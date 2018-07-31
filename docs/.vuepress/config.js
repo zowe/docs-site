@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Zowe Docs',
-  base: '/zowe/docs-site',
+  base: '/docs-site',
   description: 'Docs site for Zowe.',
   // ga: '',
   themeConfig: {
