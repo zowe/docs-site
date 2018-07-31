@@ -1,11 +1,11 @@
 module.exports = {
   title: 'Zowe Docs',
-  // base: '',
+  base: '/zowe/docs-site',
   description: 'Docs site for Zowe.',
   // ga: '',
   themeConfig: {
     docsDir: 'docs',
-    // repo: 'https://github.ibm.com/Adam-Battenburg/zoe-quick-start',
+    repo: 'https://github.com/zowe/docs-site',
     editLinks: true,
     editLinkText: 'Edit this page on github.',
     lastUpdated: 'Last Updated', // string | boolean
