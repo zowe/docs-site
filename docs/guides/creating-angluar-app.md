@@ -1,14 +1,8 @@
 # Creating an App and API with Angular
 
-:::warning
-This guide currently requires access to the Giza foundation on github to download zlux dependencies. These will be added to this shortly.
-
-In the meantime, the guide still servers as a great reference on creating an API with Node and connecting to it through a native Angular application.
-:::
-
 This tutorial will teach you how to develop your own Zoe App using Angular.
 
-The skeleton repo for the project can be found [here](), but to finish the tutorial you will need to piece together the snippets and descriptions found below.
+The skeleton repo for the project can be found [here](https://github.com/gizafoundation/workshop-user-browser-app), but to finish the tutorial you will need to piece together the snippets and descriptions found below.
 
 By the end of this tutorial, you will:
 
