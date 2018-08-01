@@ -1,13 +1,13 @@
 module.exports = {
   title: 'Zowe Docs',
   base: '/docs-site/',
-  description: 'Docs site for Zowe.',
+  description: 'Home of Zowe documentation',
   // ga: '',
   themeConfig: {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
     editLinks: true,
-    editLinkText: 'Edit this page on github.',
+    editLinkText: 'Edit this page on GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
     nav: [
@@ -35,12 +35,12 @@ module.exports = {
           children: ['summaryofchanges']
         },
         {
-          title: 'Project Zoe Overview',
+          title: 'Project Zowe Overview',
           collapsable: true,
           children: ['zoe-introduction']
         },
         {
-          title: 'Installing Project Zoe',
+          title: 'Installing Project Zowe',
           collapsable: true,
           children: [
             'installandconfig',
@@ -54,7 +54,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Using Project Zoe',
+          title: 'Using Project Zowe',
           collapsable: true,
           children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
         },
