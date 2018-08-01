@@ -1,6 +1,6 @@
 # Creating a RestAPI with Swagger documentation using Liberty
 
-This tutorial will show you to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same primnciples can be applied for other JEE servers.
+This tutorial will show you to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
 
 The source repo for the project can be found [TODO](https://github.com/gizafoundation/atlas-jzos-sample/)
 
@@ -26,9 +26,9 @@ Knowledge of the following development technologies is beneficial:
 
 ##  Zowe API Architecture Overview
 
-Much of the Zowe infrastructure builds upon functionality provided by different applications and systsmes in z/OS some of which are microservices deployed on a Liberty server runnong on the Z system. As an example Zowe can access z/OSMF services that are aggregated with other functionality that provides new or more comprehensive functionality that allows new services to be created that also benefit from single-sign using **Lightweight Third Party** Authentication (LTPA) keys and centralised logging functions.
+Much of the Zowe infrastructure builds upon functionality provided by different applications and systsmes in z/OS some of which are microservices deployed on a Liberty server running on the Z system. As an example Zowe can access z/OSMF services that are aggregated with other functionality that provides new or more comprehensive functionality that allows new services to be created that also benefit from single-sign using **Lightweight Third Party** Authentication (LTPA) keys and centralized logging functions.
 
-The API for Zowe is written in Java utilising JAX-RS: Java API for RESTful Web Services (JAX-RS). JAX-RS uses Java annotations to simplify the development and deployment of web service clients and endpoints and ultimately become rendered into swagger interfaces.
+The API for Zowe is written in Java utilizing JAX-RS: Java API for RESTful Web Services (JAX-RS). JAX-RS uses Java annotations to simplify the development and deployment of web service clients and endpoints and ultimately become rendered into swagger interfaces.
 
 ## Building your own Microservice
 
@@ -111,10 +111,10 @@ later based upon future requirements.
 Aim for 100% coverage. In many cases it may be impossible or impractical to achieve either because code is auto-generated or covered in other
 tests. Use Jacoco to highlight where there are gaps.
 
-Note the references to Jacoco in the atlas-jzos-sample pom.xml file. Remember it operates in two phases, initialising before the unit tests
+Note the references to Jacoco in the atlas-jzos-sample pom.xml file. Remember it operates in two phases, initializing before the unit tests
 are run and reporting afterwards.
 
-Examples of unit testing, the use of Mockito and PowerMock are in thesrc/test/java folder for the jzos sample.
+Examples of unit testing, the use of Mockito and PowerMock are in the src/test/java folder for the jzos sample.
 
 ##  FV testing
 
