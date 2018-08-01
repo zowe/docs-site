@@ -16,7 +16,7 @@ module.exports = {
       { text: 'User Guide', link: '/user-guide/editionnotice' }
     ],
     sidebar: {
-      '/guides/': ['creating-angluar-app'],
+      '/guides/': ['creating-angluar-app', 'libertyAPI'],
       '/examples/': ['api', 'ui'],
       '/user-guide/': [
         {
