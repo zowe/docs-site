@@ -11,13 +11,13 @@ module.exports = {
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
     nav: [
-      { text: 'Guides', link: '/guides/creating-angluar-app' },
-      { text: 'Examples', link: '/examples/api' },
+      { text: 'Guides', link: '/guides/intro' },
+      { text: 'Examples', link: '/examples/intro' },
       { text: 'User Guide', link: '/user-guide/editionnotice' }
     ],
     sidebar: {
-      '/guides/': ['creating-angluar-app', 'libertyAPI'],
-      '/examples/': ['api', 'ui'],
+      '/guides/': ['intro', 'creating-angluar-app', 'libertyAPI'],
+      '/examples/': ['intro', 'api', 'ui'],
       '/user-guide/': [
         {
           title: 'Edition Notice',

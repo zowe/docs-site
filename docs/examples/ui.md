@@ -59,7 +59,7 @@ Make sure that you first expose an API to connect to before following the steps 
 
 Upon restarting the server, navigate to the zlux server.
 
-- This can be found at: [https://<base>:<port>/ZLUX/plugins/com.rs.mvd/web/](https://localhost:8544/ZLUX/plugins/com.rs.mvd/web/)
+- This can be found at: `https://<base>:<port>/ZLUX/plugins/com.rs.mvd/web/`
 
 Check to make sure that your new plugin has been added and that it is able to interact with the server.
 
