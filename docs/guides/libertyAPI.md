@@ -74,7 +74,7 @@ Maven archetype choose one containing a simplified sample J2EE application.
 The image below indicates the type of structure you should be seeing although this contains more files and folders than you will have
 initially it should give you the general idea. Don't worry about git or target at this stage they will appear later as you develop your project.
 
-![](images/guides/libertyAPI/struct1.png)
+![](../images/guides/libertyAPI/struct1.png)
 
 Your project should be developed as a standalone war file and deployed either to a local server if you have no z dependencies (Hint: good to
 start with). If using Eclipse and not yet using z/OS specific functionality consider setting up a test server within Eclipse and
@@ -96,7 +96,7 @@ Using Maven to build in an Eclipse environment can leave your files full of red 
 mechanism has no visibility of dependencies described in the pom.xml file. There is a magic function to help with this. Right click on your
 project and select the Maven Update option. This will allow the Eclipse project to be updated and get rid of many of the x's.
 
-![](images/guides/libertyAPI/menu1.png)
+![](../images/guides/libertyAPI/menu1.png)
 
 ### Generic jar files
 
