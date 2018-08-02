@@ -1,6 +1,6 @@
 # UI Samples
 
-Zowe allows extensions to be written in any UI framework through the use of an Iframe, or Angular and React. In this section, walkthroughs of various use cases will be provided along with code samples.
+Zowe allows extensions to be written in any UI framework through the use of an Iframe, or Angular and React natively. In this section, code samples of various use-cases will provided with install instructions.
 
 ::: warning Troubleshooting Suggestions:
 As Zowe is still in beta, not everything works as expected yet. If you are running into issues, try these suggestions:
@@ -16,7 +16,7 @@ As Zowe is still in beta, not everything works as expected yet. If you are runni
 For this guide we have provided a react sample (found below), which connects to the API defined in the API extension sample.
 
 ::: tip
-Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/examples/api.md).
+Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/api.md).
 :::
 
 #### Github Sample Code: [basic-react](https://github.ibm.com/ZoeExtenders/webui-scenarios/tree/master/basic-react)

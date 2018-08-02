@@ -12,12 +12,12 @@ module.exports = {
     sidebarDepth: 2,
     nav: [
       { text: 'Guides', link: '/guides/intro' },
-      { text: 'Examples', link: '/examples/intro' },
+      { text: 'Samples', link: '/samples/intro' },
       { text: 'User Guide', link: '/user-guide/editionnotice' }
     ],
     sidebar: {
       '/guides/': ['intro', 'creating-angluar-app', 'libertyAPI'],
-      '/examples/': ['intro', 'api', 'ui'],
+      '/samples/': ['intro', 'api', 'ui'],
       '/user-guide/': [
         {
           title: 'Edition Notice',

@@ -1,7 +1,7 @@
 ---
 home: true
 actionText: View Documentation
-actionLink: /guides/creating-angluar-app.html
+actionLink: /guides/intro.html
 features:
 - title: Learn to install Zowe
   details: Includes guides on how to install for every platform from mainframes to locally. 
