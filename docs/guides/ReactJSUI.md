@@ -6,4 +6,4 @@ One of the great things about working with Zowe is that you can include any UI's
 
 Take a look at the [Creating a RestAPI with Swagger documentation using Liberty](https://zowe.github.io/docs-site/guides/libertyAPI.html) tutorial for the background to the Restful API with Swagger documentation we will be using.
 
-The sample app can be downloaded from [here](https://github.ibm.com/ZoeExtenders/webui-scenarios/tree/master/basic-react) overview
+The sample app can be downloaded from [TODO](https://github.ibm.com/ZoeExtenders/webui-scenarios/tree/master/basic-react) overview
