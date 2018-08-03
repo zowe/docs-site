@@ -26,7 +26,7 @@ Knowledge of the following development technologies is beneficial:
 
 ##  Zowe API Architecture Overview
 
-Much of the Zowe infrastructure builds upon functionality provided by different applications and systsmes in z/OS some of which are microservices deployed on a Liberty server running on the Z system. As an example Zowe can access z/OSMF services that are aggregated with other functionality that provides new or more comprehensive functionality that allows new services to be created that also benefit from single-sign using **Lightweight Third Party** Authentication (LTPA) keys and centralized logging functions.
+Much of the Zowe infrastructure builds upon functionality provided by different applications and systems in z/OS some of which are microservices deployed on a Liberty server running on the Z system. As an example Zowe can access z/OSMF services that are aggregated with other functionality that provides new or more comprehensive functionality that allows new services to be created that also benefit from single-sign using **Lightweight Third Party** Authentication (LTPA) keys and centralized logging functions.
 
 The API for Zowe is written in Java utilizing JAX-RS: Java API for RESTful Web Services (JAX-RS). JAX-RS uses Java annotations to simplify the development and deployment of web service clients and endpoints and ultimately become rendered into swagger interfaces.
 
@@ -129,7 +129,7 @@ exercised.
 
 ##  WebUI
 
-An example of a WebUI built using the functionality provided by this sample can be found [TODO](https://github.com/gizafoundation/atlas-jzos-sample/) using JavaScript, React/Redux, but this does not
+An example of a WebUI built using the functionality provided by this Blog and sample can be found in the [ReactJS blog](./ReactJSUI.md) created using JavaScript, React/Redux, but this does not
 mean you are restricted to these.
 
 ##  Documentation
