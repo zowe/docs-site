@@ -1,32 +1,3 @@
-# Adding Apps to the MVD
-
-While the zlux environment comes with predefined “apps” and explorers, you also have the ability to extend the system and add your own apps. These apps can be created using any UI framework through an Iframe. However only Angular is supported natively.
-
-In this section we will discuss:
-
-- The file structure of the plugin system
-- Configuring your app for Zoe with the pluginDefiniton.json
-- Building and deploying newly added apps
-
-## Plugin file system
-
-To add new apps, files must be added in two locations.
-
-- Zoe root (`/zaas1/zoe/<build-number>`)
-
-  - Here is where the App project itself is added.
-
-- Plugins Folder (`/zaas1/zoe/<build-number>/zlux-example-server/plugins`)
-
-  - An identifier in the format of com.<**plugin-name**>.json is convention. Inside this json file the **plugin location** (generally the zoe root), and the **identifier name** are specified. To identify the plugin further, names such as auth, mvd, common, ext are postfixed after **com**. An example of such a file is below.
-
-```json
-{
-  "identifier": "com.<plugin-name>",
-  "pluginLocation": "../../<plugin-name>"
-}
-```
-
 ::: tip Web Folder
 
 Although projects are added to the Zoe root, Zoe looks in the **web** folder under `/zaas1/zoe/<build-number>/<plugin-name>/web` when looking for an entry point to new apps. Make sure to put your **index.html** or other entry point in this folder.

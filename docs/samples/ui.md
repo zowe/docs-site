@@ -13,7 +13,7 @@ As Zowe is still in beta, not everything works as expected yet. If you are runni
 
 ## Connect to API Backend (In Iframe)
 
-For this guide we have provided a react sample (found below), which connects to the API defined in the API extension sample.
+For this section we have provided a react sample (found below), which connects to the API defined in the API extension sample.
 
 ::: tip
 Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/api.md).

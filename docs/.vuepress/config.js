@@ -16,8 +16,40 @@ module.exports = {
       { text: 'User Guide', link: '/user-guide/editionnotice' }
     ],
     sidebar: {
-      '/guides/': ['intro', 'creating-angluar-app', 'libertyAPI'],
-      '/samples/': ['intro', 'api', 'ui'],
+      '/guides/': [
+        {
+          title: 'Guides',
+          collapsable: true,
+          children: ['intro']
+        },
+        {
+          title: 'Build Angluar App',
+          collapsable: true,
+          children: ['creating-angluar-app']
+        },
+        {
+          title: 'Provide Liverty APIs',
+          collapsable: true,
+          children: ['libertyAPI', 'ReactJSUI']
+        }
+      ],
+      '/samples/': [
+        {
+          title: 'Code Samples',
+          collapsable: true,
+          children: ['intro']
+        },
+        {
+          title: 'Provide Liverty API Sample',
+          collapsable: true,
+          children: ['api']
+        },
+        {
+          title: 'The UI Samples',
+          collapsable: true,
+          children: ['ui']
+        }
+      ],
       '/user-guide/': [
         {
           title: 'Edition Notice',
