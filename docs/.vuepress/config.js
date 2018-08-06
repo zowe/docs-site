@@ -11,14 +11,14 @@ module.exports = {
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
     nav: [
-      { text: 'Guides', link: '/guides/intro' },
+      { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
       { text: 'User Guide', link: '/user-guide/editionnotice' }
     ],
     sidebar: {
       '/guides/': [
         {
-          title: 'Guides',
+          title: 'Developer Tutorials',
           collapsable: true,
           children: ['intro']
         },
