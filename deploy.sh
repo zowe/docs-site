@@ -3,7 +3,7 @@
 # abort on errors
 set -e
 
-npm run docs:build
+yarn run docs:build
 
 cd docs/.vuepress/dist
 
