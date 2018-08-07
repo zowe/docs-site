@@ -23,12 +23,12 @@ module.exports = {
           children: ['intro']
         },
         {
-          title: 'Build Angluar App',
+          title: 'Build Angular App',
           collapsable: true,
           children: ['creating-angluar-app']
         },
         {
-          title: 'Provide Liverty APIs',
+          title: 'Provide Liberty APIs',
           collapsable: true,
           children: ['libertyAPI', 'ReactJSUI']
         }
@@ -40,7 +40,7 @@ module.exports = {
           children: ['intro']
         },
         {
-          title: 'Provide Liverty API Sample',
+          title: 'Provide Liberty API Sample',
           collapsable: true,
           children: ['api']
         },
