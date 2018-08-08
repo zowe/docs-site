@@ -7,13 +7,13 @@ module.exports = {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
     editLinks: true,
-    editLinkText: 'Edit this page on GitHub.',
+    editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
     nav: [
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
-      { text: 'User Guide', link: '/user-guide/editionnotice' }
+      { text: 'User Guide', link: '/user-guide/zoe-introduction' }
     ],
     sidebar: {
       '/guides/': [
@@ -57,7 +57,7 @@ module.exports = {
           children: ['editionnotice']
         },
         {
-          title: 'About this document',
+          title: 'About this documentation',
           collapsable: true,
           children: ['aboutthisbook']
         },
@@ -67,12 +67,12 @@ module.exports = {
           children: ['summaryofchanges']
         },
         {
-          title: 'Project Zowe Overview',
+          title: 'Zowe Overview',
           collapsable: true,
           children: ['zoe-introduction']
         },
         {
-          title: 'Installing Project Zowe',
+          title: 'Installing Zowe',
           collapsable: true,
           children: [
             'installandconfig',
@@ -86,7 +86,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Using Project Zowe',
+          title: 'Using Zowe',
           collapsable: true,
           children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
         },
