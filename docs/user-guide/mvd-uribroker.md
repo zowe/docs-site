@@ -10,11 +10,11 @@ Access the URI Broker through one of two locations:
 
 Natively:
 
-**`window.RocketMVD.uriBroker`**
+`window.RocketMVD.uriBroker`
 
 In an iframe:
 
-**`window.parent.RocketMVD.uriBroker`**
+`window.parent.RocketMVD.uriBroker`
 
 
 ## Functions
@@ -23,7 +23,7 @@ The URI Broker builds different categories of URIs depending upon what the appli
 
 ### Accessing an application plug-in's dataservices
 
-zLUX dataservices can be based on HTTP (REST) or Websocket. For more information, see [zLUX dataservices](mvd-zluxdataservices.md). 
+zLUX dataservices can be based on HTTP (REST) or Websocket. For more information, see [zLUX dataservices](mvd-zluxdataservices.md).
 
 #### HTTP Dataservice URI
 
@@ -60,14 +60,14 @@ Returns: A URI for accessing a specific scope for a given resource.
 
 ### Accessing static content
 
-Content under an application plug-in's `web` directory is static content accessible by a browser. 
+Content under an application plug-in's `web` directory is static content accessible by a browser.
 This can be accessed through:
 
 `pluginResourceUri(pluginDefinition: ZLUX.Plugin, relativePath: string): string`
 
 Returns: A URI for getting static content.
 
-For more information about the `web` directory, see [zLUX application filesystem structure](topics/mvd-zluxappfilesystem.md).
+For more information about the `web` directory, see [zLUX application plug-in filesystem structure](mvd-zluxplugindefandstruct.md#zlux-application-plug-in-filesystem-structure).
 
 ### Accessing the application plug-in's root
 
@@ -85,5 +85,4 @@ A client can find different information about a server's configuration or the co
 
 `pluginListUri(pluginType: ZLUX.PluginType): string`
 
-Returns: A URI which when accessed will return the list of existing plug-ins on the server by the type specified, such as "Application" or "all".
-
+Returns: A URI, which when accesseds returns the list of existing plug-ins on the server by the type specified, such as "Application" or "all".

@@ -1,106 +1,71 @@
-# Troubleshooting the installation process
+# Troubleshooting the installation
 
 ## Troubleshooting installing the Zowe runtime
 
 1.  Environment variables
 
-    To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs in order to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
+    To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
 
-     - `ZOE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`
-     - `ZOE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
-     - `ZOE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
+     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`
+     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
+     - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
 
     The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
 
      **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
 
-    If the environment variables for `ZOE_ZOSMF_PATH`, `ZOE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location.  The install script will not continue unless valid locations are provided.  
+    If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location.  The install script will not continue unless valid locations are provided.  
 
 2. Expanding the PAX files
 
-    The install script will create the Zowe runtime directory structure using the  `install:rootDir ` value in the  `zoe-install.yaml` file.  The runtime components of the Zowe server are then unpaxed into the directory that contains a number of directories and files that make up the Zowe runtime.
+    The install script will create the Zowe runtime directory structure using the  `install:rootDir ` value in the  `zowe-install.yaml` file.  The runtime components of the Zowe server are then unpaxed into the directory that contains a number of directories and files that make up the Zowe runtime.
 
     If the expand of the PAX files is successful, the install script will report that it ran its install step to completion.
 
 3. Changing Unix permissions
 
-    After the install script has laid down the contents of the Zowe runtime into the `rootDir`, the next step is to set the file and directory permissions correctly to allow the Zowe runtime servers to start and operate successfully.
+    After the install script lay down the contents of the Zowe runtime into the `rootDir`, the next step is to set the file and directory permissions correctly to allow the Zowe runtime servers to start and operate successfully.
 
-    The install process will execute the file `scripts/zoe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result will be reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process will report the errors.  A user with sufficient authority should then run the `zoe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zoe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
+    The install process will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result is reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
 
 4. Creating the PROCLIB member to run the Zowe runtime
 
-    **Note:**  The name of the PROCLIB member may vary depending on the standards in place at each z/OS site, however for this documentation we assume that the PROCLIB member is called `ZOESVR`.
+    **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
 
-    At the end of the installation, a Unix file `ZOESVR.jcl` is created under the directory where the runtime was installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task.  The install script does this automatically, trying data sets `USER.PROCLIB`, other PROCLIB data sets found in the PROCLIB concatenation and finally `SYS1.PROCLIB`.  
+    At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task.  The install script does this automatically, trying data sets `USER.PROCLIB`, other PROCLIB data sets found in the PROCLIB concatenation and finally `SYS1.PROCLIB`.  
 
     If this succeeds, you will see a message like the following one:
 
-     ```PROC ZOESVR placed in USER.PROCLIB```
+     ```
+     PROC ZOWESVR placed in USER.PROCLIB
+     ```
 
     Otherwise you will see messages beginning with the following information:  
 
-     ```Failed to put ZOESVR.JCL in a PROCLIB dataset.```
+     ```
+     Failed to put ZOWESVR.JCL in a PROCLIB dataset.
+     ```
 
-    In this case, you need to copy the PROC manually. The TSO `oget` command can be used to copy the `ZOESVR.jcl` file to the preferred PROCLIB.  
+    In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZOWESVR.jcl` file to the preferred PROCLIB:  
 
-     ```oget '$INSTALL_DIR/files/templates/ZOESVR.jcl' 'MY.USER.PROCLIB(ZOESVR)'```
+     ```
+     oget '$INSTALL_DIR/files/templates/ZOWESVR.jcl' 'MY.USER.PROCLIB(ZOWESVR)'
+     ```
 
-    You can place the PROC in any PROCLIB data set in the PROCLIB concatenation, but some data sets such as `SYS1.PROCLIB` may be restricted, depending on the permission of the user.  
+    You can place the PROC in any PROCLIB data set in the PROCLIB concatenation, but some data sets such as `SYS1.PROCLIB` might be restricted, depending on the permission of the user.  
 
     You can tailor the JCL at this line
 
-      ```//ZOESVR   PROC SRVRPATH='/zoe/install/path/explorer-server'```
+      ```
+      //ZOWESVR   PROC SRVRPATH='/zowe/install/path/explorer-server'
+      ```
 
-    to replace the `/zoe/install/path` with the location of the Zowe runtime directory that contains the explorer server.  Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server.  Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
-      ```/S ZOESVR,SRVRPATH='$ZOE_ROOT_DIR/explorer-server'```
+      ```
+      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
+      ```
 
-5. Adding RACF authorizations for Zowe
-
-    To define RACF authorizations for Zowe, the following steps are required:
-
-     1. Define the PROC named ZOESVR to be a started task.
-
-        ```
-        RDEFINE STARTED ZOESVR.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))
-
-        SETROPTS REFRESH RACLIST(STARTED)
-        ```
-        If you use CA ACF2, to set the ZOESVR STC to use the IZUSVR user ID, issue the following commands:
-
-        ```
-        SET CONTROL(GSO)  
-        INSERT STC.ZOESVR LOGONID(ZIUSVR) GROUP(IZUADMIN) STCID(ZOESVR)  
-        F ACF2,REFRESH(STC)  
-        ```
-
-        If you use CA Top Secret, to set the ZOESVR STC to use the IZUSVR user ID, issue the following commands:
-
-        ```
-        TSS ADDTO(STC) PROCNAME(ZOESVR) ACID(IZUSVR)
-        ```
-
-     2. Add the user who is performing the install to the IZUADMIN group.  
-
-        ```
-        CONNECT (userid) GROUP(IZUADMIN)
-        ```
-
-        If you use CA ACF2, to add the user to the IZUADMIN group, issue the following commands:
-
-        ```
-        SET LID  
-        CHANGE userid GROUP(IZUADMIN)  
-        ```
-
-        If you use CA Top Secret, to add the user to the IZUADMIN group, issue the following commands:
-
-        ```  
-        TSS ADD(userid)  PROFILE(IZUADMIN)  
-        TSS ADD(userid)  GROUP(IZUADMGP)    
-        ```
-        
 ### Troubleshooting installing zLUX
 
 To help zLUX research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
@@ -113,25 +78,24 @@ To help zLUX research any problems you might encounter, collect as much of the f
  - Error message codes
  - Screenshots (if applicable)
  - Other relevant information (such as the version of Node.js that is running on the Zowe Node Server and the browser and browser version).
- 
- 
+
 ### Troubleshooting installing explorer server
 
 If explorer server REST APIs do not work, check the following items:
 
 -   Check whether your Liberty explorer server is running.
 
-    You can check this in the Display Active \(DA\) panel of SDSF under ISPF. The ZOESVR started task should be running. If the ZOESVR task is not running, start the explorer server by using the following `START` operator command:
+    You can check this in the Display Active \(DA\) panel of SDSF under ISPF. The ZOWESVR started task should be running. If the ZOWESVR task is not running, start the explorer server by using the following `START` operator command:
 
     ```
-    /S ZOESVR
+    /S ZOWESVR
     ```
 
-    You can also use the operator command `/D A,ZOESVR` to verify whether the task is active, which alleviates the need for the \(DA\) panel of SDSF. If the started task is not running, ensure that your ZOESVR procedure resides in a valid PROCLIB data set, and check the task’s job output for errors.
+    You can also use the operator command `/D A,ZOWESVR` to verify whether the task is active, which alleviates the need for the DA panel of SDSF. If the started task is not running, ensure that your ZOWESVR procedure resides in a valid PROCLIB data set, and check the task’s job output for errors.
 
 -   Check whether the explorer server is started without errors.
 
-    In the Display Active \(DA\) panel of SDSF under ISPF, select the ZOESVR job to view the started task output. If the explorer server is started without errors, you can see the following messages:
+    In the DA panel of SDSF under ISPF, select the ZOWESVR job to view the started task output. If the explorer server is started without errors, you can see the following messages:
 
     ```
     CWWKE0001I: The server Atlas has been launched.
@@ -141,7 +105,7 @@ If explorer server REST APIs do not work, check the following items:
     CWWKF0011I: The server Atlas is ready to run a smarter planet.
     ```
 
-    If you see error messages that are prefixed with "ERROR" or stack traces in the ZOESVR job output, respond to them.
+    If you see error messages that are prefixed with "ERROR" or stack traces in the ZOWESVR job output, respond to them.
 
 -   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/Atlas/api/system/version. The URL is case-sensitive.
 -   Ensure that you enter a valid z/OS® user ID and password when initially connecting to the explorer server.
@@ -169,7 +133,7 @@ If explorer server REST APIs do not work, check the following items:
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
 
-    You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTJOBS API directly fails, fix z/OSMF before explorer server can use these APIs successfully. 
+    You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTJOBS API directly fails, fix z/OSMF before explorer server can use these APIs successfully.
 
 -   If testing the explorer server REST API for data set information fails, check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
 
@@ -185,7 +149,7 @@ If explorer server REST APIs do not work, check the following items:
 
     You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTFILES API directly fails, fix z/OSMF before explorer server can use these APIs successfully.
 
-    **Tip:** The z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB might be missed. For more information, see the *z/OSMF Configuration Guide*.
+    **Tip:** The z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB might be missed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
 
     The IZUFPROC member resides in your system PROCLIB, which is similar to the following sample:
 
@@ -219,13 +183,12 @@ If explorer server REST APIs do not work, check the following items:
 
 If the explorer server cannot connect to the z/OSMF server, check the following item:
 
-By default, the explorer server communicates with the z/OSMF server on the localhost address. If your z/OSMF server is on a different IP address to the explorer server, for example, if you are running z/OSMF with Dynamic Virtual IP Addressing (DVIPA), you can change this by adding a `ZOSMF_HOST` parameter to the server.env file. For example: `ZOSMF_HOST=winmvs27`.
-
+By default, the explorer server communicates with the z/OSMF server on the localhost address. If your z/OSMF server is on a different IP address to the explorer server, for example, if you are running z/OSMF with Dynamic Virtual IP Addressing (DVIPA), you can change this by adding a `ZOSMF_HOST` parameter to the `server.env` file. For example: `ZOSMF_HOST=winmvs27`.
 
 ## Troubleshooting installing Zowe CLI
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior using Zowe CLI.
 
-### `npm install -g `Command Fails Due to an EPERM Error
+### `npm install -g `Command Fails Due to an EPERM Error
 
 **Valid on Windows**
 
@@ -247,7 +210,7 @@ report success using the following workarounds:
 
   - `Add the --no-optional` flag to the end of the `npm install` command.
 
-### `Sudo` syntax required to complete some installations
+### `Sudo` syntax required to complete some installations
 
 **Valid on Linux**
 
@@ -262,7 +225,7 @@ to add the prefix `sudo `before the `npm install -g` command or the `npm
 uninstall -g` command. This step gives Node.js write access to the
 installation directory.
 
-### `sudo npm install -g` command fails with an `EPERM` error 
+### `sudo npm install -g` command fails with an `EPERM` error
 
 **Valid on Linux**
 
@@ -286,7 +249,7 @@ performs the following actions:
 
 **Follow these steps:**
 
-1.  [Obtain the Project Zoe installation files](zoegettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
+1.  [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 2.  Open a command line window and browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
     ```
@@ -301,7 +264,7 @@ performs the following actions:
 **Tip:** If the script fails, rerun the script. If the script fails again on the same step, you can perform the script operations manually. See the npm documentation about [how to change the default global node module directory](https://docs.npmjs.com/getting-started/fixing-npm-permissions#option-two-change-npms-default-directory)
 manually.
 
-### `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
+### `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
 **Valid on Windows or Linux**
 
@@ -315,8 +278,9 @@ This behavior is due to a problem with Node Package Manager (npm). If
 you encounter this problem, revert to a previous version of npm that
 does not contain this defect. To revert to a previous version of npm,
 issue the following command:
-
-`npm install npm@5.3.0 -g`
+```
+npm install npm@5.3.0 -g
+```
 
 ### Node.js commands do not respond as expected
 

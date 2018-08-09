@@ -1,12 +1,12 @@
 # System requirements
 
-Before installing Project Zowe, ensure that your environment meets all of the prerequisites.
+Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
-1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Project Zowe microservice that must be installed and running before you use Project Zowe. For details, see [z/OSMF configuration](../topics/prezosmf.md).
+1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF requirements](#zosmf-requirements).
 
 2. Review component specific requirements.
-     -   [System requirements for API Mediation, zLUX, and explorer server](../topics/premvd.md)
-     -   [System requirements for Zowe CLI](../topics/cli-precli.md)
+     -   [System requirements for zLUX, explorer server, and API Mediation](#system-requirements-for-zlux-explorer-server-and-api-mediation-layer)
+     -   [System requirements for Zowe CLI](#system-requirements-for-zowe-cli)
 
 ## z/OSMF requirements
 
@@ -24,8 +24,8 @@ AXE (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
   Common Information Model (CIM) server| z/OSMF uses the CIM server to perform capacity-provisioning and workload-management tasks. Start the CIM server before you start z/OSMF (the IZU* started tasks).  |  [Reviewing your CIM server setup][155070cd]
 CONSOLE and CONSPROF commands |The CONSOLE and CONSPROF commands must exist in the authorized command table.| [Customizing the CONSOLE and CONSPROF commands][51d741c4]
-IBM z/OS Provisioning Toolkit  |  The IBM® z/OS® Provisioning Toolkit is a command line utility that provides the ability to provision z/OS development environments. If you want to provision CICS or Db2 environments with the Zowe Brightside, this toolkit is required. | [What is IBM Cloud Provisioning and Management for z/OS? ][695feec1]
-Java level   | IBM® 64-bit SDK for z/OS®, Java Technology Edition V7.1 or higher is required. | [Software prerequisites for z/OSMF][0a0a3cac]
+IBM z/OS Provisioning Toolkit  |  The IBM® z/OS® Provisioning Toolkit is a command line utility that provides the ability to provision z/OS development environments. If you want to provision CICS or Db2 environments with the Zowe CLI, this toolkit is required. | [What is IBM Cloud Provisioning and Management for z/OS? ][695feec1]
+Java level   | IBM® 64-bit SDK for z/OS®, Java Technology Edition V7.1 or later is required. | [Software prerequisites for z/OSMF][0a0a3cac]
 TSO region size   | To prevent **exceeds maximum region size** errors, verify that the TSO maximum region size is a minimum of 65536 KB for the z/OS system.   |  N/A
 User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During workflow processing and REST API requests, z/OSMF might start one or more TSO address spaces under the following job names: userid; substr(userid, 1, 6) CN (Console).  |  N/A
 
@@ -38,39 +38,15 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 ### Configuring z/OSMF
 
-1. Use one of the following commands to verify the version of z/OS:
+1. From the console, issue the following command to verify the version of z/OS:
+    ```
+    /D IPLINFO
+    ```
+    Part of the output contains the release, for example,
+    ```
+    RELEASE z/OS 02.02.00.
+    ```
 
-    - From the console, issue the following command:
-
-        ```
-        /D IPLINFO
-        ```
-
-        Part of the output contains the release, for example,
-
-        ```
-        RELEASE z/OS 02.02.00.
-        ```
-
-    - Use SDSF and select the menu option **MAS**. The output displays the SysName (LPAR name) and the z/OS version, for example:
-
-        ```
-        SysName  Version
-
-        S001     z/OS 2.2
-        ```
-
-    - Use ISPF option **7.3** (Dialog Test Variables). Scroll down to the variable `ZOS390RL`, for example,
-
-        ```
-        ZOS390RL S N z/OS   02.02.00
-        ```
-        From the ISPF Primary Option Menu, the last entry is the ISPF Release, which corresponds to the z/OS version, for example:
-        ```
-        Release . : ISPF 7.1    --> z/OS v2.1
-        Release . : ISPF 7.2    --> z/OS v2.2
-        Release . : ISPF 7.3    --> z/OS v2.3
-        ```
 2. Configure z/OSMF.
 
     z/OSMF is a base element of z/OS V2.2 and V2.3, so it is already installed. But it might not be configured and running on every z/OS V2.2 and V2.3 system.
@@ -81,16 +57,18 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
     - Stage 2 - Configuration
     - Stage 3 - Server initialization
 
-    This stage sequence is critical to a successful configuration. For complete information about how to configure z/OSMF, see [IBM® z/OS Management Facility Configuration Guide][ebfc91e0].
+   This stage sequence is critical to a successful configuration. For complete information about how to configure z/OSMF, see [Configuring z/OSMF for the first time][56147429] if you use z/OS V2.2 or [Setting up z/OSMF for the first time][56699d6d] if V2.3.
+
+  [56147429]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua300/IZUHPINFO_ConfiguringMain.htm "Configuring z/OSMF"
+  [56699d6d]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_ConfiguringMain.htm "Setting up z/OSMF for the first time"
 
 
-    **Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
-    The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Brightside's RestConsoles API require Version 2.3.
+**Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
-    [ebfc91e0]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm "IBM® z/OS Management Facility Configuration Guide"
+   The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe CLI's RestConsoles API require Version 2.3.
 
-3. Verify that the z/OSMF server and angel processes are running. From the command line, enter the following command:
+3. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
 
     ```
     /D A,IZU*
@@ -102,13 +80,13 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
     /S IZUANG1
     ```
 
-    After you see the message **CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL**, issue the following command to start the server:
+    After you see the message ""CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL"", issue the following command to start the server:
 
     ```
     /S IZUSVR1
     ```
 
-    The server might take a few minutes to initialize. The z/OSMF server is available when the message **CWWKF0011I: The server zosmfServer is ready to run a smarter planet.** is displayed.
+    The server might take a few minutes to initialize. The z/OSMF server is available when the message ""CWWKF0011I: The server zosmfServer is ready to run a smarter planet."" is displayed.
 
 4. Issue the following command to find the startup messages in the SDSF log of the z/OSMF server:
 
@@ -118,23 +96,23 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
     You could see a message similar to the following message, which indicates the port number:
 
-    `IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.`
+   ""IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.""
 
     In this example, the port number is 443. You will need this port number later.
 
     Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
 
-#### z/OSMF REST services for the Zowe Brightside
-The Zowe Brightside uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
+#### z/OSMF REST services for the Zowe CLI
+The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
   --|---|--
-  Cloud provisioning services | Cloud provisioning services are required for the Zowe Brightside CICS and Db2 command groups. Endpoints begin with `/zosmf/provisioning/`  | [Cloud provisioning services][aab6df02]
-  TSO/E address space services  | TSO/E address space services are required to issue TSO commands in the Zowe Brightside. Endpoints begin with `/zosmf/tsoApp`  |  [TSO/E address space services][a5ec5a22]
-  z/OS console services  | z/OS console services are required to issue console commands in the Zowe Brightside. Endpoints begin with `/zosmf/restconsoles/`  | [z/OS console services][cec53ca4]
-  z/OS data set and file REST interface  | z/OS data set and file REST interface is required to work with mainframe data sets and UNIX System Services files in the Zowe Brightside. Endpoints begin with `/zosmf/restfiles/`  |  [z/OS data set and file REST interface][6bbf5bfd]
-  z/OS jobs REST interface  |z/OS jobs REST interface is required to use the zos-jobs command group in the Zowe Brightside. Endpoints begin with `/zosmf/restjobs/`   |  [z/OS jobs REST interface][9d372fb1]
+  Cloud provisioning services | Cloud provisioning services are required for the Zowe CLI CICS and Db2 command groups. Endpoints begin with `/zosmf/provisioning/`  | [Cloud provisioning services][aab6df02]
+  TSO/E address space services  | TSO/E address space services are required to issue TSO commands in the Zowe CLI. Endpoints begin with `/zosmf/tsoApp`  |  [TSO/E address space services][a5ec5a22]
+  z/OS console services  | z/OS console services are required to issue console commands in the Zowe CLI. Endpoints begin with `/zosmf/restconsoles/`  | [z/OS console services][cec53ca4]
+  z/OS data set and file REST interface  | z/OS data set and file REST interface is required to work with mainframe data sets and UNIX System Services files in the Zowe CLI. Endpoints begin with `/zosmf/restfiles/`  |  [z/OS data set and file REST interface][6bbf5bfd]
+  z/OS jobs REST interface  |z/OS jobs REST interface is required to use the zos-jobs command group in the Zowe CLI. Endpoints begin with `/zosmf/restjobs/`   |  [z/OS jobs REST interface][9d372fb1]
   z/OSMF workflow services  | z/OSMF workflow services is required to create and manage z/OSMF workflows on a z/OS system. Endpoints begin with `/zosmf/workflow/`  | [z/OSMF workflow services][4e443fd6]
 
   [a5ec5a22]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/izuprog_API_TSOServices.htm "TSO/E address space services"
@@ -144,7 +122,7 @@ The Zowe Brightside uses z/OSMF Representational State Transfer (REST) APIs to w
   [9d372fb1]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTJOBS.htm "z/OS jobs interface"
   [4e443fd6]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/izuprog_API_WorkflowServices.htm "z/OSMF workflow services"  
 
-  Project Zowe uses symbolic links to the z/OSMF `bootstrap.properties`, `jvm.security.override.properties`, and `ltpa.keys` files. Project Zowe reuses SAF, SSL, and LTPA configurations; therefore, they must be valid and complete.
+  Zowe uses symbolic links to the z/OSMF `bootstrap.properties`, `jvm.security.override.properties`, and `ltpa.keys` files. Zowe reuses SAF, SSL, and LTPA configurations; therefore, they must be valid and complete.
 
   For more information, see [Using the z/OSMF REST services][0c0f6f64] in IBM z/OSMF documentation.
 
@@ -153,13 +131,14 @@ The Zowe Brightside uses z/OSMF Representational State Transfer (REST) APIs to w
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: https://mvs.ibm.com:443/zosmf/restjobs/jobs
 
   **Note:**
-  
+
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-## System requirements for API Mediation Layer, zLUX, and explorer server
 
-API Mediation Layer, zLUX, and explorer server are installed together. Before the installation, make sure your system meets the following requirements:
+## System requirements for zLUX, explorer server, and API Mediation Layer
+
+zLUX, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
 
 -   z/OS® Version 2.2 or later.
 -   64-bit Java™ 8 JRE or later.
@@ -187,7 +166,7 @@ API Mediation Layer, zLUX, and explorer server are installed together. Before th
 
 The following information is required during the installation process. Make the decisions before the installtion.
 
-- The HFS directory where you install the Zoe project, for example, `/var/zoe`.
+- The HFS directory where you install Zowe, for example, `/var/zowe`.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
 - The z/OSMF installation directory that contains `derby.jar`, for example, `/usr/lpp/zosmf/lib`.
 - The z/OSMF configuration user directory that contains the following z/OSMF files:
@@ -200,18 +179,19 @@ The following information is required during the installation process. Make the 
 
 - The HTTP and HTTPS port numbers of the explorer server. By default, they are 7080 and 7443.
 - The API Mediation Layer HTTP and HTTPS port numbers. You will be asked for 3 unique port numbers.
-- The user ID that runs the Zoe started task.
+- The user ID that runs the Zowe started task.
 
     **Tip:** Use the same user ID that runs the z/OSMF `IZUSVR1` task, or a user ID with equivalent authorizations.
 
 - The mainframe account under which the ZSS server runs must have UPDATE permission on the `BPX.DAEMON` and `BPX.SERVER` facility class profiles.
+
 
 ## System requirements for Zowe CLI
 Before you install Zowe CLI, make sure your system meets the following requirements:
 
 ### Supported platforms
 
-You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe Brightside](cli-troubleshootinginstallingcli.md).
+You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.md#troubleshooting-installing-zowe-cli).
 
 **Important!**
 
@@ -220,10 +200,10 @@ You can install Zowe CLI on any Windows or Linux operating system. For more info
 
 ### Free disk space
 
-Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe Brightside.
+Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
 
 ### Prerequisite software
-Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment. This section provides supplemental information about Zowe Brightside-specific tips or requirements that system programmers can refer to.
+Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment. This section provides supplemental information about Zowe CLI-specific tips or requirements that system programmers can refer to.
 
 Before you install Zowe CLI, also install the following prerequisite software depending on the system where you install Zowe CLI:
 
@@ -297,35 +277,36 @@ Linux  operating systems require the following software:
     To install gcc, issue one of the following commands:
 
     - Red Hat  
-
-        `sudo yum install gcc`
-
+        ```
+        sudo yum install gcc
+        ```
     - Debian/Ubuntu
-
-        `sudo apt-get update`
-
-        `sudo apt-get install build-essential`
-
+        ```
+        sudo apt-get update
+        ```
+        ```
+        sudo apt-get install build-essential
+        ```
     - Arch Linux
-
-        `sudo pacman -S gcc`
-
+        ```
+        sudo pacman -S gcc
+        ```
 - Libsecret  
 
     To install Libsecret, issue one of the following commands:
 
     - Red Hat  
-
-        `sudo yum install libsecret-devel`
-
+        ```
+        sudo yum install libsecret-devel
+        ```
     - Debian/Ubuntu  
-
-        `sudo apt-get install libsecret-1-dev`
-
+        ```
+        sudo apt-get install libsecret-1-dev
+        ```
     - Arch Linux  
-
-        `sudo pacman -S libsecret`
-
+        ```
+        sudo pacman -S libsecret
+        ```
 - Make  
 
     Make is included with most Linux distributions. To confirm that Make is installed, issue the command `make –-version`.
@@ -333,13 +314,14 @@ Linux  operating systems require the following software:
     To install Make, issue one of the following commands:
 
     - Red Hat  
-
-        `sudo yum install devtoolset-7`
-
+        ```
+        sudo yum install devtoolset-7
+        ```
     - Debian/Ubuntu
-
-        `sudo apt-get install build-essential`
-
+        ```
+        sudo apt-get install build-essential
+        ```
     - Arch Linux  
-
-        `sudo pacman -S base-devel`
+        ```
+        sudo pacman -S base-devel
+        ```

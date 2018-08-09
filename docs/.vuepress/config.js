@@ -13,7 +13,7 @@ module.exports = {
     nav: [
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
-      { text: 'User Guide', link: '/user-guide/zoe-introduction' }
+      { text: 'User Guide', link: '/user-guide/aboutthisdoc' }
     ],
     sidebar: {
       '/guides/': [
@@ -52,24 +52,20 @@ module.exports = {
       ],
       '/user-guide/': [
         {
-          title: 'Edition Notice',
-          collapsable: true,
-          children: ['editionnotice']
-        },
-        {
           title: 'About this documentation',
           collapsable: true,
-          children: ['aboutthisbook']
-        },
-        {
-          title: 'Summary of changes',
-          collapsable: true,
-          children: ['summaryofchanges']
+          children: ['aboutthisdoc']
         },
         {
           title: 'Zowe Overview',
           collapsable: true,
-          children: ['zoe-introduction']
+          children: [
+            'introduction',
+            'mvd-overview',
+            'atlas-overview',
+            'cli-overview',
+            'api-mediation-overview'
+          ]
         },
         {
           title: 'Installing Zowe',
@@ -78,17 +74,23 @@ module.exports = {
             'installandconfig',
             'installroadmap',
             'planinstall',
-            'zoegettingstarted',
-            'zoeinstall-zos',
+            'gettingstarted',
+            'install-zos',
             'cli-installcli',
-            'zoeinstalltroubleshoot',
+            'troubleshootinstall',
             'uninstall'
           ]
         },
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
+          children: [
+            'using',
+            'usingmvd',
+            'usingapis',
+            'cli-usingcli',
+            'api-mediation-usingapiml'
+           ]
         },
         {
           title: 'Extending zLUX',
@@ -101,6 +103,8 @@ module.exports = {
             'mvd-desktopandwindowmgt',
             'mvd-configdataservice',
             'mvd-uribroker',
+            'mvd-apptoappcommunication',
+            'mvd-errorreportingui',
             'mvd-logutility'
           ]
         },
@@ -108,6 +112,11 @@ module.exports = {
           title: 'Extending Zowe CLI',
           collapsable: true,
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
+        },
+        {
+          title: 'Edition Notice',
+          collapsable: true,
+          children: ['editionnotice']
         },
         {
           title: 'Notices',

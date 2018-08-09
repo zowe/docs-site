@@ -1,11 +1,11 @@
 # Logging utility
 
-[zlux-shared](https://github.com/gizafoundation/zlux-shared/tree/master/src/logging) provides a logging utility for use by dataservices and web content for a Zowe application plug-in.
+The `zlux-shared` repository provides a logging utility for use by dataservices and web content for a Zowe application plug-in.
 
 
 ## Logging objects
 
-This logging utility is based on the following objects:
+The logging utility is based on the following objects:
 
 * **Component Loggers**: Objects that log messages for an individual component of the environment, such as a REST API for an application plug-in or to log user access.
 * **Destinations**: Objects that are called when a component logger requests a message to be logged. Destinations determine how something is logged, for example, to a file or to a console, and what formatting is applied.
@@ -13,7 +13,7 @@ This logging utility is based on the following objects:
 
 ## Logger IDs
 
-Because Zowe application plug-ins have unique identifiers, both dataservices and an application plug-in's web content are provided with a component logger that knows this unique ID such that messages logged can be prefixed with that ID. With the association of logging to IDs, verbosity of logs can be controlled by setting log verbosity by ID.
+Because Zowe application plug-ins have unique identifiers, both dataservices and an application plug-in's web content are provided with a component logger that knows this unique ID such that messages that are logged can be prefixed with the ID. With the association of logging to IDs, you can control verbosity of logs by setting log verbosity by ID.
 
 ## Accessing logger objects
 
@@ -49,10 +49,10 @@ See **Router Dataservice Context** in the topic [zLUX dataservices](mvd-zluxdata
 
 The following constants and functions are available on the central logging object.
 
-| Attribute | Type | Description | Arguments | 
-|-----------|------|-------------|-----------| 
-| makeComponentLogger | function | Creates a component logger - Automatically done by the App framework for dataservices and web content | componentIDString  | 
-| setLogLevelForComponentName | function | Sets the verbosity of an existing component logger | componentIDString, logLevel  | 
+| Attribute | Type | Description | Arguments |
+|-----------|------|-------------|-----------|
+| `makeComponentLogger` | function | Creates a component logger - Automatically done by the application framework for dataservices and web content | `componentIDString`  |
+| `setLogLevelForComponentName` | function | Sets the verbosity of an existing component logger | `componentIDString`, `logLevel`  |
 
 ## Component Logger API
 
@@ -60,18 +60,18 @@ The following constants and functions are available to each component logger.
 
 | Attribute | Type | Description | Arguments
 |-----------|------|-------------|----------
-| SEVERE | const | Is a const for logLevel 
-| WARNING | const | Is a const for logLevel 
-| INFO | const | Is a const for logLevel 
-| FINE | const | Is a const for logLevel 
-| FINER | const | Is a const for logLevel 
-| FINEST | const | Is a const for logLevel 
-| log | function | Used to write a log, specifying the log level | logLevel, messageString
-| severe | function | Used to write a SEVERE log. | messageString
-| warn | function | Used to write a WARNING log. | messageString
-| info | function | Used to write an INFO log. | messageString
-| debug | function | Used to write a FINE log. | messageString
-| makeSublogger | function | Creates a new component logger with an ID appended by the string given | componentNameSuffix
+| `SEVERE` | const | Is a const for `logLevel`
+| `WARNING` | const | Is a const for `logLevel`
+| `INFO` | const | Is a const for `logLevel`
+| `FINE` | const | Is a const for `logLevel`
+| `FINER` | const | Is a const for `logLevel`
+| `FINEST` | const | Is a const for `logLevel`
+| `log` | function | Used to write a log, specifying the log level | `logLevel`, `messageString`
+| `severe` | function | Used to write a SEVERE log. | `messageString`
+| `warn` | function | Used to write a WARNING log. | `messageString`
+| `info` | function | Used to write an INFO log. | `messageString`
+| `debug` | function | Used to write a FINE log. | `messageString`
+| `makeSublogger` | function | Creates a new component logger with an ID appended by the string given | `componentNameSuffix`
 
 ## Log Levels
 
@@ -86,16 +86,17 @@ An enum, `LogLevel`, exists for specifying the verbosity level of a logger. The 
 | FINER | 4
 | FINEST | 5
 
-**Note:** The default log level for any logger is **INFO**.
+**Note:** The default log level for a logger is **INFO**.
 
 
 ## Logging verbosity
 
 Using the component logger API, loggers can dictate at which level of verbosity a log message should be visible.
-The user can configure the server or client to show more or less verbose messages by using the [core logger's API objects](#logger-api).
+The user can configure the server or client to show more or less verbose messages by using the core logger's API objects.
 
-Example: You want to set the verbosity of the org.zoe.foo application plug-in's dataservice, bar to show debugging information.
-`logger.setLogLevelForComponentName('org.zoe.foo.bar',LogLevel.DEBUG)`
+Example: You want to set the verbosity of the org.zowe.foo application plug-in's dataservice, bar to show debugging information.
+
+`logger.setLogLevelForComponentName('org.zowe.foo.bar',LogLevel.DEBUG)`
 
 ### Configuring logging verbosity
 
@@ -118,4 +119,4 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Configuring the zLUX Proxy Server and ZSS](mvd-configzluxproxyandzss.md).
+For more information about the server configuration file, see [Configuring the zLUX Proxy Server and ZSS](mvd-zluxconfiguration.md#configuring-the-zlux-proxy-server-and-zss).

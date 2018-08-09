@@ -14,7 +14,7 @@ Follow these steps to transfer the PAX file to z/OS and prepare it to install th
 
 1. Transfer the PAX file to z/OS.
 
-    a. Open a terminal in Mac OS/X, or command prompt in Windows OS, and navigate to the directory where you downloaded the Zowe PAX file.
+    a. Open a terminal in Mac OS/Linux, or command prompt in Windows OS, and navigate to the directory where you downloaded the Zowe PAX file.
 
     b. Connect to z/OS using SFTP. Issue the following command:
 
@@ -36,7 +36,7 @@ Follow these steps to transfer the PAX file to z/OS and prepare it to install th
 
     c. Navigate to the target directory on z/OS.
 
-       After you connect to z/OS and enter your password, you will be entered into the Unix file system. Navigate to the directory you wish to transfer the Zowe PAX file into.
+       After you connect to z/OS and enter your password, you enter into the Unix file system. Navigate to the directory you wish to transfer the Zowe PAX file into.
 
        - To see what directory you are in, type `pwd`.
        - To switch directory, type `cd`.
@@ -49,18 +49,17 @@ Follow these steps to transfer the PAX file to z/OS and prepare it to install th
      put <pax-file-name>.pax
      ```
 
-    Where _pax-file-name_ is a variable that indicates the full name of the PAX file you downloaded. For example, zowe-0.8.1.pax.
+    Where _pax-file-name_ is a variable that indicates the full name of the PAX file you downloaded.
 
     **Note**: When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` will list contents of a directory on z/OS.  
 
-2. When the PAX file has transferred, expand the PAX file by issuing the following command in an ssh session:
+2. When the PAX file is transferred, expand the PAX file by issuing the following command in an ssh session:
 
     ```
     pax -ppx -rf <pax-file-name>.pax
     ```  
 
-    Where _pax-file-name_ is a variable that indicates the name of the PAX file you downloaded. For example, zowe-0.8.1.pax.
-
+    Where _pax-file-name_ is a variable that indicates the name of the PAX file you downloaded.
 
 
     This will expand to a file structure.
@@ -72,4 +71,4 @@ Follow these steps to transfer the PAX file to z/OS and prepare it to install th
       ...
     ```
 
-     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as /zowe/paxes that contains the PAX files, and another such as /zowe/builds.  Use SFTP to transfer the Zowe PAX file into the /zowe/paxes directory, use the `cd` command to switch into /zowe/builds and run the command `pax -ppx -rf ../../paxes/<zowe-v.r.m>.pax`.  The /install folder will be created inside the zowe/builds directory from where the install can be launched.
+     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the install can be launched.

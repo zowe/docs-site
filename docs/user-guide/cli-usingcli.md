@@ -1,9 +1,6 @@
-# Using Zoe Brightside
+# Using Zowe CLI
 
-This section contains the following articles about using Zoe Brightside:
-
-- How to display Zoe Brightside help
-- Zoe Brightside command groups
+This section contains the following articles about using Zowe CLI.
 
 ## Displaying Zowe CLI help
 Zowe CLI contains a help system that is embedded directly into the command-line interface. When you want help with Zowe CLI, you issue help commands that provide you with information about the product, syntax, and usage.
@@ -12,9 +9,9 @@ Zowe CLI contains a help system that is embedded directly into the command-line
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
 ```
-bright --help
+zowe --help
 ```
-**Tip:** The command `bright` initiates the product on a command line. All Zowe CLI commands begin with `bright.`
+**Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
 ### Help structure
 The help displays the following types of information:
@@ -31,24 +28,21 @@ The help displays the following types of information:
 You can use the `--help` global option get more information about a specific command group, action, or object. Use the following syntax to display group-level help and learn more about specific command groups (for example, *zos-jobs* and *zos-files*):
 
 ```
-bright <group, action, or object name> --help
+zowe <group, action, or object name> --help
 ```
 ```
-bright zos-files create --help
+zowe zos-files create --help
 ```
-**More Information:**
 
-  - [Command Groups](cli-commandgroups.md)
-  
+
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
-provides the ability to interact with mainframe data sets. In this
-article, we review all the Zowe CLI command groups and provide you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](cli-howtodisplaybrightsidehelp.md). 
+provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help). 
 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
 **Important\!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-createaprofile.md) and [Test Connection to z/OSMF](cli-validateInstallation.md) to help ensure that Zowe CLI can communicate with z/OS systems.
+completed the steps in [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 
@@ -67,7 +61,9 @@ properly. 
 **Note:** For more information about `plugins` syntax, actions, and options, open Zowe CLI and issue the following
 command:
 
-`bright plugins -h`
+```
+zowe plugins -h
+```
 
 ### profiles
 The profiles command group lets you create and manage profiles for use with other Zowe CLI command groups. Profiles allow you to issue commands to different mainframe systems quickly, without specifying your connection details with every command.
@@ -79,9 +75,9 @@ With the profiles command group, you can perform the following tasks:
 - List profile names and details for any command group, including the default active profile.
 
 **Note:** For more information about `profiles` syntax, actions, and options, open Zowe CLI, and issue the following command:
-
-`bright profiles -h`
-
+```
+zowe profiles -h
+```
 ### provisioning
 
 The provisioning command group lets you perform IBM z/OSMF provisioning tasks with templates and provisioned instances from Zowe CLI.
@@ -97,7 +93,9 @@ application (for example, DB2 and CICS) and by the external name of the provisio
 
 **Note:** For more information about provisioning syntax, actions, and options, open Zowe CLI and issue the following command:
 
-`bright provisioning -h`
+```
+zowe provisioning -h
+```
 
 ### zos-console
 
@@ -112,9 +110,9 @@ organization.
 - Collect command responses and continue to collect solicited command responses on-demand.
 
 **Note:** For more information about `zos-console` syntax, actions, and options, open Zowe CLI and issue the following command:
-
-`bright zos-console -h`
-
+```
+zowe zos-console -h
+```
 ### zos-files
 
 The zos-files command group lets you interact with data sets on z/OS systems.
@@ -128,9 +126,9 @@ With the zos-files command group, you can perform the following tasks:
 - Interact with VSAM data sets directly, or invoke Access Methods Services (IDCAMS) to work with VSAM data sets.
 
 **Note:** For more information about `zos-console` syntax, actions, and options, open Zowe CLI and issue the following command:
-
-`bright zos-files -h`
-
+```
+zowe zos-files -h
+```
 ### zos-jobs
 
 The zos-jobs command group lets you submit jobs and interact with jobs on z/OS systems.
@@ -143,7 +141,9 @@ With the zos-jobs command group, you can perform the following tasks:
 
 **Note:** For more information about `zos-jobs` syntax, actions, and options, open Zowe CLI and issue the following command:
 
-`bright zos-jobs -h`
+```
+zowe zos-jobs -h
+```
 
 ### zos-tso
 
@@ -157,25 +157,21 @@ With the zos-tso command group, you can perform the following tasks:
 
 **Note:** For more information about `zos-tso` syntax, actions, and options, open Zowe CLI and issue the following
 command:
-
-`bright zos-tso -h `
-
+```
+zowe zos-tso -h
+```
 ### zosmf
 
 The zosmf command group lets you work with Zowe CLI profiles and get general information about z/OSMF.
 
 With the zosmf command group, you can perform the following tasks:
 
-- Create and manage your Zowe CLI zosmf profiles. You must have at least one zosmf profile to issue most commands. Issue the `bright help explain profiles` command in Zowe CLI to learn more about using profiles.
-- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-validateInstallation.md).
+- Create and manage your Zowe CLI zosmf profiles. You must have at least one zosmf profile to issue most commands. Issue the `zowe help explain profiles` command in Zowe CLI to learn more about using profiles.
+- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-zosmf).
 - Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 **Note:** For more information about `zosmf` syntax, actions, and
 options, open Zowe CLI and issue the following command:
-
-`bright zosmf -h`
-
-**More Information:**
-
-  - [Display Zowe CLI help](cli-howtodisplaybrightsidehelp.md)
-
+```
+zowe zosmf -h
+```

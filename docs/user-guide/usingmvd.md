@@ -63,17 +63,17 @@ Application plug-ins are applications that you can use to access the mainframe a
 This sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
 
 ### IFrame
-This sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for details).
+This sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
 
 ### ZOS Subsystems
 This application plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
 ### TN3270
 This application plug-in provides a 3270 connection to the mainframe on
-which the Zowe Node Server runs.
+which the Zowe Node Server runs. (Available from Rocket Software.)
 
 ### VT Terminal 
-This application plug-in provides a connection to USS and UNIX.
+This application plug-in provides a connection to UNIX System Services and UNIX. (Available from Rocket Software.)
 
 ## zLUX logging
 
@@ -102,7 +102,8 @@ If you set the log file name for the node server by setting the *ZLUX_NODE_LOG_F
 
 **Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, zLUX will not override the log names, set a timestamp, or delete the logs.
 
-If zLUX cannot create the folder or file, the server will run (but it might not perform logging properly).
+If zLUX cannot create the directory or file, the server will run (but it might not perform logging properly).
 
 ### Retaining logs
 By default, zLUX retains the last five logs. If you want to specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Node Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. The default is 5.
+

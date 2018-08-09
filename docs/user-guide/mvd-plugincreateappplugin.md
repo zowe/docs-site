@@ -6,6 +6,7 @@ Before you build a zLUX application plug-in, you must set the UNIX environment v
 
 `sample-app` is a sample application plug-in with which you can experiment.
 
+
 ## Setting the environment variables for plug-in development
 
 To set up the environment, the node must be accessible on the PATH. To determine if the node is already on the PATH, issue the following command from the command line:
@@ -36,14 +37,17 @@ To build the sample application plug-in, node and npm must be included in the PA
 
 - If you want to modify `sample-app`, you must run `_npm install_` in the virtual desktop and the `sample-app/webClient`. Then, you can run `_npm run build_` in `sample-app/webClient`.
 
+- Ensure that you set the `MVD_DESKTOP_DIR` system variable to the virtual desktop plug-in location. For example: `<ZLUX_CAP>/zlux-app-manager/virtual-desktop`.
+
 1.   Add an item to `sample-app`. The following figure shows an excerpt from `app.component.ts`:
-       ```
+
+      ```
         export class AppComponent {
-           items = ['a', 'b', 'c', 'd']
-           title = 'app';
-           helloText: string;
+          items = ['a', 'b', 'c', 'd']
+          title = 'app';
+          helloText: string;
           serverResponseMessage: string;
-       ```
+      ```
 
 2.   Save the changes to `app.component.ts`. 
 3.   Issue one of the following commands: 

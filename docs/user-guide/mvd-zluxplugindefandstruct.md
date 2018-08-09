@@ -4,6 +4,7 @@ The zLUX Application Server `zlux-proxy-server`  enables extensiblity with appli
 
 The files that define a plug-in are located in the `pluginsDir` directory. 
 
+
 ## zLUX application plug-in filesystem structure
 
 A zLUX application plug-in can be loaded from a filesystem that is accessible to the zLUX Application Server, or it can be loaded dynamically at runtime. When accessed from a filesystem, there are important considerations for the developer and the user as to where to place the files for proper build, packaging, and operation.
@@ -38,7 +39,7 @@ The `lib` directory is where router-type dataservices are loaded by use in the z
 
 #### web
 
-The `web` directory is where the server serves static content for an application plug-in that includes the *webContent* attribute in its definition. Typically, this directory contains the output of a webpack build. Anything you place in this folder can be accessed by a client, so only include content that is intended to be consumed by clients.
+The `web` directory is where the server serves static content for an application plug-in that includes the *webContent* attribute in its definition. Typically, this directory contains the output of a webpack build. Anything you place in this directory can be accessed by a client, so only include content that is intended to be consumed by clients.
 
 ## Location of plug-in files
 
@@ -54,9 +55,10 @@ Within the `pluginsDir` directory are a collection of JSON files. Each file has 
 
 **identifier**: The unique string (commonly styled as a Java resource) of a plug-in, which must match what is in the `pluginDefinition.json` file.
 
+
 ## Plug-in definition file
 
-`pluginDefinition.json` is a file that describes a plug-in. Each zLUX plug-in requires this file, because it defines how the server will register and use the backend of an application plug-in, (called a *plug-in* in the terminology of the proxy server). The attributes in each file are dependent upon the **pluginType** attribute. Consider the following `pluginDefinition.json` file from `sample-app`:
+`pluginDefinition.json` is a file that describes a plug-in. Each zLUX plug-in requires this file, because it defines how the server will register and use the backend of an application plug-in, (called a *plug-in* in the terminology of the proxy server). The attributes in each file are dependent upon the `pluginType` attribute. Consider the following `pluginDefinition.json` file from `sample-app`:
 
 ```
 {
@@ -170,8 +172,9 @@ An object that details the placement of a default window for the application in 
 
 ###   IFrame application web content
 
-In addition to the general web content attributes, when the framework of an application is "iframe", you must specify the page that is being embedded in the iframe. To do so, incude the attribute *startingPage* within *webContent*. (*startingPage* is relative to the application's `/web` directory.)
+In addition to the general web content attributes, when the framework of an application is "iframe", you must specify the page that is being embedded in the iframe. To do so, incude the attribute *startingPage* within *webContent*. *startingPage* is relative to the application's `/web` directory.
 
 Specify *startingPage* as a relative path rather than an absolute path because the `pluginDefinition.json` file is intended to be read-only, and therefore would not work well when the hostname of a page changes.
 
 Within an IFrame, the application plug-in still has access to the globals that are used by zLUX for application-to-application communication, simply access *window.parent.RocketMVD*.
+

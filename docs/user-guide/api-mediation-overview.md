@@ -10,12 +10,12 @@ The API Mediation Layer provides a single point of access for mainframe service 
 * Runs on Windows, Linux, and z/OS (target platform)
 * Written in Java utilizing Spring Boot (2.x), Angular 5, and the Netflix CloudStack
 * Supports multiple client types for discovery (including Spring Boot, Java, and NodeJS)
-* Contains enablers that allow for easy discovery and exposure of REST APIs and Swagger documentation for each microservice 
+* Contains enablers that allow for easy discovery and exposure of REST APIs and Swagger documentation for each microservice
 
-## API Mediation Layer architecture 
+## API Mediation Layer architecture
 The following diagram illustrates the single point of access with the API Gateway and the interactions between the API Gateway, API Catalog, and the Discovery Service:   
 
-![API Mediation Layer Architecture diagram](diagrams/image2018-2-26%2014_53_46.png)
+![API Mediation Layer Architecture diagram](../images/api-mediation/image2018-2-26%2014_53_46.png)
 
 ## Components
 The API Layer consists of the following key components:
@@ -27,6 +27,4 @@ The microservices that are contained within the ecosystem are located behind a r
 The Discovery service is the central point in the API Gateway infrastructure that accepts "announcements of REST services" and serves as a repository of active services. Back-end microservices register with this service either directly by using a Eureka client. Non-Spring Boot applications register with the Discover Service indirectly through a Sidecar. The Discovery Service is built on Eureka and Spring Boot technology.
 
 ### API Catalog
-The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability. 
-
-
+The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.

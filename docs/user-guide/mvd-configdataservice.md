@@ -38,12 +38,11 @@ Data that is shared between multiple users in a group.
 
 Data for an individual user.
 
-**Note: While Authorization tuning can allow for settings such as GET from Instance to work without login, User and Group scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, User and Group Scopes will not be functional until the Security Framework is available.**
+**Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* and *Group* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, *User* and *Group* scopes will not be functional until the Security Framework is available.
 
 Where *Product* is the broadest scope and *User* is the narrowest scope.
 
-When you use *Scope* *User*, the service  manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
-
+When you specify *Scope* *User*, the service  manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
 
 Consider a case where a user wants to access preferences for their text editor. One way they could do this is to use the REST API to retrieve the settings resource from the *Instance* scope.
 
@@ -59,12 +58,11 @@ When you reach the Configuration Service through a REST API, HTTP methods are us
 
 The HTTP URL scheme for the configuration dataservice is:
 
-**`<Server>/plugins/com.rs.configjs/services/data/<plugin ID>/<Scope>/<resource>/<optional subresources>?<query>`**
+`<Server>/plugins/com.rs.configjs/services/data/<plugin ID>/<Scope>/<resource>/<optional subresources>?<query>`
 
 Where the resources are one or more levels deep, using as many layers of subresources as needed.
 
 Think of a resource as a collection of elements, or a directory. To access a single element, you must use the query parameter "name="
-
 
 ### REST query parameters
 
@@ -85,16 +83,15 @@ Each API call includes an example request and response against a hypothetical ap
 
 #### GET
 
-**GET 
-`/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`**
+GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`
 
   * This returns JSON with the attribute "content" being a JSON resource that is the entire configuration that was requested. For example:
 
-  ```/plugins/com.rs.configjs/services/data/org.openmainframe.zoe.codeeditor/user/sessions/default?name=tabs```
+  ```/plugins/com.rs.configjs/services/data/org.openmainframe.zowe.codeeditor/user/sessions/default?name=tabs```
 
   The parts of the URL are:
 
-  - Plugin: org.openmainframe.zoe.codeeditor
+  - Plugin: org.openmainframe.zowe.codeeditor
   - Scope: user
   - Resource: sessions
   - Subresource: default
@@ -105,10 +102,10 @@ The response body is a JSON config:
 {
 	"_objectType" : "com.rs.config.resource",
 	"_metadataVersion" : "1.1",
-	"resource" : "org.openmainframe.zoe.codeeditor/USER/sessions/default",
+	"resource" : "org.openmainframe.zowe.codeeditor/USER/sessions/default",
 	"contents" : {
 		"_metadataVersion" : "1.1",
-		"_objectType" : "org.openmainframe.zoe.codeeditor.sessions.tabs",
+		"_objectType" : "org.openmainframe.zowe.codeeditor.sessions.tabs",
 		"tabs" : [{
 				"title" : "TSSPG.REXX.EXEC(ARCTEST2)",
 				"filePath" : "TSSPG.REXX.EXEC(ARCTEST2)",
@@ -122,28 +119,30 @@ The response body is a JSON config:
 }
 ```
 
-**GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`**
+GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`
 
-  This returns JSON with the attribute "content" being a JSON object that has each attribute being another JSON object, which is a single configuration element.
+  This returns JSON with the attribute `content` being a JSON object that has each attribute being another JSON object, which is a single configuration element.
 
-**GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`** when subresources exist.
+GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`
+
+(When subresources exist.)
 
   This returns a listing of subresources that can, in turn, be queried.
 
 #### PUT
 
-**PUT `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`**
+PUT `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`
 
-Stores a single element (must be a JSON object {...}) within the requested scope, ignoring aggregation policies, provided the privilege of the user permits this. For example: 
+Stores a single element (must be a JSON object {...}) within the requested scope, ignoring aggregation policies, depending on the user privilege. For example: 
 
-  ```/plugins/com.rs.configjs/services/data/org.openmainframe.zoe.codeeditor/user/sessions/default?name=tabs```
+  ```/plugins/com.rs.configjs/services/data/org.openmainframe.zowe.codeeditor/user/sessions/default?name=tabs```
 
 Body:
 
 ```
 {
   "_metadataVersion" : "1.1",
-  "_objectType" : "org.openmainframe.zoe.codeeditor.sessions.tabs",
+  "_objectType" : "org.openmainframe.zowe.codeeditor.sessions.tabs",
   "tabs" : [{
       "title" : ".profile",
       "filePath" : "/u/tsspg/.profile"
@@ -165,25 +164,25 @@ Response:
 {
   "_objectType" : "com.rs.config.resourceUpdate",
   "_metadataVersion" : "1.1",
-  "resource" : "org.openmainframe.zoe.codeeditor/USER/sessions/default",
+  "resource" : "org.openmainframe.zowe.codeeditor/USER/sessions/default",
   "result" : "Replaced item."
 }
 ```
 
 #### DELETE
 
-**DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?recursive=true`**
+DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?recursive=true`
 
   Deletes all files in all leaf resources below the resource specified.
 
-**DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`**
+DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`
 
   Deletes a single file in a leaf resource.
 
-**DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`**
+DELETE `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`
 
   * Deletes all files in a leaf resource.
-  * Does not delete the folder on disk.
+  * Does not delete the directory on disk.
 
 
 ### Administrative access and group
@@ -194,35 +193,36 @@ In the simplest case, it might mean that the user is able to do a PUT, POST, or 
 
 The more interesting case is in accessing another user's contents. In this case, the shape of the URL is different. Compare the following two commands:
 
-**GET `/plugins/com.rs.configjs/services/data/<plugin>/user/<resource>`**
+GET `/plugins/com.rs.configjs/services/data/<plugin>/user/<resource>`
 
 Gets the content for the current user.
 
-**GET `/plugins/com.rs.configjs/services/data/<plugin>/users/<username>/<resource>`**
+GET `/plugins/com.rs.configjs/services/data/<plugin>/users/<username>/<resource>`
 
 Gets the content for a specific user if authorized.
 
 This is the same structure that is used for the *Group* scope. When requesting content from the *Group* scope, the user is checked to see if they are authorized to make the request for the specific group. For example:
 
-**GET `/plugins/com.rs.configjs/services/data/<plugin>/group/<groupname>/<resource>`**
+GET `/plugins/com.rs.configjs/services/data/<plugin>/group/<groupname>/<resource>`
 
 Gets the content for the given group, if the user is authorized.
+
 
 ## Application API
 
 Retrieves and stores configuration information from specific scopes. 
 
-**Note: This API should only be used for configuration administration user interfaces.**
+**Note:** This API should only be used for configuration administration user interfaces.
 
-```ZLUX.UriBroker.pluginConfigForScopeUri(pluginDefinition: ZLUX.Plugin, scope: string, resourcePath:string, resourceName:string): string;```
+`ZLUX.UriBroker.pluginConfigForScopeUri(pluginDefinition: ZLUX.Plugin, scope: string, resourcePath:string, resourceName:string): string;`
 
-A shortcut for the preceding method, and the preferred method when you are retrieving configuration information is simply to "consume" it. It "asks" for configurations using the "user" scope, and allows the configuration service decide which configuration information to retrieve and how to aggregate it. (See below on how the configuration service evaluates what to return for this type of request).
+A shortcut for the preceding method, and the preferred method when you are retrieving configuration information is simply to "consume" it. It "asks" for configurations using the *User* scope, and allows the configuration service decide which configuration information to retrieve and how to aggregate it. (See below on how the configuration service evaluates what to return for this type of request).
 
-```ZLUX.UriBroker.pluginConfigUri(pluginDefinition: ZLUX.Plugin, resourcePath:string, resourceName:string): string;```
+`ZLUX.UriBroker.pluginConfigUri(pluginDefinition: ZLUX.Plugin, resourcePath:string, resourceName:string): string;`
 
 ## Internal and bootstrapping
 
-Some dataservices within plug-ins can take configuration that affects their behavior. This configuration is stored within the Configuration Dataservice structure, but is not accessible through the REST API.
+Some dataservices within plug-ins can take configuration that affects their behavior. This configuration is stored within the Configuration Dataservice structure, but it is not accessible through the REST API.
 
 Within the `deploy` directory of a zLUX installation, each plug-in might optionally have an `_internal` directory. An example of such a path is:
 
@@ -235,7 +235,7 @@ Within each `_internal` directory, the following directories might exist:
 
 The JSON contents within these directories are provided as Objects to dataservices through the dataservice context Object.
 
-## Plug-in Definition
+## Plug-in definition
 
 Because the Configuration Dataservices stores data on a per-plug-in basis, each zLUX plug-in must define their resource structure to make use of the Configuration Dataservice. The resource structure definition is included in the plug-in's `pluginDefinition.json` file.
 
@@ -249,7 +249,7 @@ For example:
         "locationType": "relative", //this is the only option for now, but later absolute paths may be accepted
         "aggregationPolicy": "override" //override and none for now, but more in the future
       },
-      "sessions": { //the name at this level represents the name used within a URL, such as /plugins/com.rs.configjs/services/data/org.openmainframe.zoe.codeeditor/user/sessions
+      "sessions": { //the name at this level represents the name used within a URL, such as /plugins/com.rs.configjs/services/data/org.openmainframe.zowe.codeeditor/user/sessions
         "aggregationPolicy": "none",
         "subResources": {
           "sessionName": {
@@ -262,15 +262,15 @@ For example:
   }
 ```
 
-## Aggregation Policies
+## Aggregation policies
 
-Aggregation Policies determine how the Configuration Dataservice aggregates JSON objects from different Scopes together when a user requests a resource. If the user requests a resource from the User scope, the data from the User scope might replace, or be merged with the data from a broader scope such as *Instance*, to make a combined resource object that is returned to the user.
+Aggregation policies determine how the Configuration Dataservice aggregates JSON objects from different Scopes together when a user requests a resource. If the user requests a resource from the *User* scope, the data from the User scope might replace, or be merged with the data from a broader scope such as *Instance*, to make a combined resource object that is returned to the user.
 
 Aggregation policies are defined by a plug-in developer in the plug-in's definition for the Configuration Service, as the attribute `aggregationPolicy` within a resource.
 
 The following policies are currently implemented:
 
-* **NONE**: If the Configuration Dataservice is called for Scope User, only user-saved settings are sent, unless there are no user-saved settings for the query, in which case the Dataservice attempts to send data that is found at a broader scope.
+* **NONE**: If the Configuration Dataservice is called for *Scope User*, only user-saved settings are sent, unless there are no user-saved settings for the query, in which case the dataservice attempts to send data that is found at a broader scope.
 
 * **OVERRIDE**: The Configuration Dataservice obtains data for the resource that is requested at the broadest level found, and joins the resource's properties from narrower scopes, overriding broader attributes with narrower ones, when found.
 

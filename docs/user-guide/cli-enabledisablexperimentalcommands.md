@@ -1,6 +1,6 @@
 # Enabling and disabling experimental Commands
 
-Brightside CLI includes experimental commands, which are currently in development and are not ready for general availability. You can enable or disable these commands. The experimental commands are disabled by default.
+Zowe CLI includes experimental commands, which are currently in development and are not ready for general availability. You can enable or disable these commands. The experimental commands are disabled by default.
 
 **Important!**  If you use these commands, you might encounter errors, unexpected behavior, incompatibilities with your system, or incomplete help text.
 ## Enable experimental commands
@@ -22,10 +22,9 @@ To determine whether the experimental commands are enabled or disabled, issue th
 ```
 bright config get experimental-features
 ```
-**Note:** Experimental commands display the prefix `(experimental)` in Brightside CLI help when they are enabled. For
+**Note:** Experimental commands display the prefix `(experimental)` in Zowe CLI help when they are enabled. For
 example:
 ```
 cics       (experimental) Issue commands to interact with CICS regions 
 compiler   (experimental) Compile source code on the mainframe
 ```
-

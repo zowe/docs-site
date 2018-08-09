@@ -1,6 +1,6 @@
 # Edition notice
 
-This edition applies to the Closed Beta of Project Zowe and to all subsequent releases and modifications until otherwise indicated in new editions.
+This edition applies to the Open Beta of Zowe and to all subsequent releases and modifications until otherwise indicated in new editions.
 
 © Copyright International Business Machines Corporation 2018.  
 

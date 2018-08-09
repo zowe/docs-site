@@ -17,7 +17,7 @@ Use data set APIs to create, read, update, delete, and list data sets. See the f
 |`GET /Atlas/api/datasets/{dsn}/members`|Get a list of members for a partitioned data set. Use this API to get a list of members of a partitioned data set.|z/OSMF restfiles|
 |`GET /Atlas/api/datasets/{dsn}/content`|Read content from a data set or member. Use this API to read the content of a sequential data set or partitioned data set member. Or use this API to return a checksum that can be used on a subsequent `PUT` request to determine if a concurrent update has occurred.|z/OSMF restfiles|
 |`PUT /Atlas/api/datasets/{dsn}/content`|Write content to a data set or member. Use this API to write content to a sequential data set or partitioned data set member. If a checksum is passed and it does not match the checksum that is returned by a previous `GET` request, a concurrent update has occurred and the write fails.|z/OSMF restfiles|
-|`POST /Atlas/api/datasets/{dsn}`|Create a data set. Use this API to create a data set according to the attributes that are provided. The API uses z/OSMF to create the data set and uses the syntax and rules that are described in the *z/OSMF Programming Guide*.|z/OSMF restfiles|
+|`POST /Atlas/api/datasets/{dsn}`|Create a data set. Use this API to create a data set according to the attributes that are provided. The API uses z/OSMF to create the data set and uses the syntax and rules that are described in the [z/OSMF Programming Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278420?OpenDocument).|z/OSMF restfiles|
 |`POST /Atlas/api/datasets/{dsn}/{basedsn}`|Create a data set by using the attributes of a given base data set. When you do not know the attributes of a new data set, use this API to create a new data set by using the same attributes as an existing one.|z/OSMF|
 |`DELETE /Atlas/api/datasets/{dsn}`|Delete a data set or member. Use this API to delete a sequential data set or partitioned data set member.|z/OSMF restfiles|
 
@@ -34,8 +34,8 @@ Use Jobs APIs to view the information and files of jobs, and submit and cancel j
 |`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files`|Get a list of output file names for a job. Job output files have associated DSIDs. Use this API to get a list of the DSIDs and DD name of a job. You can use the DSIDs and DD name to read specific job output files.|z/OSMF restjobs|
 |`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files/{fileId}`|Read content from a specific job output file. If you have a DSID or field for a given job, use this API to read the output file's content.|z/OSMF restjobs|
 |`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files/{fileId}/tail`|Read the tail of a job's output file. Use this API to request a specific number of records from the tail of a job output file.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/subsystem`|Get the subsystem type for a job. Use this API to determine the subsystem that is associated with a given job. The API examines the JCL of the job to determine if the executed program is CICS®, DB2®, IMS™, or IBM® MQ.|z/OSMF restjobs|
-|`POST /Atlas/api/jobs`|Submit a job and get the job id back. Use this API to submit a partitioned data set member or UNIX™ file.|z/OSMF restjobs|
+|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/subsystem`|Get the subsystem type for a job. Use this API to determine the subsystem that is associated with a given job. The API examines the JCL of the job to determine if the executed program is CICS®, Db2®, IMS™, or IBM® MQ.|z/OSMF restjobs|
+|`POST /Atlas/api/jobs`|Submit a job and get the job ID back. Use this API to submit a partitioned data set member or UNIX™ file.|z/OSMF restjobs|
 |`DELETE /Atlas/api/jobs/{jobName}/{jobId}`|Cancel a job and purge its associated files. Use this API to purge a submitted job and the logged output files that it creates to free up space.|z/OSMF Running Common Information Model \(CIM\) server|
 
 ### Persistent Data APIs
@@ -71,7 +71,7 @@ Use USS File APIs to create, read, update, and delete USS files. See the followi
 
 ### z/OS System APIs
 
-Use z/OS system APIs to view information about CPU, PARMLIB, SYSPLEX, USER. See the following table for available operations and their descriptions and prerequisites.
+Use z/OS system APIs to view information about CPU, PARMLIB, SYSPLEX, and USER. See the following table for available operations and their descriptions and prerequisites.
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
@@ -82,7 +82,7 @@ Use z/OS system APIs to view information about CPU, PARMLIB, SYSPLEX, USER. See 
 
 ## Programming explorer server REST APIs
 
-You can program explorer server REST APIs by referring to the following examples. 
+You can program explorer server REST APIs by referring to the examples in this section.
 
 ### Sending a `GET` request in Java
 

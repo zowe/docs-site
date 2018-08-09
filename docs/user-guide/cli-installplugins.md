@@ -35,7 +35,7 @@ Issue an `install `command to install plug-ins to Zowe CLI. The
 `install` command contains the following syntax:
 
 ```
-bright plugins install [plugin...] [--registry <registry>]
+zowe plugins install [plugin...] [--registry <registry>]
 ```
 
   - **`[plugin...]`**   
@@ -45,10 +45,10 @@ bright plugins install [plugin...] [--registry <registry>]
     specifies the prefix that is stored in npm save-prefix. For more
     information, see [npm save prefix](https://docs.npmjs.com/misc/config#save-prefix). For more
     information about npm semantic versioning, see [npm semver](https://docs.npmjs.com/misc/semver). Optionally, you can
-    specify a specific version of a plug-in to install. For example, `bright plugin install pluginName@^1.0.0`.
+    specify a specific version of a plug-in to install. For example, `zowe plugin install pluginName@^1.0.0`.
 
     **Tip:** You can install multiple plug-ins with one command. For
-    example, issue `bright plugin install plugin1 plugin2 plugin3`
+    example, issue `zowe plugin install plugin1 plugin2 plugin3`
 
   - **`[--registry <registry>]`**  
     (Optional) Specifies a registry URL from which to install a plug-in
@@ -61,21 +61,21 @@ bright plugins install [plugin...] [--registry <registry>]
     If you are using zowe-cli-bundle.zip, issue the following command for each plug-in .tgz file:
     
     ```
-    bright plugins install ./zowe-cli-db2-1.0.0.tgz
+    zowe plugins install ./zowe-cli-db2-1.0.0.tgz
     ```
 
   - The following example illustrates the syntax to use to install a
     plug-in that is named "my-plugin" from a specified registry:
 
     ```
-    bright plugins install @brightside/my-plugin
+    zowe plugins install @brightside/my-plugin
     ```
 
   - The following example illustrates the syntax to use to install a
     specific version of "my-plugins" 
 
     ```
-     bright plugins install @brightside/my-plugin@"^1.2.3"
+     zowe plugins install @brightside/my-plugin@"^1.2.3"
     ```
     
 
@@ -88,7 +88,7 @@ Perform validation after you install the plug-ins to help ensure that it integra
 The `validate` command has the following syntax:
 
 ```
-bright plugins validate [plugin]
+zowe plugins validate [plugin]
 ```
 
   - **`[plugin]`**  
@@ -103,14 +103,14 @@ bright plugins validate [plugin]
     specified installed plug-in:
 
     ```
-    bright plugins validate @brightside/my-plugin
+    zowe plugins validate @brightside/my-plugin
     ```
 
   - The following example illustrates the syntax to use to validate all
     installed plug-ins:
 
     ```
-    bright plugins validate
+    zowe plugins validate
     ```
 
 ## Updating plug-ins
@@ -120,7 +120,7 @@ version of a plug-in that you installed previously. The `update` command
 has the following syntax:
 
 ```
-bright plugins update [plugin...] [--registry <registry>]
+zowe plugins update [plugin...] [--registry <registry>]
 ```
 
   - **`[plugin...]`** 
@@ -142,14 +142,14 @@ bright plugins update [plugin...] [--registry <registry>]
     installed plug-in to the latest version:
 
     ```
-    bright plugins update @brightside/my-plugin@latest
+    zowe plugins update @brightside/my-plugin@latest
     ```
 
   - The following example illustrates the syntax to use to update a
     plug-in to a specific version:
 
     ```
-    bright plugins update @brightside/my-plugin@"^1.2.3"
+    zowe plugins update @brightside/my-plugin@"^1.2.3"
     ```
 
 ## Uninstalling plug-ins
@@ -164,7 +164,7 @@ configuration.
 The `uninstall` command contains the following syntax:
 
 ```
-bright plugins uninstall [plugin]
+zowe plugins uninstall [plugin]
 ```
 
   - **`[plugin]`**   
@@ -175,5 +175,5 @@ bright plugins uninstall [plugin]
 - The following example illustrates the syntax to use to uninstall a plug-in:
 
   ```
-  bright plugins uninstall @brightside/my-plugin
+  zowe plugins uninstall @brightside/my-plugin
   ```
