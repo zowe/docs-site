@@ -93,11 +93,11 @@ Actions can be stored in JSON files that are loaded at login. The JSON structure
 {
   "actions": [
     {
-      "id":"org.giza.explorer.openmember",
+      "id":"org.zowe.explorer.openmember",
       "defaultName":"Edit PDS in MVS Explorer",
       "type":"Launch",
       "targetMode":"PluginCreate",
-      "targetId":"org.giza.explorer",
+      "targetId":"org.zowe.explorer",
       "arg": {
         "type": "edit_pds",
         "pds": {
@@ -190,7 +190,7 @@ Recognizers can be simple or complex. The following is an example to illustrate 
 {
   "recognizers":[
     {
-      "id":"org.giza.explorer.openmember",
+      "id":"org.zowe.explorer.openmember",
       "clause": {
         "op": "AND",
         "args": [
@@ -202,7 +202,7 @@ Recognizers can be simple or complex. The following is an example to illustrate 
 }
 ```
 
-In this case, the Recognizer detects whether it is possible to run the `org.giza.explorer.openmember` Action when the TN3270 Terminal application plug-in is on the screen ISRUDSM (an ISPF panel for browsing PDS members).
+In this case, the Recognizer detects whether it is possible to run the `org.zowe.explorer.openmember` Action when the TN3270 Terminal application plug-in is on the screen ISRUDSM (an ISPF panel for browsing PDS members).
 
 
 ## Dispatcher
