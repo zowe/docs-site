@@ -1,6 +1,6 @@
 ---
 home: true
-footer: Creative Commons Licensed | Copyright © 2018-present
+footer: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
 ---
 
 <div style="text-align: center">
