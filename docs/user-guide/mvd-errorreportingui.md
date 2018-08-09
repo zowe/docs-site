@@ -1,10 +1,8 @@
-
 # Error reporting UI
 
-The `zLUX Widgets` repository contains shared widget-like components of the mainframe virtual desktop, including Button, Checkbox, Paginator, various pop-ups, and others. To maintain consistency in desktop styling across all applications, use, reuse, and customize existing widgets to suit the purpose of the application's function and look. 
+The `zLUX Widgets` repository contains shared widget-like components of the mainframe virtual desktop, including Button, Checkbox, Paginator, various pop-ups, and others. To maintain consistency in desktop styling across all applications, use, reuse, and customize existing widgets to suit the purpose of the application's function and look.
 
 Ideally, a program should have little to no logic errors. Once in a while a few slip through, but more commonly an error occurs from misconfigured user settings. A user might request an action or command that requires certain prerequisites, for example: a proper ZSS-Server configuration. If the program or method fails, the program should notify the user through the UI about the error and how to fix it. For the purposes of this discussion, we will use the zLUX Workflow application plug-in in the `zlux-workflow` repository.
-
 
 ### ZluxPopupManagerService
 
@@ -25,6 +23,7 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     unblock(): void;
     getLoggerSeverity(severity: ZluxErrorSeverity): any;
     reportError(severity: ZluxErrorSeverity, title: string, text: string, options?: any): Rx.Observable<any>;
+
 `}`
 
 ### ZluxErrorSeverity
@@ -36,6 +35,7 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     ERROR = "error",
     WARNING = "warning",
     INFO = "info",
+
 `}`
 
 ### ErrorReportStruct
@@ -49,11 +49,12 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     text: string;
     title: string;
     buttons: string[];
+
 `}`
 
 # Implementation
 
-Import `ZluxPopupManagerService` and `ZluxErrorSeverity` from widgets. If you are using additional services with your error prompt, import those too (for example, `LoggerService` to print to the logger or `GlobalVeilService` to create a visible semi-transparent gray veil over the program and pause background tasks). Here, widgets is imported from `node_modules\@zlux\` so you must ensure zLUX widgets is used in your `package-lock.json` or `package.json` and you have run `npm install`. 
+Import `ZluxPopupManagerService` and `ZluxErrorSeverity` from widgets. If you are using additional services with your error prompt, import those too (for example, `LoggerService` to print to the logger or `GlobalVeilService` to create a visible semi-transparent gray veil over the program and pause background tasks). Here, widgets is imported from `node_modules\@zlux\` so you must ensure zLUX widgets is used in your `package-lock.json` or `package.json` and you have run `npm install`.
 
 `import { ZluxPopupManagerService, ZluxErrorSeverity } from '@zlux/widgets';`
 
@@ -64,8 +65,9 @@ Create a member variable within the constructor of the class you want to use it 
 `export class ZosmfServerConfigComponent {`
 
     constructor(
-    private popupManager: ZluxPopupManagerService, ) 
+    private popupManager: ZluxPopupManagerService, )
     {  popupManager.setLogger(logger); } //Optional
+
 `}`
 
 ### Usage
@@ -87,8 +89,9 @@ Now that you have declared your variable within the scope of your program's clas
         const options = {
           blocking: true
         };
-          this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);  
+          this.popupManager.reportError(ZluxErrorSeverity.ERROR, errorTitle.toString()+": "+err.status.toString(), errorMessage+"\n"+err.toString(), options);
         });
+
 `}`
 
 Here, the `errorMessage` clearly describes the error with a small degree of ambiguity as to account for all types of errors that might occur from that method. The specifics of the error are then generated dynamically and are printed with the `err.toString()`, which contains the more specific information that is used to pinpoint the problem. The `this.popupManager.report()` method triggers the error prompt to display. The error severity is set with `ZluxErrorSeverity.ERROR` and the `err.status.toString()` describes the status of the error (often classified by a code for example: `404`). The optional parameters in `options` specify that this error will block the user from interacting with the application plug-in until the error is closed or it until goes away on its own. `globalVeilService` is optional and is used to create a gray veil on the outside of the program when the error is caused. You must import `globalVeilService` separately (see `zlux-workflow` for more information).
@@ -101,13 +104,6 @@ The final step is to have the recently created error dialog appear in the applic
 
 So now when the error is called, the new UI element should resemble the following:
 
-![UI element](../images/mvd/mvderrorreportui.png)
-
+<!-- ![UI element](../images/mvd/mvderrorreportui.png) -->
 
 The order in which you place the pop-up manager determines how the error dialog will overlap in your UI. If you want the error dialog to overlap other UI elements, place it at the end of the `.html` file. You can also create custom styling through a CSS template, and add it within the scope of your application plug-in.
-
-
-
-
-
-

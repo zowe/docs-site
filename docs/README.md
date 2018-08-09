@@ -1,6 +1,7 @@
 ---
 home: true
-footer: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
+footer:
+  Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
 ---
 
 <div style="text-align: center">
@@ -29,7 +30,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   <div class="feature">
     <h2>Read Documentation</h2>
     <p>User guide covering configuring and using the Zowe platform.</p>
-    <a class="action-button" href="https://zowe.github.io/docs-site/user-guide/zoe-introduction.html">
+    <a class="action-button" href="https://zowe.github.io/docs-site/user-guide/introduction.html">
       <div>
         Documentation
       </div>
