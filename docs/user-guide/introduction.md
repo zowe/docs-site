@@ -39,7 +39,7 @@ zLUX consists of the following components:
 - **Application plug-ins**
 
     Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.md#using-zlux-application-plug-ins).
-    
+
 ## Explorer server
 
 The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets, z/OS UNIX™ System Services (USS) files, and persistent data.
@@ -145,7 +145,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 ### API Mediation Layer architecture
 The following diagram illustrates the single point of access with the API Gateway and the interactions between the API Gateway, API Catalog, and the Discovery Service:   
 
-![API Mediation Layer Architecture diagram](../images/api-mediation/image2018-2-26%2014_53_46.png)
+![API Mediation Layer Architecture diagram](../images/api-mediation/apiml-architecture.png)
 
 ### Components
 The API Layer consists of the following key components:
