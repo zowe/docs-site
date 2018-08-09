@@ -59,13 +59,7 @@ module.exports = {
         {
           title: 'Zowe Overview',
           collapsable: true,
-          children: [
-            'introduction',
-            'mvd-overview',
-            'atlas-overview',
-            'cli-overview',
-            'api-mediation-overview'
-          ]
+          children: ['introduction']
         },
         {
           title: 'Installing Zowe',
