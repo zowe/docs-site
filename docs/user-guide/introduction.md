@@ -133,6 +133,9 @@ Zowe CLI uses.
 
 The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer includes an API Catalog that provides an interface to view all discovered microservices, their associated APIs, and Swagger documentation in a user-friendly manner. The Discovery Service makes it possible to determine the location and status of microservice instances running inside the ecosystem.  
 
+**Zowe API Mediation Layer Tutorials**
+- [How to Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-usingapiml.md)
+
 ### Key features  
 * High availability of services in which application instances on a failing node are distributed among surviving nodes
 * Microservice UIs available through the API Gateway and API Catalog by means of reverse proxying
@@ -159,3 +162,7 @@ The Discovery service is the central point in the API Gateway infrastructure tha
 
 #### API Catalog
 The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
+
+
+**Zowe API Mediation Layer Tutorials**
+- [How to Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-usingapiml.md)
