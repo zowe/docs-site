@@ -76,6 +76,14 @@ module.exports = {
           ]
         },
         {
+          title: 'Configuring Zowe',
+          collapsable: true,
+          children: [
+            'mvd-zluxconfiguration',
+            'cli-configuringcli'
+           ]
+        },
+        {
           title: 'Using Zowe',
           collapsable: true,
           children: [
@@ -107,21 +115,6 @@ module.exports = {
           collapsable: true,
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
         },
-        {
-          title: 'Edition Notice',
-          collapsable: true,
-          children: ['editionnotice']
-        },
-        {
-          title: 'Notices',
-          collapsable: true,
-          children: [
-            'notices_toc',
-            'atlas-notices',
-            'mvd-zluxlegalnotices',
-            'cli-legalnotices'
-          ]
-        }
       ],
       '/': ['' /* / */, 'about' /* /about.html */]
     }
