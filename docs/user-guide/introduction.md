@@ -222,7 +222,6 @@ Zowe API Mediation Layer uses the following third-party software:
 | swagger-jersey2-jaxrs	 | 1.5.17 | Legal_Doc__00001528_32.pdf |
 | swagger-schema-ts | 2.0.8 | Legal_Doc_00002499_12.pdf |
 | zone.js | 0.8.20 | Legal_Doc_zonejs_MIT.pdf |
-||||
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
