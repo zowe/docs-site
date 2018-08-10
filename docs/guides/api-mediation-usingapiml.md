@@ -1,4 +1,4 @@
-# Onboard existing Spring Boot REST API services using Zowe API Mediation Layer
+# Onboard Spring Boot REST API services using Zowe API Mediation Layer
 
 Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../user-guide/introduction.md#api-mediation-layer).
 
