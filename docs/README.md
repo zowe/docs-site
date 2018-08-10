@@ -10,8 +10,8 @@ footer:
 
 <div class="features">
   <div class="feature">
-    <h2>Follow Tutorials</h2>
-    <p>Tutorials for specific use cases and examples.</p>
+    <h2>Follow Developer Tutorials</h2>
+    <p>Tutorials for specific development use cases and examples.</p>
     <a class="action-button" href="https://zowe.github.io/docs-site/guides/intro.html">
       <div>
         Tutorials
@@ -19,16 +19,16 @@ footer:
     </a>
   </div>
   <div class="feature">
-    <h2>Learn to install Zowe</h2>
-    <p>Guides on how to install for every platform from mainframes to locally.</p>
+    <h2>Learn About Installing Zowe</h2>
+    <p>Guides focused on how to install Zowe locally and on the mainframe</p>
     <a class="action-button" href="https://zowe.github.io/docs-site/user-guide/installandconfig.html">
       <div>
-        Installation
+        Installing
       </div>
     </a>
   </div>
   <div class="feature">
-    <h2>Read Documentation</h2>
+    <h2>Read User Documentation</h2>
     <p>User guide covering configuring and using the Zowe platform.</p>
     <a class="action-button" href="https://zowe.github.io/docs-site/user-guide/introduction.html">
       <div>
