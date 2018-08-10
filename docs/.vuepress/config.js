@@ -36,6 +36,11 @@ module.exports = {
           title: 'Coming Soon - Develop for Zowe CLI',
           collapsable: true,
           children: ['cli-developPlugins']
+        },
+        {
+          title: 'How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer',
+          collapsable: true,
+          children: ['api-mediation-usingapiml']
         }
       ],
       '/samples/': [
