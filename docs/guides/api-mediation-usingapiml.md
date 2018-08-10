@@ -1,17 +1,20 @@
 # How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer
 
-Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](api-mediation-overview.md).
+Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../user-guide/introduction.md#API-Mediation-Layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-1. [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
-2. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
-3. [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
-4. [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
-5. [Test your service](#test-your-service)
-6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
+- [How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](#how-to-onboard-an-existing-spring-boot-rest-api-service-using-zowe-api-mediation-layer)
+  - [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
+  - [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
+  - [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
+  - [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
+  - [Test your service](#test-your-service)
+    - [Validate that your API instance is still working](#validate-that-your-api-instance-is-still-working)
+    - [Validate that your API instance is discoverable](#validate-that-your-api-instance-is-discoverable)
+  - [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 ## Prepare an existing Spring Boot REST API for onboarding
 
