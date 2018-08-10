@@ -33,7 +33,8 @@ module.exports = {
           children: ['libertyAPI', 'ReactJSUI']
         },
         {
-          title: 'How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer',
+          title:
+            'How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer',
           collapsable: true,
           children: ['api-mediation-usingapiml']
         },
@@ -42,7 +43,6 @@ module.exports = {
           collapsable: true,
           children: ['cli-developPlugins']
         }
-
       ],
       '/samples/': [
         {
@@ -89,20 +89,12 @@ module.exports = {
         {
           title: 'Configuring Zowe',
           collapsable: true,
-          children: [
-            'mvd-zluxconfiguration',
-            'cli-configuringcli'
-           ]
+          children: ['mvd-zluxconfiguration', 'cli-configuringcli']
         },
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: [
-            'using',
-            'usingmvd',
-            'usingapis',
-            'cli-usingcli',
-           ]
+          children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
         },
         {
           title: 'Extending zLUX',
@@ -124,7 +116,7 @@ module.exports = {
           title: 'Extending Zowe CLI',
           collapsable: true,
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
-        },
+        }
       ],
       '/': ['' /* / */, 'about' /* /about.html */]
     }
