@@ -86,7 +86,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
 
 For more information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](cli-usingcli.md#zowe-cli-command-groups).
 
-### Third-Party software agreements
+### Zowe CLI Third-Party software agreements
 
 Zowe CLI uses the following third-party software:
 
@@ -120,9 +120,7 @@ Zowe CLI uses the following third-party software:
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-To read each complete license, navigate to the GitHub repository and download the file named
-Zowe_CLI_TPSRs.zip. The .zip file contains the licenses for all of the third-party components that
-Zowe CLI uses.
+To read each complete license, navigate to the GitHub repository and download the file named Zowe_CLI_TPSRs.zip. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
 
 **More Information:**
 
@@ -166,3 +164,66 @@ The API Catalog is the catalog of published APIs and their associated documentat
 
 **Zowe API Mediation Layer Tutorials**
 - [How to Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-usingapiml.md)
+
+### Zowe API Mediation Layer Third-Party software agreements
+
+Zowe API Mediation Layer uses the following third-party software:
+
+| Third-party Software | Version | File name             |
+| ----------------- | -------| ------------------------- |
+| angular | 5.2.0 | Legal_Doc_00002377_15.pdf |
+| angular2-notifications | 0.9.5 | Legal_Doc_00002499_11.pdf |
+| Apache Tomcat | 8.0.39 | Legal_Doc_00001505_6.pdf |
+| Bootstrap | 3.0.3 | Legal_Doc_12955_5.pdf |
+| Bootstrap | 3.3.7 | Legal_Doc_00001682_11.pdf |
+| bootstrap-submenu | 2.0.4 | Legal_Doc_00001456_44.pdf |
+| Commons Validator | 1.6.0 | Legal_Doc_00002105_1.pdf |
+| copy-webpack-plugin | 4.4.1 | Legal_Doc_00002499_13.pdf |
+| core-js  | 2.5.3 | Legal_Doc_corejs_MIT.pdf |
+| eureka-client | 1.8.6 | Legal_Doc_00002499_3.pdf |
+| eventsource | 1.0.5 | Legal_Doc_00002499_9.pdf |
+| google-gson | 2.8.2 | Legal_Doc_00002252_4.pdf |
+| Guava | 23.2-jre | Legal_Doc_00002499_22.pdf |
+| H2 | 1.4.196 | Legal_Doc_00002499_19.pdf |
+| hamcrest | 1.3 | Legal_Doc_00001170_33.pdf |
+| httpclient | 4.5.3 | Legal_Doc_00001843_2.pdf |
+| jackson | 2.9.2 | Legal_Doc_00002259_6.pdf |
+| jackson | 2.9.3 | Legal_Doc_00001505_16.pdf |
+| javamail | 1.4.3 | Legal_Doc_00000439_22.pdf |
+| javax servlet api | 3.1.0 | Legal_Doc_00002499_23.pdf |
+| javax.validation | 2.0.1.Final | Legal_Doc_00002499_27.pdf |
+| Jersey | 2.26 | Legal_Doc_00002499_2.pdf |
+| Jersey Media JSON Jackson | 2.26 | Legal_Doc_00002019_68.pdf |
+| jquery | 2.0.3 | Legal_Doc_00000379_69.pdf |
+| JSON Web Token | 0.8.0 | Legal_Doc_00002499_21.pdf |
+| json-path | 2.4.0 | Legal_Doc_00001454_30.pdf |
+| lodash | 4.17.5 | Legal_Doc_00002499_8.pdf |
+| Logback | 1.0.1 | Legal_Doc_00002499_1.pdf |
+| lombok | 1.16.20 | Legal_Doc_00002499_18.pdf |
+| mockito | 2.15.0 | Legal_Doc_00002499_28.pdf |
+| netflix-infix | 0.3.0 | Legal_Doc_00002499_4.pdf |
+| ng2-cookies | 1.0.12 | Legal_Doc_00002499_15.pdf |
+| ng2-destroy-subscribers | 0.0.28 | Legal_Doc_00002499_16.pdf |
+| ng2-simple-timer | 1.3.3 | Legal_Doc_00002499_17.pdf |
+| NPM | 5.6.0 | Legal_Doc_00002499_10.pdf |
+| powermock | 1.7.3 | Legal_Doc_00002499_25.pdf |
+| reactor-core | 3.0.7.RELEASE | Legal_Doc_00001938_51.pdf |
+| Roaster | 2.20.1.Final | Legal_Doc_00002499_20.pdf |
+| RxJS | 5.5.6 | Legal_Doc_rxjs_Apache.pdf |
+| Spring Cloud Config | 2.0.0.M9 | Legal_Doc_00002499_33.pdf |
+| Spring Hateoas | 0.23.0.RELEASE | Legal_Doc_00002377_10.pdf |
+| Spring Retry | 1.2.2 | Legal_Doc_00002499_14.pdf |
+| spring security | 5.0.3.RELEASE | Legal_Doc_00002499_29.pdf |
+| spring-boot | 2.0.0.RELEASE | Legal_Doc_spring_boot_Apache.pdf |
+| Spring-Cloud-Netflix | 2.0.0.M8 | Legal_Doc_00002499_30.pdf |
+| Springfox | 2.8.0 | Legal_Doc_00002499_31.pdf |
+| spring-ws | 3.0.0.RELEASE | Legal_Doc_00002499_32.pdf |
+| swagger-core | 1.5.18 | Legal_Doc_00002499_24.pdf |
+| swagger-jersey2-jaxrs	 | 1.5.17 | Legal_Doc__00001528_32.pdf |
+| swagger-schema-ts | 2.0.8 | Legal_Doc_00002499_12.pdf |
+| zone.js | 0.8.20 | Legal_Doc_zonejs_MIT.pdf |
+||||
+
+**Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
+
+To read each complete license, navigate to the GitHub repository and download the file named Zowe_APIML_TPSRs.zip. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
