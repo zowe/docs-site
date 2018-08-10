@@ -233,44 +233,6 @@ to add the prefix `sudo `before the `npm install -g` command or the `npm
 uninstall -g` command. This step gives Node.js write access to the
 installation directory.
 
-### `sudo npm install -g` command fails with an `EPERM` error
-
-**Valid on Linux**
-
-**Symptom:**
-
-You receive an `EPERM` error after appending `sudo` to the install
-command.
-
-**Solution:**
-
-You can run a script on your Linux PC to resolve the problem. The script
-performs the following actions:
-
-1.  Verifies that the Zowe CLI prerequisites are installed.
-2.  Prompts you to specify a directory location to which to install
-    global node modules.
-3.  Creates the specified directory.
-4.  Sets the npm global install directory to the new directory.
-5.  Adds the new directory to the $PATH environmental variable.  
-    You can install Zowe CLI.
-
-**Follow these steps:**
-
-1.  [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
-2.  Open a command line window and browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
-
-    ```
-    unzip zowe-cli-bundle.zip
-    ```
-3. Locate the file named `setup-node.sh` in the directory where you extracted the Zowe CLI installation bundle. Issue the following command to add executable permissions for all users on the `setup-node.sh` shell script:
-4.  Execute the shell script.
-
-5.  Follow the prompts to enter a new directory location for global node modules. If the script runs successfully, you can install Zowe CLI on your PC. See [Install Zowe CLI](cli-installcli.md) for more
-    information. 
-
-**Tip:** If the script fails, rerun the script. If the script fails again on the same step, you can perform the script operations manually. See the npm documentation about [how to change the default global node module directory](https://docs.npmjs.com/getting-started/fixing-npm-permissions#option-two-change-npms-default-directory)
-manually.
 
 ### `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
