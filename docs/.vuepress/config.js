@@ -31,6 +31,11 @@ module.exports = {
           title: 'Provide Liberty APIs',
           collapsable: true,
           children: ['libertyAPI', 'ReactJSUI']
+        },
+        {
+          title: 'Coming Soon - Develop for Zowe CLI',
+          collapsable: true,
+          children: ['cli-developPlugins']
         }
       ],
       '/samples/': [
