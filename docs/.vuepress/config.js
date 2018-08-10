@@ -102,7 +102,6 @@ module.exports = {
             'usingmvd',
             'usingapis',
             'cli-usingcli',
-            'api-mediation-usingapiml'
            ]
         },
         {
