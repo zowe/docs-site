@@ -1,23 +1,20 @@
-# Using API Mediation Layer
+# How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer
 
 Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](api-mediation-overview.md).
 
-The following section describes how you can onboard REST API services to the Zowe API Mediation Layer.
-
-## Onboard an existing Spring Boot REST API service
+**Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-**Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
+1. [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
+2. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
+3. [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
+4. [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
+5. [Test your service](#test-your-service)
+6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
-* Overview of onboarding an Existing Spring Boot REST API
-* Add Zowe API enablers to your service
-* Add API Layer onboarding configuration
-* Externalize API Layer configuration parameters
-* Test your service
-* Sample code and configuration
 
-### Overview of onboarding an existing Spring Boot REST API
+## Prepare an existing Spring Boot REST API for onboarding
 The Spring Boot API onboarding process follows these general steps. Further detail about how to perform these steps is described later in this article.
 
 **Follow these steps:**
@@ -35,7 +32,7 @@ The Spring Boot API onboarding process follows these general steps. Further deta
 3. Externalize the API Layer site-specific configuration settings.
 4. Test your changes.
 
-### Add Zowe API enablers to your service
+## Add Zowe API enablers to your service
 The first step to onboard a REST API with the Zowe ecosystem is to add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
 
 **Follow these steps:**
@@ -102,7 +99,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
      You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
 
 
- ### Add API Layer onboarding configuration
+## Add API Layer onboarding configuration
  As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API Layer. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
 
 **Important!** Spring Boot configuration can be externalized in multiple different ways. For more information, see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
@@ -387,7 +384,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         **Tip:** You have three options to make your endpoints discoverable and exposed: `basePackage`, `apiPattern`, or none (if you do not specify a parameter). If `basePackage` or `apiPattern` are not defined, all endpoints in the Spring Boot app are exposed.
 
-### Externalize API Layer configuration parameters
+## Externalize API Layer configuration parameters
 
 The following list summarizes the API Layer parameters that are set by the customer system administrator:
 
@@ -422,18 +419,18 @@ The `discoveryLocations` (public URL of the discovery service) value is found in
 MFS_EUREKA="http://eureka:password@141.202.65.33:10011/eureka/")
 ```      
 
-### Test your service
+## Test your service
 
 To test that your API instance is working and is discoverable, use the following validation tests:
 
-#### Validate that your API instance is still working
+### Validate that your API instance is still working
 
 **Follow these steps:**
 
  1. Disable discovery by setting `discoveryEnabled=false` in your API service instance configuration.
  2. Run your tests to check that they are working as before.
 
-#### Validate that your API instance is discoverable
+### Validate that your API instance is discoverable
 
    **Follow these steps:**
 1. Point your configuration of API instance to use the following discovery service:
@@ -455,6 +452,6 @@ To test that your API instance is working and is discoverable, use the following
 
 5. Check that you can still access your API service endpoints directly outside of the gateway.
 
-### Configuration example of the discoverable client   
+## Review the configuration examples of the discoverable client   
 
 Refer to the [Discoverable Client API Sample Service](https://github.com/gizafoundation/api-layer) in the API Layer git repository.   
