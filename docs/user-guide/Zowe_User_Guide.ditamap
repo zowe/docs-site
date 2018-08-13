@@ -23,57 +23,57 @@ http://submit.boulder.ibm.com/infocenter/idwb/v3r8m4/topic/com.ibm.ditaref.doc/d
 <frontbooklists>
 <toc navtitle="Contents"/>
 </frontbooklists>
-<preface format="md" href="topics/aboutthisdoc.md" navtitle="About this documentation" scope="local"/><?Pub Caret -1?>
-<topicref format="md" scope="local" href="topics/summaryofchanges.md" navtitle="Summary of changes"/>
+<preface format="md" href="aboutthisdoc.md" navtitle="About this documentation" scope="local"/><?Pub Caret -1?>
+<topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Summary of changes"/>
 </ibmfrontmatter>
-<chapter format="md" href="topics/introduction.md" navtitle="Zowe overview" scope="local"/>
-<chapter format="md" href="topics/installandconfig.md" navtitle="Installing Zowe"
+<chapter format="md" href="introduction.md" navtitle="Zowe overview" scope="local"/>
+<chapter format="md" href="installandconfig.md" navtitle="Installing Zowe"
 scope="local">
-<topicref format="md" href="topics/installroadmap.md" navtitle="Installation roadmap" scope="local"/>
-<topicref format="md" href="topics/planinstall.md" navtitle="System requirements" scope="local"/>
-<topicref format="md" href="topics/gettingstarted.md" navtitle="Obtaining installation files"
+<topicref format="md" href="installroadmap.md" navtitle="Installation roadmap" scope="local"/>
+<topicref format="md" href="planinstall.md" navtitle="System requirements" scope="local"/>
+<topicref format="md" href="gettingstarted.md" navtitle="Obtaining installation files"
 scope="local"/>
-<topicref format="md" href="topics/install-zos.md"
+<topicref format="md" href="install-zos.md"
 navtitle="Installing zLUX, explorer server, and API Mediation Layer" scope="local"/>
-<topicref format="md" href="topics/cli-installcli.md" navtitle="Installing Zowe CLI" scope="local"/>
-<topicref format="md" href="topics/troubleshootinstall.md"
+<topicref format="md" href="cli-installcli.md" navtitle="Installing Zowe CLI" scope="local"/>
+<topicref format="md" href="troubleshootinstall.md"
 navtitle="Troubleshooting the installation" scope="local"/>
-<topicref format="md" href="topics/uninstall.md" navtitle="Uninstalling Zowe" scope="local"/>
+<topicref format="md" href="uninstall.md" navtitle="Uninstalling Zowe" scope="local"/>
 </chapter>
-<chapter format="md" href="topics/configuringzowe.md" navtitle="Configuring Zowe"
+<chapter format="md" href="configuringzowe.md" navtitle="Configuring Zowe"
 scope="local">
-<topicref format="md" href="topics/mvd-zluxconfiguration.md" navtitle="Configuring zLUX"
+<topicref format="md" href="mvd-zluxconfiguration.md" navtitle="Configuring zLUX"
 scope="local"/>
-<topicref format="md" href="topics/cli-configuringcli.md" navtitle="Configuring Zowe CLI"
+<topicref format="md" href="cli-configuringcli.md" navtitle="Configuring Zowe CLI"
 scope="local"/>
 </chapter>
-<chapter format="md" href="topics/using.md" navtitle="Using Zowe" scope="local">
-<topicref format="md" href="topics/usingmvd.md" navtitle="Using zLUX" scope="local"/>
-<topicref format="md" href="topics/usingapis.md" navtitle="Using APIs" scope="local"/>
-<topicref format="md" href="topics/cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
+<chapter format="md" href="using.md" navtitle="Using Zowe" scope="local">
+<topicref format="md" href="usingmvd.md" navtitle="Using zLUX" scope="local"/>
+<topicref format="md" href="usingapis.md" navtitle="Using APIs" scope="local"/>
+<topicref format="md" href="cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
 </chapter>
-<chapter format="md" href="topics/mvd-extendingzlux.md" navtitle="Extending zLUX" scope="local">
-<topicref format="md" href="topics/mvd-plugincreateappplugin.md"
+<chapter format="md" href="mvd-extendingzlux.md" navtitle="Extending zLUX" scope="local">
+<topicref format="md" href="mvd-plugincreateappplugin.md"
 navtitle="Creating zLUX application plug-ins" scope="local"/>
-<topicref format="md" href="topics/mvd-zluxplugindefandstruct.md"
+<topicref format="md" href="mvd-zluxplugindefandstruct.md"
 navtitle="zLUX plug-ins definition and structure" scope="local"/>
 <topicref format="md" navtitle="zLUX dataservices" scope="local"
-href="topics/mvd-zluxdataservices.md"/>
+href="mvd-zluxdataservices.md"/>
 <topicref format="md" navtitle="Desktop and window management" scope="local"
-href="topics/mvd-desktopandwindowmgt.md"/>
-<topicref format="md" href="topics/mvd-configdataservice.md" navtitle="Configuration Dataservices"
+href="mvd-desktopandwindowmgt.md"/>
+<topicref format="md" href="mvd-configdataservice.md" navtitle="Configuration Dataservices"
 scope="local"/>
-<topicref format="md" href="topics/mvd-uribroker.md" navtitle="URI Broker" scope="local"/>
-<topicref format="md" href="topics/mvd-apptoappcommunication.md"
+<topicref format="md" href="mvd-uribroker.md" navtitle="URI Broker" scope="local"/>
+<topicref format="md" href="mvd-apptoappcommunication.md"
 navtitle="Application-to-application communication" scope="local"/>
-<topicref format="md" href="topics/mvd-errorreportingui.md" navtitle="Error reporting UI"
+<topicref format="md" href="mvd-errorreportingui.md" navtitle="Error reporting UI"
 scope="local"/>
-<topicref format="md" href="topics/mvd-logutility.md" navtitle="Logging utility" scope="local"/>
+<topicref format="md" href="mvd-logutility.md" navtitle="Logging utility" scope="local"/>
 </chapter>
-<chapter format="md" href="topics/cli-extending.md" navtitle="Extending Zowe CLI" scope="local">
-<topicref format="md" href="topics/cli-installplugins.md" navtitle="Installing plug-ins"
+<chapter format="md" href="cli-extending.md" navtitle="Extending Zowe CLI" scope="local">
+<topicref format="md" href="cli-installplugins.md" navtitle="Installing plug-ins"
 scope="local"/>
-<topicref format="md" href="topics/cli-db2plugin.md"
+<topicref format="md" href="cli-db2plugin.md"
 navtitle="Zowe CLI plug-in for IBM Db2 Database" scope="local"/>
 </chapter>
 </ibmbook>
