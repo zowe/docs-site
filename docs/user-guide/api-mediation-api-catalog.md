@@ -23,7 +23,7 @@ Use the API Catalog to view services, API documentation, descriptive information
 3. Click the tile. Header information and the registered services under that family ID is displayed.
     
     **Example:**
-    ![Service Detail Information](../images/api-mediation/service-detail-info.PNG)
+    ![Service Detail Information](../images/api-mediation/service-detail-info.png)
  **Note:** The state of the service is indicated in the tab. If at least one instance of the service is running, the state of the service is represented with a checkmark ![checkmark](../images/api-mediation/green-check.jpg). If no instances of the service are currently running the state of the service is represented as an 'x' ![x](../images/api-mediation/x-graphic.jpg). At least one instance of a service must be started and registered with the discovery service for it to be visible in the API Catalog. If a service was started and the corresponding API documentation was viewed, then that information is cached and is visible even when the service and all instances are stopped.  
 4. Click the tab to view the API documentation for that service.
    Descriptive information about the service and a link to the home page of the service is displayed.
