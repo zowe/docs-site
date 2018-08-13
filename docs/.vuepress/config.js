@@ -2,7 +2,7 @@ module.exports = {
   title: 'Zowe Docs',
   base: '/docs-site/',
   description: 'Home of Zowe documentation',
-  // ga: '',
+  ga: 'UA-123892882-1',
   themeConfig: {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
