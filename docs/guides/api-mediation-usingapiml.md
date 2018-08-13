@@ -6,7 +6,7 @@ Zowe API Mediation Layer provides a single point of access for mainframe service
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-- [How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](#how-to-onboard-an-existing-spring-boot-rest-api-service-using-zowe-api-mediation-layer)
+- [Onboard Spring Boot REST API services using Zowe API Mediation Layer](#onboard-spring-boot-rest-api-services-using-zowe-api-mediation-layer)
   - [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
   - [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
   - [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
@@ -304,6 +304,9 @@ As an API service developer, you set multiple configuration settings in your app
    c. **API Catalog Parameters**
 
    These parameters are used to populate API Catalog. The API Catalog contains information about every registered API service. The catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a "tile" in the API Catalog UI dashboard.
+
+   
+  For more information about the API Catalog, see [Using the API Catalog](../user-guide/api-mediation-api-catalog.md).
 
    - **mfaas.catalog-ui-tile.id**
 
