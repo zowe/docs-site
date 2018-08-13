@@ -28,6 +28,21 @@ module.exports = {
           children: ['creating-angluar-app']
         },
         {
+          title: 'Getting Started with a zLUX Server Installation',
+          collapsable: true,
+          children: ['zlux-example-server']
+        },
+        {
+          title: 'Creating a zLUX Application',
+          collapsable: true,
+          children: ['zlux-workshop-starter-app', 'zlux-workshop-user-browser']
+        },
+        {
+          title: 'An Example of a Simple zLUX Application',
+          collapsable: true,
+          children: ['zlux-sample-app']
+        },
+        {
           title: 'Provide Liberty APIs',
           collapsable: true,
           children: ['libertyAPI', 'ReactJSUI']
@@ -118,7 +133,7 @@ module.exports = {
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
         }
       ],
-      '/': ['' /* / */, 'about' /* /about.html */]
+      '/': ['about']
     }
   }
 }

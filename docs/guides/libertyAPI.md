@@ -2,7 +2,7 @@
 
 This tutorial will show you to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
 
-The source repo for the project can be found [TODO](https://github.com/gizafoundation/atlas-jzos-sample/)
+The source repo for the project can be found at the [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 
 This document describes how we can add new function and UI's to run alongside Zowe.
 
