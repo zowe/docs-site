@@ -137,10 +137,10 @@ nodeServer.sh <parameters>
 
 Valid parameters for nodeServer are as follows:
 
-- _-h_: Specifies the hostname where ZSS can be found. Use as _-h \<hostname\>_
-- _-P_: Specifies the port where ZSS can be found. Use as _-P \<port\>_. This overrides _zssPort_ from the configuration file.
-- _-p_: Specifies the HTTP port to be used by the zLUX Proxy Server. Use as _-p <port>_. This overrides _node.http.port_ from the configuration file.
-- _-s_: Specifies the HTTPS port to be used by the zLUX Proxy Server. Use as _-s <port>_. This overrides _node.https.port_ from the configuration file.
+- _-h_: Specifies the hostname where ZSS can be found. Use as `-h \<hostname\>`
+- _-P_: Specifies the port where ZSS can be found. Use as `-P \<port\>`. This overrides _zssPort_ from the configuration file.
+- _-p_: Specifies the HTTP port to be used by the zLUX Proxy Server. Use as `-p <port>`. This overrides _node.http.port_ from the configuration file.
+- _-s_: Specifies the HTTPS port to be used by the zLUX Proxy Server. Use as `-s <port>`. This overrides _node.https.port_ from the configuration file.
 - _--noChild_: If specified, tells the server to ignore and skip spawning of child processes defined as _node.childProcesses_ in the configuration file.
 
 In the example where we're running ZSS on a host named mainframe.zowe.com, running on zssPort = 19997, the Proxy server running on Windows could be started with the following:
