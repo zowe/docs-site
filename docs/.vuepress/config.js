@@ -83,6 +83,11 @@ module.exports = {
           children: ['aboutthisdoc']
         },
         {
+          title: 'Summary of changes',
+          collapsable: true,
+          children: ['summaryofchanges']
+        },
+        {
           title: 'Zowe Overview',
           collapsable: true,
           children: ['introduction']
