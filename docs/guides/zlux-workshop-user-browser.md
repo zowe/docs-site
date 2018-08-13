@@ -1,6 +1,9 @@
 # User Browser Workshop App
 
 This repository acts as a tutorial, intended as a workshop session, which will teach you how to develop your own Zowe App.
+
+*Note: Before continuing, download and examine the [starter-app](./zlux-workshop-starter-app.md). It will be needed to complete this tutorial.*
+
 This README contains code snippets and descriptions that you can piece together to complete the App that you will need to complete the tutorial.
 
 By the end of this tutorial, you will:

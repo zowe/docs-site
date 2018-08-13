@@ -4,7 +4,9 @@ This is an example of a server built upon the zLUX framework. Within, you will f
 
 ## Server layout
 
-At the core of the zLUX App infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of Apps, and also can server as a proxy for requests from Apps to additional servers as needed. One such proxy destination is the ZSS - the zLUX backend component for **Z Secure Services**. It is recommended that everyone who is going to set up a zLUX install contact Rocket, which can provide the ZSS binary to use in the install.
+At the core of the zLUX App infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of Apps, and also can server as a proxy for requests from Apps to additional servers as needed. One such proxy destination is the ZSS - the zLUX backend component for **Z Secure Services**. It is recommended that everyone who is going to set up a zLUX install contact the Zowe Project, which can provide the ZSS binary to use in the install.
+
+_Note: the ZSS binary is not required for a local server_
 
 ### ZSS & zLUX Server overlap
 
@@ -95,6 +97,8 @@ build.sh
 ```
 
 This will take some time to complete.
+
+_Note: You will need to have `ant` and `ant-contrib` installed_
 
 ### 5. Deploy server configuration files
 
@@ -215,11 +219,3 @@ When running the zLUX server, simply specify a few flags to declare which ZSS in
 
 - _-h_: Declares the host where ZSS can be found. Use as `-h \<hostname\>`
 - _-P_: Declares the port at which ZSS is listening. Use as `-P \<port\>`
-
-This program and the accompanying materials are
-made available under the terms of the Eclipse Public License v2.0 which accompanies
-this distribution, and is available at https://www.eclipse.org/legal/epl-v20.html
-
-SPDX-License-Identifier: EPL-2.0
-
-Copyright Contributors to the Zowe Project.
