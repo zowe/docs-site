@@ -14,7 +14,6 @@ As an API developer, use this guide to onboard your REST API service into the Zo
   - [Test your service](#test-your-service)
     - [Validate that your API instance is still working](#validate-that-your-api-instance-is-still-working)
     - [Validate that your API instance is discoverable](#validate-that-your-api-instance-is-discoverable)
-  - [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 ## Prepare an existing Spring Boot REST API for onboarding
 
@@ -63,22 +62,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
     public class DiscoverableClientSampleApplication {...
    ```
 
-2. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
-
-   - In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block:
-
-     ```
-     maven { url 'https://gizaartifactory.jfrog.io/gizaartifactory/libs-release' }
-     ```
-
-   - In a Maven build system, add the following code to the `pom.xml` file:
-
-     ```
-     <repository>
-            <id>Gizaartificatory</id>
-            <url>http://https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
-     </repository>
-     ```
+2. Request access to the API Mediation Layer Sprint Boot JARs on the OMP [Slack #zowe-api channel](https://openmainframeproject.slack.com/messages). Download the JARs. 
 
 3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.2.
 
@@ -496,7 +480,3 @@ To test that your API instance is working and is discoverable, use the following
    ```
 
 5. Check that you can still access your API service endpoints directly outside of the gateway.
-
-## Review the configuration examples of the discoverable client
-
-Refer to the [Discoverable Client API Sample Service](https://github.com/gizafoundation/api-layer) in the API Layer git repository.
