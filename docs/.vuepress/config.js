@@ -133,7 +133,7 @@ module.exports = {
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
         }
       ],
-      '/': ['' /* / */, 'about' /* /about.html */]
+      '/': ['about']
     }
   }
 }

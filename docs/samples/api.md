@@ -4,7 +4,7 @@ Users can connect with and create their own API's within the Zowe environment. I
 
 ## Adding a REST API to Zowe
 
-#### Github Sample Code: [atlas-jzos-sample](https://github.com/gizafoundation/atlas-jzos-sample)
+#### Github Sample Code: [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 
 ### To Install
 
