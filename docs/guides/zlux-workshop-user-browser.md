@@ -1,17 +1,17 @@
 # User Browser Workshop App
 
-This repository acts as a tutorial, intended as a workshop session, which will teach you how to develop your own Zowe application (App).
-These instructions contain code snippets and descriptions that you can combine to complete the application that you will need to complete the tutorial.
+This repository acts as a tutorial, intended as a workshop session, which will teach you how to develop your own Zowe App.
+This README contains code snippets and descriptions that you can piece together to complete the App that you will need to complete the tutorial.
 
 By the end of this tutorial, you will:
-1. Know how to create an application that displays on the desktop
-1. Know how to create a Dataservice, which implements a simple REST API
+1. Know how to create an App that shows up on the Desktop
+1. Know how to create a Dataservice which implements a simple REST API
 1. Be introduced to Typescript programming
 1. Be introduced to simple Angular web development
-1. Have experience in working with the Zowe application framework
-1. Become familiar with one of the Zowe application widgets: the grid widget
+1. Have experience in working with the Zowe App framework
+1. Become familiar with one of the Zowe App widgets: the grid widget
 
-**Note: This tutorial assumes you already have a Zowe installation ready to be run. If you do not, try setting one up through the README at [zlux-example-server](https://github.com/gizafoundation/zlux-example-server) before continuing.**
+**Note: This tutorial assumes you already have a Zowe installation ready to be run. If you do not, try setting one up via the README at [zlux-example-server](https://github.com/zowe/zlux-example-server) before continuing.**
 
 So, let's get started!
 
@@ -30,10 +30,10 @@ So, let's get started!
     1. [Calling back to the Starter App](#calling-back-to-the-starter-app)
 
 ## Constructing an App Skeleton
-If you look within this repository, you'll see that a few boilerplate files exist to help you get your first application running quickly. The structure of this repository follows the guidelines for Zowe application filesystem layout, which you can read more about [on this wiki](https://github.com/gizafoundation/zlux/wiki/ZLUX-App-filesystem-structure) if needed.
+If you look within this repository, you'll see that a few boilerplate files already exist to help you get your first App running quickly. The structure of this repository follows the guidelines for Zowe App filesystem layout, which you can read more about [on this wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure) if you need.
 
 ### Defining your first Plugin
-So, where do you start when making an application? In the Zowe framework, An application is a Plugin of type Application. Every Plugin is bound by their **pluginDefinition.json** file, which describes what properties it has.
+So, where do you start when making an App? In the Zowe framework, An App is a Plugin of type Application. Every Plugin is bound by their **pluginDefinition.json** file, which describes what properties it has.
 Let's start by creating this file.
 
 Make a file, **pluginDefinition.json**, at the root of the **workshop-user-browser-app** folder.
@@ -62,11 +62,11 @@ The file should contain the following:
 }
 ```
 
-You might wonder why we chose the particular values that are put into this file. A description of each can again be found [in the wiki](https://github.com/gizafoundation/zlux/wiki/Zlux-Plugin-Definition-&-Structure).
+You might wonder why we chose the particular values that are put into this file. A description of each can again be found [in the wiki](https://github.com/zowe/zlux/wiki/Zlux-Plugin-Definition-&-Structure).
 
 Of the many attributes here, you should be aware of the following:
-* Our application has the unique identifier of `org.openmainframe.zowe.workshop-user-browser`, which can be used to refer to it when running Zowe.
-* The application has a `webContent` attribute, because it will have a UI component visible in a browser.
+* Our App has the unique identifier of `org.openmainframe.zowe.workshop-user-browser`, which can be used to refer to it when running Zowe
+* The App has a `webContent` attribute, because it will have a UI component visible in a browser.
     * The `webContent` section states that the App's code will conform to Zowe's Angular App structure, due to it stating `"framework": "angular2"`
     * The App has certain characteristics that the user will see, such as:
         * The default window size (`defaultWindowStyle`), 
@@ -184,8 +184,8 @@ While a package.json can be created through other means such as `npm init` and p
     "@angular/platform-browser": "~6.0.9",
     "@angular/platform-browser-dynamic": "~6.0.9",
     "@angular/router": "~6.0.9",
-    "@zlux/grid": "git+https://github.com/gizafoundation/zlux-grid.git",
-    "@zlux/widgets": "git+https://github.com:gizafoundation/zlux-widgets.git",
+    "@zlux/grid": "git+https://github.com/zowe/zlux-grid.git",
+    "@zlux/widgets": "git+https://github.com:zowe/zlux-widgets.git",
     "angular2-template-loader": "~0.6.2",
     "copy-webpack-plugin": "~4.5.2",
     "core-js": "~2.5.7",
@@ -228,7 +228,7 @@ Let's make one ourselves. Make a file `/zlux-example-server/plugins/org.openmain
 }
 ```
 
-When the server runs, it will check for these sorts of files in its `pluginsDir`, a location known to the server via its specification in the [server configuration file](https://github.com/gizafoundation/zlux/wiki/Configuration-for-zLUX-Proxy-Server-&-ZSS#app-configuration). In our case, this is `/zlux-example-server/deploy/instance/ZLUX/plugins/`.
+When the server runs, it will check for these sorts of files in its `pluginsDir`, a location known to the server via its specification in the [server configuration file](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-Proxy-Server-&-ZSS#app-configuration). In our case, this is `/zlux-example-server/deploy/instance/ZLUX/plugins/`.
 
 You could place the JSON directly into that location, but the recommended way to place content into the deploy area is via running the server deployment process.
 Simply:
@@ -246,7 +246,7 @@ Do you see your Hello World message from [this earlier step?](#constructing-a-si
 
 
 ## Building your First Dataservice
-An App can have one or more [Dataservices](https://github.com/gizafoundation/zlux/wiki/ZLUX-Dataservices). A Dataservice is a REST or Websocket endpoint that can be added to the Zowe App Server. 
+An App can have one or more [Dataservices](https://github.com/zowe/zlux/wiki/ZLUX-Dataservices). A Dataservice is a REST or Websocket endpoint that can be added to the Zowe App Server. 
 
 To demonstrate the use of a Dataservice, we'll add one to this App. The App needs to display a list of users, filtered by some value. Ordinarily, this sort of data would be contained within a database, where you can get rows in bulk and filter them in some manner. Retrieval of database contents, likewise, is a task that is easily representable via a REST API, so let's make one.
 
@@ -610,7 +610,7 @@ We've already done the work of setting up the App's HTML and Angular definitions
     this.log.info(`Launch metadata provided=${JSON.stringify(launchMetadata)}`);
     if (launchMetadata != null && launchMetadata.data) {
     /* The message will always be an Object, but format can be specific. The format we are using here is in the Starter App: 
-      https://github.com/gizafoundation/workshop-starter-app/blob/master/webClient/src/app/workshopstarter-component.ts#L177
+      https://github.com/zowe/workshop-starter-app/blob/master/webClient/src/app/workshopstarter-component.ts#L177
     */    
       switch (launchMetadata.data.type) {
       case 'load':
@@ -633,7 +633,7 @@ Then, add a new method on the Class, **provideZLUXDispatcherCallbacks**, which i
 ```typescript
   /* 
   I expect a JSON here, but the format can be specific depending on the Action - see the Starter App to see the format that is sent for the Workshop: 
-  https://github.com/gizafoundation/workshop-starter-app/blob/master/webClient/src/app/workshopstarter-component.ts#L225
+  https://github.com/zowe/workshop-starter-app/blob/master/webClient/src/app/workshopstarter-component.ts#L225
   */
   zluxOnMessage(eventContext: any): Promise<any> {
     return new Promise((resolve,reject)=> {
@@ -741,4 +741,3 @@ Check that the App builds successfully, and if so, you've built the App for the 
     1. The Starter App should print a confirmation message indicating success
     
 And that's it! Looking back at the beginning of this document, you should notice that we've covered all aspects of App building - REST APIs, persistent settings storage, Creating Angular Apps and using Widgets within them, as well as having one App communicate with another. Hopefully you have learned a lot about App building from this experience, but if you have questions or want to learn more, please reach out to those in the Foundation so that we can assist.
-
