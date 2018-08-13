@@ -6,7 +6,7 @@ As an application developer, use the API Catalog to view what services are runni
 
 * Ensure that the service you would like to view in the API Catalog is configured to be displayed in the API Catalog.
 
-**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](topics/api-mediation/api-mediation-onboard-an-existing-spring-boot-rest-api-service.md).
+**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](../guides/api-mediation-usingapiml.md).
 
 ## View a service in the API Catalog 
 
