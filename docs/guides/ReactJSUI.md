@@ -28,7 +28,7 @@ Looking at the sample app their are 2 main sections that are important to us:
 Lets first examine Constants.js.
 
 ```javascript
-let host = 'winmvs2e.hursley.ibm.com:7445'
+let host = '<host>:<port>'
 if (typeof location !== 'undefined') {
   const hostname = location.hostname
   if (hostname !== 'localhost') {

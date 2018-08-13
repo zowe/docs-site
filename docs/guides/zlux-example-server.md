@@ -98,7 +98,7 @@ This will take some time to complete.
 
 ### 5. Deploy server configuration files
 
-If you are running the zLUX Proxy Server seperate from ZSS, you must ensure the ZSS installation has its configuration deployed. You can accomplish this via:
+If you are running the zLUX Proxy Server separate from ZSS, you must ensure the ZSS installation has its configuration deployed. You can accomplish this via:
 
 ```
 ant deploy
@@ -164,7 +164,7 @@ Now that ZSS & the zLUX Proxy Server are both started, you can access this insta
 In this example, the address you will want to go to first is the location of the window management App - Mainframe Virtual Desktop (MVD).
 The URL for this is:
 
-http(s)://\<zLUX Proxy Server\>:\<node.http(s).port\>/ZLUX/plugins/com.rs.mvd/web/index.html
+`http(s)://\<zLUX Proxy Server\>:\<node.http(s).port\>/ZLUX/plugins/com.rs.mvd/web/index.html`
 
 Once here, you should be greeted with a Login screen and a few example Apps in the taskbar at the bottom of the screen. You can login with your mainframe credentials, and try out a few Apps to see how they interact with the framework:
 
@@ -192,7 +192,7 @@ In the configuration file, a directory can be specified which contains JSON file
 
 To include Apps, be sure to define the location of the Plugins directory in the configuration file, via the top-level attribute _pluginsDir_
 
-**NOTE: In this repository, the directory for these JSON files is /plugins. Yet, in order to seperate configuration files from runtime files, the zlux-example-server repository copies the contents of this folder into /deploy/instance/ZLUX/plugins. So, the example configuration file uses the latter directory.**
+**NOTE: In this repository, the directory for these JSON files is /plugins. Yet, in order to separate configuration files from runtime files, the zlux-example-server repository copies the contents of this folder into /deploy/instance/ZLUX/plugins. So, the example configuration file uses the latter directory.**
 
 #### Plugins directory example
 
@@ -213,8 +213,8 @@ The one attribute that is specific to ZSS however is **zssPort**. This is the TC
 
 When running the zLUX server, simply specify a few flags to declare which ZSS instance zLUX will proxy ZSS requests to:
 
-- _-h_: Declares the host where ZSS can be found. Use as "-h \<hostname\>"
-- _-P_: Declares the port at which ZSS is listening. Use as "-P \<port\>"
+- _-h_: Declares the host where ZSS can be found. Use as `-h \<hostname\>`
+- _-P_: Declares the port at which ZSS is listening. Use as `-P \<port\>`
 
 This program and the accompanying materials are
 made available under the terms of the Eclipse Public License v2.0 which accompanies
