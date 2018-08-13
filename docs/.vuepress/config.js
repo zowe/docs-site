@@ -109,7 +109,7 @@ module.exports = {
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
+          children: ['using', 'usingmvd', 'usingapis', 'api-mediation-api-catalog', 'cli-usingcli']
         },
         {
           title: 'Extending zLUX',
