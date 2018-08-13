@@ -17,11 +17,7 @@ module.exports = {
     ],
     sidebar: {
       '/guides/': [
-        {
-          title: 'Developer Tutorials',
-          collapsable: true,
-          children: ['intro']
-        },
+        'intro',
         {
           title: 'Getting Started with a zLUX',
           collapsable: true,
@@ -49,11 +45,7 @@ module.exports = {
         }
       ],
       '/samples/': [
-        {
-          title: 'Code Samples',
-          collapsable: true,
-          children: ['intro']
-        },
+        'intro',
         {
           title: 'Provide Liberty API Sample',
           collapsable: true,
