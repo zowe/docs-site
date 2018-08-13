@@ -42,7 +42,7 @@ See **Router Dataservice Context** in the topic [zLUX dataservices](mvd-zluxdata
 
 #### Web
 
-(Angular App Instance Injectible). See **Logger** in [Desktop and window management](mvd-desktopandwindowmgt.md).  
+(Angular App Instance Injectible). See **Logger** in [Virtual desktop and window management](mvd-desktopandwindowmgt.md).  
 
 
 ## Logger API

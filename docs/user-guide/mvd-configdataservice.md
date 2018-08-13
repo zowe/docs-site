@@ -216,7 +216,7 @@ Retrieves and stores configuration information from specific scopes.
 
 `ZLUX.UriBroker.pluginConfigForScopeUri(pluginDefinition: ZLUX.Plugin, scope: string, resourcePath:string, resourceName:string): string;`
 
-A shortcut for the preceding method, and the preferred method when you are retrieving configuration information is simply to "consume" it. It "asks" for configurations using the *User* scope, and allows the configuration service decide which configuration information to retrieve and how to aggregate it. (See below on how the configuration service evaluates what to return for this type of request).
+A shortcut for the preceding method, and the preferred method when you are retrieving configuration information, is simply to "consume" it. It "asks" for configurations using the *User* scope, and allows the configuration service to decide which configuration information to retrieve and how to aggregate it. (See below on how the configuration service evaluates what to return for this type of request).
 
 `ZLUX.UriBroker.pluginConfigUri(pluginDefinition: ZLUX.Plugin, resourcePath:string, resourceName:string): string;`
 
@@ -264,7 +264,7 @@ For example:
 
 ## Aggregation policies
 
-Aggregation policies determine how the Configuration Dataservice aggregates JSON objects from different Scopes together when a user requests a resource. If the user requests a resource from the *User* scope, the data from the User scope might replace, or be merged with the data from a broader scope such as *Instance*, to make a combined resource object that is returned to the user.
+Aggregation policies determine how the Configuration Dataservice aggregates JSON objects from different Scopes together when a user requests a resource. If the user requests a resource from the *User* scope, the data from the User scope might replace or be merged with the data from a broader scope such as *Instance*, to make a combined resource object that is returned to the user.
 
 Aggregation policies are defined by a plug-in developer in the plug-in's definition for the Configuration Service, as the attribute `aggregationPolicy` within a resource.
 
