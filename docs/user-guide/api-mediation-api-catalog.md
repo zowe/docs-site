@@ -31,7 +31,7 @@ Use the API Catalog to view services, API documentation, descriptive information
 
     **Example:** 
     
-    ![controller detail](../images/api-mediation/cntrlr-detail.PNG)
+    ![controller detail](../images/api-mediation/cntrlr-detail.png)
     
 6. Expand the endpoints to see a detailed description of the endpoints including the responses and parameters of each endpoint.
    The summary of the endpoint and the full structure of the endpoint including the base URL and description of the endpoint is displayed.
@@ -39,7 +39,7 @@ Use the API Catalog to view services, API documentation, descriptive information
    **Note:** If a lock is visible, the endpoint requires authentication.
    
    **Example:**
-   ![endpoint detail](../images/endpoint-detail.PNG)
+   ![endpoint detail](../images/api-mediation/endpoint-detail.png)
    
    The structure of the endpoint is displayed relative to the base URL.
    
