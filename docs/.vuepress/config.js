@@ -23,24 +23,13 @@ module.exports = {
           children: ['intro']
         },
         {
-          title: 'Build Angular App',
+          title: 'Getting Started with a zLUX',
           collapsable: true,
-          children: ['creating-angluar-app']
-        },
-        {
-          title: 'Getting Started with a zLUX Server Installation',
-          collapsable: true,
-          children: ['zlux-example-server']
-        },
-        {
-          title: 'Creating a zLUX Application',
-          collapsable: true,
-          children: ['zlux-workshop-starter-app', 'zlux-workshop-user-browser']
-        },
-        {
-          title: 'An Example of a Simple zLUX Application',
-          collapsable: true,
-          children: ['zlux-sample-app']
+          children: [
+            'zlux-workshop-starter-app',
+            'zlux-example-server',
+            'zlux-workshop-user-browser'
+          ]
         },
         {
           title: 'Provide Liberty APIs',
@@ -54,7 +43,7 @@ module.exports = {
           children: ['api-mediation-usingapiml']
         },
         {
-          title: 'Coming Soon - Develop for Zowe CLI',
+          title: 'Coming Soon',
           collapsable: true,
           children: ['cli-developPlugins']
         }
@@ -71,9 +60,14 @@ module.exports = {
           children: ['api']
         },
         {
-          title: 'The UI Samples',
+          title: 'zLUX Samples',
           collapsable: true,
-          children: ['ui']
+          children: [
+            'ui_intro',
+            'iframe-sample',
+            'react-sample',
+            'angular-sample'
+          ]
         }
       ],
       '/user-guide/': [
@@ -114,7 +108,13 @@ module.exports = {
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: ['using', 'usingmvd', 'usingapis', 'api-mediation-api-catalog', 'cli-usingcli']
+          children: [
+            'using',
+            'usingmvd',
+            'usingapis',
+            'api-mediation-api-catalog',
+            'cli-usingcli'
+          ]
         },
         {
           title: 'Extending zLUX',
