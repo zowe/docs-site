@@ -50,6 +50,7 @@ scope="local"/>
 <chapter format="md" href="using.md" navtitle="Using Zowe" scope="local">
 <topicref format="md" href="usingmvd.md" navtitle="Using zLUX" scope="local"/>
 <topicref format="md" href="usingapis.md" navtitle="Using APIs" scope="local"/>
+<topicref format="md" href="api-mediation-api-catalog.md" navtitle="Using API Catalog" scope="local"/>
 <topicref format="md" href="cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
 </chapter>
 <chapter format="md" href="mvd-extendingzlux.md" navtitle="Extending zLUX" scope="local">
