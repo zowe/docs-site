@@ -16,7 +16,7 @@ Knowledge of the following development technologies is beneficial:
 
 ## Examining the App Structure
 
-First download the sample app found [TODO](https://github.ibm.com/ZoeExtenders/webui-scenarios/tree/master/basic-react). We will not be examining the entire sample, but it is included as an example and boilerplate that can be built off of.
+First download the sample app found [here](https://github.com/zowe/webui-scenarios/tree/master/basic-react). We will not be examining the entire sample, but it is included as an example and boilerplate that can be built off of.
 
 Looking at the sample app their are 2 main sections that are important to us:
 
@@ -28,7 +28,7 @@ Looking at the sample app their are 2 main sections that are important to us:
 Lets first examine Constants.js.
 
 ```javascript
-let host = 'winmvs2e.hursley.ibm.com:7445'
+let host = '<host>:<port>'
 if (typeof location !== 'undefined') {
   const hostname = location.hostname
   if (hostname !== 'localhost') {
@@ -45,7 +45,7 @@ Notice that here we are setting our 'host' for the app. We are connecting to hyp
 
 ### Actions.js
 
-Next lets look at calling our API created in the [creating a RestAPI with Swagger documentation using Liberty]() tutorial. Following Redux structure, this call will be in our action.js file. We won't be looking at the entire file, but instead the relevant fetch request.
+Next lets look at calling our API created in the [creating a RestAPI with Swagger documentation using Liberty](https://zowe.github.io/docs-site/guides/libertyAPI.html) tutorial. Following Redux structure, this call will be in our action.js file. We won't be looking at the entire file, but instead the relevant fetch request.
 
 ```javascript
 function fetchPosts(subreddit) {

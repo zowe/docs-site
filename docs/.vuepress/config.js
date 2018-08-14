@@ -2,7 +2,7 @@ module.exports = {
   title: 'Zowe Docs',
   base: '/docs-site/',
   description: 'Home of Zowe documentation',
-  // ga: '',
+  ga: 'UA-123892882-1',
   themeConfig: {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
@@ -17,30 +17,15 @@ module.exports = {
     ],
     sidebar: {
       '/guides/': [
+        'intro',
         {
-          title: 'Developer Tutorials',
+          title: 'Getting Started with a zLUX',
           collapsable: true,
-          children: ['intro']
-        },
-        {
-          title: 'Build Angular App',
-          collapsable: true,
-          children: ['creating-angluar-app']
-        },
-        {
-          title: 'Getting Started with a zLUX Server Installation',
-          collapsable: true,
-          children: ['zlux-example-server']
-        },
-        {
-          title: 'Creating a zLUX Application',
-          collapsable: true,
-          children: ['zlux-workshop-starter-app', 'zlux-workshop-user-browser']
-        },
-        {
-          title: 'An Example of a Simple zLUX Application',
-          collapsable: true,
-          children: ['zlux-sample-app']
+          children: [
+            'zlux-workshop-starter-app',
+            'zlux-example-server',
+            'zlux-workshop-user-browser'
+          ]
         },
         {
           title: 'Provide Liberty APIs',
@@ -49,31 +34,32 @@ module.exports = {
         },
         {
           title:
-            'How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer',
+            'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
           collapsable: true,
           children: ['api-mediation-usingapiml']
         },
         {
-          title: 'Coming Soon - Develop for Zowe CLI',
+          title: 'Coming Soon',
           collapsable: true,
           children: ['cli-developPlugins']
         }
       ],
       '/samples/': [
-        {
-          title: 'Code Samples',
-          collapsable: true,
-          children: ['intro']
-        },
+        'intro',
         {
           title: 'Provide Liberty API Sample',
           collapsable: true,
           children: ['api']
         },
         {
-          title: 'The UI Samples',
+          title: 'zLUX Samples',
           collapsable: true,
-          children: ['ui']
+          children: [
+            'ui_intro',
+            'iframe-sample',
+            'react-sample',
+            'angular-sample'
+          ]
         }
       ],
       '/user-guide/': [
@@ -81,6 +67,11 @@ module.exports = {
           title: 'About this documentation',
           collapsable: true,
           children: ['aboutthisdoc']
+        },
+        {
+          title: 'Summary of changes',
+          collapsable: true,
+          children: ['summaryofchanges']
         },
         {
           title: 'Zowe Overview',
@@ -109,7 +100,13 @@ module.exports = {
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: ['using', 'usingmvd', 'usingapis', 'cli-usingcli']
+          children: [
+            'using',
+            'usingmvd',
+            'usingapis',
+            'api-mediation-api-catalog',
+            'cli-usingcli'
+          ]
         },
         {
           title: 'Extending zLUX',
@@ -133,7 +130,7 @@ module.exports = {
           children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
         }
       ],
-      '/': ['' /* / */, 'about' /* /about.html */]
+      '/': ['about']
     }
   }
 }

@@ -2,7 +2,7 @@
 
 This tutorial will show you to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
 
-The source repo for the project can be found [TODO](https://github.com/gizafoundation/atlas-jzos-sample/)
+The source repo for the project can be found at the [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 
 This document describes how we can add new function and UI's to run alongside Zowe.
 
@@ -68,7 +68,7 @@ Within the Liberty server we have configured a function "APIDiscovery" which at 
 
 ## Anatomy of a project
 
-Using [atlas-jzos-sample](https://github.com/gizafoundation/atlas-jzos-sample/) as a guide. Create a Dynamic web project (don't specify it as part of an EAR if using the wizard), or if using a
+Using [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample) as a guide. Create a Dynamic web project (don't specify it as part of an EAR if using the wizard), or if using a
 Maven archetype choose one containing a simplified sample J2EE application.
 
 _Alternatively, use the project as a template. Download the code, rename it and use as the basis of your new project._
@@ -106,7 +106,7 @@ It is likely that the Zowe team will provide utility jar files that will either 
 described in 'Additional Jars'. Currently generic jar files such as Zowe utilities should be included in your war file. This may be revised
 later based upon future requirements.
 
-# Unit Testing
+## Unit Testing
 
 Aim for 100% coverage. In many cases it may be impossible or impractical to achieve either because code is auto-generated or covered in other
 tests. Use Jacoco to highlight where there are gaps.
@@ -116,7 +116,7 @@ are run and reporting afterwards.
 
 Examples of unit testing, the use of Mockito and PowerMock are in the src/test/java folder for the jzos sample.
 
-##  FV testing
+###  FV testing
 
 For the purpose of testing applications in a live fully configured environment scenario it is necessary to create another testing specific
 project. You will notice that only the src/main/tests folder is populated. When running a Maven build the tests contained here are
@@ -127,11 +127,7 @@ exercised.
 
 - Alternatively, you can always download the code, rename it and use as the basis of your new project.
 
-##  WebUI
+### WebUI
 
 An example of a WebUI built using the functionality provided by this Blog and sample can be found in the [ReactJS blog](./ReactJSUI.md) created using JavaScript, React/Redux, but this does not
 mean you are restricted to these.
-
-##  Documentation
-
-Don't forget to complete a README.md in GitHub which provides the initial overview
