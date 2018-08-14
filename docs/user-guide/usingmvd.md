@@ -70,10 +70,10 @@ This application plug-in helps you find information about the important services
 
 ### TN3270
 This application plug-in provides a 3270 connection to the mainframe on
-which the Zowe Node Server runs. (Available from Rocket Software.)
+which the Zowe Node Server runs. 
 
 ### VT Terminal 
-This application plug-in provides a connection to UNIX System Services and UNIX. (Available from Rocket Software.)
+This application plug-in provides a connection to UNIX System Services and UNIX. 
 
 ## zLUX logging
 
