@@ -102,7 +102,7 @@ If you set the log file name for the node server by setting the *ZLUX_NODE_LOG_F
 
 **Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, zLUX will not override the log names, set a timestamp, or delete the logs.
 
-If zLUX cannot create the directory or file, the server will run (but it might not perform logging properly).
+If zLUX cannot create the directory or file, the server will still run, however, it might not perform logging properly).
 
 ### Retaining logs
 By default, zLUX retains the last five logs. If you want to specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Node Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. The default is 5.
