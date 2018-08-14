@@ -13,7 +13,8 @@ module.exports = {
     nav: [
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
-      { text: 'User Guide', link: '/user-guide/aboutthisdoc' }
+      { text: 'User Guide', link: '/user-guide/aboutthisdoc' },
+      { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
     sidebar: {
       '/guides/': [
