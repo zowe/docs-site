@@ -6,6 +6,14 @@ When you initially open the MVD, a security message alerts you that you are atte
 
 **Note:** If you clear the browser cache, you must add the URL to your trusted sites again.
 
+During runtime, the information message ICH408I may present identifying insufficient write authority to a number of resources, these resources may include:
+
+- `zowe/explorer-server/wlp/usr/servers/.pid/Atlas.pid`
+- `zowe/zlux-example-server/deploy/site/plugins/`
+- `zowe/zlux-example-server/deploy/instance/plugins/`
+
+**Note:** This should not affect the runtime operations of Zowe. This is a known issue and will be addressed in the next build.
+
 zLUX APIs exist but are under development. Features might be reorganized if it simplifies and clarifies the API, and features might be added if applications can benefit from them.h
 
 ## Troubleshooting installing the Zowe runtime
