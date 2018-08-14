@@ -1,10 +1,6 @@
-# Downloadable PDF file
-
-You can download this documentation for Zowe as PDF file. Click here to view and download the PDF file.
-
 # About this documentation
 
-This documentation describes how to install, configure, use, and extend Open Beta for Zowe.  
+This documentation describes how to install, configure, use, and extend Open Beta for Zowe.
 
 ## Who should read this documentation
 

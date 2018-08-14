@@ -66,7 +66,7 @@ module.exports = {
         {
           title: 'About this documentation',
           collapsable: true,
-          children: ['aboutthisdoc']
+          children: ['download-pdf', 'aboutthisdoc']
         },
         {
           title: 'Summary of changes',
