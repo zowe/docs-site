@@ -35,8 +35,8 @@ Make sure that you first expose an API to connect to before following the steps 
 ```
 
 9.  Run `./deploy.sh` found in `<zowe_base>/zlux-build`
-10. Run `./zoe-stop.sh` found in `<zowe_base>/scripts`
-11. Run `./zoe-start.sh` found in `<zowe_base>/scripts`
+10. Run `./zowe-stop.sh` found in `<zowe_base>/scripts`
+11. Run `./zowe-start.sh` found in `<zowe_base>/scripts`
 
 ## Verify Install
 

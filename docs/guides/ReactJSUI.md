@@ -92,7 +92,7 @@ In order to build and prepare your app:
 
 ### Configuring your app for Zowe
 
-In order for Zoe to be aware of an app, a pluginDefintion.json file must be included in the root of the project. This file lets Zoe know information about the framework used, reference files, and basic configuration for the app. Lets take a look at our pluginDefinition:
+In order for Zowe to be aware of an app, a pluginDefintion.json file must be included in the root of the project. This file lets Zowe know information about the framework used, reference files, and basic configuration for the app. Lets take a look at our pluginDefinition:
 
 ```json
 {
@@ -167,8 +167,8 @@ To add our app to the file system:
 In order to deploy our newly added app,
 
 1.  Run `./deploy.sh` found in `/zaas1/zowe/<build-number>/zlux-build`
-2.  Run `./zoe-stop.sh` found in `/zaas1/zowe/<build-number>/scripts`
-3.  Run `./zoe-start.sh` found in `/zaas1/zowe/<build-number>/scripts`
+2.  Run `./zowe-stop.sh` found in `/zaas1/zowe/<build-number>/scripts`
+3.  Run `./zowe-start.sh` found in `/zaas1/zowe/<build-number>/scripts`
 
 ## Setting up the server for Development
 

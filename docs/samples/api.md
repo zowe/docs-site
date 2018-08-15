@@ -13,11 +13,11 @@ After creating or obtaining the REST API war file:
 1.  Stop the Zowe server.
 
     - Navigate to `<zowe_base>/scripts/`
-    - Run `./zoe-stop.sh`
+    - Run `./zowe-stop.sh`
 
 2.  Push the war file up to the dropins folder using SCP, SFTP, or on Windows with Putty SCP (PSCP).
     - _EX_:
-      `scp /path/to/warfile <usrID>@<serverLocation>:<zoe_base>/explorer-server/wlp/usr/servers/Atlas/dropins/`
+      `scp /path/to/warfile <usrID>@<serverLocation>:<zowe_base>/explorer-server/wlp/usr/servers/Atlas/dropins/`
 
 ::: tip
 Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have transferred.
@@ -26,7 +26,7 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
 3.  Restart the Zowe server.
 
     - Navigate to `<zowe_base>/scripts/`
-    - Run `./zoe-start.sh`
+    - Run `./zowe-start.sh`
 
 ### Verify Install
 

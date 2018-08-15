@@ -607,7 +607,7 @@ Note the key functions of this template:
 
 3. Small modification to **userbrowser-component.ts** to add the grid variable, and set up the aforementioned table selection event listener, both within the **UserBrowserComponent** Class:
 
-```
+```js
 @ViewChild('grid') grid; //above the constructor
 
 onTableSelectionChange(rows: any[]):void{
