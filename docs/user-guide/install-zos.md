@@ -12,139 +12,136 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
 
 1. Navigate to the directory where the installation archive is extracted. Locate the `/install` directory.
 
-   ```
-        /install
-           /zowe-install.sh
-           /zowe-install.yaml
-   ```
+    ```
+         /install
+            /zowe-install.sh
+            /zowe-install.yaml
+    ```
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-   - `install:rootDir` is the directory that Zowe will be installed into to create a Zowe runtime. The default directory is `~/zowe/0.9.0`. The user's home directory is the default value to ensure that the installing user has permission to create the directories that are required for the install. If the Zowe runtime will be maintained by multiple users it might be more appropriate to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe will be installed into to create a Zowe runtime. The default directory is `~/zowe/0.9.0`. The user's home directory is the default value to ensure that the installing user has permission to create the directories that are required for the install. If the Zowe runtime will be maintained by multiple users it might be more appropriate to use another directory, such as `/var/zowe/v.r.m`.
 
-     You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. The directory that Zowe is installed into must be empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
+       You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. The directory that Zowe is installed into must be empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-   - API Mediation Layer has three ports - two HTTP ports and one HTTPS port, each for a micro-service.
+    - API Mediation Layer has three ports - two HTTP ports and one HTTPS port, each for a micro-service.
 
-   - Explorer-server has two ports - one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
+    - Explorer-server has two ports - one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
 
-   - zLUX-server has three ports - the HTTP and HTTPS ports that are used by the zLUX window manager server, and the port that is used by the ZSS server.
+    - zLUX-server has three ports - the HTTP and HTTPS ports that are used by the zLUX window manager server, and the port that is used by the ZSS server.
 
 
-    ```yaml
-    install:
-     rootDir=/var/zowe/0.9.0
+        ```yaml
+        install:
+         rootDir=/var/zowe/0.9.0
 
-    api-mediation:
-      catalogHttpPort=7552
-      discoveryHttpPort=7553
-      gatewayHttpsPort=7554
+        api-mediation:
+          catalogHttpPort=7552
+          discoveryHttpPort=7553
+          gatewayHttpsPort=7554
 
-    explorer-server:
-      httpPort=7080
-      httpsPort=7443
+        explorer-server:
+          httpPort=7080
+          httpsPort=7443
 
-    # http and https ports for the node server
-    zlux-server:
-      httpPort=8543
-      httpsPort=8544
-      zssPort=8542
-    ```
+        # http and https ports for the node server
+        zlux-server:
+          httpPort=8543
+          httpsPort=8544
+          zssPort=8542
+        ```
 
-    If all of the default port values are acceptable, then you do not need to change them. The ports must not be in use for the Zowe runtime servers to be able to allocate them.
+     If all of the default port values are acceptable, then you do not need to change them. The ports must not be in use for the Zowe runtime servers to be able to allocate them.
 
-    To determine which ports are not available, follow these steps:
+     To determine which ports are not available, follow these steps:
 
-    - To display a list of ports that are in use, issue the following command:
+     - To display a list of ports that are in use, issue the following command:
+        ```
+        TSO NETSTAT
+        ```
 
-    ```
-    TSO NETSTAT
-    ```
-
-    - To display a list of reserved ports, issue the following command:
-
-    ```
-    TSO NETSTAT PORTLIST
-    ```
+     - To display a list of reserved ports, issue the following command:
+        ```
+        TSO NETSTAT PORTLIST
+        ```
 
     The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This is to allow the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.  Unlike the ports needed by the Zowe runtime for its zLUX and explorer server which must be unused, the terminal ports are expected to be in use.
 
-    ```
-    # Ports for the TN3270 and the VT terminal to connect to
-    terminals:
-        sshPort=22
-        telnetPort=23
-    ```
+       ```
+       # Ports for the TN3270 and the VT terminal to connect to
+       terminals:
+           sshPort=22
+           telnetPort=23
+       ```
 
 3. Execute the `zowe-install.sh` script.
 
-   With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
+    With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
-   ```
-   zowe-install.sh
-   ```
+    ```
+    zowe-install.sh
+    ```
 
-   You might receive the following error that the file cannot be executed.
+    You might receive the following error that the file cannot be executed.
 
-   ```
-   zowe-install.sh: cannot execute
-   ```
+    ```
+    zowe-install.sh: cannot execute
+    ```
 
-   The error is due to that the install script does not have execute permission. To add execute permission, issue the following command:
+    The error is due to that the install script does not have execute permission. To add execute permission, issue the following command:
 
-   ```
-   chmod u+x zowe-install.sh.
-   ```
+    ```
+    chmod u+x zowe-install.sh.
+    ```
 
 4. Configure Zowe as a started task.
 
-   The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID
+     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
 
-   If you use RACF, issue the following commands:
+     - If you use RACF, issue the following commands:
 
-   ```
-   RDEFINE STARTED ZOWESVR.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))
+        ```
+        RDEFINE STARTED ZOWESVR.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+        SETROPTS REFRESH RACLIST(STARTED)
+        ```
 
-   SETROPTS REFRESH RACLIST(STARTED)
-   ```
+     - If you use CA ACF2, issue the following commands:
 
-   If you use CA ACF2, issue the following commands:
+        ```
+        SET CONTROL(GSO)
+        INSERT STC.ZOWESVR LOGONID(ZIUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
+        F ACF2,REFRESH(STC)
+        ```
 
-   ```
-   SET CONTROL(GSO)
-   INSERT STC.ZOWESVR LOGONID(ZIUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
-   F ACF2,REFRESH(STC)
-   ```
+     - If you use CA Top Secret, issue the following commands:
 
-   If you use CA Top Secret, issue the following commands:
-
-   ```
-   TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
-   ```
+        ```
+        TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
+        ```
 
 5. Add the users to the required groups, IZUADMIN for administrators and IZUUSER for standard users.
 
-   If you use RACF, issue the following command:
+     - If you use RACF, issue the following command:
 
-   ```
-   CONNECT (userid) GROUP(IZUADMIN)
-   ```
+        ```
+        CONNECT (userid) GROUP(IZUADMIN)
+        ```
 
-   If you use CA ACF2, issue the following commands:
+     - If you use CA ACF2, issue the following commands:
 
-   ```
-   ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
-   F ACF2,REBUILD(TGR)
-   ```
+        ```
+        ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
+        F ACF2,REBUILD(TGR)
+        ```
 
-   If you use CA Top Secret, issue the following commands:
+     - If you use CA Top Secret, issue the following commands:
 
-   ```
-   TSS ADD(userid)  PROFILE(IZUADMIN)
-   TSS ADD(userid)  GROUP(IZUADMGP)
-   ```
+        ```
+        TSS ADD(userid)  PROFILE(IZUADMIN)
+        TSS ADD(userid)  GROUP(IZUADMGP)
+        ```
 
-   When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. These are covered more in the section [Troubleshooting the installation](troubleshootinstall.md).
+     When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. These are covered more in the section [Troubleshooting the installation](troubleshootinstall.md).
 
 ## Starting and stopping the Zowe runtime on z/OS
 
