@@ -246,7 +246,7 @@ This URL sends an HTTP GET request to the Liberty Profile explorer server. If ex
 
 After you verify that explorer server is successfully installed, you can access the UI at:
 
-`https://<your.server>:<atlasport>/ui/\#/`
+`https://<your.server>:<atlasport>/explorer-mvs/\#/`
 
 If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
 
