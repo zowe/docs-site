@@ -251,7 +251,7 @@ After you verify that explorer server is successfully installed, you can access 
 
 `https://<your.server>:<atlasport>/ui/\#/`
 
-If explorer server is not installed successfully, see [Troubleshooting installation](troubleshoot.md) for solutions.
+If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
 
 #### Verifying the availability of explorer server REST APIs
 
