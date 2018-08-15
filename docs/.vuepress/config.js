@@ -22,11 +22,7 @@ module.exports = {
         {
           title: 'Getting Started with a zLUX',
           collapsable: true,
-          children: [
-            'zlux-workshop-starter-app',
-            'zlux-example-server',
-            'zlux-workshop-user-browser'
-          ]
+          children: ['zlux-example-server', 'zlux-workshop-user-browser']
         },
         {
           title: 'Provide Liberty APIs',
@@ -48,15 +44,20 @@ module.exports = {
       '/samples/': [
         'intro',
         {
-          title: 'Provide Liberty API Sample',
+          title: 'Starter App Samples',
           collapsable: true,
-          children: ['api']
+          children: ['starter-intro', 'zlux-workshop-starter-app.md']
+        },
+        {
+          title: 'API Extension Samples',
+          collapsable: true,
+          children: ['api-intro', 'liberty-api-sample']
         },
         {
           title: 'zLUX Samples',
           collapsable: true,
           children: [
-            'ui_intro',
+            'ui-intro',
             'iframe-sample',
             'react-sample',
             'angular-sample'

@@ -1,12 +1,10 @@
-# API extension sample
+# Provide Liberty API Sample
 
-Users can connect with and create their own API's within the Zowe environment. In this section we will create an API to expose environmental variables.
+### Github Sample Code: [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 
-## Adding a REST API to Zowe
+This sample is a boilerplate for creating Rest API's using a liberty. For more information, visit [Creating a RestAPI with Swagger documentation using Liberty](../guides/libertyAPI.md).
 
-#### Github Sample Code: [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
-
-### To Install
+## To Install
 
 After creating or obtaining the REST API war file:
 
@@ -28,7 +26,7 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
     - Navigate to `<zowe_base>/scripts/`
     - Run `./zowe-start.sh`
 
-### Verify Install
+## Verify Install
 
 1.  Check the Browser to see if the REST APIs have been added.
     - _EX_: `<base>:<yourport>/ibm/api/explorer/#/`
