@@ -35,6 +35,8 @@ So, let's get started!
 
 ## Constructing an App Skeleton
 
+Download the skeleton code from the [project repository](https://github.com/zowe/workshop-user-browser-app).
+
 If you look within this repository, you'll see that a few boilerplate files already exist to help you get your first App running quickly. The structure of this repository follows the guidelines for Zowe App filesystem layout, which you can read more about [on this wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure) if you need.
 
 ### Defining your first Plugin

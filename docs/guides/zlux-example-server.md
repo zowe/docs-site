@@ -84,7 +84,7 @@ zLUX Apps can contain server and/or web components. The web components must be b
 This example server only needs transpilation and packaging of web components, and therefore we do not need any special build steps for the host running ZSS.
 
 Instead, on the host running the zLUX Proxy Server, run the script that will automatically build all included Apps.
-Simply,
+Under `zlux-build` run,
 
 ```
 //Windows
@@ -100,7 +100,7 @@ _Note: You will need to have `ant` and `ant-contrib` installed_
 
 ### 5. Deploy server configuration files
 
-If you are running the zLUX Proxy Server separate from ZSS, you must ensure the ZSS installation has its configuration deployed. You can accomplish this via:
+If you are running the zLUX Proxy Server separate from ZSS, you must ensure the ZSS installation has its configuration deployed. You can accomplish this by navigating to `zlux-build` and running:
 
 ```
 ant deploy
