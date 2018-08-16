@@ -38,7 +38,7 @@ zLUX consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.md#using-zlux-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.html#using-zlux-application-plug-ins).
 
 ## Explorer server
 
@@ -84,7 +84,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**    
     Return data in JSON format on request for consumption in other programming languages.
 
-For more information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](cli-usingcli.md#zowe-cli-command-groups).
+For more information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](cli-usingcli.md).
 
 ### Zowe CLI Third-Party software agreements
 

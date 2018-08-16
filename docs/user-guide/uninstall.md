@@ -94,7 +94,7 @@ The following steps describe how to list the profiles that you created, delete t
 
     **Note:** If you do not want to delete the Zowe CLI profiles from your PC, go to Step 5.
 
-2.  List all profiles that you created for a [Command Group](cli-usingcli.md#zowe-cli-command-groups) by issuing the following command:
+2.  List all profiles that you created for a [Command Group](cli-usingcli.html#zowe-cli-command-groups) by issuing the following command:
 
     ```
      zowe profiles list <profileType>

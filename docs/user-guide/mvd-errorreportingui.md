@@ -6,7 +6,7 @@ The `zLUX Widgets` repository contains shared widget-like components of the main
 Ideally, a program should have little to no logic errors. Once in a while a few slip through, but more commonly an error occurs from misconfigured user settings. A user might request an action or command that requires certain prerequisites, for example: a proper ZSS-Server configuration. If the program or method fails, the program should notify the user through the UI about the error and how to fix it. For the purposes of this discussion, we will use the zLUX Workflow application plug-in in the `zlux-workflow` repository.
 
 
-### ZluxPopupManagerService
+## ZluxPopupManagerService
 
 The `ZluxPopupManagerService` is a standard popup widget that can, through its `reportError()` method, be used to display errors with attributes that specify the title (or error code), severity, text, whether it should block the user from proceeding, whether it should output to the logger, and other options you want to add to the error dialog. `ZluxPopupManagerService` uses both `ZluxErrorSeverity` and `ErrorReportStruct`.
 
@@ -27,7 +27,7 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     reportError(severity: ZluxErrorSeverity, title: string, text: string, options?: any): Rx.Observable<any>;
 `}`
 
-### ZluxErrorSeverity
+## ZluxErrorSeverity
 
 `ZluxErrorSeverity` classifies the type of report. Under the popup-manager, there are the following types: error, warning, and information. Each type has its own visual style and the desired error or pop-up should be classified accordingly to accurately indicate the type of issue to the user.
 
@@ -38,7 +38,7 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     INFO = "info",
 `}`
 
-### ErrorReportStruct
+## ErrorReportStruct
 
 `ErrorReportStruct` contains the main interface that brings the specified parameters of `reportError()` together.
 
@@ -51,7 +51,7 @@ The `ZluxPopupManagerService` is a standard popup widget that can, through its `
     buttons: string[];
 `}`
 
-# Implementation
+## Implementation
 
 Import `ZluxPopupManagerService` and `ZluxErrorSeverity` from widgets. If you are using additional services with your error prompt, import those too (for example, `LoggerService` to print to the logger or `GlobalVeilService` to create a visible semi-transparent gray veil over the program and pause background tasks). Here, widgets is imported from `node_modules\@zlux\` so you must ensure zLUX widgets is used in your `package-lock.json` or `package.json` and you have run `npm install`.
 
