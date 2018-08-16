@@ -5,8 +5,8 @@ As a systems programmer or application developer, you install Zowe CLI on your
 ## Methods to install Zowe CLI
 
 You can use either of the following methods to install Zowe CLI.
-- Install Zowe CLI from local package
-- Installing Zowe CLI from Bintray registry
+- [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
+- [Install Zowe CLI from Bintray registry](l#installing-zowe-cli-from-bintray-registry)
 
 ### Installing Zowe CLI from local package
 
