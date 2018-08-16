@@ -189,7 +189,7 @@ Here is an extended API sample that is written using JavaScript™ with features
 // This Sample is written using Javascript with features from ES62015 (map).
 // The sample is also written using JSX giving the ability to return HTML elements
 // with Javascript variables embedded. This sample is based upon the codebase of the
-// sample UI (see- hostname:port/ui) which is written using Facebook's React, Redux,
+// sample UI (see- hostname:port/explorer-mvs) which is written using Facebook's React, Redux,
 // Router and Google's material-ui
 /////////////////////////////////////////////////////////////////////////////
 
