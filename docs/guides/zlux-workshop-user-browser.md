@@ -211,7 +211,7 @@ While a package.json can be created through other means such as `npm init` and p
     "@angular/platform-browser-dynamic": "~6.0.9",
     "@angular/router": "~6.0.9",
     "@zlux/grid": "git+https://github.com/zowe/zlux-grid.git",
-    "@zlux/widgets": "git+https://github.com:zowe/zlux-widgets.git",
+    "@zlux/widgets": "git+https://github.com/zowe/zlux-widgets.git",
     "angular2-template-loader": "~0.6.2",
     "copy-webpack-plugin": "~4.5.2",
     "core-js": "~2.5.7",
