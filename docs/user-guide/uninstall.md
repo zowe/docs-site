@@ -1,11 +1,11 @@
-# Uninstalling Zowe
+# Uninstalling Zowe <!-- omit in toc -->
 
 You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
-- [Uninstalling Zowe](#uninstalling-zowe)
-    - [Uninstalling zLUX](#uninstalling-zlux)
-    - [Uninstalling explorer server](#uninstalling-explorer-server)
-    - [Uninstalling API Mediation Layer](#uninstalling-api-mediation-layer)
-    - [Uninstalling Zowe CLI](#uninstalling-zowe-cli)
+
+- [Uninstalling zLUX](#uninstalling-zlux)
+- [Uninstalling explorer server](#uninstalling-explorer-server)
+- [Uninstalling API Mediation Layer](#uninstalling-api-mediation-layer)
+- [Uninstalling Zowe CLI](#uninstalling-zowe-cli)
 
 ## Uninstalling zLUX
 
