@@ -26,20 +26,20 @@ You can download the PAX file from the Zowe website. After you obtain the PAX fi
      ftp <userID@ip.of.zos.box>
      ```
 
-     **Note**: When you use FTP, switch to binary file transfer mode by issuing the following command:
+     **Note:** When you use FTP, switch to binary file transfer mode by issuing the following command:
 
      ```
      bin
      ```
 
-    c. Navigate to the target directory on z/OS.
+    c. Navigate to the target directory that you wish to transfer the Zowe PAX file into on z/OS.
 
-       After you connect to z/OS and enter your password, you enter into the Unix file system. Navigate to the directory you wish to transfer the Zowe PAX file into.
+    **Note:** After you connect to z/OS and enter your password, you enter into the Unix file system. The following commands are useful:
 
-       - To see what directory you are in, type `pwd`.
-       - To switch directory, type `cd`.
-       - To list the contents of a directory, type `ls`.
-       - To create a directory, type `mkdir`.   
+    - To see what directory you are in, type `pwd`.
+    - To switch directory, type `cd`.
+    - To list the contents of a directory, type `ls`.
+    - To create a directory, type `mkdir`.   
 
     d. When you are in the directory you want to transfer the Zowe PAX file into, issue the following command:
 
@@ -49,7 +49,7 @@ You can download the PAX file from the Zowe website. After you obtain the PAX fi
 
     Where _pax-file-name_ is a variable that indicates the full name of the PAX file you downloaded.
 
-    **Note**: When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` will list contents of a directory on z/OS.  
+    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` will list contents of a directory on z/OS.  
 
 2. When the PAX file is transferred, expand the PAX file by issuing the following command in an ssh session:
 
