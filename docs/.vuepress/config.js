@@ -20,7 +20,7 @@ module.exports = {
       '/guides/': [
         'intro',
         {
-          title: 'Getting Started with a zLUX',
+          title: 'Getting Started with zLUX',
           collapsable: true,
           children: ['zlux-example-server', 'zlux-workshop-user-browser']
         },

@@ -1,10 +1,6 @@
 # Create a User Database Browser app on zLUX
 
-This repository acts as a tutorial, intended as a workshop session, which will teach you how to develop your own Zowe App.
-
-_Note: Before continuing, download and examine the [starter-app](./zlux-workshop-starter-app.md). It will be needed to complete this tutorial._
-
-This README contains code snippets and descriptions that you can piece together to complete the App that you will need to complete the tutorial.
+This tutorial contains code snippets and descriptions that you can piece together to build a complete app. It builds off the project skeleton code found at the [github project repo](https://github.com/zowe/workshop-user-browser-app).
 
 By the end of this tutorial, you will:
 
@@ -15,7 +11,11 @@ By the end of this tutorial, you will:
 1. Have experience in working with the Zowe App framework
 1. Become familiar with one of the Zowe App widgets: the grid widget
 
-**Note: This tutorial assumes you already have a Zowe installation ready to be run. If you do not, try setting one up via the README at [zlux-example-server](https://github.com/zowe/zlux-example-server) before continuing.**
+:::warning
+Before continuing, make sure you have completed the prerequisites for this tutorial:
+
+- Setup up the [zlux-example-server locally](./zlux-example-server.md).
+  :::
 
 So, let's get started!
 
@@ -35,7 +35,7 @@ So, let's get started!
 
 ## Constructing an App Skeleton
 
-Download the skeleton code from the [project repository](https://github.com/zowe/workshop-user-browser-app).
+Download the skeleton code from the [project repository](https://github.com/zowe/workshop-user-browser-app). Next move the project into the `zlux` source folder created in the prerequisite tutorial.
 
 If you look within this repository, you'll see that a few boilerplate files already exist to help you get your first App running quickly. The structure of this repository follows the guidelines for Zowe App filesystem layout, which you can read more about [on this wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure) if you need.
 
@@ -619,13 +619,13 @@ onTableSelectionChange(rows: any[]):void{
 
 The previous section, [Adding your Dataservice to the App](#adding-your-dataservice-to-the-app) set the variables that are fed into the ZLUX Grid widget, so at this point the App should be updated with the ability to present a list of users in a grid.
 
-If you are still running `npm run-script start` in a command prompt, it should now show that the App has been successfully built, and that means we are ready to see the results. Reload your browser's webpage and open the user browser App once more... Do you see the list of users in columns and rows that can be sorted and selected? If so, great, you've built a simple yet useful App within Zowe! Let's move on to the last portion of the App workshop where we hook the Starter App and the User Browser App together to accomplish a task.
+If you are still running `npm run-script start` in a command prompt, it should now show that the App has been successfully built, and that means we are ready to see the results. Reload your browser's webpage and open the user browser App once more... Do you see the list of users in columns and rows that can be sorted and selected? If so, great, you've built a simple yet useful App within Zowe! Let's move on to the last portion of the App tutorial where we hook the Starter App and the User Browser App together to accomplish a task.
 
 ## Adding Zowe App-to-App Communication
 
 Apps in Zowe can be useful and provide insight all by themselves, but a big part of using the Zowe Desktop is that Apps are able to keep track of and share context by user interaction in order to accomplish a complex task by simple and intuitive means by having the foreground App request an App best suited for a task to accomplish that task with some context as to the data & purpose.
 
-In the case of this Workshop, we're trying to not just find a list of employees in a company (as was accomplished in the last step where the Grid was added and populated with the REST API), but to filter that list to find those employees who are best suited to the task we need done. So, our user browser App needs to be enhanced with two new abilities:
+In the case of this tutorial, we're trying to not just find a list of employees in a company (as was accomplished in the last step where the Grid was added and populated with the REST API), but to filter that list to find those employees who are best suited to the task we need done. So, our user browser App needs to be enhanced with two new abilities:
 
 - Filter the user list to show only those users that meet the filter
 - Send the subset of users selected in the list back to the App that requested a user list.
@@ -639,6 +639,34 @@ In either case, the App framework provides Actions as the objects to perform the
 
 - Open a new App window, where the message context is delivered in the form of a Launch Context
 - Message a particular, or any of the currently open instances of the target App
+
+### Adding the Starter App
+
+In order to facilitate app to app communication, we need another app to communicate with. A 'starter' app is provided which can be [found on github](https://github.com/zowe/workshop-starter-app).
+
+As we did previously in the [Adding Your App to the Desktop](#adding-your-app-to-the-desktop) section, we need to move the app files to a location where they can be included in our `zlux-example-server`. We then need to add to the `plugins` folder in the example server and redeploy.
+
+1. Clone or download the starter app under the `zlux` folder
+
+- `git clone https://github.com/zowe/workshop-starter-app.git`
+
+2. Next navigate to the `zlux-example-server`:
+
+- create a new file under `/zlux-example-server/plugins/org.openmainframe.zowe.workshop-starter.json`
+- Edit the file to contain:
+
+```json
+{
+  "identifier": "org.openmainframe.zowe.workshop-starter",
+  "pluginLocation": "../../workshop-starter-app"
+}
+```
+
+3. Make sure the ./nodeServer is stopped before running `ant deploy` under `zlux-build`
+4. Restart the ./nodeServer under `zlux-example-server/bin` with the appropriate parameters passed in.
+5. Refresh the browser and verify that the app with a **Green S** is present in zLUX.
+
+### Enabling Communication
 
 We've already done the work of setting up the App's HTML and Angular definitions, so in order to make our App compatible with App-to-App communication, it only needs to listen for, act upon, and issue Zowe App Actions. Let's make edits to the typescript component to do that. Edit the **UserBrowserComponent** Class's constructor within **userbrowser-component.ts** in order to listen for the launch context:
 
@@ -730,7 +758,7 @@ We can also see that once this App has been opened, the Starter App's button, "F
 
 ### Calling back to the Starter App
 
-We're close to finished now - the App can visualize data from a REST API, and can be instructed by other Apps to filter that data according to the situation. But, in order to complete this workshop, we need the App communication to go in the other direction - inform the Starter App which employees you have chosen in the table!
+We're close to finished now - the App can visualize data from a REST API, and can be instructed by other Apps to filter that data according to the situation. But, in order to complete this tutorial, we need the App communication to go in the other direction - inform the Starter App which employees you have chosen in the table!
 
 This time, we will edit **provideZLUXDispatcherCallbacks** to issue Actions rather than to listen for them. We need to target the Starter App, since it is the App that expects to receive a message about which employees should be assigned a task. If that App is given an employee listing that contains employees with the wrong job titles, the operation will be rejected as invalid, so we can ensure that we get the right result through a combination of filtering and sending a subset of the filtered users back to the starter App.
 
@@ -781,7 +809,7 @@ And we'll invoke this via a button click action, which we will add into the Angu
 <button type="button" class="wide-button btn btn-default" (click)="submitSelectedUsers()" value="Send">
 ```
 
-Check that the App builds successfully, and if so, you've built the App for the workshop! Try it out:
+Check that the App builds successfully, and if so, you've built the App for the tutorial! Try it out:
 
 1. Open the Starter App
 1. Click the "Find Users from Lookup Directory" button
