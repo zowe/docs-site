@@ -1,4 +1,4 @@
-# Uninstalling Zowe <!-- omit in toc -->
+# Uninstalling Zowe 
 
 You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 

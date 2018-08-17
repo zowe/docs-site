@@ -244,9 +244,11 @@ This URL sends an HTTP GET request to the Liberty Profile explorer server. If ex
 
 **Note:** The first time that you interact with the explorer server, you are prompted to enter an MVS™ user ID and password. The MVS user ID and password are passed over the secure HTTPS connection to establish authentication.
 
-After you verify that explorer server is successfully installed, you can access the UI at:
+After you verify that explorer server is successfully installed, you can access the UI at the following URLs:
 
-`https://<your.server>:<atlasport>/explorer-mvs/#/`
+- `https://<your.server>:<atlasport>/explorer-jes/#/`
+- `https://<your.server>:<atlasport>/explorer-mvs/#/`
+- `https://<your.server>:<atlasport>/explorer-uss/#/`
 
 If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
 
