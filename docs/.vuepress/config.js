@@ -2,7 +2,7 @@ module.exports = {
   title: 'Zowe Docs',
   base: '/docs-site/',
   description: 'Home of Zowe documentation',
-  // ga: '',
+  ga: 'UA-123892882-1',
   themeConfig: {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
@@ -13,34 +13,16 @@ module.exports = {
     nav: [
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
-      { text: 'User Guide', link: '/user-guide/aboutthisdoc' }
+      { text: 'User Guide', link: '/user-guide/aboutthisdoc' },
+      { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
     sidebar: {
       '/guides/': [
+        'intro',
         {
-          title: 'Developer Tutorials',
+          title: 'Getting Started with zLUX',
           collapsable: true,
-          children: ['intro']
-        },
-        {
-          title: 'Build Angular App',
-          collapsable: true,
-          children: ['creating-angluar-app']
-        },
-        {
-          title: 'Getting Started with a zLUX Server Installation',
-          collapsable: true,
-          children: ['zlux-example-server']
-        },
-        {
-          title: 'Creating a zLUX Application',
-          collapsable: true,
-          children: ['zlux-workshop-starter-app', 'zlux-workshop-user-browser']
-        },
-        {
-          title: 'An Example of a Simple zLUX Application',
-          collapsable: true,
-          children: ['zlux-sample-app']
+          children: ['zlux-example-server', 'zlux-workshop-user-browser']
         },
         {
           title: 'Provide Liberty APIs',
@@ -54,33 +36,44 @@ module.exports = {
           children: ['api-mediation-usingapiml']
         },
         {
-          title: 'Coming Soon - Develop for Zowe CLI',
+          title: 'Coming Soon',
           collapsable: true,
           children: ['cli-developPlugins']
         }
       ],
       '/samples/': [
+        'intro',
         {
-          title: 'Code Samples',
+          title: 'Starter App Samples',
           collapsable: true,
-          children: ['intro']
+          children: ['starter-intro', 'zlux-workshop-starter-app.md']
         },
         {
-          title: 'Provide Liberty API Sample',
+          title: 'API Extension Samples',
           collapsable: true,
-          children: ['api']
+          children: ['api-intro', 'liberty-api-sample']
         },
         {
-          title: 'The UI Samples',
+          title: 'zLUX Samples',
           collapsable: true,
-          children: ['ui']
+          children: [
+            'ui-intro',
+            'iframe-sample',
+            'react-sample',
+            'angular-sample'
+          ]
         }
       ],
       '/user-guide/': [
         {
           title: 'About this documentation',
           collapsable: true,
-          children: ['aboutthisdoc']
+          children: ['download-pdf', 'aboutthisdoc']
+        },
+        {
+          title: 'Summary of changes',
+          collapsable: true,
+          children: ['summaryofchanges']
         },
         {
           title: 'Zowe Overview',
@@ -109,7 +102,13 @@ module.exports = {
         {
           title: 'Using Zowe',
           collapsable: true,
-          children: ['using', 'usingmvd', 'usingapis', 'api-mediation-api-catalog', 'cli-usingcli']
+          children: [
+            'using',
+            'usingmvd',
+            'usingapis',
+            'api-mediation-api-catalog',
+            'cli-usingcli'
+          ]
         },
         {
           title: 'Extending zLUX',

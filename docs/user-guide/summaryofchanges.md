@@ -10,7 +10,7 @@ Version 0.9.0 is the first Open Beta version for Zowe. This version contains the
 
 **New component - API Mediation Layer**
 
-Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](introduction.md#api-mediation-layer) and [Installing zLUX, explorer server, and API Mediation Layer](install-zos.md#installing-the-zowe-runtime-on-z-os).
+Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](introduction.html#api-mediation-layer) and [Installing zLUX, explorer server, and API Mediation Layer](install-zos.html#installing-the-zowe-runtime-on-z-os).
 
 ### What's changed
 **Naming**

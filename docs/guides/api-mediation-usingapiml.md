@@ -6,7 +6,7 @@ Zowe API Mediation Layer provides a single point of access for mainframe service
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-- [How to onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](#how-to-onboard-an-existing-spring-boot-rest-api-service-using-zowe-api-mediation-layer)
+- [Onboard Spring Boot REST API services using Zowe API Mediation Layer](#onboard-spring-boot-rest-api-services-using-zowe-api-mediation-layer)
   - [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
   - [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
   - [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
@@ -14,7 +14,6 @@ As an API developer, use this guide to onboard your REST API service into the Zo
   - [Test your service](#test-your-service)
     - [Validate that your API instance is still working](#validate-that-your-api-instance-is-still-working)
     - [Validate that your API instance is discoverable](#validate-that-your-api-instance-is-discoverable)
-  - [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 ## Prepare an existing Spring Boot REST API for onboarding
 
@@ -63,22 +62,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
     public class DiscoverableClientSampleApplication {...
    ```
 
-2. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
-
-   - In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block:
-
-     ```
-     maven { url 'https://gizaartifactory.jfrog.io/gizaartifactory/libs-release' }
-     ```
-
-   - In a Maven build system, add the following code to the `pom.xml` file:
-
-     ```
-     <repository>
-            <id>Gizaartificatory</id>
-            <url>http://https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
-     </repository>
-     ```
+2. Request access to the API Mediation Layer Sprint Boot JARs on the OMP [Slack #zowe-api channel](https://openmainframeproject.slack.com/messages). Download the JARs. 
 
 3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.2.
 
@@ -305,6 +289,9 @@ As an API service developer, you set multiple configuration settings in your app
 
    These parameters are used to populate API Catalog. The API Catalog contains information about every registered API service. The catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a "tile" in the API Catalog UI dashboard.
 
+   
+  For more information about the API Catalog, see [Using the API Catalog](../user-guide/api-mediation-api-catalog.md).
+
    - **mfaas.catalog-ui-tile.id**
 
      Specifies the unique identifier for the API services product family. This is the grouping value used by the API Layer to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
@@ -493,7 +480,3 @@ To test that your API instance is working and is discoverable, use the following
    ```
 
 5. Check that you can still access your API service endpoints directly outside of the gateway.
-
-## Review the configuration examples of the discoverable client
-
-Refer to the [Discoverable Client API Sample Service](https://github.com/gizafoundation/api-layer) in the API Layer git repository.

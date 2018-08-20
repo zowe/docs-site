@@ -4,13 +4,13 @@ Zowe offers modern interfaces to interact with z/OS and allows you to work with 
 
 Zowe consists of the following main components.
 
-- **zLUX**: Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
+- [**zLUX**](#zlux): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- **Explorer server**: Provides a range of APIs for the management of jobs, data sets, z/OS UNIX System Services files, and persistent data.
+- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets, z/OS UNIX System Services files, and persistent data.
 
-- **API Mediation Layer**: Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
+- [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
-- **Zowe CLI**: Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
+- [**Zowe CLI**](#zowe-cli): Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
 
 For details of each component, see the corresponding section.
 
@@ -38,7 +38,7 @@ zLUX consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.md#using-zlux-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.html#using-zlux-application-plug-ins).
 
 ## Explorer server
 
@@ -84,7 +84,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**    
     Return data in JSON format on request for consumption in other programming languages.
 
-For more information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](cli-usingcli.md#zowe-cli-command-groups).
+For more information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](cli-usingcli.h#zowe-cli-command-groups).
 
 ### Zowe CLI Third-Party software agreements
 

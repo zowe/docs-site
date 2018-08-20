@@ -1,6 +1,6 @@
 # About this documentation
 
-This documentation describes how to install, configure, use, and extend Open Beta for Zowe.  
+This documentation describes how to install, configure, use, and extend Open Beta for Zowe.
 
 ## Who should read this documentation
 

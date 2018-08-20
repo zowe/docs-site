@@ -5,8 +5,8 @@ As a systems programmer or application developer, you install Zowe CLI on your
 ## Methods to install Zowe CLI
 
 You can use either of the following methods to install Zowe CLI.
-- Install Zowe CLI from local package
-- Installing Zowe CLI from Bintray registry
+- [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
+- [Install Zowe CLI from Bintray registry](#installing-zowe-cli-from-bintray-registry)
 
 ### Installing Zowe CLI from local package
 
@@ -29,20 +29,20 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-core-1.0.1.tgz
+    npm install -g zowe-cli-1.1.0-next.201808072010.tgz 
     ```
 
-    **Note:** On Linux systems, you might need to append `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.md#troubleshooting-installing-zowe-cli).
+    **Note:** On Linux systems, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
     Zowe CLI is installed on your PC. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
 5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
 
-    **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+    **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
-    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.md#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
+    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.md#displaying-zowe-cli-help).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
 ### Installing Zowe CLI from Bintray registry
@@ -64,16 +64,16 @@ If your PC is connected to the Internet, you can use the following method to ins
 
     Zowe CLI is installed on your PC. For information about plug-ins for Zowe CLI, see [Extending Zowe CLI](cli-extending.md).
 
-1.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+1.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
-    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.md#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
+    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.md#displaying-zowe-cli-help).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
 **Note:** You might encounter problems when you attempt to install
 Zowe CLI depending on your operating system and
-environment. For more information and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.md#troubleshooting-installing-zowe-cli).
+environment. For more information and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 ## Creating a Zowe CLI profile
 Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe

@@ -119,4 +119,4 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Configuring the zLUX Proxy Server and ZSS](mvd-zluxconfiguration.md#configuring-the-zlux-proxy-server-and-zss).
+For more information about the server configuration file, see [Configuring the zLUX Proxy Server and ZSS](mvd-zluxconfiguration.html#configuring-the-zlux-proxy-server-and-zss).

@@ -61,7 +61,7 @@ zowe plugins install [plugin...] [--registry <registry>]
     If you are using zowe-cli-bundle.zip, issue the following command for each plug-in .tgz file:
     
     ```
-    zowe plugins install ./zowe-cli-db2-1.0.0.tgz
+    zowe plugins install ./zowe-cli-db2-1.0.0-next.20180531.tgz 
     ```
 
   - The following example illustrates the syntax to use to install a

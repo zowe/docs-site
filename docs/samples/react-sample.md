@@ -1,42 +1,25 @@
-# UI Samples
+# Add React app to zLUX
 
-Zowe allows extensions to be written in any UI framework through the use of an Iframe, or Angular and React natively. In this section, code samples of various use-cases will provided with install instructions.
+### Github Sample Repo: [basic-react](https://github.com/zowe/webui-scenarios/tree/master/basic-react)
 
-::: warning Troubleshooting Suggestions:
-As Zowe is still in beta, not everything works as expected yet. If you are running into issues, try these suggestions:
-
-- Restart the Zowe Server/ VM.
-- Double check that the name in the plugins folder matches your identifier in `pluginsDefinition.json` located in the Zowe root.
-- After logging into the MVD, use the Chrome/ Firefox developer tools and navigate to the "network" tab to see what errors you are getting.
-- Check each file with `cat <filename>` to be sure it wasn't corrupted while uploading. Try uploading with different methods like SCP or SFTP if so.
-  :::
-
-## Connect to API Backend (In Iframe)
-
-For this section we have provided a react sample (found below), which connects to the API defined in the API extension sample.
+For this section we have provided a react sample (through an Iframe), which connects to the API defined in the API extension sample.
 
 ::: tip
 Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/api.md).
 :::
 
-#### Github Sample Code: [basic-react](https://github.ibm.com/ZoeExtenders/webui-scenarios/tree/master/basic-react)
-
-### To Install
+## To Install
 
 1.  Point your project to the server hosting you API.
     - In the sample this can be defined in the `Constants.js` file.
     - The default is: `localhost:7443`, but otherwise point to your hardware address.
 2.  Create a minified version of your project.
-
-    - For the sample code, add a simple `build` script in `package.json`
-      - EX: `"build": "webpack --mode production"`
     - Generate minified version using `npm run build`
-
 3.  Create folder for project and create new `web` folder inside it.
     - EX: `/Desktop/<Your_Project_Name>` and `Desktop/<Your_Project_Name>/web`
 4.  Copy built project into `Desktop/<Your_Project_Name>/web`
     - If using the sample, copy `app.min.js` , `index.html` , `icon.png` and `css` into to `/Desktop/<Your_Project_Name>/web/`
-5.  Create a `pluginDefinition.json` [following the guide](../guides/add-to-mvd.md#configuring-your-app-for-zoe) and copy to `Desktop/<Your_Project_Name>/`
+5.  Create a `pluginDefinition.json` [following the guide](../guides/ReactJSUI.html#configuring-your-app-for-zowe) and copy to `Desktop/<Your_Project_Name>/`
     - If using the sample this is included within the project. Copy to `Desktop/<Your_Project_Name>/`
 6.  Copy project from `/Desktop` to `<zowe_base>/`
     - Use `scp <userID>@<server> /Users/path/to/files <zowe_base>/`
@@ -52,10 +35,10 @@ Make sure that you first expose an API to connect to before following the steps 
 ```
 
 9.  Run `./deploy.sh` found in `<zowe_base>/zlux-build`
-10. Run `./zoe-stop.sh` found in `<zowe_base>/scripts`
-11. Run `./zoe-start.sh` found in `<zowe_base>/scripts`
+10. Run `./zowe-stop.sh` found in `<zowe_base>/scripts`
+11. Run `./zowe-start.sh` found in `<zowe_base>/scripts`
 
-### Verify Install
+## Verify Install
 
 Upon restarting the server, navigate to the zlux server.
 

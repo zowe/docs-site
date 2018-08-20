@@ -1,23 +1,21 @@
-# API extension sample
+# Provide Liberty API Sample
 
-Users can connect with and create their own API's within the Zowe environment. In this section we will create an API to expose environmental variables.
+### Github Sample Code: [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 
-## Adding a REST API to Zowe
+This sample is a boilerplate for creating Rest API's using a liberty. For more information, visit [Creating a RestAPI with Swagger documentation using Liberty](../guides/libertyAPI.md).
 
-#### Github Sample Code: [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
-
-### To Install
+## To Install
 
 After creating or obtaining the REST API war file:
 
 1.  Stop the Zowe server.
 
     - Navigate to `<zowe_base>/scripts/`
-    - Run `./zoe-stop.sh`
+    - Run `./zowe-stop.sh`
 
 2.  Push the war file up to the dropins folder using SCP, SFTP, or on Windows with Putty SCP (PSCP).
     - _EX_:
-      `scp /path/to/warfile <usrID>@<serverLocation>:<zoe_base>/explorer-server/wlp/usr/servers/Atlas/dropins/`
+      `scp /path/to/warfile <usrID>@<serverLocation>:<zowe_base>/explorer-server/wlp/usr/servers/Atlas/dropins/`
 
 ::: tip
 Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have transferred.
@@ -26,9 +24,9 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
 3.  Restart the Zowe server.
 
     - Navigate to `<zowe_base>/scripts/`
-    - Run `./zoe-start.sh`
+    - Run `./zowe-start.sh`
 
-### Verify Install
+## Verify Install
 
 1.  Check the Browser to see if the REST APIs have been added.
     - _EX_: `<base>:<yourport>/ibm/api/explorer/#/`
