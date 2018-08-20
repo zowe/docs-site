@@ -4,9 +4,6 @@ A zLUX application plug-in is an installable set of files that present resources
 
 Before you build a zLUX application plug-in, you must set the UNIX environment variables that support the plug-in environment.
 
-`sample-app` is a sample application plug-in with which you can experiment.
-
-
 ## Setting the environment variables for plug-in development
 
 To set up the environment, the node must be accessible on the PATH. To determine if the node is already on the PATH, issue the following command from the command line:
@@ -27,7 +24,7 @@ Using this directory, the node will be included on the PATH in `nodeServer.sh`. 
 
 ## Using the zLUX sample application plug-in
 
-Your zLUX installation provides a sample application plug-in with which you can experiment.
+You can experiment with the sample application plug-in called `sample-app` that is provided with zLUX.
 
 To build the sample application plug-in, node and npm must be included in the PATH. You can use the `npm run build` or `npm start` command to build the sample application plug-in. These commands are configured in `package.json`.
 

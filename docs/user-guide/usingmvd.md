@@ -57,7 +57,7 @@ The following views are available from the explorer server Web UI and are access
 
 ## Using zLUX application plug-ins
 
-Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. 
+Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ### Hello World
 This sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
