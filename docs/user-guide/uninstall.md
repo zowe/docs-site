@@ -11,13 +11,13 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
 
 **Follow these steps:**
 
-1. The zLUX server runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
+1. The zLUX server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
 
-    - SIGHUP
-    - SIGTERM
-    - SIGKILL
+    - `SIGHUP`
+    - `SIGTERM`
+    - `SIGKILL`
 
-2. Delete the original directories (except in the case where you have customized the installation to point to directories other than the original directories).
+2. Delete or overwrite the original directories. If you modified the `zluxserver.json` file so that it points to directories other than the default directories, do not delete or overwrite those directories.
 
 ## Uninstalling explorer server
 
