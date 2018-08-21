@@ -233,6 +233,16 @@ While a package.json can be created through other means such as `npm init` and p
 }
 ```
 
+Before we can build, we first need to tell our system where our example server is located. While we could provide the explicit path to our server in our project, creating an environmental variable with this location will speed up future projects.
+
+In order to add an environmental variable on a Unix based machine:
+
+1. `cd ~`
+2. `nano .bash_profile`
+3. Add `export MVD_DESKTOP_DIR=/Users/<user-name>/path/to/zlux/zlux-app-manager/virtual-desktop/`
+4. Save and exit
+5. `source ~/.bash_profile`
+
 Now we're really ready to build.
 Let's set up our system to automatically perform these steps every time we make updates to the App.
 
