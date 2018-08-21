@@ -12,7 +12,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2>Learn About Installing Zowe</h2>
-    <p>Guides focused on how to install Zowe locally and on the mainframe</p>
+    <p>Guides focused on how to install Zowe locally and on the mainframe.</p>
   </div>
   <div class="feature">
     <h2>Read User Documentation</h2>
