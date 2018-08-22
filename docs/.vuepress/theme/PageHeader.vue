@@ -1,5 +1,8 @@
 <template>
     <div class="page-edit">
+      <div class="header-title">
+        <h1>{{ title }}</h1>
+      </div>
       <div class="last-updated" v-if="lastUpdated">
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ lastUpdated }}</span>
@@ -8,6 +11,7 @@
         <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
         <OutboundLink/>
       </div>
+      <div class="header-underline"></div>
     </div>
 </template>
 
@@ -16,6 +20,11 @@ import { normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
   computed: {
+    title() {
+      if (this.$page.title) {
+        return this.$page.title
+      }
+    },
     lastUpdated() {
       if (this.$page.lastUpdated) {
         return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
@@ -61,6 +70,9 @@ export default {
     }
   },
   methods: {
+    logIt() {
+      console.log(this.$page)
+    },
     createEditLink(repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
       if (bitbucket.test(repo)) {
@@ -97,7 +109,12 @@ export default {
     @extend $wrapper;
     padding-top: ($navbarHeight + 4rem);
     padding-bottom: 0rem;
+    margin-bottom: -0.5rem;
     overflow: auto;
+
+    .header-title {
+        padding-bottom: 1rem;
+    }
 
     .edit-link {
         display: inline-block;
@@ -121,6 +138,12 @@ export default {
             font-weight: 400;
             color: #aaa;
         }
+    }
+
+    .header-underline {
+        border-bottom: 1px solid $borderColor;
+        padding: 0 0.15rem;
+        margin-top: 0.5rem;
     }
 }
 
