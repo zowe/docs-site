@@ -660,6 +660,11 @@ As we did previously in the [Adding Your App to the Desktop](#adding-your-app-to
 
 - `git clone https://github.com/zowe/workshop-starter-app.git`
 
+2. Navigate to starter app and build it as before
+
+- Install packages with `cd webClient` and then `npm install`
+- Build the project using `npm start`
+
 2. Next navigate to the `zlux-example-server`:
 
 - create a new file under `/zlux-example-server/plugins/org.openmainframe.zowe.workshop-starter.json`
