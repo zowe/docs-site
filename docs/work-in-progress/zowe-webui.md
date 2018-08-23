@@ -1,5 +1,9 @@
 # Getting Started with Zowe WebUi
 
+**Prerequisites:**
+
+_Before following the tutorial, please navigate to [https://www-01.ibm.com/events/wwe/ast/mtm/zowe.nsf/enrollall?openform](https://www-01.ibm.com/events/wwe/ast/mtm/zowe.nsf/enrollall?openform) and register for a username and password to access the mainframe. You will need this to login to your system and complete the tutorial_
+
 Users of Zowe can interact with the zLux WebUi by pointing their browser at their mainframe system. This UI will include all the apps installed on the Zowe mainframe system currently. While it is possible to develop new apps and deploy them on our mainframe directly, it is often easier to create a local instance of the WebUi (known as zLUX) on our desktop. From here, we can play with the example-server, make changes to apps already installed, and create our own applications.
 
 ## Standup a local version of the zLUX Example Server
@@ -82,8 +86,8 @@ The URL for this is:
 
 Once here, you should be greeted with a Login screen and a few example Apps in the taskbar at the bottom of the screen. You can login into the mainframe with the credentials:
 
-- Username: **Z99942**
-- Password: **zoweuser**
+- Username: **Refer to prereq**
+- Password: **Refer to prereq**
 
 ## Create a User Database Browser app on zLUX
 
