@@ -1,34 +1,35 @@
 # Zowe CLI plug-in for IBM Db2 Database
-The Zowe CLI plug-in for IBM Db2 Database lets you
-interact with Db2 for z/OS to perform tasks with modern development tools to automate typical workloads more efficiently. The plug-in also enables you to interact with Db2 to advance continuous integration to validate product quality and stability.
-
-## Plug-in overview
+The Zowe CLI plug-in for IBM Db2 Database lets you interact with Db2 for z/OS to perform tasks with modern development tools to automate typical workloads more efficiently. The plug-in also enables you to interact with Db2 to advance continuous integration to validate product quality and stability.
 
 Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure.The plug-in also exposes its API so that the plug-in can be used directly in other products.
 
+  - [Use Cases](#use-cases)
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+  - [Setting up profiles](#setting-up-profiles)
+  - [Commands](#commands)
+  
 ## Use cases
 
-Example use cases for Zowe CLI Db2 plug-in include:
-  - Execute SQL and interact with databases
-  - Execute a file with SQL statements
-  - Export tables to a local file on your PC in SQL format
-  - Call a stored procedure and pass parameters
+Use cases for Zowe CLI Db2 plug-in include:
+  - Execute SQL and interact with databases.
+  - Execute a file with SQL statements.
+  - Export tables to a local file on your PC in SQL format.
+  - Call a stored procedure and pass parameters.
 
 ## Prerequisites
 
-Ensure that Zowe CLI is installed.
+Before you install the plug-in, meet the following prerequisites:
 
-**More Information:**
-
-  - [Installing Zowe CLI](cli-installcli.md)
+  - [Install Zowe CLI](cli-installcli.md) on your PC.
 
 ## Installing
 
-There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM Db2 Database.
+There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM Db2 Database - install from Bintray or install from the Zowe package.
 
-**Method 1**
+### Installing from Bintray
 
-If you installed **Zowe CLI** from **bintray**, complete the following steps:
+If you installed Zowe CLI from **Bintray**, complete the following steps:
 
 1. Open a command line window and issue the following command:
 
@@ -44,9 +45,9 @@ If you installed **Zowe CLI** from **bintray**, complete the following steps:
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-**Method 2**
+### Installing from package
 
-If you downloaded the **Zowe** installation package from **Github**, complete the following steps:
+If you downloaded the Zowe installation package from **Github**, complete the following steps:
 
 1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic **Install Zowe CLI from local package** in [Installing Zowe CLI](cli-installcli.md) for information about how to obtain and extract it.
 
@@ -74,11 +75,8 @@ If you downloaded the **Zowe** installation package from **Github**, complete th
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-## Profile setup
-
+## Setting up profiles
 Before you start using the IBM Db2 plug-in, create a profile.
-
-### Creating a profile
 
 Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following information:
 
