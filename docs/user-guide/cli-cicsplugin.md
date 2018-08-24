@@ -8,7 +8,7 @@ The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with 
   - [Setting up profiles](#setting-up-profiles)
   - [Commands](#commands)
 
-## Use Cases
+## Use cases
 
 As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perform the following tasks:
 
