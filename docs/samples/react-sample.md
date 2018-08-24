@@ -1,6 +1,8 @@
 # Add React app to zLUX
 
-### Github Sample Repo: [basic-react](https://github.com/zowe/webui-scenarios/tree/master/basic-react)
+:::tip Github Sample Repo:
+[basic-react](https://github.com/zowe/webui-scenarios/tree/master/basic-react)
+:::
 
 For this section we have provided a react sample (through an Iframe), which connects to the API defined in the API extension sample.
 

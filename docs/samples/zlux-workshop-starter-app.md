@@ -1,6 +1,8 @@
 # User Database Browser Starter App
 
-### Github Sample Repo: [workshop-starter-app](https://github.com/zowe/workshop-starter-app)
+:::tip Github Sample Repo:
+[workshop-starter-app](https://github.com/zowe/workshop-starter-app)
+:::
 
 _This sample is included as the first part of a tutorial detailing communication between separate zLUX apps._
 

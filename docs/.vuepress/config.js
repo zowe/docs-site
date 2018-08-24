@@ -104,7 +104,7 @@ module.exports = {
           collapsable: true,
           children: [
             'using',
-            'usingmvd',
+            'usingzlux',
             'usingapis',
             'api-mediation-api-catalog',
             'cli-usingcli'
@@ -115,7 +115,7 @@ module.exports = {
           collapsable: true,
           children: [
             'mvd-extendingzlux',
-            'mvd-plugincreateappplugin',
+            'mvd-creatingzluxappplugins',
             'mvd-zluxplugindefandstruct',
             'mvd-zluxdataservices',
             'mvd-desktopandwindowmgt',

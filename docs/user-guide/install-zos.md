@@ -67,12 +67,12 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
 
     The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This is to allow the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.  Unlike the ports needed by the Zowe runtime for its zLUX and explorer server which must be unused, the terminal ports are expected to be in use.
 
-       ```
-       # Ports for the TN3270 and the VT terminal to connect to
-       terminals:
-           sshPort=22
-           telnetPort=23
-       ```
+    ```
+    # Ports for the TN3270 and the VT terminal to connect to
+    terminals:
+        sshPort=22
+        telnetPort=23
+    ```
 
 3. Execute the `zowe-install.sh` script.
 

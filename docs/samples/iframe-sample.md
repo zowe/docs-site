@@ -1,6 +1,8 @@
 # Add Iframe App to zLUX
 
-### Github Sample Repo: [sample-iframe-app](https://github.com/zowe/sample-iframe-app)
+:::tip Github Sample Repo:
+[sample-iframe-app](https://github.com/zowe/sample-iframe-app)
+:::
 
 This sample app is made to showcase two important abilities of the ZLUX App framework.
 The first is the ability to bring web content into ZLUX that is non-native, that is, that is not developed with ZLUX in mind or written around an unsupported framework (As opposed to Angular or other supported frameworks).
