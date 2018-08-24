@@ -38,7 +38,7 @@ zLUX consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingmvd.html#using-zlux-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingzlux.html#using-zlux-application-plug-ins).
 
 ## Explorer server
 
