@@ -6,7 +6,7 @@
 <?Pub Inc?>
 <ibmbook xml:lang="en-us">
 <!--This sample shows how to create a final PDF from a DITA Book Map. For the latest guidance and text to use, see: "Legal notices for books", http://utic.raleigh.ibm.com/help/topic/com.ibm.utic.publishing.doc/doc/notices_books.html
-For information on the DITA tags, see: 
+For information on the DITA tags, see:
 http://submit.boulder.ibm.com/infocenter/idwb/v3r8m4/topic/com.ibm.ditaref.doc/doc/DitaGuideTitle.htm-->
 <ibmbooktitle>
 <ibmbooklibrary><titleline>Open Beta for Zowe</titleline></ibmbooklibrary>
@@ -48,13 +48,13 @@ scope="local"/>
 scope="local"/>
 </chapter>
 <chapter format="md" href="using.md" navtitle="Using Zowe" scope="local">
-<topicref format="md" href="usingmvd.md" navtitle="Using zLUX" scope="local"/>
+<topicref format="md" href="usingzlux.md" navtitle="Using zLUX" scope="local"/>
 <topicref format="md" href="usingapis.md" navtitle="Using APIs" scope="local"/>
 <topicref format="md" href="api-mediation-api-catalog.md" navtitle="Using API Catalog" scope="local"/>
 <topicref format="md" href="cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
 </chapter>
 <chapter format="md" href="mvd-extendingzlux.md" navtitle="Extending zLUX" scope="local">
-<topicref format="md" href="mvd-plugincreateappplugin.md"
+<topicref format="md" href="mvd-creatingzluxappplugins.md"
 navtitle="Creating zLUX application plug-ins" scope="local"/>
 <topicref format="md" href="mvd-zluxplugindefandstruct.md"
 navtitle="zLUX plug-ins definition and structure" scope="local"/>
