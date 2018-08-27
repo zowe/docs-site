@@ -19,6 +19,7 @@ You can download the PAX file from the [Zowe website](https://zowe.org/download/
     **Notes:** 
     
     - The commands in the following steps are tested on both Mac OS X V10.13.6 and Ubuntu V16.04 and V17.10.
+    - Ensure that you have GPG installed. Click [here](https://www.gnupg.org/) to download and install GPG.
     - The `v.r.m` in the commands of this step is a variable. You must replace it with the actual PAX file version, for example, `0.9.0`.
 
     a. Verify the hash code.
