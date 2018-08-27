@@ -5,7 +5,7 @@ The URI Broker is an object in the application plug-in web framework, which faci
 
 ## Accessing the URI Broker
 
-The URI Broker is accessible independent of other frameworks involved such as Angular, and is also accessible through iframe. This is because it is attached to a global when within the MVD. For more information, see [Desktop and window management](mvd-desktopandwindowmgt.md).
+The URI Broker is accessible independent of other frameworks involved such as Angular, and is also accessible through iframe. This is because it is attached to a global when within the MVD. For more information, see [Virtual desktop and window management](mvd-desktopandwindowmgt.md).
 Access the URI Broker through one of two locations:
 
 Natively:
