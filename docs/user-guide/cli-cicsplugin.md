@@ -112,7 +112,7 @@ The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
   - [Defining resources to CICS](#defining-resources-to-cics)
   - [Deleting CICS resources](#deleting-cics-resources)
   - [Discarding CICS resources](#discarding-cics-resources)
-  - [Get CICS resources](#get-cics-resources)
+  - [Getting CICS resources](#get-cics-resources)
   - [Installing resources to CICS](#installing-resources-to-cics)
   - [Refreshing CICS programs](#refreshing-cics-programs)
 
@@ -164,7 +164,7 @@ Discard a program named PGM123 from the CICS region named MYREGION:
 zowe cics discard program PGM123 --region-name MYREGION
 ```
 
-### Get CICS resources
+### Getting CICS resources
 
 The get command lets you get a list of programs and transactions that are installed in your CICS region so that you can determine if they were installed successfully and defined properly. To display a list of objects and options, issue the following command:
 
