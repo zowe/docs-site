@@ -173,11 +173,9 @@ The following information is required during the installation process. Make the 
 - The z/OSMF installation directory that contains `derby.jar`, for example, `/usr/lpp/zosmf/lib`.
 - The z/OSMF configuration user directory that contains the following z/OSMF files:
 
-      - `/bootstrap.properties`
-
-      - `/jvm.security.override.properties`
-
-      - `/resources/security/ltpa.keys`
+    - `/bootstrap.properties`
+    - `/jvm.security.override.properties`
+    - `/resources/security/ltpa.keys`
 
 - The HTTP and HTTPS port numbers of the explorer server. By default, they are 7080 and 7443.
 - The API Mediation Layer HTTP and HTTPS port numbers. You will be asked for 3 unique port numbers.
