@@ -1,6 +1,6 @@
 # How to contribute
 
-**First off, thanks for taking the time to contribute!**
+:fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball:
 
 The following is a set of guidelines for contributing to Zowe documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
@@ -142,6 +142,7 @@ Example:
 #### Use simple present tense rather than future or past tense, as much as possible.
 
 Example:
+
 :heavy_check_mark: The API returns a promise.
 
 :x: The API will return a promise.
@@ -291,7 +292,7 @@ Example:
 
 ✘ You can FTP the files to the server.
 
-✔ can use the FTP command to send the files to the server.
+✔ You can use the FTP command to send the files to the server.
 
 #### Do not use Latin abbreviations.
 Use their English equivalents instead. Latin abbreviations are sometimes misunderstood.
@@ -323,7 +324,7 @@ Do  | Don't
 ✔ Node.js  | ✘ node.js <br> ✘ Nodejs
 ✔ application  | ✘ app
   ✔ plug-in| ✘ plugin
-✔ Capitalize the word "Server"  | Capitalize Server when it's part of the product name
+✔ Capitalize the word "Server" <br> ✔ Capitalize "Server" when it's part of the product name |
 ✔UNIX System Services <br> ✔ z/OS UNIX System Services  | ✘USS  
  ✔ IBM z/OS Managemnt Facility (z/OSMF) |
 ✔ later  | ✘ higher <br> Do not use to describe versions of software or fix packs.
