@@ -38,7 +38,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
     Zowe CLI is installed on your PC. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
-5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
+5. Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
 
     **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
@@ -67,7 +67,13 @@ If your PC is connected to the Internet, you can use the following method to ins
     
     Zowe CLI is installed on your PC. For information about plug-ins for Zowe CLI, see [Extending Zowe CLI](cli-extending.md).
 
-1.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
+3. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
+
+    ```
+    bright plugins install @brightside/db2@next @brightside/cics@next
+    ```
+    
+4. Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
     **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
