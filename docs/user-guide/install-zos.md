@@ -2,7 +2,7 @@
 
 You install zLUX, explorer server, and API Mediation Layer on z/OS.
 
-Before you install the runtime on z/OS, ensure that your environment meets the requirements. See [System requirements](planinstall.md).
+Before you install the runtime on z/OS, ensure that your environment meets the requirements. See [System requirements](systemrequirements.md).
 
 ## Installing the Zowe runtime on z/OS
 

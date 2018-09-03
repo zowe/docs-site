@@ -86,7 +86,7 @@ module.exports = {
           children: [
             'installandconfig',
             'installroadmap',
-            'planinstall',
+            'systemrequirements',
             'gettingstarted',
             'install-zos',
             'cli-installcli',

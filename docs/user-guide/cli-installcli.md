@@ -14,7 +14,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
 **Follow these steps:**
 
-1. [Address the prerequisites](planinstall.md).
+1. [Address the prerequisites](systemrequirements.md).
 
 2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 
