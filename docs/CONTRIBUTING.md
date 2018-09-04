@@ -25,7 +25,7 @@ The Zowe documentation is written in Markdown markup language. Not familiar with
 
 
 
-## Contributing to documentation{#contribute}
+## Contributing to documentation<a name="contribute"></a>
 
 You can use one of the following ways to contribute to documentation:
 
