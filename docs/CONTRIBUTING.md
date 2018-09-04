@@ -9,7 +9,7 @@ The following is a set of guidelines for contributing to Zowe documentation, whi
 
 :arrow_right: [Before you get started](#start)
 
-:arrow_right: Contributing to documentation(#contribute)
+:arrow_right: [Contributing to documentation](#contribute)
 
 :arrow_right: [Documentation style guide](#style)
 
