@@ -4,34 +4,83 @@
 
 The following is a set of guidelines for contributing to Zowe documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
-
   [b5d824b5]: https://github.com/zowe/docs-site "https://github.com/zowe/docs-site"
 
 
-  The Zowe documentation is written in Markdown markup language. Not familiar with Markdown? [**Learn the basic syntax**][84fff357].
+:arrow_right: [Before you get started](#start)
 
-  You can file issues, edit content, and review changes from others, all from the Github website. You can also use Github’s embedded history and search tools.
+:arrow_right: [Contributing to documentation](#contribute)
 
-  Not all tasks can be done in the Github UI, but these are discussed in the intermediate and advanced docs contribution guides.
-  Participating in SIG Docs
+:arrow_right: [Documentation style guide](#style)
 
-  [84fff357]: https://www.markdownguide.org/basic-syntax "https://www.markdownguide.org/basic-syntax"
+:arrow_right: [Word usage](#usage)
 
 
-## Before you get started
+## Before you get started {#start}
 
-xxx
+The Zowe documentation is written in Markdown markup language. Not familiar with Markdown? [**Learn the basic syntax**][84fff357].
 
-## Documentation Style Guide
 
-This page gives writing style guidelines for the Zowe documentation. These are guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+[84fff357]: https://www.markdownguide.org/basic-syntax "https://www.markdownguide.org/basic-syntax"
 
-For additional information on creating new content for the Zowe docs, follow the instructions on using page templates (tbd) and [creating a documentation pull request][8c024bb7].
+
+
+## Contributing to documentation {#contribute}
+
+You can use one of the following ways to contribute to documentation:
+
+- Send a GitHub pull request to provide a suggested edit for the content by clicking the **Propose content change in GitHub** link on each documentation page.
+- Open an issue in GitHub to request documentation to be updated, improved, or clarified by providing a comment.
+
+### Sending a GitHub pull request
+
+You can provide suggested edit to any documentation page by using the **Propose content change in GitHub** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
+
+Follow these steps:
+
+1. Click **Propose content change in GitHub** on the page that you want to update.
+2. Click the **Edit the file** icon ![Edit the file icon](../images/common/icon_edit_this_file.png).
+3. Make the changes to the file.
+4. Scroll to the end of the page and enter a brief description about your change.
+5. Optional: Enter an extended description.
+6. Select **Propose file change**.
+7. Select **Create pull request**.
+
+### Opening an issue for the documentation
+
+You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Zowe content team to address. The content team tracks the issues and works to address your feedback.
+
+Follow these steps:
+
+1. Click the **GitHub** link at the top of the page.
+2. Select **Issues**.
+3. Click **New issue**.
+4. Enter a title and description for the issue.
+5. Click **Submit new issue**.
+
+
+
+## Documentation Style guide {#style}
+
+This section gives writing style guidelines for the Zowe documentation. These are guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation in a pull request.
 
   [8c024bb7]: https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request "https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request"
 
+:arrow_right: Headings and titles
 
-## Documentation formatting standards
+:arrow_right: Technical elements
+
+:arrow_right: Tone
+
+:arrow_right: Word usage
+
+:arrow_right: Graphics
+
+:arrow_right: Abbreviations
+
+:arrow_right: Structure and format
+
+
 ### Headings and titles
 
 #### Use sentence-style capitalization for headings
@@ -77,11 +126,9 @@ Style:
 - Wrap using angle brackets <> within code examples here italic font is not supported.
 
     Example:   
+    - put <pax-file-name>.pax
 
-```
-    put <pax-file-name>.pax
-
-    Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
+    - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
 ```
 #### Message text and prompts to the user
 
@@ -213,9 +260,9 @@ Example:
 #### Note headings such as Note, Important, and Tip should be formatted using the lower case and bold format.
 
 Example:
-- Note:
-- Important!
-- Tip:
+- **Note:**
+- **Important!**
+- **Tip:**
 
 #### Use of "following"
 
@@ -230,7 +277,9 @@ Avoid ending the sentence with "following".
 
 Example:
 
-:x: complete the following.
+:x: Complete the following.
+
+:heavy_check_mark: Complete the following tasks.
 
 #### Use a consistent style for referring to version numbers.
 
@@ -282,17 +331,17 @@ Example: At a command prompt, type the following command:
 
 Example:
 
-✘ The tutorials are available as PDFs. [portable document formats]
+:x: The tutorials are available as PDFs. [portable document formats]
 
-✔ The tutorials are available as PDF files.
+:heavy_check_mark: The tutorials are available as PDF files.
 
 #### Do not use abbreviations as verbs.
 
 Example:
 
-✘ You can FTP the files to the server.
+:x: You can FTP the files to the server.
 
-✔ You can use the FTP command to send the files to the server.
+:heavy_check_mark: You can use the FTP command to send the files to the server.
 
 #### Do not use Latin abbreviations.
 Use their English equivalents instead. Latin abbreviations are sometimes misunderstood.
@@ -310,25 +359,26 @@ Example: Mainframe Virtual Desktop (MVD)
 ### Structure and format
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.
 
-## Word usage
+## Word usage {#usage}
+
+The following table alphabetically lists the common used words and their usage guidelines.
 
 Do  | Don't
 --|--
-  ✔ data set| ✘ dataset  
-✔ Java  | ✘ java
-  ✔ PAX| ✘ pax  
-  ✔ personal computer <br> ✔ PC <br> ✔ server| ✘ machine
-✔ zLUX  | ✘ ZLUX <br> ✘ zLux
-✔ z/OSMF  |✘ zosmf (unless used in syntax)  
-✔ REXX  | ✘ Rexx
-✔ Node.js  | ✘ node.js <br> ✘ Nodejs
-✔ application  | ✘ app
-  ✔ plug-in| ✘ plugin
-✔ Capitalize the word "Server" <br> ✔ Capitalize "Server" when it's part of the product name |
-✔UNIX System Services <br> ✔ z/OS UNIX System Services  | ✘USS  
- ✔ IBM z/OS Managemnt Facility (z/OSMF) |
-✔ later  | ✘ higher <br> Do not use to describe versions of software or fix packs.
-✔ API Mediation Layer|
-✔ Zowe CLI|
-✔ macOS|✘ MacOS
-✔ ID|✘ id
+:heavy_check_mark: API Mediation Layer|
+:heavy_check_mark: application  | :x: app
+:heavy_check_mark: Capitalize the word "Server" <br> :heavy_check_mark: Capitalize "Server" when it's part of the product name |  
+:heavy_check_mark: data set| :x: dataset  
+:heavy_check_mark: Java  | :x: java
+:heavy_check_mark: IBM z/OS Managemnt Facility (z/OSMF) <br> :heavy_check_mark: z/OSMF   |:x: zosmf (unless used in syntax)  
+:heavy_check_mark: ID|:x: id  
+  :heavy_check_mark: PAX| :x: pax  
+  :heavy_check_mark: personal computer <br> :heavy_check_mark: PC <br> :heavy_check_mark: server| :x: machine
+:heavy_check_mark: later  | :x: higher <br> Do not use to describe versions of software or fix packs.  
+:heavy_check_mark: macOS|:x: MacOS
+:heavy_check_mark: Node.js  | :x: node.js <br> :x: Nodejs
+  :heavy_check_mark: plug-in| :x: plugin
+:heavy_check_mark: REXX  | :x: Rexx
+:heavy_check_mark:UNIX System Services <br> :heavy_check_mark: z/OS UNIX System Services  | :x:USS  
+:heavy_check_mark: zLUX  | :x: ZLUX <br> :x: zLux
+:heavy_check_mark: Zowe CLI|
