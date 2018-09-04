@@ -129,7 +129,7 @@ Style:
     - put <pax-file-name>.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
-```
+    
 #### Message text and prompts to the user
 
 Style: Put messages in quotation marks.
