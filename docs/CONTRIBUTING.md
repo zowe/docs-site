@@ -2,7 +2,7 @@
 
 :fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball:
 
-The following is a set of guidelines for contributing to Zowe documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+We provide you a set of guidelines for contributing to Zowe documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation.
 
   [b5d824b5]: https://github.com/zowe/docs-site "https://github.com/zowe/docs-site"
 
@@ -16,7 +16,7 @@ The following is a set of guidelines for contributing to Zowe documentation, whi
 :arrow_right: [Word usage](#usage)
 
 
-## Before you get started {#start}
+## Before you get started<a name="start"></a>
 
 The Zowe documentation is written in Markdown markup language. Not familiar with Markdown? [**Learn the basic syntax**][84fff357].
 
@@ -60,28 +60,28 @@ Follow these steps:
 
 
 
-## Documentation Style guide {#style}
+## Documentation Style guide <a name="style"></a>
 
 This section gives writing style guidelines for the Zowe documentation. These are guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation in a pull request.
 
   [8c024bb7]: https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request "https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request"
 
-:arrow_right: Headings and titles
+:arrow_right: [Headings and titles](#headings)
 
-:arrow_right: Technical elements
+:arrow_right: [Technical elements](#ui)
 
-:arrow_right: Tone
+:arrow_right: [Tone](#tone)
 
-:arrow_right: Word usage
+:arrow_right: [Word usage](#word)
 
-:arrow_right: Graphics
+:arrow_right: [Graphics](#graphics)
 
-:arrow_right: Abbreviations
+:arrow_right: [Abbreviations](#abbreviations)
 
-:arrow_right: Structure and format
+:arrow_right: [Structure and format](#Structure)
 
 
-### Headings and titles
+### Headings and titles<a name="headings"></a>
 
 #### Use sentence-style capitalization for headings
 
@@ -114,7 +114,7 @@ Example:
 
 #### If the subject is a functional overview, begin a heading with words such as Introduction or Overview rather than contriving a pseudo-task-oriented heading that begins with Understanding, Using, Introducing, or Learning.
 
-### Technical elements
+### Technical elements<a name="ui"></a>
 
 #### Variables
 
@@ -129,7 +129,8 @@ Style:
     - put <pax-file-name>.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
-    
+
+
 #### Message text and prompts to the user
 
 Style: Put messages in quotation marks.
@@ -183,7 +184,7 @@ Example:
 - See "XML Encryption Syntax and Processing" on the W3C website.
 - For installation information, see "Installing the product" in IBM Knowledge Center.
 
-### Tone
+### Tone<a name="tone"></a>
 
 
 #### Use simple present tense rather than future or past tense, as much as possible.
@@ -255,7 +256,7 @@ Example:
 :x: Product focus: The Replicator page lets you synchronize your local database with replica databases.
 #### Avoid complex sentences that overuse punctuation such as commas and semicolons.
 
-### Word usage
+### Word usage<a name="word"></a>
 
 #### Note headings such as Note, Important, and Tip should be formatted using the lower case and bold format.
 
@@ -318,14 +319,14 @@ Example:
 
 Example: At a command prompt, type the following command:
 
-### Graphics
+### Graphics<a name="graphics"></a>
 - Use graphics sparingly.
 
     Use graphics only when text cannot adequately convey information or when the graphic enhances the meaning of the text.
 
 - When the graphic contains translatable text, ensure you include the source file for the graphic to the doc repository for future translation considerations.
 
-### Abbreviations
+### Abbreviations<a name="abbreviations"></a>
 
 #### Do not use an abbreviation as a noun unless the sentence makes sense when you substitute the spelled-out form of the term.
 
@@ -356,10 +357,10 @@ i.e.  | that is
 
 Example: Mainframe Virtual Desktop (MVD)
 
-### Structure and format
+### Structure and format<a name="Structure"></a>
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.
 
-## Word usage {#usage}
+## Word usage<a name="usage"></a>
 
 The following table alphabetically lists the common used words and their usage guidelines.
 
