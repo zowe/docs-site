@@ -109,7 +109,7 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
 
         ```
         SET CONTROL(GSO)
-        INSERT STC.ZOWESVR LOGONID(ZIUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
+        INSERT STC.ZOWESVR LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
         F ACF2,REFRESH(STC)
         ```
 
