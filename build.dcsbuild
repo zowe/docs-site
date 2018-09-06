@@ -6,7 +6,7 @@ common.input.path=github.com:zowe/docs-site.git
 common.input.file=/docs/user-guide/Zowe_User_Guide.ditamap
 common.output.type=box
 common.output.path=/Zowe - IBM, Rocket and CA/Documentation/daily-pdf-under-dev
-transform.output.type=ibmpdf
+transform.output.type=pdf
 ditaot.args.gen.task.lbl=YES
 transform.draft.show=false
 EOF

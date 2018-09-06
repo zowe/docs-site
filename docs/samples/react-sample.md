@@ -7,7 +7,7 @@
 For this section we have provided a react sample (through an Iframe), which connects to the API defined in the API extension sample.
 
 ::: tip
-Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/api.md).
+Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/liberty-api-sample.md).
 :::
 
 ## To Install

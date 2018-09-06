@@ -26,11 +26,11 @@ http://submit.boulder.ibm.com/infocenter/idwb/v3r8m4/topic/com.ibm.ditaref.doc/d
 <preface format="md" href="aboutthisdoc.md" navtitle="About this documentation" scope="local"/><?Pub Caret -1?>
 <topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Summary of changes"/>
 </ibmfrontmatter>
-<chapter format="md" href="introduction.md" navtitle="Zowe overview" scope="local"/>
+<chapter format="md" href="overview.md" navtitle="Zowe overview" scope="local"/>
 <chapter format="md" href="installandconfig.md" navtitle="Installing Zowe"
 scope="local">
 <topicref format="md" href="installroadmap.md" navtitle="Installation roadmap" scope="local"/>
-<topicref format="md" href="planinstall.md" navtitle="System requirements" scope="local"/>
+<topicref format="md" href="systemrequirements.md" navtitle="System requirements" scope="local"/>
 <topicref format="md" href="gettingstarted.md" navtitle="Obtaining installation files"
 scope="local"/>
 <topicref format="md" href="install-zos.md"

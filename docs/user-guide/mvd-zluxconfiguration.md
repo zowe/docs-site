@@ -8,23 +8,23 @@ Follow these optional steps to configure the default connection to open for the 
 ### Setting up the TN3270 mainframe terminal application plug-in
 
 `_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
-    
+```    
       "host": <hostname>
       "port": <port>
       “security”: {
       type: <”telnet” or “tls”>
     }
-    
+```    
 ### Setting up the VT Terminal application plug-in
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
- 
+``` 
     “host”:<hostname>
     “port”:<port>
     “security”: {
       type: <”telnet” or “ssh”>
     }
-    
+```    
 ## Configuring the zLUX Proxy Server and ZSS
 
 ### Configuration file
@@ -115,9 +115,9 @@ This topic describes application plug-ins that are defined in advance.
 
 In the configuration file, you can specify a directory that contains JSON files, which tell the server what application plug-in to include and where to find it on disk. The backend of these application plug-ins use the server's plug-in structure, so much of the server-side references to application plug-ins use the term *plug-in*.
 
-To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**
+To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**.
 
-**Note:** In this example, the directory for these JSON files is [/plugins](https://github.com/gizafoundation/zlux-example-server/tree/master/plugins). Yet, to separate configuration files from runtime files, the *zlux-example-server* repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
+**Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-example-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
 
 #### Plug-ins directory example
 ```

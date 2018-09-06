@@ -126,8 +126,3 @@ exercised.
   create a project to contain FV and/or Integration tests.
 
 - Alternatively, you can always download the code, rename it and use as the basis of your new project.
-
-### WebUI
-
-An example of a WebUI built using the functionality provided by this Blog and sample can be found in the [ReactJS blog](./ReactJSUI.md) created using JavaScript, React/Redux, but this does not
-mean you are restricted to these.
