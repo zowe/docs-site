@@ -14,7 +14,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
 **Follow these steps:**
 
-1. [Address the prerequisites](planinstall.md).
+1. [Address the prerequisites](systemrequirements.md).
 
 2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 
@@ -40,7 +40,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
 5. Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
 
-    **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
+    **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
     **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
@@ -72,8 +72,8 @@ If your PC is connected to the Internet, you can use the following method to ins
     ```
     bright plugins install @brightside/db2@next @brightside/cics@next
     ```
-    
-4. Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
+
+4.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
     **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 

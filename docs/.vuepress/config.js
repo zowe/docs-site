@@ -78,7 +78,7 @@ module.exports = {
         {
           title: 'Zowe Overview',
           collapsable: true,
-          children: ['introduction']
+          children: ['overview']
         },
         {
           title: 'Installing Zowe',
@@ -86,7 +86,7 @@ module.exports = {
           children: [
             'installandconfig',
             'installroadmap',
-            'planinstall',
+            'systemrequirements',
             'gettingstarted',
             'install-zos',
             'cli-installcli',

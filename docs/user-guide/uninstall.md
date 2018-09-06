@@ -1,4 +1,4 @@
-# Uninstalling Zowe 
+# Uninstalling Zowe
 
 You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 
@@ -38,6 +38,8 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
     REMOVE (userid) GROUP(IZUUSER)
     ```
 
+    where _userid_ indicates the user ID that is used to install Zowe.
+    
 4.  Delete the z/OS® UNIX™ System Services explorer server directory and files from the explorer server installation directory by issuing the following command:
 
     ```sh
