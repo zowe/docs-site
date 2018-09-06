@@ -129,7 +129,7 @@ module.exports = {
         {
           title: 'Extending Zowe CLI',
           collapsable: true,
-          children: ['cli-extending', 'cli-installplugins', 'cli-db2plugin']
+          children: ['cli-extending', 'cli-installplugins', 'cli-cicsplugin', 'cli-db2plugin']
         }
       ],
       '/': ['about']
