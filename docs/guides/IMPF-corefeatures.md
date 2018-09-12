@@ -1,4 +1,4 @@
-# Core Features and Functionalities
+# Core features and functionalities
 The Imperative CLI Framework contains the following capabilities:
 
 - **Standardized command definition structure**
