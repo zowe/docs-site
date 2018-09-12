@@ -65,7 +65,8 @@ The following requirements must be met for your plug-in to function after you in
 
 Plug-ins require `name`, `version`, `description`, and `main` parameters to define the Node Package Manager (npm) package.
 
-**Note:** For more information about the parameters, see [package.json: Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json) on the npm website.
+**More information:**
+- [package.json: Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json)
 
 
 ## Define Plug-in Configurations
@@ -73,7 +74,6 @@ Plug-ins require `name`, `version`, `description`, and `main` parameters to defi
 You define plug-in configurations in the same manner that you configure a CLI application.
 
 **More information:**
-
 - [Command Definition & Processing](URL).
 
 You specify the following configuration properties for plug-ins:
@@ -82,7 +82,8 @@ You specify the following configuration properties for plug-ins:
 
 - `definitions`: The command definitions (command tree) for the plug-in.
     
-    **Note:** For more information about the definitions configuration property, see [Command Definition & Processing](URL).
+    **More information:**
+    - [Command Definition & Processing](URL).
 
 - `rootCommandDescription`: A description of the command group that appears in help text.
 - `pluginHealthCheck `: (Optional) The location the health check handler for the plug-in.
@@ -94,7 +95,6 @@ To be considered a valid plug-in, your plug-in must define at least one command 
 The syntax for a command handler is the same whether you are developing a plug-in or a CLI application.
 
 **More information:**
-
 - [Command Definition & Processing](URL).
 
 **Example: Plug-in Handler (TypeScript):**
@@ -121,5 +121,4 @@ export default class FooHandler implements ICommandHandler {
 Plug-ins can introduce new profile types to CLI applications. You develop profiles for the plug-in commands in the same manner that you develop profiles for applications. 
 
 **More information:**
-
 - [User Profiles](URL)
