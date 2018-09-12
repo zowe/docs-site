@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Arbortext, Inc., 1988-2011, v.4002-->
 <!DOCTYPE ibmbook PUBLIC "-//IBM//DTD DITA IBM BookMap//EN"
  "..\..\dita\dtd\ibmbook.dtd">
 <?Pub Sty _display FontColor="red"?>
 <?Pub Inc?>
 <ibmbook xml:lang="en-us">
-<!--This sample shows how to create a final PDF from a DITA Book Map. For the latest guidance and text to use, see: "Legal notices for books", http://utic.raleigh.ibm.com/help/topic/com.ibm.utic.publishing.doc/doc/notices_books.html
-For information on the DITA tags, see:
-http://submit.boulder.ibm.com/infocenter/idwb/v3r8m4/topic/com.ibm.ditaref.doc/doc/DitaGuideTitle.htm-->
 <ibmbooktitle>
 <ibmbooklibrary><titleline>Open Beta for Zowe</titleline></ibmbooklibrary>
 <ibmmainbooktitle><titleline>Installation and User's Guide</titleline></ibmmainbooktitle>
@@ -73,6 +69,8 @@ scope="local"/>
 </chapter>
 <chapter format="md" href="cli-extending.md" navtitle="Extending Zowe CLI" scope="local">
 <topicref format="md" href="cli-installplugins.md" navtitle="Installing plug-ins"
+scope="local"/>
+<topicref format="md" href="cli-cicsplugin.md" navtitle="Zowe CLI Plug-in for IBM CICS"
 scope="local"/>
 <topicref format="md" href="cli-db2plugin.md"
 navtitle="Zowe CLI plug-in for IBM Db2 Database" scope="local"/>
