@@ -10,7 +10,7 @@ The Plugin Management Facility (PMF) manages plug-ins in an Imperative CLI Frame
 
 When you initialize a CLI application, you set a parameter to enable or disable the PMF. The parameter that you set adds a **plugins** command group to your application that lets users install and manage plug-ins.
 
-## Enable the Plugin Management Facility
+## Enabling the Plugin Management Facility
 
 The PMF is enabled by default in the `allowPlugins` parameter in [ImperativeConfig.ts](URL).
 
@@ -33,13 +33,13 @@ export interface IImperativeConfig {
      */
     allowPlugins?: boolean;
 ```
-## Manage and load installed plug-ins 
+## Managing and loading installed plug-ins 
 
 Imperative CLI Framework uses the `Plugins.json` file to manage and load installed plug-ins. All plug-ins have a `package.json` file that contains the code structure of the plug-in.
 
 You use the commands in the **plugins** command group to register the package that is defined in `package.json` in `plugins.json`.
 
-## Design and develop plug-ins
+## Designing and developing plug-ins
 
 The following topics provide you with tip, best practices, and examples to help you design and develop plug-ins. However, before you read further, review the following tips and recommendations:
 
@@ -61,7 +61,7 @@ The following requirements must be met for your plug-in to function after you in
     - Have unique command group names that do not exist in the base CLI application. This restriction includes command groups that were added previously by other plug-ins.
     - Have a valid command tree structure.
 
-## Define the plug-in NPM package:
+## Defining the plug-in NPM package:
 
 Plug-ins require `name`, `version`, `description`, and `main` parameters to define the Node Package Manager (npm) package.
 
@@ -69,7 +69,7 @@ Plug-ins require `name`, `version`, `description`, and `main` parameters to defi
 - [package.json: Specifics of npm's package.json handling](https://docs.npmjs.com/files/package.json)
 
 
-## Define plug-in configurations
+## Defining plug-in configurations
 
 You define plug-in configurations in the same manner that you configure a CLI application.
 
@@ -88,7 +88,7 @@ You specify the following configuration properties for plug-ins:
 - `rootCommandDescription`: A description of the command group that appears in help text.
 - `pluginHealthCheck `: (Optional) The location the health check handler for the plug-in.
 
-## Define plug-in handlers
+## Defining plug-in handlers
 
 To be considered a valid plug-in, your plug-in must define at least one command and a corresponding handler.
 
@@ -116,7 +116,7 @@ export default class FooHandler implements ICommandHandler {
   }
 }
 ```
-## Implement profiles
+## Implementing profiles
 
 Plug-ins can introduce new profile types to CLI applications. You develop profiles for the plug-in commands in the same manner that you develop profiles for applications. 
 
