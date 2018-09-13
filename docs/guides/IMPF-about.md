@@ -3,7 +3,6 @@ Imperative CLI Framework is a command processing system that lets application de
 
 Within the imperative repository, we provide all the tools that application developers and systems programmers need to get started with building plug-ins.
 
-## Get started today
 To get started, review the core features that are built into Imperative CLI Framework and the plug-in functionality that the framework provides. You can build plug-ins for existing imperative-based applications, such as Zowe CLI.
 
 ## Contribution guidelines
