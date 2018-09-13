@@ -9,7 +9,7 @@ Imperative CLI Framework features a standardized command definition structure an
 **More information:**
 - [Command Handler Responses](URL)
 - [Command Definition & Processing](URL)
--  [JSON Responses](URL)
+- [JSON Responses](URL)
 
 ## Generate help content
 The framework lets you generate help content automatically.
