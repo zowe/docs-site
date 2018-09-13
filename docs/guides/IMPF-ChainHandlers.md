@@ -6,21 +6,23 @@ You can still define `options` and `positionals` in command definitions that con
 
 `chainedHandlers` is an array of objects that implement the `IChainedHandlerEntry` interface. In each object in the `chainedHandlers` array, you specify a handler, an argument mapping, and whether the handler in the chain should be silent.
 
+## IChainedHandlerEntry interface fields
+
 The `IChainedHandlerEntry` interface contains the following fields:
 
-- `handler`
+### handler
 
-    The path to a command handler. The path represents one of the handlers in the chain. Your command invokes the handlers in the order in which you specify them in the array of the IChainedHandlerEntry objects.
+The path to a command handler. The path represents one of the handlers in the chain. Your command invokes the handlers in the order in which you specify them in the array of the IChainedHandlerEntry objects.
 
-- `mapping`
-    
-    An array of objects that correspond with the `IChainedHandlerArgumentMapping` interface. Because it is likely that one or more of the handlers in your chain requires command line arguments, you need a mechanism to specify the arguments. You use the mapping field to map either the arguments from the command that contains chained handlers (for example, `--customer-name` from the example at the bottom of this page) or the fields from the data field of the command response.
-    
-    By default, the mappings are assumed to refer to the command response. You can apply the mappings to the current handler in the chain, and any number of future handlers. When you want to map fields of the response object to arguments, the handler must call ```commandParameters.response.data.setObj(<an object here>)```.
-    
-    **Note:** You cannot map fields from the command response to arguments of the current handler in the chain, because the command response is not available until after the handler is invoked.
-    
-    **Example:** The following syntax illustrates the mapping of a command response field:
+### mapping
+
+An array of objects that correspond with the `IChainedHandlerArgumentMapping` interface. Because it is likely that one or more of the handlers in your chain requires command line arguments, you need a mechanism to specify the arguments. You use the mapping field to map either the arguments from the command that contains chained handlers (for example, `--customer-name` from the example at the bottom of this page) or the fields from the data field of the command response. 
+
+By default, the mappings are assumed to refer to the command response. You can apply the mappings to the current handler in the chain, and any number of future handlers. When you want to map fields of the response object to arguments, the handler must call ```commandParameters.response.data.setObj(<an object here>)```.
+
+**Note:** You cannot map fields from the command response to arguments of the current handler in the chain, because the command response is not available until after the handler is invoked.
+
+**Example:** The following syntax illustrates the mapping of a command response field:
 
     `MyHandler.ts`:
     
@@ -52,11 +54,9 @@ The `IChainedHandlerEntry` interface contains the following fields:
 ]
     ```
 
+### silent
 
-
-- `silent`
-
-    When you specify a value of true, no output prints for the current handler. Using the silent field with a value of true is useful when you want to use the functionality of a command handler, but hide its output for a less cluttered user experience.
+When you specify a value of true, no output prints for the current handler. Using the silent field with a value of true is useful when you want to use the functionality of a command handler, but hide its output for a less cluttered user experience.
     
 ## Configuring chained handlers for commands
 
