@@ -2,6 +2,14 @@
 
 Learn about what is new, changed, and removed in Open Beta for Zowe.
 
+## Version 0.10.0 (September 2018)
+
+### What's changed
+**Naming**
+
+- zLUX is renamed to Zowe Application Framework.
+- MVD is renamed to Zowe Zowe Desktop.
+
 ## Version 0.9.0 (August 2018)
 
 Version 0.9.0 is the first Open Beta version for Zowe. This version contains the following changes since the last Closed Beta version.
@@ -10,7 +18,7 @@ Version 0.9.0 is the first Open Beta version for Zowe. This version contains the
 
 **New component - API Mediation Layer**
 
-Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](overview.html#api-mediation-layer) and [Installing zLUX, explorer server, and API Mediation Layer](install-zos.html#installing-the-zowe-runtime-on-z-os).
+Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](overview.html#api-mediation-layer) and [Installing the Zowe Application Framework, explorer server, and API Mediation Layer](install-zos.html#installing-the-zowe-runtime-on-z-os).
 
 ### What's changed
 

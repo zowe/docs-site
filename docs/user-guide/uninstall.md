@@ -2,16 +2,16 @@
 
 You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 
-- [Uninstalling zLUX](#uninstalling-zlux)
+- [Uninstalling the Zowe Application Framework](#uninstalling-the-zowe-application-framework)
 - [Uninstalling explorer server](#uninstalling-explorer-server)
 - [Uninstalling API Mediation Layer](#uninstalling-api-mediation-layer)
 - [Uninstalling Zowe CLI](#uninstalling-zowe-cli)
 
-## Uninstalling zLUX
+## Uninstalling the Zowe Application Framework
 
 **Follow these steps:**
 
-1. The zLUX server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
+1. The Zowe Application Framework server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
 
     - `SIGHUP`
     - `SIGTERM`

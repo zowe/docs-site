@@ -2,9 +2,9 @@
 
 Review the following troubleshooting tips and known issues if you have problems with Zowe installation.
 
-## Security message when you open MVD
+## Security message when you open the Zowe Desktop
 
-When you initially open the MVD, a security message alerts you that you are attempting to open a site that has an invalid HTTPS certificate. Other applications within the MVD might also encounter this message. To prevent this message, add the URLs that you see to your list of trusted sites.
+When you initially open the Zowe Desktop, a security message alerts you that you are attempting to open a site that has an invalid HTTPS certificate. Other applications within the Zowe Desktop might also encounter this message. To prevent this message, add the URLs that you see to your list of trusted sites.
 
 **Note:** If you clear the browser cache, you must add the URL to your trusted sites again.
 
@@ -18,8 +18,8 @@ During runtime, the information message ICH408I may present identifying insuffic
 
 **Note:** This should not affect the runtime operations of Zowe. This is a known issue and will be addressed in the next build.
 
-### zLUX APIs
-zLUX APIs exist but are under development. Features might be reorganized if it simplifies and clarifies the API, and features might be added if applications can benefit from them.
+### Zowe Application Framework APIs
+Zowe Application Framework APIs exist but are under development. Features might be reorganized if it simplifies and clarifies the API, and features might be added if applications can benefit from them.
 
 ## Troubleshooting installing the Zowe runtime
 
@@ -87,11 +87,11 @@ zLUX APIs exist but are under development. Features might be reorganized if it s
       /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
       ```
 
-### Troubleshooting installing zLUX
+### Troubleshooting installing the Zowe Application Framework
 
-To help zLUX research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
+To help Zowe research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
 
- - Project Zowe version and release level
+ - Zowe version and release level
  - z/OS release level
  - Job output and dump (if any)
    - Javascript console output (Web Developer toolkit accessible by pressing F12)

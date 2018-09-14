@@ -1,11 +1,11 @@
 # URI Broker
 
-The URI Broker is an object in the application plug-in web framework, which facilitates calls to the zLUX Application Server by constructing URIs that use the context from the calling application plug-in.
+The URI Broker is an object in the application plug-in web framework, which facilitates calls to the Zowe Application Server by constructing URIs that use the context from the calling application plug-in.
 
 
 ## Accessing the URI Broker
 
-The URI Broker is accessible independent of other frameworks involved such as Angular, and is also accessible through iframe. This is because it is attached to a global when within the MVD. For more information, see [Virtual desktop and window management](mvd-desktopandwindowmgt.md).
+The URI Broker is accessible independent of other frameworks involved such as Angular, and is also accessible through iframe. This is because it is attached to a global when within the Zowe Desktop. For more information, see [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).
 Access the URI Broker through one of two locations:
 
 Natively:
@@ -19,11 +19,11 @@ In an iframe:
 
 ## Functions
 
-The URI Broker builds different categories of URIs depending upon what the application plug-in is designed to call. Each category is listed below.
+The URI Broker builds the following categories of URIs depending upon what the application plug-in is designed to call.
 
 ### Accessing an application plug-in's dataservices
 
-zLUX dataservices can be based on HTTP (REST) or Websocket. For more information, see [zLUX dataservices](mvd-zluxdataservices.md).
+Zowe Application Framework dataservices can be based on HTTP (REST) or Websocket. For more information, see [Zowe Application Framework dataservices](mvd-dataservices.md).
 
 #### HTTP Dataservice URI
 
@@ -67,7 +67,7 @@ This can be accessed through:
 
 Returns: A URI for getting static content.
 
-For more information about the `web` directory, see [zLUX application plug-in filesystem structure](mvd-zluxplugindefandstruct.html#zlux-application-plug-in-filesystem-structure).
+For more information about the `web` directory, see [Zowe Application Framework application plug-in filesystem structure](mvd-plugindefandstruct.md#application-plug-in-filesystem-structure).
 
 ### Accessing the application plug-in's root
 
@@ -85,4 +85,4 @@ A client can find different information about a server's configuration or the co
 
 `pluginListUri(pluginType: ZLUX.PluginType): string`
 
-Returns: A URI, which when accesseds returns the list of existing plug-ins on the server by the type specified, such as "Application" or "all".
+Returns: A URI, which when accessed returns the list of existing plug-ins on the server by  type, such as "Application" or "all".

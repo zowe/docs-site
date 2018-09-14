@@ -21,7 +21,7 @@ Because Zowe application plug-ins have unique identifiers, both dataservices and
 
 The core logger object is attached as a global for low-level access.
 
-#### zLUX Application Server
+#### Zowe Application Server
 
 NodeJS uses `global` as its global object, so the logger is attached to:
 `global.COM_RS_COMMON_LOGGER`
@@ -37,12 +37,12 @@ Component loggers are created from the core logger object, but when working with
 
 #### App Server
 
-See **Router Dataservice Context** in the topic [zLUX dataservices](mvd-zluxdataservices.md).   
+See **Router Dataservice Context** in the topic [Zowe Application Framework dataservices](mvd-dataservices.md).   
 
 
 #### Web
 
-(Angular App Instance Injectible). See **Logger** in [Virtual desktop and window management](mvd-desktopandwindowmgt.md).  
+(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
 
 ## Logger API
@@ -92,7 +92,7 @@ An enum, `LogLevel`, exists for specifying the verbosity level of a logger. The 
 ## Logging verbosity
 
 Using the component logger API, loggers can dictate at which level of verbosity a log message should be visible.
-The user can configure the server or client to show more or less verbose messages by using the core logger's API objects.
+You can configure the server or client to show more or less verbose messages by using the core logger's API objects.
 
 Example: You want to set the verbosity of the org.zowe.foo application plug-in's dataservice, bar to show debugging information.
 
@@ -119,4 +119,4 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Configuring the zLUX Proxy Server and ZSS](mvd-zluxconfiguration.html#configuring-the-zlux-proxy-server-and-zss).
+For more information about the server configuration file, see [Configuring the Zowe Proxy Server and ZSS](mvd-configuration.md#configuring-the-zowe-proxy-server-and-zss).

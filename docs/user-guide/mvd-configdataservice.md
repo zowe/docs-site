@@ -1,16 +1,16 @@
 # Configuration Dataservice
 
-The Configuration Dataservice is an essential component of the zLUX framework, which acts as a JSON resource storage service, and is accessible externally by REST API and internally to the server by dataservices.
+The Configuration Dataservice is an essential component of the Zowe Application Framework, which acts as a JSON resource storage service, and is accessible externally by REST API and internally to the server by dataservices.
 
-The Configuration Dataservice allows for saving preferences of applications, management of defaults and privileges within a zLUX ecosystem, and bootstrapping configuration of the server's dataservices.
+The Configuration Dataservice allows for saving preferences of applications, management of defaults and privileges within a Zowe ecosystem, and bootstrapping configuration of the server's dataservices.
 
-The fundamental element of extensibility of the zLUX framework is a plug-in. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
+The fundamental element of extensibility of the Zowe Application Framework is a plug-in. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
 
-The behavior of the Configuration Dataservice is dependent upon the Resource structure for a zLUX plug-in. Each plug-in lists the valid resources, and the administrators can set permissions for the users who can view or modify these resources.
+The behavior of the Configuration Dataservice is dependent upon the Resource structure for a Zowe Application Framework plug-in. Each plug-in lists the valid resources, and the administrators can set permissions for the users who can view or modify these resources.
 
 ## Resource Scope
 
-Data is stored within the Configuration Dataservice according to the selected *Scope*. The intent of *Scope* within the Dataservice is to facilitate company-wide administration and privilege management of zLUX data.
+Data is stored within the Configuration Dataservice according to the selected *Scope*. The intent of *Scope* within the Dataservice is to facilitate company-wide administration and privilege management of Zowe Application Framework data.
 
 When a user requests a resource, the resource that is retrieved is an override or an aggregation of the broader scopes that encompass the *Scope* from which they are viewing the data.
 
@@ -24,11 +24,11 @@ Configuration defaults that come with the product. Cannot be modified.
 
 **Site**
 
-Data that can be used between multiple instances of the zLUX Server.
+Data that can be used between multiple instances of the Zowe Application Server.
 
 **Instance**
 
-Data within an individual zLUX Server.
+Data within an individual Zowe Application Server.
 
 **Group**
 
@@ -42,7 +42,7 @@ Data for an individual user.
 
 Where *Product* is the broadest scope and *User* is the narrowest scope.
 
-When you specify *Scope* *User*, the service  manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
+When you specify *Scope* *User*, the service manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
 
 Consider a case where a user wants to access preferences for their text editor. One way they could do this is to use the REST API to retrieve the settings resource from the *Instance* scope.
 
@@ -224,7 +224,7 @@ A shortcut for the preceding method, and the preferred method when you are retri
 
 Some dataservices within plug-ins can take configuration that affects their behavior. This configuration is stored within the Configuration Dataservice structure, but it is not accessible through the REST API.
 
-Within the `deploy` directory of a zLUX installation, each plug-in might optionally have an `_internal` directory. An example of such a path is:
+Within the `deploy` directory of a Zowe installation, each plug-in might optionally have an `_internal` directory. An example of such a path is:
 
 `deploy/instance/ZLUX/pluginStorage/<pluginName>/_internal`
 
@@ -237,7 +237,7 @@ The JSON contents within these directories are provided as Objects to dataservic
 
 ## Plug-in definition
 
-Because the Configuration Dataservices stores data on a per-plug-in basis, each zLUX plug-in must define their resource structure to make use of the Configuration Dataservice. The resource structure definition is included in the plug-in's `pluginDefinition.json` file.
+Because the Configuration Dataservices stores data on a per-plug-in basis, each plug-in must define their resource structure to make use of the Configuration Dataservice. The resource structure definition is included in the plug-in's `pluginDefinition.json` file.
 
 For each resource and subresource, you can define an `aggregationPolicy` to control how the data of a broader scope alters the resource data that is returned to a user when requesting a resource from a narrower scope.
 
