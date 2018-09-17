@@ -1,14 +1,15 @@
 # Reviewer TOC
 
-
-
-- Welcome to Imperative CLI Framework
-- Core features and functionalities
-- Working with chained handlers
-- Working with command handler responses
-- Implementing experimental commands
-- Generating help automatically
-- Generating command responses in JSON format
-- Implementing progress bars
-- Working with profiles
-- Working with plug-ins
+- [Welcome to Imperative CLI Framework](IMPF-about.md)
+- [Core features and functionalities](IMPF-corefeatures.md)
+- [Working with chained handlers](IMPF-ChainHandlers.md)
+- [Command definition and processing](IMPF-ComDefPro.md)
+- [Working with command handler responses](IMPF-ComHandResp.md)
+- [Implementing experimental commands](IMPF-ExpCommands.md)
+- [Generating help automatically](IMPF-generatehelpauto.md)
+- [Generating command responses in JSON format](IMPF-generatejsonresponses.md)
+- [Implementing progress bars](IMPF-implementprogressbars.md)
+- [Configuring logging](IMPF-logging.md)
+- [Consume REST APIs using the REST client](IMPF-restclient.md)
+- [Working with plug-ins](IMPF-workingwithplugins.md)
+- [Working with profiles](IMPF-workingwithprofiles.md)
