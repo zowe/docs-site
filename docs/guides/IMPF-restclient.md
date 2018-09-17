@@ -1,4 +1,4 @@
-# REST Clients
+# Consume REST APIs using the REST client
 
 Imperative CLI Framework contains a package that lets you consume REST APIs. There are many packages that can call REST APIs. However, the REST Client package that is built into the framework lets you perform the following tasks:
 
@@ -7,17 +7,17 @@ Imperative CLI Framework contains a package that lets you consume REST APIs. The
 - Capture node-report for unexpected errors
 - Work with the "session" management package to store and use cookies for repeated REST calls
 
-To call a rest API using the Rest Client, you define a Session that controls connection information for items such as the following:
+To call a rest API using the Rest Client, you define a session that controls connection information for items such as the following:
 - hostname
 - port
 - http / https
 - no, basic, or token auth
 
-After you create a *Session*, you invoke `RestClient` with the proper HTTP verb method and according to whether a string or JSON response is expected. The following examples illustrate how to use the HTTP verbs.
+After you create a *Session*, you invoke `RestClient` with the proper HTTP verb method, and whether a string or JSON response is expected. The following examples illustrate how to use the HTTP verbs.
 
 **Example 1:**
 
-The following syntax illustrates how to use the HTTP GET verb to get string content from a public API:
+The following syntax illustrates how to use the `HTTP GET` verb to get string content from a public API:
 
 ```typescript
 import { Session, RestClient } from "imperative-cli";
@@ -31,7 +31,7 @@ const users = await RestClient.getExpectString(session, "/users");
 
 **Example 2:**
 
-The following syntax illustrates how to use the HTTP POST verb with payload to get JSON responses from a public API:
+The following syntax illustrates how to use the `HTTP POST` verb with payload to get JSON responses from a public API:
 
 ```typescript
 import { Session, RestClient, Logger } from "imperative-cli";
