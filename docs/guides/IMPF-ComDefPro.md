@@ -111,5 +111,5 @@ You create the configuration files to define profiles, commands, plug-ins, and a
 
 **More information:**
 
-- [JSON Responses](URL)
+- [Generating command responses in JSON format](IMPF-generatejsonresponses.md)
 
