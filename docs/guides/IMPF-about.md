@@ -14,6 +14,11 @@ We provide a sample plug-in that you can use to get started developing your own 
 
 **Note:** For more information on how to build the sample plug-in and install it to a CLI application, see the [README.md](URL) file in the [Sample Plugin GitHub repository](URL).
 
+## Follow the Zowe Sample PLug-in Tutorial
+
+Learn from Zowe experts about how build your own plug-ins!
+
+
 ## npm package requirements
 Plug-ins that you build using Imperative CLI Framework must include `@types/yargs` as a devDependency in the `package.json` file. The suggested version to use is 8.0.2.
 

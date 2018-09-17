@@ -10,4 +10,5 @@
 - Generating help automatically
 - Generating command responses in JSON format
 - Implementing progress bars
+- Working with profiles
 - Working with plug-ins

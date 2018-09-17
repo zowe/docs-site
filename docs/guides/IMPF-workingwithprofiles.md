@@ -1,5 +1,5 @@
-# Working with Profiles
-Imperative-CLI Framework provides application developers with a mechanism to define user profiles. Profiles are simple configuration documents (stored in YAML format) that are intended to persist user configuration properties. A common use case for user profiles is storing multiple sets of connection details (for example, host, port, and credentials) to a remote host (for example, sessions in Putty).
+# Working with profiles
+Imperative CLI Framework provides application developers with a mechanism to define user profiles. Profiles are simple configuration documents (stored in YAML format) that are intended to persist user configuration properties. A common use case for user profiles is storing multiple sets of connection details (for example, host, port, and credentials) to a remote host (for example, sessions in Putty).
 
 - [Define profiles](#define-profiles)
 - [Configure commands to load profiles](#configure-commands-to-load-profiles)
@@ -119,13 +119,13 @@ export default class Handler implements ICommandHandler {
 The handler prints `tasty` to the console/terminal.
 
 ## Access user profiles
-Outside of a CLI (from a client app or IDE/Editor extension), you may want to access the users profiles. You can access the users profiles using the [Basic Profile Manager](URL).
+Outside of a CLI (from a client app or IDE/Editor extension), you may want to access the users profiles. You can access the user's profiles using the [Basic Profile Manager](URL).
 
 **Example Profile Load:**
 
-The following example illustrates the instantiation of the Basic Profile Manager (BasicProfileManager.ts). You must supply the directory of the CLI's profiles and a type.
+The following example illustrates the instantiation of the Basic Profile Manager (BasicProfileManager.ts). You must supply the directory of the plug-ins profiles and a type.
 
-**Note:** The example assumes that the users `Fruit-CLI` profiles are stored in their home directory (the framework automatically generates the hidden CLI directory and the `/profiles/` directory).
+**Note:** The example assumes that the users `Fruit-CLI` profiles are stored in their home directory (the framework automatically generates the hidden profile directory and the `/profiles/` directory).
 
 ```typescript
 const tastyProfile = await new BasicProfileManager({
@@ -184,7 +184,7 @@ For each type of profile defined in your Imperative configuration, one of each o
 
 For example, when you issue the following command:
 ```
-sample-cli profiles --help
+sample-cli profiles --help  (***should this be zowe-cli***????)
 ````
 
 The following help content displays:
@@ -226,7 +226,7 @@ sample-cli profiles -h
 ```
 ### Auto-generated create profile command
 
-The user of your CLI uses these commands to create new profiles. In the schema property of your profile configuration, you can specify an optionDefinition field for properties that you would like to be exposed. For most simple profiles, options specified by the user can be automatically mapped to fields in the resulting profile fields.
+The user of your CLI uses these commands to create new profiles. In the schema property of your profile configuration, you can specify an `optionDefinition` field for properties that you would like to be exposed. For most simple profiles, options specified by the user can be automatically mapped to fields in the resulting profile fields.
 
 **Example schema:**
 ```typescript
@@ -369,6 +369,7 @@ sample-cli profiles validate banana-profile old-banana
 ```
 
 ## Validate profiles
+
 The Imperative CLI Framework contains profile validation infrastructure that lets you (command line developers and users) test the profiles that you create. You can use the infrastructure (for example) after you use the auto-generated profiles commands or your own custom-generated commands to create new configuration profiles.
 
 To use the profile validation infrastructure, build an object that corresponds to the structure of the IProfileValidationPlan interface. The plan contains a list of tasks to perform against the user’s profile to test its validity. Each task, when finished, provides a result (Success, Warning, or Failure), a description of the result, and a list of any associated REST endpoints for the task. Having these specific tasks can make it easier for you to safely test credentials, URLS, file paths, and other data that is stored in the profile before the user starts using your CLI.
