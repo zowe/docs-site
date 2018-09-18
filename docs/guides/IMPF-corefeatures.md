@@ -7,7 +7,7 @@ The Imperative CLI Framework contains the capabilites that are described in the 
 Imperative CLI Framework features a standardized command definition structure and a standardized approach to defining and implementing handlers. The framework also uses standardized command responses, such as messages and JSON response formats. Imperative CLI Framework contains an advanced mechanism for validating syntax. The framework supports the capability to programmatically process compound command handler statements. Imperative CLI Framework contains helper utilities.
 
 **More information:**
-- [Command Handler Responses](IMPF-ComHandResp.md)
+- [Working with command handler responses](IMPF-ComHandResp.md)
 - [Command definition and processing](IMPF-ComDefPro.md)
 - [Generating command responses in JSON format](IMPF-generatejsonresponses.md)
 
@@ -23,14 +23,14 @@ Imperative CLI Framework lets you create user profiles during the configuration 
 
 **More information:**
 - [Working with plug-in profiles](IMPF-workingwithprofiles.md)
-- [Secure Credential Storage](URL)
+- [Storing credentials securely](IMPF-storecredsecure.md)
 
 ## Flexible extension framework
 
 Imperative CLI framework contains a flexible extension framework that lets you add custom plug-ins to applications that are build on Imperative CLI framework, such as Zowe CLI.
     
 **More information:**
-- [Working with plug-ins](URL)
+- [Working with plug-ins]IMPF-workingwithplugins.md)
 
 ## CLI reference markdown
 
@@ -46,6 +46,6 @@ Imperative CLI Framework contains the following utilities that let you perform t
 - Designate command Groups and commands as Experimental.
     
 **More information:**
-- [Progress Bars](URL)
-- [Logging](URL)
-- [Experimental Commands](URL)
+- [Implementing progress bars](IMPF-implementprogressbars.md)
+- [Configuring logging](IMPF-logging.md)
+- [Implementing experimental commands](IMPF-ExpCommands.md)
