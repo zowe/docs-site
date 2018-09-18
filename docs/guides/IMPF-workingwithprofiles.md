@@ -1,19 +1,19 @@
-# Working with profiles
+# Working with plug-in profiles
 Imperative CLI Framework provides application developers with a mechanism to define user profiles. Profiles are simple configuration documents (stored in YAML format) that are intended to persist user configuration properties. A common use case for user profiles is storing multiple sets of connection details (for example, host, port, and credentials) to a remote host (for example, sessions in Putty).
 
-- [Define profiles](#define-profiles)
-- [Configure commands to load profiles](#configure-commands-to-load-profiles)
-- [Access loaded profiles](#access-loaded-profiles)
-- [Access user profiles](#access-user-profiles)
-- [Configure profile dependencies](#configure-profile-dependencies)
+- [Defining profiles](#defining-profiles)
+- [Configuring commands to load profiles](#configuring-commands-to-load-profiles)
+- [Accessing loaded profiles](#accessing-loaded-profiles)
+- [Accessing user profiles](#accessing-user-profiles)
+- [Configuring profile dependencies](#configuring-profile-dependencies)
 - [Using auto-generated profile commands](#using-auto-generated-profile-commands)
-- [Validate profiles](#validate-profiles)
+- [Validating profiles](#validating-profiles)
 
 **More information:**
 
 For information about how to protect user information in your applications, see [Secure Credential Storage](). In the Secure Credential Storage article, we describe how you can use [keytar]() (Keychain Manager) to implement security, how the [default security implementation]() works, and how you can use a [custom credential manager]() to secure the user profiles for your applications.
 
-## Define profiles
+## Defining profiles
 To define profiles to your Imperative-based CLI, you populate the profiles property on your Imperative configuration document. You can define as many profile types as you need.
 
 **Example (configuration):**
@@ -59,7 +59,7 @@ The schema document describes the structure of the respective profile type. The 
 **More information:**
 - For an in-depth look at schema, see [JSON Schema](),
 
-## Configure commands to load profiles
+## Configuring commands to load profiles
 After you define the profile types on your configuration document, you specify the profile type (or types) that you want the command to load in the profiles property in the command definition document.
 
 By default, when you specify a profile that your command uses, the framework automatically adds options that let you specify which profile of that type you want to use (unless the command definition requests that the option be suppressed). The options are in the form --<type>-profile.
@@ -99,7 +99,7 @@ An array of optional profile types. Optional implies that a command can proceed 
 ### Suppress options property
 An array of profile types for which Imperative will NOT auto-generate command options.
 
-## Access loaded profiles
+## Accessing loaded profiles
 
 After the framework loads the required/optional profiles for a command, the framework passes the profiles to the command handler on the handler parameters object. You can get the loaded profiles by type using `params.profiles.get()`.
 
@@ -118,7 +118,7 @@ export default class Handler implements ICommandHandler {
 
 The handler prints `tasty` to the console/terminal.
 
-## Access user profiles
+## Accessing user profiles
 Outside of a CLI (from a client app or IDE/Editor extension), you may want to access the users profiles. You can access the user's profiles using the [Basic Profile Manager](URL).
 
 **Example Profile Load:**
@@ -134,7 +134,7 @@ const tastyProfile = await new BasicProfileManager({
 }).load({name: "tasty"});
 ```
 
-## Configure profile dependencies
+## Configuring profile dependencies
 
 You can configure a profile `type` to be dependent on another profile type (or types).
 
@@ -295,7 +295,7 @@ Review the created profile and edit if necessary using the profile update comman
      // ... 
     }]
 ```
-### Auto-generated List Profiles Command
+### Auto-generated list profiles command
 
 The `profiles list` commands list profiles that the user created. They can also display the contents of each profile if the –show-contents option is specified.
 
@@ -325,7 +325,7 @@ sample-cli profiles delete banana old-banana
 Profile "old-banana" of type "banana" successfully deleted.
 ```
 
-### Auto-generated Update Profile Command
+### Auto-generated update profile command
 
 The following commands let users update particular fields of their existing profiles.
 
@@ -368,7 +368,7 @@ sample-cli profiles validate --help
 sample-cli profiles validate banana-profile old-banana
 ```
 
-## Validate profiles
+## Validating profiles
 
 The Imperative CLI Framework contains profile validation infrastructure that lets you (command line developers and users) test the profiles that you create. You can use the infrastructure (for example) after you use the auto-generated profiles commands or your own custom-generated commands to create new configuration profiles.
 

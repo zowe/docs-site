@@ -7,22 +7,22 @@ The Imperative CLI Framework contains the capabilites that are described in the 
 Imperative CLI Framework features a standardized command definition structure and a standardized approach to defining and implementing handlers. The framework also uses standardized command responses, such as messages and JSON response formats. Imperative CLI Framework contains an advanced mechanism for validating syntax. The framework supports the capability to programmatically process compound command handler statements. Imperative CLI Framework contains helper utilities.
 
 **More information:**
-- [Command Handler Responses](URL)
-- [Command Definition & Processing](URL)
-- [JSON Responses](URL)
+- [Command Handler Responses](IMPF-ComHandResp.md)
+- [Command definition and processing](IMPF-ComDefPro.md)
+- [Generating command responses in JSON format](IMPF-generatejsonresponses.md)
 
 ## Generate help content
 The framework lets you generate help content automatically.
   
 **More information:**
-- [Auto Generated Help](URL)
+- [Generating help automatically](IMPF-generatehelpauto.md)
 
 ## Create user profiles
 
 Imperative CLI Framework lets you create user profiles during the configuration process. This capability includes a profile validation infrastructure. Also, the framework features a secure credential store, which helps you manage user profiles.
 
 **More information:**
-- [User Profiles](URL)
+- [Working with plug-in profiles](IMPF-workingwithprofiles.md)
 - [Secure Credential Storage](URL)
 
 ## Flexible extension framework
