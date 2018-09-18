@@ -210,20 +210,21 @@ The following java code is an example of adding these endpoints with Spring Cont
 ```java
 package com.ca.mfaas.hellospring.controller;
 
-import com.ca.mfaas.eurekaservice.model.*;
+import com.ca.mfaas.eurekaservice.model.Health;
+import com.ca.mfaas.hellospring.model.EmptyJsonResponse;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.ResourceBundle;
-
 @Controller
 @ApiIgnore
 public class MfaasController {
-    private static ResourceBundle eurekaProperties = ResourceBundle.getBundle("eureka-client");
 
-    @GetMapping("/api/v1/api-doc")
+    @GetMapping("/api-doc")
     public String apiDoc() {
         return "forward:/v2/api-docs";
     }
@@ -234,91 +235,193 @@ public class MfaasController {
     }
 
     @GetMapping("/application/info")
-    public @ResponseBody InstanceInfo getDiscoveryInfo() {
-        return new InstanceInfo(
-
-            new App(
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.title"),
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.description"),
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.version")
-            ),
-
-            new MFaasInfo(
-                new DiscoveryInfo(
-                    eurekaProperties.getString("eureka.service.hostname"),
-                    Boolean.valueOf(eurekaProperties.getString("eureka.securePortEnabled")),
-                    eurekaProperties.getString("eureka.name"),
-                    Integer.valueOf(eurekaProperties.getString("eureka.port")),
-                    "CLIENT",
-                    eurekaProperties.getString("eureka.name"),
-                    Boolean.TRUE,
-                    eurekaProperties.getString("eureka.metadata.mfaas.discovery.catalogUiTile.description")
-                )
-            )
-        );
+    public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
     }
 }
 ```
 
-## Add Eureka client configuration
-Add the following `eureka-client.properties` file to your resources directory:
+## Add configuration for Eureka client
+Add the following `service-configuration.yml` file to your resources directory:
 
-```ini
-server.contextPath=/hellospring
-eureka.registration.enabled=true
-eureka.decoderName=JacksonJson
-eureka.region=default
-eureka.name=hellospring
-eureka.vipAddress=hellospring
-eureka.port=10020
-eureka.shouldUseDns=false
-eureka.serviceUrl.default=http://eureka:password@localhost:10011/eureka
-eureka.shouldOnDemandUpdateStatusChange=false
-eureka.validateInstanceId=false
+```yml
+serviceId: hellospring
+baseUrl: http://localhost:10020/hellospring
+homePageRelativeUrl:
+statusPageRelativeUrl: /application/info
+healthCheckRelativeUrl: /application/health
+discoveryServiceUrls:
+    - http://eureka:password@localhost:10011/eureka
+routedServices:
+- gatewayUrl: api/v1
+  serviceUrl: /hellospring/api/v1
 
-eureka.service.hostname=localhost
-eureka.service.ipAddress=127.0.0.1
-eureka.nonSecurePortEnabled=true
-eureka.securePortEnabled=false
-eureka.lease.duration=6
-eureka.lease.renewalInterval=5
-eureka.preferIpAddress=false
-eureka.statusPageUrl=http://localhost:10020/hellospring/application/info
-eureka.healthCheckUrl=http://localhost:10020/hellospring/application/health
-eureka.homePageUrl=
-
-# API Documentation endpoint
-eureka.metadata.routed-services.apidoc.gateway-url=api/v1/api-doc
-eureka.metadata.routed-services.apidoc.service-url=/hellospring/api-doc
-
-# API mapping
-eureka.metadata.routed-services.api.gateway-url=api/v1/
-eureka.metadata.routed-services.api.service-url=/hellospring/api/v1
-
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.title=HelloWorld Spring
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.description=REST API for a Spring Application
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.version=1.0.0
-
-eureka.metadata.mfaas.discovery.catalogUiTile.id=helloworld-spring
-eureka.metadata.mfaas.discovery.catalogUiTile.title=HelloWorld Spring REST API
-eureka.metadata.mfaas.discovery.catalogUiTile.description=Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-eureka.metadata.mfaas.discovery.catalogUiTile.version=1.0.0
-eureka.metadata.mfaas.discovery.service.title=HelloWorld Spring REST API
-eureka.metadata.mfaas.discovery.service.description=P.O.C for exposing a Spring REST API
-
-eureka.client.client.refresh.interval=5
-eureka.client.appinfo.initial.replicate.time=5
-eureka.client.appinfo.replicate.interval=5
-eureka.client.serviceUrldefaultZone=http://eureka:password@localhost:10011/eureka/
-eureka.client.healthcheck.enabled=false
+- gatewayUrl: api/v1/api-doc
+  serviceUrl: /hellospring/api-doc
+apiInfo:
+    title: HelloWorld Spring
+    description: REST API for a Spring Application
+    version: 1.0.0
+    catalogUiTile:
+        id: helloworld-spring
+        title: HelloWorld Spring REST API
+        description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+        version: 1.0.0
+    serviceInfo:
+        title: HelloWorld Spring REST API
+        description: POC for exposing a Spring REST API
 ```
 
-## Add context listener
+Change configuration parameters to correspond with your API service specifications.
+Description of parameters:
+* **serviceId**
 
+    Specifies the service instance identifier to register in the API Layer installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a micro service in the API mediation layer. The system administrator at the customer site defines this parameter.
+    
+    **Important!**  Ensure that the service ID is set properly with the following considerations:
+
+    * When two API services use the same service ID, the API gateway considers the services to be clones. An incoming API request can be routed to either of them.
+    * The same service ID should be set for only multiple API service instances for API scalability.
+    * The service ID value must contain only lowercase alphanumeric characters.
+    * The service ID cannot contain more than 40 characters.
+    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+    
+    **Examples:**
+    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+        ```
+        https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+        ```
+    * If customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+        ```
+        http://gateway:port/api/v1/vantageprod1/endpoint1/...
+        ```
+* **baseUrl**
+
+    Specifies URL to your service top REST resource. It will be the prefix for **homePageRelativeUrl**, **statusPageRelativeUrl**, **healthCheckRelativeUrl**. 
+    
+    **Examples:** 
+    * `http://host:port/servicename` for HTTP service
+    * `https://host:port/servicename` for HTTPS service
+* **homePageRelativeUrl** 
+
+    Specifies relative path to home page of your service, it should start with `/`.
+    If your service has no home page leave this parameter blank.
+
+    **Examples:**
+    * `homePageRelativeUrl: ` service has no home page
+    * `homePageRelativeUrl: /` service has home page with URL `${baseUrl}/`
+* **statusPageRelativeUrl**
+
+    Specifies relative path to status page of your service, this is endpoint that you defined in `MfaasController` controller in `getDiscoveryInfo` method. It should start with `/`
+
+    **Example:**
+    * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
+* **healthCheckRelativeUrl**
+
+    Specifies relative path to health check endpoint of your service, this is endpoint that you defined in `MfaasController` controller in `getHealth` method. It should start with `/`
+
+    **Example:**
+    * `healthCheckRelativeUrl: /application/health` the result URL will be `${baseUrl}/application/health`
+* **discoveryServiceUrls**
+
+    Specifies the public URL of the Discovery Service (Eureka). The system administrator at the customer site defines this parameter. 
+
+    **Example:**
+    * `http://eureka:password@141.202.65.33:10311/eureka/`
+* **routedServices**
+    The routing rules between gateway service and your service.
+    * **routedServices.gatewayUrl**
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+    * **routedServices.serviceUrl**
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+* **apiInfo.title**
+
+    Specifies the title of your service API.
+* **apiInfo.description**
+
+    Specifies the high-level function description of your service API.
+
+* **apiInfo.version**
+
+    Specifies the actual version of the API in semantic format.
+
+* **apiInfo.catalogUiTile.id**
+
+    Specifies the unique identifier for the API services product family. This is the grouping value used by the API Layer to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
+
+* **apiInfo.catalogUiTile.title**
+
+    Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+
+    ![Expanded Catalog Tile](diagrams/Expanded-Catalog-Tile.png)
+
+* **apiInfo.catalogUiTile.description**
+
+    Specifies the detailed description of the API services product family. This value is displayed in the API catalog UI dashboard as the tile description.
+
+* **apiInfo.catalogUiTile.version**
+
+    Specifies the semantic version of this API Catalog tile. Increase the version when you introduce new changes to the API services product family details (title and description).
+
+* **apiInfo.serviceInfo.title**
+
+    Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+    ![Service Status](diagrams/Service-Status.png)
+
+    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers.
+
+* **apiInfo.serviceInfo.description**
+
+    Specifies a short description of the API service.
+
+    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+
+    This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+
+    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
+
+## Add context listener
+The context listener invokes `apiMediationClient.register(config)` method to register application with API Mediation Layer when application is starting and invokes `apiMediationClient.unregister()` method when application is going to shutdown to unregister the application in API Mediation Layer.
+If you don't use Java Servlet API based frameworks you can still call same methods of `apiMediationClient` for register and unregister your application.
+### Add context listener class
+```java
+package com.ca.mfaas.hellospring.listener;
+
+import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
+import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
+import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
+import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+
+public class ApiDiscoveryListener implements ServletContextListener {
+    private ApiMediationClient apiMediationClient;
+
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        apiMediationClient = new ApiMediationClientImpl();
+        String configurationFile = "/service-configuration.yml";
+        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+        apiMediationClient.register(config);
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        apiMediationClient.unregister();
+    }
+}
+```
+
+### Register the listener
 Register the listener to start Eureka client. Reference the listener by adding the following code block to the deployment descriptor `web.xml`.
 ``` xml
 <listener>
-    <listener-class>com.ca.mfaas.eurekaservice.RestEurekaListener</listener-class>
+    <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
 </listener>
 ```
 
