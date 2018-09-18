@@ -1,4 +1,4 @@
-# Consume REST APIs using the REST client
+# Consuming REST APIs using the REST client
 
 Imperative CLI Framework contains a package that lets you consume REST APIs. There are many packages that can call REST APIs, however, the REST Client package that is built into the framework lets you perform the following tasks:
 

@@ -74,7 +74,7 @@ Plug-ins require `name`, `version`, `description`, and `main` parameters to defi
 You define plug-in configurations in the same manner that you configure a CLI application.
 
 **More information:**
-- [Command Definition & Processing](URL).
+- [Command definition and processing](IMPF-ComDefPro.md).
 
 You specify the following configuration properties for plug-ins:
 
@@ -83,7 +83,7 @@ You specify the following configuration properties for plug-ins:
 - `definitions`: The command definitions (command tree) for the plug-in.
     
     **More information:**
-    - [Command Definition & Processing](URL).
+    - [Command definition and processing](IMPF-ComDefPro.md).
 
 - `rootCommandDescription`: A description of the command group that appears in help text.
 - `pluginHealthCheck `: (Optional) The location the health check handler for the plug-in.
@@ -121,4 +121,4 @@ export default class FooHandler implements ICommandHandler {
 Plug-ins can introduce new profile types to CLI applications. You develop profiles for the plug-in commands in the same manner that you develop profiles for applications. 
 
 **More information:**
-- [User Profiles](URL)
+- [Working with plug-in profiles](IMPF-workingwithprofiles.md)
