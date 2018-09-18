@@ -30,7 +30,7 @@ Imperative CLI Framework lets you create user profiles during the configuration 
 Imperative CLI framework contains a flexible extension framework that lets you add custom plug-ins to applications that are build on Imperative CLI framework, such as Zowe CLI.
     
 **More information:**
-- [Working with plug-ins]IMPF-workingwithplugins.md)
+- [Working with plug-ins](IMPF-workingwithplugins.md)
 
 ## CLI reference markdown
 
@@ -48,4 +48,5 @@ Imperative CLI Framework contains the following utilities that let you perform t
 **More information:**
 - [Implementing progress bars](IMPF-implementprogressbars.md)
 - [Configuring logging](IMPF-logging.md)
+- [Generating command responses in JSON format](IMPF-generatejsonresponses.md)
 - [Implementing experimental commands](IMPF-ExpCommands.md)
