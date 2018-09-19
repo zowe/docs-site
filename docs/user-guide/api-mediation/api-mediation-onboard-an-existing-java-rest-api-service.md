@@ -7,8 +7,8 @@ The following procedure is an overview of steps to onboard a Java REST API appli
 **Follow these steps:**
 
 1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
-    1. [Gradle guide](#gradle-guide)
-    2. [Maven guide](#maven-guide)
+    * [Gradle guide](#gradle-guide)
+    * [Maven guide](#maven-guide)
 2. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
 3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
 4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
@@ -38,7 +38,7 @@ Use the following procedure if you use Gradle as your build automation system.
     ```ini
     # Repository URL for getting the enabler-java artifact
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-   
+    
     # Artifactory credentials for builds:
     mavenUser={username}
     mavenPassword={password}
@@ -81,7 +81,7 @@ Use the following procedure if you use Maven as your build automation system.
 **Follow these steps:**
 
 1.  Add the following *xml* tags within the newly created `pom.xml` file:
-   ```xml
+    ```xml
     <repositories>
         <repository>
             <id>libs-release</id>
@@ -92,7 +92,7 @@ Use the following procedure if you use Maven as your build automation system.
             </snapshots>
         </repository>
     </repositories>
-   ```
+    ```
 
     This file specifies the URL for the repository of the Artifactory where you download the enabler-java artifacts.
 
@@ -320,8 +320,8 @@ The following list describes the configuration parameters:
     If your service has no home page, leave this parameter blank.
 
     **Examples:**
-    * `homePageRelativeUrl: `  The service has no home page
-    * `homePageRelativeUrl: /`  The service has home page with URL `${baseUrl}/`
+    * `homePageRelativeUrl: ` The service has no home page
+    * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
 * **statusPageRelativeUrl**
 
     Specifies the relative path to the status page of your service.
@@ -403,8 +403,8 @@ The following list describes the configuration parameters:
     
     ![Service Status](diagrams/Service-Status.png)
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
-    Use a title that describes the service instance so that the end user knows the specific use of the service instance.
+    **Tip:** We recommend that you provide a specific default value of the `serviceInfo.title`.
+    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
 
 * **apiInfo.serviceInfo.description**
 
@@ -414,7 +414,7 @@ The following list describes the configuration parameters:
 
     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
+    **Tip:** We recommend that you provide a specific default value.
     Describe the service so that the end user knows the function of the service.
 
 ## Add context listener
@@ -458,7 +458,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 
 ### Register a listener
 Register a listener to start Eureka client. Add the following code block to the 
-deployment descriptor `web.xml` to reference a listener.
+deployment descriptor `web.xml` to register a listener.
 ``` xml
 <listener>
     <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
@@ -466,7 +466,7 @@ deployment descriptor `web.xml` to reference a listener.
 ```
 
 ## Run your service
-After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer Ecosystem.
+After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer ecosystem.
 
 **Follow these steps:**
 
@@ -496,4 +496,6 @@ The following procedure enables you to check if your service is discoverable by 
 
 1. Go to `http://localhost:10011`. 
 2. Enter *eureka* as a username and *password* as a password.
-3. Check if your application appears in the Discovery Service UI.  
+3. Check if your application appears in the Discovery Service UI.
+
+If your service appears in the Discovery Service UI, you successfully finished onboarding your java REST API service.
