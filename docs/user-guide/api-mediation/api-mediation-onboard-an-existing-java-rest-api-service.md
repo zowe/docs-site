@@ -1,4 +1,4 @@
-#Onboarding an existing Java Spring REST API service without Spring Boot 
+# Onboarding an existing Java Spring REST API service without Spring Boot 
 
 As an API developer, use this guide to onboard your Java Spring REST API service that is built without Spring Boot into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
@@ -7,10 +7,14 @@ The following procedure is an overview of steps to onboard a Java REST API appli
 **Follow these steps:**
 
 1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
+    * [Gradle guide](#gradle-guide)
+    * [Maven guide](#maven-guide)
 2. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
 3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-4. [Add Eureka client configuration](#add-eureka-client-configuration)
+4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
 5. [Add context listener](#add-context-listener)
+    1. [Add context listener class](#add-context-listener-class)
+    2. [Register a listener](#register-a-listener)
 6. [Run your service](#run-your-service)
 7. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
 
@@ -34,7 +38,7 @@ Use the following procedure if you use Gradle as your build automation system.
     ```ini
     # Repository URL for getting the enabler-java artifact
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-   
+    
     # Artifactory credentials for builds:
     mavenUser={username}
     mavenPassword={password}
@@ -57,15 +61,16 @@ Use the following procedure if you use Gradle as your build automation system.
 
     repositories mavenRepositories
     ```
+
     The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
-   
-4. In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
+
+4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
 
     ```gradle
     compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
     ```
 
-5. In your project directory, run the `gradle build` command to build your project.
+5.  In your project directory, run the `gradle build` command to build your project.
 
 ### Maven guide
 
@@ -75,9 +80,8 @@ Use the following procedure if you use Maven as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following *xml* tags within the newly created `pom.xml` file:
-
-   ```xml
+1.  Add the following *xml* tags within the newly created `pom.xml` file:
+    ```xml
     <repositories>
         <repository>
             <id>libs-release</id>
@@ -88,19 +92,19 @@ Use the following procedure if you use Maven as your build automation system.
             </snapshots>
         </repository>
     </repositories>
-   ```
+    ```
 
     This file specifies the URL for the repository of the Artifactory where you download the enabler-java artifacts.
 
-2. In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
-   ```xml
+2.  In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
+    ```xml
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>0.2.0</version>
     </dependency>
-   ```
-3. Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
+    ```
+3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -117,11 +121,11 @@ Use the following procedure if you use Maven as your build automation system.
     </servers>
     </settings>
     ```
-4. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+4.  Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-5. In the directory of your project, run the `mvn package` command to build the project.
+5.  In the directory of your project, run the `mvn package` command to build the project.
 
-##(Optional) Add Swagger Documentation to your project
+## (Optional) Add Swagger Documentation to your project
 If your application already has Swagger documentation enabled, skip this step. Use the following procedure if your application does not have Swagger documentation.
 
 **Follow these steps:**
@@ -135,7 +139,6 @@ If your application already has Swagger documentation enabled, skip this step. U
         ```
     
     * For Maven add the following dependency in `pom.xml`:
-    
         ```xml
         <dependency>
             <groupId>io.springfox</groupId>
@@ -192,9 +195,9 @@ If your application already has Swagger documentation enabled, skip this step. U
 ## Add endpoints to your API for API Mediation Layer integration
 You need to add several endpoints to your application for integration with the API Mediation Layer:
 * **Swagger documentation endpoint**
-    
+
     The endpoint for the Swagger documentation
-    
+
 * **Health endpoint**
 
     The endpoint used for health checks by the Discovery Service
@@ -210,11 +213,7 @@ The following java code is an example of adding these endpoints with Spring Cont
 ```java
 package com.ca.mfaas.hellospring.controller;
 
-import com.ca.mfaas.eurekaservice.model.Health;
-import com.ca.mfaas.hellospring.model.EmptyJsonResponse;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.ca.mfaas.eurekaservice.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -246,7 +245,7 @@ public class MfaasController {
 ## Add configuration for Eureka client
 Add the following `service-configuration.yml` file to your resources directory:
 
-```yml
+```yaml
 serviceId: hellospring
 baseUrl: http://localhost:10020/hellospring
 homePageRelativeUrl:
@@ -317,8 +316,8 @@ The following list describes the configuration parameters:
     If your service has no home page, leave this parameter blank.
 
     **Examples:**
-    * `homePageRelativeUrl: `  The service has no home page
-    * `homePageRelativeUrl: /`  The service has home page with URL `${baseUrl}/`
+    * `homePageRelativeUrl: ` The service has no home page
+    * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
 * **statusPageRelativeUrl**
 
     Specifies the relative path to the status page of your service.
@@ -400,8 +399,8 @@ The following list describes the configuration parameters:
     
     ![Service Status](diagrams/Service-Status.png)
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
-    Use a title that describes the service instance so that the end user knows the specific use of the service instance.
+    **Tip:** We recommend that you provide a specific default value of the `serviceInfo.title`.
+    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
 
 * **apiInfo.serviceInfo.description**
 
@@ -411,7 +410,7 @@ The following list describes the configuration parameters:
 
     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
+    **Tip:** We recommend that you provide a specific default value.
     Describe the service so that the end user knows the function of the service.
 
 ## Add context listener
@@ -455,7 +454,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 
 ### Register a listener
 Register a listener to start Eureka client. Add the following code block to the 
-deployment descriptor `web.xml` to reference a listener.
+deployment descriptor `web.xml` to register a listener.
 ``` xml
 <listener>
     <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
@@ -463,12 +462,11 @@ deployment descriptor `web.xml` to reference a listener.
 ```
 
 ## Run your service
-
-After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer Ecosystem.
+After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer ecosystem.
 
 **Follow these steps:**
 
-1. Run the following services to onboard your application:
+1.  Run the following services to onboard your application:
 
     **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md) 
     
@@ -476,23 +474,24 @@ After adding all configurations and controllers, you are ready to run your servi
     * Discovery Service
     * API Catalog Service
 
-2. Run your Java application. 
+2.  Run your Java application. 
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-3. Go to the following URL to reach the API Catalog through the Gateway (port 10010):
-   ```
-   https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
-   ``` 
+3.  Go to the following URL to reach the API Catalog through the Gateway (port 10010):
+    ```
+    https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
+    ``` 
 
-   You successfully onboarded your Java application if your service is running and you can access the API documentation. 
+    You successfully onboarded your Java application if your service is running and you can access the API documentation. 
 
 ## (Optional) Validate discovery of the API service by the Discovery Service
-
 The following procedure enables you to check if your service is discoverable by the Discovery Service.
 
 **Follow these steps:**
 
 1. Go to `http://localhost:10011`. 
 2. Enter *eureka* as a username and *password* as a password.
-3. Check if your application appears in the Discovery Service UI.  
+3. Check if your application appears in the Discovery Service UI.
+
+If your service appears in the Discovery Service UI, you successfully finished onboarding your java REST API service.
