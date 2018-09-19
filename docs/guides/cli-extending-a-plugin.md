@@ -1,5 +1,5 @@
 # Extending a plug-in 
-Before you begin, be sure to complete the [Installing the sample plug-in]() tutorial.
+Before you begin, be sure to complete the [Installing the sample plug-in](cli-installing-sample-plugin.md) tutorial.
 
 ## Overview
 This tutorial demonstrates how to extend the plug-in that is bundled with this sample by:
@@ -167,4 +167,4 @@ For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your
 Completed source can be found on the `typicode-todos` branch of this repo.
 
 ## Next steps
-Try the [Developing a new plug-in](../files-util/FilesUtilPlugin.md) tutorial next to create a new plug-in for Zowe CLI.
+Try the [Developing a new plug-in](cli-developing-a-plugin.md) tutorial next to create a new plug-in for Zowe CLI.

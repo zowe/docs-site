@@ -1,6 +1,6 @@
 # Installing the sample plug-in
 
-Before you begin, [set up](../Setup.md) your environment to install a plug-in.
+Before you begin, [set up](cli-setting-up.md) your local environment to install a plug-in.
 
 ## Overview
 This tutorial covers installing and running this bundled Zowe CLI plugin as-is (without modification), which will display your current directory contents. 
@@ -34,4 +34,4 @@ Issue the following command:
 * `npm run test`
 
 ## Next steps
-You successfully installed a plug-in to Zowe CLI! Next, try the [Extending an existing plug-in](../list-typicode-todo/ListTypicodeTodoPlugin.md) tutorial to learn about developing new commands for this plug-in. 
+You successfully installed a plug-in to Zowe CLI! Next, try the [Extending a plug-in](cli-extending-a-plugin.md) tutorial to learn about developing new commands for this plug-in. 

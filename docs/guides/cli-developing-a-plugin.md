@@ -1,5 +1,5 @@
 # Developing a new plug-in
-Before you begin this tutorial, make sure that you completed the [Extending an existing plug-in]() tutorial. 
+Before you begin this tutorial, make sure that you completed the [Extending an existing plug-in](cli-extending-a-plugin.md) tutorial. 
 
 ## Overview
 This tutorial demonstrates creating a brand new Zowe CLI plug-in that uses Zowe CLI Node.js programmatic APIs.
@@ -9,7 +9,7 @@ your plugin's output to another utility for a side-by-side diff of data set memb
 
 ![Side by Side Diff](images/htmlDiff.png)
 
-### Cloning the `zowe-cli-sample-plugin` source
+### Cloning the sample plug-in source
 Here you'll clone the sample repo, delete the irrelevant source, and make a brand new plug-in. Perform the following:
 
 1. `cd` into your `zowe-tutorial` folder
@@ -209,4 +209,4 @@ Install the `diff2html` CLI via `npm install -g diff2html-cli`. Then, pipe your 
 - `zowe files-util diff data-sets "kelda16.work.jcl(iefbr14)" "kelda16.work.jcl(iefbr15)" | diff2html -i stdin`
 
 ## Next steps
-Try the [Implementing profiles in a plug-in](url) tutorial to learn about using profiles with your plug-in.
+Try the [Implementing profiles in a plug-in](cli-implement-profiles.md) tutorial to learn about using profiles with your plug-in.

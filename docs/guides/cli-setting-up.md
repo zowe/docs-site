@@ -44,4 +44,4 @@ This process assumes that you already installed Zowe CLI on your PC.
    You should see help text displayed if the installation was successful.
 
 ## Next steps
-After you complete your setup, follow the [Installing the sample plug-in to Zowe CLI]() tutorial to install this sample plug-in to Zowe CLI.
+After you complete your setup, follow the [Installing the sample plug-in](cli-installing-sample-plugin) tutorial to install this sample plug-in to Zowe CLI.
