@@ -5,8 +5,8 @@ As a developer, you can extend Zowe CLI by developing plug-ins and contributing 
 **Note:** You can also [install existing plug-ins to Zowe CLI](../user-guide/cli-extending.md). 
 
 * [Why Create a Zowe CLI Plug-in?](#why-create-a-zowe-cli-plug-in)
-* [Getting Started](#developer-tutorials)
-* [Developer Documentation and Guidelines](#documentation-and-guidelines)
+* [Getting Started](#getting-started)
+* [Developer Documentation and Guidelines](#developer-documentation-and-guidelines)
 
 ## Why create a Zowe CLI plug-in?
 You might want to create a Zowe CLI plug-in to accomplish the following:
@@ -23,7 +23,7 @@ The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-
 
 
 ### Plug-in Development Overview
-At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](../../src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](../../package.json) `imperative` key.
+At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
 
 Along with configuration, a Brightside plug-in will minimally have:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
@@ -41,18 +41,6 @@ Follow these tutorials to get started working with the sample plug-in:
 ## Developer Documentation and Guidelines
 In addition to the [tutorials](#tutorials), we also provide the following guidelines and documentation to assist you during development:
 
-### Contribution Guidelines 
-The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins. 
-
-The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
-
-| For more information about ... | See: |
-| ------------------------------ | ----- |
-| General guidelines that apply to contributing to CA Brightside and Plug-ins | [Contribution Guidelines](https://github.com/gizafoundation/brightside/tree/master/CONTRIBUTING.md) |
-| Conventions and best practices for creating packages and plug-ins for Brightside | [Package and Plug-in Guidelines](https://github.com/gizafoundation/brightside/tree/master/docs/PackagesAndPluginGuidelines.md)|
-| Guidelines for running tests on CA Brightside | [Testing Guidelines](https://github.com/gizafoundation/brightside/tree/master/docs/TESTING.md) |
-| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/gizafoundation/brightside/tree/master/docs/PluginTESTINGGuidelines.md) |
-
 ### Imperative CLI Framework Documentation
 [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these supplementary documents during development to learn about specific features such as:
 
@@ -60,6 +48,19 @@ The guidelines contain critical information about working with the code, running
 * JSON responses
 * User profiles 
 * Logging, progress bars, experimental commands, and more!
+
+### Contribution Guidelines 
+The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins. 
+
+The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
+
+| For more information about ... | See: |
+| ------------------------------ | ----- |
+| General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/CONTRIBUTING.md) |
+| Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/docs/PackagesAndPluginGuidelines.md)|
+| Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/docs/TESTING.md) |
+| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/docs/PluginTESTINGGuidelines.md) | 
+Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/docs/MaintainerVersioning.md) |
 
 
 
