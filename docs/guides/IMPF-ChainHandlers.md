@@ -1,6 +1,6 @@
 # Working with chained handlers
 
-In addition to commands with single handlers, you can create plug-in commands from multiple, ***chained*** handlers. Chained handlers are useful, for example, when you want to create plug-in commands that combine the functionality from other existing commands. Chaining your commands lets you re-use existing handler code and provide value to your plug-in users.
+In addition to commands with single handlers, you can create plug-in commands from multiple, *chained* handlers. Chained handlers are useful, for example, when you want to create plug-in commands that combine the functionality from other existing commands. Chaining your commands lets you re-use existing handler code and provide value to your plug-in users.
 
 You can still define `options` and `positionals` in command definitions that contain chained handlers. In the Imperative CLI Framework, command definitions that contain chained handlers are identical to command definitions that contain one handler. With chained handlers, you specify `chainedHandlers` instead of `handler`.
 
