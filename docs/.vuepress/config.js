@@ -39,7 +39,7 @@ module.exports = {
           'iframe-sample',
           'react-sample',
           'angular-sample']
-        }        
+        },   
         {
           title: 'Developing for Zowe CLI',
           collapsable: true,
