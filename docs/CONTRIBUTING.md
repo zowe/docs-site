@@ -39,7 +39,6 @@ You can provide suggested edit to any documentation page by using the **Propose 
 Follow these steps:
 
 1. Click **Propose content change in GitHub** on the page that you want to update.
-2. Click the **Edit the file** icon ![Edit the file icon](../images/common/icon_edit_this_file.png).
 3. Make the changes to the file.
 4. Scroll to the end of the page and enter a brief description about your change.
 5. Optional: Enter an extended description.
@@ -121,12 +120,12 @@ Example:
 Style:
 - Italic when used outside of code examples,
 
-    Example: myHost
+    Example: _myHost_
 
-- Wrap using angle brackets <> within code examples here italic font is not supported.
+- If wrap using angle brackets <> within code examples, italic font is not supported.
 
     Example:   
-    - put <pax-file-name>.pax
+    - put &lt;pax-file-name&gt;.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
 
@@ -368,7 +367,7 @@ Do  | Don't
 --|--
 :heavy_check_mark: API Mediation Layer|
 :heavy_check_mark: application  | :x: app
-:heavy_check_mark: Capitalize the word "Server" <br> :heavy_check_mark: Capitalize "Server" when it's part of the product name |  
+:heavy_check_mark: :heavy_check_mark: Capitalize "Server" when it's part of the product name |  
 :heavy_check_mark: data set| :x: dataset  
 :heavy_check_mark: Java  | :x: java
 :heavy_check_mark: IBM z/OS Managemnt Facility (z/OSMF) <br> :heavy_check_mark: z/OSMF   |:x: zosmf (unless used in syntax)  
