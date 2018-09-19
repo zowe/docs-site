@@ -1,4 +1,4 @@
-# Onboarding an existing Java Spring REST API service without Spring Boot 
+#Onboarding an existing Java Spring REST API service without Spring Boot 
 
 As an API developer, use this guide to onboard your Java Spring REST API service that is built without Spring Boot into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
@@ -197,11 +197,11 @@ You need to add several endpoints to your application for integration with the A
     
 * **Health endpoint**
 
-    Endpoint used for health checks by the Discovery Service
+    The endpoint used for health checks by the Discovery Service
 
 * **Info endpoint**
 
-    Endpoint to get information about the service
+    The endpoint to get information about the service
 
 The following java code is an example of adding these endpoints with Spring Controller:
 
@@ -275,15 +275,18 @@ apiInfo:
 ```
 
 Change configuration parameters to correspond with your API service specifications.
-Description of parameters:
+The following list describes the configuration parameters:
 * **serviceId**
 
-    Specifies the service instance identifier to register in the API Layer installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a micro service in the API mediation layer. The system administrator at the customer site defines this parameter.
+    Specifies the service instance identifier that is registered in the API Layer installation. 
+    The service ID is used in the URL for routing to the API service through the gateway. 
+    The service ID uniquely identifies instances of a microservice in the API mediation layer. 
+    The system administrator at the customer site defines this parameter.
     
     **Important!**  Ensure that the service ID is set properly with the following considerations:
 
     * When two API services use the same service ID, the API gateway considers the services to be clones. An incoming API request can be routed to either of them.
-    * The same service ID should be set for only multiple API service instances for API scalability.
+    * The same service ID should be set only for multiple API service instances for API scalability.
     * The service ID value must contain only lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
     * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
@@ -299,31 +302,39 @@ Description of parameters:
         ```
 * **baseUrl**
 
-    Specifies URL to your service top REST resource. It will be the prefix for **homePageRelativeUrl**, **statusPageRelativeUrl**, **healthCheckRelativeUrl**. 
+    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+    
+    * **homePageRelativeUrl**
+    * **statusPageRelativeUrl**
+    * **healthCheckRelativeUrl**. 
     
     **Examples:** 
     * `http://host:port/servicename` for HTTP service
     * `https://host:port/servicename` for HTTPS service
 * **homePageRelativeUrl** 
 
-    Specifies relative path to home page of your service, it should start with `/`.
-    If your service has no home page leave this parameter blank.
+    Specifies the relative path to the home page of your service. The path should start with `/`.
+    If your service has no home page, leave this parameter blank.
 
     **Examples:**
-    * `homePageRelativeUrl: ` service has no home page
-    * `homePageRelativeUrl: /` service has home page with URL `${baseUrl}/`
+    * `homePageRelativeUrl: `  The service has no home page
+    * `homePageRelativeUrl: /`  The service has home page with URL `${baseUrl}/`
 * **statusPageRelativeUrl**
 
-    Specifies relative path to status page of your service, this is endpoint that you defined in `MfaasController` controller in `getDiscoveryInfo` method. It should start with `/`
+    Specifies the relative path to the status page of your service.
+    This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
+    Start this path with `/`
 
     **Example:**
     * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
 * **healthCheckRelativeUrl**
 
-    Specifies relative path to health check endpoint of your service, this is endpoint that you defined in `MfaasController` controller in `getHealth` method. It should start with `/`
+    Specifies relative path to health check endpoint of your service. This is the endpoint that you defined in `MfaasController` controller in `getHealth` method. It should start with `/`
 
     **Example:**
-    * `healthCheckRelativeUrl: /application/health` the result URL will be `${baseUrl}/application/health`
+    * `healthCheckRelativeUrl: /application/health`. This results in the URL:
+    `${baseUrl}/application/health`
+    
 * **discoveryServiceUrls**
 
     Specifies the public URL of the Discovery Service (Eureka). The system administrator at the customer site defines this parameter. 
@@ -331,14 +342,19 @@ Description of parameters:
     **Example:**
     * `http://eureka:password@141.202.65.33:10311/eureka/`
 * **routedServices**
-    The routing rules between gateway service and your service.
+
+    The routing rules between the gateway service and your service.
     * **routedServices.gatewayUrl**
-        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+    
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
     * **routedServices.serviceUrl**
-        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+    
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 * **apiInfo.title**
 
-    Specifies the title of your service API.
+    Specifies the title of your service API
 * **apiInfo.description**
 
     Specifies the high-level function description of your service API.
@@ -349,7 +365,10 @@ Description of parameters:
 
 * **apiInfo.catalogUiTile.id**
 
-    Specifies the unique identifier for the API services product family. This is the grouping value used by the API Layer to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
+    Specifies the unique identifier for the API services product family. 
+    This is the grouping value used by the API Layer to group multiple API services together into "tiles". 
+    Each unique identifier represents a single API Catalog UI dashboard tile. 
+    Specify a value that does not interfere with API services from other products.
 
 * **apiInfo.catalogUiTile.title**
 
@@ -359,11 +378,14 @@ Description of parameters:
 
 * **apiInfo.catalogUiTile.description**
 
-    Specifies the detailed description of the API services product family. This value is displayed in the API catalog UI dashboard as the tile description.
+    Specifies the detailed description of the API services product family. 
+    This value is displayed in the API catalog UI dashboard as the tile description.
 
 * **apiInfo.catalogUiTile.version**
 
-    Specifies the semantic version of this API Catalog tile. Increase the version when you introduce new changes to the API services product family details (title and description).
+    Specifies the semantic version of this API Catalog tile. 
+    Increase the number of the version when you introduce new changes to the product family details of the API services 
+    including the title and description.
 
 * **apiInfo.serviceInfo.title**
 
@@ -371,7 +393,8 @@ Description of parameters:
 
     ![Service Status](diagrams/Service-Status.png)
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers.
+    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
+    Use a title that describes the service instance so that the end user knows the specific use of the service instance.
 
 * **apiInfo.serviceInfo.description**
 
@@ -381,12 +404,18 @@ Description of parameters:
 
     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
-    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
+    **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
+    Describe the service so that the end user knows the function of the service.
 
 ## Add context listener
-The context listener invokes `apiMediationClient.register(config)` method to register application with API Mediation Layer when application is starting and invokes `apiMediationClient.unregister()` method when application is going to shutdown to unregister the application in API Mediation Layer.
-If you don't use Java Servlet API based frameworks you can still call same methods of `apiMediationClient` for register and unregister your application.
+The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
+the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method when the 
+application is going to shutdown to unregister the application in API Mediation Layer.
+
+**Note:** If you do not use Java Servlet API based frameworks you can still call the same methods of `apiMediationClient` 
+to register and unregister your application.
 ### Add context listener class
+Add the following code block to add a context listener class:
 ```java
 package com.ca.mfaas.hellospring.listener;
 
@@ -417,8 +446,9 @@ public class ApiDiscoveryListener implements ServletContextListener {
 }
 ```
 
-### Register the listener
-Register the listener to start Eureka client. Reference the listener by adding the following code block to the deployment descriptor `web.xml`.
+### Register a listener
+Register a listener to start Eureka client. Add the following code block to the 
+deployment descriptor `web.xml` to reference a listener.
 ``` xml
 <listener>
     <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
