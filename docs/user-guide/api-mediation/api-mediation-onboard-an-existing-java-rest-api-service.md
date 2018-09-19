@@ -7,10 +7,14 @@ The following procedure is an overview of steps to onboard a Java REST API appli
 **Follow these steps:**
 
 1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
+    * [Gradle guide](#gradle-guide)
+    * [Maven guide](#maven-guide)
 2. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
 3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-4. [Add Eureka client configuration](#add-eureka-client-configuration)
+4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
 5. [Add context listener](#add-context-listener)
+    1. [Add context listener class](#add-context-listener-class)
+    2. [Register a listener](#register-a-listener)
 6. [Run your service](#run-your-service)
 7. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
 
@@ -34,7 +38,7 @@ Use the following procedure if you use Gradle as your build automation system.
     ```ini
     # Repository URL for getting the enabler-java artifact
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-   
+    
     # Artifactory credentials for builds:
     mavenUser={username}
     mavenPassword={password}
@@ -57,15 +61,15 @@ Use the following procedure if you use Gradle as your build automation system.
 
     repositories mavenRepositories
     ```
-    The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
-   
-4. In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
 
+    The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
+
+4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
     compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
     ```
 
-5. In your project directory, run the `gradle build` command to build your project.
+5.  In your project directory, run the `gradle build` command to build your project.
 
 ### Maven guide
 
@@ -75,9 +79,8 @@ Use the following procedure if you use Maven as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following *xml* tags within the newly created `pom.xml` file:
-
-   ```xml
+1.  Add the following *xml* tags within the newly created `pom.xml` file:
+    ```xml
     <repositories>
         <repository>
             <id>libs-release</id>
@@ -88,19 +91,19 @@ Use the following procedure if you use Maven as your build automation system.
             </snapshots>
         </repository>
     </repositories>
-   ```
+    ```
 
     This file specifies the URL for the repository of the Artifactory where you download the enabler-java artifacts.
 
-2. In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
-   ```xml
+2.  In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
+    ```xml
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>0.2.0</version>
     </dependency>
-   ```
-3. Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
+    ```
+3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -117,11 +120,11 @@ Use the following procedure if you use Maven as your build automation system.
     </servers>
     </settings>
     ```
-4. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+4.  Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-5. In the directory of your project, run the `mvn package` command to build the project.
+5.  In the directory of your project, run the `mvn package` command to build the project.
 
-##(Optional) Add Swagger Documentation to your project
+## (Optional) Add Swagger Documentation to your project
 If your application already has Swagger documentation enabled, skip this step. Use the following procedure if your application does not have Swagger documentation.
 
 **Follow these steps:**
@@ -135,7 +138,6 @@ If your application already has Swagger documentation enabled, skip this step. U
         ```
     
     * For Maven add the following dependency in `pom.xml`:
-    
         ```xml
         <dependency>
             <groupId>io.springfox</groupId>
@@ -192,16 +194,16 @@ If your application already has Swagger documentation enabled, skip this step. U
 ## Add endpoints to your API for API Mediation Layer integration
 You need to add several endpoints to your application for integration with the API Mediation Layer:
 * **Swagger documentation endpoint**
-    
+
     The endpoint for the Swagger documentation
-    
+
 * **Health endpoint**
 
-    Endpoint used for health checks by the Discovery Service
+    The endpoint used for health checks by the Discovery Service
 
 * **Info endpoint**
 
-    Endpoint to get information about the service
+    The endpoint to get information about the service
 
 The following java code is an example of adding these endpoints with Spring Controller:
 
@@ -216,14 +218,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.ResourceBundle;
-
 @Controller
 @ApiIgnore
 public class MfaasController {
-    private static ResourceBundle eurekaProperties = ResourceBundle.getBundle("eureka-client");
 
-    @GetMapping("/api/v1/api-doc")
+    @GetMapping("/api-doc")
     public String apiDoc() {
         return "forward:/v2/api-docs";
     }
@@ -234,101 +233,239 @@ public class MfaasController {
     }
 
     @GetMapping("/application/info")
-    public @ResponseBody InstanceInfo getDiscoveryInfo() {
-        return new InstanceInfo(
-
-            new App(
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.title"),
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.description"),
-                eurekaProperties.getString("eureka.metadata.mfaas.api-info.apiVersionProperties.v1.version")
-            ),
-
-            new MFaasInfo(
-                new DiscoveryInfo(
-                    eurekaProperties.getString("eureka.service.hostname"),
-                    Boolean.valueOf(eurekaProperties.getString("eureka.securePortEnabled")),
-                    eurekaProperties.getString("eureka.name"),
-                    Integer.valueOf(eurekaProperties.getString("eureka.port")),
-                    "CLIENT",
-                    eurekaProperties.getString("eureka.name"),
-                    Boolean.TRUE,
-                    eurekaProperties.getString("eureka.metadata.mfaas.discovery.catalogUiTile.description")
-                )
-            )
-        );
+    public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
     }
 }
 ```
 
-## Add Eureka client configuration
-Add the following `eureka-client.properties` file to your resources directory:
+## Add configuration for Eureka client
+Add the following `service-configuration.yml` file to your resources directory:
 
-```ini
-server.contextPath=/hellospring
-eureka.registration.enabled=true
-eureka.decoderName=JacksonJson
-eureka.region=default
-eureka.name=hellospring
-eureka.vipAddress=hellospring
-eureka.port=10020
-eureka.shouldUseDns=false
-eureka.serviceUrl.default=http://eureka:password@localhost:10011/eureka
-eureka.shouldOnDemandUpdateStatusChange=false
-eureka.validateInstanceId=false
+```yaml
+serviceId: hellospring
+baseUrl: http://localhost:10020/hellospring
+homePageRelativeUrl:
+statusPageRelativeUrl: /application/info
+healthCheckRelativeUrl: /application/health
+discoveryServiceUrls:
+    - http://eureka:password@localhost:10011/eureka
+routedServices:
+- gatewayUrl: api/v1
+  serviceUrl: /hellospring/api/v1
 
-eureka.service.hostname=localhost
-eureka.service.ipAddress=127.0.0.1
-eureka.nonSecurePortEnabled=true
-eureka.securePortEnabled=false
-eureka.lease.duration=6
-eureka.lease.renewalInterval=5
-eureka.preferIpAddress=false
-eureka.statusPageUrl=http://localhost:10020/hellospring/application/info
-eureka.healthCheckUrl=http://localhost:10020/hellospring/application/health
-eureka.homePageUrl=
-
-# API Documentation endpoint
-eureka.metadata.routed-services.apidoc.gateway-url=api/v1/api-doc
-eureka.metadata.routed-services.apidoc.service-url=/hellospring/api-doc
-
-# API mapping
-eureka.metadata.routed-services.api.gateway-url=api/v1/
-eureka.metadata.routed-services.api.service-url=/hellospring/api/v1
-
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.title=HelloWorld Spring
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.description=REST API for a Spring Application
-eureka.metadata.mfaas.api-info.apiVersionProperties.v1.version=1.0.0
-
-eureka.metadata.mfaas.discovery.catalogUiTile.id=helloworld-spring
-eureka.metadata.mfaas.discovery.catalogUiTile.title=HelloWorld Spring REST API
-eureka.metadata.mfaas.discovery.catalogUiTile.description=Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-eureka.metadata.mfaas.discovery.catalogUiTile.version=1.0.0
-eureka.metadata.mfaas.discovery.service.title=HelloWorld Spring REST API
-eureka.metadata.mfaas.discovery.service.description=P.O.C for exposing a Spring REST API
-
-eureka.client.client.refresh.interval=5
-eureka.client.appinfo.initial.replicate.time=5
-eureka.client.appinfo.replicate.interval=5
-eureka.client.serviceUrldefaultZone=http://eureka:password@localhost:10011/eureka/
-eureka.client.healthcheck.enabled=false
+- gatewayUrl: api/v1/api-doc
+  serviceUrl: /hellospring/api-doc
+apiInfo:
+    title: HelloWorld Spring
+    description: REST API for a Spring Application
+    version: 1.0.0
+    catalogUiTile:
+        id: helloworld-spring
+        title: HelloWorld Spring REST API
+        description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+        version: 1.0.0
+    serviceInfo:
+        title: HelloWorld Spring REST API
+        description: POC for exposing a Spring REST API
 ```
 
-## Add context listener
+Change configuration parameters to correspond with your API service specifications.
+The following list describes the configuration parameters:
+* **serviceId**
 
-Register the listener to start Eureka client. Reference the listener by adding the following code block to the deployment descriptor `web.xml`.
+    Specifies the service instance identifier that is registered in the API Layer installation. 
+    The service ID is used in the URL for routing to the API service through the gateway. 
+    The service ID uniquely identifies instances of a microservice in the API mediation layer. 
+    The system administrator at the customer site defines this parameter.
+    
+    **Important!**  Ensure that the service ID is set properly with the following considerations:
+
+    * When two API services use the same service ID, the API gateway considers the services to be clones. An incoming API request can be routed to either of them.
+    * The same service ID should be set only for multiple API service instances for API scalability.
+    * The service ID value must contain only lowercase alphanumeric characters.
+    * The service ID cannot contain more than 40 characters.
+    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+    
+    **Examples:**
+    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+        ```
+        https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+        ```
+    * If customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+        ```
+        http://gateway:port/api/v1/vantageprod1/endpoint1/...
+        ```
+* **baseUrl**
+
+    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+    
+    * **homePageRelativeUrl**
+    * **statusPageRelativeUrl**
+    * **healthCheckRelativeUrl**. 
+    
+    **Examples:** 
+    * `http://host:port/servicename` for HTTP service
+    * `https://host:port/servicename` for HTTPS service
+* **homePageRelativeUrl** 
+
+    Specifies the relative path to the home page of your service. The path should start with `/`.
+    If your service has no home page, leave this parameter blank.
+
+    **Examples:**
+    * `homePageRelativeUrl: ` The service has no home page
+    * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
+* **statusPageRelativeUrl**
+
+    Specifies the relative path to the status page of your service.
+    This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
+    Start this path with `/`.
+
+    **Example:**
+    * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
+* **healthCheckRelativeUrl**
+
+    Specifies the relative path to the health check endpoint of your service. 
+    This is the endpoint that you defined in the `MfaasController` controller in the 
+    `getHealth` method. Start this URL with `/`.
+
+    **Example:**
+    * `healthCheckRelativeUrl: /application/health`. This results in the URL:
+    `${baseUrl}/application/health`
+    
+* **discoveryServiceUrls**
+
+    Specifies the public URL of the Discovery Service (Eureka). The system administrator at the customer site defines this parameter. 
+
+    **Example:**
+    * `http://eureka:password@141.202.65.33:10311/eureka/`
+* **routedServices**
+
+    The routing rules between the gateway service and your service.
+    * **routedServices.gatewayUrl**
+    
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+    * **routedServices.serviceUrl**
+    
+        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+* **apiInfo.title**
+
+    Specifies the title of your service API.
+* **apiInfo.description**
+
+    Specifies the high-level function description of your service API.
+
+* **apiInfo.version**
+
+    Specifies the actual version of the API in semantic format.
+
+* **apiInfo.catalogUiTile.id**
+
+    Specifies the unique identifier for the API services product family. 
+    This is the grouping value used by the API Mediation Layer to group multiple API services 
+    together into "tiles". 
+    Each unique identifier represents a single API Catalog UI dashboard tile. 
+    Specify a value that does not interfere with API services from other products.
+
+* **apiInfo.catalogUiTile.title**
+
+    Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+    
+    **Example:**
+    
+    ![Expanded Catalog Tile](diagrams/Expanded-Catalog-Tile.png)
+
+* **apiInfo.catalogUiTile.description**
+
+    Specifies the detailed description of the API services product family. 
+    This value is displayed in the API catalog UI dashboard as the tile description.
+
+* **apiInfo.catalogUiTile.version**
+
+    Specifies the semantic version of this API Catalog tile. 
+    Increase the number of the version when you introduce new changes to the product family details of the API services 
+    including the title and description.
+
+* **apiInfo.serviceInfo.title**
+
+    Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+    **Example:**
+    
+    ![Service Status](diagrams/Service-Status.png)
+
+    **Tip:** We recommend that you provide a specific default value of the `serviceInfo.title`.
+    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+
+* **apiInfo.serviceInfo.description**
+
+    Specifies a short description of the API service.
+
+    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+
+    This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+
+    **Tip:** We recommend that you provide a specific default value.
+    Describe the service so that the end user knows the function of the service.
+
+## Add context listener
+The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
+the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method when the 
+application before the application shuts down to unregister the application in API Mediation Layer.
+
+**Note:** If you do not use Java Servlet API based frameworks, you can still call the same methods of `apiMediationClient` 
+to register and unregister your application.
+### Add context listener class
+Add the following code block to add a context listener class:
+```java
+package com.ca.mfaas.hellospring.listener;
+
+import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
+import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
+import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
+import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+
+public class ApiDiscoveryListener implements ServletContextListener {
+    private ApiMediationClient apiMediationClient;
+
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        apiMediationClient = new ApiMediationClientImpl();
+        String configurationFile = "/service-configuration.yml";
+        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+        apiMediationClient.register(config);
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        apiMediationClient.unregister();
+    }
+}
+```
+
+### Register a listener
+Register a listener to start Eureka client. Add the following code block to the 
+deployment descriptor `web.xml` to register a listener.
 ``` xml
 <listener>
-    <listener-class>com.ca.mfaas.eurekaservice.RestEurekaListener</listener-class>
+    <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
 </listener>
 ```
 
 ## Run your service
-
-After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer Ecosystem.
+After adding all configurations and controllers, you are ready to run your service in the API Mediation Layer ecosystem.
 
 **Follow these steps:**
 
-1. Run the following services to onboard your application:
+1.  Run the following services to onboard your application:
 
     **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md) 
     
@@ -336,23 +473,24 @@ After adding all configurations and controllers, you are ready to run your servi
     * Discovery Service
     * API Catalog Service
 
-2. Run your Java application. 
+2.  Run your Java application. 
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-3. Go to the following URL to reach the API Catalog through the Gateway (port 10010):
-   ```
-   https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
-   ``` 
+3.  Go to the following URL to reach the API Catalog through the Gateway (port 10010):
+    ```
+    https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
+    ``` 
 
-   You successfully onboarded your Java application if your service is running and you can access the API documentation. 
+    You successfully onboarded your Java application if your service is running and you can access the API documentation. 
 
 ## (Optional) Validate discovery of the API service by the Discovery Service
-
 The following procedure enables you to check if your service is discoverable by the Discovery Service.
 
 **Follow these steps:**
 
 1. Go to `http://localhost:10011`. 
 2. Enter *eureka* as a username and *password* as a password.
-3. Check if your application appears in the Discovery Service UI.  
+3. Check if your application appears in the Discovery Service UI.
+
+If your service appears in the Discovery Service UI, you successfully finished onboarding your java REST API service.
