@@ -65,7 +65,7 @@ The `Typicode` class provides two programmatic APIs, `getTodos` and `getTodo`, t
 and to call a REST API. See the [Imperative CLI Framework documentation](https://github.com/gizafoundation/imperative/wiki) for more information.
 
 ### Exporting interface and programmatic API for other Node.js applications
-Update [zowe-cli-sample-plugin/src/index.ts](../../../src/index.ts) to contain the following:
+Update [zowe-cli-sample-plugin/src/index.ts](https://github.com/zowe/zowe-cli-sample-plugin/src/index.ts) to contain the following:
 
 ```typescript
 export * from "./api/doc/ITodo";
@@ -152,13 +152,13 @@ children: [DirectoryContentsDefinition, TypicodeTodosDefinition]
 ### Checkpoint
 Issue `npm run build` to verify a clean compilation and confirm that no lint errors are present. You now have a handler, definition, and your command has been defined to the `list` group of the command.
 
-## Using installed plug-in
+## Using the installed plug-in
 Issue the command: `zowe bp-sample list typicode-todos`
 
 Look at `zowe bp-sample list --help` for more information about your command and to see how text in the command definition
 is presented. You can also see how to use your optional `--id` flag:
 
-![output](images/completedSample.png)
+![output](../images/guides/CLI/completedSample.png)
 
 # Summary
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.

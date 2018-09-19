@@ -7,7 +7,7 @@ This tutorial demonstrates creating a brand new Zowe CLI plug-in that uses Zowe 
 At the end of this tutorial, you will have created a data set diff utility plug-in for Zowe CLI, from which you can pipe
 your plugin's output to another utility for a side-by-side diff of data set member contents.
 
-![Side by Side Diff](images/htmlDiff.png)
+![Side by Side Diff](../images/guides/CLI/htmlDiff.png)
 
 ### Cloning the sample plug-in source
 Here you'll clone the sample repo, delete the irrelevant source, and make a brand new plug-in. Perform the following:
@@ -28,7 +28,7 @@ Use a unique `npm` name for your plugin. Change `package.json` name field as fol
   "name": "@brightside/files-util",
 ```
 
-- Issue the command `npm install`
+Issue the command `npm install`
 
 ### Adjusting Imperative CLI Framework configuration
 Change `imperative.ts` to contain the following:
@@ -191,13 +191,13 @@ export default class DataSetsDiffHandler implements ICommandHandler {
 ## Trying your command
 Be sure to build your plugin via `npm run build`.
 
-Install your plug-in into Zowe CLI via `'zowe plugins install .`'
+Install your plug-in into Zowe CLI via `zowe plugins install`.
 
-Then issue the command `zowe files-util diff data-sets "your-data-set(oldmem)" "your-data-set(newmem)"`
+Then issue the command `zowe files-util diff data-sets "your-data-set(oldmem)" "your-data-set(newmem)"`.
 
 The raw diff output is displayed as a command response:
 
-![Raw Diff Output](images/diffOutput.png)
+![Raw Diff Output](../images/guides/CLI/diffOutput.png)
 
 ## Bringing together new tools!
 The advantage of Zowe CLI and of the CLI approach in mainframe development is that it allows for combining different developer tools for new and interesting uses.

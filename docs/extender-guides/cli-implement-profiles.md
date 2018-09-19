@@ -1,7 +1,7 @@
 # Implementing profiles in a Zowe CLI plug-in
 You can use this profile template to create a profile for your product.  
 
-The profile definition is placed in the 'imperative.ts' file.
+The profile definition is placed in the `imperative.ts` file.
 
 `someproduct` will be the profile name that you might require on various commands to have credentials loaded 
 from a secure credential manager and retain host/port information (so that you can easily swap to different servers)

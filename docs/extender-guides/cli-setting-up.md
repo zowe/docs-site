@@ -9,8 +9,6 @@ To create your development space, you will clone and build [zowe-cli-sample-plug
 
 Before you clone the repository, create a local development folder named `zowe-tutorial`. You will clone and build all projects in this folder.
 
-
-
 ### Clone zowe-cli-sample-plugin and build from source
 Clone the repository into your development folder to match the following structure:
 ```
