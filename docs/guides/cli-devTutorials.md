@@ -21,11 +21,10 @@ The following plug-in projects have been developed:
 ## Getting started
 The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) contains a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects. Follow the associated [developer tutorials](#tutorials) to learn about how to work with this sample plug-in, build new commands, or build a new Zowe CLI plug-in.
 
-
 ### Plug-in Development Overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
 
-Along with configuration, a Brightside plug-in will minimally have:
+Along with configuration, a Zowe CLI plug-in will minimally have:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
 2. **Command definition** - The syntax definition for your command.
 3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the command definition.
@@ -52,7 +51,7 @@ In addition to the [tutorials](#tutorials), we also provide the following guidel
 ### Contribution Guidelines 
 The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins. 
 
-The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
+The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
 
 | For more information about ... | See: |
 | ------------------------------ | ----- |
