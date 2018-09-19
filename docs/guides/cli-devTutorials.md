@@ -1,6 +1,6 @@
 # Develop for Zowe CLI
 
-As a developer, you can extend Zowe CLI by developing plug-ins and contributing code to the base CLI or existing plug-ins.
+You can extend Zowe CLI by developing plug-ins and contributing code to the base CLI or existing plug-ins.
 
 **Note:** You can also [install existing plug-ins to Zowe CLI](../user-guide/cli-extending.md). 
 
@@ -24,7 +24,7 @@ The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-
 ### Plug-in Development Overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
 
-Along with configuration, a Zowe CLI plug-in will minimally have:
+In addition to the configuration, a Zowe CLI plug-in will minimally contain the following:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
 2. **Command definition** - The syntax definition for your command.
 3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the command definition.
