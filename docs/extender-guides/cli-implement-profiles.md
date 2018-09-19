@@ -1,4 +1,4 @@
-# Implementing profiles in a Zowe CLI plug-in
+# Implementing profiles in a plug-in
 You can use this profile template to create a profile for your product.  
 
 The profile definition is placed in the `imperative.ts` file.
