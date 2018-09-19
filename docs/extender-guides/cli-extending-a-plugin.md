@@ -12,7 +12,7 @@ We'll do this by using `@brightside/imperative` infrastructure to surface REST A
 Specifically, we're going to show data from [this URI](https://jsonplaceholder.typicode.com/todos) by [Typicode](https://jsonplaceholder.typicode.com/).
 Typicode serves sample REST JSON data for testing purposes.
 
-At the end of this tutorial, you will be able to use a new command from the Zowe CLI interface: `zowe bp-sample list typicode-todos`
+At the end of this tutorial, you will be able to use a new command from the Zowe CLI interface: `zowe zowe-cli-sample list typicode-todos`
 
 ### Creating a Typescript interface for the Typicode response data
 First, we'll create a Typescript interface to map the response data from a server.
@@ -90,7 +90,7 @@ Issue `npm run build` to verify a clean compilation and confirm that no lint err
 that will be used by your handler or another Node.js application. Next you'll define the command syntax for the command that will use your programmatic Node.js APIs.
 
 ### Defining command syntax 
-Within Zowe CLI, the full command that we want to create is `zowe bp-sample list typicode-todos`. Navigate to `zowe-cli-sample-plugin/src/cli/list` and create a folder
+Within Zowe CLI, the full command that we want to create is `zowe zowe-cli-sample list typicode-todos`. Navigate to `zowe-cli-sample-plugin/src/cli/list` and create a folder
 `typicode-todos`. Within this folder, create `TypicodeTodos.definition.ts`. Its content should be as follows:
 ```typescript
 import { ICommandDefinition } from "@brightside/imperative";
@@ -153,14 +153,14 @@ children: [DirectoryContentsDefinition, TypicodeTodosDefinition]
 Issue `npm run build` to verify a clean compilation and confirm that no lint errors are present. You now have a handler, definition, and your command has been defined to the `list` group of the command.
 
 ## Using the installed plug-in
-Issue the command: `zowe bp-sample list typicode-todos`
+Issue the command: `zowe zowe-cli-sample list typicode-todos`
 
-Look at `zowe bp-sample list --help` for more information about your command and to see how text in the command definition
+Look at `zowe zowe-cli-sample list --help` for more information about your command and to see how text in the command definition
 is presented. You can also see how to use your optional `--id` flag:
 
 ![output](../images/guides/CLI/completedSample.png)
 
-# Summary
+## Summary
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
 For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create tests.
 

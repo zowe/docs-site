@@ -38,7 +38,7 @@ zowe-tutorial
 This process assumes that you already installed Zowe CLI on your PC.
 1. `cd` to your `zowe-tutorial` folder.
 2. `zowe plugins install ./zowe-cli-sample-plugin`
-3. `zowe bp-sample`
+3. `zowe zowe-cli-sample`
    You should see help text displayed if the installation was successful.
 
 ## Next steps

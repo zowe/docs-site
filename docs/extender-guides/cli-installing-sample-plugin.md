@@ -18,12 +18,12 @@ Issue the following commands to install the sample plug-in to Zowe CLI:
 2. `zowe plugins install ./zowe-cli-sample-plugin`
 
 ## Viewing the installed plug-in
-Issue `zowe` in the command line to return information for the installed `bp-sample` command group:
+Issue `zowe` in the command line to return information for the installed `zowe-cli-sample` command group:
 
 ![Installed](../images/guides/CLI/InstalledSample.png "Installed Sample Plugin")
 
 ## Using the installed plug-in
-To use the plug-in functionality, issue: `zowe bp-sample list directory-contents`:
+To use the plug-in functionality, issue: `zowe zowe-cli-sample list directory-contents`:
 
 ![Output](../images/guides/CLI/SampleOutput.png "Sample Plugin Output")
 
