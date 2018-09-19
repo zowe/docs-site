@@ -1,4 +1,4 @@
-# Develop for Zowe CLI
+# Developing for Zowe CLI
 
 You can extend Zowe CLI by developing plug-ins and contributing code to the base CLI or existing plug-ins.
 

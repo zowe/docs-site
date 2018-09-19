@@ -40,6 +40,12 @@ module.exports = {
           'react-sample',
           'angular-sample']
         }        
+        {
+          title: 'Developing for Zowe CLI',
+          collapsable: true,
+          children: ['cli-devTutorials', 'cli-setting-up', 'cli-installing-sample-plugin', 'cli-extending-a-plugin', 'cli-developing-a-plugin',
+          'cli-implement-profiles']
+        }        
       ],
       // '/guides/': [
       //   'intro',

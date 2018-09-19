@@ -164,7 +164,7 @@ is presented. You can also see how to use your optional `--id` flag:
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
 For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create tests.
 
-Completed source can be found on the `typicode-todos` branch of this repo.
+Completed source can be found on the `typicode-todos` branch of the zowe-cli-sample-plugin repository.
 
 ## Next steps
 Try the [Developing a new plug-in](cli-developing-a-plugin.md) tutorial next to create a new plug-in for Zowe CLI.

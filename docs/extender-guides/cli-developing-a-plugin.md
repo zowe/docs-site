@@ -2,21 +2,21 @@
 Before you begin this tutorial, make sure that you completed the [Extending an existing plug-in](cli-extending-a-plugin.md) tutorial. 
 
 ## Overview
-This tutorial demonstrates creating a brand new Zowe CLI plug-in that uses Zowe CLI Node.js programmatic APIs.
+This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Zowe CLI Node.js programmatic APIs.
 
 At the end of this tutorial, you will have created a data set diff utility plug-in for Zowe CLI, from which you can pipe
-your plugin's output to another utility for a side-by-side diff of data set member contents.
+your plugin's output to a third-party utility for a side-by-side diff of data set member contents.
 
 ![Side by Side Diff](../images/guides/CLI/htmlDiff.png)
 
 ### Cloning the sample plug-in source
-Here you'll clone the sample repo, delete the irrelevant source, and make a brand new plug-in. Perform the following:
+ Clone the sample repo, delete the irrelevant source, and create a brand new plug-in. Follow these steps:
 
 1. `cd` into your `zowe-tutorial` folder
 2. `git clone https://github.com/gizafoundation/zowe-cli-sample-plugin files-util`
 3. `cd files-util`
-4. Delete the `.git` (hidden) folder
-5. Delete all content within the `src/api`, `src/cli`, and `docs` folders
+4. Delete the `.git` (hidden) folder.
+5. Delete all content within the `src/api`, `src/cli`, and `docs` folders.
 6. Delete all content within the `__tests__/__system__/api`, `__tests__/__system__/cli`, `__tests__/api`, and `__tests__/cli` folders
 7. `git init`
 8. `git add .`
@@ -24,11 +24,12 @@ Here you'll clone the sample repo, delete the irrelevant source, and make a bran
 
 ### Changing package.json
 Use a unique `npm` name for your plugin. Change `package.json` name field as follows:
+
 ```typescript
   "name": "@brightside/files-util",
 ```
 
-Issue the command `npm install`
+Issue the command `npm install` against the local repository.
 
 ### Adjusting Imperative CLI Framework configuration
 Change `imperative.ts` to contain the following:
@@ -49,13 +50,15 @@ export = config;
 Here we adjusted the description and other fields in the `imperative` JSON configuration to be relevant to this plug-in.
 
 ### Adding third-party packages
+
+We'll use the following packages to create a programmatic API:
+
 - `npm install --save diff`
 - `npm install -D @types/diff`
 
-We'll use these packages to create a programmatic API.
 
 ### Creating a Node.js programmatic API
-In `files-util/src/api` create a file `DataSetDiff.ts`. The content of `DataSetDiff.ts` should be the following:
+In `files-util/src/api`, create a file named `DataSetDiff.ts`. The content of `DataSetDiff.ts` should be the following:
 ```typescript
 import { AbstractSession } from "@brightside/imperative";
 import { Download, IDownloadOptions, IZosFilesResponse } from "@brightside/core";
@@ -108,16 +111,16 @@ export class DataSetDiff {
 ```
 
 ### Exporting your API
-In `files-util/src` change `index.ts` to contain the following:
+In `files-util/src`, change `index.ts` to contain the following:
 ```typescript
 export * from "./api/DataSetDiff";
 ```
 
 ## Checkpoint
-At this point, you should be able to rebuild the plug-in without errors via `npm run build`. You have included third party dependencies, created a programmatic API, and customized this new plug-in project. Next, you'll define the command to invoke your programmatic API.
+At this point, you should be able to rebuild the plug-in without errors via `npm run build`. You included third party dependencies, created a programmatic API, and customized this new plug-in project. Next, you'll define the command to invoke your programmatic API.
 
 ### Defining commands
-In `files-util/src/cli` create a folder named `diff`. Within the `diff` folder, create a file `Diff.definition.ts`. Its content should be as follows:
+In `files-util/src/cli`, create a folder named `diff`. Within the `diff` folder, create a file `Diff.definition.ts`. Its content should be as follows:
 ```typescript
 import { ICommandDefinition } from "@brightside/imperative";
 import { DataSetsDefinition } from "./data-sets/DataSets.definition";
@@ -132,7 +135,7 @@ const IssueDefinition: ICommandDefinition = {
 export = IssueDefinition;
 ```
 
-Also within the `diff` folder create a folder named `data-sets`. Within the `data-sets` folder create `DataSets.definition.ts` and `DataSets.handler.ts`.
+Also within the `diff` folder, create a folder named `data-sets`. Within the `data-sets` folder create `DataSets.definition.ts` and `DataSets.handler.ts`.
 
 `DataSets.definition.ts` should contain:
 ```typescript
@@ -189,7 +192,7 @@ export default class DataSetsDiffHandler implements ICommandHandler {
 ```
 
 ## Trying your command
-Be sure to build your plugin via `npm run build`.
+Be sure to build your plug-in via `npm run build`.
 
 Install your plug-in into Zowe CLI via `zowe plugins install`.
 
