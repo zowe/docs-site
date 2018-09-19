@@ -323,13 +323,15 @@ The following list describes the configuration parameters:
 
     Specifies the relative path to the status page of your service.
     This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
-    Start this path with `/`
+    Start this path with `/`.
 
     **Example:**
     * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
 * **healthCheckRelativeUrl**
 
-    Specifies relative path to health check endpoint of your service. This is the endpoint that you defined in `MfaasController` controller in `getHealth` method. It should start with `/`
+    Specifies the relative path to the health check endpoint of your service. 
+    This is the endpoint that you defined in the `MfaasController` controller in the 
+    `getHealth` method. Start this URL with `/`.
 
     **Example:**
     * `healthCheckRelativeUrl: /application/health`. This results in the URL:
@@ -354,7 +356,7 @@ The following list describes the configuration parameters:
         gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 * **apiInfo.title**
 
-    Specifies the title of your service API
+    Specifies the title of your service API.
 * **apiInfo.description**
 
     Specifies the high-level function description of your service API.
@@ -366,14 +368,17 @@ The following list describes the configuration parameters:
 * **apiInfo.catalogUiTile.id**
 
     Specifies the unique identifier for the API services product family. 
-    This is the grouping value used by the API Layer to group multiple API services together into "tiles". 
+    This is the grouping value used by the API Mediation Layer to group multiple API services 
+    together into "tiles". 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
     Specify a value that does not interfere with API services from other products.
 
 * **apiInfo.catalogUiTile.title**
 
     Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
-
+    
+    **Example:**
+    
     ![Expanded Catalog Tile](diagrams/Expanded-Catalog-Tile.png)
 
 * **apiInfo.catalogUiTile.description**
@@ -391,6 +396,8 @@ The following list describes the configuration parameters:
 
     Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
+    **Example:**
+    
     ![Service Status](diagrams/Service-Status.png)
 
     **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. 
@@ -410,9 +417,9 @@ The following list describes the configuration parameters:
 ## Add context listener
 The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
 the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method when the 
-application is going to shutdown to unregister the application in API Mediation Layer.
+application before the application shuts down to unregister the application in API Mediation Layer.
 
-**Note:** If you do not use Java Servlet API based frameworks you can still call the same methods of `apiMediationClient` 
+**Note:** If you do not use Java Servlet API based frameworks, you can still call the same methods of `apiMediationClient` 
 to register and unregister your application.
 ### Add context listener class
 Add the following code block to add a context listener class:
