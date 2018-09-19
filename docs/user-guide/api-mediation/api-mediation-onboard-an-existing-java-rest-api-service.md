@@ -65,7 +65,6 @@ Use the following procedure if you use Gradle as your build automation system.
     The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
-
     ```gradle
     compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
     ```
