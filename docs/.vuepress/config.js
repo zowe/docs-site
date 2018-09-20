@@ -5,10 +5,10 @@ module.exports = {
   ga: 'UA-123892882-1',
   head: [
     [
-      'link',
+      'meta',
       {
-        rel: 'google-site-verification',
-        href: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
+        name: 'google-site-verification',
+        content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
       }
     ]
   ],
