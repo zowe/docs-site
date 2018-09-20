@@ -125,7 +125,7 @@ With the zos-files command group, you can perform the following tasks:
 - List available mainframe data sets.
 - Interact with VSAM data sets directly, or invoke Access Methods Services (IDCAMS) to work with VSAM data sets.
 
-**Note:** For more information about `zos-console` syntax, actions, and options, open Zowe CLI and issue the following command:
+**Note:** For more information about `zos-files` syntax, actions, and options, open Zowe CLI and issue the following command:
 ```
 zowe zos-files -h
 ```
