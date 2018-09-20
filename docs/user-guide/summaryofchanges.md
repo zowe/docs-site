@@ -7,8 +7,7 @@ Learn about what is new, changed, and removed in Open Beta for Zowe.
 ### What's changed
 **Naming**
 
-- zLUX is renamed to Zowe Application Framework.
-- MVD is renamed to Zowe Zowe Desktop.
+- MVD is renamed to Zowe Desktop.
 
 ## Version 0.9.0 (August 2018)
 

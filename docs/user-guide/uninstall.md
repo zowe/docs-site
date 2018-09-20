@@ -11,7 +11,7 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
 
 **Follow these steps:**
 
-1. The Zowe Application Framework server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
+1. The Zowe Application Server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
 
     - `SIGHUP`
     - `SIGTERM`

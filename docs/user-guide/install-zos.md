@@ -28,7 +28,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
     - Explorer-server has two ports - one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
 
-    - zLUX-server has three ports - the HTTP and HTTPS ports that are used by the Zowe Application Framework window manager server, and the port that is used by the ZSS server.
+    - zlux-server has three ports - the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
 
 
         ```yaml
@@ -145,7 +145,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has three runtime components on z/OS, the explorer server, the Zowe Application Framework server, and API Mediation Layer. When you run the ZOWESVR PROC, it starts all these components. The Zowe Application Framework server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers, and stopping it stops all four.
+Zowe has three runtime components on z/OS, the explorer server, the Zowe Application Server, and API Mediation Layer. When you run the ZOWESVR PROC, it starts all these components. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers, and stopping it stops all four.
 
 ### Starting the ZOWESVR PROC
 
@@ -191,7 +191,7 @@ If you prefer to use SDSF to stop Zowe, stop ZOWESVR by issuing the following op
 /C ZOWESVR
 ```
 
-Either of the methods will stop the explorer server, the Zowe Application Framework server, and the zSS server.
+Either of the methods will stop the explorer server, the Zowe Application Server, and the zSS server.
 
 When you stop the ZOWESVR, you might get the following error message:
 
@@ -223,10 +223,10 @@ From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLU
 
 where:
 
-- _myHost_ is the host on which you installed the Zowe Node Server.
+- _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
-  For example, if the Zowe Node Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
 
 ### Verifying explorer server installation
 

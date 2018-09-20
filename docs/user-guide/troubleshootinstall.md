@@ -95,10 +95,10 @@ To help Zowe research any problems you might encounter, collect as much of the f
  - z/OS release level
  - Job output and dump (if any)
    - Javascript console output (Web Developer toolkit accessible by pressing F12)
-   - Log output from the Zowe Node Server
+   - Log output from the Zowe Application Server
  - Error message codes
  - Screenshots (if applicable)
- - Other relevant information (such as the version of Node.js that is running on the Zowe Node Server and the browser and browser version).
+ - Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version).
 
 ### Troubleshooting installing explorer server
 

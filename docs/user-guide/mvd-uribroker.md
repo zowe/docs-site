@@ -1,6 +1,6 @@
 # URI Broker
 
-The URI Broker is an object in the application plug-in web framework, which facilitates calls to the Zowe Application Server by constructing URIs that use the context from the calling application plug-in.
+The URI Broker is an object in the application plug-in web framework, which facilitates calls to the zLUX Application Server by constructing URIs that use the context from the calling application plug-in.
 
 
 ## Accessing the URI Broker
@@ -23,7 +23,7 @@ The URI Broker builds the following categories of URIs depending upon what the a
 
 ### Accessing an application plug-in's dataservices
 
-Zowe Application Framework dataservices can be based on HTTP (REST) or Websocket. For more information, see [Zowe Application Framework dataservices](mvd-dataservices.md).
+Dataservices can be based on HTTP (REST) or Websocket. For more information, see [zLUX dataservices](mvd-dataservices.md).
 
 #### HTTP Dataservice URI
 
@@ -67,7 +67,7 @@ This can be accessed through:
 
 Returns: A URI for getting static content.
 
-For more information about the `web` directory, see [Zowe Application Framework application plug-in filesystem structure](mvd-plugindefandstruct.md#application-plug-in-filesystem-structure).
+For more information about the `web` directory, see [Application plug-in filesystem structure](mvd-plugindefandstruct.md#application-plug-in-filesystem-structure).
 
 ### Accessing the application plug-in's root
 

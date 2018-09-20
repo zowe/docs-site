@@ -28,13 +28,13 @@ The Zowe Application Framework consists of the following components:
 
     The desktop, accessed through a browser.
 
-- **Zowe Node Server**
+- **Zowe Application Server**
 
-    The Zowe Node Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
+    The Zowe Application Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
 
 - **ZSS Server**
 
-    The ZSS Server provides secure REST services to support the Zowe Node Server.
+    The ZSS Server provides secure REST services to support the Zowe Application Server.
 
 - **Application plug-ins**
 

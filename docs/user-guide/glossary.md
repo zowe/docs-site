@@ -2,16 +2,16 @@
 
 **plug-in** 
    The fundamental element of extensibility of the Zowe Application Framework is a plug-in. << user-guide\mvd-configdataservice.md
-   A plug-in is the unit of extensibility for the server, where an application is a plug-in of the type Application, the most common and visible plug-in type. << user-guide\mvd-zluxappfilesystem.md
+   A plug-in is the unit of extensibility for the server, where an application is a plug-in of the type Application, the most common and visible plug-in type. << user-guide\mvd-appfilesystem.md
    Application plug-ins are plug-ins of the type "application", and therefore the Zowe Desktop operates around a collection of plug-ins. << user-guide\mvd-desktopandwindowmgt.md
 
 **application plug-in** 
    For example, in the Workflow application plug-in under `\zlux-workflow\src\app\app\zosmf-server-config.component.ts` is a `ZosmfServerConfigComponent` class with the pop-up manager service variable. << user-guide\mvd-errorreportingui.md
-   Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*. << user-guide\mvd-zluxplugindefandstruct.md
-   An application plug-in is a plug-in of the type "Application", the most common and visible type of plug-in). << user-guide\mvd-zluxplugindefandstruct.md
+   Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*. << user-guide\mvd-plugindefandstruct.md
+   An application plug-in is a plug-in of the type "Application", the most common and visible type of plug-in). << user-guide\mvd-plugindefandstruct.md
 
 **data set**
-   Submit data sets that contain JCL to Job Entry Subsystem (JES). << user-guide\usingzlux.md
+   Submit data sets that contain JCL to Job Entry Subsystem (JES). << user-guide\mvd-using.md
    Create partitioned data sets (PDS) with members, physical sequential data sets (PS), and other types of data sets from templates. << user-guide\cli-usingcli.md
    You can specify options to customize the data sets you create. << user-guide\cli-usingcli.md
 
@@ -28,9 +28,9 @@
    After you obtain the PAX file, verify the PAX file and prepare it to install the Zowe runtime. << user-guide\gettingstarted.md
 
 **environment variable**
-   When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, The Zowe Application Framework will not override the log names, set a timestamp, or delete the logs. << user-guide\mvd-zluxconfiguration.md
+   When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, The Zowe Application Framework will not override the log names, set a timestamp, or delete the logs. << user-guide\mvd-configuration.md
    From the command line window, set the `IBM_DB_INSTALLER_URL` environment variable by issuing the following command: << user-guide\cli-db2plugin.md
-   Before you build a Zowe Application Framework application plug-in, you must set the UNIX environment variables that support the plug-in environment. << user-guide\mvd-creatingzluxappplugins.md
+   Before you build a Zowe Application Framework application plug-in, you must set the UNIX environment variables that support the plug-in environment. << user-guide\mvd-creatingappplugins.md
 
 **Mediation Layer**
    The API Mediation Layer includes an API Catalog that provides an interface to view all discovered microservices, their associated APIs, and Swagger documentation in a user-friendly manner. << user-guide\overview.md
@@ -48,9 +48,9 @@
    When the Window is created, the application's web content is encapsulated dependant upon its framework type. << user-guide\mvd-mvdandwindowmgt.md
 
 **Proxy Server** 
-   ZSS reads this file directly as a startup argument, while the Zowe Application Framework Proxy Server as defined in the `zlux-proxy-server` repository accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-example-server` repository, the `js/zluxServer.js` file. << user-guide\mvd-zluxconfiguration.md
-   For convenience, the Zowe Application Framework Proxy Server and ZSS read from a JSON file with a common structure. << user-guide\mvd-zluxconfiguration.md
-   ZSS configuration Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Framework Proxy Server. << user-guide\mvd-zluxconfiguration.md
+   ZSS reads this file directly as a startup argument, while the zLUX Proxy Server as defined in the `zlux-proxy-server` repository accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-example-server` repository, the `js/zluxServer.js` file. << user-guide\mvd-configuration.md
+   For convenience, the zLUX Proxy Server and ZSS read from a JSON file with a common structure. << user-guide\mvd-configuration.md
+   ZSS configuration Running ZSS requires a JSON configuration file that is similar or the same as the one used for the zLUX Proxy Server. << user-guide\mvd-configuration.md
 
 **command group** 
    Zowe CLI contains the following command groups: << user-guide\cli-usingcli.md
@@ -71,10 +71,6 @@
    Enabling and disabling experimental Commands Zowe CLI includes experimental commands, which are currently in development and are not ready for general availability. << user-guide\cli-enabledisablexperimentalcommands.md
    Enable experimental commands To enable the experimental commands, issue the following command: << user-guide\cli-enabledisablexperimentalcommands.md
 
-**Zowe Node Server**
-   - _myHost_ is the host on which you installed the Zowe Node Server. << user-guide\install-zos.md
-   - *myHost* is the host on which you are running the Zowe Node Server. << user-guide\usingzlux.md
-
 **Viewport Manager** 
    Actions performed against viewports should be performed through the Viewport Manager. << user-guide\mvd-desktopandwindowmgt.md
    The following are functions of the Viewport Manager: << user-guide\mvd-desktopandwindowmgt.md
@@ -86,9 +82,9 @@
    Using API Catalog As an application developer, use the API Catalog to view what services are running in the API Mediation Layer. << user-guide\api-mediation-api-catalog.md
 
 **configuration file**
-   ZSS configuration Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Framework Proxy Server. << user-guide\mvd-zluxconfiguration.md
-   Yet, to separate configuration files from runtime files, the `zlux-example-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. << user-guide\mvd-zluxconfiguration.md
-   The following attributes are to be defined in the server's JSON configuration file. << user-guide\mvd-zluxconfiguration.md
+   ZSS configuration Running ZSS requires a JSON configuration file that is similar or the same as the one used for the zLUX Proxy Server. << user-guide\mvd-configuration.md
+   Yet, to separate configuration files from runtime files, the `zlux-example-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. << user-guide\mvd-configuration.md
+   The following attributes are to be defined in the server's JSON configuration file. << user-guide\mvd-configuration.md
 
 **third-party plug-in**
    plugins The plugins command group lets you install and manage third-party plug-ins for the product. << user-guide\cli-usingcli.md
@@ -106,14 +102,14 @@
    Create metadata in persistent repository for one or more resource/attribute elements. << user-guide\usingapis.md
 
 **started task** 
-   The Zowe Application Framework server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped. << user-guide\uninstall.md
+   The Zowe Application Server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped. << user-guide\uninstall.md
    The ZOWESVR started task should be running. << user-guide\troubleshootinstall.md
    If the started task is not running, ensure that your ZOWESVR procedure resides in a valid PROCLIB data set, and check the task s job output for errors. << user-guide\troubleshootinstall.md
 
-**Zowe Application Framework Application Server**
-   (A plug-in is the unit of extensibility for the Zowe Application Framework Application Server. << user-guide\mvd-zluxplugindefandstruct.md
-  nodeServer When an application has Dataservices of the type "router", they are interpreted by the Zowe Application Framework Application Server by attaching them as ExpressJS routers. << user-guide\mvd-zluxappfilesystem.md
-   nodeServer When an application plug-in has router-type dataservices, they are interpreted by the Zowe Application Framework Application Server by attaching them as ExpressJS routers. << user-guide\mvd-zluxplugindefandstruct.md
+**Zowe Application Server**
+   (A plug-in is the unit of extensibility for the Zowe Application Server. << user-guide\mvd-plugindefandstruct.md
+  nodeServer When an application has Dataservices of the type "router", they are interpreted by the Zowe Application Server by attaching them as ExpressJS routers. << user-guide\mvd-appfilesystem.md
+   nodeServer When an application plug-in has router-type dataservices, they are interpreted by the Zowe Application Server by attaching them as ExpressJS routers. << user-guide\mvd-plugindefandstruct.md
 
 **Zowe Desktop**
    The Zowe Desktop presents a taskbar at the bottom of the page, where it presents each applications as an icon with a description. << user-guide\mvd-mvdandwindowmgt.md
