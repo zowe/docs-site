@@ -19,37 +19,67 @@ module.exports = {
     editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
+    activeHeaderLinks: false,
+    displayAllHeaders: true, // Default: false
     nav: [
-      { text: 'Developer Tutorials', link: '/guides/intro' },
+      { text: 'Zowe Extenders', link: '/extender-guides/architecture' },
+      // { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
       { text: 'User Guide', link: '/user-guide/aboutthisdoc' },
       { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
     sidebar: {
-      '/guides/': [
-        'intro',
+      '/extender-guides/': [
         {
-          title: 'Getting Started with zLUX',
-          collapsable: true,
-          children: ['zlux-example-server', 'zlux-workshop-user-browser']
+          title: 'Zowe Extenders Guide',
+          collapsable: false,
+          children: ['architecture','onboarding',
+            'moreinfo','deliver']
         },
         {
-          title: 'Provide Liberty APIs',
+          title: 'Onboarding Examples',
           collapsable: true,
-          children: ['libertyAPI', 'ReactJSUI']
+          children: ['libertyAPI','ReactJSUI', 'api-mediation-usingapiml','zlux-example-server', 'zlux-workshop-user-browser']
         },
         {
-          title:
-            'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
+          title: 'Virtual Desktop Examples',
           collapsable: true,
-          children: ['api-mediation-usingapiml']
-        },
+          children: ['starter-intro', 'zlux-workshop-starter-app.md', 'ui-intro',
+          'iframe-sample',
+          'react-sample',
+          'angular-sample']
+        },   
         {
-          title: 'Coming Soon',
+          title: 'Developing for Zowe CLI',
           collapsable: true,
-          children: ['cli-developPlugins']
-        }
+          children: ['cli-devTutorials', 'cli-setting-up', 'cli-installing-sample-plugin', 'cli-extending-a-plugin', 'cli-developing-a-plugin',
+          'cli-implement-profiles']
+        }        
       ],
+      // '/guides/': [
+      //   'intro',
+      //   {
+      //     title: 'Getting Started with zLUX',
+      //     collapsable: true,
+      //     children: ['zlux-example-server', 'zlux-workshop-user-browser']
+      //   },
+      //   {
+      //     title: 'Provide Liberty APIs',
+      //     collapsable: true,
+      //     children: ['libertyAPI', 'ReactJSUI']
+      //   },
+      //   {
+      //     title:
+      //       'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
+      //     collapsable: true,
+      //     children: ['api-mediation-usingapiml']
+      //   },
+      //   {
+      //     title: 'Coming Soon',
+      //     collapsable: true,
+      //     children: ['cli-developPlugins']
+      //   }
+      // ],
       '/samples/': [
         'intro',
         {

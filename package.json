@@ -13,5 +13,8 @@
   "license": "MIT",
   "devDependencies": {
     "vuepress": "^0.14.1"
+  },
+  "dependencies": {
+    "bundle": "^2.1.0"
   }
 }
