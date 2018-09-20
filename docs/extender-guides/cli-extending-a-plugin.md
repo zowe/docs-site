@@ -43,7 +43,7 @@ import { RestClient, AbstractSession, ImperativeExpect, Logger } from "@brightsi
 
 export class Typicode {
 
-    public static readonly TODO_URI = "/todo";
+    public static readonly TODO_URI = "/todos";
 
     public static getTodos(session: AbstractSession): Promise<ITodo[]> {
         Logger.getAppLogger().trace("Typicode.getTodos() called");
