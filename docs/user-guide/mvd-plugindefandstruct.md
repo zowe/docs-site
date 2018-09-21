@@ -1,6 +1,6 @@
 # zLUX plug-ins definition and structure
 
-The zLUX Application Server (`zlux-proxy-server`)  enables extensiblity with application plug-ins. Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*.
+The zLUX Application Server (`zlux-proxy-server`) enables extensiblity with application plug-ins. Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*.
 
 The files that define a plug-in are located in the `pluginsDir` directory. 
 
@@ -47,7 +47,7 @@ The files that define a plug-in are located in the `pluginsDir` directory.
 
 ### pluginsDir directory
 
-At start up, the server reads from the `pluginsDir` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
+At startup, the server reads from the `pluginsDir` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
 
 Within the `pluginsDir` directory are a collection of JSON files. Each file has two attributes, which serve to locate a plug-in on disk:
 

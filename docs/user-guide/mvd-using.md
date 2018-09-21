@@ -1,6 +1,6 @@
 # Using the Zowe Application Framework
 
-the Zowe Application Framework provides the ability to create application plug-ins. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
+The Zowe Application Framework provides the ability to create application plug-ins. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
 

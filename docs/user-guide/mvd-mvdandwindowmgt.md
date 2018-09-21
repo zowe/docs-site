@@ -8,7 +8,7 @@ The interface for building an alternative window manager is in the `zlux-platfor
 
 Window Management acts upon Windows, which are visualizations of an instance of an application. Applications are plug-ins of type "application", and therefore the Zowe Desktop operates around a collection of plug-ins.
 
-**NOTE: Other objects and frameworks that can be utilized by applications, but not related to Window Management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.**
+**Note:** Other objects and frameworks that can be utilized by applications, but not related to Window Management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.
 
 # Loading and presenting applications
 

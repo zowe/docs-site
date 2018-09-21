@@ -14,7 +14,7 @@ node --version
 
 If the version is returned, the node is already on the PATH.  
 
-If nothing is returned from the command, you can set the PATH using the *NODE_HOME* variable. The *NODE_HOME* variable must be set to the directory of the node install. You can use the export command to set the directory. For example: 
+If nothing is returned from the command, you can set the PATH using the *NODE_HOME* variable. The *NODE_HOME* variable must be set to the directory of the node install. You can use the `export` command to set the directory. For example: 
 
 ```
 export NODE_HOME=node_installation_directory
@@ -32,9 +32,9 @@ To build the sample application plug-in, node and npm must be included in the PA
 
 - If you change the source code for the sample application, you must rebuild it.
 
-- If you want to modify `sample-app`, you must run `_npm install_` in the virtual desktop and the `sample-app/webClient`. Then, you can run `_npm run build_` in `sample-app/webClient`.
+- If you want to modify `sample-app`, you must run `_npm install_` in the Zowe Desktop and the `sample-app/webClient`. Then, you can run `_npm run build_` in `sample-app/webClient`.
 
-- Ensure that you set the `MVD_DESKTOP_DIR` system variable to the virtual desktop plug-in location. For example: `<ZLUX_CAP>/zlux-app-manager/virtual-desktop`.
+- Ensure that you set the `MVD_DESKTOP_DIR` system variable to the Zowe Desktop plug-in location. For example: `<ZLUX_CAP>/zlux-app-manager/virtual-desktop`.
 
 1.   Add an item to `sample-app`. The following figure shows an excerpt from `app.component.ts`:
 
