@@ -1,46 +1,42 @@
 # Onboarding an existing REST API service without code changes
 
-As a user of Zowe API Mediation Layer, use this guide to onboard a REST API service into the Zowe API Mediation Layer without a need to change the code of the API service. This article outlines a step-by-step process to make any API service available in the API Mediation Layer.
+As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe API Mediation Layer without changing the code of the API service. This article outlines a step-by-step process to make any API service available in the API Mediation Layer.
 
 The following procedure is an overview of steps to onboard a REST API application with the API Mediation Layer. 
 
-After completing the procedure, one or more REST APIs provided by your service will be accessible via the API Gateway.
+Provide access to your service's REST APIs through the API Gateway by following this procedure.
 
 **Follow these steps:**
 
-1. Identify what is the API that you want to expose
+1. Identify the API that you want to expose
 2. Define the service and API in the YAML format
 3. Add and validate the definition in the API Mediation Layer
 4. (Optional) Check the log of the API Mediation Layer
 5. (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
 
-## Identify what is the API that you want to expose
+## Identify the API that you want to expose
 
-An API is an application programming interface. It is a set of rules that allow programs to talk to each other. The developer creates the API on the server and allows the client to talk to it.
+An API or application programming interface is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows the client to talk to the API. Representational State Transfer (REST) determines the look of the API. REST is a set of rules that developers follow when creating an API.  One of these rules states that a user should be able to get a piece of data (called a resource) accessible via URL endpoints through HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe is in JSON format.
 
-REST determines how the API looks like. It stands for “Representational State Transfer”. It is a set of rules that developers follow when they create their API. One of these rules states that you should be able to get a piece of data (called a resource) when you link to a specific URL.
-
-REST APIs are accessed via HTTP and the resources are usually represented in the form of JSON or XML documents. JSON documents are preferred in the Zowe.
-
-We follow the same definitions as in the [OpenAPI specification](https://swagger.io/specification/). A REST API is a set of resources that can be accessed by URL endpoints.
+Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server. A web server can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of a _web application server_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
+REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server which can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of a _web application server_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
 
 ![REST API Components](diagrams/rest-api-components.svg)
 
-In the microservices architecture, a web server usually provides one service. A typical example of such implementation is a Spring Boot web application. We will be using the following example of a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
+In the microservices architecture, a web server usually provides one service. A typical example of such implementation is a Spring Boot web application. The following example uses a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
 
 You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md) or you can use another existing service.
 
-The sample service has its base URL. If you start this service on your computer then the _service base URL_ is http://localhost:8080. In case of a service deployed to an application server, the base URL of the service (application) can be `http://application-server-hostname:port/application-name.`
+The sample service has its base URL. If you start this service on your computer then the _service base URL_ is http://localhost:8080. If a service deployed to an application server, the base URL of the service (application) can be `http://application-server-hostname:port/application-name.`
 
-This service provides one API that has base path `/v2` and it means that the base URL of the API is http://localhost:8080/v2.
+This service provides one API that has the base path `/v2` whereby the base URL of the API is http://localhost:8080/v2.
 
-The API is very simple and it provides only one endpoint:
+The API provides only one endpoint:
 
-- `/pets/{id}` - *Find pet by ID* - Returns a pet when 0 < ID <= 10. ID > 10 or non-integers will simulate API error conditions
+- `/pets/{id}` - *Find pet by ID*. This endpoint returns a pet when 0 < ID <= 10. ID > 10 or when non-integers simulate API error conditions.
 
 You can access http://localhost:8080/v2/pets/1 and you will get the following response:
 
