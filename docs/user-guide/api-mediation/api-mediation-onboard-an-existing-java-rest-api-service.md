@@ -252,7 +252,7 @@ statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 discoveryServiceUrls:
     - http://eureka:password@localhost:10011/eureka
-routedServices:
+routes:
 - gatewayUrl: api/v1
   serviceUrl: /hellospring/api/v1
 
@@ -341,14 +341,14 @@ The following list describes the configuration parameters:
 
     **Example:**
     * `http://eureka:password@141.202.65.33:10311/eureka/`
-* **routedServices**
+* **routes**
 
     The routing rules between the gateway service and your service.
-    * **routedServices.gatewayUrl**
+    * **routes.gatewayUrl**
     
         Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
         gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-    * **routedServices.serviceUrl**
+    * **routes.serviceUrl**
     
         Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
         gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
