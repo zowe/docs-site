@@ -90,7 +90,7 @@ services:
     - serviceId: petstore
       instanceBaseUrls:
         - http://localhost:8080
-      routedServices:
+      routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
 ```
@@ -172,19 +172,19 @@ The following list describes the configuration parameters:
     * `healthCheckRelativeUrl: /application/health`. This results in the URL:
     `${baseUrl}/application/health`
     
-* **routedServices**
+* **routes**
 
     The routing rules between the gateway service and your service.
 
-    * **routedServices.gatewayUrl**
+    * **routes.gatewayUrl**
     
-        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _gateway-url_ parameter sets the target endpoint on the gateway.
 
-    * **routedServices.serviceUrl**
+    * **routes.serviceUrl**
     
-        Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _service-url_ parameter points to the target endpoint on the gateway.
 
 
 ## Add and validate the definition in the API Mediation Layer
