@@ -22,11 +22,11 @@ An API or application programming interface is a set of rules that allow program
 Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server which can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of a _web application server_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
+REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server which can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of _web application servers_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
 
 ![REST API Components](diagrams/rest-api-components.svg)
 
-In the microservices architecture, a web server usually provides one service. A typical example of such implementation is a Spring Boot web application. The following example uses a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
+In microservice architecture, a web server usually provides one service. A typical example of such implementation is a Spring Boot web application. The following example uses a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
 
 You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md) or you can use another existing service.
 
@@ -66,7 +66,7 @@ Access http://localhost:8080/v2/pets/1 to get the following response:
 }
 ```
 
-The following example defines a new REST API service in the API Mediation Layer. This service will provide one REST API.
+The following example defines a new REST API service in the API Mediation Layer. This service generates one REST API.
 
 A service is identified in the API Gateway by its `service ID`. Service ID is an alphanumeric string in lowercase ASCII (for example `petstore`). The API Gateway differentiates different major versions of the API. To access version 2 of the `petstore` API you use the following gateway URL:
 
