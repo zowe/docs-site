@@ -45,7 +45,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
   zowe plugins validate cics
   ```
 
-  Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
+  Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
 
 To validate that the plug-in installed successfully, issue the following command:
 
@@ -62,7 +62,7 @@ A `cics` profile is required to issue commands in the CICS group that interact w
 Issue the following command to create a cics profile: 
 
 ```
-zowe profiles create cics <profile name> <host> <port> <user> <password>
+zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
 **Note:** For more information about the` `syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
@@ -145,7 +145,7 @@ zowe cics get -h
 Return a list of program resources from a CICS region named MYREGION:
 
 ```
-zowe cis get resource CICSProgram --region-name MYREGION
+zowe cics get resource CICSProgram --region-name MYREGION
 ```
 
 ### Installing resources to CICS
