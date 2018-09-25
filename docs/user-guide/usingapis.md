@@ -38,17 +38,6 @@ Use Jobs APIs to view the information and files of jobs, and submit and cancel j
 |`POST /Atlas/api/jobs`|Submit a job and get the job ID back. Use this API to submit a partitioned data set member or UNIX™ file.|z/OSMF restjobs|
 |`DELETE /Atlas/api/jobs/{jobName}/{jobId}`|Cancel a job and purge its associated files. Use this API to purge a submitted job and the logged output files that it creates to free up space.|z/OSMF Running Common Information Model \(CIM\) server|
 
-### Persistent Data APIs
-
-Use Persistent Data APIs to create, read, update, delete metadata from persistent repository. See the following table for the operations available in Persistent Data APIs and their descriptions and prerequisites.
-
-|REST API|Description|Prerequisite|
-|--------|-----------|-------------|
-|`PUT /Atlas/api/data`|Update metadata in persistent repository for a given resource and attribute name. With explorer server, you can store and retrieve persistent data by user, resource name, and attribute. A resource can have any number of attributes and associated values. Use this API to set a value for a single attribute of a resource. You can specify the resource and attribute names.|None|
-|`POST /Atlas/api/data`|Create metadata in persistent repository for one or more resource/attribute elements. Use this API to set a group of resource or attributes values.|None|
-|`GET /Atlas/api/data`|Retrieve metadata from persistent repository for a given resource \(and optional attribute\) name. Use this API to get all the attribute values or any particular attribute value for a given resource.|None|
-|`DELETE /Atlas/api/data`|Remove metadata from persistent repository for a resource \(and optional attribute\) name. Use this API to delete all the attribute values or any particular attribute value for a given resource.|None|
-
 ### System APIs
 
 Use System APIs to view the version of explorer server. See the following table for available operations and their descriptions and prerequisites.
@@ -71,11 +60,10 @@ Use USS File APIs to create, read, update, and delete USS files. See the followi
 
 ### z/OS System APIs
 
-Use z/OS system APIs to view information about CPU, PARMLIB, SYSPLEX, and USER. See the following table for available operations and their descriptions and prerequisites.
+Use z/OS system APIs to view information about PARMLIB, SYSPLEX, and USER. See the following table for available operations and their descriptions and prerequisites.
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`GET /Atlas/api/zos/cpu`|Get current system CPU usage. Use this API to get the current system CPU usage and other current system statistics.|None|
 |`GET /Atlas/api/zos/parmlib`|Get system PARMLIB information. Use this API to get the PARMLIB data set concatenation of the target z/OS system.|None|
 |`GET /Atlas/api/zos/sysplex`|Get target system sysplex and system name. Use this API to get the system and sysplex names.|None|
 |`GET /Atlas/api/zos/username`|Get current userid. Use this API to get the current user ID.|None|
