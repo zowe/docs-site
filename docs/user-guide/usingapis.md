@@ -60,7 +60,7 @@ Use USS File APIs to create, read, update, and delete USS files. See the followi
 
 ### z/OS System APIs
 
-Use z/OS system APIs to view information about CPU, PARMLIB, SYSPLEX, and USER. See the following table for available operations and their descriptions and prerequisites.
+Use z/OS system APIs to view information about PARMLIB, SYSPLEX, and USER. See the following table for available operations and their descriptions and prerequisites.
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
