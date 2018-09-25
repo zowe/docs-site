@@ -1,22 +1,31 @@
-# Onboarding an existing Java Spring REST API service without Spring Boot 
+# Onboarding an existing Java REST API service without Spring Boot 
 
-As an API developer, use this guide to onboard your Java Spring REST API service that is built without Spring Boot into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
+As an API developer, use this guide to onboard your Java REST API service that is built without Spring Boot into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
 The following procedure is an overview of steps to onboard a Java REST API application with the API Mediation Layer. 
 
 **Follow these steps:**
 
-1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
+1. [Prerequisites](#prerequisites)
+2. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
-2. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
-3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
-5. [Add context listener](#add-context-listener)
+3. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
+4. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
+5. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
+6. [Add context listener](#add-context-listener)
     1. [Add context listener class](#add-context-listener-class)
     2. [Register a listener](#register-a-listener)
-6. [Run your service](#run-your-service)
-7. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
+7. [Run your service](#run-your-service)
+8. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
+
+
+## Prerequisites
+You need to have REST API service that is written with Java language.
+Also you need to have way to generate and serve Swagger documentation with REST endpoint.
+This guide uses Spring Framework as example of REST API service example.
+If you have other framework that is based on Servlet API you can use `ServletContextListener` that is described in this instruction.
+If you are using some other framework that that don't have `ServletContextListener` class, check the [add context listener](#add-context-listener) section to details how to register and unregister your service in API Mediation Layer.
 
 ## Get enablers from the Artifactory
 
@@ -40,8 +49,8 @@ Use the following procedure if you use Gradle as your build automation system.
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
     
     # Artifactory credentials for builds:
-    mavenUser={username}
-    mavenPassword={password}
+    mavenUser=apilayer-build
+    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
     ```
 
     This file specifies the URL for the repository of the Artifactory. The enabler-java artifacts are downloaded from this repository.
@@ -114,8 +123,8 @@ Use the following procedure if you use Maven as your build automation system.
     <servers>
         <server>
            <id>libs-release</id>
-           <username>{username}</username>
-           <password>{password}</password>
+           <username>apilayer-build</username>
+           <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
         </server>
     </servers>
     </settings>
@@ -176,16 +185,18 @@ If your application already has Swagger documentation enabled, skip this step. U
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(new ApiInfo(
-                    "Spring REST API",
-                    "Spring REST API documentation",
-                    "1.0.0",
-                    "",
-                    new Contact("Company", "http://example.com", ""),
-                    "MIT",
-                    "https://opensource.org/licenses/MIT",
-                    new ArrayList<>()
-                ));
+                .apiInfo(
+                    new ApiInfo(
+                        "Spring REST API",
+                        "Example of REST API",
+                        "1.0.0",
+                        null,
+                        null,
+                        null,
+                        null,
+                        new ArrayList<>()
+                    )
+                );
         }
     }
     ```
@@ -246,6 +257,8 @@ Add the following `service-configuration.yml` file to your resources directory:
 
 ```yaml
 serviceId: hellospring
+title: HelloWorld Spring REST API
+description: POC for exposing a Spring REST API
 baseUrl: http://localhost:10020/hellospring
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
@@ -262,14 +275,11 @@ apiInfo:
     title: HelloWorld Spring
     description: REST API for a Spring Application
     version: 1.0.0
-    catalogUiTile:
-        id: helloworld-spring
-        title: HelloWorld Spring REST API
-        description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-        version: 1.0.0
-    serviceInfo:
-        title: HelloWorld Spring REST API
-        description: POC for exposing a Spring REST API
+catalogUiTile:
+    id: helloworld-spring
+    title: HelloWorld Spring REST API
+    description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+    version: 1.0.0
 ```
 
 Change configuration parameters to correspond with your API service specifications.
@@ -298,6 +308,28 @@ The following list describes the configuration parameters:
         ```
         http://gateway:port/api/v1/vantageprod1/endpoint1/...
         ```
+* **title**
+
+    Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+    **Example:**
+    
+    ![Service Status](diagrams/Service-Status.png)
+
+    **Tip:** We recommend that you provide a specific default value of the `title`.
+    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+
+* **description**
+
+    Specifies a short description of the API service.
+
+    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+
+    This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+
+    **Tip:** We recommend that you provide a specific default value.
+    Describe the service so that the end user knows the function of the service.
+
 * **baseUrl**
 
     Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
@@ -371,7 +403,7 @@ The following list describes the configuration parameters:
     Each unique identifier represents a single API Catalog UI dashboard tile. 
     Specify a value that does not interfere with API services from other products.
 
-* **apiInfo.catalogUiTile.title**
+* **catalogUiTile.title**
 
     Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
     
@@ -379,38 +411,16 @@ The following list describes the configuration parameters:
     
     ![Expanded Catalog Tile](diagrams/Expanded-Catalog-Tile.png)
 
-* **apiInfo.catalogUiTile.description**
+* **catalogUiTile.description**
 
     Specifies the detailed description of the API services product family. 
     This value is displayed in the API catalog UI dashboard as the tile description.
 
-* **apiInfo.catalogUiTile.version**
+* **catalogUiTile.version**
 
     Specifies the semantic version of this API Catalog tile. 
     Increase the number of the version when you introduce new changes to the product family details of the API services 
     including the title and description.
-
-* **apiInfo.serviceInfo.title**
-
-    Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
-
-    **Example:**
-    
-    ![Service Status](diagrams/Service-Status.png)
-
-    **Tip:** We recommend that you provide a specific default value of the `serviceInfo.title`.
-    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
-
-* **apiInfo.serviceInfo.description**
-
-    Specifies a short description of the API service.
-
-    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
-
-    This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
-
-    **Tip:** We recommend that you provide a specific default value.
-    Describe the service so that the end user knows the function of the service.
 
 ## Add context listener
 The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
