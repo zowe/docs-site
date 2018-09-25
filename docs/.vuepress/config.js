@@ -3,6 +3,15 @@ module.exports = {
   base: '/docs-site/',
   description: 'Home of Zowe documentation',
   ga: 'UA-123892882-1',
+  head: [
+    [
+      'meta',
+      {
+        name: 'google-site-verification',
+        content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
+      }
+    ]
+  ],
   themeConfig: {
     docsDir: 'docs',
     repo: 'https://github.com/zowe/docs-site',
@@ -129,7 +138,12 @@ module.exports = {
         {
           title: 'Extending Zowe CLI',
           collapsable: true,
-          children: ['cli-extending', 'cli-installplugins', 'cli-cicsplugin', 'cli-db2plugin']
+          children: [
+            'cli-extending',
+            'cli-installplugins',
+            'cli-cicsplugin',
+            'cli-db2plugin'
+          ]
         }
       ],
       '/': ['about']
