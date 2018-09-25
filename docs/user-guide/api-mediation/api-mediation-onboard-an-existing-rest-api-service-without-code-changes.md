@@ -32,13 +32,13 @@ You can build this service using instructions in the source code of that example
 
 The sample service has its base URL. If you start this service on your computer then the _service base URL_ is http://localhost:8080. If a service deployed to an application server, the base URL of the service (application) can be `http://application-server-hostname:port/application-name.`
 
-This service provides one API that has the base path `/v2` whereby the base URL of the API is http://localhost:8080/v2.
+This service provides one API that has the base path `/v2` which is represented in the base URL of the API as http://localhost:8080/v2.
 
-The API provides only one endpoint:
+This API provides only one endpoint:
 
 - `/pets/{id}` - *Find pet by ID*. This endpoint returns a pet when 0 < ID <= 10. ID > 10 or when non-integers simulate API error conditions.
 
-You can access http://localhost:8080/v2/pets/1 and you will get the following response:
+Access http://localhost:8080/v2/pets/1 to get the following response:
 
 ```json
 {
@@ -66,24 +66,24 @@ You can access http://localhost:8080/v2/pets/1 and you will get the following re
 }
 ```
 
-We are going to define a new REST API service to the API Mediation Layer. This service will provide one REST API.
+The following example defines a new REST API service in the API Mediation Layer. This service will provide one REST API.
 
 A service is identified in the API Gateway by its `service ID`. Service ID is an alphanumeric string in lowercase ASCII (for example `petstore`). The API Gateway differentiates different major versions of the API. To access version 2 of the `petstore` API you use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
 
-The base URL of the version 2 of the `petstore` API is at the sample service is:
+The base URL of the version 2 of the `petstore` API is:
 
     http://localhost:8080/v2
 
-The API Gateway will be routing REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
+The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
 
-As the user of the API Gateway, you will be accessing the service only with the gateway URL. This will enable you to access the service via a stable URL and move the service to another machine without changing the gateway URL or have multiple instances of the service running on different machines to achieve high-availability.
+As the user of the API Gateway, you access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the APU Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 
 ## Define the service and API in the YAML format
 
-The define the sample `petstore` service described above, you need to provide the following definition in a YAML file:
+To define the sample `petstore` service described above, you need to provide the following definition in a YAML file:
 
 ```yaml
 services:
@@ -95,13 +95,13 @@ services:
           serviceRelativeUrl: /v2
 ```
 
-The file can be named for example `petstore.yml`. The filename is name is not important but it needs to have the `.yml` extension.
+In this example, the file can be named `petstore.yml`. The filename does not need to follow specific naming conventions but it needs to have the `.yml` extension.
 
-The file can contain one or more services defined under `services:` node.
+The file can contain one or more services defined under the `services:` node.
 
-Each service has its own service ID (`petstore` in this example). The service can have one or more instances (in this case we have only one instance at `http://localhost:8080`).
+Each service has its own service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, onlu one instance `http://localhost:8080` is used.
 
-The service can provide multiple APIs that are routed by the API Gateway. In this case requests with relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the service (full URL: `http://localhost:8080/v2/...`).
+A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
 There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
