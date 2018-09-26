@@ -96,6 +96,7 @@ module.exports = {
             'installandconfig',
             'installroadmap',
             'systemrequirements',
+            'zosmf-lite',
             'gettingstarted',
             'install-zos',
             'cli-installcli',
@@ -144,6 +145,14 @@ module.exports = {
             'cli-cicsplugin',
             'cli-db2plugin'
           ]
+        },
+        {
+        title: 'Appendix',
+          collapsable: true,
+          children: [
+            'appendix'
+          ]
+        
         }
       ],
       '/': ['about']
