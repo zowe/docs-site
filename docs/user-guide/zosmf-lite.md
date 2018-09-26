@@ -29,7 +29,7 @@ This document is designed for use with a single z/OS system, not a z/OS sysplex.
 It is assumed that a basic level of security for z/OSMF is sufficient on the z/OS system. IBM provides a program, IZUSECEZ, to help you set up basic security for a z/OSMF Lite configuration.
 
 
-System defaults are used for the z/OSMF environmental settings. Wherever possible, it is recommended that you use the default values. If necessary, however, you can override the defaults by supplying an IZUPRMxx member, as described in [Appendix A. Creating a IZUPRMxx parmlib member](#appendix-a:-optional:-creating-a-izuprmxx-parmlib-member).  
+System defaults are used for the z/OSMF environmental settings. Wherever possible, it is recommended that you use the default values. If necessary, however, you can override the defaults by supplying an IZUPRMxx member, as described in [Appendix A. Creating a IZUPRMxx parmlib member](#appendix-a.-creating-an-izuprmxx-parmlib-member).  
 
 It is recommended that you use the following procedures as
 provided by IBM:
@@ -46,7 +46,7 @@ Setting up z/OSMF Lite requires that you have access to a z/OS V2R2 system or la
 
 ## Minimum Java level
 
-Java™ must be installed and operational on your z/OS system, at the required minimum level. See the table that follows for the minimum level and default location. If you installed Java in another location, you must specify the JAVA_HOME statement in your IZUPRMxx parmlib member, as described in [Appendix A. Creating a IZUPRMxx parmlib member](#appendix-a:-optional:-creating-a-izuprmxx-parmlib-member).     
+Java™ must be installed and operational on your z/OS system, at the required minimum level. See the table that follows for the minimum level and default location. If you installed Java in another location, you must specify the JAVA_HOME statement in your IZUPRMxx parmlib member, as described in [Appendix A. Creating a IZUPRMxx parmlib member](#appendix-a.-creating-an-izuprmxx-parmlib-member).   
 
 **z/OS Version** | **Minimum level of Java™**  | **Recommended level of Java**  | **Default location**  
 ---|---|---|---
@@ -60,7 +60,7 @@ z/OS V2R3        | IBM® 64-bit SDK for z/OS®, Java™ Technology Edition, V8 S
 
 z/OSMF V2R3 uses the Liberty Profile that is supplied with z/OS, rather than its own copy of Liberty. The WebSphere Liberty profile must be mounted on your z/OS system. The default mount point is: `/usr/lpp/liberty_zos`. To determine whether WebSphere® Liberty profile is mounted, check for the existence of the mount point directory on your z/OS system.
 
-If WebSphere® Liberty profile is mounted at a non-default location, you need to specify the location in the IZUSVR1 started procedure on the keyword **WLPDIR=**. For details, see [Appendix B. Modifying IZUSVR1 settings](#appendix-b.-modifying-IZUSVR1-settings).
+If WebSphere® Liberty profile is mounted at a non-default location, you need to specify the location in the IZUSVR1 started procedure on the keyword **WLPDIR=**. For details, see [Appendix B. Modifying IZUSVR1 settings](#appendix-b.-modifying-izusvr1-settings).
 
 Note: Whenever you apply PTFs for z/OSMF, you might be prompted to install outstanding WebSphere Liberty service. It is recommended that you do so to maintain z/OSMF functionality.
 
@@ -72,7 +72,7 @@ Ensure that the z/OS host system meets the following requirements:
 
 -   The system host name is unique and maps to the system on which z/OSMF Lite will be configured.
 
-Otherwise, you might encounter errors later in the process. If you encounter errors, see [Troubleshooting problems](#Troubleshooting-problems) for the corrective actions to take.
+Otherwise, you might encounter errors later in the process. If you encounter errors, see [Troubleshooting problems](#troubleshooting-problems) for the corrective actions to take.
 
 ## Web browser
 
@@ -156,7 +156,7 @@ earlier system, the job mounts the file system at mount point `/var/zosmf`.
 
 To perform this step, you need a user ID with “superuser” authority on the z/OS
 host system. For more information about how to define a user with superuser
-authority, see the publication [z/OS UNIX System Services](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
+authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
 
 ### Procedure
 
@@ -188,7 +188,7 @@ Review the following messages and the corresponding resolutions as needed
 
 **Symptom**   | **Cause**    | **Resolution**       
 ---|---|---
-Job fails with FSM error (message ??????). | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [z/OS UNIX System Services](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
+Job fails with FSM error (message ??????). | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
 Job fails with an authorization error (message ??????). | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems)      
 Another problem…    | User ID missing USS segment|
 Another problem…                      |                                                                                                    Another problem…                                        |                                         |                                                                                                              
@@ -360,7 +360,7 @@ Error message is displayed in the browser session: Secure Connection Failed. | S
 
 ## Mounting the z/OSMF user file system at IPL time
 
-Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-IZUMKFS-to-create-the-z/OSMF-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, you make an update to the BPXPRMxx parmlib member on your z/OS system, as described in this topic.
+Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z/osmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, you make an update to the BPXPRMxx parmlib member on your z/OS system, as described in this topic.
 
 ###  Before you begin
 
@@ -446,7 +446,7 @@ The z/OSMF JOB REST services are enabled. To verify, open a web browser to our z
 
 `GET /zosmf/restjobs/jobs`
 
-The result is a list of the jobs that are owned by your user ID. For more information about the z/OSMF JOB REST services, see [z/OSMF Programming Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTJOBS.htm).
+The result is a list of the jobs that are owned by your user ID. For more information about the z/OSMF JOB REST services, see [_z/OSMF Programming Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTJOBS.htm).
 
 
 ### Common errors
@@ -627,12 +627,12 @@ At this point, you have completed the setup of z/OSMF Lite.
 # successful
 At this point, you have completed the setup of z/OSMF Lite.
 
-Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#Appendix-C.-Adding-more-users-to-z/OSMF).
+Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#appendix-c/.-Adding-more-users-to-z//osmf).
 
 
 # Troubleshooting problems
 
-This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 ## Common problems and scenarios
 
@@ -640,19 +640,19 @@ This document assumes that the following is true of the z/OS host system:
 
 -   Port 443 is available for use. To check this, issue NETSTAT with option ? to determine if the port is being used.
 
--   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter the command HOST at the operations console. If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+-   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter the command HOST at the operations console. If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 -   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`
 
-If you find that a different value is used on your z/OS system, you can edit the IZUPRMxx parmlib member to specify the correct setting. For details, see [Appendix A. Creating a IZUPRMxx parmlib member](#Appendix-A.-Creating-a-IZUPRMxx-parmlib-member).
+If you find that a different value is used on your z/OS system, you can edit the IZUPRMxx parmlib member to specify the correct setting. For details, see [Appendix A. Creating an IZUPRMxx parmlib member](#appendix-a.-creating-an-IZUPRMxx-parmlib-member).
 
 ## Tools and techniques for troubleshooting
 
-For information about working with z/OSMF log files, see [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+For information about working with z/OSMF log files, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 Common messages
 TBD: Insert the message IDs of all error messages that are encountered during FVT testing of this document.   
-For descriptions of all the z/OSMF messages, see the following link in IBM Knowledge Center: https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zosmfmessages.help.doc/izuG00hpMessages.html
+For descriptions of all the z/OSMF messages, see [z/OSMF messages](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zosmfmessages.help.doc/izuG00hpMessages.html) in IBM Knowledge Center.
 
 
 # Appendix A. Creating an IZUPRMxx parmlib member
@@ -673,9 +673,9 @@ The following setting is needed for the TSO/E REST services:
 
 -   COMMON_TSO ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
 
-Descriptions of these settings are provided in the table below. For complete details about the IZUPRMxx settings and the proper syntax for updating the member, see [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+Descriptions of these settings are provided in the table below. For complete details about the IZUPRMxx settings and the proper syntax for updating the member, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
-If you change values in the IZUPRMxx member, you might need to customize the started procedure IZUSVR1, accordingly. For details, see [Appendix B. Modifying IZUSVR1 settings](#Appendix-B.-Modifying-IZUSVR1-settings).  
+If you change values in the IZUPRMxx member, you might need to customize the started procedure IZUSVR1, accordingly. For details, see [Appendix B. Modifying IZUSVR1 settings](#appendix-b.-modifying-izusvr1-settings).  
 
 
 To create an IZUPRMxx parmlib member, follow these steps:
@@ -690,7 +690,7 @@ To create an IZUPRMxx parmlib member, follow these steps:
 ---|---|---|---|
 HOSTNAME('hostname') | Specifies the host name, as defined by DNS, where the z/OSMF server is located. To use the local host name, enter asterisk (\*), which is equivalent to \@HOSTNAME from previous releases. If you plan to use z/OSMF in a multisystem sysplex, IBM recommends using a dynamic virtual IP address (DVIPA) that resolves to the correct IP address if the z/OSMF server is moved to a different system. | Must be a valid TCP/IP HOSTNAME or an asterisk (\*).                        | Default: \*
 HTTP_SSL_PORT(nnn)   | Identifies the port number that is associated with the z/OSMF server. This port is used for SSL encrypted traffic from your z/OSMF configuration. The default value, 443, follows the Internet Engineering Task Force (IETF) standard. **Note:** By default, the z/OSMF server uses the SSL protocol SSL_TLSv2 for secure TCP/IP communications. As a result, the server can accept incoming connections that use SSL V3.0 and the TLS 1.0, 1.1 and 1.2 protocols. | Must be a valid TCP/IP port number. Value range: 1 - 65535 (up to 5 digits) | Default: 443  
-COMMON_TSO ACCT(*account-number*) REGION(*region-size*) PROC(*proc-name*)|Specifies values for the TSO/E logon procedure that is used internally for various z/OSMF activities and by the Workflows task.|The valid ranges for each value are described in [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).|Default: 443 ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
+COMMON_TSO ACCT(*account-number*) REGION(*region-size*) PROC(*proc-name*)|Specifies values for the TSO/E logon procedure that is used internally for various z/OSMF activities and by the Workflows task.|The valid ranges for each value are described in [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).|Default: 443 ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
 USER_DIR=*filepath*  | z/OSMF data directory path. By default, the z/OSMF data directory is located in /global/zosmf. If you want to use a different path for the z/OSMF data directory, specify that value here, for example: USER_DIR=`/the/new/config/dir`. | Must be a valid z/OS UNIX path name. | Default: `/global/zosmf/`
 
 # Appendix B. Modifying IZUSVR1 settings
@@ -712,7 +712,7 @@ To modify the IZUSVR1 settings, follow these steps:
 
 # Appendix C. Adding more users to z/OSMF
 
-Your security administrator can authorize more users to z/OSMF. Simply connect the required user IDs to the z/OSMF administrator group (IZUADMIN). This group is permitted to a default set of z/OSMF resources (tasks and services). For the specific group permissions, see Appendix A in [z/OSMF Configuration Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+Your security administrator can authorize more users to z/OSMF. Simply connect the required user IDs to the z/OSMF administrator group (IZUADMIN). This group is permitted to a default set of z/OSMF resources (tasks and services). For the specific group permissions, see Appendix A in [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 You can create more user groups as needed, for example, one group per z/OSMF task.
 
