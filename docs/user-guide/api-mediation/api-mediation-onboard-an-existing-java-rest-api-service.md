@@ -1,30 +1,28 @@
 # Onboarding an existing Java Spring REST API service without Spring Boot 
 
-As an API developer, use this guide to onboard your Java Spring REST API service that is built without Spring Boot into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
-
-The following procedure is an overview of steps to onboard a Java REST API application with the API Mediation Layer. 
+As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot with the Zowe API Mediation Layer. This article outlines a step-by-step process to onboard a Java REST API application with the API Mediation Layer. More detail about each of these steps is described later in this article.
 
 **Follow these steps:**
-
-1. [Prerequisites](#prerequisites)
-2. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
+1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
-3. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
-4. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-5. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
-6. [Add context listener](#add-context-listener)
+2. [(Optional) Add Swagger Documentation to your project](#optional-add-swagger-documentation-to-your-project)
+3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
+4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
+5. [Add context listener](#add-context-listener)
     1. [Add context listener class](#add-context-listener-class)
     2. [Register a listener](#register-a-listener)
-7. [Run your service](#run-your-service)
-8. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
+6. [Run your service](#run-your-service)
+7. [(Optional) Validate discovery of the API service by the Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
 
-## Prerequisites
-You need to have REST API service that is written with Java language.
-Also you need to have way to generate and serve Swagger documentation with REST endpoint.
-This guide uses Spring Framework as example of REST API service example.
-If you have other framework that is based on Servlet API you can use `ServletContextListener` that is described in this instruction.
-If you are using some other framework that that don't have `ServletContextListener` class, check the [add context listener](#add-context-listener) section to details how to register and unregister your service in API Mediation Layer.
+**Notes:** 
+* This onboarding procedure uses the Spring framework for implementation of a REST API service, and describes how to generate Swagger documentation using a Springfox library.
+* If you use another framework that is based on a Servlet API, you can use `ServletContextListener` that is described later in this article.
+* If you use a framework that does not have a `ServletContextListener` class, check the [add context listener](#add-context-listener) section for details about how to register and unregister your service in the API Mediation Layer.
+
+# Prerequisites
+* Ensure that your REST API service that is written in Java.
+* Ensure that your service has an endpoint that generates Swagger documentation. 
 
 ## Get enablers from the Artifactory
 
@@ -34,8 +32,6 @@ You can use either Gradle or Maven build automation systems.
 
 ### Gradle guide
 Use the following procedure if you use Gradle as your build automation system.
-
-**Tip:** To migrate from Maven to Gradle, go to your project directory and run `gradle init`. This converts the Maven build to a Gradle build by generating a *setting.gradle* file and a *build.gradle* file.
 
 **Follow these steps:**
 
@@ -82,8 +78,6 @@ Use the following procedure if you use Gradle as your build automation system.
 ### Maven guide
 
 Use the following procedure if you use Maven as your build automation system.
-
-**Tip:** To migrate from Gradle to Maven, go to your project directory and run `gradle install`. This command automatically generates a `pom-default.xml` inside the `build/poms` subfolder where all of the dependencies are contained. 
 
 **Follow these steps:**
 
@@ -203,15 +197,15 @@ If your application already has Swagger documentation enabled, skip this step. U
 You need to add several endpoints to your application for integration with the API Mediation Layer:
 * **Swagger documentation endpoint**
 
-    The endpoint for the Swagger documentation
+    The endpoint for the Swagger documentation.
 
 * **Health endpoint**
 
-    The endpoint used for health checks by the Discovery Service
+    The endpoint used for health checks by the Discovery Service.
 
 * **Info endpoint**
 
-    The endpoint to get information about the service
+    The endpoint to get information about the service.
 
 The following java code is an example of adding these endpoints with Spring Controller:
 
@@ -285,7 +279,7 @@ The following list describes the configuration parameters:
 
     Specifies the service instance identifier that is registered in the API Layer installation. 
     The service ID is used in the URL for routing to the API service through the gateway. 
-    The service ID uniquely identifies instances of a microservice in the API mediation layer. 
+    The service ID uniquely identifies instances of a microservice in the API Mediation Layer. 
     The system administrator at the customer site defines this parameter.
     
     **Important!**  Ensure that the service ID is set properly with the following considerations:
@@ -324,8 +318,7 @@ The following list describes the configuration parameters:
 
     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
-    **Tip:** We recommend that you provide a specific default value.
-    Describe the service so that the end user knows the function of the service.
+    **Tip:** Describe the service so that the end user knows the function of the service.
 
 * **baseUrl**
 
@@ -425,10 +418,10 @@ The following list describes the configuration parameters:
 
 ## Add context listener
 The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
-the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method when the 
-application before the application shuts down to unregister the application in API Mediation Layer.
+the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method 
+before the application shuts down to unregister the application in API Mediation Layer.
 
-**Note:** If you do not use Java Servlet API based frameworks, you can still call the same methods of `apiMediationClient` 
+**Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` 
 to register and unregister your application.
 ### Add context listener class
 Add the following code block to add a context listener class:
@@ -504,4 +497,4 @@ The following procedure enables you to check if your service is discoverable by 
 2. Enter *eureka* as a username and *password* as a password.
 3. Check if your application appears in the Discovery Service UI.
 
-If your service appears in the Discovery Service UI, you successfully finished onboarding your java REST API service.
+If your service appears in the Discovery Service UI, you successfully finished onboarding your Java REST API service.
