@@ -1,34 +1,34 @@
-# Using zLUX
+# Using the Zowe Application Framework
 
-zLUX provides the ability to create application plug-ins. For more information, see [Creating zLUX application plug-ins](mvd-creatingzluxappplugins.md). 
+The Zowe Application Framework provides the ability to create application plug-ins. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
 
-## Navigating MVD
+## Navigating the Zowe Desktop
 
 
-From the Mainframe Virtual Desktop (MVD), you can access the Project Zowe applications. 
+From the Zowe Desktop, you can access Zowe applications. 
 
-### Accessing the MVD
+### Accessing the Zowe Desktop
 
-From a supported browser, open the MVD at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
     
 where:
 
--   *myHost* is the host on which you are running the Zowe Node Server.
+-   *myHost* is the host on which you are running the Zowe Application Server.
 -   *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`.
-    For example, if you run the Zowe Node Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.html`.
+    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.html`.
 
 
-### Logging in and out of the MVD
+### Logging in and out of the Zowe Desktop
 
 1. To log in, enter your mainframe credentials in the **Username** and  **Password** fields.
 2. Press Enter. Upon authentication of your user name and password, the desktop opens.
 
 To log out, click the the avatar in the lower right corner and click **Sign Out**.
 
-## Using Explorers within zLUX
+## Using Explorers within the Zowe Application Framework
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
 
-The following views are available from the explorer server Web UI and are accessible via the explorer server icon located in the application draw of MVD (Navigation between views can be performed using the menu draw located in the top left corner of the explorer server Web UI):
+The following views are available from the explorer server Web UI and are accessible via the explorer server icon located in the application draw of Zowe Desktop (Navigation between views can be performed using the menu draw located in the top left corner of the explorer server Web UI):
 
 **JES Explorer**
 
@@ -55,7 +55,7 @@ The following views are available from the explorer server Web UI and are access
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
 
-## Using zLUX application plug-ins
+## Using Zowe Application Framework application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
@@ -70,7 +70,7 @@ This application plug-in helps you find information about the important services
 
 ### TN3270
 This application plug-in provides a 3270 connection to the mainframe on
-which the Zowe Node Server runs. 
+which the Zowe Application Server runs. 
 
 ### VT Terminal 
 This application plug-in provides a connection to UNIX System Services and UNIX.

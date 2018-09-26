@@ -1,12 +1,12 @@
-# Installing zLUX, explorer server, and API Mediation Layer
+# Installing the Zowe Application Framework, explorer server, and API Mediation Layer
 
-You install zLUX, explorer server, and API Mediation Layer on z/OS.
+You install the Zowe Application Framework, explorer server, and API Mediation Layer on z/OS.
 
 Before you install the runtime on z/OS, ensure that your environment meets the requirements. See [System requirements](systemrequirements.md).
 
 ## Installing the Zowe runtime on z/OS
 
-To install API Mediation Layer, zLUX, and explorer server, you install the Zowe runtime on z/OS.
+To install API Mediation Layer, the Zowe Application Framework, and explorer server, you install the Zowe runtime on z/OS.
 
 **Follow these steps:**
 
@@ -28,7 +28,7 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
 
     - Explorer-server has two ports - one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
 
-    - zLUX-server has three ports - the HTTP and HTTPS ports that are used by the zLUX window manager server, and the port that is used by the ZSS server.
+    - zlux-server has three ports - the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
 
 
         ```yaml
@@ -65,7 +65,7 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
         TSO NETSTAT PORTLIST
         ```
 
-    The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This is to allow the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.  Unlike the ports needed by the Zowe runtime for its zLUX and explorer server which must be unused, the terminal ports are expected to be in use.
+    The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This is to allow the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.  Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and explorer server which must be unused, the terminal ports are expected to be in use.
 
     ```
     # Ports for the TN3270 and the VT terminal to connect to
@@ -145,7 +145,7 @@ To install API Mediation Layer, zLUX, and explorer server, you install the Zowe 
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has three runtime components on z/OS, the explorer server, the zLUX server, and API Mediation Layer. When you run the ZOWESVR PROC, it starts all these components. The zLUX server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers, and stopping it stops all four.
+Zowe has three runtime components on z/OS, the explorer server, the Zowe Application Server, and API Mediation Layer. When you run the ZOWESVR PROC, it starts all these components. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers, and stopping it stops all four.
 
 ### Starting the ZOWESVR PROC
 
@@ -158,7 +158,7 @@ cd $ZOWE_ROOT_DIR/scripts
 
 where _$ZOWE_ROOT_DIR_ is the directory where you installed the Zowe runtime. This script starts the ZOWESVR PROC for you so you don't have to log on to TSO and use SDSF.
 
-**Note:** The default startup allows self signed and expired certificates from zLUX proxy data services such as the explorer server.
+**Note:** The default startup allows self signed and expired certificates from the Zowe Application Framework proxy data services such as the explorer server.
 
 If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following operator command in SDSF:
 
@@ -191,7 +191,7 @@ If you prefer to use SDSF to stop Zowe, stop ZOWESVR by issuing the following op
 /C ZOWESVR
 ```
 
-Either of the methods will stop the explorer server, the zLUX server, and the zSS server.
+Either of the methods will stop the explorer server, the Zowe Application Server, and the zSS server.
 
 When you stop the ZOWESVR, you might get the following error message:
 
@@ -213,20 +213,20 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Verifying installation
 
-After you complete the installation of API Mediation, zLUX, and explorer server, use the following procedures to verify that the components are installed correctly and are functional.
+After you complete the installation of API Mediation, Zowe Application Framework, and explorer server, use the following procedures to verify that the components are installed correctly and are functional.
 
-### Verifying zLUX installation
+### Verifying Zowe Application Framework installation
 
-If zLUX is installed correctly, you can open the MVD from a supported browser.
+If the Zowe Application Framework is installed correctly, you can open the Zowe Desktop from a supported browser.
 
-From a supported browser, open the MVD at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
 
 where:
 
-- _myHost_ is the host on which you installed the Zowe Node Server.
+- _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
-  For example, if the Zowe Node Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
 
 ### Verifying explorer server installation
 

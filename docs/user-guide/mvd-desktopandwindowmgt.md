@@ -1,27 +1,27 @@
-# Virtual desktop and window management
+# Zowe Desktop and window management
 
-The Mainframe Virtual Desktop (MVD) is a web component of Zowe, which is an implementation of `MVDWindowManagement`, the interface that is used to create a window manager.
+The Zowe Desktop is a web component of Zowe, which is an implementation of `MVDWindowManagement`, the interface that is used to create a window manager.
 
 The code for this software is in the `zlux-app-manager` repository.
 
 The interface for building an alternative window manager is in the `zlux-platform` repository.
 
 
-Window Management acts upon Windows, which are visualizations of an instance of an application plug-in. Application plug-ins are plug-ins of the type "application", and therefore the MVD operates around a collection of plug-ins.
+Window Management acts upon Windows, which are visualizations of an instance of an application plug-in. Application plug-ins are plug-ins of the type "application", and therefore the Zowe Desktop operates around a collection of plug-ins.
 
 **Note:** Other objects and frameworks that can be utilized by application plug-ins, but not related to window management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.
 
 
 ## Loading and presenting application plug-ins
 
-Upon loading the MVD, a GET call is made to ```/plugins?type=application```.
-This returns a JSON list of all application plug-ins that are on the server, which can be accessed by the user. Application plug-ins can be composed of dataservices, web content, or both. Application plug-ins that have web content are presented in the MVD UI.
+Upon loading the Zowe Desktop, a GET call is made to ```/plugins?type=application```.
+The GET call returns a JSON list of all application plug-ins that are on the server, which can be accessed by the user. Application plug-ins can be composed of dataservices, web content, or both. Application plug-ins that have web content are presented in the Zowe Desktop UI.
 
-The MVD has a taskbar at the bottom of the page, where it displays each application plug-in as an icon with a description. The icon that is used, and the description that is presented are based on the application plug-in's `PluginDefinition`'s `webContent` attributes.
+The Zowe Desktop has a taskbar at the bottom of the page, where it displays each application plug-in as an icon with a description. The icon that is used, and the description that is presented are based on the application plug-in's `PluginDefinition`'s `webContent` attributes.
 
 ## Plug-in management
 
-Application plug-ins can gain insight into the environment they were spawned in through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the MVD is running, you can access the Plugin Manager  through ```RocketMVD.PluginManager```
+Application plug-ins can gain insight into the environment in which they were spawned through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the Zowe Desktop is running, you can access the Plugin Manager through ```RocketMVD.PluginManager```
 
 The following are the functions you can use on the Plugin Manager:
 
@@ -44,7 +44,7 @@ The following are functions of an Application Manager:
 
 ## Windows and Viewports
 
-When a user clicks an application plug-in's icon on the taskbar, an instance of the application plug-in is started and presented within a Viewport, which is encapsulated in a Window within the Desktop.
+When a user clicks an application plug-in's icon on the taskbar, an instance of the application plug-in is started and presented within a Viewport, which is encapsulated in a Window within the Zowe Desktop.
 Every instance of an application plug-in's web content within Zowe is given context and can listen on events about the Viewport and Window it exists within, regardless of whether the Window Manager implementation utilizes these constructs visually. It is possible to create a Window Manager that only displays one application plug-in at a time, or to have a drawer-and-panel UI rather than a true windowed UI.
 
 When the Window is created, the application plug-in's web content is encapsulated dependent upon its framework type. The following are valid framework types:
@@ -52,7 +52,7 @@ When the Window is created, the application plug-in's web content is encapsulate
 * *"angular2"*: The web content is written in Angular, and packaged with Webpack. Application plug-in framework objects are given through @injectables and imports.
 * *"iframe"*: The web content can be written using any framework, but is included through an iframe tag. Application plug-ins within an iframe can access framework objects through *parent.RocketMVD* and callbacks.
 
-In the case of the MVD, this framework-specific wrapping is handled by the Plugin Manager.
+In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plugin Manager.
 
 ## Viewport Manager
 
@@ -70,7 +70,7 @@ The following are functions of the Viewport Manager:
 
 ## Injection Manager
 
-When you create Angular application plug-ins, they can use injectables to be informed of when an action occurs. iframe application plug-ins indirectly benefit from some of these hooks due to the wrapper acting upon them, but Angular application plug-ins have direct access to these.
+When you create Angular application plug-ins, they can use injectables to be informed of when an action occurs. iframe application plug-ins indirectly benefit from some of these hooks due to the wrapper acting upon them, but Angular application plug-ins have direct access.
 
 The following topics describe injectables that application plug-ins can use.
 
