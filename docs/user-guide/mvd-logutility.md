@@ -21,7 +21,7 @@ Because Zowe application plug-ins have unique identifiers, both dataservices and
 
 The core logger object is attached as a global for low-level access.
 
-#### Zowe Application Server
+#### App Server
 
 NodeJS uses `global` as its global object, so the logger is attached to:
 `global.COM_RS_COMMON_LOGGER`
