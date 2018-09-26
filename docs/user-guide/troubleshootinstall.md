@@ -1,25 +1,6 @@
 # Troubleshooting the installation
 
-Review the following troubleshooting tips and known issues if you have problems with Zowe installation.
-
-## Security message when you open the Zowe Desktop
-
-When you initially open the Zowe Desktop, a security message alerts you that you are attempting to open a site that has an invalid HTTPS certificate. Other applications within the Zowe Desktop might also encounter this message. To prevent this message, add the URLs that you see to your list of trusted sites.
-
-**Note:** If you clear the browser cache, you must add the URL to your trusted sites again.
-
-## Message ICH408I during runtime
-
-During runtime, the information message ICH408I may present identifying insufficient write authority to a number of resources, these resources may include:
-
-- `zowe/explorer-server/wlp/usr/servers/.pid/Atlas.pid`
-- `zowe/zlux-example-server/deploy/site/plugins/`
-- `zowe/zlux-example-server/deploy/instance/plugins/`
-
-**Note:** This should not affect the runtime operations of Zowe. This is a known issue and will be addressed in the next build.
-
-### Zowe Application Framework APIs
-Zowe Application Framework APIs exist but are under development. Features might be reorganized if it simplifies and clarifies the API, and features might be added if applications can benefit from them.
+Review the following troubleshooting tips if you have problems with Zowe installation.
 
 ## Troubleshooting installing the Zowe runtime
 
