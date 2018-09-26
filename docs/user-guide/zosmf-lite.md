@@ -38,7 +38,7 @@ provided by IBM:
 
 -   Logon procedure IZUFPROC
 
-Information about installing these procedures is provided in [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-provided-procedures-into-jes-proclib).
+Information about installing these procedures is provided in [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib).
 
 # Software Requirements
 
