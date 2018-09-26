@@ -3,6 +3,7 @@
 Learn about what is new, changed, removed, and known issues in Open Beta for Zowe.
 
 Zowe Open Beta includes the following releases:
+
 - [Version 0.9.1 (September 2018)](summaryofchanges.html#version-0-9-1-september-2018)
 - [Version 0.9.0 (August 2018)](summaryofchanges.html#version-0-9-0-august-2018)
 
