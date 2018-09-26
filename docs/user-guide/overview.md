@@ -4,9 +4,9 @@ Zowe offers modern interfaces to interact with z/OS and allows you to work with 
 
 Zowe consists of the following main components.
 
-- [**zLUX**](#zlux): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
+- [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets, z/OS UNIX System Services files, and persistent data.
+- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets and z/OS UNIX System Services files.
 
 - [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
@@ -14,35 +14,35 @@ Zowe consists of the following main components.
 
 For details of each component, see the corresponding section.
 
-## zLUX
+## Zowe Application Framework
 
-zLUX modernizes and simplifies working on the mainframe. With zLUX, you can create applications to suit your specific needs. zLUX contains a web UI that has the following features:
+The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. The Zowe Application Framework contains a web UI that has the following features:
 
 - The web UI works with the underlying REST APIs for data, jobs, and subsystem, but presents the information in a full screen mode as compared to the command line interface.
 - The web UI makes use of leading-edge web presentation technology and is also extensible through web UI plug-ins to capture and present a wide variety of information.
 - The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL along with general purpose data set actions for both Unix System Services (USS) and Partitioned Data Sets (PDS) plus Job Entry System (JES) logs.
 
-zLUX consists of the following components:
+The Zowe Application Framework consists of the following components:
 
-- **Mainframe Virtual Desktop (MVD)**
+- **Zowe Desktop**
 
     The desktop, accessed through a browser.
 
-- **Zowe Node Server**
+- **Zowe Application Server**
 
-    The Zowe Node Server runs zLUX. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
+    The Zowe Application Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
 
 - **ZSS Server**
 
-    The ZSS Server provides secure REST services to support the Zowe Node Server.
+    The ZSS Server provides secure REST services to support the Zowe Application Server.
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using zLUX application plug-ins](usingzlux.html#using-zlux-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](mvd-using.md#using-zowe-framework-application-plug-ins).
 
 ## Explorer server
 
-The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets, z/OS UNIX™ System Services (USS) files, and persistent data.
+The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets and z/OS UNIX™ System Services (USS) files.
 
 These APIs have the following features:
 

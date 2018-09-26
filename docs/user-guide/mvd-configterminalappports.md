@@ -1,4 +1,4 @@
-# Configuring ports for the zLUX terminal application plug-ins
+# Configuring ports for the Zowe terminal application plug-ins
 
 Before you install Zowe, configure the following ports for the VT Terminal and TN3270 mainframe terminal application plug-ins.  
 

@@ -5,7 +5,7 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF requirements](#zosmf-requirements).
 
 2. Review component specific requirements.
-     -   [System requirements for zLUX, explorer server, and API Mediation](#system-requirements-for-zlux-explorer-server-and-api-mediation-layer)
+     -   [System requirements for the Zowe Application Framework, explorer server, and API Mediation](#system-requirements-for-the-zowe-application-framework-explorer-server-and-api-mediation-layer)
      -   [System requirements for Zowe CLI](#system-requirements-for-zowe-cli)
 
 ## z/OSMF requirements
@@ -138,9 +138,9 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
 
-## System requirements for zLUX, explorer server, and API Mediation Layer
+## System requirements for the Zowe Application Framework, explorer server, and API Mediation Layer
 
-zLUX, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
+The Zowe Application Framework, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
 
 -   z/OS® Version 2.2 or later.
 -   64-bit Java™ 8 JRE or later.
@@ -151,12 +151,12 @@ zLUX, explorer server, and API Mediation Layer are installed together. Before th
     -   Safari 11 or later
     -   Microsoft Edge
 
--  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Node Server.
+-  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Application Server.
 
-    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running zLUX.
+    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
     2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
 
--   npm 5.4 or later for building zLUX applications.
+-   npm 5.4 or later for building Zowe Application Framework applications.
 
      To update npm, issue the following command:
 

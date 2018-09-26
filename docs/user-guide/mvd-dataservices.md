@@ -74,7 +74,7 @@ An example is available in `sample-app/nodeServer/ts/helloWorld.ts`
 
 ExpressJS routers are fairly flexible, so the contract to create the Router for Websockets is not significantly different.
 
-Here, the express-ws package is used, which adds websockets through the ws package to ExpressJS. The two changes between a websocket-based router and a normal router is that the method is 'ws', as in `router.ws(<url>,<callback>)`, and that the callback provides the websocket on which you must define event listeners.
+Here, the express-ws package is used, which adds websockets through the ws package to ExpressJS. The two changes between a websocket-based router and a normal router are that the method is 'ws', as in `router.ws(<url>,<callback>)`, and  the callback provides the websocket on which you must define event listeners.
 
 See the ws and express-ws topics on [www.npmjs.com](https://www.npmjs.com) for more information about how they work, as the API for websocket router dataservices is primarily provided in these packages.
 
