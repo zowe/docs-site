@@ -6,7 +6,7 @@ Zowe consists of the following main components.
 
 - [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets, z/OS UNIX System Services files, and persistent data.
+- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets and z/OS UNIX System Services files.
 
 - [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
@@ -42,7 +42,7 @@ The Zowe Application Framework consists of the following components:
 
 ## Explorer server
 
-The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets, z/OS UNIX™ System Services (USS) files, and persistent data.
+The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets and z/OS UNIX™ System Services (USS) files.
 
 These APIs have the following features:
 
