@@ -33,10 +33,10 @@ To create an IZUPRMxx parmlib member, follow these steps:
 
 **Setting**|**Purpose**|**Rules**|**Default**             
 ---|---|---|---|
-HOSTNAME('hostname') | Specifies the host name, as defined by DNS, where the z/OSMF server is located. To use the local host name, enter asterisk (\*), which is equivalent to \@HOSTNAME from previous releases. If you plan to use z/OSMF in a multisystem sysplex, IBM recommends using a dynamic virtual IP address (DVIPA) that resolves to the correct IP address if the z/OSMF server is moved to a different system. | Must be a valid TCP/IP HOSTNAME or an asterisk (\*).                        | Default: \*
+HOSTNAME(*hostname*) | Specifies the host name, as defined by DNS, where the z/OSMF server is located. To use the local host name, enter asterisk (\*), which is equivalent to \@HOSTNAME from previous releases. If you plan to use z/OSMF in a multisystem sysplex, IBM recommends using a dynamic virtual IP address (DVIPA) that resolves to the correct IP address if the z/OSMF server is moved to a different system. | Must be a valid TCP/IP HOSTNAME or an asterisk (\*).                        | Default: \*
 HTTP_SSL_PORT(nnn)   | Identifies the port number that is associated with the z/OSMF server. This port is used for SSL encrypted traffic from your z/OSMF configuration. The default value, 443, follows the Internet Engineering Task Force (IETF) standard. **Note:** By default, the z/OSMF server uses the SSL protocol SSL_TLSv2 for secure TCP/IP communications. As a result, the server can accept incoming connections that use SSL V3.0 and the TLS 1.0, 1.1 and 1.2 protocols. | Must be a valid TCP/IP port number. Value range: 1 - 65535 (up to 5 digits) | Default: 443  
 COMMON_TSO ACCT(*account-number*) REGION(*region-size*) PROC(*proc-name*)|Specifies values for the TSO/E logon procedure that is used internally for various z/OSMF activities and by the Workflows task.|The valid ranges for each value are described in [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).|Default: 443 ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
-USER_DIR=*filepath*  | z/OSMF data directory path. By default, the z/OSMF data directory is located in /global/zosmf. If you want to use a different path for the z/OSMF data directory, specify that value here, for example: USER_DIR=`/the/new/config/dir`. | Must be a valid z/OS UNIX path name. | Default: `/global/zosmf/`
+USER_DIR=*filepath*  | z/OSMF data directory path. By default, the z/OSMF data directory is located in `/global/zosmf`. If you want to use a different path for the z/OSMF data directory, specify that value here, for example: USER_DIR=`/the/new/config/dir`. | Must be a valid z/OS UNIX path name. | Default: `/global/zosmf/`
 
 ## Appendix B. Modifying IZUSVR1 settings
 
@@ -65,7 +65,7 @@ You can create more user groups as needed, for example, one group per z/OSMF tas
 Collect the z/OS user IDs that you want to add.
 
 #### Procedure
-1.	On a RACF system, enter the CONNECT command for the user IDs to be granted authorization to z/OSMF resources:
+1.	On an RACF system, enter the CONNECT command for the user IDs to be granted authorization to z/OSMF resources:
 
   `CONNECT userid GROUP(IZUADMIN)`
 #### Results
