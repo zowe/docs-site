@@ -666,7 +666,9 @@ Optionally, you can add more users to z/OSMF, as described in [Appendix C. Addin
 This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 ### Common problems and scenarios
+This section discusses troubleshooting topics, procedures and tools for recovering from a set of known issues.
 
+#### System setup requirements not met
 This document assumes that the following is true of the z/OS host system:
 
 -   Port 443 is available for use. To check this, issue NETSTAT with option ? to determine if the port is being used.
