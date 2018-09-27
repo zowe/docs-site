@@ -360,7 +360,7 @@ Error message is displayed in the browser session: Secure Connection Failed. | S
 
 ### Mounting the z/OSMF user file system at IPL time
 
-Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z\/osmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, you make an update to the BPXPRMxx parmlib member on your z/OS system, as described in this topic.
+Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, you make an update to the BPXPRMxx parmlib member on your z/OS system, as described in this topic.
 
 ####  Before you begin
 
