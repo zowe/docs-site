@@ -29,7 +29,7 @@ This document is designed for use with a single z/OS system, not a z/OS sysplex.
 It is assumed that a basic level of security for z/OSMF is sufficient on the z/OS system. IBM provides a program, IZUSECEZ, to help you set up basic security for a z/OSMF Lite configuration.
 
 
-System defaults are used for the z/OSMF environmental settings. Wherever possible, it is recommended that you use the default values. If necessary, however, you can override the defaults by supplying an IZUPRMxx member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](appendix.html#appendixa).  
+System defaults are used for the z/OSMF environmental settings. Wherever possible, it is recommended that you use the default values. If necessary, however, you can override the defaults by supplying an IZUPRMxx member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](appendix.html#appendix-a-creating-an-izuprmxx-parmlib-member).  
 
 It is recommended that you use the following procedures as
 provided by IBM:
