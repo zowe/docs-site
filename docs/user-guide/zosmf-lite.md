@@ -1,4 +1,33 @@
 # z/OSMF Lite requirements
+
+This section provides information about requirements for IBM z/OS Management Facility lite configuration.
+1. [Introduction](#introduction)
+2. [Assumptions](#assumptions)
+3. [Software Requirements](#software-requirements)
+  1. [Minimum Java level](#minimum-java-level)
+  2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-zosmf-v2r3-and-later)
+  3. [System settings](#system-settings)
+  4. [Web browser](#web-browser)
+4. [Creating a z/OSMF nucleus on your system](#creating-a-zosmf-nucleus-on-your-system)
+  1. [Running job IZUSECEZ to create security](#running-job-izusecez-to-create-security)
+  2. [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
+  3. [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
+  4. [Starting the z/OSMF server](#starting-the-zosmf-server)
+  5. [Accessing the z/OSMF Welcome page](#accessing-the-zosmf-welcome-page)
+  6. [Mounting the z/OSMF user file system at IPL time](#mounting-the-zosmf-user-file-system-at-ipl-time)
+5. [Adding the required REST services](#adding-the-required-rest-services)
+  1. [Enabling the z/OSMF JOB REST services](#enabling-the-zosmf-job-rest-services)
+  2. [Enabling the TSO REST services](#enabling-the-tso-rest-services)
+  3. [Enabling the z/OSMF data set and file REST services](#enabling-the-zosmf-data-set-and-file-rest-services)
+  4. [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-zosmf-workflow-rest-services-and-workflows-task-ui)
+6. [Successful](#successful)
+7. [Troubleshooting problems](#troubleshooting-problems)
+  1. [Common problems and scenarios](#common-problems-and-scenarios)
+  2. [Tools and techniques for troubleshooting](#tools-and-techniques-for-troubleshooting)
+
+
+
+
 ## Introduction
 IBM® z/OS® Management Facility (z/OSMF) provides extensive system management
 functions in a task-oriented, web browser-based user interface with integrated
@@ -635,7 +664,9 @@ Optionally, you can add more users to z/OSMF, as described in [Appendix C. Addin
 This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 ### Common problems and scenarios
+This section discusses troubleshooting topics, procedures and tools for recovering from a set of known issues.
 
+#### System setup requirements not met
 This document assumes that the following is true of the z/OS host system:
 
 -   Port 443 is available for use. To check this, issue NETSTAT with option ? to determine if the port is being used.
