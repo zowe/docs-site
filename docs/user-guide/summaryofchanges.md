@@ -45,11 +45,9 @@ Zowe CLI Version 0.9.1 contains the following new features:
 ***Important!*** Zowe CLI Version 0.9.1 contains **breaking** changes. A **breaking** change can cause problems with existing functionality when you upgrade Zowe CLI Version 0.9.1. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly. 
 
 You will be impacted by the following changes if you update your version of Zowe CLI to Version 0.9.1: 
-  
 - The home directory for Zowe CLI, which contains the Zowe CLI logs, profiles, and plug-ins, was changed from `~/.brightside` to `~/.zowe`. The character "`~`" denotes your home directory on your computer, which is typically `C:/Users/<yourUserId>` on Windows operating systems. When you update to Zowe CLI Version 0.9.1 and issue `zowe` commands, the profiles that you created previously will not be available.
-    
-    To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:
 
+    To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:
     1. Issue any bright command to create the `~/.zowe` home directory.
     2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously. 
     3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
