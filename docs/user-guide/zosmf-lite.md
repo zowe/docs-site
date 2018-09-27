@@ -46,7 +46,7 @@ Setting up z/OSMF Lite requires that you have access to a z/OS V2R2 system or la
 
 ### Minimum Java level
 
-Java™ must be installed and operational on your z/OS system, at the required minimum level. See the table that follows for the minimum level and default location. If you installed Java in another location, you must specify the JAVA_HOME statement in your IZUPRMxx parmlib member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](appendix.html#appendixa).   
+Java™ must be installed and operational on your z/OS system, at the required minimum level. See the table that follows for the minimum level and default location. If you installed Java in another location, you must specify the JAVA_HOME statement in your IZUPRMxx parmlib member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](appendix.md#appendix-a-creating-an-izuprmxx-parmlib-member).   
 
 **z/OS Version** | **Minimum level of Java™**  | **Recommended level of Java**  | **Default location**  
 ---|---|---|---
@@ -60,7 +60,7 @@ z/OS V2R3        | IBM® 64-bit SDK for z/OS®, Java™ Technology Edition, V8 S
 
 z/OSMF V2R3 uses the Liberty Profile that is supplied with z/OS, rather than its own copy of Liberty. The WebSphere Liberty profile must be mounted on your z/OS system. The default mount point is: `/usr/lpp/liberty_zos`. To determine whether WebSphere® Liberty profile is mounted, check for the existence of the mount point directory on your z/OS system.
 
-If WebSphere® Liberty profile is mounted at a non-default location, you need to specify the location in the IZUSVR1 started procedure on the keyword **WLPDIR=**. For details, see [Appendix B. Modifying IZUSVR1 settings](appendix.html#appendixb).
+If WebSphere® Liberty profile is mounted at a non-default location, you need to specify the location in the IZUSVR1 started procedure on the keyword **WLPDIR=**. For details, see [Appendix B. Modifying IZUSVR1 settings](appendix.md#appendix-b-modifying-izusvr1-settings).
 
 Note: Whenever you apply PTFs for z/OSMF, you might be prompted to install outstanding WebSphere Liberty service. It is recommended that you do so to maintain z/OSMF functionality.
 
@@ -320,7 +320,7 @@ TBD : Insert a screen shot of the job log showing the 369I message with the URL.
 1.  Open a web browser to the z/OSMF Welcome page. The URL for the Welcome page
     has the following format: https://hostname:port/zosmf/
 
-  Where:
+    Where:
     -   *hostname* is the hostname or IP address of the system in which z/OSMF is
     installed.
 
@@ -624,10 +624,10 @@ Another problem… |           |
 
 At this point, you have completed the setup of z/OSMF Lite.
 
-## successful
+## Successful
 At this point, you have completed the setup of z/OSMF Lite.
 
-Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](appendix.html#appendixc).
+Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](appendix.md#appendix-c-adding-more-users-to-zosmf).
 
 
 ## Troubleshooting problems
@@ -644,7 +644,7 @@ This document assumes that the following is true of the z/OS host system:
 
 -   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`
 
-If you find that a different value is used on your z/OS system, you can edit the IZUPRMxx parmlib member to specify the correct setting. For details, see [Appendix A. Creating an IZUPRMxx parmlib member](appendix.html#appendixa).
+If you find that a different value is used on your z/OS system, you can edit the IZUPRMxx parmlib member to specify the correct setting. For details, see [Appendix A. Creating an IZUPRMxx parmlib member](appendix.md#appendix-a-creating-an-izuprmxx-parmlib-member).
 
 ### Tools and techniques for troubleshooting
 
