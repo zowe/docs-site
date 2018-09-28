@@ -34,20 +34,21 @@ module.exports = {
           children: ['zlux-example-server', 'zlux-workshop-user-browser']
         },
         {
-          title: 'Provide Liberty APIs',
+          title: 'Providing Liberty APIs',
           collapsable: true,
           children: ['libertyAPI', 'ReactJSUI']
         },
         {
           title:
-            'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
+            'Onboarding Spring Boot REST API services using Zowe API Mediation Layer',
           collapsable: true,
           children: ['api-mediation-usingapiml']
         },
         {
-          title: 'Coming Soon',
+          title: 'Developing for Zowe CLI',
           collapsable: true,
-          children: ['cli-developPlugins']
+          children: ['cli-devTutorials', 'cli-setting-up', 'cli-installing-sample-plugin', 'cli-extending-a-plugin', 'cli-developing-a-plugin',
+          'cli-implement-profiles']
         }
       ],
       '/samples/': [
