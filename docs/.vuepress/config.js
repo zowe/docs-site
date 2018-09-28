@@ -75,11 +75,6 @@ module.exports = {
       ],
       '/user-guide/': [
         {
-          title: 'About this documentation',
-          collapsable: true,
-          children: ['download-pdf', 'aboutthisdoc']
-        },
-        {
           title: 'Release notes',
           collapsable: true,
           children: ['summaryofchanges']

@@ -44,11 +44,24 @@ Zowe CLI contains the following new features:
     - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your PC.
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
+#### Enhanced JES Explorer
+
+A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently available via only direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:  
+https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
+
 ### What's changed
 
 #### Naming
 
 MVD is renamed to Zowe Desktop.
+
+#### JES Explorer
+
+Fixed an issue where text would fall out of line in the content viewer caused by special characters. This fix includes migration to the orion-editor-component as the content viewer.
+
+#### MVS Explorer
+
+Fixed an issue where deletion of a dataset member fails.
 
 #### Zowe CLI
 
@@ -58,6 +71,7 @@ You will be impacted by the following changes if you update your version of Zowe
 - The home directory for Zowe CLI, which contains the Zowe CLI logs, profiles, and plug-ins, was changed from `~/.brightside` to `~/.zowe`. The character "`~`" denotes your home directory on your computer, which is typically `C:/Users/<yourUserId>` on Windows operating systems. When you update to Zowe CLI Version 0.9.1 and issue `zowe` commands, the profiles that you created previously will not be available.
 
     To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:
+
     1. Issue any bright command to create the `~/.zowe` home directory.
     2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
     3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
@@ -65,9 +79,11 @@ You will be impacted by the following changes if you update your version of Zowe
 - The environment variables that control logging and the location of your home directory were previously prefixed with `BRIGHTSIDE_`. They are now prefixed with `ZOWE_`. If you were not using the environment variables before this change, no action is required. If you were using the environment variables, update any usage of the variables.
 
     The following environment variables are affected:
+
     - `BRIGHTSIDE_CLI_HOME` changed to `ZOWE_CLI_HOME`
     - `BRIGHTSIDE_IMPERATIVE_LOG_LEVEL` changed to `ZOWE_IMPERATIVE_LOG_LEVEL`
     - `BRIGHTSIDE_APP_LOG_LEVEL` changed to `ZOWE_APP_LOG_LEVEL`
+
 
 
 ## Version 0.9.0 (August 2018)
