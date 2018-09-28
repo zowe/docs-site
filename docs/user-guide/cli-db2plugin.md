@@ -45,11 +45,11 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-### Installing from package
+### Installing from local package
 
 If you downloaded the Zowe installation package from **Github**, complete the following steps:
 
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic **Install Zowe CLI from local package** in [Installing Zowe CLI](cli-installcli.md) for information about how to obtain and extract it.
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
 
 2. From the command line window, set the `IBM_DB_INSTALLER_URL` environment variable by issuing the following command:
 
@@ -65,7 +65,7 @@ If you downloaded the Zowe installation package from **Github**, complete the fo
       ```
 3. Issue the following command to install the plug-in:
     ```
-    zowe plugins install zowe-cli-db2-1.0.0.tgz
+    zowe plugins install zowe-cli-db2-1.0.0-next.201809271513  
     ```
 4. After the command execution completes, issue the following command to validate that the installation completed successfully.
 

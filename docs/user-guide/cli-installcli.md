@@ -29,7 +29,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-1.1.0-next.201808072010.tgz 
+    npm install -g zowe-cli-2.0.0-next.201809251404 
     ```
     
     **Note:** On Windows, you must run as an Administrator to install the product and plug-ins.
