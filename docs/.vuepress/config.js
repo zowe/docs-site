@@ -80,7 +80,7 @@ module.exports = {
           children: ['download-pdf', 'aboutthisdoc']
         },
         {
-          title: 'Summary of changes',
+          title: 'Release notes',
           collapsable: true,
           children: ['summaryofchanges']
         },

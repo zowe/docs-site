@@ -4,7 +4,7 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.1 (September 2018)](##version-091-september-2018)
+- [Version 0.9.1 (October 2018)](#version-091-october-2018)
 - [Version 0.9.0 (August 2018)](#version-090-august-2018)
 
 ## Version 0.9.1 (September 2018)
@@ -13,26 +13,30 @@ Version 0.9.1 contains the following changes since the last version.
 
 ### What's new
 
-#### New in the Zowe Application Framework 
+#### New in the Zowe Application Framework
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
-#### New in Zowe CLI Verison 0.9.1
-Zowe CLI Version 0.9.1 contains the following new features:
+#### New in Zowe CLI
+
+Zowe CLI contains the following new features:
+
 - **Zowe CLI Plug-in for IBM® CICS®**
-    
-    The plug-in lets you extend Zowe CLI interact with CICS programs and transactions. It uses the IBM CICS Management Client Interface (CMCI) API to achieve the interaction with CICS. 
+
+    The new plug-in lets you extend Zowe CLI to interact with CICS programs and transactions. It uses the IBM CICS Management Client Interface (CMCI) API to achieve the interaction with CICS.
 
     As an application developer, you can use the plug-in to perform various CICS-related tasks, such as the following:
+
     - Deploy code changes to CICS applications that were developed with COBOL.
     - Deploy changes to CICS regions for testing or delivery.
     - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
-    
-    **Note:** For more information, see [Zowe CLI Plug-in for IBM CICS](cli-cicsplugin.md).
 
-- **`zos-jobs` and `zos-files` commands and command options:**
+    For more information, see [Zowe CLI Plug-in for IBM CICS](cli-cicsplugin.md).
+
+- **`zos-jobs` and `zos-files` commands and command options**
 
     Zowe CLI contains the following new commands and command options:
+
     - `zowe zos-jobs delete job` command: Lets you cancel a job and purge its output by providing the JOB ID.
     - `zowe zos-files upload file-to-uss` command: Lets you upload a local file to a file on USS.
     - `zowe zos-files download uss-file` command: Lets you download a file on USS to a local file.
@@ -41,30 +45,29 @@ Zowe CLI Version 0.9.1 contains the following new features:
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
 ### What's changed
-**Naming**
 
-- MVD is renamed to Zowe Desktop.
+#### Naming
 
-#### Changed in Zowe CLI Version 0.9.1
+MVD is renamed to Zowe Desktop.
 
-***Important!*** Zowe CLI Version 0.9.1 contains **breaking** changes. A **breaking** change can cause problems with existing functionality when you upgrade Zowe CLI Version 0.9.1. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly. 
+#### Zowe CLI
 
-You will be impacted by the following changes if you update your version of Zowe CLI to Version 0.9.1: 
+***Important!*** Zowe CLI in Version 0.9.1 contains **breaking** changes. A **breaking** change can cause problems with existing functionality when you upgrade to Zowe CLI Version 0.9.1. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly.
+
+You will be impacted by the following changes if you update your version of Zowe CLI to Version 0.9.1:
 - The home directory for Zowe CLI, which contains the Zowe CLI logs, profiles, and plug-ins, was changed from `~/.brightside` to `~/.zowe`. The character "`~`" denotes your home directory on your computer, which is typically `C:/Users/<yourUserId>` on Windows operating systems. When you update to Zowe CLI Version 0.9.1 and issue `zowe` commands, the profiles that you created previously will not be available.
 
     To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:
     1. Issue any bright command to create the `~/.zowe` home directory.
-    2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously. 
+    2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
     3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
 
 - The environment variables that control logging and the location of your home directory were previously prefixed with `BRIGHTSIDE_`. They are now prefixed with `ZOWE_`. If you were not using the environment variables before this change, no action is required. If you were using the environment variables, update any usage of the variables.
 
-    The following environment variables are affected: 
+    The following environment variables are affected:
     - `BRIGHTSIDE_CLI_HOME` changed to `ZOWE_CLI_HOME`
     - `BRIGHTSIDE_IMPERATIVE_LOG_LEVEL` changed to `ZOWE_IMPERATIVE_LOG_LEVEL`
     - `BRIGHTSIDE_APP_LOG_LEVEL` changed to `ZOWE_APP_LOG_LEVEL`
-
-### What's removed
 
 
 ## Version 0.9.0 (August 2018)
