@@ -4,10 +4,10 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.1 (October 2018)](#version-091-october-2018)
-- [Version 0.9.0 (August 2018)](#version-090-august-2018)
+- [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
+- [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
 
-## Version 0.9.1 (September 2018)
+## Version 0.9.1 (October 2018)
 
 Version 0.9.1 contains the following changes since the last version.
 
