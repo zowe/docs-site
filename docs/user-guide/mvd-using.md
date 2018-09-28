@@ -54,26 +54,32 @@ The following views are available from the explorer server Web UI and are access
  - Create new files and folders.
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
+  
+## Using Zowe Application Framework application plug-ins
+
+Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ## Zowe Application Framework application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
-### Hello World
-This sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
+### Hello World Sample
+The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
 
-### IFrame
-This sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
+### IFrame Sample
+The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
 
-### ZOS Subsystems
-This application plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
+### z/OS Subsystems
+This z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
 ### TN3270
-This application plug-in provides a 3270 connection to the mainframe on
-which the Zowe Application Server runs. 
+This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
 
 ### VT Terminal 
-This application plug-in provides a connection to UNIX System Services and UNIX.
+The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
+
+### API Catalog
+The API Catalog plug-in lets you view API services that have been discovered by the API Mediation layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](#api-mediation-layer-architecture).
 
 ### Workflows
 
