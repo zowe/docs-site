@@ -55,7 +55,7 @@ The following views are available from the explorer server Web UI and are access
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
 
-## Using Zowe Application Framework application plug-ins
+## Zowe Application Framework application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
@@ -74,3 +74,98 @@ which the Zowe Application Server runs.
 
 ### VT Terminal 
 This application plug-in provides a connection to UNIX System Services and UNIX.
+
+### Workflows
+
+From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your z/OS system.
+
+## Workflows 
+
+The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon.
+
+### Navigating Workflows
+
+When you launch the Workflows application plug-in, the **Users/Tasks Workflows** window opens.
+
+To refresh the display, click the circular arrow in the upper right corner.
+
+The following tabs are available:
+
+**My Tasks**
+
+This tab displays Workflow tasks that belong to you. You can choose to view **Pending**, **Completed**, or **All** tasks. Workflows that have tasks that are assigned to you are shown on the left side of the window. For each workflow, you can click the arrow to expand or collapse the task list. Your assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
+
+Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window.
+
+**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed.
+
+Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
+
+**Workflows**
+
+This tab displays all workflows on the system. 
+
+**Tip:** To search for a particular workflow, type the search string in the search box in the upper right portion of the tab.
+
+**Workflow**
+
+The name of the workflow.
+
+**Description**
+
+Workflow description.
+
+**Version**
+
+The version number.
+
+**Owner**
+
+User ID of the workflow owner.
+
+**System**
+
+The system identifier.
+
+**Status** 
+
+The status of the workflow (for example, In progress, Completed, and so on.)
+
+**Progress**
+
+Progress indicator.
+
+**Warnings**
+
+This tab lists any warning messages that were encountered.
+
+**Message Code**
+
+The message code associated with the warning.
+
+**Description**
+
+A description of the warning.
+
+**Date**
+The date of the warning.
+
+**Corresponding Workflow**
+
+The workflow that is associated with the warning.
+
+**Configuration**
+
+This tab displays the server configuration and the active servers.
+
+From the **Configuration** tab, you can add and remove servers.
+
+### Adding a new z/OSMF server (Configuration)
+
+Complete these steps to add a new z/OSMF server:
+
+1. Click the **Configuration** tab.
+2. Click the plus sign (+) on the left side of the window.
+3. In the **Host** field, type the name of the host.
+4. In the **Port** field, type the port number.
+5. Click **OK**.

@@ -12,6 +12,11 @@ Zowe Open Beta includes the following releases:
 Version 0.9.1 contains the following changes since the last version.
 
 ### What's new
+
+#### New in the Zowe Application Framework 
+
+The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
+
 #### New in Zowe CLI Verison 0.9.1
 Zowe CLI Version 0.9.1 contains the following new features:
 - **Zowe CLI Plug-in for IBM® CICS®**
