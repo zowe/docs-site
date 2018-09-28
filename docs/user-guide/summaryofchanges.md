@@ -67,7 +67,7 @@ Fixed an issue where deletion of a dataset member fails.
 
 ***Important!*** Zowe CLI in Version 0.9.1 contains **breaking** changes. A **breaking** change can cause problems with existing functionality when you upgrade to Zowe CLI Version 0.9.1. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly.
 
-You will be impacted by the following changes if you update your version of Zowe CLI to Version 0.9.1:
+You will be impacted by the following changes if you update your version of Zowe to Version 0.9.1:
 - The home directory for Zowe CLI, which contains the Zowe CLI logs, profiles, and plug-ins, was changed from `~/.brightside` to `~/.zowe`. The character "`~`" denotes your home directory on your computer, which is typically `C:/Users/<yourUserId>` on Windows operating systems. When you update to Zowe CLI Version 0.9.1 and issue `zowe` commands, the profiles that you created previously will not be available.
 
     To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:
