@@ -44,9 +44,13 @@ Zowe CLI contains the following new features:
     - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your PC.
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
+#### New in API Mediation Layer
+
+You can now view the status of API Mediation Layer from the Zowe Desktop App (zLUX plug-in).
+
 #### Enhanced JES Explorer
 
-A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently available via only direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:  
+A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:  
 https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
 
 ### What's changed
@@ -68,6 +72,7 @@ Fixed an issue where deletion of a dataset member fails.
 ***Important!*** Zowe CLI in Version 0.9.1 contains **breaking** changes. A **breaking** change can cause problems with existing functionality when you upgrade to Zowe CLI Version 0.9.1. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly.
 
 You will be impacted by the following changes if you update your version of Zowe to Version 0.9.1:
+
 - The home directory for Zowe CLI, which contains the Zowe CLI logs, profiles, and plug-ins, was changed from `~/.brightside` to `~/.zowe`. The character "`~`" denotes your home directory on your computer, which is typically `C:/Users/<yourUserId>` on Windows operating systems. When you update to Zowe CLI Version 0.9.1 and issue `zowe` commands, the profiles that you created previously will not be available.
 
     To correct this behavior and migrate from an older version Zowe CLI, complete the following steps:

@@ -20,7 +20,7 @@
 <toc navtitle="Contents"/>
 </frontbooklists>
 <preface format="md" href="aboutthisdoc.md" navtitle="About this documentation" scope="local"/><?Pub Caret -1?>
-<topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Summary of changes"/>
+<topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Release notes"/>
 </ibmfrontmatter>
 <chapter format="md" href="overview.md" navtitle="Zowe overview" scope="local"/>
 <chapter format="md" href="installandconfig.md" navtitle="Installing Zowe"

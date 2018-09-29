@@ -38,7 +38,7 @@ The Zowe Application Framework consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](mvd-using.md#using-zowe-framework-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](mvd-using.html#using-zowe-framework-application-plug-ins).
 
 ## Explorer server
 
