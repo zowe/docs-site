@@ -32,4 +32,4 @@ The latest version is 0.9.1. You can download the Version 0.9.1 User Guide as a 
 ### Previous version
 You can download the User Guide of previous Open Beta version as a PDF file.
 
-- Version 0.9.0: [Download PDF](https://zowe.github.io/docs-site/Zowe_User_Guide_0.9.0.pdf)
+- Version 0.9.0: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.0.pdf)
