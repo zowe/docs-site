@@ -34,9 +34,9 @@ In microservice architecture, a web server usually provides one service. A typic
 
 You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md) or you can use another existing service.
 
-The sample service has its base URL. If you start this service on your computer then the _service base URL_ is http://localhost:8080. If a service deployed to an application server, the base URL of the service (application) can be `http://application-server-hostname:port/application-name.`
+The sample service has a base URL. If you start this service on your computer, the _service base URL_ is: http://localhost:8080. If the service is deployed to an application server, a suitable base URL of the service (application) is: `http://application-server-hostname:port/application-name.`
 
-This service provides one API that has the base path `/v2` which is represented in the base URL of the API as http://localhost:8080/v2.
+This service provides one API that has the base path `/v2`, which is represented in the base URL of the API as http://localhost:8080/v2.
 
 This API provides only one endpoint:
 
@@ -72,7 +72,7 @@ Access http://localhost:8080/v2/pets/1 to get the following response:
 
 The following example defines a new REST API service in the API Mediation Layer. This service generates one REST API.
 
-A service is identified in the API Gateway by its `service ID`. Service ID is an alphanumeric string in lowercase ASCII (for example `petstore`). The API Gateway differentiates different major versions of the API. To access version 2 of the `petstore` API you use the following gateway URL:
+The `service ID` of a service identifies the service in the API Gateway. The Service ID is an alphanumeric string in lowercase ASCII (for example `petstore`). The API Gateway differentiates major versions of an API. For example, to access version 2 of the `petstore` API you use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
 
@@ -82,12 +82,11 @@ The base URL of the version 2 of the `petstore` API is:
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
 
-As the user of the API Gateway, you access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the APU Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
-
+As an user of the API Gateway, access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 ## Define the service and API in the YAML format
 
-To define the sample `petstore` service described above, you need to provide the following definition in a YAML file:
+To define the sample `petstore` service used in this example, provide the following definition in a YAML file:
 
 ```yaml
 services:
@@ -99,17 +98,20 @@ services:
           serviceRelativeUrl: /v2
 ```
 
-In this example, the file can be named `petstore.yml`. The filename does not need to follow specific naming conventions but it needs to have the `.yml` extension.
+In this example, a suitable name for the file is `petstore.yml`. The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 
 The file can contain one or more services defined under the `services:` node.
 
-Each service has its own service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, onlu one instance `http://localhost:8080` is used.
+Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
 A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
-There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
+**Tips:** 
+    * There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-**Note:** For more details about YAML formatting, see https://learnxinyminutes.com/docs/yaml/
+    * For more details about YAML formatting, see https://learnxinyminutes.com/docs/yaml/
+
+## Configuration parameters##
 
 The following list describes the configuration parameters:
 
@@ -193,9 +195,9 @@ The following list describes the configuration parameters:
 
 ## Add and validate the definition in the API Mediation Layer running on your machine
 
-After defining the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
+After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
-Following steps show how to add your service to the API Mediation Layer on your local machine.
+The following procedure describes how to add your service to the API Mediation Layer on your local machine.
 
 **Follow these steps:**
 
@@ -213,23 +215,27 @@ Following steps show how to add your service to the API Mediation Layer on your 
 
         https://localhost:10010/application/routes
 
-    You should see a line:
+    The following line should appear:
 
         /api/v2/petstore/**: "petstore"
 
-    This line says that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+    This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application. If your service is running and you can access its endpoints. In case of the sample application it is for example:
+    You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
         https://localhost:10010/api/v2/petstore/pets/1
 
 
-## Add the definition in the API Mediation Layer in the Zowe runtime
+## Add a definition in the API Mediation Layer in the Zowe runtime
 
-After defining and validating the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as a part of the Zowe runtime installation. 
+After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation. 
 
-1. Locate the Zowe runtime directory. The Zowe runtime directory has been chosen during the Zowe installation. 
-   Its location is store in the `zowe-install.yaml` file in variable `install:rootDir`. We will use the `${zoweRuntime}` symbol in following instructions.
+**Follow these steps:**
+
+1. Locate the Zowe runtime directory. The Zowe runtime directory was chosen during Zowe installation. 
+   Its location is in the `zowe-install.yaml` file in the variable `install:rootDir`. 
+
+    **Note:** We use the `${zoweRuntime}` symbol in following instructions.
 
 2. Copy your YAML file to the `${zoweRuntime}/api-mediation/api-defs` directory.
 
@@ -241,20 +247,20 @@ After defining and validating the service in YAML format, you are ready to add y
 
         https://${zoweHostname}:${gatewayHttpsPort}/application/routes
 
-    You should see a line:
+   The following line should appear:
 
         /api/v2/petstore/**: "petstore"
 
-    This line says that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+    This line says that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application. If your service is running and you can access its endpoints. In case of the sample application it is for example:
+    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 
         https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
 
 
 ## (Optional) Check the log of the API Mediation Layer
 
-The API Mediation Layer prints following messages to its log when the API definitions are processed:
+The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
         Scanning directory with static services definition: config/local/api-defs
         Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
@@ -263,7 +269,7 @@ The API Mediation Layer prints following messages to its log when the API defini
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
-The following procedure enables you to refresh the API definitions after you change the definitions while the API Mediation Layer is already started.
+The following procedure enables you to refresh the API definitions after you change the definitions whin the API Mediation Layer is already running.
 
 **Follow these steps:**
 
@@ -271,13 +277,13 @@ The following procedure enables you to refresh the API definitions after you cha
     
         http://localhost:10011/discovery/api/v1/staticApi
 
-    Discovery Services requires authentication. In the case of the API Mediation Layer running on your local machine, it is `eureka` as the user ID and `password` as the password.
+    Discovery Services requires authentication. If the API Mediation Layer running on your local machine, the user ID is `eureka`, and the password is `password`.
 
-    This is an example that uses the [HTTPie command-line HTTP client](https://httpie.org):
+    This example uses the [HTTPie command-line HTTP client](https://httpie.org):
    
         http -j -a eureka:password POST http://localhost:10011/discovery/api/v1/staticApi
 
-2. Check if your updated definition is effective
+2. Check if your updated definition is effective.
 
     **Note:** It can take up 30 seconds to API Gateway to pick up the new routing.
 
