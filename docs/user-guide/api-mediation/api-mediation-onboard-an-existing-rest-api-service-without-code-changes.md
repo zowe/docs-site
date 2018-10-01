@@ -8,12 +8,16 @@ Provide access to your service's REST APIs through the API Gateway by following 
 
 **Follow these steps:**
 
-1. Identify the API that you want to expose
-2. Define the service and API in the YAML format
-3. Add and validate the definition in the API Mediation Layer
-4. (Optional) Check the log of the API Mediation Layer
-5. (Optional) Reload the services definition after the update when the API Mediation Layer is already started
+<!-- TOC depthFrom:2 orderedList:true -->
 
+1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+2. [Define the service and API in the YAML format](#define-the-service-and-api-in-the-yaml-format)
+3. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+4. [Add the definition in the API Mediation Layer in the Zowe runtime](#add-the-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+5. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+6. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+
+<!-- /TOC -->
 
 ## Identify the API that you want to expose
 
@@ -187,7 +191,7 @@ The following list describes the configuration parameters:
         gateway endpoints. The _service-url_ parameter points to the target endpoint on the gateway.
 
 
-## Add and validate the definition in the API Mediation Layer
+## Add and validate the definition in the API Mediation Layer running on your machine
 
 After defining the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
@@ -195,9 +199,9 @@ Following steps show how to add your service to the API Mediation Layer on your 
 
 **Follow these steps:**
 
-1.  Copy or move you YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.
+1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.
 
-2.  Run the following services to onboard your application:
+2.  Run the following services to start the API Mediation Layer:
 
     **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md) 
     
@@ -218,6 +222,34 @@ Following steps show how to add your service to the API Mediation Layer on your 
     You successfully defined your Java application. If your service is running and you can access its endpoints. In case of the sample application it is for example:
 
         https://localhost:10010/api/v2/petstore/pets/1
+
+
+## Add the definition in the API Mediation Layer in the Zowe runtime
+
+After defining and validating the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as a part of the Zowe runtime installation. 
+
+1. Locate the Zowe runtime directory. The Zowe runtime directory has been chosen during the Zowe installation. 
+   Its location is store in the `zowe-install.yaml` file in variable `install:rootDir`. We will use the `${zoweRuntime}` symbol in following instructions.
+
+2. Copy your YAML file to the `${zoweRuntime}/api-mediation/api-defs` directory.
+
+3. Run your application. 
+
+4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started).
+
+5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
+
+        https://${zoweHostname}:${gatewayHttpsPort}/application/routes
+
+    You should see a line:
+
+        /api/v2/petstore/**: "petstore"
+
+    This line says that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+
+    You successfully defined your Java application. If your service is running and you can access its endpoints. In case of the sample application it is for example:
+
+        https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
 
 
 ## (Optional) Check the log of the API Mediation Layer
