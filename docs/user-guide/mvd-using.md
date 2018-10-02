@@ -55,9 +55,6 @@ The following views are available from the explorer server Web UI and are access
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
   
-## Using Zowe Application Framework application plug-ins
-
-Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ## Zowe Application Framework application plug-ins
 
@@ -83,35 +80,45 @@ The API Catalog plug-in lets you view API services that have been discovered by 
 
 ### Workflows
 
-From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your z/OS system.
+From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
 
-## Workflows 
+## Using the Workflows application plug-in
 
-The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon.
+The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
 
-### Navigating Workflows
+To refresh the display, click the circular arrow in the upper right corner of the window.
 
-When you launch the Workflows application plug-in, the **Users/Tasks Workflows** window opens.
+### Configuration
 
-To refresh the display, click the circular arrow in the upper right corner.
+From the **Configuration** tab, you can view, add, and remove servers.
 
-The following tabs are available:
+### Adding a z/OSMF server (Configuration)
 
-**My Tasks**
+Complete these steps to add a new z/OSMF server:
 
-This tab displays Workflow tasks that belong to you. You can choose to view **Pending**, **Completed**, or **All** tasks. Workflows that have tasks that are assigned to you are shown on the left side of the window. For each workflow, you can click the arrow to expand or collapse the task list. Your assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
+1. Click the **Configuration** tab.
+2. Click the plus sign (+) on the left side of the window.
+3. In the **Host** field, type the name of the host.
+4. In the **Port** field, type the port number.
+5. Click **OK**.
 
-Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window.
+To test the connection, click **Test**. When the server is online the **Online** indicator next to the server Host and Port is green.
 
-**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed.
+### Setting a server as the default z/OSMF server
 
-Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
+Complete these steps to set a default z/OSMF server:
 
-**Workflows**
+1. Click **Set as default**.
+2. Enter your user ID and password.
+3. Click **Sign in**.
 
-This tab displays all workflows on the system. 
+### Workflows
+
+Click the **Workflows** tab to display all workflows on the system. 
 
 **Tip:** To search for a particular workflow, type the search string in the search box in the upper right portion of the tab.
+
+The following information is displayed on the **Workflows** tab.
 
 **Workflow**
 
@@ -119,7 +126,7 @@ The name of the workflow.
 
 **Description**
 
-Workflow description.
+The description of the workflow.
 
 **Version**
 
@@ -127,7 +134,7 @@ The version number.
 
 **Owner**
 
-User ID of the workflow owner.
+The user ID of the workflow owner.
 
 **System**
 
@@ -135,15 +142,35 @@ The system identifier.
 
 **Status** 
 
-The status of the workflow (for example, In progress, Completed, and so on.)
+The status of the workflow (for example, **In progress**, **Completed**, and so on.)
 
 **Progress**
 
 Progress indicator.
 
-**Warnings**
+### Defining a workflow
 
-This tab lists any warning messages that were encountered.
+Complete these steps to define a workflow.
+1. From the **Workflows** tab, click **Action** in the upper left corner of the tab.
+2. Click **New workflow**.
+3. Specify the Name, Workflow definition file, System, and Owner.
+4. Click **OK**.
+
+### Viewing tasks
+
+To view your tasks, click the **My Tasks** tab. This tab displays Workflow tasks that belong to you. You can choose to view **Pending**, **Completed**, or **All** tasks. Workflows that have tasks that are assigned to you are shown on the left side of the window. For each workflow, you can click the arrow to expand or collapse the task list. Your assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
+
+Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window.
+
+**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed.
+
+Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
+
+### Viewing warnings
+
+Click the **Warnings** tab to view any warning messages that were encountered.
+
+The following information is displayed on the **Warnings** tab.
 
 **Message Code**
 
@@ -154,24 +181,9 @@ The message code associated with the warning.
 A description of the warning.
 
 **Date**
+
 The date of the warning.
 
 **Corresponding Workflow**
 
 The workflow that is associated with the warning.
-
-**Configuration**
-
-This tab displays the server configuration and the active servers.
-
-From the **Configuration** tab, you can add and remove servers.
-
-### Adding a new z/OSMF server (Configuration)
-
-Complete these steps to add a new z/OSMF server:
-
-1. Click the **Configuration** tab.
-2. Click the plus sign (+) on the left side of the window.
-3. In the **Host** field, type the name of the host.
-4. In the **Port** field, type the port number.
-5. Click **OK**.

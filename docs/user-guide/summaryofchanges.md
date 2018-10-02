@@ -17,6 +17,8 @@ Version 0.9.1 contains the following changes since the last version.
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
+Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
+
 #### New in Zowe CLI
 
 Zowe CLI contains the following new features:
