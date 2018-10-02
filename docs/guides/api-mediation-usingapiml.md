@@ -318,13 +318,11 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
       * **mfaas.catalog-ui-tile.title**
 
-        Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title:
-
-         ![Expanded Catalog Tile](../images/api-mediation/Expanded-Catalog-Tile.png)
+        Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title
 
       * **mfaas.catalog-ui-tile.description**
 
-        Specifies the detailed description of the API services product family. This value is displayed in the API catalog UI dashboard as the tile description
+        Specifies the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description
 
       * **mfaas.catalog-ui-tile.version**
 
@@ -332,7 +330,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
       * **mfaas.discovery.info.serviceTitle**
 
-        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
          ![Service Status](../images/api-mediation/Service-Status.png)
 
@@ -375,7 +373,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
-        **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API catalog.
+        **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
 
     e. **Swagger Api-Doc Parameters**
 
@@ -392,7 +390,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
               # apiPattern: /v1/.*  # alternative to basePackage for exposing endpoints which match the regex pattern to swagger JSON
       ```   
 
-    The following parameters describe the function of the specific version of an API. This information is included in the swagger JSON and displayed in the API catalog:
+    The following parameters describe the function of the specific version of an API. This information is included in the swagger JSON and displayed in the API Catalog:
 
     ![API information detail](../images/api-mediation/Service-detail.png)
 
@@ -472,7 +470,7 @@ To test that your API instance is working and is discoverable, use the following
     http://eureka:password@localhost:10011/eureka
     ```
 2. Start up the API service instance.
-3. Check that your API service instance and each of its endpoints are displayed in the API catalog
+3. Check that your API service instance and each of its endpoints are displayed in the API Catalog
     ```
     https://localhost:10010/ui/v1/caapicatalog/
     ```
