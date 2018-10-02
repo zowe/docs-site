@@ -70,7 +70,7 @@ If your PC is connected to the Internet, you can use the following method to ins
 3. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/db2@next @brightside/cics@next
+    bright plugins install @brightside/cics@next
     ```
 
 4.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
