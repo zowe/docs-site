@@ -99,7 +99,7 @@ In this example, the file can be named `petstore.yml`. The filename does not nee
 
 The file can contain one or more services defined under the `services:` node.
 
-Each service has its own service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
+Each service has its own service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, onlu one instance `http://localhost:8080` is used.
 
 A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
