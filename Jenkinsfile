@@ -27,6 +27,13 @@ customParameters.push(booleanParam(
   description: 'If run the piublish step.',
   defaultValue: false
 ))
+customParameters.push(string(
+  name: 'PUBLISH_BRANCH',
+  description: 'Target branch to publish',
+  defaultValue: 'gh-pages',
+  trim: true,
+  required: true
+))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
   description: 'Github user credentials',
@@ -82,6 +89,8 @@ node ('ibm-jenkins-slave-nvm') {
 
     stage('test') {
       ansiColor('xterm') {
+        // list all files generated
+        sh 'find docs/.vuepress/dist'
         // the test should check 404 errors
         sh 'npm run test'
       }
@@ -101,7 +110,7 @@ node ('ibm-jenkins-slave-nvm') {
             git init
             git add -A
             git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push -f https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jackjia-ibm/docs-site.git master:gh-pages
+            git push -f https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jackjia-ibm/docs-site.git master:${params.PUBLISH_BRANCH}
           """
         }
       }
