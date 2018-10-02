@@ -52,7 +52,7 @@ node ('ibm-jenkins-slave-nvm') {
       ansiColor('xterm') {
         sh 'npm install'
         try {
-          sh 'npm run docs:build'
+          sh 'npm run docs:build || true'
         } catch (err) {
           echo err
         }
