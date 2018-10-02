@@ -31,7 +31,7 @@ module.exports = {
         {
           title: 'Getting Started with zLUX',
           collapsable: true,
-          children: ['zlux-example-server', 'zlux-workshop-user-browser']
+          children: ['zlux-example-server', 'zlux-workshop-user-browser', 'zlux-tutorials']
         },
         {
           title: 'Provide Liberty APIs',
