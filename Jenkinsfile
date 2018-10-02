@@ -96,11 +96,11 @@ node ('ibm-jenkins-slave-nvm') {
         )]) {
           sh '''
             cd docs/.vuepress/dist
-            git config --global user.email "${params.GITHUB_USER_EMAIL}"
-            git config --global user.name "${params.GITHUB_USER_NAME}"
+            git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
+            git config --global user.name \"${params.GITHUB_USER_NAME}\"
             git init
             git add -A
-            git commit -m "deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}"
+            git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
             git push -f https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jackjia-ibm/docs-site.git master:gh-pages
           '''
         }
