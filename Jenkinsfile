@@ -87,8 +87,8 @@ node ('ibm-jenkins-slave-nvm') {
       ansiColor('xterm') {
         // list all files generated
         sh 'find docs/.vuepress/dist'
-        // the test should check 404 errors
-        sh 'npm run test'
+        // check broken links
+        sh 'npm run test:links'
       }
     }
 
