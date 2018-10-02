@@ -27,6 +27,27 @@ customParameters.push(booleanParam(
   description: 'If run the piublish step.',
   defaultValue: false
 ))
+customParameters.push(credentials(
+  name: 'GITHUB_CREDENTIALS',
+  description: 'Github user credentials',
+  credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl',
+  defaultValue: 'zowe-robot-github',
+  required: true
+))
+customParameters.push(string(
+  name: 'GITHUB_USER_EMAIL',
+  description: 'github user email',
+  defaultValue: 'zowe.robot@gmail.com',
+  trim: true,
+  required: true
+))
+customParameters.push(string(
+  name: 'GITHUB_USER_NAME',
+  description: 'github user name',
+  defaultValue: 'Zowe Robot',
+  trim: true,
+  required: true
+))
 opts.push(parameters(customParameters))
 
 // set build properties
@@ -68,13 +89,21 @@ node ('ibm-jenkins-slave-nvm') {
 
     utils.conditionalStage('publish', params.RUN_PUBLISH) {
       ansiColor('xterm') {
-        sh '''
-          cd docs/.vuepress/dist
-          git init
-          git add -A
-          git commit -m 'deploy'
-          git push -f https://github.com/jackjia-ibm/docs-site.git master:gh-pages
-        '''
+        withCredentials([usernamePassword(
+          credentialsId: params.GITHUB_CREDENTIALS,
+          passwordVariable: 'GIT_PASSWORD',
+          usernameVariable: 'GIT_USERNAME'
+        )]) {
+          sh '''
+            cd docs/.vuepress/dist
+            git config --global user.email "${params.GITHUB_USER_EMAIL}"
+            git config --global user.name "${params.GITHUB_USER_NAME}"
+            git init
+            git add -A
+            git commit -m 'deploy'
+            git push -f https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jackjia-ibm/docs-site.git master:gh-pages
+          '''
+        }
       }
     }
 
