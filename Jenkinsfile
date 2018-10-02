@@ -51,7 +51,11 @@ node ('ibm-jenkins-slave-nvm') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh 'npm run docs:build'
+        try {
+          sh 'npm run docs:build'
+        } catch (err) {
+          echo err
+        }
       }
     }
 
@@ -69,7 +73,7 @@ node ('ibm-jenkins-slave-nvm') {
           git init
           git add -A
           git commit -m 'deploy'
-          git push -f https://github.com/zowe/docs-site.git master:gh-pages
+          git push -f https://github.com/jackjia-ibm/docs-site.git master:gh-pages
         '''
       }
     }
