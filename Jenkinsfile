@@ -79,11 +79,7 @@ node ('ibm-jenkins-slave-nvm') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        try {
-          sh 'npm run docs:build || true'
-        } catch (err) {
-          echo err
-        }
+        sh 'npm run docs:build'
       }
     }
 
@@ -105,6 +101,8 @@ node ('ibm-jenkins-slave-nvm') {
         )]) {
           sh """
             cd docs/.vuepress/dist
+            git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
+            git config --global user.name \"${params.GITHUB_USER_NAME}\"
             git init
             git add -A
             git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
