@@ -106,14 +106,13 @@ module.exports = {
         {
           title: 'Configuring Zowe',
           collapsable: true,
-          children: ['mvd-zluxconfiguration', 'cli-configuringcli']
+          children: ['mvd-configuration', 'cli-configuringcli']
         },
         {
           title: 'Using Zowe',
           collapsable: true,
           children: [
             'using',
-            'usingzlux',
             'usingapis',
             'api-mediation-api-catalog',
             'cli-usingcli'
@@ -124,9 +123,9 @@ module.exports = {
           collapsable: true,
           children: [
             'mvd-extendingzlux',
-            'mvd-creatingzluxappplugins',
-            'mvd-zluxplugindefandstruct',
-            'mvd-zluxdataservices',
+            'mvd-creatingappplugins',
+            'mvd-plugindefandstruct',
+            'mvd-dataservices',
             'mvd-desktopandwindowmgt',
             'mvd-configdataservice',
             'mvd-uribroker',
