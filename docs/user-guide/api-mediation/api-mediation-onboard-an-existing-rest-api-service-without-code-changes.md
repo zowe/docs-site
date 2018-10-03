@@ -1,4 +1,4 @@
-# Onboarding an existing REST API service without code changes
+# Onboard an existing REST API service with the Zowe API Mediation Layer without code changes
 
 As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe API Mediation Layer without changing the code of the API service. This article outlines a step-by-step process to make any API service available in the API Mediation Layer.
 
