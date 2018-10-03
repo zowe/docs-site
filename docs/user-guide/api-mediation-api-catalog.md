@@ -8,7 +8,7 @@ As an application developer, use the API Catalog to view what services are runni
    is onboarded with the API Mediation Layer and configured appropriately, registers automatically with the API Catalog
    and a tile for that service is added to the Catalog.
 
-**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
+**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
 ## View Service Information and API Documentation in the API Catalog
 
