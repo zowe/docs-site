@@ -17,6 +17,8 @@ Version 0.9.1 contains the following changes since the last version.
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
+The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer. 
+
 Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
 
 #### New in Zowe CLI

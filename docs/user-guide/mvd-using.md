@@ -1,9 +1,8 @@
 # Using the Zowe Desktop
 
-You can use the Zowe Application Framework to build plug-ins for Zowe Desktop. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
+You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
-
 
 From the Zowe Desktop, you can access Zowe applications. 
 
@@ -25,7 +24,14 @@ where:
 
 To log out, click the the avatar in the lower right corner and click **Sign Out**.
 
-## Using Explorers within the Zowe Application Framework
+### Pinning applications to the task bar
+
+1. Click the Start menu.
+2. Locate the application you want to pin.
+3. Right-click the on the application icon and select **Pin to taskbar**.
+
+
+## Using Explorers within the Zowe Desktop
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
 
 The following views are available from the explorer server Web UI and are accessible via the explorer server icon located in the application draw of Zowe Desktop (Navigation between views can be performed using the menu draw located in the top left corner of the explorer server Web UI):
@@ -56,7 +62,7 @@ The following views are available from the explorer server Web UI and are access
  - Delete files and folders.
   
 
-## Zowe Application Framework application plug-ins
+## Zowe Desktop application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
@@ -92,7 +98,7 @@ To refresh the display, click the circular arrow in the upper right corner of th
 
 From the **Configuration** tab, you can view, add, and remove servers.
 
-### Adding a z/OSMF server (Configuration)
+### Adding a z/OSMF server 
 
 Complete these steps to add a new z/OSMF server:
 
@@ -111,6 +117,12 @@ Complete these steps to set a default z/OSMF server:
 1. Click **Set as default**.
 2. Enter your user ID and password.
 3. Click **Sign in**.
+
+**Note:** You must specify a default server.
+
+### Removing a server
+
+To remove a server, click **x** next to the server in the list that you want to remove.
 
 ### Workflows
 
@@ -150,7 +162,7 @@ Progress indicator.
 
 ### Defining a workflow
 
-Complete these steps to define a workflow.
+Complete these steps to define a workflow:
 1. From the **Workflows** tab, click **Action** in the upper left corner of the tab.
 2. Click **New workflow**.
 3. Specify the Name, Workflow definition file, System, and Owner.
@@ -166,6 +178,13 @@ Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHE
 
 Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
 
+### Task work area
+ When you click **CHECK** or **PERFORM**  a work area on the right side of the window is displayed.
+
+-  When you click **CHECK**, you can view the JESMSGLG, JESJCL, JESYSMSG, or SYSTSPRT that is associated with the selected task.
+
+-   When you click **PERFORM**, you can use the work area to perform the steps associated with the selected task. Click **Next** to advance to the next step for the task.
+
 ### Viewing warnings
 
 Click the **Warnings** tab to view any warning messages that were encountered.
@@ -174,7 +193,7 @@ The following information is displayed on the **Warnings** tab.
 
 **Message Code**
 
-The message code associated with the warning.
+The message code that is associated with the warning.
 
 **Description**
 
