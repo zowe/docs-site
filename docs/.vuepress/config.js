@@ -42,7 +42,7 @@ module.exports = {
           title:
             'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
           collapsable: true,
-          children: ['api-mediation-usingapiml']
+          children: ['api-mediation-onboard-a-spring-boot-rest-api-service']
         },
         {
           title: 'Coming Soon',
