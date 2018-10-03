@@ -58,7 +58,7 @@ To validate that the plug-in installed successfully, issue the following command
 ### Installing from local package
 If you downloaded the Zowe installation package from Github, complete the following steps:
 
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli#installing-zowe-cli-from-local-package) in Installing Zowe CLI for information about how to obtain and extract it.
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) in Installing Zowe CLI for information about how to obtain and extract it.
 2. Issue the following command to install the plug-in:
     ```
     zowe plugins install zowe-cli-cics-1.1.0-next.201809271925.tgz
