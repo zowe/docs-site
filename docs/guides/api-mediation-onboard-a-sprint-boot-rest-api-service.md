@@ -1,6 +1,6 @@
 # Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer
 
-Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](api-mediation-overview.md).
+Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../user-guide/overview.html#api-mediation-layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
@@ -55,12 +55,12 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
      public class DiscoverableClientSampleApplication {...
      ```
 2. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
-    * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block. 
-    
+    * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
+
       **Note:** Valid Zowe Artifactory credentials must be used.  
 
         ```
-      maven { 
+      maven {
           url 'https://gizaartifactory.jfrog.io/gizaartifactory/libs-release'
           credentials {
               username artifactoryUser
@@ -68,7 +68,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
           }            
       }
         ```
-        
+
     * In a Maven build system, follow these steps:
 
         a) Add the following code to the `pom.xml` file:
@@ -79,9 +79,9 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
                <url>http://https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
         </repository>
         ```
-        
+
         b) Create a `settings.xml` file and copy the following XML code block which defines the login credentials for the Zowe Artifactory. Use valid credentials.  
-        
+
         ```
         <?xml version="1.0" encoding="UTF-8"?>
 
@@ -98,9 +98,9 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         </servers>
         </settings>
         ```  
-        
+
         c) Copy the `settings.xml` file inside `${user.home}/.m2/` directory.
-        
+
 3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.2.
 
     * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
