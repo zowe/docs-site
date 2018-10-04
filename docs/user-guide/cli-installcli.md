@@ -52,14 +52,14 @@ If your PC is connected to the Internet, you can use the following method to ins
 
 **Follow these steps:**
 
-1.  Ensure that the following prerequisite software is installed on your PC.
+1.  Ensure that the following prerequisite software is installed on your PC:
     -   Node.js V8.0 or later
         
         Click [here](https://nodejs.org/en/download/) to download Node.js.
 
     -   Node Package Manager (npm) V5.0 or later
     
-        npm is included with the Node.js installation
+        npm is included with the Node.js installation.
 
 2.  Issue the following command to set the registry to the Zowe CLI scoped package on Bintray. In addition to setting the scoped registry, your non-scoped registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
