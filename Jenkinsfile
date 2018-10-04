@@ -25,7 +25,7 @@ def customParameters = []
 customParameters.push(booleanParam(
   name: 'RUN_PUBLISH',
   description: 'If run the piublish step.',
-  defaultValue: false
+  defaultValue: true
 ))
 customParameters.push(string(
   name: 'PUBLISH_BRANCH',
