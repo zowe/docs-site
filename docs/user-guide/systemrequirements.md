@@ -205,9 +205,10 @@ Zowe CLI requires approximately **100 MB** of free disk space. The actual quanti
 ### Prerequisite software
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment. This section provides supplemental information about Zowe CLI-specific tips or requirements that system programmers can refer to.
 
-Before you install Zowe CLI, also install the following prerequisite software depending on the system where you install Zowe CLI:
+***Important!*** You install the prerequisite software that is described in the following topics (Windows, Mac, and Linux) only when you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you do not need to install the prerequisite software. 
 
-**Note:** It's highly recommended that you update Node.js regularly to the latest Long Term Support (LTS) version.
+**Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
+
 
 #### Windows operating systems
 Windows operating systems require the following software:
