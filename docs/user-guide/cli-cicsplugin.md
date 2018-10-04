@@ -38,6 +38,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
   ``` 
   zowe plugins install @brightside/cics
   ```
+ **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
 
@@ -63,6 +64,8 @@ If you downloaded the Zowe installation package from Github, complete the follow
     ```
     zowe plugins install zowe-cli-cics-1.1.0-next.201809271925.tgz
     ```
+   **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
+   
 3. After the command execution completes, issue the following command to validate that the installation completed successfully.
   
     ```
