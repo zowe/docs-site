@@ -45,6 +45,12 @@ module.exports = {
           children: ['api-mediation-onboard-a-sprint-boot-rest-api-service']
         },
         {
+          title:
+            'Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer',
+          collapsable: true,
+          children: ['api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
+        },
+        {
           title: 'Coming Soon',
           collapsable: true,
           children: ['cli-developPlugins']
