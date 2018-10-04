@@ -35,7 +35,7 @@ Issue an `install `command to install plug-ins to Zowe CLI. The
 ```
 zowe plugins install [plugin...] [--registry <registry>]
 ```
-**Note:** On Windows, you must run as an Administrator to install the product and plug-ins.
+**Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
   - **`[plugin...]`**   
     (Optional) Specifies the name of a plug-in, an npm package, or a

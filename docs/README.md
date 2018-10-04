@@ -27,7 +27,7 @@ This website contains documentation for the latest version of Zowe Open Beta rel
 ### Latest version
 The latest version is 0.9.1. You can download the Version 0.9.1 User Guide as a PDF file.
 
-[Download V0.9.1 PDF](https://zowe.github.io/docs-site/Zowe_User_Guide.pdf)
+[Download V0.9.1 PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.1.pdf)
 
 ### Previous version
 You can download the User Guide of previous Open Beta version as a PDF file.
