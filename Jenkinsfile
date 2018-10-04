@@ -12,6 +12,7 @@
 
 def isPullRequest = env.BRANCH_NAME.startsWith('PR-')
 def slackChannel = '#test-build-notify'
+def allowPublishing = env.BRANCH_NAME == 'master'
 
 def opts = []
 // keep last 20 builds for regular branches, no keep for pull requests
@@ -92,7 +93,7 @@ node ('ibm-jenkins-slave-nvm') {
       }
     }
 
-    utils.conditionalStage('publish', params.RUN_PUBLISH) {
+    utils.conditionalStage('publish', allowPublishing && params.RUN_PUBLISH) {
       ansiColor('xterm') {
         withCredentials([usernamePassword(
           credentialsId: params.GITHUB_CREDENTIALS,
