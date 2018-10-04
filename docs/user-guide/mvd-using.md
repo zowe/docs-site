@@ -31,7 +31,7 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 3. Right-click the on the application icon and select **Pin to taskbar**.
 
 
-## Using Explorers within the Zowe Application Framework
+## Using Explorers within the Zowe Desktop
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
 
 The following views are available from the explorer server Web UI and are accessible via the explorer server icon located in the application draw of Zowe Desktop (Navigation between views can be performed using the menu draw located in the top left corner of the explorer server Web UI):
@@ -62,7 +62,7 @@ The following views are available from the explorer server Web UI and are access
  - Delete files and folders.
   
 
-## Zowe Application Framework application plug-ins
+## Zowe Desktop application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
