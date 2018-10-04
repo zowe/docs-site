@@ -4,8 +4,8 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
-- [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
+- [Version 0.9.1 (October 2018)](#version-091-october-2018)
+- [Version 0.9.0 (August 2018)](#version-090-august-2018)
 
 ## Version 0.9.1 (October 2018)
 
@@ -59,7 +59,7 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
     - The Swagger user interface component was implemented for more standardized look and feel.
     - The Tile view now contains a Search bar.
 - API Mediation Layer documentation now contains the following tutorials:
-    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](../guides/api-mediation-onboard-a-java-rest-api-service.md).
+    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](../guides/onboard-an-existing-spring-boot-rest-api-service-with-zowe-api-mmediation-layer.md).
     - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
 #### Enhanced JES Explorer
