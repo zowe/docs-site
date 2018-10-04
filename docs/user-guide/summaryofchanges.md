@@ -50,11 +50,21 @@ Zowe CLI contains the following new features:
 
 #### New in API Mediation Layer
 
-You can now view the status of API Mediation Layer from the Zowe Desktop App (zLUX plug-in).
+API Mediation Layer Version 0.9.1 contains the following new functionality and features:
+
+- You can now view the status of API Mediation Layer from the Zowe Desktop App (zLUX plug-in).
+- API Mediation Layer now lets you define single instance services and route it through a gateway without having to apply code changes to the service.
+- API Catalog contains the following new functionality and features:
+    - The [Mineral](https://mineral-ui.com/) user interface framework was used to design the API Catalog user interface.
+    - The Swagger user interface component was implemented for more standardized look and feel.
+    - The Tile view now contains a Search bar.
+- API Mediation Layer documentation now contains the following tutorials:
+    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](./guides/api-mediation-onboard-a-java-rest-api-service.md).
+    - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](./guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
 #### Enhanced JES Explorer
 
-A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:  
+A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:   
 https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
 
 ### What's changed
@@ -62,6 +72,7 @@ https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345
 #### Naming
 
 MVD is renamed to Zowe Desktop.
+
 
 #### JES Explorer
 
