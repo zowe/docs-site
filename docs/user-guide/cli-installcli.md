@@ -53,11 +53,11 @@ If your PC is connected to the Internet, you can use the following method to ins
 **Follow these steps:**
 
 1.  Ensure that the following prerequisite software is installed on your PC:
-    -   Node.js V8.0 or later
+    -   **Node.js V8.0 or later**
         
         Click [here](https://nodejs.org/en/download/) to download Node.js.
 
-    -   Node Package Manager (npm) V5.0 or later
+    -   **Node Package Manager (npm) V5.0 or later**
     
         npm is included with the Node.js installation.
 
