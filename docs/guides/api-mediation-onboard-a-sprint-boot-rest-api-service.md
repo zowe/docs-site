@@ -6,12 +6,15 @@ Zowe API Mediation Layer provides a single point of access for mainframe service
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-1. [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
-2. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
-3. [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
-4. [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
-5. [Test your service](#test-your-service)
-6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
+- [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](#onboard-an-existing-spring-boot-rest-api-service-with-zowe-api-mediation-layer)
+    - [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
+    - [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
+    - [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
+    - [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
+    - [Test your service](#test-your-service)
+        - [Validate that your API instance is still working](#validate-that-your-api-instance-is-still-working)
+        - [Validate that your API instance is discoverable](#validate-that-your-api-instance-is-discoverable)
+    - [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 
 ## Prepare an existing Spring Boot REST API for onboarding
@@ -354,7 +357,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
       **Note:** If your REST API does not conform to MFaaS REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
-      * **eureka.instance.metadata-map.routed-services.<prefix>**
+      * `eureka.instance.metadata-map.routed-services.<prefix>`
 
         Specifies a name for routing rules group. This parameter is only for logical grouping of further parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
@@ -364,10 +367,10 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         api_v1
         api_v2
         ```
-      * **eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl**
+      * `eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * **metadata-map.routed-services.<prefix>.serviceUrl**
+      * `metadata-map.routed-services.<prefix>.serviceUrl`
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
