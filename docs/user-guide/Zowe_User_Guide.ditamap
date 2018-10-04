@@ -20,7 +20,7 @@
 <toc navtitle="Contents"/>
 </frontbooklists>
 <preface format="md" href="aboutthisdoc.md" navtitle="About this documentation" scope="local"/><?Pub Caret -1?>
-<topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Summary of changes"/>
+<topicref format="md" scope="local" href="summaryofchanges.md" navtitle="Release notes"/>
 </ibmfrontmatter>
 <chapter format="md" href="overview.md" navtitle="Zowe overview" scope="local"/>
 <chapter format="md" href="installandconfig.md" navtitle="Installing Zowe"
@@ -44,7 +44,7 @@ scope="local"/>
 scope="local"/>
 </chapter>
 <chapter format="md" href="using.md" navtitle="Using Zowe" scope="local">
-<topicref format="md" href="mvd-using.md" navtitle="Using the Zowe Application Framework" scope="local"/>
+<topicref format="md" href="mvd-using.md" navtitle="Using the Zowe Desktop" scope="local"/>
 <topicref format="md" href="usingapis.md" navtitle="Using APIs" scope="local"/>
 <topicref format="md" href="api-mediation-api-catalog.md" navtitle="Using API Catalog" scope="local"/>
 <topicref format="md" href="cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
@@ -71,8 +71,6 @@ navtitle="Application-to-application communication" scope="local"/>
 scope="local"/>
 <topicref format="md" href="cli-cicsplugin.md" navtitle="Zowe CLI Plug-in for IBM CICS"
 scope="local"/>
-<topicref format="md" href="cli-db2plugin.md"
-navtitle="Zowe CLI plug-in for IBM Db2 Database" scope="local"/>
 </chapter>
 </ibmbook>
 <?Pub *0000009695?>

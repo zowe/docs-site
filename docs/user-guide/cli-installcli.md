@@ -29,10 +29,10 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-1.1.0-next.201808072010.tgz 
+    npm install -g zowe-cli-2.0.0-next.201809251404 
     ```
     
-    **Note:** On Windows, you must run as an Administrator to install the product and plug-ins.
+    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
@@ -63,14 +63,14 @@ If your PC is connected to the Internet, you can use the following method to ins
     ```
     npm install -g @brightside/core@next
     ```
-    **Note:** On Windows, you must run as an Administrator to install the product and plug-ins. 
+    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins. 
     
     Zowe CLI is installed on your PC. For information about plug-ins for Zowe CLI, see [Extending Zowe CLI](cli-extending.md).
 
 3. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/db2@next @brightside/cics@next
+    bright plugins install @brightside/cics@next
     ```
 
 4.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).

@@ -119,4 +119,4 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](mvd-configuration.md#zowe-application-framework-configuration).
+For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](mvd-configuration.html#zowe-application-framework-configuration).

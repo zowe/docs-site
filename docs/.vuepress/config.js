@@ -31,7 +31,7 @@ module.exports = {
         {
           title: 'Getting Started with zLUX',
           collapsable: true,
-          children: ['zlux-example-server', 'zlux-workshop-user-browser']
+          children: ['zlux-example-server', 'zlux-workshop-user-browser', 'zlux-tutorials']
         },
         {
           title: 'Provide Liberty APIs',
@@ -42,7 +42,13 @@ module.exports = {
           title:
             'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
           collapsable: true,
-          children: ['api-mediation-usingapiml']
+          children: ['api-mediation-onboard-a-sprint-boot-rest-api-service']
+        },
+        {
+          title:
+            'Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer',
+          collapsable: true,
+          children: ['api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
         },
         {
           title: 'Coming Soon',
@@ -77,15 +83,15 @@ module.exports = {
         {
           title: 'About this documentation',
           collapsable: true,
-          children: ['download-pdf', 'aboutthisdoc']
+          children: ['aboutthisdoc']
         },
         {
-          title: 'Summary of changes',
+          title: 'Release notes',
           collapsable: true,
           children: ['summaryofchanges']
         },
         {
-          title: 'Zowe Overview',
+          title: 'Zowe overview',
           collapsable: true,
           children: ['overview']
         },
@@ -113,13 +119,14 @@ module.exports = {
           collapsable: true,
           children: [
             'using',
+            'mvd-using',
             'usingapis',
             'api-mediation-api-catalog',
             'cli-usingcli'
           ]
         },
         {
-          title: 'Extending zLUX',
+          title: 'Extending the Zowe Application Framework',
           collapsable: true,
           children: [
             'mvd-extendingzlux',
@@ -140,8 +147,7 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin',
-            'cli-db2plugin'
+            'cli-cicsplugin'
           ]
         }
       ],
