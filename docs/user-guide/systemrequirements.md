@@ -193,6 +193,8 @@ Before you install Zowe CLI, make sure your system meets the following requireme
 
 You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
+Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
+
 **Important!**
 
 - Zowe CLI is not officially supported on Mac computers. However, Zowe CLI *might* run successfully on some Mac computers.
@@ -203,9 +205,8 @@ You can install Zowe CLI on any Windows or Linux operating system. For more info
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
 
 ### Prerequisite software
-Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment. This section provides supplemental information about Zowe CLI-specific tips or requirements that system programmers can refer to.
 
-***Important!*** You install the prerequisite software that is described in the following topics (Windows, Mac, and Linux) only when you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you do not need to install the prerequisite software. 
+***Important!*** The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
