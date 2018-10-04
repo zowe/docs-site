@@ -59,8 +59,8 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
     - The Swagger user interface component was implemented for more standardized look and feel.
     - The Tile view now contains a Search bar.
 - API Mediation Layer documentation now contains the following tutorials:
-    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](./guides/api-mediation-onboard-a-java-rest-api-service.md).
-    - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](./guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
+    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](../guides/api-mediation-onboard-a-java-rest-api-service.md).
+    - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
 #### Enhanced JES Explorer
 
