@@ -13,7 +13,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "broken-link-checker-local": "^0.2.0",
+    "broken-link-checker-local": "git+https://github.com/jackjia-ibm/broken-link-checker-local.git",
+    "html-auditor": "^0.16.0",
     "vuepress": "^0.14.1"
   }
 }
