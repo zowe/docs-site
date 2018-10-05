@@ -79,8 +79,8 @@ node ('ibm-jenkins-slave-nvm') {
 
     stage('build') {
       ansiColor('xterm') {
-        sh 'yarn install'
-        sh 'yarn run docs:build'
+        sh 'npm install'
+        sh 'npm run docs:build'
       }
     }
 
@@ -89,7 +89,7 @@ node ('ibm-jenkins-slave-nvm') {
         // list all files generated
         sh 'find docs/.vuepress/dist'
         // check broken links
-        sh 'yarn run test:links'
+        sh 'npm run test:links'
       }
     }
 
