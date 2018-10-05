@@ -14,6 +14,8 @@ Typicode serves sample REST JSON data for testing purposes.
 
 At the end of this tutorial, you will be able to use a new command from the Zowe CLI interface: `zowe zowe-cli-sample list typicode-todos`
 
+Completed source for this tutorial can be found on the `extend-a-plugin` branch of the zowe-cli-sample-plugin repository.
+
 ### Creating a Typescript interface for the Typicode response data
 First, we'll create a Typescript interface to map the response data from a server.
 
@@ -164,7 +166,7 @@ is presented to the end user. You can also see how to use your optional `--id` f
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
 For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests. 
 
-Completed source for this tutorial can be found on the `typicode-todos` branch of the zowe-cli-sample-plugin repository.
+Completed source for this tutorial can be found on the `extend-a-plugin` branch of the zowe-cli-sample-plugin repository.
 
 ## Next steps
 Try the [Developing a new plug-in](cli-developing-a-plugin.md) tutorial next to create a new plug-in for Zowe CLI.

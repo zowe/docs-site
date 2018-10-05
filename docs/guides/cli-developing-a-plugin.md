@@ -9,6 +9,8 @@ your plugin's output to a third-party utility for a side-by-side diff of data se
 
 ![Side by Side Diff](../images/guides/CLI/htmlDiff.png)
 
+Completed source for this tutorial can be found on the `develop-a-plugin` branch of the zowe-cli-sample-plugin repository.
+
 ### Cloning the sample plug-in source
  Clone the sample repo, delete the irrelevant source, and create a brand new plug-in. Follow these steps:
 
