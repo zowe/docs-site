@@ -1,10 +1,6 @@
-# Onboarding an existing REST API service without code changes
+# Onboard an existing REST API service with the Zowe API Mediation Layer without code changes
 
-As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe API Mediation Layer without changing the code of the API service. This article outlines a step-by-step process to make any API service available in the API Mediation Layer.
-
-The following procedure is an overview of steps to onboard a REST API application with the API Mediation Layer. 
-
-Provide access to your service's REST APIs through the API Gateway by following this procedure.
+As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe API Mediation Layer without changing the code of the API service. The following procedure is an overview of steps to onboard an API service through the API Gateway in the API Mediation Layer.
 
 **Follow these steps:**
 
@@ -20,14 +16,23 @@ Provide access to your service's REST APIs through the API Gateway by following 
 
 <!-- /TOC -->
 
-## Identify the API that you want to expose
+## Overview of APIs
 
-An API or application programming interface is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows the client to talk to the API. Representational State Transfer (REST) determines the look of the API. REST is a set of rules that developers follow when creating an API.  One of these rules states that a user should be able to get a piece of data (called a resource) accessible via URL endpoints through HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe is in JSON format.
-
-Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
-Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+Before youcan identify the API you want to expose, it is useful to consider the structure of an API. An API or application programming interface is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows the client to talk to the API. Representational State Transfer (REST) determines the look of the API. REST is a set of rules that developers follow when creating an API.  One of these rules states that a user should be able to get a piece of data (called a resource) accessible via URL endpoints through HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe is in JSON format.
 
 REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server which can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of _web application servers_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
+
+**Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
+Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+
+## Identify the API that you want to expose
+
+The first step to onboard an API service through the API Gateway without making code changes is to identify the API you want o expose.
+
+**Follow these steps:**
+
+1.  
+2.  
 
 ![REST API Components](diagrams/rest-api-components.svg)
 
