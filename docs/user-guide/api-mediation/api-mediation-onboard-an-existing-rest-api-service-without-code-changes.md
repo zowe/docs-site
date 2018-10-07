@@ -12,10 +12,11 @@ Provide access to your service's REST APIs through the API Gateway by following 
 
 1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
 2. [Define the service and API in the YAML format](#define-the-service-and-api-in-the-yaml-format)
-3. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-4. [Add the definition in the API Mediation Layer in the Zowe runtime](#add-the-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-5. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-6. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+3. [Configuration parameters](#configuration-parameters)
+4. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+5. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+6. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+7. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 <!-- /TOC -->
 
@@ -203,7 +204,7 @@ The following procedure describes how to add your service to the API Mediation L
 
 1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.
 
-2.  Run the following services to start the API Mediation Layer:
+2.  Start the API Mediation Layer services.
 
     **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md) 
     
