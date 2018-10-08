@@ -4,79 +4,42 @@ As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe 
 
 **Follow these steps:**
 
-<!-- TOC depthFrom:2 orderedList:true -->
+<!-- TOC depthFrom:2 depthTo:2 orderedList:true -->
 
-1. [Overview of APIs](#overview-of-apis)
-2. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
-3. [Define the service and API in the YAML format](#define-the-service-and-api-in-the-yaml-format)
-4. [Configuration parameters](#configuration-parameters)
-5. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-6. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-7. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-8. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+2. [Define the service and API in the YAML format](#define-the-service-and-api-in-the-yaml-format)
+3. [Configuration parameters](#configuration-parameters)
+4. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+5. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+6. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+7. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 <!-- /TOC -->
 
-## Overview of APIs
-
-Before you can identify the API you want to expose, it is useful to consider the structure of an API. An API or application programming interface is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows the client to talk to the API. Representational State Transfer (REST) determines the look of the API. REST is a set of rules that developers follow when creating an API. One of these rules states that a user should be able to get a piece of data (called a resource) accessible via URL endpoints through HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe is JSON format.
-
-REST APIs are provided by REST API services. A REST API service can provide one or more REST APIs. A service usually provides the latest version of its API. A REST service is hosted on a web server which can host one or more services. A service is sometimes called _application_. A web server that hosts multiple services (applications) is usually called a _web application server_. Examples of _web application servers_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
-
-**Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
-Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
-
-![REST API Components](diagrams/rest-api-components.svg)
-
 ## Identify the API that you want to expose
 
-The first step to onboard an API service through the API Gateway without making code changes is to identify the API you want to expose.
+1. The first step to onboard an API service through the API Gateway without making code changes is to identify what is the hostname, port, and optional base path where the service is available. This URL is called base URL of the service.
 
-In microservice architecture, a web server usually provides one service. A typical example of such implementation is a Spring Boot web application. The following example uses a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
+    * In case of the sample service described earlier (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service)), it is `http://localhost:8080`
 
-You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md) or you can use another existing service.
+2. The second step is to identify all APIs that are provided by this service and you want to expose them via the API Gateway.
 
-The sample service has a base URL. If you start this service on your computer, the _service base URL_ is: http://localhost:8080. 
+    * In case of the sample service, it is one REST API available at path `/v2` relative to base URL of the service. This API is the version 2 of the Pet Store API.
 
-If a service is deployed to an application server, a  base URL of the service (application) can be: `http://application-server-hostname:port/application-name.`
+3. Choose the _service ID_ of your service. he _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
 
-This service provides one API that has the base path `/v2`, which is represented in the base URL of the API as http://localhost:8080/v2.
+    * In case of the sample service, we will choose `petstore`.
 
-This API provides only one endpoint:
+4. Decide at which URL this API is going to be available in the API Gateway. This is called gateway URL and it is composed from the API type and major version. 
 
-- `/pets/{id}` - *Find pet by ID*. This endpoint returns a pet when 0 < ID <= 10. ID > 10 or when non-integers simulate API error conditions.
+    * In case of the sample service, we are providing a REST API so the first segment is `/api`. Since it is the version 2, the second segment is `/v2`.
 
-Access http://localhost:8080/v2/pets/1 to get the following response:
+### Routing
 
-```json
-{
-    "category": {
-        "id": 2,
-        "name": "Cats"
-    },
-    "id": 1,
-    "name": "Cat 1",
-    "photoUrls": [
-        "url1",
-        "url2"
-    ],
-    "status": "available",
-    "tags": [
-        {
-            "id": 1,
-            "name": "tag1"
-        },
-        {
-            "id": 2,
-            "name": "tag2"
-        }
-    ]
-}
-```
+The process of sending requests from API gateway to a specific API service is called _routing_.
 
-The following example defines a new REST API service in the API Mediation Layer. This service generates one REST API.
-
-The _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII (for example `petstore`). The API Gateway differentiates major versions of an API. For example, to access version 2 of the `petstore` API you use the following gateway URL:
+The API Gateway differentiates major versions of an API.
+For example, to access version 2 of the `petstore` API you use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
 
@@ -86,7 +49,8 @@ The base URL of the version 2 of the `petstore` API is:
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
 
-As an user of the API Gateway, access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+As an user of the API Gateway, you access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+
 
 ## Define the service and API in the YAML format
 
@@ -111,11 +75,12 @@ Each service has a service ID. In this example, the service ID is `petstore`. Th
 A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
 **Tips:** 
-    * There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-    * For more details about YAML formatting, see https://learnxinyminutes.com/docs/yaml/
+* There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-## Configuration parameters##
+* For more details about YAML formatting, see https://learnxinyminutes.com/docs/yaml/
+
+## Configuration parameters
 
 The following list describes the configuration parameters:
 
@@ -251,7 +216,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
         https://${zoweHostname}:${gatewayHttpsPort}/application/routes
 
-   The following line should appear:
+    The following line should appear:
 
         /api/v2/petstore/**: "petstore"
 
