@@ -10,10 +10,10 @@ You can extend Zowe CLI by developing plug-ins and contributing code to the base
 
 ## How can I contribute?
 You can contribute to Zowe CLI in the following ways:
-1. Add new commands and command options to the base CLI.
+1. Add new commands, options, or other improvements to the base CLI.
 2. Develop a plug-in that users can install to Zowe CLI. 
 
-See the [tutorials](#tutorials) to get started with development! 
+See the [Getting Started](#getting-started) to get started with development today! 
 
 You might want to contribute to Zowe CLI to accomplish the following:
 * Provide new scriptable functionality for yourself, your organization, or to a broader community.
@@ -25,7 +25,18 @@ The following plug-in projects have been developed:
 * [Zowe CLI Plug-in for IBM CICS](https://github.com/zowe/zowe-cli-cics-plugin)
 
 ## Getting started
-The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) contains a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects. Follow the associated [developer tutorials](#tutorials) to learn about how to work with this sample plug-in, build new commands, or build a new Zowe CLI plug-in.
+If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/CONTRIBUTING.md).
+
+The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) contains a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects. Follow the associated [developer tutorials](#tutorials) to learn about how to work with our sample plug-in, build new commands, or build a new Zowe CLI plug-in.
+
+
+### Tutorials
+Follow these tutorials to get started working with the sample plug-in:
+1. **[Setting up](cli-setting-up.md)** - Clone the project and prepare your local environment.
+2. **[Installing a plug-in](cli-installing-sample-plugin.md)** - Install the sample plug-in to Zowe CLI and run as-is.
+3. **[Extending a plug-in](docs/tutorials/list-typicode-todo/ListTypicodeTodoPlugin.md)** - Extend the sample plug-in with a new by creating a programmatic API, definition, and handler.
+4. **[Creating a new plug-in](docs/tutorials/files-util/FilesUtilPlugin.md)** - Create a new CLI plug-in that uses Zowe CLI programmatic APIs and a diff package to compare two data sets.
+5. **[Implementing user profiles](docs/tutorials/profile-example/ProfilePlugin.md)** - Implement user profiles with the plug-in.
 
 ### Plug-in Development Overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
@@ -33,18 +44,10 @@ At a high level, a plug-in must have `imperative-framework` configuration [(samp
 In addition to the configuration, a Zowe CLI plug-in will minimally contain the following:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
 2. **Command definition** - The syntax definition for your command.
-3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the command definition.
-
-### Tutorials
-Follow these tutorials to get started working with the sample plug-in:
-1. **[Setting up](cli-setting-up.md)** - Clone the project and prepare your local environment.
-2. **[Installing a plug-in](cli-installing-sample-plugin.md)** - Install the sample plug-in to Zowe CLI and run as-is.
-3. **[Extending a plug-in](docs/tutorials/list-typicode-todo/ListTypicodeTodoPlugin.md)** - Extend the sample plug-in with a new command by creating a programmatic API, command definition, and handler.
-4. **[Creating a new plug-in](docs/tutorials/files-util/FilesUtilPlugin.md)** - Create a new CLI plug-in that uses Zowe CLI programmatic APIs and a diff package to compare two data sets.
-5. **[Implementing user profiles](docs/tutorials/profile-example/ProfilePlugin.md)** - Implement user profiles with the plug-in.
+3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the definition.
 
 ## Developer Documentation and Guidelines
-In addition to the [tutorials](#tutorials), we also provide the following guidelines and documentation to assist you during development:
+In addition to the [tutorials](#tutorials), the following guidelines and documentation will assist you during development:
 
 ### Imperative CLI Framework Documentation
 [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these supplementary documents during development to learn about specific features such as:

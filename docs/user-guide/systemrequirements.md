@@ -226,7 +226,7 @@ Windows operating systems require the following software:
 
     The command that installs C++ Compiler also installs Python on Windows.
 
-- C++ Compiler (gcc 4.8.1 or later)
+- C++ Compiler (Windows Build Tools)
 
     From an administrator command prompt, issue the following command:
 
