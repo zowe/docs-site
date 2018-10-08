@@ -52,13 +52,22 @@ If your PC is connected to the Internet, you can use the following method to ins
 
 **Follow these steps:**
 
-1.  Issue the following command to set the registry to the Zowe CLI scoped package on Bintray. In addition to setting the scoped registry, your non-scoped registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
+1.  Ensure that the following prerequisite software is installed on your PC:
+    -   **Node.js V8.0 or later**
+        
+        Click [here](https://nodejs.org/en/download/) to download Node.js.
+
+    -   **Node Package Manager (npm) V5.0 or later**
+    
+        npm is included with the Node.js installation.
+
+2.  Issue the following command to set the registry to the Zowe CLI scoped package on Bintray. In addition to setting the scoped registry, your non-scoped registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
     ```
     npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
     ```
 
-2.  Issue the following command to install Zowe CLI from the registry:
+3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
     npm install -g @brightside/core@next
@@ -67,13 +76,13 @@ If your PC is connected to the Internet, you can use the following method to ins
     
     Zowe CLI is installed on your PC. For information about plug-ins for Zowe CLI, see [Extending Zowe CLI](cli-extending.md).
 
-3. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
+4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
     bright plugins install @brightside/cics@next
     ```
 
-4.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
+5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
     **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
