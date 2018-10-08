@@ -71,7 +71,7 @@ If you downloaded the Zowe installation package from Github, complete the follow
     ```
     zowe plugins validate cics
     ```
-      Successful validation of the IBM Db2 plug-in returns the response: Successfully validated.
+      Successful validation of the CICS plug-in returns the response: Successfully validated.
       
 ## Setting up profiles
 

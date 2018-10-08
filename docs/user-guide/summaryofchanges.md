@@ -21,6 +21,30 @@ The API Catalog plug-in was added to the Zowe Application Framework. This plug-i
 
 Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
 
+The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
+
+The following tutorials are now available in Github:
+
+Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
+
+Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
+
+Internationalization in Angular Templates in Zowe zLUX 
+
+[sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
+
+App to app communication
+
+[sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)
+
+Using the Widgets Library
+
+[sample-angular-app (Widgets)](https://github.com/zowe/sample-angular-app/blob/lab/step-4-widgets-complete/README.md)
+
+Configuring user preferences (configuration dataservice)
+
+[sample-angular-app (configuration dataservice)](https://github.com/zowe/sample-angular-app/blob/lab/step-5-config-complete/README.md)
+
 #### New in Zowe CLI
 
 Zowe CLI contains the following new features:

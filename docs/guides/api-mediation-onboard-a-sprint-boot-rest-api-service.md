@@ -1,4 +1,4 @@
-# Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer
+# Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer 
 
 Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../user-guide/overview.html#api-mediation-layer).
 
@@ -12,7 +12,6 @@ As an API developer, use this guide to onboard your REST API service into the Zo
 4. [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
 5. [Test your service](#test-your-service)
 6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
-
 
 ## Prepare an existing Spring Boot REST API for onboarding
 The Spring Boot API onboarding process follows these general steps. Further detail about how to perform these steps is described later in this article.
@@ -354,7 +353,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
       **Note:** If your REST API does not conform to MFaaS REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
-      * **eureka.instance.metadata-map.routed-services.<prefix>**
+      * `eureka.instance.metadata-map.routed-services.<prefix>`
 
         Specifies a name for routing rules group. This parameter is only for logical grouping of further parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
@@ -364,10 +363,10 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         api_v1
         api_v2
         ```
-      * **eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl**
+      * `eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * **metadata-map.routed-services.<prefix>.serviceUrl**
+      * `metadata-map.routed-services.<prefix>.serviceUrl`
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
