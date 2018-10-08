@@ -39,12 +39,7 @@ module.exports = {
           children: ['libertyAPI', 'ReactJSUI']
         },
         {
-<<<<<<< HEAD
-          title:
-            'Onboarding Spring Boot REST API services using Zowe API Mediation Layer',
-=======
           title: 'Onboard REST APIs to the API Mediation Layer',
->>>>>>> master
           collapsable: true,
           children: ['api-mediation-onboard-a-sprint-boot-rest-api-service', 'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
         },
