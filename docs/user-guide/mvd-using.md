@@ -1,9 +1,8 @@
-# Using the Zowe Application Framework
+# Using the Zowe Desktop
 
-The Zowe Application Framework provides the ability to create application plug-ins. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
+You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
-
 
 From the Zowe Desktop, you can access Zowe applications. 
 
@@ -25,7 +24,14 @@ where:
 
 To log out, click the the avatar in the lower right corner and click **Sign Out**.
 
-## Using Explorers within the Zowe Application Framework
+### Pinning applications to the task bar
+
+1. Click the Start menu.
+2. Locate the application you want to pin.
+3. Right-click the on the application icon and select **Pin to taskbar**.
+
+
+## Using Explorers within the Zowe Desktop
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
 
 The following views are available from the explorer server Web UI and are accessible via the explorer server icon located in the application draw of Zowe Desktop (Navigation between views can be performed using the menu draw located in the top left corner of the explorer server Web UI):
@@ -54,23 +60,149 @@ The following views are available from the explorer server Web UI and are access
  - Create new files and folders.
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
+  
 
-## Using Zowe Application Framework application plug-ins
+## Zowe Desktop application plug-ins
 
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
-### Hello World
-This sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
+### Hello World Sample
+The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
 
-### IFrame
-This sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
+### IFrame Sample
+The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
 
-### ZOS Subsystems
-This application plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
+### z/OS Subsystems
+This z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
 ### TN3270
-This application plug-in provides a 3270 connection to the mainframe on
-which the Zowe Application Server runs. 
+This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
 
 ### VT Terminal 
-This application plug-in provides a connection to UNIX System Services and UNIX.
+The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
+
+### API Catalog
+The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](#api-mediation-layer-architecture).
+
+### Workflows
+
+From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
+
+## Using the Workflows application plug-in
+
+The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
+
+To refresh the display, click the circular arrow in the upper right corner of the window.
+
+### Configuration
+
+From the **Configuration** tab, you can view, add, and remove servers.
+
+### Adding a z/OSMF server 
+
+Complete these steps to add a new z/OSMF server:
+
+1. Click the **Configuration** tab.
+2. Click the plus sign (+) on the left side of the window.
+3. In the **Host** field, type the name of the host.
+4. In the **Port** field, type the port number.
+5. Click **OK**.
+
+To test the connection, click **Test**. When the server is online the **Online** indicator next to the server Host and Port is green.
+
+### Setting a server as the default z/OSMF server
+
+Complete these steps to set a default z/OSMF server:
+
+1. Click **Set as default**.
+2. Enter your user ID and password.
+3. Click **Sign in**.
+
+**Note:** You must specify a default server.
+
+### Removing a server
+
+To remove a server, click **x** next to the server in the list that you want to remove.
+
+### Workflows
+
+Click the **Workflows** tab to display all workflows on the system. 
+
+**Tip:** To search for a particular workflow, type the search string in the search box in the upper right portion of the tab.
+
+The following information is displayed on the **Workflows** tab.
+
+**Workflow**
+
+The name of the workflow.
+
+**Description**
+
+The description of the workflow.
+
+**Version**
+
+The version number.
+
+**Owner**
+
+The user ID of the workflow owner.
+
+**System**
+
+The system identifier.
+
+**Status** 
+
+The status of the workflow (for example, **In progress**, **Completed**, and so on.)
+
+**Progress**
+
+Progress indicator.
+
+### Defining a workflow
+
+Complete these steps to define a workflow:
+1. From the **Workflows** tab, click **Action** in the upper left corner of the tab.
+2. Click **New workflow**.
+3. Specify the Name, Workflow definition file, System, and Owner.
+4. Click **OK**.
+
+### Viewing tasks
+
+To view your tasks, click the **My Tasks** tab. This tab displays Workflow tasks that belong to you. You can choose to view **Pending**, **Completed**, or **All** tasks. Workflows that have tasks that are assigned to you are shown on the left side of the window. For each workflow, you can click the arrow to expand or collapse the task list. Your assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
+
+Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window.
+
+**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed.
+
+Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
+
+### Task work area
+ When you click **CHECK** or **PERFORM**  a work area on the right side of the window is displayed.
+
+-  When you click **CHECK**, you can view the JESMSGLG, JESJCL, JESYSMSG, or SYSTSPRT that is associated with the selected task.
+
+-   When you click **PERFORM**, you can use the work area to perform the steps associated with the selected task. Click **Next** to advance to the next step for the task.
+
+### Viewing warnings
+
+Click the **Warnings** tab to view any warning messages that were encountered.
+
+The following information is displayed on the **Warnings** tab.
+
+**Message Code**
+
+The message code that is associated with the warning.
+
+**Description**
+
+A description of the warning.
+
+**Date**
+
+The date of the warning.
+
+**Corresponding Workflow**
+
+The workflow that is associated with the warning.

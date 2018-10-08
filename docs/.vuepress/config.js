@@ -31,7 +31,7 @@ module.exports = {
         {
           title: 'Getting Started with zLUX',
           collapsable: true,
-          children: ['zlux-example-server', 'zlux-workshop-user-browser']
+          children: ['zlux-example-server', 'zlux-workshop-user-browser', 'zlux-tutorials']
         },
         {
           title: 'Providing Liberty APIs',
@@ -39,10 +39,14 @@ module.exports = {
           children: ['libertyAPI', 'ReactJSUI']
         },
         {
+<<<<<<< HEAD
           title:
             'Onboarding Spring Boot REST API services using Zowe API Mediation Layer',
+=======
+          title: 'Onboard REST APIs to the API Mediation Layer',
+>>>>>>> master
           collapsable: true,
-          children: ['api-mediation-usingapiml']
+          children: ['api-mediation-onboard-a-sprint-boot-rest-api-service', 'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
         },
         {
           title: 'Developing for Zowe CLI',
@@ -78,15 +82,15 @@ module.exports = {
         {
           title: 'About this documentation',
           collapsable: true,
-          children: ['download-pdf', 'aboutthisdoc']
+          children: ['aboutthisdoc']
         },
         {
-          title: 'Summary of changes',
+          title: 'Release notes',
           collapsable: true,
           children: ['summaryofchanges']
         },
         {
-          title: 'Zowe Overview',
+          title: 'Zowe overview',
           collapsable: true,
           children: ['overview']
         },
@@ -107,27 +111,27 @@ module.exports = {
         {
           title: 'Configuring Zowe',
           collapsable: true,
-          children: ['mvd-zluxconfiguration', 'cli-configuringcli']
+          children: ['mvd-configuration', 'cli-configuringcli']
         },
         {
           title: 'Using Zowe',
           collapsable: true,
           children: [
             'using',
-            'usingzlux',
+            'mvd-using',
             'usingapis',
             'api-mediation-api-catalog',
             'cli-usingcli'
           ]
         },
         {
-          title: 'Extending zLUX',
+          title: 'Extending the Zowe Application Framework',
           collapsable: true,
           children: [
             'mvd-extendingzlux',
-            'mvd-creatingzluxappplugins',
-            'mvd-zluxplugindefandstruct',
-            'mvd-zluxdataservices',
+            'mvd-creatingappplugins',
+            'mvd-plugindefandstruct',
+            'mvd-dataservices',
             'mvd-desktopandwindowmgt',
             'mvd-configdataservice',
             'mvd-uribroker',
@@ -142,8 +146,7 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin',
-            'cli-db2plugin'
+            'cli-cicsplugin'
           ]
         }
       ],

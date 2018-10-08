@@ -1,59 +1,67 @@
-# Using API Catalog
+# API Catalog
 
-As an application developer, use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view the associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. The tiles in the API Catalog are customized according to the configuration of the mfaas.catalog.ui section in the application.yml for a service. A microservice that is onboarded with the API Mediation Layer and configured appropriately, registers automatically with the API Catalog and a tile for that service is added to the Catalog.
+As an application developer, use the API Catalog to view what services are running in the
+ API Mediation Layer. Through the API Catalog, you can also view the associated API documentation
+  corresponding to a service, descriptive information about the service, and the current state
+   of the service. The tiles in the API Catalog can be customized by changing values in
+   the mfaas.catalog-ui-tile section defined in the application.yml of a service. A microservice that
+   is onboarded with the API Mediation Layer and configured appropriately, registers automatically with the API Catalog
+   and a tile for that service is added to the Catalog.
 
-## Prerequisites
+**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
-* Ensure that the service you would like to view in the API Catalog is configured to be displayed in the API Catalog.
-
-**Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](../guides/api-mediation-usingapiml.md).
-
-## View a service in the API Catalog
+## View Service Information and API Documentation in the API Catalog
 
 Use the API Catalog to view services, API documentation, descriptive information about the service, the current state of the service, service endpoints, and detailed descriptions of these endpoints.
 
-**Tip:** If the home page of the service is configured you can click Home Page to open the services home page.
+**Note:** Verify that your service is running. At least one started and registered instance with the Discovery Service
+           is needed for your service to be visible in the API Catalog.
 
 **Follow these steps:**
 
-1. Verify that your service is running. At least one started and registered instance with the Discovery Service is needed for your service to be visible in the API catalog.
-2. In the API Catalog, find the tile that describes the product family of the API documentation that you are looking for.
+1. Use the search bar to find the service that you are looking for.
+Services that belong to the same product family are displayed on the same tile.
 
     **Example:** `Sample Applications, Endevor, SDK Application`
-3. Click the tile. Header information and the registered services under that family ID is displayed.
+
+2. Click the tile to view header information, the registered services under that family ID,
+ and API documentation for that service.
+
+    **Notes:**
+
+    * The state of the service is indicated in the service tile on the dashboard page.
+    If no instances of the service are currently running, the tile displays a message displays that no services are running.
+    * At least one instance of a service must be started and registered with the discovery service for it to be visible
+     in the API Catalog. If the service that you are onboarding is running, and
+     the corresponding API documentation is displayed, this API documentation is cached and remains visible
+     even when the service and all service instances stop.  
+    * Descriptive information about the service and a link to the home page of the service is displayed.
 
     **Example:**
-    ![Service Detail Information](../images/api-mediation/service-detail-info.png)
- **Note:** The state of the service is indicated in the tab. If at least one instance of the service is running, the state of the service is represented with a checkmark ![checkmark](../images/api-mediation/green-check.jpg). If no instances of the service are currently running the state of the service is represented as an 'x' ![x](../images/api-mediation/x-graphic.jpg). At least one instance of a service must be started and registered with the discovery service for it to be visible in the API Catalog. If a service was started and the corresponding API documentation was viewed, then that information is cached and is visible even when the service and all instances are stopped.  
 
-4. Click the tab to view the API documentation for that service.
-   Descriptive information about the service and a link to the home page of the service is displayed.
+    ![controller detail](../images/api-mediation/newswagger.png)
 
-5. Expand the panel to see the high-level description of the API and endpoint groups.
+3. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
+ the endpoint description, and the full structure of the endpoint.
 
     **Example:**
 
-    ![controller detail](../images/api-mediation/cntrlr-detail.png)
+    ![endpoint detail](../images/api-mediation/expanded.png)
 
-6. Expand the endpoints to see a detailed description of the endpoints including the responses and parameters of each endpoint.
-   The summary of the endpoint and the full structure of the endpoint including the base URL and description of the endpoint is displayed.
+    **Notes:**
 
-   **Note:** If a lock is visible, the endpoint requires authentication.
+    * If a lock icon is visible on the right side of the endpoint panel, the endpoint requires authentication.  
 
-   **Example:**
-   
-   ![endpoint detail](../images/api-mediation/endpoint-detail.png)
+    * The structure of the endpoint is displayed relative to the base URL.
 
-   The structure of the endpoint is displayed relative to the base URL.
+    * The URL path of the abbreviated endpoint relative to the base URL is displayed in the following format:
 
-   **Example:**
+        **Example:**
 
-   In the Endpoint panel header section, the abbreviated endpoint relative to the base URL is displayed as the following path:
-   ```aidl
-    /api/v1/discoverableclient/movies/list
-   ```
-   A full URL that includes the base URL is also displayed as the following path:
-   ```aidl
-    https://hostName:basePort/api/v1/discoverableclient/movies/list
-   ```
-   Both links target the same endpoint location.
+        `/api/v1/{yourServiceId}/{endpointName}`
+
+        The path of the full URL that includes the base URL is also displayed in the following format:
+
+        `https://hostName:basePort/api/v1/{yourServiceId}/{endpointName}`
+
+        Both links target the same endpoint location.

@@ -38,7 +38,7 @@ The Zowe Application Framework consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](mvd-using.md#using-zowe-framework-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](mvd-using.html#using-zowe-framework-application-plug-ins).
 
 ## Explorer server
 
@@ -132,7 +132,7 @@ To read each complete license, navigate to the GitHub repository and download th
 The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer includes an API Catalog that provides an interface to view all discovered microservices, their associated APIs, and Swagger documentation in a user-friendly manner. The Discovery Service makes it possible to determine the location and status of microservice instances running inside the ecosystem.  
 
 **More Information:**
-- [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-usingapiml.md)
+- [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](api-mediation-api-catalog.md)
 
 ### Key features  
@@ -164,7 +164,7 @@ The API Catalog is the catalog of published APIs and their associated documentat
 
 
 **More Information:**
-- [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-usingapiml.md)
+- [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](api-mediation-api-catalog.md)
 
 
