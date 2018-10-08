@@ -63,11 +63,11 @@ The guidelines contain critical information about working with the code, running
 
 | For more information about ... | See: |
 | ------------------------------ | ----- |
-| General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/docs/CONTRIBUTING.md) |
-| Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/docs/PackagesAndPluginGuidelines.md)|
-| Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/docs/TESTING.md) |
-| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/docs/PluginTESTINGGuidelines.md) | 
-Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/docs/MaintainerVersioning.md) |
+| General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md) |
+| Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PackagesAndPluginGuidelines.md)|
+| Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/TESTING.md) |
+| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) | 
+Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) |
 
 
 
