@@ -18,21 +18,36 @@ As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe 
 
 ## Identify the API that you want to expose
 
-1. The first step to onboard an API service through the API Gateway without making code changes is to identify what is the hostname, port, and optional base path where the service is available. This URL is called base URL of the service.
+Onboard an API service through the API Gateway without making code changes.
 
-    * In case of the sample service described earlier (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service)), it is `http://localhost:8080`
+**Follow these steps:**
 
-2. The second step is to identify all APIs that are provided by this service and you want to expose them via the API Gateway.
+1. Identify the following parameters of your API service:
+    * Hostname
+    * Port
+    * (Optional) base path where the service is available. 
+    This URL is called base URL of the service.
 
-    * In case of the sample service, it is one REST API available at path `/v2` relative to base URL of the service. This API is the version 2 of the Pet Store API.
+    **Example:**
+    
+    In the sample service described earlier, the URL of teh service is: `http://localhost:8080` (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
 
-3. Choose the _service ID_ of your service. he _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
+2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
-    * In case of the sample service, we will choose `petstore`.
+    **Example:**
+    
+    In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version 2 of the Pet Store API.
 
-4. Decide at which URL this API is going to be available in the API Gateway. This is called gateway URL and it is composed from the API type and major version. 
+3. Choose the _service ID_ of your service. The _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
 
-    * In case of the sample service, we are providing a REST API so the first segment is `/api`. Since it is the version 2, the second segment is `/v2`.
+    **Example:**
+    In the sample service, this _service ID_ is `petstore`.
+
+4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL.  It is composed of the API type and the major version. 
+
+    **Example:**
+    
+    In the sample service, we provide a REST API, so the first segment is `/api`. Since it is version 2, the second segment is `/v2`.
 
 ### Routing
 
