@@ -30,31 +30,32 @@ Onboard an API service through the API Gateway without making code changes.
 
     **Example:**
     
-    In the sample service described earlier, the URL of teh service is: `http://localhost:8080` (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
+    In the sample service described earlier, the URL of the service is: `http://localhost:8080` (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
 
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
     **Example:**
     
-    In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version 2 of the Pet Store API.
+    In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version     2 of the Pet Store API.
 
 3. Choose the _service ID_ of your service. The _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
 
     **Example:**
+    
     In the sample service, this _service ID_ is `petstore`.
 
 4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL.  It is composed of the API type and the major version. 
 
     **Example:**
     
-    In the sample service, we provide a REST API, so the first segment is `/api`. Since it is version 2, the second segment is `/v2`.
+    In the sample service, we provide a REST API. The first segment is `/api`. Since it is version 2, the second segment is `/v2`.
 
-### Routing
+### Route your API
 
-The process of sending requests from API gateway to a specific API service is called _routing_.
+After identifying the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API gateway to a specific API service (_routing_).
 
 The API Gateway differentiates major versions of an API.
-For example, to access version 2 of the `petstore` API you use the following gateway URL:
+For example, to access version 2 of the `petstore` API use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
 
@@ -64,10 +65,9 @@ The base URL of the version 2 of the `petstore` API is:
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
 
-As an user of the API Gateway, you access the service only through the gateway URL. This enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+Access the service in the API Gateway through the gateway URL. This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
-
-## Define the service and API in the YAML format
+## Define your service and API in YAML format
 
 To define the sample `petstore` service used in this example, provide the following definition in a YAML file:
 
@@ -93,7 +93,7 @@ A service can provide multiple APIs that are routed by the API Gateway. In this 
 
 * There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-* For more details about YAML formatting, see https://learnxinyminutes.com/docs/yaml/
+* For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
 
 ## Configuration parameters
 
