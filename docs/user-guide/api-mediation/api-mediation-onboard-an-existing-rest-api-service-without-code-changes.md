@@ -7,7 +7,7 @@ As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe 
 <!-- TOC depthFrom:2 depthTo:2 orderedList:true -->
 
 1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
-2. [Define the service and API in the YAML format](#define-the-service-and-api-in-the-yaml-format)
+2. [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
 3. [Configuration parameters](#configuration-parameters)
 4. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
 5. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
@@ -30,7 +30,7 @@ Onboard an API service through the API Gateway without making code changes.
 
     **Example:**
     
-    In the sample service described earlier, the URL of the service is: `http://localhost:8080` (see [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
+    In the sample service described earlier, the URL of the service is: `http://localhost:8080` See: [Sample REST API Service](api-        mediation-onboard-overview.md#sample-rest-api-service) 
 
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
@@ -38,24 +38,26 @@ Onboard an API service through the API Gateway without making code changes.
     
     In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version     2 of the Pet Store API.
 
-3. Choose the _service ID_ of your service. The _service ID_ of a service identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
+3. Choose the _service ID_ of your service. The _service ID_ identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
 
     **Example:**
     
-    In the sample service, this _service ID_ is `petstore`.
+    In the sample service, the _service ID_ is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL.  It is composed of the API type and the major version. 
+4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL and is composed of the API type and the major version. 
 
     **Example:**
     
-    In the sample service, we provide a REST API. The first segment is `/api`. Since it is version 2, the second segment is `/v2`.
+    In the sample service, we provide a REST API. The first segment is `/api`. To indicate that this is version 2, the second segment is `/v2`.
 
 ### Route your API
 
-After identifying the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API gateway to a specific API service (_routing_).
+After you identify the APIs you want to expose, define the _routing_ of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
 
-The API Gateway differentiates major versions of an API.
-For example, to access version 2 of the `petstore` API use the following gateway URL:
+**Note:** The API Gateway differentiates major versions of an API.
+
+**Example:**
+To access version 2 of the `petstore` API use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
 
@@ -65,9 +67,15 @@ The base URL of the version 2 of the `petstore` API is:
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
 
-Access the service in the API Gateway through the gateway URL. This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+Access the service in the API Gateway through the gateway URL. 
+
+**Information:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 ## Define your service and API in YAML format
+
+Define your service and API in YAML format in the same way as presented in the following sample `petstore` service example.
+
+**Example:**
 
 To define the sample `petstore` service used in this example, provide the following definition in a YAML file:
 
@@ -81,13 +89,16 @@ services:
           serviceRelativeUrl: /v2
 ```
 
-In this example, a suitable name for the file is `petstore.yml`. The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
+In this example, a suitable name for the file is `petstore.yml`. 
 
-The file can contain one or more services defined under the `services:` node.
+**Notes:** 
+    * The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 
-Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
+    * The file can contain one or more services defined under the `services:` node.
+    
+    * Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
-A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+    * A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
 **Tips:** 
 
