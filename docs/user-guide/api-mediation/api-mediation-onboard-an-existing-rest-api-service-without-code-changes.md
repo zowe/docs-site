@@ -128,13 +128,15 @@ The following list describes the configuration parameters:
     * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
     
     **Examples:**
-    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+    * If the customer system administrator sets the service ID to `sysviewlpr1`, 
+    the API URL in the API Gateway appears as the following URL: 
 
-    https://gateway:port/api/v1/sysviewlpr1/...
+        https://gateway:port/api/v1/sysviewlpr1/...
 
-    * If customer system administrator sets the service ID to `vantageprod1`, the API URL in the API Gateway appears as the following URL:
+    * If customer system administrator sets the service ID to `vantageprod1`,
+    the API URL in the API Gateway appears as the following URL:
 
-    http://gateway:port/api/v1/vantageprod1/...
+        http://gateway:port/api/v1/vantageprod1/...
 
 * **baseUrl**
 
