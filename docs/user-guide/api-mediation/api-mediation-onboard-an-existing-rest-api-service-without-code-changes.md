@@ -32,7 +32,7 @@ Onboard an API service through the API Gateway without making code changes.
     
     In the sample service described earlier, the URL of the service is: `http://localhost:8080`.
 
-**Tip:** For more information about the Sample REST API Service, see: [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
+    **Tip:** For more information about the Sample REST API Service, see: [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
 
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
@@ -71,7 +71,7 @@ The API Gateway routes REST API requests from the gateway URL `https://gateway:p
 
 Access the service in the API Gateway through the gateway URL. 
 
-**Information:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+**Note:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 ## Define your service and API in YAML format
 
@@ -94,6 +94,7 @@ services:
 In this example, a suitable name for the file is `petstore.yml`. 
 
 **Notes:** 
+
     * The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 
     * The file can contain one or more services defined under the `services:` node.
@@ -102,11 +103,11 @@ In this example, a suitable name for the file is `petstore.yml`.
 
     * A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
-**Tips:** 
+    **Tips:** 
 
-* There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
+    * There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-* For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
+    * For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
 
 ## Configuration parameters
 
