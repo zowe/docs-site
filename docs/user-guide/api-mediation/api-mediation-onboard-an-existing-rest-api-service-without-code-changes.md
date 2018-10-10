@@ -62,11 +62,11 @@ After you identify the APIs you want to expose, define the _routing_ of your API
 
 To access version 2 of the `petstore` API use the following gateway URL:
 
-    https://gateway-host:port/api/v2/petstore
+https://gateway-host:port/api/v2/petstore
 
 The base URL of the version 2 of the `petstore` API is:
 
-    http://localhost:8080/v2
+http://localhost:8080/v2
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. 
 
@@ -130,11 +130,11 @@ The following list describes the configuration parameters:
     **Examples:**
     * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
 
-            https://gateway:port/api/v1/sysviewlpr1/...
+    https://gateway:port/api/v1/sysviewlpr1/...
 
     * If customer system administrator sets the service ID to `vantageprod1`, the API URL in the API Gateway appears as the following URL:
 
-            http://gateway:port/api/v1/vantageprod1/...
+    http://gateway:port/api/v1/vantageprod1/...
 
 * **baseUrl**
 
@@ -210,7 +210,7 @@ The following procedure describes how to add your service to the API Mediation L
 
 4.  Go to the following URL to reach the API Gateway (port 10010) and see the paths that are routed by the API Gateway:
 
-        https://localhost:10010/application/routes
+    https://localhost:10010/application/routes
 
     The following line should appear:
 
@@ -220,7 +220,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
-        https://localhost:10010/api/v2/petstore/pets/1
+https://localhost:10010/api/v2/petstore/pets/1
 
 
 ## Add a definition in the API Mediation Layer in the Zowe runtime
@@ -242,7 +242,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
 
-        https://${zoweHostname}:${gatewayHttpsPort}/application/routes
+https://${zoweHostname}:${gatewayHttpsPort}/application/routes
 
     The following line should appear:
 
@@ -252,7 +252,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
     You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 
-        https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
+https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
 
 
 ## (Optional) Check the log of the API Mediation Layer
