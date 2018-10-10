@@ -77,7 +77,7 @@ Define your service and API in YAML format in the same way as presented in the f
 
 **Example:**
 
-To define the sample `petstore` service used in this example, provide the following definition in a YAML file:
+To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service:
 
 ```yaml
 services:
