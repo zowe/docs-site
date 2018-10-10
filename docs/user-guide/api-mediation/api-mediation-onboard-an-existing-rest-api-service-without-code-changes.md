@@ -59,6 +59,7 @@ After you identify the APIs you want to expose, define the _routing_ of your API
 **Note:** The API Gateway differentiates major versions of an API.
 
 **Example:**
+
 To access version 2 of the `petstore` API use the following gateway URL:
 
     https://gateway-host:port/api/v2/petstore
@@ -283,6 +284,8 @@ The following procedure enables you to refresh the API definitions after you cha
 
 2. Check if your updated definition is effective.
 
-    **Note:** It can take up 30 seconds to API Gateway to pick up the new routing.
-
-    **Note:** The basic authentication will be replaced by client certificates when the Discovery Service is updated to use HTTPS.
+    **Notes:** 
+    
+    * It can take up 30 seconds to API Gateway to pick up the new routing.
+    
+    * The basic authentication will be replaced by client certificates when the Discovery Service is updated to use HTTPS.
