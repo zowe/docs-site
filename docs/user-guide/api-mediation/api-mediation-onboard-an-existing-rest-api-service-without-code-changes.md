@@ -68,9 +68,7 @@ The base URL of the version 2 of the `petstore` API is:
 
     http://localhost:8080/v2
 
-The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`.
-
-Access the service in the API Gateway through the gateway URL. 
+The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. 
 
 **Note:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
