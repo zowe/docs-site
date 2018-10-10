@@ -222,7 +222,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
-https://localhost:10010/api/v2/petstore/pets/1
+    https://localhost:10010/api/v2/petstore/pets/1
 
 
 ## Add a definition in the API Mediation Layer in the Zowe runtime
@@ -242,9 +242,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started).
 
-5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
-
-https://${zoweHostname}:${gatewayHttpsPort}/application/routes
+5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway: https://${zoweHostname}:${gatewayHttpsPort}/application/routes
 
     The following line should appear:
 
@@ -252,9 +250,7 @@ https://${zoweHostname}:${gatewayHttpsPort}/application/routes
 
     This line says that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
-
-https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
+    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is: https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
 
 
 ## (Optional) Check the log of the API Mediation Layer
