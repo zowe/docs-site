@@ -1,6 +1,6 @@
 # Onboard an existing REST API service with the Zowe API Mediation Layer without code changes
 
-As a user of Zowe API Mediation Layer, onboard a REST API service into the Zowe API Mediation Layer without changing the code of the API service. The following procedure is an overview of steps to onboard an API service through the API Gateway in the API Mediation Layer.
+As a user of Zowe API Mediation Layer, onboard a REST API service with the Zowe API Mediation Layer without changing the code of the API service. The following procedure is an overview of steps to onboard an API service through the API Gateway in the API Mediation Layer.
 
 **Follow these steps:**
 
@@ -30,7 +30,7 @@ Onboard an API service through the API Gateway without making code changes.
 
     **Example:**
     
-    In the sample service described earlier, the URL of the service is: `http://localhost:8080` See: [Sample REST API Service](api-        mediation-onboard-overview.md#sample-rest-api-service) 
+    In the sample service described earlier, the URL of the service is: `http://localhost:8080` See: [Sample REST API Service](api-      mediation-onboard-overview.md#sample-rest-api-service) 
 
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
