@@ -95,19 +95,19 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 **Notes:** 
 
-    * The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
+* The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 
-    * The file can contain one or more services defined under the `services:` node.
+* The file can contain one or more services defined under the `services:` node.
     
-    * Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
+* Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
-    * A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+* A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
-    **Tips:** 
+**Tips:** 
 
-    * There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
+* There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
 
-    * For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
+* For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
 
 ## Configuration parameters
 
