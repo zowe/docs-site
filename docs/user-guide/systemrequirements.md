@@ -216,19 +216,25 @@ Windows operating systems require the following software:
 
 - Node.js V8.0 or later
 
-    Click [here](https://nodejs.org/en/download/) to download Node.js.    
+    Click [here](https://nodejs.org/en/download/) to download Node.js.   
+    
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
 
 - Node Package Manager (npm) V5.0 or later
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 - Python V2.7  
 
     The command that installs C++ Compiler also installs Python on Windows.
 
+    **Tip:** Issue the command `python --version` to verify that Python is installed.
+
 - C++ Compiler (Windows Build Tools)
 
-    From an administrator command prompt, issue the following command:
+    From an _administrator_ command prompt, issue the following command:
 
     ```
     npm install --global --production --add-python-to-path windows-build-tools
@@ -239,11 +245,15 @@ Mac operating systems require the following software:
 
 - Node.js V8.0 or later   
 
-    Click [here](https://nodejs.org/en/download/) to download Node.js.  
+    Click [here](https://nodejs.org/en/download/) to download Node.js.
+    
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
 
 - Node Package Manager (npm) V5.0 or later
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
     **Tip:** If you install Node.js on a macOS operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
 
@@ -251,9 +261,11 @@ Mac operating systems require the following software:
 
     Click [here](https://www.python.org/download/releases/2.7/) to download Python 2.7.
 
+    **Tip:** Issue the command `python --version` to verify that Python is installed.
+
 - C ++ Compiler (gcc 4.8.1 or later)  
 
-    The gcc compiler is included with macOS. To confirm that you have the compiler, issue the command `gcc –help`.
+    The gcc compiler is included with macOS. Issue the command `gcc --version` to confirm that gcc is installed.
 
 #### Linux operating systems
 Linux  operating systems require the following software:
@@ -262,19 +274,23 @@ Linux  operating systems require the following software:
 
     Click [here](https://nodejs.org/en/download/) to download Node.js.
 
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
+
 - Node Package Manager (npm) V5.0 or later   
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
     **Tip:** If you install Node.js on a Linux operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
 
 - Python V2.7  
 
-    Included with most Linux distributions.
+    Included with most Linux distributions. **Tip:** Issue the command `python --version` to verify that Python is installed.
 
 - C ++ Compiler (gcc 4.8.1 or later)
 
-    Gcc is included with most Linux distributions. To confirm that gcc is installed, issue the command `gcc –version`.
+    Gcc is included with most Linux distributions. Issue the command `gcc –version` to confirm that gcc is installed.
 
     To install gcc, issue one of the following commands:
 
