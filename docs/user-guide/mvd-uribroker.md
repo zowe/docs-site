@@ -67,7 +67,7 @@ This can be accessed through:
 
 Returns: A URI for getting static content.
 
-For more information about the `web` directory, see [Application plug-in filesystem structure](mvd-plugindefandstruct.md#application-plug-in-filesystem-structure).
+For more information about the `web` directory, see [Application plug-in filesystem structure](mvd-plugindefandstruct.html#application-plug-in-filesystem-structure).
 
 ### Accessing the application plug-in's root
 

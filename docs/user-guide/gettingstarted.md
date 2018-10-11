@@ -42,7 +42,7 @@ You can download the PAX file from the [Zowe website](https://zowe.org/download/
 
       1. Download the signature file `zowe-v.r.m.pax.asc` from [Zowe website](https://projectgiza.org/Downloads/verify.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
       2. Import the public key with command `gpg --import KEYS`.
-      3. If you never use gpg before, generate keys with command `gpg --gen-key`.
+      3. If you have never used gpg before, generate keys with command `gpg --gen-key`.
       3. Sign the downloaded public key with command `gpg --sign-key DC8633F77D1253C3`.
       4. Verify the file with command `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax`.
       5. Optional: You can remove the imported key with command: `gpg --delete-key DC8633F77D1253C3`.
