@@ -155,7 +155,7 @@ Issue `npm run build` to verify a clean compilation and confirm that no lint err
 ## Using the installed plug-in
 Issue the command: `zowe zowe-cli-sample list typicode-todos`
 
-Refer to `zowe zowe-cli-sample list --help` for more information about your command and to see how text in the command definition
+Refer to `zowe zowe-cli-sample list typicode-todos --help` for more information about your command and to see how text in the command definition
 is presented to the end user. You can also see how to use your optional `--id` flag:
 
 ![output](../images/guides/CLI/completedSample.png)
