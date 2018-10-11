@@ -147,8 +147,8 @@ The following list describes the configuration parameters:
     * **healthCheckRelativeUrl**
     
     **Examples:** 
-    * `http://host:port/serviceid` for HTTP service
-    * `https://host:port/serviceid` for HTTPS service
+    * `http://host:port/serviceid` for an HTTP service
+    * `https://host:port/serviceid` for an HTTPS service
  
 * **homePageRelativeUrl** 
 
@@ -171,7 +171,7 @@ The following list describes the configuration parameters:
 * **healthCheckRelativeUrl**
 
     Specifies the relative path to the health check endpoint of your service. 
-    Start this URL with `/`. If you service has not a health check endpoint, omit this parameter.
+    Start this URL with `/`. If your service does not have a health check endpoint, omit this parameter.
 
     **Example:**
     * `healthCheckRelativeUrl: /application/health`. This results in the URL:
@@ -218,7 +218,7 @@ The following procedure describes how to add your service to the API Mediation L
 
         /api/v2/petstore/**: "petstore"
 
-    This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+    This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with the service ID `petstore`.
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -231,8 +231,8 @@ After you define and validate the service in YAML format, you are ready to add y
 
 **Follow these steps:**
 
-1. Locate the Zowe runtime directory. The Zowe runtime directory was chosen during Zowe installation. 
-   Its location is in the `zowe-install.yaml` file in the variable `install:rootDir`. 
+1. Locate the Zowe runtime directory. The Zowe runtime directory is chosen during Zowe installation. 
+   The location of the directory is in the `zowe-install.yaml` file in the variable `install:rootDir`. 
 
     **Note:** We use the `${zoweRuntime}` symbol in following instructions.
 
@@ -248,7 +248,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
         /api/v2/petstore/**: "petstore"
 
-    This line says that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+    This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
     You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is: https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
 
@@ -264,7 +264,7 @@ The API Mediation Layer prints the following messages to its log when the API de
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
-The following procedure enables you to refresh the API definitions after you change the definitions whin the API Mediation Layer is already running.
+The following procedure enables you to refresh the API definitions after you change the definitions when the API Mediation Layer is already running.
 
 **Follow these steps:**
 
@@ -272,7 +272,7 @@ The following procedure enables you to refresh the API definitions after you cha
     
         http://localhost:10011/discovery/api/v1/staticApi
 
-    Discovery Services requires authentication. If the API Mediation Layer running on your local machine, the user ID is `eureka`, and the password is `password`.
+    The Discovery Service requires authentication. If the API Mediation Layer is running on your local machine, the user ID is `eureka`, and the password is `password`.
 
     This example uses the [HTTPie command-line HTTP client](https://httpie.org):
    
