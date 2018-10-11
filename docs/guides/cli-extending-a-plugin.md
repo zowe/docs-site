@@ -14,6 +14,8 @@ Typicode serves sample REST JSON data for testing purposes.
 
 At the end of this tutorial, you will be able to use a new command from the Zowe CLI interface: `zowe zowe-cli-sample list typicode-todos`
 
+Completed source for this tutorial can be found on the `typicode-todos` branch of the zowe-cli-sample-plugin repository.
+
 ### Creating a Typescript interface for the Typicode response data
 First, we'll create a Typescript interface to map the response data from a server.
 
