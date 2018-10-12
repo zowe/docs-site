@@ -48,7 +48,7 @@ module.exports = {
           'api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
         },
         {
-          title: 'Developing for Zo CLI',
+          title: 'Developing for Zowe CLI',
           collapsable: true,
           children: ['cli-devTutorials', 'cli-setting-up', 'cli-installing-sample-plugin', 'cli-extending-a-plugin', 'cli-developing-a-plugin',
           'cli-implement-profiles']
