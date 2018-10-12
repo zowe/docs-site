@@ -29,4 +29,7 @@ The Discovery service is the central point in the API Gateway infrastructure tha
 ### API Catalog
 The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability. 
 
+## Onboarding APIs
+The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
 
+* [Onboarding Overview](api-mediation-onboard-overview.md)
