@@ -7,12 +7,13 @@ As a user of Zowe API Mediation Layer, onboard a REST API service with the Zowe 
 <!-- TOC depthFrom:2 depthTo:2 orderedList:true -->
 
 1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
-2. [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
-3. [Configuration parameters](#configuration-parameters)
-4. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-5. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-6. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-7. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+2. [Route your API](#route-your-api)
+3. [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+4. [Configuration parameters](#configuration-parameters)
+5. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+6. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+7. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+8. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 <!-- /TOC -->
 
