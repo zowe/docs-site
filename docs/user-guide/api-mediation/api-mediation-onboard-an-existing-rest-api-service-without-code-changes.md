@@ -132,12 +132,12 @@ The following list describes the configuration parameters:
     * If the customer system administrator sets the service ID to `sysviewlpr1`, 
     the API URL in the API Gateway appears as the following URL: 
 
-        https://gateway:port/api/v1/sysviewlpr1/...
+        `https://gateway:port/api/v1/sysviewlpr1/...`
 
     * If customer system administrator sets the service ID to `vantageprod1`,
     the API URL in the API Gateway appears as the following URL:
 
-        http://gateway:port/api/v1/vantageprod1/...
+        `http://gateway:port/api/v1/vantageprod1/...`
 
 * **baseUrl**
 
@@ -213,17 +213,17 @@ The following procedure describes how to add your service to the API Mediation L
 
 4.  Go to the following URL to reach the API Gateway (port 10010) and see the paths that are routed by the API Gateway:
 
-    https://localhost:10010/application/routes
+    `https://localhost:10010/application/routes`
 
     The following line should appear:
 
-        /api/v2/petstore/**: "petstore"
+    `/api/v2/petstore/**: "petstore"`
 
     This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with the service ID `petstore`.
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
-    https://localhost:10010/api/v2/petstore/pets/1
+    `https://localhost:10010/api/v2/petstore/pets/1`
 
 
 ## Add a definition in the API Mediation Layer in the Zowe runtime
@@ -247,11 +247,11 @@ After you define and validate the service in YAML format, you are ready to add y
 
     The following line should appear:
 
-        /api/v2/petstore/**: "petstore"
+    `/api/v2/petstore/**: "petstore"`
 
     This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is: https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
+    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is: `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
 
 
 ## (Optional) Check the log of the API Mediation Layer
@@ -271,13 +271,13 @@ The following procedure enables you to refresh the API definitions after you cha
 
 1. Use a REST API client to issue a POST request to the Discovery Service (port 10011):
     
-        http://localhost:10011/discovery/api/v1/staticApi
+    `http://localhost:10011/discovery/api/v1/staticApi`
 
     The Discovery Service requires authentication. If the API Mediation Layer is running on your local machine, the user ID is `eureka`, and the password is `password`.
 
     This example uses the [HTTPie command-line HTTP client](https://httpie.org):
    
-        http -j -a eureka:password POST http://localhost:10011/discovery/api/v1/staticApi
+        http -j -a eureka:password POST `http://localhost:10011/discovery/api/v1/staticApi`
 
 2. Check if your updated definition is effective.
 
