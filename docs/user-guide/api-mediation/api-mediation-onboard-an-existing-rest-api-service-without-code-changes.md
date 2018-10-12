@@ -63,11 +63,11 @@ After you identify the APIs you want to expose, define the _routing_ of your API
 
 To access version 2 of the `petstore` API use the following gateway URL:
 
-https://gateway-host:port/api/v2/petstore
+`https://gateway-host:port/api/v2/petstore`
 
 The base URL of the version 2 of the `petstore` API is:
 
-http://localhost:8080/v2
+`http://localhost:8080/v2`
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. 
 
