@@ -38,6 +38,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
   ``` 
   zowe plugins install @brightside/cics
   ```
+ **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
 
@@ -45,7 +46,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
   zowe plugins validate cics
   ```
 
-  Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
+  Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
 
 To validate that the plug-in installed successfully, issue the following command:
 
@@ -55,6 +56,23 @@ To validate that the plug-in installed successfully, issue the following command
 
 **Note:** For detailed information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
+### Installing from local package
+If you downloaded the Zowe installation package from Github, complete the following steps:
+
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) in Installing Zowe CLI for information about how to obtain and extract it.
+2. Issue the following command to install the plug-in:
+    ```
+    zowe plugins install zowe-cli-cics-1.1.0-next.201809271925.tgz
+    ```
+   **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
+   
+3. After the command execution completes, issue the following command to validate that the installation completed successfully.
+  
+    ```
+    zowe plugins validate cics
+    ```
+      Successful validation of the CICS plug-in returns the response: Successfully validated.
+      
 ## Setting up profiles
 
 A `cics` profile is required to issue commands in the CICS group that interact with CICS regions. The `cics` profile contains your host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
@@ -62,7 +80,7 @@ A `cics` profile is required to issue commands in the CICS group that interact w
 Issue the following command to create a cics profile: 
 
 ```
-zowe profiles create cics <profile name> <host> <port> <user> <password>
+zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
 **Note:** For more information about the` `syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
@@ -145,7 +163,7 @@ zowe cics get -h
 Return a list of program resources from a CICS region named MYREGION:
 
 ```
-zowe cis get resource CICSProgram --region-name MYREGION
+zowe cics get resource CICSProgram --region-name MYREGION
 ```
 
 ### Installing resources to CICS

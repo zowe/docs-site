@@ -1,5 +1,5 @@
-# zLUX configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the zLUX Proxy Server and ZSS configuration, if needed.
+# Zowe Application Framework (zLUX) configuration
+After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server (zLUX Proxy Server) and ZSS configuration, if needed.
 
 ## Setting up terminal application plug-ins
 
@@ -40,7 +40,7 @@ An example JSON file can be found in the `zlux-example-server` repository, in th
 
 **Note:** The following attributes are to be defined in the server's JSON configuration file.
 
-The zLUX server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
+The zLUX Proxy Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
 
 #### HTTP
 
@@ -133,44 +133,44 @@ For more information, see [Logging Utility](mvd-logutility.md).
 
 ### ZSS configuration
 
-Running ZSS requires a JSON configuration file that is similar or the same as the one used for the zLUX Proxy Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the Proxy Server, but if the Proxy Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a JSON configuration file that is similar or the same as the one used for the zLUX Proxy Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the zLUX Proxy Server and ZSS are not run from the same location, then these directories can be different.
 
-The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the zLUX server. Define this port in the configuration file as a value between 1024-65535.
+The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the zLUX Proxy Server. Define this port in the configuration file as a value between 1024-65535.
 
 #### Connecting the zLUX Proxy Server to ZSS
 
-When you run the zLUX Proxy Server, specify the following flags to declare which ZSS instance zLUX will proxy ZSS requests to:
+When you run the zLUX Proxy Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
-## zLUX logging
+## Zowe Application Framework logging
 
-The zLUX log files contain processing messages and statistics. zLUX generates log files in the following default locations:
+The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
 
-- Zowe Node Server: `zlux-example-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
+- Zowe Proxy Server: `zlux-example-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
 - ZSS: `zlux-example-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
  
-The Zowe Node Server logs and ZSS logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
+The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
 
 
-### Controlling the zLUX logging location
+### Controlling the logging location
 
-zLUX writes log information to a file and to the screen. (On Windows, logs are written to a file only.)
+The log information is written to a file and to the screen. (On Windows, logs are written to a file only.)
 
 #### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
 
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Node Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, zLUX will write the logs to the specified file instead (for example: `/dev/null` to disable logging). 
+To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the zLUX Proxy Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging). 
 
-When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, zLUX will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold. 
+When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold. 
 
 #### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
 
-If you set the log file name for the node server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
+If you set the log file name for the zLUX Proxy Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
 
-**Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, zLUX will not override the log names, set a timestamp, or delete the logs.
+**Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
 
-If zLUX cannot create the directory or file, the server will run (but it might not perform logging properly).
+If the directory or file cannot be created, the server will run (but it might not perform logging properly).
 
 ### Retaining logs
-By default, zLUX retains the last five logs. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Node Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. The default is 5.
+By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (zLUX Proxy Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. 

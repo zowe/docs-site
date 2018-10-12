@@ -5,7 +5,7 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF requirements](#zosmf-requirements).
 
 2. Review component specific requirements.
-     -   [System requirements for zLUX, explorer server, and API Mediation](#system-requirements-for-zlux-explorer-server-and-api-mediation-layer)
+     -   [System requirements for the Zowe Application Framework, explorer server, and API Mediation](#system-requirements-for-the-zowe-application-framework-explorer-server-and-api-mediation-layer)
      -   [System requirements for Zowe CLI](#system-requirements-for-zowe-cli)
 
 ## z/OSMF requirements
@@ -138,9 +138,9 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
 
-## System requirements for zLUX, explorer server, and API Mediation Layer
+## System requirements for the Zowe Application Framework, explorer server, and API Mediation Layer
 
-zLUX, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
+The Zowe Application Framework, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
 
 -   z/OS® Version 2.2 or later.
 -   64-bit Java™ 8 JRE or later.
@@ -151,12 +151,12 @@ zLUX, explorer server, and API Mediation Layer are installed together. Before th
     -   Safari 11 or later
     -   Microsoft Edge
 
--  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Node Server.
+-  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Application Server.
 
-    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running zLUX.
+    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
     2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
 
--   npm 5.4 or later for building zLUX applications.
+-   npm 5.4 or later for building Zowe Application Framework applications.
 
      To update npm, issue the following command:
 
@@ -193,6 +193,8 @@ Before you install Zowe CLI, make sure your system meets the following requireme
 
 You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
+Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
+
 **Important!**
 
 - Zowe CLI is not officially supported on Mac computers. However, Zowe CLI *might* run successfully on some Mac computers.
@@ -203,30 +205,36 @@ You can install Zowe CLI on any Windows or Linux operating system. For more info
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
 
 ### Prerequisite software
-Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment. This section provides supplemental information about Zowe CLI-specific tips or requirements that system programmers can refer to.
 
-Before you install Zowe CLI, also install the following prerequisite software depending on the system where you install Zowe CLI:
+***Important!*** The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
 
-**Note:** It's highly recommended that you update Node.js regularly to the latest Long Term Support (LTS) version.
+**Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
+
 
 #### Windows operating systems
 Windows operating systems require the following software:
 
 - Node.js V8.0 or later
 
-    Click [here](https://nodejs.org/en/download/) to download Node.js.    
+    Click [here](https://nodejs.org/en/download/) to download Node.js.   
+    
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
 
 - Node Package Manager (npm) V5.0 or later
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 - Python V2.7  
 
     The command that installs C++ Compiler also installs Python on Windows.
 
-- C++ Compiler (gcc 4.8.1 or later)
+    **Tip:** Issue the command `python --version` to verify that Python is installed.
 
-    From an administrator command prompt, issue the following command:
+- C++ Compiler (Windows Build Tools)
+
+    From an _administrator_ command prompt, issue the following command:
 
     ```
     npm install --global --production --add-python-to-path windows-build-tools
@@ -237,11 +245,15 @@ Mac operating systems require the following software:
 
 - Node.js V8.0 or later   
 
-    Click [here](https://nodejs.org/en/download/) to download Node.js.  
+    Click [here](https://nodejs.org/en/download/) to download Node.js.
+    
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
 
 - Node Package Manager (npm) V5.0 or later
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
     **Tip:** If you install Node.js on a macOS operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
 
@@ -249,9 +261,11 @@ Mac operating systems require the following software:
 
     Click [here](https://www.python.org/download/releases/2.7/) to download Python 2.7.
 
+    **Tip:** Issue the command `python --version` to verify that Python is installed.
+
 - C ++ Compiler (gcc 4.8.1 or later)  
 
-    The gcc compiler is included with macOS. To confirm that you have the compiler, issue the command `gcc –help`.
+    The gcc compiler is included with macOS. Issue the command `gcc --version` to confirm that gcc is installed.
 
 #### Linux operating systems
 Linux  operating systems require the following software:
@@ -260,19 +274,23 @@ Linux  operating systems require the following software:
 
     Click [here](https://nodejs.org/en/download/) to download Node.js.
 
+    **Tip:** You might need to restart the command prompt after installing Node.js.
+
+    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
+
 - Node Package Manager (npm) V5.0 or later   
 
-    **Note:** npm is included with the Node.js installation.
+    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
     **Tip:** If you install Node.js on a Linux operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
 
 - Python V2.7  
 
-    Included with most Linux distributions.
+    Included with most Linux distributions. **Tip:** Issue the command `python --version` to verify that Python is installed.
 
 - C ++ Compiler (gcc 4.8.1 or later)
 
-    Gcc is included with most Linux distributions. To confirm that gcc is installed, issue the command `gcc –version`.
+    Gcc is included with most Linux distributions. Issue the command `gcc –version` to confirm that gcc is installed.
 
     To install gcc, issue one of the following commands:
 

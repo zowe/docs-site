@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: pending to verify dead links.\"",
+    "test:links": "blcl --base-url /docs-site/ --filter-level 3 --exclude-external --recursive --ordered ./docs/.vuepress/dist/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -12,6 +13,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "broken-link-checker-local": "git+https://github.com/jackjia-ibm/broken-link-checker-local.git",
     "vuepress": "^0.14.1"
   }
 }

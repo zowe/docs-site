@@ -11,7 +11,7 @@ At the root of an application's directory, the following content is found:
 This file describes a plug-in to the zLUX Application Server. A plug-in is the unit of extensibility for the server, where an application is a plug-in of the type Application, the most common and visible plug-in type.
 
 A definition file informs the server whether the application has server-side, client-side web content, or both.
-The attributes of this file and how it is found by the server are described in [zLUX plug-in definition and structure](mvd-zluxplugindefandstruct.md).
+The attributes of this file and how it is found by the server are described in [zLUX plug-in definition and structure](mvd-plugindefandstruct.md).
 
 ## Dev and Source content
 Aside from demonstration or open source applications, the following directories should not be seen on a deployed server. The directories are not read by the server, but they are used to build content that the server can read.
