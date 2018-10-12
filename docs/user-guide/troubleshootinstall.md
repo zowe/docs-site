@@ -1,25 +1,6 @@
 # Troubleshooting the installation
 
-Review the following troubleshooting tips and known issues if you have problems with Zowe installation.
-
-## Security message when you open MVD
-
-When you initially open the MVD, a security message alerts you that you are attempting to open a site that has an invalid HTTPS certificate. Other applications within the MVD might also encounter this message. To prevent this message, add the URLs that you see to your list of trusted sites.
-
-**Note:** If you clear the browser cache, you must add the URL to your trusted sites again.
-
-## Message ICH408I during runtime
-
-During runtime, the information message ICH408I may present identifying insufficient write authority to a number of resources, these resources may include:
-
-- `zowe/explorer-server/wlp/usr/servers/.pid/Atlas.pid`
-- `zowe/zlux-example-server/deploy/site/plugins/`
-- `zowe/zlux-example-server/deploy/instance/plugins/`
-
-**Note:** This should not affect the runtime operations of Zowe. This is a known issue and will be addressed in the next build.
-
-### zLUX APIs
-zLUX APIs exist but are under development. Features might be reorganized if it simplifies and clarifies the API, and features might be added if applications can benefit from them.
+Review the following troubleshooting tips if you have problems with Zowe installation.
 
 ## Troubleshooting installing the Zowe runtime
 
@@ -87,18 +68,18 @@ zLUX APIs exist but are under development. Features might be reorganized if it s
       /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
       ```
 
-### Troubleshooting installing zLUX
+### Troubleshooting installing the Zowe Application Framework
 
-To help zLUX research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
+To help Zowe research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
 
- - Project Zowe version and release level
+ - Zowe version and release level
  - z/OS release level
  - Job output and dump (if any)
    - Javascript console output (Web Developer toolkit accessible by pressing F12)
-   - Log output from the Zowe Node Server
+   - Log output from the Zowe Application Server
  - Error message codes
  - Screenshots (if applicable)
- - Other relevant information (such as the version of Node.js that is running on the Zowe Node Server and the browser and browser version).
+ - Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version).
 
 ### Troubleshooting installing explorer server
 

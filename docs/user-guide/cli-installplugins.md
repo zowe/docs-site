@@ -10,9 +10,6 @@ the use of third-party plug-ins.
 You can install the following plug-ins:
   - **Zowe CLI Plug-in for IBM CICS**
     Use `@brightside/cics` in your command syntax to install, update, and validate the plug-in. 
-  - **Zowe CLI Plug-in for IBM Db2 Database**  
-    Use `@brightside/db2` in your command syntax to install, update, and
-    validate the IBM Db2 Database plug-in. 
 
 ## Setting the registry
 
@@ -38,7 +35,7 @@ Issue an `install `command to install plug-ins to Zowe CLI. The
 ```
 zowe plugins install [plugin...] [--registry <registry>]
 ```
-**Note:** On Windows, you must run as an Administrator to install the product and plug-ins.
+**Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
   - **`[plugin...]`**   
     (Optional) Specifies the name of a plug-in, an npm package, or a
@@ -63,7 +60,7 @@ zowe plugins install [plugin...] [--registry <registry>]
     If you are using zowe-cli-bundle.zip, issue the following command for each plug-in .tgz file:
     
     ```
-    zowe plugins install ./zowe-cli-db2-1.0.0-next.20180531.tgz 
+    zowe plugins install ./zowe-cli-cics-1.0.0-next.20180531.tgz 
     ```
 
   - The following example illustrates the syntax to use to install a

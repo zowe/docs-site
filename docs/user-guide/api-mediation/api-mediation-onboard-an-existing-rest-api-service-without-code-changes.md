@@ -136,7 +136,7 @@ The following list describes the configuration parameters:
 
     * If customer system administrator sets the service ID to `vantageprod1`,
     the API URL in the API Gateway appears as the following URL:
-
+    
         `http://gateway:port/api/v1/vantageprod1/...`
 
 * **baseUrl**

@@ -2,16 +2,16 @@
 
 You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 
-- [Uninstalling zLUX](#uninstalling-zlux)
+- [Uninstalling the Zowe Application Framework](#uninstalling-the-zowe-application-framework)
 - [Uninstalling explorer server](#uninstalling-explorer-server)
 - [Uninstalling API Mediation Layer](#uninstalling-api-mediation-layer)
 - [Uninstalling Zowe CLI](#uninstalling-zowe-cli)
 
-## Uninstalling zLUX
+## Uninstalling the Zowe Application Framework
 
 **Follow these steps:**
 
-1. The zLUX server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
+1. The Zowe Application Server (`zlux-server`) runs under the ZOWESVR started task, so it should terminate when ZOWESVR is stopped.  If it does not, use one of the following standard process signals to stop the server:
 
     - `SIGHUP`
     - `SIGTERM`
@@ -30,6 +30,27 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
     ```
 
 2.  Delete the ZOWESVR member from your system PROCLIB data set.
+
+    To do this, you can issue the following TSO DELETE command from the TSO READY prompt or from ISPF option 6:
+
+    ```
+    delete 'your.zowe.proclib(zowesvr)'
+    ```
+
+    Alternatively, you can issue the TSO DELETE command at any ISPF command line by prefixing the command with TSO:
+
+    ```
+    tso delete 'your.zowe.proclib(zowesvr)'
+    ```
+
+    To query which PROCLIB data set that ZOWESVR is put in, you can view the SDSF JOB log of ZOWESVR and look for the following message:  
+
+    ```
+    IEFC001I PROCEDURE ZOWESVR WAS EXPANDED USING SYSTEM LIBRARY your.zowe.proclib
+    ```
+
+    If no ZOWESVR JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZOWESVR. Then issue the DELETE command as shown above.
+
 3.  Remove RACF® \(or equivalent\) definitions with the following command:
 
     ```
@@ -39,7 +60,7 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
     ```
 
     where _userid_ indicates the user ID that is used to install Zowe.
-    
+
 4.  Delete the z/OS® UNIX™ System Services explorer server directory and files from the explorer server installation directory by issuing the following command:
 
     ```sh
@@ -75,6 +96,27 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
     ```
 
 2.  Delete the `ZOWESVR` member from your system `PROCLIB` data set.
+
+    To do this, you can issue the following TSO DELETE command from the TSO READY prompt or from ISPF option 6:
+
+    ```
+    delete 'your.zowe.proclib(zowesvr)'
+    ```
+
+    Alternatively, you can issue the TSO DELETE command at any ISPF command line by prefixing the command with TSO:
+
+    ```
+    tso delete 'your.zowe.proclib(zowesvr)'
+    ```
+
+    To query which PROCLIB data set that ZOWESVR is put in, you can view the SDSF JOB log of ZOWESVR and look for the following message:  
+
+    ```
+    IEFC001I PROCEDURE ZOWESVR WAS EXPANDED USING SYSTEM LIBRARY your.zowe.proclib
+    ```
+
+    If no ZOWESVR JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZOWESVR. Then issue the DELETE command as shown above.
+
 3.  Remove RACF® \(or equivalent\) definitions using the following command:
 
     ```
@@ -82,6 +124,8 @@ You can uninstall Zowe if you no longer need to use it. Follow these procedures 
     SETR RACLIST(STARTED) REFRESH
     REMOVE (userid) GROUP(IZUUSER)
     ```
+
+    where _userid_ indicates the user ID that is used to install Zowe.
 
 4.  Delete the z/OS® UNIX™ System Services API Mediation Layer directory and files from the API Mediation Layer installation directory using the following command:
 

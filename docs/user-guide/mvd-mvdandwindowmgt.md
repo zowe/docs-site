@@ -1,25 +1,25 @@
-# Virtual Desktop and Window management
+# Zowe Desktop and Window management
 
-The Virtual Desktop is a web component of Zowe, which is an implementation of MVDWindowManagement, the interface that is used to create a window manager.
+The Zowe Desktop (MVD) is a web component of Zowe, which is an implementation of **MVDWindowManagement**, the interface that is used to create a window manager.
 
-The code for this software can be found in the `lux-app-manager` repository.
+The code for this software is in the `lux-app-manager` repository.
 
-The interface for building an alternative window manager can be found in the `zlux-platform` repository.
+The interface for building an alternative window manager is in the `zlux-platform` repository.
 
-Window Management acts upon Windows, which are visualizations of an instance of an application. Applications are plug-ins of type "application", and therefore the Virtual Desktop operates around a collection of plug-ins.
+Window Management acts upon Windows, which are visualizations of an instance of an application. Applications are plug-ins of type "application", and therefore the Zowe Desktop operates around a collection of plug-ins.
 
-**NOTE: Other objects and frameworks that can be utilized by applications, but not related to Window Management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.**
+**Note:** Other objects and frameworks that can be utilized by applications, but not related to Window Management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.
 
 # Loading and presenting applications
 
-Upon loading the Desktop, a GET call is made to `/plugins?type=application`
-This returns a JSON list of all of the applications that are present on the server, which can be accessed by the user. Applications can be composed of dataservices, web content, or both. Applications that have web content are presented in the Virtual Desktop UI.
+Upon loading the Zowe Desktop, a GET call is made to `/plugins?type=application`.
+The GET call returns a JSON list of all of the applications that are present on the server, which can be accessed by the user. Applications can be composed of dataservices, web content, or both. Applications that have web content are presented in the Zowe Desktop UI.
 
-The Virtual Desktop presents a taskbar at the bottom of the page, where it presents each applications as an icon with a description. The icon used, and description presented are based off of the applications's PluginDefinition's webContent attributes.
+The Zowe Desktop presents a taskbar at the bottom of the page, where it displays each application as an icon with a description. The icon that is used, and description that are presented are based on the applications's PluginDefinition's **webContent** attributes.
 
 # Plug-in management
 
-Applications can gain insight into the environment they have been spawned in through the Plug-in Manager. Use the Plug-in Manager to check whether a plug-in is present before acting upon the existence of the plug-in. When the Virtual Desktop is running, you can access the Plug-in Manager through `RocketMVD.PluginManager`
+Applications can gain insight into the environment in which they have been spawned through the Plug-in Manager. Use the Plug-in Manager to determine whether a plug-in is present before acting upon the existence of the plug-in. When the Zowe Desktop is running, you can access the Plug-in Manager through `RocketMVD.PluginManager`
 
 The following are functions you can use on the Plug-in Manager:
 
@@ -49,21 +49,21 @@ The following are functions of an Application Manager:
 
 # Windows and Viewports
 
-When a user clicks on an application's icon on the taskbar, an instance of the application is started and presented within a Viewport, which is encapsulated in a Window within the Desktop.
+When a user clicks on an application's icon on the taskbar, an instance of the application is started and presented within a Viewport, which is encapsulated in a Window within the Zowe Desktop.
 
 Every instance of an application's web content within Zowe is given context and can listen on events about the Viewport and Window it exists within, regardless of whether the Window Manager implementation uses these constructs visually. It is possible to create a Window Manager that only displays one application at a time, or to have a drawer-and-panel UI rather than a true windowed UI.
 
-When the Window is created, the application's web content is encapsulated dependant upon its framework type. The following are valid framework types:
+When the Window is created, the application's web content is encapsulated dependent upon its framework type. The following are valid framework types:
 
 - "angular2": The web content is written in Angular, and packaged with Webpack. Application framework objects are given through @injectables and imports.
 
-- "iframe": The web content can be written using any framework, but is included through an iframe tag. Applicationa within an iframe can access framework objects through `parent.RocketMVD` and callbacks.
+- "iframe": The web content can be written using any framework, but is included through an iframe tag. Applications within an iframe can access framework objects through `parent.RocketMVD` and callbacks.
 
-In the case of the Virtual Desktop, this framework-specific wrapping is handled by the Plug-in Manager.
+In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plug-in Manager.
 
 # Viewport Manager
 
-Viewports encapsulate an instance of an application's web content, but otherwise do not add to the UI (they do not present chrome as a Window does).
+Viewports encapsulate an instance of an application's web content, but otherwise do not add to the UI (they do not present Chrome as a Window does).
 Each instance of an application is associated with a viewport, and operations to act upon a particular application instance should be done by specifying a viewport for an application, to differentiate which instance is the target of an action. Actions performed against viewports should be performed through the Viewport Manager.
 
 The following are functions of the Viewport Manager:
@@ -85,7 +85,7 @@ The following are functions of the Viewport Manager:
 
 # Injection Manager
 
-When Angular applications are created, they can utilize injectables to be informed of when an action happens. iframe applications indirectly benefit from some of these hooks due to the wrapper acting upon them, but Angular applications have direct access to these.
+When Angular applications are created, they can utilize injectables to be informed of when an action happens. iframe applications indirectly benefit from some of these hooks due to the wrapper acting upon them, but Angular applications have direct access.
 
 An application can utilize the following injectables:
 

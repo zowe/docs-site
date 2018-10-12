@@ -1,13 +1,13 @@
 # zLUX plug-ins definition and structure
 
-The zLUX Application Server `zlux-proxy-server`  enables extensiblity with application plug-ins. Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*.
+The zLUX Application Server (`zlux-proxy-server`) enables extensiblity with application plug-ins. Application plug-ins are a subcategory of the unit of extensibility in the server called a *plug-in*.
 
 The files that define a plug-in are located in the `pluginsDir` directory. 
 
 
-## zLUX application plug-in filesystem structure
+## Application plug-in filesystem structure
 
-A zLUX application plug-in can be loaded from a filesystem that is accessible to the zLUX Application Server, or it can be loaded dynamically at runtime. When accessed from a filesystem, there are important considerations for the developer and the user as to where to place the files for proper build, packaging, and operation.
+An application plug-in can be loaded from a filesystem that is accessible to the zLUX Application Server, or it can be loaded dynamically at runtime. When accessed from a filesystem, there are important considerations for the developer and the user as to where to place the files for proper build, packaging, and operation.
 
 ### Root files and directories
 
@@ -15,7 +15,7 @@ The root of an application plug-in directory contains the following files and di
 
 #### pluginDefinition.json
 
-This file describes an application plug-in to the zLUX Application Server. (A plug-in is the unit of extensibility for the zLUX Application Server. An application plug-in is a plug-in of the type "Application", the most common and visible type of plug-in). A definition file informs the server whether the application plug-in has server-side dataservices, client-side web content, or both. 
+This file describes an application plug-in to the zLUX Application Server. (A plug-in is the unit of extensibility for the zLUX Application Server. An application plug-in is a plug-in of the type "Application", the most common and visible type of plug-in.) A definition file informs the server whether the application plug-in has server-side dataservices, client-side web content, or both. 
 
 ### Dev and source content
 
@@ -35,7 +35,7 @@ At runtime, the following set of directories are used by the server and client.
 
 #### lib
 
-The `lib` directory is where router-type dataservices are loaded by use in the zLUX Application Server. If the JS files that are loaded from the `lib` directory require NodeJS modules, which are not provided by the server base (modules `ZLUX-proxy-server` requires are added to `NODE_PATH` at runtime), then you must include these modules in `lib/node_modules` for local directory lookup or ensure that they are found on the `NODE_PATH` environment variable. `nodeServer/node_modules` is not automatically accessed at runtime because it is a dev and build directory.
+The `lib` directory is where router-type dataservices are loaded by use in the zLUX Application Server. If the JS files that are loaded from the `lib` directory require NodeJS modules, which are not provided by the server base (the modules `ZLUX-proxy-server` requires are added to `NODE_PATH` at runtime), then you must include these modules in `lib/node_modules` for local directory lookup or ensure that they are found on the `NODE_PATH` environment variable. `nodeServer/node_modules` is not automatically accessed at runtime because it is a dev and build directory.
 
 #### web
 
@@ -47,7 +47,7 @@ The files that define a plug-in are located in the `pluginsDir` directory.
 
 ### pluginsDir directory
 
-At start up, the server reads from the `pluginsDir` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
+At startup, the server reads from the `pluginsDir` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
 
 Within the `pluginsDir` directory are a collection of JSON files. Each file has two attributes, which serve to locate a plug-in on disk:
 
@@ -58,7 +58,7 @@ Within the `pluginsDir` directory are a collection of JSON files. Each file has 
 
 ## Plug-in definition file
 
-`pluginDefinition.json` is a file that describes a plug-in. Each zLUX plug-in requires this file, because it defines how the server will register and use the backend of an application plug-in (called a *plug-in* in the terminology of the proxy server). The attributes in each file are dependent upon the `pluginType` attribute. Consider the following `pluginDefinition.json` file from `sample-app`:
+`pluginDefinition.json` is a file that describes a plug-in. Each plug-in requires this file, because it defines how the server will register and use the backend of an application plug-in (called a *plug-in* in the terminology of the proxy server). The attributes in each file are dependent upon the `pluginType` attribute. Consider the following `pluginDefinition.json` file from `sample-app`:
 
 ```
 {
@@ -116,7 +116,7 @@ The version number of the individual plug-in.
 
 A string that specifies the type of plug-in. The type of plug-in determines the other attributes that are valid in the definition.
 
--  **application**: Defines the plug-in as an application plug-in. Application plug-ins are composed of a collection of web content for presentation in the zLUX web component (such as the virtual desktop), or a collection of dataservices (REST and websocket), or both.
+-  **application**: Defines the plug-in as an application plug-in. Application plug-ins are composed of a collection of web content for presentation in the zLUX web component (such as the Zowe Desktop), or a collection of dataservices (REST and websocket), or both.
 
 -  **library**: Defines the plug-in as a library that serves static content at a known URL space.
 
