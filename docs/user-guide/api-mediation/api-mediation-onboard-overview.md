@@ -56,7 +56,7 @@ Access http://localhost:8080/v2/pets/1 to get the following response:
 }
 ```
 
-The onboarding guides demonstrate how to add the sample service to the API Mediation Layer in to make it available through the `petstore` service ID.
+**Note:** The onboarding guides demonstrate how to add the sample service to the API Mediation Layer in to make it available through the `petstore` service ID.
 
 ![Sample REST API Components](diagrams/rest-api-components-sample.svg)
 
