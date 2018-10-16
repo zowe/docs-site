@@ -191,13 +191,12 @@ Before you install Zowe CLI, make sure your system meets the following requireme
 
 ### Supported platforms
 
-You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 
 **Important!**
 
-- Zowe CLI is not officially supported on Mac computers. However, Zowe CLI *might* run successfully on some Mac computers.
 - Oracle Linux 6 is not supported.
 
 ### Free disk space
@@ -206,7 +205,7 @@ Zowe CLI requires approximately **100 MB** of free disk space. The actual quanti
 
 ### Prerequisite software
 
-***Important!*** The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
+The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
