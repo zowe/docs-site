@@ -120,7 +120,8 @@ module.exports = {
             'mvd-using',
             'usingapis',
             'api-mediation-api-catalog',
-            'cli-usingcli'
+            'cli-usingcli',
+            'cli-vscodeplugin'
           ]
         },
         {

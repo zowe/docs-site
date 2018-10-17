@@ -48,6 +48,7 @@ scope="local"/>
 <topicref format="md" href="usingapis.md" navtitle="Using APIs" scope="local"/>
 <topicref format="md" href="api-mediation-api-catalog.md" navtitle="Using API Catalog" scope="local"/>
 <topicref format="md" href="cli-usingcli.md" navtitle="Using Zowe CLI" scope="local"/>
+<topicref format="md" href="cli-vscode-plugin.md" navtitle="Using Visual Studio Code Extension for Zowe" scope="local"/>
 </chapter>
 <chapter format="md" href="mvd-extendingzlux.md" navtitle="Extending the Zowe Application Framework"
 scope="local">

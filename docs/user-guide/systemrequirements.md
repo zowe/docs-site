@@ -195,9 +195,7 @@ CA Brightside Community Edition is supported on any platform where Node.js 8.0 o
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 
-**Important!**
-
-- Oracle Linux 6 is not supported.
+**Important!** Oracle Linux 6 is not supported.
 
 ### Free disk space
 
