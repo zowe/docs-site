@@ -16,7 +16,7 @@ Before you use the VSCode extension, meet the following prerequisites on your PC
 
   - [Install Zowe CLI](cli-installcli.md).
   
-  - Create at least one Zowe CLI 'zosmf' profile so that the extension can communicate with z/OSMF. See [Create a Profile](cli-create).
+  - Create at least one Zowe CLI 'zosmf' profile so that the extension can communicate with z/OSMF. See [Create a Profile](cli-installclil#creating-a-zowe-cli-profile).
 
 ## Installing
 
