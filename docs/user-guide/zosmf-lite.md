@@ -141,7 +141,7 @@ In most cases, you can run the IZUSECEZ security job without modification. To ve
 
 #### Procedure
 
-1.	Locate IZUSECEZ in the SYS1.SAMPLIB data set on your z/OS system.
+1.	In the system library `SYS1.SAMPLIB`, locate job IZUSECEZ.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUSECEZ as a batch job on your z/OS system.  
 
@@ -191,17 +191,15 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 
 #### Procedure
 
-1.  In the system library `SYS1.SAMPLIB`, locate the job IZUMKFS.
+1.  In the system library `SYS1.SAMPLIB`, locate job IZUMKFS.
 
 2.  Make a copy of the job.
 
-3.  Examine the contents of the job.
+3.  Review and edit the job:
+    - Modify the job information so that the job can run on your system.
+    - You must specify a volume serial (VOLSER) to be used for allocating a data set for the z/OSMF data directory.
 
-4.  Modify the contents so that the job will run on your system. You must
-    specify a volume serial (VOLSER) to be used for allocating a data set for
-    the z/OSMF data directory.
-
-5.  From the TSO/E command line, run the IZUMKFS job.
+3.  Submit job IZUMKFS.
 
 TBD: Add screen capture of submitting the IZUSECEZ job from the TSO/E command
 line.
