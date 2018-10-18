@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pending to verify dead links.\"",
-    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --exclude https://github.com ./docs/.vuepress/dist/",
+    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude https://github.com ./docs/.vuepress/dist/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -14,6 +14,6 @@
   "license": "MIT",
   "devDependencies": {
     "vuepress": "^0.14.1",
-    "w3c-linkchecker-local": "^0.1.3"
+    "w3c-linkchecker-local": "^0.1.4"
   }
 }
