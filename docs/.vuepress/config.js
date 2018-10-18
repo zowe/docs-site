@@ -120,8 +120,7 @@ module.exports = {
             'mvd-using',
             'usingapis',
             'api-mediation-api-catalog',
-            'cli-usingcli',
-            'cli-vscodeplugin'
+            'cli-usingcli'
           ]
         },
         {
@@ -146,7 +145,8 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin'
+            'cli-cicsplugin',
+            'cli-vscodeplugin'
           ]
         }
       ],
