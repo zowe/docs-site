@@ -5,10 +5,10 @@ As a systems programmer or application developer, you install Zowe CLI on your
 ## Methods to install Zowe CLI
 
 You can use either of the following methods to install Zowe CLI.
-- [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
-- [Install Zowe CLI from Bintray registry](#installing-zowe-cli-from-bintray-registry)
+- <a href="#first">Install Zowe CLI from local package</a>
+- <a href="#second">Install Zowe CLI from Bintray registry</a>
 
-### Installing Zowe CLI from local package
+### Installing Zowe CLI from local package <a name="first"></a> 
 
 Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating system.
 
@@ -47,7 +47,7 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
-### Installing Zowe CLI from Bintray registry
+### Installing Zowe CLI from Bintray registry <a name="second"></a> 
 If your PC is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
 
 **Follow these steps:**
