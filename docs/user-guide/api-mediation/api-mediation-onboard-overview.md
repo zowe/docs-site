@@ -9,6 +9,8 @@ A REST API service can provide one or more REST APIs and usually provides the la
 **Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+Following diagram shows the relations between various types of services, their APIs, REST API endpoints, and API gateway:
+
 ![REST API Components](diagrams/rest-api-components.svg)
 
 
@@ -28,7 +30,7 @@ This API provides only one endpoint:
 
 - `/pets/{id}` - *Find pet by ID*. This endpoint returns a pet when 0 < ID <= 10. ID > 10 or when non-integers simulate API error conditions.
 
-Access http://localhost:8080/v2/pets/1 to get the following response:
+Access http://localhost:8080/v2/pets/1 to see what the REST API endpoint does. You should get the following response:
 
 ```json
 {
@@ -57,6 +59,8 @@ Access http://localhost:8080/v2/pets/1 to get the following response:
 ```
 
 **Note:** The onboarding guides demonstrate how to add the sample service to the API Mediation Layer to make it available through the `petstore` service ID.
+
+Following diagram shows the relations between the sample service, its API, REST API endpoint, and API gateway:
 
 ![Sample REST API Components](diagrams/rest-api-components-sample.svg)
 
