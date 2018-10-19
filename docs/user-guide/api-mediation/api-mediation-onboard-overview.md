@@ -16,19 +16,21 @@ Following diagram shows the relations between various types of services, their A
 
 ## Sample REST API Service
 
-In microservice architecture, a web server usually provides a single service. A typical example of a single service implementation is a Spring Boot web application. The following example of a simple REST API service demonstrates the use of the terms _application_, and _web application server_ and uses a Spring Boot web service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot.
+In microservice architecture, a web server usually provides a single service. A typical example of a single service implementation is a Spring Boot web application. 
 
-You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md) or you can use another existing service.
+We will use following example of a Spring Boot REST API service: https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot. We will demonstrate the terms like API and service on it. We will use this example in other onboarding guides.
+
+You can build this service using instructions in the source code of that example (https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md).
 
 The sample service has a base URL. When you start this service on your computer, the _service base URL_ is: http://localhost:8080. 
 
-**Note:** If a service is deployed to an application server, a base URL of the service (application) can be: `http://application-server-hostname:port/application-name.`
+**Note:** If a service is deployed to a web application server, a base URL of the service (application) can be: `https://application-server-hostname:port/application-name`.
 
-This service provides one API that has the base path `/v2`, which is represented in the base URL of the API as http://localhost:8080/v2.
+This service provides one API that has the base path `/v2`, which is represented in the base URL of the API as http://localhost:8080/v2. The `/v2` is the compoment in the base path that was chosen by the developer of this API. Other APIs can have different base paths depending on the particular implementation of the service.
 
 This API provides only one endpoint:
 
-- `/pets/{id}` - *Find pet by ID*. This endpoint returns a pet when 0 < ID <= 10. ID > 10 or when non-integers simulate API error conditions.
+- `/pets/{id}` - *Find pet by ID*. This endpoint in this sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or non-integer then it returns an error.
 
 Access http://localhost:8080/v2/pets/1 to see what the REST API endpoint does. You should get the following response:
 
