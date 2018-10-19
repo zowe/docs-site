@@ -26,7 +26,7 @@ rectangle service1 <<Service>> {
     ]
 }
 
-node "Web Server" as server {
+node "Web Application Server" as server {
     rectangle service3 <<Service>> {
         rectangle api3v1 <<API>> [
         <b>/v1</b>
