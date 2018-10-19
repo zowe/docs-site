@@ -110,7 +110,7 @@ node ('ibm-jenkins-slave-nvm') {
           sh """
             git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
             git config --global user.name \"${params.GITHUB_USER_NAME}\"
-            mkdir .deploy
+            mkdir -p .deploy
             cd .deploy
             git init
             git remote add origin https://github.com/zowe/docs-site.git
