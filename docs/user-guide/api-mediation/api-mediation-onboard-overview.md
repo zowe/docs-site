@@ -7,7 +7,7 @@ Before identifying the API you want to expose in the API Mediation Layer, it is 
 A REST API service can provide one or more REST APIs and usually provides the latest version of each API. A REST service is hosted on a web server which can host one or more services, often referred to as _applications_. A web server that hosts multiple services  or applications is referred to as a _web application server_. Examples of _web application servers_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
 
 **Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
-Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)).
 
 Following diagram shows the relations between various types of services, their APIs, REST API endpoints, and API gateway:
 
