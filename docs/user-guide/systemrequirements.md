@@ -17,23 +17,24 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
   **Notes:**
 
-  - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including the following requirement:  
+  - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including that Integrated Cryptographic Service Facility (ICSF) is configured and started.
 
-    z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
-
-  - Installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
+  - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
 
   2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
 
 - IBM SDK for Java Technology Edition V8 or later
 
 **Disk and brower requirements (for Zowe desktop):**
+
 - 833 MB of HFS file space.
+
 - Supported browsers:
     -   Google Chrome V54 or later
     -   Mozilla Firefox V44 or later
     -   Safari V11 or later
     -   Microsoft Edge (Windows 10)
+
 - npm 5.4 or later for building Zowe Application Framework applications.
 
      To update npm, issue the following command:
@@ -59,6 +60,7 @@ Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
 --|---|--
+Integrated Cryptographic Service Facility (ICSF) | On z/OS, Node requires ICSF to be installed, configured and started. | N/A
 AXE (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
   Common Information Model (CIM) server| z/OSMF uses the CIM server to perform capacity-provisioning and workload-management tasks. Start the CIM server before you start z/OSMF (the IZU* started tasks).  |  [Reviewing your CIM server setup][155070cd]
