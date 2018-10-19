@@ -4,7 +4,7 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.2 (November 2018)](#version-092-november-2018)
+- [Version 0.9.2 (October 2018)](#version-092-october-2018)
 - [Version 0.9.1 (October 2018)](#version-091-october-2018)
 - [Version 0.9.0 (August 2018)](#version-090-august-2018)
 
@@ -33,7 +33,7 @@ Angular application plug-ins can be internationalized utilizing the ngx-i18n lib
 
 The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
 
-The following tutorials are now available in Github:
+The following tutorials are now available in GitHub:
 
 Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
 
