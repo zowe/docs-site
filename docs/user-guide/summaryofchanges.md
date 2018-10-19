@@ -16,6 +16,21 @@ Version 0.9.2 contains the following changes since the last version.
 
 ### What's changed
 
+#### Changed in Explorer Server
+
+- The URLs to access the explorer server UI are changed.
+
+| URL in 0.9.1 | URL in 0.9.2 |
+| ------| ------|
+| `https://<your.server>:<atlasport>/explorer-jes/#/` | `https://<your.server>:<atlasport>/ui/v1/jobs/#/` |
+| `https://<your.server>:<atlasport>/explorer-mvs/#/` | `https://<your.server>:<atlasport>/ui/v1/datasets/#/` |
+| `https://<your.server>:<atlasport>/explorer-uss/#/` | `https://<your.server>:<atlasport>/ui/v1/uss/#/` |
+
+- All explorer server REST APIs are changed. The `/Atlas/api/` portion of an explorer server REST API is changed to `/api/v1/`. For example, `GET /Atlas/api/datasets/{filter}` is changed to `GET /api/v1/datasets/{filter}`.
+
+  For a list of the new APIs, see [Using APIs](usingapis.md).
+
+
 
 ## Version 0.9.1 (October 2018)
 
