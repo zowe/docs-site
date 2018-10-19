@@ -109,7 +109,7 @@ If explorer server REST APIs do not function properly, check the following items
 
     If you see error messages that are prefixed with "ERROR" or stack traces in the ZOWESVR job output, respond to them.
 
--   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/Atlas/api/system/version. The URL is case-sensitive.
+-   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/api/v1/system/version. The URL is case-sensitive.
 -   Ensure that you enter a valid z/OS® user ID and password when initially connecting to the explorer server.
 -   If testing the explorer server REST API for jobs information fails, check the z/OSMF IZUSVR1 task output for errors. If no errors occur, you can see the following messages in the IZUSVR1 job output:
 
