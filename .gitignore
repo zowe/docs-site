@@ -1,4 +1,12 @@
+# node.js dependencies
 node_modules
+
+# build result
 docs/.vuepress/dist
-.vscode/last.sql
+# deployment temp directory
+.deploy
+!.deploy/index.html
+
+# OS temp files
 .DS_Store
+.vscode/last.sql

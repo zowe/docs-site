@@ -31,7 +31,7 @@ customParameters.push(booleanParam(
 customParameters.push(string(
   name: 'PUBLISH_BRANCH',
   description: 'Target branch to publish',
-  defaultValue: 'gh-pages',
+  defaultValue: 'gh-pages-test-versioning',
   trim: true,
   required: true
 ))
@@ -63,6 +63,11 @@ properties(opts)
 
 node ('ibm-jenkins-slave-nvm') {
   currentBuild.result = 'SUCCESS'
+
+  // if we publish to test branch, we allow it anyway
+  if (params.PUBLISH_BRANCH.startsWith('gh-pages-test')) {
+    allowPublishing = true
+  }
 
   try {
 
@@ -103,13 +108,20 @@ node ('ibm-jenkins-slave-nvm') {
           usernameVariable: 'GIT_USERNAME'
         )]) {
           sh """
-            cd docs/.vuepress/dist
             git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
             git config --global user.name \"${params.GITHUB_USER_NAME}\"
+            mkdir .deploy
+            cd .deploy
             git init
+            git remote add origin https://github.com/zowe/docs-site.git
+            git fetch
+            git checkout -B ${params.PUBLISH_BRANCH}
+            rm -fr latest || true
+            mkdir latest
+            cp -r ../docs/.vuepress/dist/. latest
             git add -A
             git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push -f https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/zowe/docs-site.git master:${params.PUBLISH_BRANCH}
+            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/zowe/docs-site.git' ${params.PUBLISH_BRANCH}
           """
         }
       }
