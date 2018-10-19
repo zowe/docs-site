@@ -16,13 +16,13 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
 1. Ensure that the following prerequisite software is installed on your PC:
 
--  [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+    -  [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 
-    **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-- **Node Package Manager V5.0 or later**
+    - **Node Package Manager V5.0 or later**
 
-    npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
+        npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 
@@ -61,13 +61,14 @@ If your PC is connected to the Internet, you can use the following method to ins
 **Follow these steps:**
 
 1.  Ensure that the following prerequisite software is installed on your PC:
-    -   **Node.js V8.0 or later**
-        
-        Click [here](https://nodejs.org/en/download/) to download Node.js.
 
-    -   **Node Package Manager (npm) V5.0 or later**
-    
-        npm is included with the Node.js installation.
+    - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+
+        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+
+    - **Node Package Manager V5.0 or later**
+
+        npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 2.  Issue the following command to set the registry to the Zowe CLI scoped package on Bintray. In addition to setting the scoped registry, your non-scoped registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
