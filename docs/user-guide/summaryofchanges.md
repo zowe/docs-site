@@ -4,9 +4,9 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.2 (October 2018)](#version-092-october-2018)
-- [Version 0.9.1 (October 2018)](#version-091-october-2018)
-- [Version 0.9.0 (August 2018)](#version-090-august-2018)
+- [Version 0.9.2 (October 2018)](#version-0-9-2-october-2018)
+- [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
+- [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
 
 ## Version 0.9.2 (October 2018)
 
@@ -28,7 +28,40 @@ Version 0.9.2 contains the following changes since the last version.
 
   For a list of the new APIs, see [Using APIs](usingapis.md).
 
+#### New in Zowe CLI
 
+This version of Zowe CLI contains an extension named Visual Studio Code (VSCode) Extension for Zowe. You install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md).
+
+#### Changed in Zowe CLI
+
+This version of Zowe CLI contains the following changes:
+
+- Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. The user names and passwords that are stored in zosmf profiles and other profile types are now stored in plain text. When you update from a previous version of Zowe CLI, and your credentials are stored securely, you must update, or optionally, re-create your profiles.
+
+    **Important!** Use the following steps only if you were using a version of Zowe CLI that is older than version 0.9.2.
+
+    **Follow these steps:**
+    1. Issue any bright command to create the `~/.zowe` home directory.
+    2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
+    3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
+    4. After you migrate your profiles, issue the following command to list your existing profiles.
+        ```
+        bright profiles list zosmf
+        ```
+    5. Update each profile for compatibility with the credential storage changes by issuing the following command:
+        ```
+        bright profiles update zosmf <profilename> -u <username> -p <password>
+        ```
+    6. (Optional) If you do not want to migrate your profiles from `~/.brightside` to `~/.zowe` you can recreate your profiles using the following command:
+        ```
+        bright profiles create zosmf
+        ```
+
+        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+
+    **Note:** In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
+
+- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.md#system-requirements-for-zowe-cli).  
 
 ## Version 0.9.1 (October 2018)
 
