@@ -99,7 +99,7 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
 #### Enhanced JES Explorer
 
 A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:   
-https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
+https://host:explorerSecurePort/explorer-jes/#/viewer?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
 
 ### What's changed
 
