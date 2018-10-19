@@ -30,7 +30,7 @@ Version 0.9.2 contains the following changes since the last version.
 
 #### New in Zowe CLI
 
-This version of Zowe CLI contains an extension named Visual Studio Code (VSCode) Extension for Zowe. You install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see VSCode Extension for Zowe.
+The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe.  
 
 #### Changed in Zowe CLI
 
