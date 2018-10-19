@@ -14,7 +14,15 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 
 **Follow these steps:**
 
-1. [Address the prerequisites](systemrequirements.md#system-requirements-for-zowe-cli).
+1. Ensure that the following prerequisite software is installed on your PC:
+
+-  [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+
+    **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+
+- **Node Package Manager V5.0 or later**
+
+    npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 

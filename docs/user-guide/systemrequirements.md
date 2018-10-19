@@ -204,6 +204,22 @@ The following information is required during the installation process of API Med
 ## System requirements for Zowe CLI
 Before you install Zowe CLI, make sure your system meets the following requirements:
 
+### Prerequisite software
+
+The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
+
+**Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
+
+Ensure that the following prerequisite software is installed on your PC:
+
+- [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+
+    **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+
+- **Node Package Manager V5.0 or later**
+
+    npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
+
 ### Supported platforms
 
 CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
@@ -217,143 +233,3 @@ Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Ver
 ### Free disk space
 
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
-
-### Prerequisite software
-
-The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
-
-**Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
-
-
-#### Windows operating systems
-Windows operating systems require the following software:
-
-- Node.js V8.0 or later
-
-    Click [here](https://nodejs.org/en/download/) to download Node.js.   
-
-    **Tip:** You might need to restart the command prompt after installing Node.js.
-
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
-
-- Node Package Manager (npm) V5.0 or later
-
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
-- Python V2.7  
-
-    The command that installs C++ Compiler also installs Python on Windows.
-
-    **Tip:** Issue the command `python --version` to verify that Python is installed.
-
-- C++ Compiler (Windows Build Tools)
-
-    From an _administrator_ command prompt, issue the following command:
-
-    ```
-    npm install --global --production --add-python-to-path windows-build-tools
-    ```
-
-#### Mac operating systems
-Mac operating systems require the following software:
-
-- Node.js V8.0 or later   
-
-    Click [here](https://nodejs.org/en/download/) to download Node.js.
-
-    **Tip:** You might need to restart the command prompt after installing Node.js.
-
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
-
-- Node Package Manager (npm) V5.0 or later
-
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
-    **Tip:** If you install Node.js on a macOS operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
-
-- Python V2.7
-
-    Click [here](https://www.python.org/download/releases/2.7/) to download Python 2.7.
-
-    **Tip:** Issue the command `python --version` to verify that Python is installed.
-
-- C ++ Compiler (gcc 4.8.1 or later)  
-
-    The gcc compiler is included with macOS. Issue the command `gcc --version` to confirm that gcc is installed.
-
-#### Linux operating systems
-Linux  operating systems require the following software:
-
-- Node.js V8.0 or later
-
-    Click [here](https://nodejs.org/en/download/) to download Node.js.
-
-    **Tip:** You might need to restart the command prompt after installing Node.js.
-
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
-
-- Node Package Manager (npm) V5.0 or later   
-
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
-    **Tip:** If you install Node.js on a Linux operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
-
-- Python V2.7  
-
-    Included with most Linux distributions. **Tip:** Issue the command `python --version` to verify that Python is installed.
-
-- C ++ Compiler (gcc 4.8.1 or later)
-
-    Gcc is included with most Linux distributions. Issue the command `gcc –version` to confirm that gcc is installed.
-
-    To install gcc, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install gcc
-        ```
-    - Debian/Ubuntu
-        ```
-        sudo apt-get update
-        ```
-        ```
-        sudo apt-get install build-essential
-        ```
-    - Arch Linux
-        ```
-        sudo pacman -S gcc
-        ```
-- Libsecret  
-
-    To install Libsecret, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install libsecret-devel
-        ```
-    - Debian/Ubuntu  
-        ```
-        sudo apt-get install libsecret-1-dev
-        ```
-    - Arch Linux  
-        ```
-        sudo pacman -S libsecret
-        ```
-- Make  
-
-    Make is included with most Linux distributions. To confirm that Make is installed, issue the command `make –-version`.
-
-    To install Make, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install devtoolset-7
-        ```
-    - Debian/Ubuntu
-        ```
-        sudo apt-get install build-essential
-        ```
-    - Arch Linux  
-        ```
-        sudo pacman -S base-devel
-        ```
