@@ -12,14 +12,14 @@ Use data set APIs to create, read, update, delete, and list data sets. See the f
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`GET /Atlas/api/datasets/{filter}`|Get a list of data sets by filter. Use this API to get a starting list of data sets, for example, **userid.\*\***.|z/OSMF restfiles|
-|`GET /Atlas/api/datasets/{dsn}/attributes`|Retrieve attributes of a data set\(s\). If you have a data set name, use this API to determine attributes for a data set name. For example, it is a partitioned data set.|z/OSMF restfiles|
-|`GET /Atlas/api/datasets/{dsn}/members`|Get a list of members for a partitioned data set. Use this API to get a list of members of a partitioned data set.|z/OSMF restfiles|
-|`GET /Atlas/api/datasets/{dsn}/content`|Read content from a data set or member. Use this API to read the content of a sequential data set or partitioned data set member. Or use this API to return a checksum that can be used on a subsequent `PUT` request to determine if a concurrent update has occurred.|z/OSMF restfiles|
-|`PUT /Atlas/api/datasets/{dsn}/content`|Write content to a data set or member. Use this API to write content to a sequential data set or partitioned data set member. If a checksum is passed and it does not match the checksum that is returned by a previous `GET` request, a concurrent update has occurred and the write fails.|z/OSMF restfiles|
-|`POST /Atlas/api/datasets/{dsn}`|Create a data set. Use this API to create a data set according to the attributes that are provided. The API uses z/OSMF to create the data set and uses the syntax and rules that are described in the [z/OSMF Programming Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278420?OpenDocument).|z/OSMF restfiles|
-|`POST /Atlas/api/datasets/{dsn}/{basedsn}`|Create a data set by using the attributes of a given base data set. When you do not know the attributes of a new data set, use this API to create a new data set by using the same attributes as an existing one.|z/OSMF|
-|`DELETE /Atlas/api/datasets/{dsn}`|Delete a data set or member. Use this API to delete a sequential data set or partitioned data set member.|z/OSMF restfiles|
+|`GET /api/v1/datasets/{filter}`|Get a list of data sets by filter. Use this API to get a starting list of data sets, for example, **userid.\*\***.|z/OSMF restfiles|
+|`GET /api/v1/datasets/{dsn}/attributes`|Retrieve attributes of a data set\(s\). If you have a data set name, use this API to determine attributes for a data set name. For example, it is a partitioned data set.|z/OSMF restfiles|
+|`GET /api/v1/datasets/{dsn}/members`|Get a list of members for a partitioned data set. Use this API to get a list of members of a partitioned data set.|z/OSMF restfiles|
+|`GET /api/v1/datasets/{dsn}/content`|Read content from a data set or member. Use this API to read the content of a sequential data set or partitioned data set member. Or use this API to return a checksum that can be used on a subsequent `PUT` request to determine if a concurrent update has occurred.|z/OSMF restfiles|
+|`PUT /api/v1/datasets/{dsn}/content`|Write content to a data set or member. Use this API to write content to a sequential data set or partitioned data set member. If a checksum is passed and it does not match the checksum that is returned by a previous `GET` request, a concurrent update has occurred and the write fails.|z/OSMF restfiles|
+|`POST /api/v1/datasets/{dsn}`|Create a data set. Use this API to create a data set according to the attributes that are provided. The API uses z/OSMF to create the data set and uses the syntax and rules that are described in the [z/OSMF Programming Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278420?OpenDocument).|z/OSMF restfiles|
+|`POST /api/v1/datasets/{dsn}/{basedsn}`|Create a data set by using the attributes of a given base data set. When you do not know the attributes of a new data set, use this API to create a new data set by using the same attributes as an existing one.|z/OSMF|
+|`DELETE /api/v1/datasets/{dsn}`|Delete a data set or member. Use this API to delete a sequential data set or partitioned data set member.|z/OSMF restfiles|
 
 ### Job APIs
 
@@ -27,16 +27,16 @@ Use Jobs APIs to view the information and files of jobs, and submit and cancel j
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`GET /Atlas/api/jobs`|Get a list of jobs. Use this API to get a list of job names that match a given prefix, owner, or both.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids`|Get a list of job identifiers for a given job name. If you have a list of existing job names, use this API to get a list of job instances for a given job name.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/steps`|Get job steps for a given job. With a job name and job ID, use this API to get a list of the job steps, which includes the step name, the executed program, and the logical step number.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/steps/{stepNumber}/dds`|Get data set definitions \(DDs\) for a given job step. If you know a step number for a given job instance, use this API to get a list of the DDs for a given job step, which includes the DD name, the data sets that are described by the DD, the original DD JCL, and the logical order of the DD in the step.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files`|Get a list of output file names for a job. Job output files have associated DSIDs. Use this API to get a list of the DSIDs and DD name of a job. You can use the DSIDs and DD name to read specific job output files.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files/{fileId}`|Read content from a specific job output file. If you have a DSID or field for a given job, use this API to read the output file's content.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/files/{fileId}/tail`|Read the tail of a job's output file. Use this API to request a specific number of records from the tail of a job output file.|z/OSMF restjobs|
-|`GET /Atlas/api/jobs/{jobName}/ids/{jobId}/subsystem`|Get the subsystem type for a job. Use this API to determine the subsystem that is associated with a given job. The API examines the JCL of the job to determine if the executed program is CICS®, Db2®, IMS™, or IBM® MQ.|z/OSMF restjobs|
-|`POST /Atlas/api/jobs`|Submit a job and get the job ID back. Use this API to submit a partitioned data set member or UNIX™ file.|z/OSMF restjobs|
-|`DELETE /Atlas/api/jobs/{jobName}/{jobId}`|Cancel a job and purge its associated files. Use this API to purge a submitted job and the logged output files that it creates to free up space.|z/OSMF Running Common Information Model \(CIM\) server|
+|`GET /api/v1/jobs`|Get a list of jobs. Use this API to get a list of job names that match a given prefix, owner, or both.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids`|Get a list of job identifiers for a given job name. If you have a list of existing job names, use this API to get a list of job instances for a given job name.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/steps`|Get job steps for a given job. With a job name and job ID, use this API to get a list of the job steps, which includes the step name, the executed program, and the logical step number.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/steps/{stepNumber}/dds`|Get data set definitions \(DDs\) for a given job step. If you know a step number for a given job instance, use this API to get a list of the DDs for a given job step, which includes the DD name, the data sets that are described by the DD, the original DD JCL, and the logical order of the DD in the step.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/files`|Get a list of output file names for a job. Job output files have associated DSIDs. Use this API to get a list of the DSIDs and DD name of a job. You can use the DSIDs and DD name to read specific job output files.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/files/{fileId}`|Read content from a specific job output file. If you have a DSID or field for a given job, use this API to read the output file's content.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/files/{fileId}/tail`|Read the tail of a job's output file. Use this API to request a specific number of records from the tail of a job output file.|z/OSMF restjobs|
+|`GET /api/v1/jobs/{jobName}/ids/{jobId}/subsystem`|Get the subsystem type for a job. Use this API to determine the subsystem that is associated with a given job. The API examines the JCL of the job to determine if the executed program is CICS®, Db2®, IMS™, or IBM® MQ.|z/OSMF restjobs|
+|`POST /api/v1/jobs`|Submit a job and get the job ID back. Use this API to submit a partitioned data set member or UNIX™ file.|z/OSMF restjobs|
+|`DELETE /api/v1/jobs/{jobName}/{jobId}`|Cancel a job and purge its associated files. Use this API to purge a submitted job and the logged output files that it creates to free up space.|z/OSMF Running Common Information Model \(CIM\) server|
 
 ### System APIs
 
@@ -44,7 +44,7 @@ Use System APIs to view the version of explorer server. See the following table 
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`GET /Atlas/api/system/version`|Get the current explorer server version. Use this API to get the current version of the explorer server microservice.|None|
+|`GET /api/v1/system/version`|Get the current explorer server version. Use this API to get the current version of the explorer server microservice.|None|
 
 ### USS File APIs
 
@@ -52,11 +52,11 @@ Use USS File APIs to create, read, update, and delete USS files. See the followi
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`POST /Atlas/api/uss/files`|Use this API to create new USS directories and files.|z/OSMF restfiles|
-|`DELETE /Atlas/api/uss/files{path}`|Use this API to delete USS directories and files.|z/OSMF resfiles|
-|`GET /Atlas/api/files/{path}`|Use this API to get a list of files in a USS directory along with their attributes.|z/OSMF restfiles|
-|`GET /Atlas/api/files/{path}/content`|Use this API to get the content of a USS file.|z/OSMF restfiles|
-|`PUT /Atlas/api/files/{path}/content`|Use this API to update the content of a USS file.|z/OSMF resfiles|
+|`POST /api/v1/uss/files`|Use this API to create new USS directories and files.|z/OSMF restfiles|
+|`DELETE /api/v1/uss/files{path}`|Use this API to delete USS directories and files.|z/OSMF resfiles|
+|`GET /api/v1/files/{path}`|Use this API to get a list of files in a USS directory along with their attributes.|z/OSMF restfiles|
+|`GET /api/v1/files/{path}/content`|Use this API to get the content of a USS file.|z/OSMF restfiles|
+|`PUT /api/v1/files/{path}/content`|Use this API to update the content of a USS file.|z/OSMF resfiles|
 
 ### z/OS System APIs
 
@@ -64,9 +64,9 @@ Use z/OS system APIs to view information about PARMLIB, SYSPLEX, and USER. See t
 
 |REST API|Description|Prerequisite|
 |--------|-----------|-------------|
-|`GET /Atlas/api/zos/parmlib`|Get system PARMLIB information. Use this API to get the PARMLIB data set concatenation of the target z/OS system.|None|
-|`GET /Atlas/api/zos/sysplex`|Get target system sysplex and system name. Use this API to get the system and sysplex names.|None|
-|`GET /Atlas/api/zos/username`|Get current userid. Use this API to get the current user ID.|None|
+|`GET /api/v1/zos/parmlib`|Get system PARMLIB information. Use this API to get the PARMLIB data set concatenation of the target z/OS system.|None|
+|`GET /api/v1/zos/sysplex`|Get target system sysplex and system name. Use this API to get the system and sysplex names.|None|
+|`GET /api/v1/zos/username`|Get current userid. Use this API to get the current user ID.|None|
 
 ## Programming explorer server REST APIs
 
@@ -82,7 +82,7 @@ public class JobListener implements Runnable {
 
     /*
     *   Perform an HTTPs GET at the given jobs URL and credentials
-    *   targetURL e.g "https://host:port/Atlas/api/jobs?owner=IBMUSER&prefix=*"         
+    *   targetURL e.g "https://host:port/api/v1/jobs?owner=IBMUSER&prefix=*"         
     *   credentials in the form of base64 encoded string of user:password
     */     
     private String executeGET(String targetURL, String credentials) {
@@ -127,7 +127,7 @@ public class JobListener implements Runnable {
 Here is sample code written in JavaScript™ using features from ES6 to send a `GET`request to explorer server.
 
 ```
-const BASE_URL = 'hostname.com:port/Atlas/api';
+const BASE_URL = 'hostname.com:port/api/v1';
 
 // Call the jobs GET api to get all jobs with the userID IBMUSER
 function getJobs(){
@@ -194,7 +194,7 @@ function displayJobNamesTable(){
 
 // Call the jobs GET api to get all jobs with the userID IBMUSER
 function getJobs(owner, prefix){
-    const BASE_URL = 'hostname.com:port/Atlas/api';
+    const BASE_URL = 'hostname.com:port/api/v1';
     let parameters = "prefix=" + prefix + "&owner=" + owner;     
     let contentURL = `${BASE_URL}/jobs?${parameters}`;     
     let result = fetch(contentURL, {credentials: "include"})                     

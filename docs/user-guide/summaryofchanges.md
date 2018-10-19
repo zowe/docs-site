@@ -17,11 +17,11 @@ Version 0.9.1 contains the following changes since the last version.
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
-The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer. 
+The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer.
 
-Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
+Angular application plug-ins can be internationalized utilizing the ngx-i18n library.
 
-The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
+The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
 
 The following tutorials are now available in Github:
 
@@ -29,7 +29,7 @@ Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/bl
 
 Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
 
-Internationalization in Angular Templates in Zowe zLUX 
+Internationalization in Angular Templates in Zowe zLUX
 
 [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
 
@@ -89,7 +89,7 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
 #### Enhanced JES Explorer
 
 A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:   
-https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
+https://host:explorerSecurePort/explorer-jes/#/viewer?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
 
 ### What's changed
 
