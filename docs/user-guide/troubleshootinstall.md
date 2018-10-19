@@ -109,7 +109,7 @@ If explorer server REST APIs do not function properly, check the following items
 
     If you see error messages that are prefixed with "ERROR" or stack traces in the ZOWESVR job output, respond to them.
 
--   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/Atlas/api/system/version. The URL is case-sensitive.
+-   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/api/v1/system/version. The URL is case-sensitive.
 -   Ensure that you enter a valid z/OS® user ID and password when initially connecting to the explorer server.
 -   If testing the explorer server REST API for jobs information fails, check the z/OSMF IZUSVR1 task output for errors. If no errors occur, you can see the following messages in the IZUSVR1 job output:
 
@@ -143,15 +143,19 @@ If explorer server REST APIs do not function properly, check the following items
     CWWKZ0001I: Application IzuManagementFacilityRestFiles started in n.nnn seconds.
     ```
 
-    You can also call z/OSMF RESTFILES APIs directly from your internet browser with a URL, for example,
+    To test z/OSMF REST APIs you can run curl scripts from your workstation. 
 
-    https://your.server:securezosmfport/zosmf/restfiles/ds?dslevel=userid.**
+    curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restjobs/jobs?prefix=*&owner=*
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
 
-    You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTFILES API directly fails, fix z/OSMF before explorer server can use these APIs successfully.
+    /zosmf/restjobs/jobs?prefix=*&owner=* will return a list of the jobs.
 
-    **Tip:** The z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB might be missed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
+    If z/OSMF returns jobs correctly you can test whether it is able to returns files using
+
+    curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restfiles/ds?dslevel=SYS1"
+
+    If the restfiles curl statement returns a TSO SERVLET EXCEPTION error check that the the z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB has been completed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
 
     The IZUFPROC member resides in your system PROCLIB, which is similar to the following sample:
 
@@ -270,3 +274,4 @@ Oracle Linux 6 operating system. 
 **Solution:**
 
 Install the product on Oracle Linux 7 or another Linux or Windows OS. Zowe CLI is not compatible with Oracle Linux 6.
+
