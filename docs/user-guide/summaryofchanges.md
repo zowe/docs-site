@@ -72,6 +72,10 @@ Zowe CLI contains the following new features:
     - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your PC.
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
+- **Visual Studio Code Extension for Zowe**
+
+    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md). 
+
 #### New in API Mediation Layer
 
 API Mediation Layer Version 0.9.1 contains the following new functionality and features:
