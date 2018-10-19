@@ -1,14 +1,53 @@
 # System requirements
 
+When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on PC.
+
 Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
-1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF requirements](#zosmf-requirements).
+**z/OS host requirements (for all components):**
 
-2. Review component specific requirements.
-     -   [System requirements for the Zowe Application Framework, explorer server, and API Mediation](#system-requirements-for-the-zowe-application-framework-explorer-server-and-api-mediation-layer)
-     -   [System requirements for Zowe CLI](#system-requirements-for-zowe-cli)
+- IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
 
-## z/OSMF requirements
+  z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
+
+- z/OS® Version 2.2 or later.
+- IBM SDK for Node.js z/OS Version 6.11.2 or later.
+
+  1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
+
+  **Notes:**
+
+  - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including the following requirement:  
+
+    z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
+
+  - Installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
+
+  2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
+
+- IBM SDK for Java Technology Edition V8 or later
+
+**Disk and brower requirements (for Zowe desktop):**
+- 833 MB of HFS file space.
+- Supported browsers:
+    -   Google Chrome V54 or later
+    -   Mozilla Firefox V44 or later
+    -   Safari V11 or later
+    -   Microsoft Edge (Windows 10)
+- npm 5.4 or later for building Zowe Application Framework applications.
+
+     To update npm, issue the following command:
+
+     ```
+     npm install -g npm
+     ```
+
+**Client requirements (for Zowe CLI):**
+
+Any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For details, see [System requirements for Zowe CLI](#system-requirements-for-zowe-cli).
+
+
+## z/OSMF configuration
 
 The following information contains procedures and tips for meeting z/OSMF requirements. For complete information, go to [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3/en/homepage.html) and read the following documents.
 
@@ -138,35 +177,9 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
 
-## System requirements for the Zowe Application Framework, explorer server, and API Mediation Layer
+## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
 
-The Zowe Application Framework, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
-
--   z/OS® Version 2.2 or later.
--   64-bit Java™ 8 JRE or later.
--   833 MB of HFS file space.
--   Supported browsers:
-    -   Chrome 54 or later
-    -   Firefox 44 or later
-    -   Safari 11 or later
-    -   Microsoft Edge
-
--  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Application Server.
-
-    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
-    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
-
--   npm 5.4 or later for building Zowe Application Framework applications.
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
-
-### Planning for installation
-
-The following information is required during the installation process. Make the decisions before the installtion.
+The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.
 
 - The HFS directory where you install Zowe, for example, `/var/zowe`.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
@@ -216,7 +229,7 @@ Windows operating systems require the following software:
 - Node.js V8.0 or later
 
     Click [here](https://nodejs.org/en/download/) to download Node.js.   
-    
+
     **Tip:** You might need to restart the command prompt after installing Node.js.
 
     **Tip:** Issue the command `node --version` to verify that Node.js is installed.
@@ -245,7 +258,7 @@ Mac operating systems require the following software:
 - Node.js V8.0 or later   
 
     Click [here](https://nodejs.org/en/download/) to download Node.js.
-    
+
     **Tip:** You might need to restart the command prompt after installing Node.js.
 
     **Tip:** Issue the command `node --version` to verify that Node.js is installed.

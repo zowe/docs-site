@@ -12,8 +12,6 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.2 contains the following changes since the last version.
 
-### What's new
-
 ### What's changed
 
 #### Changed in Explorer Server
