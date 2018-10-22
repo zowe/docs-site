@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pending to verify dead links.\"",
-    "test:links": "blcl --base-url /docs-site/ --filter-level 3 --exclude-external --recursive --ordered ./docs/.vuepress/dist/",
+    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!localhost|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org).)*\\/\" ./docs/.vuepress/dist/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "broken-link-checker-local": "git+https://github.com/jackjia-ibm/broken-link-checker-local.git",
-    "vuepress": "^0.14.1"
+    "vuepress": "^0.14.1",
+    "w3c-linkchecker-local": "^0.1.5"
   }
 }

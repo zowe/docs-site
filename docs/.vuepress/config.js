@@ -145,7 +145,8 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin'
+            'cli-cicsplugin',
+            'cli-vscodeplugin'
           ]
         }
       ],
