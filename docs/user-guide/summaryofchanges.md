@@ -12,6 +12,12 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.2 contains the following changes since the last version.
 
+### What's new
+
+#### New in Zowe CLI
+
+The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe.  
+
 ### What's changed
 
 #### Changed in Explorer Server
@@ -27,10 +33,6 @@ Version 0.9.2 contains the following changes since the last version.
 - All explorer server REST APIs are changed. The `/Atlas/api/` portion of an explorer server REST API is changed to `/api/v1/`. For example, `GET /Atlas/api/datasets/{filter}` is changed to `GET /api/v1/datasets/{filter}`.
 
   For a list of the new APIs, see [Using APIs](usingapis.md).
-
-#### New in Zowe CLI
-
-The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe.  
 
 #### Changed in Zowe CLI
 
