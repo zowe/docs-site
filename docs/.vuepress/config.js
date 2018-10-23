@@ -1,6 +1,10 @@
+const ROOT_BASE_URL = '/docs-site'
+const BUILD_TARGET = process.env.BUILD_TARGET || 'latest'
+
 module.exports = {
   title: 'Zowe Docs',
-  base: '/docs-site/',
+  base: `${ROOT_BASE_URL}/${BUILD_TARGET}/`,
+  dest: `.deploy/${BUILD_TARGET}/`,
   description: 'Home of Zowe documentation',
   ga: 'UA-123892882-1',
   head: [
@@ -14,7 +18,16 @@ module.exports = {
   ],
   themeConfig: {
     docsDir: 'docs',
-    repo: 'https://github.com/zowe/docs-site',
+    // define Zowe versions
+    versions: [{
+      text: 'Latest',
+      link: 'latest/',
+    }, {
+      text: 'v0.9.x', 
+      link: 'v0.9.x/',
+    }],
+    rootBaseUrl: ROOT_BASE_URL,
+    repo: `https://github.com/zowe${ROOT_BASE_URL}`,
     editLinks: true,
     editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
@@ -23,6 +36,7 @@ module.exports = {
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
       { text: 'User Guide', link: '/user-guide/aboutthisdoc' },
+      { tags: ['versions'] }, // versions dropdown placeholder
       { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
     sidebar: {

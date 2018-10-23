@@ -2,7 +2,8 @@
 node_modules
 
 # build result
-docs/.vuepress/dist
+docs/.vuepress/dist 
+docs-site
 # deployment temp directory
 .deploy
 !.deploy/index.html
