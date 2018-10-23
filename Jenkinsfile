@@ -77,12 +77,12 @@ node ('ibm-jenkins-slave-nvm') {
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
   // if we publish target branch to test branch, we allow it anyway
-  if (​isMasterBranch || isReleaseBranch ||
+  if (isMasterBranch || isReleaseBranch ||
       params.PUBLISH_BRANCH.startsWith('gh-pages-test')) {
     allowPublishing = true
   }
   if (allowPublishing && isReleaseBranch) {
-    publishTargetPath = ​env.BRANCH_NAME
+    publishTargetPath = env.BRANCH_NAME
   }
   if (allowPublishing && params.PUBLISH_PATH) { // this is manually assigned parameter value
     publishTargetPath = params.PUBLISH_PATH
