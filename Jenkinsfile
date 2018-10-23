@@ -116,7 +116,7 @@ node ('ibm-jenkins-slave-nvm') {
           git checkout -B ${params.PUBLISH_BRANCH}
           cd ..
         """
-        if (isMasterBranch) {
+        if (isMasterBranch || !fileExists('.deploy/index.html')) {
           // only update redirect index from master branch
           sh 'cp version-redirect-index.html .deploy/index.html'
         }
@@ -126,14 +126,14 @@ node ('ibm-jenkins-slave-nvm') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh 'PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build'
+        sh "PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build"
       }
     }
 
     stage('test') {
       ansiColor('xterm') {
         // list all files generated
-        sh 'find .deploy/${publishTargetPath}'
+        sh "find .deploy/${publishTargetPath} | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
           sh 'npm run test:links'
