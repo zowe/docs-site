@@ -5,7 +5,7 @@ Before you follow the development tutorials for creating a Zowe CLI plug-in, fol
 [Install Zowe CLI](https://zowe.github.io/docs-site/user-guide/cli-installcli.html#methods-to-install-zowe-cli).
 
 ## Initial setup 
-To create your development space, you will clone and build [zowe-cli-sample-plugin]() from source.
+To create your development space, you will clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin) from source.
 
 Before you clone the repository, create a local development folder named `zowe-tutorial`. You will clone and build all projects in this folder.
 
