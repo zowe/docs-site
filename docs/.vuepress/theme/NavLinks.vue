@@ -44,6 +44,10 @@ export default {
             tags: ['versions']
           }
         })
+        if (this.userNav[versionsIndex].items.length === 1) {
+          // we only have one version, remove the versions dropdown
+          this.userNav.splice(versionsIndex, 1)
+        }
       }
 
       // parse locales settings

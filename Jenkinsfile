@@ -12,7 +12,11 @@
 
 def isPullRequest = env.BRANCH_NAME.startsWith('PR-')
 def slackChannel = '#test-build-notify'
-def allowPublishing = env.BRANCH_NAME == 'master'
+def githubRepository = 'zowe/docs-site'
+def allowPublishing = false
+def publishTargetPath = 'latest'
+def isMasterBranch = env.BRANCH_NAME == 'master'
+def isReleaseBranch = env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/
 
 def opts = []
 // keep last 20 builds for regular branches, no keep for pull requests
@@ -34,6 +38,13 @@ customParameters.push(string(
   defaultValue: 'gh-pages-test-versioning',
   trim: true,
   required: true
+))
+customParameters.push(string(
+  name: 'PUBLISH_PATH',
+  description: 'Target URL path to publish. Default is "latest" for master branch, "v?.?.x" for v?.?.x release branches.',
+  defaultValue: '',
+  trim: true,
+  required: false
 ))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
@@ -64,9 +75,17 @@ properties(opts)
 node ('ibm-jenkins-slave-nvm') {
   currentBuild.result = 'SUCCESS'
 
-  // if we publish to test branch, we allow it anyway
-  if (params.PUBLISH_BRANCH.startsWith('gh-pages-test')) {
+  // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
+  // if we publish target branch to test branch, we allow it anyway
+  if (​isMasterBranch || isReleaseBranch ||
+      params.PUBLISH_BRANCH.startsWith('gh-pages-test')) {
     allowPublishing = true
+  }
+  if (allowPublishing && isReleaseBranch) {
+    publishTargetPath = ​env.BRANCH_NAME
+  }
+  if (allowPublishing && params.PUBLISH_PATH) { // this is manually assigned parameter value
+    publishTargetPath = params.PUBLISH_PATH
   }
 
   try {
@@ -80,19 +99,38 @@ node ('ibm-jenkins-slave-nvm') {
       if (isPullRequest) {
         echo "This is a pull request"
       }
+
+      // prepare .deploy folder to match params.PUBLISH_BRANCH
+      if (allowPublishing && params.RUN_PUBLISH) {
+        sh """
+          git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
+          git config --global user.name \"${params.GITHUB_USER_NAME}\"
+          mkdir -p .deploy
+          cd .deploy
+          git init
+          git remote add origin https://github.com/${githubRepository}.git
+          git fetch
+          git checkout -B ${params.PUBLISH_BRANCH}
+          cd ..
+        """
+        if (isMasterBranch) {
+          // only update redirect index from master branch
+          sh 'cp version-redirect-index.html .deploy/index.html'
+        }
+      }
     }
 
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh 'npm run docs:build'
+        sh 'PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build'
       }
     }
 
     stage('test') {
       ansiColor('xterm') {
         // list all files generated
-        sh 'find docs/.vuepress/dist'
+        sh 'find .deploy/${publishTargetPath}'
         // check broken links
         timeout(30) {
           sh 'npm run test:links'
@@ -108,20 +146,10 @@ node ('ibm-jenkins-slave-nvm') {
           usernameVariable: 'GIT_USERNAME'
         )]) {
           sh """
-            git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
-            git config --global user.name \"${params.GITHUB_USER_NAME}\"
-            mkdir -p .deploy
             cd .deploy
-            git init
-            git remote add origin https://github.com/zowe/docs-site.git
-            git fetch
-            git checkout -B ${params.PUBLISH_BRANCH}
-            rm -fr latest || true
-            mkdir latest
-            cp -r ../docs/.vuepress/dist/. latest
             git add -A
             git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/zowe/docs-site.git' ${params.PUBLISH_BRANCH}
+            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
           """
         }
       }

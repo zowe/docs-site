@@ -6,7 +6,6 @@ docs/.vuepress/dist
 docs-site
 # deployment temp directory
 .deploy
-!.deploy/index.html
 
 # OS temp files
 .DS_Store

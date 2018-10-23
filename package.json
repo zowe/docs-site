@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pending to verify dead links.\"",
-    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!localhost|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org).)*\\/\" ./docs/.vuepress/dist/",
+    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!localhost|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org).)*\\/\" ./.deploy/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
