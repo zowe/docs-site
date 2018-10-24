@@ -110,16 +110,20 @@ node ('ibm-jenkins-slave-nvm') {
 
     stage('done') {
       echo """
-      Branch ${params.RELEASE_VERSION} is created and protected.
-
-      You can go ahead update docs/.vuepress/versions.json on master branch to add the new version.
-
-      Example version entry is:
-
-      {
-        "text": "v0.9.x",
-        "link": "v0-9-x/"
-      }
+*************************************************************************************************
+*                                                                                               *
+* Branch ${params.RELEASE_VERSION} is created and protected.                                    *
+*                                                                                               *
+* You can go ahead update docs/.vuepress/versions.json on master branch to add the new version. *
+*                                                                                               *
+*  Example version entry is:                                                                    *
+*                                                                                               *
+*  {                                                                                            *
+*    "text": "v0.9.x",                                                                          *
+*    "link": "v0-9-x/"                                                                          *
+*  }                                                                                            *
+*                                                                                               *
+*************************************************************************************************
       """
       // send out notification
       // slackSend channel: slackChannel,
