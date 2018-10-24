@@ -60,6 +60,9 @@ node ('ibm-jenkins-slave-nvm') {
   currentBuild.result = 'SUCCESS'
 
   // validate release version name
+  if (!params.RELEASE_VERSION) {
+    error "RELEASE_VERSION parameter is required to release"
+  }
   def isValidVersion = params.RELEASE_VERSION ==~ versionPattern
   if (!isValidVersion) {
     error "\"${params.RELEASE_VERSION}\" is not a valid version name. Please use pattern of \"v?.?.?\""
@@ -85,7 +88,7 @@ node ('ibm-jenkins-slave-nvm') {
     }
 
     stage('release') {
-      def remote = sh(script: "git ls-remote --heads origin ${params.PUBLISH_BRANCH}", returnStdout: true).trim()
+      def remote = sh(script: "git ls-remote --heads origin ${params.RELEASE_VERSION}", returnStdout: true).trim()
       if (remote) {
         error "Branch \"${params.RELEASE_VERSION}\" is already existed"
       }
