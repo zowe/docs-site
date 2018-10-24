@@ -129,9 +129,11 @@ If explorer server REST APIs do not function properly, check the following items
     CWWKZ0001I: Application IzuManagementFacilityRestJobs started in n.nnn seconds.
     ```
 
-    You can also call z/OSMF RESTJOBS APIs directly from your Internet browser with a URL, for example,
-
+    You can also call z/OSMF RESTJOBS APIs directly from your Internet browser with a URL, for example,  
+    
+    ```
     https://your.server:securezosmfport/zosmf/restjobs/jobs
+    ```
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
 
@@ -145,15 +147,19 @@ If explorer server REST APIs do not function properly, check the following items
 
     To test z/OSMF REST APIs you can run curl scripts from your workstation. 
 
+    ```
     curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restjobs/jobs?prefix=*&owner=*
+    ```
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
 
-    /zosmf/restjobs/jobs?prefix=*&owner=* will return a list of the jobs.
+    `/zosmf/restjobs/jobs?prefix=*&owner=*` will return a list of the jobs.
 
     If z/OSMF returns jobs correctly you can test whether it is able to returns files using
 
+    ```
     curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restfiles/ds?dslevel=SYS1"
+    ```
 
     If the restfiles curl statement returns a TSO SERVLET EXCEPTION error check that the the z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB has been completed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
 
