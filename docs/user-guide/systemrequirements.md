@@ -151,10 +151,10 @@ The Zowe Application Framework, explorer server, and API Mediation Layer are ins
     -   Safari 11 or later
     -   Microsoft Edge
 
--  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Application Server.
+-  Node.js Version 6.14.4 or later on the z/OS host where you install the Zowe Application Server.
 
     1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
-    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
+    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
 -   npm 5.4 or later for building Zowe Application Framework applications.
 

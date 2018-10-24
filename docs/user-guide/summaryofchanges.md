@@ -21,6 +21,8 @@ The API Catalog plug-in was added to the Zowe Application Framework. This plug-i
 
 Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
 
+Node.js v6.14.4.0 and later is now required.
+
 The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
 
 The following tutorials are now available in Github:
