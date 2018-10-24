@@ -25,7 +25,7 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
 - IBM SDK for Java Technology Edition V8 or later
 
-**Disk and brower requirements (for Zowe desktop):**
+**Disk and browser requirements (for Zowe desktop):**
 
 - 833 MB of HFS file space.
 
