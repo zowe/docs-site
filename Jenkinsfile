@@ -134,7 +134,7 @@ node ('ibm-jenkins-slave-nvm') {
     stage('test') {
       ansiColor('xterm') {
         // list all files generated
-        sh "find .deploy/${publishTargetPath} | grep -v '.deploy/.git'"
+        sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
           sh 'npm run test:links'
