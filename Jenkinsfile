@@ -35,7 +35,7 @@ customParameters.push(booleanParam(
 customParameters.push(string(
   name: 'PUBLISH_BRANCH',
   description: 'Target branch to publish',
-  defaultValue: 'gh-pages-test-versioning',
+  defaultValue: 'gh-pages',
   trim: true,
   required: true
 ))
