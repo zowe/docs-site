@@ -24,7 +24,7 @@ If you do not have internet access at your site, use the following method to ins
     unzip zowe-cli-bundle.zip
     ```
 
-    The command expands files into your working directory for Zowe CLI and Zowe CLI plug-ins. The file also contains the `odbc_cli` folder, which is required if you install the Zowe CLI Plug-in for IBM Db2 from a local package. 
+    The command expands files into your working directory for Zowe CLI and Zowe CLI plug-ins.
 
 4. Issue the following command to install Zowe CLI on your PC:
 
@@ -33,7 +33,7 @@ If you do not have internet access at your site, use the following method to ins
     ```
     - **\*\*VERSION\*\***
 
-        The version of Zowe CLI that you want to install from the package. 
+        The version of Zowe CLI that you want to install from the package.
 
     **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
