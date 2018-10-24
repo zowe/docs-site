@@ -93,8 +93,8 @@ node ('ibm-jenkins-slave-nvm') {
         error "Branch \"${params.RELEASE_VERSION}\" is already existed"
       }
 
-      echo "Creating new branch \"${params.RELEASE_VERSION}\" ..."
-      sh "git checkout -b ${params.RELEASE_VERSION}"
+      echo "Creating new branch \"${params.RELEASE_VERSION}\" from master ..."
+      sh "git checkout -b ${params.RELEASE_VERSION} master"
 
       withCredentials([usernamePassword(
         credentialsId: params.GITHUB_CREDENTIALS,
