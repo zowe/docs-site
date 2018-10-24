@@ -97,30 +97,33 @@ node ('ibm-jenkins-slave-nvm') {
       // check if it's pull request
       echo "Current branch is ${env.BRANCH_NAME}"
       if (allowPublishing) {
-        echo "Will publish to ${publishTargetPath}"
+        echo "**** Will publish to ${publishTargetPath}"
+      } else {
+        echo "**** Publish stage will be skipped"
       }
       if (isPullRequest) {
         echo "This is a pull request"
       }
+    }
 
-      // prepare .deploy folder to match params.PUBLISH_BRANCH
-      if (allowPublishing && params.RUN_PUBLISH) {
-        sh """
-          git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
-          git config --global user.name \"${params.GITHUB_USER_NAME}\"
-          mkdir -p .deploy
-          cd .deploy
-          git init
-          git remote add origin https://github.com/${githubRepository}.git
-          git fetch
-          git checkout -B ${params.PUBLISH_BRANCH}
-          if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
-          cd ..
-        """
-        if (isMasterBranch || !fileExists('.deploy/index.html')) {
-          // only update redirect index from master branch
-          sh 'cp version-redirect-index.html .deploy/index.html'
-        }
+    stage('prepare') {
+      // prepare .deploy folder
+      // checkout params.PUBLISH_BRANCH to .deploy folder
+      sh """
+        git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
+        git config --global user.name \"${params.GITHUB_USER_NAME}\"
+        mkdir -p .deploy
+        cd .deploy
+        git init
+        git remote add origin https://github.com/${githubRepository}.git
+        git fetch
+        git checkout -B ${params.PUBLISH_BRANCH}
+        if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
+        cd ..
+      """
+      if (isMasterBranch || !fileExists('.deploy/index.html')) {
+        // only update redirect index from master branch
+        sh 'cp version-redirect-index.html .deploy/index.html'
       }
     }
 
