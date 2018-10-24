@@ -46,7 +46,7 @@ _Please note, if we have multiple documentation versions in place, you may see b
 
 ### Automatic Build
 
-Build will be automatically triggered with commit or pull request, pipeline `Jenkinsfile` will be executed. Build result will be published to `gh-pages` branch `latest` folder, which will be synced to Github Pages hosting.
+Build will be automatically triggered by commit or pull request, and pipeline `Jenkinsfile` will be executed. Build result will be published to `gh-pages` branch `latest` folder, which will be synced to Github Pages hosting.
 
 ### Tag A Patch Version
 
@@ -55,7 +55,7 @@ At the release date of Zowe, we should tag the version. For example, we are rele
 ```
 git checkout master
 git pull
-git tag -- v0.10.3
+git tag v0.10.3
 git push --tags
 ```
 
@@ -67,10 +67,10 @@ git push --tags
 
 Please follow these steps to archive documentation. Below example are based on archiving `v0.9.x` before we start `v0.10.x`.
 
-- Double check `master` branch is ready to be archived, all `v0.9.x` information are in place and `v0.10.x` information are not merged into `master`.
-- `Jenkinsfile.archive` is the pipeline to archive. Currently the build name is called `docs-site-archive`. Choose `Build with Parameters` option, then input `v0.9.x` as `RELEASE_VERSION` parameter, then click on `BUILD`.
+- Double check `master` branch is ready to be archived. All `v0.9.x` information should be in place and `v0.10.x` information are not merged into `master` yet.
+- `Jenkinsfile.archive` is the pipeline to be executed. Currently the build name is called `docs-site-archive`. Choose `Build with Parameters` option, input `v0.9.x` as `RELEASE_VERSION` parameter, then click on `BUILD`.
 - The build will create a protected branch called `v0.9.x`. Same as `mater` branch, any changes make to this branch requires pull request, reviewer and DCO check passed.
-- New branch `v0.9.x` will trigger a new build, and publish the build result to `gh-pages` branch `v0-9-x` folder. _PLease note, the folder name is using `-` instead of `.`, which is a limitation on VuePress._
+- New branch `v0.9.x` will trigger a new build, and publish the build result to `gh-pages` branch `v0-9-x` folder. _Please note, the folder name is using `-` instead of `.`, which is a limitation of VuePress._
 - Create a new branch from `master`, add a new record to `docs/.vuepress/versions.json`. Please make sure your JSON file is valid. Example record:
 
 ```
@@ -81,9 +81,9 @@ Please follow these steps to archive documentation. Below example are based on a
 ```
 - Create pull request and merge the new version entry change into `master` branch. After build, the latest version of documentation website will have a `Versions` dropdown with options to switch to `v0.9.x` documentation.
 
-Now you have two documentation threads:
+Now we have two documentation threads:
 
 - **master**: this is the main thread, same as before. Changes added to this branch will be automatically published to `/latest` path.
 - **v0.9.x**: this is the legacy version v0.9.x thread. Any changes added to this branch will be automatically published to `/v0-9-x` path.
 
-As time goes, you may have multiple legacy versions. You can still go back to version branch to make changes, fix errors.
+As time goes, we may have multiple legacy versions. We can still go back to version branch to make changes, fix errors.
