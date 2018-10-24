@@ -114,6 +114,7 @@ node ('ibm-jenkins-slave-nvm') {
           git remote add origin https://github.com/${githubRepository}.git
           git fetch
           git checkout -B ${params.PUBLISH_BRANCH}
+          if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
           cd ..
         """
         if (isMasterBranch || !fileExists('.deploy/index.html')) {
