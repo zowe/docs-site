@@ -1,14 +1,54 @@
 # System requirements
 
+When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on PC.
+
 Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
-1. Ensure that IBM z/OS Management Facility (z/OSMF) is installed and configured correctly. z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF requirements](#zosmf-requirements).
+**z/OS host requirements (for all components):**
 
-2. Review component specific requirements.
-     -   [System requirements for the Zowe Application Framework, explorer server, and API Mediation](#system-requirements-for-the-zowe-application-framework-explorer-server-and-api-mediation-layer)
-     -   [System requirements for Zowe CLI](#system-requirements-for-zowe-cli)
+- IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
 
-## z/OSMF requirements
+  z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
+
+- z/OS® Version 2.2 or later.
+- IBM SDK for Node.js z/OS Version 6.11.2 or later.
+
+  1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
+
+  **Notes:**
+
+  - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including that Integrated Cryptographic Service Facility (ICSF) is configured and started.
+
+  - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
+
+  2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
+
+- IBM SDK for Java Technology Edition V8 or later
+
+**Disk and browser requirements (for Zowe desktop):**
+
+- 833 MB of HFS file space.
+
+- Supported browsers:
+    -   Google Chrome V54 or later
+    -   Mozilla Firefox V44 or later
+    -   Safari V11 or later
+    -   Microsoft Edge (Windows 10)
+
+- npm 5.4 or later for building Zowe Application Framework applications.
+
+     To update npm, issue the following command:
+
+     ```
+     npm install -g npm
+     ```
+
+**Client requirements (for Zowe CLI):**
+
+Any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For details, see [System requirements for Zowe CLI](#system-requirements-for-zowe-cli).
+
+
+## z/OSMF configuration
 
 The following information contains procedures and tips for meeting z/OSMF requirements. For complete information, go to [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3/en/homepage.html) and read the following documents.
 
@@ -20,6 +60,7 @@ Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
 --|---|--
+Integrated Cryptographic Service Facility (ICSF) | On z/OS, Node requires ICSF to be installed, configured and started. | N/A
 AXR (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
   Common Information Model (CIM) server| z/OSMF uses the CIM server to perform capacity-provisioning and workload-management tasks. Start the CIM server before you start z/OSMF (the IZU* started tasks).  |  [Reviewing your CIM server setup][155070cd]
@@ -138,35 +179,9 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
 
-## System requirements for the Zowe Application Framework, explorer server, and API Mediation Layer
+## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
 
-The Zowe Application Framework, explorer server, and API Mediation Layer are installed together. Before the installation, make sure your system meets the following requirements:
-
--   z/OS® Version 2.2 or later.
--   64-bit Java™ 8 JRE or later.
--   833 MB of HFS file space.
--   Supported browsers:
-    -   Chrome 54 or later
-    -   Firefox 44 or later
-    -   Safari 11 or later
-    -   Microsoft Edge
-
--  Node.js Version 6.11.2 or later on the z/OS host where you install the Zowe Application Server.
-
-    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp). Note that installation of the C/C++ compiler is not necessary for running the Zowe Application Framework.
-    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
-
--   npm 5.4 or later for building Zowe Application Framework applications.
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
-
-### Planning for installation
-
-The following information is required during the installation process. Make the decisions before the installtion.
+The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.
 
 - The HFS directory where you install Zowe, for example, `/var/zowe`.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
@@ -189,154 +204,32 @@ The following information is required during the installation process. Make the 
 ## System requirements for Zowe CLI
 Before you install Zowe CLI, make sure your system meets the following requirements:
 
-### Supported platforms
-
-CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
-
-Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
-
-**Important!** Oracle Linux 6 is not supported.
-
-### Free disk space
-
-Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
-
 ### Prerequisite software
 
 The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
+Ensure that the following prerequisite software is installed on your PC:
 
-#### Windows operating systems
-Windows operating systems require the following software:
+- [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 
-- Node.js V8.0 or later
+    **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    Click [here](https://nodejs.org/en/download/) to download Node.js.   
-    
-    **Tip:** You might need to restart the command prompt after installing Node.js.
+- **Node Package Manager V5.0 or later**
 
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
+    npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-- Node Package Manager (npm) V5.0 or later
+### Supported platforms
 
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
+CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
-- Python V2.7  
+Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 
-    The command that installs C++ Compiler also installs Python on Windows.
+**Important!**
 
-    **Tip:** Issue the command `python --version` to verify that Python is installed.
+- Oracle Linux 6 is not supported.
 
-- C++ Compiler (Windows Build Tools)
+### Free disk space
 
-    From an _administrator_ command prompt, issue the following command:
-
-    ```
-    npm install --global --production --add-python-to-path windows-build-tools
-    ```
-
-#### Mac operating systems
-Mac operating systems require the following software:
-
-- Node.js V8.0 or later   
-
-    Click [here](https://nodejs.org/en/download/) to download Node.js.
-    
-    **Tip:** You might need to restart the command prompt after installing Node.js.
-
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
-
-- Node Package Manager (npm) V5.0 or later
-
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
-    **Tip:** If you install Node.js on a macOS operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
-
-- Python V2.7
-
-    Click [here](https://www.python.org/download/releases/2.7/) to download Python 2.7.
-
-    **Tip:** Issue the command `python --version` to verify that Python is installed.
-
-- C ++ Compiler (gcc 4.8.1 or later)  
-
-    The gcc compiler is included with macOS. Issue the command `gcc --version` to confirm that gcc is installed.
-
-#### Linux operating systems
-Linux  operating systems require the following software:
-
-- Node.js V8.0 or later
-
-    Click [here](https://nodejs.org/en/download/) to download Node.js.
-
-    **Tip:** You might need to restart the command prompt after installing Node.js.
-
-    **Tip:** Issue the command `node --version` to verify that Node.js is installed.
-
-- Node Package Manager (npm) V5.0 or later   
-
-    **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
-    **Tip:** If you install Node.js on a Linux operating system, it's highly recommended that you follow the instructions on the Node.js website (using package manager) to install `nodejs` and `nodejs-legacy`. For example, you can issue command `sudo apt install nodejs-legacy` to install `nodejs-legacy`. With `nodejs-legacy`, you can issue command `node` rather than `nodejs`.
-
-- Python V2.7  
-
-    Included with most Linux distributions. **Tip:** Issue the command `python --version` to verify that Python is installed.
-
-- C ++ Compiler (gcc 4.8.1 or later)
-
-    Gcc is included with most Linux distributions. Issue the command `gcc –version` to confirm that gcc is installed.
-
-    To install gcc, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install gcc
-        ```
-    - Debian/Ubuntu
-        ```
-        sudo apt-get update
-        ```
-        ```
-        sudo apt-get install build-essential
-        ```
-    - Arch Linux
-        ```
-        sudo pacman -S gcc
-        ```
-- Libsecret  
-
-    To install Libsecret, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install libsecret-devel
-        ```
-    - Debian/Ubuntu  
-        ```
-        sudo apt-get install libsecret-1-dev
-        ```
-    - Arch Linux  
-        ```
-        sudo pacman -S libsecret
-        ```
-- Make  
-
-    Make is included with most Linux distributions. To confirm that Make is installed, issue the command `make –-version`.
-
-    To install Make, issue one of the following commands:
-
-    - Red Hat  
-        ```
-        sudo yum install devtoolset-7
-        ```
-    - Debian/Ubuntu
-        ```
-        sudo apt-get install build-essential
-        ```
-    - Arch Linux  
-        ```
-        sudo pacman -S base-devel
-        ```
+Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
