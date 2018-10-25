@@ -22,57 +22,69 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfo
 
 Before you install the plug-in, meet the following prerequisites:
 
-  - [Install Zowe CLI](cli-installcli.md) on your PC.
+  - [Install Zowe CLI](cli-installcli.md) on your PC. 
   - Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
   - Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region. 
 
 ## Installing
 
-There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM CICS - install from Bintray or install from the Zowe package.
+Use one of the two following methods that you can use to install the Zowe CLI Plug-in for IBM CICS:
 
-### Installing from Bintray
+- [Installing from online registry](#installing-from-online-registry)
 
-If you installed Zowe CLI from **Bintray**, complete the following steps:
+- [Installing from local package](#installing-from-local-package)
 
-1. Open a command line window and issue the following command:
+### Installing from online registry
 
-  ``` 
-  zowe plugins install @brightside/cics
-  ```
- **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
+To install Zowe CLI from an online registry, complete the following steps:
 
-2. After the command execution completes, issue the following command to validate that the installation completed successfully.
+1. Set your npm registry if you did not already do so when you installed Zowe CLI. Issue the following command:
 
-  ```
-  zowe plugins validate cics
-  ```
+    ```
+    npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+    ```
 
-  Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
+2. Open a command line window and issue the following command:
 
-To validate that the plug-in installed successfully, issue the following command:
+    ``` 
+    zowe plugins install @brightside/cics@next
+    ```
+    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
-```
- zowe plugins validate @brightside/cics
-```
+3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
-**Note:** For detailed information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
+    ```
+    zowe plugins validate cics
+    ```
+
+    Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
+
+**Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
 ### Installing from local package
-If you downloaded the Zowe installation package from Github, complete the following steps:
 
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) in Installing Zowe CLI for information about how to obtain and extract it.
+If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` package, complete the following steps:
+
+1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
+
 2. Issue the following command to install the plug-in:
     ```
-    zowe plugins install zowe-cli-cics-1.1.0-next.201809271925.tgz
+    zowe plugins install zowe-cli-cics-**VERSION**.tgz
     ```
+    - **\*\*VERSION\*\***
+
+        The version of Zowe CLI that you want to install from the package. 
+          
    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
    
-3. After the command execution completes, issue the following command to validate that the installation completed successfully.
+3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
   
     ```
     zowe plugins validate cics
     ```
-      Successful validation of the CICS plug-in returns the response: Successfully validated.
+    Successful validation of the CICS plug-in returns the response: Successfully validated.
+
+**Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
       
 ## Setting up profiles
 

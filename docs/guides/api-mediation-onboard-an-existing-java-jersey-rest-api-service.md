@@ -126,7 +126,8 @@ Use the following procedure if you use Maven as your build automation system.
 ## Externalize parameters
 
 By default, parameters defined inside the *eureka-client.properties* are externalized 
-due to a `ServletContextListener` defined in the *enabler-jersey*.  To  create your own 
+due to a `ServletContextListener` defined inside *integration-enabler-java* in the package `com.ca.mfaas.eurekaservice.RestDiscoveryListener`. If you want to use the default `ServletContextListener`,
+you can skip the following steps for externalizing parameters and run your service. To  create your own 
 `ServletContextListener`, register a `ServletContextListener` and enable it to read all 
 the properties defined inside the .*properties* file.
 
@@ -199,7 +200,9 @@ the defined code.
     * Add the ```@WebListener``` annotation to the servlet.
     * Reference the listener by adding the following code block to the 
     deployment descriptor _web.xml_.
-    
+
+      **Example:** 
+      
       ``` xml
       <listener>
         <listener-class>your.class.package.path</listener-class>
