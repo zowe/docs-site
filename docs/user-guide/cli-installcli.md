@@ -18,9 +18,9 @@ If you do not have internet access at your site, use the following method to ins
 
 1. [Address the prerequisites](systemrequirements.html#system-requirements-for-zowe-cli).
 
-2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
+2. [Obtain the Zowe installation files](gettingstarted.md), which includes the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations.
 
-3.  Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
+3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
     ```
     unzip zowe-cli-bundle.zip
@@ -35,7 +35,7 @@ If you do not have internet access at your site, use the following method to ins
     ```
     - <VERSION_NUMBER>
 
-        The version of Zowe CLI that you want to install from the package.
+        The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
     **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
