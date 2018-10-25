@@ -8,6 +8,8 @@ You can use either of the following methods to install Zowe CLI.
 - [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
 - [Install Zowe CLI from online registry](#installing-zowe-cli-from-online-registry)
 
+If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+
 ### Installing Zowe CLI from local package
 
 If you do not have internet access at your site, use the following method to install Zowe CLI from a local package.
@@ -29,9 +31,9 @@ If you do not have internet access at your site, use the following method to ins
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-**VERSION**.tgz 
+    npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
     ```
-    - **\*\*VERSION\*\***
+    - <VERSION_NUMBER>
 
         The version of Zowe CLI that you want to install from the package.
 
@@ -57,6 +59,7 @@ If your PC is connected to the Internet, you can use the following method to ins
 **Follow these steps:**
 
 1.  Ensure that the following prerequisite software is installed on your PC:
+
     -   **Node.js V8.0 or later**
         
         Click [here](https://nodejs.org/en/download/) to download Node.js.
@@ -85,6 +88,7 @@ If your PC is connected to the Internet, you can use the following method to ins
     ```
     bright plugins install @brightside/cics@next
     ```
+    **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
 5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
@@ -93,7 +97,6 @@ If your PC is connected to the Internet, you can use the following method to ins
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
-**Note:** You might encounter problems when you attempt to install Zowe CLI depending on your operating system and environment. For more information and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 ## Creating a Zowe CLI profile
 
