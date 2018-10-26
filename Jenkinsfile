@@ -119,9 +119,18 @@ node ('ibm-jenkins-slave-nvm') {
         git fetch
         git checkout -B ${params.PUBLISH_BRANCH}
         if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
-        if [ ! -d ".deploy/latest" ]; then rm -fr *; fi
         cd ..
       """
+      if (!fileExists('.deploy/latest/index.html')) {
+        // this is the old documentation directory structure, latest folder doesn't exist
+        // we need to migrate to new structure
+        if (isMasterBranch) {
+          // clean the .deploy folder to generate latest folder
+          sh 'rm -fr .deploy/*'
+        } else {
+          error 'Migration from old directory structure can only be done on master branch.'
+        }
+      }
       if (isMasterBranch || !fileExists('.deploy/index.html')) {
         // only update redirect index from master branch
         sh 'cp version-redirect-index.html .deploy/index.html'
