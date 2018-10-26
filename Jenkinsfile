@@ -14,6 +14,7 @@ def isPullRequest = env.BRANCH_NAME.startsWith('PR-')
 def slackChannel = '#test-build-notify'
 def githubRepository = 'zowe/docs-site'
 def allowPublishing = false
+def isTestPublishing = false
 def publishTargetPath = 'latest'
 def isMasterBranch = env.BRANCH_NAME == 'master'
 def isReleaseBranch = env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/
@@ -77,8 +78,8 @@ node ('ibm-jenkins-slave-nvm') {
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
   // if we publish target branch to test branch, we allow it anyway
-  if (isMasterBranch || isReleaseBranch ||
-      params.PUBLISH_BRANCH.startsWith('gh-pages-test')) {
+  isTestPublishing = params.PUBLISH_BRANCH.startsWith('gh-pages-test')
+  if (isMasterBranch || isReleaseBranch || isTestPublishing) {
     allowPublishing = true
   }
   if (allowPublishing && isReleaseBranch) {
@@ -124,11 +125,11 @@ node ('ibm-jenkins-slave-nvm') {
       if (!fileExists('.deploy/latest/index.html')) {
         // this is the old documentation directory structure, latest folder doesn't exist
         // we need to migrate to new structure
-        if (isMasterBranch) {
+        if (isMasterBranch || isTestPublishing) {
           // clean the .deploy folder to generate latest folder
           sh 'rm -fr .deploy/*'
         } else {
-          error 'Migration from old directory structure can only be done on master branch.'
+          error 'Migration "gh-pages" from old directory structure can only be done on master branch.'
         }
       }
       if (isMasterBranch || !fileExists('.deploy/index.html')) {
