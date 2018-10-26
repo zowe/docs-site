@@ -30,6 +30,13 @@ customParameters.push(string(
   trim: true,
   required: true
 ))
+customParameters.push(string(
+  name: 'BASE_BRANCH',
+  description: 'Base branch of the release branch',
+  defaultValue: 'master',
+  trim: true,
+  required: true
+))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
   description: 'Github user credentials',
@@ -93,10 +100,10 @@ node ('ibm-jenkins-slave-nvm') {
         error "Branch \"${params.RELEASE_VERSION}\" is already existed"
       }
 
-      echo "Creating new branch \"${params.RELEASE_VERSION}\" from master ..."
+      echo "Creating new branch \"${params.RELEASE_VERSION}\" from origin/${params.BASE_BRANCH} ..."
       sh "git config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\""
       sh "git fetch"
-      sh "git checkout -b ${params.RELEASE_VERSION} origin/master"
+      sh "git checkout -b ${params.RELEASE_VERSION} origin/${params.BASE_BRANCH}"
 
       withCredentials([usernamePassword(
         credentialsId: params.GITHUB_CREDENTIALS,
