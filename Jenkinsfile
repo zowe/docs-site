@@ -97,7 +97,7 @@ node ('ibm-jenkins-slave-nvm') {
       // check if it's pull request
       echo "Current branch is ${env.BRANCH_NAME}"
       if (allowPublishing) {
-        echo "**** Will publish to ${publishTargetPath}"
+        echo "**** Will publish to \"${params.PUBLISH_BRANCH}\" branch \"${publishTargetPath}\" directory"
       } else {
         echo "**** Publish stage will be skipped"
       }
