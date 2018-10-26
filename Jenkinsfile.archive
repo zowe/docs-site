@@ -94,6 +94,8 @@ node ('ibm-jenkins-slave-nvm') {
       }
 
       echo "Creating new branch \"${params.RELEASE_VERSION}\" from master ..."
+      sh "git config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\""
+      sh "git fetch"
       sh "git checkout -b ${params.RELEASE_VERSION} master"
 
       withCredentials([usernamePassword(
