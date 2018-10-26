@@ -9,6 +9,8 @@ You can use either of the following methods to install Zowe CLI.
 - [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
 - [Install Zowe CLI from online registry](#installing-zowe-cli-from-online-registry)
 
+If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+
 ### Installing Zowe CLI from local package
 
 If you do not have internet access at your site, use the following method to install Zowe CLI from a local package.
@@ -25,9 +27,9 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
+2. [Obtain the Zowe installation files](gettingstarted.md), which includes the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations.
 
-3.  Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
+3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
     ```
     unzip zowe-cli-bundle.zip
@@ -38,11 +40,11 @@ If you do not have internet access at your site, use the following method to ins
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-**VERSION**.tgz 
+    npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
     ```
-    - **\*\*VERSION\*\***
+    - **<VERSION_NUMBER>**
 
-        The version of Zowe CLI that you want to install from the package.
+        The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
     **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
@@ -87,14 +89,13 @@ If your PC is connected to the Internet, you can use the following method to ins
     npm install -g @brightside/core@next
     ```
     **Important!** On Windows, you must run as an Administrator to install the product and plug-ins. 
-    
-    Zowe CLI is installed on your PC. For information about plug-ins for Zowe CLI, see [Extending Zowe CLI](cli-extending.md).
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
     bright plugins install @brightside/cics@next
     ```
+    **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
 5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
@@ -103,7 +104,6 @@ If your PC is connected to the Internet, you can use the following method to ins
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
-**Note:** You might encounter problems when you attempt to install Zowe CLI depending on your operating system and environment. For more information and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 ## Creating a Zowe CLI profile
 
