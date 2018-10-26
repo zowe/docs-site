@@ -20,7 +20,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe will be installed into to create a Zowe runtime. The default directory is `~/zowe/0.9.1`. The user's home directory is the default value to ensure that the installing user has permission to create the directories that are required for the install. If the Zowe runtime will be maintained by multiple users it might be more appropriate to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe will be installed into to create a Zowe runtime. The default directory is `~/zowe/0.9.2`. The user's home directory is the default value to ensure that the installing user has permission to create the directories that are required for the install. If the Zowe runtime will be maintained by multiple users it might be more appropriate to use another directory, such as `/var/zowe/v.r.m`.
 
        You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. The directory that Zowe is installed into must be empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
@@ -33,7 +33,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
         ```yaml
         install:
-         rootDir=/var/zowe/0.9.1
+         rootDir=/var/zowe/0.9.2
 
         api-mediation:
           catalogHttpPort=7552
@@ -232,7 +232,7 @@ where:
 
 After explorer server is installed and the ZOWESVR procedure is started, you can verify the installation from an Internet browser by using the following case-sensitive URL:
 
-`https://<your.server>:<atlasport>/Atlas/api/system/version`
+`https://<your.server>:<atlasport>/api/v1/system/version`
 
 where _your.server_ is the host name or IP address of the z/OS® system where explorer server is installed, and _atlasport_ is the port number that is chosen during installation. You can verify the port number in the `server.xml` file that is located in the explorer server installation directory, which is `/var/zowe/explorer-server/wlp/usr/servers/Atlas/server.xml` by default. Look for the `httpsPort` assignment in the `server.xml` file, for example: httpPort="7443".
 
@@ -246,9 +246,9 @@ This URL sends an HTTP GET request to the Liberty Profile explorer server. If ex
 
 After you verify that explorer server is successfully installed, you can access the UI at the following URLs:
 
-- `https://<your.server>:<atlasport>/explorer-jes/#/`
-- `https://<your.server>:<atlasport>/explorer-mvs/#/`
-- `https://<your.server>:<atlasport>/explorer-uss/#/`
+- `https://<your.server>:<atlasport>/ui/v1/jobs/#/`
+- `https://<your.server>:<atlasport>/ui/v1/datasets/#/`
+- `https://<your.server>:<atlasport>/ui/v1/uss/#/`
 
 If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
 
@@ -262,13 +262,13 @@ With the discovery feature, you can also try each discovered API. The users who 
 
 Explorer server: JES Jobs APIs
 
-`GET /Atlas/api/jobs`
+`GET /api/v1/jobs`
 
 This API returns job information for the calling user.
 
 Explorer server: Data set APIs
 
-`GET /Atlas/api/datasets/userid.**`
+`GET /api/v1/datasets/userid.**`
 
 This API returns a list of the userid.\*\* MVS data sets.
 

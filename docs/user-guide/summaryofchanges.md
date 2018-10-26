@@ -4,8 +4,66 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.1 (October 2018)](#version-091-october-2018)
-- [Version 0.9.0 (August 2018)](#version-090-august-2018)
+- [Version 0.9.2 (October 2018)](#version-0-9-2-october-2018)
+- [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
+- [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
+
+## Version 0.9.2 (October 2018)
+
+Version 0.9.2 contains the following changes since the last version.
+
+### What's new
+
+#### New in Zowe CLI
+
+The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe.  
+
+### What's changed
+
+#### Changed in Explorer Server
+
+- The URLs to access the explorer server UI are changed.
+
+| URL in 0.9.1 | URL in 0.9.2 |
+| ------| ------|
+| `https://<your.server>:<atlasport>/explorer-jes/#/` | `https://<your.server>:<atlasport>/ui/v1/jobs/#/` |
+| `https://<your.server>:<atlasport>/explorer-mvs/#/` | `https://<your.server>:<atlasport>/ui/v1/datasets/#/` |
+| `https://<your.server>:<atlasport>/explorer-uss/#/` | `https://<your.server>:<atlasport>/ui/v1/uss/#/` |
+
+- All explorer server REST APIs are changed. The `/Atlas/api/` portion of an explorer server REST API is changed to `/api/v1/`. For example, `GET /Atlas/api/datasets/{filter}` is changed to `GET /api/v1/datasets/{filter}`.
+
+  For a list of the new APIs, see [Using APIs](usingapis.md).
+
+#### Changed in Zowe CLI
+
+This version of Zowe CLI contains the following changes:
+
+- Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. The user names and passwords that are stored in zosmf profiles and other profile types are now stored in plain text. When you update from a previous version of Zowe CLI, and your credentials are stored securely, you must update, or optionally, re-create your profiles.
+
+    **Important!** Use the following steps only if you were using a version of Zowe CLI that is older than version 0.9.2.
+
+    **Follow these steps:**
+    1. Issue any bright command to create the `~/.zowe` home directory.
+    2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
+    3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
+    4. After you migrate your profiles, issue the following command to list your existing profiles.
+        ```
+        bright profiles list zosmf
+        ```
+    5. Update each profile for compatibility with the credential storage changes by issuing the following command:
+        ```
+        bright profiles update zosmf <profilename> -u <username> -p <password>
+        ```
+    6. (Optional) If you do not want to migrate your profiles from `~/.brightside` to `~/.zowe` you can recreate your profiles using the following command:
+        ```
+        bright profiles create zosmf
+        ```
+
+        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+
+    **Note:** In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
+
+- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.md#system-requirements-for-zowe-cli).  
 
 ## Version 0.9.1 (October 2018)
 
@@ -17,21 +75,21 @@ Version 0.9.1 contains the following changes since the last version.
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
-The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer. 
+The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer.
 
-Angular application plug-ins can be internationalized utilizing the ngx-i18n library. 
+Angular application plug-ins can be internationalized utilizing the ngx-i18n library.
 
 Node.js v6.14.4.0 and later is now required.
 
 The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
 
-The following tutorials are now available in Github:
+The following tutorials are now available in GitHub:
 
 Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
 
 Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
 
-Internationalization in Angular Templates in Zowe zLUX 
+Internationalization in Angular Templates in Zowe zLUX
 
 [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
 
@@ -74,6 +132,10 @@ Zowe CLI contains the following new features:
     - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your PC.
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
+- **Visual Studio Code Extension for Zowe**
+
+    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md). 
+
 #### New in API Mediation Layer
 
 API Mediation Layer Version 0.9.1 contains the following new functionality and features:
@@ -91,7 +153,7 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
 #### Enhanced JES Explorer
 
 A full-screen job output view is now available. You can view a single job output file in a full-screen text area, which removes the need to navigate via the job tree. Note that this view is currently only available via direct access to the explorer. It is not accessible via the Zowe Desktop app in this release. To open a file in full screen, you can use the following URL/parameters:   
-https://host:explorerSecurePort/explorer-jes/#/?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
+https://host:explorerSecurePort/explorer-jes/#/viewer?jobName=SAMPLEJOB&jobId=JOB12345&fileId=102
 
 ### What's changed
 

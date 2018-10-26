@@ -1,3 +1,4 @@
 node_modules
-
 docs/.vuepress/dist
+.vscode/last.sql
+.DS_Store

@@ -12,12 +12,12 @@ You can set the log level to adjust the level of detail that is written to log f
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
-| `BRIGHTSIDE\_APP\_LOG\_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
-| `BRIGHTSIDE\_IMPERATIVE\_LOG\_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE\_APP\_LOG\_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE\_IMPERATIVE\_LOG\_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
-### Setting the .brightside directory
-You can set the location on your PC where Zowe CLI creates the *.brightside* directory, which contains log files, profiles, and plug-ins for the product:
+### Setting the .zowe directory
+You can set the location on your PC where Zowe CLI creates the *.zowe* directory, which contains log files, profiles, and plug-ins for the product:
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
-| `BRIGHTSIDE\_CLI\_HOME`  | Zowe CLI home directory location | Any valid path on your PC | Your PC default home directory |
+| `ZOWE\_CLI\_HOME`  | Zowe CLI home directory location | Any valid path on your PC | Your PC default home directory |

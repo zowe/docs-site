@@ -34,24 +34,24 @@ module.exports = {
           children: ['zlux-example-server', 'zlux-workshop-user-browser', 'zlux-tutorials']
         },
         {
-          title: 'Provide Liberty APIs',
+          title: 'Providing Liberty APIs',
           collapsable: true,
           children: ['libertyAPI', 'ReactJSUI']
         },
         {
-          title: 'Onboard Spring Boot REST API services using Zowe API Mediation Layer',
+          title: 'Onboard REST APIs to the API Mediation Layer',
           collapsable: true,
-          children: ['api-mediation-onboard-a-sprint-boot-rest-api-service']
+          children: [
+            'api-mediation-onboard-a-sprint-boot-rest-api-service', 
+            'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer', 
+            'api-mediation-onboard-an-existing-java-jersey-rest-api-service', 
+            'api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
         },
         {
-          title: 'Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer',
+          title: 'Developing for Zowe CLI',
           collapsable: true,
-          children: ['api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
-        },
-        {
-          title: 'Coming Soon',
-          collapsable: true,
-          children: ['cli-developPlugins']
+          children: ['cli-devTutorials', 'cli-setting-up', 'cli-installing-sample-plugin', 'cli-extending-a-plugin', 'cli-developing-a-plugin',
+          'cli-implement-profiles']
         }
       ],
       '/samples/': [
@@ -145,7 +145,8 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin'
+            'cli-cicsplugin',
+            'cli-vscodeplugin'
           ]
         }
       ],
