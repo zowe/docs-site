@@ -59,11 +59,11 @@ This version of Zowe CLI contains the following changes:
         bright profiles create zosmf
         ```
 
-        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
     **Note:** In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
 
-- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.md#system-requirements-for-zowe-cli).  
+- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.html#system-requirements-for-zowe-cli).  
 
 ## Version 0.9.1 (October 2018)
 
