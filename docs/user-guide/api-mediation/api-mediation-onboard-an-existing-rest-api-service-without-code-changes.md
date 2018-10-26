@@ -83,11 +83,19 @@ To define your service in YAML format, provide the following definition in a YAM
 ```yaml
 services:
     - serviceId: petstore
+      catalogUiTileId: static 
+      title: Petstore Sample Service  
+      description: This is a sample server Petstore service
       instanceBaseUrls:
         - http://localhost:8080
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
+
+catalogUiTiles:
+    static:
+        title: Static API services
+        description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
 ```
 
 In this example, a suitable name for the file is `petstore.yml`. 
@@ -137,19 +145,43 @@ The following list describes the configuration parameters:
     the API URL in the API Gateway appears as the following URL:
 
         http://gateway:port/api/v1/vantageprod1/...
+        
+ * **title**
 
-* **baseUrl**
+     Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
-    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+     **Tip:** We recommend that you provide a specific default value of the `title`.
+     Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+
+ * **description**
+
+     Specifies a short description of the API service.
+
+     **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+
+     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+
+     **Tip:** Describe the service so that the end user knows the function of the service.        
+
+* **instanceBaseUrls**
+
+    Specifies a list of base URLs to your service to the REST resource. It will be the prefix for the following URLs:
     
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl**
     
     **Examples:** 
-    * `http://host:port/serviceid` for an HTTP service
-    * `https://host:port/serviceid` for an HTTPS service
- 
+    * `- http://host:port/filemasterplus` for an HTTP service
+    * `- https://host:port/endevor` for an HTTPS service
+    
+    You can provide one URL if your service has one instance. If you service provides multiple instances for the high-availability then you can provide URLs to these instances.
+
+   ```yaml
+   - https://host1:port1/endevor
+     https://host2:port2/endevor
+   ```   
+
 * **homePageRelativeUrl** 
 
     Specifies the relative path to the homepage of your service. The path should start with `/`.
@@ -190,6 +222,38 @@ The following list describes the configuration parameters:
     
         Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
         gateway endpoints. The _service-url_ parameter points to the target endpoint on the gateway.
+
+* **catalogUiTileId**
+
+   Specifies the unique identifier for the API services group. 
+   This is the grouping value used by the API Mediation Layer to group multiple API services 
+   together into "tiles". 
+   Each unique identifier represents a single API Catalog UI dashboard tile. 
+   Specify a value that is an ID of a defined tile.
+    
+* **catalogUiTile**
+
+   This section contains definitions of tiles. Each tile is defined in a section that has its tile ID as a key.
+   A tile can be used by multiple services.
+   
+   ```yaml
+   catalogUiTiles:
+       tile1:
+           title: Tile 1
+           description: This is the first tile with ID tile1
+       tile2:
+           title: Tile 2
+           description: This is the second tile with ID tile2
+   ```
+
+* **catalogUiTile.{tileId}.title**
+
+   Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+
+* **catalogUiTile.{tileId}.description**
+
+   Specifies the detailed description of the API Catalog UI dashboard tile. 
+   This value is displayed in the API catalog UI dashboard as the tile description.
 
 
 ## Add and validate the definition in the API Mediation Layer running on your machine
