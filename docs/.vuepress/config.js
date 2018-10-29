@@ -1,6 +1,15 @@
+// load versions list
+const ZOWE_VERSIONS = require('./versions.json')
+// root base url for all versions
+const ROOT_BASE_URL = '/docs-site'
+// Due to VuePress limitation, publish url path cannot have dot (.) inside
+// so we convert it to dash
+const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'latest').replace(/\./g, '-')
+
 module.exports = {
   title: 'Zowe Docs',
-  base: '/docs-site/',
+  base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
+  dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
   description: 'Home of Zowe documentation',
   ga: 'UA-123892882-1',
   head: [
@@ -14,7 +23,11 @@ module.exports = {
   ],
   themeConfig: {
     docsDir: 'docs',
-    repo: 'https://github.com/zowe/docs-site',
+    // define Zowe versions
+    versions: ZOWE_VERSIONS,
+    // expose this to render versioning urls
+    rootBaseUrl: ROOT_BASE_URL,
+    repo: `https://github.com/zowe${ROOT_BASE_URL}`,
     editLinks: true,
     editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
@@ -23,6 +36,7 @@ module.exports = {
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
       { text: 'User Guide', link: '/user-guide/aboutthisdoc' },
+      { tags: ['versions'] }, // versions dropdown placeholder, it should be converted
       { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
     sidebar: {
