@@ -66,6 +66,12 @@ Following diagram shows the relations between the sample service, its API, REST 
 
 ![Sample REST API Components](diagrams/rest-api-components-sample.svg)
 
+This sample service provides the Swagger document in JSON format on following URL:
+
+    http://localhost:8080/v2/swagger.json
+
+The Swagger document is used by API Catalog to display the API documentation.
+
 
 ## API Service Types
 

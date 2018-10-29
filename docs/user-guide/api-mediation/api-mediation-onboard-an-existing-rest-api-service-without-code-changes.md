@@ -62,11 +62,11 @@ After you identify the APIs you want to expose, define the _routing_ of your API
 
 To access version 2 of the `petstore` API use the following gateway URL:
 
-https://gateway-host:port/api/v2/petstore
+    https://gateway-host:port/api/v2/petstore
 
 The base URL of the version 2 of the `petstore` API is:
 
-http://localhost:8080/v2
+    http://localhost:8080/v2
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. 
 
@@ -91,6 +91,11 @@ services:
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
+      apiInfo:
+        - apiId: petstore
+          gatewayUrl: api/v2
+          swaggerUrl: http://localhost:8080/v2/swagger.json
+          version: 2.0.0
 
 catalogUiTiles:
     static:
@@ -215,13 +220,45 @@ The following list describes the configuration parameters:
 
     * **routes.gatewayUrl**
     
-        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _gateway-url_ parameter sets the target endpoint on the gateway.
+        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _gatewayUrl_ parameter sets the target endpoint on the gateway.
 
     * **routes.serviceUrl**
     
-        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _service-url_ parameter points to the target endpoint on the gateway.
+        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the gateway.
+
+* **apiInfo**
+
+    This section defines APIs that are provided by the service. Currently, only one API is supported.
+
+* **apiInfo.apiId**
+
+    Specifies the API identifier that is registered in the API Mediation Layer installation. 
+    The API ID uniquely identifies the API in the API Mediation Layer. 
+    The same API can be provided by multiple service. The API ID can be used
+    to locate same APIs that are provided by different services.
+    The creator of the API defines this ID.
+    Same syntax rules as for the service ID applies for the API ID.
+
+* **apiInfo.gatewayUrl**
+
+    The base path at the API gateway where the API is available. It should be
+    the same as a _gatewayUrl_ value in the _routes_ sections.
+
+* **apiInfo.swaggerUrl**
+
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document 
+    that provides the API documentation for this API is available.
+
+* **apiInfo.documentationUrl**
+
+    (Optional) Specifies a URL to a website where external documentation is provided.
+    This can be used when _swaggerUrl_ is not provided.
+  
+* **apiInfo.version**
+
+    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
 * **catalogUiTileId**
 
