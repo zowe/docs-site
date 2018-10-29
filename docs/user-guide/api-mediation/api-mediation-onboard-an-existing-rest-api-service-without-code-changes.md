@@ -92,7 +92,7 @@ services:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
       apiInfo:
-        - apiId: petstore
+        - apiId: io.swagger.petstore
           gatewayUrl: api/v2
           swaggerUrl: http://localhost:8080/v2/swagger.json
           version: 2.0.0
@@ -239,8 +239,14 @@ The following list describes the configuration parameters:
     The same API can be provided by multiple service. The API ID can be used
     to locate same APIs that are provided by different services.
     The creator of the API defines this ID.
-    Same syntax rules as for the service ID applies for the API ID.
-
+    The API ID needs to be string up to 64 characters 
+    that is using lowercase alphanumeric characters and a dot: `.`.
+    It is recommended to use your organization as the prefix - for example:
+       
+       - `org.zowe.file`
+       - `com.ca.sysview`
+       - `com.ibm.zosmf`
+   
 * **apiInfo.gatewayUrl**
 
     The base path at the API gateway where the API is available. It should be
