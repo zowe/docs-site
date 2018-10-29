@@ -9,7 +9,7 @@ This section provides information about requirements for z/OSMF lite configurati
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
 4. [Creating a z/OSMF nucleus on your system](#creating-a-zosmf-nucleus-on-your-system)
-    1. [Running job IZUSECEZ to create security](#running-job-izusecez-to-create-security)
+    1. [Running job IZUNUSEC to create security](#running-job-IZUNUSEC-to-create-security)
     2. [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
     3. [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
     4. [Starting the z/OSMF server](#starting-the-zosmf-server)
@@ -35,7 +35,7 @@ and administration of your mainframe z/OS systems.
 By following the steps in this guide, you can quickly enable z/OSMF on your z/OS
 system. This simplified approach to set-up, known as “z/OSMF Lite”, requires
 only a minimal amount of z/OS customization, but provides the key functions that
-are required by many exploiters, such as the open mainframe project (Zowe). Later, you can easily expand z/OSMF Lite into a full function z/OSMF configuration by adding more optional services and plug-ins.
+are required by many exploiters, such as the open mainframe project (Zowe). 
 
 A z/OSMF Lite configuration is applicable to any future expansions you make to
 z/OSMF, such as adding more optional services and plug-ins.
@@ -53,7 +53,7 @@ on your system, you do not need to create a z/OSMF Lite configuration.
 
 This document is designed for use with a single z/OS system, not a z/OS sysplex. If you plan to run z/OSMF in a sysplex, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm) for multi-system considerations.
 
-It is assumed that a basic level of security for z/OSMF is sufficient on the z/OS system. IBM provides a program, IZUSECEZ, to help you set up basic security for a z/OSMF Lite configuration.
+It is assumed that a basic level of security for z/OSMF is sufficient on the z/OS system. IBM provides a program, IZUNUSEC, to help you set up basic security for a z/OSMF Lite configuration.
 
 
 System defaults are used for the z/OSMF environmental settings. Wherever possible, it is recommended that you use the default values. If necessary, however, you can override the defaults by supplying an IZUPRMxx member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](appendix.md#appendix-a-creating-an-izuprmxx-parmlib-member).  
@@ -99,7 +99,7 @@ Note: Whenever you apply PTFs for z/OSMF, you might be prompted to install outst
 
 Ensure that the z/OS host system meets the following requirements:
 
--   Port 443 is available for use.
+-   Port 443 (Default port) is available for use.
 
 -   The system host name is unique and maps to the system on which z/OSMF Lite will be configured.
 
@@ -121,7 +121,7 @@ To check your web browser’s level, click **About** in the web browser.
 
 The following system changes are described in this chapter:
 
-- [Running job IZUSECEZ to create security](#running-job-izusecez-to-create-security)
+- [Running job IZUNUSEC to create security](#running-job-IZUNUSEC-to-create-security)
 - [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
 - [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
 - [Starting the z/OSMF server](#starting-the-zosmf-server)
@@ -129,26 +129,27 @@ The following system changes are described in this chapter:
 - [Mounting the z/OSMF user file system at IPL time](#mounting-the-zosmf-user-file-system-at-ipl-time)
 
 
-### Running job IZUSECEZ to create security
+### Running job IZUNUSEC to create security
 
-The security job IZUSECEZ contains a minimal set of RACF® commands for creating security profiles for the z/OSMF nucleus. The profiles are used to protect the resources that are used by the z/OSMF server, and to grant users access to the z/OSMF core functions. IZUSECEZ is a simplified version of the sample job IZUSEC, which is intended for a more complete installation of z/OSMF.
+The security job IZUNUSEC contains a minimal set of RACF® commands for creating security profiles for the z/OSMF nucleus. The profiles are used to protect the resources that are used by the z/OSMF server, and to grant users access to the z/OSMF core functions. IZUNUSEC is a simplified version of the sample job IZUSEC, which is intended for a more complete installation of z/OSMF.
 
 If your installation uses an external security manager other than RACF, you need to provide equivalent commands for your environment. For help with non-IBM security products, see the following web page (TBD - Add reference to the web page with contact info for CA equivalent commands).
 
 #### Before you begin
 
-In most cases, you can run the IZUSECEZ security job without modification. To verify that the job is okay to run as is, ask your security administrator to review the job and modify it as necessary for your security environment. If security is not a concern for the host system, you can run the job without modification.
+In most cases, you can run the IZUNUSEC security job without modification. To verify that the job is okay to run as is, ask your security administrator to review the job and modify it as necessary for your security environment. If security is not a concern for the host system, you can run the job without modification.
 
 #### Procedure
 
-1.	In the system library `SYS1.SAMPLIB`, locate job IZUSECEZ.
+1.	If you are running z/OS V2R2 or V2R3, download job IZUNUSEC and upload this Job to z/OS. If you are running z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
-3.	Submit IZUSECEZ as a batch job on your z/OS system.  
+3.	Submit IZUNUSEC as a batch job on your z/OS system.  
+4.	Connect your user ID to IZUADMIN group. Download and customize IZUAUTH, replace the ‘userid’ with your z/OSMF user id. Submit the JOB on your z/OS system.
 
 
 #### Results
 
-The IZUSECEZ job should complete with return code 0000.
+The IZUNUSEC job should complete with return code 0000.
 
 To verify, check the results of the job execution in the job log. For example, you can use SDSF to examine the job log:  
 
@@ -159,7 +160,7 @@ To verify, check the results of the job execution in the job log. For example, y
 
 3.  Check the return code of the job. The job succeeds if ‘0000’ is returned.
 
-TBD: Add screen capture of a job log for a completed IZUSECEZ job.
+TBD: Add screen capture of a job log for a completed IZUNUSEC job.
 
 #### Common errors
 
@@ -199,9 +200,9 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
     - Modify the job information so that the job can run on your system.
     - You must specify a volume serial (VOLSER) to be used for allocating a data set for the z/OSMF data directory.
 
-3.  Submit job IZUMKFS.
+3.  Submit IZUMKFS as a batch job on your z/OS system.
 
-TBD: Add screen capture of submitting the IZUSECEZ job from the TSO/E command
+TBD: Add screen capture of submitting the IZUNUSEC job from the TSO/E command
 line.
 
 #### Results
@@ -225,7 +226,7 @@ Another problem…                      |                                       
 ### Copying the IBM procedures into JES PROCLIB
 
 Copy the z/OSMF started procedures and logon procedure from SYS1.PROCLIB into
-your JES concatenation.
+your JES concatenation. Use $D PROCLIB command to display your JES2 PROCLIB definitions. 
 
 #### Before you begin
 
@@ -243,7 +244,7 @@ order, as follows:
 
 #### Procedure
 
-Use ISPF option 3.4 to copy the procedures from SYS1.PROCLIB into your JES
+Use ISPF option 3.3 or 3.4 to copy the procedures from SYS1.PROCLIB into your JES
 concatenation.
 
 -   IZUSVR1
@@ -262,8 +263,8 @@ Review the following messages and the corresponding resolutions as needed
 
 **Symptom**   | **Cause** | **Resolution**
 ---|---|---
-A problem…       |           |                         
-Another problem… |           |                         
+Not authorized to copy  into PROCLIB     |      Your user ID doesn’t have the permission to modify PROCLIB     |      Contact Security Administrator                   
+Abend code B37 or E37 |     The data set runs out of space      |          Use IEBCOPY utility to compress PROCLIB dataset before copy               
 Another problem… |           |                       
 Another problem… |           |                        
 Another problem… |           |                      
@@ -304,23 +305,11 @@ When the z/OSMF server is initialized, you can see the following messages
 displayed in the operations console:
 
 ```
-SY1 \$HASP100 IZUANG1 ON STCINRDR
+CWWKB0069I: INITIALIZATION IS COMPLETE FOR THE IZUANG1 ANGEL PROCESS.
 
-\- SY1 \$HASP373 IZUANG1 STARTED
+IZUG400I: The z/OSMF Web application services are initialized.
 
-SY1 CWWKB0069I: INITIALIZATION IS COMPLETE FOR THE IZUANG1 ANGEL PROCESS.
-
-...
-
-SY1 \$HASP100 IZUSVR1 ON STCINRDR
-
-\- SY1 \$HASP373 IZUSVR1 STARTED
-
-...
-
-\- SY1 IZUG400I: The z/OSMF Web application services are initialized.
-
-SY1 +CWWKF0011I: The server zosmfServer is ready to run a smarter planet.
+CWWKF0011I: The server zosmfServer is ready to run a smarter planet.
 ```
 
 ####  Common errors
@@ -384,8 +373,8 @@ The following errors might occur during this step:
 **Symptom**    |**Cause**   |**Resolution**  
 ---|---|---
 z/OSMF welcome page does not load in your web browser. | The SSL handshake was not successful. This problem can be related to the browser certificate. | See “Certificate error in the Mozilla Firefox browser” in Troubleshooting.
-Error message is displayed in the browser session: Secure Connection Failed. | User not connected to IZUADMIN group  | ??                                
-Error message is displayed in the browser session: Secure Connection Failed. | Server is not connected to angel       | ??          
+To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts.| User not connected to IZUADMIN group  | Connect your user id to IZUADMIN group                                
+To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | Password expired       | Log on TSO use your z/OS User ID and Password, you will be asked to change your password if it’s expired          
 
 ### Mounting the z/OSMF user file system at IPL time
 
@@ -468,7 +457,7 @@ The following system changes are described in this topic:
 The Zowe framework requires that you enable the z/OSMF JOB REST services, as described in this topic.
 
 #### Procedure
-TBD:<Is there an IZU job that we need to run for the z/OSMF Job REST services?>
+None
 
 #### Results
 The z/OSMF JOB REST services are enabled. To verify, open a web browser to our z/OS system (hostname and port) and add the following REST call to the URL:
@@ -484,7 +473,7 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom** | **Cause** | **Resolution**
 ---|---|---
-A problem…       |           |                
+To be added       |     User id is not connected to IZUADMIN or IZUUSER      |    Connect your user id to IZUADMIN or IZUUSER            
 Another problem… |           |                 
 Another problem… |           |                
 Another problem… |           |                
@@ -549,7 +538,7 @@ The Zowe framework requires that you enable the z/OSMF data set and file REST se
 
 #### Before you begin
 
-1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. To set this value dynamically, you can enter the following operator command:
+1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. Issue command "D OMVS,O" to see the current value of IPCMSGQBYTES, if it is not large enough, use "SETOMVS" command to set a large value. To set this value dynamically, you can enter the following operator command:
 
     `SETOMVS IPCMSGQBYTES=20971520`
 
@@ -669,9 +658,9 @@ This section discusses troubleshooting topics, procedures and tools for recoveri
 #### System setup requirements not met
 This document assumes that the following is true of the z/OS host system:
 
--   Port 443 is available for use. To check this, issue NETSTAT with option ? to determine if the port is being used.
+-   Port 443 is available for use. To check this, issue either TSO command "NETSTAT SOCKET" or TSO command "NETSTAT BYTE" to determine if the port is being used.
 
--   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter the command HOST at the operations console. If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+-   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter either "hostname" z/OS UNIX command or TSO command "HOMETEST". If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 -   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`
 
