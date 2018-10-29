@@ -180,7 +180,7 @@ The following list describes the configuration parameters:
     * `- http://host:port/filemasterplus` for an HTTP service
     * `- https://host:port/endevor` for an HTTPS service
     
-    You can provide one URL if your service has one instance. If you service provides multiple instances for the high-availability then you can provide URLs to these instances.
+    You can provide one URL if your service has one instance. If your service provides multiple instances for the high-availability then you can provide URLs to these instances.
 
    ```yaml
    - https://host1:port1/endevor
@@ -266,8 +266,8 @@ The following list describes the configuration parameters:
    This is the grouping value used by the API Mediation Layer to group multiple API services 
    together into "tiles". 
    Each unique identifier represents a single API Catalog UI dashboard tile. 
-   Specify a value that is an ID of a defined tile.
-    
+   Specify the value based on the ID of the defined tile.
+
 * **catalogUiTile**
 
    This section contains definitions of tiles. Each tile is defined in a section that has its tile ID as a key.
