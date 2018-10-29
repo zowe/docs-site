@@ -132,9 +132,9 @@ node ('ibm-jenkins-slave-nvm') {
           error 'Migration "gh-pages" from old directory structure can only be done on master branch.'
         }
       }
-      if (isMasterBranch || !fileExists('.deploy/index.html')) {
-        // only update redirect index from master branch
-        sh 'cp version-redirect-index.html .deploy/index.html'
+      if (isMasterBranch) {
+        // alway try to update default pages from master branch
+        sh 'cp -r gh-pages-default/. .deploy/'
       }
     }
 
