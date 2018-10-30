@@ -183,9 +183,9 @@ Zowe CLI has a "command option order of precedence" that lets you define argumen
   - [What is Command Option Order of Precedence?](#Understanding-command-option-order-of-precedence)
   - [Use cases and benefits](#use-cases-and-benefits)
   - [Defining environment variables](#defining-environment-variables)
-      - [Transforming arguments/options to environment variable format](#transforming arguments/options to e)
-      - [Setting environment variables in an Automation Server]()
-      - [Using secure credential storage]()
+      - [Transforming arguments/options to environment variable format](#transforming-arguments-options-to-environment-variable-format)
+      - [Setting environment variables in an Automation Server](#setting-environment-variables-in-an-automation-server)
+      - [Using secure credential storage](#using-secure-credential-storage)
 
 
 ### Understanding command option order of precedence
@@ -239,7 +239,7 @@ In this section we explain how to transform arguments and options from
 Zowe CLI commands into environment variables and define them with a
 value. 
 
-#### Transform arguments/options to environment variable format
+#### Transforming arguments/options to environment variable format
 
 Transform the option/argument into the correct format for a Zowe CLI environment variable, then define values to the new variable.
 The following rules apply to this transformation:
@@ -269,7 +269,7 @@ You can use environment variables in an automation server, such as
 Jenkins, to write more efficient scripts and make use of secure
 credential storage.
 
-You can either set environment variables using the SET command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties **and define an environment variable in the Jenkins GUI. For example: 
+You can either set environment variables using the SET command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI. For example: 
 
     ![jenkins gui](../images/envVarsJenkins.png)
 
