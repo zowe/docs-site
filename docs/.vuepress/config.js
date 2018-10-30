@@ -160,6 +160,7 @@ module.exports = {
             'cli-extending',
             'cli-installplugins',
             'cli-cicsplugin',
+            'cli-db2plugin',
             'cli-vscodeplugin'
           ]
         }

@@ -72,6 +72,8 @@ navtitle="Application-to-application communication" scope="local"/>
 scope="local"/>
 <topicref format="md" href="cli-cicsplugin.md" navtitle="Zowe CLI Plug-in for IBM CICS"
 scope="local"/>
+<topicref format="md" href="cli-db2plugin.md" navtitle="Zowe CLI Plug-in for IBM Db2"
+scope="local"/>
 </chapter>
 </ibmbook>
 <?Pub *0000009695?>
