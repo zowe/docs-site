@@ -4,9 +4,23 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
+- [Version 0.9.3 (October 2018)](#version-0-9-3-october-2018)
 - [Version 0.9.2 (October 2018)](#version-0-9-2-october-2018)
 - [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
 - [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
+
+## Version 0.9.3 (October 2018)
+
+Version 0.9.3 contains the following changes since the last version.
+
+### What's changed
+
+#### Changed in Zowe CLI
+
+- Creating and updating zosmf profiles:
+
+    You must now specify `--pass` rather than `--password` when you create a zosmf profile using the `zowe profiles create zosmf` command, or update a zosmf profile using the `zowe profiles update zosmf` command.
+
 
 ## Version 0.9.2 (October 2018)
 
