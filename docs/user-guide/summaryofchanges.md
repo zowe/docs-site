@@ -15,11 +15,38 @@ Version 0.9.3 contains the following changes since the last version.
 
 ### What's changed
 
+#### New in Zowe CLI
+
+Zowe CLI Version 0.9.3 now uses the following command line precedence:
+
+- Command line options
+- Environment variables
+- Profiles
+- Default values
+
+The precedence lets CI/CD orchestrators more effectively use the credential managers that CI/CD orchestration tools provide (for example, *Jenkins*).
+
+With the new command line precedence, Zowe CLI now supports the following capabilities:
+
+- Issuing commands without a profile:
+
+    Zowe CLI now lets you issue commands without a profile. All Zowe CLI commands now contain options that let you fully qualify your connection details without creating a profile before you issue the commands.
+
+    For example, you can issue the following command without a profile:
+    ```
+    zowe zos-files download data-set "my.data.set" --user myuser --pass mypass --host mymainframe.com --port 1443
+    ```
+- Specifying command execution options using environment variables:
+
+    Zowe CLI now lets you specify options that you define using environment variables. You create and define the environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
+
 #### Changed in Zowe CLI
+
+Zowe CLI version 0.9.3 contains the following functional changes.
 
 - Creating and updating zosmf profiles:
 
-    You must now specify `--pass` rather than `--password` when you create a zosmf profile using the `zowe profiles create zosmf` command, or update a zosmf profile using the `zowe profiles update zosmf` command.
+    You must now specify `--pass` rather than `--password` when you create zosmf profiles using the `zowe profiles create zosmf` command, or update zosmf profiles using the `zowe profiles update zosmf` command.
 
 
 ## Version 0.9.2 (October 2018)
