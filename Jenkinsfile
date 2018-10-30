@@ -89,7 +89,9 @@ node ('ibm-jenkins-slave-nvm') {
         // list all files generated
         sh 'find docs/.vuepress/dist'
         // check broken links
-        sh 'npm run test:links'
+        timeout(30) {
+          sh 'npm run test:links'
+        }
       }
     }
 

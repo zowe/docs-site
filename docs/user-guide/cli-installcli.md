@@ -6,15 +6,15 @@ As a systems programmer or application developer, you install Zowe CLI on your
 
 You can use either of the following methods to install Zowe CLI.
 - [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
-- [Install Zowe CLI from Bintray registry](#installing-zowe-cli-from-bintray-registry)
+- [Install Zowe CLI from online registry](#installing-zowe-cli-from-online-registry)
 
 ### Installing Zowe CLI from local package
 
-Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating system.
+If you do not have internet access at your site, use the following method to install Zowe CLI from a local package.
 
 **Follow these steps:**
 
-1. [Address the prerequisites](systemrequirements.md#system-requirements-for-zowe-cli).
+1. [Address the prerequisites](systemrequirements.html#system-requirements-for-zowe-cli).
 
 2. [Obtain the Zowe installation files](gettingstarted.md), which includes the zowe-cli-bundle.zip file. Use FTP to distribute the zowe-cli-bundle.zip file to client workstations.
 
@@ -24,14 +24,17 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
     unzip zowe-cli-bundle.zip
     ```
 
-    The command expands four TGZ packages into your working directory - Zowe CLI, one plug-in, and the odbc_cli folder.
+    The command expands files into your working directory for Zowe CLI and Zowe CLI plug-ins.
 
 4. Issue the following command to install Zowe CLI on your PC:
 
     ```
-    npm install -g zowe-cli-2.0.0-next.201809251404 
+    npm install -g zowe-cli-**VERSION**.tgz 
     ```
-    
+    - **\*\*VERSION\*\***
+
+        The version of Zowe CLI that you want to install from the package.
+
     **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
@@ -47,7 +50,8 @@ Install Zowe CLI on PCs that are running a Windows, Linux, or macOS operating 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
 
 
-### Installing Zowe CLI from Bintray registry
+### Installing Zowe CLI from online registry
+
 If your PC is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
 
 **Follow these steps:**
@@ -92,6 +96,7 @@ After you install and configure Zowe CLI, you can issue the `zowe --help` com
 **Note:** You might encounter problems when you attempt to install Zowe CLI depending on your operating system and environment. For more information and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 ## Creating a Zowe CLI profile
+
 Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
 **Important\!** A `zosmf` profile is required to issue most Zowe CLI commands. The first profile that you create becomes your default profile. When you issue any command that requires

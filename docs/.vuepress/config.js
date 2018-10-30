@@ -41,7 +41,11 @@ module.exports = {
         {
           title: 'Onboard REST APIs to the API Mediation Layer',
           collapsable: true,
-          children: ['api-mediation-onboard-a-sprint-boot-rest-api-service', 'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer']
+          children: [
+            'api-mediation-onboard-a-sprint-boot-rest-api-service', 
+            'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer', 
+            'api-mediation-onboard-an-existing-java-jersey-rest-api-service', 
+            'api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
         },
         {
           title: 'Developing for Zowe CLI',
@@ -141,7 +145,8 @@ module.exports = {
           children: [
             'cli-extending',
             'cli-installplugins',
-            'cli-cicsplugin'
+            'cli-cicsplugin',
+            'cli-vscodeplugin'
           ]
         }
       ],

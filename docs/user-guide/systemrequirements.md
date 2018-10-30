@@ -20,7 +20,7 @@ Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
 --|---|--
-AXE (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
+AXR (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
   Common Information Model (CIM) server| z/OSMF uses the CIM server to perform capacity-provisioning and workload-management tasks. Start the CIM server before you start z/OSMF (the IZU* started tasks).  |  [Reviewing your CIM server setup][155070cd]
 CONSOLE and CONSPROF commands |The CONSOLE and CONSPROF commands must exist in the authorized command table.| [Customizing the CONSOLE and CONSPROF commands][51d741c4]
@@ -191,14 +191,11 @@ Before you install Zowe CLI, make sure your system meets the following requireme
 
 ### Supported platforms
 
-You can install Zowe CLI on any Windows or Linux operating system. For more information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 
-**Important!**
-
-- Zowe CLI is not officially supported on Mac computers. However, Zowe CLI *might* run successfully on some Mac computers.
-- Oracle Linux 6 is not supported.
+**Important!** Oracle Linux 6 is not supported.
 
 ### Free disk space
 
@@ -206,7 +203,7 @@ Zowe CLI requires approximately **100 MB** of free disk space. The actual quanti
 
 ### Prerequisite software
 
-***Important!*** The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
+The following prerequisites for Windows, Mac, and Linux are required if you are installing Zowe CLI from a local package. If you are installing Zowe CLI from Bintray registry, you only require Node.js and npm.
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
