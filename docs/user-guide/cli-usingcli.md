@@ -176,7 +176,7 @@ With the zosmf command group, you can perform the following tasks:
 zowe zosmf -h
 ```
 
-# Setting environment variables for command arguments and options
+## Setting environment variables for command arguments and options
 
 Zowe CLI has a "command option order of precedence" that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains that order of precedence and how you can use environment variables with Zowe CLI. 
 
@@ -188,7 +188,7 @@ Zowe CLI has a "command option order of precedence" that lets you define argumen
       - [Using secure credential storage]()
 
 
-## Understanding command option order of precedence
+### Understanding command option order of precedence
 
 Before you use environment variables, it is helpful to understand the command option order of precedence. The following is the order in which Zowe CLI "looks for" your command arguments and options when you issue a command:
 
@@ -201,7 +201,7 @@ The impact of this order is that if you omit an argument/option from the command
 
 **Note:** If a required option or argument value is not located, you will receive a syntax error message that states `Missing Positional Argument` or `Missing Option.`
 
-## Use cases and benefits
+### Use cases and benefits
 
 Use environment variables with Zowe CLI in the following scenarios: 
 
@@ -229,7 +229,7 @@ Use environment variables with Zowe CLI in the following scenarios: 
     password in the secure credential store so that it is not available
     in plain text. 
 
-## Defining environment variables
+### Defining environment variables
 
 You define, or set, environment variables in your environment. The term
 "environment" refers to your operating system, but can also refer to an
@@ -239,7 +239,7 @@ In this section we explain how to transform arguments and options from
 Zowe CLI commands into environment variables and define them with a
 value. 
 
-### Transform arguments/options to environment variable format
+#### Transform arguments/options to environment variable format
 
 Transform the option/argument into the correct format for a Zowe CLI environment variable, then define values to the new variable.
 The following rules apply to this transformation:
@@ -258,30 +258,21 @@ a value to. Use the appropriate procedure for for your operating system
 to define the
 variables.
 
-| Command Option | Environment Variable           | Use Case   |
+| Command Option          | Environment Variable           | Use Case   |
 | ----------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--user`                | `ZOWE_OPT_USER`                | Define your mainframe username to an environment variable to avoid specifying it on every command or profile.                           |
 | `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unathoriazed` flag if you always require the flag and do not want to specify it on every command or profile. |
 
-### Setting environment variables in an automation server
+#### Setting environment variables in an automation server
 
 You can use environment variables in an automation server, such as
 Jenkins, to write more efficient scripts and make use of secure
 credential storage.
 
-You can either set environment variables using the SET command within
-your scripts, or navigate to **Manage Jenkins \> Configure System \>
-Global Properties **and define an environment variable in the Jenkins
-GUI. For
-example: 
+You can either set environment variables using the SET command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties **and define an environment variable in the Jenkins GUI. For example: 
 
     ![jenkins gui](../images/envVarsJenkins.png)
 
-### Use secure credential storage
+#### Using secure credential storage
 
-Automation tools such as Jenkins automation server usually provide a
-mechanism for securely storing configuration (e.g. credentials). In
-Jenkins, you can use `withCredentials` to expose
-credentials as an environment variable (ENV) or Groovy variable. For
-more information about usinng this feature in Jenkins, see [Credentials Binding Plugin](https://jenkins.io/doc/pipeline/steps/credentials-binding/) in
-the Jenkins documentation.
+Automation tools such as Jenkins automation server usually provide a mechanism for securely storing configuration (e.g. credentials). In Jenkins, you can use `withCredentials` to expose credentials as an environment variable (ENV) or Groovy variable. For more information about usinng this feature in Jenkins, see [Credentials Binding Plugin](https://jenkins.io/doc/pipeline/steps/credentials-binding/) in the Jenkins documentation.
