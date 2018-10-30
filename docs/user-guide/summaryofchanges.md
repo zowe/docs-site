@@ -59,11 +59,11 @@ This version of Zowe CLI contains the following changes:
         bright profiles create zosmf
         ```
 
-        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile).
+        **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
     **Note:** In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
 
-- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.md#system-requirements-for-zowe-cli).  
+- As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.html#system-requirements-for-zowe-cli).  
 
 ## Version 0.9.1 (October 2018)
 
@@ -79,7 +79,9 @@ The API Catalog plug-in was added to the Zowe Application Framework. This plug-i
 
 Angular application plug-ins can be internationalized utilizing the ngx-i18n library.
 
-The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
+Node.js v6.14.4.0 and later is now required.
+
+The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
 
 The following tutorials are now available in GitHub:
 

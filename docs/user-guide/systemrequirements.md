@@ -11,19 +11,28 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
   z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
 
 - z/OS® Version 2.2 or later.
-- IBM SDK for Node.js z/OS Version 6.11.2 or later.
 
-  1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
+- Node.js Version 6.14.4 or later on the z/OS host where you install the Zowe Application Server.
 
-  **Notes:**
+    1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
 
-  - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including that Integrated Cryptographic Service Facility (ICSF) is configured and started.
+    **Notes:**
 
-  - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
+    - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including that Integrated Cryptographic Service Facility (ICSF) is configured and started.
 
-  2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.11.2-os390-s390x`.
+    - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
 
+    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
+
+-   npm 5.4 or later for building Zowe Application Framework applications.
+
+     To update npm, issue the following command:
+
+     ```
+     npm install -g npm
+     ```
 - IBM SDK for Java Technology Edition V8 or later
+
 
 **Disk and browser requirements (for Zowe desktop):**
 
