@@ -180,7 +180,7 @@ zowe zosmf -h
 
 Zowe CLI has a "command option order of precedence" that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains that order of precedence and how you can use environment variables with Zowe CLI. 
 
-  - [What is Command Option Order of Precedence?](#Understanding-command-option-order-of-precedence)
+  - [Understanding command option order of precedence?](#Understanding-command-option-order-of-precedence)
   - [Use cases and benefits](#use-cases-and-benefits)
   - [Defining environment variables](#defining-environment-variables)
       - [Transforming arguments/options to environment variable format](#transforming-arguments-options-to-environment-variable-format)
