@@ -121,7 +121,7 @@ unless you specify a specific profile name on that command.
     zowe profiles create zosmf-profile --help
     ```
 
-**Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#Testing Zowe CLI connection to z/OSMF).
+**Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
 
 
 ## Testing Zowe CLI connection to z/OSMF
