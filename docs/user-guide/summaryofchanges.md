@@ -24,7 +24,7 @@ Zowe CLI Version 0.9.3 now uses the following command line precedence:
 - Profiles
 - Default values
 
-The precedence lets CI/CD orchestrators more effectively use the credential managers that CI/CD orchestration tools provide (for example, *Jenkins*).
+The precedence lets CI/CD orchestrators more effectively use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide.
 
 With the new command line precedence, Zowe CLI now supports the following capabilities:
 
