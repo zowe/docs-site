@@ -68,9 +68,10 @@ This version of Zowe CLI contains the following changes:
 #### Bug fixes
 
 The following bugs are fixed in this release.
-- JES Explorer: Unable to retrieve file content in full-screen job view
-- JES Explorer: Full-screen job output view does not refresh when users change URL for the first time
-- MVS Explorer: MVS explorer editor cannot be displayed because of "TypeError: Cannot read property 'setContents' of null"
+
+- JES Explorer: [Unable to retrieve file content in full-screen job view](https://github.com/zowe/explorer-jes/issues/16)
+- JES Explorer: [Full-screen job output view does not refresh when users change URL for the first time](https://github.com/zowe/explorer-jes/issues/14)
+- MVS Explorer: [MVS explorer editor cannot be displayed because of "TypeError: Cannot read property 'setContents' of null"](https://github.com/zowe/explorer-mvs/issues/5)
 
 
 ## Version 0.9.1 (October 2018)
