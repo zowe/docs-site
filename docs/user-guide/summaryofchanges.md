@@ -17,28 +17,30 @@ Version 0.9.3 contains the following changes since the last version.
 
 #### New in Zowe CLI
 
-Zowe CLI Version 0.9.3 now uses the following command line precedence:
+Zowe CLI Version 0.9.3 now uses the following command option precedence:
 
 - Command line options
 - Environment variables
 - Profiles
 - Default values
 
-The precedence lets CI/CD orchestrators more effectively use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide.
-
-With the new command line precedence, Zowe CLI now supports the following capabilities:
+With the new order of precedence, Zowe CLI now supports the following capabilities:
 
 - Issuing commands without a profile:
 
     Zowe CLI now lets you issue commands without a profile. All Zowe CLI commands now contain options that let you fully qualify your connection details without creating a profile before you issue the commands.
 
     For example, you can issue the following command without a profile:
+
     ```
     zowe zos-files download data-set "my.data.set" --user myuser --pass mypass --host mymainframe.com --port 1443
     ```
-- Specifying command execution options using environment variables:
 
-    Zowe CLI now lets you specify options that you define using environment variables. You create and define the environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
+- Specifying command options using environment variables:
+
+    Zowe CLI now lets you specify command options by defining environment variables. You create and define the environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
+
+- Make use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide by defining sensitive information in environment variables. 
 
 #### Changed in Zowe CLI
 
