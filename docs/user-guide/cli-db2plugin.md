@@ -22,7 +22,7 @@ Use cases for Zowe CLI Db2 plug-in include:
 Before you install the plug-in, meet the following prerequisites:
 
   - [Install Zowe CLI](cli-installcli.md) on your PC.
-  - Install ODBC driver on your PC.
+  - [Install ODBC driver on your PC](#installing-the-odbc-driver) if you install the plug-in from a package..
 
 ## Installing
 
@@ -48,25 +48,21 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
 
 ### Installing from package
 
-Ensure that you install the ODBC driver before you install the Db2 plug-in. 
+Follow this procedure if you downloaded the Zowe installation package from **Github**.
+
+#### Installing the ODBC driver
+
+Install the ODBC driver and set the IBM_DB_INSTALLER_URL environment variable before you install the Db2 plug-in. 
 
 **Follow these steps:**
 
-1. Download the ODBC driver from -https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url.
+1. [Download the ODBC driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url).
 
-2. Create a new directory called `odbc_cli`.
+2. Create a new directory named `odbc_cli` on your PC.
 
-3. Place the driver in the `odbc_cli` folder.    
+3. Place the ODBC driver in the `odbc_cli` folder.    
 
-4. Install the ODBC driver.
-
-You installed the ODBC driver successfully.
-
-If you downloaded the Zowe installation package from **Github**, complete the following steps:
-
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic **Install Zowe CLI from local package** in [Installing Zowe CLI](cli-installcli.md) for information about how to obtain and extract it.
-
-2. From the command line window, set the `IBM_DB_INSTALLER_URL` environment variable by issuing the following command:
+4. From the command line window, set the `IBM_DB_INSTALLER_URL` environment variable by issuing the following command:
 
     - Windows operating systems:
 
@@ -78,6 +74,17 @@ If you downloaded the Zowe installation package from **Github**, complete the fo
       ```
       export IBM_DB_INSTALLER_URL=`pwd`/odbc_cli
       ```
+
+You installed the ODBC driver successfully.
+
+#### Installing the Plug-in
+
+Now that the Db2 driver is installed, install the Db2 plug-in to Zowe CLI. 
+
+**Follow these steps:**
+
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic **Install Zowe CLI from local package** in [Installing Zowe CLI](cli-installcli.md) for information about how to obtain and extract it.
+
 3. Issue the following command to install the plug-in:
     ```
     zowe plugins install zowe-cli-db2-1.0.0.tgz
@@ -90,16 +97,18 @@ If you downloaded the Zowe installation package from **Github**, complete the fo
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-5. Install a Db2 lincense.
+5. Locate your client copy of the Db2 license. For the DB2 plugin to successfully connect to a z/OS instance, you must install have a properly licensed and configured DB2 instance. 
     
-    **Note:** The license must be of version 11.1 if the DB2 server is not `db2connectactivated`
-    to accept an unlimited number of client connections. 
+    **Note:** The license must be of version 11.1 if the DB2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
-6. Copy your Db2 license file and place it in the following directory: 
+6. Copy your Db2 license file and place it in the following directory. 
     
    ```
    Brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
    ```
+   
+   After the license is copied, you can use the DB2 plugin functionality.
 
 ## Setting up profiles
 Before you start using the IBM Db2 plug-in, create a profile.
