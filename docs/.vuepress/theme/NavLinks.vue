@@ -32,6 +32,25 @@ export default {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
     nav () {
+      // parse versions settings
+      const versionsIndex = this.userNav.findIndex(one => one.tags && one.tags.indexOf('versions') > -1)
+      if (versionsIndex > -1) {
+        // FIXME: text by locales
+        this.userNav[versionsIndex].text = 'Versions'
+        this.userNav[versionsIndex].items = this.$site.themeConfig.versions.map(one => {
+          return {
+            text: one.text,
+            link: `${this.$site.themeConfig.rootBaseUrl}/${one.link}`,
+            tags: ['versions']
+          }
+        })
+        if (this.userNav[versionsIndex].items.length === 1) {
+          // we only have one version, remove the versions dropdown
+          this.userNav.splice(versionsIndex, 1)
+        }
+      }
+
+      // parse locales settings
       const { locales } = this.$site
       if (locales && Object.keys(locales).length > 1) {
         const currentLink = this.$page.path

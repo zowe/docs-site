@@ -2,9 +2,17 @@
   <router-link
     class="nav-link"
     :to="link"
-    v-if="!isExternal(link)"
+    v-if="!isExternal(link) && !isVersionLink"
     :exact="exact"
+    replace 
   >{{ item.text }}</router-link>
+  <a
+    v-else-if="isVersionLink"
+    :href="link"
+    class="nav-link"
+  >
+    {{ item.text }}
+  </a>
   <a
     v-else
     :href="link"
@@ -29,6 +37,9 @@ export default {
   computed: {
     link () {
       return ensureExt(this.item.link)
+    },
+    isVersionLink () {
+      return this.item.tags && this.item.tags.indexOf('versions') > -1
     },
     exact () {
       if (this.$site.locales) {

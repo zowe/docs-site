@@ -62,11 +62,24 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
       maven {
           url 'https://gizaartifactory.jfrog.io/gizaartifactory/libs-release'
           credentials {
-              username artifactoryUser
-              password artifactoryPassword
+              username 'apilayer-build'
+              password 'lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI='
           }            
       }
         ```
+      **Note:** You can define `gradle.properties` file where you can set your username, password and the 
+      read-only repo URL for access to the Zowe Artifactory.This way, you do not need to hardcode the username,
+      password, and read-only repo URL in your `gradle.build` file.
+    
+      **Example:** 
+      ```
+         # Artifactory repositories for builds
+         artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
+
+         # Artifactory credentials for builds (not publishing):
+         mavenUser=apilayer-build
+         mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+      ```
 
     * In a Maven build system, follow these steps:
 
@@ -79,7 +92,8 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         </repository>
         ```
 
-        b) Create a `settings.xml` file and copy the following XML code block which defines the login credentials for the Zowe Artifactory. Use valid credentials.  
+        b) Create a `settings.xml` file and copy the following XML code block which defines the
+        login credentials for the Zowe  Artifactory. Use valid credentials.  
 
         ```
         <?xml version="1.0" encoding="UTF-8"?>

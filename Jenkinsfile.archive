@@ -13,11 +13,7 @@
 def isPullRequest = env.BRANCH_NAME.startsWith('PR-')
 def slackChannel = '#test-build-notify'
 def githubRepository = 'zowe/docs-site'
-def allowPublishing = false
-def isTestPublishing = false
-def publishTargetPath = 'latest'
-def isMasterBranch = env.BRANCH_NAME == 'master'
-def isReleaseBranch = env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/
+def versionPattern = /^v[0-9]+\.[0-9]+\.[0-9x]+$/
 
 def opts = []
 // keep last 20 builds for regular branches, no keep for pull requests
@@ -28,24 +24,18 @@ opts.push(disableConcurrentBuilds())
 // define custom build parameters
 def customParameters = []
 // >>>>>>>> parameters to control pipeline behavior
-customParameters.push(booleanParam(
-  name: 'RUN_PUBLISH',
-  description: 'If run the piublish step.',
-  defaultValue: true
-))
 customParameters.push(string(
-  name: 'PUBLISH_BRANCH',
-  description: 'Target branch to publish',
-  defaultValue: 'gh-pages',
+  name: 'RELEASE_VERSION',
+  description: 'Version to release. For example, v0.9.x',
   trim: true,
   required: true
 ))
 customParameters.push(string(
-  name: 'PUBLISH_PATH',
-  description: 'Target URL path to publish. Default is "latest" for master branch, "v?.?.x" for v?.?.x release branches.',
-  defaultValue: '',
+  name: 'BASE_BRANCH',
+  description: 'Base branch of the release branch',
+  defaultValue: 'master',
   trim: true,
-  required: false
+  required: true
 ))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
@@ -76,17 +66,13 @@ properties(opts)
 node ('ibm-jenkins-slave-nvm') {
   currentBuild.result = 'SUCCESS'
 
-  // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
-  // if we publish target branch to test branch, we allow it anyway
-  isTestPublishing = params.PUBLISH_BRANCH.startsWith('gh-pages-test')
-  if (isMasterBranch || isReleaseBranch || isTestPublishing) {
-    allowPublishing = true
+  // validate release version name
+  if (!params.RELEASE_VERSION) {
+    error "RELEASE_VERSION parameter is required to release"
   }
-  if (allowPublishing && isReleaseBranch) {
-    publishTargetPath = env.BRANCH_NAME
-  }
-  if (allowPublishing && params.PUBLISH_PATH) { // this is manually assigned parameter value
-    publishTargetPath = params.PUBLISH_PATH
+  def isValidVersion = params.RELEASE_VERSION ==~ versionPattern
+  if (!isValidVersion) {
+    error "\"${params.RELEASE_VERSION}\" is not a valid version name. Please use pattern of \"v?.?.?\""
   }
 
   try {
@@ -97,83 +83,57 @@ node ('ibm-jenkins-slave-nvm') {
 
       // check if it's pull request
       echo "Current branch is ${env.BRANCH_NAME}"
-      if (allowPublishing) {
-        echo "**** Will publish to \"${params.PUBLISH_BRANCH}\" branch \"${publishTargetPath}\" directory"
-      } else {
-        echo "**** Publish stage will be skipped"
-      }
       if (isPullRequest) {
         echo "This is a pull request"
       }
-    }
 
-    stage('prepare') {
-      // prepare .deploy folder
-      // checkout params.PUBLISH_BRANCH to .deploy folder
+      // config github users
       sh """
         git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
         git config --global user.name \"${params.GITHUB_USER_NAME}\"
-        mkdir -p .deploy
-        cd .deploy
-        git init
-        git remote add origin https://github.com/${githubRepository}.git
-        git fetch
-        git checkout -B ${params.PUBLISH_BRANCH}
-        if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
-        cd ..
       """
-      if (!fileExists('.deploy/latest/index.html')) {
-        // this is the old documentation directory structure, latest folder doesn't exist
-        // we need to migrate to new structure
-        if (isMasterBranch || isTestPublishing) {
-          // clean the .deploy folder to generate latest folder
-          sh 'rm -fr .deploy/*'
-        } else {
-          error 'Migration "gh-pages" from old directory structure can only be done on master branch.'
-        }
-      }
-      if (isMasterBranch || !fileExists('.deploy/index.html')) {
-        // only update redirect index from master branch
-        sh 'cp version-redirect-index.html .deploy/index.html'
-      }
     }
 
-    stage('build') {
-      ansiColor('xterm') {
-        sh 'npm install'
-        sh "PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build"
+    stage('release') {
+      def remote = sh(script: "git ls-remote --heads origin ${params.RELEASE_VERSION}", returnStdout: true).trim()
+      if (remote) {
+        error "Branch \"${params.RELEASE_VERSION}\" is already existed"
       }
-    }
 
-    stage('test') {
-      ansiColor('xterm') {
-        // list all files generated
-        sh "find .deploy | grep -v '.deploy/.git'"
-        // check broken links
-        timeout(30) {
-          sh 'npm run test:links'
-        }
-      }
-    }
+      echo "Creating new branch \"${params.RELEASE_VERSION}\" from origin/${params.BASE_BRANCH} ..."
+      sh "git config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\""
+      sh "git fetch"
+      sh "git checkout -b ${params.RELEASE_VERSION} origin/${params.BASE_BRANCH}"
 
-    utils.conditionalStage('publish', allowPublishing && params.RUN_PUBLISH) {
-      ansiColor('xterm') {
-        withCredentials([usernamePassword(
-          credentialsId: params.GITHUB_CREDENTIALS,
-          passwordVariable: 'GIT_PASSWORD',
-          usernameVariable: 'GIT_USERNAME'
-        )]) {
-          sh """
-            cd .deploy
-            git add -A
-            git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
-          """
-        }
+      withCredentials([usernamePassword(
+        credentialsId: params.GITHUB_CREDENTIALS,
+        passwordVariable: 'GIT_PASSWORD',
+        usernameVariable: 'GIT_USERNAME'
+      )]) {
+        echo "Publish to origin ..."
+        sh "git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.RELEASE_VERSION}"
+        echo "Protect the branch ..."
+        sh "curl -u '${GIT_USERNAME}:${GIT_PASSWORD}' -X PUT -H 'Content-Type: application/json' -d '{\"required_status_checks\":{\"strict\":true,\"contexts\":[\"DCO\"]},\"enforce_admins\":true,\"required_pull_request_reviews\": {\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false},\"restrictions\":{\"users\":[],\"teams\":[\"Documentation\"]}}' https://api.github.com/repos/${githubRepository}/branches/${params.RELEASE_VERSION}/protection"
       }
     }
 
     stage('done') {
+      echo """
+*************************************************************************************************
+*                                                                                               *
+* Branch ${params.RELEASE_VERSION} is created and protected.                                    *
+*                                                                                               *
+* You can go ahead update docs/.vuepress/versions.json on master branch to add the new version. *
+*                                                                                               *
+*  Example version entry is:                                                                    *
+*                                                                                               *
+*  {                                                                                            *
+*    "text": "v0.9.x",                                                                          *
+*    "link": "v0-9-x/"                                                                          *
+*  }                                                                                            *
+*                                                                                               *
+*************************************************************************************************
+      """
       // send out notification
       // slackSend channel: slackChannel,
       //           color: 'good',
