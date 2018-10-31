@@ -46,7 +46,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-3. [Address the license requirements](#license) to begin using the plug-in.
+3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ### Installing from package
 
@@ -112,9 +112,9 @@ Now that the Db2 ODBC CLI driver is installed, set the IBM_DB_INSTALLER_URL envi
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
-5. [Address the license requirements](#license) to begin using the plug-in.
+5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
-### License
+### Addressing the license requirement
 
 The following steps are required for both the registry and offline package installation methods: 
 
