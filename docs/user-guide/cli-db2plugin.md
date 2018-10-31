@@ -114,7 +114,7 @@ Now that the Db2 ODBC CLI driver is installed, set the IBM_DB_INSTALLER_URL envi
 
 5. [Address the license requirements](#license) to begin using the plug-in.
 
-## License
+### License
 
 The following steps are required for both the registry and offline package installation methods: 
 
