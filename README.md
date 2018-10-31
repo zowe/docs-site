@@ -71,6 +71,7 @@ Please follow these steps to archive documentation. Below example are based on a
 - `Jenkinsfile.archive` is the pipeline to be executed. Currently the build name is called `docs-site-archive`. Choose `Build with Parameters` option, input `v0.9.x` as `RELEASE_VERSION` parameter, then click on `BUILD`.
 - The build will create a protected branch called `v0.9.x`. Same as `mater` branch, any changes make to this branch requires pull request, reviewer and DCO check passed.
 - New branch `v0.9.x` will trigger a new build, and publish the build result to `gh-pages` branch `v0-9-x` folder. _Please note, the folder name is using `-` instead of `.`, which is a limitation of VuePress._
+- Create a pull request on https://github.com/algolia/docsearch-configs/blob/master/configs/zowe.json#L7 to update Algolia crawler configuration. If we have new `v0.9.x` version, add an entry of `"v0-9-x"` to `start_urls.0.variables.version` array.
 - Create a new branch from `master`, add a new record to `docs/.vuepress/versions.json`. Please make sure your JSON file is valid. Example record:
 
 ```
