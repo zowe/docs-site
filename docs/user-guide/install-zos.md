@@ -2,7 +2,10 @@
 
 You install the Zowe Application Framework, explorer server, and API Mediation Layer on z/OS.
 
-Before you install the runtime on z/OS, ensure that your environment meets the requirements. See [System requirements](systemrequirements.md).
+## Before you begin
+Before you start the installation on z/OS, ensure that your environment meets the requirements. For details, see [System requirements](systemrequirements.md).
+
+The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag, which requires at least read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe on z/OS, but if not enabled then, it must be enabled before you run the `zowe-runtime-authorize.sh` script.
 
 ## Installing the Zowe runtime on z/OS
 
