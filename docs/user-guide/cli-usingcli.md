@@ -258,15 +258,15 @@ transform and the resulting environment variable to which you should define the 
 | Command Option          | Environment Variable           | Use Case   |
 | ----------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--user`                | `ZOWE_OPT_USER`                | Define your mainframe user name to an environment variable to avoid specifying it on all commands or profiles.                           |
-| `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unathoriazed` flag when you always require the flag and do not want to specify it on all commands or profiles. |
+| `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unathorized` flag when you always require the flag and do not want to specify it on all commands or profiles. |
 
 #### Setting environment variables in an automation server
 
 You can use environment variables in an automation server, such as Jenkins, to write more efficient scripts and make use of secure credential storage.
 
-You can either set environment variables using the `SET` command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI. For example: 
+You can either set environment variables using the `SET` command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI. For example:
 
-    ![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
+![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
 
 #### Using secure credential storage
 
