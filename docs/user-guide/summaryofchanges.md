@@ -13,8 +13,7 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.3 contains the following changes since the last version.
 
-### What's changed
-
+### What's new
 #### New in Zowe CLI
 
 Zowe CLI Version 0.9.3 now uses the following command option precedence:
@@ -40,8 +39,9 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
     Zowe CLI now lets you specify command options by defining environment variables. You create and define the environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
 
-- Make use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide by defining sensitive information in environment variables. 
+- Make use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide by defining sensitive information in environment variables.
 
+### What's changed
 #### Changed in Zowe CLI
 
 Zowe CLI version 0.9.3 contains the following functional changes.
