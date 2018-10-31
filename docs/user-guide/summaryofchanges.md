@@ -16,7 +16,7 @@ Version 0.9.2 contains the following changes since the last version.
 
 #### New in Zowe CLI
 
-The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe.  
+The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe. 
 
 ### What's changed
 
@@ -65,6 +65,15 @@ This version of Zowe CLI contains the following changes:
 
 - As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.html#system-requirements-for-zowe-cli).  
 
+#### Bug fixes
+
+The following bugs are fixed in this release.
+
+- JES Explorer: [Unable to retrieve file content in full-screen job view](https://github.com/zowe/explorer-jes/issues/16)
+- JES Explorer: [Full-screen job output view does not refresh when users change URL for the first time](https://github.com/zowe/explorer-jes/issues/14)
+- MVS Explorer: [MVS explorer editor cannot be displayed because of "TypeError: Cannot read property 'setContents' of null"](https://github.com/zowe/explorer-mvs/issues/5)
+
+
 ## Version 0.9.1 (October 2018)
 
 Version 0.9.1 contains the following changes since the last version.
@@ -81,7 +90,7 @@ Angular application plug-ins can be internationalized utilizing the ngx-i18n lib
 
 Node.js v6.14.4.0 and later is now required.
 
-The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor. 
+The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
 
 The following tutorials are now available in GitHub:
 
@@ -134,7 +143,7 @@ Zowe CLI contains the following new features:
 
 - **Visual Studio Code Extension for Zowe**
 
-    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md). 
+    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md).
 
 #### New in API Mediation Layer
 

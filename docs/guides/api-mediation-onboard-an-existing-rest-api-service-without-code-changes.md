@@ -82,11 +82,24 @@ To define your service in YAML format, provide the following definition in a YAM
 ```yaml
 services:
     - serviceId: petstore
+      catalogUiTileId: static 
+      title: Petstore Sample Service  
+      description: This is a sample server Petstore service
       instanceBaseUrls:
         - http://localhost:8080
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
+      apiInfo:
+        - apiId: io.swagger.petstore
+          gatewayUrl: api/v2
+          swaggerUrl: http://localhost:8080/v2/swagger.json
+          version: 2.0.0
+
+catalogUiTiles:
+    static:
+        title: Static API services
+        description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
 ```
 
 In this example, a suitable name for the file is `petstore.yml`. 
@@ -134,21 +147,45 @@ The following list describes the configuration parameters:
 
     * If customer system administrator sets the service ID to `vantageprod1`,
     the API URL in the API Gateway appears as the following URL:
-    
-        `http://gateway:port/api/v1/vantageprod1/...`
 
-* **baseUrl**
+        http://gateway:port/api/v1/vantageprod1/...
+        
+ * **title**
 
-    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+     Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+     **Tip:** We recommend that you provide a specific default value of the `title`.
+     Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+
+ * **description**
+
+     Specifies a short description of the API service.
+
+     **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+
+     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+
+     **Tip:** Describe the service so that the end user knows the function of the service.        
+
+* **instanceBaseUrls**
+
+    Specifies a list of base URLs to your service to the REST resource. It will be the prefix for the following URLs:
     
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl**
     
     **Examples:** 
-    * `http://host:port/serviceid` for an HTTP service
-    * `https://host:port/serviceid` for an HTTPS service
- 
+    * `- http://host:port/filemasterplus` for an HTTP service
+    * `- https://host:port/endevor` for an HTTPS service
+    
+    You can provide one URL if your service has one instance. If your service provides multiple instances for the high-availability then you can provide URLs to these instances.
+
+   ```yaml
+   - https://host1:port1/endevor
+     https://host2:port2/endevor
+   ```   
+
 * **homePageRelativeUrl** 
 
     Specifies the relative path to the homepage of your service. The path should start with `/`.
@@ -182,13 +219,83 @@ The following list describes the configuration parameters:
 
     * **routes.gatewayUrl**
     
-        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _gateway-url_ parameter sets the target endpoint on the gateway.
+        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _gatewayUrl_ parameter sets the target endpoint on the gateway.
 
     * **routes.serviceUrl**
     
-        Both _gateway-url_ and _service-url_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _service-url_ parameter points to the target endpoint on the gateway.
+        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
+        gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the gateway.
+
+* **apiInfo**
+
+    This section defines APIs that are provided by the service. Currently, only one API is supported.
+
+* **apiInfo.apiId**
+
+    Specifies the API identifier that is registered in the API Mediation Layer installation. 
+    The API ID uniquely identifies the API in the API Mediation Layer. 
+    The same API can be provided by multiple service. The API ID can be used
+    to locate same APIs that are provided by different services.
+    The creator of the API defines this ID.
+    The API ID needs to be string up to 64 characters 
+    that is using lowercase alphanumeric characters and a dot: `.`.
+    It is recommended to use your organization as the prefix - for example:
+       
+       - `org.zowe.file`
+       - `com.ca.sysview`
+       - `com.ibm.zosmf`
+   
+* **apiInfo.gatewayUrl**
+
+    The base path at the API gateway where the API is available. It should be
+    the same as a _gatewayUrl_ value in the _routes_ sections.
+
+* **apiInfo.swaggerUrl**
+
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document 
+    that provides the API documentation for this API is available.
+
+* **apiInfo.documentationUrl**
+
+    (Optional) Specifies a URL to a website where external documentation is provided.
+    This can be used when _swaggerUrl_ is not provided.
+  
+* **apiInfo.version**
+
+    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+
+* **catalogUiTileId**
+
+   Specifies the unique identifier for the API services group. 
+   This is the grouping value used by the API Mediation Layer to group multiple API services 
+   together into "tiles". 
+   Each unique identifier represents a single API Catalog UI dashboard tile. 
+   Specify the value based on the ID of the defined tile.
+
+* **catalogUiTile**
+
+   This section contains definitions of tiles. Each tile is defined in a section that has its tile ID as a key.
+   A tile can be used by multiple services.
+   
+   ```yaml
+   catalogUiTiles:
+       tile1:
+           title: Tile 1
+           description: This is the first tile with ID tile1
+       tile2:
+           title: Tile 2
+           description: This is the second tile with ID tile2
+   ```
+
+* **catalogUiTile.{tileId}.title**
+
+   Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+
+* **catalogUiTile.{tileId}.description**
+
+   Specifies the detailed description of the API Catalog UI dashboard tile. 
+   This value is displayed in the API catalog UI dashboard as the tile description.
 
 
 ## Add and validate the definition in the API Mediation Layer running on your machine
