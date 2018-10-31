@@ -33,8 +33,6 @@ Onboard an API service through the API Gateway without making code changes.
     
     In the sample service described earlier, the URL of the service is: `http://localhost:8080`.
 
-    **Tip:** For more information about the Sample REST API Service, see: [Sample REST API Service](api-mediation-onboard-overview.md#sample-rest-api-service) 
-
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
     **Example:**
