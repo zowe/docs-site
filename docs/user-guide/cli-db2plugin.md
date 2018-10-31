@@ -48,7 +48,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
 
 ### Installing from package
 
-Follow this procedure if you downloaded the Zowe installation package from **Github**.
+Follow these procedures if you downloaded the Zowe installation package:
 
 #### Installing the ODBC driver
 
