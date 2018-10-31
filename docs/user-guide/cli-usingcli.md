@@ -266,7 +266,7 @@ You can use environment variables in an automation server, such as Jenkins, to w
 
 You can either set environment variables using the `SET` command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI. For example: 
 
-    ![jenkins gui](../images/envVarsJenkins.png)
+    ![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
 
 #### Using secure credential storage
 
