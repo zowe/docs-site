@@ -99,7 +99,7 @@ Now that the Db2 driver is installed, install the Db2 plug-in to Zowe CLI.
 
 5. Locate your client copy of the Db2 license. For the DB2 plugin to successfully connect to a z/OS instance, you must install have a properly licensed and configured DB2 instance. 
     
-    **Note:** The license must be of version 11.1 if the DB2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
 6. Copy your Db2 license file and place it in the following directory. 
@@ -108,7 +108,7 @@ Now that the Db2 driver is installed, install the Db2 plug-in to Zowe CLI.
    Brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
    ```
    
-   After the license is copied, you can use the DB2 plugin functionality.
+   After the license is copied, you can use the Db2 plugin functionality.
 
 ## Setting up profiles
 Before you start using the IBM Db2 plug-in, create a profile.
