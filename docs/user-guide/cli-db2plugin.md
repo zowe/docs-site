@@ -64,11 +64,11 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.  
 
-You downloaded and installed the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI. 
+You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI. 
 
 #### Installing the Plug-in
 
-Now that the Db2 ODBC CLI driver is installed, set the IBM_DB_INSTALLER_URL environment variable and install the Db2 plug-in to Zowe CLI.
+Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL environment variable and install the Db2 plug-in to Zowe CLI.
 
 **Follow these steps:**
 
@@ -118,7 +118,7 @@ Now that the Db2 ODBC CLI driver is installed, set the IBM_DB_INSTALLER_URL envi
 
 The following steps are required for both the registry and offline package installation methods: 
 
-1. Locate your client copy of the Db2 license. For the DB2 plugin to successfully connect to a z/OS instance, you must install have a properly licensed and configured DB2 instance. 
+1. Locate your client copy of the Db2 license. For the DB2 plugin to successfully connect to a z/OS instance, you must have a properly licensed and configured DB2 instance. 
     
     **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
