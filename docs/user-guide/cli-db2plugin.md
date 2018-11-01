@@ -100,7 +100,7 @@ Now that the Db2 ODBC CLI driver is installed, set the IBM_DB_INSTALLER_URL envi
 
     - **<VERSION_NUMBER>**
 
-        The version of Zowe CLI Plug-in for Db2that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-db2-1.0.0-next.201810041114.tgz`
+        The version of Zowe CLI Plug-in for Db2 that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-db2-1.0.0-next.201810041114.tgz`
 
    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
 
@@ -128,7 +128,7 @@ The following steps are required for both the registry and offline package insta
    ```
    <brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
    ```
-   Note: by default, <brightside_home> is set to ~/.brightside on UN\*X systems, and C:\Users\<Your_User>\.brightside on Windows systems. 
+   Note: by default, <brightside_home> is set to `~/.brightside` on \*NIX systems, and `C:\Users\<Your_User>\.brightside` on Windows systems.
    
    After the license is copied, you can use the Db2 plugin functionality.
 
