@@ -26,11 +26,11 @@ Before you install the plug-in, meet the following prerequisites:
 
 ## Installing
 
-There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM Db2 Database - install from Bintray or install from the Zowe package.
+There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM Db2 Database - install from an online registry or install from the local package.
 
-### Installing from Bintray
+### Installing from online registry
 
-If you installed Zowe CLI from **Bintray**, complete the following steps:
+If you installed Zowe CLI from **online registry**, complete the following steps:
 
 1. Open a command line window and issue the following command:
 
@@ -48,7 +48,7 @@ If you installed Zowe CLI from **Bintray**, complete the following steps:
 
 3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
-### Installing from package
+### Installing from local package
 
 Follow these procedures if you downloaded the Zowe installation package:
 
