@@ -43,7 +43,23 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
 See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
 
+#### New in API Mediation Layer
+
+API Mediation Layer Version 0.9.3 contains the following new functionality and features:
+
+- API Catalog Login Protection
+
+    Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
+
+- Improved API Gateway Landing Page
+    - Page was refactored into static, server rendered page 
+    - Is now showing version of the build
+    - Is now aligned with the design of the rest of the application using Mineral UI
+
+- z/OSMF REST APIs are now on-boarded part of the default installation of Zowe
+
 ### What's changed
+
 #### Changed in Zowe CLI
 
 Zowe CLI version 0.9.3 contains the following functional changes.
