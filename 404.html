@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -79,7 +78,9 @@
       var url = document && document.location && document.location.href, newurl;
       if (url) {
         var m = url.match(/^(https?:\/\/[^\/]+\/[^\/]+\/)(.+)$/);
-        if (m && m[2] && m[2].substr(0, 7) !== 'latest/') {
+        if (m && m[2] && m[2].substr(0, 7) !== 'latest/' &&
+          !m[2].match(/^v[0-9]+-[0-9]+-[0-9x]+\//)) {
+          // this is a legacy link without version, redirect to latest version
           newurl = m[1] + 'latest/' + m[2];
 
           // update html elements
