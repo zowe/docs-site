@@ -41,7 +41,7 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
 - Make use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide by defining sensitive information in environment variables.
 
-See [Setting environment variables for command arguments and options](cli-usingcli.md#Setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
+See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
 
 ### What's changed
 #### Changed in Zowe CLI
