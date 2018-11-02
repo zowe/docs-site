@@ -38,7 +38,7 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
     Zowe CLI now lets you specify command options by defining environment variables. You create and define environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
 
-- **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.
+- **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.**
 
     See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
 
@@ -75,6 +75,8 @@ Zowe API Mediation Layer Version 0.9.3 contains the following new functionality 
     - Swagger that is provided by the API service is now displayed in the API Catalog for the following conditions:
         - When Swagger is provided by the API service (in the location specified in YAML as URL).
         - When Swagger is provided externally as a Swagger file.
+
+
 
 ## Version 0.9.2 (October 2018)
 
