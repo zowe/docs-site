@@ -38,25 +38,9 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
     Zowe CLI now lets you specify command options by defining environment variables. You create and define environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
 
-- **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.
+- **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.**
 
     See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
-
-### What's new in the API Mediation Layer
-
-API Mediation Layer Version 0.9.3 contains the following new functionality and features:
-
-- **API Catalog Login Protection**
-
-    Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
-
-- **Improved API Gateway Landing Page**
-    - Page was refactored into static, server rendered page 
-    - Is now showing version of the build
-    - Is now aligned with the design of the rest of the application using Mineral UI
-
-- **z/OSMF REST APIs are now on-boarded part of the default installation of Zowe**
-
 
 ### What's changed in Zowe CLI
 
@@ -66,6 +50,31 @@ Zowe CLI version 0.9.3 contains the following functional changes.
 
     You must now specify `--pass` rather than `--password` when you create zosmf profiles using the `zowe profiles create zosmf` command, or update zosmf profiles using the `zowe profiles update zosmf` command.
 
+### What's new in Zowe API Mediation Layer
+
+Zowe API Mediation Layer Version 0.9.3 contains the following new functionality and features:
+
+- **API Catalog Login Protection**
+
+    Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
+
+- **Improved API Gateway Landing Page**
+    - Page was refactored into static, server rendered page 
+    - Is now showing version of the build
+    - Is now aligned with the design of the rest of the application using Mineral UI
+    - You can invoke this page at https://hostname:port (default port 7554)
+
+- **Enhanced process for on-boarding REST API Services without required code changes**
+    - Previously we supported routing REST API Services without code changes through the Gateway.
+      In this version we enhanced static on-boarding support with the ability to display such services in the API Catalog.
+    - All services that are routed though the Gateway are now displayed in the Catalog (even if they do not have Open API documentation).
+        - The API catalog shows the service without any documentation.
+        - The API catalog shows the base URL that can access the API service.
+    - An active link is displayed in the API Catalog for services in which REST API documentation is available online through a URL (e.g. DocOps URL).
+    - Swagger that is provided by the API service is now displayed in the API Catalog for the following conditions:
+        - When Swagger is provided by the API service (in the location specified in YAML as URL).
+        - When Swagger is provided externally as a Swagger file.
+       
 
 ## Version 0.9.2 (October 2018)
 
@@ -136,37 +145,25 @@ Version 0.9.1 contains the following changes since the last version.
 
 ### What's new in the Zowe Application Framework
 
-The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
+- The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
-The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services discovered by the API Mediation Layer.
+- The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services discovered by the API Mediation Layer.
 
-Angular application plug-ins can be internationalized utilizing the `ngx-i18n` library.
+- Angular application plug-ins can be internationalized utilizing the `ngx-i18n` library.
 
-Node.js v6.14.4.0 and later is now required.
+- Node.js v6.14.4.0 and later is now required.
 
-The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
+- The Zowe Application Framework now provides a sample react app, Angular app, and a simple editor.
 
-The following tutorials are now available in GitHub:
+- The following tutorials are now available in GitHub:
 
-Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
-
-Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
-
-Internationalization in Angular Templates in Zowe zLUX
-
-[sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
-
-App to app communication
-
-[sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)
-
-Using the Widgets Library
-
-[sample-angular-app (Widgets)](https://github.com/zowe/sample-angular-app/blob/lab/step-4-widgets-complete/README.md)
-
-Configuring user preferences (configuration dataservice)
-
-[sample-angular-app (configuration dataservice)](https://github.com/zowe/sample-angular-app/blob/lab/step-5-config-complete/README.md)
+    - Sample React app: [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
+    - Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
+    
+    - Internationalization in Angular Templates in Zowe zLUX [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
+    - App to app communication [sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)      
+    - Using the Widgets Library [sample-angular-app (Widgets)](https://github.com/zowe/sample-angular-app/blob/lab/step-4-widgets-complete/README.md)
+    - Configuring user preferences (configuration dataservice) [sample-angular-app (configuration dataservice)](https://github.com/zowe/sample-angular-app/blob/lab/step-5-config-complete/README.md)
 
 #### New in Zowe CLI
 
