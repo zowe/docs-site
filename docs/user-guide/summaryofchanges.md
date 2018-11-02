@@ -60,10 +60,10 @@ Zowe API Mediation Layer Version 0.9.3 contains the following new functionality 
     Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
 
 - **Improved API Gateway Landing Page**
-    - Page was refactored into a static, server rendered page 
+    - Page was refactored into a static, server rendered page
     - Is now showing the version of the build
     - Is now aligned with the design of the rest of the application using Mineral UI
-    - You can invoke this page at https://hostname:port (default port 7554) 
+    - You can invoke this page at `https://hostname:port` (the default port 7554)
 
  - **Enhanced process for on-boarding REST API Services without required code changes**
     - Previously we supported routing REST API Services without code changes through the Gateway.
@@ -75,7 +75,6 @@ Zowe API Mediation Layer Version 0.9.3 contains the following new functionality 
     - Swagger that is provided by the API service is now displayed in the API Catalog for the following conditions:
         - When Swagger is provided by the API service (in the location specified in YAML as URL).
         - When Swagger is provided externally as a Swagger file.
-
 
 
 ## Version 0.9.2 (October 2018)
