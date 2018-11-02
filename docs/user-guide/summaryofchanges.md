@@ -13,8 +13,7 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.3 contains the following changes since the last version.
 
-### What's new
-#### New in Zowe CLI
+### What's new in Zowe CLI
 
 Zowe CLI Version 0.9.3 now uses the following command option precedence:
 
@@ -25,7 +24,7 @@ Zowe CLI Version 0.9.3 now uses the following command option precedence:
 
 With the new order of precedence, Zowe CLI now supports the following capabilities:
 
-- Issuing commands without a profile:
+- **Issuing commands without a profile**
 
     Zowe CLI now lets you issue commands without a profile. All Zowe CLI commands now contain options that let you fully qualify your connection details without creating a profile before you issue the commands.
 
@@ -35,36 +34,35 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
     zowe zos-files download data-set "my.data.set" --user myuser --pass mypass --host mymainframe.com --port 1443
     ```
 
-- Specifying command options using environment variables:
+- **Specifying command options using environment variables**
 
-    Zowe CLI now lets you specify command options by defining environment variables. You create and define the environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
+    Zowe CLI now lets you specify command options by defining environment variables. You create and define environment variables by prefixing them with `ZOWE_OPT_`. For example, you can specify the `--host` option by creating an environment variable named `ZOWE_OPT_HOST` and set the environment variable to the desired value.
 
-- Make use the credential managers that CI/CD orchestration tools, such as *Jenkins*, provide by defining sensitive information in environment variables.
+- **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.
 
-See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
+    See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
 
-#### New in API Mediation Layer
+### What's new in the API Mediation Layer
 
 API Mediation Layer Version 0.9.3 contains the following new functionality and features:
 
-- API Catalog Login Protection
+- **API Catalog Login Protection**
 
     Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
 
-- Improved API Gateway Landing Page
+- **Improved API Gateway Landing Page**
     - Page was refactored into static, server rendered page 
     - Is now showing version of the build
     - Is now aligned with the design of the rest of the application using Mineral UI
 
-- z/OSMF REST APIs are now on-boarded part of the default installation of Zowe
+- **z/OSMF REST APIs are now on-boarded part of the default installation of Zowe**
 
-### What's changed
 
-#### Changed in Zowe CLI
+### What's changed in Zowe CLI
 
 Zowe CLI version 0.9.3 contains the following functional changes.
 
-- Creating and updating zosmf profiles:
+- **Creating and updating zosmf profiles:**
 
     You must now specify `--pass` rather than `--password` when you create zosmf profiles using the `zowe profiles create zosmf` command, or update zosmf profiles using the `zowe profiles update zosmf` command.
 
@@ -73,15 +71,12 @@ Zowe CLI version 0.9.3 contains the following functional changes.
 
 Version 0.9.2 contains the following changes since the last version.
 
-### What's new
-
-#### New in Zowe CLI
+### What's new in Zowe CLI
 
 The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe. 
 
-### What's changed
 
-#### Changed in Explorer Server
+### What's changed in the Explorer Server
 
 - The URLs to access the explorer server UI are changed.
 
@@ -95,7 +90,7 @@ The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the e
 
   For a list of the new APIs, see [Using APIs](usingapis.md).
 
-#### Changed in Zowe CLI
+### What's Changed in the Zowe CLI
 
 This version of Zowe CLI contains the following changes:
 
@@ -106,8 +101,8 @@ This version of Zowe CLI contains the following changes:
     **Follow these steps:**
     1. Issue any bright command to create the `~/.zowe` home directory.
     2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
-    3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of Zowe CLI.
-    4. After you migrate your profiles, issue the following command to list your existing profiles.
+    3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of the Zowe CLI.
+    4. After you migrate your profiles, issue the following command to list your existing profiles:
         ```
         bright profiles list zosmf
         ```
@@ -139,15 +134,13 @@ The following bugs are fixed in this release.
 
 Version 0.9.1 contains the following changes since the last version.
 
-### What's new
-
-#### New in the Zowe Application Framework
+### What's new in the Zowe Application Framework
 
 The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
 
-The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services that have been discovered by the API Mediation Layer.
+The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services discovered by the API Mediation Layer.
 
-Angular application plug-ins can be internationalized utilizing the ngx-i18n library.
+Angular application plug-ins can be internationalized utilizing the `ngx-i18n` library.
 
 Node.js v6.14.4.0 and later is now required.
 
