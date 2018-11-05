@@ -40,7 +40,7 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
 - **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.**
 
-    See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature. 
+    See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature.
 
 ### What's changed in Zowe CLI
 
@@ -50,22 +50,23 @@ Zowe CLI version 0.9.3 contains the following functional changes.
 
     You must now specify `--pass` rather than `--password` when you create zosmf profiles using the `zowe profiles create zosmf` command, or update zosmf profiles using the `zowe profiles update zosmf` command.
 
-
-### What's new in the Zowe API Mediation Layer
+### What's new in Zowe API Mediation Layer
 
 Zowe API Mediation Layer Version 0.9.3 contains the following new functionality and features:
 
-- **API Catalog Login Protection**
+- **Creating and updating zosmf profiles:**
 
-    Login will be presented temporarily. The login will be replaced by Zowe single sign-on (SSO) in future releases.
+    You must now specify `--pass` rather than `--password` when you create zosmf profiles using the `zowe profiles create zosmf` command, or update zosmf profiles using the `zowe profiles update zosmf` command.
 
 - **Improved API Gateway Landing Page**
-    - Page was refactored into a static, server rendered page
-    - Is now showing the version of the build
-    - Is now aligned with the design of the rest of the application using Mineral UI
-    - You can invoke this page at `https://hostname:port` (the default port 7554)
 
- - **Enhanced process for on-boarding REST API Services without required code changes**
+    - Page was refactored into static, server rendered page 
+    - Is now showing version of the build
+    - Is now aligned with the design of the rest of the application using Mineral UI
+    - You can invoke this page at https://hostname:port (default port 7554)
+
+- **Enhanced process for on-boarding REST API Services without required code changes**
+
     - Previously we supported routing REST API Services without code changes through the Gateway.
       In this version we enhanced static on-boarding support with the ability to display such services in the API Catalog.
     - All services that are routed though the Gateway are now displayed in the Catalog (even if they do not have Open API documentation).
@@ -109,9 +110,10 @@ This version of Zowe CLI contains the following changes:
 **Important!** Use the following steps only if you were using a version of Zowe CLI that is older than version 0.9.2.
 
 **Follow these steps:**
+
 1. Issue any bright command to create the `~/.zowe` home directory.
 2. After you create the directory, copy the complete contents of the `~/.brightside` directory to the newly created `~/.zowe` directory. Copying the contents of the `~/.brightside` directory to the `~/.zowe` directory restores the profiles you created previously.
-3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of the Zowe CLI. 
+3. To help ensure that your plug-ins function properly, reinstall the plug-ins that you installed with older versions of the Zowe CLI.
 4. After you migrate your profiles, issue the following command to list your existing profiles:
     ```
     bright profiles list zosmf
@@ -127,10 +129,9 @@ This version of Zowe CLI contains the following changes:
 
     **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
 
-    **Notes:** 
+    **Notes:**
 
     - In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
-
     - As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.html#system-requirements-for-zowe-cli).  
 
 #### Bug fixes
@@ -164,13 +165,13 @@ Version 0.9.1 contains the following changes since the last version.
 
     - Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
 
-    - Internationalization in Angular Templates in Zowe zLUX [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
+    - Internationalization in Angular Templates in Zowe zLUX: [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
 
-    - App to app communication [sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)
+    - App to app communication: [sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)
 
-    - Using the Widgets Library [sample-angular-app (Widgets)](https://github.com/zowe/sample-angular-app/blob/lab/step-4-widgets-complete/README.md)
+    - Using the Widgets Library: [sample-angular-app (Widgets)](https://github.com/zowe/sample-angular-app/blob/lab/step-4-widgets-complete/README.md)
 
-    - Configuring user preferences (configuration dataservice) [sample-angular-app (configuration dataservice)](https://github.com/zowe/sample-angular-app/blob/lab/step-5-config-complete/README.md)
+    - Configuring user preferences (configuration dataservice): [sample-angular-app (configuration dataservice)](https://github.com/zowe/sample-angular-app/blob/lab/step-5-config-complete/README.md)
 
 #### New in Zowe CLI
 
@@ -258,8 +259,6 @@ You will be impacted by the following changes if you update your version of Zowe
     - `BRIGHTSIDE_CLI_HOME` changed to `ZOWE_CLI_HOME`
     - `BRIGHTSIDE_IMPERATIVE_LOG_LEVEL` changed to `ZOWE_IMPERATIVE_LOG_LEVEL`
     - `BRIGHTSIDE_APP_LOG_LEVEL` changed to `ZOWE_APP_LOG_LEVEL`
-
-
 
 ## Version 0.9.0 (August 2018)
 
