@@ -240,11 +240,13 @@ The following list describes the configuration parameters:
     The creator of the API defines this ID.
     The API ID needs to be string up to 64 characters 
     that is using lowercase alphanumeric characters and a dot: `.`.
-    It is recommended to use your organization as the prefix - for example:
+    It is recommended to use your organization as the prefix.
+    
+    **Examples:**
        
-       - `org.zowe.file`
-       - `com.ca.sysview`
-       - `com.ibm.zosmf`
+     - `org.zowe.file`
+     - `com.ca.sysview`
+     - `com.ibm.zosmf`
    
 * **apiInfo.gatewayUrl**
 
