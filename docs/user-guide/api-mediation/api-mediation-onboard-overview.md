@@ -82,10 +82,10 @@ The process of onboarding depends on the method that is used to develop the API 
 While any REST API service can be added to the API Mediation Layer, this documentation focuses on following types of REST APIs:
 
 - Services that can be updated to support the API Mediation Layer natively by updating the service code:
-    - [REST API service implemented in Java using Spring Boot](api-mediation-onboard-an-existing-spring-boot-rest-api-service.md)
-    - [REST API service implemented in Java using Jersey](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
-    - [REST API service implemented in Java with any REST API framework](api-mediation-onboard-an-existing-java-rest-api-service.md)
+    - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
+    - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
+    - [Java REST APIs without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
   
-- [Services that can be added to the API Mediation Layer without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
+- [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
 
 **Tip:** If you develop a new service, we recommend that you update the code to support the API Mediation Layer natively. Use the previously mentioned onboarding guides for services that can be updated to support the API Mediation Layer natively. The benefit of supporting the API Mediation Layer natively is that it requires less configuration for the system administrator. Such service can be moved to different system, listen on different port, or additional instances can be started without the need to changed the configuration of the API Mediation Layer.
