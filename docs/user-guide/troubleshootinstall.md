@@ -200,7 +200,7 @@ By default, the explorer server communicates with the z/OSMF server on the local
 ## Troubleshooting installing Zowe CLI
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior using Zowe CLI.
 
-#### *Command not found* message displays when issuing npm install commands
+### *Command not found* message displays when issuing npm install commands
 
 **Valid on all supported platforms**
 
