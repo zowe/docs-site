@@ -206,7 +206,7 @@ The following topics contain information that can help you troubleshoot problems
 
 **Symptom:**
 
-When you issue nmp commands to install Zowe CLI, *command not found* displays in your CLI.
+When you issue nmp commands to install Zowe CLI, the message *command not found* displays in your CLI.
 
 **Solution:**
 
