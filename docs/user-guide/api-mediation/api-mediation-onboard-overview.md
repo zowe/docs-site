@@ -9,7 +9,7 @@ A REST API service can provide one or more REST APIs and usually provides the la
 **Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)).
 
-Following diagram shows the relations between various types of services, their APIs, REST API endpoints, and API gateway:
+The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API gateway:
 
 ![REST API Components](diagrams/rest-api-components.svg)
 
@@ -26,11 +26,13 @@ The Sample REST API Service has a base URL. When you start this service on your 
 
 **Note:** If a service is deployed to a web application server, the base URL of the service (application) has the following format: `https://application-server-hostname:port/application-name`.
 
-This service provides one API that has the base path `/v2`, which is represented in the base URL of the API as `http://localhost:8080/v2`. The `/v2` is the component  of the base path that was chosen by the developer of this API. Each API has a base path depending on the particular implementation of the service. 
+This sample service provides one API that has the base path `/v2`, which is represented in the base URL of the API as `http://localhost:8080/v2`. In this base URL, `/v2` is a qualifier of the base path that was chosen by the developer of this API. Each API has a base path depending on the particular implementation of the service. 
 
 This sample API has only one single endpoint:
 
-- `/pets/{id}` - *Find pet by ID*. This endpoint in this sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer then it returns an error. Thes are conditions set in the sample.
+- `/pets/{id}` - *Find pet by ID*. 
+
+This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer then it returns an error. These are conditions set in the sample service.
 
 **Tip:** Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
 
@@ -62,7 +64,7 @@ This sample API has only one single endpoint:
 
 **Note:** The onboarding guides demonstrate how to add the Sample REST API Service to the API Mediation Layer to make the service available through the `petstore` service ID.
 
-The following diagram shows the relations between the Sample REST API Service, its corresponding API, REST API endpoint, and API gateway:
+The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API gateway:
 
 ![Sample REST API Components](diagrams/rest-api-components-sample.svg)
 
