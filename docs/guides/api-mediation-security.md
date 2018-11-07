@@ -54,25 +54,31 @@ In the APIML, the authorization is done by z/OS security manager ([CA ACF2](http
 
 ### Types of services
 
-- Zowe APIML services:
-  
-    - Gateway Service (GW)
-        - The gateway is the access point for API clients that need to access API services
-        - API Services can be accessed via the gateway by API Clients
-        - Gateway gets information about API Service from Discovery Service
-    
-    - Discovery Service (DS)
-        - The discovery service collects information about API Services and provides it to GW and other services
-        - API Mediation services are registered to it too
-    
-    - API Catalog (AC)
-        - Displays information about API services in a web UI
-        - Gets information about API Service from Discovery Service
+- Zowe Core services:
 
-    - Authentication and Authorization Service (AAS) 
-        - Provides authentication and authorization functionality to check access of users to resources on z/OS
-        - Security service is not provided as an individual microservice but is included to the Gateway Service
-        - More details are on in [APIML wiki](https://github.com/gizafoundation/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
+    - Zowe APIML services:
+    
+        - Gateway Service (GW)
+            - The gateway is the access point for API clients that need to access API services
+            - API Services can be accessed via the gateway by API Clients
+            - Gateway gets information about API Service from Discovery Service
+        
+        - Discovery Service (DS)
+            - The discovery service collects information about API Services and provides it to GW and other services
+            - API Mediation services are registered to it too
+        
+        - API Catalog (AC)
+            - Displays information about API services in a web UI
+            - Gets information about API Service from Discovery Service
+
+        - Authentication and Authorization Service (AAS) 
+            - Provides authentication and authorization functionality to check access of users to resources on z/OS
+            - Security service is not provided as an individual microservice but is included to the Gateway Service
+            - More details are on in [APIML wiki](https://github.com/gizafoundation/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
+
+    - Non-APIML Zowe Core services (zLUX, Atlas)
+
+        - They are like other regular API Client and Service described below
 
 - API Clients
     - API Clients are external applications, users, or other API services that are accessing the API services via the GW
@@ -175,6 +181,11 @@ The APIML trust store:
 - contains external CA public certificate (optional)
 - can contain self-signed certificates of API Services that are not signed by local or external CA
 - used by APIML services
+
+Zowe Core services:
+
+- they can use the same key store and trust store as APIML for simpler installation and management
+- or they can have individual stores for higher security
 
 API service key store (for each service)
 
