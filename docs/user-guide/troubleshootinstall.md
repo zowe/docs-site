@@ -210,7 +210,7 @@ When you issue nmp commands to install Zowe CLI, *command not found* displays in
 
 **Solution:**
 
-The *command not found* message displays because Node.js and NPM is not installed on your PC. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
+The *command not found* message displays because Node.js and NPM are not installed on your PC. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
 
 **More Information:** [System requirements for Zowe CLI](systemrequirements.md)
 
