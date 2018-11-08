@@ -21,7 +21,7 @@ As a user of Zowe API Mediation Layer, onboard a REST API service with the Zowe 
 
 Onboard an API service through the API Gateway without making code changes.
 
-**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see [Onboarding Overview](./user-guide/api-mediation/api-mediation-onboard-overview).
+**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see [Onboarding Overview](../user-guide/api-mediation/api-mediation-onboard-overview.md).
 
 **Follow these steps:**
 
