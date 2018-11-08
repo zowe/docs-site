@@ -102,8 +102,6 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 
         The version of Zowe CLI Plug-in for Db2 that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-db2-1.0.0-next.201810041114.tgz`
 
-   **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
-
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
