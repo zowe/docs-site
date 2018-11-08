@@ -11,7 +11,7 @@ Each API has its own title, description, and version (versioned using [Semantic 
 
 The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API gateway:
 
-![REST API Components](/docs/user-guide/api-mediation/diagrams/rest-api-components.svg)
+![REST API Components](/user-guide/api-mediation/diagrams/rest-api-components.svg)
 
 
 ## Sample REST API Service
@@ -66,14 +66,13 @@ This endpoint in the sample service returns information about a pet when the `{i
 
 The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API gateway:
 
-![Sample REST API Components](/docs/user-guide/api-mediation/diagrams/rest-api-components-sample.svg)
+![Sample REST API Components](/user-guide/api-mediation/diagrams/rest-api-components-sample.svg)
 
 This sample service provides a Swagger document in JSON format at the following URL:
 
     http://localhost:8080/v2/swagger.json
 
 The Swagger document is used by the API Catalog to display the API documentation.
-
 
 ## API Service Types
 
