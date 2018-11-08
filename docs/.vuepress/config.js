@@ -32,6 +32,13 @@ module.exports = {
     editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
+    algolia: {
+      apiKey: '59ff39ed48d0820010c7e09fc4b677bf',
+      indexName: 'zowe',
+      algoliaOptions: {
+        facetFilters: [ `version:${PUBLISH_TARGET_PATH}` ],
+      }
+    },
     nav: [
       { text: 'Developer Tutorials', link: '/guides/intro' },
       { text: 'Samples', link: '/samples/intro' },
@@ -160,6 +167,7 @@ module.exports = {
             'cli-extending',
             'cli-installplugins',
             'cli-cicsplugin',
+            'cli-db2plugin',
             'cli-vscodeplugin'
           ]
         }

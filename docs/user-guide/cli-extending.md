@@ -18,6 +18,12 @@ The Zowe CLI Plug-in for IBM CICS lets you extend Zowe CLI to interact with CICS
 
 For more information, see [CA Brightside Plug-in for IBM CICS](cli-cicsplugin.md).
 
+**Zowe CLI plug-in for IBM® Db2® Database**
+
+The Zowe CLI plug-in for Db2 enables you to interact with IBM Db2 Database on z/OS to perform tasks with modern development tools to automate typical workloads more efficiently. The plug-in also enables you to interact with IBM Db2 to foster continuous integration to validate product quality and stability.
+
+For more information, see [Zowe CLI plug-in for IBM Db2 Database](cli-db2plugin.md).
+
 **VSCode Extension for Zowe** 
 
 The Visual Studio Code (VSCode) Extension for Zowe lets you interact with data sets that are stored on IBM z/OS mainframe. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. You can explore data sets, view their contents, make changes, and upload the changes to the mainframe. For some users, it can be more convenient to interact with data sets through a GUI rather than using command-line interfaces or 3270 emulators. The extension is powered by Zowe CLI.

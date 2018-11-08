@@ -75,7 +75,7 @@ AXR (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident
   Common Information Model (CIM) server| z/OSMF uses the CIM server to perform capacity-provisioning and workload-management tasks. Start the CIM server before you start z/OSMF (the IZU* started tasks).  |  [Reviewing your CIM server setup][155070cd]
 CONSOLE and CONSPROF commands |The CONSOLE and CONSPROF commands must exist in the authorized command table.| [Customizing the CONSOLE and CONSPROF commands][51d741c4]
 IBM z/OS Provisioning Toolkit  |  The IBM® z/OS® Provisioning Toolkit is a command line utility that provides the ability to provision z/OS development environments. If you want to provision CICS or Db2 environments with the Zowe CLI, this toolkit is required. | [What is IBM Cloud Provisioning and Management for z/OS? ][695feec1]
-Java level   | IBM® 64-bit SDK for z/OS®, Java Technology Edition V7.1 or later is required. | [Software prerequisites for z/OSMF][0a0a3cac]
+Java level   | IBM® 64-bit SDK for z/OS®, Java Technology Edition V8 or later is required. | [Software prerequisites for z/OSMF][0a0a3cac]
 TSO region size   | To prevent **exceeds maximum region size** errors, verify that the TSO maximum region size is a minimum of 65536 KB for the z/OS system.   |  N/A
 User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During workflow processing and REST API requests, z/OSMF might start one or more TSO address spaces under the following job names: userid; substr(userid, 1, 6) CN (Console).  |  N/A
 

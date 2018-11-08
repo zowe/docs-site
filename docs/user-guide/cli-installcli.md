@@ -27,7 +27,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. [Obtain the Zowe installation files](gettingstarted.md), which includes the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations.
+2. [Obtain the Zowe installation media](gettingstarted.md). The Zowe installation media contains the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations.
 
 3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
