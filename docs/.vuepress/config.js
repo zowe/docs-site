@@ -63,9 +63,10 @@ module.exports = {
           title: 'Onboard REST APIs to the API Mediation Layer',
           collapsable: true,
           children: [
-            'api-mediation-onboard-a-sprint-boot-rest-api-service', 
-            'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer', 
-            'api-mediation-onboard-an-existing-java-jersey-rest-api-service', 
+            'api-mediation-onboard-overview',
+            'api-mediation-onboard-a-sprint-boot-rest-api-service',
+            'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer',
+            'api-mediation-onboard-an-existing-java-jersey-rest-api-service',
             'api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
         },
         {
