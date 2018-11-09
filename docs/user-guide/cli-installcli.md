@@ -46,8 +46,6 @@ If you do not have internet access at your site, use the following method to ins
 
         The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
-    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins.
-
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
     Zowe CLI is installed on your PC. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
@@ -88,7 +86,6 @@ If your PC is connected to the Internet, you can use the following method to ins
     ```
     npm install -g @brightside/core@next
     ```
-    **Important!** On Windows, you must run as an Administrator to install the product and plug-ins. 
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
