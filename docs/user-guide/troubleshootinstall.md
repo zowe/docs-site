@@ -200,6 +200,20 @@ By default, the explorer server communicates with the z/OSMF server on the local
 ## Troubleshooting installing Zowe CLI
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior using Zowe CLI.
 
+### *Command not found* message displays when issuing npm install commands
+
+**Valid on all supported platforms**
+
+**Symptom:**
+
+When you issue nmp commands to install Zowe CLI, the message *command not found* displays in your CLI.
+
+**Solution:**
+
+The *command not found* message displays because Node.js and NPM are not installed on your PC. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
+
+**More Information:** [System requirements for Zowe CLI](systemrequirements.md)
+
 ### `npm install -g `Command Fails Due to an EPERM Error
 
 **Valid on Windows**
@@ -224,19 +238,15 @@ report success using the following workarounds:
 
 ### `Sudo` syntax required to complete some installations
 
-**Valid on Linux**
+**Valid on Linux and macOS**
 
-**Symptom:** 
+**Symptom:**
 
-The installation fails on Linux. 
+The installation fails on Linux or macOS. 
 
 **Solution:**
 
-Depending on how you configured Node.js on Linux or Mac, you might need
-to add the prefix `sudo `before the `npm install -g` command or the `npm
-uninstall -g` command. This step gives Node.js write access to the
-installation directory.
-
+Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo ` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
 
 ### `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
@@ -244,7 +254,7 @@ installation directory.
 
 **Symptom:**
 
-You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product. 
+You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product.
 
 **Solution:**
 
