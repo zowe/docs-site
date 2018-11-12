@@ -13,7 +13,9 @@ If you encounter problems when you attempt to install Zowe CLI, see [Troubleshoo
 
 ### Installing Zowe CLI from local package
 
-If you do not have internet access at your site, use the following method to install Zowe CLI from a local package.
+Use the following steps to install Zowe CLI when you do not have internet access at your site and you downloaded the Zowe CLI installation bundle from the Zowe [Download](https://zowe.org/download/) website.
+
+**Note:** You can download the Zowe CLI installation bundle as a stand-alone package (zowe-cli-bundle.zip) or as part of the Zowe binaries (zowe-0.9.x.pax) from the Zowe [Download](https://zowe.org/download/) website.
 
 **Follow these steps:**
 
