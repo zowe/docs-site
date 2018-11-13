@@ -81,8 +81,7 @@ The process of onboarding depends on the method that is used to develop the API 
 While any REST API service can be added to the API Mediation Layer, this documentation focuses on following types of REST APIs:
 
 - Services that can be updated to support the API Mediation Layer natively by updating the service code:
-    - [Java REST APIs with Spring Boot]
-    (api-mediation-onboard-a-spring-boot-rest-api-service.md)
+    - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
     - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
     - [Java REST APIs without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
   
