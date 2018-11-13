@@ -63,7 +63,6 @@ If you do not have internet access at your site, use the following method to ins
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
 
-
 ### Installing Zowe CLI from online registry
 
 If your PC is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
