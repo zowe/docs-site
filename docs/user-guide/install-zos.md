@@ -36,7 +36,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
         ```yaml
         install:
-         rootDir=/var/zowe/0.9.3
+         rootDir=/var/zowe/0.9.4
 
         api-mediation:
           catalogHttpPort=7552
