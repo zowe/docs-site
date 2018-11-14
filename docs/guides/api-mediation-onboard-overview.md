@@ -70,7 +70,7 @@ The following diagram shows the relations between the Sample REST API Service an
 
 This sample service provides a Swagger document in JSON format at the following URL:
 
-    http://localhost:8080/v2/swagger.json
+`http://localhost:8080/v2/swagger.json`
 
 The Swagger document is used by the API Catalog to display the API documentation.
 
