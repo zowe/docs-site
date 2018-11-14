@@ -27,12 +27,9 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. Use one of the following methods to obtain the files:
-    - From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your PC.
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your PC.
 
-    - From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe zOS Components**. The Zowe zOS Components installation file (for example, `zowe-0.9.x.pax`) contains the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations where you want to install Zowe CLI.
-    
-        **Note:** For more information, see [Obtaining installation files](gettingstarted.md).
+    **Note:** *Optionally*, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file from the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zoe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
 
 3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
