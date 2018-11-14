@@ -149,7 +149,7 @@ Version 0.9.1 contains the following changes since the last version.
 
 ### What's new in the Zowe Application Framework
 
-- The Workflows application plug-in was added to the Zowe Application Framework (zLUX).
+- The Workflows application plug-in was added to the Zowe Application Framework.
 
 - The API Catalog plug-in was added to the Zowe Application Framework. This plug-in lets you view API services discovered by the API Mediation Layer.
 
@@ -165,7 +165,7 @@ Version 0.9.1 contains the following changes since the last version.
 
     - Sample Angular app: [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
 
-    - Internationalization in Angular Templates in Zowe zLUX: [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
+    - Internationalization in Angular Templates in Zowe: [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)
 
     - App to app communication: [sample-angular-app (App to app communication)](https://github.com/zowe/sample-angular-app/blob/lab/step-3-app2app-complete/README.md)
 
