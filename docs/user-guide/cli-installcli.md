@@ -29,7 +29,7 @@ If you do not have internet access at your site, use the following method to ins
 
 2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your PC.
 
-    **Note:** Optionally, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file on the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zoe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
+    **Note:** Optionally, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file on the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zowe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
 
 3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
