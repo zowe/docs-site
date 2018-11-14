@@ -1,5 +1,5 @@
-# Zowe Application Framework (zLUX) configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server (zLUX Proxy Server) and ZSS configuration, if needed.
+# Zowe Application Framework configuration
+After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and ZSS configuration, if needed.
 
 ## Setting up terminal application plug-ins
 
@@ -25,14 +25,14 @@ Follow these optional steps to configure the default connection to open for the 
       type: <”telnet” or “ssh”>
     }
 ```    
-## Configuring the zLUX Proxy Server and ZSS
+## Configuring the Zowe Application Server and ZSS
 
 ### Configuration file
-The zLUX Proxy Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
+The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
 
-For convenience, the zLUX Proxy Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the zLUX Proxy Server as defined in the `zlux-proxy-server` repository accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-example-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
+For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-proxy-server` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-example-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
 
-An example JSON file can be found in the `zlux-example-server` repository, in the zluxserver.json in the `config` directory. 
+An example of a JSON file (`zluxserver.json`) can be found in the `zlux-example-server` repository, in the `config` directory. 
 
 **Note:** All examples are based on the *zlux-example-server* repository.
 
@@ -40,7 +40,7 @@ An example JSON file can be found in the `zlux-example-server` repository, in th
 
 **Note:** The following attributes are to be defined in the server's JSON configuration file.
 
-The zLUX Proxy Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
+The Zowe Application Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
 
 #### HTTP
 
@@ -86,11 +86,11 @@ In the example configuration, both HTTP and HTTPS are specified:
 ```
 ### Deploy configuration
 
-When the zLUX Proxy Server is running, it accesses the server's settings and reads or modifies the contents of its resource storage. All of this data is stored within the `Deploy` folder hierarchy, which is spread out into a several scopes:
+When the Zowe Application Server is running, it accesses the server's settings and reads or modifies the contents of its resource storage. All of this data is stored within the `Deploy` folder hierarchy, which is spread out into a several scopes:
 
 - `Product`: The contents of this folder are not meant to be modified, but used as defaults for a product.
-- `Site`: The contents of this folder are intended to be shared across multiple zLUX Proxy Server instances, perhaps on a network drive.
-- `Instance`: This folder represents the broadest scope of data within the given zLUX Proxy Server instance.
+- `Site`: The contents of this folder are intended to be shared across multiple Zowe Application Server instances, perhaps on a network drive.
+- `Instance`: This folder represents the broadest scope of data within the given Zowe Application Server instance.
 - `Group`: Multiple users can be associated into one group, so that settings are shared among them.
 - `User`: When authenticated, users have their own settings and storage for the application plug-ins that they use.
 
@@ -133,13 +133,13 @@ For more information, see [Logging Utility](mvd-logutility.md).
 
 ### ZSS configuration
 
-Running ZSS requires a JSON configuration file that is similar or the same as the one used for the zLUX Proxy Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the zLUX Proxy Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
 
-The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the zLUX Proxy Server. Define this port in the configuration file as a value between 1024-65535.
+The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 
-#### Connecting the zLUX Proxy Server to ZSS
+#### Connecting the Zowe Application Server to ZSS
 
-When you run the zLUX Proxy Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
+When you run the Zowe Application Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
@@ -160,17 +160,17 @@ The log information is written to a file and to the screen. (On Windows, logs ar
 
 #### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
 
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the zLUX Proxy Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging). 
+To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Application Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging). 
 
 When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold. 
 
 #### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
 
-If you set the log file name for the zLUX Proxy Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
+If you set the log file name for the Zowe Application Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
 
 **Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
 
 If the directory or file cannot be created, the server will run (but it might not perform logging properly).
 
 ### Retaining logs
-By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (zLUX Proxy Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. 
+By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. 
