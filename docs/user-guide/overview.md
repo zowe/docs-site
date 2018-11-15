@@ -59,7 +59,7 @@ Zowe CLI is a command-line interface that lets application developers interac
 Zowe CLI provides the following benefits:
 
   - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
-  - Fosters the development of new and innovative tools from a PC that can interact with z/OS.
+  - Fosters the development of new and innovative tools from a computer that can interact with z/OS.
   - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
   - Provides a more streamlined way to build software that integrates with z/OS. 
 

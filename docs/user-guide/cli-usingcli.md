@@ -207,7 +207,7 @@ Use environment variables with Zowe CLI in the following scenarios:
 
   - **Assigning an environment variable for a value that is commonly used.**  
     For example, you might want to specify your mainframe user name as an
-    environment variable on your PC. When you issue a command and omit
+    environment variable on your computer. When you issue a command and omit
     the `--username` argument, Zowe CLI automatically uses the
     value that you defined in the environment variable. You can now
     issue a command or create any profile type without specifying your
@@ -223,7 +223,7 @@ Use environment variables with Zowe CLI in the following scenarios:
   - **Specifying environment variables in a Jenkins environment (or other automation server) to store credentials securely.**  
     You can set values in Jenkins environment variables for use in
     scripts that run in your CI/CD pipeline. You can define Jenkins
-    environment variables in the same manner that you can on your PC. You
+    environment variables in the same manner that you can on your computer. You
     can also define sensitive information in the Jenkins secure
     credential store. For example, you might need to define your mainframe
     password in the secure credential store so that it is not available

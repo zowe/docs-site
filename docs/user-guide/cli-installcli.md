@@ -1,6 +1,6 @@
 # Installing Zowe CLI
 
-As a systems programmer or application developer, you install Zowe CLI on your PC.
+As a systems programmer or application developer, you install Zowe CLI on your computer.
 
 ## Methods to install Zowe CLI
 
@@ -17,7 +17,7 @@ If you do not have internet access at your site, use the following method to ins
 
 **Follow these steps:**
 
-1. Ensure that the following prerequisite software is installed on your PC:
+1. Ensure that the following prerequisite software is installed on your computer:
 
     -  [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 
@@ -27,7 +27,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your PC.
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your computer.
 
     **Note:** Optionally, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file on the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zowe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
 
@@ -39,7 +39,7 @@ If you do not have internet access at your site, use the following method to ins
 
     The command expands files into your working directory for Zowe CLI and Zowe CLI plug-ins.
 
-4. Issue the following command to install Zowe CLI on your PC:
+4. Issue the following command to install Zowe CLI on your computer:
 
     ```
     npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
@@ -50,7 +50,7 @@ If you do not have internet access at your site, use the following method to ins
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
-    Zowe CLI is installed on your PC. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
+    Zowe CLI is installed on your computer. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
 5. Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
 
@@ -62,11 +62,11 @@ After you install and configure Zowe CLI, you can issue the `zowe --help` com
 
 ### Installing Zowe CLI from online registry
 
-If your PC is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
+If your computer is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
 
 **Follow these steps:**
 
-1.  Ensure that the following prerequisite software is installed on your PC:
+1.  Ensure that the following prerequisite software is installed on your computer:
 
     - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 

@@ -204,8 +204,8 @@ Zowe CLI contains the following new features:
     - `zowe zos-jobs delete job` command: Lets you cancel a job and purge its output by providing the JOB ID.
     - `zowe zos-files upload file-to-uss` command: Lets you upload a local file to a file on USS.
     - `zowe zos-files download uss-file` command: Lets you download a file on USS to a local file.
-    - `zowe zos-jobs submit local-file` command: Lets you submit a job contained in a local file on your PC rather than a data set.
-    - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your PC.
+    - `zowe zos-jobs submit local-file` command: Lets you submit a job contained in a local file on your computer rather than a data set.
+    - `zowe zos-jobs download output` command: Lets you download the complete spool output for a job to a local directory on your computer.
     - The `zowe zos-jobs submit data-set` command and the `zowe zos-jobs submit local-file` command now contain a `--view-all-spool-content` option. The option lets you submit a job and view its complete spool output in one command.
 
 - **Visual Studio Code Extension for Zowe**

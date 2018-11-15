@@ -1,6 +1,6 @@
 # System requirements
 
-When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on PC.
+When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on your computer.
 
 Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
@@ -219,7 +219,7 @@ The following prerequisites for Windows, Mac, and Linux are required if you are 
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
-Ensure that the following prerequisite software is installed on your PC:
+Ensure that the following prerequisite software is installed on your computer:
 
 - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 

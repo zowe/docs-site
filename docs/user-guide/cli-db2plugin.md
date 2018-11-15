@@ -15,14 +15,14 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
 Use cases for Zowe CLI Db2 plug-in include:
   - Execute SQL and interact with databases.
   - Execute a file with SQL statements.
-  - Export tables to a local file on your PC in SQL format.
+  - Export tables to a local file on your computer in SQL format.
   - Call a stored procedure and pass parameters.
 
 ## Prerequisites
 
 Before you install the plug-in, meet the following prerequisites:
 
-  - [Install Zowe CLI](cli-installcli.md) on your PC.
+  - [Install Zowe CLI](cli-installcli.md) on your computer.
 
 ## Installing
 
@@ -60,7 +60,7 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
-2. Create a new directory named `odbc_cli`  on your PC. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
 3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.  
 
