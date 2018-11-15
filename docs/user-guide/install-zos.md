@@ -11,7 +11,7 @@ As a Zowe user, install the Zowe Application Framework, explorer server, and API
 
 To install API Mediation Layer, the Zowe Application Framework, and explorer server, you install the Zowe runtime on z/OS.
 
-**Follow these steps:**
+ **Follow these steps:**
 
 1. Navigate to the directory where the installation archive is extracted. Locate the `/install` directory.
 
@@ -33,27 +33,27 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
 
     - The zlux-server has three ports: the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
 
-**Example:**
+    **Example:**
 
-```yaml
-install:
- rootDir=/var/zowe/0.9.3
+    ```yaml
+    install:
+     rootDir=/var/zowe/0.9.3
 
-api-mediation:
-  catalogHttpPort=7552
-  discoveryHttpPort=7553
-  gatewayHttpsPort=7554
+    api-mediation:
+      catalogHttpPort=7552
+      discoveryHttpPort=7553
+      gatewayHttpsPort=7554
 
-explorer-server:
-  httpPort=7080
-  httpsPort=7443
+    explorer-server:
+      httpPort=7080
+      httpsPort=7443
 
-# http and https ports for the node server
-zlux-server:
-  httpPort=8543
-  httpsPort=8544
-  zssPort=8542
-```
+    # http and https ports for the node server
+    zlux-server:
+      httpPort=8543
+      httpsPort=8544
+      zssPort=8542
+    ```
 
 If all of the default port values are acceptable, then you do not need to change them. The ports must not be in use for the Zowe runtime servers to be able to allocate them.
 
@@ -61,12 +61,12 @@ Determine which ports are not available with the following procedure.
      
 **Follow these steps:**
 
-- To display a list of ports that are in use, issue the following command:
+1. Display a list of ports that are in use with the following command:
   ```
   TSO NETSTAT
   ```
 
-- To display a list of reserved ports, issue the following command:
+2. Display a list of reserved ports with the following command:
   ```
   TSO NETSTAT PORTLIST
   ```
@@ -82,69 +82,68 @@ terminals:
 
 3. Execute the `zowe-install.sh` script.
 
-With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
+    With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
-```
-zowe-install.sh  
-```
+    ```
+    zowe-install.sh  
+    ```
 
-You might receive the following error that the file cannot be executed.
+    You might receive the following error that the file cannot be executed.
 
-```
-zowe-install.sh: cannot execute
-```
-The error is due to that the install script does not have execute permission. To add execute permission, issue the following command:
+    ```
+    zowe-install.sh: cannot execute
+    ```
+    The error is due to that the install script does not have execute permission. To add execute permission, issue the following command:
 
-```
-chmod u+x zowe-install.sh.
-```
-
+    ```
+    chmod u+x zowe-install.sh.
+    ```
 4. Configure Zowe as a started task.
 
- The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
+    The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
 
- - If you use RACF, issue the following commands:
+  - If you use RACF, issue the following commands:
 
-   ```
-   RDEFINE STARTED ZOWESVR.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-   SETROPTS REFRESH RACLIST(STARTED)
-   ```
+    ```
+    RDEFINE STARTED ZOWESVR.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+    SETROPTS REFRESH RACLIST(STARTED)
+    ```
 
  - If you use CA ACF2, issue the following commands:
 
-   ```
-   SET CONTROL(GSO)
-   INSERT STC.ZOWESVR LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
-   F ACF2,REFRESH(STC)
-   ```
+    ```
+    SET CONTROL(GSO)
+    INSERT STC.ZOWESVR LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZOWESVR)
+    F ACF2,REFRESH(STC)
+    ```
 
  - If you use CA Top Secret, issue the following commands:
 
-   ```
-   TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
-   ```
+    ```
+    TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
+    ```
 
 5. Add the users to the required groups, IZUADMIN for administrators and IZUUSER for standard users.
 
  - If you use RACF, issue the following command:
 
-   ```
-   CONNECT (userid) GROUP(IZUADMIN)
-   ```
+    ```
+    CONNECT (userid) GROUP(IZUADMIN)
+    ```
 
  - If you use CA ACF2, issue the following commands:
  
-   ```
-   ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
-   F ACF2,REBUILD(TGR)
-   ```
+    ```
+    ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
+    F ACF2,REBUILD(TGR)
+    ```
 
  - If you use CA Top Secret, issue the following commands:
 
-   ```
-   TSS ADD(userid)  PROFILE(IZUADMIN)
-   TSS ADD(userid)  GROUP(IZUADMGP)
-   ```
+    ```
+    TSS ADD(userid)  PROFILE(IZUADMIN)
+    TSS ADD(userid)  GROUP(IZUADMGP)
+    ```
 
 When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. These are covered more in the section [Troubleshooting the installation](troubleshootinstall.md).
 
