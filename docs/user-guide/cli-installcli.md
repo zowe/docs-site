@@ -27,9 +27,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your computer.
-
-    **Note:** Optionally, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file on the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zowe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) to your computer.
 
 3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
@@ -37,9 +35,11 @@ If you do not have internet access at your site, use the following method to ins
     unzip zowe-cli-bundle.zip
     ```
 
-    The command expands files into your working directory for Zowe CLI and Zowe CLI plug-ins.
+    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the .zip file. You can extract the contents of the zip file to your preferred location.
 
 4. Issue the following command to install Zowe CLI on your computer:
+
+    **Note:** You might need to issue a change directory command and navigate to the location where you extracted the contents of the zip file before you issue the `npm install` command.
 
     ```
     npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
