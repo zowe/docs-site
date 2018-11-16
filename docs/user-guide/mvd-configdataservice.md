@@ -1,16 +1,16 @@
 # Configuration Dataservice
 
-The Configuration Dataservice is an essential component of the zLUX framework, which acts as a JSON resource storage service, and is accessible externally by REST API and internally to the server by dataservices.
+The Configuration Dataservice is an essential component of the Zowe Application Framework, which acts as a JSON resource storage service, and is accessible externally by REST API and internally to the server by dataservices.
 
-The Configuration Dataservice allows for saving preferences of applications, management of defaults and privileges within a zLUX ecosystem, and bootstrapping configuration of the server's dataservices.
+The Configuration Dataservice allows for saving preferences of applications, management of defaults and privileges within a Zowe ecosystem, and bootstrapping configuration of the server's dataservices.
 
-The fundamental element of extensibility of the zLUX framework is a plug-in. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
+The fundamental element of extensibility of the framework is a plug-in. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
 
 The behavior of the Configuration Dataservice is dependent upon the Resource structure for a plug-in. Each plug-in lists the valid resources, and the administrators can set permissions for the users who can view or modify these resources.
 
 ## Resource Scope
 
-Data is stored within the Configuration Dataservice according to the selected *Scope*. The intent of *Scope* within the Dataservice is to facilitate company-wide administration and privilege management of zLUX data.
+Data is stored within the Configuration Dataservice according to the selected *Scope*. The intent of *Scope* within the Dataservice is to facilitate company-wide administration and privilege management of Zowe Application Framework data.
 
 When a user requests a resource, the resource that is retrieved is an override or an aggregation of the broader scopes that encompass the *Scope* from which they are viewing the data.
 
@@ -24,11 +24,11 @@ Configuration defaults that come with the product. Cannot be modified.
 
 **Site**
 
-Data that can be used between multiple instances of the zLUX Server.
+Data that can be used between multiple instances of the Zowe Application Server.
 
 **Instance**
 
-Data within an individual zLUX Server.
+Data within an individual Zowe Application Server.
 
 **Group**
 
