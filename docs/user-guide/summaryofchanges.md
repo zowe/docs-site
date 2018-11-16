@@ -290,7 +290,7 @@ Zowe now contains a component named API Mediation Layer. You install API Mediati
 - The System Display and Search Facility (SDSF) of z/OS is no longer a prerequisite for installing explorer server.
 - The name of the PROC is now ZOWESVR rather than ZOESVR.
 
-**zLUX**
+**Zowe Application Framework**
 
 The mainframe account under which the ZSS server runs must have UPDATE permission on the `BPX.DAEMON` and `BPX.SERVER` facility class profiles.
 
