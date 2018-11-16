@@ -382,11 +382,12 @@ The following procedure enables you to refresh the API definitions after you cha
     
     `http://localhost:10011/discovery/api/v1/staticApi`
 
-    The Discovery Service requires authentication. If the API Mediation Layer is running on your local machine, the user ID is `eureka`, and the password is `password`.
+    The Discovery Service requires authentication by a client certificate. If the API Mediation Layer is running on your local machine, the certificate is stored at `keystore/localhost/localhost.pem`.
 
     This example uses the [HTTPie command-line HTTP client](https://httpie.org):
    
-        http -j -a eureka:password POST `http://localhost:10011/discovery/api/v1/staticApi`
+       http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST https://localhost:10011/discovery/api/v1/staticApi
+
 
 2. Check if your updated definition is effective.
 
