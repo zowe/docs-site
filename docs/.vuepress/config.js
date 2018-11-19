@@ -40,7 +40,7 @@ module.exports = {
       }
     },
     nav: [
-      { text: 'Getting started', link: '/getting-started/overview' },
+      { text: 'Getting Started', link: '/getting-started/overview' },
       { text: 'User Guide', link: '/user-guide/installandconfig' },
       { text: 'Extending', link: '/extend/zlux-example-server' },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
@@ -51,7 +51,7 @@ module.exports = {
     sidebar: {
       '/getting-started/': [
         {
-          title: 'Zowe overview',
+          title: 'What is Zowe?',
           collapsable: true,
           children: ['overview']
         },
@@ -93,7 +93,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Zowe extensions and plug-ins',
+          title: 'Zowe CLI extensions and plug-ins',
           collapsable: true,
           children: [
             'cli-extending',
@@ -114,56 +114,56 @@ module.exports = {
           title: 'Developing for Zowe Application Framework (zLUX)',
           collapsable: true,
           children: [
-            'mvd-extendingzlux',
-            'mvd-creatingappplugins',
-            'mvd-plugindefandstruct',
-            'mvd-dataservices',
-            'mvd-desktopandwindowmgt',
-            'mvd-configdataservice',
-            'mvd-uribroker',
-            'mvd-apptoappcommunication',
-            'mvd-errorreportingui',
-            'mvd-logutility',
-            'zlux-example-server',
-            'zlux-workshop-user-browser',
-            'zlux-tutorials',
-            'starter-intro',
-            'zlux-workshop-starter-app.md',
-            'ui-intro',
-            'iframe-sample',
-            'react-sample',
-            'angular-sample'
+            'extend-desktop/mvd-extendingzlux',
+            'extend-desktop/mvd-creatingappplugins',
+            'extend-desktop/mvd-plugindefandstruct',
+            'extend-desktop/mvd-dataservices',
+            'extend-desktop/mvd-desktopandwindowmgt',
+            'extend-desktop/mvd-configdataservice',
+            'extend-desktop/mvd-uribroker',
+            'extend-desktop/mvd-apptoappcommunication',
+            'extend-desktop/mvd-errorreportingui',
+            'extend-desktop/mvd-logutility',
+            'extend-desktop/zlux-example-server',
+            'extend-desktop/zlux-workshop-user-browser',
+            'extend-desktop/zlux-tutorials',
+            'extend-desktop/starter-intro',
+            'extend-desktop/zlux-workshop-starter-app.md',
+            'extend-desktop/ui-intro',
+            'extend-desktop/iframe-sample',
+            'extend-desktop/react-sample',
+            'extend-desktop/angular-sample'
           ]
         },
         {
           title: 'Developing for API Mediation Layer',
           collapsable: true,
           children: [
-            'api-mediation-onboard-overview',
-            'api-mediation-onboard-a-sprint-boot-rest-api-service',
-            'api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer',
-            'api-mediation-onboard-an-existing-java-jersey-rest-api-service',
-            'api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
+            'extend-apiml/api-mediation-onboard-overview',
+            'extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service',
+            'extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer',
+            'extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service',
+            'extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
         },
         {
           title: 'Developing for Zowe CLI',
           collapsable: true,
           children: [
-            'cli-devTutorials',
-            'cli-setting-up',
-            'cli-installing-sample-plugin',
-            'cli-extending-a-plugin',
-            'cli-developing-a-plugin',
-            'cli-implement-profiles']
+            'extend-cli/cli-devTutorials',
+            'extend-cli/cli-setting-up',
+            'extend-cli/cli-installing-sample-plugin',
+            'extend-cli/cli-extending-a-plugin',
+            'extend-cli/cli-developing-a-plugin',
+            'extend-cli/cli-implement-profiles']
         },
         {
           title: 'Developing JEE components',
           collapsable: true,
           children: [
-            'libertyAPI',
-            'ReactJSUI',
-            'api-intro',
-            'liberty-api-sample']
+            'extend-api/libertyAPI',
+            'extend-api/ReactJSUI',
+            'extend-api/api-intro',
+            'extend-api/liberty-api-sample']
         }
       ],
 	'/troubleshoot/': [
