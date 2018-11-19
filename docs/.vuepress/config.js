@@ -41,7 +41,14 @@ module.exports = {
     },
     nav: [
       { text: 'Getting Started', link: '/getting-started/overview' },
-      { text: 'User Guide', link: '/user-guide/installandconfig' },
+      { text: 'User Guide',
+      items: [
+                    { text: 'Installing Zowe', link: '/user-guide/installandconfig.md' },
+                    { text: 'Configuring Zowe', link: '/user-guide/mvd-configuration.md' },
+                    { text: 'Using Zowe', link: '/user-guide/using.md' },
+                    { text: 'Zowe CLI extensions and plug-ins', link: '/user-guide/cli-extending.md'}
+      ]
+      },
       { text: 'Extending',
       items: [
                     { text: 'Introduction', link: '/extend/extender-architecture.md' },
@@ -52,7 +59,7 @@ module.exports = {
       ]
       },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
-      { text: 'Contributing', link: '/contribute/CONTRIBUTING' },
+      { text: 'Contributing', link: '/contribute/contribute-doc' },
       { tags: ['versions'] }, // versions dropdown placeholder, it should be converted
       { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
@@ -60,12 +67,15 @@ module.exports = {
       '/getting-started/': [
         {
           title: 'What is Zowe?',
-          collapsable: true,
-          children: ['overview']
+          collapsable: false,
+          children: [
+            'overview',
+            'zowe-architecture'
+          ]
         },
         {
           title: 'Release notes',
-          collapsable: true,
+          collapsable: false,
           children: ['summaryofchanges']
         },
       ],
@@ -80,7 +90,6 @@ module.exports = {
             'gettingstarted',
             'install-zos',
             'cli-installcli',
-            'troubleshootinstall',
             'uninstall'
           ]
         },
@@ -176,17 +185,14 @@ module.exports = {
         }
       ],
 	'/troubleshoot/': [
-        {
-          title: 'FAQ',
-          collapsable: true,
-          children: ['troubleshootinstall']
-        },
+            'troubleshootinstall',
+            'faq'
       ],
 	'/contribute/': [
         {
           title: 'Contributing to documentation',
           collapsable: true,
-          children: ['CONTRIBUTING']
+          children: ['contribute-doc']
         },
       ],
       '/': ['about']
