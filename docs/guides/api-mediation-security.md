@@ -1,29 +1,28 @@
 # Zowe API Mediation Layer Security
 
-<!-- TOC depthFrom:2 depthTo:3 orderedList:true -->
+- [Introduction and requirements](#introduction-and-requirements)
+    - [Transport-level Security](#transport-level-security)
+    - [Authentication](#authentication)
+    - [Authorization](#authorization)
+    - [Types of services](#types-of-services)
+    - [Transport Security Requirements](#transport-security-requirements)
+    - [Authentication](#authentication-1)
+    - [Trust stores and key stores](#trust-stores-and-key-stores)
+- [Client Certificates](#client-certificates)
+    - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+- [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
+- [Running on localhost](#running-on-localhost)
+    - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
+    - [Certificate management script](#certificate-management-script)
+    - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
+    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
+    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
+    - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
+    - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
+    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
+    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost-1)
+    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost-1)
 
-1. [Introduction and requirements](#introduction-and-requirements)
-    1. [Transport-level Security](#transport-level-security)
-    2. [Authentication](#authentication)
-    3. [Authorization](#authorization)
-    4. [Types of services](#types-of-services)
-    5. [Transport Security Requirements](#transport-security-requirements)
-    6. [Authentication](#authentication-1)
-    7. [Trust stores and key stores](#trust-stores-and-key-stores)
-2. [Client Certificates](#client-certificates)
-3. [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
-4. [Running on localhost](#running-on-localhost)
-    1. [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
-    2. [Certificate management script](#certificate-management-script)
-    3. [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
-    4. [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
-    5. [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
-    6. [Zowe runtime on z/OS](#zowe-runtime-on-zos)
-    7. [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
-    8. [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost-1)
-    9. [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost-1)
-
-<!-- /TOC -->
 
 ## Introduction and requirements
 
@@ -200,7 +199,20 @@ API service trust store (for each service)
 
 A client certificate is a certificate that is used for validation of the HTTPS client.
 
-The client certificate of a Eureka client can be the same certificate as the server certificate of the services which the Eureka client.
+The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client.
+
+### Authentication to the Discovery Service
+
+The Discovery Service has two types of users that need to authenticate:
+
+1. Administrators and developers who need to login to the homepage of the Discovery Service
+   
+   - These users need to provide valid user ID and password (currently pre-configured user ID and password, it will be replaced by mainframe security in https://waffle.io/zowe/api-layer/cards/5bd8be8131cd76001dcddd77)
+
+2. Services that need to register to the Discovery Service
+
+    - These are not users that have user ID and password but other services 
+    - They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication
 
 
 ## Certificate Management in Zowe API Mediation Layer
@@ -241,6 +253,21 @@ https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-cert
 ### Add a service with an existing certificate to APIML on localhost
 
 This will be documented during work on the following user story: https://waffle.io/zowe/api-layer/cards/5bd8be80283e09001babbf86
+
+
+### Login to Discovery service on localhost
+
+You need to provide a valid client certificate if you want to access Discovery Service on localhost.
+
+The certificate is stored in the `keystore/localhost/localhost.keystore.p12` key store.
+
+Some utilities including HTTPie requires the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
+
+Since the Discovery Service is using HTTPS, your client has also verify the validity of its certificate. This can be done by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
+
+Example how to access Discovery Service from CLI with full certificate validation:
+
+    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
 
 
 ### Zowe runtime on z/OS
