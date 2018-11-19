@@ -42,7 +42,15 @@ module.exports = {
     nav: [
       { text: 'Getting Started', link: '/getting-started/overview' },
       { text: 'User Guide', link: '/user-guide/installandconfig' },
-      { text: 'Extending', link: '/extend/zlux-example-server' },
+      { text: 'Extending',
+      items: [
+                    { text: 'Introduction', link: '/extend/extender-architecture.md' },
+                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' },
+                    { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
+                    { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
+                    { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' }
+      ]
+      },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
       { text: 'Contributing', link: '/contribute/CONTRIBUTING' },
       { tags: ['versions'] }, // versions dropdown placeholder, it should be converted
@@ -79,7 +87,10 @@ module.exports = {
         {
           title: 'Configuring Zowe',
           collapsable: true,
-          children: ['mvd-configuration', 'cli-configuringcli']
+          children: [
+            'mvd-configuration',
+            'cli-configuringcli'
+          ]
         },
         {
           title: 'Using Zowe',
@@ -105,13 +116,9 @@ module.exports = {
         }
         ],
       '/extend/': [
+        `extender-architecture`,
         {
-          title: 'The Zowe Extender Environment',
-          collapsable: true,
-          children: ['zlux-example-server']
-        },
-        {
-          title: 'Developing for Zowe Application Framework (zLUX)',
+          title: 'Developing for Zowe Application Framework',
           collapsable: true,
           children: [
             'extend-desktop/mvd-extendingzlux',
@@ -143,7 +150,9 @@ module.exports = {
             'extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service',
             'extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer',
             'extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service',
-            'extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes']
+            'extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes',
+            'extend-apiml/api-mediation-onboarding'
+          ]
         },
         {
           title: 'Developing for Zowe CLI',
