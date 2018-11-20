@@ -28,7 +28,7 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 
 1. Click the Start menu.
 2. Locate the application you want to pin.
-3. Right-click the on the application icon and select **Pin to taskbar**.
+3. Right-click the application icon and select **Pin to taskbar**.
 
 
 ## Using Explorers within the Zowe Desktop
