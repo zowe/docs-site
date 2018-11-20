@@ -2,10 +2,11 @@
 
 As a Zowe user, install Zowe Application Framework, explorer server, and Zowe API Mediation Layer on z/OS to begin using Zowe.
 
-**Important!** 
+## Prerequisites 
+
 - Before you start the installation on z/OS, ensure that your environment meets the necessary requirements. For details, see [System requirements](systemrequirements.md).
 
-- The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag, which requires at least read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe on z/OS, but if this is not enabled at this time, it must be enabled before you run the `zowe-runtime-authorize.sh` script.
+- The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe on z/OS. However, if this access must be enabled before you run the `zowe-runtime-authorize.sh` script.
 
 ## Installing the Zowe runtime on z/OS
 
@@ -55,7 +56,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       zssPort=8542
     ```
 
-    If all of the default port values are acceptable, then you do not need to change them. The ports must not be in use for the Zowe runtime servers to be able to allocate them.
+    **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers. 
 
 3. Determine which ports are not available.
      
@@ -70,7 +71,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       TSO NETSTAT PORTLIST
       ```
 
-      The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This is to allow the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.  Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and explorer server which must be unused, the terminal ports are expected to be in use.
+      The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR uses different ports, edit the values. This allows the TN3270 terminal desktop application as well as the VT terminal desktop application to connect.  Unlike the ports which must not be in use which are needed by Zowe runtime for its Zowe Application Framework and explorer server, the terminal ports are expected to be in use.
 
      ```
      # Ports for the TN3270 and the VT terminal to connect to
@@ -87,7 +88,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     zowe-install.sh  
     ```
 
-    You might receive the following error that the file cannot be executed:
+    **Note:** You might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute
@@ -148,7 +149,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has three runtime components on z/OS, the explorer server, the Zowe Application Server, and Zowe API Mediation Layer. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers. Stopping ZOWESVR PROC stops all four servers.
+Zowe has three runtime components on z/OS: the explorer server, the Zowe Application Server, and Zowe API Mediation Layer. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers. Stopping ZOWESVR PROC stops all four servers.
 
 ### Starting the ZOWESVR PROC
 
@@ -162,7 +163,7 @@ where:
 
 _$ZOWE_ROOT_DIR_ is the directory where you installed the Zowe runtime. This script starts the ZOWESVR PROC for you so you don't have to log on to TSO and use SDSF.
 
-**Note:** The default startup allows self signed and expired certificates from the Zowe Application Framework proxy data services such as the explorer server.
+**Note:** The default startup allows self-signed and expired certificates from the Zowe Application Framework proxy data services such as the explorer server.
 
 If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following operator command in SDSF:
 
@@ -178,7 +179,7 @@ By default, Zowe uses the runtime version that you most recently installed. To s
 
 To test whether the explorer server is active, open the URL: `https://<hostname>:7443/explorer-mvs`.
 
-The port number 7443 is the default port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See [Installing Zowe runtime on z/OS](install-zos.md).
+The port number `7443` is the default port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See [Installing Zowe runtime on z/OS](install-zos.md).
 
 ### Stopping the ZOWESVR PROC
 
