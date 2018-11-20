@@ -14,7 +14,7 @@ Review the following troubleshooting tips if you have problems with Zowe install
 
     The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
 
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
+     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.  
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location.  The install script will not continue unless valid locations are provided.  
 

@@ -222,14 +222,14 @@ After you complete the installation of API Mediation, Zowe Application Framework
 
 If the Zowe Application Framework is installed correctly, you can open the Zowe Desktop from a supported browser.
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 where:
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
 
 ### Verifying explorer server installation
 
