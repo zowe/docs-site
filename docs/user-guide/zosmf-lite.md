@@ -473,7 +473,7 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom** | **Cause** | **Resolution**
 ---|---|---
-To be added       |     User id is not connected to IZUADMIN or IZUUSER      |    Connect your user id to IZUADMIN or IZUUSER            
+401 Unauthorized       |     User ID is not connected to IZUADMIN or IZUUSER      |    Connect your user ID to IZUADMIN or IZUUSER            
 Another problem… |           |                 
 Another problem… |           |                
 Another problem… |           |                
@@ -507,13 +507,25 @@ TSOASMGR: ALLOWED: 50 IN USE: 0 HIGHCNT: 0
 
 #### Procedure
 
-1.	In the system library `SYS1.SAMPLIB`, locate the job IZUTSSEC.
-2.	Make a copy of the job.
-3.	Examine the contents of the job.
-4.	Modify the contents so that the job will run on your system.
-5.	From the TSO/E command line, run the IZUTSSEC job.
+1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
+2.	Review and edit job IZUTSSEC before you submit. You can review the IZUTSSEC section below for more details.
+3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 
-TBD: Insert the command here
+#### IZUTSSEC
+IBM provides a set of jobs in `SYS1.SAMPLIB` with sample RACF commands to help with your z/OSMF configuration and its prerequisites. The IZUTSSEC job represents the authorizations that are needed for the z/OSMF TSO/E address space service. Your security administrator can edit and run the job.
+Generally, your z/OSMF user ID requires the same authorizations for using the TSO/E address space services as when you perform these operations through a TSO/E session on the z/OS system. For example, to start an application in a TSO/E address space requires that your user ID be authorized to operate that application.
+In addition, to use TSO/E address space services, you must have:
+-   READ access to the account resource in class ACCTNUM, where account is the value specified in the COMMON_TSO ACCT option in parmlib.
+-   READ access to the CEA.CEATSO.TSOREQUEST resource in class SERVAUTH.
+-   READ access to the proc resource in class TSOPROC, where proc is the value specified with the COMMON_TSO PROC option in parmlib.
+-   READ access to the <SAF_PREFIX>.*.izuUsers profile in the EJBROLE class. Or, at a minimum, READ access to the <SAF_PREFIX>.IzuManagementFacilityTsoServices.izuUsers resource name in the EJBROLE class.
+You must also ensure that the z/OSMF started task user ID, which is IZUSVR by default, has READ access to the CEA.CEATSO.TSOREQUEST resource in class SERVAUTH.
+To create a TSO/E address space on a remote system, you require the following authorizations:
+-   You must be authorized to the SAF resource profile that controls the ability to send data to the remote system (systemname), as indicated:
+CEA.CEATSO.FLOW.systemname
+-   To flow data between different systems in the sysplex, you must be authorized to do so by your external security manager, such as a RACF database with sysplex-wide scope. For example, to flow data between System A and System B, you must be permitted to the following resource profiles:
+CEA.CEATSO.FLOW.SYSTEMA
+CEA.CEATSO.FLOW.SYSTEMB
 
 #### Results
 The IZUTSSEC job should complete with return code 0000.
