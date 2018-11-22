@@ -4,11 +4,11 @@ Zowe is a collection of components that together form a framework that allows Z 
 
 The following diagram depicts the high level Zowe architecture.
 
-![](../images/common/zowe-architecture-highlevel.png)
+
 
 The following diagram depicts a more comprehensive Zowe architecture.
 
-![](../images/common/zowe-architecture-comprehensive.gif)
+
 
 
 ## API Mediation Layer
