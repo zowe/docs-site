@@ -51,12 +51,12 @@ module.exports = {
       },
       { text: 'Extending',
       items: [
-                    { text: 'Introduction', link: '/extend/extender-architecture.md' },
-                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' },
+                    { text: 'Onboarding', link: '/extend/extender-architecture.md' },
+                    { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' },
                     { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
                     { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
-                    { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' }
-      ]
+                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' }
+            ]
       },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
       { text: 'Contributing', link: '/contribute/contribute-doc' },
@@ -125,31 +125,20 @@ module.exports = {
         }
         ],
       '/extend/': [
-        `extender-architecture`,
+        `extender-architecture`,  
         {
-          title: 'Developing for Zowe Application Framework',
+          title: 'Onboarding Scenarios',
           collapsable: true,
           children: [
-            'extend-desktop/mvd-extendingzlux',
-            'extend-desktop/mvd-creatingappplugins',
-            'extend-desktop/mvd-plugindefandstruct',
-            'extend-desktop/mvd-dataservices',
-            'extend-desktop/mvd-desktopandwindowmgt',
-            'extend-desktop/mvd-configdataservice',
-            'extend-desktop/mvd-uribroker',
-            'extend-desktop/mvd-apptoappcommunication',
-            'extend-desktop/mvd-errorreportingui',
-            'extend-desktop/mvd-logutility',
-            'extend-desktop/zlux-example-server',
-            'extend-desktop/zlux-workshop-user-browser',
-            'extend-desktop/zlux-tutorials',
-            'extend-desktop/starter-intro',
-            'extend-desktop/zlux-workshop-starter-app.md',
-            'extend-desktop/ui-intro',
-            'extend-desktop/iframe-sample',
-            'extend-desktop/react-sample',
-            'extend-desktop/angular-sample'
-          ]
+            'extend-api/existingApp',
+            'extend-api/existingAPI']
+        },
+        {
+          title: 'Developing JEE components',
+          collapsable: true,
+          children: [
+            'extend-api/libertyAPI',
+            'extend-api/liberty-api-sample']
         },
         {
           title: 'Developing for API Mediation Layer',
@@ -175,14 +164,31 @@ module.exports = {
             'extend-cli/cli-implement-profiles']
         },
         {
-          title: 'Developing JEE components',
+          title: 'Developing for Zowe Application Framework',
           collapsable: true,
           children: [
-            'extend-api/libertyAPI',
-            'extend-api/ReactJSUI',
-            'extend-api/api-intro',
-            'extend-api/liberty-api-sample']
-        }
+            'extend-desktop/mvd-extendingzlux',
+            'extend-desktop/mvd-creatingappplugins',
+            'extend-desktop/mvd-plugindefandstruct',
+            'extend-desktop/mvd-dataservices',
+            'extend-desktop/mvd-desktopandwindowmgt',
+            'extend-desktop/mvd-configdataservice',
+            'extend-desktop/mvd-uribroker',
+            'extend-desktop/mvd-apptoappcommunication',
+            'extend-desktop/mvd-errorreportingui',
+            'extend-desktop/mvd-logutility',
+            'extend-desktop/zlux-example-server',
+            'extend-desktop/zlux-workshop-user-browser',
+            'extend-desktop/zlux-tutorials',
+            'extend-desktop/starter-intro',
+            'extend-desktop/zlux-workshop-starter-app.md',
+            'extend-desktop/ui-intro',
+            'extend-desktop/iframe-sample',
+            'extend-desktop/react-sample',
+            'extend-desktop/angular-sample',
+            'extend-api/ReactJSUI'
+          ]
+        } 
       ],
 	'/troubleshoot/': [
             'troubleshootinstall',

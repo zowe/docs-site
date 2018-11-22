@@ -1,6 +1,6 @@
 # Java  REST APIs with Spring Boot 
 
-Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../user-guide/overview.html#api-mediation-layer).
+Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../user-guide/overview.html#api-mediation-layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
@@ -345,7 +345,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
-         ![Service Status](../images/api-mediation/Service-Status.png)
+         ![Service Status](../../images/api-mediation/Service-Status.png)
 
          **Tip:** We recommend that you provide a good default value or give good naming examples to the customers.
       * **mfaas.discovery.info.description**
@@ -405,7 +405,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
     The following parameters describe the function of the specific version of an API. This information is included in the swagger JSON and displayed in the API Catalog:
 
-    ![API information detail](../images/api-mediation/Service-detail.png)
+    ![API information detail](../../images/api-mediation/Service-detail.png)
 
 
    * **v1**

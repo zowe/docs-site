@@ -4,7 +4,7 @@
 [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 :::
 
-This sample is a boilerplate for creating Rest API's using a liberty. For more information, visit [Creating a RestAPI with Swagger documentation using Liberty](../guides/libertyAPI.md).
+This sample is a boilerplate for creating Rest API's using a liberty. For more information, visit [Creating a RestAPI with Swagger documentation using Liberty](./libertyAPI.md).
 
 ## To Install
 
@@ -33,7 +33,7 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
 1.  Check the Browser to see if the REST APIs have been added.
     - _EX_: `<base>:<yourport>/ibm/api/explorer/#/`
 
-<img src="../images/common/SampleMicroservesLook.png" alt="view" align=center/>
+<img src="../../images/common/SampleMicroservesLook.png" alt="view" align=center/>
 
 ::: tip
 Make sure to set file transfer mode to binary before the transfer.
