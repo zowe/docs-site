@@ -91,7 +91,7 @@ In the APIML, the authorization is done by z/OS security manager ([CA ACF2](http
     - API Services can be API Clients to (when they access other services)
 
 Following diagram show basic relationships between services:
-![Services Diagram](../images/api-mediation/apiml-components.svg)
+![Services Diagram](../../images/api-mediation/apiml-components.svg)
 
 
 ### Transport Security Requirements

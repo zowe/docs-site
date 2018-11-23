@@ -148,8 +148,7 @@ module.exports = {
             'extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service',
             'extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer',
             'extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service',
-            'extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes',
-            'extend-apiml/api-mediation-onboarding'
+            'extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes'
           ]
         },
         {
