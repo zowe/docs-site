@@ -273,3 +273,31 @@ You can either set environment variables using the `SET` command within your scr
 Automation tools such as Jenkins automation server usually provide a mechanism for securely storing configuration (for example, credentials). In Jenkins, you can use `withCredentials` to expose credentials as an environment variable (ENV) or Groovy variable.
 
 **Note:** For more information about using this feature in Jenkins, see [Credentials Binding Plugin](https://jenkins.io/doc/pipeline/steps/credentials-binding/) in the Jenkins documentation.
+
+#### Accessing API mediation layers
+
+An API mediation layer provides a single point of access to a defined set of microservices. API mediation layers provide cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation.
+
+When Zowe CLI executes commands that connect to an API through a mediation later, the layer routes the command execution requests to an appropriate instance of the API, based on the system load and the available instances of the API.
+
+Use the `--base-path` option to let all of your Zowe CLI core command groups (excludes plug-in groups) access REST APIs through an API mediation layer. To access API mediation layers, you specify the base path, or URL, to the API gateway as you execute your commands. Optionally, you can define the base path URL as an environment variable or in a profile that you create.
+
+**Examples:**
+
+The following example illustrates the base path for a REST request that is not connecting through an API mediation layer to one system where an instance of z/OSMF is running:
+
+```
+https://mymainframehost:port/zosmf/restjobs/jobs
+```
+
+The following example illustrates the base path (named `api/v1/zosmf1)` for a REST request to an API mediation layer:
+
+```
+https://myapilayerhost:port/api/v1/zosmf1/zosmf/restjobs/jobs
+```
+
+The following example illustrates the command to verify that you can connect to z/OSMF through an API mediation later that contains the base path my/api/layer:
+
+```
+bright zosmf check status -H myhost -P myport -u myuser --pw mypass --base-path my/api/layer
+```
