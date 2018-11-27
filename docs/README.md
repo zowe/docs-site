@@ -8,27 +8,27 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 <div class="features">
   <div class="feature">
     <h2><a href="./getting-started/overview.html">Getting Started</a></h2>
-    <p>Find the Zowe architecture, overview, and what's new information to get started with Zowe.</p>
+    <p>Get started with Zowe architecture and components; read about what’s new and changed in the Release Notes.</p>
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
-    <p>Learn about how to install Zowe locally and on the mainframe and how to install Zowe extensions and plug-ins.</p>
+    <p>Find out how to install, configure, and use Zowe Application Framework, explorer server, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
     <h2><a href="./extend/extender-architecture.html">Extending</a></h2>
-    <p>Find guides, tutorials and samples for how to develop on Zowe.</p>
+    <p>Learn about onboarding your products. Developers can follow tutorials the teach how to build and extend Zowe components.</p>
   </div>
   <div class="feature">
     <h2><a href="./troubleshoot/troubleshootinstall.html">Troubleshooting</a></h2>
-    <p>Find some of the most frequent questions and troubleshooting information.</p>
+    <p>Get troubleshooting tips and answers to your most frequently asked questions.</p>
   </div>
   <div class="feature">
     <h2><a href="./contribute/contribute-doc.html">Contributing</a></h2>
-    <p>Learn about how to contribute to this documentation.</p>
+    <p>Learn about how you can contribute to this documentation.</p>
   </div>
   <div class="feature">
     <h2><a href="https://zowe.org/home/">Getting Help</a></h2>
-    <p>Check out extra help resources like Slack channel and additional FAQs on Zowe.org.</p>  
+    <p>Visit Zowe.org where you can experience our beta application and join Zowe communities.</p>  
   </div>
 </div>
 
