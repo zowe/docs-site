@@ -40,7 +40,12 @@ module.exports = {
       }
     },
     nav: [
-      { text: 'Getting Started', link: '/getting-started/overview' },
+      { text: 'Getting Started', 
+      items: [
+                    { text: 'Zowe overview', link: '/getting-started/overview'},
+                    { text: 'Release notes', link: '/getting-started/summaryofchanges'}
+      ]
+      },
       { text: 'User Guide',
       items: [
                     { text: 'Installing Zowe', link: '/user-guide/installandconfig.md' },
