@@ -302,6 +302,6 @@ The following example illustrates the command to verify that you can connect to 
 bright zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
-More Information:
+**More Information:**
 - [API Mediation Layer overview](api-mediation-overview.md)
 - [Creating a profile to access an API Mediation Layer](cli-installcli.md#Creating-a-profile-to-access-an-API-Mediation-Layer)
