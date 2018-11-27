@@ -118,19 +118,23 @@ unless you specify a specific profile name on that command.
     ```
 **Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
 
-### Creating a profile to access an API mediation layer
+### Creating a profile to access an API Mediation Layer
 
-Zowe CLI lets you create profiles that can access an exposed API or an API mediation layer. The following methods describe how you can create profiles that can access an API.
-* When you create a profile, specify the host and port of the API that you want to access in your profile. With only the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
-* When you create a profile, specify the host and port and the base path of the API mediation layer that you want to access in your profile. Using the base path to an API mediation layer, Zowe CLI connects an API mediation layer that routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
+You can create profiles that access an either an exposed API or an API Mediation Layer in the following ways:
+
+* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
+
+* When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
 
 **Example:**
 
-The following example illustrates the command to create a profile that connects to z/OSMF through an API mediation layer that uses the base path my/api/layer:
+The following example illustrates the command to create a profile that connects to z/OSMF through API Mediation Layer with the base path `my/api/layer`:
 
 ```
-bright profiles create zosmf myprofile -H myhost -P my port -u myuser --pw mypass --base-path my/api/layer
+bright profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
+
+For more information, see [Accessing an API Mediation Layer](cli-using.md#accessing-an-api-mediation-layer).
 
 ## Testing Zowe CLI connection to z/OSMF
 After you configure a Zowe CLI `zosmf` profile to connect to z/OSMF on your mainframe systems, you can issue a command at any time to receive diagnostic information from the server and confirm that your profile can communicate with z/OSMF.

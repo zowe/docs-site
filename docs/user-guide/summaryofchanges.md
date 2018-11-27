@@ -15,7 +15,7 @@ Zowe Open Beta includes the following releases:
 Version 0.9.4 contains the following changes since the last version.
 
 ### What's new in Zowe CLI
-Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer.
+Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](cli-usingcli.md#accessing-an-api-mediation-layer) for more information.
 
 ### What's new in Explorer Server
 #### Enhanced JES explorer app
