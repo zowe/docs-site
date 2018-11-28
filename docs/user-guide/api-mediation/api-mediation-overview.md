@@ -15,7 +15,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 ## API Mediation Layer architecture 
 The following diagram illustrates the single point of access with the API Gateway and the interactions between the API Gateway, API Catalog, and the Discovery Service:   
 
-![API Mediation Layer Architecture diagram](../diagrams/image2018-2-26%2014_53_46.png)
+![API Mediation Layer Architecture diagram](diagrams/image2018-2-26%20 14_53_46.png)
 
 ## Components
 The API Layer consists of the following key components:
