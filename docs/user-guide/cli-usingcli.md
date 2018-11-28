@@ -274,9 +274,9 @@ Automation tools such as Jenkins automation server usually provide a mechanism f
 
 **Note:** For more information about using this feature in Jenkins, see [Credentials Binding Plugin](https://jenkins.io/doc/pipeline/steps/credentials-binding/) in the Jenkins documentation.
 
-#### Accessing an API Mediation Layer
+#### Accessing API Mediation Layer
 
-The API Mediation Layer provides a single point of access to a defined set of microservices. API Mediation Layers provide cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation.
+The API Mediation Layer provides a single point of access to a defined set of microservices. The API Mediation Layer provides cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
 When Zowe CLI executes commands that connect to a service through the API Mediation Layer, the layer routes the command execution requests to an appropriate instance of the API. The routing path is based on the system load and available instances of the API.
 
