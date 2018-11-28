@@ -303,5 +303,5 @@ bright zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --ba
 ```
 
 **More Information:**
-- [API Mediation Layer overview](api-mediation-overview.md)
+- [API Mediation Layer overview](api-mediation/api-mediation-overview.md)
 - [Creating a profile to access an API Mediation Layer](cli-installcli.md#Creating-a-profile-to-access-an-API-Mediation-Layer)
