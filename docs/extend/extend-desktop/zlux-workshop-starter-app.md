@@ -12,4 +12,4 @@ The App's scenario is that it has been opened to submit a task report to a set o
 In this case, it is a bug report. We want to find engineers who can fix this bug, but this App does not hold a directory listing for engineers in the company, so we need to communicate with some App which does provide this information.
 In this tutorial, you must build an App which is called by this App in order to list Engineers, is able to be filtered by the office that they work from, and is able to submit a list of engineers which would be able to handle the task.
 
-After installing this app on your system, follow directions in the [User Browser Tutorial](../guides/zlux-workshop-user-browser.md) to enable app to app communication.
+After installing this app on your system, follow directions in the [User Browser Tutorial](zlux-workshop-user-browser.md) to enable app to app communication.
