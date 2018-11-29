@@ -18,7 +18,7 @@ Version 0.9.4 contains the following changes since the last version.
 
 #### Integrate Zowe CLI with API Mediation Layer 
 
-Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](cli-usingcli.md#accessing-an-api-mediation-layer) for more information.
+Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.md#accessing-an-api-mediation-layer) for more information.
 
 #### Zowe CLI standalone download available
 
@@ -68,7 +68,7 @@ With the new order of precedence, Zowe CLI now supports the following capabiliti
 
 - **Use the credential managers that CI/CD orchestration tools provide, such as *Jenkins*, by defining sensitive information in environment variables.**
 
-    See [Setting environment variables for command arguments and options](cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature.
+    See [Setting environment variables for command arguments and options](../user-guide/cli-usingcli.html#setting-environment-variables-for-command-arguments-and-options) for more information about this feature.
 
 ### What's changed in Zowe CLI
 
@@ -127,7 +127,7 @@ The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the e
 
 - All explorer server REST APIs are changed. The `/Atlas/api/` portion of an explorer server REST API is changed to `/api/v1/`. For example, `GET /Atlas/api/datasets/{filter}` is changed to `GET /api/v1/datasets/{filter}`.
 
-  For a list of the new APIs, see [Using APIs](usingapis.md).
+  For a list of the new APIs, see [Using APIs](../user-guide/usingapis.md).
 
 ### What's Changed in the Zowe CLI
 
@@ -155,12 +155,12 @@ This version of Zowe CLI contains the following changes:
     bright profiles create zosmf
     ```
 
-    **Tip:** For more information, see [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile).
+    **Tip:** For more information, see [Create a Zowe CLI profile](../user-guide/cli-installcli.html#creating-a-zowe-cli-profile).
 
     **Notes:**
 
     - In future versions of Zowe CLI, plug-ins will be available that let you store your user credentials securely, which is similar to the previous behavior.
-    - As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](systemrequirements.html#system-requirements-for-zowe-cli).  
+    - As mentioned in the previous bullet, Zowe CLI no longer uses keytar to store credentials securely in your operating system's credential vault. As a result, Zowe CLI requires only **Node.js** and **npm** as prerequisite software. For more information, see [System Requirements for Zowe CLI](../user-guide/systemrequirements.html#system-requirements-for-zowe-cli).  
 
 #### Bug fixes
 
@@ -215,7 +215,7 @@ Zowe CLI contains the following new features:
     - Deploy changes to CICS regions for testing or delivery.
     - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
 
-    For more information, see [Zowe CLI Plug-in for IBM CICS](cli-cicsplugin.md).
+    For more information, see [Zowe CLI Plug-in for IBM CICS](../user-guide/cli-cicsplugin.md).
 
 - **`zos-jobs` and `zos-files` commands and command options**
 
@@ -230,7 +230,7 @@ Zowe CLI contains the following new features:
 
 - **Visual Studio Code Extension for Zowe**
 
-    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](cli-vscodeplugin.md).
+    The Visual Studio Code (VSCode) Extension for Zowe is now available. You can install the extension directly to Visual Studio Code to enable the extension within the UI. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. For more information, see [VSCode Extension for Zowe](../user-guide/cli-vscodeplugin.md).
 
 #### New in API Mediation Layer
 
@@ -243,8 +243,8 @@ API Mediation Layer Version 0.9.1 contains the following new functionality and f
     - The Swagger user interface component was implemented for more standardized look and feel.
     - The Tile view now contains a Search bar.
 - API Mediation Layer documentation now contains the following tutorials:
-    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](../guides/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md).
-    - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](../guides/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
+    - [Onboard an existing Java REST API service without Spring Boot with Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md).
+    - [Onboard an existing Spring Boot REST API service with Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md).
 
 #### Enhanced JES Explorer
 
@@ -296,7 +296,7 @@ Version 0.9.0 is the first Open Beta version for Zowe. This version contains the
 
 **New component - API Mediation Layer**
 
-Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](overview.html#api-mediation-layer) and [Installing the Zowe Application Framework, explorer server, and API Mediation Layer](install-zos.html#installing-the-zowe-runtime-on-z-os).
+Zowe now contains a component named API Mediation Layer. You install API Mediation Layer when you install the Zowe runtime on z/OS. For more information, see [API Mediation Layer](overview.html#api-mediation-layer) and [Installing the Zowe Application Framework, explorer server, and API Mediation Layer](../user-guide/install-zos.html#installing-the-zowe-runtime-on-z-os).
 
 ### What's changed
 
