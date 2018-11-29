@@ -18,7 +18,7 @@ Version 0.9.4 contains the following changes since the last version.
 
 #### Integrate Zowe CLI with API Mediation Layer 
 
-Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.md#accessing-an-api-mediation-layer) for more information.
+Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.html#accessing-an-api-mediation-layer) for more information.
 
 #### Zowe CLI standalone download available
 

@@ -125,7 +125,7 @@ To read each complete license, navigate to the GitHub repository and download th
 **More Information:**
 
   - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
-  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
+  - [Installing Zowe CLI](../user-guide/cli-installcli.html)
 
 ## API Mediation Layer
 
