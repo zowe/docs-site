@@ -10,8 +10,6 @@ The numbers are incremented each time a release is created so the higher the num
 
 You can download the PAX file from the [Zowe website](https://zowe.org/download/). After you obtain the PAX file, verify the PAX file and prepare it to install the Zowe runtime.
 
-**Note:** Optionally, if you want to install ***only*** Zowe Command Line Interface (CLI), click the *DOWNLOAD Zowe Command Line Interface* button on the [Download](https://zowe.org/download/) website, and follow the instructions for installing ***Zowe CLI from a local package*** in the article [Installing Zowe CLI](cli-installcli.md).
-
 **Follow these steps:**
 
 1. Verify the downloaded PAX file.

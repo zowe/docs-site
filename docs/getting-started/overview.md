@@ -20,7 +20,7 @@ The Zowe Application Framework modernizes and simplifies working on the mainfram
 
 - The web UI works with the underlying REST APIs for data, jobs, and subsystem, but presents the information in a full screen mode as compared to the command line interface.
 - The web UI makes use of leading-edge web presentation technology and is also extensible through web UI plug-ins to capture and present a wide variety of information.
-- The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL. General purpose data set actions for Unix System Services (USS) and MVS data sets and Job Entry System (JES) logs can be performed through the web UI.
+- The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL along with general purpose data set actions for both Unix System Services (USS) and Partitioned Data Sets (PDS) plus Job Entry System (JES) logs.
 
 The Zowe Application Framework consists of the following components:
 

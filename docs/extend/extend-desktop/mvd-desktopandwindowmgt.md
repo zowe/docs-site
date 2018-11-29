@@ -6,6 +6,7 @@ The code for this software is in the `zlux-app-manager` repository.
 
 The interface for building an alternative window manager is in the `zlux-platform` repository.
 
+
 Window Management acts upon Windows, which are visualizations of an instance of an application plug-in. Application plug-ins are plug-ins of the type "application", and therefore the Zowe Desktop operates around a collection of plug-ins.
 
 **Note:** Other objects and frameworks that can be utilized by application plug-ins, but not related to window management, such as application-to-application communication, Logging, URI lookup, and Auth are not described here.
@@ -20,7 +21,7 @@ The Zowe Desktop has a taskbar at the bottom of the page, where it displays each
 
 ## Plug-in management
 
-Application plug-ins can gain insight into the environment in which they were spawned through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the Zowe Desktop is running, you can access the Plugin Manager through ```ZoweZLUX.PluginManager```
+Application plug-ins can gain insight into the environment in which they were spawned through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the Zowe Desktop is running, you can access the Plugin Manager through ```RocketMVD.PluginManager```
 
 The following are the functions you can use on the Plugin Manager:
 
@@ -44,13 +45,12 @@ The following are functions of an Application Manager:
 ## Windows and Viewports
 
 When a user clicks an application plug-in's icon on the taskbar, an instance of the application plug-in is started and presented within a Viewport, which is encapsulated in a Window within the Zowe Desktop.
-
 Every instance of an application plug-in's web content within Zowe is given context and can listen on events about the Viewport and Window it exists within, regardless of whether the Window Manager implementation utilizes these constructs visually. It is possible to create a Window Manager that only displays one application plug-in at a time, or to have a drawer-and-panel UI rather than a true windowed UI.
 
 When the Window is created, the application plug-in's web content is encapsulated dependent upon its framework type. The following are valid framework types:
 
 * *"angular2"*: The web content is written in Angular, and packaged with Webpack. Application plug-in framework objects are given through @injectables and imports.
-* *"iframe"*: The web content can be written using any framework, but is included through an iframe tag. Application plug-ins within an iframe can access framework objects through *parent.ZoweZLUX* and callbacks.
+* *"iframe"*: The web content can be written using any framework, but is included through an iframe tag. Application plug-ins within an iframe can access framework objects through *parent.RocketMVD* and callbacks.
 
 In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plugin Manager.
 

@@ -27,9 +27,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation bundle (`zowe-cli-bundle.zip`) as a stand-alone package directly to your PC.
-
-    **Note:** Optionally, you can obtain the Zowe CLI installation files from the Zowe zOS Components pax file on the [Download](https://zowe.org/download/) website. However, we recommend that you download the Zowe CLI installation bundle as a stand-alone package when you want to install Zowe CLI quickly. For more information, see [Obtaining installation files](gettingstarted.md).
+2. [Obtain the Zowe installation media](gettingstarted.md). The Zowe installation media contains the `zowe-cli-bundle.zip` file. Use FTP to distribute the zip file to client workstations.
 
 3. Open a command line window. For example, Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation bundle (.zip file). Issue the following command to unzip the files:
 
@@ -59,6 +57,7 @@ If you do not have internet access at your site, use the following method to ins
     **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
+
 
 ### Installing Zowe CLI from online registry
 

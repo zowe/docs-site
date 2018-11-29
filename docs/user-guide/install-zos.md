@@ -76,17 +76,8 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
         sshPort=22
         telnetPort=23
     ```
-3. Execute the `zowe-verify-pre-install.sh` script.
 
-    With the current directory being the `/install` directory, execute the script `zowe-verify-pre-install.sh` by issuing the following command:
-
-    ```
-    zowe-verify-pre-install.sh
-    ```
-
-    This script checks the basic pre-requisites for Zowe on your z/OS system before you install the Zowe runtime.  The script writes its messages to your terminal window.  The results will be marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and re-run the `zowe-verify-pre-install.sh` script before you run the `zowe-install.sh` script.  The `zowe-verify-pre-install.sh` script does not change any settings, so you can run it as often as required.
-
-4. Execute the `zowe-install.sh` script.
+3. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
@@ -106,7 +97,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
     chmod u+x zowe-install.sh.
     ```
 
-5. Configure Zowe as a started task.
+4. Configure Zowe as a started task.
 
      The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
 
@@ -131,7 +122,7 @@ To install API Mediation Layer, the Zowe Application Framework, and explorer ser
         TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
         ```
 
-6. Add the users to the required groups, IZUADMIN for administrators and IZUUSER for standard users.
+5. Add the users to the required groups, IZUADMIN for administrators and IZUUSER for standard users.
 
      - If you use RACF, issue the following command:
 
@@ -227,30 +218,18 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 After you complete the installation of API Mediation, Zowe Application Framework, and explorer server, use the following procedures to verify that the components are installed correctly and are functional.
 
-### Verifying Zowe configuration
-
-Once Zowe is running and the startup sequence is complete, navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where $ZOWE_ROOT_DIR is the location of the Zowe runtime directory that contains the explorer server.  
-
-Now run the `zowe-verify-post-install.sh` script by issuing the command
-
-```
-zowe-verify-post-install.sh
-```
-
-This script checks the configuration files and jobs for Zowe on your z/OS system.  The script writes its messages to your terminal window.  The results will be marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and re-start the Zowe server.  The `zowe-verify-post-install.sh` script does not change any settings, so you can run it as often as required.
-
 ### Verifying Zowe Application Framework installation
 
 If the Zowe Application Framework is installed correctly, you can open the Zowe Desktop from a supported browser.
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
 
 where:
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.htm`.
 
 ### Verifying explorer server installation
 

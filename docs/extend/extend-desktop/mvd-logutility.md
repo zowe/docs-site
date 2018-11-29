@@ -37,7 +37,7 @@ Component loggers are created from the core logger object, but when working with
 
 #### App Server
 
-See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
+See **Router Dataservice Context** in the topic [zLUX dataservices](mvd-dataservices.md).   
 
 
 #### Web
@@ -119,4 +119,4 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Zowe Application Framework  configuration](mvd-configuration.html#zowe-application-framework-configuration).
+For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](mvd-configuration.html#zowe-application-framework-configuration).
