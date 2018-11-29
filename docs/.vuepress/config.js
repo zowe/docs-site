@@ -40,7 +40,7 @@ module.exports = {
       }
     },
     nav: [
-      { text: 'Getting Started', 
+      { text: 'Getting Started',
       items: [
                     { text: 'Zowe overview', link: '/getting-started/overview'},
                     { text: 'Release notes', link: '/getting-started/summaryofchanges'}
@@ -74,8 +74,7 @@ module.exports = {
           title: 'What is Zowe?',
           collapsable: false,
           children: [
-            'overview',
-            'zowe-architecture'
+            'overview'
           ]
         },
         {
@@ -130,14 +129,6 @@ module.exports = {
         }
         ],
       '/extend/': [
-        `extender-architecture`,  
-        {
-          title: 'Onboarding Scenarios',
-          collapsable: true,
-          children: [
-            'extend-api/existingApp',
-            'extend-api/existingAPI']
-        },
         {
           title: 'Developing JEE components',
           collapsable: true,
@@ -192,11 +183,10 @@ module.exports = {
             'extend-desktop/angular-sample',
             'extend-api/ReactJSUI'
           ]
-        } 
+        }
       ],
 	'/troubleshoot/': [
-            'troubleshootinstall',
-            'faq'
+            'troubleshootinstall'
       ],
 	'/contribute/': [
         {

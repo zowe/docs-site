@@ -1,4 +1,4 @@
-# FAQ (To be updated)
+# FAQ
 
 ## During starting up explorer-server, port 7443 is not initialized
 

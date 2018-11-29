@@ -1,4 +1,4 @@
-# Zowe architecture (To be updated)
+# Zowe architecture (Work-in-progress)
 
 Zowe is a collection of components that together form a framework that allows Z based functionality to be accessible across an organization. This includes exposing Z based components such as z/OSMF and zSS, as RestAPI's but critically the framework provides an environment into which any other components can be included and exposed to a broader non-Z based audience.
 
