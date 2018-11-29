@@ -154,7 +154,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       TSS ADD(userid)  GROUP(IZUADMGP)
       ```
 
-      When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. For more details about these steps, see [Troubleshooting the installation](troubleshootinstall.md).
+      When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. For more details about these steps, see [Troubleshooting the installation](../troubleshoot/troubleshootinstall.md).
 
 ## Starting and stopping the Zowe runtime on z/OS
 
@@ -284,7 +284,7 @@ After you verify that explorer server is successfully installed, you can access 
 - `https://<your.server>:<atlasport>/ui/v1/datasets/#/`
 - `https://<your.server>:<atlasport>/ui/v1/uss/#/`
 
-If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
+If explorer server is not installed successfully, see [Troubleshooting installation](../troubleshoot/troubleshootinstall.md) for solutions.
 
 #### Verifying the availability of explorer server REST APIs
 
