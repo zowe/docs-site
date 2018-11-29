@@ -74,7 +74,8 @@ module.exports = {
           title: 'What is Zowe?',
           collapsable: false,
           children: [
-            'overview'
+            'overview',
+			'zowe-architecture'
           ]
         },
         {
@@ -129,6 +130,14 @@ module.exports = {
         }
         ],
       '/extend/': [
+	    `extender-architecture`,  
+        {
+          title: 'Onboarding Scenarios',
+          collapsable: true,
+          children: [
+            'extend-api/existingApp',
+            'extend-api/existingAPI']
+        },
         {
           title: 'Developing JEE components',
           collapsable: true,
@@ -186,7 +195,8 @@ module.exports = {
         }
       ],
 	'/troubleshoot/': [
-            'troubleshootinstall'
+            'troubleshootinstall',
+			'faq'
       ],
 	'/contribute/': [
         {
