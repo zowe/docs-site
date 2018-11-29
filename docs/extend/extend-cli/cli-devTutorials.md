@@ -2,7 +2,7 @@
 
 You can extend Zowe CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
 
-**Note:** You can also [install existing plug-ins to Zowe CLI](../user-guide/cli-extending.md). 
+**Note:** You can also [install existing plug-ins to Zowe CLI](../../user-guide/cli-extending.md).
 
 * [Why Create a Zowe CLI Plug-in?](#why-create-a-zowe-cli-plug-in)
 * [Getting Started](#getting-started)
@@ -11,16 +11,16 @@ You can extend Zowe CLI by developing plug-ins and contributing code to the base
 ## How can I contribute?
 You can contribute to Zowe CLI in the following ways:
 1. Add new commands, options, or other improvements to the base CLI.
-2. Develop a plug-in that users can install to Zowe CLI. 
+2. Develop a plug-in that users can install to Zowe CLI.
 
-See [Getting Started](#getting-started) to get started with development today! 
+See [Getting Started](#getting-started) to get started with development today!
 
 You might want to contribute to Zowe CLI to accomplish the following:
 * Provide new scriptable functionality for yourself, your organization, or to a broader community.
 * Make use of Zowe CLI infrastructure (profiles and programmatic APIs).
 * Participate in the Zowe CLI community space.
 
-The following plug-in projects have been developed: 
+The following plug-in projects have been developed:
 * [Zowe CLI Plug-in for IBM Db2](https://github.com/zowe/zowe-cli-db2-plugin)
 * [Zowe CLI Plug-in for IBM CICS](https://github.com/zowe/zowe-cli-cics-plugin)
 
@@ -53,11 +53,11 @@ In addition to the [tutorials](#tutorials), the following guidelines and documen
 
 * Auto-generated help
 * JSON responses
-* User profiles 
+* User profiles
 * Logging, progress bars, experimental commands, and more!
 
-### Contribution Guidelines 
-The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins. 
+### Contribution Guidelines
+The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins.
 
 The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
 
@@ -66,8 +66,5 @@ The guidelines contain critical information about working with the code, running
 | General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md) |
 | Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PackagesAndPluginGuidelines.md)|
 | Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/TESTING.md) |
-| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) | 
+| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) |
 Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) |
-
-
-

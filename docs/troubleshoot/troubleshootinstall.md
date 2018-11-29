@@ -212,7 +212,7 @@ When you issue nmp commands to install Zowe CLI, the message *command not found*
 
 The *command not found* message displays because Node.js and NPM are not installed on your PC. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
 
-**More Information:** [System requirements for Zowe CLI](systemrequirements.md)
+**More Information:** [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
 
 ### `npm install -g `Command Fails Due to an EPERM Error
 
@@ -232,7 +232,7 @@ report success using the following workarounds:
   - Issue the `npm cache clean` command.
 
   - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](cli-installcli.md).
+    see [Install Zowe CLI](../user-guide/cli-installcli.md).
 
   - `Add the --no-optional` flag to the end of the `npm install` command.
 

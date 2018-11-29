@@ -1,6 +1,6 @@
-# Java  REST APIs with Spring Boot 
+# Java  REST APIs with Spring Boot
 
-Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../user-guide/overview.html#api-mediation-layer).
+Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
@@ -67,11 +67,11 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
           }            
       }
         ```
-      **Note:** You can define `gradle.properties` file where you can set your username, password and the 
+      **Note:** You can define `gradle.properties` file where you can set your username, password and the
       read-only repo URL for access to the Zowe Artifactory.This way, you do not need to hardcode the username,
       password, and read-only repo URL in your `gradle.build` file.
-    
-      **Example:** 
+
+      **Example:**
       ```
          # Artifactory repositories for builds
          artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release

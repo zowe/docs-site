@@ -2,7 +2,7 @@
 Before you follow the development tutorials for creating a Zowe CLI plug-in, follow these steps to set up your environment.
 
 ## Prequisites
-[Install Zowe CLI](../user-guide/cli-installcli.html#methods-to-install-zowe-cli).
+[Install Zowe CLI](../../user-guide/cli-installcli.html#methods-to-install-zowe-cli).
 
 ## Initial setup 
 To create your development space, you will clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin) from source.
@@ -23,7 +23,7 @@ Follow these steps:
 5. `npm run build`
 
     The first time that you build, the script will interactively ask you for the location of your Zowe CLI directory. Subsequent builds will not ask again.
-    
+
     The build script creates symbolic links. On Windows, you might need to have Administrator privileges to create those symbolic links.
 
 ### (Optional) Run the automated tests

@@ -32,4 +32,4 @@ The API Catalog is the catalog of published APIs and their associated documentat
 ## Onboarding APIs
 The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
 
-* [Onboarding Overview](../../guides/api-mediation-onboard-overview.md)
+* [Onboarding Overview](../../extend/extend-apiml/api-mediation-onboard-overview.md)

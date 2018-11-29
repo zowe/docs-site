@@ -7,7 +7,7 @@
 For this section we have provided a react sample (through an Iframe), which connects to the API defined in the API extension sample.
 
 ::: tip
-Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](/samples/liberty-api-sample.md).
+Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first go through the steps listed in [API extension sample](../extend-api/liberty-api-sample.md).
 :::
 
 ## To Install
@@ -21,7 +21,7 @@ Make sure that you first expose an API to connect to before following the steps 
     - EX: `/Desktop/<Your_Project_Name>` and `Desktop/<Your_Project_Name>/web`
 4.  Copy built project into `Desktop/<Your_Project_Name>/web`
     - If using the sample, copy `app.min.js` , `index.html` , `icon.png` and `css` into to `/Desktop/<Your_Project_Name>/web/`
-5.  Create a `pluginDefinition.json` [following the guide](../guides/ReactJSUI.html#configuring-your-app-for-zowe) and copy to `Desktop/<Your_Project_Name>/`
+5.  Create a `pluginDefinition.json` [following the guide](../extend-api/ReactJSUI.html#configuring-your-app-for-zowe) and copy to `Desktop/<Your_Project_Name>/`
     - If using the sample this is included within the project. Copy to `Desktop/<Your_Project_Name>/`
 6.  Copy project from `/Desktop` to `<zowe_base>/`
     - Use `scp <userID>@<server> /Users/path/to/files <zowe_base>/`
