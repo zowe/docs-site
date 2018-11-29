@@ -14,6 +14,12 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.4 contains the following changes since the last version.
 
+### What's new in the Zowe Application Framework
+
+#### Accessing the Zowe Desktop 
+
+The URL to access the Zowe Desktop has been updated. See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
+
 ### What's new in Zowe CLI
 
 #### Integrate Zowe CLI with API Mediation Layer 

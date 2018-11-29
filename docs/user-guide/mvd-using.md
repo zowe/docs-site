@@ -8,13 +8,13 @@ From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
     
 where:
 
 -   *myHost* is the host on which you are running the Zowe Application Server.
 -   *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`.
-    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/com.rs.mvd/web/index.html`.
+    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 
 ### Logging in and out of the Zowe Desktop
