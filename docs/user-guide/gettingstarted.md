@@ -8,7 +8,9 @@ The Zowe installation files are distributed as a PAX file that contains the runt
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.  Use your web browser to download the PAX file by saving it to a folder on your desktop.
 
-You can download the PAX file from the [Zowe website](https://zowe.org/download/). After you obtain the PAX file, verify the PAX file and prepare it to install the Zowe runtime.
+You download the PAX file from the [Zowe website](https://zowe.org/download/). After you obtain the PAX file, verify the PAX file and prepare it to install the Zowe runtime.
+
+To install Zowe Command Line Interface (CLI), click the *DOWNLOAD Zowe Command Line Interface* button on the [Download](https://zowe.org/download/) website, and follow the instructions for installing ***Zowe CLI from a local package*** in the article [Installing Zowe CLI](cli-installcli.md).
 
 **Follow these steps:**
 
