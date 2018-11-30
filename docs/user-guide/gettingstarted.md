@@ -1,6 +1,8 @@
 # Obtaining installation files
 
-The Zowe installation files are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime and the runtime for the command line interface. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
+## Obtaining installation files for Zowe z/OS components
+
+The Zowe installation files for installing the Zowe server on z/OS are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
 
 - `v` indicates the version
 - `r` indicates the release number
@@ -8,9 +10,7 @@ The Zowe installation files are distributed as a PAX file that contains the runt
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.  Use your web browser to download the PAX file by saving it to a folder on your desktop.
 
-You download the PAX file from the [Zowe website](https://zowe.org/download/). After you obtain the PAX file, verify the PAX file and prepare it to install the Zowe runtime.
-
-To install Zowe Command Line Interface (CLI), click the *DOWNLOAD Zowe Command Line Interface* button on the [Download](https://zowe.org/download/) website, and follow the instructions for installing ***Zowe CLI from a local package*** in the article [Installing Zowe CLI](cli-installcli.md).
+To download the PAX file, click the *DOWNLOAD Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/download/) website. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
@@ -117,3 +117,7 @@ To install Zowe Command Line Interface (CLI), click the *DOWNLOAD Zowe Command L
     ```
 
      **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
+
+## Obtaining installation files for Zowe CLI
+
+To install Zowe Command Line Interface (CLI), click the *DOWNLOAD Zowe Command Line Interface* button on the [Download](https://zowe.org/download/) website, and follow the instructions for installing ***Zowe CLI from a local package*** in the article [Installing Zowe CLI](cli-installcli.md).
