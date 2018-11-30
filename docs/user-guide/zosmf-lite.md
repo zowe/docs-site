@@ -9,7 +9,7 @@ This section provides information about requirements for z/OSMF lite configurati
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
 4. [Creating a z/OSMF nucleus on your system](#creating-a-zosmf-nucleus-on-your-system)
-    1. [Running job IZUNUSEC to create security](#running-job-IZUNUSEC-to-create-security)
+    1. [Running job IZUNUSEC to create security](#running-job-izunusec-to-create-security)
     2. [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
     3. [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
     4. [Starting the z/OSMF server](#starting-the-zosmf-server)
@@ -121,7 +121,7 @@ To check your web browser’s level, click **About** in the web browser.
 
 The following system changes are described in this chapter:
 
-- [Running job IZUNUSEC to create security](#running-job-IZUNUSEC-to-create-security)
+- [Running job IZUNUSEC to create security](#running-job-izunusec-to-create-security)
 - [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
 - [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
 - [Starting the z/OSMF server](#starting-the-zosmf-server)
@@ -169,10 +169,9 @@ Review the following messages and the corresponding resolutions as needed:
 **Symptom** | **Cause**  | **Resolution**  
 ---|---|---
 Message IKJ56702I INVALID data is issued | The job is submitted more than once.| You can ignore this message.
-Job fails with an authorization error (message ??????). | Your user ID lacks superuser authority.             | See “Select a user ID for performing the steps”.
-Job fails with an authorization error (message ??????). | Your installation uses the RACF PROTECT-ALL option. | See “Troubleshooting”.         
-Another problem…                                        |                                                     |                                                 
-Another problem…                                        |                                                     |                                                 
+Job fails with an authorization error. | Your user ID lacks superuser authority.             | See “Select a user ID for performing the steps”.
+Job fails with an authorization error. | Your installation uses the RACF PROTECT-ALL option. | See “Troubleshooting”.         
+ADDGROUP and ADDUSER commands are not executed |  The automatic GID and UID assignment is required | Define SHARED.IDS and BPX.NEXT.USER profiles to enable the use of AUTOUID and AUTOGID                                                
 
 
 ### Running job IZUMKFS to create the z/OSMF user file system
@@ -202,8 +201,6 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 
 3.  Submit IZUMKFS as a batch job on your z/OS system.
 
-TBD: Add screen capture of submitting the IZUNUSEC job from the TSO/E command
-line.
 
 #### Results
 
@@ -218,10 +215,8 @@ Review the following messages and the corresponding resolutions as needed
 
 **Symptom**   | **Cause**    | **Resolution**       
 ---|---|---
-Job fails with FSM error (message ??????). | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
-Job fails with an authorization error (message ??????). | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems)      
-Another problem…    | User ID missing USS segment|
-Another problem…                      |                                                                                                    Another problem…                                        |                                         |                                                                                                              
+Job fails with FSM error. | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
+Job fails with an authorization error. | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems)      
 
 ### Copying the IBM procedures into JES PROCLIB
 
@@ -264,10 +259,7 @@ Review the following messages and the corresponding resolutions as needed
 **Symptom**   | **Cause** | **Resolution**
 ---|---|---
 Not authorized to copy  into PROCLIB     |      Your user ID doesn’t have the permission to modify PROCLIB     |      Contact Security Administrator                   
-Abend code B37 or E37 |     The data set runs out of space      |          Use IEBCOPY utility to compress PROCLIB dataset before copy               
-Another problem… |           |                       
-Another problem… |           |                        
-Another problem… |           |                      
+Abend code B37 or E37 |     The data set runs out of space      |          Use IEBCOPY utility to compress PROCLIB dataset before copy                     
 
 
 ### Starting the z/OSMF server
@@ -310,18 +302,7 @@ CWWKB0069I: INITIALIZATION IS COMPLETE FOR THE IZUANG1 ANGEL PROCESS.
 IZUG400I: The z/OSMF Web application services are initialized.
 
 CWWKF0011I: The server zosmfServer is ready to run a smarter planet.
-```
-
-####  Common errors
-
-Review the following messages and the corresponding resolutions as needed:
-
-**Symptom**      | **Cause**        | **Resolution**
----|---|---
-A START command fails with message ??????. | The angel started before the server.|     
-Another problem…  | Port 443 is not available for use.   |             
-Start command fails    | The server user ID IZUSVR  is not authorized.           |                    
-Another problem…                           |                                      |                         
+```             
 
 ### Accessing the z/OSMF Welcome page
 
@@ -428,18 +409,6 @@ MOUNTPOINT(’/var/zosmf’) PARM(’AGGRGROW’) UNMOUNT
 
 The BPXPRMxx member is updated. At the next system IPL, the following message is issued to indicate that the z/OSMF file system is mounted automatically.
 
-TBD< Insert a screen capture of the message that is issued when the z/OSMF file system is mounted automatically.>
-
-
-####  Common errors
-
-The following errors might occur during this step:
-
-**Symptom**   | **Cause** | **Resolution**
----|---|---
-A problem…       |           |                
-Another problem… |           |       
-
 
 ## Adding the required REST services
 
@@ -474,10 +443,6 @@ Review the following messages and the corresponding resolutions as needed:
 **Symptom** | **Cause** | **Resolution**
 ---|---|---
 401 Unauthorized       |     User ID is not connected to IZUADMIN or IZUUSER      |    Connect your user ID to IZUADMIN or IZUUSER            
-Another problem… |           |                 
-Another problem… |           |                
-Another problem… |           |                
-Another problem… |           |                
 
 ### Enabling the TSO REST services
 The Zowe framework requires that you enable the TSO REST services, as described in this topic.
@@ -530,19 +495,6 @@ CEA.CEATSO.FLOW.SYSTEMB
 #### Results
 The IZUTSSEC job should complete with return code 0000.
 
-#### Common errors
-
-
-Review the following messages and the corresponding resolutions as needed:
-
-**Symptom**      | **Cause**                               | **Resolution**
----|---|---
-A problem…       |                                         |                          
-Another problem… |                                         |                          
-Another problem… |                                         |                          
-Another problem… |                                         |                         
-Another problem… |                                         |     
-
 
 ###  Enabling the z/OSMF data set and file REST services
 
@@ -556,7 +508,9 @@ The Zowe framework requires that you enable the z/OSMF data set and file REST se
 
 2.  Ensure that the TSO REST services are enabled.
 
-3.  Ensure that your user ID has a TSO segment defined. To do so, enter the following command from TSO/E command prompt:
+3.  Ensure that IZUFPROC is in your JES concatenation.
+
+4.  Ensure that your user ID has a TSO segment defined. To do so, enter the following command from TSO/E command prompt:
 
     `LU userid TSO`
 
@@ -589,13 +543,11 @@ USERDATA= 0000
 
 #### Procedure
 
-1.	In the system library SYS1.SAMPLIB, locate the job IZUFPSEC.
+1.	If you run z/OS V2R2 and V2R3, download job IZUFPSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUFPSEC at `SYS1.SAMPLIB`.
 2.	Make a copy of the job.
 3.	Examine the contents of the job.
 4.	Modify the contents so that the job will run on your system.
 5.	From the TSO/E command line, run the IZUFPSEC job.
-
-TBD: Insert the command here
 
 
 #### Results
@@ -610,47 +562,34 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom**      | **Cause**                               | **Resolution**
 ---|---|---
-A problem…       | Message queue size for CEA is too small |                          
-Another problem… |                                         |                          
-Another problem… |                                         |                          
-Another problem… |                                         |                         
-Another problem… |                                         |                        
+REST API doesn't return expected data with rc=12, rsn=3, message: message queue size  "SIZE"  is less than minimum: 20M       | Message queue size for CEA is too small | Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx                         
+   
 
 ### Enabling the z/OSMF Workflow REST services and Workflows task UI
 The Zowe framework requires that you enable the z/OSMF Workflow REST services and Workflows task UI, as described in this topic.
 
 #### Before you begin
 
-TBD: Identify the prerequisite steps here?
+1.  Ensure that the JOB REST services are enabled.
+
+2.  Ensure that the TSO REST services are enabled.
+
+3.  Ensure that the dataset and file REST services are enabled.
 
 #### Procedure
 
-1.	In the system library `SYS1.SAMPLIB`, locate the job IZUWFSEC.
+1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
 2.	Make a copy of the job.
 3.	Examine the contents of the job.
 4.	Modify the contents so that the job will run on your system.
 5.	From the TSO/E command line, run the IZUWFSEC job.
-
-TBD: Insert the command here
-Screen shot here
 
 #### Results
 
 The IZUWFSEC job should complete with return code 0000.
 
 To verify, logon to z/OSMF (or refresh it) and verify that the Workflows task appears in the z/OSMF UI.
-
-#### Common errors
-
-Review the following messages and the corresponding resolutions as needed:
-
- **Symptom**      | **Cause** | **Resolution**
----|---|---
-A problem…       |           |                 
-Another problem… |           |                 
-Another problem… |           |                
-Another problem… |           |                
-Another problem… |           |                
+         
 
 At this point, you have completed the setup of z/OSMF Lite.
 
