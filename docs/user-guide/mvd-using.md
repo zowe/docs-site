@@ -1,6 +1,6 @@
 # Using the Zowe Desktop
 
-You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Exending the Zowe Application Framework](mvd-extendingzlux.md). 
+You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Exending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
 
@@ -28,7 +28,7 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 
 1. Click the Start menu.
 2. Locate the application you want to pin.
-3. Right-click the application icon and select **Pin to taskbar**.
+3. Right-click the on the application icon and select **Pin to taskbar**.
 
 
 ## Using Explorers within the Zowe Desktop

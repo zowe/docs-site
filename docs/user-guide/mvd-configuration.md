@@ -94,7 +94,7 @@ When the Zowe Application Server is running, it accesses the server's settings a
 - `Group`: Multiple users can be associated into one group, so that settings are shared among them.
 - `User`: When authenticated, users have their own settings and storage for the application plug-ins that they use.
 
-These directories dictate where the [Configuration Dataservice](mvd-configdataservice.md) stores content.
+These directories dictate where the [Configuration Dataservice](../extend/extend-desktop/mvd-configdataservice.md) stores content.
 
 #### Deploy example
 ```
@@ -129,7 +129,7 @@ To include application plug-ins, define the location of the plug-ins directory i
 
 ### Logging configuration
 
-For more information, see [Logging Utility](mvd-logutility.md).
+For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
 
 ### ZSS configuration
 

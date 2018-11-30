@@ -2,7 +2,7 @@
 
 As a Zowe user, install Zowe Application Framework, explorer server, and Zowe API Mediation Layer on z/OS to begin using Zowe.
 
-## Prerequisites 
+## Prerequisites
 
 - Before you start the installation on z/OS, ensure that your environment meets the necessary requirements. For details, see [System requirements](systemrequirements.md).
 
@@ -36,9 +36,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     **Example:**
 
-    ```yaml
-    install:
-     rootDir=/var/zowe/0.9.3
+        ```yaml
+        install:
+         rootDir=/var/zowe/0.9.4
 
     api-mediation:
       catalogHttpPort=7552
@@ -56,10 +56,10 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       zssPort=8542
     ```
 
-    **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers. 
+    **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
 
 3. Determine which ports are not available.
-     
+
 
    a. Display a list of ports that are in use with the following command:
       ```
@@ -141,7 +141,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       ```
 
    - If you use CA ACF2, issue the following commands:
- 
+
       ```
       ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
       F ACF2,REBUILD(TGR)
@@ -154,7 +154,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       TSS ADD(userid)  GROUP(IZUADMGP)
       ```
 
-      When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. For more details about these steps, see [Troubleshooting the installation](troubleshootinstall.md).
+      When the `zowe-install.sh` script runs, it performs a number of steps broken down into sections. For more details about these steps, see [Troubleshooting the installation](../troubleshoot/troubleshootinstall.md).
 
 ## Starting and stopping the Zowe runtime on z/OS
 
@@ -263,13 +263,13 @@ After the explorer server is installed and the ZOWESVR procedure is started, you
 where:
 
 - _your.server_ is the host name or IP address of the z/OS® system where explorer server is installed
-- _atlasport_ is the port number that is chosen during installation. 
+- _atlasport_ is the port number that is chosen during installation.
   You can verify the port number in the `server.xml` file. This file is located in the explorer server installation directory, which is `/var/zowe/explorer-server/wlp/usr/servers/Atlas/server.xml` by default. The port number is visible in the `httpsPort` assignment in the `server.xml` file.
-      
+
 **Example:** `httpPort="7443"`.
 
-This URL sends an HTTP GET request to the Liberty Profile explorer server. If explorer server is installed correctly, a JSON payload that indicates the current explorer server application version is returned. 
-      
+This URL sends an HTTP GET request to the Liberty Profile explorer server. If explorer server is installed correctly, a JSON payload that indicates the current explorer server application version is returned.
+
 **Example:**
 
 ```
@@ -284,7 +284,7 @@ After you verify that explorer server is successfully installed, you can access 
 - `https://<your.server>:<atlasport>/ui/v1/datasets/#/`
 - `https://<your.server>:<atlasport>/ui/v1/uss/#/`
 
-If explorer server is not installed successfully, see [Troubleshooting installation](troubleshootinstall.md) for solutions.
+If explorer server is not installed successfully, see [Troubleshooting installation](../troubleshoot/troubleshootinstall.md) for solutions.
 
 #### Verifying the availability of explorer server REST APIs
 

@@ -15,7 +15,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 ## API Mediation Layer architecture 
 The following diagram illustrates the single point of access with the API Gateway and the interactions between the API Gateway, API Catalog, and the Discovery Service:   
 
-![API Mediation Layer Architecture diagram](diagrams/image2018-2-26%2014_53_46.png)
+![API Mediation Layer Architecture diagram](diagrams/image2018-2-26%20 14_53_46.png)
 
 ## Components
 The API Layer consists of the following key components:
@@ -32,4 +32,4 @@ The API Catalog is the catalog of published APIs and their associated documentat
 ## Onboarding APIs
 The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
 
-* [Onboarding Overview](api-mediation-onboard-overview.md)
+* [Onboarding Overview](../../extend/extend-apiml/api-mediation-onboard-overview.md)
