@@ -16,13 +16,15 @@ Version 0.9.4 contains the following changes since the last version.
 
 ### What's new in the Zowe Application Framework
 
-#### Accessing the Zowe Desktop 
+#### Accessing the Zowe Desktop
 
-The URL to access the Zowe Desktop has been updated. See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
+The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously the URL is `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
+
+See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
 
 ### What's new in Zowe CLI
 
-#### Integrate Zowe CLI with API Mediation Layer 
+#### Integrate Zowe CLI with API Mediation Layer
 
 Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.html#accessing-an-api-mediation-layer) for more information.
 
