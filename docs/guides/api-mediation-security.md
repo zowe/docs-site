@@ -18,7 +18,7 @@
     - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
     - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
-    - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
+- [Zowe runtime on z/OS](#zowe-runtime-on-zos)
     - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
     - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost-1)
     - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost-1)
@@ -272,7 +272,7 @@ Example how to access Discovery Service from CLI with full certificate validatio
     http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
 
 
-### Zowe runtime on z/OS
+## Zowe runtime on z/OS
 
 ### Certificates for z/OS installation from the Zowe PAX file
 
@@ -308,14 +308,17 @@ Local CA:
 
 Local CA key store can be accessible only by the user that is installing and managing the Zowe runtime. 
 
+### Import the local CA certificate to your browser
 
-### Generating certificate for a new service on localhost
+TBD
+
+### Generating certificate for a new service on z/OS
 
 Follow the same steps as in https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost.
 
 Use the certificate management script that is store at `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.
 
 
-### Add a service with an existing certificate to APIML on localhost
+### Add a service with an existing certificate to APIML on z/OS
 
 This will be documented during work on the following user story: https://waffle.io/zowe/api-layer/cards/5bd8be80283e09001babbf86
