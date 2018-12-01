@@ -114,12 +114,12 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         c) Copy the `settings.xml` file inside `${user.home}/.m2/` directory.
 
-3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.2.
+3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
 
     * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
     ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '0.2.0-SNAPSHOT'
+        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '0.3.0-SNAPSHOT'
     ```
      * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
 
@@ -127,20 +127,20 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         <dependency>
               <groupId>com.ca.mfaas.sdk</groupId>
               <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
-              <version>0.2.0-SNAPSHOT</version>
+              <version>0.3.0-SNAPSHOT</version>
         </dependency>
     ```
      * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.2.RELEASE', version: '0.2.0-SNAPSHOT'
+        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '0.3.0-SNAPSHOT'
         ```
 
      * If you use the Spring Boot release 2.0.x in a Maven build system, add the following code to the `pom.xml` file:  
         ```
         <dependency>
                <groupId>com.ca.mfaas.sdk</groupId>
-               <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.2.RELEASE</artifactId>
-               <version>0.2.0-SNAPSHOT</version>
+               <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
+               <version>0.3.0-SNAPSHOT</version>
         </dependency>
         ```  
      You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
@@ -428,6 +428,36 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         This option exposes any endpoints that match a specified regular expression. The parameters `basePackage` and `apiPattern` are mutually exclusive. Specify just one of them and remove or comment out the second one.
 
         **Tip:** You have three options to make your endpoints discoverable and exposed: `basePackage`, `apiPattern`, or none (if you do not specify a parameter). If `basePackage` or `apiPattern` are not defined, all endpoints in the Spring Boot app are exposed.
+
+## Setup key store with the service certificate
+
+You service needs to have a certificate that is trusted by API Mediation Layer in order to register into it.
+
+1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+
+    In case of a service running on localhost, the command can look like:
+
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+
+    Alternatively, you can just copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+
+2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding:
+
+        server:
+            ssl:
+                protocol: TLSv1.2
+                ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+                keyAlias: localhost
+                keyPassword: password
+                keyStore: keystore/localhost.keystore.p12
+                keyStoreType: PKCS12
+                keyStorePassword: password
+                trustStore: keystore/localhost.truststore.p12
+                trustStoreType: PKCS12
+                trustStorePassword: password
+
+**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+
 
 ## Externalize API Layer configuration parameters
 
