@@ -36,37 +36,38 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     **Example:**
 
-        ```yaml
-        install:
-         rootDir=/var/zowe/0.9.4
+    ```yaml
+     install:
+       rootDir=/var/zowe/0.9.4
 
-    api-mediation:
-      catalogHttpPort=7552
-      discoveryHttpPort=7553
-      gatewayHttpsPort=7554
+     api-mediation:
+       catalogHttpPort=7552
+       discoveryHttpPort=7553
+       gatewayHttpsPort=7554
 
-    explorer-server:
-      httpPort=7080
-      httpsPort=7443
+     explorer-server:
+       httpPort=7080
+       httpsPort=7443
 
-    # http and https ports for the node server
-    zlux-server:
-      httpPort=8543
-      httpsPort=8544
-      zssPort=8542
+     # http and https ports for the node server
+     zlux-server:
+       httpPort=8543
+       httpsPort=8544
+       zssPort=8542
     ```
 
     **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
 
 3. Determine which ports are not available.
 
+    a. Display a list of ports that are in use with the following command:
 
-   a. Display a list of ports that are in use with the following command:
       ```
       TSO NETSTAT
       ```
 
-   b. Display a list of reserved ports with the following command:
+    b. Display a list of reserved ports with the following command:
+
       ```
       TSO NETSTAT PORTLIST
       ```
@@ -79,15 +80,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
           sshPort=22
           telnetPort=23
       ```
-3. Execute the `zowe-verify-pre-install.sh` script.
-
-    With the current directory being the `/install` directory, execute the script `zowe-verify-pre-install.sh` by issuing the following command:
-
-    ```
-    zowe-verify-pre-install.sh
-    ```
-
-    This script checks the basic pre-requisites for Zowe on your z/OS system before you install the Zowe runtime.  The script writes its messages to your terminal window.  The results will be marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and re-run the `zowe-verify-pre-install.sh` script before you run the `zowe-install.sh` script.  The `zowe-verify-pre-install.sh` script does not change any settings, so you can run it as often as required.
 
 4. Execute the `zowe-install.sh` script.
 
@@ -107,6 +99,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     ```
     chmod u+x zowe-install.sh.
     ```
+
 5. Configure Zowe as a started task.
 
      The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
@@ -118,7 +111,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       SETROPTS REFRESH RACLIST(STARTED)
       ```
 
-   - If you use CA ACF2, issue the following commands:
+    - If you use CA ACF2, issue the following commands:
 
       ```
       SET CONTROL(GSO)
@@ -126,7 +119,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       F ACF2,REFRESH(STC)
       ```
 
-   - If you use CA Top Secret, issue the following commands:
+    - If you use CA Top Secret, issue the following commands:
 
       ```
       TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
@@ -134,20 +127,20 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 6. Add the users to the required groups, IZUADMIN for administrators, and IZUUSER for standard users.
 
-   - If you use RACF, issue the following command:
+    - If you use RACF, issue the following command:
 
       ```
       CONNECT (userid) GROUP(IZUADMIN)
       ```
 
-   - If you use CA ACF2, issue the following commands:
+    - If you use CA ACF2, issue the following commands:
 
       ```
       ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
       F ACF2,REBUILD(TGR)
       ```
 
-   - If you use CA Top Secret, issue the following commands:
+    - If you use CA Top Secret, issue the following commands:
 
       ```
       TSS ADD(userid)  PROFILE(IZUADMIN)
@@ -228,18 +221,6 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 ## Verifying installation
 
 After you complete the installation of Zowe API Mediation Layer, Zowe Application Framework, and explorer server, use the following procedures to verify that the components are installed correctly and are functional.
-
-### Verifying Zowe configuration
-
-Once Zowe is running and the startup sequence is complete, navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where $ZOWE_ROOT_DIR is the location of the Zowe runtime directory that contains the explorer server.  
-
-Now run the `zowe-verify-post-install.sh` script by issuing the command
-
-```
-zowe-verify-post-install.sh
-```
-
-This script checks the configuration files and jobs for Zowe on your z/OS system.  The script writes its messages to your terminal window.  The results will be marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and re-start the Zowe server.  The `zowe-verify-post-install.sh` script does not change any settings, so you can run it as often as required.
 
 ### Verifying Zowe Application Framework installation
 
