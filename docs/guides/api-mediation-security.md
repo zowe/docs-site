@@ -310,7 +310,42 @@ Local CA key store can be accessible only by the user that is installing and man
 
 ### Import the local CA certificate to your browser
 
-TBD
+The local CA certificate is not trusted outside of the API Mediation Layer by default.
+You need to add it to the trust store of the REST API clients and to your browser.
+
+The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
+
+It is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
+
+The recommended method is to use Zowe CLI:
+
+    zowe zos-files download uss-file --binary  $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+
+Verify that the file has been transferred correctly. Open it and you should see something like:
+
+    -----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+
+Then you need to import the certificate to your root certificate store and trust it. 
+
+For **Windows**, you can run the following command:
+
+    certutil -enterprise -f -v -AddStore "Root" localca.cer 
+    
+You have to open the terminal as administrator. This will install the certificate to the Trusted Root Certification Authorities. 
+
+If you're using **macOS**, you can run the following command: 
+
+    $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer 
+
+**Firefox** uses its own certificate trust store. You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows trust store:
+
+Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
+
+    /* Enable experimental Windows trust store support */
+    pref("security.enterprise_roots.enabled", true);
+    
 
 ### Generating certificate for a new service on z/OS
 
