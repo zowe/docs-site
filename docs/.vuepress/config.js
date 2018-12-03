@@ -56,7 +56,6 @@ module.exports = {
       },
       { text: 'Extending',
       items: [
-                    { text: 'Onboarding', link: '/extend/extender-architecture.md' },
                     { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' },
                     { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
                     { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
