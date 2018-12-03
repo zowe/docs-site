@@ -351,9 +351,15 @@ Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files 
 
 Follow the same steps as in https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost.
 
-Use the certificate management script that is store at `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.
+Use the certificate management script that is stored at `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.
 
 
 ### Add a service with an existing certificate to APIML on z/OS
 
-This will be documented during work on the following user story: https://waffle.io/zowe/api-layer/cards/5bd8be80283e09001babbf86
+This will be documented during work on the following user story: https://github.com/zowe/api-layer/issues/80
+
+
+### Use an existing certificate for APIML
+
+This will be documented during work on the following user story: 
+https://github.com/zowe/api-layer/issues/91
