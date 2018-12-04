@@ -1,6 +1,6 @@
 ---
-name: "\U0001F4A1 Doc Site Enhancement Request"
-about: Suggest an idea for doc site enhancement
+name: "\U0001F4A1 Doc Enhancement Request"
+about: Suggest an idea for doc enhancement
 
 ---
 
