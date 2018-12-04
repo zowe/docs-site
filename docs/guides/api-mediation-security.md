@@ -317,9 +317,14 @@ The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy
 
 It is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
 
-The recommended method is to use Zowe CLI:
+The recommended method is to use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--):
 
-    zowe zos-files download uss-file --binary  $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+    zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+
+Alternatively, you can use `sftp`:
+
+    sftp <system>
+    get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
 
 Verify that the file has been transferred correctly. Open it and you should see something like:
 
