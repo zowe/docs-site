@@ -6,7 +6,7 @@ about: Create a report to help us improve the doc
 
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
-<!-- See doc link (TBD) for guidance on writing an actionable issue description. -->
+<!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contribute/contribute.html) for guidance on writing an actionable issue description. -->
 
 ## Description
 A clear and concise description of what the error is.
@@ -16,10 +16,6 @@ https://zowe.github.io/docs-site/...
 
 ## Screenshots
 Add screenshots to help explain your problem, if needed.
-
-## Desktop:
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
 
 ## Expected behavior
 A clear and concise description of what you expect to happen.
