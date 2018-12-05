@@ -91,7 +91,7 @@ export default {
     },
     // MODIFICATION_FROM_THEME, newly added
     githubLogo () {
-      return this.$site.base + 'assets/Github-Mark-32px.png'
+      return this.$site.base + 'assets/github-mark-32px.png'
     },
     repoLink () {
       const { repo } = this.$site.themeConfig
