@@ -14,8 +14,10 @@
       class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      {{ repoLabel }}
-      <OutboundLink/>
+      <!-- MODIFICATION_FROM_THEME: repoLabel text link is replaced with img tag below -->
+      <img v-if="repoLabel == 'GitHub'" :src="githubLogo" width="20" height="20" style="vertical-align:top" :title="repoLabel" />
+      <span v-else>{{ repoLabel }}</span>
+      <!-- MODIFICATION_FROM_THEME removed <OutboundLink/> -->
     </a>
   </nav>
 </template>
@@ -86,6 +88,10 @@ export default {
           items: (link.items || []).map(resolveNavLinkItem)
         })
       })
+    },
+    // MODIFICATION_FROM_THEME, newly added
+    githubLogo () {
+      return this.$site.base + 'assets/Github-Mark-32px.png'
     },
     repoLink () {
       const { repo } = this.$site.themeConfig

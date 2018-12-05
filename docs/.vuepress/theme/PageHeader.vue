@@ -107,6 +107,7 @@ export default {
 
 .page-edit {
     @extend $wrapper;
+    // MODIFICATION_FROM_THEME, original value ($navbarHeight + 4rem)
     padding-top: ($navbarHeight + 2rem);
     padding-bottom: 0rem;
     margin-bottom: -0.5rem;
