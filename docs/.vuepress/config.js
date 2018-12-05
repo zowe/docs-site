@@ -63,7 +63,7 @@ module.exports = {
             ]
       },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
-      { text: 'Contributing', link: '/contribute/contribute-doc' },
+      { text: 'Contributing', link: '/contribute/contribute-doc', canHideFirst: true },
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
       { text: 'Zowe.org', link: 'https://zowe.org',

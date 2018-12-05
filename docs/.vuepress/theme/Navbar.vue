@@ -83,4 +83,12 @@ export default {
     }
   }
 }
+
+@media (max-width: $MQMobileMiddle) {
+  .navbar {
+    .can-hide-first {
+      display: none;
+    }
+  }
+}
 </style>

@@ -2,7 +2,7 @@
   <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
     <div
-      class="nav-item"
+      :class="['nav-item', {'can-hide-first': item.canHideFirst }]"
       v-for="item in userLinks"
       :key="item.link">
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
