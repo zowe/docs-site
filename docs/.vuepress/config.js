@@ -63,7 +63,7 @@ module.exports = {
             ]
       },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
-      { text: 'Contributing', link: '/contribute/contribute-doc' },
+      { text: 'Contributing', link: '/contributing' },
       { tags: ['versions'] }, // versions dropdown placeholder, it should be converted
       { text: 'Zowe.org', link: 'https://zowe.org' }
     ],
@@ -187,11 +187,11 @@ module.exports = {
 	'/troubleshoot/': [
             'troubleshootinstall'
       ],
-	'/contribute/': [
+	'/': [
         {
           title: 'Contributing to documentation',
           collapsable: true,
-          children: ['contribute-doc']
+          children: ['contributing']
         },
       ],
       '/': ['about']
