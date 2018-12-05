@@ -9,16 +9,16 @@ about: Create a report to help us improve the doc
 <!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contribute/contribute.html) for guidance on writing an actionable issue description. -->
 
 ## Description
-A clear and concise description of what the error is.
+<!-- A clear and concise description of what the error is.-->
 
 ## Pages to Update
-https://zowe.github.io/docs-site/...
+<!--https://zowe.github.io/docs-site/...-->
 
 ## Screenshots
-Add screenshots to help explain your problem, if needed.
+<!--Add screenshots to help explain your problem, if needed.-->
 
 ## Expected behavior
-A clear and concise description of what you expect to happen.
+<!--A clear and concise description of what you expect to happen.-->
 
 ## Additional context
-Add any other context about the documentation error here.
+<!--Add any other context about the documentation error here.-->
