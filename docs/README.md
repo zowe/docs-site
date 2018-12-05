@@ -23,7 +23,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Get troubleshooting tips and answers to your most frequently asked questions.</p>
   </div>
   <div class="feature">
-    <h2><a href="./contribute/contribute-doc.html">Contributing</a></h2>
+    <h2><a href="./contributing.html">Contributing</a></h2>
     <p>Learn about how you can contribute to this documentation.</p>
   </div>
   <div class="feature">
