@@ -188,11 +188,7 @@ module.exports = {
             'troubleshootinstall'
       ],
 	'/': [
-        {
-          title: 'Contributing to documentation',
-          collapsable: true,
-          children: ['contributing']
-        },
+            'contributing'
       ],
       '/': ['about']
     }
