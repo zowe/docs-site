@@ -56,10 +56,12 @@ module.exports = {
       },
       { text: 'Extending',
       items: [
-                    { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' },
+                    { text: 'Extending and Deploying', link: '/extend/extender-architecture.md' },
+                    { text: 'Developing REST APIs', link: '/extend/extend-api/libertyAPI.md' },
                     { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
                     { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
-                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' }
+                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' },
+                    // { text: 'Deploying', link: '/extend/extend-api/existingAPI.md' }
             ]
       },
       { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
@@ -129,16 +131,9 @@ module.exports = {
         }
         ],
       '/extend/': [
-	    `extender-architecture`,  
+        `extender-architecture`,  
         {
-          title: 'Onboarding Scenarios',
-          collapsable: true,
-          children: [
-            'extend-api/existingApp',
-            'extend-api/existingAPI']
-        },
-        {
-          title: 'Developing JEE components',
+          title: 'Developing Rest APIs',
           collapsable: true,
           children: [
             'extend-api/libertyAPI',
@@ -191,7 +186,15 @@ module.exports = {
             'extend-desktop/angular-sample',
             'extend-api/ReactJSUI'
           ]
-        }
+        // },
+        // {
+        //   title: 'Deploying',
+        //   collapsable: true,
+        //   children: [
+        //     'extend-api/existingApp.md',
+        //     'extend-api/existingAPI.md'
+        //   ]
+        }           
       ],
 	'/troubleshoot/': [
             'troubleshootinstall',

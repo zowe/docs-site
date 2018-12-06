@@ -1,12 +1,10 @@
-# Onboarding
+# Extending and Deploying
 
-Onboarding or extending, which is it to be ?. Well both actually... 
+This section is all about exposing functionality to customers and end users so by Extending Zowe you as a developer you make that happen. 
 
-Onboarding is getting your product onboard Zowe and in front of your customers. Extending Zowe means what you as a developer have to do to make that happen. 
+So the aim is to allow your product to seemlessly join with the Zowe infrastructure. Considering the four main touch points the first to consider is being able to expose your product and it's services using an industry standard interface to maximise it's availability. In Zowe using Rest API. Next would be able to centralise those services behind the API Gateway which would provide additional functionality such as Single-Sign-On for example that your applications could benefit from. Exploiting your product and services from a command line interface anywhere in the enterprise allows integration with batch and DevOps systems and connectivity with development tools. Ultimately presenting within a graphical UI via a browser or even the Zowe desktop which supports inter-operability between product tiles which maximises the availabilty of your products and services.  
 
-So the aim of Onboarding is to allow your product to seemlessly join with the Zowe infrastructure. Considering the four main touch points the first to consider is being able to expose your product and it's services using an industry standard interface to maximise it's availability. In Zowe using Rest API. Next would be able to centralise those services behind the API Gateway which would provide additional functionality such as Single-Sign-On for example that your applications could benefit from. Exploiting your product and services from a command line interface anywhere in the enterprise allows integration with batch and DevOps systems and connectivity with development tools. Ultimately presenting within a graphical UI via a browser or even the Zowe desktop which supports inter-operability between product tiles which maximises the availabilty of your products and services.  
-
-Use the [Onboarding Scenarios](extend-api/existingApp.md) to plan how to integrate products with Zowe and use the [Developing..](extend-api/libertyAPI.md) sections for more comprehensive description and explanation. 
+Use the [Deploying Scenarios](extend-api/existingApp.md) to plan how to integrate products with Zowe and use the [Developing..](extend-api/libertyAPI.md) sections for more comprehensive description and explanation. 
 The four main areas to consider when integrating with Zowe...
 :::tip Creating API's 
 Providing API's is the corner stone to the Zowe environment and this is about building Rest API's that surface functionality for use by other systems. This can be achieved using anything from a Tomcat or Liberty JEE war file a Spring Boot application or node based app. The choice is yours and there are a number of examples around this site for you to choose. 
@@ -35,5 +33,8 @@ Comprehensive details and explanation of how to do this are found in the [Develo
 :::
 
 
+:::warning Other ways to exploit Zowe
+ Teams are already exploiting Zowe in other weays. For example CLI based solutions are finding themselves into third party editors. The Zowe community supports the notion of BYOE (Bring your own editor) and already we are seeing "Dataset and Jobs views" appearing as plugins in editor platforms. Which is a great example of the Zowe community working.
+:::
 <!-- use tip, danger or warning for coloured blocks -->
 
