@@ -1,6 +1,9 @@
 ---
 name: "\U0001F6E0 Doc Error Report"
 about: Create a report to help us improve the doc
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
