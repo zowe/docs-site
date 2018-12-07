@@ -1,6 +1,9 @@
 ---
 name: "\U0001F4A1 Doc Enhancement Request"
 about: Suggest an idea for doc enhancement
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
@@ -16,9 +19,6 @@ about: Suggest an idea for doc enhancement
 
 ## Related doc pages
 <!-- https://zowe.github.io/docs-site/... -->
-
-## Describe alternatives you've considered
-<!-- A clear and concise description of any alternative solutions or features you've considered. -->
 
 ## Additional context
 <!-- Add any other context or screenshots about the feature request here.-->
