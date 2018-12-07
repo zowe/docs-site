@@ -278,7 +278,7 @@ After you've externalized the parameters to make them readable through Tomcat an
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to [https://localhost:10011]([https://localhost:10011]) and check if the service is registered to the discovery service. 
+3.  Navigate to [https://localhost:10011]([https://localhost:10011]). Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
 You should also be able to reach the following endpoints using HTTPS:
     * [https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016](https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016) for metadata and service information
     
@@ -299,16 +299,3 @@ You should also be able to reach the following endpoints using HTTPS:
     
   You successfully onboarded your Java Jersey application if see your service 
     running and can access the API documentation. 
-
-## (Optional) Validate discovery of the API service by the Discovery Service
-
-The following procedure enables you to check if your service is discoverable by 
-the Discovery Service.
- 
- **Follow these steps:**
- 
-1. Go to `http://localhost:10011`. 
-2. Enter _eureka_ as a username and _password_ as a password.
-3. Check if your application was discovered by Eureka. 
-
-
