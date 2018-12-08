@@ -36,44 +36,49 @@ module.exports = {
       apiKey: '59ff39ed48d0820010c7e09fc4b677bf',
       indexName: 'zowe',
       algoliaOptions: {
-        facetFilters: [ `version:${PUBLISH_TARGET_PATH}` ],
+        facetFilters: [`version:${PUBLISH_TARGET_PATH}`],
       }
     },
-    nav: [
-      { text: 'Getting Started',
-      items: [
-                    { text: 'Zowe overview', link: '/getting-started/overview'},
-                    { text: 'Release notes', link: '/getting-started/summaryofchanges'}
-      ]
+    nav: [{
+        text: 'Getting Started',
+        items: [
+          { text: 'Zowe overview', link: '/getting-started/overview.md' },
+          { text: 'Release notes', link: '/getting-started/summaryofchanges.md' }
+        ]
       },
-      { text: 'User Guide',
-      items: [
-                    { text: 'Installing Zowe', link: '/user-guide/installandconfig.md' },
-                    { text: 'Configuring Zowe', link: '/user-guide/mvd-configuration.md' },
-                    { text: 'Using Zowe', link: '/user-guide/using.md' },
-                    { text: 'Zowe CLI extensions and plug-ins', link: '/user-guide/cli-extending.md'}
-      ]
+      {
+        text: 'User Guide',
+        items: [
+          { text: 'Installing Zowe', link: '/user-guide/installandconfig.md' },
+          { text: 'Configuring Zowe', link: '/user-guide/mvd-configuration.md' },
+          { text: 'Using Zowe', link: '/user-guide/using.md' },
+          { text: 'Zowe CLI extensions and plug-ins', link: '/user-guide/cli-extending.md' }
+        ]
       },
-      { text: 'Extending',
-      items: [
-                    { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' },
-                    { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
-                    { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
-                    { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' }
-            ]
+      {
+        text: 'Extending',
+        items: [
+          { text: 'Developing JEE components', link: '/extend/extend-api/libertyAPI.md' },
+          { text: 'Developing for API Mediation Layer', link: '/extend/extend-apiml/api-mediation-onboard-overview.md' },
+          { text: 'Developing for Zowe CLI', link: '/extend/extend-cli/cli-devTutorials.md' },
+          { text: 'Developing for Zowe Application Framework', link: '/extend/extend-desktop/mvd-extendingzlux.md' }
+        ]
       },
-      { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall' },
-      { text: 'Contributing', link: '/contributing.html', canHideFirst: true },
+      { text: 'Troubleshooting', link: '/troubleshoot/troubleshootinstall.md' },
+      { text: 'Contributing', link: '/contributing.md', canHideFirst: true },
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
-      { text: 'Zowe.org', link: 'https://zowe.org',
+      {
+        text: 'Zowe.org',
+        link: 'https://zowe.org',
         // MODIFICATION_FROM_THEME newly added to support image link
-        image: 'assets/zowe-logo.png', imageWidth: 20, imageHeight: 20
+        image: 'assets/zowe-logo.png',
+        imageWidth: 20,
+        imageHeight: 20
       }
     ],
     sidebar: {
-      '/getting-started/': [
-        {
+      '/getting-started/': [{
           title: 'What is Zowe?',
           collapsable: false,
           children: [
@@ -86,8 +91,7 @@ module.exports = {
           children: ['summaryofchanges']
         },
       ],
-      '/user-guide/': [
-        {
+      '/user-guide/': [{
           title: 'Installing Zowe',
           collapsable: true,
           children: [
@@ -130,14 +134,14 @@ module.exports = {
             'cli-vscodeplugin'
           ]
         }
-        ],
-      '/extend/': [
-        {
+      ],
+      '/extend/': [{
           title: 'Developing JEE components',
           collapsable: true,
           children: [
             'extend-api/libertyAPI',
-            'extend-api/liberty-api-sample']
+            'extend-api/liberty-api-sample'
+          ]
         },
         {
           title: 'Developing for API Mediation Layer',
@@ -159,7 +163,8 @@ module.exports = {
             'extend-cli/cli-installing-sample-plugin',
             'extend-cli/cli-extending-a-plugin',
             'extend-cli/cli-developing-a-plugin',
-            'extend-cli/cli-implement-profiles']
+            'extend-cli/cli-implement-profiles'
+          ]
         },
         {
           title: 'Developing for Zowe Application Framework',
@@ -192,5 +197,112 @@ module.exports = {
       '/contributing.html': ['contributing'],
       '/': ['about']
     }
-  }
+  },
+  pdf: [
+    { text: 'Release notes', link: 'getting-started/summaryofchanges.md' },
+    { text: 'Zowe overview', link: 'getting-started/overview.md', },
+    {
+      text: 'User Guide',
+      items: [{
+          text: 'Installing Zowe',
+          items: [
+            '/user-guide/installandconfig.md',
+            'user-guide/installroadmap.md',
+            'user-guide/systemrequirement,s.md',
+            'user-guide/gettingstarted.md',
+            'user-guide/install-zos.md',
+            'user-guide/cli-installcli,.md',
+            'user-guide/uninstall',
+          ]
+        },
+        {
+          text: 'Configuring Zowe',
+          items: [
+            'user-guide/mvd-configuration.md',
+            'user-guide/cli-configuringcli'
+          ]
+        },
+        {
+          text: 'Using Zowe',
+          items: [
+            'user-guide/using.md',
+            'user-guide/mvd-using.md',
+            'user-guide/usingapis.md',
+            'user-guide/api-mediation-api-catalog.md',
+            'user-guide/cli-usingcli.md',
+          ]
+        },
+        {
+          text: 'Zowe CLI extensions and plug-ins',
+          items: [
+            'user-guide/cli-extending.md',
+            'user-guide/cli-installplugins.md',
+            'user-guide/cli-cicsplugin.md',
+            'user-guide/cli-db2plugin.md',
+            'user-guide/cli-vscodeplugin.md',
+          ]
+        }
+      ]
+    },
+    {
+      text: 'Extending',
+      items: [{
+          text: 'Developing JEE components',
+          items: [
+            'extend/extend-api/libertyAPI.md',
+            'extend/extend-api/liberty-api-sample.md',
+          ]
+        },
+        {
+          text: 'Developing for API Mediation Layer',
+          items: [
+            'extend/extend-apiml/api-mediation-onboard-overview.md',
+            'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
+            'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
+            'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
+            'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
+          ]
+        },
+        {
+          text: 'Developing for Zowe CLI',
+          items: [
+            'extend/extend-cli/cli-devTutorials.md',
+            'extend/extend-cli/cli-setting-up.md',
+            'extend/extend-cli/cli-installing-sample-plugin.md',
+            'extend/extend-cli/cli-extending-a-plugin.md',
+            'extend/extend-cli/cli-developing-a-plugin.md',
+            'extend/extend-cli/cli-implement-profiles.md',
+          ]
+        },
+        {
+          text: 'Developing for Zowe Application Framework',
+          items: [
+            'extend/extend-desktop/mvd-extendingzlux.md',
+            'extend/extend-desktop/mvd-creatingappplugins.md',
+            'extend/extend-desktop/mvd-plugindefandstruct.md',
+            'extend/extend-desktop/mvd-dataservices.md',
+            'extend/extend-desktop/mvd-desktopandwindowmgt.md',
+            'extend/extend-desktop/mvd-configdataservice.md',
+            'extend/extend-desktop/mvd-uribroker.md',
+            'extend/extend-desktop/mvd-apptoappcommunication.md',
+            'extend/extend-desktop/mvd-errorreportingui.md',
+            'extend/extend-desktop/mvd-logutility.md',
+            'extend/extend-desktop/zlux-example-server.md',
+            'extend/extend-desktop/zlux-workshop-user-browser.md',
+            'extend/extend-desktop/zlux-tutorials.md',
+            'extend/extend-desktop/starter-intro.md',
+            'extend/extend-desktop/zlux-workshop-starter-app.md.md',
+            'extend/extend-desktop/ui-intro.md',
+            'extend/extend-desktop/iframe-sample.md',
+            'extend/extend-desktop/react-sample.md',
+            'extend/extend-desktop/angular-sample.md',
+            'extend/extend-api/ReactJSUI.md',
+          ]
+        }
+      ]
+    },
+    { text: 'Troubleshooting', link: 'troubleshoot/troubleshootinstall.md' },
+    { text: 'Contributing', link: 'contributing.md', },
+    { text: 'Zowe.org', link: 'https://zowe.org', }
+  ]
 }

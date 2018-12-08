@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+  <title>Open Beta for Zowe</title>
+  <topicmeta>
+    <publisher>Zowe</publisher>
+    <critdates>
+      <created date="{{build-date}}" />
+    </critdates>
+  </topicmeta>
+
+  {{topics}}
+</map>

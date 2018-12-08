@@ -14,6 +14,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "replace": "^1.0.0",
     "vuepress": "^0.14.1",
     "w3c-linkchecker-local": "^0.1.7"
   }
