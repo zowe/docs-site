@@ -1,27 +1,29 @@
 # Zowe API Mediation Layer Security
 
 - [Introduction and requirements](#introduction-and-requirements)
-    - [Transport-level Security](#transport-level-security)
-    - [Authentication](#authentication)
-    - [Authorization](#authorization)
-    - [Types of services](#types-of-services)
-    - [Transport Security Requirements](#transport-security-requirements)
-    - [Authentication](#authentication-1)
-    - [Trust stores and key stores](#trust-stores-and-key-stores)
+  - [Transport-level Security](#transport-level-security)
+  - [Authentication](#authentication)
+  - [Authorization](#authorization)
+  - [Types of services](#types-of-services)
+  - [Transport Security Requirements](#transport-security-requirements)
+  - [Authentication](#authentication-1)
+  - [Trust stores and key stores](#trust-stores-and-key-stores)
 - [Client Certificates](#client-certificates)
-    - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+  - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
 - [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
 - [Running on localhost](#running-on-localhost)
-    - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
-    - [Certificate management script](#certificate-management-script)
-    - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
-    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
-    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
-    - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
+  - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
+  - [Certificate management script](#certificate-management-script)
+  - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
+  - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
+  - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
+  - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
 - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
-    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
-    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost-1)
-    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost-1)
+  - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
+  - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
+  - [Generating certificate for a new service on z/OS](#generating-certificate-for-a-new-service-on-zos)
+  - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
+  - [Use an existing certificate for API Mediation Layer](#use-an-existing-certificate-for-api-mediation-layer)
 
 
 ## Introduction and requirements
@@ -361,10 +363,47 @@ Use the certificate management script that is stored at `$ZOWE_ROOT_DIR/api-medi
 
 ### Add a service with an existing certificate to APIML on z/OS
 
-This will be documented during work on the following user story: https://github.com/zowe/api-layer/issues/80
+The API Mediation Layer needs to validate the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer needs to validate the full certificate chain. It usually means that:
+
+1. You need to import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
+
+2. or your service needs to have its own certificate and all intermediate CA certificates (if it was signed by intermediate CA) in its keystore.
+
+    - If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the APIML truststore.
+
+You can import a public certificate to the APIML trust store by calling in the directory with API Mediation Layer:
+
+    cd $ZOWE_ROOT_DIR/api-mediation
+    scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
+
+#### What happens if the service is not trusted
+
+If you access a service that is not trusted, for example, by issuing a REST API request to it:
+
+    http --verify=keystore/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting
+
+You will get a similar response:
+
+    HTTP/1.1 502
+    Content-Type: application/json;charset=UTF-8
+
+    {
+        "messages": [
+            {
+                "messageContent": "The certificate of the service accessed by HTTPS using URI '/api/v1/<untrustedService>/greeting' is not trusted by the API Gateway: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target",
+                "messageKey": "apiml.common.tlsError",
+                "messageNumber": "AML0105",
+                "messageType": "ERROR"
+            }
+        ]
+    }
+
+The response has HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and message number `AML0105` and its content explains details about the message.
+
+If you see this message, you need to import the certificate of your service or the CA that has signed it to the truststore API Mediation Layer as described above.
 
 
-### Use an existing certificate for APIML
+### Use an existing server certificate for API Mediation Layer
 
 This will be documented during work on the following user story: 
 https://github.com/zowe/api-layer/issues/91
