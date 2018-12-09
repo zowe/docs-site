@@ -11,6 +11,8 @@ The following procedure is an overview of steps to onboard a Java Jersey REST AP
 
 2. [Externalize parameters](#externalize-parameters)
 
+3. [Download Apache Tomcat and enable SSL](#download-apache-tomcat-and-enable-ssl)
+
 3. [Run your service](#run-your-service)
 
 4. [Validate discovery of the API service by the Discovery Service](#validate-discovery-of-the-api-service-by-the-discovery-service)
@@ -223,11 +225,42 @@ the defined code.
       **Note:** Ensure that the parameter name is the same name as in 
       the _external-parameters.properties_.
 
+## Download Apache Tomcat and enable SSL
+
+To run Helloworld Jersey, you need to have Apache Tomcat installed in your computer. The service is also using HTTPS, so you will have to configure Tomcat to use **SSL/TLS** protocol. Follow the steps below:
+
+1.  Download Apache Tomcat 8.0.39 and install it. 
+2.  Build Helloworld Jersey through IntelliJ or by running `gradlew helloworld-jersey:build` in the terminal. 
+
+3.  Enable HTTPS for Apache Tomcat. In order to do that, there are few additional steps that are needed to be done:
+    * Go to `apache-tomcat-8.0.39-windows-x64\conf` directory (the full path depends on where you decided to install Tomcat) and open `server.xml` file with some text editor as Administrator. Add the xml block below:
+        ```xml
+               <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+                              maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+                              clientAuth="false" sslProtocol="TLS"
+                              keystoreFile="{your-project-directory}\api-layer\keystore\localhost\localhost.keystore.p12"
+                              keystorePass="password"
+                                                    />
+        ```
+        Be also sure to comment the HTTP connector which uses the same port.
+    * Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file, right below the `<servlet-mapping>` tag:
+        ```xml
+        <security-constraint>
+                <web-resource-collection>
+                    <web-resource-name>Protected resource</web-resource-name>
+                    <url-pattern>/*</url-pattern>
+                    <http-method>GET</http-method>
+                    <http-method>POST</http-method>
+                </web-resource-collection>
+                <user-data-constraint>
+                    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+                </user-data-constraint>
+            </security-constraint>
+        ```
 
 ## Run your service
 
-After you externalize the parameters to make them readable through Tomcat, 
-you are ready to run your service in the APIM Ecosystem.
+After you've externalized the parameters to make them readable through Tomcat and enabled SSL, you are ready to run your service in the APIM Ecosystem.
 
 **Note:** The following procedure uses `localhost` testing.
 
@@ -240,26 +273,29 @@ you are ready to run your service in the APIM Ecosystem.
     * Discovery Service
     * API Catalog Service
 
-2. Run Tomcat for your Java Jersey application. 
-
-    **Tip:** Wait for the services to be ready. This process may take a few minutes.
+2. Run `gradlew tomcatRun` with these additional parameters: `-Djavax.net.ssl.trustStore="<your-project-directory>\api-layer\keystore\localhost\localhost.truststore.p12" -Djavax.net.ssl.trustStorePassword="password"`. 
+   If you need some more information about SSL configuration status while deploying, use this parameter `-Djavax.net.debug=SSL`.
+   
+   **Tip:** Wait for the services to be ready. This process may take a few minutes.
+   
+3.  Navigate to [https://localhost:10011](https://localhost:10011). Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
+You should also be able to reach the following endpoints using HTTPS:
+    * [https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016](https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016) for metadata and service information
     
-3. Go to the following URL to reach the API Catalog through the Gateway (port 10010):
+    * [https://localhost:10016](https://localhost:10016) for the homepage
+    
+    * [https://localhost:10016/helloworld-jersey/api-doc](https://localhost:10016/helloworld-jersey/api-doc) which contains the API documentation
+    
+    * [https://localhost:10016/helloworld-jersey/application/health](https://localhost:10016/helloworld-jersey/application/health) for the health check endpoint containing the status of the application
+     
+    * [https://localhost:10016/helloworld-jersey/application/info](https://localhost:10016/helloworld-jersey/application/info) for the service informations such as hostname, port etc
+    
+    * [https://localhost:10016/helloworld-jersey/v1/greeting](https://localhost:10016/helloworld-jersey/v1/greeting) for the greeting endpoint
+        
+    Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
     ```
-    https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
+    https://localhost:10010/ui/v1/apicatalog/#/dashboard
     ``` 
     
-    You successfully onboarded your Java Jersey application if see your service 
+  You successfully onboarded your Java Jersey application if see your service 
     running and can access the API documentation. 
-
-## (Optional) Validate discovery of the API service by the Discovery Service
-
-The following procedure enables you to check if your service is discoverable by 
-the Discovery Service.
- 
- **Follow these steps:**
- 
-1. Go to `http://localhost:10011`. 
-2. Enter _eureka_ as a username and _password_ as a password.
-3. Check if your application was discovered by Eureka. 
-
