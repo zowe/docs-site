@@ -7,7 +7,7 @@
   - [Types of services](#types-of-services)
   - [Transport Security Requirements](#transport-security-requirements)
   - [Authentication](#authentication-1)
-  - [Trust stores and key stores](#trust-stores-and-key-stores)
+  - [Truststores and keystores](#truststores-and-keystores)
 - [Client Certificates](#client-certificates)
   - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
 - [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
@@ -23,7 +23,8 @@
   - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
   - [Generating certificate for a new service on z/OS](#generating-certificate-for-a-new-service-on-zos)
   - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
-  - [Use an existing certificate for API Mediation Layer](#use-an-existing-certificate-for-api-mediation-layer)
+    - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
+  - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
 ## Introduction and requirements
@@ -106,35 +107,35 @@ The requirements for the services are the following:
 - API Client
     - Is not a server
     - Needs to trust the API Gateway
-    - Has a trust store that contains certificate(s) needed to trust the API Gateway
+    - Has a truststore that contains certificate(s) needed to trust the API Gateway
 
 - Gateway Service
     - Provides an HTTPS port
-    - Has a key store with a server certificate
+    - Has a keystore with a server certificate
         - The certificate needs to be trusted by API Clients
         - This certificate should be trusted by web browsers because the API Gateway can be used to display web UIs
-    - Has a trust store that contains certificates needed to trust API Services
+    - Has a truststore that contains certificates needed to trust API Services
 
 - API Catalog
     - Provides an HTTPS port
-    - Has a key store with a server certificate
+    - Has a keystore with a server certificate
         - The certificate needs to be trusted by the API Gateway
         - This certificate does not need to be trusted by anyone else
 
 - Discovery Service
     - Provides an HTTPS port
-    - Has a key store with a server certificate
+    - Has a keystore with a server certificate
         - The certificate needs to be trusted by API Clients
-    - Has a trust store that contains certificates needed to trust API Services
+    - Has a truststore that contains certificates needed to trust API Services
 
 - API Service
     - Provides an HTTPS port
-    - Has a key store with a server and client certificate
+    - Has a keystore with a server and client certificate
         - The server certificate needs to be trusted by GW
         - The client certificate needs to be trusted by DS
         - The client and server certificates can be the same
         - These certificates do not need to be trusted by anyone else
-    - Has a trust store that contains certificate(s) needed to trust the API Gateway and Discovery Service
+    - Has a truststore that contains certificate(s) needed to trust the API Gateway and Discovery Service
   
 
 ### Authentication
@@ -160,9 +161,9 @@ The requirements for the services are the following:
     - It should be using Authentication and Authorization Service for authentication
 
 
-###  Trust stores and key stores
+### Truststores and keystores
 
-A _key store_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys, used in TLS encryption. A _key store_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe APIML uses PKCS12 to enable the key stores to be used
+A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys, used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe APIML uses PKCS12 to enable the keystores to be used
 by other technologies used in Zowe (Node.js).
 
 The APIML local CA:
@@ -171,14 +172,14 @@ The APIML local CA:
 - It is used to sign certificates of services
 - Its certificate is trusted by API services and clients
 
-The APIML key store:
+The APIML keystore:
 
 - server certificate of GW (with PK) - can be signed by local CA or external CA
 - server certificate of DS (with PK) - can be signed by local CA
 - server certificate of AC (with PK) - can be signed by local CA
 - used by APIML services
 
-The APIML trust store:
+The APIML truststore:
 
 - contains local CA public certificate
 - contains external CA public certificate (optional)
@@ -187,14 +188,14 @@ The APIML trust store:
 
 Zowe Core services:
 
-- they can use the same key store and trust store as APIML for simpler installation and management
+- they can use the same keystore and truststore as APIML for simpler installation and management
 - or they can have individual stores for higher security
 
-API service key store (for each service)
+API service keystore (for each service)
 
 - contains server and client certificate signed by local CA
   
-API service trust store (for each service)  
+API service truststore (for each service)  
 
 - contains local CA and external CA certificates (optional)
 
@@ -225,7 +226,7 @@ The Discovery Service has two types of users that need to authenticate:
 
 ### How to start APIML on localhost with full HTTPS
 
-The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start APIML with HTTPS on your computer. The certificates are not trusted by your browser so can either ignore security warning or generate your own certificates and add them to the trust store of your browser or system.
+The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start APIML with HTTPS on your computer. The certificates are not trusted by your browser so can either ignore security warning or generate your own certificates and add them to the truststore of your browser or system.
 
 The certificates are described in more detail in the https://github.com/zowe/api-layer/blob/https-local-certmgmt-%2372/keystore/README.md.
 
@@ -233,7 +234,7 @@ The certificates are described in more detail in the https://github.com/zowe/api
 ### Certificate management script
 
 Zowe API Mediation layer provides a script that can used on Windows, Mac, Linux, and z/OS
-to generate the certificate and key store for the local CA, API Mediation Layer, and services.
+to generate the certificate and keystore for the local CA, API Mediation Layer, and services.
 
 It is stored in [scripts/apiml_cm.sh](https://github.com/zowe/api-layer/blob/master/scripts/apiml_cm.sh).
 It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, you need to install Bash, for example by using [cmder](http://cmder.net/).
@@ -245,7 +246,7 @@ Use the following script in the root of the `api-layer` repository:
 
     scripts/apiml_cm.sh --action setup
 
-This creates the certificates and key store for the API Mediation Layer in your current workspace.
+This creates the certificates and keystore for the API Mediation Layer in your current workspace.
 
 
 ### Generating certificate for a new service on localhost
@@ -263,7 +264,7 @@ This will be documented during work on the following user story: https://waffle.
 
 You need to provide a valid client certificate if you want to access Discovery Service on localhost.
 
-The certificate is stored in the `keystore/localhost/localhost.keystore.p12` key store.
+The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
 
 Some utilities including HTTPie requires the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
 
@@ -286,7 +287,7 @@ They are generated by the certificate management script `apiml_cm.sh` that is in
 
 The certificates are generated to the directory `$ZOWE_ROOT_DIR/api-mediation/keystore`.
 
-APIML key store and trust store:
+APIML keystore and truststore:
 
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local/localhost.keystore.p12` 
     - used for the HTTPS servers
@@ -298,7 +299,7 @@ APIML key store and trust store:
     - contains the local CA public certificate
     - can contain additional certificate to trust services that are not signed by local CA
 
-APIML key and trust stores needs be accessible by the user ID that executes the Zowe runtime.
+APIML key and truststores needs be accessible by the user ID that executes the Zowe runtime.
 
 Local CA:
 
@@ -308,12 +309,12 @@ Local CA:
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.keystore.p12`
     - private key of the local CA 
 
-Local CA key store can be accessible only by the user that is installing and managing the Zowe runtime. 
+Local CA keystore can be accessible only by the user that is installing and managing the Zowe runtime. 
 
 ### Import the local CA certificate to your browser
 
 The local CA certificate is not trusted outside of the API Mediation Layer by default.
-You need to add it to the trust store of the REST API clients and to your browser.
+You need to add it to the truststore of the REST API clients and to your browser.
 
 The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
 
@@ -346,11 +347,11 @@ If you're using **macOS**, you can run the following command:
 
     $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer 
 
-**Firefox** uses its own certificate trust store. You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows trust store:
+**Firefox** uses its own certificate truststore. You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore:
 
 Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
 
-    /* Enable experimental Windows trust store support */
+    /* Enable experimental Windows truststore support */
     pref("security.enterprise_roots.enabled", true);
     
 
@@ -371,7 +372,7 @@ The API Mediation Layer needs to validate the certificate of each service that i
 
     - If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the APIML truststore.
 
-You can import a public certificate to the APIML trust store by calling in the directory with API Mediation Layer:
+You can import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
 
     cd $ZOWE_ROOT_DIR/api-mediation
     scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
