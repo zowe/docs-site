@@ -434,6 +434,21 @@ You need to run following commands as superuser to import z/OSMF certificates:
 If the import is successful, you need to restart Zowe server to make the changes effective.
 
 
+#### Disabling certificate validation
+
+If you want to try out the Zowe without setting up the certificates, you can disable the validation of the TLS/SSL certificates by the API Mediation layer.
+
+This can be done updating following property:
+
+    -Dapiml.security.verifySslCertificatesOfServices=false
+
+in following shell scripts:
+
+- `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-catalog.sh`
+- `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
+- `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
+  
+
 #### Use an existing server certificate for API Mediation Layer
 
 This will be documented during work on the following user story: 
