@@ -24,6 +24,7 @@
     - [Generating certificate for a new service on z/OS](#generating-certificate-for-a-new-service-on-zos)
     - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
       - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
+    - [Trust z/OSMF certificate](#trust-zosmf-certificate)
     - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
@@ -402,6 +403,35 @@ You will get a similar response:
 The response has HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and message number `AML0105` and its content explains details about the message.
 
 If you see this message, you need to import the certificate of your service or the CA that has signed it to the truststore API Mediation Layer as described above.
+
+
+#### Trust z/OSMF certificate
+
+The Zowe installation script tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically.
+
+This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
+
+If it is not possible, you will see following error message:
+
+    ERROR: z/OSMF is not trusted by the API Mediation Layer.
+
+You can add z/OSMF to the truststore manually as a user that have access right to read the z/OSMF keyring or is a superuser.
+
+To find the name of the z/OSMF keyring issue:
+ 
+    cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring
+
+This will return line like:
+
+    izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT
+
+You need to run following commands as superuser to import z/OSMF certificates:
+
+    su
+    cd $ZOWE_RUNTIME/api-mediation
+    scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
+
+If the import is successful, you need to restart Zowe server to make the changes effective.
 
 
 #### Use an existing server certificate for API Mediation Layer
