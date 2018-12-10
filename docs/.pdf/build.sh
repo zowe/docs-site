@@ -61,11 +61,11 @@ echo
 cd $SCRIPT_PATH
 cd ../../
 DOCS_ROOT=$(pwd)
-rm -fr $TMP_FOLDER
-mkdir -p $TMP_FOLDER
-rm -fr $OUT_FOLDER
-mkdir -p $OUT_FOLDER
-cp -r docs/* $TMP_FOLDER
+[ ! -x "$REPLACE_COMMAND" ] \
+  && echo "Replace command is missing, installing ..." \
+  && npm install
+rm -fr $TMP_FOLDER && mkdir -p $TMP_FOLDER && cp -r docs/* $TMP_FOLDER
+rm -fr $OUT_FOLDER && mkdir -p $OUT_FOLDER && chmod 777 $OUT_FOLDER
 # render ditamap from template and vuepress config
 node docs/.pdf/generate-ditamap.js > $TMP_FOLDER/$DITA_MAP
 echo "------------------------------------------------------------------------------"
