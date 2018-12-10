@@ -27,7 +27,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
        You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-    - Zowe API Mediation Layer has three ports: two HTTP ports and one HTTPS port, for each micro-service.
+    - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
     - The Explorer-server has two ports: one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
 
@@ -40,9 +40,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
      rootDir=/var/zowe/0.9.3
 
     api-mediation:
-      catalogHttpPort=7552
-      discoveryHttpPort=7553
-      gatewayHttpsPort=7554
+      catalogPort=7552
+      discoveryPort=7553
+      gatewayPort=7554
 
     explorer-server:
       httpPort=7080
