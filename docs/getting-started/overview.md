@@ -122,7 +122,7 @@ Zowe CLI uses the following third-party software:
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-[Click here](../.vuepress/public/CA_Brightside_TPSRs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
+[Click here](../.vuepress/public/Zowe_User_Guide_0.9.0.pdf) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
 
 **More Information:**
 
