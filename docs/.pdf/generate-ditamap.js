@@ -10,40 +10,40 @@ const now = new Date();
 const y = now.getFullYear();
 const m = now.getMonth() + 1;
 const d = now.getDate();
-result = result.replace(/{{build-date}}/, [y, m < 10 ? '0' + m : m, d < 10 ? '0' + d : d].join('-'));
+result = result
+  .replace(/{{build-year}}/, y)
+  .replace(/{{build-date}}/, [y, m < 10 ? '0' + m : m, d < 10 ? '0' + d : d].join('-'));
 
 const pdfConfig = config && config.pdf;
 let topics = [];
 const isExternalLink = link => link.match(/^https?:\/\//);
-const addTopic = item => {
+const addTopic = (item, level) => {
+  level = level || 0;
   // console.log('>>>', item);
   let result = [];
+  const tag = level === 0 ? 'chapter' : 'topicref';
 
   if (item.items) {
     if (item.link) {
-      result.push(`<topicref format="markdown" href="${item.link}" navtitle="${item.text}">`);
+      result.push(`<${tag} format="markdown" href="${item.link}" navtitle="${item.text}">`);
       for (let item2 of item.items) {
-        result = result.concat(addTopic(item2));
+        result = result.concat(addTopic(item2, level + 1));
       }
-      result.push('</topicref>');
+      result.push(`</${tag}>`);
     } else {
-      result.push(`<topicgroup navtitle="${item.text}">`);
+      result.push(`<${tag} navtitle="${item.text}">`);
       for (let item2 of item.items) {
-        result = result.concat(addTopic(item2));
+        result = result.concat(addTopic(item2, level + 1));
       }
-      result.push('</topicgroup>');
+      result.push(`</${tag}>`);
     }
   } else if (item.link && item.text) {
-    if (isExternalLink(item.link)) {
-      result.push(`<topicref format="html" href="${item.link}" navtitle="${item.text}" scope="external" />`);
-    } else {
-      result.push(`<topicref format="markdown" href="${item.link}" navtitle="${item.text}" />`);
+    if (!isExternalLink(item.link)) {
+      result.push(`<${tag} format="markdown" href="${item.link}" navtitle="${item.text}" />`);
     }
   } else {
-    if (isExternalLink(item)) {
-      result.push(`<topicref format="html" href="${item}" scope="external" />`);
-    } else {
-      result.push(`<topicref format="markdown" href="${item}" />`);
+    if (!isExternalLink(item)) {
+      result.push(`<${tag} format="markdown" href="${item}" />`);
     }
   }
 

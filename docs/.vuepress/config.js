@@ -198,28 +198,32 @@ module.exports = {
       '/': ['about']
     }
   },
-  pdf: [
-    { text: 'Release notes', link: 'getting-started/summaryofchanges.md' },
-    { text: 'Zowe overview', link: 'getting-started/overview.md', },
+  pdf: [{
+      text: 'Getting Started',
+      items: [
+        { text: 'Release notes', link: 'getting-started/summaryofchanges.md' },
+        { text: 'Zowe overview', link: 'getting-started/overview.md', },
+      ],
+    },
     {
       text: 'User Guide',
       items: [{
           text: 'Installing Zowe',
           items: [
-            '/user-guide/installandconfig.md',
+            'user-guide/installandconfig.md',
             'user-guide/installroadmap.md',
-            'user-guide/systemrequirement,s.md',
+            'user-guide/systemrequirements.md',
             'user-guide/gettingstarted.md',
             'user-guide/install-zos.md',
-            'user-guide/cli-installcli,.md',
-            'user-guide/uninstall',
+            'user-guide/cli-installcli.md',
+            'user-guide/uninstall.md',
           ]
         },
         {
           text: 'Configuring Zowe',
           items: [
             'user-guide/mvd-configuration.md',
-            'user-guide/cli-configuringcli'
+            'user-guide/cli-configuringcli.md',
           ]
         },
         {
@@ -291,7 +295,7 @@ module.exports = {
             'extend/extend-desktop/zlux-workshop-user-browser.md',
             'extend/extend-desktop/zlux-tutorials.md',
             'extend/extend-desktop/starter-intro.md',
-            'extend/extend-desktop/zlux-workshop-starter-app.md.md',
+            'extend/extend-desktop/zlux-workshop-starter-app.md',
             'extend/extend-desktop/ui-intro.md',
             'extend/extend-desktop/iframe-sample.md',
             'extend/extend-desktop/react-sample.md',

@@ -73,6 +73,11 @@ echo "Temporary folder: $DOCS_ROOT/$TMP_FOLDER"
 ls -la $TMP_FOLDER
 echo
 
+echo "------------------------------------------------------------------------------"
+echo "DITA Map: $DOCS_ROOT/$TMP_FOLDER/$DITA_MAP"
+cat $DOCS_ROOT/$TMP_FOLDER/$DITA_MAP
+echo
+
 ################################################################################
 # transform to CommonMark
 ################################################################################
