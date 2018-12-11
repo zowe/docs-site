@@ -14,6 +14,14 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.4 contains the following changes since the last version.
 
+### What's new in Zowe installation
+Pre-install and post-install scripts are now available to provide an enhanced installation experience when you install the Zowe runtime on z/OS. 
+
+- The pre-install script `zowe-verify-pre-install.sh` checks the basic prerequisites for Zowe on your z/OS system before you install the Zowe runtime. 
+- The post-install script `zowe-verify-post-install.sh` checks the configuration files and jobs for Zowe on your z/OS system when Zowe is running and the startup sequence is complete.
+
+These scripts write messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. The scripts do not change any settings, so you can run it as often as required. For details, see [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html).
+
 ### What's new in Zowe Application Framework
 
 -  **Accessing the Zowe Desktop**
