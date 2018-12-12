@@ -14,36 +14,39 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.4 contains the following changes since the last version.
 
-### What's new in the Zowe Application Framework
+### What's new in Zowe Application Framework
 
-#### Accessing the Zowe Desktop
+-  **Accessing the Zowe Desktop**
 
-The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously the URL is `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
+    The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously, the URL is `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
 
-See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
+    See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
 
 ### What's new in Zowe CLI
 
-#### Integrate Zowe CLI with API Mediation Layer
+- **Integrate Zowe CLI with API Mediation Layer**
 
-Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.html#accessing-an-api-mediation-layer) for more information.
+    Zowe CLI now integrates with the API Mediation Layer. You can now easily interact with services that have been surfaced through the API Mediation Layer. See [Accessing an API Mediation Layer](../user-guide/cli-usingcli.html#accessing-an-api-mediation-layer) for more information.
 
-#### Zowe CLI standalone download available
+- **Zowe CLI standalone download available**
 
-Zowe CLI is now available as a standalone .tgz file download from [www.zowe.org/download](https://zowe.org/download/) to allow for easier installation. The CLI is no longer included in the primary Zowe PAX file download.
+    Zowe CLI is now available as a standalone .tgz file download from [www.zowe.org/download](https://zowe.org/download/) to allow for easier installation. The CLI is no longer included in the primary Zowe PAX file download.
 
 ### What's new in Explorer Server
-#### Enhanced JES explorer app
-- Rewrites jobs tree to a simpler interface to make better use of available space. See [this issue](https://github.com/zowe/explorer-uss/issues/12) for details.
-- Fixes an issue that prevents the content viewer from resizing when launched in virtual desktop. See [this issue](https://github.com/zowe/explorer-jes/issues/20) for details.
+- **Enhanced JES explorer app**
 
-#### Enhanced MVS explorer app
-- Rewrites dataset tree to make better use of available space. See [this issue](https://github.com/zowe/explorer-mvs/issues/17) for details.
-- Fixes race condition when opening full-screen dataset causes no content to appear. See [this issue](https://github.com/zowe/explorer-mvs/issues/5) for details.
+    - Rewrites jobs tree to a simpler interface to make better use of available space. See [this issue](https://github.com/zowe/explorer-uss/issues/12) for details.
+    - Fixes an issue that prevents the content viewer from resizing when launched in virtual desktop. See [this issue](https://github.com/zowe/explorer-jes/issues/20) for details.
 
-#### Enhanced USS explorer app
-- You can now double click on directory to update path and reload tree. You can single click on directory to expand its contents.
-- Rewrites USS tree to make better use of available space. See [this issue](https://github.com/zowe/explorer-uss/issues/12) for details.
+- **Enhanced MVS explorer app**
+
+    - Rewrites dataset tree to make better use of available space. See [this issue](https://github.com/zowe/explorer-mvs/issues/17) for details.
+    - Fixes race condition when opening full-screen dataset causes no content to appear. See [this issue](https://github.com/zowe/explorer-mvs/issues/5) for details.
+
+- **Enhanced USS explorer app**
+
+    - You can now double click on directory to update path and reload tree. You can single click on directory to expand its contents.
+    - Rewrites USS tree to make better use of available space. See [this issue](https://github.com/zowe/explorer-uss/issues/12) for details.
 
 ## Version 0.9.3 (November 2018)
 
