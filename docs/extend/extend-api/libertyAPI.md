@@ -92,7 +92,7 @@ The example project uses Maven for its build process which will run locally or a
 
 Further examples of implementations can be found looking at the code for the Zowe microservice.
 
-#### Eclipse hint..
+### Eclipse hint..
 
 Using Maven to build in an Eclipse environment can leave your files full of red x's. Generally this is caused because the Eclipse compiler
 mechanism has no visibility of dependencies described in the pom.xml file. There is a magic function to help with this. Right click on your
