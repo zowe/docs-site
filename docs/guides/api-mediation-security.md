@@ -21,10 +21,11 @@
   - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
     - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
     - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-    - [Generating certificate for a new service on z/OS](#generating-certificate-for-a-new-service-on-zos)
+    - [Generating keystore and truststore for a new service on z/OS](#generating-keystore-and-truststore-for-a-new-service-on-zos)
     - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
       - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
     - [Trust z/OSMF certificate](#trust-zosmf-certificate)
+    - [Disabling certificate validation](#disabling-certificate-validation)
     - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
@@ -356,11 +357,38 @@ Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files 
     pref("security.enterprise_roots.enabled", true);
     
 
-#### Generating certificate for a new service on z/OS
+#### Generating keystore and truststore for a new service on z/OS
 
-Follow the same steps as in https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost.
+You can generate keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
-Use the certificate management script that is stored at `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.
+    cd $ZOWE_ROOT_DIR/api-mediation
+    scripts/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
+    --service-keystore <keystore_path> --service-truststore <truststore_path> \
+    --service-dname <dname> --service-password <password> --service-validity <days> \
+    --local-ca-filename $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca 
+
+The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
+
+The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore. For example: `/opt/myservice/keystore/service.keystore`.
+
+The `service-truststore` contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that will be generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
+
+The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN has contain host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration. For example:
+
+    "SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"
+
+*Note:* For more details about SAN, see section *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
+
+The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. For example:
+
+    "CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"
+
+
+The `service-validity` is the number of days after that the certificate will expire.
+
+The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
+
+The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. If you an in the `$ZOWE_RUNTIME/api-mediation-directory`, you can omit this parameter. It should point to the `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca`.
 
 
 #### Add a service with an existing certificate to APIML on z/OS
