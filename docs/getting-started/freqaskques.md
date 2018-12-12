@@ -21,7 +21,7 @@ You can install Zowe CLI using the following methods:
 **How can I get help with using Zowe CLI?**
 
 - You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups.md).
+- For information about the available commands in Zowe CLI, see [Command Groups](./user-guide/cli-usingcli#zowe-cli-command-groups.md).
 - If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
 
 **How can I use Zowe CLI to automate mainframe actions?**
@@ -36,4 +36,4 @@ As a developer, you can extend Zowe CLI in the following ways:
 - Contribute code to the core Zowe CLI
 - Fix bugs in Zowe CLI or plug-in code, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack. 
 
-    **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials#how-can-i-contribute.md).
+    **Note:** For more information, see [Developing for Zowe CLI](./extend/extend-cli/cli-devTutorials#how-can-i-contribute.md).
