@@ -66,6 +66,7 @@ DOCS_ROOT=$(pwd)
   && npm install
 rm -fr $TMP_FOLDER && mkdir -p $TMP_FOLDER && cp -r docs/* $TMP_FOLDER
 rm -fr $OUT_FOLDER && mkdir -p $OUT_FOLDER && chmod 777 $OUT_FOLDER
+rm -fr $OUT_FOLDER/.tmp && mkdir -p $OUT_FOLDER/.tmp && chmod 777 $OUT_FOLDER/.tmp
 # render ditamap from template and vuepress config
 node docs/.pdf/generate-ditamap.js > $TMP_FOLDER/$DITA_MAP
 echo "------------------------------------------------------------------------------"
@@ -99,7 +100,7 @@ docker run -v $DOCS_ROOT/$TMP_FOLDER:/opt/dita-ot/data \
   dita -i /opt/dita-ot/data/Zowe_User_Guide.ditamap \
   -f pdf \
   -o /opt/dita-ot/out \
-  --dita.temp.dir=/opt/dita-ot/data/.tmp --clean.temp=no \
+  --dita.temp.dir=/opt/dita-ot/out/.tmp --clean.temp=no \
   -v
 echo
 
