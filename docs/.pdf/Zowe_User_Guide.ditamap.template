@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN"
-"http://docs.oasis-open.org/dita/dtd/bookmap.dtd">
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "http://docs.oasis-open.org/dita/dtd/bookmap.dtd">
 <bookmap>
   <booktitle>
     <mainbooktitle>Open Beta for Zowe</mainbooktitle>
@@ -8,6 +7,9 @@
   </booktitle>
   <bookmeta>
     <author>Zowe Docs Team</author>
+    <publisherinformation>
+      <organization>Zowe</organization>
+    </publisherinformation>
     <bookrights>
       <copyrfirst>
         <year>2018</year>

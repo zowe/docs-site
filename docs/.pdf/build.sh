@@ -26,8 +26,8 @@
 # constants
 ################################################################################
 SCRIPT_PATH=$(dirname "$0")
-TMP_FOLDER=.deploy/.pdf-tmp
-OUT_FOLDER=.deploy/.pdf-out
+TMP_FOLDER=.deploy/.pdf/data
+OUT_FOLDER=.deploy/.pdf/out
 REPLACE_COMMAND=./node_modules/.bin/replace
 DITA_MAP=Zowe_User_Guide.ditamap
 
@@ -99,6 +99,7 @@ docker run -v $DOCS_ROOT/$TMP_FOLDER:/opt/dita-ot/data \
   dita -i /opt/dita-ot/data/Zowe_User_Guide.ditamap \
   -f pdf \
   -o /opt/dita-ot/out \
+  --dita.temp.dir=/opt/dita-ot/data/.tmp --clean.temp=no \
   -v
 echo
 
