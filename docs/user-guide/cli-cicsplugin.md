@@ -83,7 +83,7 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
     ```
     Successful validation of the CICS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
       
-## Create a User Profile
+## Creating a user profile
 
 You can create a CICS user profile to avoid typing your connection details on every command. The `cics` profile contains your host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
 
