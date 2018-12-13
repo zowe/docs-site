@@ -46,7 +46,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       externalCertificate=
       externalCertificateAlias=
       externalCertificateAuthorities=
-      verifySslCertificatesOfServices=true
+      verifyCertificatesOfServices=true
 
     explorer-server:
       httpPort=7080
@@ -93,13 +93,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
    Follow these steps to use an existing certificate:
 
-   a. Update value of `externalCertificate` in the `api-mediation` section of the YAML file. The value needs to point  to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only PKCS12 keystore without a password are supported.
+   a. Update value of `externalCertificate` in the `api-mediation` section of the YAML file. The value needs to point  to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only PKCS12 keystore with password set to `password` are supported.
 
    b. Update value of `externalCertificateAlias` to the alias of the server certificate in the keystore.
 
    c. Update value of `externalCertificateAuthorities` to the to path of the public certificate of the certificate authority that has signed the certificate. You can add additional certificate authorities separated by spaces. This can be used for certificate authorities that have signed the certificates of the services that you want to access via the API Mediation Layer.
 
-   d. (Optional) If you have troubles with getting the certificates and you want to just evaluate Zowe, you can switch off the certificate validation by setting `verifySslCertificatesOfServices=false`. The HTTPS will be still used but API Mediation Layer will not validate any certificate. Such setup is not secure.
+   d. (Optional) If you have troubles with getting the certificates and you want to just evaluate Zowe, you can switch off the certificate validation by setting `verifyCertificatesOfServices=false`. The HTTPS will be still used but API Mediation Layer will not validate any certificate. Such setup is not secure.
 
    You should have something like:
 
@@ -110,7 +110,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
          externalCertificate=/path/to/keystore.p12
          externalCertificateAlias=servercert
          externalCertificateAuthorities=/path/to/cacert.cer
-         verifySslCertificatesOfServices=true
+         verifyCertificatesOfServices=true
    ```
 
 5. Execute the `zowe-install.sh` script.
