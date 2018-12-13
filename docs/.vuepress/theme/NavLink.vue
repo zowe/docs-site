@@ -8,7 +8,7 @@
   >
     <!-- MODIFICATION_FROM_THEME added <img> condition -->
     <img v-if="item.image" :src="imageUrl" :title="item.text" :width="item.imageWidth" :height="item.imageHeight" />
-    <span v-else>{{ item.text }}</span>
+    <span :class="{'not-in-navbar': item.image}">{{ item.text }}</span>
   </router-link>
   <!-- MODIFICATION_FROM_THEME added for listing versions without certain css class and target -->
   <a
@@ -27,7 +27,7 @@
   >
     <!-- MODIFICATION_FROM_THEME added <img> condition -->
     <img v-if="item.image" :src="imageUrl" :title="item.text" :width="item.imageWidth" :height="item.imageHeight" style="vertical-align:top" />
-    <span v-else>{{ item.text }}</span>
+    <span :class="{'not-in-navbar': item.image}">{{ item.text }}</span>
     <!-- MODIFICATION_FROM_THEME removed <OutboundLink/> -->
   </a>
 </template>
