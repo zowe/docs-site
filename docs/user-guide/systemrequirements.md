@@ -69,7 +69,7 @@ The following information contains procedures and tips for meeting z/OSMF requir
 Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
---|---|--
+---|---|---
 Integrated Cryptographic Service Facility (ICSF) | On z/OS, Node requires ICSF to be installed, configured and started. | N/A
 AXR (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
