@@ -19,6 +19,12 @@ Version 0.9.5 contains the following changes since the last version.
 
 ### What's new in Zowe CLI
 
+- **Use the Zowe CLI Plug-in for IBM CICS without a profile**
+
+    Zowe CLI Plug-in for CICS now lets you qualify connection details on a command without creating a cics user profile. You can issue commands directly on command line, using profiles, or using environment variables. This provides the flexibility to use of secure credential storage in automation tools such as Jenkins, override options on existing profiles, and write efficient more scripts. 
+
+    For more information about this feature, see [Setting environment variables for command arguments and options](cli-usingcli.md#setting-environment-variables-for-command-arguments-and-options).
+
 ## Version 0.9.4 (November 2018)
 
 Version 0.9.4 contains the following changes since the last version.
