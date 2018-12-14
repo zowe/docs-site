@@ -3,7 +3,7 @@
 <bookmap>
   <booktitle>
     <mainbooktitle>Open Beta for Zowe</mainbooktitle>
-    <booktitlealt>Installation and User's Guide</booktitlealt>
+    <booktitlealt>Zowe Documentation Version {{version}}</booktitlealt>
   </booktitle>
   <bookmeta>
     <author>Zowe Docs Team</author>

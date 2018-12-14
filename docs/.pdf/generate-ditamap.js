@@ -3,9 +3,13 @@ const path = require('path');
 
 const config = require('../.vuepress/config');
 
-const template = fs.readFileSync(path.join(__dirname, 'Zowe_User_Guide.ditamap.template')).toString();
+const template = fs.readFileSync(path.join(__dirname, 'Zowe_Documentation.ditamap.template')).toString();
 let result = template;
 
+// replace doc version
+result = result.replace(/{{version}}/, config.version);
+
+// replace create date
 const now = new Date();
 const y = now.getFullYear();
 const m = now.getMonth() + 1;
@@ -14,6 +18,7 @@ result = result
   .replace(/{{build-year}}/, y)
   .replace(/{{build-date}}/, [y, m < 10 ? '0' + m : m, d < 10 ? '0' + d : d].join('-'));
 
+// replace topics list
 const pdfConfig = config && config.pdf;
 let topics = [];
 const isExternalLink = link => link.match(/^https?:\/\//);
@@ -55,4 +60,5 @@ for (let item of pdfConfig) {
 }
 result = result.replace(/{{topics}}/, topics.join('\n'));
 
+// echo result
 console.log(result);

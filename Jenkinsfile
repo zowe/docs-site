@@ -159,8 +159,8 @@ node ('ibm-jenkins-slave-nvm') {
     stage('pdf') {
       ansiColor('xterm') {
         sh 'npm run docs:pdf'
-        if (fileExists('.deploy/.pdf/out/Zowe_User_Guide.pdf')) {
-          sh "cp .deploy/.pdf/out/Zowe_User_Guide.pdf .deploy/${publishTargetPath}/"
+        if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
+          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPath}/"
         } else {
           error 'Failed to generate PDF document.'
         }
