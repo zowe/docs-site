@@ -131,6 +131,14 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     ```
     chmod u+x zowe-install.sh.
     ```
+   
+    You may also receive the following error:
+    ```
+    apiml_cm.sh --action trust-zosmf has failed.
+    ERROR: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
+    ```
+    This error does not interfere with installation progress and can be remediated after install completes. See [Trust z/OSMF Certificate](../guides/api-mediation-security.md#trust-zosmf-certificate) for more details.
+    
 6. Configure Zowe as a started task.
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.
