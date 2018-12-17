@@ -1,5 +1,4 @@
 # z/OSMF Lite requirements
-
 This section provides information about requirements for z/OSMF lite configuration.
 1. [Introduction](#introduction)
 2. [Assumptions](#assumptions)
@@ -141,7 +140,7 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 
 #### Procedure
 
-1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC and upload this Job to z/OS. If you run z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
+1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC and upload this job to z/OS. If you run z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 4.	Connect your user ID to IZUADMIN group. 
@@ -173,7 +172,7 @@ Review the following messages and the corresponding resolutions as needed:
 ---|---|---
 Message IKJ56702I: INVALID data is issued | The job is submitted more than once.| You can ignore this message.
 Job fails with an authorization error. | Your user ID lacks superuser authority.             | See “Select a user ID for performing the steps”.
-Job fails with an authorization error. | Your installation uses the RACF PROTECT-ALL option. | See “Troubleshooting”.         
+Job fails with an authorization error. | Your installation uses the RACF PROTECT-ALL option. | See [Troubleshooting problems](#troubleshooting-problems).         
 ADDGROUP and ADDUSER commands are not executed. |  The automatic GID and UID assignment is required. | Define SHARED.IDS and BPX.NEXT.USER profiles to enable the use of AUTOUID and AUTOGID.                                              
 
 
@@ -196,7 +195,7 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 
 1.  In the system library `SYS1.SAMPLIB`, locate job IZUMKFS.
 
-2.  Make a copy of the job.
+2.  Copy the job.
 
 3.  Review and edit the job:
     - Modify the job information so that the job can run on your system.
@@ -210,7 +209,7 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 The z/OSMF file system is allocated, formatted, and mounted, and
 the necessary directories are created.
 
-<font color="red">TBD: How do we know this worked?</font>
+TBD: How do we know this worked?
 
 #### Common errors
 
@@ -219,24 +218,23 @@ Review the following messages and the corresponding resolutions as needed
 **Symptom**   | **Cause**    | **Resolution**       
 ---|---|---
 Job fails with FSM error. | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
-Job fails with an authorization error. | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems)      
+Job fails with an authorization error. | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems).      
 
 ### Copying the IBM procedures into JES PROCLIB
 
 Copy the z/OSMF started procedures and logon procedure from SYS1.PROCLIB into
-your JES concatenation. Use $D PROCLIB command to display your JES2 PROCLIB definitions. 
+your JES concatenation. Use `$D PROCLIB` command to display your JES2 PROCLIB definitions. 
 
 #### Before you begin
 
 Locate the IBM procedures. IBM supplies procedures for z/OSMF in your z/OS
-order, as follows:
+order:
 
 -   ServerPac and CustomPac orders: IBM supplies the z/OSMF procedures in the
-    SMP/E managed proclib data set. In ServerPac and SystemPac, the data set is
-    named SYS1.IBM.PROCLIB, by default.
+    SMP/E managed proclib data set. In ServerPac and SystemPac, the default name for the data set is
+    SYS1.IBM.PROCLIB.
 
--   CBPDO orders: For a CBPDO order, the SMP/E-managed proclib data set is named
-    SYS1.PROCLIB.
+-   CBPDO orders: For a CBPDO order, the SMP/E-managed proclib data set is named as SYS1.PROCLIB.
 
 -   Application Development CD.
 
