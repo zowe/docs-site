@@ -13,7 +13,7 @@
 <prodinfo>
 <!--More cover information-->
 <prodname>Zowe</prodname>
-</prodinfo>
+<vrmlist><vrm version="0" release="9" modification="5"/></vrmlist></prodinfo>
 <bookid><edition>First Edition</edition></bookid></bookmeta>
 <ibmfrontmatter>
 <frontbooklists>
@@ -27,8 +27,6 @@ navtitle="Release notes"/>
 scope="local">
 <topicref format="md" href="installroadmap.md" navtitle="Installation roadmap" scope="local"/>
 <topicref format="md" href="systemrequirements.md" navtitle="System requirements" scope="local"/>
-<topicref format="md" href="gettingstarted.md" navtitle="Obtaining installation files"
-scope="local"/>
 <topicref format="md" href="install-zos.md"
 navtitle="Installing Zowe Application Framework, explorer server, and API Mediation Layer" scope="local"/>
 <topicref format="md" href="cli-installcli.md" navtitle="Installing Zowe CLI" scope="local"/>
