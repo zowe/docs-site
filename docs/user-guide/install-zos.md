@@ -10,10 +10,6 @@ To install Zowe on z/OS, you install the Zowe runtime that consists of three com
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
     - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)    
 5. [Verifying installation](#verifying-installation)        
-    - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-    - [Verifying explorer server installation](#verifying-explorer-server-installation)
-        - [Verifying the availability of explorer server REST APIs](#verifying-the-availability-of-explorer-server-rest-apis)       
-    - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 6. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
 ## Obtaining and preparing the installation file
@@ -141,10 +137,10 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
     You can run a script to check the install condition of the required prerequisites. To do this, issue the following command with the current directory being the `/install` directory.
 
     ```
-    zowe-prepreq-verify.sh
+    zowe-check-prereqs.sh
     ```
 
-    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-prereq-verify` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
+    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
 
 - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script.
 
@@ -428,7 +424,26 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Verifying installation
 
-After you complete the installation of Zowe API Mediation Layer, Zowe Application Framework, and explorer server, use the following procedures to verify that the components are installed correctly and are functional.
+Once Zowe is running and the startup sequence is complete, you can check the configuration files and jobs for Zowe on your z/OS system to ensure that the installation process is successful. To do this, follow these steps.
+
+1. Navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where *$ZOWE_ROOT_DIR* is the location of the Zowe runtime directory that contains the explorer server.  
+
+2. Run the `zowe-verify.sh` script by issuing the following command:
+
+    ```
+    zowe-verify.sh
+    ```
+
+The script writes its messages to your terminal window.  The results are marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and restart the Zowe server.  The `zowe-verify.sh` script does not change any settings, so you can run it as often as required.
+
+**Next steps**
+
+Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
+
+- [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
+- [Verifying explorer server installation](#verifying-explorer-server-installation)
+    - [Verifying the availability of explorer server REST APIs](#verifying-the-availability-of-explorer-server-rest-apis)  
+- [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
 
@@ -518,5 +533,5 @@ The response `UP` confirms that API Mediation Layer is installed and is running 
 
 ## Looking for troubleshooting help?
 
-If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](troubleshootinstall.md) section that describes how to use the `zowe-troubleshoot.sh` script to check errors and other helpful troubleshooting tips.
+If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](troubleshootinstall.md) section for troubleshooting tips.
 

@@ -29,8 +29,8 @@ Version 0.9.5 contains the following changes since the last version.
 
 New scripts are available now to provide an enhanced installation experience when you install the Zowe runtime on z/OS. 
 
-- The `zowe-prepreq-verify.sh` script checks the basic prerequisites for Zowe on your z/OS system before you install the Zowe runtime. 
-- The `zowe-troubleshoot.sh` script checks the configuration files and jobs for Zowe on your z/OS system when Zowe is running and the startup sequence is complete.
+- The `zowe-check-prepreq.sh` script checks the basic prerequisites for Zowe on your z/OS system before you install the Zowe runtime. 
+- The `zowe-verify.sh` script checks the configuration files and jobs for Zowe on your z/OS system when Zowe is running and the startup sequence is complete.
 
 These scripts write messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. The scripts do not change any settings, so you can run them as often as required. For details, see [Installing the Zowe runtime on z/OS](../user-guide/install-zos.md).
 

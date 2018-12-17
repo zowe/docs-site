@@ -6,18 +6,6 @@ Review the following troubleshooting tips if you have problems with Zowe install
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe runtime.
 
-### Troubleshooting Zowe configuration
-
-Once Zowe is running and the startup sequence is complete, you can check the configuration files and jobs for Zowe on your z/OS system. To do this, navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where *$ZOWE_ROOT_DIR* is the location of the Zowe runtime directory that contains the explorer server.  
-
-Then run the `zowe-troubleshoot.sh` script by issuing the following command:
-
-```
-zowe-troubleshoot.sh
-```
-
-The script writes its messages to your terminal window.  The results are marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and restart the Zowe server.  The `zowe-troubleshoot.sh` script does not change any settings, so you can run it as often as required.
-
 ### Troubleshooting installing explorer server
 
 If explorer server REST APIs do not function properly, check the following items:
