@@ -99,7 +99,7 @@ Note: Whenever you apply PTFs for z/OSMF, you might be prompted to install outst
 
 Ensure that the z/OS host system meets the following requirements:
 
--   Port 443 (Default port) is available for use.
+-   Port 443 (default port) is available for use.
 
 -   The system host name is unique and maps to the system on which z/OSMF Lite will be configured.
 
@@ -141,21 +141,24 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 
 #### Procedure
 
-1.	If you are running z/OS V2R2 or V2R3, download job IZUNUSEC and upload this Job to z/OS. If you are running z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
+1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC and upload this Job to z/OS. If you run z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
-4.	Connect your user ID to IZUADMIN group. Download and customize IZUAUTH, replace the ‘userid’ with your z/OSMF user id. Submit the JOB on your z/OS system.
+4.	Connect your user ID to IZUADMIN group. 
+    1. Download and customize job IZUAUTH.
+    2. Replace the ‘userid’ with your z/OSMF user ID. 
+    3. Submit the job on your z/OS system.
 
 
 #### Results
 
-The IZUNUSEC job should complete with return code 0000.
+Ensure the IZUNUSEC job completes with return code `0000`.
 
 To verify, check the results of the job execution in the job log. For example, you can use SDSF to examine the job log:  
 
 1.  In the SDSF primary option menu, select Option ST.
 
-2.  On the SDSF Status Display, enter letter S next to the job that you
+2.  On the SDSF Status Display, enter **S** next to the job that you
     submitted.
 
 3.  Check the return code of the job. The job succeeds if ‘0000’ is returned.
@@ -168,10 +171,10 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom** | **Cause**  | **Resolution**  
 ---|---|---
-Message IKJ56702I INVALID data is issued | The job is submitted more than once.| You can ignore this message.
+Message IKJ56702I: INVALID data is issued | The job is submitted more than once.| You can ignore this message.
 Job fails with an authorization error. | Your user ID lacks superuser authority.             | See “Select a user ID for performing the steps”.
 Job fails with an authorization error. | Your installation uses the RACF PROTECT-ALL option. | See “Troubleshooting”.         
-ADDGROUP and ADDUSER commands are not executed |  The automatic GID and UID assignment is required | Define SHARED.IDS and BPX.NEXT.USER profiles to enable the use of AUTOUID and AUTOGID                                                
+ADDGROUP and ADDUSER commands are not executed. |  The automatic GID and UID assignment is required. | Define SHARED.IDS and BPX.NEXT.USER profiles to enable the use of AUTOUID and AUTOGID.                                              
 
 
 ### Running job IZUMKFS to create the z/OSMF user file system
@@ -204,10 +207,10 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 
 #### Results
 
-On completion, the z/OSMF file system is allocated, formatted, and mounted, and
+The z/OSMF file system is allocated, formatted, and mounted, and
 the necessary directories are created.
 
-TBD: How do we know this worked?
+<font color="red">TBD: How do we know this worked?</font>
 
 #### Common errors
 
