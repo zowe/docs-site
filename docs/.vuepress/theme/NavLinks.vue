@@ -16,7 +16,7 @@
       rel="noopener noreferrer">
       <!-- MODIFICATION_FROM_THEME: repoLabel text link is replaced with img tag below -->
       <img v-if="repoLabel == 'GitHub'" :src="githubLogo" width="20" height="20" style="vertical-align:top" :title="repoLabel" />
-      <span v-else>{{ repoLabel }}</span>
+      <span :class="{'not-in-navbar': repoLabel == 'GitHub'}">{{ repoLabel }}</span>
       <!-- MODIFICATION_FROM_THEME removed <OutboundLink/> -->
     </a>
   </nav>
@@ -140,6 +140,10 @@ export default {
     line-height 2rem
   .repo-link
     margin-left 1.5rem
+
+.navbar
+  .not-in-navbar
+    display: none
 
 @media (max-width: $MQMobile)
   .nav-links
