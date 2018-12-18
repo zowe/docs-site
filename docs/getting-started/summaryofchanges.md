@@ -15,7 +15,22 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.5 contains the following changes since the last version.
 
+### What's new in the Zowe Desktop
+
+You can now obtain information about an application by right-clicking on an application icon and then clicking **Properties**.
+
+To view version information for the desktop, click the avatar in the lower right corner of the desktop.
+
 ### What's new in API Mediation Layer
+
+If you are running the APIML, you must prefix all Zowe Desktop and application URLs with: 
+
+`/api/v1/zlux` 
+
+For example: `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+
+Becomes: `/api/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+
 
 ### What's new in Zowe CLI
 
@@ -46,7 +61,7 @@ Version 0.9.4 contains the following changes since the last version.
 
 -  **Accessing the Zowe Desktop**
 
-    The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously, the URL is `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
+    The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously, the URL was `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
 
     See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
 
