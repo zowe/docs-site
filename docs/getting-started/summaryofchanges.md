@@ -23,13 +23,21 @@ To view version information for the desktop, click the avatar in the lower right
 
 ### What's new in API Mediation Layer
 
-If you are running the APIML, you must prefix all Zowe Desktop and application URLs with: 
+Zowe version 0.9.5 introduces the following enhancements to Zowe APIML:
 
-`/api/v1/zlux` 
+- APIML can now trust API services that are self-signed or signed by third-party certificate authorities.
+- APIML can now use existing server certificates for the API gateway that are signed by third-party certificate authorities.
+- The Zowe zLux and Zowe Atlas can now use the certificates that the APIML certificate management process creates.
+- Developers working with APIML can now disable the (APIML) HTTPS certificate validation process.
+- If you are running the APIML, you must prefix all Zowe Desktop and application URLs with:
 
-For example: `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+    `/api/v1/zlux` 
 
-Becomes: `/api/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+    Example:
+
+    `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+
+    Becomes: `/api/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
 
 
 ### What's new in Zowe CLI
