@@ -132,7 +132,11 @@ The following system changes are described in this chapter:
 
 The security job IZUNUSEC contains a minimal set of RACF® commands for creating security profiles for the z/OSMF nucleus. The profiles are used to protect the resources that are used by the z/OSMF server, and to grant users access to the z/OSMF core functions. IZUNUSEC is a simplified version of the sample job IZUSEC, which is intended for a more complete installation of z/OSMF.
 
-If your installation uses an external security manager other than RACF, you need to provide equivalent commands for your environment. For help with non-IBM security products, see the following web page (TBD - Add reference to the web page with contact info for CA equivalent commands).
+If your installation uses an external security manager other than RACF, you need to provide equivalent commands for your environment. For help with non-IBM security products, see the following web page 
+
+[Configure z/OS Management Facility for CA Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
+
+[Configure z/OS Management Facility for CA ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
 #### Before you begin
 
@@ -161,8 +165,6 @@ To verify, check the results of the job execution in the job log. For example, y
     submitted.
 
 3.  Check the return code of the job. The job succeeds if ‘0000’ is returned.
-
-TBD: Add screen capture of a job log for a completed IZUNUSEC job.
 
 #### Common errors
 
@@ -209,12 +211,15 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 The z/OSMF file system is allocated, formatted, and mounted, and
 the necessary directories are created.
 
-To verify if the file system is allocated and formatted, locate the following messages in IZUMKFS job output. 
-IDC0002I IDCAMS PROCESSING COMPLETE. MAX CONDITION CODE WAS 0. IOEZ00077I HFS-compatibility aggregate izu.sizuusrd has been successfully created.
+To verify the file system is allocated, formatted, locate the following messages in IZUMKFS job output.
 
-![](../images/zosmf/IZUMKFS1.png)
-![](../images/zosmf/IZUMKFS2.png)
-![](../images/zosmf/IZUMKFS3.png)
+```
+IDC0002I IDCAMS PROCESSING COMPLETE. MAX CONDITION CODE WAS 0.
+
+IOEZ00077I HFS-compatibility aggregate izu.sizuusrd has been successfully created.
+```
+
+TBD - add screenshots of IZUMKFS1.png, IZUMKFS2.png, IZUMKFS3.png 
 
 #### Common errors
 
@@ -318,7 +323,7 @@ At the end of the z/OSMF configuration process, you can verify the results of yo
 
 To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF server job log.
 
-![](../images/zosmf/IZUG349I.png)
+TBD : Insert IZUG349I.png here
 
 #### Procedure
 
@@ -348,7 +353,7 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
 
 If the user ID and password or pass phrase are valid, you are authenticated to z/OSMF. The Welcome page of IBM z/OS Management Facility tab opens in the main area. At the top right of the screen, Welcome *<your_user_ID>* is displayed. In the UI, only the options you are allowed to use are displayed.
 
-TBD< Insert a screen shot of the z/OSMS Welcome page after login. >
+TBD< Insert Welcome.png>
 
 You have successfully configured the z/OSMF nucleus.
 
@@ -627,6 +632,16 @@ If you find that a different value is used on your z/OS system, you can edit the
 
 For information about working with z/OSMF log files, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
-Common messages
-TBD: Insert the message IDs of all error messages that are encountered during FVT testing of this document.   
+#### Common messages
+
+```
+ICH420I PROGRAM CELQLIB FROM LIBRARY CEE.SCEERUN2 CAUSED THE ENVIRONMENT
+ TO BECOME UNCONTROLLED.  
+ 
+BPXP014I ENVIRONMENT MUST BE CONTROLLED FOR DAEMON (BPX.DAEMON)         
+PROCESSING. 
+```
+
+If you see above error messages, please check if your IZUANG0 procedure is up to date.
+
 For descriptions of all the z/OSMF messages, see [_z/OSMF messages_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zosmfmessages.help.doc/izuG00hpMessages.html) in IBM Knowledge Center.
