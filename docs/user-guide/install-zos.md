@@ -192,7 +192,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
        zssPort=8542
     ```
 
-    **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
+    **Notes:**
+    -  If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
+    - Comments are not supported in the yaml file, apart from lines starting with '#' in column one.
 
 3. Determine which ports are not available.
 
@@ -216,6 +218,47 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
           sshPort=22
           telnetPort=23
       ```
+
+4. Select the ZOWESVR PROCLIB member.
+
+    The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
+
+    **Example:**
+
+    ```
+    # started task JCL member for Zowe job - these entries are not case-sensitive
+    zowe-server-proclib:
+    # dsName=SYS1.PROCLIB   
+      dsName=auto
+      memberName=ZOWESVR
+    ```
+    **Follow these steps:**
+
+    a. Specify the dataset name of the PROCLIB member you want to use with the `dsName` tag.  For example,
+
+     ```
+     dsName=user.proclib
+     ```
+     
+     The following guidelines apply.
+
+      - Do not enclose the dataset name in quotes.
+      - The dataset name is not case-sensitive, but the `dsName` tag must be all lowercase.
+      - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user installing Zowe must have update access to this dataset.  
+      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the datasets in the PROCLIB concatenation and places the JCL member in the first dataset where the installing user has write access.  
+
+    b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
+
+     ```
+     memberName=ZOWEABC
+     ```
+     
+     The following guidelines apply.
+
+     - Do not enclose the member name in quotes.  
+     - The member name is not case-sensitive, but the `memberName` tag must be all lowercase. 
+     - The member name must be a valid PDS member name in z/OS.  If the member already exists, it will be overwritten.  
+     - If you omit the `memberName` tag or specify `memberName=`, the install script uses ZOWESVR.
 
 4. Execute the `zowe-install.sh` script to start installation. 
 
