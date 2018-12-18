@@ -441,7 +441,7 @@ This requires the user ID that is doing the installation to be able to read the 
 
 If it is not possible, you will see following error message:
 
-    ERROR: z/OSMF is not trusted by the API Mediation Layer.
+    WARNING: z/OSMF is not trusted by the API Mediation Layer.
 
 You can add z/OSMF to the truststore manually as a user that have access right to read the z/OSMF keyring or is a superuser.
 
