@@ -209,7 +209,12 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 The z/OSMF file system is allocated, formatted, and mounted, and
 the necessary directories are created.
 
-TBD: How do we know this worked?
+To verify if the file system is allocated and formatted, locate the following messages in IZUMKFS job output. 
+IDC0002I IDCAMS PROCESSING COMPLETE. MAX CONDITION CODE WAS 0. IOEZ00077I HFS-compatibility aggregate izu.sizuusrd has been successfully created.
+
+![](../images/zosmf/IZUMKFS1.png)
+![](../images/zosmf/IZUMKFS2.png)
+![](../images/zosmf/IZUMKFS3.png)
 
 #### Common errors
 
@@ -313,7 +318,7 @@ At the end of the z/OSMF configuration process, you can verify the results of yo
 
 To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF server job log.
 
-TBD : Insert a screen shot of the job log showing the 369I message with the URL.
+![](../images/zosmf/IZUG349I.png)
 
 #### Procedure
 
