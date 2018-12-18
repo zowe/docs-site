@@ -227,13 +227,21 @@ the defined code.
 
 ## Download Apache Tomcat and enable SSL
 
-To run Helloworld Jersey, you need to have Apache Tomcat installed in your computer. The service is also using HTTPS, so you will have to configure Tomcat to use **SSL/TLS** protocol. Follow the steps below:
+To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the service uses HTTPS, configure Tomcat to use **SSL/TLS** protocol.
+
+**Follow these steps:**
 
 1.  Download Apache Tomcat 8.0.39 and install it. 
+
 2.  Build Helloworld Jersey through IntelliJ or by running `gradlew helloworld-jersey:build` in the terminal. 
 
-3.  Enable HTTPS for Apache Tomcat. In order to do that, there are few additional steps that are needed to be done:
-    * Go to `apache-tomcat-8.0.39-windows-x64\conf` directory (the full path depends on where you decided to install Tomcat) and open `server.xml` file with some text editor as Administrator. Add the xml block below:
+3.  Enable HTTPS for Apache Tomcat. There are few additional steps to enable HTTPS for Apache Tomcat.
+
+    a) Go to the `apache-tomcat-8.0.39-windows-x64\conf` directory
+
+    **Note:** (the full path depends on where you decided to install Tomcat)
+    
+    b) Open the `server.xml` file with a text editor as Administrator and add the following xml block:
         ```xml
                <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
                               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
@@ -243,7 +251,8 @@ To run Helloworld Jersey, you need to have Apache Tomcat installed in your compu
                                                     />
         ```
         Be also sure to comment the HTTP connector which uses the same port.
-    * Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file, right below the `<servlet-mapping>` tag:
+    c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
+    
         ```xml
         <security-constraint>
                 <web-resource-collection>
@@ -260,7 +269,7 @@ To run Helloworld Jersey, you need to have Apache Tomcat installed in your compu
 
 ## Run your service
 
-After you've externalized the parameters to make them readable through Tomcat and enabled SSL, you are ready to run your service in the APIM Ecosystem.
+After you externalize the parameters to make them readable through Tomcat and enable SSL, you are ready to run your service in the APIM Ecosystem.
 
 **Note:** The following procedure uses `localhost` testing.
 
