@@ -431,17 +431,19 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
 ## Setup key store with the service certificate
 
-You service needs to have a certificate that is trusted by API Mediation Layer in order to register into it.
+To register with the API Mediation Layer, a service is required to have a certificate that is trusted by API Mediation Layer.
+
+**Follow these steps:**
 
 1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
-    In case of a service running on localhost, the command can look like:
+    When a service is running on localhost, the command can have the following format:
 
        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
 
-    Alternatively, you can just copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+    Alternatively, for the purpose of local development, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 
-2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding:
+2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding the following code:
 
         server:
             ssl:
@@ -472,7 +474,7 @@ The following list summarizes the API Layer parameters that are set by the custo
    * `mfaas.service.ipAddress: ${environment.ipAddress}`
    * `mfaas.server.port: ${environment.port}`
 
-**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For MFaaS applications, we recommend that you use Java System properties.    
+**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Mainframe as a Service applications, we recommend that you use Java System properties.    
 
 Java System properties are defined using `-D` options for Java. Java System properties can override any configuration. Those properties that are likely to change are defined as `${environment.variableName}:`     
 
@@ -507,25 +509,25 @@ To test that your API instance is working and is discoverable, use the following
 
 ### Validate that your API instance is discoverable
 
-   **Follow these steps:**
-1. Point your configuration of API instance to use the following discovery service:
+**Follow these steps:**
+ 1. Point your configuration of API instance to use the following discovery service:
     ```
     http://eureka:password@localhost:10011/eureka
     ```
-2. Start up the API service instance.
-3. Check that your API service instance and each of its endpoints are displayed in the API Catalog
+ 2. Start up the API service instance.
+ 3. Check that your API service instance and each of its endpoints are displayed in the API Catalog
     ```
     https://localhost:10010/ui/v1/caapicatalog/
     ```
 
-4. Check that you can access your API service endpoints through the gateway.
+ 4. Check that you can access your API service endpoints through the gateway.
 
    **Example:**
    ```
    https://localhost:10010/api/v1/
    ```
 
-5. Check that you can still access your API service endpoints directly outside of the gateway.
+ 5. Check that you can still access your API service endpoints directly outside of the gateway.
 
 ## Review the configuration examples of the discoverable client   
 
