@@ -160,7 +160,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/0.9.4`. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/0.9.5`. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
 
         You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
@@ -174,7 +174,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     ```yaml
     install:
-     rootDir=/var/zowe/0.9.3
+     rootDir=/var/zowe/0.9.5
 
     api-mediation:
       catalogPort=7552
