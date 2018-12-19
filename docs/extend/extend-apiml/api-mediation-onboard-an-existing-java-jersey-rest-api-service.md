@@ -287,19 +287,19 @@ After you externalize the parameters to make them readable through Tomcat and en
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to [https://localhost:10011](https://localhost:10011). Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
+3.  Navigate to `https://localhost:10011`. Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
 You should also be able to reach the following endpoints using HTTPS:
-    * [https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016](https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016) for metadata and service information
+    * `https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016` for metadata and service information
     
-    * [https://localhost:10016](https://localhost:10016) for the homepage
+    * `https://localhost:10016` for the homepage
     
-    * [https://localhost:10016/helloworld-jersey/api-doc](https://localhost:10016/helloworld-jersey/api-doc) which contains the API documentation
+    * `https://localhost:10016/helloworld-jersey/api-doc` which contains the API documentation
     
-    * [https://localhost:10016/helloworld-jersey/application/health](https://localhost:10016/helloworld-jersey/application/health) for the health check endpoint containing the status of the application
+    * `https://localhost:10016/helloworld-jersey/application/health` for the health check endpoint containing the status of the application
      
-    * [https://localhost:10016/helloworld-jersey/application/info](https://localhost:10016/helloworld-jersey/application/info) for the service informations such as hostname, port etc
+    * `https://localhost:10016/helloworld-jersey/application/info` for the service informations such as hostname, port etc
     
-    * [https://localhost:10016/helloworld-jersey/v1/greeting](https://localhost:10016/helloworld-jersey/v1/greeting) for the greeting endpoint
+    * `https://localhost:10016/helloworld-jersey/v1/greeting` for the greeting endpoint
         
     Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
     ```
