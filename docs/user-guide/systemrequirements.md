@@ -69,7 +69,7 @@ The following information contains procedures and tips for meeting z/OSMF requir
 Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
---|---|--
+---|---|---
 Integrated Cryptographic Service Facility (ICSF) | On z/OS, Node requires ICSF to be installed, configured and started. | N/A
 AXR (System REXX)    | z/OS uses AXR (System REXX) component to perform Incident Log tasks. The component enables REXX executable files to run outside of conventional TSO and batch environments.  |  [System REXX][1dae6ddc]
   Common Event Adapter (CEA) server| The CEA server, which is a co-requisite of the Common Information Model (CIM) server, enables the ability for z/OSMF to deliver z/OS events to C-language clients.       |  [Customizing for CEA][8e6f2b3e]
@@ -160,7 +160,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
-  --|---|--
+  ---|---|---
   Cloud provisioning services | Cloud provisioning services are required for the Zowe CLI CICS and Db2 command groups. Endpoints begin with `/zosmf/provisioning/`  | [Cloud provisioning services][aab6df02]
   TSO/E address space services  | TSO/E address space services are required to issue TSO commands in the Zowe CLI. Endpoints begin with `/zosmf/tsoApp`  |  [TSO/E address space services][a5ec5a22]
   z/OS console services  | z/OS console services are required to issue console commands in the Zowe CLI. Endpoints begin with `/zosmf/restconsoles/`  | [z/OS console services][cec53ca4]
