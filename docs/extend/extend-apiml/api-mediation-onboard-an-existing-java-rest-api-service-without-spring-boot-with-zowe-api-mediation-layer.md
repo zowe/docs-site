@@ -476,7 +476,9 @@ After you add all configurations and controllers, you are ready to run your serv
     * API Catalog Service
 
     **Tip:** For more information about how to run the API Mediation Layer locally, 
-    see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/api-layer/blob/master/docs/local-configuration.md)
+
+    see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
+
 
 2.  Run your Java application. 
 
