@@ -1,6 +1,6 @@
 # System requirements
 
-When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on PC.
+When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on your computer.
 
 Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
@@ -8,7 +8,7 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
 - IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
 
-  z/OSMF is a prerequisite for the Zowe microservice that must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
+  z/OSMF is a prerequisite for the Zowe microservice. z/OSMF must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
 
 - z/OS® Version 2.2 or later.
 
@@ -16,11 +16,12 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
     1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
 
-    **Notes:**
+     **Notes:**
 
-    - To install Node.js on z/OS, ensure that you meet all the hardware and software requirements in the procedure, including that Integrated Cryptographic Service Facility (ICSF) is configured and started.
+     - To install Node.js on z/OS, ensure that you meet the following requirements in the procedure. Other requirements, including installing Python, Make 4.1, or Perl, are not needed.
+       > z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
 
-    - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
+     - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
 
     2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
@@ -88,6 +89,8 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 ### Configuring z/OSMF
 
+**Follow these steps:**
+
 1. From the console, issue the following command to verify the version of z/OS:
     ```
     /D IPLINFO
@@ -111,8 +114,6 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
   [56147429]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua300/IZUHPINFO_ConfiguringMain.htm "Configuring z/OSMF"
   [56699d6d]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_ConfiguringMain.htm "Setting up z/OSMF for the first time"
-
-
 
 **Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
@@ -154,6 +155,11 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
     Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
+**Note:** If your implementation uses an external security manager other than RACF (for example, CA Top Secret or CA ACF2), you provide equivalent commands for your environment. For more information, see the following CA Technologies product documentation:
+
+- [Configure z/OS Management Facility for CA Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
+
+- [Configure z/OS Management Facility for CA ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
 #### z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
@@ -182,10 +188,16 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: https://mvs.ibm.com:443/zosmf/restjobs/jobs
 
-  **Note:**
+  **Notes:**
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
+
+**More Information:**
+
+You can now configure z/OSMF Zowe CLI now supports the 
+
+
 
 
 ## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
@@ -219,7 +231,7 @@ The following prerequisites for Windows, Mac, and Linux are required if you are 
 
 **Note:** As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
-Ensure that the following prerequisite software is installed on your PC:
+Ensure that the following prerequisite software is installed on your computer:
 
 - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
 
@@ -231,7 +243,7 @@ Ensure that the following prerequisite software is installed on your PC:
 
 ### Supported platforms
 
-CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 

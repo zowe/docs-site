@@ -10,7 +10,7 @@ The Visual Studio Code (VSCode) Extension for Zowe lets you interact with data s
 
 ## Prerequisites
 
-Before you use the VSCode extension, meet the following prerequisites on your PC:
+Before you use the VSCode extension, meet the following prerequisites on your computer:
 
   - Install [VSCode](https://code.visualstudio.com/).
 

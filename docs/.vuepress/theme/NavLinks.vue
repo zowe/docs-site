@@ -2,7 +2,7 @@
   <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
     <div
-      class="nav-item"
+      :class="['nav-item', {'can-hide-first': item.canHideFirst }]"
       v-for="item in userLinks"
       :key="item.link">
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
@@ -14,8 +14,10 @@
       class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      {{ repoLabel }}
-      <OutboundLink/>
+      <!-- MODIFICATION_FROM_THEME: repoLabel text link is replaced with img tag below -->
+      <img v-if="repoLabel == 'GitHub'" :src="githubLogo" width="20" height="20" style="vertical-align:top" :title="repoLabel" />
+      <span :class="{'not-in-navbar': repoLabel == 'GitHub'}">{{ repoLabel }}</span>
+      <!-- MODIFICATION_FROM_THEME removed <OutboundLink/> -->
     </a>
   </nav>
 </template>
@@ -87,6 +89,10 @@ export default {
         })
       })
     },
+    // MODIFICATION_FROM_THEME, newly added
+    githubLogo () {
+      return this.$site.base + 'assets/github-mark-32px.png'
+    },
     repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
@@ -134,6 +140,10 @@ export default {
     line-height 2rem
   .repo-link
     margin-left 1.5rem
+
+.navbar
+  .not-in-navbar
+    display: none
 
 @media (max-width: $MQMobile)
   .nav-links
