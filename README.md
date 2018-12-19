@@ -42,6 +42,14 @@ Errors must be fixed before merge to master branch, otherwise the pull request w
 
 _Please note, if we have multiple documentation versions in place, you may see broken links warnings on links to other versions._
 
+### Build PDF
+
+Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf-out` folder if there are no errors.
+
+To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js` `pdf` property.
+
+Check [Build PDF](docs/.pdf/README.md) for details explanations.
+
 ## Build and Archive Legacy Documentation
 
 ### Automatic Build

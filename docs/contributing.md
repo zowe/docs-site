@@ -347,7 +347,7 @@ Example:
 Use their English equivalents instead. Latin abbreviations are sometimes misunderstood.
 
 Latin  | English equivalent
---|--
+---|---
 e.g.  | for example
   etc. | and so on. <br> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
 i.e.  | that is
@@ -364,7 +364,7 @@ Add "More information" to link to useful resources or related topics at the end 
 The following table alphabetically lists the common used words and their usage guidelines.
 
 Do  | Don't
---|--
+---|---
 :heavy_check_mark: API Mediation Layer|
 :heavy_check_mark: application  | :x: app
 :heavy_check_mark: :heavy_check_mark: Capitalize "Server" when it's part of the product name |  
