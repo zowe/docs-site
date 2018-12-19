@@ -118,9 +118,9 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 **Tips:**
 
-* There are more examples of API definitions in https://github.com/gizafoundation/api-layer/tree/master/config/local/api-defs.
+* There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 
-* For more details about how to use YAML format, see https://learnxinyminutes.com/docs/yaml/
+* For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/)
 
 ## Configuration parameters
 
@@ -314,7 +314,7 @@ The following procedure describes how to add your service to the API Mediation L
 
 2.  Start the API Mediation Layer services.
 
-    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md)
+    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
 
 3.  Run your Java application.
 
