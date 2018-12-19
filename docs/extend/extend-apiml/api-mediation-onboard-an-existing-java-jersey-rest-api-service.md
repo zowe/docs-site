@@ -235,7 +235,7 @@ you are ready to run your service in the APIM Ecosystem.
 
 1. Run the following services to onboard your application:
 
-    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/gizafoundation/api-layer/blob/master/docs/local-configuration.md)
+    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
     * Gateway Service  
     * Discovery Service
     * API Catalog Service
