@@ -558,16 +558,16 @@ USERDATA= 0000
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUFPSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUFPSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
 2.	Make a copy of the job.
 3.	Examine the contents of the job.
 4.	Modify the contents so that the job will run on your system.
-5.	From the TSO/E command line, run the IZUFPSEC job.
+5.	From the TSO/E command line, run the IZURFSEC job.
 
 
 #### Results
 
-The IZUFPSEC job should complete with return code 0000.
+The IZURFSEC job should complete with return code 0000.
 
 To verify that this setup is complete, try issuing a REST service. See the example in [_List data sets_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_GetListDataSets.htm) in the z/OSMF programming guide.  
 
