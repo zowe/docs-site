@@ -40,7 +40,7 @@ A z/OSMF Lite configuration is applicable to any future expansions you make to
 z/OSMF, such as adding more optional services and plug-ins.
 
 It takes 2-3 hours to set up z/OSMF Lite. Some steps might require the
-assistance of your security administrator, unless you are that person at your installation.
+assistance of your security administrator.
 
 For detailed information about various aspects of z/OSMF configuration such as
 enabling the optional plug-ins and services, see the IBM publication [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
@@ -144,7 +144,7 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 
 #### Procedure
 
-1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC and upload this job to z/OS. If you run z/OS V2R4, IZUNUSEC is located at SYS1.SAMPLIB.
+1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC and upload this job to z/OS. If you run z/OS V2R4, locate job IZUNUSEC at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 4.	Connect your user ID to IZUADMIN group. 
@@ -211,13 +211,14 @@ authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com
 The z/OSMF file system is allocated, formatted, and mounted, and
 the necessary directories are created.
 
-To verify the file system is allocated, formatted, locate the following messages in IZUMKFS job output.
+To verify if the file system is allocated, formatted, locate the following messages in IZUMKFS job output.
 
 ```
 IDC0002I IDCAMS PROCESSING COMPLETE. MAX CONDITION CODE WAS 0.
 
 IOEZ00077I HFS-compatibility aggregate izu.sizuusrd has been successfully created.
 ```
+Sample output:
 
 ![](../images/zosmf/IZUMKFS1.png)
 
@@ -232,7 +233,7 @@ Review the following messages and the corresponding resolutions as needed
 **Symptom**   | **Cause**    | **Resolution**       
 ---|---|---
 Job fails with FSM error. | Your user ID lacks superuser authority. | For more information about how to define a user with superuser authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
-Job fails with an authorization error. | Job statement errors…                   | See [Troubleshooting problems](#troubleshooting-problems).      
+Job fails with an authorization error. | Job statement errors.                   | See [Troubleshooting problems](#troubleshooting-problems).      
 
 ### Copying the IBM procedures into JES PROCLIB
 
@@ -273,8 +274,8 @@ Review the following messages and the corresponding resolutions as needed
 
 **Symptom**   | **Cause** | **Resolution**
 ---|---|---
-Not authorized to copy  into PROCLIB     |      Your user ID doesn’t have the permission to modify PROCLIB     |      Contact Security Administrator                   
-Abend code B37 or E37 |     The data set runs out of space      |          Use IEBCOPY utility to compress PROCLIB dataset before copy                     
+Not authorized to copy  into PROCLIB.     |      Your user ID doesn’t have the permission to modify PROCLIB.     |      Contact your security administrator.                   
+Abend code B37 or E37. |     The data set runs out of space.      |          Use IEBCOPY utility to compress PROCLIB dataset before you copy it.                     
 
 
 ### Starting the z/OSMF server
@@ -304,7 +305,7 @@ You must enter these commands manually at subsequent IPLs. If necessary, you can
 stop z/OSMF processing by entering the STOP command for each of the started
 tasks IZUANG1 and IZUSVR1.
 
-Note: z/OSMF offers an autostart function, which you can configure to have the z/OSMF server started automatically. For more information about the autostart capability, see the publication z/OSMF Configuration Guide.
+Note: z/OSMF offers an autostart function, which you can configure to have the z/OSMF server started automatically. For more information about the autostart capability, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 ####  Results
 
@@ -335,13 +336,13 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
     has the following format: https://hostname:port/zosmf/
 
     Where:
-    -   *hostname* is the hostname or IP address of the system in which z/OSMF is
+    -   *hostname* is the host name or IP address of the system in which z/OSMF is
     installed.
 
     -   *port* is the secure port for the z/OSMF configuration. If you specified a
     secure port for SSL encrypted traffic during the configuration process
     through parmlib statement HTTP_SSL_PORT, port is required to log in.
-    Otherwise, it is assumed that you are using the default port 443.
+    Otherwise, it is assumed that you use the default port 443.
 
 2.  In the z/OS USER ID field on the Welcome page, enter the z/OS user ID that
     you use to configure z/OSMF.
@@ -369,12 +370,12 @@ The following errors might occur during this step:
 **Symptom**    |**Cause**   |**Resolution**  
 ---|---|---
 z/OSMF welcome page does not load in your web browser. | The SSL handshake was not successful. This problem can be related to the browser certificate. | See “Certificate error in the Mozilla Firefox browser” in Troubleshooting.
-To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts.| User not connected to IZUADMIN group  | Connect your user id to IZUADMIN group                                
-To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | Password expired       | Log on TSO use your z/OS User ID and Password, you will be asked to change your password if it’s expired          
+To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts.| The user ID is not connected to the IZUADMIN group.  | Connect your user ID to the IZUADMIN group.                                
+To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | The password is expired.       | Log on to TSO using your z/OS User ID and password, you will be asked to change your password if it’s expired.          
 
 ### Mounting the z/OSMF user file system at IPL time
 
-Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, you make an update to the BPXPRMxx parmlib member on your z/OS system, as described in this topic.
+Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, update the BPXPRMxx parmlib member on your z/OS system.
 
 ####  Before you begin
 
@@ -384,13 +385,13 @@ If you do not know which BPXPRMxx member is active, follow these steps to find o
 
 1.	In the operations console, enter the following command to see which parmlib members are included in the parmlib concatenation on your system:
 
-  `D PARMLIB`
+     `D PARMLIB`
 
 2.	Make a note of the BPXPRMxx member suffixes that you see.
 
 3.	To determine which BPXPRMxx member takes precedence, enter the following command:
 
-  `D OMVS`
+     `D OMVS`
 
   The output of this command should be similar to the following:
 
@@ -407,13 +408,13 @@ In this example, the member BPXPRMST takes precedence. If BPXPRMST is not presen
 Add a MOUNT command for the z/OSMF user file system to your currently active
 BPXPRMxx parmlib member. For example:
 
-On a z/OS V2R3 system with the PTF for APAR PI92211:
+On a z/OS V2R3 system with the PTF for APAR PI92211 installed:
 ```
 MOUNT FILESYSTEM(’IZU.SIZUUSRD’) TYPE(ZFS) MODE(RDWR)
 
 MOUNTPOINT(’/global/zosmf’) PARM(’AGGRGROW’) UNMOUNT
 ```
-On a z/OS V2R2 or V2R3 system without PTF for APAR PI92211:
+On a z/OS V2R2 or V2R3 system without PTF for APAR PI92211 installed:
 ```
 MOUNT FILESYSTEM(’IZU.SIZUUSRD’) TYPE(ZFS) MODE(RDWR)
 
@@ -444,7 +445,7 @@ The Zowe framework requires that you enable the z/OSMF JOB REST services, as des
 None
 
 #### Results
-The z/OSMF JOB REST services are enabled. To verify, open a web browser to our z/OS system (hostname and port) and add the following REST call to the URL:
+To verify if the z/OSMF JOB REST services are enabled, open a web browser to our z/OS system (host name and port) and add the following REST call to the URL:
 
 `GET /zosmf/restjobs/jobs`
 
@@ -457,7 +458,7 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom** | **Cause** | **Resolution**
 ---|---|---
-401 Unauthorized       |     User ID is not connected to IZUADMIN or IZUUSER      |    Connect your user ID to IZUADMIN or IZUUSER            
+401 Unauthorized       |     The user ID is not connected to IZUADMIN or IZUUSER.      |    Connect your user ID to IZUADMIN or IZUUSER.            
 
 ### Enabling the TSO REST services
 The Zowe framework requires that you enable the TSO REST services, as described in this topic.
@@ -504,8 +505,8 @@ To create a TSO/E address space on a remote system, you require the following au
 -   You must be authorized to the SAF resource profile that controls the ability to send data to the remote system (systemname), as indicated:
 CEA.CEATSO.FLOW.systemname
 -   To flow data between different systems in the sysplex, you must be authorized to do so by your external security manager, such as a RACF database with sysplex-wide scope. For example, to flow data between System A and System B, you must be permitted to the following resource profiles:
-CEA.CEATSO.FLOW.SYSTEMA
-CEA.CEATSO.FLOW.SYSTEMB
+    - CEA.CEATSO.FLOW.SYSTEMA
+    - CEA.CEATSO.FLOW.SYSTEMB
 
 #### Results
 The IZUTSSEC job should complete with return code 0000.
@@ -513,11 +514,13 @@ The IZUTSSEC job should complete with return code 0000.
 
 ###  Enabling the z/OSMF data set and file REST services
 
-The Zowe framework requires that you enable the z/OSMF data set and file REST services, as described in this topic.
+The Zowe framework requires that you enable the z/OSMF data set and file REST services.
 
 #### Before you begin
 
-1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. Issue command "D OMVS,O" to see the current value of IPCMSGQBYTES, if it is not large enough, use "SETOMVS" command to set a large value. To set this value dynamically, you can enter the following operator command:
+1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. 
+
+Issue command `D OMVS,O` to see the current value of IPCMSGQBYTES, if it is not large enough, use the `SETOMVS` command to set a large value. To set this value dynamically, you can enter the following operator command:
 
     `SETOMVS IPCMSGQBYTES=20971520`
 
@@ -558,18 +561,18 @@ USERDATA= 0000
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
-2.	Make a copy of the job.
+1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC and upload it to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
+2.	Copy the job.
 3.	Examine the contents of the job.
-4.	Modify the contents so that the job will run on your system.
+4.	Modify the contents as needed so that the job will run on your system.
 5.	From the TSO/E command line, run the IZURFSEC job.
 
 
 #### Results
 
-The IZURFSEC job should complete with return code 0000.
+Ensure that the IZURFSEC job completes with return code `0000`.
 
-To verify that this setup is complete, try issuing a REST service. See the example in [_List data sets_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_GetListDataSets.htm) in the z/OSMF programming guide.  
+To verify if this setup is complete, try issuing a REST service. See the example in [_List data sets_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_GetListDataSets.htm) in the z/OSMF programming guide.  
 
 #### Common errors
 
@@ -577,38 +580,33 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom**      | **Cause**                               | **Resolution**
 ---|---|---
-REST API doesn't return expected data with rc=12, rsn=3, message: message queue size  "SIZE"  is less than minimum: 20M       | Message queue size for CEA is too small | Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx                         
+REST API doesn't return expected data with rc=12, rsn=3, message: message queue size  "SIZE"  is less than minimum: 20M       | The message queue size for CEA is too small. | Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMx.                        
    
 
 ### Enabling the z/OSMF Workflow REST services and Workflows task UI
-The Zowe framework requires that you enable the z/OSMF Workflow REST services and Workflows task UI, as described in this topic.
+The Zowe framework requires that you enable the z/OSMF Workflow REST services and Workflows task UI.
 
 #### Before you begin
 
 1.  Ensure that the JOB REST services are enabled.
-
 2.  Ensure that the TSO REST services are enabled.
-
 3.  Ensure that the dataset and file REST services are enabled.
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
-2.	Make a copy of the job.
+1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC and upload this job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
+2.	Copy the job.
 3.	Examine the contents of the job.
-4.	Modify the contents so that the job will run on your system.
+4.	Modify the contents as needed so that the job will run on your system.
 5.	From the TSO/E command line, run the IZUWFSEC job.
 
 #### Results
 
-The IZUWFSEC job should complete with return code 0000.
+Ensure the IZUWFSEC job completes with return code `0000`.
 
-To verify, logon to z/OSMF (or refresh it) and verify that the Workflows task appears in the z/OSMF UI.
+To verify, log on to z/OSMF (or refresh it) and verify that the Workflows task appears in the z/OSMF UI.
          
 
-At this point, you have completed the setup of z/OSMF Lite.
-
-## Successful
 At this point, you have completed the setup of z/OSMF Lite.
 
 Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](appendix.md#appendix-c-adding-more-users-to-zosmf).
@@ -619,16 +617,16 @@ Optionally, you can add more users to z/OSMF, as described in [Appendix C. Addin
 This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
 ### Common problems and scenarios
-This section discusses troubleshooting topics, procedures and tools for recovering from a set of known issues.
+This section discusses troubleshooting topics, procedures, and tools for recovering from a set of known issues.
 
 #### System setup requirements not met
 This document assumes that the following is true of the z/OS host system:
 
--   Port 443 is available for use. To check this, issue either TSO command "NETSTAT SOCKET" or TSO command "NETSTAT BYTE" to determine if the port is being used.
+-   Port 443 is available for use. To check this, issue either TSO command `NETSTAT SOCKET` or TSO command `NETSTAT BYTE` to determine if the port is being used.
 
 -   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter either "hostname" z/OS UNIX command or TSO command "HOMETEST". If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
 
--   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`
+-   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`.
 
 If you find that a different value is used on your z/OS system, you can edit the IZUPRMxx parmlib member to specify the correct setting. For details, see [Appendix A. Creating an IZUPRMxx parmlib member](appendix.md#appendix-a-creating-an-izuprmxx-parmlib-member).
 
@@ -646,6 +644,6 @@ BPXP014I ENVIRONMENT MUST BE CONTROLLED FOR DAEMON (BPX.DAEMON)        �
 PROCESSING. 
 ```
 
-If you see above error messages, please check if your IZUANG0 procedure is up to date.
+If you see above error messages, check if your IZUANG0 procedure is up to date.
 
 For descriptions of all the z/OSMF messages, see [_z/OSMF messages_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zosmfmessages.help.doc/izuG00hpMessages.html) in IBM Knowledge Center.
