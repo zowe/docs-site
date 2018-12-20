@@ -251,7 +251,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag must be all lowercase.
       - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user installing Zowe must have update access to this dataset.  
-      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the datasets in the PROCLIB concatenation and places the JCL member in the first dataset where the installing user has write access.  
+      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-installsh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
 
@@ -406,7 +406,11 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
 
-    At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task.  The install script does this automatically, trying data sets `USER.PROCLIB`, other PROCLIB data sets found in the PROCLIB concatenation and finally `SYS1.PROCLIB`.  
+    At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task. The install script does this automatically.  If the user specifies `dsName=auto`, or omits the `dsName` tag, or sets it to null by coding `dsName=`,  the install script proceeds as follows and stops after the first successful write to destination PROCLIB. 
+
+     1. Try JES2 PROCLIB concatenation.
+     2. Try  master JES2 JCL.
+     3. Try `SYS1.PROCLIB`.
 
     If this succeeds, you will see a message like the following one:
 
