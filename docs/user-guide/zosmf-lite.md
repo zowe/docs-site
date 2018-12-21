@@ -369,7 +369,7 @@ The following errors might occur during this step:
 
 **Symptom**    |**Cause**   |**Resolution**  
 ---|---|---
-z/OSMF welcome page does not load in your web browser. | The SSL handshake was not successful. This problem can be related to the browser certificate. | See “Certificate error in the Mozilla Firefox browser” in Troubleshooting.
+z/OSMF welcome page does not load in your web browser. | The SSL handshake was not successful. This problem can be related to the browser certificate. | See [Certificate error in the Mozilla Firefox browser](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_FirefoxCertificateError.htm).
 To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts.| The user ID is not connected to the IZUADMIN group.  | Connect your user ID to the IZUADMIN group.                                
 To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | The password is expired.       | Log on to TSO using your z/OS User ID and password, you will be asked to change your password if it’s expired.          
 
