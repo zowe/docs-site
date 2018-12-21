@@ -173,7 +173,7 @@ Review the following messages and the corresponding resolutions as needed:
 **Symptom** | **Cause**  | **Resolution**  
 ---|---|---
 Message IKJ56702I: INVALID data is issued | The job is submitted more than once.| You can ignore this message.
-Job fails with an authorization error. | Your user ID lacks superuser authority.             | See “Select a user ID for performing the steps”.
+Job fails with an authorization error. | Your user ID lacks superuser authority.             | Contact your security admin to run IZUNUSEC. If you are using RACF®, select a user ID with SPECIAL attribute which can issue all RACF® commands.
 Job fails with an authorization error. | Your installation uses the RACF PROTECT-ALL option. | See [Troubleshooting problems](#troubleshooting-problems).         
 ADDGROUP and ADDUSER commands are not executed. |  The automatic GID and UID assignment is required. | Define SHARED.IDS and BPX.NEXT.USER profiles to enable the use of AUTOUID and AUTOGID.                                              
 
@@ -425,6 +425,9 @@ MOUNTPOINT(’/var/zosmf’) PARM(’AGGRGROW’) UNMOUNT
 
 The BPXPRMxx member is updated. At the next system IPL, the following message is issued to indicate that the z/OSMF file system is mounted automatically.
 
+```
+BPXF013I FILE SYSTEM IZU.SIZUUSRD WAS SUCCESSFULLY MOUNTED. 
+```
 
 ## Adding the required REST services
 
