@@ -15,12 +15,6 @@ Zowe Open Beta includes the following releases:
 
 Version 0.9.5 contains the following changes since the last version.
 
-### What's new in the Zowe Desktop
-
-You can now obtain information about an application by right-clicking on an application icon and then clicking **Properties**.
-
-To view version information for the desktop, click the avatar in the lower right corner of the desktop.
-
 ### What's new in API Mediation Layer
 
 Zowe version 0.9.5 introduces the following enhancements to Zowe APIML:
