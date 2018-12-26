@@ -88,7 +88,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         ```
         <repository>
                <id>Gizaartificatory</id>
-               <url>http://https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+               <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
         </repository>
         ```
 
@@ -499,4 +499,4 @@ To test that your API instance is working and is discoverable, use the following
 
 ## Review the configuration examples of the discoverable client   
 
-Refer to the [Discoverable Client API Sample Service](https://github.com/gizafoundation/api-layer) in the API Layer git repository.   
+Refer to the [Discoverable Client API Sample Service](https://github.com/zowe/api-layer) in the API Layer git repository.   
