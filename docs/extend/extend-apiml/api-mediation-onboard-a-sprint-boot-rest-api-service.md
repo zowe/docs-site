@@ -88,7 +88,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         ```
         <repository>
                <id>Gizaartificatory</id>
-               <url>http://https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+               <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
         </repository>
         ```
 
