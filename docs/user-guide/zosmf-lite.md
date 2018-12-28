@@ -461,7 +461,8 @@ Review the following messages and the corresponding resolutions as needed:
 
 **Symptom** | **Cause** | **Resolution**
 ---|---|---
-401 Unauthorized       |     The user ID is not connected to IZUADMIN or IZUUSER.      |    Connect your user ID to IZUADMIN or IZUUSER.            
+401 Unauthorized       |     The user ID is not connected to IZUADMIN or IZUUSER.      |    Connect your user ID to IZUADMIN or IZUUSER.
+HTTP/1.1 500 Internal Server Error  {"rc":16,"reason":-1,"stack":"JesException: CATEGORY_CIM rc=16 reason=-1 cause=com.ibm.zoszmf.util.eis.EisConnectionException: IZUG911I: Connection to \"http:\/\/null:5988\" cannot be established, or was lost and cannot be re-established using protocol \"CIM\"......Caused by: WBEMException: CIM_ERR_FAILED (JNI Exception type CannotConnectException:\nCannot connect to local CIM server. Connection failed.)| For JES2, you may have performed one of the following "Modify" operations: Hold a job, Release a job, Change the job class, Cancel a job, Delete a job (Cancel a job and purge its output), or you are running JES3 without configuring CIM Server.|If you are running JES2, you can use [_synchronous support for job modify operations_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTJOBS.htm#izuhpinfo_api_restjobs__RequestingSynchronousProcessing) which does not required CIM. If you are running JES3, follow the [_CIM setup instructions_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_AdditionalCIMStepsForZOS.htm) to configure CIM on your system.
 
 ### Enabling the TSO REST services
 The Zowe framework requires that you enable the TSO REST services, as described in this topic.
