@@ -10,11 +10,11 @@ Access the URI Broker through one of two locations:
 
 Natively:
 
-`window.RocketMVD.uriBroker`
+`window.ZoweZLUX.uriBroker`
 
 In an iframe:
 
-`window.parent.RocketMVD.uriBroker`
+`window.parent.ZoweZLUX.uriBroker`
 
 
 ## Functions

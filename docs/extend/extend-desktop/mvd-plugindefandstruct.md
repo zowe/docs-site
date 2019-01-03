@@ -176,5 +176,5 @@ In addition to the general web content attributes, when the framework of an appl
 
 Specify *startingPage* as a relative path rather than an absolute path because the `pluginDefinition.json` file is intended to be read-only, and therefore would not work well when the hostname of a page changes.
 
-Within an IFrame, the application plug-in still has access to the globals that are used by zLUX for application-to-application communication; simply access *window.parent.RocketMVD*.
+Within an IFrame, the application plug-in still has access to the globals that are used by zLUX for application-to-application communication; simply access *window.parent.ZoweZLUX*.
 
