@@ -1,10 +1,10 @@
-# zLUX dataservices
+# Dataservices
 
-Dataservices are a dynamic component of the backend of a zLUX application. Dataservices are optional, because the proxy server might only serve static content for a particular application. However, when included in an application, a dataservice defines a URL space for which the server will run the extensible code from the application. Dataservices are primarily intended to be used to create REST APIs and Websocket channels.
+Dataservices are a dynamic component of the backend of a Zowe application. Dataservices are optional, because the proxy server might only serve static content for a particular application. However, when included in an application, a dataservice defines a URL space for which the server will run the extensible code from the application. Dataservices are primarily intended to be used to create REST APIs and Websocket channels.
 
 ## Defining a dataservice
 
-Within the `sample-app` repository, in the top directory, you will find a `pluginDefinition.json` file. Each zLUX application requires this file, because it defines how the server registers and uses the backend of an application (called a plug-in in the terminology of the proxy server).
+Within the `sample-app` repository, in the top directory, you will find a `pluginDefinition.json` file. Each application requires this file, because it defines how the server registers and uses the backend of an application (called a plug-in in the terminology of the proxy server).
 
 Within the JSON file, there is a top level attribute, *dataServices*:
 ```
@@ -94,11 +94,11 @@ An object that contains the contents of configuration files, if present.
 
 **logger**
 
-An instance of a zLUX Logger, which has its component name as the unique name of the dataservice within a plug-in.
+An instance of a Zowe Logger, which has its component name as the unique name of the dataservice within a plug-in.
 
 **makeSublogger**
 
-A function to create a zLUX Logger with a new name, which is appended to the unique name of the dataservice.
+A function to create a Zowe Logger with a new name, which is appended to the unique name of the dataservice.
 
 **addBodyParseMiddleware**
 
