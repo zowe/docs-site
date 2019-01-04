@@ -480,7 +480,7 @@ Let's make some edits to **userbrowser-component.ts**, replacing the **UserBrows
   ngOnInit(): void {
     this.resultNotReady = true;
     this.log.info(`Calling own dataservice to get user listing for filter=${JSON.stringify(this.filter)}`);
-    let uri = this.filter ? RocketMVD.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), 'table', `${this.filter.type}/${this.filter.value}`) : RocketMVD.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), 'table',null);
+    let uri = this.filter ? ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), 'table', `${this.filter.type}/${this.filter.value}`) : ZoweZLUX.uriBroker.pluginRESTUri(this.pluginDefinition.getBasePlugin(), 'table',null);
     setTimeout(()=> {
     this.log.info(`Sending GET request to ${uri}`);
     this.http.get(uri).map(res=>res.json()).subscribe(
@@ -786,11 +786,11 @@ Add a private instance variable to the **UserBrowserComponent** Class.
 Then, create the Action template within the constructor
 
 ```typescript
-this.submitSelectionAction = RocketMVD.dispatcher.makeAction(
+this.submitSelectionAction = ZoweZLUX.dispatcher.makeAction(
   'org.openmainframe.zowe.workshop-user-browser.actions.submitselections',
   'Sorts user table in App which has it',
-  RocketMVD.dispatcher.constants.ActionTargetMode.PluginFindAnyOrCreate,
-  RocketMVD.dispatcher.constants.ActionType.Message,
+  ZoweZLUX.dispatcher.constants.ActionTargetMode.PluginFindAnyOrCreate,
+  ZoweZLUX.dispatcher.constants.ActionType.Message,
   'org.openmainframe.zowe.workshop-starter',
   { data: { op: 'deref', source: 'event', path: ['data'] } }
 )
@@ -803,13 +803,13 @@ For the final change to this file, add a new method to the Class:
 
 ```typescript
   submitSelectedUsers() {
-    let plugin = RocketMVD.PluginManager.getPlugin("org.openmainframe.zowe.workshop-starter");
+    let plugin = ZoweZLUX.PluginManager.getPlugin("org.openmainframe.zowe.workshop-starter");
     if (!plugin) {
       this.log.warn(`Cannot request Workshop Starter App... It was not in the current environment!`);
       return;
     }
 
-    RocketMVD.dispatcher.invokeAction(this.submitSelectionAction,
+    ZoweZLUX.dispatcher.invokeAction(this.submitSelectionAction,
       {'data':{
          'type':'loadusers',
          'value':this.selectedRows
