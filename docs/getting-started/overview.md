@@ -176,57 +176,77 @@ Zowe API Mediation Layer uses the following third-party software:
 
 | Third-party Software | Version | File name             |
 | ----------------- | -------| ------------------------- |
-| angular | 5.2.0 | Legal_Doc_00002377_15.pdf |
-| angular2-notifications | 0.9.5 | Legal_Doc_00002499_11.pdf |
-| Apache Tomcat | 8.0.39 | Legal_Doc_00001505_6.pdf |
-| Bootstrap | 3.0.3 | Legal_Doc_12955_5.pdf |
-| Bootstrap | 3.3.7 | Legal_Doc_00001682_11.pdf |
-| bootstrap-submenu | 2.0.4 | Legal_Doc_00001456_44.pdf |
-| Commons Validator | 1.6.0 | Legal_Doc_00002105_1.pdf |
-| copy-webpack-plugin | 4.4.1 | Legal_Doc_00002499_13.pdf |
-| core-js  | 2.5.3 | Legal_Doc_corejs_MIT.pdf |
-| eureka-client | 1.8.6 | Legal_Doc_00002499_3.pdf |
-| eventsource | 1.0.5 | Legal_Doc_00002499_9.pdf |
+| Apache Tomcat | 8.5.33 | Legal_Doc_00002499_84.pdf |
+| api-layer |1.0.0 | Legal_Doc_00002499_81.pdf |
+| CCS for Z/OS - ESM Microservice | 14.1 | component registration |
+| Commons Validator | 1.6.0	| Legal_Doc_00002105_1.pdf |
+| emotion | 9.2.12 | Legal_Doc_00002499_68.pdf |
+| eslint-config-airbnb | 16.1.0	| Legal_Doc_00002499_69.pdf |
+| eslint-plugin-jsx-a11y | 6.1.2 | Legal_Doc_00002499_70.pdf |
+| eureka-client | 1.8.6	| Legal_Doc_00002499_3.pdf |
+| exception-formatter | 1.0.7 | Legal_Doc_00002499_44.pdf |
 | google-gson | 2.8.2 | Legal_Doc_00002252_4.pdf |
+| gradle-git | 1.5.1 | Legal_Doc_00002499_37.pdf |
 | Guava | 23.2-jre | Legal_Doc_00002499_22.pdf |
 | H2 | 1.4.196 | Legal_Doc_00002499_19.pdf |
 | hamcrest | 1.3 | Legal_Doc_00001170_33.pdf |
+| history | 4.7.2 | Legal_Doc_00002499_45.pdf |
 | httpclient | 4.5.3 | Legal_Doc_00001843_2.pdf |
-| jackson | 2.9.2 | Legal_Doc_00002259_6.pdf |
-| jackson | 2.9.3 | Legal_Doc_00001505_16.pdf |
+| install | 0.12.2 | Legal_Doc_00002499_49.pdf |
+| jackson | 2.9.2 | Legal_Doc_00002359_6.pdf |
 | javamail | 1.4.3 | Legal_Doc_00000439_22.pdf |
-| javax servlet api | 3.1.0 | Legal_Doc_00002499_23.pdf |
+| javax servlet api | 3.1.0	| Legal_Doc_00002499_23.pdf |
 | javax.validation | 2.0.1.Final | Legal_Doc_00002499_27.pdf |
-| Jersey | 2.26 | Legal_Doc_00002499_2.pdf |
-| Jersey Media JSON Jackson | 2.26 | Legal_Doc_00002019_68.pdf |
+| Jersey | 2.3 | Legal_Doc_00002499_2.pdf |
+| Jersey Media JSON Jackson | 2.3 | Legal_Doc_00002019_68.pdf |
+| Jetty	| 9.4.11.v20180605 | Legal_Doc_00002499_83.pdf |
+| jjwt | 0.9.1 | Legal_Doc_00002499_47.pdf |
 | jquery | 2.0.3 | Legal_Doc_00000379_69.pdf |
 | JSON Web Token | 0.8.0 | Legal_Doc_00002499_21.pdf |
-| json-path | 2.4.0 | Legal_Doc_00001454_30.pdf |
-| lodash | 4.17.5 | Legal_Doc_00002499_8.pdf |
-| Logback | 1.0.1 | Legal_Doc_00002499_1.pdf |
+| json-path | 2.4.0	| Legal_Doc_00001454_30.pdf |
+| Jsoup | 1.8.3	| Legal_Doc_00001239_18.pdf |
+| lodash | 4.17.11 | Legal_Doc_00002499_50.pdf |
+| Logback | 1.2.3 | Legal_Doc_00002320_2.pdf |
+| loglevel | 1.6.1 | Legal_Doc_00002499_51.pdf |
 | lombok | 1.16.20 | Legal_Doc_00002499_18.pdf |
+| mineral-ui | 0.54.0 | Legal_Doc_00002499_77.pdf |
 | mockito | 2.15.0 | Legal_Doc_00002499_28.pdf |
-| netflix-infix | 0.3.0 | Legal_Doc_00002499_4.pdf |
-| ng2-cookies | 1.0.12 | Legal_Doc_00002499_15.pdf |
-| ng2-destroy-subscribers | 0.0.28 | Legal_Doc_00002499_16.pdf |
-| ng2-simple-timer | 1.3.3 | Legal_Doc_00002499_17.pdf |
-| NPM | 5.6.0 | Legal_Doc_00002499_10.pdf |
-| powermock | 1.7.3 | Legal_Doc_00002499_25.pdf |
+| netflix-infix | 0.3.0	| Legal_Doc_00002499_4.pdf |
+| NPM | 6.4.1 | Legal_Doc_00002499_53.pdf |
+| powermock | 1.7.3	| Legal_Doc_00002499_25.pdf |
+| react | 16.6.3 | Legal_Doc_00002499_72.pdf |
+| react-app-polyfill | 0.1.3 | Legal_Doc_00002499_78.pdf |
+| react-loadable | 5.5.0 | Legal_Doc_00002499_54.pdf |
 | reactor-core | 3.0.7.RELEASE | Legal_Doc_00001938_51.pdf |
+| react-redux  | 5.1.1 | Legal_Doc_00002499_73.pdf |
+| react-render-html	| 0.6.0	| Legal_Doc_00002499_56.pdf |
+| react-router-dom | 4.3.1 | Legal_Doc_00002499_57.pdf |
+| react-router-tabs	| 1.2.0	| Legal_Doc_00002499_58.pdf |
+| react-scripts | 2.1.1	| Legal_Doc_00002499_74.pdf |
+| react-toastify | 4.4.3 | Legal_Doc_00002499_75.pdf |
+| redux | 4.0.1	| Legal_Doc_00002499_76.pdf |
+| redux-catch | 1.3.1 | Legal_Doc_00002499_64.pdf |
+| redux-logger | 3.0.6| Legal_Doc_00002285_65.pdf |
+| redux-observable | 1.0.0 | Legal_Doc_00002499_61.pdf |
+| redux-persist | 5.10.0 | Legal_Doc_00002499_63.pdf |
+| redux-thunk | 2.3.0 | Legal_Doc_00002499_79.pdf |
 | Roaster | 2.20.1.Final | Legal_Doc_00002499_20.pdf |
-| RxJS | 5.5.6 | Legal_Doc_rxjs_Apache.pdf |
-| Spring Cloud Config | 2.0.0.M9 | Legal_Doc_00002499_33.pdf |
+| RxJS | 6.3.1 | Legal_Doc_00002499_65.pdf |
+| RxJS | 6.3.3 | Legal_Doc_00002616_5.pdf |
+| slf4j | 1.7.25 | Legal_Doc_00001962_32.pdf |
+| Spring Cloud | 2.0.1.RELEASE | Legal_Doc_00002377_40.pdf |
+| spring framework | 4.3.7.RELEASE | Legal_Doc_00001531_31.pdf |
 | Spring Hateoas | 0.23.0.RELEASE | Legal_Doc_00002377_10.pdf |
 | Spring Retry | 1.2.2 | Legal_Doc_00002499_14.pdf |
-| spring security | 5.0.3.RELEASE | Legal_Doc_00002499_29.pdf |
-| spring-boot | 2.0.0.RELEASE | Legal_Doc_spring_boot_Apache.pdf |
-| Spring-Cloud-Netflix | 2.0.0.M8 | Legal_Doc_00002499_30.pdf |
-| Springfox | 2.8.0 | Legal_Doc_00002499_31.pdf |
-| spring-ws | 3.0.0.RELEASE | Legal_Doc_00002499_32.pdf |
-| swagger-core | 1.5.18 | Legal_Doc_00002499_24.pdf |
-| swagger-jersey2-jaxrs	 | 1.5.17 | Legal_Doc__00001528_32.pdf |
-| swagger-schema-ts | 2.0.8 | Legal_Doc_00002499_12.pdf |
-| zone.js | 0.8.20 | Legal_Doc_zonejs_MIT.pdf |
+| spring security | 5.1.0.RELEASE | Legal_Doc_00002499_48.pdf |
+| spring-boot | 2.0.4.RELEASE | Legal_Doc_00002601_11.pdf |
+| Spring-Cloud-Netflix 	| 2.0.0.M8 | Legal_Doc_00002499_30.pdf |
+| Springfox	| 2.8.0	| Legal_Doc_00002499_31.pdf |
+| swagger-core | 1.5.21	| Legal_Doc_00002499_82.pdf |
+| swagger-jersey2-jaxrs | 1.5.17 | Legal_Doc_00001528_32.pdf |
+| Swagger-UI | 3.20.0 | Legal_Doc_00002499_80.pdf |
+| uuid | 3.3.2 | Legal_Doc_00002499_67.pdf |
+| Velocity | 2.0 | Legal_Doc_00002499_62.pdf |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
