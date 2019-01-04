@@ -1,32 +1,33 @@
 # Zowe API Mediation Layer Security
 
-- [Introduction and requirements](#introduction-and-requirements)
-  - [Transport-level Security](#transport-level-security)
-  - [Authentication](#authentication)
-  - [Authorization](#authorization)
-  - [Types of services](#types-of-services)
-  - [Transport Security Requirements](#transport-security-requirements)
-  - [Authentication](#authentication-1)
-  - [Truststores and keystores](#truststores-and-keystores)
-  - [Client Certificates](#client-certificates)
-  - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
-- [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
-  - [Running on localhost](#running-on-localhost)
-    - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
-    - [Certificate management script](#certificate-management-script)
-    - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
-    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
-    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
-    - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
-  - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
-    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
-    - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-    - [Generating keystore and truststore for a new service on z/OS](#generating-keystore-and-truststore-for-a-new-service-on-zos)
-    - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
-      - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
-    - [Trust z/OSMF certificate](#trust-zosmf-certificate)
-    - [Disabling certificate validation](#disabling-certificate-validation)
-    - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
+- [Zowe API Mediation Layer Security](#zowe-api-mediation-layer-security)
+  - [Introduction and requirements](#introduction-and-requirements)
+    - [Transport-level Security](#transport-level-security)
+    - [Authentication](#authentication)
+    - [Authorization](#authorization)
+    - [Types of services](#types-of-services)
+    - [Transport Security Requirements](#transport-security-requirements)
+    - [Authentication](#authentication-1)
+    - [Truststores and keystores](#truststores-and-keystores)
+    - [Client Certificates](#client-certificates)
+    - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+  - [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
+    - [Running on localhost](#running-on-localhost)
+      - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
+      - [Certificate management script](#certificate-management-script)
+      - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
+      - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
+      - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
+      - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
+    - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
+      - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
+      - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
+      - [Generating keystore and truststore for a new service on z/OS](#generating-keystore-and-truststore-for-a-new-service-on-zos)
+      - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
+        - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
+      - [Trust z/OSMF certificate](#trust-zosmf-certificate)
+      - [Disabling certificate validation](#disabling-certificate-validation)
+      - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
 ## Introduction and requirements
@@ -452,13 +453,36 @@ This will return line like:
 
     izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT
 
-You need to run following commands as superuser to import z/OSMF certificates:
+You need to run following commands as superuser or user that has read access to the z/OSMF keyring to import z/OSMF certificates:
 
     su
     cd $ZOWE_RUNTIME/api-mediation
     scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
 
 If the import is successful, you need to restart Zowe server to make the changes effective.
+
+The read access to z/OSMF keyring can be granted by following commands:
+
+- RACF:
+
+      PERMIT IRR.DIGTCERT.LISTRING CLASS(FACILITY) ID(acid) ACCESS(READ)
+      PERMIT IRR.DIGTCERT.LIST CLASS(FACILITY) ID(acid) ACCESS(READ)
+
+- Top Secret:
+      
+      TSS ADD(dept) IBMFAC(IRR.DIGTCERT)
+      TSS PER(acid) IBMFAC(IRR.DIGTCERT.LISTRING) ACCESS(READ)
+      TSS PER(acid) IBMFAC(IRR.DIGTCERT.LIST) ACCESS(READ) 
+
+- ACF2:
+
+      ACF 
+      SET RESOURCE(FAC) 
+      RECKEY IRR ADD(DIGTCERT.LIST UID(acid) - 
+        SERVICE(READ) ALLOW)                                           
+      RECKEY IRR ADD(DIGTCERT.LISTRING UID(acid) -  
+        SERVICE(READ) ALLOW)
+      F ACF2,REBUILD(FAC)   
 
 
 #### Disabling certificate validation
