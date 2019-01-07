@@ -8,9 +8,9 @@ At the core of the application infrastructure backend is an extensible server, w
 
 ### ZSS and Zowe Application Server overlap
 
-The Zowe Application Proxy Server and ZSS utilize the same deployment and Application/Plugin structure, and share some configuration parameters. It is possible to run ZSS and Zowe Application Proxy Server from the same system, in which case you would be running under z/OS USS. This configuration requires that IBM's version of nodeJS is installed beforehand.
+The Zowe Application Server and ZSS utilize the same deployment and Application/Plugin structure, and share some configuration parameters. It is possible to run ZSS and Zowe Application Server from the same system, in which case you would be running under z/OS USS. This configuration requires that IBM's version of nodeJS is installed beforehand.
 
-Another way to set up Zowe Application Framework is to have the Zowe Application Proxy Server running under LUW, while keeping ZSS under USS. This is the configuration scenario presented below. In this scenario, you must clone these github repositories to two different systems, and they will require compatible configurations. If this is your initial setup, it is fine to have identical configuration files and `/plugins` folders to get started.
+Another way to set up Zowe Application Framework is to have the Zowe Application  Server running under LUW, while keeping ZSS under USS. This is the configuration scenario presented below. In this scenario, you must clone these github repositories to two different systems, and they will require compatible configurations. If this is your initial setup, it is fine to have identical configuration files and `/plugins` folders to get started.
 
 ## First-time Installation and Use
 
@@ -25,17 +25,17 @@ Getting started with the server requires the following steps:
 1. [Run the server](#6-run-the-server)
 1. [Connect in a browser!](#7-connect-in-a-browser)
 
-Follow each step and you will be on your way to your first Zowe Application Proxy Server instance.
+Follow each step and you will be on your way to your first Zowe Application Server instance.
 
 ### 0. (Optional) Install git for z/OS
 
-Because all of the code is on github, yet ZSS must run on z/OS and the Zowe Application Proxy Server can optionally run on z/OS as well, having git on z/OS is the most convenient way to work with the source code. The alternative would be to utilize FTP or another method to transfer contents to z/OS.
+Because all of the code is on github, yet ZSS must run on z/OS and the Zowe Application Server can optionally run on z/OS as well, having git on z/OS is the most convenient way to work with the source code. The alternative would be to utilize FTP or another method to transfer contents to z/OS.
 If you'd like to go this route, you can find git for z/OS free of charge here: http://www.rocketsoftware.com/product-categories/mainframe/git-for-zos
 
 ### 1. Acquire the source code
 
 To get started, first clone or download the github capstone repository, https://github.com/zowe/zlux
-Because we will be configuring ZSS on z/OS's USS, and the zLUX Proxy Server on a LUW host, you will need to place the contents on both systems.
+Because we will be configuring ZSS on z/OS's USS, and the Zowe Application Server on a LUW host, you will need to place the contents on both systems.
 If you are using git, use the following commands:
 
 ```
@@ -82,7 +82,7 @@ Application plug-ins can contain server and web components. The web components m
 
 This example server only needs transpilation and packaging of web components, and therefore we do not need any special build steps for the host running ZSS.
 
-Instead, on the host running the Zowe Application Proxy Server, run the script that will automatically build all included application plug-ins.
+Instead, on the host running the Zowe Application Server, run the script that will automatically build all included application plug-ins.
 Under `zlux-build` run,
 
 ```
@@ -99,15 +99,15 @@ _Note: You will need to have `ant` and `ant-contrib` installed_
 
 ### 5. Deploy server configuration files
 
-If you are running the Zowe Application Proxy Server separate from ZSS, you must ensure the ZSS installation configuration is deployed. You can accomplish this by navigating to `zlux-build` and running the following:
+If you are running the Zowe Application Server separate from ZSS, you must ensure the ZSS installation configuration is deployed. You can accomplish this by navigating to `zlux-build` and running the following:
 
 ```
 ant deploy
 ```
 
-On the other hand, if you are running ZSS and the Zowe Application Proxy Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in step 4.
+On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in step 4.
 
-However, if you need to change the server configuration files or if want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Proxy Server and ZSS would be required.
+However, if you need to change the server configuration files or if want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Server and ZSS would be required.
 
 ### 6. Run the server
 
@@ -124,7 +124,7 @@ If the zssServer server did not start, two common sources of error are:
 1. The _zssPort_ chosen is already occupied. To fix this, edit _config/zluxserver.json_ to choose a new one, and re-run _build/deploy.sh_ to make change take effect.
 2. The zssServer binary does not have the APF bit set. Because this server is meant for secure services, it is required. To fix this, execute `extattr +a zssServer`. Note that you might need to alter the execute permissions of `zssServer.sh` in the event that the previous command is not satisfactory (for example: chmod +x zssServer.sh)
 
-Second, from the system with the Zowe Application Proxy Server, start it with a few parameters to hook it to ZSS.
+Second, from the system with the Zowe Application Server, start it with a few parameters to hook it to ZSS.
 
 ```
 cd ../zlux-example-server/bin
@@ -140,15 +140,15 @@ Valid parameters for nodeServer are as follows:
 
 - _-h_: Specifies the hostname where ZSS can be found. Use as `-h \<hostname\>`
 - _-P_: Specifies the port where ZSS can be found. Use as `-P \<port\>`. This overrides _zssPort_ from the configuration file.
-- _-p_: Specifies the HTTP port to be used by the Zowe Application Proxy Server. Use as `-p <port>`. This overrides _node.http.port_ from the configuration file.
-- _-s_: Specifies the HTTPS port to be used by the Zowe Application Proxy Server. Use as `-s <port>`. This overrides _node.https.port_ from the configuration file.
+- _-p_: Specifies the HTTP port to be used by the Zowe Application Server. Use as `-p <port>`. This overrides _node.http.port_ from the configuration file.
+- _-s_: Specifies the HTTPS port to be used by the Zowe Application Server. Use as `-s <port>`. This overrides _node.https.port_ from the configuration file.
 - _--noChild_: If specified, tells the server to ignore and skip spawning of child processes defined as _node.childProcesses_ in the configuration file.
 
-In the example where we run ZSS on a host named `mainframe.zowe.com`, running on zssPort = 19997, the Proxy server running on Windows could be started with the following:
+In the example where we run ZSS on a host named `mainframe.zowe.com`, running on zssPort = 19997, the Zowe Application Server running on Windows could be started with the following:
 
 `nodeServer.bat -h mainframe.zowe.com -P 19997 -p 19998`
 
-After which we would be able to connect to the Proxy server at port 19998.
+After which we would be able to connect to the Zowe Application Server at port 19998.
 
 **NOTE:** the parameter parsing is provided by [argumentParser.js](https://github.com/zowe/zlux-proxy-server/blob/master/js/argumentParser.js), which allows for a few variations of input, depending on preference. For example, the following are all valid ways to specify the ZSS host:
 
@@ -157,18 +157,18 @@ After which we would be able to connect to the Proxy server at port 19998.
 - **--hostServer myhost.com**
 - **--hostServer=myhost.com**
 
-When the Zowe Application Proxy Server has started, one of the last messages you will see as bootstrapping completes is that the server is listening on the HTTP/s port. At this time, you should be able to use the server.
+When the Zowe Application Server has started, one of the last messages you will see as bootstrapping completes is that the server is listening on the HTTP/s port. At this time, you should be able to use the server.
 
 ### 7. Connect in a browser
 
-Now that ZSS and the Zowe Application Proxy Server are both started, you can access this instance by pointing your web browser to the Zowe Application Proxy Server.
+Now that ZSS and the Zowe Application Server are both started, you can access this instance by pointing your web browser to the Zowe Application Server.
 In this example, the address you will want to go to first is the location of the window management application - Zowe Desktop. The URL is:
 
 `http(s)://\<zLUX Proxy Server\>:\<node.http(s).port\>/ZLUX/plugins/com.rs.mvd/web/index.html`
 
 Once here, a Login window is presented with a few example application plug-ins in the taskbar at the bottom of the window. To try the application plug-ins to see how they interact with the framework, can login with your mainframe credentials.
 
-- tn3270-ng2: This application communicates with the Zowe Application Proxy Server to enable a TN3270 connection in the browser.
+- tn3270-ng2: This application communicates with the Zowe Application Server to enable a TN3270 connection in the browser.
 - subsystems: This application shows various z/OS subsystems installed on the host the ZSS runs on. This is accomplished through discovery of these services by the application's portion running in the ZSS context.
 - sample-app: A simple app showing how a Zowe Application Framework application frontend (Angular) component can communicate with an application backend (REST) component.
 

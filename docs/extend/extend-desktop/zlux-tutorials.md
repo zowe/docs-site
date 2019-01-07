@@ -1,6 +1,6 @@
-# zLUX tutorials
+# Zowe tutorials
 
-The following zLUX tutorials are available in Github.
+The following Zowe tutorials are available in Github.
 
 ## Sample Apps
 
