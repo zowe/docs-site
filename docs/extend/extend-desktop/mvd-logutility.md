@@ -37,7 +37,7 @@ Component loggers are created from the core logger object, but when working with
 
 #### App Server
 
-See **Router Dataservice Context** in the topic [zLUX dataservices](mvd-dataservices.md).   
+See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
 
 
 #### Web
