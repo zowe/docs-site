@@ -1,4 +1,4 @@
-# Add React app to zLUX
+# Add React app to Zowe
 
 :::tip Github Sample Repo:
 [basic-react](https://github.com/zowe/webui-scenarios/tree/master/basic-react)
@@ -42,7 +42,7 @@ Make sure that you first expose an API to connect to before following the steps 
 
 ## Verify Install
 
-Upon restarting the server, navigate to the zlux server.
+Upon restarting the server, navigate to the Zowe Application Server (zlux-proxy-server).
 
 - This can be found at: `https://<base>:<port>/ZLUX/plugins/com.rs.mvd/web/`
 

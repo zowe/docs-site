@@ -21,7 +21,7 @@ The Zowe Desktop has a taskbar at the bottom of the page, where it displays each
 
 ## Plug-in management
 
-Application plug-ins can gain insight into the environment in which they were spawned through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the Zowe Desktop is running, you can access the Plugin Manager through ```RocketMVD.PluginManager```
+Application plug-ins can gain insight into the environment in which they were spawned through the Plugin Manager. Use the Plugin Manager to determine whether a plug-in is present before you act upon the existence of that plug-in. When the Zowe Desktop is running, you can access the Plugin Manager through ```ZoweZLUX.PluginManager```
 
 The following are the functions you can use on the Plugin Manager:
 

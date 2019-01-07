@@ -19,7 +19,7 @@ The Zowe Desktop presents a taskbar at the bottom of the page, where it displays
 
 # Plug-in management
 
-Applications can gain insight into the environment in which they have been spawned through the Plug-in Manager. Use the Plug-in Manager to determine whether a plug-in is present before acting upon the existence of the plug-in. When the Zowe Desktop is running, you can access the Plug-in Manager through `RocketMVD.PluginManager`
+Applications can gain insight into the environment in which they have been spawned through the Plug-in Manager. Use the Plug-in Manager to determine whether a plug-in is present before acting upon the existence of the plug-in. When the Zowe Desktop is running, you can access the Plug-in Manager through `ZoweZLUX.PluginManager`
 
 The following are functions you can use on the Plug-in Manager:
 
@@ -57,7 +57,7 @@ When the Window is created, the application's web content is encapsulated depend
 
 - "angular2": The web content is written in Angular, and packaged with Webpack. Application framework objects are given through @injectables and imports.
 
-- "iframe": The web content can be written using any framework, but is included through an iframe tag. Applications within an iframe can access framework objects through `parent.RocketMVD` and callbacks.
+- "iframe": The web content can be written using any framework, but is included through an iframe tag. Applications within an iframe can access framework objects through `parent.ZoweZLUX` and callbacks.
 
 In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plug-in Manager.
 
