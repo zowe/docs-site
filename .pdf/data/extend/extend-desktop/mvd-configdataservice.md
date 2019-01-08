@@ -50,7 +50,7 @@ The *Instance* scope might contain editor defaults set by the administrator. But
 
 Therefore, the data the user receives would be no broader than what is stored in the *Instance* scope, but might have only been the settings they saved within their own *User* scope (if the broader scopes do not have data for the resource).
 
-Later, the user might want to save changes, and they try to save them in the *Instance* scope. Most likely, this action is rejected because of the preferences set by the administrator to disallow changes to the *Instance* scope by ordinary users.
+Later, the user might want to save changes, and they try to save them in the *Instance* scope. Most likely, this action will be rejected because of the preferences set by the administrator to disallow changes to the *Instance* scope by ordinary users.
 
 ## REST API
 
