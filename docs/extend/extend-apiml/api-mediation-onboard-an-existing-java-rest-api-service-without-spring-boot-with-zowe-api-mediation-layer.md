@@ -245,8 +245,8 @@ public class MfaasController {
 }
 ```
 
-## Add configuration for Eureka client
-After you add API Mediaiton Layer integration endpoints, you are ready to add service configuration for Eureka client.
+## Add configuration for Discovery client
+After you add API Mediaiton Layer integration endpoints, you are ready to add service configuration for Discovery client.
 
 **Follow these steps:**
 1.  Create a the file `service-configuration.yml` in your resources directory.
@@ -364,7 +364,7 @@ After you add API Mediaiton Layer integration endpoints, you are ready to add se
     
     * **discoveryServiceUrls**
     
-        Specifies the public URL of the Discovery Service (Eureka). The system administrator at the customer site defines this parameter. 
+        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
     
         **Example:**
         * `http://eureka:password@141.202.65.33:10311/eureka/`
@@ -456,7 +456,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 ```
 
 ### Register a context listener
-Register a context listener to start Eureka client. Add the following code block to the 
+Register a context listener to start Discovery client. Add the following code block to the 
 deployment descriptor `web.xml` to register a context listener:
 ``` xml
 <listener>
