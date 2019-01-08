@@ -1,14 +1,14 @@
-# Standup a local version of the Example Zowe Application Server
+# Stand up a local version of the Example Zowe Application Server
 
-`zlux-example-server` is an example of a server built upon the application framework. Within, you will find a collection of build, deploy, and run scripts as well as configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
+`zlux-example-server` is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
 
 ## Server layout
 
-At the core of the application infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of application, and also can server as a proxy for requests from applications to additional servers, as needed. One such proxy destination is the ZSS - the Zowe Application Framework backend component for **Z Secure Services**. If you are going to set up a Zowe Application Framework installation, contact Rocket to obtain the ZSS binary to use in the installation process.
+At the core of the application infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of an application, and can serve as a proxy for requests from applications to additional servers, as needed. One such proxy destination is the ZSS - the Zowe Application Framework backend component for **Z Secure Services**. If you want to set up a Zowe Application Framework installation, contact Rocket to obtain the ZSS binary to use in the installation process.
 
 ### ZSS and Zowe Application Server overlap
 
-The Zowe Application Server and ZSS utilize the same deployment and Application/Plugin structure, and share some configuration parameters. It is possible to run ZSS and Zowe Application Server from the same system, in which case you would be running under z/OS USS. This configuration requires that IBM's version of nodeJS is installed beforehand.
+The Zowe Application Server and ZSS utilize the same deployment and Application/Plugin structure, and share some configuration parameters. It is possible to run ZSS and the Zowe Application Server from the same system, in which case you would be running under z/OS USS. This configuration requires that IBM's version of nodeJS is installed beforehand.
 
 Another way to set up Zowe Application Framework is to have the Zowe Application  Server running under LUW, while keeping ZSS under USS. This is the configuration scenario presented below. In this scenario, you must clone these github repositories to two different systems, and they will require compatible configurations. If this is your initial setup, it is fine to have identical configuration files and `/plugins` folders to get started.
 
@@ -78,7 +78,7 @@ Edit _../vt-ng2/\_defaultVT.json_ to set _host_ and _port_ to a valid ssh host a
 
 **Note:** NPM is used when building application plug-ins. The version of NPM needed for the build to succeed should be at least 5.4. You can update NPM by executing `npm install -g npm`
 
-Application plug-ins can contain server and web components. The web components must be built, as webpack is involved in optimized packaging, and server components are also likely to need building if they require external dependencies from NPM, use native code, or are written in typescript.
+Application plug-ins can contain server and web components. The web components must be built, as webpack is involved in optimized packaging. Server components are also likely to need building if they require external dependencies from NPM, use native code, or are written in typescript.
 
 This example server only needs transpilation and packaging of web components, and therefore we do not need any special build steps for the host running ZSS.
 
@@ -99,7 +99,7 @@ _Note: You will need to have `ant` and `ant-contrib` installed_
 
 ### 5. Deploy server configuration files
 
-If you are running the Zowe Application Server separate from ZSS, you must ensure the ZSS installation configuration is deployed. You can accomplish this by navigating to `zlux-build` and running the following:
+If you are running the Zowe Application Server separate from ZSS, ensure the ZSS installation configuration is deployed. You can accomplish this by navigating to `zlux-build` and running the following:
 
 ```
 ant deploy
@@ -107,7 +107,7 @@ ant deploy
 
 On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in step 4.
 
-However, if you need to change the server configuration files or if want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Server and ZSS would be required.
+However, if you need to change the server configuration files or if you want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Server and ZSS would be required.
 
 ### 6. Run the server
 
@@ -121,7 +121,7 @@ cd ../zlux-example-server/bin
 
 If the zssServer server did not start, two common sources of error are:
 
-1. The _zssPort_ chosen is already occupied. To fix this, edit _config/zluxserver.json_ to choose a new one, and re-run _build/deploy.sh_ to make change take effect.
+1. The _zssPort_ chosen is already occupied. To fix this, edit _config/zluxserver.json_ to choose a new one, and re-run _build/deploy.sh_ to make the change take effect.
 2. The zssServer binary does not have the APF bit set. Because this server is meant for secure services, it is required. To fix this, execute `extattr +a zssServer`. Note that you might need to alter the execute permissions of `zssServer.sh` in the event that the previous command is not satisfactory (for example: chmod +x zssServer.sh)
 
 Second, from the system with the Zowe Application Server, start it with a few parameters to hook it to ZSS.
@@ -170,7 +170,7 @@ Once here, a Login window is presented with a few example application plug-ins i
 
 - tn3270-ng2: This application communicates with the Zowe Application Server to enable a TN3270 connection in the browser.
 - subsystems: This application shows various z/OS subsystems installed on the host the ZSS runs on. This is accomplished through discovery of these services by the application's portion running in the ZSS context.
-- sample-app: A simple app showing how a Zowe Application Framework application frontend (Angular) component can communicate with an application backend (REST) component.
+- sample-app: A simple app that shows how a Zowe Application Framework application frontend (Angular) component can communicate with an application backend (REST) component.
 
 #### Deploy example
 
@@ -187,8 +187,8 @@ Once here, a Login window is presented with a few example application plug-ins i
 
 ### Application plug-in configuration
 
-This section does not cover any dynamic runtime inclusion of application plug-ins, but rather application plug-ins that are defined in advance.
-In the configuration file, a directory can be specified which contains JSON files which tell the server what application plug-in to include and where to find it on disk. The backend of these application plug-ins use the Server's Plugin structure, so much of the server-side references to application plug-ins use the term "Plugin".
+This section does not cover dynamic runtime inclusion of application plug-ins, but rather application plug-ins that are defined in advance.
+In the configuration file, a directory can be specified which contains JSON files that tell the server what application plug-in to include and where to find it on disk. The backend of these application plug-ins use the Server's Plugin structure, so much of the server-side references to application plug-ins use the term "Plugin".
 
 To include application plug-ins, be sure to define the location of the `Plugins` directory in the configuration file, through the top-level attribute _pluginsDir_
 
@@ -205,9 +205,9 @@ To include application plug-ins, be sure to define the location of the `Plugins`
 
 ### ZSS Configuration
 
-Running ZSS requires a JSON configuration file similar (or the same as) the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:_rootDir_, _productDir_, _siteDir_, _instanceDir_, _groupsDir_, _usersDir_, _pluginsDir_ and **zssPort**. All of these attributes have the same meaning as described above for the Zowe Application Server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a JSON configuration file that is similar (or the same as) the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:_rootDir_, _productDir_, _siteDir_, _instanceDir_, _groupsDir_, _usersDir_, _pluginsDir_ and **zssPort**. All of these attributes have the same meaning as described above for the Zowe Application Server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
 
-The  **zssPort** attribute is specific to ZSS. This is the TCP port on which ZSS will listen  to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
+The **zssPort** attribute is specific to ZSS. This is the TCP port on which ZSS will listen to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 
 #### Connecting Zowe Application Server to ZSS
 
