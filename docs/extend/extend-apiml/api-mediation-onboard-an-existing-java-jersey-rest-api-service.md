@@ -133,7 +133,7 @@ the properties defined inside the .*yml* file.
 
 **Follow these steps:**
 
-1. Define parameters that you want to externalize in a `.yml` file. 
+1. Define parameters that you want to externalize in a _.yml_ file. 
 Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `com.ca.mfaas.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the `yml` file follows the correct structure. Below is one example of the structure that the `yml` file should have:
   
     **Example:**
@@ -262,7 +262,7 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
         Be also sure to comment the HTTP connector which uses the same port.
     c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
     
-        ```xml
+       ```xml
         <security-constraint>
                 <web-resource-collection>
                     <web-resource-name>Protected resource</web-resource-name>
@@ -274,7 +274,7 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
                     <transport-guarantee>CONFIDENTIAL</transport-guarantee>
                 </user-data-constraint>
             </security-constraint>
-        ```
+       ```
 
 ## Run your service
 
@@ -296,12 +296,11 @@ After you externalize the parameters to make them readable through Tomcat and en
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to `https://localhost:10011`. Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
+3.  Navigate to [https://localhost:10011](https://localhost:10011). Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
         
     Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
-    ```
-    https://localhost:10010/ui/v1/apicatalog/#/dashboard
-    ``` 
+    
+    [https://localhost:10010/ui/v1/apicatalog/#/dashboard](https://localhost:10010/ui/v1/apicatalog/#/dashboard)
     
   You successfully onboarded your Java Jersey application if see your service 
     running and can access the API documentation. 
