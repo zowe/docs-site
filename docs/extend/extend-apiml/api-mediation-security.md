@@ -442,7 +442,32 @@ If it is not possible, you will see following error message:
 
     WARNING: z/OSMF is not trusted by the API Mediation Layer.
 
-You can add z/OSMF to the truststore manually as a user that have access right to read the z/OSMF keyring or is a superuser.
+You can add z/OSMF to the truststore manually as a user that have access rights to read the z/OSMF keyring.
+
+The read access to z/OSMF keyring can be granted by following commands:
+
+- RACF:
+
+      PERMIT IRR.DIGTCERT.LIST CLASS(FACILITY) ID(acid) ACCESS(READ)
+      PERMIT IRR.DIGTCERT.LISTRING CLASS(FACILITY) ID(acid) ACCESS(UPDATE)
+
+- Top Secret:
+      
+      TSS ADD(dept) IBMFAC(IRR.DIGTCERT)
+      TSS PER(acid) IBMFAC(IRR.DIGTCERT.LIST) ACCESS(READ) 
+      TSS PER(acid) IBMFAC(IRR.DIGTCERT.LISTRING) ACCESS(UPDATE)
+
+- ACF2:
+
+      ACF 
+      SET RESOURCE(FAC) 
+      RECKEY IRR ADD(DIGTCERT.LIST UID(acid) - 
+        SERVICE(READ) ALLOW)                                           
+      RECKEY IRR ADD(DIGTCERT.LISTRING UID(acid) -  
+        SERVICE(UPDATE) ALLOW)
+      F ACF2,REBUILD(FAC)   
+
+`acid` is the user ID of the user that is installing Zowe.
 
 To find the name of the z/OSMF keyring issue:
  
