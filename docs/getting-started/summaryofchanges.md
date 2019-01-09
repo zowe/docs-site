@@ -4,11 +4,56 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
+- [Version 0.9.5 (December 2018)](#version-0-9-5-december-2018)
 - [Version 0.9.4 (November 2018)](#version-0-9-4-november-2018)
 - [Version 0.9.3 (November 2018)](#version-0-9-3-november-2018)
 - [Version 0.9.2 (October 2018)](#version-0-9-2-october-2018)
 - [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
 - [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
+
+## Version 0.9.5 (December 2018)
+
+Version 0.9.5 contains the following changes since the last version.
+
+### What's new in API Mediation Layer
+
+Zowe version 0.9.5 introduces the following enhancements to Zowe APIML:
+
+- APIML can now trust API services that are self-signed or signed by third-party certificate authorities.
+- APIML can now use existing server certificates for the API gateway that are signed by third-party certificate authorities.
+- The Zowe zLux and Zowe Atlas can now use the certificates that the APIML certificate management process creates.
+- Developers working with APIML can now disable the (APIML) HTTPS certificate validation process.
+- If you are running the APIML, you must prefix all Zowe Desktop and application URLs with:
+
+    `/api/v1/zlux` 
+
+    Example:
+
+    `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+
+    Becomes: `/api/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
+
+
+### What's new in Zowe CLI
+
+- **Use the Zowe CLI Plug-in for IBM CICS without a profile**
+
+    Zowe CLI Plug-in for CICS now lets you qualify connection details on a command without creating a cics user profile. You can issue commands directly on command line, using profiles, or using environment variables. This provides the flexibility to use of secure credential storage in automation tools such as Jenkins, override options on existing profiles, and write more efficient scripts. 
+
+    For more information about this feature, see [Setting environment variables for command arguments and options](../user-guide/cli-usingcli.md#setting-environment-variables-for-command-arguments-and-options).
+
+### What's new in Zowe installation
+
+- New scripts are available that provide an enhanced installation experience when you install the Zowe runtime on z/OS. 
+
+    - The `zowe-check-prereqs.sh` script checks the basic prerequisites for Zowe on your z/OS system before you install the Zowe runtime. 
+    - The `zowe-verify.sh` script checks the configuration files and jobs for Zowe on your z/OS system when Zowe is running and the startup sequence is complete.
+
+    These scripts write messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. The scripts do not change any settings, so you can run them as often as required.
+
+- You can now select the ZOWESVR PROCLIB member that you want to use. 
+
+For details, see [Installing the Zowe runtime on z/OS](../user-guide/install-zos.md).
 
 ## Version 0.9.4 (November 2018)
 
@@ -18,7 +63,7 @@ Version 0.9.4 contains the following changes since the last version.
 
 -  **Accessing the Zowe Desktop**
 
-    The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously, the URL is `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
+    The URL to access the Zowe Desktop is changed to `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. Previously, the URL was `https://myhost:httpsPort/ZLUX/plugins/com.rs.mvd/web/index.html`.
 
     See [Using the Zowe Desktop](../user-guide/mvd-using.md) for more information.
 
