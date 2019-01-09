@@ -2,84 +2,9 @@
 
 Review the following troubleshooting tips if you have problems with Zowe installation.
 
-## Troubleshooting installing the Zowe runtime
+## Troubleshooting installing Zowe runtime
 
-1.  Environment variables
-
-    To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
-
-     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`
-     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
-     - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
-
-    The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
-
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
-
-    If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location.  The install script will not continue unless valid locations are provided.  
-
-2. Expanding the PAX files
-
-    The install script will create the Zowe runtime directory structure using the  `install:rootDir ` value in the  `zowe-install.yaml` file.  The runtime components of the Zowe server are then unpaxed into the directory that contains a number of directories and files that make up the Zowe runtime.
-
-    If the expand of the PAX files is successful, the install script will report that it ran its install step to completion.
-
-3. Changing Unix permissions
-
-    After the install script lay down the contents of the Zowe runtime into the `rootDir`, the next step is to set the file and directory permissions correctly to allow the Zowe runtime servers to start and operate successfully.
-
-    The install process will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result is reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
-
-4. Creating the PROCLIB member to run the Zowe runtime
-
-    **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
-
-    At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task.  The install script does this automatically, trying data sets `USER.PROCLIB`, other PROCLIB data sets found in the PROCLIB concatenation and finally `SYS1.PROCLIB`.  
-
-    If this succeeds, you will see a message like the following one:
-
-     ```
-     PROC ZOWESVR placed in USER.PROCLIB
-     ```
-
-    Otherwise you will see messages beginning with the following information:  
-
-     ```
-     Failed to put ZOWESVR.JCL in a PROCLIB dataset.
-     ```
-
-    In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZOWESVR.jcl` file to the preferred PROCLIB:  
-
-     ```
-     oget '$INSTALL_DIR/files/templates/ZOWESVR.jcl' 'MY.USER.PROCLIB(ZOWESVR)'
-     ```
-
-    You can place the PROC in any PROCLIB data set in the PROCLIB concatenation, but some data sets such as `SYS1.PROCLIB` might be restricted, depending on the permission of the user.  
-
-    You can tailor the JCL at this line
-
-      ```
-      //ZOWESVR   PROC SRVRPATH='/zowe/install/path/explorer-server'
-      ```
-
-    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server.  Otherwise you must specify that path on the START command when you start Zowe in SDSF:
-
-      ```
-      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
-      ```
-
-### Troubleshooting installing the Zowe Application Framework
-
-To help Zowe research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
-
- - Zowe version and release level
- - z/OS release level
- - Job output and dump (if any)
-   - Javascript console output (Web Developer toolkit accessible by pressing F12)
-   - Log output from the Zowe Application Server
- - Error message codes
- - Screenshots (if applicable)
- - Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version).
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe runtime.
 
 ### Troubleshooting installing explorer server
 
@@ -197,6 +122,19 @@ If the explorer server cannot connect to the z/OSMF server, check the following 
 
 By default, the explorer server communicates with the z/OSMF server on the localhost address. If your z/OSMF server is on a different IP address to the explorer server, for example, if you are running z/OSMF with Dynamic Virtual IP Addressing (DVIPA), you can change this by adding a `ZOSMF_HOST` parameter to the `server.env` file. For example: `ZOSMF_HOST=winmvs27`.
 
+### Troubleshooting installing the Zowe Application Framework
+
+To help Zowe research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
+
+ - Zowe version and release level
+ - z/OS release level
+ - Job output and dump (if any)
+   - Javascript console output (Web Developer toolkit accessible by pressing F12)
+   - Log output from the Zowe Application Server
+ - Error message codes
+ - Screenshots (if applicable)
+ - Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version).
+
 ## Troubleshooting installing Zowe CLI
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior using Zowe CLI.
 
@@ -210,7 +148,7 @@ When you issue nmp commands to install Zowe CLI, the message *command not found*
 
 **Solution:**
 
-The *command not found* message displays because Node.js and NPM are not installed on your PC. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
+The *command not found* message displays because Node.js and NPM are not installed on your computer. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
 
 **More Information:** [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
 

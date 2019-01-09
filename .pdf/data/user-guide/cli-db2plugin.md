@@ -130,7 +130,7 @@ The following steps are required for both the registry and offline package insta
    
    After the license is copied, you can use the Db2 plugin functionality.
 
-## Setting up profiles
+## Creating a user profile
 
 Before you start using the IBM Db2 plug-in, create a profile.
 
