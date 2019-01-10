@@ -246,10 +246,10 @@ public class MfaasController {
 ```
 
 ## Add configuration for Discovery client
-After you add API Mediaiton Layer integration endpoints, you are ready to add service configuration for Discovery client.
+After you add API Mediation Layer integration endpoints, you are ready to add service configuration for Discovery client.
 
 **Follow these steps:**
-1.  Create a the file `service-configuration.yml` in your resources directory.
+1.  Create the file `service-configuration.yml` in your resources directory.
 
 2.  Add the following configuration to your `service-configuration.yml`:
 
@@ -284,14 +284,14 @@ After you add API Mediaiton Layer integration endpoints, you are ready to add se
     The following list describes the configuration parameters:
     * **serviceId**
     
-        Specifies the service instance identifier that is registered in the API Layer installation. 
+        Specifies the service instance identifier that is registered in the API Mediation Layer installation. 
         The service ID is used in the URL for routing to the API service through the gateway. 
         The service ID uniquely identifies instances of a microservice in the API Mediation Layer. 
         The system administrator at the customer site defines this parameter.
         
         **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-        * When two API services use the same service ID, the API gateway considers the services to be clones. An incoming API request can be routed to either of them.
+        * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
         * The same service ID should be set only for multiple API service instances for API scalability.
         * The service ID value must contain only lowercase alphanumeric characters.
         * The service ID cannot contain more than 40 characters.
@@ -302,13 +302,13 @@ After you add API Mediaiton Layer integration endpoints, you are ready to add se
             ```
             https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
             ```
-        * If customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+        * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
             ```
             http://gateway:port/api/v1/vantageprod1/endpoint1/...
             ```
     * **title**
     
-        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
         **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
@@ -468,17 +468,19 @@ deployment descriptor `web.xml` to register a context listener:
 
 ## Setup key store with the service certificate
 
-You service needs to have a certificate that is trusted by API Mediation Layer in order to register into it.
+All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
+
+**Follow these steps:**
 
 1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
-    In case of a service running on localhost, the command can look like:
+    If the service runs on localhost, the command uses the following format:
 
        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
 
-    Alternatively, you can just copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
 
-2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding:
+2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
         ssl:
             protocol: TLSv1.2
