@@ -3,7 +3,7 @@
 <bookmap>
   <booktitle>
     <mainbooktitle>Open Beta for Zowe</mainbooktitle>
-    <booktitlealt>Zowe Documentation Version 0.9.4</booktitlealt>
+    <booktitlealt>Zowe Documentation Version 0.9.5</booktitlealt>
   </booktitle>
   <bookmeta>
     <author>Zowe Docs Team</author>
@@ -22,7 +22,7 @@
       </bookowner>
     </bookrights>
     <critdates>
-      <created date="2019-01-09" />
+      <created date="2019-01-10" />
     </critdates>
   </bookmeta>
   <frontmatter>

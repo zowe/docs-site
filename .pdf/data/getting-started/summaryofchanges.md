@@ -4,14 +4,14 @@ Learn about what is new, changed, removed, and known issues in Open Beta for Zow
 
 Zowe Open Beta includes the following releases:
 
-- [Version 0.9.5 (December 2018)](#version-0-9-5-december-2018)
+- [Version 0.9.5 (January 2019)](#version-0-9-5-january-2019)
 - [Version 0.9.4 (November 2018)](#version-0-9-4-november-2018)
 - [Version 0.9.3 (November 2018)](#version-0-9-3-november-2018)
 - [Version 0.9.2 (October 2018)](#version-0-9-2-october-2018)
 - [Version 0.9.1 (October 2018)](#version-0-9-1-october-2018)
 - [Version 0.9.0 (August 2018)](#version-0-9-0-august-2018)
 
-## Version 0.9.5 (December 2018)
+## Version 0.9.5 (January 2019)
 
 Version 0.9.5 contains the following changes since the last version.
 
@@ -21,7 +21,7 @@ Zowe version 0.9.5 introduces the following enhancements to Zowe APIML:
 
 - APIML can now trust API services that are self-signed or signed by third-party certificate authorities.
 - APIML can now use existing server certificates for the API gateway that are signed by third-party certificate authorities.
-- The Zowe zLux and Zowe Atlas can now use the certificates that the APIML certificate management process creates.
+- The Zowe Application Framework and Zowe Explorer Server can now use the certificates that the APIML certificate management process creates.
 - Developers working with APIML can now disable the (APIML) HTTPS certificate validation process.
 - If you are running the APIML, you must prefix all Zowe Desktop and application URLs with:
 
