@@ -36,14 +36,15 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 This website contains documentation for the latest version of Zowe Open Beta release.
 
-### Latest versions
-The latest version is 0.9.4. You can download the Version 0.9.4 User Guide as a PDF file.
+### Latest version
+The latest version is 0.9.5. You can download the Version 0.9.5 documentation as a PDF file.
 
-[Download V0.9.4 PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.4.pdf)
+[Download V0.9.5 PDF](https://github.com/zowe/docs-site/blob/gh-pages/.pdf/out/Zowe_Documentation.pdf)
 
-### Previous version
-You can download the User Guide of previous Open Beta version as a PDF file.
+### Previous versions
+You can download the User Guide of a previous Open Beta version as a PDF file.
 
+- Version 0.9.4: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.4.pdf)
 - Version 0.9.3: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.3.pdf)
 - Version 0.9.2: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.2.pdf)
 - Version 0.9.1: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.1.pdf)

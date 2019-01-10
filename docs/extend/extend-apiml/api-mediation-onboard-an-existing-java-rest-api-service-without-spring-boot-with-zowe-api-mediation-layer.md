@@ -423,6 +423,7 @@ before the application shuts down to unregister the application in API Mediation
 
 **Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` 
 to register and unregister your application.
+
 ### Add a context listener class
 Add the following code block to add a context listener class:
 ```java
@@ -464,6 +465,35 @@ deployment descriptor `web.xml` to register a context listener:
 </listener>
 ```
 
+
+## Setup key store with the service certificate
+
+You service needs to have a certificate that is trusted by API Mediation Layer in order to register into it.
+
+1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+
+    In case of a service running on localhost, the command can look like:
+
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+
+    Alternatively, you can just copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+
+2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding:
+
+        ssl:
+            protocol: TLSv1.2
+            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            keyAlias: localhost
+            keyPassword: password
+            keyStore: keystore/localhost.keystore.p12
+            keyStoreType: PKCS12
+            keyStorePassword: password
+            trustStore: keystore/localhost.truststore.p12
+            trustStoreType: PKCS12
+            trustStorePassword: password
+
+**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+
 ## Run your service
 After you add all configurations and controllers, you are ready to run your service in the API Mediation Layer ecosystem.
 
@@ -486,13 +516,13 @@ After you add all configurations and controllers, you are ready to run your serv
 
 3.  Go to the following URL to reach the API Catalog through the Gateway (port 10010):
     ```
-    https://localhost:10010/ui/v1/caapicatalog/#/ui/dashboard
+    https://localhost:10010/ui/v1/apicatalog/
     ``` 
 
 You successfully onboarded your Java application with the API Mediation Layer if your service is running and you can access the API documentation. 
 
 ## (Optional) Validate discovery of the API service by the Discovery Service
-If your service is not visable in the API Catalog, you can check if your service is discovered by the Discovery Service.
+If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
 
 **Follow these steps:**
 
@@ -500,5 +530,5 @@ If your service is not visable in the API Catalog, you can check if your service
 2. Enter *eureka* as a username and *password* as a password.
 3. Check if your application appears in the Discovery Service UI.
 
-If your service appears in the Discovery Service UI but is not visable in the API Catalog, check to ensure 
+If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure 
 that your configuration settings are correct. 

@@ -89,6 +89,8 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 ### Configuring z/OSMF
 
+**Follow these steps:**
+
 1. From the console, issue the following command to verify the version of z/OS:
     ```
     /D IPLINFO
@@ -112,8 +114,6 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
   [56147429]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua300/IZUHPINFO_ConfiguringMain.htm "Configuring z/OSMF"
   [56699d6d]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_ConfiguringMain.htm "Setting up z/OSMF for the first time"
-
-
 
 **Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
@@ -161,7 +161,6 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 - [Configure z/OS Management Facility for CA ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
-
 #### z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
@@ -189,10 +188,16 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: https://mvs.ibm.com:443/zosmf/restjobs/jobs
 
-  **Note:**
+  **Notes:**
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
+
+**More Information:**
+
+You can now configure z/OSMF Zowe CLI now supports the 
+
+
 
 
 ## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
