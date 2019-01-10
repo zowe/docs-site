@@ -365,20 +365,20 @@ The following table alphabetically lists the common used words and their usage g
 
 Do  | Don't
 ---|---
-:heavy_check_mark: API Mediation Layer|
-:heavy_check_mark: application  | :x: app
-:heavy_check_mark: :heavy_check_mark: Capitalize "Server" when it's part of the product name |  
-:heavy_check_mark: data set| :x: dataset  
-:heavy_check_mark: Java  | :x: java
-:heavy_check_mark: IBM z/OS Managemnt Facility (z/OSMF) <br> :heavy_check_mark: z/OSMF   |:x: zosmf (unless used in syntax)  
-:heavy_check_mark: ID|:x: id  
-  :heavy_check_mark: PAX| :x: pax  
-  :heavy_check_mark: personal computer <br> :heavy_check_mark: PC <br> :heavy_check_mark: server| :x: machine
-:heavy_check_mark: later  | :x: higher <br> Do not use to describe versions of software or fix packs.  
-:heavy_check_mark: macOS|:x: MacOS
-:heavy_check_mark: Node.js  | :x: node.js <br> :x: Nodejs
-  :heavy_check_mark: plug-in| :x: plugin
-:heavy_check_mark: REXX  | :x: Rexx
-:heavy_check_mark:UNIX System Services <br> :heavy_check_mark: z/OS UNIX System Services  | :x:USS  
-:heavy_check_mark: zLUX  | :x: ZLUX <br> :x: zLux
-:heavy_check_mark: Zowe CLI|
+API Mediation Layer|
+application  | app
+Capitalize "Server" when it's part of the product name |  
+data set| dataset  
+Java  |  java
+IBM z/OS Managemnt Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)  
+ID| id  
+PAX| pax  
+personal computer <br> PC <br> server| machine
+later  | higher <br> Do not use to describe versions of software or fix packs.  
+macOS| MacOS
+Node.js  | node.js <br> Nodejs
+plug-in| plugin
+REXX  | Rexx
+UNIX System Services <br> z/OS UNIX System Services  | USS  
+zLUX  | ZLUX <br> zLux
+Zowe CLI|
