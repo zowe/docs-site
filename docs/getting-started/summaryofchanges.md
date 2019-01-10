@@ -21,7 +21,7 @@ Zowe version 0.9.5 introduces the following enhancements to Zowe APIML:
 
 - APIML can now trust API services that are self-signed or signed by third-party certificate authorities.
 - APIML can now use existing server certificates for the API gateway that are signed by third-party certificate authorities.
-- The Zowe zLux and Zowe Atlas can now use the certificates that the APIML certificate management process creates.
+- The Zowe Application Framework and Zowe Explorer Server can now use the certificates that the APIML certificate management process creates.
 - Developers working with APIML can now disable the (APIML) HTTPS certificate validation process.
 - If you are running the APIML, you must prefix all Zowe Desktop and application URLs with:
 
