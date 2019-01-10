@@ -229,7 +229,9 @@ It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Window
 
 Use the following script in the root of the `api-layer` repository:
 
+```bash
     scripts/apiml_cm.sh --action setup
+```
 
 This creates the certificates and keystore for the API Mediation Layer in your current workspace.
 
