@@ -4,9 +4,6 @@ The Visual Studio Code (VSCode) Extension for Zowe lets you interact with data s
 
 **Note:** The primary documentation, for this plug-in is available on the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe). This topic is intended to be an overview of the extension.
 
-You can watch this video to learn about this extension. If you read PDF, you can visit the video [here]().
-<iframe class="embed-responsive-item" id="youtubeplayer" title="VSCode Extension for Zowe" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/NX20ZMRoTtk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
-
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
   - [Use Cases](#use-cases)
