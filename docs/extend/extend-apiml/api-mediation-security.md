@@ -200,9 +200,6 @@ API service trust store (for each service)
 
 A client certificate is a certificate that is used for validation of the HTTPS client.
 
-The client certificate of a Discovery client can be the same certificate as the server certificate of the services which the Eureka client.
-
-
 ## Certificate Management in Zowe API Mediation Layer
 
 ## Running on localhost
