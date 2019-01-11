@@ -22,7 +22,7 @@
       </bookowner>
     </bookrights>
     <critdates>
-      <created date="2019-01-10" />
+      <created date="2019-01-11" />
     </critdates>
   </bookmeta>
   <frontmatter>
@@ -40,7 +40,6 @@
 <topicref format="markdown" href="user-guide/installandconfig.md" />
 <topicref format="markdown" href="user-guide/installroadmap.md" />
 <topicref format="markdown" href="user-guide/systemrequirements.md" />
-<topicref format="markdown" href="user-guide/gettingstarted.md" />
 <topicref format="markdown" href="user-guide/install-zos.md" />
 <topicref format="markdown" href="user-guide/cli-installcli.md" />
 <topicref format="markdown" href="user-guide/uninstall.md" />
@@ -50,7 +49,6 @@
 <topicref format="markdown" href="user-guide/cli-configuringcli.md" />
 </topicref>
 <topicref navtitle="Using Zowe">
-<topicref format="markdown" href="user-guide/using.md" />
 <topicref format="markdown" href="user-guide/mvd-using.md" />
 <topicref format="markdown" href="user-guide/usingapis.md" />
 <topicref format="markdown" href="user-guide/api-mediation-api-catalog.md" />
