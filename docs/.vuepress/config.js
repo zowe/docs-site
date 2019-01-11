@@ -30,7 +30,6 @@ const ALL_PAGES = [{
           'user-guide/installandconfig.md',
           'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
-          'user-guide/gettingstarted.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',
           'user-guide/uninstall.md',
@@ -46,7 +45,6 @@ const ALL_PAGES = [{
       {
         text: 'Using Zowe',
         items: [
-          'user-guide/using.md',
           'user-guide/mvd-using.md',
           'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
