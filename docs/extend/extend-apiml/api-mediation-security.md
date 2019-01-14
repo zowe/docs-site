@@ -82,7 +82,7 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
             - Security service is not provided as an individual microservice but is included to the Gateway Service
             - For more details, see: [APIML wiki](https://github.com/gizafoundation/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
 
-    - Non-APIML Zowe Core services (zLUX, Atlas)
+    - Non-APIML Zowe Core services (zLUX, z/OS Jobs Service, z/OS Datasets service)
 
         - They are like other regular API Client and Service described below
 

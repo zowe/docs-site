@@ -46,7 +46,6 @@ const ALL_PAGES = [{
         text: 'Using Zowe',
         items: [
           'user-guide/mvd-using.md',
-          'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
           'user-guide/cli-usingcli.md',
         ]
