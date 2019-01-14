@@ -6,65 +6,9 @@ Review the following troubleshooting tips if you have problems with Zowe install
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe runtime.
 
-### Troubleshooting installing explorer server
+## Troubleshooting z/OSMF
 
-If explorer server REST APIs do not function properly, check the following items:
-
--   Check whether your Liberty explorer server is running.
-
-    You can check this in the Display Active \(DA\) panel of SDSF under ISPF. The ZOWESVR started task should be running. If the ZOWESVR task is not running, start the explorer server by using the following `START` operator command:
-
-    ```
-    /S ZOWESVR
-    ```
-
-    You can also use the operator command `/D A,ZOWESVR` to verify whether the task is active, which alleviates the need for the DA panel of SDSF. If the started task is not running, ensure that your ZOWESVR procedure resides in a valid PROCLIB data set, and check the task’s job output for errors.
-
--   Check whether the explorer server is started without errors.
-
-    In the DA panel of SDSF under ISPF, select the ZOWESVR job to view the started task output. If the explorer server is started without errors, you can see the following messages:
-
-    ```
-    CWWKE0001I: The server Atlas has been launched.
-    ```
-
-    ```
-    CWWKF0011I: The server Atlas is ready to run a smarter planet.
-    ```
-
-    If you see error messages that are prefixed with "ERROR" or stack traces in the ZOWESVR job output, respond to them.
-
--   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/api/v1/system/version. The URL is case-sensitive.
--   Ensure that you enter a valid z/OS® user ID and password when initially connecting to the explorer server.
--   If testing the explorer server REST API for jobs information fails, check the z/OSMF IZUSVR1 task output for errors. If no errors occur, you can see the following messages in the IZUSVR1 job output:
-
-    ```
-    CWWKE0001I : The server zosmfServer has been launched.
-    ```
-
-    ```
-    CWWKF0011I: The server zosmfServer is ready to run a smarter planet.
-    ```
-
-    If you see error messages, respond to them.
-
-    For RESTJOBS, you can see the following message if no errors occur:
-
-    ```
-    CWWKZ0001I: Application IzuManagementFacilityRestJobs started in n.nnn seconds.
-    ```
-
-    You can also call z/OSMF RESTJOBS APIs directly from your Internet browser with a URL, for example,  
-    
-    ```
-    https://your.server:securezosmfport/zosmf/restjobs/jobs
-    ```
-
-    where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
-
-    You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTJOBS API directly fails, fix z/OSMF before explorer server can use these APIs successfully.
-
--   If testing the explorer server REST API for data set information fails, check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
+-   If the z/OS Services are unavailable ensure that the z/OSMF REST API services are working.  Check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
 
     ```
     CWWKZ0001I: Application IzuManagementFacilityRestFiles started in n.nnn seconds.
@@ -77,8 +21,6 @@ If explorer server REST APIs do not function properly, check the following items
     ```
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
-
-    `/zosmf/restjobs/jobs?prefix=*&owner=*` will return a list of the jobs.
 
     If z/OSMF returns jobs correctly you can test whether it is able to returns files using
 

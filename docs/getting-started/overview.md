@@ -6,7 +6,7 @@ Zowe consists of the following main components. For details of each component, s
 
 - [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets and z/OS UNIX System Services files.
+- [**z/OS Services**](#zos-services): Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
 - [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
@@ -42,18 +42,20 @@ The Zowe Application Framework consists of the following components:
 
     Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.html#using-zowe-framework-application-plug-ins).
 
-## Explorer server
+## z/OS Services
 
-The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets and z/OS UNIX™ System Services (USS) files.
+Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices.  Delivered with Zowe are core z/OS services
+ - **z/OS Datasets services:**
+   get a list of jobs, get content from a job file output, submit job from a data set, and more...
+ - **z/OS Jobs services:**
+    get a list of data sets, retrieve content from a member, create a dats set, and more ...
 
-These APIs have the following features:
+The full list of capabilities of the RESTful APIs can be viewed from the API catalog that will display the Open API Specification for their capabilities.
 
 - These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
 - These APIs can be exploited by off-platform applications with proper security controls.
 
-Any client application that calls RESTful APIs directly can use the explorer server.
-
-As a deployment architecture, the explorer server accommodates the installation of other z/Tool microservices into its Liberty instance. These microservices can be used by explorer server APIs and client applications.
+As a deployment architecture, the z/OS Services are running as microservices with a Springboot embedded Tomcat stack.  
 
 ## Zowe CLI
 Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.

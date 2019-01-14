@@ -154,10 +154,6 @@
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/liberty-api-sample.html</loc>
-    <changefreq>always</changefreq>
-  </url>
-  <url>
     <loc>https://zowe.github.io/docs-site/user-guide/mvd-configdataservice.html</loc>
     <changefreq>always</changefreq>
   </url>
