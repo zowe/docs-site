@@ -73,7 +73,7 @@ The Hello World sample application plug-in for developers demonstrates how to cr
 The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
 
 ### z/OS Subsystems
-This z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
+The z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
 ### TN3270
 This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
@@ -84,9 +84,53 @@ The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
 ### API Catalog
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](#api-mediation-layer-architecture).
 
-### Workflows
+### Editor
+With the Zowe Editor you can create and edit files on the system that Zowe serves.
 
+### Workflows
 From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
+
+## Using the Editor
+
+With the Zowe Editor, you can create and edit the many types of files.
+
+### Specifying a language server
+
+To specify a language server, complete these steps:
+
+1. From the **Language Server** menu, select **URL***.
+2. From the **Language Server Setting**, **Put your config here** area, paste your configuration.
+3. Ensure that the **Enable Language Server** check box is selected.
+4. Click **Save**.
+
+### Specifying a language
+
+From the **Language** menu, select the language you want to use.
+
+### Opening a directory
+
+To open a directory on the system, complete these steps:
+
+1. From the **File** menu, select **Open Directory**.(Alternatively, you can click **Open Directory** in the File Explorer.)
+
+2. From the **Open Directory**, **Input Your Directory** field, type the name of the directory you want to open. For example: `/u/zs1234`
+3. Click **Open**.
+
+The File Explorer on the left side of the window lists the folders and files in the specified directory. Clicking on a folder expands the tree. Clicking on a file opens a tab that displays the file contents.
+
+### Creating a new file
+
+To create a new file, complete these steps:
+
+1. From the **File** menu, select **New File**. The **New File** tab opens.
+2. From the **New File**, **File Name** field, type the name of the file.
+3. Click **Create**.
+
+### Saving a file
+
+To save a file, click **File** > **Save**.
+
+**Note:** To save all files, click **File** > **Save All** (or Ctrl+S).
 
 ## Using the Workflows application plug-in
 
