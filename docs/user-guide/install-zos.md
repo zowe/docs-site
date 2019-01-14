@@ -384,7 +384,9 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
      - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
 
-    The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
+    The first time the script is run, if it has to locate any of the environment variables, the script will add lines to a new file called `.zowe_profile` in the current user's home directory to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
+
+    The script takes the environment variable settings from `.profile`, if it exists in the current user's home directory.  It does this for every install, not just the first time.  But if `.zowe_profile` already exists, the script uses `.zowe_profile` instead of `.profile` to set the variables.  You can create, edit or delete the `.zowe_profile` file as needed before each install to set the variables to the values you want.  You should not add any commands except `export` and shell variable assignments to the `.zowe_profile` file.
 
      **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
 
