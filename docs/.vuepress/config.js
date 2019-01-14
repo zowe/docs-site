@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '0.9.4'
+const CURRENT_ZOWE_VERSION = '0.9.5'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -30,7 +30,6 @@ const ALL_PAGES = [{
           'user-guide/installandconfig.md',
           'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
-          'user-guide/gettingstarted.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',
           'user-guide/uninstall.md',
@@ -46,7 +45,6 @@ const ALL_PAGES = [{
       {
         text: 'Using Zowe',
         items: [
-          'user-guide/using.md',
           'user-guide/mvd-using.md',
           'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
