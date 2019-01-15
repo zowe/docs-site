@@ -1,6 +1,6 @@
 # Create a User Database Browser application on the Zowe Application Framework
 
-This tutorial contains code snippets and descriptions that you can combine to build a complete app. It builds off the project skeleton code found at the [github project repo](https://github.com/zowe/workshop-user-browser-app).
+This tutorial contains code snippets and descriptions that you can combine to build a complete application. It builds off the project skeleton code found at the [github project repo](https://github.com/zowe/workshop-user-browser-app).
 
 By the end of this tutorial, you will:
 
@@ -14,7 +14,7 @@ By the end of this tutorial, you will:
 :::warning
 Before continuing, make sure you have completed the prerequisites for this tutorial:
 
-- Setup up the [zlux-example-server locally](./zlux-example-server.md).
+- Setup up the [zlux-app-server locally](./zlux-app-server.md).
   :::
 
 So, let's get started!
@@ -71,7 +71,7 @@ The file should contain the following:
 }
 ```
 
-A description of the particular values that are placed into this file can be found [on the wiki](https://github.com/zowe/zlux/wiki/Zlux-Plugin-Definition-&-Structure).
+A description of the values that are placed into this file can be found [on the wiki](https://github.com/zowe/zlux/wiki/Zlux-Plugin-Definition-&-Structure).
 
 Note the following attributes:
 
@@ -85,7 +85,7 @@ Note the following attributes:
 
 ### Constructing a Simple Angular UI
 
-Angular application plug-ins for Zowe are structured such that the source code exists within `webClient/src/app`. In here, you can create modules, components, templates and services in whatever hierarchy desired. For the application plug-in we are making here however, we will add three files:
+Angular application plug-ins for Zowe are structured such that the source code exists within `webClient/src/app`. In here, you can create modules, components, templates and services in any hierarchy. For the application plug-in we are creating however, we will add three files:
 
 - userbrowser.module.ts
 - userbrowser-component.html
@@ -187,7 +187,7 @@ At this time, we've made the source for a Zowe application plug-in that should o
 Before we're ready to use it however, we must transpile the typescript and package the application plug-in. This will require a few build tools first. We'll make an NPM package in order to facilitate this.
 
 Let's create a `package.json` file within `workshop-user-browser-app/webClient`.
-While a package.json can be created through other means such as `npm init` and packages can be added through commands such as `npm install --save-dev typescript@2.9.0`, we'll opt to save time by just pasting these contents in:
+While a `package.json` can be created through other means such as `npm init` and packages can be added through commands such as `npm install --save-dev typescript@2.9.0`, we'll opt to save time by just pasting these contents in:
 
 ```json
 {
@@ -233,32 +233,24 @@ While a package.json can be created through other means such as `npm init` and p
 }
 ```
 
-Before we can build, we first need to tell our system where our example server is located. While we could provide the explicit path to our server in our project, creating an environmental variable with this location will speed up future projects.
-
-To add an environmental variable on a Unix based machine:
-
-1. `cd ~`
-2. `nano .bash_profile`
-3. Add `export MVD_DESKTOP_DIR=/Users/<user-name>/path/to/zlux/zlux-app-manager/virtual-desktop/`
-4. Save and exit
-5. `source ~/.bash_profile`
-
 Now we are ready to build.
+
 Let's set up our system to automatically perform these steps every time we make updates to the application plug-in.
 
-1. Open a command prompt to `workshop-user-browser-app/webClient`
-1. Execute `npm install`
-1. Execute `npm run-script start`
+1. Open a command prompt to `workshop-user-browser-app/webClient`.
+2. Set the environment variable `MVD_DESKTOP_DIR` to the location of zlux-app-manager/virtual-desktop. For example, set `MVD_DESKTOP_DIR=../../zlux-app-manager/virtual-desktop`. This is needed whenever building individual application web code due to the core configuration files being located in virtual-desktop.
+1. Execute `npm install`.
+1. Execute `npm run-script start`.
 
 After the first execution of the transpilation and packaging concludes, you should have `workshop-user-browser-app/web` populated with files that can be served by the Zowe Application Server.
 
 ### Adding Your application plug-in to the Zowe Desktop
 
-At this point, your workshop-user-browser-app folder contains files for an application plug-in that could be added to a Zowe instance. We will add this to our own Zowe instance. First, ensure that the Zowe Application Server is not running. Then, navigate to the instance's root folder, `/zlux-example-server`.
+At this point, your workshop-user-browser-app folder contains files for an application plug-in that could be added to a Zowe instance. We will add this to our own Zowe instance. First, ensure that the Zowe Application Server is not running. Then, navigate to the instance's root folder, `/zlux-app-server`.
 
-Within, you'll see a folder, `plugins`. Take a look at one of the files within the folder. You can see that these are JSON files with the attributes **identifier** and **pluginLocation**. These files are what we call **Plugin Locators**, since they point to a plug-in to be included into the server.
+Within, you'll see a folder, `plugins`. Take a look at one of the files in the folder. You can see that these are JSON files with the attributes **identifier** and **pluginLocation**. These files are what we call **Plugin Locators**, since they point to a plug-in to be included into the server.
 
-Let's make one ourselves. Make a file `/zlux-example-server/plugins/org.openmainframe.zowe.workshop-user-browser.json`, with these contents:
+Let's make one ourselves. Make a file `/zlux-example-server/plugins/org.openmainframe.zowe.workshop-user-browser.json`, with the following contents:
 
 ```json
 {
@@ -267,7 +259,7 @@ Let's make one ourselves. Make a file `/zlux-example-server/plugins/org.openmain
 }
 ```
 
-When the server runs, it will check for these types of files in its `pluginsDir`, a location known to the server through its specification in the [server configuration file](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-Proxy-Server-&-ZSS#app-configuration). In our case, this is `/zlux-example-server/deploy/instance/ZLUX/plugins/`.
+When the server runs, it will check for these types of files in its `pluginsDir`, a location known to the server through its specification in the server configuration file. In our case, this is `/zlux-app-server/deploy/instance/ZLUX/plugins/`.
 
 You could place the JSON directly into that location, but the recommended way to place content into the deploy area is through running the server deployment process.
 Simply:
@@ -277,10 +269,10 @@ Simply:
 
 Now you're ready to run the server and see your application plug-in.
 
-1. `cd /zlux-example-server/bin`
-1. `./nodeServer.sh`
-1. Open your browser to `https://hostname:port`
-1. Login with your credentials
+1. `cd /zlux-example-server/bin`.
+1. `./nodeServer.sh`.
+1. Open your browser to `https://hostname:port`.
+1. Login with your credentials.
 1. Open the application plug-in on the bottom of the page with the green 'U' icon.
 
 Do you see the Hello World message from [this earlier step?](#constructing-a-simple-angular-ui). If so, you're in good shape! Now, let's add some content to the application plug-in.
@@ -289,7 +281,7 @@ Do you see the Hello World message from [this earlier step?](#constructing-a-sim
 
 An application plug-in can have one or more [Dataservices](https://github.com/zowe/zlux/wiki/ZLUX-Dataservices). A Dataservice is a REST or Websocket endpoint that can be added to the Zowe Application Server.
 
-To demonstrate the use of a Dataservice, we'll add one to this application plug-in. The application plug-in needs to display a list of users, filtered by some value. Ordinarily, this sort of data would be contained within a database, where you can obtain rows in bulk and filter them in some manner. Retrieval of database contents, likewise, is a task that is easily representable through a REST API, so let's make one.
+To demonstrate the use of a Dataservice, we'll add one to this application plug-in. The application plug-in needs to display a list of users, filtered by some value. Ordinarily, this sort of data would be contained within a database, where you can get rows in bulk and filter them in some manner. Retrieval of database contents, likewise, is a task that is easily representable through a REST API, so let's make one.
 
 1. Create a file, `workshop-user-browser-app/nodeServer/ts/tablehandler.ts`
    Add the following contents:
@@ -372,7 +364,7 @@ function respondWithRows(rows: Array<Array<string>>, res: Response): void {
 Because we reference the usertable file through import, we are able to refer to its **metadata** and **columns** attributes here.
 This **`respondWithRows`** function expects an array of rows, so we'll improve the Router to call this function with some rows so that we can present them back to the user.
 
-2. Update the **UserTableDataservice** constructor, modifying and expanding upon the Router
+2. Update the **UserTableDataservice** constructor, modifying and expanding upon the Router.
 
 ```typescript
   constructor(context: any){
@@ -408,10 +400,10 @@ This REST API now allows for two GET calls to be made: one to root /, and the ot
 
 Now that the Dataservice is made, add it to our Plugin's definition so that the server is aware of it, and then build it so that the server can run it.
 
-1. Open a (third) command prompt to `workshop-user-browser-app/nodeServer`
-1. Install dependencies, `npm install`
-1. Invoke the NPM build process, `npm run-script start`
-   1. If there are errors, go back to [building the dataservice](#building-your-first-dataservice) and make sure the files look correct.
+1. Open a (third) command prompt to `workshop-user-browser-app/nodeServer`.
+1. Install dependencies, `npm install`.
+1. Invoke the NPM build process, `npm run-script start`.
+   1. If there are errors, go back to [building the dataservice].(#building-your-first-dataservice) and make sure the files look correct.
 1. Edit `workshop-user-browser-app/pluginDefinition.json`, adding a new attribute which declares Dataservices.
 
 ```json
@@ -423,6 +415,7 @@ Now that the Dataservice is made, add it to our Plugin's definition so that the 
       "fileName": "tablehandler.js",
       "routerFactory": "tableRouter",
       "dependenciesIncluded": true
+      "version": "1.0.0"
     }
 ],
 ```
@@ -443,6 +436,7 @@ Your full pluginDefinition.json should now be:
       "fileName": "tablehandler.js",
       "routerFactory": "tableRouter",
       "dependenciesIncluded": true
+      "version": "1.0.0"
     }
   ],
   "webContent": {
@@ -465,7 +459,7 @@ Your full pluginDefinition.json should now be:
 
 There's a few interesting attributes about the Dataservice we have specified here. First is that it is listed as `type: router`, which is because there are different types of Dataservices that can be made to suit the need. Second, the **name** is **table**, which determines both the name seen in logs but also the URL this can be accessed at. Finally, **fileName** and **routerFactory** point to the file within `workshop-user-browser-app/lib` where the code can be invoked, and the function that returns the ExpressJS Router, respectively.
 
-4. [Restart the server](#adding-your-app-to-the-desktop) (as was done when adding the App initially) to load this new Dataservice. This is not always needed but done here for educational purposes.
+4. [Restart the server](#adding-your-app-to-the-desktop) (as was done when adding the application initially) to load this new Dataservice. This is not always needed but done here for educational purposes.
 5. Access `https://host:port/ZLUX/plugins/org.openmainframe.zowe.workshop-user-browser/services/table/` to see the Dataservice in action. It should return all of the rows in the user table, as you did a GET to the root / URL that we just coded.
 
 ## Adding your first Widget
@@ -536,7 +530,7 @@ Hopefully you are still running the command in the first command prompt, `npm ru
 
 ### Introducing ZLUX Grid
 
-When **ngOnInit** runs, it will call out to the REST Dataservice and put the table row results into our cache, but we haven't yet visualized this in any way. We need to improve our HTML a bit to do that, and rather than reinvent the wheel, we have a table visualization library we can rely on - **ZLUX Grid**.
+When **ngOnInit** runs, it will call out to the REST Dataservice and put the table row results into our cache, but we haven't yet visualized this in any way. We need to improve our HTML a bit to do that, and rather than reinvent the wheel, we have a table visualization library we can rely on: **ZLUX Grid**.
 
 If you inspect `package.json` in the **webClient** folder, you'll see that we've already included @zlux/grid as a dependency (as a link to one of the Zowe github repositories) so it should have been pulled into the **node_modules** folder during the `npm install` operation. We just need to include it in the Angular code to make use of it. To do so, complete these steps:
 
@@ -612,9 +606,9 @@ export class UserBrowserModule { }
 
 Note the key functions of this template:
 
-- There's a button which when clicked will submit selected users (from the grid). We will implement this ability later.
-- We show or hide the grid based on a variable `ngIf="showGrid"` so that we can wait to show the grid until there is data to present
-- The zlux-grid tag pulls the Zowe Application Framework Grid widget into our application, and it has many variables that can be set for visualization, as well as functions and modes.
+- There is a button which when clicked will submit selected users (from the grid). We will implement this ability later.
+- We show or hide the grid based on a variable `ngIf="showGrid"` so that we can wait to show the grid until there is data to present.
+- The zlux-grid tag pulls the ZLUX Grid widget into our application, and it has many variables that can be set for visualization, as well as functions and modes.
   - We allow the columns, rows, and metadata to be set dynamically by using the square bracket [ ] template syntax, and allow our code to be informed when the user selection of rows changes through `(selectionChange)="onTableSelectionChange($event)"`
 
 3. Small modification to **userbrowser-component.ts** to add the grid variable, and set up the aforementioned table selection event listener, both within the **UserBrowserComponent** Class:
@@ -627,7 +621,7 @@ onTableSelectionChange(rows: any[]):void{
 }
 ```
 
-The previous section, [Adding your Dataservice to the application](#adding-your-dataservice-to-the-app) set the variables that are fed into the Zowe Application Framework Grid widget, so at this point the application should be updated with the ability to present a list of users in a grid.
+The previous section, [Adding your Dataservice to the application](#adding-your-dataservice-to-the-app) set the variables that are fed into the ZLUX Grid widget, so at this point the application should be updated with the ability to present a list of users in a grid.
 
 If you are still running `npm run-script start` in a command prompt, it should now show that the application has been successfully built, and that means we are ready to see the results. Reload your browser's webpage and open the user browser application once more. Do you see the list of users in columns and rows that can be sorted and selected? If so, great, you've built a simple yet useful application within Zowe! Let's move on to the last portion of the application tutorial where we hook the Starter application and the User Browser application together to accomplish a task.
 
@@ -635,39 +629,39 @@ If you are still running `npm run-script start` in a command prompt, it should n
 
 Applications in Zowe can be useful and provide insight all by themselves, but a big advantage to using the Zowe Desktop is that applications can track and share context by user interaction. By having the foreground application request the application best suited for a task, the requested application can perform the task with context regarding the task data and purpose and you can accomplish a complex task by simple and intuitive means.
 
-In the case of this tutorial, we're not only trying find a list of employees in a company (as was shown in the last step where the Grid was added and populated with the REST API), but to filter that list to find those employees who are best suited to the task we need to accomplish. So, our user browser application needs to be enhanced with two new abilities:
+In the case of this tutorial, we are not only trying find a list of employees in a company (as was shown in the last step where the Grid was added and populated with the REST API), but to filter that list to find those employees who are best suited to the task we need to accomplish. So, our user browser application needs to be enhanced with two new abilities:
 
 - Filter the user list to show only those users that meet the filter
-- Send the subset of users selected in the list back to the App that requested a user list.
+- Send the subset of users selected in the list back to the application that requested a user list.
 
 How do we do either task? Application-to-application communication! Applications can communicate with other applications in a few ways, but can be categorized into two interaction groups:
 
-1. Launching an App with a context of what it should do
-1. Messaging an App that's already open to a request or alert it of something
+1. Launching an application with a context of what it should do
+1. Messaging an application that is already open to a request or alert it of something
 
-In either case, the application framework provides Actions as the objects to perform the communication. Actions not only define what form of communication should happen, but between which Apps. Actions are issued from one application, and are fulfilled by a target application. But, because there might be more than one instance or window of an application open, there are Target Modes:
+In either case, the application framework provides Actions as the objects to perform the communication. Actions not only define what form of communication should happen, but between which applications. Actions are issued from one application, and are fulfilled by a target application. But, because there might be more than one instance or window of an application open, there are Target Modes:
 
-- Open a new App window, where the message context is delivered in the form of a Launch Context
-- Message a particular, or any of the currently open instances of the target App
+- Open a new application window, where the message context is delivered in the form of a Launch Context
+- Message a particular, or any of the currently open instances of the target application
 
 ### Adding the Starter application
 
 In order to facilitate app-to-app communication, we need another application with which to communicate. A 'starter' application is provided which can be [found on github](https://github.com/zowe/workshop-starter-app).
 
-As we did previously in the [Adding Your application to the Desktop](#adding-your-app-to-the-desktop) section, we need to move the application files to a location where they can be included in our `zlux-example-server`. We then need to add to the `plugins` folder in the example server and re-deploy.
+As we did previously in the [Adding Your application to the Desktop](#adding-your-app-to-the-desktop) section, we need to move the application files to a location where they can be included in our `zlux-app-server`. We then need to add to the `plugins` folder in the example server and re-deploy.
 
-1. Clone or download the starter app under the `zlux` folder
+1. Clone or download the starter application under the `zlux` folder
 
 - `git clone https://github.com/zowe/workshop-starter-app.git`
 
-2. Navigate to starter app and build it as before
+2. Navigate to starter application and build it as before.
 
 - Install packages with `cd webClient` and then `npm install`
 - Build the project using `npm start`
 
-2. Next navigate to the `zlux-example-server`:
+2. Next navigate to the `zlux-app-server`:
 
-- create a new file under `/zlux-example-server/plugins/org.openmainframe.zowe.workshop-starter.json`
+- create a new file under `/zlux-app-server/plugins/org.openmainframe.zowe.workshop-starter.json`
 - Edit the file to contain:
 
 ```json
@@ -678,7 +672,7 @@ As we did previously in the [Adding Your application to the Desktop](#adding-you
 ```
 
 3. Make sure the ./nodeServer is stopped before running `ant deploy` under `zlux-build`
-4. Restart the ./nodeServer under `zlux-example-server/bin` with the appropriate parameters passed in.
+4. Restart the ./nodeServer under `zlux-app-server/bin` with the appropriate parameters passed in.
 5. Refresh the browser and verify that the app with a **Green S** is present in zLUX.
 
 ### Enabling Communication
@@ -774,17 +768,17 @@ We can also see that once this application has been opened, the Starter applicat
 
 ### Calling back to the Starter application
 
-We're almost finished. The application can visualize data from a REST API, and can be instructed by other applications to filter that data according to the situation. But, to complete this tutorial, we need the application communication to go in the other direction - inform the Starter application which employees you have chosen in the table!
+We are almost finished. The application can visualize data from a REST API, and can be instructed by other applications to filter that data according to the situation. But, to complete this tutorial, we need the application communication to go in the other direction - inform the Starter application which employees you have chosen in the table!
 
 This time, we will edit **provideZLUXDispatcherCallbacks** to issue Actions rather than to listen for them. We need to target the Starter application, since it is the application that expects to receive a message about which employees should be assigned a task. If that application is given an employee listing that contains employees with the wrong job titles, the operation will be rejected as invalid, so we can ensure that we get the correct result through a combination of filtering and sending a subset of the filtered users back to the starter application.
 
-Add a private instance variable to the **UserBrowserComponent** Class.
+Add a private instance variable to the **UserBrowserComponent** Class:
 
 ```typescript
  private submitSelectionAction: ZLUX.Action;
 ```
 
-Then, create the Action template within the constructor
+Then, create the Action template within the constructor:
 
 ```typescript
 this.submitSelectionAction = ZoweZLUX.dispatcher.makeAction(
@@ -797,8 +791,8 @@ this.submitSelectionAction = ZoweZLUX.dispatcher.makeAction(
 )
 ```
 
-So, we've made an Action which targets an open window of the Starter application, and provides it with an Object with a data attribute.
-We'll populate this object for the message to send to the application by getting the results from Zowe Application Framework Grid (`this.selectedRows` will be populated from `this.onTableSelectionChange`).
+So, we created an Action which targets an open window of the Starter application, and provides it with an Object with a data attribute.
+We'll populate this object for the message to send to the application by getting the results from ZLUX Grid (`this.selectedRows` will be populated from `this.onTableSelectionChange`).
 
 For the final change to this file, add a new method to the Class:
 
@@ -819,7 +813,7 @@ For the final change to this file, add a new method to the Class:
 }
 ```
 
-And we'll invoke this through a button click action, which we will add into the Angular template, **userbrowser-component.html**, by changing the button tag for "Submit Selected Users" to:
+And we'll invoke this through a button click action, which we will add into the Angular template, `userbrowser-component.html`, by changing the button tag for "Submit Selected Users" to:
 
 ```html
 <button type="button" class="wide-button btn btn-default" (click)="submitSelectedUsers()" value="Send">
