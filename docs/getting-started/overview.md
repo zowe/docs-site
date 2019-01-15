@@ -44,13 +44,17 @@ The Zowe Application Framework consists of the following components:
 
 ## z/OS Services
 
-Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices.  Delivered with Zowe are core z/OS services
- - **z/OS Datasets services:**
-   get a list of jobs, get content from a job file output, submit job from a data set, and more...
- - **z/OS Jobs services:**
-    get a list of data sets, retrieve content from a member, create a dats set, and more ...
+Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
 
-The full list of capabilities of the RESTful APIs can be viewed from the API catalog that will display the Open API Specification for their capabilities.
+ - **z/OS Datasets services**
+
+   Get a list of jobs, get content from a job file output, submit job from a data set, and more.
+
+ - **z/OS Jobs services**
+
+    Get a list of data sets, retrieve content from a member, create a data set, and more.
+
+You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
 
 - These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
 - These APIs can be exploited by off-platform applications with proper security controls.

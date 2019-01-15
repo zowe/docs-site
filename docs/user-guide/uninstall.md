@@ -1,15 +1,15 @@
 # Uninstalling Zowe
 
-You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.Application Framework
+You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 
-- [Uninstalling  Zowe from z/OS](#uninstalling-zowe-zos)
-- [Uninstalling Zowe CLI](#uninstalling-zowe-cli)
+- [Uninstalling  Zowe from z/OS](#uninstalling-zowe-from-z-os)
+- [Uninstalling Zowe CLI from the desktop](#uninstalling-zowe-cli-from-the-desktop)
 
 ## Uninstalling Zowe from z/OS
 
 **Follow these steps on z/OS:**
 
-1.  Stop the Zowe started task which will stop all of its microservices using the following command:
+1.  Stop the Zowe started task which stops all of its microservices by using the following command:
 
     ```
     C ZOWESVR
@@ -96,11 +96,13 @@ The following steps describe how to list the profiles that you created, delete t
 5.  Uninstall Zowe CLI by issuing one of the following commands:
 
     - If you installed Zowe CLI from the package, issue the following command
+
         ```
         npm uninstall --global @brightside/core
         ```
 
     - If you installed Zowe CLI from the online registry, issue the following command:
+    
         ```
         npm uninstall --global brightside
         ```

@@ -28,7 +28,6 @@ const ALL_PAGES = [{
         text: 'Installing Zowe',
         items: [
           'user-guide/installandconfig.md',
-          'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',

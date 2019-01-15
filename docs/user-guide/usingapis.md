@@ -8,7 +8,7 @@ Zowe provides a range of REST APIs through a Swagger defined description, and a 
 
 The APIs are available on the API catalog available for you to try within a browser.  The API catalog links to the swagger documentation.
 
-https://youhost:apicatalogport/ui/v1/apicatalog/#/dashboard
+```https://youhost:apicatalogport/ui/v1/apicatalog/#/dashboard```
 
 From the catalog you will see z/OS Jobs services and z/OS Data Set services.  Selecting these will navigate to the swagger catalog that allows you to view and try out the APIs.
 

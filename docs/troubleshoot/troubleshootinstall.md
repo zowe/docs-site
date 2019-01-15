@@ -1,14 +1,16 @@
 # Troubleshooting the installation
 
-Review the following troubleshooting tips if you have problems with Zowe installation.
-
-## Troubleshooting installing Zowe runtime
-
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe runtime.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe.
 
 ## Troubleshooting z/OSMF
 
--   If the z/OS Services are unavailable ensure that the z/OSMF REST API services are working.  Check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
+### z/OS Services are unavailable
+
+**Solution:**
+
+If the z/OS Services are unavailable, take the following corrective actions. 
+
+- Ensure that the z/OSMF REST API services are working. Check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
 
     ```
     CWWKZ0001I: Application IzuManagementFacilityRestFiles started in n.nnn seconds.
@@ -22,13 +24,13 @@ The following topics contain information that can help you troubleshoot problems
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
 
-    If z/OSMF returns jobs correctly you can test whether it is able to returns files using
+    If z/OSMF returns jobs correctly, you can test whether it is able to returns files by using the following curl scripts:
 
     ```
     curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restfiles/ds?dslevel=SYS1"
     ```
 
-    If the restfiles curl statement returns a TSO SERVLET EXCEPTION error check that the the z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB has been completed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
+    If the restfiles curl statement returns a TSO SERVLET EXCEPTION error, check that the the z/OSMF installation step of creating a valid IZUFPROC procedure in your system PROCLIB has been completed. For more information, see the [z/OSMF Configuration Guide](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sc278419?OpenDocument).
 
     The IZUFPROC member resides in your system PROCLIB, which is similar to the following sample:
 
@@ -60,11 +62,7 @@ The following topics contain information that can help you troubleshoot problems
 
 -   Check your system console log for related error messages and respond to them.
 
-If the explorer server cannot connect to the z/OSMF server, check the following item:
-
-By default, the explorer server communicates with the z/OSMF server on the localhost address. If your z/OSMF server is on a different IP address to the explorer server, for example, if you are running z/OSMF with Dynamic Virtual IP Addressing (DVIPA), you can change this by adding a `ZOSMF_HOST` parameter to the `server.env` file. For example: `ZOSMF_HOST=winmvs27`.
-
-### Troubleshooting installing the Zowe Application Framework
+## Troubleshooting installing the Zowe Application Framework
 
 To help Zowe research any problems you might encounter, collect as much of the following information as possible and open an issue in GitHub with the collected information.
 

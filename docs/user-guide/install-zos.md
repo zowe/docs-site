@@ -160,7 +160,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where v is the Zowe version number, r is the release number and m the modification number,e.g. 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
 
         You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
@@ -313,7 +313,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
 
     ```
-    chmod u+x zowe-install.sh.
+    chmod u+x zowe-install.sh
     ```
    
     While the script is running it will echo its progress to the shell and you may be prompted for the location of Java, node, or z/OSMF is the script is unable to determine their location.
@@ -392,8 +392,8 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
 
-<<TODO - JRW>>
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
+    <<TODO - JRW>>
+     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 
@@ -453,7 +453,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has a number of runtime on z/OS: the z/OS Service microservice serves, the Zowe Application Server, and the Zowe API Mediation Layer microsercices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent unix processes.
+Zowe has a number of runtime on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
 
@@ -539,8 +539,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying explorer server installation](#verifying-explorer-server-installation)
-    - [Verifying the availability of explorer server REST APIs](#verifying-the-availability-of-explorer-server-rest-apis)  
+- [Verifying z/OS Services installation](#verifying-z-os-services-installationn) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
@@ -554,16 +553,18 @@ where:
 - _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
+  
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
 
 ### Verifying z/OS Services installation
 
-After the explorer server is installed and the ZOWESVR procedure is started, you can verify the installation from an internet browser by entering the following case-sensitive URL:
+After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
-- _gatewayPort_ is the port number that is assigned to api:mediation:gatewayPort in `zowe-install.yaml`.
+```
+https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
+```
 
-`https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*`
-
+where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatewayPort` in `zowe-install.yaml`.
 
 ### Verifying API Mediation installation
 
