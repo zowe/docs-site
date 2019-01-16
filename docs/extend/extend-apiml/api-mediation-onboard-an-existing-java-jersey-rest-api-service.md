@@ -296,11 +296,15 @@ After you externalize the parameters to make them readable through Tomcat and en
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to `https://localhost:10011`. Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
+3.  Navigate to following URL:
+        
+        https://localhost:10011
+    
+    Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
         
     Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
     
-    `https://localhost:10010/ui/v1/apicatalog/#/dashboard`
+        https://localhost:10010/ui/v1/apicatalog/#/dashboard
     
   You successfully onboarded your Java Jersey application if see your service 
     running and can access the API documentation. 
