@@ -95,7 +95,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-db2.tgz
+    zowe plugins install zowe-cli-db2-plugin.tgz
     ```
 
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.

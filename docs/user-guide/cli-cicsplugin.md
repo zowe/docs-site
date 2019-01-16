@@ -69,7 +69,7 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-cli-cics.tgz
+    zowe plugins install zowe-cli-cics-plugin.tgz
     ```
 
 
