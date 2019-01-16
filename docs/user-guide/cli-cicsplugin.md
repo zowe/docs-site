@@ -49,7 +49,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @brightside/cics@next
+    zowe plugins install @brightside/cics@latest
     ```
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -69,11 +69,8 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-cli-cics-<VERSION_NUMBER>.tgz
+    zowe plugins install zowe-cli-cics.tgz
     ```
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI Plug-in for CICS that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-core-2.0.0-next.201810161407.tgz`
 
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -81,6 +78,7 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
     ```
     zowe plugins validate @brightside/cics
     ```
+
     Successful validation of the CICS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
       
 ## Creating a user profile
