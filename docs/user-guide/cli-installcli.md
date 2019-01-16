@@ -42,11 +42,8 @@ If you do not have internet access at your site, use the following method to ins
     **Note:** You might need to issue a change directory command and navigate to the location where you extracted the contents of the zip file before you issue the `npm install` command.
 
     ```
-    npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
+    npm install -g zowe-cli.tgz 
     ```
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
@@ -85,19 +82,22 @@ If your computer is connected to the Internet, you can use the following method 
 3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
-    npm install -g @brightside/core@next
+    npm install -g @brightside/core@latest
     ```
+
+    **Note:** You can use different npm tags to install a previous stable release of Zowe CLI, or install a newer alpha or beta release. The Zowe community only supports the `@latest` release at any given time. For a list of available npm tags, see [Understanding CLI versioning](#understanding-cli-versioning).
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/cics@next
+    bright plugins install @brightside/cics@latest @brightside/db2@latest
     ```
+
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
-5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
+5. (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF without specifying the connection details on every command. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
-    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
+    **Tip:** Profiles are note required. You can issue commands directly on the command line, or choose to create a profile to issue commands more efficiently. 
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
@@ -105,22 +105,19 @@ After you install and configure Zowe CLI, you can issue the `zowe --help` com
 
 Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
-**Important\!** A `zosmf` profile is required to issue most Zowe CLI commands. The first profile that you create becomes your default profile. When you issue any command that requires
-a `zosmf` profile, the command executes using your default profile
-unless you specify a specific profile name on that command.
-
 **Follow these steps:**
 
-1.  To create a `zosmf` profile, issue the following command.  
-  Refer to the available options in the help text to define your profile:   
+1.  To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:
+
     ```
     zowe profiles create zosmf-profile --help
     ```
+
 **Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
 
 ### Creating a profile to access an API Mediation Layer
 
-You can create profiles that access an either an exposed API or an API Mediation Layer in the following ways:
+You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 
 * When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
 
@@ -166,10 +163,9 @@ The commands return a success or failure message and display information about y
 
 Each release of Zowe CLI is associated with tag in a Node Package Manager (npm) registry. If you install using the online registry method. You use tags in your command syntax to install or update the product to a specific version. For example, you use the @latest tag to install the community version of the product.
 
-**Important!** The Zowe community offers support to users who stay on the `@latest` version of the Zowe CLI. The community cannot gaurantee support for alpha, beta, or older versions of the CLI. 
+**Important!** The Zowe community offers support to users who stay on the `@latest` version of the Zowe CLI. The community cannot gaurantee support for alpha, beta, or older versions of the CLI.
 
 The following list describes each npm tag and its intended usage: 
-
 
 - `@lts-stable` 
     
