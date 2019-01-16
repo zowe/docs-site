@@ -46,6 +46,22 @@ completed the steps in [Create a Zowe CLI profile](cli-installcli.html#creating-
 
 Zowe CLI contains the following command groups:
 
+### config
+
+The config command group lets you configure the credential manager for Zowe CLI. The CLI stores credentials in plain text by default.
+
+With the config command group, you can perform the following tasks:
+
+- Set the configuration for your credential manager.
+- Reset the configuration for your credential manager to default. 
+
+**Note:** For more information about `config` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+command:
+```
+zowe config -h
+```
+
 ### plugins
 
 The plugins command group lets you install and manage third-party
