@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pending to verify dead links.\"",
-    "test:links": "w3c-linkchecker-local --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!localhost|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org|zowe\\.github\\.io).)*\\/\" ./.deploy/",
-    "test:links:latest": "w3c-linkchecker-local --base-url /docs-site/latest/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!localhost|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org|zowe\\.github\\.io).)*\\/\" ./.deploy/latest/",
+    "test:links": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url /docs-site/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org|zowe\\.github\\.io).)*\\/\" ./.deploy/",
+    "test:links:latest": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url /docs-site/latest/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --exclude \"https?:\\/\\/((?!zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|projectgiza\\.org|www\\.projectgiza\\.org|zowe\\.github\\.io).)*\\/\" ./.deploy/latest/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:pdf": "./docs/.pdf/build.sh"
@@ -17,6 +17,6 @@
   "devDependencies": {
     "replace": "^1.0.0",
     "vuepress": "^0.14.1",
-    "w3c-linkchecker-local": "^0.1.7"
+    "w3c-linkchecker-local": "^0.1.9"
   }
 }
