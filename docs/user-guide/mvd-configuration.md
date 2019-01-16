@@ -1,5 +1,5 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and ZSS configuration, if needed.
+After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, if needed.
 
 ## Setting up terminal application plug-ins
 
