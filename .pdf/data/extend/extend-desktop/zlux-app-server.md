@@ -1,10 +1,10 @@
 # Stand up a local version of the Example Zowe Application Server
 
-`zlux-example-server` is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
+The `zlux-app-server` repository is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
 
 ## Server layout
 
-At the core of the application infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of an application, and can serve as a proxy for requests from applications to additional servers, as needed. One such proxy destination is the ZSS - the Zowe Application Framework backend component for **Z Secure Services**. If you want to set up a Zowe Application Framework installation, contact Rocket to obtain the ZSS binary to use in the installation process.
+At the core of the application infrastructure backend is an extensible server, written for nodeJS and utilizing expressJS for routing. It handles the backend components of an application, and can serve as a proxy for requests from applications to additional servers, as needed. One such proxy destination is the ZSS, the Zowe Application Framework backend component for **Z Secure Services**, a so called agent for the Zowe Application Server. If you want to set up a Zowe Application Framework installation, contact Rocket to obtain the ZSS binary to use in the installation process.
 
 ### ZSS and Zowe Application Server overlap
 
@@ -46,11 +46,11 @@ cd zlux-build
 ```
 
 At this point, you have the latest code from each repository on your system.
-Continue from within `zlux-example-server`.
+Continue from within `zlux-app-server`.
 
 ### 2. Acquire external components
 
-Application plug-ins and external servers can require contents that are not in the Zowe github repositories. In the case of the `zlux-example-server`, there is a a ZSS binary component which cannot be found in the repositories. To obtain the ZSS binary component, contact Rocket.
+Applications and external servers can require contents that are not in the Zowe github repositories. In the case of the `zlux-app-server`, there is a a ZSS binary component which cannot be found in the repositories. To obtain the ZSS binary component, contact the Zowe project.
 
 After you obtain the ZSS binary component, you should receive _zssServer_.
 This must be placed within _zlux-build/externals/Rocket_, on the z/OS host.
@@ -66,7 +66,7 @@ mv zssServer externals/Rocket
 
 ### 3. Set the server configuration
 
-Read the [Configuration](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-Proxy-Server-&-ZSS) wiki page for a detailed explanation of the primary items that you will want to configure for your first server.
+Read the [Configuration](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-App-Server-&-ZSS) wiki page for a detailed explanation of the primary items that you will want to configure for your first server.
 
 In short, ensure that within the `config/zluxserver.json` file, **node.http.port** or **node.https.port** and the other HTTPS parameters are set to your liking on the LUW host, and that **zssPort** is set on the z/OS host.
 
@@ -82,8 +82,7 @@ Application plug-ins can contain server and web components. The web components m
 
 This example server only needs transpilation and packaging of web components, and therefore we do not need any special build steps for the host running ZSS.
 
-Instead, on the host running the Zowe Application Server, run the script that will automatically build all included application plug-ins.
-Under `zlux-build` run,
+Instead, on the host that runs the Zowe Application Server, run the script that will automatically build all included application plug-ins. Simply,
 
 ```
 //Windows
@@ -99,7 +98,7 @@ _Note: You will need to have `ant` and `ant-contrib` installed_
 
 ### 5. Deploy server configuration files
 
-If you are running the Zowe Application Server separate from ZSS, ensure the ZSS installation configuration is deployed. You can accomplish this by navigating to `zlux-build` and running the following:
+If you are running the Zowe Application Server separate from ZSS, ensure the ZSS installation configuration is deployed. You can accomplish this through:
 
 ```
 ant deploy
@@ -115,19 +114,19 @@ At this point, all server files have been configured and the application plug-in
 First, from the z/OS system, start ZSS.
 
 ```
-cd ../zlux-example-server/bin
+cd ../zlux-app-server/bin
 ./zssServer.sh
 ```
 
 If the zssServer server did not start, two common sources of error are:
 
 1. The _zssPort_ chosen is already occupied. To fix this, edit _config/zluxserver.json_ to choose a new one, and re-run _build/deploy.sh_ to make the change take effect.
-2. The zssServer binary does not have the APF bit set. Because this server is meant for secure services, it is required. To fix this, execute `extattr +a zssServer`. Note that you might need to alter the execute permissions of `zssServer.sh` in the event that the previous command is not satisfactory (for example: chmod +x zssServer.sh)
+2. The zssServer binary does not have the APF bit set. Because this server is meant for secure services, it is required. To fix this, execute `extattr +a zssServer`. Note that you might need to alter the execute permissions of `zssServer.sh` in the event that the previous command is not satisfactory (for example: `chmod +x zssServer.sh`)
 
 Second, from the system with the Zowe Application Server, start it with a few parameters to hook it to ZSS.
 
 ```
-cd ../zlux-example-server/bin
+cd ../zlux-app-server/bin
 
 // Windows:
 nodeServer.bat <parameters>
@@ -162,20 +161,23 @@ When the Zowe Application Server has started, one of the last messages you will 
 ### 7. Connect in a browser
 
 Now that ZSS and the Zowe Application Server are both started, you can access this instance by pointing your web browser to the Zowe Application Server.
-In this example, the address you will want to go to first is the location of the window management application - Zowe Desktop. The URL is:
+In this example, the address you will want to go to first is the location of the window management application: the Zowe Desktop. The URL is:
 
-`http(s)://\<zLUX Proxy Server\>:\<node.http(s).port\>/ZLUX/plugins/com.rs.mvd/web/index.html`
+`http(s)://<zLUX App Server>:<node.http(s).port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-Once here, a Login window is presented with a few example application plug-ins in the taskbar at the bottom of the window. To try the application plug-ins to see how they interact with the framework, can login with your mainframe credentials.
+Once here, a Login window opens with a few example application plug-ins in the taskbar at the bottom of the window. To try the application plug-ins to see how they interact with the framework, can login with your mainframe credentials.
 
 - tn3270-ng2: This application communicates with the Zowe Application Server to enable a TN3270 connection in the browser.
-- subsystems: This application shows various z/OS subsystems installed on the host the ZSS runs on. This is accomplished through discovery of these services by the application's portion running in the ZSS context.
-- sample-app: A simple app that shows how a Zowe Application Framework application frontend (Angular) component can communicate with an application backend (REST) component.
+- z/OS Subsystems: This application shows various z/OS subsystems installed on the host the ZSS runs on. This is accomplished through discovery of these services by the application's portion running in the ZSS context.
+- sample-angular-app: A simple app that show how a zLUX application frontend (here, Angular) component can communicate with an App backend (REST) component.
+- sample-react-app: Similar to the Angular application, but using React instead to show how you have the flexibility to use a framework of your choice.
+- sample-iframe-app: Similar in functionality to the Angular and React sample application, but presented by means of inclusion of an iframe, to show that pre-existing pages can be included.
+
 
 #### Deploy example
 
 ```
-// All paths relative to zlux-example-server/js or zlux-example-server/bin
+// All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the install.
   "rootDir":"../deploy",
   "productDir":"../deploy/product",
@@ -192,12 +194,12 @@ In the configuration file, a directory can be specified which contains JSON file
 
 To include application plug-ins, be sure to define the location of the `Plugins` directory in the configuration file, through the top-level attribute _pluginsDir_
 
-**NOTE:** In this repository, the directory for these JSON files is `/plugins`. To separate configuration files from runtime files, the `zlux-example-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
+**NOTE:** In this repository, the directory for these JSON files is `/plugins`. To separate configuration files from runtime files, the `zlux-app-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
 
 #### Plugins directory example
 
 ```
-// All paths relative to zlux-example-server/js or zlux-example-server/bin
+// All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the install.
 //...
   "pluginsDir":"../deploy/instance/ZLUX/plugins",
@@ -205,7 +207,7 @@ To include application plug-ins, be sure to define the location of the `Plugins`
 
 ### ZSS Configuration
 
-Running ZSS requires a JSON configuration file that is similar (or the same as) the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:_rootDir_, _productDir_, _siteDir_, _instanceDir_, _groupsDir_, _usersDir_, _pluginsDir_ and **zssPort**. All of these attributes have the same meaning as described above for the Zowe Application Server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:_rootDir_, _productDir_, _siteDir_, _instanceDir_, _groupsDir_, _usersDir_, _pluginsDir_ and **zssPort**. All of these attributes have the same meaning as described above for the Zowe Application Server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
 
 The **zssPort** attribute is specific to ZSS. This is the TCP port on which ZSS will listen to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 

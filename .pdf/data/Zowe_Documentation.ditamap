@@ -22,7 +22,7 @@
       </bookowner>
     </bookrights>
     <critdates>
-      <created date="2019-01-16" />
+      <created date="2019-01-17" />
     </critdates>
   </bookmeta>
   <frontmatter>
@@ -93,7 +93,7 @@
 <topicref format="markdown" href="extend/extend-desktop/mvd-apptoappcommunication.md" />
 <topicref format="markdown" href="extend/extend-desktop/mvd-errorreportingui.md" />
 <topicref format="markdown" href="extend/extend-desktop/mvd-logutility.md" />
-<topicref format="markdown" href="extend/extend-desktop/zlux-example-server.md" />
+<topicref format="markdown" href="extend/extend-desktop/zlux-app-server.md" />
 <topicref format="markdown" href="extend/extend-desktop/zlux-workshop-user-browser.md" />
 <topicref format="markdown" href="extend/extend-desktop/zlux-tutorials.md" />
 <topicref format="markdown" href="extend/extend-desktop/starter-intro.md" />
