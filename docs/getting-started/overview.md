@@ -125,7 +125,7 @@ Zowe CLI uses the following third-party software:
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-[Click here](https://github.com/zowe/docs-site/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
+[Click here](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
 
 **More Information:**
 
@@ -200,7 +200,6 @@ Zowe API Mediation Layer uses the following third-party software:
 
 
 
-
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-[Click here](https://github.com/zowe/docs-site/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
+[Click here](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
