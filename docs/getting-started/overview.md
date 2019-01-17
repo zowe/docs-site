@@ -96,7 +96,7 @@ Zowe CLI uses the following third-party software:
 | ----------| -------------------- | --------| --------- | ------ |
 | Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
 | Zowe CLI  | string-width  | 2.1.1 | license_string-width_2.1.1.pdf | [https://github.com/sindresorhus/string-width](https://github.com/sindresorhus/string-width) |
-| Imperative CLI Framework  | @types/yargs | 8.0.2 | license_@types_yargs_8.0.2.pdf | [https://github.com/DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)   |
+| Imperative CLI Framework  | @types/yargs | 8.0.2 | license_types_yargs_8.0.2.pdf | [https://github.com/DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)   |
 | Imperative CLI Framework  | chalk | 2.1.0 | license_chalk_2.1.0.pdf | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
 | Imperative CLI Framework | cli-table3 | 0.5.1 | license_cli-table3_0.5.1.pdf | [https://github.com/cli-table/cli-table3](https://github.com/cli-table/cli-table3)   |
 | Imperative CLI Framework | dataobject-parser | 1.2.1  | license_dataobject-parser_1.2.1.pdf | [https://github.com/henrytseng/dataobject-parser](https://github.com/henrytseng/dataobject-parser) |
