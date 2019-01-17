@@ -94,34 +94,34 @@ Zowe CLI uses the following third-party software:
 
 | Component | Third-party Software | Version | File name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| Zowe CLI  | js-yaml  | 3.9.0 | license_chalk_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
-| Zowe CLI  | string-width  |   | license_  |   |
-| Imperative CLI Framework  |   |  | license_ .pdf | []()  |
-| Imperative CLI Framework |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework   |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf   | []()  |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
-| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | license_xml2js_0.4.19.pdf |   |
-| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf |    |
+| Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
+| Zowe CLI  | string-width  | 2.1.1 | license_string-width_2.1.1.pdf | [https://github.com/sindresorhus/string-width](https://github.com/sindresorhus/string-width) |
+| Imperative CLI Framework  | @types/yargs | 8.0.2 | license_@types_yargs_8.0.2.pdf | [https://github.com/DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)   |
+| Imperative CLI Framework  | chalk | 2.1.0 | license_chalk_2.1.0.pdf | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
+| Imperative CLI Framework | cli-table3 | 0.5.1 | license_cli-table3_0.5.1.pdf | [https://github.com/cli-table/cli-table3](https://github.com/cli-table/cli-table3)   |
+| Imperative CLI Framework | dataobject-parser | 1.2.1  | license_dataobject-parser_1.2.1.pdf | [https://github.com/henrytseng/dataobject-parser](https://github.com/henrytseng/dataobject-parser) |
+| Imperative CLI Framework  | deepmerge | 3.0.0 | license_deepmerge_3.0.0.pdf | [https://github.com/TehShrike/deepmerge](https://github.com/TehShrike/deepmerge) |
+| Imperative CLI Framework  | find-up  | 2.1.0 | license_find-up_2.1.0.pdf | [https://github.com/sindresorhus/find-up](https://github.com/sindresorhus/find-up)   |
+| Imperative CLI Framework  | glob | 7.1.1 | license_glob_7.1.1.pdf | [https://github.com/isaacs/node-glob](https://github.com/isaacs/node-glob) |
+| Imperative CLI Framework  | js-yaml | 3.9.0 | license_js-yaml_3.9.0.pdf | [https://github.com/nodeca/js-yaml](https://github.com/nodeca/js-yaml)  |
+| Imperative CLI Framework  | jsonfile | 4.0.0 | license_jsonfile_4.0.0.pdf | [https://github.com/jprichardson/node-jsonfile](https://github.com/jprichardson/node-jsonfile)   |
+| Imperative CLI Framework  | jsonschema | 1.1.1 | license_jsonschema_1.1.1.pdf | [https://github.com/tdegrunt/jsonschema](https://github.com/tdegrunt/jsonschema)   |
+| Imperative CLI Framework  | levenshtein | 1.0.5 | license_levenshtein_1.05.pdf | [https://github.com/gf3/Levenshtein](https://github.com/gf3/Levenshtein)   |
+| Imperative CLI Framework  | log4js | 3.0.5 | license_log4js_3.0.5.pdf | [https://github.com/log4js-node/log4js-node](https://github.com/log4js-node/log4js-node)   |
+| Imperative CLI Framework  | mkdirp | 0.5.1 | license_mkdirp_0.5.1.pdf | [https://github.com/substack/node-mkdirp](https://github.com/substack/node-mkdirp)   |
+| Imperative CLI Framework  | moment | 2.20.1 | license_moment_2.20.1.pdf | [https://github.com/moment/moment](https://github.com/moment/moment)   |
+| Imperative CLI Framework  | mustache | 2.3.0 | license_mustache_2.3.0.pdf  | [https://github.com/janl/mustache.js](https://github.com/janl/mustache.js)   |
+| Imperative CLI Framework  | npm | 6.4.1 | license_npm_6.4.1.pdf  | [https://github.com/npm/cli](https://github.com/npm/cli)   |
+| Imperative CLI Framework  | prettyjson | 1.2.1 | license_prettyjson_1.2.1.pdf   | [https://github.com/rafeca/prettyjson](https://github.com/rafeca/prettyjson)  |
+| Imperative CLI Framework  | progress | 2.0.0 | license_progress_2.0.0.pdf | [https://github.com/visionmedia/node-progress](https://github.com/visionmedia/node-progress)   |
+| Imperative CLI Framework  | rimraf | 2.6.1 | license_rimraf_2.6.1.pdf | [https://github.com/isaacs/rimraf](https://github.com/isaacs/rimraf)   |
+| Imperative CLI Framework  | semver | 5.5.0 | license_semver_5.5.0.pdf | [https://github.com/npm/node-semver](https://github.com/npm/node-semver)   |
+| Imperative CLI Framework  | stack-trace | 0.0.10 | license_stack-trace_0.0.10.pdf  | [https://github.com/felixge/node-stack-trace](https://github.com/felixge/node-stack-trace)   |
+| Imperative CLI Framework  | wrap-ansi | 3.0.1 | license_wrap-ansi_3.0.1.pdf  | [https://github.com/chalk/wrap-ansi](https://github.com/chalk/wrap-ansi)   |
+| Imperative CLI Framework  | yamlis | 0.3.0 | license_yamlis_0.3.0.pdf  | [  https://github.com/jeremyfa/yaml.js](  https://github.com/jeremyfa/yaml.js)   |
+| Imperative CLI Framework  | yargs | 8.0.2  | license_yargs_8.0.2.pdf  | [https://github.com/yargs/yargs](https://github.com/yargs/yargs)   |
+| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | license_xml2js_0.4.19.pdf | [https://github.com/Leonidas-from-XIV/node-xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)  |
+| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | license_ibm_db_2.3.0.pdf | [https://github.com/ibmdb/node-ibm_db](https://github.com/ibmdb/node-ibm_db) |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
@@ -178,27 +178,25 @@ The API Catalog is the catalog of published APIs and their associated documentat
 Zowe API Mediation Layer uses the following third-party software:
 | Component | Third-party Software | Version | File name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
-
-
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer |  |  | license_ .pdf |  |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
