@@ -92,16 +92,40 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 Zowe CLI uses the following third-party software:
 
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe CLI  | Eclipse Public License | 2.0 | Legal_Doc_00002579_4.pdf |
-| Imperative CLI Framework | Eclipse Public License | 2.0 | Legal_Doc_00002579_5.pdf |
-| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | Legal_Doc_00002310_41.pdf |
-| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf | 
+| Component | Third-party Software | Version | File name | GitHub |
+| ----------| -------------------- | --------| --------- | ------ |
+| Zowe CLI  | js-yaml  | 3.9.0 | license_chalk_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
+| Zowe CLI  | string-width  |   | license_  |   |
+| Imperative CLI Framework  |   |  | license_ .pdf | []()  |
+| Imperative CLI Framework |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework   |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf   | []()  |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Imperative CLI Framework  |   |   | license_ .pdf  | []()   |
+| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | license_xml2js_0.4.19.pdf |   |
+| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf |    |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
+[Click here](https://github.com/zowe/docs-site/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
 
 **More Information:**
 
@@ -160,4 +184,4 @@ Zowe API Mediation Layer uses the following third-party software:
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
+[Click here](https://github.com/zowe/docs-site/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
