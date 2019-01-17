@@ -176,10 +176,29 @@ The API Catalog is the catalog of published APIs and their associated documentat
 ### Zowe API Mediation Layer Third-Party software agreements
 
 Zowe API Mediation Layer uses the following third-party software:
+| Component | Third-party Software | Version | File name | GitHub |
+| ----------| -------------------- | --------| --------- | ------ |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
+| Zowe API Mediation Layer |  |  | license_ .pdf | []() |
 
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe API Mediation Layer | Eclipse Public License | 2.0 | Legal_Doc_00002599_81.pdf |
+
 
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
