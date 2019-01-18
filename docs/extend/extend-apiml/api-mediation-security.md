@@ -26,7 +26,6 @@
       - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
     - [Trust z/OSMF certificate](#trust-zosmf-certificate)
     - [Disabling certificate validation](#disabling-certificate-validation)
-    - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
 ## Introduction and requirements
@@ -95,6 +94,10 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
     - API Services can always access other services via the API Gateway
     - API Services can sometimes access other services without the API Gateway (if they are installed in such a way that direct access is possible)
     - API Services can also be API Clients (when they access other services)
+
+The following diagram illustrates basic relationships between services:
+![Services Diagram](../../images/api-mediation/apiml-components.svg)
+
 
 ### Transport Security Requirements
 
@@ -204,13 +207,14 @@ A client certificate is a certificate that is used for validation of the HTTPS c
 
 The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client.
 
+
 ### Authentication to the Discovery Service
 
 The Discovery Service has two types of users that need to authenticate:
 
 1. Administrators and developers who need to login to the homepage of the Discovery Service
    
-   - These users need to provide valid user ID and password (currently pre-configured user ID and password, it will be replaced by mainframe security in https://waffle.io/zowe/api-layer/cards/5bd8be8131cd76001dcddd77)
+    - These users need to provide valid user ID and password to the z/OS system where Zowe is installed
 
 2. Services that need to register to the Discovery Service
 
@@ -226,7 +230,7 @@ The Discovery Service has two types of users that need to authenticate:
 
 The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start APIML with HTTPS on your computer. The certificates are not trusted by your browser so can either ignore security warning or generate your own certificates and add them to the truststore of your browser or system.
 
-The certificates are described in more detail in the https://github.com/zowe/api-layer/blob/https-local-certmgmt-%2372/keystore/README.md.
+The certificates are described in more detail in the https://github.com/zowe/api-layer/blob/master/keystore/README.md.
 
 
 #### Certificate management script
@@ -255,7 +259,8 @@ https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-cert
 
 #### Add a service with an existing certificate to APIML on localhost
 
-This will be documented during work on the following user story: https://waffle.io/zowe/api-layer/cards/5bd8be80283e09001babbf86
+This will be documented during work on the following user story: 
+https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services
 
 
 #### Login to Discovery service on localhost
@@ -308,6 +313,7 @@ Local CA:
     - private key of the local CA 
 
 Local CA keystore can be accessible only by the user that is installing and managing the Zowe runtime. 
+
 
 #### Import the local CA certificate to your browser
 
@@ -411,6 +417,7 @@ You can import a public certificate to the APIML truststore by calling in the di
     scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
     ```
 
+
 ##### What happens if the service is not trusted
 
 If you access a service that is not trusted, for example, by issuing a REST API request to it:
@@ -484,9 +491,3 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-catalog.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
-  
-
-#### Use an existing server certificate for API Mediation Layer
-
-This will be documented during work on the following user story: 
-https://github.com/zowe/api-layer/issues/91
