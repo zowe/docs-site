@@ -170,6 +170,22 @@ Version 0.9.2 contains the following changes since the last version.
 
 The Visual Studio Code (VSCode) Extension for Zowe is now available. Using the extension you can data sets, view their contents, make changes, and upload the changes to the mainframe directly from the Visual Studio Code user interface. You install the extension directly to Visual Studio Code to enable the extension within the UI. For more information, see VSCode Extension for Zowe. 
 
+### What's changed in the Explorer Server
+
+- The URLs to access the explorer server UI are changed.
+
+  | URL in 0.9.1 | URL in 0.9.2 |
+  | ------| ------|
+  | `https://<your.server>:<atlasport>/explorer-jes/#/` |   `https://<your.server>:<atlasport>/ui/v1/jobs/#/` |
+  | `https://<your.server>:<atlasport>/explorer-mvs/#/` | `https://<your.server>:<atlasport>/ui/v1/datasets/#/` |
+  | `https://<your.server>:<atlasport>/explorer-uss/#/` | `https://<your.server>:<atlasport>/ui/v1/uss/#/` |
+
+- All explorer server REST APIs are changed. 
+
+  The `/Atlas/api/` portion of an explorer server REST API is changed to `/api/v1/`. For example, `GET /Atlas/api/datasets/{filter}` is changed to `GET /api/v1/datasets/{filter}`.
+
+  For a list of the new APIs, see [Using APIs](../user-guide/usingapis.md).
+
 ### What's Changed in the Zowe CLI
 
 This version of Zowe CLI contains the following changes:

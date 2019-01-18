@@ -316,7 +316,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     chmod u+x zowe-install.sh
     ```
    
-    While the script is running it will echo its progress to the shell and you may be prompted for the location of Java, node, or z/OSMF is the script is unable to determine their location.
+   When the script runs, it echos its progress to the shell and attempts to determine and validate the location of the prerequisites including z/OSMF, Java, and Node. When the script cannot determine the location of these prerequisites, you will be prompted for their location.
 
     <<JRW TO DO - Write about the log file and the commands behing echoed>>
     

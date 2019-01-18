@@ -1,10 +1,6 @@
-# Using APIs
+# Using z/OS Services REST APIs
 
-Access and modify your z/OS resources such as jobs, data sets, z/OS UNIX System Services files by using APIs.
-
-## Using z/OS Services REST APIs
-
-Zowe provides a range of REST APIs through a Swagger defined description, and a simple interface to specify API endpoint parameters and request bodies along with the response body and return code.
+Access and modify your z/OS resources such as jobs, data sets, z/OS UNIX System Services files by using APIs. Zowe provides a range of REST APIs through a Swagger defined description, and a simple interface to specify API endpoint parameters and request bodies along with the response body and return code.
 
 The APIs are available on the API catalog available for you to try within a browser.  The API catalog links to the swagger documentation.
 
@@ -12,17 +8,7 @@ The APIs are available on the API catalog available for you to try within a brow
 
 From the catalog you will see z/OS Jobs services and z/OS Data Set services.  Selecting these will navigate to the swagger catalog that allows you to view and try out the APIs.
 
-### Data set APIs
-
-
-
-### Job APIs
-
-Use Jobs APIs to view the information and files of jobs, and submit and cancel jobs. See the following table for the operations available in Job APIs and their descriptions and prerequisites.
-
- https://winmvs3b.hursley.ibm.com:25105/v2/api-docs
-
-## Programming explorer server REST APIs
+## Programming REST APIs
 
 You can program explorer server REST APIs by referring to the examples in this section.
 
