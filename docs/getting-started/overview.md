@@ -92,7 +92,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 Zowe CLI uses the following third-party software:
 
-| Component | Third-party Software | Version | File name | GitHub |
+| Component | Third-party Software | Version | File Name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
 | Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
 | Zowe CLI  | string-width  | 2.1.1 | license_string-width_2.1.1.pdf | [https://github.com/sindresorhus/string-width](https://github.com/sindresorhus/string-width) |
