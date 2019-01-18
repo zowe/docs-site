@@ -99,7 +99,7 @@ const ALL_PAGES = [{
           'extend/extend-desktop/mvd-apptoappcommunication.md',
           'extend/extend-desktop/mvd-errorreportingui.md',
           'extend/extend-desktop/mvd-logutility.md',
-          'extend/extend-desktop/zlux-example-server.md',
+          'extend/extend-desktop/zlux-app-server.md',
           'extend/extend-desktop/zlux-workshop-user-browser.md',
           'extend/extend-desktop/zlux-tutorials.md',
           'extend/extend-desktop/starter-intro.md',
