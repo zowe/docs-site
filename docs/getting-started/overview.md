@@ -118,7 +118,7 @@ Zowe CLI uses the following third-party software:
 | Imperative CLI Framework  | semver | 5.5.0 | license_semver_5.5.0.pdf | [https://github.com/npm/node-semver](https://github.com/npm/node-semver)   |
 | Imperative CLI Framework  | stack-trace | 0.0.10 | license_stack-trace_0.0.10.pdf  | [https://github.com/felixge/node-stack-trace](https://github.com/felixge/node-stack-trace)   |
 | Imperative CLI Framework  | wrap-ansi | 3.0.1 | license_wrap-ansi_3.0.1.pdf  | [https://github.com/chalk/wrap-ansi](https://github.com/chalk/wrap-ansi)   |
-| Imperative CLI Framework  | yamlis | 0.3.0 | license_yamlis_0.3.0.pdf  | [  https://github.com/jeremyfa/yaml.js](  https://github.com/jeremyfa/yaml.js)   |
+| Imperative CLI Framework  | yamlis | 0.3.0 | license_yamlis_0.3.0.pdf  | [  https://github.com/jeremyfa/yaml.js](https://github.com/jeremyfa/yaml.js)   |
 | Imperative CLI Framework  | yargs | 8.0.2  | license_yargs_8.0.2.pdf  | [https://github.com/yargs/yargs](https://github.com/yargs/yargs)   |
 | Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | license_xml2js_0.4.19.pdf | [https://github.com/Leonidas-from-XIV/node-xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)  |
 | Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | license_ibm_db_2.3.0.pdf | [https://github.com/ibmdb/node-ibm_db](https://github.com/ibmdb/node-ibm_db) |
@@ -178,25 +178,76 @@ The API Catalog is the catalog of published APIs and their associated documentat
 Zowe API Mediation Layer uses the following third-party software:
 | Component | Third-party Software | Version | File name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
-| Zowe API Mediation Layer |  |  | license_ .pdf |  |
+| Zowe API Mediation Layer | Apache Tomcat | 8.5.33 | license_apache-tomcat_8.5.33.pdf | []() |
+| Zowe API Mediation Layer | Commons Validator | 1.0.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | emotion | 9.2.12 | license_ .pdf | []() |
+| Zowe API Mediation Layer | eslint-config-airbnb | 16.1.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | eslint-plugin-jsx-a11y | 6.1.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | eureka-client | 1.8.6 | license_ .pdf | []() |
+| Zowe API Mediation Layer | exception-formatter | 1.0.7 | license_ .pdf | []() |
+| Zowe API Mediation Layer | google-gson | 2.8.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | gradle-git | 1.5.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Guava | 23.2-jre | license_ .pdf | []() |
+| Zowe API Mediation Layer | H2 | 1.4.196 | license_ .pdf | []() |
+| Zowe API Mediation Layer | hamcrest | 1.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | history | 4.7.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | httpclient | 4.5.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | httpcore | 4.4.10 | license_ .pdf | []() |
+| Zowe API Mediation Layer | install | 0.12.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | jackson | 2.9.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | javamail | 1.4.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | javax servlet api | 3.1.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | javax.validation | 2.0.1Final | license_ .pdf | []() |
+| Zowe API Mediation Layer | Jersey | 2.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Jersey Media JSON Jackson | 2.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Jetty | 9.4.11.v20180605 | license_ .pdf | []() |
+| Zowe API Mediation Layer | jjwt | 0.9.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | jquery | 2.0.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | JSON Web Token | 0.8.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | json-path | 2.4.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Jsoup | 1.8.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | lodash | 4.17.11 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Logback | 1.2.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | loglevel | 1.6.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | lombok | 1.16.20 | license_ .pdf | []() |
+| Zowe API Mediation Layer | mineral-ui | 0.54.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | mockito | 2.15.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | netflix-infix | 0.3.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | NPM | 6.4.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | powermock | 1.7.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react | 16.6.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-app-polyfill | 0.1.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-loadable | 5.5.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-core | 3.0.7.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-redux | 5.1.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-render-html | 0.6.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-router-dom | 4.3.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-router-tabs | 1.2.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-scripts | 2.1.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | react-toastify | 4.4.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux | 4.0.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux-catch | 1.3.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux-logger | 3.0.6 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux-observable | 1.0.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux-persist | 5.10.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | redux-thunk | 2.3.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Roaster | 2.20.1.Final | license_ .pdf | []() |
+| Zowe API Mediation Layer | RxJS | 6.3.1 | license_ .pdf | []() |
+| Zowe API Mediation Layer | RxJS | 6.3.3 | license_ .pdf | []() |
+| Zowe API Mediation Layer | reduxslf4j | 1.7.25 | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring-cloud | 2.0.1.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring framework | 4.3.7.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring-hateoas| 0.23.0.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring-retry| 1.2.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring securiy | 5.1.0.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring-boot | 2.0.4.RELEASE | license_ .pdf | []() |
+| Zowe API Mediation Layer | spring-cloud-netflix | 2.0.0.M8 | license_ .pdf | []() |
+| Zowe API Mediation Layer | springfox | 2.8.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | swagger-core | 1.5.21 | license_ .pdf | []() |
+| Zowe API Mediation Layer | swagger-jersey2-jaxrs | 1.5.17 | license_ .pdf | []() |
+| Zowe API Mediation Layer | swagger-UI | 3.20.0 | license_ .pdf | []() |
+| Zowe API Mediation Layer | uuid | 3.3.2 | license_ .pdf | []() |
+| Zowe API Mediation Layer | Apache Velocity | 2.0 | license_ .pdf | []() |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
