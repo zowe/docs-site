@@ -203,8 +203,8 @@ Zowe API Mediation Layer uses the following third-party software:
 | Zowe API Mediation Layer | Eclipse Jetty | 9.4.11.v20180605 | license_Eclipse-Jetty_9.4.11.v20180605.pdf | [https://github.com/eclipse/jetty.project](https://github.com/eclipse/jetty.project) |
 | Zowe API Mediation Layer | jjwt | 0.9.1 | license_jjwt_0.9.1.pdf | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt) |
 | Zowe API Mediation Layer | jquery | 2.0.3 | license_jquery_2.0.3.pdf | [https://github.com/jquery/jquery](https://github.com/jquery/jquery) |
-| Zowe API Mediation Layer | JSON Web Token | 0.8.0 | license_JSON-Web-Token_0.8.0.pdf | []() |
-| Zowe API Mediation Layer | json-path | 2.4.0 | license_json-path_2.4.0.pdf | []() |
+| Zowe API Mediation Layer | JSON Web Token | 0.8.0 | license_JSON-Web-Token_0.8.0.pdf | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt) |
+| Zowe API Mediation Layer | jsonpath | 2.4.0 | license_json-path_2.4.0.pdf | [https://github.com/json-path/JsonPath](https://github.com/json-path/JsonPath) |
 | Zowe API Mediation Layer | Jsoup | 1.8.3 | license_Jsoup_1.8.3.pdf | []() |
 | Zowe API Mediation Layer | lodash | 4.17.11 | license_lodash_4.17.11.pdf | []() |
 | Zowe API Mediation Layer | Logback | 1.2.3 | license_Logback_1.2.3.pdf | []() |
