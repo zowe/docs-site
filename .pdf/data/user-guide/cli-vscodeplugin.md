@@ -27,6 +27,10 @@ Before you use the VSCode extension, meet the following prerequisites on your co
 
 **Tip:** For information about how to install the extension from a VSIX file and run system tests on the extension, see the Developer README file in the Zowe VSCode extension GitHub repository.
 
+You can also watch the following video to learn how to install and use the Zowe VSCode Extension. If you read this doc in PDF format, you can click [here](https://youtu.be/la1_Ss27fn8) to watch the video.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe VSCode Extension" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/la1_Ss27fn8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+
 ## Use-Cases
 
 As an developer, you can use VSCode Extension for Zowe to perform the following tasks. 
