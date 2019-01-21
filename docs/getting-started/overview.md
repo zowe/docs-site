@@ -178,31 +178,31 @@ The API Catalog is the catalog of published APIs and their associated documentat
 Zowe API Mediation Layer uses the following third-party software:
 | Component | Third-party Software | Version | File name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| Zowe API Mediation Layer | Apache Tomcat | 8.5.33 | license_apache-tomcat_8.5.33.pdf | []() |
-| Zowe API Mediation Layer | Apache Commons Validator | 1.0.0 | license_apache-commons-validator_1.0.0.pdf | []() |
-| Zowe API Mediation Layer | emotion | 9.2.12 | license_emotion_9.2.12.pdf | []() |
-| Zowe API Mediation Layer | eslint-config-airbnb | 16.1.0 | license_eslint-config-airbnb_16.1.0.pdf | []() |
-| Zowe API Mediation Layer | eslint-plugin-jsx-a11y | 6.1.2 | license_eslint-plugin-jsx-a11y_6.1.2.pdf | []() |
-| Zowe API Mediation Layer | eureka-client | 1.8.6 | license_eureka-client_1.8.6.pdf | []() |
-| Zowe API Mediation Layer | exception-formatter | 1.0.7 | license_exception-formatter_1.0.7.pdf | []() |
-| Zowe API Mediation Layer | google-gson | 2.8.2 | license_google-gson_2.8.2.pdf | []() |
-| Zowe API Mediation Layer | gradle-git | 1.5.1 | license_gradle-git_1.5.1.pdf | []() |
-| Zowe API Mediation Layer | guava | 23.2-jre | license_guava_23.2-jre.pdf | []() |
-| Zowe API Mediation Layer | H2 | 1.4.196 | license_H2_1.4.196.pdf | []() |
-| Zowe API Mediation Layer | hamcrest | 1.3 | license_hamcrest_1.3.pdf | []() |
+| Zowe API Mediation Layer | Apache Tomcat | 8.5.33 | license_apache-tomcat_8.5.33.pdf | [https://github.com/apache/tomcat](https://github.com/apache/tomcat) |
+| Zowe API Mediation Layer | Apache Commons Validator | 1.0.0 | license_apache-commons-validator_1.0.0.pdf | [https://github.com/apache/commons-validator](https://github.com/apache/commons-validator) |
+| Zowe API Mediation Layer | emotion | 9.2.12 | license_emotion_9.2.12.pdf | [https://github.com/emotion-js/emotion](https://github.com/emotion-js/emotion) |
+| Zowe API Mediation Layer | eslint-config-airbnb | 16.1.0 | license_eslint-config-airbnb_16.1.0.pdf | [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript) |
+| Zowe API Mediation Layer | eslint-plugin-jsx-a11y | 6.1.2 | license_eslint-plugin-jsx-a11y_6.1.2.pdf | [https://github.com/evcohen/eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) |
+| Zowe API Mediation Layer | eureka-client | 1.8.6 | license_eureka-client_1.8.6.pdf | [https://github.com/Netflix/eureka/tree/master/eureka-client](https://github.com/Netflix/eureka/tree/master/eureka-client) |
+| Zowe API Mediation Layer | exception-formatter | 1.0.7 | license_exception-formatter_1.0.7.pdf | [https://github.com/benbria/exception-formatter](https://github.com/benbria/exception-formatter) |
+| Zowe API Mediation Layer | google-gson | 2.8.2 | license_google-gson_2.8.2.pdf | [https://github.com/google/gson](https://github.com/google/gson) |
+| Zowe API Mediation Layer | gradle-git | 1.5.1 | license_gradle-git_1.5.1.pdf | [https://github.com/ajoberstar/gradle-git](https://github.com/ajoberstar/gradle-git) |
+| Zowe API Mediation Layer | guava | 23.2-jre | license_guava_23.2-jre.pdf | [https://github.com/google/guava](https://github.com/google/guava) |
+| Zowe API Mediation Layer | H2 | 1.4.196 | license_H2_1.4.196.pdf | [https://github.com/h2database/h2database](https://github.com/h2database/h2database) |
+| Zowe API Mediation Layer | hamcrest | 1.3 | license_hamcrest_1.3.pdf | [https://github.com/hamcrest/JavaHamcrest](https://github.com/hamcrest/JavaHamcrest) |
 | Zowe API Mediation Layer | history | 4.7.2 | license_history_4.7.2.pdf | [https://github.com/ReactTraining/history](https://github.com/ReactTraining/history) |
-| Zowe API Mediation Layer | httpclient | 4.5.3 | license_httpclient_4.5.3.pdf | []() |
-| Zowe API Mediation Layer | httpcore | 4.4.10 | license_httpcore_4.4.10.pdf | []() |
+| Zowe API Mediation Layer | httpclient | 4.5.3 | license_httpclient_4.5.3.pdf | [https://github.com/apache/httpcomponents-client](https://github.com/apache/httpcomponents-client) |
+| Zowe API Mediation Layer | httpcore | 4.4.10 | license_httpcore_4.4.10.pdf | [https://github.com/apache/httpcomponents-core](https://github.com/apache/httpcomponents-core) |
 | Zowe API Mediation Layer | install | 0.12.2 | license_install_0.12.2.pdf | [https://github.com/benjamn/install](https://github.com/benjamn/install) |
-| Zowe API Mediation Layer | jackson | 2.9.2 | license_jackson_2.9.2.pdf | []() |
-| Zowe API Mediation Layer | javamail | 1.4.3 | license_javamail_1.4.3.pdf | []() |
+| Zowe API Mediation Layer | jackson | 2.9.2 | license_jackson_2.9.2.pdf | [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson) |
+| Zowe API Mediation Layer | javamail | 1.4.3 | license_javamail_1.4.3.pdf | [https://github.com/eclipse-ee4j/javamail](https://github.com/eclipse-ee4j/javamail) |
 | Zowe API Mediation Layer | javax servlet api | 3.1.0 | license_javax-servlet-api_3.1.0.pdf | []() |
 | Zowe API Mediation Layer | javax.validation | 2.0.1Final | license_javax.validaton_2.0.1Final.pdf | []() |
-| Zowe API Mediation Layer | Jersey | 2.3 | license_Jersey_2.3.pdf | []() |
-| Zowe API Mediation Layer | Jersey Media JSON Jackson | 2.3 | license_Jersey-Media-JSON-Jackson_2.3.pdf | []() |
+| Zowe API Mediation Layer | Jersey | 2.3 | license_Jersey_2.3.pdf | [https://github.com/jersey/jersey](https://github.com/jersey/jersey) |
+| Zowe API Mediation Layer | Jersey Media JSON Jackson | 2.3 | license_Jersey-Media-JSON-Jackson_2.3.pdf | [https://github.com/jersey/jersey/tree/master/media/json-jackson](https://github.com/jersey/jersey/tree/master/media/json-jackson) |
 | Zowe API Mediation Layer | Eclipse Jetty | 9.4.11.v20180605 | license_Eclipse-Jetty_9.4.11.v20180605.pdf | [https://github.com/eclipse/jetty.project](https://github.com/eclipse/jetty.project) |
-| Zowe API Mediation Layer | jjwt | 0.9.1 | license_jjwt_0.9.1.pdf | []() |
-| Zowe API Mediation Layer | jquery | 2.0.3 | license_jquery_2.0.3.pdf | []() |
+| Zowe API Mediation Layer | jjwt | 0.9.1 | license_jjwt_0.9.1.pdf | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt) |
+| Zowe API Mediation Layer | jquery | 2.0.3 | license_jquery_2.0.3.pdf | [https://github.com/jquery/jquery](https://github.com/jquery/jquery) |
 | Zowe API Mediation Layer | JSON Web Token | 0.8.0 | license_JSON-Web-Token_0.8.0.pdf | []() |
 | Zowe API Mediation Layer | json-path | 2.4.0 | license_json-path_2.4.0.pdf | []() |
 | Zowe API Mediation Layer | Jsoup | 1.8.3 | license_Jsoup_1.8.3.pdf | []() |
