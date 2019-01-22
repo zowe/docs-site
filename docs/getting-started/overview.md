@@ -196,58 +196,57 @@ Zowe API Mediation Layer uses the following third-party software:
 | Zowe API Mediation Layer | install | 0.12.2 | license_install_0.12.2.pdf | [https://github.com/benjamn/install](https://github.com/benjamn/install) |
 | Zowe API Mediation Layer | jackson | 2.9.2 | license_jackson_2.9.2.pdf | [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson) |
 | Zowe API Mediation Layer | javamail | 1.4.3 | license_javamail_1.4.3.pdf | [https://github.com/eclipse-ee4j/javamail](https://github.com/eclipse-ee4j/javamail) |
-| Zowe API Mediation Layer | javax servlet api | 3.1.0 | license_javax-servlet-api_3.1.0.pdf | []() |
-| Zowe API Mediation Layer | javax.validation | 2.0.1Final | license_javax.validaton_2.0.1Final.pdf | []() |
+| Zowe API Mediation Layer | javax servlet api | 3.1.0 | license_javax-servlet-api_3.1.0.pdf | [https://github.com/javaee/servlet-spec/tree/3.1.0](https://github.com/javaee/servlet-spec/tree/3.1.0) |
+| Zowe API Mediation Layer | javax.validation | 2.0.1Final | license_javax.validaton_2.0.1Final.pdf | [https://github.com/beanvalidation/beanvalidation-api](https://github.com/beanvalidation/beanvalidation-api) |
 | Zowe API Mediation Layer | Jersey | 2.3 | license_Jersey_2.3.pdf | [https://github.com/jersey/jersey](https://github.com/jersey/jersey) |
 | Zowe API Mediation Layer | Jersey Media JSON Jackson | 2.3 | license_Jersey-Media-JSON-Jackson_2.3.pdf | [https://github.com/jersey/jersey/tree/master/media/json-jackson](https://github.com/jersey/jersey/tree/master/media/json-jackson) |
 | Zowe API Mediation Layer | Eclipse Jetty | 9.4.11.v20180605 | license_Eclipse-Jetty_9.4.11.v20180605.pdf | [https://github.com/eclipse/jetty.project](https://github.com/eclipse/jetty.project) |
 | Zowe API Mediation Layer | jjwt | 0.9.1 | license_jjwt_0.9.1.pdf | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt) |
 | Zowe API Mediation Layer | jquery | 2.0.3 | license_jquery_2.0.3.pdf | [https://github.com/jquery/jquery](https://github.com/jquery/jquery) |
-| Zowe API Mediation Layer | JSON Web Token | 0.8.0 | license_JSON-Web-Token_0.8.0.pdf | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt) |
 | Zowe API Mediation Layer | jsonpath | 2.4.0 | license_json-path_2.4.0.pdf | [https://github.com/json-path/JsonPath](https://github.com/json-path/JsonPath) |
-| Zowe API Mediation Layer | Jsoup | 1.8.3 | license_Jsoup_1.8.3.pdf | []() |
-| Zowe API Mediation Layer | lodash | 4.17.11 | license_lodash_4.17.11.pdf | []() |
-| Zowe API Mediation Layer | Logback | 1.2.3 | license_Logback_1.2.3.pdf | []() |
-| Zowe API Mediation Layer | loglevel | 1.6.1 | license_loglevel_1.6.1.pdf | []() |
-| Zowe API Mediation Layer | lombok | 1.16.20 | license_lombok_1.16.pdf | []() |
-| Zowe API Mediation Layer | mineral-ui | 0.54.0 | license_mineral-ui_0.54.0.pdf | []() |
-| Zowe API Mediation Layer | mockito | 2.15.0 | license_mockito_2.15.0.pdf | []() |
-| Zowe API Mediation Layer | netflix-infix | 0.3.0 | license_netflix-infix_0.3.0.pdf | []() |
-| Zowe API Mediation Layer | NPM | 6.4.1 | license_NPM_6.4.1.pdf | []() |
-| Zowe API Mediation Layer | powermock | 1.7.3 | license_powermock_1.7.3.pdf | []() |
-| Zowe API Mediation Layer | react | 16.6.3 | license_react_16.6.3.pdf | []() |
-| Zowe API Mediation Layer | react-app-polyfill | 0.1.3 | license_react-app-polyfill_0.1.3.pdf | []() |
-| Zowe API Mediation Layer | react-loadable | 5.5.0 | license_react-loadable_5.5.0.pdf | []() |
-| Zowe API Mediation Layer | react-core | 3.0.7.RELEASE | license_react-core_3.0.7.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | react-redux | 5.1.1 | license_react-redux_5.1.1.pdf | []() |
-| Zowe API Mediation Layer | react-render-html | 0.6.0 | license_react-render-html_0.6.0.pdf | []() |
-| Zowe API Mediation Layer | react-router-dom | 4.3.1 | license_react-router-dom_4.3.1.pdf | []() |
-| Zowe API Mediation Layer | react-router-tabs | 1.2.0 | license_react-router-tabs_1.2.0.pdf | []() |
-| Zowe API Mediation Layer | react-scripts | 2.1.1 | license_react-scripts_2.1.1.pdf | []() |
-| Zowe API Mediation Layer | react-toastify | 4.4.3 | license_react-toastify_4.4.3.pdf | []() |
-| Zowe API Mediation Layer | redux | 4.0.1 | license_redux_4.0.1.pdf | []() |
-| Zowe API Mediation Layer | redux-catch | 1.3.1 | license_1.3.1.pdf | []() |
-| Zowe API Mediation Layer | redux-logger | 3.0.6 | license_redux-logger_3.0.6.pdf | []() |
-| Zowe API Mediation Layer | redux-observable | 1.0.0 | license_redux-observable_1.0.0.pdf | []() |
-| Zowe API Mediation Layer | redux-persist | 5.10.0 | license_redux-persist_5.10.0.pdf | []() |
-| Zowe API Mediation Layer | redux-thunk | 2.3.0 | license_redux-thunk_2.3.0.pdf | []() |
-| Zowe API Mediation Layer | Roaster | 2.20.1.Final | license_Roaster_2.20.1.Final.pdf | []() |
-| Zowe API Mediation Layer | RxJS | 6.3.1 | license_RxJS_6.3.1.pdf | []() |
-| Zowe API Mediation Layer | RxJS | 6.3.3 | license_RxJS_6.3.3.pdf | []() |
-| Zowe API Mediation Layer | reduxslf4j | 1.7.25 | license_reduxslf4j_1.7.25.pdf | []() |
-| Zowe API Mediation Layer | spring-cloud | 2.0.1.RELEASE | license_spring-cloud_2.0.1.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | spring framework | 4.3.7.RELEASE | license_spring framework_4.3.7.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | spring-hateoas | 0.23.0.RELEASE | license_spring-hateoas_0.23.0.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | spring-retry | 1.2.2 | license_spring-retry_1.2.2.pdf | []() |
-| Zowe API Mediation Layer | spring-security | 5.1.0.RELEASE | license_spring-security_5.1.0.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | spring-boot | 2.0.4.RELEASE | license_spring-boot_2.0.4.RELEASE.pdf | []() |
-| Zowe API Mediation Layer | spring-cloud-netflix | 2.0.0.M8 | license_spring-cloud-netflix_2.0.0.M8.pdf | []() |
-| Zowe API Mediation Layer | springfox | 2.8.0 | license_springfox_2.8.0.pdf | []() |
-| Zowe API Mediation Layer | swagger-core | 1.5.21 | license_swagger-core_1.5.21.pdf | []() |
-| Zowe API Mediation Layer | swagger-jersey2-jaxrs | 1.5.17 | license_swagger-jersey2-jaxrs_1.5.17.pdf | []() |
-| Zowe API Mediation Layer | swagger-UI | 3.20.0 | license_swagger-UI_3.20.0.pdf | []() |
-| Zowe API Mediation Layer | uuid | 3.3.2 | license_uuid_3.3.2.pdf | []() |
-| Zowe API Mediation Layer | Apache Velocity | 2.0 | license_apache-velocity_2.0.pdf | []() |
+| Zowe API Mediation Layer | Jsoup | 1.8.3 | license_Jsoup_1.8.3.pdf | [https://github.com/jhy/jsoup](https://github.com/jhy/jsoup) |
+| Zowe API Mediation Layer | lodash | 4.17.11 | license_lodash_4.17.11.pdf | [https://github.com/lodash/lodash](https://github.com/lodash/lodash) |
+| Zowe API Mediation Layer | logback | 1.2.3 | license_logback_1.2.3.pdf | [https://github.com/qos-ch/logback](https://github.com/qos-ch/logback) |
+| Zowe API Mediation Layer | loglevel | 1.6.1 | license_loglevel_1.6.1.pdf | [https://github.com/pimterry/loglevel](https://github.com/pimterry/loglevel) |
+| Zowe API Mediation Layer | lombok | 1.16.20 | license_lombok_1.16.pdf | [https://github.com/rzwitserloot/lombok](https://github.com/rzwitserloot/lombok) |
+| Zowe API Mediation Layer | mineral-ui | 0.54.0 | license_mineral-ui_0.54.0.pdf | [https://github.com/mineral-ui/mineral-ui](https://github.com/mineral-ui/mineral-ui) |
+| Zowe API Mediation Layer | mockito | 2.15.0 | license_mockito_2.15.0.pdf | [https://github.com/mockito/mockito](https://github.com/mockito/mockito) |
+| Zowe API Mediation Layer | netflix-infix | 0.3.0 | license_netflix-infix_0.3.0.pdf | [https://github.com/Netflix/netflix-commons/tree/master/netflix-infix/src](https://github.com/Netflix/netflix-commons/tree/master/netflix-infix/src) |
+| Zowe API Mediation Layer | npm | 6.4.1 | license_npm_6.4.1.pdf | [https://github.com/npm/cli](https://github.com/npm/cli) |
+| Zowe API Mediation Layer | powermock | 1.7.3 | license_powermock_1.7.3.pdf | [https://github.com/powermock/powermock](https://github.com/powermock/powermock) |
+| Zowe API Mediation Layer | react | 16.6.3 | license_react_16.6.3.pdf | [https://github.com/facebook/react](https://github.com/facebook/react) |
+| Zowe API Mediation Layer | react-app-polyfill | 0.1.3 | license_react-app-polyfill_0.1.3.pdf | [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app) |
+| Zowe API Mediation Layer | react-loadable | 5.5.0 | license_react-loadable_5.5.0.pdf | [https://github.com/jamiebuilds/react-loadable](https://github.com/jamiebuilds/react-loadable) |
+| Zowe API Mediation Layer | reactor-core | 3.0.7.RELEASE | license_reactor-core_3.0.7.RELEASE.pdf | [https://github.com/reactor/reactor-core](https://github.com/reactor/reactor-core) |
+| Zowe API Mediation Layer | react-redux | 5.1.1 | license_react-redux_5.1.1.pdf | [https://github.com/reduxjs/react-redux](https://github.com/reduxjs/react-redux) |
+| Zowe API Mediation Layer | react-render-html | 0.6.0 | license_react-render-html_0.6.0.pdf | [https://github.com/utatti/react-render-html](https://github.com/utatti/react-render-html) |
+| Zowe API Mediation Layer | react-router-dom | 4.3.1 | license_react-router-dom_4.3.1.pdf | [https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) |
+| Zowe API Mediation Layer | react-router-tabs | 1.2.0 | license_react-router-tabs_1.2.0.pdf | [https://github.com/chacestew/react-router-tabs](https://github.com/chacestew/react-router-tabs) |
+| Zowe API Mediation Layer | react-scripts | 2.1.1 | license_react-scripts_2.1.1.pdf | [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app) |
+| Zowe API Mediation Layer | react-toastify | 4.4.3 | license_react-toastify_4.4.3.pdf | [https://github.com/fkhadra/react-toastify](https://github.com/fkhadra/react-toastify) |
+| Zowe API Mediation Layer | redux | 4.0.1 | license_redux_4.0.1.pdf | [https://github.com/reduxjs/redux](https://github.com/reduxjs/redux) |
+| Zowe API Mediation Layer | redux-catch | 1.3.1 | license_1.3.1.pdf | [https://github.com/PlatziDev/redux-catch](https://github.com/PlatziDev/redux-catch) |
+| Zowe API Mediation Layer | redux-logger | 3.0.6 | license_redux-logger_3.0.6.pdf | [https://github.com/LogRocket/redux-logger](https://github.com/LogRocket/redux-logger) |
+| Zowe API Mediation Layer | redux-observable | 1.0.0 | license_redux-observable_1.0.0.pdf | [https://github.com/redux-observable/redux-observabl](https://github.com/redux-observable/redux-observabl) |
+| Zowe API Mediation Layer | redux-persist | 5.10.0 | license_redux-persist_5.10.0.pdf | [https://github.com/rt2zz/redux-persist](https://github.com/rt2zz/redux-persist) |
+| Zowe API Mediation Layer | redux-thunk | 2.3.0 | license_redux-thunk_2.3.0.pdf | [https://github.com/reduxjs/redux-thunk](https://github.com/reduxjs/redux-thunk) |
+| Zowe API Mediation Layer | Roaster | 2.20.1.Final | license_Roaster_2.20.1.Final.pdf | [https://github.com/forge/roaster](https://github.com/forge/roaster) |
+| Zowe API Mediation Layer | RxJS | 6.3.1 | license_RxJS_6.3.1.pdf | [https://github.com/reactivex/rxjs]https://github.com/reactivex/rxjs() |
+| Zowe API Mediation Layer | RxJS | 6.3.3 | license_RxJS_6.3.3.pdf | [https://github.com/reactivex/rxjs](https://github.com/reactivex/rxjs) |
+| Zowe API Mediation Layer | slf4j | 1.7.25 | license_slf4j_1.7.25.pdf | [https://github.com/qos-ch/slf4j](https://github.com/qos-ch/slf4j) |
+| Zowe API Mediation Layer | spring-cloud | 2.0.1.RELEASE | license_spring-cloud_2.0.1.RELEASE.pdf | [https://github.com/spring-cloud/spring-cloud-config](https://github.com/spring-cloud/spring-cloud-config) |
+| Zowe API Mediation Layer | spring framework | 4.3.7.RELEASE | license_spring framework_4.3.7.RELEASE.pdf | [https://github.com/spring-projects/spring-framework](https://github.com/spring-projects/spring-framework) |
+| Zowe API Mediation Layer | spring-hateoas | 0.23.0.RELEASE | license_spring-hateoas_0.23.0.RELEASE.pdf | [https://github.com/spring-projects/spring-hateoas](https://github.com/spring-projects/spring-hateoas) |
+| Zowe API Mediation Layer | spring-retry | 1.2.2 | license_spring-retry_1.2.2.pdf | [https://github.com/spring-projects/spring-retry](https://github.com/spring-projects/spring-retry) |
+| Zowe API Mediation Layer | spring-security | 5.1.0.RELEASE | license_spring-security_5.1.0.RELEASE.pdf | [https://github.com/spring-projects/spring-security](https://github.com/spring-projects/spring-security) |
+| Zowe API Mediation Layer | spring-boot | 2.0.4.RELEASE | license_spring-boot_2.0.4.RELEASE.pdf | [https://github.com/spring-projects/spring-boot](https://github.com/spring-projects/spring-boot) |
+| Zowe API Mediation Layer | spring-cloud-netflix | 2.0.0.M8 | license_spring-cloud-netflix_2.0.0.M8.pdf | [https://github.com/spring-cloud/spring-cloud-netflix](https://github.com/spring-cloud/spring-cloud-netflix) |
+| Zowe API Mediation Layer | springfox | 2.8.0 | license_springfox_2.8.0.pdf | [https://github.com/springfox/springfox](https://github.com/springfox/springfox) |
+| Zowe API Mediation Layer | swagger-core | 1.5.21 | license_swagger-core_1.5.21.pdf | [https://github.com/swagger-api/swagger-core](https://github.com/swagger-api/swagger-core) |
+| Zowe API Mediation Layer | swagger-jersey2-jaxrs | 1.5.17 | license_swagger-jersey2-jaxrs_1.5.17.pdf | [https://github.com/swagger-api/swagger-core](https://github.com/swagger-api/swagger-core) |
+| Zowe API Mediation Layer | swagger-UI | 3.20.0 | license_swagger-UI_3.20.0.pdf | [https://github.com/swagger-api/swagger-ui](https://github.com/swagger-api/swagger-ui) |
+| Zowe API Mediation Layer | uuid | 3.3.2 | license_uuid_3.3.2.pdf | [https://github.com/kelektiv/node-uuid](https://github.com/kelektiv/node-uuid) |
+| Zowe API Mediation Layer | Apache Velocity | 2.0 | license_apache-velocity_2.0.pdf | [https://github.com/apache/velocity-engine](https://github.com/apache/velocity-engine) |
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
