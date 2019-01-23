@@ -452,26 +452,32 @@ The read access to z/OSMF keyring can be granted by following commands:
 
 - RACF:
 
+      ```
       PERMIT IRR.DIGTCERT.LIST CLASS(FACILITY) ID(acid) ACCESS(CONTROL)
       PERMIT IRR.DIGTCERT.LISTRING CLASS(FACILITY) ID(acid) ACCESS(UPDATE)
+      ```
 
 - Top Secret:
       
+      ```
       TSS ADD(dept) IBMFAC(IRR.DIGTCERT)
       TSS PER(acid) IBMFAC(IRR.DIGTCERT.LIST) ACCESS(CONTROL) 
       TSS PER(acid) IBMFAC(IRR.DIGTCERT.LISTRING) ACCESS(UPDATE)
+      ```
 
 - ACF2:
 
+      ```
       ACF 
       SET RESOURCE(FAC) 
       RECKEY IRR ADD(DIGTCERT.LIST UID(acid) - 
         SERVICE(CONTROL) ALLOW)                                           
       RECKEY IRR ADD(DIGTCERT.LISTRING UID(acid) -  
         SERVICE(UPDATE) ALLOW)
-      F ACF2,REBUILD(FAC)   
+      F ACF2,REBUILD(FAC) 
+      ```
 
-`acid` is the user ID of the user that is installing Zowe.
+where `acid` is the user ID of the user that is installing Zowe.
 
 To find the name of the z/OSMF keyring issue:
  
