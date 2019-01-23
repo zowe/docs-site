@@ -179,7 +179,6 @@ Zowe API Mediation Layer uses the following third-party software:
 
 | Component | Third-party Software | Version | File Name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| --------- | -------------------- | ------- | --------- | ------ |
 | Zowe API Mediation Layer | Apache Tomcat | 8.5.33 | license_apache-tomcat_8.5.33.pdf | [https://github.com/apache/tomcat](https://github.com/apache/tomcat) |
 | Zowe API Mediation Layer | Apache Commons Validator | 1.0.0 | license_apache-commons-validator_1.0.0.pdf | [https://github.com/apache/commons-validator](https://github.com/apache/commons-validator) |
 | Zowe API Mediation Layer | emotion | 9.2.12 | license_emotion_9.2.12.pdf | [https://github.com/emotion-js/emotion](https://github.com/emotion-js/emotion) |
