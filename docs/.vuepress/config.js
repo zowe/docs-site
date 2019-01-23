@@ -30,7 +30,6 @@ const ALL_PAGES = [{
           'user-guide/installandconfig.md',
           'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
-          'user-guide/gettingstarted.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',
           'user-guide/uninstall.md',
@@ -46,7 +45,6 @@ const ALL_PAGES = [{
       {
         text: 'Using Zowe',
         items: [
-          'user-guide/using.md',
           'user-guide/mvd-using.md',
           'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
@@ -109,7 +107,7 @@ const ALL_PAGES = [{
           'extend/extend-desktop/mvd-apptoappcommunication.md',
           'extend/extend-desktop/mvd-errorreportingui.md',
           'extend/extend-desktop/mvd-logutility.md',
-          'extend/extend-desktop/zlux-example-server.md',
+          'extend/extend-desktop/zlux-app-server.md',
           'extend/extend-desktop/zlux-workshop-user-browser.md',
           'extend/extend-desktop/zlux-tutorials.md',
           'extend/extend-desktop/starter-intro.md',
