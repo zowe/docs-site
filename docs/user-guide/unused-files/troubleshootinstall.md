@@ -10,10 +10,10 @@ The following topics contain information that can help you troubleshoot problems
 
 Once Zowe is running and the startup sequence is complete, you can check the configuration files and jobs for Zowe on your z/OS system. To do this, navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where *$ZOWE_ROOT_DIR* is the location of the Zowe runtime directory that contains the explorer server.  
 
-Then run the `zowe-troubleshoot.sh` script by issuing the following command:
+Then run the `zowe-verify.sh` script by issuing the following command:
 
 ```
-zowe-troubleshoot.sh
+zowe-verify.sh
 ```
 
 The script writes its messages to your terminal window.  The results are marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and restart the Zowe server.  The `zowe-troubleshoot.sh` script does not change any settings, so you can run it as often as required.
@@ -22,7 +22,7 @@ The script writes its messages to your terminal window.  The results are marked 
 
 If explorer server REST APIs do not function properly, check the following items:
 
--   Check whether your Liberty explorer server is running.
+-   Check whether your Zowe server is running.
 
     You can check this in the Display Active \(DA\) panel of SDSF under ISPF. The ZOWESVR started task should be running. If the ZOWESVR task is not running, start the explorer server by using the following `START` operator command:
 
@@ -32,57 +32,9 @@ If explorer server REST APIs do not function properly, check the following items
 
     You can also use the operator command `/D A,ZOWESVR` to verify whether the task is active, which alleviates the need for the DA panel of SDSF. If the started task is not running, ensure that your ZOWESVR procedure resides in a valid PROCLIB data set, and check the task’s job output for errors.
 
--   Check whether the explorer server is started without errors.
+-   Check whether z/OSMF is running.
 
-    In the DA panel of SDSF under ISPF, select the ZOWESVR job to view the started task output. If the explorer server is started without errors, you can see the following messages:
-
-    ```
-    CWWKE0001I: The server Atlas has been launched.
-    ```
-
-    ```
-    CWWKF0011I: The server Atlas is ready to run a smarter planet.
-    ```
-
-    If you see error messages that are prefixed with "ERROR" or stack traces in the ZOWESVR job output, respond to them.
-
--   Check whether the URL that you use to call explorer server REST APIs is correct. For example: https://your.server:atlasport/api/v1/system/version. The URL is case-sensitive.
--   Ensure that you enter a valid z/OS® user ID and password when initially connecting to the explorer server.
--   If testing the explorer server REST API for jobs information fails, check the z/OSMF IZUSVR1 task output for errors. If no errors occur, you can see the following messages in the IZUSVR1 job output:
-
-    ```
-    CWWKE0001I : The server zosmfServer has been launched.
-    ```
-
-    ```
-    CWWKF0011I: The server zosmfServer is ready to run a smarter planet.
-    ```
-
-    If you see error messages, respond to them.
-
-    For RESTJOBS, you can see the following message if no errors occur:
-
-    ```
-    CWWKZ0001I: Application IzuManagementFacilityRestJobs started in n.nnn seconds.
-    ```
-
-    You can also call z/OSMF RESTJOBS APIs directly from your Internet browser with a URL, for example,  
-    
-    ```
-    https://your.server:securezosmfport/zosmf/restjobs/jobs
-    ```
-
-    where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
-
-    You might get error message IZUG846W, which indicates that a cross-site request forgery (CSRF) was attempted. To resolve the issue, update your browser by adding the `X-CSRF-ZOSMF-HEADER` HTTP custom header to every cross-site request. This header can be set to any value or an empty string (""). For details, see the z/OSMF documentation. If calling the z/OSMF RESTJOBS API directly fails, fix z/OSMF before explorer server can use these APIs successfully.
-
--   If testing the explorer server REST API for data set information fails, check the z/OSMF IZUSVR1 task output for errors and confirm that the z/OSMF RESTFILES services are started successfully. If no errors occur, you can see the following message in the IZUSVR1 job output:
-
-    ```
-    CWWKZ0001I: Application IzuManagementFacilityRestFiles started in n.nnn seconds.
-    ```
-
-    To test z/OSMF REST APIs you can run curl scripts from your workstation. 
+    Some functions of Zowe use z/OSMF REST APIs.  To test z/OSMF REST APIs you can run curl scripts from your workstation. 
 
     ```
     curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restjobs/jobs?prefix=*&owner=*
@@ -129,10 +81,6 @@ If explorer server REST APIs do not function properly, check the following items
     A known issue and workaround for RESTFILES API can be found at [TSO SERVLET EXCEPTION ATTEMPTING TO USE RESTFILE INTERFACE](http://www-01.ibm.com/support/docview.wss?crawler=1&uid=isg1PI63398).
 
 -   Check your system console log for related error messages and respond to them.
-
-If the explorer server cannot connect to the z/OSMF server, check the following item:
-
-By default, the explorer server communicates with the z/OSMF server on the localhost address. If your z/OSMF server is on a different IP address to the explorer server, for example, if you are running z/OSMF with Dynamic Virtual IP Addressing (DVIPA), you can change this by adding a `ZOSMF_HOST` parameter to the `server.env` file. For example: `ZOSMF_HOST=winmvs27`.
 
 ### Troubleshooting installing the Zowe Application Framework
 

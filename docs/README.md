@@ -15,10 +15,6 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Find out how to install, configure, and use Zowe Application Framework, explorer server, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
-    <h2><a href="./extend/extend-api/libertyAPI.html">Extending</a></h2>
-    <p>Learn about onboarding your products. Developers can follow tutorials that teach how to build and extend Zowe components.</p>
-  </div>
-  <div class="feature">
     <h2><a href="./troubleshoot/troubleshootinstall.html">Troubleshooting</a></h2>
     <p>Get troubleshooting tips and answers to your most frequently asked questions.</p>
   </div>

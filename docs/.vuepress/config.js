@@ -28,7 +28,6 @@ const ALL_PAGES = [{
         text: 'Installing Zowe',
         items: [
           'user-guide/installandconfig.md',
-          'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',
@@ -46,7 +45,6 @@ const ALL_PAGES = [{
         text: 'Using Zowe',
         items: [
           'user-guide/mvd-using.md',
-          'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
           'user-guide/cli-usingcli.md',
         ]
@@ -66,13 +64,7 @@ const ALL_PAGES = [{
   {
     text: 'Extending',
     baseuri: '/extend/',
-    items: [{
-        text: 'Developing JEE components',
-        items: [
-          'extend/extend-api/libertyAPI.md',
-          'extend/extend-api/liberty-api-sample.md',
-        ]
-      },
+    items: [
       {
         text: 'Developing for API Mediation Layer',
         items: [
@@ -114,9 +106,7 @@ const ALL_PAGES = [{
           'extend/extend-desktop/zlux-workshop-starter-app.md',
           'extend/extend-desktop/ui-intro.md',
           'extend/extend-desktop/iframe-sample.md',
-          'extend/extend-desktop/react-sample.md',
           'extend/extend-desktop/angular-sample.md',
-          'extend/extend-api/ReactJSUI.md',
         ]
       }
     ]
