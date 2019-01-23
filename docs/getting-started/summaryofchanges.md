@@ -14,3 +14,5 @@ Version 1.0.0 contains the following changes since the Open Beta release.
 
 ### What's changed
 
+- Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided through the Liberty web application server. In this release, they are provided through the Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
+
