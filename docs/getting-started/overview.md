@@ -175,6 +175,12 @@ The API Catalog is the catalog of published APIs and their associated documentat
 
 ### Zowe API Mediation Layer Third-Party software agreements
 
+Zowe CLI uses the following third-party software:
+
+| Component | Third-party Software | Version | File Name | GitHub |
+| ----------| -------------------- | --------| --------- | ------ |
+| Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/nodeca/js-yaml](https://github.com/nodeca/js-yaml)  |
+
 Zowe API Mediation Layer uses the following third-party software:
 
 | Component | Third-party Software | Version | File name | GitHub |
