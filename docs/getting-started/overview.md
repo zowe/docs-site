@@ -94,7 +94,7 @@ Zowe CLI uses the following third-party software:
 
 | Component | Third-party Software | Version | File Name | GitHub |
 | ----------| -------------------- | --------| --------- | ------ |
-| Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
+| Zowe CLI  | js-yaml  | 3.9.0 | license_js-yaml_3.9.0.pdf  | [https://github.com/nodeca/js-yaml](https://github.com/nodeca/js-yaml)  |
 | Zowe CLI  | string-width  | 2.1.1 | license_string-width_2.1.1.pdf | [https://github.com/sindresorhus/string-width](https://github.com/sindresorhus/string-width) |
 | Imperative CLI Framework  | @types/yargs | 8.0.2 | license_types_yargs_8.0.2.pdf | [https://github.com/DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)   |
 | Imperative CLI Framework  | chalk | 2.1.0 | license_chalk_2.1.0.pdf | [https://github.com/chalk/chalk](https://github.com/chalk/chalk)  |
@@ -225,17 +225,17 @@ Zowe API Mediation Layer uses the following third-party software:
 | Zowe API Mediation Layer | react-scripts | 2.1.1 | license_react-scripts_2.1.1.pdf | [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app) |
 | Zowe API Mediation Layer | react-toastify | 4.4.3 | license_react-toastify_4.4.3.pdf | [https://github.com/fkhadra/react-toastify](https://github.com/fkhadra/react-toastify) |
 | Zowe API Mediation Layer | redux | 4.0.1 | license_redux_4.0.1.pdf | [https://github.com/reduxjs/redux](https://github.com/reduxjs/redux) |
-| Zowe API Mediation Layer | redux-catch | 1.3.1 | license_1.3.1.pdf | [https://github.com/PlatziDev/redux-catch](https://github.com/PlatziDev/redux-catch) |
+| Zowe API Mediation Layer | redux-catch | 1.3.1 | license_redux-catch_1.3.1.pdf | [https://github.com/PlatziDev/redux-catch](https://github.com/PlatziDev/redux-catch) |
 | Zowe API Mediation Layer | redux-logger | 3.0.6 | license_redux-logger_3.0.6.pdf | [https://github.com/LogRocket/redux-logger](https://github.com/LogRocket/redux-logger) |
 | Zowe API Mediation Layer | redux-observable | 1.0.0 | license_redux-observable_1.0.0.pdf | [https://github.com/redux-observable/redux-observabl](https://github.com/redux-observable/redux-observabl) |
 | Zowe API Mediation Layer | redux-persist | 5.10.0 | license_redux-persist_5.10.0.pdf | [https://github.com/rt2zz/redux-persist](https://github.com/rt2zz/redux-persist) |
 | Zowe API Mediation Layer | redux-thunk | 2.3.0 | license_redux-thunk_2.3.0.pdf | [https://github.com/reduxjs/redux-thunk](https://github.com/reduxjs/redux-thunk) |
 | Zowe API Mediation Layer | Roaster | 2.20.1.Final | license_Roaster_2.20.1.Final.pdf | [https://github.com/forge/roaster](https://github.com/forge/roaster) |
-| Zowe API Mediation Layer | RxJS | 6.3.1 | license_RxJS_6.3.1.pdf | [https://github.com/reactivex/rxjs]https://github.com/reactivex/rxjs() |
+| Zowe API Mediation Layer | RxJS | 6.3.1 | license_RxJS_6.3.1.pdf | [https://github.com/reactivex/rxjs](https://github.com/reactivex/rxjs) |
 | Zowe API Mediation Layer | RxJS | 6.3.3 | license_RxJS_6.3.3.pdf | [https://github.com/reactivex/rxjs](https://github.com/reactivex/rxjs) |
 | Zowe API Mediation Layer | slf4j | 1.7.25 | license_slf4j_1.7.25.pdf | [https://github.com/qos-ch/slf4j](https://github.com/qos-ch/slf4j) |
 | Zowe API Mediation Layer | spring-cloud | 2.0.1.RELEASE | license_spring-cloud_2.0.1.RELEASE.pdf | [https://github.com/spring-cloud/spring-cloud-config](https://github.com/spring-cloud/spring-cloud-config) |
-| Zowe API Mediation Layer | spring framework | 4.3.7.RELEASE | license_spring framework_4.3.7.RELEASE.pdf | [https://github.com/spring-projects/spring-framework](https://github.com/spring-projects/spring-framework) |
+| Zowe API Mediation Layer | spring-framework | 4.3.7.RELEASE | license_spring-framework_4.3.7.RELEASE.pdf | [https://github.com/spring-projects/spring-framework](https://github.com/spring-projects/spring-framework) |
 | Zowe API Mediation Layer | spring-hateoas | 0.23.0.RELEASE | license_spring-hateoas_0.23.0.RELEASE.pdf | [https://github.com/spring-projects/spring-hateoas](https://github.com/spring-projects/spring-hateoas) |
 | Zowe API Mediation Layer | spring-retry | 1.2.2 | license_spring-retry_1.2.2.pdf | [https://github.com/spring-projects/spring-retry](https://github.com/spring-projects/spring-retry) |
 | Zowe API Mediation Layer | spring-security | 5.1.0.RELEASE | license_spring-security_5.1.0.RELEASE.pdf | [https://github.com/spring-projects/spring-security](https://github.com/spring-projects/spring-security) |
