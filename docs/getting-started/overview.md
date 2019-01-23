@@ -176,6 +176,7 @@ The API Catalog is the catalog of published APIs and their associated documentat
 ### Zowe API Mediation Layer Third-Party software agreements
 
 Zowe API Mediation Layer uses the following third-party software:
+
 | Component | Third-party Software | Version | File name | GitHub |
 | --------- | -------------------- | ------- | --------- | ------ |
 | Zowe API Mediation Layer | Apache Tomcat | 8.5.33 | license_apache-tomcat_8.5.33.pdf | [https://github.com/apache/tomcat](https://github.com/apache/tomcat) |
