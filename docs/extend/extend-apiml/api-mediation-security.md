@@ -95,9 +95,6 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
     - API Services can sometimes access other services without the API Gateway (if they are installed in such a way that direct access is possible)
     - API Services can also be API Clients (when they access other services)
 
-The following diagram illustrates basic relationships between services:
-![Services Diagram](../../images/api-mediation/apiml-components.svg)
-
 
 ### Transport Security Requirements
 
