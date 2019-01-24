@@ -22,7 +22,7 @@
       </bookowner>
     </bookrights>
     <critdates>
-      <created date="2019-01-23" />
+      <created date="2019-01-24" />
     </critdates>
   </bookmeta>
   <frontmatter>
@@ -69,6 +69,7 @@
 </topicref>
 <topicref navtitle="Developing for API Mediation Layer">
 <topicref format="markdown" href="extend/extend-apiml/api-mediation-onboard-overview.md" />
+<topicref format="markdown" href="extend/extend-apiml/api-mediation-security.md" />
 <topicref format="markdown" href="extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md" />
 <topicref format="markdown" href="extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md" />
 <topicref format="markdown" href="extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md" />
