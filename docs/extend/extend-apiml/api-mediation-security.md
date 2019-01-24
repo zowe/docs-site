@@ -446,7 +446,7 @@ If it is not possible, you will see following error message:
 
     WARNING: z/OSMF is not trusted by the API Mediation Layer.
 
-You can add z/OSMF to the truststore manually as a user that have access rights to read the z/OSMF keyring.
+You can add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring.
 
 The read access to z/OSMF keyring can be granted by following commands:
 
@@ -483,15 +483,38 @@ To find the name of the z/OSMF keyring issue:
  
     cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring
 
-This will return line like:
+This will return a line like:
 
     izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT
 
-You need to run following commands as superuser to import z/OSMF certificates:
+This should be the same keyring name as specified in the PARMLIB member for z/OSMF; for example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like
+
+  KEYRING_NAME('IZUKeyring.IZUDFLT')
+
+You need to run following commands as superuser to import z/OSMF certificates.  Substitute the value of the z/OSMF keyring obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
 
     su
     cd $ZOWE_RUNTIME/api-mediation
     scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
+
+If you receive an error like this from that command, 
+```
+keytool error (likely untranslated): java.io.IOException: The private key of IZUDFLT is not available or no authority to access the private key
+It is not possible to read z/OSMF keyring IZUSVR/IZUKeyring.IZUDFLT. The effective user ID was: acid. You need to run this command as user that has access to the z/OSMF keyring:
+```
+and you see these messages in the log
+```
+ICH408I USER(acid ) GROUP(group ) NAME(name        )
+ IRR.DIGTCERT.GENCERT CL(FACILITY)
+ INSUFFICIENT ACCESS AUTHORITY
+ FROM IRR.DIGTCERT.** (G)
+ ACCESS INTENT(CONTROL)  ACCESS ALLOWED(NONE   )
+```
+then you need to PERMIT the user to have CONTROL access to IRR.DIGTCERT.** with the following RACF command:
+```
+    PERMIT IRR.DIGTCERT.** CLASS(FACILITY) ID(acid) ACCESS(CONTROL)DATE)
+```
+or the equivalent command for ACF2 or Top Secret.
 
 If the import is successful, you need to restart Zowe server to make the changes effective.
 
