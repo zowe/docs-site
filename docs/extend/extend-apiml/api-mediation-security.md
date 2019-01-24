@@ -80,7 +80,7 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
         - Authentication and Authorization Service (AAS) 
             - Provides authentication and authorization functionality to check access of users to resources on z/OS
             - Security service is not provided as an individual microservice but is included to the Gateway Service
-            - For more details, see: [APIML wiki](https://github.com/gizafoundation/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
+            - For more details, see: [APIML wiki](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
 
     - Non-APIML Zowe Core services (zLUX, Atlas)
 
