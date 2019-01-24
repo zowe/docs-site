@@ -69,6 +69,7 @@ const ALL_PAGES = [{
         text: 'Developing for API Mediation Layer',
         items: [
           'extend/extend-apiml/api-mediation-onboard-overview.md',
+          'extend/extend-apiml/api-mediation-security.md',
           'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
           'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
           'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
