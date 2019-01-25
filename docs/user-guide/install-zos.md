@@ -444,13 +444,13 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     You can tailor the JCL at this line
 
       ```
-      //ZOWESVR   PROC SRVRPATH='/zowe/install/path/explorer-server'
+      //ZOWESVR   PROC SRVRPATH='/zowe/install/path'
       ```
 
-    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server.  Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
       ```
-      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
+      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
       ```
 
 ## Starting and stopping the Zowe runtime on z/OS
@@ -480,12 +480,12 @@ If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following 
 By default, Zowe uses the runtime version that you most recently installed. To start a different runtime, specify its server path on the START command:
 
 ```
-/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
+/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
 ```
 
-To test whether the explorer server is active, open the URL: `https://<hostname>:7443/explorer-mvs`.
+To test whether the API Mediation Layer is active, open the URL: `https://<hostname>:7554`. 
 
-The port number `7443` is the default port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing Zowe runtime on z/OS](# #installing-the-zowe-runtime-on-z-os).
+The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os).
 
 ### Stopping the ZOWESVR PROC
 
@@ -556,7 +556,7 @@ where:
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
   
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
 
 ### Verifying z/OS Services installation
 
