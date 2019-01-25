@@ -95,7 +95,7 @@ If your computer is connected to the Internet, you can use the following method 
     ```
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
-5.  (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating Zowe CLI profiles](cli-usingcli.md#creating-zowe-cli-profiles).
+5.  (Optional) Create a `zosmf` profile. For information about how to create a profile, see [Creating Zowe CLI profiles](cli-usingcli.md#creating-zowe-cli-profiles).
 
     **Tip:** Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
