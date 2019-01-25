@@ -49,9 +49,11 @@ If you do not have internet access at your site, use the following method to ins
 
     Zowe CLI is installed on your computer. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
-5. (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF without specifying the connection details on every command. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
+5. (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF.
 
-    **Tip:** Profiles are note required. You can issue commands directly on the command line, or choose to create a profile to issue commands more efficiently. 
+    **Note:** For information about how to create a profile, see [Creating a Zowe CLI profile](cli-usingcli.md#creating-zowe-cli-profiles).
+
+    **Tip:** Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
 
@@ -93,54 +95,31 @@ If your computer is connected to the Internet, you can use the following method 
 
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
-5. (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF without specifying the connection details on every command. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
 
-    **Tip:** Profiles are note required. You can issue commands directly on the command line, or choose to create a profile to issue commands more efficiently. 
+5.  (Optional) Create a `zosmf` profile. For information about how to create a profile, see [Creating Zowe CLI profiles](cli-usingcli.md#creating-zowe-cli-profiles).
+
+    **Tip:** Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
-## Creating a Zowe CLI profile
-
-Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
-
-**Follow these steps:**
-
-1.  To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:
-
-    ```
-    zowe profiles create zosmf-profile --help
-    ```
-
-**Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
-
-### Creating a profile to access an API Mediation Layer
-
-You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
-
-* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
-
-* When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
-
-**Example:**
-
-The following example illustrates the command to create a profile that connects to z/OSMF through API Mediation Layer with the base path `my/api/layer`:
-
-```
-bright profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
-```
-
-For more information, see [Accessing an API Mediation Layer](cli-usingcli.html#accessing-an-api-mediation-layer).
 
 ## Testing Zowe CLI connection to z/OSMF
-After you configure a Zowe CLI `zosmf` profile to connect to z/OSMF on your mainframe systems, you can issue a command at any time to receive diagnostic information from the server and confirm that your profile can communicate with z/OSMF.
+You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
 
-**Tip:** In this documentation we provide command syntax to help you create a basic profile. We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
 
-After you create a profile, run a test to verify that Zowe CLI can communicate properly with z/OSMF. You can test your default profile and any other Zowe CLI profile that you created.
+**Tip:** We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
+
+**Without a Profile**
+
+- Verify that your CLI can communicate with z/OSMF by issuing the following command: 
+
+    ```
+    bright zosmf check status --host <host> --port <port> --user <username> --pass <password> 
+    ```
 
 **Default profile**
 
-  - Verify that you can use your default profile to communicate with z/OSMF by issuing the following command:
+- Verify that you can use your default profile to communicate with z/OSMF by issuing the following command:
 
     ```
     zowe zosmf check status
@@ -148,8 +127,7 @@ After you create a profile, run a test to verify that Zowe CLI can communicat
 
 **Specific profile**
 
-  - Verify that you can use a specific profile to communicate with
-    z/OSMF by issuing the following command: 
+- Verify that you can use a specific profile to communicate with z/OSMF by issuing the following command: 
 
     ```
     zowe zosmf check status --zosmf-profile <profile_name>

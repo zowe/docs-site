@@ -28,7 +28,6 @@ const ALL_PAGES = [{
         text: 'Installing Zowe',
         items: [
           'user-guide/installandconfig.md',
-          'user-guide/installroadmap.md',
           'user-guide/systemrequirements.md',
           'user-guide/install-zos.md',
           'user-guide/cli-installcli.md',
@@ -46,7 +45,6 @@ const ALL_PAGES = [{
         text: 'Using Zowe',
         items: [
           'user-guide/mvd-using.md',
-          'user-guide/usingapis.md',
           'user-guide/api-mediation-api-catalog.md',
           'user-guide/cli-usingcli.md',
         ]
@@ -66,17 +64,12 @@ const ALL_PAGES = [{
   {
     text: 'Extending',
     baseuri: '/extend/',
-    items: [{
-        text: 'Developing JEE components',
-        items: [
-          'extend/extend-api/libertyAPI.md',
-          'extend/extend-api/liberty-api-sample.md',
-        ]
-      },
+    items: [
       {
         text: 'Developing for API Mediation Layer',
         items: [
           'extend/extend-apiml/api-mediation-onboard-overview.md',
+          'extend/extend-apiml/api-mediation-security.md',
           'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
           'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
           'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
@@ -107,16 +100,14 @@ const ALL_PAGES = [{
           'extend/extend-desktop/mvd-apptoappcommunication.md',
           'extend/extend-desktop/mvd-errorreportingui.md',
           'extend/extend-desktop/mvd-logutility.md',
-          'extend/extend-desktop/zlux-example-server.md',
+          'extend/extend-desktop/zlux-app-server.md',
           'extend/extend-desktop/zlux-workshop-user-browser.md',
           'extend/extend-desktop/zlux-tutorials.md',
           'extend/extend-desktop/starter-intro.md',
           'extend/extend-desktop/zlux-workshop-starter-app.md',
           'extend/extend-desktop/ui-intro.md',
           'extend/extend-desktop/iframe-sample.md',
-          'extend/extend-desktop/react-sample.md',
           'extend/extend-desktop/angular-sample.md',
-          'extend/extend-api/ReactJSUI.md',
         ]
       }
     ]

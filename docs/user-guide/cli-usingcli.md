@@ -13,17 +13,6 @@ zowe --help
 ```
 **Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
-### Help structure
-The help displays the following types of information:
-
-- **Description:** An explanation of the functionality for the command group, action, or option that you specified in a `--help` command.
-
--  **Usage:** The syntax for the command. Refer to usage to determine the expected hierarchical structure of a command.    
-
-- **Options:** Flags that you can append to the end of a command to specify particular values or booleans. For example, the volume size for a data set that you want to create.    
-
-- **Global Options:** Flags that you can append to any command in Zowe CLI. For example, the `--help` flag is a global option. 
-
 ### Displaying command group, action, and object help
 You can use the `--help` global option get more information about a specific command group, action, or object. Use the following syntax to display group-level help and learn more about specific command groups (for example, *zos-jobs* and *zos-files*):
 
@@ -34,17 +23,29 @@ zowe <group, action, or object name> --help
 zowe zos-files create --help
 ```
 
-
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
 provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help). 
 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
-**Important\!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-installcli.html#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
-
 Zowe CLI contains the following command groups:
+
+### config
+
+The config command group lets you configure the credential manager for Zowe CLI. The CLI stores credentials in plain text by default.
+
+With the config command group, you can perform the following tasks:
+
+- Set the configuration for your credential manager.
+- Reset the configuration for your credential manager to default. 
+
+**Note:** For more information about `config` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+command:
+```
+zowe config -h
+```
 
 ### plugins
 
@@ -176,34 +177,61 @@ With the zosmf command group, you can perform the following tasks:
 zowe zosmf -h
 ```
 
-## Setting environment variables for command arguments and options
+## Defining Zowe CLI connection details
 
-Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains that order of precedence and how you can use environment variables with Zowe CLI.
+Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains order of precedence and different methods for specifying your mainframe connection details. 
 
-  - [Understanding command option order of precedence?](#Understanding-command-option-order-of-precedence)
-  - [Use cases and benefits](#use-cases-and-benefits)
+  - [Understanding command option order of precedence](#Understanding-command-option-order-of-precedence)
+  - [Creating CLI profiles](#creating-cli-profiles)
   - [Defining environment variables](#defining-environment-variables)
-      - [Transforming arguments/options to environment variable format](#transforming-arguments-options-to-environment-variable-format)
-      - [Setting environment variables in an Automation Server](#setting-environment-variables-in-an-automation-server)
-      - [Using secure credential storage](#using-secure-credential-storage)
-
+  - [Integrating with API Mediation Layer](#integrating-with-api-mediation-layer)
 
 ### Understanding command option order of precedence
 
-Before you use environment variables, it is helpful to understand the command option order of precedence. The following is the order in which Zowe CLI *searches for* your command arguments and options when you issue a command:
+Before you issue commands, it is helpful to understand the command option order of precedence. The following is the order in which Zowe CLI *searches for* your command arguments and options when you issue a command:
 
-1.  Arguments and options that you specify directly on the command line
-2.  Environment variables that you define in the computer's operating system
-3.  Profiles that you create
-4.  The default value for the argument or option
+1.  Arguments and options that you specify directly on the command line.
+2.  Environment variables that you define in the computer's operating system. For more information, see [Defining Environment Variables](#defining-environment-variables)
+3.  User profiles that you create.
+4.  The default value for the argument or option.
 
 The affect of the order is that if you omit an argument/option from the command line, Zowe CLI searches for an environment variable that contains a value that you defined for the argument/option. If Zowe CLI does not find a value for the argument/option in an environment variable, Zowe CLI searches your user profiles for the value that you defined for the option/argument. If Zowe CLI does not find a value for the argument/option in your profiles, Zowe CLI executes the command using the default value for the argument/option.
 
-**Note:** If a required option or argument value is not located, you will receive a syntax error message that states `Missing Positional Argument` or `Missing Option.`
+**Note:** If a required option or argument value is not located, you receive a syntax error message that states `Missing Positional Argument` or `Missing Option.`
 
-### Use cases and benefits
+### Creating Zowe CLI profiles
 
-Use environment variables with Zowe CLI in the following scenarios:
+Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
+
+**Important\!** A `zosmf` profile is required to issue most Zowe CLI commands. The first profile that you create becomes your default profile. When you issue any command that requires a `zosmf` profile, the command executes using your default profile unless you specify a specific profile name on that command.
+
+To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:  
+
+  ```
+  zowe profiles create zosmf-profile --help
+  ```
+
+#### Creating a profile to access API Mediation Layer
+
+You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
+
+* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
+
+* When you create a profile, specify the host, port, and the base path of API ML instance that you want to access. Using the base path to API ML, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
+
+**Example:**
+
+The following example illustrates the command to create a profile that connects to z/OSMF through API ML with the base path `my/api/layer`:
+
+```
+zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
+```
+
+For more information, see [Accessing an API Mediation Layer](#integrating-with-api-mediation-layer).
+
+### Defining Environment Variables
+You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
+In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
 
   - **Assigning an environment variable for a value that is commonly used.**  
     For example, you might want to specify your mainframe user name as an
@@ -229,15 +257,6 @@ Use environment variables with Zowe CLI in the following scenarios:
     password in the secure credential store so that it is not available
     in plain text.
 
-### Defining environment variables
-
-You define, or set, environment variables in your environment. The term
-*environment* refers to your operating system, but it can also refer to an
-automation server, such as Jenkins or a Docker container.
-
-In this section we explain how to transform arguments and options from
-Zowe CLI commands into environment variables and define them with a
-value.
 
 #### Transforming arguments/options to environment variable format
 
@@ -274,7 +293,7 @@ Automation tools such as Jenkins automation server usually provide a mechanism f
 
 **Note:** For more information about using this feature in Jenkins, see [Credentials Binding Plugin](https://jenkins.io/doc/pipeline/steps/credentials-binding/) in the Jenkins documentation.
 
-#### Accessing API Mediation Layer
+### Integrating with API Mediation Layer
 
 The API Mediation Layer provides a single point of access to a defined set of microservices. The API Mediation Layer provides cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
@@ -299,9 +318,8 @@ https://myapilayerhost:port/api/v1/zosmf1/zosmf/restjobs/jobs
 The following example illustrates the command to verify that you can connect to z/OSMF through an API Mediation Layer that contains the base path `my/api/layer`:
 
 ```
-bright zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
+zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
 **More Information:**
 - [API Mediation Layer overview](api-mediation/api-mediation-overview.md)
-- [Creating a profile to access an API Mediation Layer](cli-installcli.html#Creating-a-profile-to-access-an-API-Mediation-Layer)

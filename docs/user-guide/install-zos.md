@@ -142,7 +142,9 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
 
-- The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script.
+<!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
+
+- The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate]((../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
 ## Installing the Zowe runtime on z/OS
 
@@ -160,13 +162,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/0.9.5`. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
 
         You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
-    - The Explorer-server has two ports: one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
+    - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
 
     - The zlux-server has three ports: the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
 
@@ -174,7 +176,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     ```yaml
     install:
-     rootDir=/var/zowe/0.9.5
+     rootDir=/var/zowe/1.0.0
 
     api-mediation:
       catalogPort=7552
@@ -186,8 +188,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       verifyCertificatesOfServices=true
 
     explorer-server:
-      httpPort=7080
-      httpsPort=7443
+      jobsPort=7080
+      mvsPort=7443
 
     # http and https ports for the node server
     zlux-server:
@@ -313,10 +315,14 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
 
     ```
-    chmod u+x zowe-install.sh.
+    chmod u+x zowe-install.sh
     ```
    
-    You may also receive the following error:
+   When the script runs, it echos its progress to the shell and attempts to determine and validate the location of the prerequisites including z/OSMF, Java, and Node. When the script cannot determine the location of these prerequisites, you will be prompted for their location.
+
+    <<JRW TO DO - Write about the log file and the commands behing echoed>>
+    
+    You may also receive the following message:
 
     ```
     apiml_cm.sh --action trust-zosmf has failed.
@@ -324,6 +330,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     ```
 
     This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-zosmf-certificate) for more details.
+
+
     
 7. Configure Zowe as a started task.
 
@@ -386,7 +394,8 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
 
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
+    <<TODO - JRW>>
+     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 
@@ -446,7 +455,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has three runtime components on z/OS: the explorer server, the Zowe Application Server, and Zowe API Mediation Layer. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers. Stopping ZOWESVR PROC stops all four servers.
+Zowe has a number of runtime on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
 
@@ -532,8 +541,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying explorer server installation](#verifying-explorer-server-installation)
-    - [Verifying the availability of explorer server REST APIs](#verifying-the-availability-of-explorer-server-rest-apis)  
+- [Verifying z/OS Services installation](#verifying-z-os-services-installationn) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
@@ -547,59 +555,18 @@ where:
 - _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
+  
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
 
-### Verifying explorer server installation
+### Verifying z/OS Services installation
 
-After the explorer server is installed and the ZOWESVR procedure is started, you can verify the installation from an internet browser by entering the following case-sensitive URL:
-
-`https://<your.server>:<atlasport>/api/v1/system/version`
-
-where:
-
-- _your.server_ is the host name or IP address of the z/OS® system where explorer server is installed
-- _atlasport_ is the port number that is chosen during installation.
-  You can verify the port number in the `server.xml` file. This file is located in the explorer server installation directory, which is `/var/zowe/explorer-server/wlp/usr/servers/Atlas/server.xml` by default. The port number is visible in the `httpsPort` assignment in the `server.xml` file.
-
-**Example:** `httpPort="7443"`.
-
-This URL sends an HTTP GET request to the Liberty Profile explorer server. If explorer server is installed correctly, a JSON payload that indicates the current explorer server application version is returned.
-
-**Example:**
+After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```
-{ "version": "V0.0.1" }
+https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
 ```
 
-**Note:** The first time that you interact with the explorer server, you are prompted to enter an MVS™ user ID and password. The MVS user ID and password are passed over the secure HTTPS connection to establish authentication.
-
-After you verify that explorer server is successfully installed, you can access the UI at the following URLs:
-
-- `https://<your.server>:<atlasport>/ui/v1/jobs/#/`
-- `https://<your.server>:<atlasport>/ui/v1/datasets/#/`
-- `https://<your.server>:<atlasport>/ui/v1/uss/#/`
-
-If explorer server is not installed successfully, see [Troubleshooting installation](../troubleshoot/troubleshootinstall.md) for solutions.
-
-#### Verifying the availability of explorer server REST APIs
-
-To verify the availability of all explorer server REST APIs, use the Liberty Profile's REST API discovery feature from an internet browser with the following URL. This URL is case-sensitive.
-
-`https://<your.server>:<atlasport>/ibm/api/explorer`
-
-With the discovery feature, you can also try each discovered API. The users who verify the availability must have access to their data sets and job information by using relevant explorer server APIs. This ensures that your z/OSMF configuration is valid, complete, and compatible with the explorer server application. For example, try the following APIs:
-
-Explorer server: JES Jobs APIs
-
-`GET /api/v1/jobs`
-
-This API returns job information for the calling user.
-
-Explorer server: Data set APIs
-
-`GET /api/v1/datasets/userid.**`
-
-This API returns a list of the userid.\*\* MVS data sets.
+where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatewayPort` in `zowe-install.yaml`.
 
 ### Verifying API Mediation installation
 

@@ -25,7 +25,7 @@ Make sure that you first expose an API to connect to before following the steps 
     - If you are using the sample, this is included within the project. Copy to `Desktop/<Your_Project_Name>/`
 6.  Copy the project from `/Desktop` to `<zowe_base>/`
     - Use `scp <userID>@<server> /Users/path/to/files <zowe_base>/`
-7.  Create a new file within the plugins folder (`<zowe_base>/zlux-example-server-plugins`) called `com.<Your_Project_Name>.json`
+7.  Create a new file within the plugins folder (`<zowe_base>/zlux-app-server-plugins`) called `com.<Your_Project_Name>.json`
     - `touch com.<Your_Project_Name>.json`
 8.  Edit this folder (using vi) to read:
 
@@ -42,11 +42,11 @@ Make sure that you first expose an API to connect to before following the steps 
 
 ## Verify the Install
 
-Upon restarting the server, navigate to the Zowe Application Server (zlux-proxy-server).
+Upon restarting the server, navigate to the Zowe Application Server.
 
-- This can be found at: `https://<base>:<port>/ZLUX/plugins/com.rs.mvd/web/`
+- This can be found at: `https://<base>:<port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
 
-Make sure that your new plugin was added and that it is able to interact with the server.
+Make sure that your new plug-in was added and that it can interact with the server.
 
 If it is not able to interact with the server and you are getting CORS errors, you might need to update the server to accept all connections.
 
@@ -57,7 +57,7 @@ Note: This is for development purposes only.
 To update the server:
 
 - Navigate to `<zowe-base>/explorer-server/wlp/usr/servers/Atlas/server.xml`
-- Open to the file with vi and paste the following code in.
+- Open to the file with vi and paste in the following code.
 
 ```javascript
 <!-- FOR TESTING ONLY -->

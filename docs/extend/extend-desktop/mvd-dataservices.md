@@ -78,7 +78,7 @@ Here, the express-ws package is used, which adds websockets through the ws packa
 
 See the ws and express-ws topics on [www.npmjs.com](https://www.npmjs.com) for more information about how they work, as the API for websocket router dataservices is primarily provided in these packages.
 
-An example is available in `zlux-proxy-server/plugins/terminal-proxy/lib/terminalProxy.js`
+An example is available in `zlux-server-framework/plugins/terminal-proxy/lib/terminalProxy.js`
 
 #### Router dataservice context
 

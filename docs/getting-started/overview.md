@@ -6,7 +6,7 @@ Zowe consists of the following main components. For details of each component, s
 
 - [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets and z/OS UNIX System Services files.
+- [**z/OS Services**](#zos-services): Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
 - [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
@@ -42,18 +42,24 @@ The Zowe Application Framework consists of the following components:
 
     Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.html#using-zowe-framework-application-plug-ins).
 
-## Explorer server
+## z/OS Services
 
-The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets and z/OS UNIX™ System Services (USS) files.
+Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
 
-These APIs have the following features:
+ - **z/OS Datasets services**
+
+   Get a list of jobs, get content from a job file output, submit job from a data set, and more.
+
+ - **z/OS Jobs services**
+
+    Get a list of data sets, retrieve content from a member, create a data set, and more.
+
+You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
 
 - These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
 - These APIs can be exploited by off-platform applications with proper security controls.
 
-Any client application that calls RESTful APIs directly can use the explorer server.
-
-As a deployment architecture, the explorer server accommodates the installation of other z/Tool microservices into its Liberty instance. These microservices can be used by explorer server APIs and client applications.
+As a deployment architecture, the z/OS Services are running as microservices with a Springboot embedded Tomcat stack.  
 
 ## Zowe CLI
 Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
@@ -94,10 +100,15 @@ Zowe CLI uses the following third-party software:
 
 | Component | Third-party Software | Version | File name |
 | ----------| -------------------- | --------| --------- |
-| Zowe CLI  | Eclipse Public License | 2.0 | Legal_Doc_00002579_4.pdf |
-| Imperative CLI Framework | Eclipse Public License | 2.0 | Legal_Doc_00002579_5.pdf |
+| Zowe CLI  | Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
+| Imperative CLI Framework | Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
 | Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | Legal_Doc_00002310_41.pdf |
-| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf | 
+|| Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
+|| Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
+| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf |
+|| Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
+|| Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
+
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
@@ -155,8 +166,8 @@ Zowe API Mediation Layer uses the following third-party software:
 
 | Component | Third-party Software | Version | File name |
 | ----------| -------------------- | --------| --------- |
-| Zowe API Mediation Layer | Eclipse Public License | 2.0 | Legal_Doc_00002599_81.pdf |
-
+| Zowe API Mediation Layer | api-layer | 2.0 | Legal_Doc_00002599_81.pdf |
+|||||
 
 **Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
 
