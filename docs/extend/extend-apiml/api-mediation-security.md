@@ -490,15 +490,15 @@ To find the name of the z/OSMF keyring issue:
  
 `cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring`
 
-This will return a line like:
+This will return a line like the following one:
 
 `izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT`
 
-This should be the same keyring name as specified in the PARMLIB member for z/OSMF; for example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like
+This should be the same keyring name as specified in the PARMLIB member for z/OSMF; for example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like this:
 
-  KEYRING_NAME('IZUKeyring.IZUDFLT')
+`KEYRING_NAME('IZUKeyring.IZUDFLT')`
 
-You need to run following commands as superuser to import z/OSMF certificates.  Substitute the value of the z/OSMF keyring obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
+You need to run the following commands as superuser to import z/OSMF certificates.  Substitute the value of the z/OSMF keyring that is obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
 
 ```
     su
@@ -507,11 +507,14 @@ You need to run following commands as superuser to import z/OSMF certificates.  
 ```
 
 If you receive an error like this from that command, 
+
 ```
 keytool error (likely untranslated): java.io.IOException: The private key of IZUDFLT is not available or no authority to access the private key
 It is not possible to read z/OSMF keyring IZUSVR/IZUKeyring.IZUDFLT. The effective user ID was: acid. You need to run this command as user that has access to the z/OSMF keyring:
 ```
-and you see these messages in the log
+
+and you see these messages in the log:
+
 ```
 ICH408I USER(acid ) GROUP(group ) NAME(name        )
  IRR.DIGTCERT.GENCERT CL(FACILITY)
@@ -519,13 +522,14 @@ ICH408I USER(acid ) GROUP(group ) NAME(name        )
  FROM IRR.DIGTCERT.** (G)
  ACCESS INTENT(CONTROL)  ACCESS ALLOWED(NONE   )
 ```
-then you need to PERMIT the user to have CONTROL access to IRR.DIGTCERT.** with the following RACF command:
-```
-    PERMIT IRR.DIGTCERT.** CLASS(FACILITY) ID(acid) ACCESS(CONTROL)DATE)
-```
-or the equivalent command for ACF2 or Top Secret.
 
-If the import is successful, you need to restart Zowe server to make the changes effective.
+then you need to PERMIT the user to have CONTROL access to `IRR.DIGTCERT.**` with the following RACF command or the equivalent command for ACF2 or Top Secret:
+
+```
+PERMIT IRR.DIGTCERT.** CLASS(FACILITY) ID(acid) ACCESS(CONTROL)
+```
+
+If the import is successful, you need to restart the Zowe server to make the changes effective.
 
 
 #### Disabling certificate validation
