@@ -211,10 +211,38 @@ To create a `zosmf` profile, issue the following command. Refer to the availab
     zowe profiles create zosmf-profile --help
     ```
 
+#### Creating a profile to access API Mediation Layer (API ML)
+
+You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
+
+* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
+
+* When you create a profile, specify the host, port, and the base path of API ML instance that you want to access. Using the base path to API ML, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
+
+**Example:**
+
+The following example illustrates the command to create a profile that connects to z/OSMF through API ML with the base path `my/api/layer`:
+
+```
+zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
+```
+
+For more information, see [Accessing an API Mediation Layer](l#accessing-an-api-mediation-layer).
+* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
+
+* When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
+
+**Example:**
+
+The following example illustrates the command to create a profile that connects to z/OSMF through API Mediation Layer with the base path `my/api/layer`:
+
+```
+zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
+```
 After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Test Connection to z/OSMF](cli-installcli.md#creating-a-profile-to-access-an-api-mediation-layer).
 
 ### Defining Environment Variables
-You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from CA Brightside CLI commands into environment variables and define them with a value. 
+You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
 In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
 
   - **Assigning an environment variable for a value that is commonly used.**  
@@ -302,7 +330,7 @@ https://myapilayerhost:port/api/v1/zosmf1/zosmf/restjobs/jobs
 The following example illustrates the command to verify that you can connect to z/OSMF through an API Mediation Layer that contains the base path `my/api/layer`:
 
 ```
-bright zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
+zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
 **More Information:**

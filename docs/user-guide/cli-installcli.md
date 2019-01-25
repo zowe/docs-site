@@ -101,11 +101,6 @@ If your computer is connected to the Internet, you can use the following method 
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
 
-### Creating a profile to access an API Mediation Layer
-
-You can create profiles that access an either an exposed API or an API Mediation Layer in the following ways:
-
-For more information, see [Accessing an API Mediation Layer](cli-usingcli.html#accessing-an-api-mediation-layer).
 
 ## Testing Zowe CLI connection to z/OSMF
 After you configure a Zowe CLI `zosmf` profile to connect to z/OSMF on your mainframe systems, you can issue a command at any time to receive diagnostic information from the server and confirm that your profile can communicate with z/OSMF.
