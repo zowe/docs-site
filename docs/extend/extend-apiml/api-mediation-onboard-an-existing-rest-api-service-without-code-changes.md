@@ -367,9 +367,11 @@ After you define and validate the service in YAML format, you are ready to add y
 
 The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
+        ```
         Scanning directory with static services definition: config/local/api-defs
         Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
         Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
+        ```
 
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
@@ -386,7 +388,9 @@ The following procedure enables you to refresh the API definitions after you cha
 
     This example uses the [HTTPie command-line HTTP client](https://httpie.org):
 
+       ```
        http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST https://localhost:10011/discovery/api/v1/staticApi
+       ```
 
 2. Check if your updated definition is effective.
 
