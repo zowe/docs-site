@@ -42,11 +42,8 @@ If you do not have internet access at your site, use the following method to ins
     **Note:** You might need to issue a change directory command and navigate to the location where you extracted the contents of the zip file before you issue the `npm install` command.
 
     ```
-    npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
+    npm install -g zowe-cli.tgz 
     ```
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
@@ -85,15 +82,19 @@ If your computer is connected to the Internet, you can use the following method 
 3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
-    npm install -g @brightside/core@next
+    npm install -g @brightside/core@latest
     ```
+
+    **Note:** You can use different npm tags to install a previous stable release of Zowe CLI, or install a newer alpha or beta release. The Zowe community only supports the `@latest` release at any given time. For a list of available npm tags, see [Understanding CLI versioning](#understanding-cli-versioning).
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/cics@next
+    bright plugins install @brightside/cics@latest @brightside/db2@latest
     ```
+
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
+
 
 5.  (Optional) Create a `zosmf` profile. For information about how to create a profile, see [Creating Zowe CLI profiles](cli-usingcli.md#creating-zowe-cli-profiles).
 
@@ -104,6 +105,7 @@ After you install and configure Zowe CLI, you can issue the `zowe --help` com
 
 ## Testing Zowe CLI connection to z/OSMF
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
+
 
 **Tip:** We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
 
@@ -132,3 +134,39 @@ You can issue a command at any time to receive diagnostic information from the s
     ```
 
 The commands return a success or failure message and display information about your z/OSMF server. For example, the z/OSMF version number and a list of installed plug-ins. Report any failure to your systems administrator and use the information for diagnostic purposes.
+
+## Understanding CLI versioning
+
+Each release of Zowe CLI is associated with tag in a Node Package Manager (npm) registry. If you install using the online registry method. You use tags in your command syntax to install or update the product to a specific version. For example, you use the @latest tag to install the community version of the product.
+
+**Important!** The Zowe community offers support to users who stay on the `@latest` version of the Zowe CLI. The community cannot gaurantee support for alpha, beta, or older versions of the CLI.
+
+The following list describes each npm tag and its intended usage: 
+
+- `@lts-stable` 
+    
+    Points to an older, stable version of the product. This version is only updated for bug fixes.
+
+- `@lts-incremental`
+    
+    Points to a incremental version of the product. This version is only updated to introduce backward-compatible enhancements and bug fixes.
+
+- `@latest` 
+    
+    Points to the latest version of the product that is intended for the community.
+
+- `@beta`
+
+    Points to a pre-release snapshot that contains a set of features and bug fixes, and is available for validation. It will remain unchanged for a longer period of time compared to the @daily tag (approximately 2 weeks) to allow time for users to validate the features and/or fixes. 
+
+    **Important!** You consume this beta release at your own risk.
+
+- `@daily` 
+
+    Points to the most recent pre-release snapshot (alpha version) of the product. This version is available for validation until the next snapshot is taken after a feature completion or bug fix. 
+
+    **Important!** You consume this alpha release at your own risk.
+
+- `@next` (DEPRECATED)
+
+    This tag is deprecated.

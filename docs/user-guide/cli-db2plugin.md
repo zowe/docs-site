@@ -35,7 +35,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2 
+    zowe plugins install @brightside/db2@latest
     ```
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -95,12 +95,8 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-db2-<VERSION_NUMBER>.tgz
+    zowe plugins install zowe-cli-db2-plugin.tgz
     ```
-
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI Plug-in for Db2 that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-db2-1.0.0-next.201810041114.tgz`
 
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
