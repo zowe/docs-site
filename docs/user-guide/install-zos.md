@@ -144,6 +144,8 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script.
 
+- The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate]((../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
+
 ## Installing the Zowe runtime on z/OS
 
 To install Zowe API Mediation Layer, Zowe Application Framework, and explorer server, you install the Zowe runtime on z/OS.
