@@ -384,9 +384,13 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
      - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
 
-    The first time the script is run, if it has to locate any of the environment variables, the script will add lines to a new file called `.zowe_profile` in the current user's home directory to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
+    When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
 
-    The script takes the environment variable settings from `.profile`, if it exists in the current user's home directory.  It does this for every install, not just the first time.  But if `.zowe_profile` already exists, the script uses `.zowe_profile` instead of `.profile` to set the variables.  You can create, edit or delete the `.zowe_profile` file as needed before each install to set the variables to the values you want.  You should not add any commands except `export` and shell variable assignments to the `.zowe_profile` file.
+    Each time you run the install script, it retrieves environment variable settings in the following ways. 
+	  - When the `.zowe-profile` file exists in the home diretory, the install script uses the values in this file to set the environment variables. 
+	  - When the `.zowe-profile` file does not exist, the install script detects if the `.profile` file exists in the home directory. If yes, the install script uses the values in this file to set the environment variables.
+
+    You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with exception to the export command and to specify shell variable assignments.
 
      **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
 
