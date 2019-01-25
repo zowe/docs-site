@@ -445,17 +445,15 @@ If you see this message, you need to import the certificate of your service or t
 
 #### Trust z/OSMF certificate
 
-The Zowe installation script tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically.
-
-This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
+The Zowe installation script tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically.  This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
 
 If it is not possible, you will see following error message:
 
 `WARNING: z/OSMF is not trusted by the API Mediation Layer.`
 
-You can add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring.
+To allow `apiml_cm.sh` to run, it should be sufficient to give CONTROL access for the user of `IRR.DIGTCERT.LIST` (needed for a SITE certificate) and UPDATE access for the user of `IRR.DIGTCERT.LISTRING`, but in some cases (for example, you have already created a certificate), you might have to permit the user CONTROL access to `IRR.DIGTCERT.**`. See details below.
 
-The read access to z/OSMF keyring can be granted by following commands:
+You can add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring. The read access to z/OSMF keyring can be granted by the following commands:
 
 - RACF:
 
