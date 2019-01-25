@@ -4,7 +4,7 @@ The Configuration Dataservice is an essential component of the Zowe Application 
 
 The Configuration Dataservice allows for saving preferences of applications, management of defaults and privileges within a Zowe ecosystem, and bootstrapping configuration of the server's dataservices.
 
-The fundamental element of extensibility of the Zowe Application Framework is a plug-in. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
+The fundamental element of extensibility of the Zowe Application Framework is a *plug-in*. The Configuration Dataservice works with data for plug-ins. Every resource that is stored in the Configuration Service is stored for a particular plug-in, and valid resources to be accessed are determined by the definition of each plug-in in how it uses the Configuration Dataservice.
 
 The behavior of the Configuration Dataservice is dependent upon the Resource structure for a plug-in. Each plug-in lists the valid resources, and the administrators can set permissions for the users who can view or modify these resources.
 
@@ -24,21 +24,21 @@ Configuration defaults that come with the product. Cannot be modified.
 
 **Site**
 
-Data that can be used between multiple instances of the Zowe Application Server (zlux-proxy-server).
+Data that can be used between multiple instances of the Zowe Application Server.
 
 **Instance**
 
-Data within an individual Zowe Application Server (zlux-proxy-server).
+Data within an individual Zowe Application Server.
 
 **Group**
 
-Data that is shared between multiple users in a group.
+Data that is shared between multiple users in a group.(Pending)
 
 **User**
 
-Data for an individual user.
+Data for an individual user.(Pending)
 
-**Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* and *Group* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, *User* and *Group* scopes will not be functional until the Security Framework is available.
+**Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* and *Group* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, *User* and *Group* scopes will not be functional until the Security Framework is merged into the mainline.
 
 Where *Product* is the broadest scope and *User* is the narrowest scope.
 
@@ -72,8 +72,11 @@ Get or put a single element rather than a collection.
 
 **Recursive** (boolean) 
 
-When performing a DELETE, specifies whether to delete subresources.
+When performing a DELETE, specifies whether to delete subresources too.
 
+**Listing** (boolean) 
+
+When performing a GET against a resource with content subresources, `listing=true` will provide the names of the subresources rather than both the names and contents.
 
 ### REST HTTP methods
 
@@ -239,7 +242,7 @@ The JSON contents within these directories are provided as Objects to dataservic
 
 Because the Configuration Dataservices stores data on a per-plug-in basis, each plug-in must define their resource structure to make use of the Configuration Dataservice. The resource structure definition is included in the plug-in's `pluginDefinition.json` file.
 
-For each resource and subresource, you can define an `aggregationPolicy` to control how the data of a broader scope alters the resource data that is returned to a user when requesting a resource from a narrower scope.
+For each resource and subresource, you can define an `aggregationPolicy` to control how the data of a broader scope alters the resource data that is returned to a user when requesting a resource from a narrower Scope.
 
 For example:
 ```
@@ -273,4 +276,5 @@ The following policies are currently implemented:
 * **NONE**: If the Configuration Dataservice is called for *Scope User*, only user-saved settings are sent, unless there are no user-saved settings for the query, in which case the dataservice attempts to send data that is found at a broader scope.
 
 * **OVERRIDE**: The Configuration Dataservice obtains data for the resource that is requested at the broadest level found, and joins the resource's properties from narrower scopes, overriding broader attributes with narrower ones, when found.
+
 

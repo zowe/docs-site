@@ -66,7 +66,7 @@ Use the following procedure if you use Gradle as your build automation system.
 4. In the same _build.gradle_ file, add the following code to the dependencies code block to add the enabler-jersey artifact as a dependency of your project:
 
     ```groovy
-      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-jersey', version: '0.2.0')
+      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '0.2.0')
     ```
     
 5. In your project directory, run the `gradle build` command to build your project.
@@ -94,13 +94,13 @@ Use the following procedure if you use Maven as your build automation system.
       </repositories>
    ``` 
 
-    This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifacts.
+    This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifact.
 
 2. In the same file, copy the following _xml_ tags to add the enabler-jersey artifact as a dependency of your project:
    ```xml
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
-        <artifactId>mfaas-integration-enabler-jersey</artifactId>
+        <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>0.2.0</version>
     </dependency>
    ```

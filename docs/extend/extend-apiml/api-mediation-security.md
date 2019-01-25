@@ -79,9 +79,9 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
         - Authentication and Authorization Service (AAS) 
             - Provides authentication and authorization functionality to check access of users to resources on z/OS
             - Security service is not provided as an individual microservice but is included to the Gateway Service
-            - For more details, see: [APIML wiki](https://github.com/gizafoundation/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
+            - For more details, see: [APIML wiki](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
 
-    - Non-APIML Zowe Core services (zLUX, Atlas)
+    - Non-APIML Zowe Core services (zLUX, z/OS Jobs Service, z/OS Datasets service)
 
         - They are like other regular API Client and Service described below
 
@@ -94,10 +94,6 @@ In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](
     - API Services can always access other services via the API Gateway
     - API Services can sometimes access other services without the API Gateway (if they are installed in such a way that direct access is possible)
     - API Services can also be API Clients (when they access other services)
-
-The following diagram illustrates basic relationships between services:
-![Services Diagram](../../images/api-mediation/apiml-components.svg)
-
 
 ### Transport Security Requirements
 
@@ -246,7 +242,7 @@ It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Window
 
 Use the following script in the root of the `api-layer` repository:
 
-    scripts/apiml_cm.sh --action setup
+`scripts/apiml_cm.sh --action setup`
 
 This creates the certificates and keystore for the API Mediation Layer in your current workspace.
 
@@ -275,7 +271,7 @@ Since the Discovery Service is using HTTPS, your client has also verify the vali
 
 Example how to access Discovery Service from CLI with full certificate validation:
 
-    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
+`http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
 
 
 ### Zowe runtime on z/OS
@@ -326,48 +322,55 @@ It is stored in UTF-8 encoding so you need to transfer it as a binary file. Sinc
 
 The recommended method is to use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--):
 
-    zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+`zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer`
 
 Alternatively, you can use `sftp`:
 
-    sftp <system>
-    get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+```
+sftp <system>
+get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+```
 
 Verify that the file has been transferred correctly. Open it and you should see something like:
-
-    -----BEGIN CERTIFICATE-----
-    ...
-    -----END CERTIFICATE-----
+   
+```
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+```
 
 Then you need to import the certificate to your root certificate store and trust it. 
 
 For **Windows**, you can run the following command:
 
-    certutil -enterprise -f -v -AddStore "Root" localca.cer 
+`certutil -enterprise -f -v -AddStore "Root" localca.cer` 
     
 You have to open the terminal as administrator. This will install the certificate to the Trusted Root Certification Authorities. 
 
 If you're using **macOS**, you can run the following command: 
 
-    $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer 
+`$ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer` 
 
 **Firefox** uses its own certificate truststore. You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore:
 
 Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
 
-    /* Enable experimental Windows truststore support */
-    pref("security.enterprise_roots.enabled", true);
-    
+```
+/* Enable experimental Windows truststore support */
+pref("security.enterprise_roots.enabled", true);
+```
 
 #### Generating keystore and truststore for a new service on z/OS
 
 You can generate keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
-    cd $ZOWE_ROOT_DIR/api-mediation
-    scripts/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
-    --service-keystore <keystore_path> --service-truststore <truststore_path> \
-    --service-dname <dname> --service-password <password> --service-validity <days> \
-    --local-ca-filename $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca 
+```
+cd $ZOWE_ROOT_DIR/api-mediation
+scripts/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
+--service-keystore <keystore_path> --service-truststore <truststore_path> \
+--service-dname <dname> --service-password <password> --service-validity <days> \
+--local-ca-filename $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca 
+ ```
 
 The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
 
@@ -377,13 +380,13 @@ The `service-truststore` contains certificates from other parties that you expec
 
 The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN has contain host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration. For example:
 
-    "SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"
+`"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
 *Note:* For more details about SAN, see section *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
 The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. For example:
 
-    "CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"
+`"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
 
 The `service-validity` is the number of days after that the certificate will expire.
@@ -405,18 +408,21 @@ The API Mediation Layer needs to validate the certificate of each service that i
 
 You can import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
 
-    cd $ZOWE_ROOT_DIR/api-mediation
-    scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
+```
+cd $ZOWE_ROOT_DIR/api-mediation
+scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
+```
 
 
 ##### What happens if the service is not trusted
 
 If you access a service that is not trusted, for example, by issuing a REST API request to it:
 
-    http --verify=keystore/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting
+```http --verify=keystore/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
 
 You will get a similar response:
 
+```
     HTTP/1.1 502
     Content-Type: application/json;charset=UTF-8
 
@@ -430,7 +436,8 @@ You will get a similar response:
             }
         ]
     }
-
+```
+    
 The response has HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and message number `AML0105` and its content explains details about the message.
 
 If you see this message, you need to import the certificate of your service or the CA that has signed it to the truststore API Mediation Layer as described above.
@@ -444,7 +451,7 @@ This requires the user ID that is doing the installation to be able to read the 
 
 If it is not possible, you will see following error message:
 
-    WARNING: z/OSMF is not trusted by the API Mediation Layer.
+`WARNING: z/OSMF is not trusted by the API Mediation Layer.`
 
 You can add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring.
 
@@ -481,11 +488,11 @@ where `acid` is the user ID of the user that is installing Zowe.
 
 To find the name of the z/OSMF keyring issue:
  
-    cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring
+`cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring`
 
 This will return a line like:
 
-    izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT
+`izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT`
 
 This should be the same keyring name as specified in the PARMLIB member for z/OSMF; for example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like
 
@@ -493,9 +500,11 @@ This should be the same keyring name as specified in the PARMLIB member for z/OS
 
 You need to run following commands as superuser to import z/OSMF certificates.  Substitute the value of the z/OSMF keyring obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
 
+```
     su
     cd $ZOWE_RUNTIME/api-mediation
     scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
+```
 
 If you receive an error like this from that command, 
 ```
@@ -525,7 +534,7 @@ If you want to try out the Zowe without setting up the certificates, you can dis
 
 This can be done updating following property:
 
-    -Dapiml.security.verifySslCertificatesOfServices=false
+`-Dapiml.security.verifySslCertificatesOfServices=false`
 
 in following shell scripts:
 

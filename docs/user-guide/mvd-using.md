@@ -73,7 +73,7 @@ The Hello World sample application plug-in for developers demonstrates how to cr
 The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
 
 ### z/OS Subsystems
-This z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
+The z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
 ### TN3270
 This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
@@ -84,15 +84,68 @@ The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
 ### API Catalog
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](#api-mediation-layer-architecture).
 
-### Workflows
+### Editor
+With the Zowe Editor you can create and edit files on the system that Zowe serves.
 
+### Workflows
 From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
+
+## Using the Editor
+
+With the Zowe Editor, you can create and edit the many types of files.
+
+### Specifying a language server
+
+To specify a language server, complete these steps:
+
+1. From the **Language Server** menu, select **URL***.
+2. From the **Language Server Setting**, **Put your config here** area, paste your configuration.
+3. Ensure that the **Enable Language Server** check box is selected.
+4. Click **Save**.
+
+### Specifying a language
+
+From the **Language** menu, select the language you want to use.
+
+### Opening a directory
+
+To open a directory on the system, complete these steps:
+
+1. From the **File** menu, select **Open Directory**.(Alternatively, you can click **Open Directory** in the File Explorer.)
+
+2. From the **Open Directory**, **Input Your Directory** field, type the name of the directory you want to open. For example: `/u/zs1234`
+3. Click **Open**.
+
+The File Explorer on the left side of the window lists the folders and files in the specified directory. Clicking on a folder expands the tree. Clicking on a file opens a tab that displays the file contents.
+
+### Creating a new file
+
+To create a new file, complete these steps:
+
+1. From the **File** menu, select **New File**. The **New File** tab opens.
+2. From the **New File**, **File Name** field, type the name of the file.
+3. Click **Create**.
+
+### Saving a file
+
+To save a file, click **File** > **Save**.
+
+**Note:** To save all files, click **File** > **Save All** (or Ctrl+S).
 
 ## Using the Workflows application plug-in
 
 The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
 
-To refresh the display, click the circular arrow in the upper right corner of the window.
+### Logging on to the system
+
+If you are prompted to log on to the system, complete these steps:
+
+1. Enter your user ID and password.
+2. Click **Sign in**.
+
+### Updating the data display
+
+To refresh the data on any tab, click ![the circular arrow](../images/mvd/mvd_workflow2.png) in the upper right corner of the window.
 
 ### Configuration
 
@@ -108,7 +161,9 @@ Complete these steps to add a new z/OSMF server:
 4. In the **Port** field, type the port number.
 5. Click **OK**.
 
-To test the connection, click **Test**. When the server is online the **Online** indicator next to the server Host and Port is green.
+### Testing a server connection
+
+To test the connection, click **Test**. When the server is online the **Online** indicator next to the server **Host** and **Port** is green.
 
 ### Setting a server as the default z/OSMF server
 
@@ -122,15 +177,21 @@ Complete these steps to set a default z/OSMF server:
 
 ### Removing a server
 
-To remove a server, click **x** next to the server in the list that you want to remove.
+To remove a server, click **x** next to the server that you want to remove.
+
+### Reload a server configuration
+
+To reload a server configuration, click **Reload**.
+
+### Save a server configuration
+
+To save a server configuration, click **Save**.
 
 ### Workflows
 
-Click the **Workflows** tab to display all workflows on the system. 
+To display all workflows on the system, click the **Workflows** tab. 
 
-**Tip:** To search for a particular workflow, type the search string in the search box in the upper right portion of the tab.
-
-The following information is displayed on the **Workflows** tab.
+You can sort the workflows based on the following information:
 
 **Workflow**
 
@@ -154,42 +215,94 @@ The system identifier.
 
 **Status** 
 
-The status of the workflow (for example, **In progress**, **Completed**, and so on.)
+The status of the workflow (**In progress** or **Completed**).
 
 **Progress**
 
-Progress indicator.
+Indicates how much of the workflow has been completed based on the number of tasks completed.
+
+### Searching workflows
+
+To locate a specific workflow, type a search string in the search box in the upper right corner of the window.
 
 ### Defining a workflow
 
-Complete these steps to define a workflow:
-1. From the **Workflows** tab, click **Action** in the upper left corner of the tab.
-2. Click **New workflow**.
-3. Specify the Name, Workflow definition file, System, and Owner.
+To define a workflow, complete these steps:
+
+1. From the **Workflows** tab, click **Actions** > **New workflow**. (By default, the **Advanced Mode** check box is selected.)
+2. In the **Name** field, specify a descriptive name for the workflow.
+3. In the **Workflow definition file** field, specify the primary XML file for this workflow.
+4. In the **System** field, specify a system.
+5. In the **Owner** field, specify the user ID of the person that is responsible for assigning the tasks in the workflow. (To set the owner to the current user, select the **Set owner to current user** check box.)
 4. Click **OK**.
 
 ### Viewing tasks
 
-To view your tasks, click the **My Tasks** tab. This tab displays Workflow tasks that belong to you. You can choose to view **Pending**, **Completed**, or **All** tasks. Workflows that have tasks that are assigned to you are shown on the left side of the window. For each workflow, you can click the arrow to expand or collapse the task list. Your assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
+To view the tasks associated with a workflow, click the **My Tasks** tab. Workflows that have assigned tasks are shown on the left side of the window. The task work area is on the right side of the window.
 
-Each task has a indicator of **PERFORM** (a step needs to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window.
+You can choose to view workflows that have **Pending** or **Completed** tasks or you can choose to view all workflows (**Pending** and **Completed**) and their tasks, regardless of the task status.
 
-**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed.
+For each workflow, you can click the arrow to expand or collapse the task list. Assigned tasks display below each workflow. Hovering over each task displays more information about the task, such as the status and the owner.
 
-Hovering over the task description in the title bar of the work area window on the right side displays more information corresponding workflow and the step description.
+Each task has a indicator of **PERFORM** (a step to be performed) or **CHECK** (Check the step that was performed). Clicking **CHECK** or **PERFORM** opens a work area on the right side of the window. When a task is complete, a green clipboard icon with a checkmark is displayed.
+
+**Note:** If you are viewing tasks on a **Pending** or **Completed** tab, only those workflows that have tasks with a corresponding status, are displayed. 
 
 ### Task work area
- When you click **CHECK** or **PERFORM**  a work area on the right side of the window is displayed.
 
--  When you click **CHECK**, you can view the JESMSGLG, JESJCL, JESYSMSG, or SYSTSPRT that is associated with the selected task.
+When you click **CHECK** or **PERFORM**, a work area on the right side of the window opens to display the steps to complete the task. Expand or collapse the work area by clicking  ![alt text](../images/mvd/mvd_workflow3.png).
 
--   When you click **PERFORM**, you can use the work area to perform the steps associated with the selected task. Click **Next** to advance to the next step for the task.
+**Tip:** Hovering over the task description in the title bar of the work area window on the right side displays more information about the corresponding workflow and the step description.
+
+### Performing a task
+
+1. To perform a task that has steps that are assigned to you, click **PERFORM**.
+2. Use the work area to perform the steps associated with the selected task. Depending on the task, you might use an embedded tool (such as another application) or you might complete a series of steps to complete the task. 
+3. If there are multiple steps to perform, click **Next** to advance to the next step for the task.
+4. Click **Finish**.
+
+**Note:** When a task is complete, a green clipboard icon with a checkmark is displayed next to the task.
+
+### Checking a task
+
+1. To check a task, click **CHECK**.
+2. In the task work area, view the JESMSGLG, JESJCL, JESYSMSG, or SYSTSPRT output that is associated with the selected task.
+
+### Managing tasks
+
+To manage a task in the PERFORM status, click ![alt text](../images/mvd/mvd_workflow1.png) to the right of the task status. Choose from the following options:
+
+**Properties**
+
+Display the title and description of the task.
+
+**Perform**
+
+Perform the first step.
+
+**Skip**
+
+Skip this step.
+
+**Override Complete**
+
+Override the completion of the step. The selected step will be bypassed and will not be performed for this workflow. You must ensure that the step is performed manually.
+
+**Assignment**
+
+Opens the Manage Assignees window where authorized users can add or remove the user ID of the person that is assigned to the step.
+
+**Return**
+
+Remove ownership of the step.
 
 ### Viewing warnings
 
-Click the **Warnings** tab to view any warning messages that were encountered.
+To view any warning messages that were encountered, click the **Warnings** tab. A message is listed in this tab each time it is encountered.
 
-The following information is displayed on the **Warnings** tab.
+To locate a specific message, type a search string in the search box in the upper right corner of the window.
+
+You can sort the warning messages based on the following information.
 
 **Message Code**
 
