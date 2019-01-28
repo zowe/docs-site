@@ -90,7 +90,7 @@ If your computer is connected to the Internet, you can use the following method 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/cics@latest @brightside/db2@latest
+    zowe plugins install @brightside/cics@latest @brightside/db2@latest
     ```
 
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
@@ -114,7 +114,7 @@ You can issue a command at any time to receive diagnostic information from the s
 - Verify that your CLI can communicate with z/OSMF by issuing the following command: 
 
     ```
-    bright zosmf check status --host <host> --port <port> --user <username> --pass <password> 
+    zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
     ```
 
 **Default profile**
