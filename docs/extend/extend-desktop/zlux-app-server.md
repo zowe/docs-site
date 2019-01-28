@@ -16,14 +16,14 @@ Another way to set up Zowe Application Framework is to have the Zowe Application
 
 Getting started with the server requires the following steps:
 
-0. [(Optional) Install git for z/OS](#0-optional-install-git-for-zos)
-1. [Acquire the source code](#1-acquire-the-source-code)
-1. [Acquire external components](#2-acquire-external-components)
-1. [Set the server configuration](#3-set-the-server-configuration)
-1. [Build application plug-ins](#4-build-application-plug-ins)
-1. [Deploy server configuration files](#5-deploy-server-configuration-files)
-1. [Run the server](#6-run-the-server)
-1. [Connect in a browser!](#7-connect-in-a-browser)
+0. [(Optional) Install git for z/OS](#_0-optional-install-git-for-z-os)
+1. [Acquire the source code](#_1-acquire-the-source-code)
+1. [Acquire external components](#_2-acquire-external-components)
+1. [Set the server configuration](#_3-set-the-server-configuration)
+1. [Build application plug-ins](#_4-build-application-plug-ins)
+1. [Deploy server configuration files](#_5-deploy-server-configuration-files)
+1. [Run the server](#_6-run-the-server)
+1. [Connect in a browser!](#_7-connect-in-a-browser)
 
 Follow each step and you will be on your way to your first Zowe Application Server instance.
 
@@ -34,9 +34,12 @@ If you'd like to go this route, you can find git for z/OS free of charge here: h
 
 ### 1. Acquire the source code
 
-To get started, first clone or download the github capstone repository, https://github.com/zowe/zlux
-Because we will be configuring ZSS on z/OS's USS, and the Zowe Application Server on a LUW host, you will need to place the contents on both systems.
-If you are using git, use the following commands:
+To get started, first clone or download the GitHub capstone repository [https://github.com/zowe/zlux](https://github.com/zowe/zlux). 
+
+**Note:** Make sure that you have your SSH key set up and added to GitHub. For how to do this, see [Generating SSH keys](https://help.github.com/articles/connecting-to-github-with-ssh/).
+
+Because we will be configuring ZSS on z/OS's USS, and the Zowe Application Server on a LUW host, you will need to place the contents on both systems. 
+If you are using git, use the following commands. 
 
 ```
 git clone --recursive git@github.com:zowe/zlux.git
@@ -76,7 +79,9 @@ Edit _../vt-ng2/\_defaultVT.json_ to set _host_ and _port_ to a valid ssh host a
 
 ### 4. Build application plug-ins
 
-**Note:** NPM is used when building application plug-ins. The version of NPM needed for the build to succeed should be at least 5.4. You can update NPM by executing `npm install -g npm`
+**Prerequisites:** 
+- NPM is used when building application plug-ins. The version of NPM needed for the build to succeed should be at least 5.4. You can update NPM by executing `npm install -g npm`.
+- You must have `ant` and `ant-contrib` installed. 
 
 Application plug-ins can contain server and web components. The web components must be built, as webpack is involved in optimized packaging. Server components are also likely to need building if they require external dependencies from NPM, use native code, or are written in typescript.
 
@@ -94,8 +99,6 @@ build.sh
 
 This will take some time to complete.
 
-_Note: You will need to have `ant` and `ant-contrib` installed_
-
 ### 5. Deploy server configuration files
 
 If you are running the Zowe Application Server separate from ZSS, ensure the ZSS installation configuration is deployed. You can accomplish this through:
@@ -104,7 +107,7 @@ If you are running the Zowe Application Server separate from ZSS, ensure the ZSS
 ant deploy
 ```
 
-On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in step 4.
+On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in [step 4](#_4-build-application-plug-ins).
 
 However, if you need to change the server configuration files or if you want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Server and ZSS would be required.
 
