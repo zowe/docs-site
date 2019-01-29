@@ -2,8 +2,8 @@
 <!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "http://docs.oasis-open.org/dita/dtd/bookmap.dtd">
 <bookmap>
   <booktitle>
-    <mainbooktitle>Open Beta for Zowe</mainbooktitle>
-    <booktitlealt>Zowe Documentation Version {{version}}</booktitlealt>
+    <mainbooktitle>Zowe Documenation</mainbooktitle>
+    <booktitlealt>Version {{version}}</booktitlealt>
   </booktitle>
   <bookmeta>
     <author>Zowe Docs Team</author>
