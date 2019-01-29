@@ -193,7 +193,6 @@ Zowe API Mediation Layer uses the following third-party software:
 | Zowe API Mediation Layer | hamcrest | 1.3 | license_hamcrest_1.3.pdf | [https://github.com/hamcrest/JavaHamcrest](https://github.com/hamcrest/JavaHamcrest) |
 | Zowe API Mediation Layer | history | 4.7.2 | license_history_4.7.2.pdf | [https://github.com/ReactTraining/history](https://github.com/ReactTraining/history) |
 | Zowe API Mediation Layer | httpclient | 4.5.3 | license_httpclient_4.5.3.pdf | [https://github.com/apache/httpcomponents-client](https://github.com/apache/httpcomponents-client) |
-| Zowe API Mediation Layer | httpcore | 4.4.10 | license_httpcore_4.4.10.pdf | [https://github.com/apache/httpcomponents-core](https://github.com/apache/httpcomponents-core) |
 | Zowe API Mediation Layer | install | 0.12.2 | license_install_0.12.2.pdf | [https://github.com/benjamn/install](https://github.com/benjamn/install) |
 | Zowe API Mediation Layer | jackson | 2.9.2 | license_jackson_2.9.2.pdf | [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson) |
 | Zowe API Mediation Layer | javamail | 1.4.3 | license_javamail_1.4.3.pdf | [https://github.com/eclipse-ee4j/javamail](https://github.com/eclipse-ee4j/javamail) |
@@ -230,6 +229,7 @@ Zowe API Mediation Layer uses the following third-party software:
 | Zowe API Mediation Layer | redux-logger | 3.0.6 | license_redux-logger_3.0.6.pdf | [https://github.com/LogRocket/redux-logger](https://github.com/LogRocket/redux-logger) |
 | Zowe API Mediation Layer | redux-observable | 1.0.0 | license_redux-observable_1.0.0.pdf | [https://github.com/redux-observable/redux-observabl](https://github.com/redux-observable/redux-observabl) |
 | Zowe API Mediation Layer | redux-persist | 5.10.0 | license_redux-persist_5.10.0.pdf | [https://github.com/rt2zz/redux-persist](https://github.com/rt2zz/redux-persist) |
+| Zowe API Mediation Layer | redux-persist-transform-filter | 0.0.10 | Legal_Doc_ 00002499_87.pdf | [https://github.com/rt2zz/redux-persist-transform-filter](https://github.com/rt2zz/redux-persist-transform-filter) |
 | Zowe API Mediation Layer | redux-thunk | 2.3.0 | license_redux-thunk_2.3.0.pdf | [https://github.com/reduxjs/redux-thunk](https://github.com/reduxjs/redux-thunk) |
 | Zowe API Mediation Layer | Roaster | 2.20.1.Final | license_Roaster_2.20.1.Final.pdf | [https://github.com/forge/roaster](https://github.com/forge/roaster) |
 | Zowe API Mediation Layer | RxJS | 6.3.1 | license_RxJS_6.3.1.pdf | [https://github.com/reactivex/rxjs](https://github.com/reactivex/rxjs) |
