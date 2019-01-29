@@ -9,10 +9,10 @@ the use of third-party plug-ins.
 
 You can install the following plug-ins:
   - **Zowe CLI Plug-in for IBM CICS**
-    Use `@brightside/cics` in your command syntax to install, update, and validate the plug-in. 
+    Use `@brightside/cics@latest` in your command syntax to install, update, and validate the plug-in. 
   - **Zowe CLI Plug-in for IBM Db2 Database**  
-    Use `@brightside/db2` in your command syntax to install, update, and
-    validate the IBM Db2 Database plug-in. 
+    Use `@brightside/db2@latest` in your command syntax to install, update, and
+    validate the IBM Db2 Database plug-in.
 
 ## Setting the registry
 

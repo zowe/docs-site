@@ -42,11 +42,8 @@ If you do not have internet access at your site, use the following method to ins
     **Note:** You might need to issue a change directory command and navigate to the location where you extracted the contents of the zip file before you issue the `npm install` command.
 
     ```
-    npm install -g zowe-cli-<VERSION_NUMBER>.tgz 
+    npm install -g zowe-cli.tgz 
     ```
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI that you want to install from the package. The following is an example of a full package name for Zowe CLI: `zowe-core-2.0.0-next.201810161407.tgz`
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
@@ -85,13 +82,13 @@ If your computer is connected to the Internet, you can use the following method 
 3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
-    npm install -g @brightside/core@next
+    npm install -g @brightside/core@latest
     ```
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/cics@next
+    bright plugins install @brightside/cics@latest
     ```
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
@@ -112,7 +109,7 @@ unless you specify a specific profile name on that command.
 **Follow these steps:**
 
 1.  To create a `zosmf` profile, issue the following command.  
-  Refer to the available options in the help text to define your profile:   
+  Refer to the available options in the help text to define your profile:
     ```
     zowe profiles create zosmf-profile --help
     ```
