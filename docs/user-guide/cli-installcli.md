@@ -107,7 +107,7 @@ You can issue a command at any time to receive diagnostic information from the s
 Verify that your CLI can communicate with z/OSMF by issuing the following command:
 
 ```
-bright zosmf check status --host <host> --port <port> --user <username> --pass <password> 
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
 ```
 
 **Default profile**
