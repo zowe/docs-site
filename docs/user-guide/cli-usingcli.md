@@ -191,8 +191,6 @@ The affect of the order is that if you omit an argument/option from the command 
 
 Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
-**Important\!** A `zosmf` profile is required to issue most Zowe CLI commands. The first profile that you create becomes your default profile. When you issue any command that requires a `zosmf` profile, the command executes using your default profile unless you specify a specific profile name on that command.
-
 To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:  
 
     ```
