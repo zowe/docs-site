@@ -217,7 +217,6 @@ The Discovery Service has two types of users that need to authenticate:
     - These are not users that have user ID and password but other services 
     - They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication
 
-
 ## Certificate Management in Zowe API Mediation Layer
 
 ### Running on localhost
