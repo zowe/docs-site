@@ -1,6 +1,6 @@
 # Creating a RestAPI with Swagger documentation using Liberty
 
-This tutorial will show you to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
+This tutorial will show you how to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
 
 The source repo for the project can be found at the [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
 

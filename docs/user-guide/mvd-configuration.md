@@ -1,5 +1,5 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and ZSS configuration, if needed.
+After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, if needed.
 
 ## Setting up terminal application plug-ins
 
@@ -30,11 +30,11 @@ Follow these optional steps to configure the default connection to open for the 
 ### Configuration file
 The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
 
-For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-proxy-server` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-example-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
+For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
 
-An example of a JSON file (`zluxserver.json`) can be found in the `zlux-example-server` repository, in the `config` directory. 
+An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-server` repository, in the `config` directory. 
 
-**Note:** All examples are based on the *zlux-example-server* repository.
+**Note:** All examples are based on the *zlux-app-server* repository.
 
 ### Network configuration
 
@@ -98,7 +98,7 @@ These directories dictate where the [Configuration Dataservice](../extend/extend
 
 #### Deploy example
 ```
-// All paths relative to zlux-example-server/js or zlux-example-server/bin
+// All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the installation process.
   "rootDir":"../deploy",
   "productDir":"../deploy/product",
@@ -117,11 +117,11 @@ In the configuration file, you can specify a directory that contains JSON files,
 
 To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**.
 
-**Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-example-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
+**Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-app-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
 
 #### Plug-ins directory example
 ```
-// All paths relative to zlux-example-server/js or zlux-example-server/bin
+// All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the install process.
 //...
   "pluginsDir":"../deploy/instance/ZLUX/plugins",
@@ -148,8 +148,8 @@ When you run the Zowe Application Server, specify the following flags to declare
 
 The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
 
-- Zowe Proxy Server: `zlux-example-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
-- ZSS: `zlux-example-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
+- Zowe Proxy Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
+- ZSS: `zlux-app-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
  
 The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
 

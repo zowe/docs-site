@@ -187,7 +187,6 @@ Zowe CLI has a *command option order of precedence* that lets you define argumen
       - [Setting environment variables in an Automation Server](#setting-environment-variables-in-an-automation-server)
       - [Using secure credential storage](#using-secure-credential-storage)
 
-
 ### Understanding command option order of precedence
 
 Before you use environment variables, it is helpful to understand the command option order of precedence. The following is the order in which Zowe CLI *searches for* your command arguments and options when you issue a command:

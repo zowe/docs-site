@@ -1,11 +1,11 @@
 # Zowe CLI Plug-in for IBM CICS
 
-The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS.For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
+The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
-  - [Setting up profiles](#setting-up-profiles)
+  - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
 
 ## Use cases
@@ -93,7 +93,7 @@ Issue the following command to create a cics profile: 
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
-**Note:** For more information about the` `syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
+**Note:** For more information about the syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
 
 ```
 zowe profiles create cics -h

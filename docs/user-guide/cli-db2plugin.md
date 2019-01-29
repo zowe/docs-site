@@ -6,8 +6,8 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
-  - [Obtaining a DB2 License](#license)
-  - [Setting up profiles](#setting-up-profiles)
+  - [Addressing the license requirement](#addressing-the-license-requirement)
+  - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
   
 ## Use cases
@@ -112,23 +112,27 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 
 5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
-### Addressing the license requirement
+## Addressing the license requirement
 
 The following steps are required for both the registry and offline package installation methods: 
 
 1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS. 
 
-    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
-2. Copy your Db2 license file and place it in the following directory. 
-    
-   ```
-   <brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
-   ```
-   Note: by default, <brightside_home> is set to `~/.brightside` on \*NIX systems, and `C:\Users\<Your_User>\.brightside` on Windows systems.
-   
-   After the license is copied, you can use the Db2 plugin functionality.
+2. Copy your Db2 license file and place it in the following directory.
+    - **Windows:**
+        ```
+        <brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
+        ```
+    - **Linux:**
+        ```
+        <brightside_home>/plugins/installed/lib/node_modules/@brightside/db2/node_modules/ibm_db/installer/clidriver/license
+        ```
+    **Tip:** By default, <brightside_home> is set to `~/.brightside` on \*NIX systems, and `C:\Users\<Your_User>\.brightside` on Windows systems. 
+
+    After the license is copied, you can use the Db2 plugin functionality.
 
 ## Creating a user profile
 
