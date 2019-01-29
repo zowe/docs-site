@@ -155,7 +155,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
     Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
-**Note:** If your implementation uses an external security manager other than RACF (for example, CA Technologies Top Secret or CA Technologies ACF2), you provide equivalent commands for your environment. For more information, see the following product documentation:
+**Note:** If your implementation uses an external security manager other than RACF (for example, CA Technologies, a Broadcom Company, Top Secret or CA Technologies ACF2), you provide equivalent commands for your environment. For more information, see the following product documentation:
 
 - [Configure z/OS Management Facility for CA Technologies Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
 
