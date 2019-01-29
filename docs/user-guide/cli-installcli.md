@@ -9,7 +9,7 @@ Use one of the following methods to install Zowe CLI.
 - [Install Zowe CLI from local package](#installing-zowe-cli-from-local-package)
 - [Install Zowe CLI from online registry](#installing-zowe-cli-from-online-registry)
 
-If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.md#troubleshooting-installing-zowe-cli).
 
 ### Installing Zowe CLI from local package
 
@@ -45,7 +45,7 @@ If you do not have internet access at your site, use the following method to ins
     npm install -g zowe-cli.tgz 
     ```
 
-    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.md#troubleshooting-installing-zowe-cli).
 
     Zowe CLI is installed on your computer. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
@@ -53,7 +53,7 @@ If you do not have internet access at your site, use the following method to ins
 
    **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.html#displaying-zowe-cli-help).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [Display Help](cli-usingcli.md#displaying-zowe-cli-help).
 
 ### Installing Zowe CLI from online registry
 
@@ -95,7 +95,7 @@ If your computer is connected to the Internet, you can use the following method 
 
    **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.md#displaying-zowe-cli-help).
 
 ## Testing Zowe CLI connection to z/OSMF
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
