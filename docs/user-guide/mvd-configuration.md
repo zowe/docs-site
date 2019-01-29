@@ -148,7 +148,7 @@ When you run the Zowe Application Server, specify the following flags to declare
 
 The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
 
-- Zowe Proxy Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
+- Zowe Application Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
 - ZSS: `zlux-app-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
  
 The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.

@@ -40,9 +40,9 @@ The following views are available from the explorer server Web UI and are access
 
   Use this view to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
 
-**Data set Explorer**
+**MVS Explorer**
 
-  Use this view to browse the MVS™ file system by using a high-level qualifier filter. With the Dataset Explorer, you can complete the following tasks:
+  Use this view to browse the MVS™ file system by using a high-level qualifier filter. With the MVS Explorer, you can complete the following tasks:
 
   - List the members of partitioned data sets.
   - Create new data sets using attributes or the attributes of an existing data set ("Allocate Like").
@@ -52,9 +52,9 @@ The following views are available from the explorer server Web UI and are access
   - Delete data sets and members.
   - Open data sets in full screen editor mode, which gives you a fully qualified link to that file. The link is then reusable for example in help tickets.
 
-**UNIX file Explorer**
+**USS Explorer**
 
-  Use this view to browse the USS files by using a path. With the UNIX file Explorer, you can complete the following tasks:
+  Use this view to browse the USS files by using a path. With the USS Explorer, you can complete the following tasks:
 
  - List files and folders.
  - Create new files and folders.
