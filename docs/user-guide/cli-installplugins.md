@@ -62,14 +62,14 @@ zowe plugins install [plugin...] [--registry <registry>]
     If you are using zowe-cli-bundle.zip, issue the following command for each plug-in .tgz file:
     
     ```
-    zowe plugins install ./zowe-cli-cics-1.0.0-next.20180531.tgz 
+    zowe plugins install ./zowe-cli-cics.tgz 
     ```
 
   - The following example illustrates the syntax to use to install a
     plug-in that is named "my-plugin" from a specified registry:
 
     ```
-    zowe plugins install @brightside/my-plugin
+    zowe plugins install @brightside/my-plugin@latest
     ```
 
   - The following example illustrates the syntax to use to install a
