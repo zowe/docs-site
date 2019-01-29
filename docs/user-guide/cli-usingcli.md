@@ -2,10 +2,10 @@
 
 This section contains information about using Zowe CLI.
 
-## Display Zowe CLI help
+## Displaying Zowe CLI help
 Zowe CLI contains a help system that is embedded directly into the command-line interface. When you want help with Zowe CLI, you issue help commands that provide you with information about the product, syntax, and usage.
 
-### Display top-level help
+### Displaying top-level help
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
 ```
@@ -169,8 +169,8 @@ zowe zosmf -h
 
 Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains order of precedence and different methods for specifying your mainframe connection details. 
 
-  - [Understanding command option order of precedence](#Understanding-command-option-order-of-precedence)
-  - [Creating CLI profiles](#creating-cli-profiles)
+  - [Understanding command option order of precedence](#understanding-command-option-order-of-precedence)
+  - [Creating Zowe CLI profiles](#creating-zowe-cli-profiles)
   - [Defining environment variables](#defining-environment-variables)
   - [Integrating with API Mediation Layer](#integrating-with-api-mediation-layer)
 
@@ -213,7 +213,7 @@ The following example illustrates the command to create a profile that connects 
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
-For more information, see [Accessing an API Mediation Layer](l#accessing-an-api-mediation-layer).
+For more information, see [Accessing an API Mediation Layer](#accessing-an-api-mediation-layer).
 * When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
 
 * When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
