@@ -155,11 +155,11 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
     Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
-**Note:** If your implementation uses an external security manager other than RACF (for example, CA Technologies A Broadcom Company Top Secret or CA Technologies A Broadcom Company ACF2), you provide equivalent commands for your environment. For more information, see the following product documentation:
+**Note:** If your implementation uses an external security manager other than RACF (for example, CA Technologies Top Secret or CA Technologies ACF2), you provide equivalent commands for your environment. For more information, see the following product documentation:
 
-- [Configure z/OS Management Facility for CA Technologies A Broadcom Company Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
+- [Configure z/OS Management Facility for CA Technologies Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
 
-- [Configure z/OS Management Facility for CA Technologies A Broadcom Company ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
+- [Configure z/OS Management Facility for CA Technologies ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
 #### z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
