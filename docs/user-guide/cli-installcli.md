@@ -92,46 +92,11 @@ If your computer is connected to the Internet, you can use the following method 
     ```
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
-5.  Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating a Zowe CLI profile](#creating-a-zowe-cli-profile).
+5.  (Optional) Create a `zosmf` profile so that you can issue commands that communicate with z/OSMF. For information about how to create a profile, see [Creating Zowe CLI profiles](cli-usingcli.md#creating-zowe-cli-profiles).
 
-    **Tip:** Zowe CLI profiles contain information that is required for the product to interact with remote systems. For example, host name, port, and user ID. Profiles let you target unique systems, regions, or instances for a command. Most Zowe CLI [command groups](cli-usingcli.html#zowe-cli-command-groups) require a Zowe CLI `zosmf` profile.
+   **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
 After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For more information, see [How to display Zowe CLI help](cli-usingcli.html#displaying-zowe-cli-help).
-
-## Creating a Zowe CLI profile
-
-Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
-
-**Important\!** A `zosmf` profile is required to issue most Zowe CLI commands. The first profile that you create becomes your default profile. When you issue any command that requires
-a `zosmf` profile, the command executes using your default profile
-unless you specify a specific profile name on that command.
-
-**Follow these steps:**
-
-1.  To create a `zosmf` profile, issue the following command.  
-  Refer to the available options in the help text to define your profile:
-    ```
-    zowe profiles create zosmf-profile --help
-    ```
-**Note:** After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
-
-### Creating a profile to access an API Mediation Layer
-
-You can create profiles that access an either an exposed API or an API Mediation Layer in the following ways:
-
-* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
-
-* When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
-
-**Example:**
-
-The following example illustrates the command to create a profile that connects to z/OSMF through API Mediation Layer with the base path `my/api/layer`:
-
-```
-bright profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
-```
-
-For more information, see [Accessing an API Mediation Layer](cli-usingcli.html#accessing-an-api-mediation-layer).
 
 ## Testing Zowe CLI connection to z/OSMF
 After you configure a Zowe CLI `zosmf` profile to connect to z/OSMF on your mainframe systems, you can issue a command at any time to receive diagnostic information from the server and confirm that your profile can communicate with z/OSMF.
