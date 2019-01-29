@@ -199,7 +199,7 @@ To create a `zosmf` profile, issue the following command. Refer to the available
     zowe profiles create zosmf-profile --help
     ```
 
-#### Creating a profile to access API Mediation Layer (API ML)
+#### Creating a profile to access API Mediation Layer
 
 You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 

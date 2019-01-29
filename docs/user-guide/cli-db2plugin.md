@@ -155,7 +155,7 @@ output:
 
 ```
 Profile created successfully! Path:
-/home/user/.brightside/profiles/db2/<profile name>.yaml
+/home/user/.zowe/profiles/db2/<profile name>.yaml
 type: db2
 name: <profile name>
 hostname: <host>

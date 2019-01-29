@@ -86,7 +86,7 @@ If your computer is connected to the Internet, you can use the following method 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    bright plugins install @brightside/cics@latest
+    zowe plugins install @brightside/cics@latest
     ```
 
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
