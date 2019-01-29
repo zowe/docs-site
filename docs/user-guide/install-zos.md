@@ -42,7 +42,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
       (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
       ```
 
-      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary "zowe-v.r.m.pax.sha512.my" file.
+      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary `zowe-v.r.m.pax.sha512.my` file.
 
       You can also use other commands such as `sha512`, `sha512sum`, or `openssl dgst -sha512` to generate `SHA512` hash code. These hash code results are in a different format from what Zowe provides but the values are the same.
 
@@ -52,14 +52,14 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
       **Follow these steps:**
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [Zowe website](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
-      2. Import the public key with command `gpg --import KEYS`.
-      3. If you have never used gpg before, generate keys with command `gpg --gen-key`.
-      4. Sign the downloaded public key with command `gpg --sign-key DC8633F77D1253C3`.
-      5. Verify the file with command `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax`.
-      6. Optional: You can remove the imported key with command: `gpg --delete-key DC8633F77D1253C3`.
+      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://projectgiza.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
+      2. Import the public key with the `gpg --import KEYS` command.
+      3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
+      4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
+      5. Verify the file with the `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax` command.
+      6. Optional: You can remove the imported key with the `gpg --delete-key DC8633F77D1253C3` command.
 
-     When you see output similar to the followin one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
+     When you see output similar to the following one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
 
      ```
      gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
@@ -103,20 +103,20 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
     d. When you are in the directory you want to transfer the Zowe PAX file into, issue the following command:
 
      ```
-     put <pax-file-name>.pax
+     put <zowe-v.r.m>.pax
      ```
 
-    Where _pax-file-name_ is a variable that indicates the full name of the PAX file you downloaded.
+    Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
 
-    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` will list contents of a directory on z/OS.  
+    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.  
 
-3. When the PAX file is transferred, expand the PAX file by issuing the following command in an ssh session:
+3. When the PAX file is transferred, expand the PAX file by issuing the following command in an SSH session:
 
     ```
-    pax -ppx -rf <pax-file-name>.pax
+    pax -ppx -rf <zowe-v.r.m>.pax
     ```  
 
-    Where _pax-file-name_ is a variable that indicates the name of the PAX file you downloaded.
+    Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
 
 
     This will expand to a file structure.
@@ -144,7 +144,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
-- The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate]((../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
+- The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
 ## Installing the Zowe runtime on z/OS
 
@@ -200,7 +200,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     **Notes:**
     -  If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
-    - Comments are not supported in the yaml file, apart from lines starting with '#' in column one.
+    - Comments are not supported in the YAML file, apart from lines starting with '#' in column one.
 
 3. Determine which ports are not available.
 
@@ -252,7 +252,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
-      - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user installing Zowe must have update access to this dataset.  
+      - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
       - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-installsh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
@@ -268,9 +268,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
      - The member name must be a valid PDS member name in z/OS.  If the member already exists, it will be overwritten.  
      - If you omit the `memberName` tag or specify `memberName=`, the install script uses ZOWESVR.
 
-5. (Optional) Use existing certificate signed by an external CA for HTTPS ports in API Mediation Layer and zLUX.
+5. (Optional) Use existing certificate signed by an external CA for HTTPS ports in API Mediation Layer and Zowe Application Framework.
 
-     If you skip this step, then certificates generated by the local API Mediation CA are used. These certificates are generated automatically during the installation. The server certificate needs to be imported to your browser - see [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).
+     If you skip this step, then certificates generated by the local API Mediation CA are used. These certificates are generated automatically during the installation. The server certificate needs to be imported to your browser. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).
 
      You can use an existing server certificate that is signed by an external CA such as a CA managed by the IT department of your company. The benefit of such certificate is that it will be trusted by browsers in your company.
      You can even use a public certificate authority such as Symantec, Comodo, or GoDaddy. Such certificate are trusted by all browsers and most REST API clients. This is, however, a manual process of requesting a certificate. As such, we recommend to start with the local API Mediation Layer CA for an initial evaluation.
@@ -287,7 +287,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
      d. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `verifyCertificatesOfServices=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate. 
    
-     **Important** Switching off certificate evaluation is a non-secure setup.
+     **Important!** Switching off certificate evaluation is a non-secure setup.
 
      **Example:**
 
@@ -307,7 +307,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     zowe-install.sh  
     ```
 
-    **Note:** You might receive the following error that the file cannot be executed:
+    You might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute
@@ -388,14 +388,14 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
 
-     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`
-     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
-     - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`
+     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
+     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
+     - `ZOWE_EXPLORER_HOST`: The IP address of where the explorer servers are launched from.  Defaults to running `hostname -c`.
 
     The first time the script is run if it has to locate any of the environment variables, the script will add lines to the current user's home directory `.profile` file to set the variables.  This ensures that the next time the same user runs the install script, the previous values will be used.
 
     <<TODO - JRW>>
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.
+     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 
@@ -455,7 +455,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has a number of runtime on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
 
