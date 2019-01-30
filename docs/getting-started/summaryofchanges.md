@@ -2,7 +2,7 @@
 
 Learn about what is new, changed, removed, and known issues in Zowe.
 
-## Version 1.0.0 (January 2019)
+## Version 1.0.0 (February 2019)
 
 Version 1.0.0 contains the following changes since the Open Beta release.
 
