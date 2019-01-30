@@ -171,7 +171,7 @@ Review the created profile and edit if necessary using the profile update comman
 The following commands can be issued with the Zowe CLI Plug-in for IBM Db2:
 
 - [Calling a stored procedure](#calling-a-stored-procedure)
-- [Executing an SQL statement](#executing-an-sql-statememnt)
+- [Executing an SQL statement](#executing-an-sql-statement)
 - [Exporting a table in SQL format](#exporting-a-table-in-sql-format)
 
 
@@ -197,7 +197,7 @@ Issue the following command to call a stored procedure and pass a placeholder bu
 $ zowe db2 call sp "DEMOUSER.TIME1(?)" --parameters "....placeholder..
 ```
 
-### Executing an SQL statement 
+### Executing an SQL statement
 
 Issue the following command to count rows in the EMP table:
 
