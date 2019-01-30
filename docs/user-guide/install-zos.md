@@ -1,6 +1,6 @@
 # Installing Zowe on z/OS 
 
-To install Zowe on z/OS, you install the Zowe runtime that consists of three components: Zowe Application Framework, explorer server, and Zowe API Mediation Layer. Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
+To install Zowe on z/OS, you install the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Services, and Zowe API Mediation Layer. Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
 
 1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
 2. [Prerequisites](#prerequisites)
@@ -148,7 +148,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 ## Installing the Zowe runtime on z/OS
 
-To install Zowe API Mediation Layer, Zowe Application Framework, and explorer server, you install the Zowe runtime on z/OS.
+To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
 
  **Follow these steps:**
 
@@ -218,7 +218,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
       The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application. 
       
-      **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and explorer server which must be unused, the terminal ports are expected to be in use.
+      **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.
 
       ```
       # Ports for the TN3270 and the VT terminal to connect to
@@ -453,7 +453,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
       //ZOWESVR   PROC SRVRPATH='/zowe/install/path'
       ```
 
-    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
       ```
       /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
@@ -475,7 +475,7 @@ where:
 
 _$ZOWE_ROOT_DIR_ is the directory where you installed the Zowe runtime. This script starts the ZOWESVR PROC for you so you do not have to log on to TSO and use SDSF.
 
-**Note:** The default startup allows self-signed and expired certificates from the Zowe Application Framework proxy data services such as the explorer server.
+**Note:** The default startup allows self-signed and expired certificates from the Zowe Application Framework proxy data services.
 
 If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following operator command in SDSF:
 
@@ -508,7 +508,7 @@ If you prefer to use SDSF to stop Zowe, stop ZOWESVR by issuing the following op
 /C ZOWESVR
 ```
 
-Either method will stop the explorer server, the Zowe Application Server, and the zSS server.
+Either method will stop the z/OS Service microservice server, the Zowe Application Server, and the zSS server.
 
 When you stop the ZOWESVR, you might get the following error message:
 
