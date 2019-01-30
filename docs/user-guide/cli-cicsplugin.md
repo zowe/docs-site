@@ -30,13 +30,13 @@ Before you install the plug-in, meet the following prerequisites:
 
 Use one of the two following methods that you can use to install the Zowe CLI Plug-in for IBM CICS:
 
-- [Installing from online registry](#installing-from-online-registry)
+- [Installing from an online registry](#installing-from-an-online-registry)
 
-- [Installing from local package](#installing-from-local-package)
+- [Installing from local package](#installing-from-a-local-package)
 
 **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
-### Installing from online registry
+### Installing from an online registry
 
 To install Zowe CLI from an online registry, complete the following steps:
 
@@ -60,11 +60,11 @@ To install Zowe CLI from an online registry, complete the following steps:
 
     Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
 
-### Installing from local package
+### Installing from a local package
 
 If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` package, complete the following steps to install the Zowe CLI Plug-in for CICS:
 
-1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
+1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
 
 2. Issue the following command to install the plug-in:
 
@@ -104,7 +104,7 @@ The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
   - [Defining resources to CICS](#defining-resources-to-cics)
   - [Deleting CICS resources](#deleting-cics-resources)
   - [Discarding CICS resources](#discarding-cics-resources)
-  - [Getting CICS resources](#get-cics-resources)
+  - [Getting CICS resources](#getting-cics-resources)
   - [Installing resources to CICS](#installing-resources-to-cics)
   - [Refreshing CICS programs](#refreshing-cics-programs)
 
