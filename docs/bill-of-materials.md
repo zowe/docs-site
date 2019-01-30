@@ -2,8 +2,8 @@
 
 ## Zowe PAX 
 
-| File Path | Description | Source Location | Build Details | 
-| --------- | ----------- | --------------- | ------------- |
+| File Path | Description | Source Location | Build Script(s) | 
+| --------- | ----------- | --------------- | --------------- |
 | <>/zowe-*.pax | PAX file containing all Zowe z/OS Components | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |  
 | files/ZLUX.pax | PAX Archive containing Zowe Desktop Core Components | [zlux sources](https://www.github.com/zowe/zlux) | [zlux build](https://www.github.com/zowe/zlux-build) | 
 | files/api-mediation-package-*.pax | PAX Archive containing Zowe API Mediation Layer Components | [api layer sources](https://www.github.com/zowe/api-layer) | [api-layer pipeline](https://github.com/zowe/api-layer/blob/master/Jenkinsfile) |
@@ -67,8 +67,8 @@
 
 ## Zowe CLI Package  
 
-| File Path | Description | Source Location | Build Details | 
-| --------- | ----------- | --------------- | ------------- |
+| File Path | Description | Source Location | Build Script(s) | 
+| --------- | ----------- | --------------- | --------------- |
 | <>/zowe-cli-package-*.zip | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
 | zowe-cli-*.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
 | zowe-cics-*.tgz | Zowe CLI Plug-in for IBM® CICS® | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 
