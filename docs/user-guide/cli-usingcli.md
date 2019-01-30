@@ -322,7 +322,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 ```
 
 **More Information:**
-- [API Mediation Layer overview](./api-mediation/api-mediation-overview.md)
+- [API Mediation Layer](api-mediation/api-mediation-overview.md)
 - [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
 
 ## Writing scripts to automate mainframe actions
