@@ -94,26 +94,6 @@ For detailed information about the available functionality in Zowe CLI, see [Z
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
-### Zowe CLI Third-Party software agreements
-
-Zowe CLI uses the following third-party software:
-
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe CLI  | Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
-| Imperative CLI Framework | Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
-| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | Legal_Doc_00002310_41.pdf |
-|| Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
-|| Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
-| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf |
-|| Zowe-CLI | 2.0 | Legal_Doc_00002579_4.pdf |
-|| Imperative | 2.0 | Legal_Doc_00002579_5.pdf |
-
-
-**Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
-
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
-
 **More Information:**
 
   - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
@@ -158,17 +138,3 @@ The API Catalog is the catalog of published APIs and their associated documentat
 **More Information:**
 - [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
-
-
-### Zowe API Mediation Layer Third-Party software agreements
-
-Zowe API Mediation Layer uses the following third-party software:
-
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe API Mediation Layer | api-layer | 2.0 | Legal_Doc_00002599_81.pdf |
-|||||
-
-**Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
-
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
