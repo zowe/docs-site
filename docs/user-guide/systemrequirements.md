@@ -193,13 +193,6 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-**More Information:**
-
-You can now configure z/OSMF Zowe CLI now supports the 
-
-
-
-
 ## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
 
 The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.

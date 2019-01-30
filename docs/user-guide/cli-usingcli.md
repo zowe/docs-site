@@ -30,7 +30,7 @@ provides the ability to interact with mainframe data sets. This article provides
 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
-**Important\!** Before you issue these commands, verify that you
+**Important!** Before you issue these commands, verify that you
 completed the steps in [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-installcli.html#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
@@ -197,7 +197,7 @@ To create a `zosmf` profile, issue the following command. Refer to the available
     zowe profiles create zosmf-profile --help
     ```
 
-#### Creating a profile to access API Mediation Layer
+#### Creating a profile to access an API Mediation Layer
 
 You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 
@@ -231,7 +231,8 @@ After you create a profile, verify that it can communicate with z/OSMF. For more
 You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
 In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
 
-  - **Assigning an environment variable for a value that is commonly used.**  
+  - **Assigning an environment variable for a value that is commonly used.**
+
     For example, you might want to specify your mainframe user name as an
     environment variable on your computer. When you issue a command and omit
     the `--username` argument, Zowe CLI automatically uses the
@@ -240,6 +241,7 @@ In this section we explain how to transform arguments and options from Zowe CLI 
     user name repeatedly.
 
   - **Overriding a value that is used in existing profiles.**  
+  
     For example, you might want to override a value that you previously
     set on multiple profiles to avoid recreating each profile.This
     reduces the number of profiles that you need to maintain and lets
@@ -247,6 +249,7 @@ In this section we explain how to transform arguments and options from Zowe CLI 
     commands.
 
   - **Specifying environment variables in a Jenkins environment (or other automation server) to store credentials securely.**  
+  
     You can set values in Jenkins environment variables for use in
     scripts that run in your CI/CD pipeline. You can define Jenkins
     environment variables in the same manner that you can on your computer. You
@@ -254,7 +257,6 @@ In this section we explain how to transform arguments and options from Zowe CLI 
     credential store. For example, you might need to define your mainframe
     password in the secure credential store so that it is not available
     in plain text.
-
 
 #### Transforming arguments/options to environment variable format
 
@@ -265,7 +267,7 @@ The following rules apply to this transformation:
   - Convert lowercase letters in arguments/options to uppercase letters
   - Convert hyphens in arguments/options to underscores  
 
-**Tip:** See your operating system documentation for how to set and get environment variables. The procedure for setting environment variables varies between Windows, Mac, and various versions of Linux operating systems.
+**Tip:**  See your operating system documentation for information about how to set and get environment variables. The procedure for setting environment variables varies between Windows, Mac, and various versions of Linux operating systems.
 
 **Examples:**
 
@@ -320,8 +322,8 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 ```
 
 **More Information:**
-- [API Mediation Layer overview](api-mediation/api-mediation-overview.md)
-- [Creating a profile to access an API Mediation Layer](cli-installcli.html#Creating-a-profile-to-access-an-API-Mediation-Layer)
+- [API Mediation Layer overview](./api-mediation/api-mediation-overview.md)
+- [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
 
 ## Writing scripts to automate mainframe actions
 
