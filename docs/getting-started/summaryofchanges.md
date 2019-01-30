@@ -24,7 +24,7 @@ Version 1.0.0 contains the following changes since the Open Beta release.
 
 ### What's changed
  
-- Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided through the Liberty web application server. In this release, they are provided through the Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
+- Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided unsing an IBM WebSphere Liberty web application server. In this release, they are provided using a Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
 
 - References to `zlux-example-server` were changed to `zlux-app-server` and references to `zlux-proxy-server` were changed to `zlux-server-framework`.
 
@@ -39,4 +39,6 @@ Pressing Ctrl+V will perform paste for the TN3270 App on other browsers.
 **VT Terminal App** - In the VT Terminal App, Ctrl+V will not perform a paste operation for any browser.
 
 **Note:** In both terminals, press Shift + right-click to access copy and paste options through the context menu.
+
+**z/OS Subsystems App** - is being removed temporarily in the 1.0 release.  The reason is that as the ZSS has transitioned from closed to open source some APIs needed to be re-worked and are not complete yet.  Look for the return of the App in the next update.
 
