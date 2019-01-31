@@ -126,13 +126,13 @@ const ALL_PAGES = [{
   {
     text: 'Appendix',
     baseuri: '/appendix/',
+    canHideFirst: true,    
     items: [{
         text: 'Appendix',
         items: [
           'appendix/bill-of-materials.md',
           'appendix/tpsr.md',
         ]
-        canHideFirst: true,
       },
 ];
 
