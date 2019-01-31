@@ -125,8 +125,7 @@ const ALL_PAGES = [{
   },
   {
     text: 'Appendix',
-    baseuri: '/appendix/',
-    canHideFirst: true,    
+    baseuri: '/appendix/', 
     items: [{
         text: 'Appendix',
         items: [
