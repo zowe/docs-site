@@ -18,7 +18,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 * [Zowe Desktop TN3270 Emulator Plug-in](#zowe-desktop-tn3270-emulator-plug-in-dependency-attributions)
 * [Zowe Desktop VT Emulator Plugin-in](#zowe-desktop-vt-emulator-plugin-in-dependency-attributions)
 * [Zowe Desktop Web Plug-in Server](#zowe-desktop-web-plug-in-server-dependency-attributions)
-* [Zowe Desktop z/OS Unix Files UI Plugin](#zowe-desktop-z/os-unix-files-ui-plugin-dependency-attributions)
+* [Zowe Desktop z/OS Unix Files UI Plugin](#zowe-desktop-zos-unix-files-ui-plugin-dependency-attributions)
 * [Zowe Explorer Common REST Server](#zowe-explorer-common-rest-server-dependency-attributions)
 * [Zowe Explorer Data Sets REST Server](#zowe-explorer-data-sets-rest-server-dependency-attributions)
 * [Zowe Explorer Jobs REST Server](#zowe-explorer-jobs-rest-server-dependency-attributions)
