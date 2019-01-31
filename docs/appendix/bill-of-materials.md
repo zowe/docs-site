@@ -25,7 +25,7 @@ The following materials are distributed with Zowe binaries:
 | /manifest.json | Zowe PAX Manifest | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/manifest.json) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
 | install/zowe-install.sh | Script to initiate Zowe automated installation | [zowe-install-packaging/install](https://github.com/zowe/zowe-install-packaging/) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
 | install/zowe-install.yaml | Configuration File for Zowe automated installation | [zowe-install-packaging/install](https://github.com/zowe/zowe-install-packaging/tree/master/install) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
-| licenses/zowe_licenses.zip | License archive for Zowe third party dependencies | n/a | Build coming soon |  
+| licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | n/a | Build coming soon |  
 | scripts/ocopyshr.clist | A CList to copy a USS file to a PDS member | [zowe-install-packaging/scripts](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
 | scripts/ocopyshr.sh | Script to copy a uss JCL file to a shared PDS | [zowe-install-packaging/scripts](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
 | scripts/opercmd | REXX file to issue z/OS console commands | [zowe-install-packaging/scripts](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
@@ -72,6 +72,7 @@ The following materials are distributed with Zowe binaries:
 | File Path | Description | Source Location | Build Script(s) | 
 | --------- | ----------- | --------------- | --------------- |
 | <>/zowe-cli-package-*.zip | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
+| licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | n/a | Build coming soon |  
 | zowe-cli-*.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
 | zowe-cics-*.tgz | Zowe CLI Plug-in for IBM® CICS® | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 
 | zowe-db2-*.tgz | Zowe CLI Plug-in for IBM® Db2® for z/OS® | [zowe-cli-db2-plugin](https://github.com/zowe/zowe-cli-db2-plugin) | [zowe-cli-db2-plugin pipeline](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/Jenkinsfile) | 
