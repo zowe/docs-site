@@ -193,9 +193,9 @@ Profiles are a Zowe CLI functionality that let you store configuration informati
 
 To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:  
 
-    ```
-    zowe profiles create zosmf-profile --help
-    ```
+```
+zowe profiles create zosmf-profile --help
+```
 
 #### Creating a profile to access an API Mediation Layer
 
