@@ -2,27 +2,6 @@
 
 This section lists the third-party libraries for each Zowe component and the associated license agreement. 
 
-* [Imperative CLI Framework](#Imperative-CLI-Framework-dependency-attributions)
-* [Zowe API Mediation Layer](#Zowe-API-Mediation-Layer-dependency-attributions)
-* [Zowe Application Framework](#Zowe-Application-Framework-dependency-attributions)
-* [Zowe CLI](#Zowe-CLI-dependency-attributions)
-* [Zowe CLI Plug-in for IBM CICS](#Zowe-CLI-Plug-in-for-IBM-CICS-dependency-attributions)
-* [Zowe CLI Plug-in for IBM Db2 Database](#Zowe-CLI-Plug-in-for-IBM-Db2-Database-dependency-attributions)
-* [Zowe Desktop Data Sets UI Plugin](#Zowe-Desktop-Data-Sets-UI-Plugin-dependency-attributions)
-* [Zowe Desktop Database Browser Plug-in](#Zowe-Desktop-Database-Browser-Plug-in-dependency-attributions)
-* [Zowe Desktop Eclipse Orion-based React Editor](#Zowe-Desktop-Eclipse-Orion-based-React-Editor-dependency-attributions)
-* [Zowe Desktop File Transfer Plug-in](#Zowe-Desktop-File-Transfer-Plug-in-dependency-attributions)
-* [Zowe Desktop JES UI Plugin](#Zowe-Desktop-JES-UI-Plugin-dependency-attributions)
-* [Zowe Desktop Sample Angular Application](#Zowe-Desktop-Sample-Angular-Application-dependency-attributions)
-* [Zowe Desktop Sample React Application](#Zowe-Desktop-Sample-React-Application-dependency-attributions)
-* [Zowe Desktop TN3270 Emulator Plug-in](#Zowe-Desktop-TN3270-Emulator-Plug-in-dependency-attributions)
-* [Zowe Desktop VT Emulator Plugin-in](#Zowe-Desktop-VT-Emulator-Plugin-in-dependency-attributions)
-* [Zowe Desktop Web Plug-in Server](#Zowe-Desktop-Web-Plug-in-Server-dependency-attributions)
-* [Zowe Desktop z/OS Unix Files UI Plugin](#Zowe-Desktop-z/OS-Unix-Files-UI-Plugin-dependency-attributions)
-* [Zowe Explorer Common REST Server](#Zowe-Explorer-Common-REST-Server-dependency-attributions)
-* [Zowe Explorer Data Sets REST Server](#Zowe-Explorer-Data-Sets-REST-Server-dependency-attributions)
-* [Zowe Explorer Jobs REST Server](#Zowe-Explorer-Jobs-REST-Server-dependency-attributions)
-* [Zowe ZSS Authentication Handler](#Zowe-ZSS-Authentication-Handler-dependency-attributions)
 
 ### Imperative CLI Framework Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
