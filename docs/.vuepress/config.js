@@ -133,6 +133,7 @@ const ALL_PAGES = [{
           'appendix/tpsr.md',
         ]
       },
+    },
 ];
 
 const navbarLinks = (allPages => {
