@@ -121,7 +121,6 @@ const ALL_PAGES = [{
     text: 'Contributing',
     baseuri: '/contributing.html',
     link: 'contributing.md',
-    canHideFirst: true,
   },
   {
     text: 'Appendix',
@@ -132,7 +131,7 @@ const ALL_PAGES = [{
           'appendix/bill-of-materials.md',
           'appendix/tpsr.md',
         ]
-      },
+      },],
     },
 ];
 
