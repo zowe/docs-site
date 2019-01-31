@@ -193,13 +193,6 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-**More Information:**
-
-You can now configure z/OSMF Zowe CLI now supports the 
-
-
-
-
 ## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
 
 The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.
@@ -243,7 +236,7 @@ Ensure that the following prerequisite software is installed on your computer:
 
 ### Supported platforms
 
-CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+CA Zowe CLI is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 
