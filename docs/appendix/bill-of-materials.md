@@ -1,5 +1,7 @@
 # Zowe Binaries - Bill of Materials
 
+The following materials are distributed with Zowe binaries:
+
 ## Zowe PAX 
 
 | File Path | Description | Source Location | Build Script(s) | 

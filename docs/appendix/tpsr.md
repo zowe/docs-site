@@ -1,4 +1,6 @@
-# Zowe Third Party Library Usage
+# Zowe Third-Party Software Requirements
+
+This section lists the third-party libraries for each Zowe component and the associated license agreement. 
 
 * [Imperative CLI Framework](#Imperative-CLI-Framework-dependency-attributions)
 * [Zowe API Mediation Layer](#Zowe-API-Mediation-Layer-dependency-attributions)
