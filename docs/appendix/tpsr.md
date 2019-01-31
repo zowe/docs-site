@@ -7,7 +7,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 * [Zowe Application Framework](#zowe-application-framework-dependency-attributions)
 * [Zowe CLI](#zowe-cli-dependency-attributions)
 * [Zowe CLI Plug-in for IBM CICS](#zowe-cli-plug-in-for-ibm-cics-dependency-attributions)
-* [Zowe CLI Plug-in for IBM Db2 Database](#zowe-cli-plug-in-for-ibm-db2-atabase-dependency-attributions)
+* [Zowe CLI Plug-in for IBM Db2 Database](#zowe-cli-plug-in-for-ibm-db2-database-dependency-attributions)
 * [Zowe Desktop Data Sets UI Plugin](#zowe-desktop-data-sets-ui-plugin-dependency-attributions)
 * [Zowe Desktop Database Browser Plug-in](#zowe-desktop-database-browser-plug-in-dependency-attributions)
 * [Zowe Desktop Eclipse Orion-based React Editor](#zowe-desktop-eclipse-orion-based-react-editor-dependency-attributions)
