@@ -1040,7 +1040,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe API Mediation Layer | async-each |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-each](https://www.github.com/paulmillr/async-each.git) |
 | Zowe API Mediation Layer | async-limiter |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.github.com/strml/async-limiter.git) |
 | Zowe API Mediation Layer | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit.git) |
-| Zowe API Mediation Layer | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](git://git.coolaj86.com/coolaj86/atob.js.git) |
+| Zowe API Mediation Layer | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
 | Zowe API Mediation Layer | autolinker |  v0.15.3 | MIT Licensed. http://www.opensource.org/licenses/mit-license.php | [autolinker](https://www.github.com/gregjacobs/Autolinker.js.git) |
 | Zowe API Mediation Layer | autoprefixer |  v9.4.7 | [MIT](http://opensource.org/licenses/mit-license) | [autoprefixer](https://www.github.com/postcss/autoprefixer.git) |
 | Zowe API Mediation Layer | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](https://www.github.com/mikeal/aws-sign) |
@@ -3625,7 +3625,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Sample React Application | async-each |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-each](https://www.github.com/paulmillr/async-each.git) |
 | Zowe Desktop Sample React Application | async-limiter |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.github.com/strml/async-limiter.git) |
 | Zowe Desktop Sample React Application | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit.git) |
-| Zowe Desktop Sample React Application | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](git://git.coolaj86.com/coolaj86/atob.js.git) |
+| Zowe Desktop Sample React Application | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
 | Zowe Desktop Sample React Application | autoprefixer |  v6.7.7 | [MIT](http://opensource.org/licenses/mit-license) | [autoprefixer](https://www.github.com/postcss/autoprefixer.git) |
 | Zowe Desktop Sample React Application | autoprefixer |  v7.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [autoprefixer](https://www.github.com/postcss/autoprefixer.git) |
 | Zowe Desktop Sample React Application | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](https://www.github.com/mikeal/aws-sign) |
