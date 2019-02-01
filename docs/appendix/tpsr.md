@@ -14,7 +14,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 * [Zowe Desktop JES UI Plugin](#zowe-desktop-jes-ui-plugin-dependency-attributions)
 * [Zowe Desktop Sample React Application](#zowe-desktop-sample-react-application-dependency-attributions)
 * [Zowe Desktop Web Plug-in Server](#zowe-desktop-web-plug-in-server-dependency-attributions)
-* [Zowe Desktop z/OS Unix Files UI Plugin](#zowe-desktop-z/os-unix-files-ui-plugin-dependency-attributions)
+* [Zowe Desktop z/OS Unix Files UI Plugin](#zowe-desktop-z-os-unix-files-ui-plugin-dependency-attributions)
 * [Zowe Explorer Common REST Server](#zowe-explorer-common-rest-server-dependency-attributions)
 * [Zowe Explorer Data Sets REST Server](#zowe-explorer-data-sets-rest-server-dependency-attributions)
 * [Zowe Explorer Jobs REST Server](#zowe-explorer-jobs-rest-server-dependency-attributions)
