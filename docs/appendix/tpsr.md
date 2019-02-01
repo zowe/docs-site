@@ -2,6 +2,24 @@
 
 This section lists the third-party libraries for each Zowe component and the associated license agreement. 
 
+* [Imperative CLI Framework](#imperative-cli-framework-dependency-attributions)
+* [Zowe API Mediation Layer](#zowe-api-mediation-layer-dependency-attributions)
+* [Zowe Application Framework](#zowe-application-framework-dependency-attributions)
+* [Zowe CLI](#zowe-cli-dependency-attributions)
+* [Zowe CLI Plug-in for IBM CICS](#zowe-cli-plug-in-for-ibm-cics-dependency-attributions)
+* [Zowe CLI Plug-in for IBM Db2 Database](#zowe-cli-plug-in-for-ibm-db2-database-dependency-attributions)
+* [Zowe Desktop Data Sets UI Plugin](#zowe-desktop-data-sets-ui-plugin-dependency-attributions)
+* [Zowe Desktop Database Browser Plug-in](#zowe-desktop-database-browser-plug-in-dependency-attributions)
+* [Zowe Desktop Eclipse Orion-based React Editor](#zowe-desktop-eclipse-orion-based-react-editor-dependency-attributions)
+* [Zowe Desktop JES UI Plugin](#zowe-desktop-jes-ui-plugin-dependency-attributions)
+* [Zowe Desktop Sample React Application](#zowe-desktop-sample-react-application-dependency-attributions)
+* [Zowe Desktop Web Plug-in Server](#zowe-desktop-web-plug-in-server-dependency-attributions)
+* [Zowe Desktop z/OS Unix Files UI Plugin](#zowe-desktop-z/os-unix-files-ui-plugin-dependency-attributions)
+* [Zowe Explorer Common REST Server](#zowe-explorer-common-rest-server-dependency-attributions)
+* [Zowe Explorer Data Sets REST Server](#zowe-explorer-data-sets-rest-server-dependency-attributions)
+* [Zowe Explorer Jobs REST Server](#zowe-explorer-jobs-rest-server-dependency-attributions)
+* [Zowe ZSS Authentication Handler](#zowe-zss-authentication-handler-dependency-attributions)
+
 ### Imperative CLI Framework Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
