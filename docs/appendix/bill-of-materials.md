@@ -6,7 +6,7 @@ The following materials are distributed with Zowe binaries:
 
 | File Path | Description | Source Location | Build Script(s) | 
 | --------- | ----------- | --------------- | --------------- |
-| <>/zowe-*.pax | PAX file containing all Zowe z/OS Components | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |  
+| zowe-x.y.z.pax | PAX file containing all Zowe z/OS Components | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |  
 | files/ZLUX.pax | PAX Archive containing Zowe Desktop Core Components | [zlux sources](https://www.github.com/zowe/zlux) | [zlux build](https://www.github.com/zowe/zlux-build) | 
 | files/api-mediation-package-*.pax | PAX Archive containing Zowe API Mediation Layer Components | [api layer sources](https://www.github.com/zowe/api-layer) | [api-layer pipeline](https://github.com/zowe/api-layer/blob/master/Jenkinsfile) |
 | files/assets/api-catalog.png | Zowe API Mediation Layer image | [zowe-install-packaging](https://www.github.com/zowe/zowe-install-packaging/tree/master/files/assets/) | [install-packaging pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
