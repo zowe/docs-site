@@ -1,6 +1,10 @@
 # Installing Zowe on z/OS 
 
-To install Zowe on z/OS, you install the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Services, and Zowe API Mediation Layer. Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
+To install Zowe on z/OS there are two parts.
+The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. 
+The second pprt is the Zowe Cross Memory Server.  This is an authorized server application that provides privileged services to Zowe in a secure manner. 
+
+Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
 
 1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
 2. [Prerequisites](#prerequisites)
@@ -8,9 +12,13 @@ To install Zowe on z/OS, you install the Zowe runtime that consists of three com
     - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-installsh-works)   
 4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)        
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)    
-5. [Verifying installation](#verifying-installation)        
-6. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
+    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
+5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
+    - [Manually installing the Zowe Cross Memory Server]()
+    - [Scripted insetall of the Zowe Cross Memory Server]()
+6. [Starting and stopping the Zowe APF angel on z/OS](#starting-and-stopping-the-zowe-apf-angel-on-zos) TODO
+7. [Verifying installation](#verifying-installation)        
+8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
 ## Obtaining and preparing the installation file
 
@@ -527,6 +535,34 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 ```
 /D A,ZOWESVR
 ```
+
+### Installing the Zowe Cross Memory Server on z/OS
+
+The Zowe APF Angel is an authorized server application that provides prileged cross-memory services to Zowe.  
+
+The server runs as a started task and requies an APF authorized load library, as well as a PPT entry and a parmlib.  These can either be created manually or else using the script `/install/zowe-install-apf-server.sh` that reads configuration parameters from the file `/install/zowe-install-apf-server.yaml`.  These two are documented separately and a user can choose which route to take depending on the authority of their user ID and familiarity with z/OS configuration steps.
+
+### Manually installing the Zowe Cross Memory Server
+
+A number of files are included in `zowe_install_dir/files/zss`.  If this folder is not present the file `zowe_install_dir/files/zis.pax` should be expanded.  Create a folder `zss` beneath `files` using `mkdir zss` and navigate into it using `cd zss`. Expand zis pax using the command `pax -ppx -rf ../zis.pax`. 
+
+1. ZWESIS01 load module and proclib
+
+Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set zwes_loadlib, e.g. ZWES.SISLOAD.
+
+You can copy the ZWESIS01 file to your zwes_loadlib data set using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The zwes_loadlib must be a PDSE due to language requirements.  
+
+Do not add the zwes_loadlib data set to the system LNKLST or LPALST concatenations.  It must be executed using a started task using a STEPLIB DD statement so that the apprioriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files\zss\SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, e.g. SYS1.PROCLIB or any other PROCLIB in the JES2 Conactenation Proclib Path.  
+
+Note:  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
+
+2. PPT Entry
+
+3. APF-authorization
+
+### Scripted install of the Zowe Cross Memory Server 
+
+
 
 ## Verifying installation
 
