@@ -8,6 +8,10 @@ Version 1.0.0 contains the following changes since the Open Beta release.
 
 ### What's new in API Mediation Layer
 
+- HTTPs is now supported on all Java enablers for onboarding API microservices with the API ML.  
+
+- SSO authentication using z/OSMF has been implemented for the API Catalog login.  Mainframe credentials are required for access.
+
 ### What's new in Zowe CLI
 
 -  **Breaking change to Zowe CLI**: The `--pass` command option is changed to `--password` for all core Zowe CLI commands for clarity and to be consistent with plug-ins. If you have zosmf profiles that you created prior to January 11, 2019, you must recreate them to use the `--password` option. The aliases `--pw` and `--pass` still function when you issue commands as they did prior to this breaking change. You do not need to modify scripts that use  `--pass`.
