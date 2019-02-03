@@ -1,7 +1,10 @@
 # System requirements
 
-When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on your computer.
+When you install Zowe on z/OS there are two parts.  
+The first installs the Zowe Application Framework, the API Mediation Layer, and a number of micro services that provide capability to both.  
+The second part of the install created an angel process that is an APF authorized server used by Zowe.
 
+The Zowe CLI is not installed on z/OS and runs on a desktop computer.  
 Before installing Zowe, ensure that your environment meets all of the prerequisites.
 
 **z/OS host requirements (for all components):**
@@ -193,20 +196,13 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
+## Planning for installation of API Mediation Layer, Zowe Application Framework, and Zowe APF Angel
 
-The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.
+The following information is required during the installation process of API Mediation Layer and Zowe Application Framework. Make the decisions before the installtion.
 
 - The HFS directory where you install Zowe, for example, `/var/zowe`.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
-- The z/OSMF installation directory that contains `derby.jar`, for example, `/usr/lpp/zosmf/lib`.
-- The z/OSMF configuration user directory that contains the following z/OSMF files:
-
-    - `/bootstrap.properties`
-    - `/jvm.security.override.properties`
-    - `/resources/security/ltpa.keys`
-
-- The HTTP and HTTPS port numbers of the explorer server. By default, they are 7080 and 7443.
+- The z/OSMF installation directory, for example, `/usr/lpp/zosmf/lib`.
 - The API Mediation Layer HTTP and HTTPS port numbers. You will be asked for 3 unique port numbers.
 - The user ID that runs the Zowe started task.
 
