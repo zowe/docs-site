@@ -122,13 +122,36 @@ const ALL_PAGES = [{
   baseuri: '/contributing.html',
   link: 'contributing.md',
 
-}
+},
+{
+  text: 'Appendix',
+  hideInPdf: true,
+  canHideFirst: true,
+  baseuri: '/appendix/',
+  items: [
+    {
+    text: 'Bill of Materials',
+    items: [
+      'appendix/bill-of-materials.md'
+    ]
+  },
+  {
+    text: 'Third-Party Software Requirements',
+    items: [
+      'appendix/tpsr.md'
+    ]
+  }],
+},
 ];
 
 const navbarLinks = (allPages => {
   let result = [];
 
   for (let group of allPages) {
+    if (group.hideInNavBar) {
+      continue;
+    }
+
     let converted = {};
 
     if (group.text) {
@@ -139,6 +162,10 @@ const navbarLinks = (allPages => {
     } else if (group.items) {
       converted.items = [];
       group.items.forEach(item => {
+        if (item.hideInNavBar) {
+          return;
+        }
+
         let convertedItem = {};
 
         if (item.text) {
@@ -172,6 +199,10 @@ const sidebarLinks = (allPages => {
     .replace(/^\//, '');
 
   for (let group of allPages) {
+    if (group.hideInSideBar) {
+      continue;
+    }
+
     let converted = [];
     const baseuri = group.baseuri;
 
@@ -180,6 +211,10 @@ const sidebarLinks = (allPages => {
       converted.push(convertedItem);
     } else if (group.items) {
       for (let item of group.items) {
+        if (item.hideInSideBar) {
+          return;
+        }
+
         let convertedItem = {
           title: item.text,
           collapsable: false,
@@ -200,6 +235,20 @@ const sidebarLinks = (allPages => {
     }
 
     result[baseuri] = converted;
+  }
+
+  return result;
+})(ALL_PAGES);
+
+const pdfLinks = (allPages => {
+  let result = [];
+
+  for (let group of allPages) {
+    if (group.hideInPdf) {
+      continue;
+    }
+
+    result.push(group);
   }
 
   return result;
@@ -257,5 +306,5 @@ module.exports = {
     sidebar: sidebarLinks
   },
   // pages tree used by generating PDF
-  pdf: ALL_PAGES,
+  pdf: pdfLinks,
 }
