@@ -25,7 +25,6 @@
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
     - [Trust a z/OSMF certificate](#trust-a-zosmf-certificate)
     - [Disable certificate validation](#disable-certificate-validation)
-    - [Use an existing server certificate for API Mediation Layer](#use-an-existing-server-certificate-for-api-mediation-layer)
 
 
 ## How API ML transport security works
@@ -402,7 +401,7 @@ The API Mediation Layer requires validatation of the certificate of each service
 
 - Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
 
-- Ensure that your service nhas its own certificate and all intermediate CA certificates (if it was signed by intermediate CA) in its keystore.
+- Ensure that your service has its own certificate. If it was signed by intermediate CA all intermediate CA certificates ensure that all certificates are in its keystore.
 
     **Note:** If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
@@ -487,8 +486,3 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
   
-
-#### Use an existing server certificate for API Mediation Layer
-
-This will be documented during work on the following user story: 
-https://github.com/zowe/api-layer/issues/91
