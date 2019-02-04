@@ -10,7 +10,7 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 
 - z/OS® Version 2.2 or later.
 
-- Node.js Version 6.14.4 or later on the z/OS host where you install the Zowe Application Server.
+- Node.js Version 6.14.4.1 or later on the z/OS host where you install the Zowe Application Server.
 
     1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
 
