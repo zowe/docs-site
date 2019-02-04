@@ -122,25 +122,7 @@ const ALL_PAGES = [{
   baseuri: '/contributing.html',
   link: 'contributing.md',
 
-},
-{
-  text: 'Appendix',
-  canHideFirst: true,
-  baseuri: '/appendix/',
-  items: [
-    {
-    text: 'Bill of Materials',
-    items: [
-      'appendix/bill-of-materials.md'
-    ]
-  },
-  {
-    text: 'Third-Party Software Requirements',
-    items: [
-      'appendix/tpsr.md'
-    ]
-  }],
-},
+}
 ];
 
 const navbarLinks = (allPages => {
