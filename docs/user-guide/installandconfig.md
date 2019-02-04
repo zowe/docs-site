@@ -1,9 +1,12 @@
 # Installing Zowe
 
-Zowe consists of four main components: the Zowe Application Framework (zLUX), z/OS Services, API Mediation Layer, and Zowe CLI. You install the Zowe Application Framework, z/OS Services, and API Mediation Layer on z/OS and install Zowe CLI on your computer. The installations on z/OS and on a computer are independent processes.
+You install the Zowe runtime on z/OS and install Zowe CLI on your computer. The installations on z/OS and on a computer are independent processes.
+
+When you install Zowe on z/OS, there are two parts. The first part is to install the Zowe Application Framework, the API Mediation Layer, and a number of micro services that provide capability to both. The second part is to install the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner. 
+
+The Zowe CLI is not installed on z/OS and runs on a personal computer.  
 
 ![Zowe installation overview](../images/common/zowe-install-location.png)
-
 
 ## Installation roadmap
 

@@ -1,11 +1,6 @@
 # System requirements
 
-When you install Zowe on z/OS there are two parts.  
-The first installs the Zowe Application Framework, the API Mediation Layer, and a number of micro services that provide capability to both.  
-The second part of the install created an angel process that is an APF authorized server used by Zowe.
-
-The Zowe CLI is not installed on z/OS and runs on a desktop computer.  
-Before installing Zowe, ensure that your environment meets all of the prerequisites.
+Before installing Zowe, ensure that your environment meets the prerequisites.
 
 **z/OS host requirements (for all components):**
 
