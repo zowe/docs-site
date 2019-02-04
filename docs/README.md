@@ -43,5 +43,5 @@ You can download the documentation for the latest version of Zowe on this websit
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
-- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.html)
-- [Bill of Materials (BOM)](./appendix/bill-of-materials.html)
+- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.md)
+- [Bill of Materials (BOM)](./appendix/bill-of-materials.md)
