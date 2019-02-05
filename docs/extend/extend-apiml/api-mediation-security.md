@@ -1,274 +1,265 @@
 # Zowe API Mediation Layer Security
 
-- [Introduction and requirements](#introduction-and-requirements)
-  - [Transport-level Security](#transport-level-security)
+- [How API ML transport security works](#how-api-ml-transport-security-works)
+  - [Transport layer security](#transport-layer-security)
   - [Authentication](#authentication)
+  - [Zowe API ML services](#zowe-api-ml-services)
+  - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
+  - [Authentication for API ML services](#authentication-for-api-ml-services)
   - [Authorization](#authorization)
-  - [Types of services](#types-of-services)
-  - [Transport Security Requirements](#transport-security-requirements)
-  - [Authentication](#authentication-1)
-  - [Truststores and keystores](#truststores-and-keystores)
-  - [Client Certificates](#client-certificates)
+  - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
   - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
-- [Certificate Management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
+- [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
-    - [How to start APIML on localhost with full HTTPS](#how-to-start-apiml-on-localhost-with-full-https)
+    - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
     - [Certificate management script](#certificate-management-script)
-    - [Generating own certificates for localhost](#generating-own-certificates-for-localhost)
-    - [Generating certificate for a new service on localhost](#generating-certificate-for-a-new-service-on-localhost)
-    - [Add a service with an existing certificate to APIML on localhost](#add-a-service-with-an-existing-certificate-to-apiml-on-localhost)
-    - [Login to Discovery service on localhost](#login-to-discovery-service-on-localhost)
+    - [Generate certificates for localhost](#generate-certificates-for-localhost)
+    - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
+    - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
+    - [Log in to Discovery Service on localhost](#log-in-to-discovery-service-on-localhost)
   - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
     - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
     - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-    - [Generating keystore and truststore for a new service on z/OS](#generating-keystore-and-truststore-for-a-new-service-on-zos)
-    - [Add a service with an existing certificate to APIML on z/OS](#add-a-service-with-an-existing-certificate-to-apiml-on-zos)
-      - [What happens if the service is not trusted](#what-happens-if-the-service-is-not-trusted)
-    - [Trust z/OSMF certificate](#trust-zosmf-certificate)
-    - [Disabling certificate validation](#disabling-certificate-validation)
+    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-zos)
+    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
+      - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
+    - [Trust a z/OSMF certificate](#trust-a-zosmf-certificate)
+    - [Disable certificate validation](#disable-certificate-validation)
 
+## How API ML transport security works
 
-## Introduction and requirements
+Security within the API Mediaiton Layer (API ML) is performed on several levels. This article describes how API ML uses Transport Layer Security (TLS). As a system administrator or API developer, use this guide to familiarize yourself with the following security concepts:  
 
-The security of the APIML is performed on several levels and are described in following sections.
+### Transport layer security
 
-### Transport-level Security
-
-Data needs to be secured during transport. This is achieved by using the TLS protocol for all connections to APIML services. While disabling the TLS protocol is permitted (e.g. for debugging purposes), the default mode is to have it on.
+Secure data during data-transport by using the TLS protocol for all connections to API Mediation Layer services. While it is possible to disable the TLS protocol for debugging purposes or other use-cases, the enabled TLS protocol is the default mode.
 
 ### Authentication
 
-Authentication is a way how an entity, whether it be a user (API Client) or an application (API Service), proves its true identity.  
+Authentication is the method of how an entity, whether it be a user (API Client) or an application (API Service), proves its true identity.  
 
-APIML uses two authentication methods:
-- user ID and password (and authentication tokens retrieved by using the user ID and password) 
-    - These requests originate from a user.
+API ML uses the following authentication methods:
+
+- **User ID and password** 
+    - The user ID and password are used to retreive authentication tokens. 
+    - Requests originate from a user.
     - The user ID and password are validated by a z/OS security manager and
     a token is issued that is then used to access the API service.
-- TLS client certificates
-    - These certificates are for service-only requests.
-
-In the future, we would like APIML to support client certificates to access the gateway.
-
-### Authorization
-
-Authorization is a method used to determine access rights of an entity.
-
-In the APIML, the authorization is done by the z/OS security manager ([CA ACF2](https://www.ca.com/us/products/ca-acf2.html), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [CA Top Secret](https://www.ca.com/us/products/ca-top-secret.html)). The authentication token is used as proof of valid authentication. The authorization checks, however, are always done by the z/OS security manager.
-
-
-### Types of services
-
-- Zowe Core services:
-
-    - Zowe APIML services:
     
-        - Gateway Service (GW)
-            - The access point for API clients that need to access API services
-            - API Services can be accessed via the gateway by API Clients
-            - Gets information about an API Service from the Discovery Service
+- **TLS client certificates**
+    - Certificates are for service-only requests.
+
+### Zowe API ML services
+
+The following range of service types apply to the Zowe API ML:
+
+- **Zowe API ML services**
+
+  - **Gateway Service (GW)**
+    The Gateway is the access point for API clients that require access to API services. 
+    API services can be accessed through the Gateway by API Clients. The Gateway receives information about an API Service 
+    from the Discovery Service.
         
-        - Discovery Service (DS)
-            - Collects information about API Services and provides it to the Gateway Service and other services
-            - API Mediation services are also registered to the Discovery Service
+  - **Discovery Service (DS)**
+    The Discovery Service collects information about API services and provides this information to the Gateway 
+    and other services. API ML internal services are also registered to the Discovery Service.
         
-        - API Catalog (AC)
-            - Displays information about API services in a web UI
-            - Gets information about an API Service from the Discovery Service
+  - **API Catalog (AC)**
+    The Catalog displays information about API services through a web UI. The Catalog receives information
+    about an API service from the Discovery Service.
 
-        - Authentication and Authorization Service (AAS) 
-            - Provides authentication and authorization functionality to check access of users to resources on z/OS
-            - Security service is not provided as an individual microservice but is included to the Gateway Service
-            - For more details, see: [APIML wiki](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
+- **Authentication and Authorization Service (AAS)** 
 
-    - Non-APIML Zowe Core services (zLUX, z/OS Jobs Service, z/OS Datasets service)
+  AAS provides authentication and authorization functionality to check user access to resources on z/OS. 
+  The API ML uses z/OSMF API for  authentication. For more information, see: [APIML wiki](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service)
 
-        - They are like other regular API Client and Service described below
+- **API Clients**
 
-- API Clients
-    - API Clients are external applications, users, or other API services that are accessing API services via the API Gateway
+  External applications, users, or other API services that are accessing API services via the API Gateway
   
-- API Services 
-    - API Services are applications that want to be accessed via the API Gateway
-    - They register themselves to the Discovery Service
-    - API Services can always access other services via the API Gateway
-    - API Services can sometimes access other services without the API Gateway (if they are installed in such a way that direct access is possible)
-    - API Services can also be API Clients (when they access other services)
+- **API Services** 
 
-### Transport Security Requirements
+  Applications that are accessed through the API Gateway. API services register themselves to the 
+  Discovery Service and can access other services through the Gateway. If an API service is installed 
+  in such a way that direct access is possible, API services can access other services without the Gateway. 
+  When APIs access other services, they can also function as API clients.
 
-Servers ae required to provide HTTPS ports.
+### Zowe API ML TLS requirements
 
-The requirements for the services are the following:
+The API ML TLS requires servers to provide HTTPS ports. Each of the API ML services has the following specific requirements:
 
-- API Client
-    - Is not a server
-    - Needs to trust the API Gateway
-    - Has a truststore that contains certificate(s) needed to trust the API Gateway
+- **API Client**
+    - The API Client is not a server
+    - Requires trust of the API Gateway
+    - Has a truststore that contains certificates required to trust the Gateway
 
-- Gateway Service
+- **Gateway Service**
     - Provides an HTTPS port
     - Has a keystore with a server certificate
         - The certificate needs to be trusted by API Clients
         - This certificate should be trusted by web browsers because the API Gateway can be used to display web UIs
     - Has a truststore that contains certificates needed to trust API Services
 
-- API Catalog
+- **API Catalog**
     - Provides an HTTPS port
     - Has a keystore with a server certificate
         - The certificate needs to be trusted by the API Gateway
         - This certificate does not need to be trusted by anyone else
 
-- Discovery Service
+- **Discovery Service**
     - Provides an HTTPS port
     - Has a keystore with a server certificate
         - The certificate needs to be trusted by API Clients
-    - Has a truststore that contains certificates needed to trust API Services
+    - Has a truststore that contains certificates needed to trust API services
 
-- API Service
+- **API Service**
     - Provides an HTTPS port
     - Has a keystore with a server and client certificate
-        - The server certificate needs to be trusted by GW
-        - The client certificate needs to be trusted by DS
+        - The server certificate needs to be trusted by the Gateway
+        - The client certificate needs to be trusted by the Discovery Service
         - The client and server certificates can be the same
         - These certificates do not need to be trusted by anyone else
-    - Has a truststore that contains certificate(s) needed to trust the API Gateway and Discovery Service
+    - Has a truststore that contains one or more certificates that are required to trust the Gateway and Discovery Service
   
 
-### Authentication
+### Authentication for API ML services
 
-- API Gateway
+- **API Gateway**
 
-    - API Gateway currently does not handle authentication. Requests are sent to the API services that need to handle authentication
+    - API Gateway currently does not handle authentication. 
+    - Requests are sent to the API services that need to handle authentication
 
-- API Catalog
+- **API Catalog**
 
-    - API Catalog is accessed by users and it needs to be protected by a login
-    - This is done via Authentication and Authorization Service
+    - API Catalog is accessed by users and requires protection by a login
+    - Protected access is performed by the Authentication and Authorization Service 
 
-- Discovery Service
+- **Discovery Service**
 
     - Discovery Service is accessed by API Services
-    - This access (reading information and registration) needs to be protected by a client certificate
-    - Access can be granted to users (administrators) - optional
+    - This access (reading information and registration) requires protection needs by a client certificate
+    - (Optional) Access can be granted to users (administrators) 
 
-- API Services
+- **API Services**
 
-    - It is up to the service
-    - It should be using Authentication and Authorization Service for authentication
+    - Authentication is service-dependent
+    - Recommended to use the Authentication and Authorization Service for authentication
 
 
-### Truststores and keystores
+### Authorization
 
-A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys, used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe APIML uses PKCS12 to enable the keystores to be used
+Authorization is a method used to determine access rights of an entity.
+
+In the API ML, authorization is performed by the z/OS security manager ([CA ACF2](https://www.ca.com/us/products/ca-acf2.html), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [CA Top Secret](https://www.ca.com/us/products/ca-top-secret.html)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
+
+
+### API ML truststore and keystore
+
+A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
 by other technologies used in Zowe (Node.js).
 
-The APIML local CA:
+**The API ML local certificate authority (CA)**
 
-- Contains local CA certificate and its private key (needs to be store securely)
-- It is used to sign certificates of services
-- Its certificate is trusted by API services and clients
+- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored
+- Used to sign certificates of services
+- The API ML local CA certificate is trusted by API services and clients
 
-The APIML keystore:
+**The API ML keystore**
 
-- server certificate of GW (with PK) - can be signed by local CA or external CA
-- server certificate of DS (with PK) - can be signed by local CA
-- server certificate of AC (with PK) - can be signed by local CA
-- used by APIML services
+- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
+- Server certificate of the Discovery Service (with PK). This can be signed by the local CA
+- Server certificate of the Catalog (with PK). This can be signed by the local CA
+- The API ML keystore is used by API ML services
 
-The APIML truststore:
+**The API ML truststore**
 
-- contains local CA public certificate
-- contains external CA public certificate (optional)
-- can contain self-signed certificates of API Services that are not signed by local or external CA
-- used by APIML services
+- The API ML truststore contains a local CA public certificate
+- Contains an external CA public certificate (optional)
+- Can contain self-signed certificates of API Services that are not signed by the local or external CA
+- Used by API ML services
 
-Zowe Core services:
+**Zowe core services**
 
-- they can use the same keystore and truststore as APIML for simpler installation and management
-- or they can have individual stores for higher security
+- Services can use the same keystore and truststore as APIML for simpler installation and management
+- Alternatively, services can have individual stores for higher security
 
-API service keystore (for each service)
+**API service keystore** (for each service)
 
-- contains server and client certificate signed by local CA
+- Contains a server and client certificate signed by the local CA
   
-API service truststore (for each service)  
+**API service truststore** (for each service)  
 
-- contains local CA and external CA certificates (optional)
+- (Optional) Contains a local CA and external CA certificates 
 
+**Client certificates**
 
-### Client Certificates
-
-A client certificate is a certificate that is used for validation of the HTTPS client.
-
-The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client.
+- A client certificate is a certificate that is used for validation of the HTTPS client. The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client uses.
 
 
 ### Authentication to the Discovery Service
 
-The Discovery Service has two types of users that need to authenticate:
+The Discovery Service has the following types of users that require authentication:
 
-1. Administrators and developers who need to login to the homepage of the Discovery Service
-   
-    - These users need to provide valid user ID and password to the z/OS system where Zowe is installed
+- **Administrators and developers who need to log in to the homepage of the Discovery Service**
+  
+    These users need to provide valid user ID and password to the z/OS system where Zowe is installed
 
-2. Services that need to register to the Discovery Service
+- **Services that need to register to the Discovery Service**
 
-    - These are not users that have user ID and password but other services 
-    - They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication
+    These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
 
-## Certificate Management in Zowe API Mediation Layer
+## Certificate management in Zowe API Mediation Layer
 
 ### Running on localhost
 
-#### How to start APIML on localhost with full HTTPS
+#### How to start API ML on localhost with full HTTPS
 
-The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start APIML with HTTPS on your computer. The certificates are not trusted by your browser so can either ignore security warning or generate your own certificates and add them to the truststore of your browser or system.
+The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
 
 The certificates are described in more detail in the https://github.com/zowe/api-layer/blob/master/keystore/README.md.
 
 
 #### Certificate management script
 
-Zowe API Mediation layer provides a script that can used on Windows, Mac, Linux, and z/OS
-to generate the certificate and keystore for the local CA, API Mediation Layer, and services.
+Zowe API Mediation Layer provides a script that can used on Windows, Mac, Linux, and z/OS
+to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
-It is stored in [scripts/apiml_cm.sh](https://github.com/zowe/api-layer/blob/master/scripts/apiml_cm.sh).
-It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, you need to install Bash, for example by using [cmder](http://cmder.net/).
+This script is stored in [scripts/apiml_cm.sh](https://github.com/zowe/api-layer/blob/master/scripts/apiml_cm.sh).
+It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, install Bash by going to the following link: [cmder](http://cmder.net/).
 
 
-#### Generating own certificates for localhost
+#### Generate certificates for localhost
 
-Use the following script in the root of the `api-layer` repository:
+Use the following script in the root of the `api-layer` repository to generate certificates for localhost:
 
 `scripts/apiml_cm.sh --action setup`
 
-This creates the certificates and keystore for the API Mediation Layer in your current workspace.
+This script creates the certificates and keystore for the API Mediation Layer in your current workspace.
 
 
-#### Generating certificate for a new service on localhost
+#### Generate a certificate for a new service on localhost
 
-The instructions are described at:
+To generate a certificate for a new service on localhost, see
 https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost
 
 
-#### Add a service with an existing certificate to APIML on localhost
+#### Add a service with an existing certificate to API ML on localhost
 
 The instructions are described at:
 https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services
 
 
-#### Login to Discovery service on localhost
+#### Log in to Discovery Service on localhost
 
-You need to provide a valid client certificate if you want to access Discovery Service on localhost.
+To access Discovery Service on localhost provide a valid client certificate.
 
 The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
 
-Some utilities including HTTPie requires the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
+Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
 
-Since the Discovery Service is using HTTPS, your client has also verify the validity of its certificate. This can be done by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
+Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
 
-Example how to access Discovery Service from CLI with full certificate validation:
+The following is an example of how to access Discovery Service from CLI with full certificate validation:
 
 `http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
 
@@ -277,15 +268,15 @@ Example how to access Discovery Service from CLI with full certificate validatio
 
 #### Certificates for z/OS installation from the Zowe PAX file
 
-When you install the Zowe runtime on z/OS from the PAX file following the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html), the certificates for the APIML local CA and APIML service are automatically generated.
+Certificates for the API ML local CA and API ML service are automatically generated by installing the Zowe runtime on z/OS from the PAX file. Following the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html) 
 
-They are generated by the certificate management script `apiml_cm.sh` that is installed to `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.    
+These certificates are generated by the certificate management script `apiml_cm.sh` that is installed to `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.    
 
 `$ZOWE_ROOT_DIR` is the directory where you installed the Zowe runtime.
 
 The certificates are generated to the directory `$ZOWE_ROOT_DIR/api-mediation/keystore`.
 
-APIML keystore and truststore:
+API ML keystore and truststore:
 
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local/localhost.keystore.p12` 
     - used for the HTTPS servers
@@ -297,7 +288,7 @@ APIML keystore and truststore:
     - contains the local CA public certificate
     - can contain additional certificate to trust services that are not signed by local CA
 
-APIML key and truststores needs be accessible by the user ID that executes the Zowe runtime.
+API ML keystores and truststores needs be accessible by the user ID that executes the Zowe runtime.
 
 Local CA:
 
@@ -307,61 +298,71 @@ Local CA:
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.keystore.p12`
     - private key of the local CA 
 
-Local CA keystore can be accessible only by the user that is installing and managing the Zowe runtime. 
+The local CA keystore is only accessible by the user that is installs and manages the Zowe runtime. 
 
 
 #### Import the local CA certificate to your browser
 
-The local CA certificate is not trusted outside of the API Mediation Layer by default.
-You need to add it to the truststore of the REST API clients and to your browser.
+Trust in the API ML server is a necessary precondition to properly encrypt traffic between web browsers and REST API client applications. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
-The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
+**Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
 
-It is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
+The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
 
-The recommended method is to use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--):
+**Follow these steps:**
 
-`zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer`
+1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
 
-Alternatively, you can use `sftp`:
+    - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**
+    Issue teh following command:
 
-```
-sftp <system>
-get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
-```
+    `zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer`
 
-Verify that the file has been transferred correctly. Open it and you should see something like:
+    - **Use `sftp`**
+    Issue the following command:
+
+    ```
+    sftp <system>
+    get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
+    ```
+
+    To verify that the file has been transferred correctly, open the file. The following heading and closing shoulf appear: 
    
-```
------BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----
-```
+    ```
+    -----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    ```
 
-Then you need to import the certificate to your root certificate store and trust it. 
+2. Import the certificate to your root certificate store and trust it. 
 
-For **Windows**, you can run the following command:
+    - **For Windows**
+    Run the following command:
 
-`certutil -enterprise -f -v -AddStore "Root" localca.cer` 
+    `certutil -enterprise -f -v -AddStore "Root" localca.cer` 
     
-You have to open the terminal as administrator. This will install the certificate to the Trusted Root Certification Authorities. 
+    **Note:** Ensure that you open the terminal as **administrator**. This will install the certificate to the Trusted Root Certification Authorities. 
 
-If you're using **macOS**, you can run the following command: 
+    - **For macOS** 
+    Run the following command: 
 
-`$ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer` 
+    `$ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer` 
 
-**Firefox** uses its own certificate truststore. You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore:
+    - **For Firefox**
+    You can manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore:
+    
+    **Note:** Firefox uses its own certificate truststore. 
+    
+    Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
 
-Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
+    ```
+    /* Enable experimental Windows truststore support */
+    pref("security.enterprise_roots.enabled", true);
+    ```
 
-```
-/* Enable experimental Windows truststore support */
-pref("security.enterprise_roots.enabled", true);
-```
+#### Generate a keystore and truststore for a new service on z/OS
 
-#### Generating keystore and truststore for a new service on z/OS
-
-You can generate keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
+You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
 ```
 cd $ZOWE_ROOT_DIR/api-mediation
@@ -381,7 +382,7 @@ The `service-ext` specifies the X.509 extension that should be the Subject Alter
 
 `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
-*Note:* For more details about SAN, see section *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
+**Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
 The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. For example:
 
@@ -395,31 +396,30 @@ The `service-password` is the keystore password. The purpose of the password is 
 The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. If you an in the `$ZOWE_RUNTIME/api-mediation-directory`, you can omit this parameter. It should point to the `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca`.
 
 
-#### Add a service with an existing certificate to APIML on z/OS
+#### Add a service with an existing certificate to API ML on z/OS
 
-The API Mediation Layer needs to validate the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer needs to validate the full certificate chain. It usually means that:
+The API Mediation Layer requires validatation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validatation of the full certificate chain. Use one of the following methods:
 
-1. You need to import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
+- Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
 
-2. or your service needs to have its own certificate and all intermediate CA certificates (if it was signed by intermediate CA) in its keystore.
+- Ensure that your service has its own certificate. If it was signed by intermediate CA all intermediate CA certificates ensure that all certificates are in its keystore.
 
-    - If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the APIML truststore.
+    **Note:** If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
-You can import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
+Import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
 
 ```
 cd $ZOWE_ROOT_DIR/api-mediation
 scripts/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
 ```
 
-
-##### What happens if the service is not trusted
+##### Procedure if the service is not trusted
 
 If you access a service that is not trusted, for example, by issuing a REST API request to it:
 
 ```http --verify=keystore/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
 
-You will get a similar response:
+You will receive a similar response:
 
 ```
     HTTP/1.1 502
@@ -437,12 +437,12 @@ You will get a similar response:
     }
 ```
     
-The response has HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and message number `AML0105` and its content explains details about the message.
+The response has the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and the message number `AML0105` and content that explains details about the message.
 
-If you see this message, you need to import the certificate of your service or the CA that has signed it to the truststore API Mediation Layer as described above.
+If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
 
 
-#### Trust z/OSMF certificate
+#### Trust a z/OSMF certificate
 
 The Zowe installation script tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically.  This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
 
@@ -450,9 +450,11 @@ If it is not possible, you will see following error message:
 
 `WARNING: z/OSMF is not trusted by the API Mediation Layer.`
 
-To allow `apiml_cm.sh` to run, it should be sufficient to give CONTROL access for the user of `IRR.DIGTCERT.LIST` (needed for a SITE certificate) and UPDATE access for the user of `IRR.DIGTCERT.LISTRING`, but in some cases (for example, you have already created a certificate), you might have to permit the user CONTROL access to `IRR.DIGTCERT.**`. See details below.
+To allow `apiml_cm.sh` to run, it should be sufficient to give CONTROL access for the user of `IRR.DIGTCERT.LIST` (needed for a SITE certificate) and UPDATE access for the user of `IRR.DIGTCERT.LISTRING`, but in some cases (for example, you have already created a certificate), you might have to permit the user CONTROL access to `IRR.DIGTCERT.**`.
 
-You can add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring. The read access to z/OSMF keyring can be granted by the following commands:
+**Follow these steps:**
+
+1. Add z/OSMF to the truststore manually as a user that has access rights to read the z/OSMF keyring. The read access to z/OSMF keyring can be granted by the following commands:
 
 - RACF:
 
@@ -481,36 +483,42 @@ You can add z/OSMF to the truststore manually as a user that has access rights t
       F ACF2,REBUILD(FAC) 
     ```
 
-where `acid` is the user ID of the user that is installing Zowe.
+    where:
 
-To find the name of the z/OSMF keyring issue:
+    - `acid` is the user ID of the user that is installing Zowe.
+
+2. Issue the following command to find the name of the z/OSMF keyring:
  
-`cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring`
+    `cat /var/zosmf/configuration/servers/zosmfServer/bootstrap.properties | grep izu.ssl.key.store.saf.keyring`
 
-This will return a line like the following one:
+    This will return a line like the following one:
+ 
+    `izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT`
 
-`izu.ssl.key.store.saf.keyring=IZUKeyring.IZUDFLT`
+3. Run following commands as a superuser to import z/OSMF certificates:
 
-This should be the same keyring name as specified in the PARMLIB member for z/OSMF; for example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like this:
+    **Note:** This should be the same keyring name as specified in the PARMLIB member for z/OSMF. For example, in SYS1.PARMLIB(IZUPRMxx) you will see a line like this:
 
-`KEYRING_NAME('IZUKeyring.IZUDFLT')`
+    `KEYRING_NAME('IZUKeyring.IZUDFLT')`
 
-You need to run the following commands as superuser to import z/OSMF certificates.  Substitute the value of the z/OSMF keyring that is obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
+4. Substitute the value of the z/OSMF keyring that is obtained above from `bootstrap.properties` in the value of the `--zosmf-keyring` parameter:
 
-```
-    su
-    cd $ZOWE_RUNTIME/api-mediation
-    scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
-```
+    ```
+        su
+        cd $ZOWE_RUNTIME/api-mediation
+        scripts/apiml_cm.sh --action trust-zosmf --zosmf-keyring IZUKeyring.IZUDFLT --zosmf-userid IZUSVR
+    ```
 
-If you receive an error like this from that command, 
+If the import is successful, restart the Zowe server to make the changes effective.
+
+If the import is not successful, you may receive an error such as the following error: 
 
 ```
 keytool error (likely untranslated): java.io.IOException: The private key of IZUDFLT is not available or no authority to access the private key
 It is not possible to read z/OSMF keyring IZUSVR/IZUKeyring.IZUDFLT. The effective user ID was: acid. You need to run this command as user that has access to the z/OSMF keyring:
 ```
 
-and you see these messages in the log:
+Verify that you receive these messages in the log:
 
 ```
 ICH408I USER(acid ) GROUP(group ) NAME(name        )
@@ -520,20 +528,19 @@ ICH408I USER(acid ) GROUP(group ) NAME(name        )
  ACCESS INTENT(CONTROL)  ACCESS ALLOWED(NONE   )
 ```
 
-then you need to PERMIT the user to have CONTROL access to `IRR.DIGTCERT.**` with the following RACF command or the equivalent command for ACF2 or Top Secret:
+If you receive these messages, permit the user to have CONTROL access to `IRR.DIGTCERT.**` with the following RACF command or the equivalent command for ACF2 or Top Secret:
 
 ```
 PERMIT IRR.DIGTCERT.** CLASS(FACILITY) ID(acid) ACCESS(CONTROL)
 ```
 
-If the import is successful, you need to restart the Zowe server to make the changes effective.
+If the import is successful, restart the Zowe server to make the changes effective.
 
+#### Disable certificate validation
 
-#### Disabling certificate validation
+To use Zowe without setting up certificates, disable the validation of the TLS/SSL certificates by the API Mediation Layer.
 
-If you want to try out the Zowe without setting up the certificates, you can disable the validation of the TLS/SSL certificates by the API Mediation layer.
-
-This can be done updating following property:
+Update the following property:
 
 `-Dapiml.security.verifySslCertificatesOfServices=false`
 
