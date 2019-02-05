@@ -13,9 +13,7 @@ The following procedure is an overview of steps to onboard a Java Jersey REST AP
 
 3. [Download Apache Tomcat and enable SSL](#download-apache-tomcat-and-enable-ssl)
 
-3. [Run your service](#run-your-service)
-
-4. [Validate discovery of the API service by the Discovery Service](#validate-discovery-of-the-api-service-by-the-discovery-service)
+4. [Run your service](#run-your-service)
 
 ## Get enablers from the Artifactory
 
