@@ -576,8 +576,7 @@ Having edited the PARMLIB refresh using
 
 3. APF-authorization
 
-Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a loab lirary is APF-authorized 
-by using the TSO command
+Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a loab library is APF-authorized by using the following TSO command:
 
 ```
 D PROG,APF,DSNAME=ZWES.SISLOAD
@@ -593,7 +592,7 @@ where the value of DSNAME is the name of the data set that contains the ZWESIS01
 
 4. PARMLIB member
 
-The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or else allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
+The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
 
 5. Security requirements for the cross memory server
 
@@ -605,40 +604,41 @@ The Zowe cross memory server performs a sequence of SAF checks to protect its se
 
 A valid caller of the Zowe cross memory services must have READ access to `ZWE.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
 
-The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
+The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
 
 
 6. ICSF cryptographic services 
 
-The user IZUSVR running ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
+The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
 
-Using ICSF services; what you'll need,  depending on whether ICSF is already installed.
-- The ICSF or CSF job running on your z/OS system
-- configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB
-- create CKDS, PKDS, TKDS VSAM datasets
-- The CSFSERV RACF (or equivalent SAF) CLASS defined and activated: 
-```
-RDEFINE CSFSERV profile-name UACC(NONE)
-PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
-SETROPTS CLASSACT(CSFSERV)
-SETROPTS RACLIST(CSFSERV) REFRESH
-```
+When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
+- The ICSF or CSF job that runs on your z/OS system.
+- Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
+- Create CKDS, PKDS, TKDS VSAM data sets.
+- Define and activate the CSFSERV RACF (or equivalent SAF) CLASS: 
+
+  ```
+  RDEFINE CSFSERV profile-name UACC(NONE)
+  PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+  PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+  SETROPTS CLASSACT(CSFSERV)
+  SETROPTS RACLIST(CSFSERV) REFRESH
+  ```
 - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
-- determine whether you want SAF authorisation checks against CSFSERV and set ```CSF.CSFSERV.AUTH.CSFRNG.DISABLE accordingly```
-- refer to https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm, the z/OS 2.3.0z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization
-- CCA and/or PKCS #11 coprocessor for random number generation
-- enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required
+- Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
+- Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
+- CCA and/or PKCS #11 coprocessor for random number generation.
+- Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
 
 ### Scripted install of the Zowe Cross Memory Server 
 
 For users who have sufficient authority under their user ID to the z/OS instance they are installing the Zowe cross memory server into, there is a convenience script provided in `/zowe_install_dir/install/zowe-install-apf-server.sh`.
 
-This script will create the APF authorized load library, copythe load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and giving READ access to the ZOWESVR user ID.  
+This script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and giving READ access to the ZOWESVR user ID.  
 
-The script will not create the PPT entry which must be done manually.  This is done using the steps described in 5. Security requirements for the cross memory server section in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server). 
+The script will not create the PPT entry which must be done manually.  This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server). 
 
-The script will not create anything for the ICSF cryptographic services.  These are described in step 6. ICSF cryptographic services in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server). 
+The script will not create anything for the ICSF cryptographic services.  These are described in step "6. ICSF cryptographic services" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
 
 The parameters that are used to control the script are contained in the file `/zowe_install_dir/install/zowe-install-apf-server.yaml`. You must edit this file before running the `zowe-install-apf-server.sh` script with appropriate values.
 
@@ -684,21 +684,22 @@ where,
 
 - _users:stcGroup_ is the user group that the ZWESIS01 started task will be run under.  Enter the same values as the user group that is running ZOWESVR, so choose IZUADMIN.
 
-After the `zowe-install-apf-server.yaml` file has been edited with values, before ruunning `zowe-install-apf-server.sh` a PPT entry needs to be added. 
+After the `zowe-install-apf-server.yaml` file has been edited with values, before running `zowe-install-apf-server.sh`, a PPT entry needs to be added. 
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
 
-The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01.  To start this issue the operator start command through SDSF
+The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
 
     ```
     /S ZOWESIS01
     ```
-To end the Zowe APF Angel process issue the operator cancel command through SDSF
+To end the Zowe APF Angel process, issue the operator cancel command through SDSF:
+
     ```
     /C ZOWESIS01
     ```
 
-**Note** The stopping and starting of the ZOWESVR for the main Zowe servers is independent of the ZOWESIS01 angel process.  If you are running more than on ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the beahvior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
+**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZOWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
 
 ## Verifying installation
 
