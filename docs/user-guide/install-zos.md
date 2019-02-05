@@ -176,7 +176,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
 
-    - The zlux-server has three ports: the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
+    - z/OS desktop apps has three ports for each of its explorer apps
+
+    - The zlux-server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
 
     **Example:**
 
@@ -192,16 +194,18 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       externalCertificateAlias=
       externalCertificateAuthorities=
       verifyCertificatesOfServices=true
+      enableSso=false
+      zosmfKeyring=IZUKeyring.IZUDFTL
+      zosmfUser=IZUSVR
 
-    explorer-server:
-      jobsPort=7080
-      mvsPort=7443
+    zos-services:
+      jobsAPIPort=8545
+      mvsAPIPort=8547
 
-    # http and https ports for the node server
-    zlux-server:
-      httpPort=8543
-      httpsPort=8544
-      zssPort=8542
+    zowe-desktop-apps:
+      jobsExplorerPort=8546
+      mvsExplorerPort=8548
+      ussExplorerPort=8550
     ```
 
     **Notes:**
@@ -572,7 +576,7 @@ The manual installation consists of the following steps.
     After you edit the PARMLIB, issue the following command to make the SCHEDxx changes effective:
 
     ```
-    /S SET SCH=00
+    /S SET SCH=xx
     ```
 
 3. APF-authorization
