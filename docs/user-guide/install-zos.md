@@ -501,7 +501,7 @@ By default, Zowe uses the runtime version that you most recently installed. To s
 
 To test whether the API Mediation Layer is active, open the URL: `https://<hostname>:7554`. 
 
-The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os).
+The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos).
 
 ### Stopping the ZOWESVR PROC
 
