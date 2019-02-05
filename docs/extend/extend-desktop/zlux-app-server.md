@@ -107,7 +107,7 @@ If you are running the Zowe Application Server separate from ZSS, ensure the ZSS
 ant deploy
 ```
 
-On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in [step 4](#_4-build-application-plug-ins).
+On the other hand, if you are running ZSS and the Zowe Application Server on the same host, _build.sh_ and _build.bat_ execute _deploy_ and therefore this task was accomplished in [Step 4](#4-build-application-plug-ins).
 
 However, if you need to change the server configuration files or if you want to add more application plug-ins to be included at startup, you must update the deploy content to reflect this. Simply running `deploy.bat` or `deploy.sh` will accomplish this, but files such as `zluxserver.json` are only read at startup, so a reload of the Zowe Application Server and ZSS would be required.
 
