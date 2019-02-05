@@ -1,6 +1,8 @@
 # Installing Zowe on z/OS 
 
-To install Zowe on z/OS, you install the Zowe runtime that consists of three components: Zowe Application Framework, explorer server, and Zowe API Mediation Layer. Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
+To install Zowe on z/OS,  there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner. 
+
+Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
 
 1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
 2. [Prerequisites](#prerequisites)
@@ -8,9 +10,13 @@ To install Zowe on z/OS, you install the Zowe runtime that consists of three com
     - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-installsh-works)   
 4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)        
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)    
-5. [Verifying installation](#verifying-installation)        
-6. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
+    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
+5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
+    - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
+    - [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
+6. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+7. [Verifying installation](#verifying-installation)        
+8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
 ## Obtaining and preparing the installation file
 
@@ -42,7 +48,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
       (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
       ```
 
-      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary "zowe-v.r.m.pax.sha512.my" file.
+      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary `zowe-v.r.m.pax.sha512.my` file.
 
       You can also use other commands such as `sha512`, `sha512sum`, or `openssl dgst -sha512` to generate `SHA512` hash code. These hash code results are in a different format from what Zowe provides but the values are the same.
 
@@ -52,14 +58,14 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
       **Follow these steps:**
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [Zowe website](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
-      2. Import the public key with command `gpg --import KEYS`.
-      3. If you have never used gpg before, generate keys with command `gpg --gen-key`.
-      4. Sign the downloaded public key with command `gpg --sign-key DC8633F77D1253C3`.
-      5. Verify the file with command `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax`.
-      6. Optional: You can remove the imported key with command: `gpg --delete-key DC8633F77D1253C3`.
+      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://projectgiza.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
+      2. Import the public key with the `gpg --import KEYS` command.
+      3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
+      4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
+      5. Verify the file with the `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax` command.
+      6. Optional: You can remove the imported key with the `gpg --delete-key DC8633F77D1253C3` command.
 
-     When you see output similar to the followin one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
+     When you see output similar to the following one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
 
      ```
      gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
@@ -103,20 +109,20 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
     d. When you are in the directory you want to transfer the Zowe PAX file into, issue the following command:
 
      ```
-     put <pax-file-name>.pax
+     put <zowe-v.r.m>.pax
      ```
 
-    Where _pax-file-name_ is a variable that indicates the full name of the PAX file you downloaded.
+    Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
 
-    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` will list contents of a directory on z/OS.  
+    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.  
 
-3. When the PAX file is transferred, expand the PAX file by issuing the following command in an ssh session:
+3. When the PAX file is transferred, expand the PAX file by issuing the following command in an SSH session:
 
     ```
-    pax -ppx -rf <pax-file-name>.pax
+    pax -ppx -rf <zowe-v.r.m>.pax
     ```  
 
-    Where _pax-file-name_ is a variable that indicates the name of the PAX file you downloaded.
+    Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
 
 
     This will expand to a file structure.
@@ -142,11 +148,13 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
 
-- The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script.
+<!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
+
+- The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
 ## Installing the Zowe runtime on z/OS
 
-To install Zowe API Mediation Layer, Zowe Application Framework, and explorer server, you install the Zowe runtime on z/OS.
+To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
 
  **Follow these steps:**
 
@@ -160,13 +168,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/0.9.5`. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
+    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
 
         You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
-    - The Explorer-server has two ports: one for HTTP and one for HTTPS. The liberty server is used for the explorer-ui components.
+    - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
 
     - The zlux-server has three ports: the HTTP and HTTPS ports that are used by the Zowe Application Server, and the port that is used by the ZSS Server.
 
@@ -174,7 +182,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     ```yaml
     install:
-     rootDir=/var/zowe/0.9.5
+     rootDir=/var/zowe/1.0.0
 
     api-mediation:
       catalogPort=7552
@@ -186,8 +194,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
       verifyCertificatesOfServices=true
 
     explorer-server:
-      httpPort=7080
-      httpsPort=7443
+      jobsPort=7080
+      mvsPort=7443
 
     # http and https ports for the node server
     zlux-server:
@@ -198,7 +206,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
     **Notes:**
     -  If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
-    - Comments are not supported in the yaml file, apart from lines starting with '#' in column one.
+    - Comments are not supported in the YAML file, apart from lines starting with '#' in column one.
 
 3. Determine which ports are not available.
 
@@ -216,7 +224,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
       The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application. 
       
-      **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and explorer server which must be unused, the terminal ports are expected to be in use.
+      **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.
 
       ```
       # Ports for the TN3270 and the VT terminal to connect to
@@ -250,7 +258,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
-      - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user installing Zowe must have update access to this dataset.  
+      - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
       - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-installsh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
@@ -266,9 +274,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
      - The member name must be a valid PDS member name in z/OS.  If the member already exists, it will be overwritten.  
      - If you omit the `memberName` tag or specify `memberName=`, the install script uses ZOWESVR.
 
-5. (Optional) Use existing certificate signed by an external CA for HTTPS ports in API Mediation Layer and zLUX.
+5. (Optional) Use existing certificate signed by an external CA for HTTPS ports in API Mediation Layer and Zowe Application Framework.
 
-     If you skip this step, then certificates generated by the local API Mediation CA are used. These certificates are generated automatically during the installation. The server certificate needs to be imported to your browser - see [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).
+     If you skip this step, then certificates generated by the local API Mediation CA are used. These certificates are generated automatically during the installation. The server certificate needs to be imported to your browser. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).
 
      You can use an existing server certificate that is signed by an external CA such as a CA managed by the IT department of your company. The benefit of such certificate is that it will be trusted by browsers in your company.
      You can even use a public certificate authority such as Symantec, Comodo, or GoDaddy. Such certificate are trusted by all browsers and most REST API clients. This is, however, a manual process of requesting a certificate. As such, we recommend to start with the local API Mediation Layer CA for an initial evaluation.
@@ -285,7 +293,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
 
      d. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `verifyCertificatesOfServices=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate. 
    
-     **Important** Switching off certificate evaluation is a non-secure setup.
+     **Important!** Switching off certificate evaluation is a non-secure setup.
 
      **Example:**
 
@@ -305,7 +313,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     zowe-install.sh  
     ```
 
-    **Note:** You might receive the following error that the file cannot be executed:
+    You might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute
@@ -313,10 +321,14 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
 
     ```
-    chmod u+x zowe-install.sh.
+    chmod u+x zowe-install.sh
     ```
    
-    You may also receive the following error:
+   When the script runs, it echos its progress to the shell and attempts to determine and validate the location of the prerequisites including z/OSMF, Java, and Node. When the script cannot determine the location of these prerequisites, you will be prompted for their location.
+
+    <<JRW TO DO - Write about the log file and the commands behing echoed>>
+    
+    You may also receive the following message:
 
     ```
     apiml_cm.sh --action trust-zosmf has failed.
@@ -324,6 +336,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     ```
 
     This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-zosmf-certificate) for more details.
+
+
     
 7. Configure Zowe as a started task.
 
@@ -380,9 +394,9 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
 
-     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`
-     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`
-     - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`
+     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
+     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
+     - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
 
     When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
 
@@ -392,7 +406,8 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
 
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/.profile`.  
+    <<TODO - JRW>>
+     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 
@@ -441,18 +456,18 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     You can tailor the JCL at this line
 
       ```
-      //ZOWESVR   PROC SRVRPATH='/zowe/install/path/explorer-server'
+      //ZOWESVR   PROC SRVRPATH='/zowe/install/path'
       ```
 
-    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the explorer server.  Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
       ```
-      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
+      /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
       ```
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has three runtime components on z/OS: the explorer server, the Zowe Application Server, and Zowe API Mediation Layer. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the four servers. Stopping ZOWESVR PROC stops all four servers.
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
 
@@ -466,7 +481,7 @@ where:
 
 _$ZOWE_ROOT_DIR_ is the directory where you installed the Zowe runtime. This script starts the ZOWESVR PROC for you so you do not have to log on to TSO and use SDSF.
 
-**Note:** The default startup allows self-signed and expired certificates from the Zowe Application Framework proxy data services such as the explorer server.
+**Note:** The default startup allows self-signed and expired certificates from the Zowe Application Framework proxy data services.
 
 If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following operator command in SDSF:
 
@@ -477,12 +492,12 @@ If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following 
 By default, Zowe uses the runtime version that you most recently installed. To start a different runtime, specify its server path on the START command:
 
 ```
-/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR/explorer-server'
+/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
 ```
 
-To test whether the explorer server is active, open the URL: `https://<hostname>:7443/explorer-mvs`.
+To test whether the API Mediation Layer is active, open the URL: `https://<hostname>:7554`. 
 
-The port number `7443` is the default port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing Zowe runtime on z/OS](# #installing-the-zowe-runtime-on-z-os).
+The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os).
 
 ### Stopping the ZOWESVR PROC
 
@@ -499,7 +514,7 @@ If you prefer to use SDSF to stop Zowe, stop ZOWESVR by issuing the following op
 /C ZOWESVR
 ```
 
-Either method will stop the explorer server, the Zowe Application Server, and the zSS server.
+Either method will stop the z/OS Service microservice server, the Zowe Application Server, and the zSS server.
 
 When you stop the ZOWESVR, you might get the following error message:
 
@@ -518,6 +533,172 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 ```
 /D A,ZOWESVR
 ```
+
+## Installing the Zowe Cross Memory Server on z/OS
+
+The Zowe Cross Memory Service is a started task angel that runs an authorized server application providing privileged cross-memory services to Zowe.  
+
+The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result. 
+- Manually 
+- Use the script  `/install/zowe-install-apf-server.sh` that reads configuration parameters from the file `/install/zowe-install-apf-server.yaml` 
+
+You can choose which method to use depending on your familiarity with z/OS configuration steps that are required for the manual path, together with the authority and privileges of your user ID if you choose to run the automated path.
+
+Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
+
+### Manually installing the Zowe Cross Memory Server
+
+A number of files are included in the USS directory `zowe_install_dir/files/zss`.  If this directory is not present, you must create it by expanding the file `zowe_install_dir/files/zss.pax`.  To do this, first create the folder `zss` beneath `files` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`. 
+
+The manual installation consists of the following steps.
+
+1. ZWESIS01 load module and proclib
+
+    Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set `zwes_loadlib`, for example, ZWES.SISLOAD.
+
+    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
+
+    Do not add the `zwes_loadlib` data set to the system LNKLST or LPALST concatenations. You must execute it by using a started task that uses a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
+
+    **Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
+
+2. PPT Entry
+
+    The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PTT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
+
+    ```
+    PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
+    ```
+    After you edit the PARMLIB, issue the following command to make the SCHEDxx changes effective:
+
+    ```
+    /S SET SCH=00
+    ```
+
+3. APF-authorization
+
+    Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a load library is APF-authorized by using the following TSO command:
+
+    ```
+    D PROG,APF,DSNAME=ZWES.SISLOAD
+    ```
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+
+    To dynamically add the SMS-managed library to the APF list, run the following TSO command:
+
+    ```
+    SETPROF APF,ADD,DSNAME=ZWES.SISLOAD
+    ```
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+
+4. PARMLIB member
+
+    The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
+
+5. Security requirements for the cross memory server
+
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWE.IS`.
+
+    - To see the current class settings, enter the TSO command `SETROPTS LIST`.  
+    - To activate the FACILITY class, enter `SETROPTS CLASSACT(FACILITY)`. 
+    - To RACLIST the FACILITY class, enter `SETROPTS RACLIST(FACILITY)`.
+
+    A valid caller of the Zowe cross memory services must have READ access to `ZWE.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
+
+    The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
+
+
+6. ICSF cryptographic services 
+
+    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
+
+    When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
+    - The ICSF or CSF job that runs on your z/OS system.
+    - Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
+    - Create CKDS, PKDS, TKDS VSAM data sets.
+    - Define and activate the CSFSERV RACF (or equivalent SAF) CLASS: 
+
+      ```
+      RDEFINE CSFSERV profile-name UACC(NONE)
+      PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+      PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+      SETROPTS CLASSACT(CSFSERV)
+      SETROPTS RACLIST(CSFSERV) REFRESH
+      ```
+    - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
+    - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
+    - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
+    - CCA and/or PKCS #11 coprocessor for random number generation.
+    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
+
+### Scripted install of the Zowe Cross Memory Server 
+
+For users who have sufficient authority under their user ID to the z/OS instance they are installing the Zowe cross memory server into, there is a convenience script provided in `/zowe_install_dir/install/zowe-install-apf-server.sh`.
+
+- The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
+- The script will not create the PPT entry which must be done manually.  This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server). 
+- The script will not create anything for the ICSF cryptographic services.  These are described in step "6. ICSF cryptographic services" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
+
+Because the parameters that are used to control the script are contained in the file `/zowe_install_dir/install/zowe-install-apf-server.yaml`, you must edit this file before running the `zowe-install-apf-server.sh` script with appropriate values.
+
+```
+# Datasets that APF server will be installed into
+install:
+  # PROCLIB dataset name (required, no default values)
+  proclib=
+  # PARMLIB dataset name (${USER}.PARMLIB by default)
+  parmlib=
+  # LOADLIB dataset name (${USER}.LOADLIB by default)
+  loadlib=
+```
+
+where, 
+- _install:proclib_ is the data set name that the ZWESIS01 JCL member that is used to start the ZWESIS01 started task will be copied into, for example, USER.PROCLIB.
+- _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB.  Choose a value such as IZUSVR.PARMLIB.
+- _install:loadlib_ is the data set name where the ZWESIS01 load module will be copied into.  This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
+
+```
+# APF server users
+users:
+  # User to run Zowe server (required, no default values)
+  zoweUser=
+  # APF server STC user (ZWESISTC by default)
+  stcUser=
+  # APF server STC user UID (required if STC user doesn't exist)
+  stcUserUid=
+  # STC user group (required if either STC user or profile doesn't exist)
+  stcGroup=
+```
+
+where, 
+
+- _users:zoweUser_ is the TSO user ID that the ZOWEVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
+- _users:sctUser_ is the user ID that the ZWESIS01 started task will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
+- _users:stcUserUid_.  This is the Unix user ID of the TSO user ID used to run the ZWESIS01 started task. If the user ID is IZUSVR to see the Unix user ID enter the command `id IZUSVR` which will return the sctUserUid in the uid result.  In the example below IZUSVR has a uid of 210, so `users:stcUserUid=210` should be entered.  
+
+    ```
+   /:>id IZUSVR
+   uid=210(IZUSVR) gid=202(IZUADMIN) groups=205(IZUSECAD)
+    ```
+
+- _users:stcGroup_ is the user group that the ZWESIS01 started task will be run under.  Enter the same values as the user group that is running ZOWESVR, so choose IZUADMIN.
+
+After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT entry before you run `zowe-install-apf-server.sh`. 
+
+## Starting and stopping the Zowe Cross Memory Server on z/OS
+
+The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
+
+```
+/S ZOWESIS01
+```
+To end the Zowe APF Angel process, issue the operator cancel command through SDSF:
+
+```
+/C ZOWESIS01
+```
+
+**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZOWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
 
 ## Verifying installation
 
@@ -538,8 +719,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying explorer server installation](#verifying-explorer-server-installation)
-    - [Verifying the availability of explorer server REST APIs](#verifying-the-availability-of-explorer-server-rest-apis)  
+- [Verifying z/OS Services installation](#verifying-z-os-services-installationn) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
@@ -553,59 +733,18 @@ where:
 - _myHost_ is the host on which you installed the Zowe Application Server.
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.http.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
+  
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
 
-### Verifying explorer server installation
+### Verifying z/OS Services installation
 
-After the explorer server is installed and the ZOWESVR procedure is started, you can verify the installation from an internet browser by entering the following case-sensitive URL:
-
-`https://<your.server>:<atlasport>/api/v1/system/version`
-
-where:
-
-- _your.server_ is the host name or IP address of the z/OS® system where explorer server is installed
-- _atlasport_ is the port number that is chosen during installation.
-  You can verify the port number in the `server.xml` file. This file is located in the explorer server installation directory, which is `/var/zowe/explorer-server/wlp/usr/servers/Atlas/server.xml` by default. The port number is visible in the `httpsPort` assignment in the `server.xml` file.
-
-**Example:** `httpPort="7443"`.
-
-This URL sends an HTTP GET request to the Liberty Profile explorer server. If explorer server is installed correctly, a JSON payload that indicates the current explorer server application version is returned.
-
-**Example:**
+After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```
-{ "version": "V0.0.1" }
+https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
 ```
 
-**Note:** The first time that you interact with the explorer server, you are prompted to enter an MVS™ user ID and password. The MVS user ID and password are passed over the secure HTTPS connection to establish authentication.
-
-After you verify that explorer server is successfully installed, you can access the UI at the following URLs:
-
-- `https://<your.server>:<atlasport>/ui/v1/jobs/#/`
-- `https://<your.server>:<atlasport>/ui/v1/datasets/#/`
-- `https://<your.server>:<atlasport>/ui/v1/uss/#/`
-
-If explorer server is not installed successfully, see [Troubleshooting installation](../troubleshoot/troubleshootinstall.md) for solutions.
-
-#### Verifying the availability of explorer server REST APIs
-
-To verify the availability of all explorer server REST APIs, use the Liberty Profile's REST API discovery feature from an internet browser with the following URL. This URL is case-sensitive.
-
-`https://<your.server>:<atlasport>/ibm/api/explorer`
-
-With the discovery feature, you can also try each discovered API. The users who verify the availability must have access to their data sets and job information by using relevant explorer server APIs. This ensures that your z/OSMF configuration is valid, complete, and compatible with the explorer server application. For example, try the following APIs:
-
-Explorer server: JES Jobs APIs
-
-`GET /api/v1/jobs`
-
-This API returns job information for the calling user.
-
-Explorer server: Data set APIs
-
-`GET /api/v1/datasets/userid.**`
-
-This API returns a list of the userid.\*\* MVS data sets.
+where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatewayPort` in `zowe-install.yaml`.
 
 ### Verifying API Mediation installation
 

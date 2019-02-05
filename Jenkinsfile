@@ -160,10 +160,14 @@ node ('ibm-jenkins-slave-dind') {
       ansiColor('xterm') {
         sh 'npm run docs:pdf'
         if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
-          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPath}/"
+          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPathConverted}/"
         } else {
           error 'Failed to generate PDF document.'
         }
+        // clean up pdf tmp folder
+        echo 'Cleaning up .deploy/.pdf ...'
+        sh 'rm -fr .deploy/.pdf || true'
       }
     }
 

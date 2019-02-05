@@ -2,7 +2,7 @@
 After you install Zowe, you can optionally perform Zowe CLI configurations.
 
 ## Setting environment variables for Zowe CLI
-You can set environment variables on your operating system to modify Zowe CLI behavior, such as the log level and the location of the *.brightside* directory, where the logs, profiles, and plug-ins are stored. Refer to your computer's operating system documentation for information about how to set environmental variables.
+You can set environment variables on your operating system to modify Zowe CLI behavior, such as the log level and the location of the *.zowe* directory, where the logs, profiles, and plug-ins are stored. Refer to your computer's operating system documentation for information about how to set environmental variables.
 
 ### Setting log levels
 

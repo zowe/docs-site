@@ -27,7 +27,7 @@ The Spring Boot API onboarding process follows these general steps. Further deta
      * **@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product})**
 
         This annotation makes an API documentation endpoint visible within the Spring context.  
-2. Update your service configuration file to include MFaaS API Layer specific settings.
+2. Update your service configuration file to include Zowe API Mediation Layer specific settings.
 3. Externalize the API Layer site-specific configuration settings.
 4. Test your changes.
 
@@ -279,7 +279,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
     * **mfaas.discovery.locations**
 
-        Specifies the public URL of the Discovery Service (eureka). The system administrator at the customer site defines this parameter.
+        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
 
         **Example:**
          ```
@@ -294,7 +294,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
     * **mfaas.discovery.region**
 
-        Specifies the geographical region. This parameter is required by the Eureka client. Under most circumstances you can accept the value `default` for the parameter.          
+        Specifies the geographical region. This parameter is required by the Discovery client. Under most circumstances you can accept the value `default` for the parameter.          
 
     b. **Service and Server Parameters**
     * **mfaas.service.hostname**
@@ -366,7 +366,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
-      **Note:** If your REST API does not conform to MFaaS REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
+      **Note:** If your REST API does not conform to Zowe API Mediation layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
       * `eureka.instance.metadata-map.routed-services.<prefix>`
 
         Specifies a name for routing rules group. This parameter is only for logical grouping of further parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
@@ -474,7 +474,8 @@ The following list summarizes the API Layer parameters that are set by the custo
    * `mfaas.service.ipAddress: ${environment.ipAddress}`
    * `mfaas.server.port: ${environment.port}`
 
-**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Mainframe as a Service applications, we recommend that you use Java System properties.    
+
+**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation layer applications, we recommend that you use Java System properties.        
 
 Java System properties are defined using `-D` options for Java. Java System properties can override any configuration. Those properties that are likely to change are defined as `${environment.variableName}:`     
 

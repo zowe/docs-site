@@ -1,6 +1,6 @@
 ---
 home: true
-actionText: Read Documentation
+actionText: Getting Started
 actionLink: getting-started/overview.html
 footer: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
 ---
@@ -12,10 +12,10 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
-    <p>Find out how to install, configure, and use Zowe Application Framework, explorer server, API Mediation Layer, and Zowe CLI.</p>
+    <p>Find out how to install, configure, and use Zowe Application Framework, z/OS Services, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
-    <h2><a href="./extend/extend-api/libertyAPI.html">Extending</a></h2>
+    <h2><a href="./extend/extend-apiml/api-mediation-onboard-overview.html">Extending</a></h2>
     <p>Learn about onboarding your products. Developers can follow tutorials that teach how to build and extend Zowe components.</p>
   </div>
   <div class="feature">
@@ -32,20 +32,16 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
 </div>
 
-## Supported Doc Versions and Downloadable PDF Files
+## Downloadable PDF Files
 
-This website contains documentation for the latest version of Zowe Open Beta release.
+You can download the documentation for the latest version of Zowe on this website in PDF format.
 
-### Latest version
-The latest version is 0.9.5. You can download the Version 0.9.5 documentation as a PDF file.
+| Version | PDF 
+| --- | ---
+| V1.0.0 | [Zowe documentation](https://github.com/zowe/docs-site/blob/gh-pages/.pdf/out/Zowe_Documentation.pdf)
 
-[Download V0.9.5 PDF](https://github.com/zowe/docs-site/blob/gh-pages/.pdf/out/Zowe_Documentation.pdf)
 
-### Previous versions
-You can download the User Guide of a previous Open Beta version as a PDF file.
+## Zowe Third-Party Software Requirements and Bill of Materials
 
-- Version 0.9.4: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.4.pdf)
-- Version 0.9.3: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.3.pdf)
-- Version 0.9.2: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.2.pdf)
-- Version 0.9.1: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.1.pdf)
-- Version 0.9.0: [Download PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.0.pdf)
+- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.md)
+- [Bill of Materials (BOM)](./appendix/bill-of-materials.md)
