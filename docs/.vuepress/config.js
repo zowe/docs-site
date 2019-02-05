@@ -9,149 +9,126 @@ const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'latest').replac
 // this holds list of all pages
 // IMPORTANT: if you have new pages, please update this constant
 const ALL_PAGES = [{
-  text: 'Getting Started',
-  baseuri: '/getting-started/',
-  items: [{
-    text: 'Zowe overview',
-    link: 'getting-started/overview.md',
+    text: 'Getting Started',
+    baseuri: '/getting-started/',
+    items: [{
+        text: 'Zowe overview',
+        link: 'getting-started/overview.md',
+      },
+      {
+        text: 'Release notes',
+        link: 'getting-started/summaryofchanges.md'
+      },
+    ],
   },
   {
-    text: 'Release notes',
-    link: 'getting-started/summaryofchanges.md'
-  },
-  ],
-},
-{
-  text: 'User Guide',
-  baseuri: '/user-guide/',
-  items: [{
-    text: 'Installing Zowe',
-    items: [
-      'user-guide/installandconfig.md',
-      'user-guide/systemrequirements.md',
-      'user-guide/install-zos.md',
-      'user-guide/cli-installcli.md',
-      'user-guide/uninstall.md',
-    ]
-  },
-  {
-    text: 'Configuring Zowe',
-    items: [
-      'user-guide/mvd-configuration.md',
-      'user-guide/cli-configuringcli.md',
-    ]
-  },
-  {
-    text: 'Using Zowe',
-    items: [
-      'user-guide/mvd-using.md',
-      'user-guide/api-mediation-api-catalog.md',
-      'user-guide/cli-usingcli.md',
-    ]
-  },
-  {
-    text: 'Zowe CLI extensions and plug-ins',
-    items: [
-      'user-guide/cli-extending.md',
-      'user-guide/cli-installplugins.md',
-      'user-guide/cli-cicsplugin.md',
-      'user-guide/cli-db2plugin.md',
-      'user-guide/cli-vscodeplugin.md',
-    ]
-  }
-  ]
-},
-{
-  text: 'Extending',
-  baseuri: '/extend/',
-  items: [
-    {
-      text: 'Developing for API Mediation Layer',
-      items: [
-        'extend/extend-apiml/api-mediation-onboard-overview.md',
-        'extend/extend-apiml/api-mediation-security.md',
-        'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
-        'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
-        'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
-        'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
-      ]
-    },
-    {
-      text: 'Developing for Zowe CLI',
-      items: [
-        'extend/extend-cli/cli-devTutorials.md',
-        'extend/extend-cli/cli-setting-up.md',
-        'extend/extend-cli/cli-installing-sample-plugin.md',
-        'extend/extend-cli/cli-extending-a-plugin.md',
-        'extend/extend-cli/cli-developing-a-plugin.md',
-        'extend/extend-cli/cli-implement-profiles.md',
-      ]
-    },
-    {
-      text: 'Developing for Zowe Application Framework',
-      items: [
-        'extend/extend-desktop/mvd-extendingzlux.md',
-        'extend/extend-desktop/mvd-creatingappplugins.md',
-        'extend/extend-desktop/mvd-plugindefandstruct.md',
-        'extend/extend-desktop/mvd-dataservices.md',
-        'extend/extend-desktop/mvd-desktopandwindowmgt.md',
-        'extend/extend-desktop/mvd-configdataservice.md',
-        'extend/extend-desktop/mvd-uribroker.md',
-        'extend/extend-desktop/mvd-apptoappcommunication.md',
-        'extend/extend-desktop/mvd-errorreportingui.md',
-        'extend/extend-desktop/mvd-logutility.md',
-        'extend/extend-desktop/zlux-app-server.md',
-        'extend/extend-desktop/zlux-workshop-user-browser.md',
-        'extend/extend-desktop/zlux-tutorials.md',
-        'extend/extend-desktop/starter-intro.md',
-        'extend/extend-desktop/zlux-workshop-starter-app.md',
-        'extend/extend-desktop/ui-intro.md',
-        'extend/extend-desktop/iframe-sample.md',
-        'extend/extend-desktop/angular-sample.md',
-      ]
-    }
-  ]
-},
-{
-  text: 'Troubleshooting',
-  baseuri: '/troubleshoot/',
-  link: 'troubleshoot/troubleshootinstall.md'
-},
-{
-  text: 'Contributing',
-  baseuri: '/contributing.html',
-  link: 'contributing.md',
-
-},
-{
-  text: 'Appendix',
-  hideInPdf: true,
-  canHideFirst: true,
-  baseuri: '/appendix/',
-  items: [
-    {
-    text: 'Bill of Materials',
-    items: [
-      'appendix/bill-of-materials.md'
+    text: 'User Guide',
+    baseuri: '/user-guide/',
+    items: [{
+        text: 'Installing Zowe',
+        items: [
+          'user-guide/installandconfig.md',
+          'user-guide/systemrequirements.md',
+          'user-guide/install-zos.md',
+          'user-guide/cli-installcli.md',
+          'user-guide/uninstall.md',
+        ]
+      },
+      {
+        text: 'Configuring Zowe',
+        items: [
+          'user-guide/mvd-configuration.md',
+          'user-guide/cli-configuringcli.md',
+        ]
+      },
+      {
+        text: 'Using Zowe',
+        items: [
+          'user-guide/mvd-using.md',
+          'user-guide/api-mediation-api-catalog.md',
+          'user-guide/cli-usingcli.md',
+        ]
+      },
+      {
+        text: 'Zowe CLI extensions and plug-ins',
+        items: [
+          'user-guide/cli-extending.md',
+          'user-guide/cli-installplugins.md',
+          'user-guide/cli-cicsplugin.md',
+          'user-guide/cli-db2plugin.md',
+          'user-guide/cli-vscodeplugin.md',
+        ]
+      }
     ]
   },
   {
-    text: 'Third-Party Software Requirements',
+    text: 'Extending',
+    baseuri: '/extend/',
     items: [
-      'appendix/tpsr.md'
+      {
+        text: 'Developing for API Mediation Layer',
+        items: [
+          'extend/extend-apiml/api-mediation-onboard-overview.md',
+          'extend/extend-apiml/api-mediation-security.md',
+          'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
+          'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
+          'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
+          'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
+        ]
+      },
+      {
+        text: 'Developing for Zowe CLI',
+        items: [
+          'extend/extend-cli/cli-devTutorials.md',
+          'extend/extend-cli/cli-setting-up.md',
+          'extend/extend-cli/cli-installing-sample-plugin.md',
+          'extend/extend-cli/cli-extending-a-plugin.md',
+          'extend/extend-cli/cli-developing-a-plugin.md',
+          'extend/extend-cli/cli-implement-profiles.md',
+        ]
+      },
+      {
+        text: 'Developing for Zowe Application Framework',
+        items: [
+          'extend/extend-desktop/mvd-extendingzlux.md',
+          'extend/extend-desktop/mvd-creatingappplugins.md',
+          'extend/extend-desktop/mvd-plugindefandstruct.md',
+          'extend/extend-desktop/mvd-dataservices.md',
+          'extend/extend-desktop/mvd-desktopandwindowmgt.md',
+          'extend/extend-desktop/mvd-configdataservice.md',
+          'extend/extend-desktop/mvd-uribroker.md',
+          'extend/extend-desktop/mvd-apptoappcommunication.md',
+          'extend/extend-desktop/mvd-errorreportingui.md',
+          'extend/extend-desktop/mvd-logutility.md',
+          'extend/extend-desktop/zlux-app-server.md',
+          'extend/extend-desktop/zlux-workshop-user-browser.md',
+          'extend/extend-desktop/zlux-tutorials.md',
+          'extend/extend-desktop/starter-intro.md',
+          'extend/extend-desktop/zlux-workshop-starter-app.md',
+          'extend/extend-desktop/ui-intro.md',
+          'extend/extend-desktop/iframe-sample.md',
+          'extend/extend-desktop/angular-sample.md',
+        ]
+      }
     ]
-  }],
-},
+  },
+  {
+    text: 'Troubleshooting',
+    baseuri: '/troubleshoot/',
+    link: 'troubleshoot/troubleshootinstall.md'
+  },
+  {
+    text: 'Contributing',
+    baseuri: '/contributing.html',
+    link: 'contributing.md',
+    canHideFirst: true,
+  },
 ];
 
 const navbarLinks = (allPages => {
   let result = [];
 
   for (let group of allPages) {
-    if (group.hideInNavBar) {
-      continue;
-    }
-
     let converted = {};
 
     if (group.text) {
@@ -162,10 +139,6 @@ const navbarLinks = (allPages => {
     } else if (group.items) {
       converted.items = [];
       group.items.forEach(item => {
-        if (item.hideInNavBar) {
-          return;
-        }
-
         let convertedItem = {};
 
         if (item.text) {
@@ -199,10 +172,6 @@ const sidebarLinks = (allPages => {
     .replace(/^\//, '');
 
   for (let group of allPages) {
-    if (group.hideInSideBar) {
-      continue;
-    }
-
     let converted = [];
     const baseuri = group.baseuri;
 
@@ -211,10 +180,6 @@ const sidebarLinks = (allPages => {
       converted.push(convertedItem);
     } else if (group.items) {
       for (let item of group.items) {
-        if (item.hideInSideBar) {
-          return;
-        }
-
         let convertedItem = {
           title: item.text,
           collapsable: false,
@@ -235,20 +200,6 @@ const sidebarLinks = (allPages => {
     }
 
     result[baseuri] = converted;
-  }
-
-  return result;
-})(ALL_PAGES);
-
-const pdfLinks = (allPages => {
-  let result = [];
-
-  for (let group of allPages) {
-    if (group.hideInPdf) {
-      continue;
-    }
-
-    result.push(group);
   }
 
   return result;
@@ -306,5 +257,5 @@ module.exports = {
     sidebar: sidebarLinks
   },
   // pages tree used by generating PDF
-  pdf: pdfLinks,
+  pdf: ALL_PAGES,
 }
