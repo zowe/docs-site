@@ -546,7 +546,7 @@ You can choose which route to take depending on your familiarity with z/OS confi
 
 Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
-## Manually installing the Zowe Cross Memory Server
+### Manually installing the Zowe Cross Memory Server
 
 A number of files are included in the USS directory `zowe_install_dir/files/zss`.  If this directory is not present, you must create it by expanding the file `zowe_install_dir/files/zss.pax`.  To do this, first create the folder `zss` beneath `files` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`. 
 
@@ -554,81 +554,82 @@ The manual installation consists of the following steps.
 
 1. ZWESIS01 load module and proclib
 
-Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set zwes_loadlib, for example, ZWES.SISLOAD.
+    Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set zwes_loadlib, for example, ZWES.SISLOAD.
 
-You can copy the ZWESIS01 file to your zwes_loadlib data set using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The zwes_loadlib must be a PDSE due to language requirements.  
+    You can copy the ZWESIS01 file to your zwes_loadlib data set using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The zwes_loadlib must be a PDSE due to language requirements.  
 
-Do not add the zwes_loadlib data set to the system LNKLST or LPALST concatenations.  It must be executed using a started task using a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, for example, SYS1.PROCLIB or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
+    Do not add the zwes_loadlib data set to the system LNKLST or LPALST concatenations.  It must be executed using a started task using a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, for example, SYS1.PROCLIB or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
 
-**Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
+    **Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
 
 2. PPT Entry
 
-The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PTT entry to the SCHEDxx member of the system PARMLIB.  An example of a PPT entry is
+    The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PTT entry to the SCHEDxx member of the system PARMLIB.  An example of a PPT entry is
 
-```
-PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
-```
-Having edited the PARMLIB refresh using
-```
-/S SET SCH=00
-```
+    ```
+    PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
+    ```
+    Having edited the PARMLIB refresh using
+
+    ```
+    /S SET SCH=00
+    ```
 
 3. APF-authorization
 
-Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a loab library is APF-authorized by using the following TSO command:
+    Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a loab library is APF-authorized by using the following TSO command:
 
-```
-D PROG,APF,DSNAME=ZWES.SISLOAD
-```
-where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+    ```
+    D PROG,APF,DSNAME=ZWES.SISLOAD
+    ```
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
-To dynamically add the SMS-managed library to the APF list, run the following TSO command:
+    To dynamically add the SMS-managed library to the APF list, run the following TSO command:
 
-```
-SETPROF APF,ADD,DSNAME=ZWES.SISLOAD
-```
-where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+    ```
+    SETPROF APF,ADD,DSNAME=ZWES.SISLOAD
+    ```
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
 4. PARMLIB member
 
-The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
+    The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
 
 5. Security requirements for the cross memory server
 
-The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWE.IS`.
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWE.IS`.
 
-- To see the current class settings, enter the TSO command `SETROPTS LIST`.  
-- To activate the FACILITY class, enter `SETROPTS CLASSACT(FACILITY)`. 
-- To RACLIST the FACILITY class, enter `SETROPTS RACLIST(FACILITY)`.
+    - To see the current class settings, enter the TSO command `SETROPTS LIST`.  
+    - To activate the FACILITY class, enter `SETROPTS CLASSACT(FACILITY)`. 
+    - To RACLIST the FACILITY class, enter `SETROPTS RACLIST(FACILITY)`.
 
-A valid caller of the Zowe cross memory services must have READ access to `ZWE.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
+    A valid caller of the Zowe cross memory services must have READ access to `ZWE.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
 
-The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
+    The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
 
 
 6. ICSF cryptographic services 
 
-The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
+    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
 
-When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
-- The ICSF or CSF job that runs on your z/OS system.
-- Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
-- Create CKDS, PKDS, TKDS VSAM data sets.
-- Define and activate the CSFSERV RACF (or equivalent SAF) CLASS: 
+    When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
+    - The ICSF or CSF job that runs on your z/OS system.
+    - Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
+    - Create CKDS, PKDS, TKDS VSAM data sets.
+    - Define and activate the CSFSERV RACF (or equivalent SAF) CLASS: 
 
-  ```
-  RDEFINE CSFSERV profile-name UACC(NONE)
-  PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-  PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
-  SETROPTS CLASSACT(CSFSERV)
-  SETROPTS RACLIST(CSFSERV) REFRESH
-  ```
-- The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
-- Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
-- Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
-- CCA and/or PKCS #11 coprocessor for random number generation.
-- Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
+      ```
+      RDEFINE CSFSERV profile-name UACC(NONE)
+      PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+      PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+      SETROPTS CLASSACT(CSFSERV)
+      SETROPTS RACLIST(CSFSERV) REFRESH
+      ```
+    - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
+    - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
+    - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
+    - CCA and/or PKCS #11 coprocessor for random number generation.
+    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
 
 ### Scripted install of the Zowe Cross Memory Server 
 
