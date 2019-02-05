@@ -8,7 +8,7 @@ As an API developer, use this guide to onboard a Java REST API service that is b
     * [Maven guide](#maven-guide)
 2. [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
 3. [Add endpoints to your API for API Mediation Layer integration](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-4. [Add configuration for Eureka client](#add-configuration-for-eureka-client)
+4. [Add configuration for Discovery client](#add-configuration-for-discovery-client)
 5. [Add a context listener](#add-a-context-listener)
     1. [Add a context listener class](#add-a-context-listener-class)
     2. [Register a context listener](#register-a-context-listener)
