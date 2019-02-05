@@ -2,7 +2,7 @@
 
 Zowe application plug-ins can opt-in to various application framework abilities, such as the ability to have a Logger, use of a URI builder utility, and more. One ability that is unique to a Zowe environment with multiple application plug-ins is the ability for one application plug-in to communicate with another. The application framework provides constructs that facilitate this ability. The constructs are: the Dispatcher, Actions, Recognizers, Registry, and the features that utilize them such as the framework's Context menu.
 
-1. [Why use application-to-application communication?](#why-application-to-application-communication)
+1. [Why use application-to-application communication?](#why-use-application-to-application-communication)
 1. [Actions](#actions)
 1. [Recognizers](#recognizers)
 1. [Dispatcher](#dispatcher)
