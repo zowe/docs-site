@@ -2,6 +2,8 @@
 
 Before installing Zowe, ensure that your environment meets the prerequisites.
 
+## Overview
+
 **z/OS host requirements (for all components):**
 
 - IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
@@ -18,12 +20,13 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 
      - To install Node.js on z/OS, ensure that you meet the following requirements in the procedure. Other requirements, including installing Python, Make 4.1, or Perl, are not needed.
        > z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
+    - The following requirements for installing Node.js are **NOT** needed, so you can skip those configurations.
+        - Python, Make 4.1, or Perl
+        - C/C++ compiler
+    
+    After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
-     - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
-
-    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
-
--   npm 5.4 or later for building Zowe Application Framework applications.
+-   npm 5.4 or later
 
      To update npm, issue the following command:
 
@@ -42,14 +45,6 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
     -   Mozilla Firefox V44 or later
     -   Safari V11 or later
     -   Microsoft Edge (Windows 10)
-
-- npm 5.4 or later for building Zowe Application Framework applications.
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
 
 **Client requirements (for Zowe CLI):**
 
