@@ -575,7 +575,7 @@ The manual installation consists of the following steps.
     After you edit the PARMLIB, issue the following command to make the SCHEDxx changes effective:
 
     ```
-    /S SET SCH=xx
+    /SET SCH=xx
     ```
 
 3. APF-authorization
