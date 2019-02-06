@@ -134,7 +134,12 @@ The Discovery service is the central point in the API Gateway infrastructure tha
 #### API Catalog
 The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
 
-
 **More Information:**
 - [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
+
+
+## Zowe Third-Party Software Requirements and Bill of Materials
+
+- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.md)
+- [Bill of Materials (BOM)](./appendix/bill-of-materials.md)

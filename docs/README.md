@@ -39,9 +39,3 @@ You can download the documentation for the latest version of Zowe on this websit
 | Version | PDF 
 | --- | ---
 | V1.0.0 | [Zowe documentation](https://github.com/zowe/docs-site/blob/gh-pages/.pdf/out/Zowe_Documentation.pdf)
-
-
-## Zowe Third-Party Software Requirements and Bill of Materials
-
-- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.md)
-- [Bill of Materials (BOM)](./appendix/bill-of-materials.md)
