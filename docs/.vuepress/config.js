@@ -101,10 +101,10 @@ const ALL_PAGES = [{
         'extend/extend-desktop/mvd-errorreportingui.md',
         'extend/extend-desktop/mvd-logutility.md',
         'extend/extend-desktop/zlux-app-server.md',
-        'extend/extend-desktop/zlux-workshop-user-browser.md',
         'extend/extend-desktop/zlux-tutorials.md',
         'extend/extend-desktop/starter-intro.md',
         'extend/extend-desktop/zlux-workshop-starter-app.md',
+        'extend/extend-desktop/zlux-workshop-user-browser.md',
         'extend/extend-desktop/ui-intro.md',
         'extend/extend-desktop/iframe-sample.md',
         'extend/extend-desktop/angular-sample.md',
@@ -121,26 +121,6 @@ const ALL_PAGES = [{
   text: 'Contributing',
   baseuri: '/contributing.html',
   link: 'contributing.md',
-
-},
-{
-  text: 'Appendix',
-  hideInPdf: true,
-  canHideFirst: true,
-  baseuri: '/appendix/',
-  items: [
-    {
-    text: 'Bill of Materials',
-    items: [
-      'appendix/bill-of-materials.md'
-    ]
-  },
-  {
-    text: 'Third-Party Software Requirements',
-    items: [
-      'appendix/tpsr.md'
-    ]
-  }],
 },
 ];
 

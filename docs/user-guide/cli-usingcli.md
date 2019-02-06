@@ -31,7 +31,7 @@ provides the ability to interact with mainframe data sets. This article provides
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
 **Important!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-installcli.html#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-installcli.html#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
+completed the steps in [Create a Zowe CLI profile](cli-installcli.md#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 
@@ -225,7 +225,7 @@ The following example illustrates the command to create a profile that connects 
 ```
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Test Connection to z/OSMF](cli-installcli.md#creating-a-profile-to-access-an-api-mediation-layer).
+After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](cli-installcli.md#creating-a-profile-to-access-an-api-mediation-layer).
 
 ### Defining Environment Variables
 You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 

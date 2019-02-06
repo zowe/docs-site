@@ -1,4 +1,4 @@
-# Create a User Database Browser application on the Zowe Application Framework
+# User Browser Tutorial
 
 This tutorial contains code snippets and descriptions that you can combine to build a complete application. It builds off the project skeleton code found at the [github project repo](https://github.com/zowe/workshop-user-browser-app).
 
@@ -19,27 +19,27 @@ Before continuing, make sure you have completed the prerequisites for this tutor
 
 So, let's get started!
 
-1. [Constructing an application skeleton](#constructing-an-app-skeleton)
-   1. [Defining your first plug-in](#defining-your-first-plugin)
-   1. [Constructing a simple Angular UI](#constructing-a-simple-angular-ui)
-   1. [Packaging Your Web App](#packaging-your-web-app)
-   1. [Adding Your App to the Desktop](#adding-your-app-to-the-desktop)
+1. [Constructing an app skeleton](#constructing-an-app-skeleton)
+   - [Defining your first plug-in](#defining-your-first-plugin)
+   - [Constructing a simple Angular UI](#constructing-a-simple-angular-ui)
+   - [Packaging Your Web App](#packaging-your-web-app)
+   - [Adding Your App to the Desktop](#adding-your-app-to-the-desktop)
 1. [Building your First Dataservice](#building-your-first-dataservice)
-   1. [Working with ExpressJS](#working-with-expressjs)
-   1. [Adding your Dataservice to the Plugin Definition](#adding-your-dataservice-to-the-plugin-definition)
+   - [Working with ExpressJS](#working-with-expressjs)
+   - [Adding your Dataservice to the Plugin Definition](#adding-your-dataservice-to-the-plugin-definition)
 1. [Adding your First Widget](#adding-your-first-widget)
-   1. [Adding your Dataservice to the App](#adding-your-dataservice-to-the-app)
-   1. [Introducing ZLUX Grid](#introducing-zlux-grid)
+   - [Adding your Dataservice to the App](#adding-your-dataservice-to-the-app)
+   - [Introducing ZLUX Grid](#introducing-zlux-grid)
 1. [Adding Zowe App-to-App Communication](#adding-zowe-app-to-app-communication)
-   1. [Calling back to the Starter App](#calling-back-to-the-starter-app)
+   - [Calling back to the Starter App](#calling-back-to-the-starter-app)
 
-## Constructing an appliction skeleton
+## Constructing an App Skeleton
 
 Download the skeleton code from the [project repository](https://github.com/zowe/workshop-user-browser-app). Next, move the project into the `zlux` source folder created in the prerequisite tutorial.
 
 If you look within this repository, you'll see that a few boilerplate files already exist to help you get your first application plug-in running quickly. The structure of this repository follows the guidelines for Zowe application plug-in filesystem layout, which you can read more about [on the wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure).
 
-### Defining your first plug-in
+### Defining your first plugin
 
 Where do you start when making an application plug-in? In the Zowe Application Framework, an application plug-in is a plug-in of type "Application". Every plug-in is bound by their `pluginDefinition.json` file, which describes its properties.
 Let's start by creating this file.
@@ -181,7 +181,7 @@ export class UserBrowserComponent implements OnInit, AfterViewInit {
 }
 ```
 
-### Packaging Your Web application plug-in
+### Packaging Your Web App
 
 At this time, we've made the source for a Zowe application plug-in that should open in the Zowe Desktop with a greeting to the planet.
 Before we're ready to use it however, we must transpile the typescript and package the application plug-in. This will require a few build tools first. We'll make an NPM package in order to facilitate this.
@@ -244,7 +244,7 @@ Let's set up our system to automatically perform these steps every time we make 
 
 After the first execution of the transpilation and packaging concludes, you should have `workshop-user-browser-app/web` populated with files that can be served by the Zowe Application Server.
 
-### Adding Your application plug-in to the Zowe Desktop
+### Adding Your App to the Desktop
 
 At this point, your workshop-user-browser-app folder contains files for an application plug-in that could be added to a Zowe instance. We will add this to our own Zowe instance. First, ensure that the Zowe Application Server is not running. Then, navigate to the instance's root folder, `/zlux-app-server`.
 
@@ -277,7 +277,7 @@ Now you're ready to run the server and see your application plug-in.
 
 Do you see the Hello World message from [this earlier step?](#constructing-a-simple-angular-ui). If so, you're in good shape! Now, let's add some content to the application plug-in.
 
-## Building your first dataservice
+## Building your first Dataservice
 
 An application plug-in can have one or more [Dataservices](https://github.com/zowe/zlux/wiki/ZLUX-Dataservices). A Dataservice is a REST or Websocket endpoint that can be added to the Zowe Application Server.
 
@@ -466,7 +466,7 @@ There's a few interesting attributes about the Dataservice we have specified her
 
 Now that you can get this data from the server's new REST API, we need to make improvements to the web content of the application plug-in to visualize this. This means not only calling this API from the application plug-in, but presenting it in a way that is easy to read and extract information from.
 
-### Adding your Dataservice to the application plug-in
+### Adding your Dataservice to the App
 
 Let's make some edits to **userbrowser-component.ts**, replacing the **UserBrowserComponent** Class's **ngOnInit** method with a call to get the user table, and defining **ngAfterViewInit**:
 
@@ -644,7 +644,7 @@ In either case, the application framework provides Actions as the objects to per
 - Open a new application window, where the message context is delivered in the form of a Launch Context
 - Message a particular, or any of the currently open instances of the target application
 
-### Adding the Starter application
+### Adding the Starter App
 
 In order to facilitate app-to-app communication, we need another application with which to communicate. A 'starter' application is provided which can be [found on github](https://github.com/zowe/workshop-starter-app).
 
@@ -766,7 +766,7 @@ At this point, the application should build successfully and upon reloading the 
 
 We can also see that once this application has been opened, the Starter application's button, **Filter Results to Those Nearby**, becomes enabled and we can click it to see the open User Browser application's listing become filtered even more, this time using the browsers [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation) to instruct the User Browser application to filter the list to those employees who are closest to you!
 
-### Calling back to the Starter application
+### Calling back to the Starter App
 
 We are almost finished. The application can visualize data from a REST API, and can be instructed by other applications to filter that data according to the situation. But, to complete this tutorial, we need the application communication to go in the other direction - inform the Starter application which employees you have chosen in the table!
 

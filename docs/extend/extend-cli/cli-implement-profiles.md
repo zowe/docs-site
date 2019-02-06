@@ -75,4 +75,4 @@ profiles: [
 ```
 
 ## Next steps
-If you completed all previous tutorials, you now understand the basics of extending and developing plug-ins for Zowe CLI. Next, we recommend reviewing the project [contribution guidelines](cli-devTutorials.md#contribution-guidelines) and [Imperative CLI Framework documentation](cli-devTutorials.md#Imperative-CLI-Framework-documentation) to learn more.
+If you completed all previous tutorials, you now understand the basics of extending and developing plug-ins for Zowe CLI. Next, we recommend reviewing the project [contribution guidelines](cli-devTutorials.md#contribution-guidelines) and [Imperative CLI Framework documentation](cli-devTutorials.md#imperative-cli-framework-documentation) to learn more.
