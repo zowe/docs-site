@@ -138,8 +138,3 @@ The API Catalog is the catalog of published APIs and their associated documentat
 **More Information:**
 - [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
-
-## Zowe Third-Party Software Requirements and Bill of Materials
-
-- [Third-Party Software Requirements](../appendix/tpsr.md)
-- [Bill of Materials](../appendix/bill-of-materials.md)
