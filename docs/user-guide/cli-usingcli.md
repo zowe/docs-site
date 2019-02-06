@@ -156,7 +156,7 @@ The zosmf command group lets you work with Zowe CLI profiles and get general inf
 With the zosmf command group, you can perform the following tasks:
 
 - Create and manage your Zowe CLI zosmf profiles. You must have at least one zosmf profile to issue most commands. Issue the `zowe help explain profiles` command in Zowe CLI to learn more about using profiles.
-- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-installcli.html#testing-zowe-cli-connection-to-zosmf).
+- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-z-osmf).
 - Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 **Note:** For more information about `zosmf` syntax, actions, and options, open Zowe CLI and issue the following command:
@@ -213,7 +213,7 @@ The following example illustrates the command to create a profile that connects 
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
-For more information, see [Accessing an API Mediation Layer](#accessing-an-api-mediation-layer).
+For more information, see [Accessing an API Mediation Layer](#integrating-with-api-mediation-layer).
 * When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
 
 * When you create a profile, specify the host, port, and the base path of the API Mediation Layer instance that you want to access. Using the base path to an API Mediation Layer, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
