@@ -141,5 +141,5 @@ The API Catalog is the catalog of published APIs and their associated documentat
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
-- [Third-Party Software Requirements (TPSR)](./appendix/tpsr.md)
-- [Bill of Materials (BOM)](./appendix/bill-of-materials.md)
+- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+- [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
