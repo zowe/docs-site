@@ -8,7 +8,7 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 
 - IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
 
-  z/OSMF is a prerequisite for the Zowe microservice. z/OSMF must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#zosmf-configuration).
+  z/OSMF is a prerequisite for the Zowe microservice. z/OSMF must be installed and running before you use Zowe. For details, see [z/OSMF configuration](#z-osmf-configuration).
 
 - z/OS® Version 2.2 or later.
 
