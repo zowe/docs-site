@@ -8,6 +8,12 @@ const ROOT_BASE_URL = '/docs-site'
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'latest').replace(/\./g, '-')
 // this holds list of all pages
 // IMPORTANT: if you have new pages, please update this constant
+// 
+// Options for page:
+// @canHideFirst(Boolean)   if want to hide the link on navbar earlier than regular links
+// @hideInPdf(Boolean)      if hide this page/section from PDF side menus
+// @hideInSideBar(Booelean) if hide this page from website side bar
+// @hideInNavBar(Boolean)   if hide this link from website top navigation bar
 const ALL_PAGES = [{
   text: 'Getting Started',
   baseuri: '/getting-started/',
@@ -121,6 +127,25 @@ const ALL_PAGES = [{
   text: 'Contributing',
   baseuri: '/contributing.html',
   link: 'contributing.md',
+},
+{
+  text: 'Appendix',
+  hideInPdf: true,
+  canHideFirst: true,
+  baseuri: '/appendix/',
+  items: [
+    {
+    text: 'Bill of Materials',
+    items: [
+      'appendix/bill-of-materials.md'
+    ]
+  },
+  {
+    text: 'Third-Party Software Requirements',
+    items: [
+      'appendix/tpsr.md'
+    ]
+  }],
 },
 ];
 
