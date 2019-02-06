@@ -330,7 +330,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
    
    When the script runs, it echos its progress to the shell and attempts to determine and validate the location of the prerequisites including z/OSMF, Java, and Node. When the script cannot determine the location of these prerequisites, you will be prompted for their location.
 
-    <<JRW TO DO - Write about the log file and the commands behing echoed>>
+    Each time the install script runs it create a log file that contains more information.  This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`.   This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
     
     You may also receive the following message:
 
@@ -410,7 +410,6 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
 
-    <<TODO - JRW>>
      **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
 
     If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
