@@ -225,7 +225,7 @@ The following example illustrates the command to create a profile that connects 
 ```
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](cli-installcli.md#creating-a-profile-to-access-an-api-mediation-layer).
+After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](cli-installcli.md##testing-zowe-cli-connection-to-z-osmf).
 
 ### Defining Environment Variables
 You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
