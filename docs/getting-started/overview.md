@@ -6,7 +6,7 @@ Zowe consists of the following main components. For details of each component, s
 
 - [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
 
-- [**z/OS Services**](#zos-services): Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
+- [**z/OS Services**](#z-os-services): Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
 - [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
 
@@ -97,7 +97,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 **More Information:**
 
   - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
-  - [Installing Zowe CLI](../user-guide/cli-installcli.html)
+  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
 
 ## API Mediation Layer
 
