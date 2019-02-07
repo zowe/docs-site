@@ -32,28 +32,11 @@ The Spring Boot API onboarding process follows these general steps. Further deta
 4. Test your changes.
 
 ## Add Zowe API enablers to your service
-The first step to onboard a REST API with the Zowe ecosystem is to add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
+In order to onboard a REST API with the Zowe ecosystem, you have toto add the Zowe Artifactory repository definition to the list of the repositories, add the Spring enabler to the list of your dependencies and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
 
 **Follow these steps:**
-1. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
 
-    *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
-    *  `@EnableApiDiscovery`
-
-    **Example:**   
-
-    ```
-     package com.ca.mfaas.DiscoverableClientSampleApplication;
-     ..
-     import com.ca.mfaas.enable.EnableApiDiscovery;
-     import org.springframework.context.annotation.ComponentScan;
-     ..
-     @EnableApiDiscovery
-     @ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})
-     ...
-     public class DiscoverableClientSampleApplication {...
-     ```
-2. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
+1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
     * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
 
       **Note:** Valid Zowe Artifactory credentials must be used.  
@@ -114,7 +97,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         c) Copy the `settings.xml` file inside `${user.home}/.m2/` directory.
 
-3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
+2. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
 
     * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
@@ -142,8 +125,26 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
                <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
                <version>0.3.0-SNAPSHOT</version>
         </dependency>
-        ```  
-     You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
+        ```
+3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
+
+    *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
+    *  `@EnableApiDiscovery`
+
+    **Example:**   
+
+    ```
+     package com.ca.mfaas.DiscoverableClientSampleApplication;
+     ..
+     import com.ca.mfaas.enable.EnableApiDiscovery;
+     import org.springframework.context.annotation.ComponentScan;
+     ..
+     @EnableApiDiscovery
+     @ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})
+     ...
+     public class DiscoverableClientSampleApplication {...
+     ```  
+  You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
 
 
 ## Add API Layer onboarding configuration
