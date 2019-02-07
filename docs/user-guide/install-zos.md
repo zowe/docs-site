@@ -574,7 +574,7 @@ The manual installation consists of the following steps.
 
 2. PPT Entry
 
-    The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PTT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
+    The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PPT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
 
     ```
     PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
@@ -582,7 +582,7 @@ The manual installation consists of the following steps.
     After you edit the PARMLIB, issue the following command to make the SCHEDxx changes effective:
 
     ```
-    /S SET SCH=xx
+    /SET SCH=xx
     ```
 
 3. APF-authorization
@@ -594,10 +594,14 @@ The manual installation consists of the following steps.
     ```
     where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
-    To dynamically add the SMS-managed library to the APF list, run the following TSO command:
+    To dynamically add the load library to the APF list, run one of the following TSO commands:
 
     ```
-    SETPROF APF,ADD,DSNAME=ZWES.SISLOAD
+    SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,VOLUME=volser
+    (If the load library resides on Non SMS-Managed Volume)
+    Or
+    SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,SMS
+    (If the load library is SMS-Managed library) 
     ```
     where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
