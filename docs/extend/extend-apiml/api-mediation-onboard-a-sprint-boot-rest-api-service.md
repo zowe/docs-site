@@ -8,8 +8,8 @@ As an API developer, use this guide to onboard your REST API service into the Zo
 
 1. [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
 2. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
-3. [Add API Layer onboarding configuration](#add-api-layer-onboarding-configuration)
-4. [Externalize API Layer configuration parameters](#externalize-api-layer-configuration-parameters)
+3. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
+4. [Externalize API ML configuration parameters](#externalize-api-ml-configuration-parameters)
 5. [Test your service](#test-your-service)
 6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
@@ -67,8 +67,8 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
           }            
       }
         ```
-      **Note:** You can define `gradle.properties` file where you can set your username, password and the
-      read-only repo URL for access to the Zowe Artifactory.This way, you do not need to hardcode the username,
+      **Note:** You can define the `gradle.properties` file where you can set your username, password, and the
+      read-only repo URL for access to the Zowe Artifactory. By defining the `gradle.properties`, you do not need to hardcode the username,
       password, and read-only repo URL in your `gradle.build` file.
 
       **Example:**
@@ -112,11 +112,11 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
         </settings>
         ```  
 
-        c) Copy the `settings.xml` file inside `${user.home}/.m2/` directory.
+        c) Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
 3. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
 
-    * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
+     * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
     ```
         compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '0.3.0-SNAPSHOT'
@@ -143,11 +143,12 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
                <version>0.3.0-SNAPSHOT</version>
         </dependency>
         ```  
-     You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
+     You are now ready to build your service to include the code pieces to make it discoverable in Zowe API Mediation Layer, and to add Swagger documentation.
 
 
-## Add API Layer onboarding configuration
- As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API Layer. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
+## Add API ML onboarding configuration
+
+As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
 
 **Important!** Spring Boot configuration can be externalized in multiple different ways. For more information, see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
 
@@ -247,6 +248,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
               name: ${mfaas.discovery.serviceId}      
     ```
     **Note:** Add this configuration also to the `application.yml` used for testing.
+    
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
     **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
@@ -261,7 +263,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
 
         **Important!**  Ensure that the service ID is set properly with the following considerations:
 
-         * When two API services use the same service ID, the API gateway considers the services to be clones. An incoming API request can be routed to either of them.
+         * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
          * The same service ID should be set for only multiple API service instances for API scalability.
          * The service ID value must contain only lowercase alphanumeric characters.
          * The service ID cannot contain more than 40 characters.
