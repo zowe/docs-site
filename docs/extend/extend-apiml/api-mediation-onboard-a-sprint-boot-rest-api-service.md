@@ -1,6 +1,6 @@
 # Java  REST APIs with Spring Boot
 
-Zowe API Mediation Layer provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
+Zowe API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
@@ -28,7 +28,7 @@ The Spring Boot API onboarding process follows these general steps. Further deta
 
         This annotation makes an API documentation endpoint visible within the Spring context.  
 2. Update your service configuration file to include Zowe API Mediation Layer specific settings.
-3. Externalize the API Layer site-specific configuration settings.
+3. Externalize the API ML site-specific configuration settings.
 4. Test your changes.
 
 ## Add Zowe API enablers to your service
@@ -259,7 +259,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     * **mfaas.discovery.serviceId**
 
-         Specifies the service instance identifier to register in the API Layer installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a micro service in the API mediation layer. The system administrator at the customer site defines this parameter.  
+         Specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
 
         **Important!**  Ensure that the service ID is set properly with the following considerations:
 
@@ -268,7 +268,7 @@ As an API service developer, you set multiple configuration settings in your app
          * The service ID value must contain only lowercase alphanumeric characters.
          * The service ID cannot contain more than 40 characters.
          * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
-         * The service ID must match `spring.application.name` parameter.
+         * The service ID must match the `spring.application.name` parameter.
 
          **Examples:**
 
@@ -291,7 +291,7 @@ As an API service developer, you set multiple configuration settings in your app
          ```
     * **mfaas.discovery.enabled**
 
-        Specifies whether the API service instance is to be discovered in the API Layer. The system administrator at the customer site defines this parameter. Set this parameter to true if the API Layer is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API Layer.    
+        Specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to true if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
     * **mfaas.discovery.fetchRegistry**
 
         Specifies whether the API service is to receive regular update notifications from the discovery service. Under most circumstances, you can accept the default value of `false` for the parameter.
@@ -321,17 +321,17 @@ As an API service developer, you set multiple configuration settings in your app
        * If your API service does not use an extra prefix in the URL (for example, `http://host:port/endpoint1/`), set this value to /.
        * If your API service uses an extra URL prefix set the parameter to that prefix value.
          For the URL: `http://host:port/filemaster/endpoint1/`, set this parameter to `/filemaster`.  
-       * In both examples, the API service URL appears as the following URL when routed through the gateway:
+       * In both examples, the API service URL appears as the following URL when routed through the Gateway:
             ```
             http://gateway:port/serviceId/endpoint1/
             ```
 
     c. **API Catalog Parameters**
 
-      These parameters are used to populate API Catalog. The API Catalog contains information about every registered API service. The catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a "tile" in the API Catalog UI dashboard.
+      These parameters are used to populate the API Catalog. The API Catalog contains information about every registered API service. The Catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a "tile" in the API Catalog UI dashboard.
       * **mfaas.catalog-ui-tile.id**
 
-        Specifies the unique identifier for the API services product family. This is the grouping value used by the API Layer to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
+        Specifies the unique identifier for the API services product family. This is the grouping value used by the API ML to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
 
       * **mfaas.catalog-ui-tile.title**
 
@@ -465,9 +465,9 @@ To register with the API Mediation Layer, a service is required to have a certif
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
 
-## Externalize API Layer configuration parameters
+## Externalize API ML configuration parameters
 
-The following list summarizes the API Layer parameters that are set by the customer system administrator:
+The following list summarizes the API ML parameters that are set by the customer system administrator:
 
    * `mfaas.discovery.enabled: ${environment.discoveryEnabled:true}`
    * `mfaas.discovery.locations: ${environment.discoveryLocations}`
@@ -479,7 +479,7 @@ The following list summarizes the API Layer parameters that are set by the custo
    * `mfaas.server.port: ${environment.port}`
 
 
-**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation layer applications, we recommend that you use Java System properties.        
+**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
 
 Java System properties are defined using `-D` options for Java. Java System properties can override any configuration. Those properties that are likely to change are defined as `${environment.variableName}:`     
 
@@ -515,7 +515,7 @@ To test that your API instance is working and is discoverable, use the following
 ### Validate that your API instance is discoverable
 
 **Follow these steps:**
- 1. Point your configuration of API instance to use the following discovery service:
+ 1. Point your configuration of API instance to use the following Discovery Service:
     ```
     http://eureka:password@localhost:10011/eureka
     ```
@@ -525,15 +525,15 @@ To test that your API instance is working and is discoverable, use the following
     https://localhost:10010/ui/v1/caapicatalog/
     ```
 
- 4. Check that you can access your API service endpoints through the gateway.
+ 4. Check that you can access your API service endpoints through the Gateway.
 
    **Example:**
    ```
    https://localhost:10010/api/v1/
    ```
 
- 5. Check that you can still access your API service endpoints directly outside of the gateway.
+ 5. Check that you can still access your API service endpoints directly outside of the Gateway.
 
 ## Review the configuration examples of the discoverable client   
 
-Refer to the [Discoverable Client API Sample Service](https://github.com/zowe/api-layer) in the API Layer git repository.   
+Refer to the [Discoverable Client API Sample Service](https://github.com/zowe/api-layer) in the API ML git repository.   
