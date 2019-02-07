@@ -327,13 +327,14 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and explorer se
     
 7. Configure Zowe as a started task.
 
-     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, `cd` to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory created by the `pax` command.  For example:
+    The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
      cd /var/zowe/1.0.0
      /zowe/builds/install/zowe-config-stc.sh
      ```
-Alternatively, you can issue the commands manually:
-**Note:**:  You must replace `ZOWESVR` in the commands below with the name of your server that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file
+    Alternatively, you can issue the commands manually:
+    
+    **Note:** You must replace `ZOWESVR` in the commands below with the name of your server that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file.
 
     - If you use RACF, issue the following commands:
 
