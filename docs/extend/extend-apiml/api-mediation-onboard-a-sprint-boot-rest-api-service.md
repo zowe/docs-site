@@ -32,14 +32,14 @@ The Spring Boot API onboarding process follows these general steps. Further deta
 4. Test your changes.
 
 ## Add Zowe API enablers to your service
-In order to onboard a REST API with the Zowe ecosystem, you have toto add the Zowe Artifactory repository definition to the list of the repositories, add the Spring enabler to the list of your dependencies and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
+In order to onboard a REST API with the Zowe ecosystem, zou add the Zowe Artifactory repository definition to the list of repositories, then add the Spring enabler to the list of your dependencies, and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
 
 **Follow these steps:**
 
 1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
     * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
 
-      **Note:** Valid Zowe Artifactory credentials must be used.  
+      **Note:** Ensure that zou are using valid Zowe Artifactory credentials.  
 
         ```
       maven {
@@ -151,7 +151,7 @@ In order to onboard a REST API with the Zowe ecosystem, you have toto add the Zo
 
 As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
 
-**Important!** Spring Boot configuration can be externalized in multiple different ways. For more information, see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
+**Important!** Spring Boot configuration can be externalized in multiple ways. For more information see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
 
 **Tip:** For information about how to set your configuration when running a Spring Boot application under an external servlet container (TomCat), see the following short stackoverflow article: [External configuration for spring-boot application](https://stackoverflow.com/questions/29106579/external-configuration-for-spring-boot-application).
 
