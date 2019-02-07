@@ -266,7 +266,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
          * The service ID value must contain only lowercase alphanumeric characters.
          * The service ID cannot contain more than 40 characters.
          * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
-         * The service ID must match spring.application.name.
+         * The service ID must match `spring.application.name` parameter.
 
          **Examples:**
 
