@@ -24,7 +24,7 @@ The Spring Boot API onboarding process follows these general steps. Further deta
         This annotation exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to enable/make your micro service discoverable in the Zowe ecosystem.
 
         **Note:** The @EnableApiDiscovery annotation uses the Spring Fox library. If your service uses this library already, some fine tuning may be necessary.
-     * **@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product})**
+     * **@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})**
 
         This annotation makes an API documentation endpoint visible within the Spring context.  
 2. Update your service configuration file to include Zowe API Mediation Layer specific settings.
@@ -245,7 +245,8 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
       spring:
           application:
               name: ${mfaas.discovery.serviceId}      
-
+    ```
+    **Note:** Add this configuration also to the `application.yml` used for testing.
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
     **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
@@ -265,6 +266,7 @@ The first step to onboard a REST API with the Zowe ecosystem is to add enabler a
          * The service ID value must contain only lowercase alphanumeric characters.
          * The service ID cannot contain more than 40 characters.
          * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+         * The service ID must match spring.application.name.
 
          **Examples:**
 
