@@ -32,7 +32,7 @@ The Spring Boot API onboarding process follows these general steps. Further deta
 4. Test your changes.
 
 ## Add Zowe API enablers to your service
-In order to onboard a REST API with the Zowe ecosystem, zou add the Zowe Artifactory repository definition to the list of repositories, then add the Spring enabler to the list of your dependencies, and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
+In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifactory repository definition to the list of repositories, then add the Spring enabler to the list of your dependencies, and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
 
 **Follow these steps:**
 
@@ -248,7 +248,7 @@ As an API service developer, you set multiple configuration settings in your app
           application:
               name: ${mfaas.discovery.serviceId}      
     ```
-    **Note:** Add this configuration also to the `application.yml` used for testing.
+    Add this configuration also to the `application.yml` used for testing so that the tests will not fail.
     
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
