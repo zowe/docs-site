@@ -4,19 +4,23 @@ To install Zowe on z/OS,  there are two parts. The first part is the Zowe runtim
 
 Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
 
-1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
-2. [Prerequisites](#prerequisites)
-3. [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos)
-    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-installsh-works)   
-4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)        
+- [Installing Zowe on z/OS](#installing-zowe-on-zos)
+  - [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
+  - [Prerequisites](#prerequisites)
+  - [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos)
+    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-installsh-works)
+  - [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
-5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
+    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
+  - [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
     - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
     - [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
-6. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
-7. [Verifying installation](#verifying-installation)        
-8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
+  - [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+  - [Verifying installation](#verifying-installation)
+    - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)
+    - [Verifying z/OS Services installation](#verifying-zos-services-installation)
+    - [Verifying API Mediation installation](#verifying-api-mediation-installation)
+  - [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
 ## Obtaining and preparing the installation file
 
@@ -611,13 +615,13 @@ The manual installation consists of the following steps.
 
 5. Security requirements for the cross memory server
 
-    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWE.IS`.
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`.
 
     - To see the current class settings, enter the TSO command `SETROPTS LIST`.  
     - To activate the FACILITY class, enter `SETROPTS CLASSACT(FACILITY)`. 
     - To RACLIST the FACILITY class, enter `SETROPTS RACLIST(FACILITY)`.
 
-    A valid caller of the Zowe cross memory services must have READ access to `ZWE.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
+    A valid caller of the Zowe cross memory services must have READ access to `ZWES.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IS UACC(NONE)`.
 
     The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
 
