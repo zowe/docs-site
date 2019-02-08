@@ -19,11 +19,7 @@ const ALL_PAGES = [{
   baseuri: '/getting-started/',
   items: [{
     text: 'Zowe overview',
-    link: 'getting-started/overview.md',
-  },
-  {
-    text: 'Zowe architecture',
-    link: 'getting-started/zowe-architecture.md'
+    items: ['getting-started/overview.md', 'getting-started/zowe-architecture.md']
   },
   {
     text: 'Release notes',
