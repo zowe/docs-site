@@ -611,9 +611,10 @@ The manual installation consists of the following steps.
 
 5. Security requirements for the cross memory server
 
-    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. For the examples below, it is assumed you will be running the ZOWESVR STC under the IZUSVR user.
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
 
     - If you use RACF, issue the following commands:
+    
         - To see the current class settings, issue:
         ```
         SETROPTS LIST
@@ -657,36 +658,37 @@ The manual installation consists of the following steps.
     - Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
     - Create CKDS, PKDS, TKDS VSAM data sets.
     - Define and activate the CSFSERV class:
-    - If you use RACF, issue the following commands:
-      ```
-      RDEFINE CSFSERV profile-name UACC(NONE)
-      PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-      PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
-      SETROPTS CLASSACT(CSFSERV)
-      SETROPTS RACLIST(CSFSERV) REFRESH
-      ```
-    - If you use CA ACF2, issue the following commands. Note that `profile-prefix` and `profile-suffix` are user defined.
-      ```
-      SET CONTROL(GSO)
-      INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
-      F ACF2,REFRESH(CLASMAP)
-      SET RESOURCE(CSF)
-      RECKEY profile-prefix ADD(profile-suffix ROLE(tcpip-stackname) SERVICE(READ) ALLOW)   
-      RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)   ... [repeat for userids IKED, NSSD, and Policy Agent]
-      F ACF2,REBUILD(CSF)
-      ```
-    - If you use CA Top Secret, issue the following commands:
-      ```
-      TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                       [WIP TODO - DO WE NEED THIS INE?]
-      TSS ADD(owner-acid) CSFSERV(profile-prefix.)
-      TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-      TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
-      ```
+    
+        - If you use RACF, issue the following commands:
+        ```
+        RDEFINE CSFSERV profile-name UACC(NONE)
+        PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+        PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+        SETROPTS CLASSACT(CSFSERV)
+        SETROPTS RACLIST(CSFSERV) REFRESH
+        ```
+        - If you use CA ACF2, issue the following commands. Note that `profile-prefix` and `profile-suffix` are user defined.
+        ```
+        SET CONTROL(GSO)
+        INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
+        F ACF2,REFRESH(CLASMAP)
+        SET RESOURCE(CSF)
+        RECKEY profile-prefix ADD(profile-suffix ROLE(tcpip-stackname) SERVICE(READ) ALLOW)   
+        RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)   ... [repeat for userids IKED, NSSD, and Policy Agent]
+        F ACF2,REBUILD(CSF)
+        ```
+        - If you use CA Top Secret, issue the following commands:
+        ```
+        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                       [WIP TODO - DO WE NEED THIS LINE?]
+        TSS ADD(owner-acid) CSFSERV(profile-prefix.)
+        TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
+        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
+        ```
     - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
     - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
     - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
     - CCA and/or PKCS #11 coprocessor for random number generation.
-    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
+    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2 if required.
 
 ### Scripted install of the Zowe Cross Memory Server 
 
