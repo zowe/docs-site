@@ -248,7 +248,7 @@ As an API service developer, you set multiple configuration settings in your app
           application:
               name: ${mfaas.discovery.serviceId}      
     ```
-    Add this configuration also to the `application.yml` used for testing so that the tests will not fail.
+    **Important:** Add this configuration also to the `application.yml` used for testing. Failure to add this configuration to the `application.yml` will cause your tests to fail.
     
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
@@ -277,7 +277,7 @@ As an API service developer, you set multiple configuration settings in your app
             ```
             https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
             ```
-         * If customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:             
+         * If the customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:             
             ```
             http://gateway:port/api/v1/vantageprod1/endpoint1/...
             ```
@@ -292,7 +292,7 @@ As an API service developer, you set multiple configuration settings in your app
          ```
     * **mfaas.discovery.enabled**
 
-        Specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to true if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
+        Specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to `true` if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
     * **mfaas.discovery.fetchRegistry**
 
         Specifies whether the API service is to receive regular update notifications from the discovery service. Under most circumstances, you can accept the default value of `false` for the parameter.
@@ -310,7 +310,7 @@ As an API service developer, you set multiple configuration settings in your app
         Specifies the local IP address of the system where the API service instance runs. This IP address may or may not be a public IP address. This parameter is externalized and set by the customer system administrator.
     * **mfaas.server.scheme**
 
-       Specifies whether the API service is using the HTTPS protocol. This value can be set to https or http  depending on whether your service is using SSL.
+       Specifies whether the API service is using the HTTPS protocol. This value can be set to `https` or `http` depending on whether your service is using SSL.
     * **mfaas.server.port**
 
        Specifies the port that is used by the API service instance. This parameter is externalized and set by the customer system administrator.
@@ -319,7 +319,7 @@ As an API service developer, you set multiple configuration settings in your app
        Specifies the prefix that is used within your API service URL path.
 
        **Examples:**
-       * If your API service does not use an extra prefix in the URL (for example, `http://host:port/endpoint1/`), set this value to /.
+       * If your API service does not use an extra prefix in the URL (for example, `http://host:port/endpoint1/`), set this value to `/`.
        * If your API service uses an extra URL prefix set the parameter to that prefix value.
          For the URL: `http://host:port/filemaster/endpoint1/`, set this parameter to `/filemaster`.  
        * In both examples, the API service URL appears as the following URL when routed through the Gateway:
@@ -329,7 +329,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     c. **API Catalog Parameters**
 
-      These parameters are used to populate the API Catalog. The API Catalog contains information about every registered API service. The Catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a "tile" in the API Catalog UI dashboard.
+      These parameters are used to populate the API Catalog. The API Catalog contains information about every registered API service. The Catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a tile in the API Catalog UI dashboard.
       * **mfaas.catalog-ui-tile.id**
 
         Specifies the unique identifier for the API services product family. This is the grouping value used by the API ML to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
@@ -434,7 +434,7 @@ As an API service developer, you set multiple configuration settings in your app
 
         **Tip:** You have three options to make your endpoints discoverable and exposed: `basePackage`, `apiPattern`, or none (if you do not specify a parameter). If `basePackage` or `apiPattern` are not defined, all endpoints in the Spring Boot app are exposed.
 
-## Setup key store with the service certificate
+## Setup keystore with the service certificate
 
 To register with the API Mediation Layer, a service is required to have a certificate that is trusted by API Mediation Layer.
 
@@ -463,7 +463,7 @@ To register with the API Mediation Layer, a service is required to have a certif
                 trustStoreType: PKCS12
                 trustStorePassword: password
 
-**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+**Note:** You need to define both keystore and truststore even if your server is not using HTTPS port.
 
 
 ## Externalize API ML configuration parameters
