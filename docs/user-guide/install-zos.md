@@ -663,7 +663,7 @@ The manual installation consists of the following steps.
         ```
         RDEFINE CSFSERV profile-name UACC(NONE)
         PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-        PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+        PERMIT profile-name CLASS(CSFSERV) ID(userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
         SETROPTS CLASSACT(CSFSERV)
         SETROPTS RACLIST(CSFSERV) REFRESH
         ```
@@ -673,16 +673,16 @@ The manual installation consists of the following steps.
         INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
         F ACF2,REFRESH(CLASMAP)
         SET RESOURCE(CSF)
-        RECKEY profile-prefix ADD(profile-suffix ROLE(tcpip-stackname) SERVICE(READ) ALLOW)   
+        RECKEY profile-prefix ADD(profile-suffix uid(UID string for tcpip-stackname) SERVICE(READ) ALLOW)   
         RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)   ... [repeat for userids IKED, NSSD, and Policy Agent]
         F ACF2,REBUILD(CSF)
         ```
-        - If you use CA Top Secret, issue the following commands:
+        - If you use CA Top Secret, issue the following commands. Note that `profile-prefix` and `profile-suffix` are user defined.
         ```
         TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                      
         TSS ADD(owner-acid) CSFSERV(profile-prefix.)
         TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
+        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                  ... [repeat for user-acids IKED, NSSD, and Policy Agent]
         ```
     - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
     - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
