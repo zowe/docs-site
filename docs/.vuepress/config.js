@@ -22,6 +22,10 @@ const ALL_PAGES = [{
     link: 'getting-started/overview.md',
   },
   {
+    text: 'Zowe architecture',
+    link: 'getting-started/zowe-architecture.md'
+  },
+  {
     text: 'Release notes',
     link: 'getting-started/summaryofchanges.md'
   },
