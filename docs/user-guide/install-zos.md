@@ -611,16 +611,43 @@ The manual installation consists of the following steps.
 
 5. Security requirements for the cross memory server
 
-    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`.
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
 
-    - To see the current class settings, enter the TSO command `SETROPTS LIST`.  
-    - To activate the FACILITY class, enter `SETROPTS CLASSACT(FACILITY)`. 
-    - To RACLIST the FACILITY class, enter `SETROPTS RACLIST(FACILITY)`.
+    - If you use RACF, issue the following commands:
+    
+        - To see the current class settings, issue:
+        ```
+        SETROPTS LIST
+        ```  
+        - To activate the FACILITY class, issue:
+        ```
+        SETROPTS CLASSACT(FACILITY)
+        ``` 
+        - To RACLIST the FACILITY class, issue:
+        ```
+        SETROPTS RACLIST(FACILITY)
+        ```
+        - To define the `ZWES.IS` profile in the FACILITY class and grant IZUSVR READ access, issue the following commands:
+        ```
+        RDEFINE FACILITY ZWES.IS UACC(NONE)
+        PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)
+        SETROPTS RACLIST(FACILITY) REFRESH
+        ```
 
-    A valid caller of the Zowe cross memory services must have READ access to `ZWES.IS` in the FACILITY class.  To define the `ZWES.IS` profiles in the FACILITY class, enter the TSO command `RDEFINE FACILITY ZWES.IC UACC(NONE)`.
+    - If you use CA ACF2, issue the following commands:
 
-    The started task ZOWESVR must be a valid caller for the Zowe Application Framework to function.  This is done by granting the user ID that ZOWESVR runs under READ access to the `ZWES.IS` profile.  If ZOWESVR is running under IZUSSVR then this is done with the TSO command `PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)`.  To refresh the FACILITY class, enter the TSO command `SETROPTS RACLIST(FACILITY) REFRESH`.
+      ```
+      SET RESOURCE(FAC)
+      RECKEY ZWES ADD(IS ROLE(IZUSVR) SERVICE(READ) ALLOW)
+      F ACF2,REBUILD(FAC)
+      ```
 
+    - If you use CA Top Secret, issue the following commands, where `owner-acid` may be IZUSVR or a different ACID:
+
+      ```
+      TSS ADD(`owner-acid`) IBMFAC(ZWES.)
+      TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
+      ```
 
 6. ICSF cryptographic services 
 
@@ -630,20 +657,38 @@ The manual installation consists of the following steps.
     - The ICSF or CSF job that runs on your z/OS system.
     - Configuration of ICSF options in SYS1.PARMLIB(CSFPRM00), SYS1.SAMPLIB, SYS1.PROCLIB.
     - Create CKDS, PKDS, TKDS VSAM data sets.
-    - Define and activate the CSFSERV RACF (or equivalent SAF) CLASS: 
-
-      ```
-      RDEFINE CSFSERV profile-name UACC(NONE)
-      PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-      PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
-      SETROPTS CLASSACT(CSFSERV)
-      SETROPTS RACLIST(CSFSERV) REFRESH
-      ```
+    - Define and activate the CSFSERV class:
+    
+        - If you use RACF, issue the following commands:
+        ```
+        RDEFINE CSFSERV profile-name UACC(NONE)
+        PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+        PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+        SETROPTS CLASSACT(CSFSERV)
+        SETROPTS RACLIST(CSFSERV) REFRESH
+        ```
+        - If you use CA ACF2, issue the following commands. Note that `profile-prefix` and `profile-suffix` are user defined.
+        ```
+        SET CONTROL(GSO)
+        INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
+        F ACF2,REFRESH(CLASMAP)
+        SET RESOURCE(CSF)
+        RECKEY profile-prefix ADD(profile-suffix ROLE(tcpip-stackname) SERVICE(READ) ALLOW)   
+        RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)   ... [repeat for userids IKED, NSSD, and Policy Agent]
+        F ACF2,REBUILD(CSF)
+        ```
+        - If you use CA Top Secret, issue the following commands:
+        ```
+        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                       [WIP TODO - DO WE NEED THIS LINE?]
+        TSS ADD(owner-acid) CSFSERV(profile-prefix.)
+        TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
+        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
+        ```
     - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
     - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
     - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
     - CCA and/or PKCS #11 coprocessor for random number generation.
-    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2  if required.
+    - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2 if required.
 
 ### Scripted install of the Zowe Cross Memory Server 
 
