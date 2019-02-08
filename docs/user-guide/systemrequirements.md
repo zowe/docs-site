@@ -1,8 +1,8 @@
 # System requirements
 
-When you install Zowe, you install the Zowe Application Framework, explorer server, and API Mediation Layer together on z/OS. You install Zowe CLI independently on your computer.
+Before installing Zowe, ensure that your environment meets the prerequisites.
 
-Before installing Zowe, ensure that your environment meets all of the prerequisites.
+## Overview
 
 **z/OS host requirements (for all components):**
 
@@ -12,7 +12,7 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
 - z/OS® Version 2.2 or later.
 
-- Node.js Version 6.14.4 or later on the z/OS host where you install the Zowe Application Server.
+- Node.js Version 6.14.4.1 or later on the z/OS host where you install the Zowe Application Server.
 
     1. To install Node.js on z/OS, follow the procedures at [https://developer.ibm.com/node/sdk/ztp](https://developer.ibm.com/node/sdk/ztp).
 
@@ -20,12 +20,13 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
 
      - To install Node.js on z/OS, ensure that you meet the following requirements in the procedure. Other requirements, including installing Python, Make 4.1, or Perl, are not needed.
        > z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
+    - The following requirements for installing Node.js are **NOT** needed, so you can skip those configurations.
+        - Python, Make 4.1, or Perl
+        - C/C++ compiler
+    
+    After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
-     - The step of installing the C/C++ compiler is not necessary for running the Zowe Application Framework.
-
-    2. Set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
-
--   npm 5.4 or later for building Zowe Application Framework applications.
+-   npm 5.4 or later
 
      To update npm, issue the following command:
 
@@ -44,14 +45,6 @@ Before installing Zowe, ensure that your environment meets all of the prerequisi
     -   Mozilla Firefox V44 or later
     -   Safari V11 or later
     -   Microsoft Edge (Windows 10)
-
-- npm 5.4 or later for building Zowe Application Framework applications.
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
 
 **Client requirements (for Zowe CLI):**
 
@@ -155,11 +148,11 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
     Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
-**Note:** If your implementation uses an external security manager other than RACF (for example, CA Top Secret or CA ACF2), you provide equivalent commands for your environment. For more information, see the following CA Technologies product documentation:
+**Note:** If your implementation uses an external security manager other than RACF (for example, CA Technologies, a Broadcom Company, Top Secret or CA Technologies ACF2), you provide equivalent commands for your environment. For more information, see the following product documentation:
 
-- [Configure z/OS Management Facility for CA Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
+- [Configure z/OS Management Facility for CA Technologies Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
 
-- [Configure z/OS Management Facility for CA ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
+- [Configure z/OS Management Facility for CA Technologies ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
 #### z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
@@ -193,27 +186,13 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-**More Information:**
+## Planning for installation of API Mediation Layer, Zowe Application Framework, and Zowe APF Angel
 
-You can now configure z/OSMF Zowe CLI now supports the 
-
-
-
-
-## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
-
-The following information is required during the installation process of API Mediation Layer, Zowe Application Framework, and explorer server. Make the decisions before the installtion.
+The following information is required during the installation process of API Mediation Layer and Zowe Application Framework. Make the decisions before the installtion.
 
 - The HFS directory where you install Zowe, for example, `/var/zowe`.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
-- The z/OSMF installation directory that contains `derby.jar`, for example, `/usr/lpp/zosmf/lib`.
-- The z/OSMF configuration user directory that contains the following z/OSMF files:
-
-    - `/bootstrap.properties`
-    - `/jvm.security.override.properties`
-    - `/resources/security/ltpa.keys`
-
-- The HTTP and HTTPS port numbers of the explorer server. By default, they are 7080 and 7443.
+- The z/OSMF installation directory, for example, `/usr/lpp/zosmf/lib`.
 - The API Mediation Layer HTTP and HTTPS port numbers. You will be asked for 3 unique port numbers.
 - The user ID that runs the Zowe started task.
 
@@ -243,7 +222,7 @@ Ensure that the following prerequisite software is installed on your computer:
 
 ### Supported platforms
 
-CA Brightside Community Edition is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
+Zowe CLI is supported on any platform where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. For information about known issues and workarounds, see [Troubleshooting installing Zowe CLI](../troubleshoot/troubleshootinstall.html#troubleshooting-installing-zowe-cli).
 
 Zowe CLI is designed and tested to integrate with z/OSMF running on IBM z/OS Version 2.2 or later. Before you can use Zowe CLI to interact with the mainframe, system programmers must install and configure IBM z/OSMF in your environment.
 

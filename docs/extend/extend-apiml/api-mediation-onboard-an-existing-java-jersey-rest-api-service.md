@@ -13,9 +13,7 @@ The following procedure is an overview of steps to onboard a Java Jersey REST AP
 
 3. [Download Apache Tomcat and enable SSL](#download-apache-tomcat-and-enable-ssl)
 
-3. [Run your service](#run-your-service)
-
-4. [Validate discovery of the API service by the Discovery Service](#validate-discovery-of-the-api-service-by-the-discovery-service)
+4. [Run your service](#run-your-service)
 
 ## Get enablers from the Artifactory
 
@@ -35,7 +33,7 @@ Use the following procedure if you use Gradle as your build automation system.
 2.  In the _gradle.properties_ file, set the following URL of the repository and customize the values of your credentials to access the repository.
 
     ```
-    # Repository URL for getting the enabler-jersey artifact
+    # Repository URL for getting the enabler-jersey artifact (`integration-enabler-java`)
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
    
     # Artifactory credentials for builds:
@@ -43,7 +41,7 @@ Use the following procedure if you use Gradle as your build automation system.
     mavenPassword={password}
     ```
 
-    This file specifies the URL for the repository of the Artifactory. The enabler-jersey artifacts are downloaded from this repository.
+    This file specifies the URL for the repository of the Artifactory. The enabler-jersey artifact is downloaded from this repository.
 
 3. Add the following Gradle code block to the *build.gradle* file:
 
@@ -66,7 +64,7 @@ Use the following procedure if you use Gradle as your build automation system.
 4. In the same _build.gradle_ file, add the following code to the dependencies code block to add the enabler-jersey artifact as a dependency of your project:
 
     ```groovy
-      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-jersey', version: '0.2.0')
+      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '0.2.0')
     ```
     
 5. In your project directory, run the `gradle build` command to build your project.
@@ -94,13 +92,13 @@ Use the following procedure if you use Maven as your build automation system.
       </repositories>
    ``` 
 
-    This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifacts.
+    This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifact.
 
 2. In the same file, copy the following _xml_ tags to add the enabler-jersey artifact as a dependency of your project:
    ```xml
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
-        <artifactId>mfaas-integration-enabler-jersey</artifactId>
+        <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>0.2.0</version>
     </dependency>
    ```
@@ -127,73 +125,96 @@ Use the following procedure if you use Maven as your build automation system.
 
 ## Externalize parameters
 
-By default, parameters defined inside the *eureka-client.properties* are externalized 
-due to a `ServletContextListener` defined inside *integration-enabler-java* in the package `com.ca.mfaas.eurekaservice.RestDiscoveryListener`. If you want to use the default `ServletContextListener`,
-you can skip the following steps for externalizing parameters and run your service. To  create your own 
+In order to externalize parameters, you have to create a `ServletContextListener`. To  create your own 
 `ServletContextListener`, register a `ServletContextListener` and enable it to read all 
-the properties defined inside the .*properties* file.
+the properties defined inside the .*yml* file.
 
 **Follow these steps:**
 
-1. Define parameters that you want to externalize in a `.properties` file. 
-Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service.
+1. Define parameters that you want to externalize in a _.yml_ file. 
+Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `com.ca.mfaas.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the `yml` file follows the correct structure. The following example shows the structure of the 'yml' file:
+  
+    **Example:**
+    
+      ```yaml
+         serviceId: 
+         eureka:
+             hostname: 
+             ipAddress: 
+             port: 
+         title: 
+         description: 
+         defaultZone: 
+         baseUrl: 
+         homePageRelativeUrl:
+         statusPageRelativeUrl: 
+         healthCheckRelativeUrl: 
+         discoveryServiceUrls:
+             
+         ssl:
+             verifySslCertificatesOfServices: true
+             protocol: TLSv1.2
+             keyAlias: localhost
+             keyPassword: password
+             keyStore: ../keystore/localhost/localhost.keystore.p12
+             keyStorePassword: password
+             keyStoreType: PKCS12
+             trustStore: ../keystore/localhost/localhost.truststore.p12
+             trustStorePassword: password
+             trustStoreType: PKCS12
+         routes:
+             - gatewayUrl: 
+               serviceUrl: 
+             - gatewayUrl: 
+               serviceUrl: 
+             - gatewayUrl: 
+               serviceUrl: 
+             - gatewayUrl: 
+               serviceUrl: 
+         apiInfo:
+             title: 
+             description: 
+             version: 
+         catalogUiTile:
+             id: 
+             title: 
+             description: 
+             version: 
+
+      ```
 
 2. Before the web application is started (Tomcat), create a `ServletContextListener` to run 
 the defined code. 
 
     **Example:**
      ```java
-                package com.ca.hwsjersey.resource.listeners;
+                package com.ca.hwsjersey.listener;
+                
+                import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
+                import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
+                import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
+                import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+                
                 import javax.servlet.ServletContextEvent;
                 import javax.servlet.ServletContextListener;
-                import javax.servlet.annotation.WebListener;
-                import java.io.IOException;
-                import java.util.Properties;
                 
                 
-                @WebListener
-                public class ExternalParameters implements ServletContextListener {
+                public class ApiDiscoveryListener implements ServletContextListener {
+                    private ApiMediationClient apiMediationClient;
                 
                     @Override
-                    public void contextDestroyed(final ServletContextEvent event) {
-                //        Filled automatically
+                    public void contextInitialized(ServletContextEvent sce) {
+                        apiMediationClient = new ApiMediationClientImpl();
+                        String configurationFile = "/service-configuration.yml";
+                        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+                        apiMediationClient.register(config);
                     }
                 
                     @Override
-                    public void contextInitialized(final ServletContextEvent event) {
-                
-                        final String fileName = "/WEB-INF/external-parameters.properties";
-                        final Properties propsFromFile = new Properties();
-                
-                        System.out.println();
-                
-                        try {
-                            // note: Try reading the external-parameters.properties file
-                            System.out.println("Looking for external parameters in - " + fileName);
-                            propsFromFile.load(event.getServletContext().getResourceAsStream(fileName));
-                        } catch (final NullPointerException e) {
-                            System.err.println("I don't know a file like this! " + fileName);
-                            System.err.println(e.getMessage());
-                            throw new NullPointerException();
-                        } catch (final IOException e) {
-                            System.err.println(e.getMessage());
-                        }
-                        
-                        for (String prop : propsFromFile.stringPropertyNames()) {
-                        
-                                    if (System.getProperty(prop) == null) {
-                                        System.out.println("Setting value " + propsFromFile.getProperty(prop) + " to property " + prop);
-                                        System.setProperty(prop, propsFromFile.getProperty(prop));
-                                    } else {
-                                        System.out.print(System.getProperty(prop));
-                                    }
-                        
-                                }
-                        
-                                System.out.println();
-                        
-                            }
-                }   
+                    public void contextDestroyed(ServletContextEvent sce) {
+                        apiMediationClient.unregister();
+                    }
+                }
 
     ```
 
@@ -210,20 +231,6 @@ the defined code.
         <listener-class>your.class.package.path</listener-class>
       </listener>
       ```
-
-4. Reference your externalized parameters in your _web.xml_ as in the following example.
-   
-      **Example:** 
-
-      ```xml
-      <context-param>
-         <param-name>{yourProperty}</param-name>
-         <param-value></param-value>
-      </context-param>
-      ```
-    
-      **Note:** Ensure that the parameter name is the same name as in 
-      the _external-parameters.properties_.
 
 ## Download Apache Tomcat and enable SSL
 
@@ -253,7 +260,7 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
         Be also sure to comment the HTTP connector which uses the same port.
     c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
     
-        ```xml
+       ```xml
         <security-constraint>
                 <web-resource-collection>
                     <web-resource-name>Protected resource</web-resource-name>
@@ -265,7 +272,7 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
                     <transport-guarantee>CONFIDENTIAL</transport-guarantee>
                 </user-data-constraint>
             </security-constraint>
-        ```
+       ```
 
 ## Run your service
 
@@ -287,24 +294,19 @@ After you externalize the parameters to make them readable through Tomcat and en
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to `https://localhost:10011`. Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
-You should also be able to reach the following endpoints using HTTPS:
-    * `https://localhost:10011/eureka/apps/HELLOWORLD-JERSEY/localhost:helloworld-jersey:10016` for metadata and service information
+3.  Navigate to following URL:
+        
+    ```
+    https://localhost:10011
+    ```
     
-    * `https://localhost:10016` for the homepage
-    
-    * `https://localhost:10016/helloworld-jersey/api-doc` which contains the API documentation
-    
-    * `https://localhost:10016/helloworld-jersey/application/health` for the health check endpoint containing the status of the application
-     
-    * `https://localhost:10016/helloworld-jersey/application/info` for the service informations such as hostname, port etc
-    
-    * `https://localhost:10016/helloworld-jersey/v1/greeting` for the greeting endpoint
+    Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
         
     Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
+    
     ```
     https://localhost:10010/ui/v1/apicatalog/#/dashboard
-    ``` 
+    ```
     
   You successfully onboarded your Java Jersey application if see your service 
     running and can access the API documentation. 

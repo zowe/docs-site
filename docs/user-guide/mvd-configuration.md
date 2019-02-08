@@ -144,11 +144,119 @@ When you run the Zowe Application Server, specify the following flags to declare
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
+### Enabling tracing
+
+To obtain more information about how a server is working, you can enable tracing within the `zluxserver.json` file. 
+
+For example:
+ 
+```
+"logLevels": {
+  "_zsf.routing": 0,
+  "_zsf.install": 0,
+  "_zss.traceLevel": 0,
+  "_zss.fileTrace": 1
+}
+```
+
+Specify the following settings inside the **logLevels** object.
+
+All settings are optional.
+
+#### Zowe Application Server tracing
+
+To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `zluxserver.json` file. 
+
+The log prefix for the Zowe Application Server is **_zsf**, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the **_zsf** prefix.)
+
+The following are the logger names that you can specify:
+
+**_zsf.bootstrap**
+Logging that pertains to the startup of the server.
+
+**_zsf.auth**
+Logging for network calls that must be checked for authentication and authorization purposes.
+
+**_zsf.static**
+Logging of the serving of static files (such as images) from an application's `/web` folder.
+
+**_zsf.child**
+Logging of child processes, if any.
+
+**_zsf.utils**
+Logging for miscellaneous utilities that the server relies upon.
+
+**_zsf.proxy**
+Logging for proxies that are set up in the server.
+
+**_zsf.install**
+Logging for the installation of plug-ins.
+
+**_zsf.apiml**
+Logging for communication with the api mediation layer.
+
+**_zsf.routing**
+Logging for dispatching network requests to plug-in dataservices.
+
+**_zsf.network**
+Logging for the HTTPS server status (connection, ports, IP, and so on)
+
+#### Log levels
+
+The log levels are:
+
+ -  SEVERE = 0,
+ -  WARNING = 1,
+ -  INFO = 2,
+ -  FINE = 3,
+ -  FINER = 4,
+ -  FINEST = 5
+
+FINE, FINER, and FINEST are log levels for debugging, with increasing verbosity.
+
+#### Enabling tracing for ZSS 
+
+To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `zluxserver.json` file.
+
+A higher value specifies greater verbosity.
+
+The log prefix for ZSS is **_zss**. The following are the logger names that you can specify:
+
+**_zss.traceLevel:**
+Controls general server logging verbosity.
+
+**_zss.fileTrace:** 
+Logs file serving behavior (if file serving is enabled).
+
+**_zss.socketTrace:** 
+Logs general TCP Socket behavior.
+
+**_zss.httpParseTrace:** 
+Logs parsing of HTTP messages.
+
+**_zss.httpDispatchTrace:** 
+Logs dispatching of HTTP messages to dataservices.
+
+**_zss.httpHeadersTrace:** 
+Logs parsing and setting of HTTP headers.
+
+**_zss.httpSocketTrace:** 
+Logs TCP socket behavior for HTTP.
+
+**_zss.httpCloseConversationTrace:** 
+Logs HTTP behavior for when an HTTP conversation ends.
+
+**_zss.httpAuthTrace:** 
+Logs behavior for session security.
+
+When you are finished specifying the settings, save the `zluxserver.json` file.
+
+
 ## Zowe Application Framework logging
 
 The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
 
-- Zowe Proxy Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
+- Zowe Application Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
 - ZSS: `zlux-app-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
  
 The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.

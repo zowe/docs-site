@@ -4,9 +4,8 @@ You can extend Zowe CLI by developing plug-ins and contributing code to the base
 
 **Note:** You can also [install existing plug-ins to Zowe CLI](../../user-guide/cli-extending.md).
 
-* [Why Create a Zowe CLI Plug-in?](#why-create-a-zowe-cli-plug-in)
-* [Getting Started](#getting-started)
-* [Developer Documentation and Guidelines](#developer-documentation-and-guidelines)
+* [How can I contribute?](#how-can-i-contribute)
+* [Getting started](#getting-started)
 
 ## How can I contribute?
 You can contribute to Zowe CLI in the following ways:

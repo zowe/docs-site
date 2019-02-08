@@ -1,16 +1,19 @@
 # Zowe overview
 
+Zowe is an open source project that is created to host technologies that benefit the Z platform from all members of the Z community, including Integrated Software Vendors, System Integrators, and z/OS consumers. Zowe, like Mac or Windows, comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box.
+
 Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors.
 
 Zowe consists of the following main components. For details of each component, see the corresponding section.
 
-- [**Zowe Application Framework**](#zowe-application-framework): Contains a Web user interface (UI) that provides a full screen interactive experience. The Web UI includes many interactions that exist in 3270 terminals and web interfaces such as IBM z/OSMF.
+- [**Zowe Application Framework**](#zowe-application-framework):
+A web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function.  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services.
 
-- [**Explorer server**](#explorer-server): Provides a range of APIs for the management of jobs, data sets and z/OS UNIX System Services files.
+- [**z/OS Services**](#z-os-services): Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
-- [**API Mediation Layer**](#api-mediation-layer): Provides an API abstraction layer through which APIs can be discovered, catalogued, and presented uniformly.
+- [**API Mediation Layer**](#api-mediation-layer): Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for Single Sign On (SSO).
 
-- [**Zowe CLI**](#zowe-cli): Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/cli-vscodeplugin.md).
+- [**Zowe CLI**](#zowe-cli): Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly. It provides a core set of commands for working with data sets, USS, JES, as well as issuing TSO and console commands. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/cli-vscodeplugin.md).
 
 Check out the video below for a demo of the modern interfaces that Zowe provides.
 
@@ -40,20 +43,26 @@ The Zowe Application Framework consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.html#using-zowe-framework-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
 
-## Explorer server
+## z/OS Services
 
-The explorer server is a z/OS® RESTful web service and deployment architecture for z/OS microservices. The server is implemented as a Liberty Profile web application that uses z/OSMF services to provide a range of APIs for the management of jobs, data sets and z/OS UNIX™ System Services (USS) files.
+Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
 
-These APIs have the following features:
+ - **z/OS Datasets services**
+
+   Get a list of jobs, get content from a job file output, submit job from a data set, and more.
+
+ - **z/OS Jobs services**
+
+    Get a list of data sets, retrieve content from a member, create a data set, and more.
+
+You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
 
 - These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
 - These APIs can be exploited by off-platform applications with proper security controls.
 
-Any client application that calls RESTful APIs directly can use the explorer server.
-
-As a deployment architecture, the explorer server accommodates the installation of other z/Tool microservices into its Liberty instance. These microservices can be used by explorer server APIs and client applications.
+As a deployment architecture, the z/OS Services are running as microservices with a Springboot embedded Tomcat stack.  
 
 ## Zowe CLI
 Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
@@ -88,25 +97,10 @@ For detailed information about the available functionality in Zowe CLI, see [Z
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
-### Zowe CLI Third-Party software agreements
-
-Zowe CLI uses the following third-party software:
-
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe CLI  | Eclipse Public License | 2.0 | Legal_Doc_00002579_4.pdf |
-| Imperative CLI Framework | Eclipse Public License | 2.0 | Legal_Doc_00002579_5.pdf |
-| Zowe CLI Plug-in for IBM CICS | xml2js | 0.4.19 | Legal_Doc_00002310_41.pdf |
-| Zowe CLI plug-in for IBM Db2 Database | ibm_db | 2.3.0 | Legal_Doc_00002310_38.pdf | 
-
-**Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
-
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_cli_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe CLI uses.
-
 **More Information:**
 
   - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
-  - [Installing Zowe CLI](../user-guide/cli-installcli.html)
+  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
 
 ## API Mediation Layer
 
@@ -143,21 +137,12 @@ The Discovery service is the central point in the API Gateway infrastructure tha
 #### API Catalog
 The API Catalog is the catalog of published APIs and their associated documentation that are discoverable or can be available if provisioned from the service catalog. The API documentation is visualized using the Swagger UI. The API Catalog contains APIs of services available as product versions. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
 
-
 **More Information:**
 - [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md)
 - [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 
-### Zowe API Mediation Layer Third-Party software agreements
+## Zowe Third-Party Software Requirements and Bill of Materials
 
-Zowe API Mediation Layer uses the following third-party software:
-
-| Component | Third-party Software | Version | File name |
-| ----------| -------------------- | --------| --------- |
-| Zowe API Mediation Layer | Eclipse Public License | 2.0 | Legal_Doc_00002599_81.pdf |
-
-
-**Note:** All trademarks, trade names, service marks, and logos referenced herein belong to their respective companies.
-
-[Click here](https://github.com/zowe/docs-site/blob/TPSR-link/docs/.vuepress/public/zowe_apiml_tpsrs.zip) to download and read each complete license. The .zip file contains the licenses for all of the third-party components that Zowe API Mediation Layer uses.
+- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+- [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
