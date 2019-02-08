@@ -679,7 +679,7 @@ The manual installation consists of the following steps.
         ```
         - If you use CA Top Secret, issue the following commands:
         ```
-        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                       [WIP TODO - DO WE NEED THIS LINE?]
+        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                      
         TSS ADD(owner-acid) CSFSERV(profile-prefix.)
         TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
         TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
