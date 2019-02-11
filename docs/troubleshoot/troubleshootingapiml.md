@@ -1,4 +1,4 @@
-# Troubleshooting API ML #
+# Troubleshooting API ML
 
 As a system administrator, when problems occur with the API Mediation Layer (API ML), use the following methods to troubleshoot the API ML:
   
