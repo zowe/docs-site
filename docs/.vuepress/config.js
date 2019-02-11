@@ -121,7 +121,16 @@ const ALL_PAGES = [{
 {
   text: 'Troubleshooting',
   baseuri: '/troubleshoot/',
-  link: 'troubleshoot/troubleshootinstall.md'
+  items: [
+          {
+           text: 'Troubleshooting installation',
+           items: ['troubleshoot/troubleshootinstall.md']
+          },
+          {
+            text: 'Troubleshooting API ML',
+            items: ['troubleshoot/troubleshootinstall.md']
+          }
+  ]
 },
 {
   text: 'Contributing',
