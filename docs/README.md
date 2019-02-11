@@ -34,12 +34,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ## Supported Doc Versions and Downloadable PDF Files
 
-This website contains documentation for the latest version of Zowe Open Beta release.
+This website contains documentation for the six Zowe Open Beta releases.
 
 ### Latest version
 The latest version is 0.9.5. You can download the Version 0.9.5 documentation as a PDF file.
 
-[Download V0.9.5 PDF](https://github.com/zowe/docs-site/blob/gh-pages/.pdf/out/Zowe_Documentation.pdf)
+[Download V0.9.5 PDF](https://github.com/zowe/docs-site/blob/master/docs/.vuepress/public/Zowe_User_Guide_0.9.5.pdf)
 
 ### Previous versions
 You can download the User Guide of a previous Open Beta version as a PDF file.
