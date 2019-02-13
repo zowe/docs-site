@@ -140,14 +140,6 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 - Before you start the installation on z/OS, ensure that your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
 
-    You can run a script to check the install condition of the required prerequisites. To do this, issue the following command with the current directory being the `/install` directory.
-
-    ```
-    zowe-check-prereqs.sh
-    ```
-
-    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
-
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
@@ -236,7 +228,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
           sshPort=22
           telnetPort=23
       ```
-
+      
 4. Select the ZOWESVR PROCLIB member.
 
     The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
@@ -308,8 +300,17 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
          externalCertificateAuthorities=/path/to/cacert.cer
          verifyCertificatesOfServices=true
    ```
+   
+6. (Optional) Check the install condition of the required prerequisites. To do this, issue the following command with the current directory being the `/install` directory.
 
-6. Execute the `zowe-install.sh` script.
+    ```
+    zowe-check-prereqs.sh
+    ```
+
+    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
+    
+
+7. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
@@ -343,7 +344,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
 
     
-7. Configure Zowe as a started task.
+8. Configure Zowe as a started task.
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
@@ -375,7 +376,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
       ```
 
-8. Add the users to the required groups, IZUADMIN for administrators, and IZUUSER for standard users.
+9. Add the users to the required groups, IZUADMIN for administrators, and IZUUSER for standard users.
 
     - If you use RACF, issue the following command:
 
