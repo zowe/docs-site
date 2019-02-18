@@ -28,7 +28,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="https://zowe.org/home/">Getting Help</a></h2>
-    <p>Visit Zowe.org where you can experience our beta application and join Zowe communities.</p>  
+    <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>  
   </div>
 </div>
 
