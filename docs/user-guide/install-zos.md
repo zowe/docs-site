@@ -140,14 +140,6 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 - Before you start the installation on z/OS, ensure that your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
 
-    You can run a script to check the install condition of the required prerequisites. To do this, issue the following command with the current directory being the `/install` directory.
-
-    ```
-    zowe-check-prereqs.sh
-    ```
-
-    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you install the Zowe runtime.
-
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
@@ -236,7 +228,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
           sshPort=22
           telnetPort=23
       ```
-
+      
 4. Select the ZOWESVR PROCLIB member.
 
     The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
@@ -308,8 +300,17 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
          externalCertificateAuthorities=/path/to/cacert.cer
          verifyCertificatesOfServices=true
    ```
+   
+6. (Optional) Check the install condition of the required prerequisites. To do this, issue the following command with the current directory being the `/install` directory.
 
-6. Execute the `zowe-install.sh` script.
+    ```
+    zowe-check-prereqs.sh
+    ```
+
+    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
+    
+
+7. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
@@ -343,7 +344,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
 
     
-7. Configure Zowe as a started task.
+8. Configure Zowe as a started task.
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
@@ -375,7 +376,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       TSS ADDTO(STC) PROCNAME(ZOWESVR) ACID(IZUSVR)
       ```
 
-8. Add the users to the required groups, IZUADMIN for administrators, and IZUUSER for standard users.
+9. Add the users to the required groups, IZUADMIN for administrators, and IZUUSER for standard users.
 
     - If you use RACF, issue the following command:
 
@@ -663,7 +664,7 @@ The manual installation consists of the following steps.
         ```
         RDEFINE CSFSERV profile-name UACC(NONE)
         PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-        PERMIT profile-name CLASS(CSFSERV) ID (userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
+        PERMIT profile-name CLASS(CSFSERV) ID(userid-list)   ... [for userids IKED, NSSD, and Policy Agent]
         SETROPTS CLASSACT(CSFSERV)
         SETROPTS RACLIST(CSFSERV) REFRESH
         ```
@@ -673,16 +674,16 @@ The manual installation consists of the following steps.
         INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
         F ACF2,REFRESH(CLASMAP)
         SET RESOURCE(CSF)
-        RECKEY profile-prefix ADD(profile-suffix ROLE(tcpip-stackname) SERVICE(READ) ALLOW)   
+        RECKEY profile-prefix ADD(profile-suffix uid(UID string for tcpip-stackname) SERVICE(READ) ALLOW)   
         RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)   ... [repeat for userids IKED, NSSD, and Policy Agent]
         F ACF2,REBUILD(CSF)
         ```
-        - If you use CA Top Secret, issue the following commands:
+        - If you use CA Top Secret, issue the following commands. Note that `profile-prefix` and `profile-suffix` are user defined.
         ```
         TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                                                      
         TSS ADD(owner-acid) CSFSERV(profile-prefix.)
         TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                               ... [repeat for user-acids IKED, NSSD, and Policy Agent]
+        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)                  ... [repeat for user-acids IKED, NSSD, and Policy Agent]
         ```
     - The user under which zssServer runs will need READ access to CSFRNGL in the CSFSERV class.
     - Determine whether you want SAF authorization checks against CSFSERV and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
@@ -731,7 +732,7 @@ users:
 
 where, 
 
-- _users:zoweUser_ is the TSO user ID that the ZOWEVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
+- _users:zoweUser_ is the TSO user ID that the ZOWESVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
 - _users:sctUser_ is the user ID that the ZWESIS01 started task will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
 - _users:stcUserUid_.  This is the Unix user ID of the TSO user ID used to run the ZWESIS01 started task. If the user ID is IZUSVR to see the Unix user ID enter the command `id IZUSVR` which will return the sctUserUid in the uid result.  In the example below IZUSVR has a uid of 210, so `users:stcUserUid=210` should be entered.  
 
@@ -749,15 +750,15 @@ After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT en
 The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
 
 ```
-/S ZOWESIS01
+/S ZWESIS01
 ```
 To end the Zowe APF Angel process, issue the operator cancel command through SDSF:
 
 ```
-/C ZOWESIS01
+/C ZWESIS01
 ```
 
-**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZOWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
+**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
 
 ## Verifying installation
 

@@ -264,7 +264,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Home of Zowe documentation',
+  description: 'Version 1.0.x',
   ga: 'UA-123892882-1',
   head: [
     [
