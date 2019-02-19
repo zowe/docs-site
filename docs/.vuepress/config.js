@@ -131,7 +131,7 @@ const ALL_PAGES = [{
   {
     text: 'Troubleshooting API ML',
     items: [
-      'troubleshoot/troubleshootingapiml.md'
+      'troubleshoot/troubleshootingknownissues.md'
     ]
   }],
 },
