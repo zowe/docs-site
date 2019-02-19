@@ -1,4 +1,8 @@
 [{
   "text": "Latest",
   "link": "latest/"
+},
+{
+  "text": "v0.9.x",
+  "link": "v0-9-x/"
 }]
