@@ -1,6 +1,6 @@
-# Troubleshooting Known Issues
+#Troubleshooting API ML
 
-## API ML Stops Accepting Connections After z/OS TCP/IP Stack is Recycled
+## API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
