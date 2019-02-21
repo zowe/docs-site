@@ -1,6 +1,4 @@
-# Troubleshooting API Mediation Layer (API ML)
-
-## API ML stops accepting connections after z/OS TCP/IP stack is recycled
+# API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
