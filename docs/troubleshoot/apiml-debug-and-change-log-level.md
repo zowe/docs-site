@@ -1,6 +1,8 @@
+# Troubleshooting API ML
+
 As a system administrator, when problems occur with the API Mediation Layer (API ML), use the following methods to troubleshoot the API ML:
 
-# Enable API ML Debug Mode
+## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
 
@@ -28,7 +30,7 @@ You successfully enabled debug mode.
 6. Restart all API ML services (Gateway, Discovery Service, and Catalog).
 You successfully disabled debug mode.
 
-# Change the Log Level of Individual Code Components #
+## Change the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
 
