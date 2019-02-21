@@ -131,6 +131,7 @@ const ALL_PAGES = [{
   {
     text: 'Troubleshooting API ML',
     items: [
+      'apiml-debut-and-cahnge-log-level.md',
       'troubleshoot/troubleshootingknownissues.md'
     ]
   }],
