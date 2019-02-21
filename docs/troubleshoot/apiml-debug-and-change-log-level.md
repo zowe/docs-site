@@ -1,6 +1,6 @@
 As a system administrator, when problems occur with the API Mediation Layer (API ML), use the following methods to troubleshoot the API ML:
 
-# Enable API ML Debug Mode ##
+# Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
 
