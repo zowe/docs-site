@@ -110,10 +110,6 @@ This activates the application/loggers endpoints in each API ML internal service
     http POST https://hostname:port/application/loggers/com.ca.mfaas.enable.model configuredLevel=WARN
     ```
 
-## API ML Known Issues
-
-The following topics can help you troubleshoot specific issues with API ML:
-
 ## API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
