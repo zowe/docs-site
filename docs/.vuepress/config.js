@@ -131,7 +131,6 @@ const ALL_PAGES = [{
   {
     text: 'Troubleshooting API Mediation Layer (API ML)',
     items: [
-      'troubleshoot/apiml-debug-and-change-log-level.md',
       'troubleshoot/troubleshootingknownissues.md'
     ]
   }],
