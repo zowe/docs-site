@@ -16,31 +16,59 @@ Before you install Zowe CLI, download and install [Node.js and npm.](https://nod
 
 ### Set target registry and install Zowe CLI core
 
-```npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside```
+```
+npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+```
 
-```npm install @brightside/core@latest```
+```
+npm install @brightside/core@latest
+```
 
 ### Install plug-ins
 
-```zowe plugins install @brightside/cics@latest```
+```
+zowe plugins install @brightside/cics@latest
+```
 
 For infomation about additional plug-ins, see [Extending Zowe CLI](../user-guide/extending.md).
 
 ## CLI usage
 
-There are several scenarios/areas in which you might use Zowe CLI: 
+There are several scenarios/areas in which you can use Zowe CLI:
 
-- **Interactively, in a command prompt or bash terminal.** 
+- **Interactively, in a command prompt or bash terminal.**
         
-    Example: Performing one-off tasks such as submitting a batch job. 
+    Example: Perform one-off tasks such as submitting a batch job.
 
-- **Interactively, in an IDE** 
-    For example, 
+- **Interactively, in an IDE**
+
+    Example: Issue a command to download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.
+
 - **Writing automation scripts to simplify repetative tasks**
+ 
+    Example: Write a shell script that submits a job, waits for the job to complete, then returns the output.
+
 - **Writing automation scripts for automated pipelines**
 
-## Issuing your first command
+    Example: Add a script to your Jenkins (or other automation tool) automated pipeline to move compiled artifacts on the mainframe from a development system to a test system.
 
+## Issuing your first commands
+
+Issue `zowe --help` to display the full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
+
+To interact with the mainframe, type `zowe` followed by a command group, action, and object. Then use options to specify your connection details such as password, system name, etc... 
+
+### List Data Sets
+
+```
+zowe zos-files list --
+```
+
+### Download a Data Set
+
+```
+zowe zos-files download dataset
+``` 
 
 ## Using profiles to store command options
 
