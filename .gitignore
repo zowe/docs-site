@@ -1,6 +1,9 @@
 # node.js dependencies
 node_modules
 
+# ignore yarn lock because we have package-lock.json and npmjs is more stable
+yarn.lock
+
 # build result
 docs/.vuepress/dist 
 docs-site
