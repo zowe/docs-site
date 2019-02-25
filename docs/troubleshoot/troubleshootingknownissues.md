@@ -86,7 +86,9 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     Where:
 
-    - {name} is the logger name
+    - **{name}**
+
+         is the logger name
     
 4. Change the log level of the given component of the API ML internal service. Use the POST request for the given service URL:
 
@@ -103,7 +105,9 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     Where:
 
-    - _level_ is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
+    - **level**
+    
+        is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
     
     **Example:**
 
