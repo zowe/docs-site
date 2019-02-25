@@ -634,6 +634,11 @@ The manual installation consists of the following steps.
         PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
+        - To check whether the permission has been successfully granted, issue the following command:
+        ```
+        RLIST FACILITY ZWES.IS AUTHUSER
+        ```
+        This shows the user IDs who have access to the ZWES.IS class, which should include IZUSVR with READ access.
 
     - If you use CA ACF2, issue the following commands:
 
