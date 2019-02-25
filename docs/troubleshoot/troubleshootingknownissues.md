@@ -1,6 +1,7 @@
 # Troubleshooting API ML
 
-As a system administrator, when problems occur with the API Mediation Layer (API ML), use the following methods to troubleshoot the API ML:
+As an API Mediation Layer user, you may encounter problems with the functioning of API ML. This article presents known API ML issues and their solutions.
+
 
 ## Enable API ML Debug Mode
 
@@ -136,3 +137,41 @@ The following message is a typical error message displayed in STDOUT:
 Restart API Mediation Layer. 
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart TCP/IP stack while the API ML is running.
+
+## Services that are Not Running Appear to be Running
+
+**Symptom:**
+
+Services that are not running appear to be running. The following message is displayed in the Discovery Service:
+
+   **EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**
+    
+**Cause:**
+
+This message is expected behavior of the discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, it initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
+
+**Solution:**
+
+Use one of the following options to exit self preservation mode:
+
+   - **Restart the services that appear to be running**
+    
+     Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service.
+
+   - **Restart the discovery service**
+    
+     Manually restart the discovery service. The new instance will not be in self perservation mode. In a few minutes, the running services register once again.
+
+   - **Adjust the threshold of services in eviction status**
+   
+     Change the frequency of the discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+
+       **Note:** The default threshold is .85. This results in the discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
+   
+       ```
+       eureka.renewalPercentThreshold=0.3
+       ```
+   
+       This threshold limit causes the discovery service to enter self preservation mode when less than 30 percent of services are not responding.
+   
+   
