@@ -103,7 +103,7 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     Where:
 
-    - level is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
+    - _level_ is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
     
     **Example:**
 
