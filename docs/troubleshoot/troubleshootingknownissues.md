@@ -82,7 +82,7 @@ This activates the application/loggers endpoints in each API ML internal service
 3. Alternatively, you extract the configuration of a specific logger using the extended **GET** request:
 
     ```
-    GETscheme://hostname:port/application/loggers/{name}
+    GET scheme://hostname:port/application/loggers/{name}
     ```
     Where:
 
@@ -111,7 +111,10 @@ This activates the application/loggers endpoints in each API ML internal service
     http POST https://hostname:port/application/loggers/com.ca.mfaas.enable.model configuredLevel=WARN
     ```
 
-## API ML stops accepting connections after z/OS TCP/IP stack is recycled
+
+## Known Issues 
+
+### API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
@@ -138,7 +141,10 @@ Restart API Mediation Layer.
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart TCP/IP stack while the API ML is running.
 
-## Services that are Not Running Appear to be Running
+
+## FAQ 
+
+### Services that are Not Running Appear to be Running
 
 **Symptom:**
 
@@ -167,6 +173,8 @@ Use one of the following options to exit self preservation mode:
      Change the frequency of the discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
 
        **Note:** The default threshold is .85. This results in the discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
+       
+       **Example:**
    
        ```
        eureka.renewalPercentThreshold=0.3
