@@ -31,7 +31,7 @@ npm install @brightside/core@latest -g
 zowe plugins install @brightside/cics@latest
 ```
 
-For a list of available plug-ins, see [Extending Zowe CLI](../../user-guide/cli-extending.md). The IBM Db2 plug-in requires additional configuration. 
+For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md). The IBM Db2 plug-in requires additional configuration. 
 
 ## Where can I use the CLI?
 
@@ -84,9 +84,9 @@ For more information about issuing commands, using profiles, and storing variabl
 
 ## Writing scripts
 
-You can write scripts with Zowe CLI commands to automate a series of mainframe actions. Use the scripts to streamline your daily development processes, and/or implement scripts in an off-platform automation tool such as Jenkins automation server. 
+Write scripts with Zowe CLI commands to automate a series of mainframe actions. Use the scripts to streamline your daily development processes or use them in an off-platform automation tool such as Jenkins or TravisCI.
 
-In this example, you want to delete a list of temporary datasets. Use Zowe CLI to download the list and store it as a variable, then loop through the list and use the `zowe zos-files delete` command to delete each dataset:
+In this example, you want to delete a list of temporary datasets. Use Zowe CLI to download the list, then loop through the list and use the `zowe zos-files delete` command for each data set:
 
 ```
 #!/bin/bash
@@ -120,4 +120,4 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - See what [plug-ins are available](..\user-guide\cli-developing-a-plugin.md) for the CLI.
 
-- Learn about [developing for the CLI](..\extend\extend-cli\cli-extending.md) (adding to core, creating plug-ins)
+- Learn about [developing for the CLI](..\extend\extend-cli\cli-extending.md) (adding to core, creating plug-ins).
