@@ -1,6 +1,24 @@
 # Release notes
 
-Learn about what is new, changed, removed, and known issues in Zowe.
+Learn about what is new, changed, removed, and known issues in Zowe. 
+
+Zowe Version 1.0.0 and later releases include the following enhancements, release by release.
+
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.0.1 (March 2019)
+
+Version 1.0.1 contains the following changes since the last version.
+
+### What's new in API Mediation Layer
+
+### What's new in the Zowe Desktop
+
+### What's new in Zowe CLI
+
+### Known issues
+
 
 ## Version 1.0.0 (February 2019)
 
