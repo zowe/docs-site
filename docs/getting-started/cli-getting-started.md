@@ -114,7 +114,7 @@ do
 done
 ```
 
-For more information, see [Writing scripts to automate mainframe actions.](../user-guide/cli-usincli.md#writing-scripts-to-automate-mainframe-actions)
+For more information, see [Writing scripts to automate mainframe actions.](../user-guide/cli-usingcli.md#writing-scripts-to-automate-mainframe-actions)
 
 ## Next Steps
 
