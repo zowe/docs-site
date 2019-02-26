@@ -757,10 +757,10 @@ The Zowe Cross Memory server is run as a started task from the JCL in the PROCLI
 ```
 /S ZWESIS01
 ```
-To end the Zowe APF Angel process, issue the operator cancel command through SDSF:
+To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
 ```
-/C ZWESIS01
+/P ZWESIS01
 ```
 
 **Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
