@@ -62,7 +62,7 @@ zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt"
 
 ```
 
-See [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups) for a list of available functionality.
+See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
 
 ## Using profiles to store command options
 
@@ -112,9 +112,9 @@ For more information, see [Writing scripts to automate mainframe actions.](../us
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
-- Review [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups) to learn what functionality is available, and explore the in-product help.
+- Review [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) to learn what functionality is available, and explore the in-product help.
 
-- Learn about [using environment variables]() to store configuration options.
+- Learn about [using environment variables](../user-guide/cli-usingcli.md#defining-environment-variables) to store configuration options.
 
 - Integrate your scripts with an automation server like Jenkins.
 
