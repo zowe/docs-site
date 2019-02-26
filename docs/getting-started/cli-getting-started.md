@@ -2,7 +2,7 @@
 
 Get started installing and using Zowe CLI quickly and easily.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. For more thorough instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
+**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. For more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 
 - [Installing](#installing)
 - [Where can I use the CLI?](#where-can-i-use-the-cli)
@@ -38,9 +38,9 @@ For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-ext
 | **Usage Scenario**    | **Example**  |
 |------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Interactive use, in a command prompt or bash terminal. | Perform one-off tasks such as submitting a batch job.                                                            |
-| Interactive use, in an IDE terminal                    | Issue a command to download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
+| Interactive use, in an IDE terminal                    | Download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
 | Scripting, to simplify repetative tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
-| Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) automated pipeline to move compiled artifacts on the mainframe from a development system to a test system. |
+| Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
 
 
 ## Issuing your first commands
@@ -59,25 +59,26 @@ zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --u
 
 ```
 zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt" --user user123 --password pass --host host123
-
 ```
 
 See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
 
 ## Using profiles
 
-Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
+Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. Switch between profiles to quickly target different subsystems.
 
 ### Profile types 
 
-Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The type of profile required for a command is listed in the PROFILE OPTIONS section of the help response.
+Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
+
+**Tip:** The first profile that you create becomes your default profile for a given type. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults. 
 
 ### Creating a zosmf profile
 
 ```
 zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password pass --zosmf-profile host123
 ```
-**Tip:** The first profile that you create becomes your default profile. If you don't specify any options on a command, the default is used. Issue `zowe profiles -h` to learn more about the profiles group. 
+
 
 ### Using the zosmf profile
 
@@ -89,11 +90,11 @@ For detailed information about issuing commands, using profiles, and storing var
 
 ## Writing scripts
 
-You can write scripts to automate a series of mainframe actions with Zowe CLI. Use the scripts to streamline your daily development processes or use them in an off-platform automation tool such as Jenkins or TravisCI.
+You can write scripts with Zowe CLI to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
 
 ### Example:
 
-In this example, you want to delete a list of temporary datasets. Use Zowe CLI to download the list, then loop through the list and use the `zowe zos-files delete` command for each data set:
+You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command. 
 
 ```
 #!/bin/bash
