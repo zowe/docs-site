@@ -6,10 +6,10 @@ Get started installing and using Zowe CLI quickly and easily.
 
 - [Installing](#installing)
 - [Where can I use the CLI?](#where-can-i-use-the-cli)
-- [Issuing your first command](#issuing-your-first-command)
+- [Issuing your first commands](#issuing-your-first-commands)
 - [Using profiles to store command options](#using-profiles-to-store-command-options)
-- [Writing a shell script](#writing-a-shell-script)
-- [Next steps]()
+- [Writing scripts](#writing-scripts)
+- [Next steps](#next-steps)
 
 ## Installing
 
@@ -25,17 +25,15 @@ npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 npm install @brightside/core@latest -g
 ```
 
-### Installing plug-ins
+### Installing plug-ins 
 
 ```
 zowe plugins install @brightside/cics@latest
 ```
 
-For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/extending.md). The IBM Db2 plug-in requires additional configuration.
+For a list of available plug-ins, see [Extending Zowe CLI](../../user-guide/cli-extending.md). The IBM Db2 plug-in requires additional configuration. 
 
 ## Where can I use the CLI?
-
-There are several scenarios/areas in which you can use Zowe CLI:
 
 | **Usage Scenario**    | **Example**  |
 |------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -43,13 +41,13 @@ There are several scenarios/areas in which you can use Zowe CLI:
 | Interactive use, in an IDE terminal                    | Issue a command to download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
 | Scripting, to simplify repetative tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
 | Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) automated pipeline to move compiled artifacts on the mainframe from a development system to a test system. |
-|||
+
 
 ## Issuing your first commands
 
-Issue `zowe --help` to display the full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
+Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
 
-To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password, system name, etc... For example:
+To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password, system name, etc...
 
 ### Listing all data sets under a HLQ
 
@@ -57,7 +55,7 @@ To interact with the mainframe, type `zowe` followed by a command group, action,
 zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
-### Downloading a PDS to local file
+### Downloading a partitioned data-set (PDS) to local file
 
 ```
 zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt" --user user123 --password pass --host host123
