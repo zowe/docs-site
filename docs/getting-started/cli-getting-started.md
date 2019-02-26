@@ -39,7 +39,7 @@ For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-ext
 |------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Interactive use, in a command prompt or bash terminal. | Perform one-off tasks such as submitting a batch job.                                                            |
 | Interactive use, in an IDE terminal                    | Download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
-| Scripting, to simplify repetative tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
+| Scripting, to simplify repetitive tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
 | Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
 
 
