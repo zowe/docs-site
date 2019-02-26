@@ -1,8 +1,8 @@
 # Getting started with Zowe CLI
 
-Get started installing and using Zowe CLI quickly and easily.
+Get started with Zowe CLI quickly and easily.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. For more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
+**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 
 - [Installing](#installing)
 - [Where can I use the CLI?](#where-can-i-use-the-cli)
@@ -58,20 +58,20 @@ zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --u
 ### Downloading a partitioned data-set (PDS) to local file
 
 ```
-zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt" --user user123 --password pass --host host123
+zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --user user123 --pass mypassword123 --host host123
 ```
 
 See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
 
 ## Using profiles
 
-Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. Switch between profiles to quickly target different subsystems.
+Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command. 
 
 ### Profile types 
 
 Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
 
-**Tip:** The first profile that you create becomes your default profile for a given type. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults. 
+**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults. 
 
 ### Creating a zosmf profile
 
@@ -80,7 +80,7 @@ zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password
 ```
 
 
-### Using the zosmf profile
+### Using a zosmf profile
 
 ```
 zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
@@ -90,11 +90,11 @@ For detailed information about issuing commands, using profiles, and storing var
 
 ## Writing scripts
 
-You can write scripts with Zowe CLI to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
+You can write Zowe CLI scripts to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
 
 ### Example:
 
-You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command. 
+You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command.
 
 ```
 #!/bin/bash
