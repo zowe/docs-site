@@ -70,13 +70,13 @@ See [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups) for a l
 
 Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
-## Creating a zosmf profile
+### Creating a zosmf profile
 
 ```
 zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password pass --zosmf-profile host123
 ```
 
-## Calling the profile on a command
+### Calling the profile on a command
 
 ```
 zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
