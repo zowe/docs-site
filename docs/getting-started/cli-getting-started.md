@@ -108,7 +108,7 @@ done
 
 For more information, see [Writing scripts to automate mainframe actions.](../user-guide/cli-usincli.md#writing-scripts-to-automate-mainframe-actions)
 
-# Next Steps
+## Next Steps
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
