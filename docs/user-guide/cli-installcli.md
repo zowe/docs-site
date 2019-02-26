@@ -80,13 +80,13 @@ If your computer is connected to the Internet, you can use the following method 
 3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
-    npm install -g @brightside/core@latest
+    npm install -g @brightside/core@lts-incremental
     ```
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    zowe plugins install @brightside/cics@latest
+    zowe plugins install @brightside/cics@lts-incremental
     ```
 
     **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
