@@ -7,15 +7,15 @@ Get started installing and using Zowe CLI quickly and easily.
 - [Installing](#installing)
 - [Where can I use the CLI?](#where-can-i-use-the-cli)
 - [Issuing your first commands](#issuing-your-first-commands)
-- [Using profiles to store command options](#using-profiles-to-store-command-options)
+- [Using profiles](#using-profiles)
 - [Writing scripts](#writing-scripts)
 - [Next steps](#next-steps)
 
-## Installing
+## Installing 
 
 Before you install Zowe CLI, download and install [Node.js and npm.](https://nodejs.org/en/download/)
 
-### Setting target registry and install Zowe CLI core
+### Installing Zowe CLI core 
 
 ```
 npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
@@ -25,7 +25,7 @@ npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 npm install @brightside/core@latest -g
 ```
 
-### Installing plug-ins 
+### Installing CLI plug-ins 
 
 ```
 zowe plugins install @brightside/cics@latest
@@ -64,7 +64,7 @@ zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt"
 
 See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
 
-## Using profiles to store command options
+## Using profiles
 
 Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
