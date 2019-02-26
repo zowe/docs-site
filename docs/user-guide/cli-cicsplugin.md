@@ -49,7 +49,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @brightside/cics@latest
+    zowe plugins install @brightside/cics@lts-incremental
     ```
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
