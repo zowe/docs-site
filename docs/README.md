@@ -34,8 +34,17 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ## Downloadable PDF Files
 
-You can download the documentation for the latest version of Zowe on this website in PDF format.
+### Zowe documentation
 
-| Version | PDF 
+You can download the Version 1.0.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.0.1.
+
+| Version | Download 
 | --- | ---
-| V1.0.0 | [Zowe documentation](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.0.1 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.0.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation_1.0.0.pdf)
+
+### Zowe overview deck
+
+A Zowe overview deck in PDF format is available for download. The information included in this slide deck provides an introduction to Zowe, its vision and value statements, persona overview, a deeper dive into the technology, how to get involved in the community, and more. 
+
+[Download PDF](...)
