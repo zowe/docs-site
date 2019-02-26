@@ -2,7 +2,7 @@
 
 Get started installing and using Zowe CLI quickly and easily.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. For more thorough instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md) and [Using Zowe CLI](../user-guide/cli-usingcli.md).
+**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. For more thorough instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 
 - [Installing](#installing)
 - [Where can I use the CLI?](#where-can-i-use-the-cli)
@@ -15,7 +15,7 @@ Get started installing and using Zowe CLI quickly and easily.
 
 Before you install Zowe CLI, download and install [Node.js and npm.](https://nodejs.org/en/download/)
 
-### Installing Zowe CLI core 
+### Installing Zowe CLI core
 
 ```
 npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
@@ -68,23 +68,30 @@ See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for 
 
 Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
+### Profile types 
+
+Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The type of profile required for a command is listed in the PROFILE OPTIONS section of the help response.
+
 ### Creating a zosmf profile
 
 ```
 zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password pass --zosmf-profile host123
 ```
+**Tip:** The first profile that you create becomes your default profile. If you don't specify any options on a command, the default is used. Issue `zowe profiles -h` to learn more about the profiles group. 
 
-### Calling the profile on a command
+### Using the zosmf profile
 
 ```
 zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
 ```
 
-For more information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-usingcli.md#defining-zowe-cli-connection-details)
+For detailed information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-usingcli.md#defining-zowe-cli-connection-details)
 
 ## Writing scripts
 
-Write scripts with Zowe CLI commands to automate a series of mainframe actions. Use the scripts to streamline your daily development processes or use them in an off-platform automation tool such as Jenkins or TravisCI.
+You can write scripts to automate a series of mainframe actions with Zowe CLI. Use the scripts to streamline your daily development processes or use them in an off-platform automation tool such as Jenkins or TravisCI.
+
+### Example:
 
 In this example, you want to delete a list of temporary datasets. Use Zowe CLI to download the list, then loop through the list and use the `zowe zos-files delete` command for each data set:
 
@@ -120,4 +127,4 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - See what [plug-ins are available](..\user-guide\cli-developing-a-plugin.md) for the CLI.
 
-- Learn about [developing for the CLI](..\extend\extend-cli\cli-extending.md) (adding to core, creating plug-ins).
+- Learn about [developing for the CLI](..\extend\extend-cli\cli-extending.md) (contributing to core and developing plug-ins).
