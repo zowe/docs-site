@@ -9,6 +9,7 @@ Get started installing and using Zowe CLI quickly and easily.
 - [Issuing your first command](#issuing-your-first-command)
 - [Using profiles to store command options](#using-profiles-to-store-command-options)
 - [Writing a shell script](#writing-a-shell-script)
+- [Next steps]()
 
 ## Installing
 
@@ -21,7 +22,7 @@ npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 ```
 
 ```
-npm install @brightside/core@latest
+npm install @brightside/core@latest -g
 ```
 
 ### Installing plug-ins
@@ -30,7 +31,7 @@ npm install @brightside/core@latest
 zowe plugins install @brightside/cics@latest
 ```
 
-For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/extending.md). The IBM Db2 plug-in requires additional configuration. 
+For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/extending.md). The IBM Db2 plug-in requires additional configuration.
 
 ## Where can I use the CLI?
 
@@ -63,11 +64,11 @@ zowe zos-files download data-set "user123.data.set(member)" -f "mylocalfile.txt"
 
 ```
 
-For information about available functionality, see Zowe CLI Command Groups groups, see [](). 
+See [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups) for a list of available functionality.
 
 ## Using profiles to store command options
 
-Zowe profiles let you store configuration details such username, password, host, and port for particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
+Zowe profiles let you store configuration details such username, password, host, and port for a mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
 ## Creating a zosmf profile
 
@@ -81,14 +82,44 @@ zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password
 zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
 ```
 
-For more information about issuing commands, using profiles, and storing variables as environment variables, see []().
+For more information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-usingcli.md#defining-zowe-cli-connection-details)
 
-## Writing a shell script
+## Writing scripts
 
 You can write scripts with Zowe CLI commands to automate a series of mainframe actions. Use the scripts to streamline your daily development processes, and/or implement scripts in an off-platform automation tool such as Jenkins automation server. 
 
-This example script 
+In this example, you want to delete a list of temporary datasets. Use Zowe CLI to download the list and store it as a variable, then loop through the list and use the `zowe zos-files delete` command to delete each dataset:
 
 ```
+#!/bin/bash
 
+set -e
+
+
+# Obtain the list of temporary project data sets 
+dslist=$(zowe zos-files list dataset "my.project.ds*")
+
+# Delete each data set in the list
+IFS=$'\n'
+for ds in $dslist
+do
+     echo "Deleting Temporary Project Dataset: $ds"
+     zowe files delete ds "$ds" -f
+done
 ```
+
+For more information, see [Writing scripts to automate mainframe actions.](../user-guide/cli-usincli.md#writing-scripts-to-automate-mainframe-actions)
+
+# Next Steps
+
+You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
+
+- Review [Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups) to learn what functionality is available, and explore the in-product help.
+
+- Learn about [using environment variables]() to store configuration options.
+
+- Integrate your scripts with an automation server like Jenkins.
+
+- See what [plug-ins are available](..\user-guide\cli-developing-a-plugin.md) for the CLI.
+
+- Learn about [developing for the CLI](..\extend\extend-cli\cli-extending.md) (adding to core, creating plug-ins)
