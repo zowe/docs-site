@@ -22,16 +22,18 @@ npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 ```
 
 ```
-npm install @brightside/core@latest -g
+npm install @brightside/core@lts-incremental -g
 ```
 
 ### Installing CLI plug-ins 
 
 ```
-zowe plugins install @brightside/cics@latest
+zowe plugins install @brightside/cics@lts-incremental
 ```
 
-For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md). The IBM Db2 plug-in requires additional configuration. 
+The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing). 
+
+For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
 ## Where can I use the CLI?
 
@@ -42,20 +44,19 @@ For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-ext
 | Scripting, to simplify repetitive tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
 | Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
 
-
 ## Issuing your first commands
 
 Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
 
-To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password, system name, etc...
+To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
-### Listing all data sets under a HLQ
+### Listing all data sets under an HLQ
 
 ```
 zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
-### Downloading a partitioned data-set (PDS) to local file
+### Downloading a partitioned data-set (PDS) member to local file
 
 ```
 zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --user user123 --pass mypassword123 --host host123
