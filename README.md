@@ -119,9 +119,9 @@ The above warning / error message includes several informations:
 
 ### Build PDF
 
-Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf-out` folder if there are no errors.
+Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf/out` folder if there are no errors.
 
-To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js` `pdf` property.
+To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js` `ALL_PAGES` property.
 
 Check [Build PDF](docs/.pdf/README.md) for details explanations.
 
