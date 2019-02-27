@@ -176,7 +176,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     ```yaml
     install:
-     rootDir=/var/zowe/1.0.0
+     rootDir=/var/zowe/1.0.1
 
     api-mediation:
       catalogPort=7552
@@ -348,7 +348,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
-     cd /var/zowe/1.0.0
+     cd /var/zowe/1.0.1
      /zowe/builds/install/zowe-config-stc.sh
      ```
     Alternatively, you can issue the commands manually:
@@ -757,10 +757,10 @@ The Zowe Cross Memory server is run as a started task from the JCL in the PROCLI
 ```
 /S ZWESIS01
 ```
-To end the Zowe APF Angel process, issue the operator cancel command through SDSF:
+To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
 ```
-/C ZWESIS01
+/P ZWESIS01
 ```
 
 **Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
