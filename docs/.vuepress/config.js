@@ -29,6 +29,10 @@ const ALL_PAGES = [{
     text: 'Getting started with Zowe CLI',
     link: 'getting-started/cli-getting-started.md'
   },
+  {
+    text: 'Zowe CLI FAQs',
+    link: 'getting-started/freqaskques.md'
+  },
   ],
 },
 {
