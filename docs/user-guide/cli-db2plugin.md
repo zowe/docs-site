@@ -6,8 +6,8 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
-  - [Obtaining a DB2 License](#license)
-  - [Setting up profiles](#setting-up-profiles)
+  - [Addressing the license requirement](#addressing-the-license-requirement)
+  - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
   
 ## Use cases
@@ -15,14 +15,14 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
 Use cases for Zowe CLI Db2 plug-in include:
   - Execute SQL and interact with databases.
   - Execute a file with SQL statements.
-  - Export tables to a local file on your PC in SQL format.
+  - Export tables to a local file on your computer in SQL format.
   - Call a stored procedure and pass parameters.
 
 ## Prerequisites
 
 Before you install the plug-in, meet the following prerequisites:
 
-  - [Install Zowe CLI](cli-installcli.md) on your PC.
+  - [Install Zowe CLI](cli-installcli.md) on your computer.
 
 ## Installing
 
@@ -35,7 +35,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2 
+    zowe plugins install @brightside/db2@latest
     ```
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -60,7 +60,7 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
-2. Create a new directory named `odbc_cli`  on your PC. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
 3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.  
 
@@ -95,12 +95,8 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-db2-<VERSION_NUMBER>.tgz
+    zowe plugins install zowe-db2.tgz
     ```
-
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI Plug-in for Db2 that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-db2-1.0.0-next.201810041114.tgz`
 
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
@@ -112,25 +108,29 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 
 5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
-### Addressing the license requirement
+## Addressing the license requirement
 
 The following steps are required for both the registry and offline package installation methods: 
 
 1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS. 
 
-    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from     IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
-2. Copy your Db2 license file and place it in the following directory. 
-    
-   ```
-   <brightside_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
-   ```
-   Note: by default, <brightside_home> is set to `~/.brightside` on \*NIX systems, and `C:\Users\<Your_User>\.brightside` on Windows systems.
-   
-   After the license is copied, you can use the Db2 plugin functionality.
+2. Copy your Db2 license file and place it in the following directory.
+    - **Windows:**
+        ```
+        <zowe_home>\plugins\installed\node_modules\@brightside\db2\node_modules\ibm_db\installer\clidriver\license
+        ```
+    - **Linux:**
+        ```
+        <zowe_home>/plugins/installed/lib/node_modules/@brightside/db2/node_modules/ibm_db/installer/clidriver/license
+        ```
+    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems. 
 
-## Setting up profiles
+    After the license is copied, you can use the Db2 plugin functionality.
+
+## Creating a user profile
 
 Before you start using the IBM Db2 plug-in, create a profile.
 
@@ -155,7 +155,7 @@ output:
 
 ```
 Profile created successfully! Path:
-/home/user/.brightside/profiles/db2/<profile name>.yaml
+/home/user/.zowe/profiles/db2/<profile name>.yaml
 type: db2
 name: <profile name>
 hostname: <host>
@@ -171,7 +171,7 @@ Review the created profile and edit if necessary using the profile update comman
 The following commands can be issued with the Zowe CLI Plug-in for IBM Db2:
 
 - [Calling a stored procedure](#calling-a-stored-procedure)
-- [Executing an SQL statement](#executing-an-sql-statememnt)
+- [Executing an SQL statement](#executing-an-sql-statement)
 - [Exporting a table in SQL format](#exporting-a-table-in-sql-format)
 
 
@@ -197,7 +197,7 @@ Issue the following command to call a stored procedure and pass a placeholder bu
 $ zowe db2 call sp "DEMOUSER.TIME1(?)" --parameters "....placeholder..
 ```
 
-### Executing an SQL statement 
+### Executing an SQL statement
 
 Issue the following command to count rows in the EMP table:
 

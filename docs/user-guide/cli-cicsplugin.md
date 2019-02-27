@@ -1,11 +1,11 @@
 # Zowe CLI Plug-in for IBM CICS
 
-The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS.For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
+The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
-  - [Setting up profiles](#setting-up-profiles)
+  - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
 
 ## Use cases
@@ -22,7 +22,7 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfo
 
 Before you install the plug-in, meet the following prerequisites:
 
-  - [Install Zowe CLI](cli-installcli.md) on your PC. 
+  - [Install Zowe CLI](cli-installcli.md) on your computer. 
   - Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
   - Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region. 
 
@@ -30,13 +30,13 @@ Before you install the plug-in, meet the following prerequisites:
 
 Use one of the two following methods that you can use to install the Zowe CLI Plug-in for IBM CICS:
 
-- [Installing from online registry](#installing-from-online-registry)
+- [Installing from an online registry](#installing-from-an-online-registry)
 
-- [Installing from local package](#installing-from-local-package)
+- [Installing from local package](#installing-from-a-local-package)
 
 **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
-### Installing from online registry
+### Installing from an online registry
 
 To install Zowe CLI from an online registry, complete the following steps:
 
@@ -49,7 +49,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @brightside/cics@next
+    zowe plugins install @brightside/cics@latest
     ```
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -60,21 +60,17 @@ To install Zowe CLI from an online registry, complete the following steps:
 
     Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
 
-### Installing from local package
+### Installing from a local package
 
 If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` package, complete the following steps to install the Zowe CLI Plug-in for CICS:
 
-1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
+1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
 
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-cli-cics-<VERSION_NUMBER>.tgz
+    zowe plugins install zowe-cli-cics.tgz
     ```
-    - **<VERSION_NUMBER>**
-
-        The version of Zowe CLI Plug-in for CICS that you want to install from the package. The following is an example of a full package name for the plug-in: `zowe-core-2.0.0-next.201810161407.tgz`
-
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
   
@@ -83,9 +79,9 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
     ```
     Successful validation of the CICS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
       
-## Setting up profiles
+## Creating a user profile
 
-A `cics` profile is required to issue commands in the CICS group that interact with CICS regions. The `cics` profile contains your host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
+You can create a CICS user profile to avoid typing your connection details on every command. The `cics` profile contains your host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
 
 Issue the following command to create a cics profile: 
 
@@ -93,7 +89,7 @@ Issue the following command to create a cics profile: 
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
-**Note:** For more information about the` `syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
+**Note:** For more information about the syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
 
 ```
 zowe profiles create cics -h
@@ -108,7 +104,7 @@ The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
   - [Defining resources to CICS](#defining-resources-to-cics)
   - [Deleting CICS resources](#deleting-cics-resources)
   - [Discarding CICS resources](#discarding-cics-resources)
-  - [Getting CICS resources](#get-cics-resources)
+  - [Getting CICS resources](#getting-cics-resources)
   - [Installing resources to CICS](#installing-resources-to-cics)
   - [Refreshing CICS programs](#refreshing-cics-programs)
 

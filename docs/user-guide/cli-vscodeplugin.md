@@ -10,13 +10,13 @@ The Visual Studio Code (VSCode) Extension for Zowe lets you interact with data s
 
 ## Prerequisites
 
-Before you use the VSCode extension, meet the following prerequisites on your PC:
+Before you use the VSCode extension, meet the following prerequisites on your computer:
 
   - Install [VSCode](https://code.visualstudio.com/).
 
   - [Install Zowe CLI](cli-installcli.md).
   
-  - Create at least one Zowe CLI 'zosmf' profile so that the extension can communicate with the mainframe. See [Creating a Zowe CLI Profile](cli-installcli.html#creating-a-zowe-cli-profile).
+  - Create at least one Zowe CLI 'zosmf' profile so that the extension can communicate with the mainframe. See [Creating Zowe CLI Profiles](cli-usingcli.md#creating-zowe-cli-profiles).
 
 ## Installing
 
@@ -26,6 +26,10 @@ Before you use the VSCode extension, meet the following prerequisites on your PC
 4. Restart VSCode. The plug-in is now installed and available for use.
 
 **Tip:** For information about how to install the extension from a VSIX file and run system tests on the extension, see the Developer README file in the Zowe VSCode extension GitHub repository.
+
+You can also watch the following video to learn how to install and use the Zowe VSCode Extension. If you read this doc in PDF format, you can click [here](https://youtu.be/la1_Ss27fn8) to watch the video.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe VSCode Extension" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/la1_Ss27fn8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Use-Cases
 

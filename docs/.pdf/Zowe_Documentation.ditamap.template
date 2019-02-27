@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "http://docs.oasis-open.org/dita/dtd/bookmap.dtd">
+<bookmap>
+  <booktitle>
+    <mainbooktitle>Zowe Documentation</mainbooktitle>
+    <booktitlealt>Version {{version}}</booktitlealt>
+  </booktitle>
+  <bookmeta>
+    <author>Zowe Docs Team</author>
+    <publisherinformation>
+      <organization>Zowe</organization>
+    </publisherinformation>
+    <bookrights>
+      <copyrfirst>
+        <year>2018</year>
+      </copyrfirst>
+      <copyrlast>
+        <year>{{build-year}}</year>
+      </copyrlast>
+      <bookowner>
+        <organization>Zowe</organization>
+      </bookowner>
+    </bookrights>
+    <critdates>
+      <created date="{{build-date}}" />
+    </critdates>
+  </bookmeta>
+  <frontmatter>
+    <booklists>
+      <toc />
+      <tablelist />
+    </booklists>
+  </frontmatter>
+  {{topics}}
+</bookmap>

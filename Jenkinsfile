@@ -73,7 +73,7 @@ opts.push(parameters(customParameters))
 // set build properties
 properties(opts)
 
-node ('ibm-jenkins-slave-nvm') {
+node ('ibm-jenkins-slave-dind') {
   currentBuild.result = 'SUCCESS'
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
@@ -153,6 +153,21 @@ node ('ibm-jenkins-slave-nvm') {
         timeout(30) {
           sh 'npm run test:links'
         }
+      }
+    }
+
+    stage('pdf') {
+      ansiColor('xterm') {
+        sh 'npm run docs:pdf'
+        if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
+          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPathConverted}/"
+        } else {
+          error 'Failed to generate PDF document.'
+        }
+        // clean up pdf tmp folder
+        echo 'Cleaning up .deploy/.pdf ...'
+        sh 'rm -fr .deploy/.pdf || true'
       }
     }
 
