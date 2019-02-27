@@ -127,6 +127,6 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - Integrate your scripts with an automation server like Jenkins.
 
-- See what [plug-ins are available](..\user-guide\cli-extending.md) for the CLI.
+- See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
 
-- Learn about [developing for the CLI](..\extend\extend-cli\cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
+- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
