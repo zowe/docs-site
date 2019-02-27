@@ -1,4 +1,4 @@
-# Getting started with Zowe CLI
+# Zowe CLI quick start
 
 Get started with Zowe CLI quickly and easily.
 

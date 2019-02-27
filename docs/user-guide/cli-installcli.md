@@ -1,6 +1,8 @@
 # Installing Zowe CLI
 
-As a systems programmer or application developer, you install Zowe CLI on your computer and create Zowe CLI profiles.
+As an application developer, install Zowe CLI on your computer.
+
+**Tip:** If you are familiar with command-line tools and want to get started with Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
 ## Methods to install Zowe CLI
 
