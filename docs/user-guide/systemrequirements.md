@@ -66,6 +66,7 @@ The following information contains procedures and tips for meeting z/OSMF requir
 - [IBM z/OS Management Facility Help](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izu/izu.htm)
 
 ### z/OS requirements
+
 Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
@@ -162,6 +163,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 - [Configure z/OS Management Facility for CA ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
 #### z/OSMF REST services for the Zowe CLI
+
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
@@ -192,12 +194,6 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
-
-**More Information:**
-
-You can now configure z/OSMF Zowe CLI now supports the 
-
-
 
 
 ## Planning for installation of API Mediation Layer, Zowe Application Framework, and explorer server
