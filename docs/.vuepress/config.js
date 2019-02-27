@@ -26,7 +26,7 @@ const ALL_PAGES = [{
     link: 'getting-started/summaryofchanges.md'
   },
   {
-    text: 'Getting started with Zowe CLI',
+    text: 'Zowe CLI quick start',
     link: 'getting-started/cli-getting-started.md'
   },
   {
