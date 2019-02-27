@@ -7,9 +7,9 @@
 
 ## Build PDF
 
-Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf-out` folder if there are no errors.
+Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf/out` folder if there are no errors.
 
-To update what should be included in PDF document, go ahead edit `../.vuepress/config.js` `pdf` property.
+To update what should be included in PDF document, go ahead edit `../.vuepress/config.js` `ALL_PAGES` property. You can use `hideInPdf: true,` switch to hide a certain page from putting into PDF.
 
 ## Steps During the Build Process
 

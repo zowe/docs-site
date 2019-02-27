@@ -40,8 +40,8 @@ You can download the Version 1.0.x Zowe documentation on this website in PDF for
 
 | Version | Download 
 | --- | ---
-| V1.0.1 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
-| V1.0.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation_1.0.0.pdf)
+| V1.0.1 | [PDF](Zowe_Documentation.pdf)
+| V1.0.0 | [PDF](Zowe_Documentation_1.0.0.pdf)
 
 ### Zowe overview deck
 
