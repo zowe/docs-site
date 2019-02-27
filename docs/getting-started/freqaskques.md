@@ -37,8 +37,11 @@ You can install Zowe CLI using the following methods:
 ### How can I contribute to Zowe CLI?
 
 As a developer, you can extend Zowe CLI in the following ways:
+
 - Build a plug-in for Zowe CLI
+
 - Contribute code to the core Zowe CLI
+
 - Fix bugs in Zowe CLI or plug-in code, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack. 
 
     **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md#how-can-i-contribute).

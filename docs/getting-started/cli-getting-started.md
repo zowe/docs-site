@@ -102,7 +102,6 @@ You want to delete a list of temporary datasets. Use Zowe CLI to download the li
 
 set -e
 
-
 # Obtain the list of temporary project data sets 
 dslist=$(zowe zos-files list dataset "my.project.ds*")
 
