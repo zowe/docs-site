@@ -25,6 +25,10 @@ const ALL_PAGES = [{
     text: 'Release notes',
     link: 'getting-started/summaryofchanges.md'
   },
+  {
+    text: 'Getting started with Zowe CLI',
+    link: 'getting-started/cli-getting-started.md'
+  },
   ],
 },
 {
@@ -38,7 +42,7 @@ const ALL_PAGES = [{
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
       'user-guide/uninstall.md',
-    ]
+    ],
   },
   {
     text: 'Configuring Zowe',
