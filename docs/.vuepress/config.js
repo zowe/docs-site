@@ -130,11 +130,26 @@ const ALL_PAGES = [{
   text: 'Troubleshooting',
   baseuri: '/troubleshoot/',
   items: [
-      'troubleshoot/troubleshoot-overview.md',
-      'troubleshoot/troubleshoot-apiml.md',
-      'troubleshoot/troubleshoot-app-framework.md',
-      'troubleshoot/troubleshoot-zos-services.md',
-      'troubleshoot/troubleshoot-cli.md'
+    {
+      text: 'Overview',
+      link: 'troubleshoot/troubleshooting.md'
+    },
+    {
+      text: 'Troubleshooting API Mediation Layer',
+      link: 'troubleshoot/troubleshoot-apiml.md'
+    },
+    {
+      text: 'Troubleshooting Zowe Application Framework',
+      link: 'troubleshoot/troubleshoot-app-framework.md'
+    },
+    {
+      text: 'Troubleshooting Zowe z/OS Services',
+      link: 'troubleshoot/troubleshoot-zos-services.md'
+    },
+    {
+      text: 'Troubleshooting Zowe CLI',
+      link: 'troubleshoot/troubleshoot-cli.md'
+    }
     ]
 },
 {

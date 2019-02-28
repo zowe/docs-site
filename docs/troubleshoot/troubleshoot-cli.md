@@ -2,7 +2,7 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe CLI.
 
-### *Command not found* message displays when issuing npm install commands
+## *Command not found* message displays when issuing npm install commands
 
 **Valid on all supported platforms**
 
@@ -16,7 +16,7 @@ The *command not found* message displays because Node.js and NPM are not install
 
 **More Information:** [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
 
-### `npm install -g `Command Fails Due to an EPERM Error
+## `npm install -g `Command Fails Due to an EPERM Error
 
 **Valid on Windows**
 
@@ -38,7 +38,7 @@ report success using the following workarounds:
 
   - `Add the --no-optional` flag to the end of the `npm install` command.
 
-### `Sudo` syntax required to complete some installations
+## `Sudo` syntax required to complete some installations
 
 **Valid on Linux and macOS**
 
@@ -50,7 +50,7 @@ The installation fails on Linux or macOS. 
 
 Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo ` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
 
-### `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
+## `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
 **Valid on Windows or Linux**
 
@@ -68,7 +68,7 @@ issue the following command:
 npm install npm@5.3.0 -g
 ```
 
-### Node.js commands do not respond as expected
+## Node.js commands do not respond as expected
 
 **Valid on Windows or Linux**
 
@@ -80,7 +80,7 @@ You attempt to issue node.js commands and you do not receive the expected  outpu
 
 There might be a program that is named *node* on your path. The Node.js installer automatically adds a program that is named *node* to your path. When there are pre-existing programs that are named *node* on your computer, the program that appears first in the path is used. To correct this behavior, change the order of the programs in the path so that Node.js appears first.
 
-### Installation fails on Oracle Linux 6
+## Installation fails on Oracle Linux 6
 
 **Valid on Oracle Linux 6**
 
