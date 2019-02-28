@@ -834,5 +834,5 @@ The response `UP` confirms that API Mediation Layer is installed and is running 
 
 ## Looking for troubleshooting help?
 
-If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](../troubleshoot/troubleshootinstall.md) section for troubleshooting tips.
+If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for troubleshooting tips.
 
