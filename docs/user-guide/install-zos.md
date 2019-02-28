@@ -784,7 +784,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying z/OS Services installation](#verifying-z-os-services-installation) 
+- [Verifying z/OS Services installation](#verifying-zos-services-installation) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
