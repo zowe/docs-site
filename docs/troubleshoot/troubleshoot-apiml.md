@@ -2,7 +2,6 @@
 
 As an API Mediation Layer user, you may encounter problems with the functioning of API ML. This article presents known API ML issues and their solutions.
 
-
 ## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:

@@ -130,18 +130,12 @@ const ALL_PAGES = [{
   text: 'Troubleshooting',
   baseuri: '/troubleshoot/',
   items: [
-    {
-    text: 'Troubleshooting installation',
-    items: [
-      'troubleshoot/troubleshootinstall.md'
+      'troubleshoot/troubleshoot-overview.md',
+      'troubleshoot/troubleshoot-apiml.md',
+      'troubleshoot/troubleshoot-app-framework.md',
+      'troubleshoot/troubleshoot-zos-services.md',
+      'troubleshoot/troubleshoot-cli.md'
     ]
-  },
-  {
-    text: 'Troubleshooting API Mediation Layer (API ML)',
-    items: [
-      'troubleshoot/troubleshootingknownissues.md'
-    ]
-  }],
 },
 {
   text: 'Contributing',
