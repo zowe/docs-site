@@ -15,6 +15,18 @@ Version 1.0.1 contains the following changes since the last version.
 
 ### What's new in the Zowe Desktop
 
+### What's new in the Zowe App Server
+
+- Fixed the vertical scrollbar for Grid and added a dynamic page size/row count parameter.
+- Made the following improvements to security:
+  - Removed the insecure SHA1 cipher from the Zowe App Server's supported ciphers list.
+  - Added instructions to REST APIs to not cache potentially sensitive response contents.
+  - Set secure attributes to desktop and z/OSMF session cookies.
+- Fixed a bug that caused the configuration data service to mishandle PUT operations with bodies that were not JSON.
+- Fixed a bug that prevented IFrame applications from being selected by clicking on their contents.
+- Fixed various bugs in the File Explorer and updated it to use newer API changes.
+- Fixed a bug in which App2App Communication Actions could be duplicated upon logging in a second time on the same desktop.
+
 ### What's new in Zowe CLI
 
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
@@ -99,7 +111,7 @@ Once multiple instances are open, you can click the application icon to select w
 - Added tracing of login, logout, and HTTP routing so that administrators can track access.
 
 ### What's changed
- 
+
 - Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided unsing an IBM WebSphere Liberty web application server. In this release, they are provided using a Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
 
 - References to `zlux-example-server` were changed to `zlux-app-server` and references to `zlux-proxy-server` were changed to `zlux-server-framework`.
