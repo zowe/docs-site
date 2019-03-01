@@ -29,11 +29,11 @@ During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR m
 
 ### What's new in Zowe CLI
 
+- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](cli-usingcli.md#zowe-cli-command-groups)
+
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
-
-- If you consume Zowe CLI or the Zowe CLI APIs as a dependendcy in your projects, you are now required use Typescript >=3.2.2
 
 ## Version 1.0.0 (February 2019)
 
