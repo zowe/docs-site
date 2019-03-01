@@ -17,7 +17,6 @@ During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR m
 
 ### What's new in the Zowe App Server
 
-- Fixed the vertical scrollbar for Grid and added a dynamic page size/row count parameter.
 - Made the following improvements to security:
   - Removed the insecure SHA1 cipher from the Zowe App Server's supported ciphers list.
   - Added instructions to REST APIs to not cache potentially sensitive response contents.
