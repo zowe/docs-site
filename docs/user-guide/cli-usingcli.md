@@ -134,6 +134,23 @@ With the zos-jobs command group, you can perform the following tasks:
 zowe zos-jobs -h
 ```
 
+### zos-workflows
+
+The zos-workflows command group lets you create and manage z/OSMF workflows on a z/OS system.
+
+With the zos-workflows command group, you can perform the following tasks:
+
+- Create or register a z/OSMF workflow based on the properties on a z/OS system
+- Start a z/OSMF workflow on a z/OS system.
+- Delete or remove a z/OSMF workflow from a z/OS system.
+- List the z/OSMF workflows for a system or sysplex.
+
+**Note:** For more information about `zos-workflows` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+```
+zowe zos-workflows -h
+```
+
 ### zos-tso
 
 The zos-tso command group lets you issue TSO commands and interact with TSO address spaces on z/OS systems.
