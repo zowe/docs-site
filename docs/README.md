@@ -45,6 +45,6 @@ You can download the Version 1.0.x Zowe documentation on this website in PDF for
 
 ### Zowe overview deck
 
-A Zowe overview deck in PDF format is available for download. The information included in this slide deck provides an introduction to Zowe, its vision and value statements, persona overview, a deeper dive into the technology, how to get involved in the community, and more. 
+A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
 
 [Download PDF](./Zowe_Overview.pdf)
