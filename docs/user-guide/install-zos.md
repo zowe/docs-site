@@ -699,32 +699,32 @@ The manual installation consists of the following steps.
 
 7. Security environment switching 
 
-    The user IZUSVR who runs the ZWESIS01 started task will need the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To perform this security environment switching the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
 
-    - If you use RACF the steps to do this are:
+    - If you use RACF, complete the following steps:
 
-        - Activate and RACLIST the FACILITY class.  This may already have been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon included with z/OS Communications Server TCP/IP services.  
-        ```
-        SETROPTS CLASSACT(FACILITY)             
-        SETROPTS RACLIST(FACILITY)                
-        ```
-        - Define the BPX facilities. This may already have been done on behalf of another server such as the FTPD daemon.  
-        ```
-        RDEFINE FACILITY BPX.SERVER UACC(NONE)
-        RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-        ```             
-        - Having activated and RACLIST the FACILITY class the user ID who runs the ZWESIS01 started task, by default IZUSVR, must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
-        ```
-        PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-        PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-        /* Activate these changes */
-        SETROPTS RACLIST(FACILITY) REFRESH      
-        ```
-        - To check whether permission has been successfully granted issue the following commands:
-        ```
-        RLIST FACILITY BPX.SERVER AUTHUSER
-        RLIST FACILITY BPX.DAEMON AUTHUSER
-        ```
+        - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+          ```
+          SETROPTS CLASSACT(FACILITY)             
+          SETROPTS RACLIST(FACILITY)                
+          ```
+        - Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
+          ```
+          RDEFINE FACILITY BPX.SERVER UACC(NONE)
+          RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+          ```             
+        - Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
+          ```
+          PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+          PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+          /* Activate these changes */
+          SETROPTS RACLIST(FACILITY) REFRESH      
+          ```
+        - To check whether permission has been successfully granted, issue the following commands:
+          ```
+          RLIST FACILITY BPX.SERVER AUTHUSER
+          RLIST FACILITY BPX.DAEMON AUTHUSER
+          ```
 
 ### Scripted install of the Zowe Cross Memory Server 
 
