@@ -11,9 +11,9 @@ Zowe Version 1.0.0 and later releases include the following enhancements, releas
 
 Version 1.0.1 contains the following changes since the last version.
 
-### What's new in API Mediation Layer
+### What's new in Zowe installation on z/OS
 
-### What's new in the Zowe Desktop
+During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. For more information, see [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server)
 
 ### What's new in the Zowe App Server
 
@@ -31,11 +31,9 @@ Version 1.0.1 contains the following changes since the last version.
 
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
-- A [CLI quick start guide](cli-getting-started.md) guide is now available for users who are familiar with command-line tools and want to get up and running quickly.
+- A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
 
 - If you consume Zowe CLI or the Zowe CLI APIs as a dependendcy in your projects, you are now required use Typescript >=3.2.2
-
-### Known issues
 
 ## Version 1.0.0 (February 2019)
 
