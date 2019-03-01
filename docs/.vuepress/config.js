@@ -135,19 +135,19 @@ const ALL_PAGES = [{
       link: 'troubleshoot/troubleshooting.md'
     },
     {
-      text: 'Troubleshooting API Mediation Layer',
+      text: 'API Mediation Layer',
       link: 'troubleshoot/troubleshoot-apiml.md'
     },
     {
-      text: 'Troubleshooting Zowe Application Framework',
+      text: 'Zowe Application Framework',
       link: 'troubleshoot/troubleshoot-app-framework.md'
     },
     {
-      text: 'Troubleshooting Zowe z/OS Services',
+      text: 'Zowe z/OS Services',
       link: 'troubleshoot/troubleshoot-zos-services.md'
     },
     {
-      text: 'Troubleshooting Zowe CLI',
+      text: 'Zowe CLI',
       link: 'troubleshoot/troubleshoot-cli.md'
     }
     ]
