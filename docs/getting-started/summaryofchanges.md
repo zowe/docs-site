@@ -17,7 +17,6 @@ During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR m
 
 ### What's new in the Zowe App Server
 
-- Fixed the vertical scrollbar for Grid and added a dynamic page size/row count parameter.
 - Made the following improvements to security:
   - Removed the insecure SHA1 cipher from the Zowe App Server's supported ciphers list.
   - Added instructions to REST APIs to not cache potentially sensitive response contents.
@@ -29,11 +28,11 @@ During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR m
 
 ### What's new in Zowe CLI
 
+- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#zowe-cli-command-groups)
+
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
-
-- If you consume Zowe CLI or the Zowe CLI APIs as a dependendcy in your projects, you are now required use Typescript >=3.2.2
 
 ## Version 1.0.0 (February 2019)
 
