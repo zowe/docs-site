@@ -13,7 +13,7 @@ Version 1.0.1 contains the following changes since the last version.
 
 ### What's new in Zowe installation on z/OS
 
-During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. For more information, see [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server)
+During manual installation of the Zowe Cross Memory Server, a new step is added to ensure that the user ID IZUSVR have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. For more information, see [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server)
 
 ### What's new in the Zowe App Server
 
@@ -33,6 +33,19 @@ During manual installation of the Zowe Cross Memory Server, the user ID IZUSVR m
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
+
+### What's new in the Zowe REST APIs
+
+Introduced new Unix files APIs that reside in the renamed API catalog tile `z/OS Datasets and Unix files service` (previously named `z/OS Datasets service`). You can use these APIs to:
+
+- List the children of a Unix directory
+- Get the contents of a Unix file
+
+### What's changed
+
+- **Zowe explorer apps**
+   - JES Explorer: Enhanced Info/Error messages to better help users diagnose problems.
+   - MVS Explorer: Fixed an issue where Info/Error messages were not displayed when loading a Dataset/Members contents.
 
 ## Version 1.0.0 (February 2019)
 
