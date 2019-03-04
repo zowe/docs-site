@@ -170,7 +170,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     - z/OS desktop apps has three ports for each of its explorer apps
 
-    - The zlux-server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
+    - The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
 
     **Example:**
 
@@ -198,6 +198,10 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       jobsExplorerPort=8546
       mvsExplorerPort=8548
       ussExplorerPort=8550
+
+    zlux-server:
+     httpsPort=8544
+     zssPort=8542
     ```
 
     **Notes:**
