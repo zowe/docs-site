@@ -35,7 +35,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2@latest
+    zowe plugins install @brightside/db2@lts-incremental
     ```
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.

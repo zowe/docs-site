@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.0.0'
+const CURRENT_ZOWE_VERSION = '1.0.1'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -25,6 +25,14 @@ const ALL_PAGES = [{
     text: 'Release notes',
     link: 'getting-started/summaryofchanges.md'
   },
+  {
+    text: 'Zowe CLI quick start',
+    link: 'getting-started/cli-getting-started.md'
+  },
+  {
+    text: 'Zowe CLI FAQs',
+    link: 'getting-started/freqaskques.md'
+  },
   ],
 },
 {
@@ -38,7 +46,7 @@ const ALL_PAGES = [{
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
       'user-guide/uninstall.md',
-    ]
+    ],
   },
   {
     text: 'Configuring Zowe',
@@ -121,7 +129,28 @@ const ALL_PAGES = [{
 {
   text: 'Troubleshooting',
   baseuri: '/troubleshoot/',
-  link: 'troubleshoot/troubleshootinstall.md'
+  items: [
+    {
+      text: 'Overview',
+      link: 'troubleshoot/troubleshooting.md'
+    },
+    {
+      text: 'API Mediation Layer',
+      link: 'troubleshoot/troubleshoot-apiml.md'
+    },
+    {
+      text: 'Zowe Application Framework',
+      link: 'troubleshoot/troubleshoot-app-framework.md'
+    },
+    {
+      text: 'Zowe z/OS Services',
+      link: 'troubleshoot/troubleshoot-zos-services.md'
+    },
+    {
+      text: 'Zowe CLI',
+      link: 'troubleshoot/troubleshoot-cli.md'
+    }
+    ]
 },
 {
   text: 'Contributing',
