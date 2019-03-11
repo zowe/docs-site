@@ -104,7 +104,7 @@ Use the following procedure if you use Maven as your build automation system.
    ```
 3. Create a _settings.xml_ file and copy the following _xml_ code block which defines the credentials for the Artifactory:
     ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -172,9 +172,9 @@ Ensure that this file is placed in the _WEB-INF_ folder located in the module of
              - gatewayUrl: 
                serviceUrl: 
          apiInfo:
-             title: 
-             description: 
-             version: 
+             - apiId:
+               gatewayUrl:
+               swaggerUrl:
          catalogUiTile:
              id: 
              title: 
