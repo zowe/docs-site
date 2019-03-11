@@ -181,6 +181,9 @@ With the zosmf command group, you can perform the following tasks:
 ```
 zowe zosmf -h
 ```
+## CLI Command Reference 
+
+See the [CLI Reference document](https://github.com/zowe/zowe-cli/blob/master/docs/CLIReadme.md) in GitHub to review a list of all commands, actions, and options in the core CLI.
 
 ## Defining Zowe CLI connection details
 
