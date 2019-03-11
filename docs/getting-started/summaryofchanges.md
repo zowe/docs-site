@@ -13,7 +13,7 @@ Version 1.0.1 contains the following changes since the last version.
 
 ### What's new in Zowe installation on z/OS
 
-During manual installation of the Zowe Cross Memory Server, a new step is added to ensure that the user ID IZUSVR have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. For more information, see [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server)
+During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not. For more information, see [Installing the Zowe Cross Memory Server on z/OS](../user-guide/install-zos.html#installing-the-zowe-cross-memory-server-on-z-os)
 
 ### What's new in the Zowe App Server
 
@@ -33,6 +33,8 @@ During manual installation of the Zowe Cross Memory Server, a new step is added 
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
+
+- Zowe CLI Plugin for IBM CICS was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
 
 ### What's new in the Zowe REST APIs
 
