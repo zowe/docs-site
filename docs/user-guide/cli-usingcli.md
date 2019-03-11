@@ -182,6 +182,10 @@ With the zosmf command group, you can perform the following tasks:
 zowe zosmf -h
 ```
 
+## CLI Command Reference 
+
+See the [CLI Reference document](https://github.com/zowe/zowe-cli/blob/master/docs/CLIReadme.md) in GitHub to review a list of all commands, actions, and options in the core CLI.
+
 ## Defining Zowe CLI connection details
 
 Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains order of precedence and different methods for specifying your mainframe connection details. 
