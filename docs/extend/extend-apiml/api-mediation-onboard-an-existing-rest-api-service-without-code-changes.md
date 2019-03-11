@@ -96,6 +96,7 @@ services:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
           swaggerUrl: http://localhost:8080/v2/swagger.json
+          documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
 
 catalogUiTiles:
