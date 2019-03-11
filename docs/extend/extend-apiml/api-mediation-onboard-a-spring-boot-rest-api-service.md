@@ -208,6 +208,7 @@ As an API service developer, you set multiple configuration settings in your app
                           - apiId: ${mfaas.discovery.serviceId}
                             gatewayUrl: api/v1
                             swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+                            documentationUrl: https://www.zowe.org
                   mfaas:
                       api-info:
                           apiVersionProperties:
@@ -396,6 +397,10 @@ As an API service developer, you set multiple configuration settings in your app
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
       
           The base path at the API gateway where the API is available. It should bethe same as a _gatewayUrl_ value in the _routes_ sections.
+          
+      * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
+      
+          (Optional)Link to external documentation, if needed. Can coexist with Swagger documentation
       * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
       
           (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document that provides the API documentation for this API is available.                   
