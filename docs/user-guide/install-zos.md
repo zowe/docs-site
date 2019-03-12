@@ -42,7 +42,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
     **Step 1:  Verify the hash code.**
 
-      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://zowe.org/Downloads/post_download.html). Then, run the following commands to check:
+      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://projectgiza.org/Downloads/post_download.1.0.1.html). Then, run the following commands to check:
 
       ```
       (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
