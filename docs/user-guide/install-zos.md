@@ -42,7 +42,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
     **Step 1:  Verify the hash code.**
 
-      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://projectgiza.org/Downloads/post_download.html). Then, run the following commands to check:
+      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://zowe.org/Downloads/post_download.html). Then, run the following commands to check:
 
       ```
       (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
@@ -58,7 +58,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
       **Follow these steps:**
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://projectgiza.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
+      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://zowe.org/Downloads/post_download.html](https://zowe.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
       2. Import the public key with the `gpg --import KEYS` command.
       3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
       4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
