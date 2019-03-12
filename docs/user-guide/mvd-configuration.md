@@ -148,12 +148,12 @@ To secure the ZSS server, you can use Application Transparent Transport Layer Se
 
 Before you begin, you must have a working knowledge of AT-TLS and you must have Policy Agent configured. For more information, on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
 
-To configure ZSS for HTTPS, create a certificate authority, self-signed certificate, and add them to a key ring. Then define AT-TLS rules. Then copy the certificate to the ZSS server and reference its location.
+To configure ZSS for HTTPS, create a certificate authority certificate and add it to a key ring. Then define AT-TLS rules. Then copy the certificate to the ZSS server and reference its location in the `zluxserver.json` file.
 
 Note: Bracketed values below (including the brackets) are variables. Use values relevant to your organization.
 
-#### Creating a certificate authority, certificate, and key ring
-Use the IBM Resource Access Control Facility (RACF) to create a Certificate Authority, self-signed certificate, and then create a key ring and add the certificates to the key ring.
+#### Creating a certificate authority and key ring
+Use the IBM Resource Access Control Facility (RACF) to create a Certificate Authority certificate, and then create a key ring and add the certificate to the ring.
 
 1. Enter the following command to generate a RACF certificate authority (CA) certificate:
   ```
@@ -167,7 +167,7 @@ Use the IBM Resource Access Control Facility (RACF) to create a Certificate Auth
     NOTAFTER(DATE([xxxx/xx/xx])) +                       
     SIZE(2048)
   ```
-2. Enter the following command to create a RACF key ring and connect the self-signed certificate to the key ring:
+2. Enter the following command to create a RACF key ring and connect the CA certificate to the key ring:
   ```
   RACDCERT ID([cert_owner]) ADDRING([ring_name])                
   RACDCERT ID([cert_owner]) +                               
