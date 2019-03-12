@@ -386,16 +386,16 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
 
         Specifies the API identifier that is registered in the API Mediation Layer installation.
         The API ID uniquely identifies the API in the API Mediation Layer.
-        The same API can be provided by multiple service. The API ID can be used
-        to locate same APIs that are provided by different services.
+        The same API can be provided by multiple services. The API ID can be used
+        to locate the same APIs that are provided by different services.
         The creator of the API defines this ID.
-        The API ID needs to be string up to 64 characters
-        that is using lowercase alphanumeric characters and a dot: `.`.
-        It is recommended to use your organization as the prefix.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.`.
+        We recommended you use your organization as the prefix.
 
     * **apiInfo.gatewayUrl**
 
-        The base path at the API gateway where the API is available. It should be
+        The base path at the API Gateway where the API is available. It should be
         the same as a _gatewayUrl_ value in the _routes_ sections.
 
     * **apiInfo.swaggerUrl**
@@ -405,7 +405,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
         
     * **apiInfo.documentationUrl**
 
-        (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation
+        (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation.
 
     * **catalogUiTile.id**
     
