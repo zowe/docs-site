@@ -313,7 +313,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
 
         **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
-        
+    
     * **description**
     
         Specifies a short description of the API service.
@@ -400,12 +400,11 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
 
     * **apiInfo.swaggerUrl**
 
-        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document
-        that provides the API documentation for this API is available.
+        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
     * **apiInfo.documentationUrl**
 
-        (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation
+        (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
 
     * **catalogUiTile.id**
     
