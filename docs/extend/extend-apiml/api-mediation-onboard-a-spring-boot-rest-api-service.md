@@ -400,10 +400,10 @@ As an API service developer, you set multiple configuration settings in your app
           
       * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
       
-          (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation
+          (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
       * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
       
-          (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document that provides the API documentation for this API is available.                   
+          (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.             
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.

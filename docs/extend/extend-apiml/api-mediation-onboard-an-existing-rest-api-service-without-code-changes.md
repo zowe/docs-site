@@ -258,8 +258,7 @@ The following list describes the configuration parameters:
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document
-    that provides the API documentation for this API is available.
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
 
 * **apiInfo.documentationUrl**
 
