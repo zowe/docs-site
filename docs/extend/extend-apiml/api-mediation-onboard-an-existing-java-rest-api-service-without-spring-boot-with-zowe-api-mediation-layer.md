@@ -256,10 +256,6 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
     ```yaml
     serviceId: hellospring
     title: HelloWorld Spring REST API
-    eureka:
-        hostname: localhost
-        ipAddress: 127.0.0.1
-        port: 10011
     description: POC for exposing a Spring REST API
     baseUrl: http://localhost:10020/hellospring
     homePageRelativeUrl:
@@ -270,6 +266,9 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
     routedServices:
     - gatewayUrl: api/v1
       serviceUrl: /hellospring/api/v1
+    
+    - gatewayUrl: api/v1/api-doc
+      serviceUrl: /hellospring/api-doc
     apiInfo:
         - apiId: ${mfaas.discovery.serviceId}
           gatewayUrl: api/v1
@@ -314,19 +313,6 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
 
         **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
-        
-    * **eureka**
-    
-        Specifies the location of the discovery service
-        * **port**
-        
-            Specifies the port number where the Discovery Service is running. 
-        * **hostname**
-        
-            Specifies the hostname of the system where the discovery service instance runs. 
-        * **ipAddress**
-        
-            Specifies the local IP address of the system where the discovery service instance runs. 
         
     * **description**
     
@@ -419,7 +405,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
         
     * **apiInfo.documentationUrl**
 
-        (Optional)Link to external documentation, if needed. Can coexist with Swagger documentation
+        (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation
 
     * **catalogUiTile.id**
     

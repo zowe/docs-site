@@ -391,7 +391,7 @@ As an API service developer, you set multiple configuration settings in your app
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
       * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
       
-          Specifies the API identifier that is registered in the API Mediation Layer installation.The API ID uniquely identifies the API in the API Mediation Layer.
+          Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple service. The API ID can be used to locate same APIs that are provided by different services. The creator of the API defines this ID.
           The API ID needs to be string up to 64 characters that is using lowercase alphanumeric characters and a dot: `.`. It is recommended to use your organization as the prefix.
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
@@ -400,14 +400,14 @@ As an API service developer, you set multiple configuration settings in your app
           
       * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
       
-          (Optional)Link to external documentation, if needed. Can coexist with Swagger documentation
+          (Optional) Link to external documentation, if needed. Can coexist with Swagger documentation
       * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
       
           (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document that provides the API documentation for this API is available.                   
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
- 
+
     e. **Swagger Api-Doc Parameters**
 
       Configures API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
