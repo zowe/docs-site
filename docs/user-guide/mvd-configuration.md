@@ -25,7 +25,6 @@ Follow these optional steps to configure the default connection to open for the 
       type: <”telnet” or “ssh”>
     }
 ```    
-## Configuring the Zowe Application Server and ZSS
 
 ### Configuration file
 The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
@@ -143,6 +142,152 @@ When you run the Zowe Application Server, specify the following flags to declare
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
+
+### Configuring ZSS for HTTPS
+To secure the ZSS server, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) on server communication. After you configure SSL, communications with ZSS must use HTTPS.
+
+Before you begin, you must have a working knowledge of AT-TLS and you must have Policy Agent configured. For more information, on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+
+To configure ZSS for HTTPS, create a certificate authority, self-signed certificate, and add them to a key ring. Then define AT-TLS rules. Then copy the certificate to the ZSS server and reference its location.
+
+Note: Bracketed values below (including the brackets) are variables. Use values relevant to your organization.
+
+#### Creating a certificate authority, certificate, and key ring
+Use the IBM Resource Access Control Facility (RACF) to create a Certificate Authority, self-signed certificate, and then create a key ring and add the certificates to the key ring.
+
+1. Enter the following command to generate a RACF certificate authority (CA) certificate:
+  ```
+  RACDCERT CERTAUTH GENCERT +                          
+    SUBJECTSDN(CN('[common_name]') +                        
+    OU('[organizational_unit]') +                                       
+    O('[organization_name]') +                                         
+    L('[locality]') SP('[state_or_province]') C('[country]')) +           
+    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) + 
+    WITHLABEL('[cert_label]') +                            
+    NOTAFTER(DATE([xxxx/xx/xx])) +                       
+    SIZE(2048)
+  ```
+2. Enter the following command to create a RACF key ring and connect the self-signed certificate to the key ring:
+  ```
+  RACDCERT ID([cert_owner]) ADDRING([ring_name])                
+  RACDCERT ID([cert_owner]) +                               
+   CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name])) 
+  RACDCERT ID([cert_owner]) LISTRING([ring_name])
+  ```
+
+#### Defining AT-TLS rules
+To define rules to enable HTTPS on ZSS communication, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+
+```
+TTLSRule                          ATTLS1~ZSS
+{
+  LocalAddr                       ALL
+  RemoteAddr                      ALL
+  LocalPortRangeRef               portZSS
+  Jobname                         *
+  Userid                          *
+  Direction                       Inbound
+  Priority                        255
+  TTLSGroupActionRef              gAct1~ZSS
+  TTLSEnvironmentActionRef        eAct1~ZSS
+  TTLSConnectionActionRef         cAct1~ZSS
+}  
+TTLSRule                          ATTLS2~ZSS
+{
+  LocalAddr                       ALL
+  RemoteAddr                      ALL
+  LocalPortRangeRef               portZSS
+  Jobname                         *
+  Userid                          *
+  Direction                       Outbound
+  Priority                        254
+  TTLSGroupActionRef              gAct1~ZSS
+  TTLSEnvironmentActionRef        eAct2~ZSS
+  TTLSConnectionActionRef         cAct2~ZSS
+}
+TTLSGroupAction                   gAct1~ZSS
+{ 
+  TTLSEnabled                     On
+  Trace                           2
+} 
+TTLSEnvironmentAction             eAct1~ZSS
+{ 
+  HandshakeRole                   Server
+  EnvironmentUserInstance         0
+  TTLSKeyringParmsRef             keyZSS
+}  
+TTLSEnvironmentAction             eAct2~ZSS
+{ 
+  HandshakeRole                   Client
+  EnvironmentUserInstance         0
+  TTLSKeyringParmsRef             keyZSS
+}
+TTLSConnectionAction              cAct1~ZSS
+{ 
+  HandshakeRole                   Server
+  TTLSCipherParmsRef              cipherZSS
+  TTLSConnectionAdvancedParmsRef  cAdv1~ZSS
+  CtraceClearText                 Off
+  Trace                           1
+}  
+TTLSConnectionAction              cAct2~ZSS
+{ 
+  HandshakeRole                   Client
+  TTLSCipherParmsRef              cipherZSS
+  TTLSConnectionAdvancedParmsRef  cAdv2~ZSS
+  CtraceClearText                 Off
+  Trace                           1
+}
+TTLSConnectionAdvancedParms       cAdv1~ZSS
+{
+  SSLv3                           Off
+  TLSv1                           Off
+  TLSv1.1                         Off
+  CertificateLabel                [cert_label]
+  SecondaryMap                    Off
+  TLSv1.2                         On
+}  
+TTLSConnectionAdvancedParms       cAdv2~ZSS
+{
+  SSLv3                           Off
+  TLSv1                           Off
+  TLSv1.1                         Off
+  CertificateLabel                [cert_label]
+  SecondaryMap                    Off
+  TLSv1.2                         On
+} 
+TTLSKeyringParms                  keyZSS
+{ 
+  Keyring                         [ring_name]
+} 
+PortRange                         portZSS
+{ 
+  Port                            [zss_port]
+} 
+TTLSCipherParms                   cipher~ZSS                          
+{                                                                       
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 
+}       
+```
+
+#### Specifying the certificate location
+Copy the CA certificate to the ZSS server, and then specify its location.
+
+1. Place the CA certificate in `zlux-app-server/deploy/product/ZLUX/serverConfig` directory.
+2. Open `zluxserver.json` in the `zlux-app-server/config` directory of the **zlux-app-server** repository.
+3. Add the certificate file path in the **zlux.https.certificateauthorities** parameter, for example:
+
+```
+"certificateAuthorities": ["../deploy/product/ZLUX/serverConfig/[ca_cert]", ]
+```
+
 
 ### Enabling tracing
 
