@@ -238,7 +238,7 @@ The following list describes the configuration parameters:
 
     Specifies the API identifier that is registered in the API Mediation Layer installation.
     The API ID uniquely identifies the API in the API Mediation Layer.
-    The same API can be provided by multiple service. The API ID can be used
+    The same API can be provided by multiple services. The API ID can be used
     to locate same APIs that are provided by different services.
     The creator of the API defines this ID.
     The API ID needs to be string up to 64 characters

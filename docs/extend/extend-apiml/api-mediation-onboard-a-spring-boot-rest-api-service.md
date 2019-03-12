@@ -392,7 +392,7 @@ As an API service developer, you set multiple configuration settings in your app
       * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
       
           Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
-          The same API can be provided by multiple service. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
+          The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
           The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
       
