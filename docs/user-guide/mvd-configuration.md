@@ -144,18 +144,18 @@ When you run the Zowe Application Server, specify the following flags to declare
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
 ### Configuring ZSS for HTTPS
-To secure the ZSS server, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) on server communication. After you configure SSL, communications with ZSS must use HTTPS.
+To secure ZSS, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) on all ZSS communication.
 
-Before you begin, you must have a working knowledge of AT-TLS and you must have Policy Agent configured. For more information, on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+Before you begin, you must have a basic knowledge of RACF and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
 
-To configure ZSS for HTTPS, create a certificate authority certificate and add it to a key ring. Then define AT-TLS rules. Then copy the certificate to the ZSS server and reference its location in the `zluxserver.json` file.
+To configure ZSS for HTTPS, you create a Certificate Authority (CA) certificate and add it to a key ring. Then you define AT-TLS rules. Then you copy the certificate to the ZSS server and reference its location in the `zluxserver.json` file.
 
-Note: Bracketed values below (including the brackets) are variables. Use values relevant to your organization.
+**Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization.
 
-#### Creating a certificate authority and key ring
-Use the IBM Resource Access Control Facility (RACF) to create a Certificate Authority certificate, and then create a key ring and add the certificate to the ring.
+#### Creating a Certificate Authority certificate and key ring
+Use the IBM Resource Access Control Facility (RACF) to create a CA certificate, and then create a key ring and add the certificate to the ring.
 
-1. Enter the following command to generate a RACF certificate authority (CA) certificate:
+1. Enter the following command to generate a RACF CA certificate:
   ```
   RACDCERT CERTAUTH GENCERT +                          
     SUBJECTSDN(CN('[common_name]') +                        
@@ -176,7 +176,7 @@ Use the IBM Resource Access Control Facility (RACF) to create a Certificate Auth
   ```
 
 #### Defining AT-TLS rules
-To define rules to enable HTTPS on ZSS communication, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+To define rules to enable HTTPS on ZSS, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
 
 ```
 TTLSRule                          ATTLS1~ZSS
@@ -281,8 +281,8 @@ TTLSCipherParms                   cipher~ZSS
 Copy the CA certificate to the ZSS server, and then specify its location.
 
 1. Place the CA certificate in `zlux-app-server/deploy/product/ZLUX/serverConfig` directory.
-2. Open `zluxserver.json` in the `zlux-app-server/config` directory of the **zlux-app-server** repository.
-3. Add the certificate file path in the **zlux.https.certificateauthorities** parameter, for example:
+2. In the `zlux-app-server/config` directory, open the `zluxserver.json` file.
+3. Add the certificate file path in the **zlux.https.certificateauthorities** array, for example:
 
 ```
 "certificateAuthorities": ["../deploy/product/ZLUX/serverConfig/[ca_cert]", ]
