@@ -203,10 +203,12 @@ As an API service developer, you set multiple configuration settings in your app
                       api_v1:
                           gateway-url: "api/v1"
                           service-url: ${mfaas.server.contextPath}
-
-                      api-doc:
-                          gateway-url: "api/v1/api-doc"
-                          service-url: ${mfaas.server.contextPath}/api-doc
+                  apiml:
+                      apiInfo:
+                          - apiId: ${mfaas.discovery.serviceId}
+                            gatewayUrl: api/v1
+                            swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+                            documentationUrl: https://www.zowe.org
                   mfaas:
                       api-info:
                           apiVersionProperties:
@@ -378,7 +380,6 @@ As an API service developer, you set multiple configuration settings in your app
 
         **Examples:**
         ```
-        api-doc
         api_v1
         api_v2
         ```
@@ -388,7 +389,21 @@ As an API service developer, you set multiple configuration settings in your app
       * `metadata-map.routed-services.<prefix>.serviceUrl`
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
-
+      * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
+      
+          Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
+          The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
+          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
+      * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
+      
+          The base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
+          
+      * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
+      
+          (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+      * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
+      
+          (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.             
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.

@@ -172,9 +172,10 @@ Ensure that this file is placed in the _WEB-INF_ folder located in the module of
              - gatewayUrl: 
                serviceUrl: 
          apiInfo:
-             title: 
-             description: 
-             version: 
+             - apiId:
+               gatewayUrl:
+               swaggerUrl:
+               documentationUrl:
          catalogUiTile:
              id: 
              title: 
