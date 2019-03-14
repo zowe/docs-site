@@ -183,7 +183,7 @@ zowe zosmf -h
 ```
 ## CLI Command Reference 
 
-See the [CLI Reference document](https://github.com/zowe/zowe-cli/blob/master/docs/CLIReadme.md) in GitHub to review a list of all commands, actions, and options in the core CLI.
+See the [CLI Reference document](CLIReference_Zowe.pdf) to review a list of all commands, actions, and options in Zowe CLI. The reference document is based on the @lts-incremental version of the CLI.
 
 ## Defining Zowe CLI connection details
 
