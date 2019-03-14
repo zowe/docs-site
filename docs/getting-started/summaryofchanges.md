@@ -1,6 +1,53 @@
 # Release notes
 
-Learn about what is new, changed, removed, and known issues in Zowe.
+Learn about what is new, changed, removed, and known issues in Zowe. 
+
+Zowe Version 1.0.0 and later releases include the following enhancements, release by release.
+
+- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
+- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.0.1 (March 2019)
+
+Version 1.0.1 contains the following changes since the last version.
+
+### What's new in Zowe installation on z/OS
+
+During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not. For more information, see [Installing the Zowe Cross Memory Server on z/OS](../user-guide/install-zos.html#installing-the-zowe-cross-memory-server-on-z-os)
+
+### What's new in the Zowe App Server
+
+- Made the following improvements to security:
+  - Removed the insecure SHA1 cipher from the Zowe App Server's supported ciphers list.
+  - Added instructions to REST APIs to not cache potentially sensitive response contents.
+  - Set secure attributes to desktop and z/OSMF session cookies.
+- Fixed a bug that caused the configuration data service to mishandle PUT operations with bodies that were not JSON.
+- Fixed a bug that prevented IFrame applications from being selected by clicking on their contents.
+- Fixed various bugs in the File Explorer and updated it to use newer API changes.
+- Fixed a bug in which App2App Communication Actions could be duplicated upon logging in a second time on the same desktop.
+
+### What's new in Zowe CLI
+
+- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#zowe-cli-command-groups)
+
+- Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
+
+- A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
+
+- Zowe CLI Plugin for IBM CICS was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
+
+### What's new in the Zowe REST APIs
+
+Introduced new Unix files APIs that reside in the renamed API catalog tile `z/OS Datasets and Unix files service` (previously named `z/OS Datasets service`). You can use these APIs to:
+
+- List the children of a Unix directory
+- Get the contents of a Unix file
+
+### What's changed
+
+- **Zowe explorer apps**
+   - JES Explorer: Enhanced Info/Error messages to better help users diagnose problems.
+   - MVS Explorer: Fixed an issue where Info/Error messages were not displayed when loading a Dataset/Members contents.
 
 ## Version 1.0.0 (February 2019)
 
@@ -78,7 +125,7 @@ Once multiple instances are open, you can click the application icon to select w
 - Added tracing of login, logout, and HTTP routing so that administrators can track access.
 
 ### What's changed
- 
+
 - Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided unsing an IBM WebSphere Liberty web application server. In this release, they are provided using a Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
 
 - References to `zlux-example-server` were changed to `zlux-app-server` and references to `zlux-proxy-server` were changed to `zlux-server-framework`.
