@@ -84,7 +84,7 @@ const ALL_PAGES = [{
       items: [
         'extend/extend-apiml/api-mediation-onboard-overview.md',
         'extend/extend-apiml/api-mediation-security.md',
-        'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
+        'extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
@@ -302,7 +302,18 @@ module.exports = {
         name: 'google-site-verification',
         content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
       }
-    ]
+    ],
+    // embed NPS Survey code
+    ['script', {
+      src: 'https://nps.mybluemix.net/survey/nps-survey.js'
+    }],
+    ['script', { }, `window.ibmNps = {
+      offeringId: "ece49543-bfcc-4d5c-a9c2-64b23b1366c3",
+      userId: "",
+      disableHashing: true,
+     deferSurvey:true,
+    };`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 220000);`],
   ],
   themeConfig: {
     docsDir: 'docs',
