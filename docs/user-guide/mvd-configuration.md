@@ -213,6 +213,7 @@ To define the AT-TLS rule, use the sample below to specify values in your AT-TLS
 TTLSRule                          ATTLS1~ZSS
 {
   LocalAddr                       All
+  RemoteAddr                      All
   LocalPortRange                  [zss_port]
   Jobname                         *
   Userid                          *
