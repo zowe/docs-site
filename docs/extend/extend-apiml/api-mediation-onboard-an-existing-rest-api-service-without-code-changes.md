@@ -243,7 +243,7 @@ The following list describes the configuration parameters:
     The creator of the API defines this ID.
     The API ID needs to be a string of up to 64 characters
     that uses lowercase alphanumeric characters and a dot: `.`.
-    We recommended that you use your organization as the prefix.
+    We recommend that you use your organization as the prefix.
 
     **Examples:**
 
