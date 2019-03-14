@@ -396,7 +396,7 @@ As an API service developer, you set multiple configuration settings in your app
           The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
       
-          The base path at the API gateway where the API is available. Ensure that it is the same path as a _gatewayUrl_ value in the _routes_ sections.
+          The base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
           
       * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
       
