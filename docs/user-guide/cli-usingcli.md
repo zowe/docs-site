@@ -183,7 +183,7 @@ zowe zosmf -h
 ```
 ## CLI Command Reference 
 
-See the [CLI Reference document](../.vuepress/public/CLIReference_Zowe.pdf) to review a list of all commands, actions, and options in Zowe CLI. The reference document is based on the @lts-incremental version of the CLI.
+See the [CLI Reference document](../CLIReference_Zowe.pdf) to review a list of all commands, actions, and options in Zowe CLI. The reference document is based on the @lts-incremental version of the CLI.
 
 ## Defining Zowe CLI connection details
 
