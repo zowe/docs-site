@@ -1,19 +1,17 @@
 # API Mediation Layer
 
-The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer includes an API Catalog that provides an interface to view all discovered microservices, their associated APIs, and Swagger documentation in a user-friendly manner. The Discovery Service makes it possible to determine the location and status of microservice instances running inside the ecosystem.  
+The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer consists of three components: the Gateway, the Discovery Service, and the Catalog. The Gateway provides secure communication across loosely coupled API services. The Discovery Service enables you to determine the location and status of service instances running inside the API ML ecosystem. The Catalog provides an easy-to-use interface to view all discovered services, their associated APIs, and Swagger documentation in a user-friendly manner. 
 
 ## Key features  
-* High availability of services in which application instances on a failing node are distributed among surviving nodes
-* Microservice UIs available through the API Gateway and API Catalog by means of reverse proxying
-* Support for standardization and normalization of microservice URLs and routing to provide API Mediation Layer users with a consistent way of accessing microservices.
-* Minimal effort to register a microservice with the gateway (configuration over code)
-* Runs on Windows, Linux, and z/OS (target platform)
-* Written in Java utilizing Spring Boot (2.x), Angular 5, and the Netflix CloudStack
-* Supports multiple client types for discovery (including Spring Boot, Java, and NodeJS)
-* Contains enablers that allow for easy discovery and exposure of REST APIs and Swagger documentation for each microservice 
+* Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
+* Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
+* High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
+* Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
+* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility. 
+* Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
 
 ## API Mediation Layer architecture 
-The following diagram illustrates the single point of access with the API Gateway and the interactions between the API Gateway, API Catalog, and the Discovery Service:   
+The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
 ![API Mediation Layer Architecture diagram](diagrams/image2018-2-26%20 14_53_46.png)
 
