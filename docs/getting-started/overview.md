@@ -51,11 +51,11 @@ Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS 
 
  - **z/OS Datasets services**
 
-   Get a list of jobs, get content from a job file output, submit job from a data set, and more.
+    Get a list of data sets, retrieve content from a member, create a data set, and more.
 
  - **z/OS Jobs services**
 
-    Get a list of data sets, retrieve content from a member, create a data set, and more.
+   Get a list of jobs, get content from a job file output, submit a job from a data set, and more.
 
 You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
 
