@@ -2,17 +2,20 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe CLI.
 
-## *Command not found* message displays when issuing npm install commands
+## *Command not found* message displays when issuing `npm install` commands
 
 **Valid on all supported platforms**
 
 **Symptom:**
 
-When you issue nmp commands to install Zowe CLI, the message *command not found* displays in your CLI.
+When you issue NPM commands to install the CLI, the message *command not found* displays. The message indicates that Node.js and NPM are not installed on your computer, or that PATH does not contain the correct path to the NodeJS folder. 
 
 **Solution:**
 
-The *command not found* message displays because Node.js and NPM are not installed on your computer. To correct this behavior, install Node.js and NPM and reissue the npm command to install Zowe CLI.
+To correct this behavior, verify the following:
+
+- Node.js and NPM are installed.
+- PATH contains the correct path to the NodeJS folder.
 
 **More Information:** [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
 
