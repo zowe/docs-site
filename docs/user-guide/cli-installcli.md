@@ -62,7 +62,7 @@ If you do not have internet access at your site, use the following method to ins
 
    **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, see [Defining CLI connection details](cli-configuringcli.md#defining-cli-connection-details).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details).
 
 ### Installing Zowe CLI from an online registry
 
@@ -104,6 +104,6 @@ If your computer is connected to the Internet, you can use the following method 
 
    **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, see [Defining CLI connection details](cli-configuringcli.md#defining-cli-connection-details).
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details).
 
 
