@@ -190,7 +190,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 - [API Mediation Layer](api-mediation/api-mediation-overview.md)
 - [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
 
-### Setting Zowe CLI log levels
+## Setting Zowe CLI log levels
 
 You can set the log level to adjust the level of detail that is written to log files:
 
@@ -201,7 +201,7 @@ You can set the log level to adjust the level of detail that is written to log f
 | `ZOWE\_APP\_LOG\_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 | `ZOWE\_IMPERATIVE\_LOG\_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
-### Setting the Zowe CLI home directory
+## Setting the Zowe CLI home directory
 
 You can set the location on your computer where Zowe CLI creates the *.zowe* directory, which contains log files, profiles, and plug-ins for the product:
 
