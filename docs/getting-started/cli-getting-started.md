@@ -87,7 +87,7 @@ zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password
 zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
 ```
 
-For detailed information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-usingcli.md#defining-zowe-cli-connection-details)
+For detailed information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-configuringcli.md#defining-zowe-cli-connection-details)
 
 ## Writing scripts
 
@@ -122,7 +122,7 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - Review [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) to learn what functionality is available, and explore the in-product help.
 
-- Learn about [using environment variables](../user-guide/cli-usingcli.md#defining-environment-variables) to store configuration options.
+- Learn about [using environment variables](../user-guide/cli-configuringcli.md#defining-environment-variables) to store configuration options.
 
 - Integrate your scripts with an automation server like Jenkins.
 
