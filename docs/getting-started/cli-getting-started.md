@@ -77,9 +77,10 @@ Most command groups require a `zosmf-profile`, but some plug-ins add their own p
 ### Creating a zosmf profile
 
 ```
-zowe profiles create zosmf myprofile123 --host host123 --user ibmuser --password pass --zosmf-profile host123
+zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
 ```
 
+**Note:** If you omit the `--port` option, port defaults to 443. Specify a different port if your host system does not use port 443. 
 
 ### Using a zosmf profile
 
