@@ -1,4 +1,4 @@
-# Configuring z/OSMF (production environment)
+# Configuring z/OSMF
 
 The following information contains procedures and tips for meeting z/OSMF requirements. For complete information, go to [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3/en/homepage.html) and read the following documents.
 

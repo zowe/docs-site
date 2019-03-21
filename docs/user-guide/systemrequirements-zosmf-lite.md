@@ -1,6 +1,9 @@
-# Configuring z/OSMF Lite (non-production environment)
+# Configuring z/OSMF Lite (for non-production use)
 
-This section provides information about requirements for z/OSMF lite configuration.
+This section provides information about requirements for z/OSMF Lite configuration. 
+
+**Discaimer:** z/OSMF Lite can be used in a non-production environment such as development, proof-of-concept, demo and so on. It is not for use in a production environment. To use z/OSMF in a production environment, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
+
 1. [Introduction](#introduction)
 2. [Assumptions](#assumptions)
 3. [Software Requirements](#software-requirements)
@@ -40,7 +43,7 @@ and administration of your mainframe z/OS systems.
 By following the steps in this guide, you can quickly enable z/OSMF on your z/OS
 system. This simplified approach to set-up, known as “z/OSMF Lite”, requires
 only a minimal amount of z/OS customization, but provides the key functions that
-are required by many exploiters, such as the open mainframe project (Zowe). 
+are required by many exploiters like Zowe. 
 
 A z/OSMF Lite configuration is applicable to any future expansions you make to
 z/OSMF, such as adding more optional services and plug-ins.

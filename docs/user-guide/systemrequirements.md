@@ -4,26 +4,19 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 
 ## z/OS host requirements (for all components)
 
+- z/OS Version 2.2 or later.
 - IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
 
-  z/OSMF is a prerequisite for the Zowe microservice. z/OSMF must be installed and running before you use Zowe. 
+  z/OSMF is a prerequisite for the Zowe microservices. z/OSMF must be installed and running before you use Zowe.
 
-  - For non-production use of Zowe (such as example development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the set up of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in start up time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md)
-  - For production use of Zowe, see [Configuring z/OSMF (production environment)](systemrequirements-zosmf.md).
+  ::: tip 
+   - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in start up time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md)
+  - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
+  :::
 
-- z/OS® Version 2.2 or later.
+- Node.js Version 6.14.4.1 or later on the z/OS host where you install the Zowe Application Server. 
 
-- Node.js Version 6.14.4.1 or later on the z/OS host where you install the Zowe Application Server. To install, follow the instructions in [Installing IBM SDK for Node.js - z-OS](install-nodejs-zos.md).
-
-     **Notes:**
-
-     - To install Node.js on z/OS, ensure that you meet the following requirements in the procedure. Other requirements, including installing Python, Make 4.1, or Perl, are not needed.
-       > z/OS V2R2 with PTF UI46658 or z/OS V2R3, z/OS UNIX System Services enabled, and Integrated Cryptographic Service Facility (ICSF) configured and started.
-    - The following requirements for installing Node.js are **NOT** needed, so you can skip those configurations.
-        - Python, Make 4.1, or Perl
-        - C/C++ compiler
-    
-    After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
+   To install Node.js on z/OS, follow the instructions in [Installing IBM SDK for Node.js - z-OS](install-nodejs-zos.md).
 
 -   npm 5.4 or later
 
@@ -34,8 +27,7 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
      ```
 - IBM SDK for Java Technology Edition V8 or later
 
-
-## Disk and browser requirements (for Zowe desktop)
+## Disk and browser requirements (for Zowe Desktop)
 
 - 833 MB of HFS file space.
 
