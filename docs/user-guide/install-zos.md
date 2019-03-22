@@ -729,6 +729,31 @@ The manual installation consists of the following steps.
           RLIST FACILITY BPX.SERVER AUTHUSER
           RLIST FACILITY BPX.DAEMON AUTHUSER
           ```
+    - If you use TSS, complete the following steps:  
+        - Ensure BPX facilities are defined. This may have already been done on behalf of another server such as the FTPD daemon. To check, issue:
+          ```
+          TSS ADD(`owner-acid`) IBMFAC(BPX.)
+          TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+          TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+          ```
+        - To check whether permission has been successfully granted, issue the following commands and review the output:
+          ```
+          TSS WHOHAS IBMFAC(BPX.SERVER)
+          TSS WHOHAS IBMFAC(BPX.DAEMON)
+          ```
+    - If you use ACF2, complete the following steps:
+        - Ensure BPX facilities are defined. This may have already been done on behalf of another server such as the FTPD daemon. To check, issue:
+          ```
+          SET RESOURCE(FAC)
+          RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+          RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+          F ACF2,REBUILD(FAC)
+          ```
+        - To check whether permission has been succesfully granted, issue the following commands and review the output:
+          ```
+          SET RESOURCE(FAC)
+          LIST BPX
+          ```
 
 ### Scripted install of the Zowe Cross Memory Server 
 
