@@ -543,10 +543,10 @@ To test that your API instance is working and is discoverable, use the following
 
  4. Check that you can access your API service endpoints through the Gateway.
 
-   **Example:**
-   ```
-   https://localhost:10010/api/v1/
-   ```
+    **Example:**
+    ```
+    https://localhost:10010/api/v1/
+    ```
 
  5. Check that you can still access your API service endpoints directly outside of the Gateway.
 
