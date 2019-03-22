@@ -725,6 +725,7 @@ The manual installation consists of the following steps.
     - If the user running the ZWESIS01 started task does not have UPDATE acecss to both facilities, follow the below instructions
       - If you use RACF, complete the following steps:
           <details>
+            <summary>Click to Expand</summary>
           - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
             ```
             SETROPTS CLASSACT(FACILITY)             
@@ -750,6 +751,7 @@ The manual installation consists of the following steps.
           </details>
       - If you use CA Top Secret, complete the following steps:  
           <details>
+            <summary>Click to Expand</summary>
           - Define the BPX Resource and access for IZUSVR.
             ```
             TSS ADD(`owner-acid`) IBMFAC(BPX.)
@@ -764,6 +766,7 @@ The manual installation consists of the following steps.
           </details>
       - If you use CA ACF2, complete the following steps:
           <details>
+            <summary>Click to Expand</summary>
           - Define the BPX Resource and access for IZUSVR.
             ```
             SET RESOURCE(FAC)
