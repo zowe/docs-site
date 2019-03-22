@@ -725,22 +725,18 @@ The manual installation consists of the following steps.
     - If the user running the ZWESIS01 started task does not have UPDATE acecss to both facilities, follow the below instructions
       - If you use RACF, complete the following steps:
           <details>
-<<<<<<< HEAD
             <summary>Click to Expand</summary>
           - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
-=======
-          - Activate and RACLIST the FACILITY class.  
->>>>>>> e56a0dd26a59c116da18bc8716820991bcde030f
             ```
             SETROPTS CLASSACT(FACILITY)             
             SETROPTS RACLIST(FACILITY)                
             ```
-          - Define the BPX facilities if they were not defined. 
+          - Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
             ```
             RDEFINE FACILITY BPX.SERVER UACC(NONE)
             RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
             ```             
-          - Grant the user ID who runs the ZWESIS01 started task (by default IZUSVR) update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
+          - Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
             ```
             PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
             PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
@@ -755,17 +751,10 @@ The manual installation consists of the following steps.
           </details>
       - If you use CA Top Secret, complete the following steps:  
           <details>
-<<<<<<< HEAD
             <summary>Click to Expand</summary>
           - Define the BPX Resource and access for IZUSVR.
-=======
-          - Define the BPX facility, if not already defined
->>>>>>> e56a0dd26a59c116da18bc8716820991bcde030f
             ```
             TSS ADD(`owner-acid`) IBMFAC(BPX.)
-            ```
-          - Grant the user ID who runs the ZWESIS01 started task (by default IZUSVR) update access to BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
-            ```
             TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
             TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
             ```
@@ -777,17 +766,12 @@ The manual installation consists of the following steps.
           </details>
       - If you use CA ACF2, complete the following steps:
           <details>
-<<<<<<< HEAD
             <summary>Click to Expand</summary>
           - Define the BPX Resource and access for IZUSVR.
-=======
-          - Grant the user ID who runs the ZWESIS01 started task (by default IZUSVR) update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
->>>>>>> e56a0dd26a59c116da18bc8716820991bcde030f
             ```
             SET RESOURCE(FAC)
             RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
             RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
-            /* Activate these changes */
             F ACF2,REBUILD(FAC)
             ```
           - To check whether permission has been succesfully granted, issue the following commands and review the output:
