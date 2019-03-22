@@ -39,7 +39,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
     * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
 
-      **Note:** Ensure that zou are using valid Zowe Artifactory credentials.  
+      **Note:** Ensure that you are using valid Zowe Artifactory credentials.  
 
         ```
       maven {
