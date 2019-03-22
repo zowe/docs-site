@@ -25,7 +25,12 @@ IBM zEnterprise® 196 (z196) or newer
     ```
     export PATH=<installation_directory>/bin/:$PATH
     ```
-1. Run the node and npm commands from the command line.
+1. Run the following command from the command line to verify the installation.
+    ```
+    node --version
+    ```
+
+    If Node.js is installed, the version of Node.js is displayed.
 1. After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
 To troubleshoot or read more information, see the [documentation for IBM SDK for Node.js - z/OS](https://developer.ibm.com/node/sdk/ztp/#documentation-ztp). 
