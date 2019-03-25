@@ -853,7 +853,7 @@ Use your preferred REST API client to review the value of the status variable of
 https://hostName:basePort/api/v1/apicatalog/application/state
 ```
 
-The `hostName` is set during install, and `basePort` is set as the `gatewayHttpsPort` parameter.
+The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
 
 **Example:**
 
