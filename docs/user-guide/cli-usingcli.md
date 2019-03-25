@@ -133,7 +133,18 @@ With the zos-jobs command group, you can perform the following tasks:
 ```
 zowe zos-jobs -h
 ```
+### zos-uss
 
+The zos-uss command group lets you issue Unix System Services shell commands by establishing an SSH connection to an SSH server.
+
+With the zos-uss command group, you can perform the following task:
+**Important\!** Before you issue z/OS UNIX System Services commands with Zowe CLI, security administrators must provide access for your user ID to login via SSH.
+- Issue z/OS UNIX System Services shell commands over an SSH connection and stream back the response.
+
+**Note:** For more information about `zos-uss` syntax, actions, and options, open Zowe CLI and issue the following command:
+```
+zowe zos-uss -h
+```
 ### zos-workflows
 
 The zos-workflows command group lets you create and manage z/OSMF workflows on a z/OS system.
