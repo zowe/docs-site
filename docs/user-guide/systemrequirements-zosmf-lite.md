@@ -737,16 +737,4 @@ Collect the z/OS user IDs that you want to add.
   `CONNECT userid GROUP(IZUADMIN)`
 #### Results
 
-  The user IDs can now access z/OSMF.
-
-#### Common errors
-
-  Review the following messages and the corresponding resolutions as needed:
-
-   **Symptom**  | **Cause** | **Resolution**
----|---|---
-A problem…       |           |     
-Another problem… |           |                    
-Another problem… |           |                          
-Another problem… |           |                          
-Another problem… |           |                          
+  The user IDs can now access z/OSMF.             
