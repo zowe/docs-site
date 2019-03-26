@@ -464,15 +464,15 @@ To allow `apiml_cm.sh` to run, it should be sufficient to give CONTROL access fo
     ```
     To access the private key belonging to SITE or CERTAUTH in a keyring, you can use either the FACILITY class or the RDATALIB class.
 
-    A. If you use the FACILITY class, you need access rights to the following resources:
+    If you use the FACILITY class, ensure that you have access rights to the following resources:
 
-    `READ` access on `IRR.DIGTCERT.LISTRING`, and
+    * `READ` access on `IRR.DIGTCERT.LISTRING`, and
     
-    `CONTROL` access on `IRR.DIGTCERT.GENCERT`
+    * `CONTROL` access on `IRR.DIGTCERT.GENCERT`
 
-    B. If you use the RDATALIB class, you need access rights on the following resource:
+    If you use the RDATALIB class, ensure that you have access rights on the following resource:
     
-    `CONTROL` access on `<keyring owner>.<ring name>.LST`
+    * `CONTROL` access on `<keyring owner>.<ring name>.LST`
 
     **Note:** If you have both `FACILITY` and `RDATALIB` active, the access check will use the `RDATALIB` class. If you do not have access to that specific profile, access is denied. It does not fall back to the `FACILITY` class.
 
