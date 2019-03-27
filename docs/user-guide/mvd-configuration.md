@@ -189,7 +189,6 @@ Use the IBM Resource Access Control Facility (RACF) to create a CA certificate a
   ```
   RACDCERT ID([cert_owner]) ADDRING([ring_name])                
   RACDCERT CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name])) 
-  RACDCERT ID([cert_owner]) LISTRING([ring_name])
   ```
 
 4. Enter the following command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
@@ -214,6 +213,7 @@ To define the AT-TLS rule, use the sample below to specify values in your AT-TLS
 TTLSRule                          ATTLS1~ZSS
 {
   LocalAddr                       All
+  RemoteAddr                      All
   LocalPortRange                  [zss_port]
   Jobname                         *
   Userid                          *
