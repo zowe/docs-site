@@ -8,12 +8,17 @@ plug-ins at your own risk. We make no warranties regarding
 the use of third-party plug-ins.
 
 You can install the following plug-ins:
-  - **Zowe CLI Plug-in for IBM CICS**
 
+  - **Zowe CLI Plug-in for IBM CICS**
+    
     Use `@brightside/cics@lts-incremental` in your command syntax to install, update, and validate the plug-in. 
+
   - **Zowe CLI Plug-in for IBM Db2 Database**  
-  
+   
     Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+
+  - **Zowe CLI Plug-in for IBM IMS**
+    Use `@zowe/ims` in your command syntax to install, update, and validate the plug-in. 
 
 ## Setting the registry
 

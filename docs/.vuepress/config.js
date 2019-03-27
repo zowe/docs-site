@@ -70,6 +70,7 @@ const ALL_PAGES = [{
       'user-guide/cli-installplugins.md',
       'user-guide/cli-cicsplugin.md',
       'user-guide/cli-db2plugin.md',
+      'user-guide/cli-imsplugin.md',
       'user-guide/cli-vscodeplugin.md',
     ]
   }
