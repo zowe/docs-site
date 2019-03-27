@@ -136,7 +136,7 @@ The following system changes are described in this chapter:
 
 The sample jobs that you might use are available for download:
 
-[Download sample jobs](zosmf_lite_samples.zip)
+[Download sample jobs](../zosmf_lite_samples.zip)
 
 Check out the video for a demo of the process:
 
