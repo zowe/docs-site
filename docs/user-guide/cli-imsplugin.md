@@ -82,13 +82,13 @@ If you downloaded the Zowe CLI `zowe-cli-bundle.zip` package, complete the follo
       
 ## Setting up profiles
 
-We recommend that you set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
+You can set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
 
 ```
 zowe profiles create ims-profile <profileName> --host <hostname> --port <portnumber> --ims-connect-host <hostname> --ims-connect-port <portnumber> --user <username> --password <password>
 ```
 
-Where:
+*Where:*
 
 - **profileName**
 
@@ -144,8 +144,8 @@ port:     1490
 ims-connect-host: zos124
 ims-connect-port: 1491
 plex:     PLEX1
-username: securely_stored
-password: securely_stored
+username: ibmuser
+password: myp4ss 
 ```
 
 ## Commands
