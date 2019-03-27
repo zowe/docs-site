@@ -4,8 +4,17 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.0.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.0.2 (April 2019)](#version-1-0-2-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.0.2 (April 2019)
+
+Version 1.0.2 contains the following changes since the last version.
+
+### What's new in Zowe installation
+z/OSMF Lite is available for non-production use now. 
+
 
 ## Version 1.0.1 (March 2019)
 
