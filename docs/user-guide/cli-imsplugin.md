@@ -23,9 +23,9 @@ Before you install the plug-in, meet the following prerequisites:
 
 * Ensure that [IBM® IMS™ v14.1.0](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_14.1.0/com.ibm.ims14.doc/ims_product_landing_v14.html) or later is installed and running in your mainframe environment.
 
-* Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.htm). IMS Connect is required so that IBM IMS Command Services can function. 
+* Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.htm). IMS Connect is required so that IBM IMS Operations APIs can function. 
 
-* Configure IBM IMS Operations APIs to enable communication between the CLI and the IMS instance. 
+* Configure IBM IMS Operations APIs to enable communication between the CLI and the IMS instance.
 
 ## Installing
 
@@ -59,7 +59,7 @@ To install Zowe CLI from an online registry, complete the following steps:
     zowe plugins validate ims
     ```
 
-    Successful validation of the IBM IMS plug-in returns the response: `Successfully validated`.
+    Successful validation of the IMS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
 
 ### Installing from local package
 
@@ -82,7 +82,7 @@ If you downloaded the Zowe CLI `zowe-cli-bundle.zip` package, complete the follo
       
 ## Setting up profiles
 
-We strongly recommend that you set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
+We recommend that you set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
 
 ```
 zowe profiles create ims-profile <profileName> --host <hostname> --port <portnumber> --ims-connect-host <hostname> --ims-connect-port <portnumber> --user <username> --password <password>
@@ -156,7 +156,7 @@ The plug-in adds the following commands to Zowe CLI:
   - [Stopping IMS resources](#stopping-ims-resources)
   - [Querying IMS resources](#querying-ims-resources)
 
-**Note:** The examples in this section assume that you define your IMS connection details using profiles, options on the command line, or environment variables. For more information, see [Setting up IMS user profiles](#setting-up-profiles) and [Define Zowe CLI connection details](cli-usingcli.md#defining-zowe-cli-connection-details).
+**Note:** The examples in this section assume that you define your connection details using profiles or environment variables. Alternatively, you can define your connection details with options directly on the command line. For more information, see [Define Zowe CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details).
 
 ### Starting IMS resources
 
