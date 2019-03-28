@@ -43,7 +43,7 @@ To solve the problem, follow these steps:
    ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
    ```
 
-   then, the setup and configuration of the cross memory server is completed successfully. You must follow the steps as described in [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server) to set up the cross memory server.  
+   then, the setup and configuration of the cross memory server did not complete successfully. You must follow the steps as described in [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server) to set up the cross memory server.  
 
    - Check that the ZWESIS01 started task is running and look into the log for any problems such as unable to find the load module.
 
