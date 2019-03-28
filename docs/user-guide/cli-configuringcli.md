@@ -208,7 +208,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 ```
 
 **More Information:**
-- [API Mediation Layer](getting-started/overview.md)
+- [API Mediation Layer](../getting-started/overview.md)
 - [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
 
 ## Setting Zowe CLI log levels
