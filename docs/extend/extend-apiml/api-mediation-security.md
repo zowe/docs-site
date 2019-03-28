@@ -466,7 +466,7 @@ To allow `apiml_cm.sh` to run, it should be sufficient to give CONTROL access fo
 
     If you use the FACILITY class, ensure that you have access rights to the following resources:
 
-    * `READ` access on `IRR.DIGTCERT.LISTRING`, and
+    * `UPDATE` access on `IRR.DIGTCERT.LISTRING`, and
     
     * `CONTROL` access on `IRR.DIGTCERT.GENCERT`
 
