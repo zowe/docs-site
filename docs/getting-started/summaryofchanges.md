@@ -12,8 +12,8 @@ Zowe Version 1.0.0 and later releases include the following enhancements, releas
 
 Version 1.0.2 contains the following changes since the last version.
 
-### What's new in Zowe installation
-z/OSMF Lite is available for non-production use now. 
+### What's new in Zowe installation on z/OS
+z/OSMF Lite is now available for non-production use such as development, proof-of-concept, demo and so on. It simplifies the setup of z/OSMF with only a minimal amount of z/OS customization, but provides key functions that are required. For more information, see [Configuring z/OSMF Lite (for non-production use)](../user-guide/systemrequirements-zosmf-lite.md)
 
 
 ## Version 1.0.1 (March 2019)
