@@ -11,7 +11,7 @@ The Zowe CLI Plug-in for IBM® Information Management System (IMS)™ lets you e
 
 As an application developer or DevOps administrator, you can use Zowe CLI Plug-in for IBM IMS to perform the following tasks:
 
-- Refresh IMS transactions, programs, and dependent IMS regions. 
+- Refresh IMS transactions, programs, and dependent IMS regions.  
 - Deploy application code into IMS production or test systems.
 - Write scripts to automate IMS actions that you traditionally perform using ISPF editors, TSO, and SPOC. 
 
@@ -44,7 +44,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 1. Set your npm registry if you did not already do so when you installed Zowe CLI. Issue the following command:
 
     ```
-    npm config set @zowe:registry https://api.bintray.com/npm/ca/brightside
+    npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
     ```
 
 2. Open a command line window and issue the following command:
