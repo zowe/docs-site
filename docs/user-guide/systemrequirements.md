@@ -18,13 +18,6 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 
    To install Node.js on z/OS, follow the instructions in [Installing IBM SDK for Node.js - z-OS](install-nodejs-zos.md).
 
--   npm 5.4 or later
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
 - IBM SDK for Java Technology Edition V8 or later
 
 ## Disk and browser requirements (for Zowe Desktop)
