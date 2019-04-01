@@ -34,3 +34,20 @@ z/OSMF Lite is now available for non-production use such as development, proof-o
 - Fixed a bug that would sometimes move application windows when you attempted to resized them.
 - Fixed a bug in the "Getting started with the ZOWE WebUi" tutorial documentation.
 - Fixed a bug that caused applications that made ZSS service requests to fail with an HTTP 401 error because of dropped session cookies.
+
+### What's new in the Zowe CLI and Plug-ins
+- CLI:
+  - [MINOR]: Added APIs to allow the definition of workflows
+  - [MINOR]: Added option: `max-concurrent-requests` to `zowe zos-files upload dir-to-uss` command
+  - [MINOR]: Added option: `overwrite` to `zowe zos-workflows create` commands
+  - [MINOR]: Added option: `workflow-name` to `zowe zos-workflows` commands
+  - [MINOR]: Added the following commands along with their APIs:
+    - `zowe zos-workflows archive active-workflow`
+    - `zowe zos-workflows create workflow-from-data-set`
+    - `zowe zos-workflows create workflow-from-uss-file`
+    - `zowe zos-workflows delete active-workflow`
+    - `zowe zos-files list uss-files`
+  - [PATCH]: Use the correct key for "solicited keyword" option on `zowe zos-console issue command`
+- DB2:
+  - Implemented command line precedence, which allows users to issue commands without the need of a DB2 profile.
+  - The DB2 plug-in can now be influenced by the `ZOWE_OPT_` environment variables
