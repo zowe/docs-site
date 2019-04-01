@@ -53,3 +53,5 @@ To solve the problem, follow these steps:
    ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=33, description='Permission denied'
    ```
     - Check that the user ID of the ZOWESVR started task is authorized to access the load module. There is a security check in place to ensure that only authorized code is able to call ZWESIS01 as it is an APF-authorized load module. The setup for each security manager is different and documented in the section "Security requirements for the cross memory server" in at [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
+
+    ***Note*** If you are using RACF security manager a common reason for seeing `Permission Denied` is that the user running the started task ZOWESVR (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
