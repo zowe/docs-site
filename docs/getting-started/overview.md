@@ -124,7 +124,7 @@ The API Layer consists of the following key components:
 
 #### API Gateway
 
-Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technology.
+Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technologies.
 
 #### Discovery Service
 
@@ -143,13 +143,12 @@ The API Catalog is the catalog of published API services and their associated do
 Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the zOSMF API. 
 
 ### Onboarding APIs
-The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
+Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
 * [Onboarding Overview](../extend/extend-apiml/api-mediation-onboard-overview.md) 
 
-**More Information:**
-- [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md)
-- [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
+* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md)
+* [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
