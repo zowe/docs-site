@@ -26,13 +26,6 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
     
     After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
--   npm 5.4 or later
-
-     To update npm, issue the following command:
-
-     ```
-     npm install -g npm
-     ```
 - IBM SDK for Java Technology Edition V8 or later
 
 
