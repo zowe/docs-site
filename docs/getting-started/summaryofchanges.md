@@ -25,7 +25,8 @@ z/OSMF Lite is now available for non-production use such as development, proof-o
 - Tile change for the Catalog has been propagated to the UI.
 - Fixed a problem with an incorrect service homepage link in the Catalog. 
 - The Login button has been disabled when the login request is in progress.
-- Documented a known issue in Troubleshooting API ML when the API ML stops accepting connections after z/OS TCP/IP is recycled.
+- Documented the procedure for changing the log level of individual code components in _Troubleshooting API ML_.
+- Documented a known issue when the API ML stops accepting connections after z/OS TCP/IP is recycled in the _Troubleshooting API ML_.
 
 ### What's new in the Zowe App Server
 - Made the following user experience improvements:
