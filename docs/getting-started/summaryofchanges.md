@@ -14,10 +14,17 @@ Version 1.1.0 contains the following changes since the last 1.0.x version.
 z/OSMF Lite is now available for non-production use such as development, proof-of-concept, demo and so on. It simplifies the setup of z/OSMF with only a minimal amount of z/OS customization, but provides key functions that are required. For more information, see [Configuring z/OSMF Lite (for non-production use)](../user-guide/systemrequirements-zosmf-lite.md).
 
 ### What's new in API Mediation Layer
-- Login button is now disabled only when login request is in progress.
-- Default handler has been added to PageNotFound warnings.
-- Fixed reporting that the API Catalog is down when it is started before the Discovery Service.
-- Fixed the creation of an instance that prevents login into Catalog.
+- Prevented Swagger UI container on the service detail page from spilling.
+- Added a check for the availability of the z/OSMF URL contained in the configuration. z/OSMF is used to verify users logging into the Catalog.    
+- Make _PageNotFound_ error visible only in debug log level. 
+- Fixed reporting that Catalog is down, when it is started before Discovery Service.
+- Removed a bean overriding error message from the log. 
+- Fixed the state manipulation mechanism in the Catalog. As a result, no restoring of the application state is performed.
+- Fixed the Catalog routing mechanism for users who are already logged in so that the user is not prompted to log in again. 
+- Timeout set for Catalog login when z/OSMF is not responding. 
+- Tile change for Catalog is now propagated to the UI.
+- Fixed a problem with an incorrect service homepage link in the Catalog. 
+- The Login button has been disabled when the login request is in progress.
 - Documented a known issue in Troubleshooting API ML when the API ML stops accepting connections after z/OS TCP/IP is recycled.
 
 ### What's new in the Zowe App Server
