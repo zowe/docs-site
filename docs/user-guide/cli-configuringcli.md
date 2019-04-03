@@ -64,15 +64,36 @@ The affect of the order is that if you omit an argument/option from the command 
 
 ### Creating Zowe CLI profiles
 
-Profiles are a Zowe CLI functionality that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
+Profiles are a Zowe CLI function that lets you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
 
-To create a `zosmf` profile, issue the following command. Refer to the available options in the help text to define your profile:  
+#### Displaying profiles help
+To learn about the options available for creating zosmf profiles, issue the following command. Refer to the available options in the help text to define your profile:
 
 ```
 zowe profiles create zosmf-profile --help
 ```
 
-#### Creating a profile to access an API Mediation Layer
+#### Create and use a profile
+
+Create a profile, then use the profile when you issue a command.
+
+**Example:**
+
+Substitute your connection details and issue the following command to create a profile with the name `myprofile123`:
+
+```
+zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
+```
+
+Issue the following command to list all data sets under the username ibmuser on the system specified in `myprofile123`:
+
+```
+zowe zos-files list data-set "ibmuser.* --zosmf-profile myprofile123
+```
+
+After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
+
+#### Creating a profile that acesses API Mediation Layer 
 
 You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 
@@ -187,7 +208,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 ```
 
 **More Information:**
-- [API Mediation Layer](api-mediation/api-mediation-overview.md)
+- [API Mediation Layer](../getting-started/overview.md)
 - [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
 
 ## Setting Zowe CLI log levels

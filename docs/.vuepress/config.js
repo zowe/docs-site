@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.0.1'
+const CURRENT_ZOWE_VERSION = '1.1.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -43,6 +43,9 @@ const ALL_PAGES = [{
     items: [
       'user-guide/installandconfig.md',
       'user-guide/systemrequirements.md',
+      'user-guide/install-nodejs-zos.md',
+      'user-guide/systemrequirements-zosmf.md',
+      'user-guide/systemrequirements-zosmf-lite.md',
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
       'user-guide/uninstall.md',
@@ -84,7 +87,7 @@ const ALL_PAGES = [{
       items: [
         'extend/extend-apiml/api-mediation-onboard-overview.md',
         'extend/extend-apiml/api-mediation-security.md',
-        'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
+        'extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
@@ -293,7 +296,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.0.x',
+  description: 'Version 1.1.x',
   ga: 'UA-123892882-1',
   head: [
     [
@@ -313,7 +316,7 @@ module.exports = {
       disableHashing: true,
      deferSurvey:true,
     };`],
-    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 220000);`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
   ],
   themeConfig: {
     docsDir: 'docs',
