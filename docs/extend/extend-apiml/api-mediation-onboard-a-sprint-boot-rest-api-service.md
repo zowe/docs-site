@@ -469,7 +469,6 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 **Note:** You need to define both keystore and truststore even if your server is not using HTTPS port.
 
-
 ## Externalize API ML configuration parameters
 
 The following list summarizes the API ML parameters that are set by the customer system administrator:
@@ -482,7 +481,6 @@ The following list summarizes the API ML parameters that are set by the customer
    * `mfaas.service.hostname: ${environment.hostname}`
    * `mfaas.service.ipAddress: ${environment.ipAddress}`
    * `mfaas.server.port: ${environment.port}`
-
 
 **Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
 
