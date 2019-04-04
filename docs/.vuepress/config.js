@@ -43,6 +43,8 @@ const ALL_PAGES = [{
     items: [
       'user-guide/installandconfig.md',
       'user-guide/systemrequirements.md',
+      'user-guide/install-nodejs-zos.md',
+      'user-guide/systemrequirements-zosmf.md',
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
       'user-guide/uninstall.md',
@@ -313,7 +315,7 @@ module.exports = {
       disableHashing: true,
      deferSurvey:true,
     };`],
-    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 220000);`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
   ],
   themeConfig: {
     docsDir: 'docs',
