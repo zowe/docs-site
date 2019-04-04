@@ -2,7 +2,7 @@
 
 This section provides information about requirements for z/OSMF Lite configuration. 
 
-**Discaimer:** z/OSMF Lite can be used in a non-production environment such as development, proof-of-concept, demo and so on. It is not for use in a production environment. To use z/OSMF in a production environment, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
+**Disclaimer:** z/OSMF Lite can be used in a non-production environment such as development, proof-of-concept, demo and so on. It is not for use in a production environment. To use z/OSMF in a production environment, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
 
 1. [Introduction](#introduction)
 2. [Assumptions](#assumptions)
