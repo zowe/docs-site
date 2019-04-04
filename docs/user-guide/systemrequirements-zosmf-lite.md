@@ -2,7 +2,7 @@
 
 This section provides information about requirements for z/OSMF Lite configuration. 
 
-**Discaimer:** z/OSMF Lite can be used in a non-production environment such as development, proof-of-concept, demo and so on. It is not for use in a production environment. To use z/OSMF in a production environment, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
+**Disclaimer:** z/OSMF Lite can be used in a non-production environment such as development, proof-of-concept, demo and so on. It is not for use in a production environment. To use z/OSMF in a production environment, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
 
 1. [Introduction](#introduction)
 2. [Assumptions](#assumptions)
@@ -11,18 +11,18 @@ This section provides information about requirements for z/OSMF Lite configurati
     2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-zosmf-v2r3-and-later)
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
-4. [Creating a z/OSMF nucleus on your system](#creating-a-zosmf-nucleus-on-your-system)
+4. [Creating a z/OSMF nucleus on your system](#creating-a-z-osmf-nucleus-on-your-system)
     1. [Running job IZUNUSEC to create security](#running-job-izunusec-to-create-security)
-    2. [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
+    2. [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z-osmf-user-file-system)
     3. [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
-    4. [Starting the z/OSMF server](#starting-the-zosmf-server)
-    5. [Accessing the z/OSMF Welcome page](#accessing-the-zosmf-welcome-page)
-    6. [Mounting the z/OSMF user file system at IPL time](#mounting-the-zosmf-user-file-system-at-ipl-time)
+    4. [Starting the z/OSMF server](#starting-the-z-osmf-server)
+    5. [Accessing the z/OSMF Welcome page](#accessing-the-z-osmf-welcome-page)
+    6. [Mounting the z/OSMF user file system at IPL time](#mounting-the-z-osmf-user-file-system-at-ipl-time)
 5. [Adding the required REST services](#adding-the-required-rest-services)
-    1. [Enabling the z/OSMF JOB REST services](#enabling-the-zosmf-job-rest-services)
+    1. [Enabling the z/OSMF JOB REST services](#enabling-the-z-osmf-job-rest-services)
     2. [Enabling the TSO REST services](#enabling-the-tso-rest-services)
-    3. [Enabling the z/OSMF data set and file REST services](#enabling-the-zosmf-data-set-and-file-rest-services)
-    4. [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-zosmf-workflow-rest-services-and-workflows-task-ui)
+    3. [Enabling the z/OSMF data set and file REST services](#enabling-the-z-osmf-data-set-and-file-rest-services)
+    4. [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-z-osmf-workflow-rest-services-and-workflows-task-ui)
 6. [Successful](#successful)
 7. [Troubleshooting problems](#troubleshooting-problems)
     1. [Common problems and scenarios](#common-problems-and-scenarios)
@@ -30,7 +30,7 @@ This section provides information about requirements for z/OSMF Lite configurati
 
 - [Appendix A. Creating an IZUPRMxx parmlib member](#appendix-a-creating-an-izuprmxx-parmlib-member)
 - [Appendix B. Modifying IZUSVR1 settings](#appendix-b-modifying-izusvr1-settings)
-- [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-zosmf)
+- [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-z-osmf)
 
 ## Introduction
 IBM® z/OS® Management Facility (z/OSMF) provides extensive system management
@@ -537,8 +537,8 @@ The Zowe framework requires that you enable the z/OSMF data set and file REST se
 #### Before you begin
 
 1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. 
-
-Issue command `D OMVS,O` to see the current value of IPCMSGQBYTES, if it is not large enough, use the `SETOMVS` command to set a large value. To set this value dynamically, you can enter the following operator command:
+    
+    Issue command `D OMVS,O` to see the current value of IPCMSGQBYTES, if it is not large enough, use the `SETOMVS` command to set a large value. To set this value dynamically, you can enter the following operator command:
 
     `SETOMVS IPCMSGQBYTES=20971520`
 
