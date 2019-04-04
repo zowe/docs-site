@@ -315,7 +315,7 @@ module.exports = {
       disableHashing: true,
      deferSurvey:true,
     };`],
-    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 220000);`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
   ],
   themeConfig: {
     docsDir: 'docs',
