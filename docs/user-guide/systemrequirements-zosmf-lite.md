@@ -537,8 +537,8 @@ The Zowe framework requires that you enable the z/OSMF data set and file REST se
 #### Before you begin
 
 1.  Ensure that the message queue size is set to a large enough value. It is recommended that you specify an IPCMSGQBYTES value of at least 20971520 (20M) in BPXPRMxx. 
-
-Issue command `D OMVS,O` to see the current value of IPCMSGQBYTES, if it is not large enough, use the `SETOMVS` command to set a large value. To set this value dynamically, you can enter the following operator command:
+    
+    Issue command `D OMVS,O` to see the current value of IPCMSGQBYTES, if it is not large enough, use the `SETOMVS` command to set a large value. To set this value dynamically, you can enter the following operator command:
 
     `SETOMVS IPCMSGQBYTES=20971520`
 
