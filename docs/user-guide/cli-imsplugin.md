@@ -156,12 +156,14 @@ The plug-in adds the following commands to Zowe CLI:
   - [Starting IMS resources](#starting-ims-resources)
   - [Stopping IMS resources](#stopping-ims-resources)
   - [Querying IMS resources](#querying-ims-resources)
+  - [Updating IMS resources](#updating-ims-resources)
+  
 
 **Note:** The examples in this section assume that you define your connection details using profiles or environment variables. Alternatively, you can define your connection details with options directly on the command line. For more information, see [Define Zowe CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details).
 
 ### Starting IMS resources
 
-The start command lets you start an IMS region, transaction, or application program and make IMS resources available for reference and use. The command submits a Start TRAN or Start PRG command in IMS and returns the output. To display a list of possible objects and options, issue the following command:
+Start a region, application program, or transaction and make IMS resources available for reference and use. The command submits a START REGION, UPDATE PGM, or UPDATE TRAN IMS command and returns the output. To display a list of objects and options, issue the following command:
 
 ```
 zowe ims start -h
@@ -177,7 +179,7 @@ zowe ims start transaction TRN1
 
 ### Stopping IMS resources
 
-The stop command lets you stop a running IMS region, transaction, or application program. The command submits a Stop Region command in IMS and returns the output. To display a list of objects and options, issue the following command:
+Stops a running region, application program, or transaction. The command submits a STOP REGION, UPDATE PGM, or UPDATE TRAN IMS command and returns the output. To display a list of objects and options, issue the following command:
 
 ```
 zowe ims stop -h
@@ -193,7 +195,7 @@ zowe ims stop program PGM123
 
 ### Querying IMS resources
 
-The query command returns a list of programs and transactions in an IMSplex. The query returns information such as class, status, queue count, and more. This command submits a Query PGM or Query TRANS command in IMS and returns the output. To display a list of objects and options, issue the following command:
+Query application programs, transactions, and regions across an IMSPlex to return information such as class, status, queue count, and more. The command submits an IMS QUERY PGM, DIS ACT, or QUERY TRANS command and returns the output. To display a list of objects and options, issue the following command:
 
 ```
 zowe ims query -h
@@ -205,4 +207,20 @@ Query transaction information for transactions named `TRAN1` and `TRAN2`:
 
 ```
 zowe ims query transaction TRAN1 TRAN2
+```
+
+### Updating IMS resources
+
+Query application programs, transactions, and regions across an IMSPlex to return information such as class, status, queue count, and more. The command submits an IMS QUERY PGM, DIS ACT, or QUERY TRANS command and returns the output. To display a list of objects and options, issue the following command:
+
+```
+zowe ims update -h
+```
+
+**Example:**
+
+Unlock all programs that begin with `PGM` to allow scheduling:
+
+```
+zowe ims update program PGM* --lock OFF
 ```
