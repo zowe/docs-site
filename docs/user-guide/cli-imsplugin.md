@@ -1,5 +1,6 @@
 # Zowe CLI Plug-in for IBM IMS
-The Zowe CLI Plug-in for IBM® Information Management System (IMS)™ lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims) in the IBM  Knowledge Center.
+The CA Brightside Plug-in for IBM® Information Management System (IMS)™ lets you extend CA Brightside to interact with IMS resources (regions, programs and transactions). You can use the plug-in to start, stop, and query regions and start, stop, query, and update programs and transactions. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims) in the IBM  Knowledge Center.
+
 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
@@ -85,7 +86,7 @@ If you downloaded the Zowe CLI `zowe-cli-bundle.zip` package, complete the follo
 You can set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
 
 ```
-zowe profiles create ims-profile <profileName> --host <hostname> --port <portnumber> --ims-connect-host <hostname> --ims-connect-port <portnumber> --user <username> --password <password>
+zowe profiles create ims-profile <profileName> --host <hostname> --port <portnumber> --ims-connect-host <ims-hostname> --ims-connect-port <ims-portnumber> --user <username> --password <password>
 ```
 
 *Where:*
@@ -94,31 +95,31 @@ zowe profiles create ims-profile <profileName> --host <hostname> --port <portnum
 
     Specifies the name of the new ims profile. You can load this profile by using the name on commands that support the --ims-profile option.
 
-- **--host | --host**
+- **--host | -H**
 
     Specifies the IMS Command Services server host name.
 
-- **--port  | -p**
+- **--port  | -P**
 
     Specifies the IMS Command Services server port. 
 
-- **--ims-connect-host**
+- **--ims-connect-host | -ich**
 
     Specifies the hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.
 
-- **--ims-connect-port**
+- **--ims-connect-port | -icp**
 
     Specifies the port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.
 
-- **--plex**
+- **--plex | -x**
 
     Specifies the name of the IMSplex.
 
-- **--user  | --user**
+- **--user  | -u**
 
     Specifies the username for logging on to the system specified in hostname.
 
-- **--pass | --pass**
+- **--password | --pass**
     
     Specifies the password for logging on to the system specified in hostname.
 
