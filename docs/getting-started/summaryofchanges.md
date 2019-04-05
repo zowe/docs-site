@@ -13,21 +13,6 @@ Version 1.1.0 contains the following changes since the last 1.0.x version.
 ### What's new in Zowe system requirements
 z/OSMF Lite is now available for non-production use such as development, proof-of-concept, demo and so on. It simplifies the setup of z/OSMF with only a minimal amount of z/OS customization, but provides key functions that are required. For more information, see [Configuring z/OSMF Lite (for non-production use)](../user-guide/systemrequirements-zosmf-lite.md).
 
-### What's new in API Mediation Layer
-- Prevented the Swagger UI container on the service detail page from spilling.
-- Added a check for the availability of the z/OSMF URL contained in the configuration. z/OSMF is used to verify users logging into the Catalog.    
-- Made _PageNotFound_ error visible only in debug log level. 
-- Fixed reporting that the Catalog is down when it is started before the Discovery Service.
-- Removed the _bean overriding error_ message from the log. 
-- Fixed the state manipulation mechanism in the Catalog. As a result, no restoring of the application state is performed.
-- Fixed the Catalog routing mechanism for users who are already logged in so that users are not prompted to log in again. 
-- A timeout has been set for the Catalog login when z/OSMF is not responding. 
-- Tile change for the Catalog has been propagated to the UI.
-- Fixed a problem with an incorrect service homepage link in the Catalog. 
-- The Login button has been disabled when the login request is in progress.
-- Documented the procedure for changing the log level of individual code components in _Troubleshooting API ML_.
-- Documented a known issue when the API ML stops accepting connections after z/OS TCP/IP is recycled in the _Troubleshooting API ML_.
-
 ### What's new in the Zowe App Server
 - Made the following user experience improvements:
   - Enabled the Desktop to react to session expiration information from the Zowe Application Server. If a user is active the Desktop renews their session before it expires. If a user appears inactive they are prompted  and can click to renew the session. If they don't click, they are logged out with a session expired message.
