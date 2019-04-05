@@ -44,3 +44,8 @@ This release of Zowe CLI contains the following new and improved capabilities:
 This release of the Plug-in for IBM DB2 Database contains the following new and improved capabilities:
 - Implemented command line precedence, which lets users issue commands without the need of a DB2 profile.
 - The DB2 plug-in can now be influenced by the `ZOWE_OPT_` environment variables.
+
+### What's new in API Mediation Layer
+- Made the following user experience improvements:
+  - Documented the procedure for changing the log level of individual code components in _Troubleshooting API ML_.
+  - Documented a known issue when the API ML stops accepting connections after z/OS TCP/IP is recycled in the _Troubleshooting API ML_.
