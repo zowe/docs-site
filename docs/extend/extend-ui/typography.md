@@ -62,7 +62,7 @@ To embed your selected fonts into a web page, copy this code into the `<head>` o
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,500" rel="stylesheet">
   ```
 
-- Import:
+## Import font
 
   ```
   <style>
