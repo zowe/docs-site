@@ -27,4 +27,5 @@ A universal variable can also have multiple associated roles when the color is c
 - Large Text (3:1): at least 24px / 19px semi-bold
 
 WCAG guidelines: https://www.w3.org/WAI/standards-guidelines/wcag/
+
 Contrast Checker Tool: https://webaim.org/resources/contrastchecker/
