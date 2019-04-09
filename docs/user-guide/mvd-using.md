@@ -1,6 +1,6 @@
 # Using the Zowe Desktop
 
-You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Exending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
+You can use the Zowe Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Extending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
 
@@ -82,7 +82,7 @@ This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zow
 The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
 
 ### API Catalog
-The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](./api-mediation/api-mediation-overview.md).
+The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
 With the Zowe Editor you can create and edit files on the system that Zowe serves.

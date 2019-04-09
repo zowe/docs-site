@@ -96,6 +96,7 @@ services:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
           swaggerUrl: http://localhost:8080/v2/swagger.json
+          documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
 
 catalogUiTiles:
@@ -237,12 +238,12 @@ The following list describes the configuration parameters:
 
     Specifies the API identifier that is registered in the API Mediation Layer installation.
     The API ID uniquely identifies the API in the API Mediation Layer.
-    The same API can be provided by multiple service. The API ID can be used
-    to locate same APIs that are provided by different services.
+    The same API can be provided by multiple services. The API ID can be used
+    to locate the same APIs that are provided by different services.
     The creator of the API defines this ID.
-    The API ID needs to be string up to 64 characters
-    that is using lowercase alphanumeric characters and a dot: `.`.
-    It is recommended to use your organization as the prefix.
+    The API ID needs to be a string of up to 64 characters
+    that uses lowercase alphanumeric characters and a dot: `.`.
+    We recommend that you use your organization as the prefix.
 
     **Examples:**
 
@@ -252,13 +253,12 @@ The following list describes the configuration parameters:
 
 * **apiInfo.gatewayUrl**
 
-    The base path at the API gateway where the API is available. It should be
-    the same as a _gatewayUrl_ value in the _routes_ sections.
+    The base path at the API gateway where the API is available. Ensure that this path is
+    the same as the _gatewayUrl_ value in the _routes_ sections.
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document
-    that provides the API documentation for this API is available.
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
 
 * **apiInfo.documentationUrl**
 
@@ -367,12 +367,11 @@ After you define and validate the service in YAML format, you are ready to add y
 
 The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
-        ```
-        Scanning directory with static services definition: config/local/api-defs
-        Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
-        Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
-        ```
-
+```
+Scanning directory with static services definition: config/local/api-defs
+Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
+Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
+```
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
@@ -388,9 +387,9 @@ The following procedure enables you to refresh the API definitions after you cha
 
     This example uses the [HTTPie command-line HTTP client](https://httpie.org):
 
-       ```
-       http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST https://localhost:10011/discovery/api/v1/staticApi
-       ```
+    ```
+    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
+    ```
 
 2. Check if your updated definition is effective.
 

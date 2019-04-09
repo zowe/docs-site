@@ -6,15 +6,15 @@ Follow the instructions in this topic to obtain the installation file for z/OS r
 
 1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
 2. [Prerequisites](#prerequisites)
-3. [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos)
-    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-installsh-works)   
-4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)        
+3. [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os)
+    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-install-sh-works)   
+4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-z-os)        
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
     - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
-5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
+5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-z-os)
     - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
     - [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
-6. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+6. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-z-os)
 7. [Verifying installation](#verifying-installation)        
 8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
@@ -58,7 +58,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
       **Follow these steps:**
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://projectgiza.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
+      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://zowe.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
       2. Import the public key with the `gpg --import KEYS` command.
       3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
       4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
@@ -170,13 +170,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     - z/OS desktop apps has three ports for each of its explorer apps
 
-    - The zlux-server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
+    - The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
 
     **Example:**
 
     ```yaml
     install:
-     rootDir=/var/zowe/1.0.0
+     rootDir=/var/zowe/1.1.0
 
     api-mediation:
       catalogPort=7552
@@ -198,6 +198,10 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       jobsExplorerPort=8546
       mvsExplorerPort=8548
       ussExplorerPort=8550
+
+    zlux-server:
+     httpsPort=8544
+     zssPort=8542
     ```
 
     **Notes:**
@@ -348,7 +352,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
-     cd /var/zowe/1.0.0
+     cd /var/zowe/1.1.0
      /zowe/builds/install/zowe-config-stc.sh
      ```
     Alternatively, you can issue the commands manually:
@@ -414,13 +418,14 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     Each time you run the install script, it retrieves environment variable settings in the following ways. 
 	  - When the `.zowe-profile` file exists in the home diretory, the install script uses the values in this file to set the environment variables. 
-	  - When the `.zowe-profile` file does not exist, the install script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables.
+	  - When the `.zowe-profile` file does not exist, the install script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables. The install script does not update or execute the `.profile` file.
 
     You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
 
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
-
-    If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     **Notes**: 
+     - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
+     - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `zowe_profile` file in the current user's home directory.  
 
 2. Expanding the PAX files
 
@@ -634,6 +639,11 @@ The manual installation consists of the following steps.
         PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
+        - To check whether the permission has been successfully granted, issue the following command:
+        ```
+        RLIST FACILITY ZWES.IS AUTHUSER
+        ```
+        This shows the user IDs who have access to the ZWES.IS class, which should include IZUSVR with READ access.
 
     - If you use CA ACF2, issue the following commands:
 
@@ -690,6 +700,36 @@ The manual installation consists of the following steps.
     - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
     - CCA and/or PKCS #11 coprocessor for random number generation.
     - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2 if required.
+
+
+7. Security environment switching 
+
+    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+
+    - If you use RACF, complete the following steps:
+
+        - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+          ```
+          SETROPTS CLASSACT(FACILITY)             
+          SETROPTS RACLIST(FACILITY)                
+          ```
+        - Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
+          ```
+          RDEFINE FACILITY BPX.SERVER UACC(NONE)
+          RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+          ```             
+        - Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
+          ```
+          PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+          PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+          /* Activate these changes */
+          SETROPTS RACLIST(FACILITY) REFRESH      
+          ```
+        - To check whether permission has been successfully granted, issue the following commands:
+          ```
+          RLIST FACILITY BPX.SERVER AUTHUSER
+          RLIST FACILITY BPX.DAEMON AUTHUSER
+          ```
 
 ### Scripted install of the Zowe Cross Memory Server 
 
@@ -779,7 +819,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying z/OS Services installation](#verifying-z-os-services-installationn) 
+- [Verifying z/OS Services installation](#verifying-zos-services-installation) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation
@@ -794,7 +834,7 @@ where:
 - _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
 - _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
   
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.htm`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 ### Verifying z/OS Services installation
 
@@ -814,7 +854,7 @@ Use your preferred REST API client to review the value of the status variable of
 https://hostName:basePort/api/v1/apicatalog/application/state
 ```
 
-The `hostName` is set during install, and `basePort` is set as the `gatewayHttpsPort` parameter.
+The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
 
 **Example:**
 
@@ -829,5 +869,5 @@ The response `UP` confirms that API Mediation Layer is installed and is running 
 
 ## Looking for troubleshooting help?
 
-If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](../troubleshoot/troubleshootinstall.md) section for troubleshooting tips.
+If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for troubleshooting tips.
 

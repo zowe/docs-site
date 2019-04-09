@@ -19,7 +19,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Learn about onboarding your products. Developers can follow tutorials that teach how to build and extend Zowe components.</p>
   </div>
   <div class="feature">
-    <h2><a href="./troubleshoot/troubleshootinstall.html">Troubleshooting</a></h2>
+    <h2><a href="./troubleshoot/troubleshooting.html">Troubleshooting</a></h2>
     <p>Get troubleshooting tips and answers to your most frequently asked questions.</p>
   </div>
   <div class="feature">
@@ -34,8 +34,16 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ## Downloadable PDF Files
 
-You can download the documentation for the latest version of Zowe on this website in PDF format.
+### Zowe documentation
 
-| Version | PDF 
+You can download the Version 1.1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.1.0.
+
+| Version | Download 
 | --- | ---
-| V1.0.0 | [Zowe documentation](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.1.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+
+### Zowe overview deck
+
+A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
+
+[Download PDF](./Zowe_Overview.pdf)

@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.0.0'
+const CURRENT_ZOWE_VERSION = '1.1.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -25,6 +25,14 @@ const ALL_PAGES = [{
     text: 'Release notes',
     link: 'getting-started/summaryofchanges.md'
   },
+  {
+    text: 'Zowe CLI quick start',
+    link: 'getting-started/cli-getting-started.md'
+  },
+  {
+    text: 'Zowe CLI FAQs',
+    link: 'getting-started/freqaskques.md'
+  },
   ],
 },
 {
@@ -35,10 +43,13 @@ const ALL_PAGES = [{
     items: [
       'user-guide/installandconfig.md',
       'user-guide/systemrequirements.md',
+      'user-guide/install-nodejs-zos.md',
+      'user-guide/systemrequirements-zosmf.md',
+      'user-guide/systemrequirements-zosmf-lite.md',
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
       'user-guide/uninstall.md',
-    ]
+    ],
   },
   {
     text: 'Configuring Zowe',
@@ -76,7 +87,7 @@ const ALL_PAGES = [{
       items: [
         'extend/extend-apiml/api-mediation-onboard-overview.md',
         'extend/extend-apiml/api-mediation-security.md',
-        'extend/extend-apiml/api-mediation-onboard-a-sprint-boot-rest-api-service.md',
+        'extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md',
         'extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md',
@@ -121,7 +132,28 @@ const ALL_PAGES = [{
 {
   text: 'Troubleshooting',
   baseuri: '/troubleshoot/',
-  link: 'troubleshoot/troubleshootinstall.md'
+  items: [
+    {
+      text: 'Overview',
+      link: 'troubleshoot/troubleshooting.md'
+    },
+    {
+      text: 'API Mediation Layer',
+      link: 'troubleshoot/troubleshoot-apiml.md'
+    },
+    {
+      text: 'Zowe Application Framework',
+      link: 'troubleshoot/troubleshoot-app-framework.md'
+    },
+    {
+      text: 'Zowe z/OS Services',
+      link: 'troubleshoot/troubleshoot-zos-services.md'
+    },
+    {
+      text: 'Zowe CLI',
+      link: 'troubleshoot/troubleshoot-cli.md'
+    }
+    ]
 },
 {
   text: 'Contributing',
@@ -264,7 +296,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.0.x',
+  description: 'Version 1.1.x',
   ga: 'UA-123892882-1',
   head: [
     [
@@ -273,7 +305,18 @@ module.exports = {
         name: 'google-site-verification',
         content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
       }
-    ]
+    ],
+    // embed NPS Survey code
+    ['script', {
+      src: 'https://nps.mybluemix.net/survey/nps-survey.js'
+    }],
+    ['script', { }, `window.ibmNps = {
+      offeringId: "ece49543-bfcc-4d5c-a9c2-64b23b1366c3",
+      userId: "",
+      disableHashing: true,
+     deferSurvey:true,
+    };`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
   ],
   themeConfig: {
     docsDir: 'docs',

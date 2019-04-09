@@ -10,10 +10,10 @@ the use of third-party plug-ins.
 You can install the following plug-ins:
   - **Zowe CLI Plug-in for IBM CICS**
 
-    Use `@brightside/cics@latest` in your command syntax to install, update, and validate the plug-in. 
+    Use `@brightside/cics@lts-incremental` in your command syntax to install, update, and validate the plug-in. 
   - **Zowe CLI Plug-in for IBM Db2 Database**  
   
-    Use `@brightside/db2@latest` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+    Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
 
 ## Setting the registry
 
@@ -47,10 +47,10 @@ zowe plugins install [plugin...] [--registry <registry>]
     specifies the prefix that is stored in npm save-prefix. For more
     information, see [npm save prefix](https://docs.npmjs.com/misc/config#save-prefix). For more
     information about npm semantic versioning, see [npm semver](https://docs.npmjs.com/misc/semver). Optionally, you can
-    specify a specific version of a plug-in to install. For example, `zowe plugin install pluginName@^1.0.0`.
+    specify a specific version of a plug-in to install. For example, `zowe plugins install pluginName@^1.0.0`.
 
     **Tip:** You can install multiple plug-ins with one command. For
-    example, issue `zowe plugin install plugin1 plugin2 plugin3`
+    example, issue `zowe plugins install plugin1 plugin2 plugin3`
 
   - **`[--registry <registry>]`**  
     (Optional) Specifies a registry URL from which to install a plug-in
@@ -70,7 +70,7 @@ zowe plugins install [plugin...] [--registry <registry>]
     plug-in that is named "my-plugin" from a specified registry:
 
     ```
-    zowe plugins install @brightside/my-plugin@latest
+    zowe plugins install @brightside/my-plugin@lts-incremental
     ```
 
   - The following example illustrates the syntax to use to install a
@@ -144,7 +144,7 @@ zowe plugins update [plugin...] [--registry <registry>]
     installed plug-in to the latest version:
 
     ```
-    zowe plugins update @brightside/my-plugin@latest
+    zowe plugins update @brightside/my-plugin@lts-incremental
     ```
 
   - The following example illustrates the syntax to use to update a

@@ -25,7 +25,6 @@ Follow these optional steps to configure the default connection to open for the 
       type: <”telnet” or “ssh”>
     }
 ```    
-## Configuring the Zowe Application Server and ZSS
 
 ### Configuration file
 The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
@@ -143,6 +142,155 @@ When you run the Zowe Application Server, specify the following flags to declare
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
+
+### Configuring ZSS for HTTPS
+To secure ZSS, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) on communication with ZSS.
+
+Before you begin, you must have a basic knowledge of RACF and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+
+To configure ZSS for HTTPS, you create a certificate authority (CA) certificate and a personal certificate, and add the personal certificate to a key ring. Then you define an AT-TLS rule. Then you copy the certificate to the Zowe App Server and specify values in the Zowe App Server configuration file.
+
+By default, the Zowe App Server is the only client that communicates with the ZSS server. In these steps, you configure HTTPS between them by creating a CA certificate and using it to sign a personal certificate. If you want to configure other clients to communicate with ZSS, best practice is to sign their certificates using a recognized certificate authority, such as Symantec. For more information, see documentation for that client.
+
+**Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization.
+
+#### Creating certificates and a key ring
+Use the IBM Resource Access Control Facility (RACF) to create a CA certificate and a personal certificate, and sign the personal certificate with the CA certificate. Then create a key ring with the personal certificate attached.
+
+1. Enter the following command to generate a RACF (CA) certificate:
+  ```
+  RACDCERT CERTAUTH GENCERT +                          
+    SUBJECTSDN(CN('[common_name]') +                        
+    OU('[organizational_unit]') +                                       
+    O('[organization_name]') +                                         
+    L('[locality]') SP('[state_or_province]') C('[country]')) +           
+    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) + 
+    WITHLABEL('[ca_label]') +                            
+    NOTAFTER(DATE([xxxx/xx/xx])) +                       
+    SIZE(2048)
+  ```
+  **Note:** `[common_name]` must be the ZSS server host name.
+
+2. Enter the follow command to generate a RACF personal certificate signed by the CA certificate:
+  ```
+  RACDCERT ID('[cert_owner]') GENCERT +                          
+    SUBJECTSDN(CN('[common_name]') +                        
+    OU('[organizational_unit]') +                                       
+    O('[organization_name]') +                                         
+    L('[locality]') SP('[state_or_province]') C('[country]')) +           
+    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) + 
+    WITHLABEL('[personal_label]') +                            
+    NOTAFTER(DATE([xxxx/xx/xx])) +                       
+    SIZE(2048) +
+    SIGNWITH(CERTAUTH LABEL('[ca_label]'))
+  ```
+
+3. Enter the following command to create a RACF key ring and connect the personal certificate to the key ring:
+  ```
+  RACDCERT ID([cert_owner]) ADDRING([ring_name])                
+  RACDCERT CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name])) 
+  ```
+
+4. Enter the following command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
+  ```
+  SETROPTS RACLIST(DIGTRING,DIGTCERT) REFRESH
+  ```
+
+5. Enter the following command to verify your changes:
+  ```
+  RACDCERT LISTRING([ring_name]) ID([cert_owner])
+  ```
+
+6. Enter the following command to export the RACF CA certificate to a dataset:
+  ```
+  RACDCERT EXPORT(LABEL('[ca_label]')) CERTAUTH DSN('[output_dataset_name]') FORMAT(CERTB64)
+  ```
+
+#### Defining the AT-TLS rule
+To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+
+```
+TTLSRule                          ATTLS1~ZSS
+{
+  LocalAddr                       All
+  RemoteAddr                      All
+  LocalPortRange                  [zss_port]
+  Jobname                         *
+  Userid                          *
+  Direction                       Inbound
+  Priority                        255
+  TTLSGroupActionRef              gAct1~ZSS
+  TTLSEnvironmentActionRef        eAct1~ZSS
+  TTLSConnectionActionRef         cAct1~ZSS
+}  
+TTLSGroupAction                   gAct1~ZSS
+{ 
+  TTLSEnabled                     On
+  Trace                           1
+} 
+TTLSEnvironmentAction             eAct1~ZSS
+{ 
+  HandshakeRole                   Server
+  EnvironmentUserInstance         0
+  TTLSKeyringParmsRef             key~ZSS
+  Trace                           1
+}  
+TTLSConnectionAction              cAct1~ZSS
+{ 
+  HandshakeRole                   Server
+  TTLSCipherParmsRef              cipherZSS
+  TTLSConnectionAdvancedParmsRef  cAdv1~ZSS
+  Trace                           1
+}  
+TTLSConnectionAdvancedParms       cAdv1~ZSS
+{
+  SSLv3                           Off
+  TLSv1                           Off
+  TLSv1.1                         Off
+  TLSv1.2                         On
+  CertificateLabel                [personal_label]
+}  
+TTLSKeyringParms                  key~ZSS
+{ 
+  Keyring                         [ring_name]
+} 
+TTLSCipherParms                   cipher~ZSS                          
+{                                                                       
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 
+}       
+```
+
+#### Configuring the Zowe App Server for HTTPS communication with ZSS
+Copy the CA certificate to the ZSS server. Then in the Zowe App Server configuration file, specify the location of the certificate, and add a parameter to specify that ZSS uses AT-TLS.
+
+1. Enter the following command to copy the CA certificate to the correct location in UNIX System Services (USS):
+
+```
+cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfig/[ca_cert]'
+```
+2. In the `zlux-app-server/deploy/instance/ZLUX/serverConfig` directory, open the `zluxserver.json` file.
+3. In the **node.https.certificateAuthorities** object, add the CA certificate file path, for example:
+```
+"certificateAuthorities": ["../deploy/instance/ZLUX/serverConfig/[ca_cert]"]
+```
+4. In the **agent.http** object add the key-value pair `"attls": true`, for example:
+```
+"agent": {
+  "host": "localhost",
+  "http": {
+    "ipAddresses": ["127.0.0.1"],
+    "port": 8542,
+    "attls": true
+  }
+}
+```
 
 ### Enabling tracing
 
