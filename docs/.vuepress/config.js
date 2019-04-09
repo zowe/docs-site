@@ -126,6 +126,17 @@ const ALL_PAGES = [{
         'extend/extend-desktop/iframe-sample.md',
         'extend/extend-desktop/angular-sample.md',
       ]
+    },
+    {
+     text: 'UI Guidelines',
+      items: [
+        'extend/extend-ui/ui.md',
+        'extend/extend-ui/colors.md',
+        'extend/extend-ui/typography.md',
+        'extend/extend-ui/grid.md',
+        'extend/extend-ui/icon.md',
+        'extend/extend-ui/appicon.md',
+        ]
     }
   ]
 },
