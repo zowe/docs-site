@@ -326,7 +326,7 @@ module.exports = {
     rootBaseUrl: ROOT_BASE_URL,
     repo: `https://github.com/zowe${ROOT_BASE_URL}`,
     editLinks: true,
-    editLinkText: 'Propose content change in GitHub.',
+    editLinkText: 'Propose content change in GitHub',
     lastUpdated: 'Last Updated', // string | boolean
     sidebarDepth: 2,
     algolia: {
@@ -341,6 +341,10 @@ module.exports = {
       ...navbarLinks,
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
+      {
+        text: 'Feedback',
+        link: 'https://forms.gle/Ztu9AjgV6HRr1kEs9'
+      },
       {
         text: 'Zowe.org',
         link: 'https://zowe.org',
