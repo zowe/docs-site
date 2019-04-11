@@ -343,6 +343,7 @@ module.exports = {
       { tags: ['versions'] },
       {
         text: 'Feedback',
+        canHideFirst: true,
         link: 'https://forms.gle/Ztu9AjgV6HRr1kEs9'
       },
       {
