@@ -30,6 +30,13 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 2. Locate the application you want to pin.
 3. Right-click the on the application icon and select **Pin to taskbar**.
 
+### Switching the Zowe Desktop language
+Use the Zowe Desktop Settings to change the desktop language. After you restart Zowe, menus and other desktop text display in the specified language. The specified language also displays in any applications with translation files for that language.
+
+1. Click the Settings icon in the lower right corner.
+2. Click **Languages**.
+3. In the **Languages** dialog, click a language, and then click **Apply**.
+4. When you are prompted, restart the Zowe Desktop.
 
 ## Using Explorers within the Zowe Desktop
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
