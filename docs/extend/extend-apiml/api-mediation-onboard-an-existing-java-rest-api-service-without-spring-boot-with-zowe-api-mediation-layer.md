@@ -495,6 +495,7 @@ All API services require a certificate that is trusted by API Mediation Layer in
 
 2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
+    ```
         ssl:
             protocol: TLSv1.2
             ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
@@ -506,7 +507,11 @@ All API services require a certificate that is trusted by API Mediation Layer in
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
-
+     eureka:
+         instance:
+             nonSecurePortEnabled: false
+             securePortEnabled: true
+    ```
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
 ## Run your service
