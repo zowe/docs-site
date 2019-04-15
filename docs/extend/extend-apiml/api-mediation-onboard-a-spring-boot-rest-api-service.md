@@ -480,6 +480,10 @@ To register with the API Mediation Layer, a service is required to have a certif
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
+    eureka:
+        instance:
+            nonSecurePortEnabled: false
+            securePortEnabled: true         
      ```
 
 **Note:** You need to define both keystore and truststore even if your server is not using HTTPS port.
