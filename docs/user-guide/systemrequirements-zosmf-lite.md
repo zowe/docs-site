@@ -8,7 +8,7 @@ This section provides information about requirements for z/OSMF Lite configurati
 2. [Assumptions](#assumptions)
 3. [Software Requirements](#software-requirements)
     1. [Minimum Java level](#minimum-java-level)
-    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-zosmf-v2r3-and-later)
+    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-z-osmf-v2r3-and-later)
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
 4. [Creating a z/OSMF nucleus on your system](#creating-a-z-osmf-nucleus-on-your-system)
@@ -78,7 +78,7 @@ Information about installing these procedures is provided in [Copying the IBM pr
 Setting up z/OSMF Lite requires that you have access to a z/OS V2R2 system or later. Also, your z/OS system must meet the following minimum software requirements:
 
 - [Minimum Java level](#minimum-java-level)
-- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-zosmf-v2r3-and-later)
+- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-z-osmf-v2r3-and-later)
 - [System settings](#system-settings)
 - [Web browser](#web-browser)
 ### Minimum Java level
@@ -128,11 +128,11 @@ To check your web browser’s level, click **About** in the web browser.
 The following system changes are described in this chapter:
 
 - [Running job IZUNUSEC to create security](#running-job-izunusec-to-create-security)
-- [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
+- [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z-osmf-user-file-system)
 - [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
-- [Starting the z/OSMF server](#starting-the-zosmf-server)
-- [Accessing the z/OSMF Welcome page](#accessing-the-zosmf-welcome-page)
-- [Mounting the z/OSMF user file system at IPL time](#mounting-the-zosmf-user-file-system-at-ipl-time)
+- [Starting the z/OSMF server](#starting-the-z-osmf-server)
+- [Accessing the z/OSMF Welcome page](#accessing-the-z-osmf-welcome-page)
+- [Mounting the z/OSMF user file system at IPL time](#mounting-the-z-osmf-user-file-system-at-ipl-time)
 
 The sample jobs that you might use are available for download:
 
