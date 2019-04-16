@@ -33,7 +33,9 @@ The affect of the order is that if you omit an argument/option from the command 
 
 ### Creating Zowe CLI profiles
 
-Profiles are a Zowe CLI function that lets you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems.
+Profiles are a Zowe CLI function that lets you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. 
+
+Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
 
 #### Displaying profiles help
 To learn about the options available for creating zosmf profiles, issue the following command. Refer to the available options in the help text to define your profile:
@@ -184,11 +186,11 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
 
-**Tip:** We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
+**Tip:** Append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
 
 **Without a Profile**
 
-Verify that your CLI can communicate with z/OSMF by issuing the following command:
+Verify that your CLI can communicate with z/OSMF:
 
 ```
 zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
@@ -196,7 +198,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 **Default profile**
 
-Verify that you can use your default profile to communicate with z/OSMF by issuing the following command:
+After you [create a profile](#creating-zowe-cli-profiles), veify that your default profile can communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -204,7 +206,7 @@ zowe zosmf check status
 
 **Specific profile**
 
-Verify that you can use a specific profile to communicate with z/OSMF by issuing the following command: 
+Verify that you can use a specific profile to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
