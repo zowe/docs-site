@@ -3,42 +3,11 @@ This section explains how to define and verify your connection to the mainframe 
 
 **Note** The configuration for the CLI is stored on your computer in a directory such as C:\Users\user01\.zowe. The configuration includes log files, your profile information, and CLI plug-ins that are installed. When you troubleshoot an issue with the CLI, the log files in the imperative and zowe folders contain valuable information.
 
-- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf) 
 - [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
+- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf) 
 - [Setting CLI log levels](#setting-zowe-cli-log-levels)
 - [Setting the CLI home directory](#setting-the-zowe-cli-home-directory)
 
-## Testing Zowe CLI connection to z/OSMF
-
-You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
-
-**Tip:** We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
-
-**Without a Profile**
-
-Verify that your CLI can communicate with z/OSMF by issuing the following command:
-
-```
-zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
-```
-
-**Default profile**
-
-Verify that you can use your default profile to communicate with z/OSMF by issuing the following command:
-
-```
-zowe zosmf check status
-```
-
-**Specific profile**
-
-Verify that you can use a specific profile to communicate with z/OSMF by issuing the following command: 
-
-```
-zowe zosmf check status --zosmf-profile <profile_name>
-```
-
-The commands return a success or failure message and display information about your z/OSMF server. For example, the z/OSMF version number and a list of installed plug-ins. Report any failure to your systems administrator and use the information for diagnostic purposes.
 
 ## Defining Zowe CLI connection details
 
@@ -210,6 +179,39 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 **More Information:**
 - [API Mediation Layer](../getting-started/overview.md)
 - [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
+
+## Testing Zowe CLI connection to z/OSMF
+
+You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
+
+**Tip:** We recommend that you append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
+
+**Without a Profile**
+
+Verify that your CLI can communicate with z/OSMF by issuing the following command:
+
+```
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
+```
+
+**Default profile**
+
+Verify that you can use your default profile to communicate with z/OSMF by issuing the following command:
+
+```
+zowe zosmf check status
+```
+
+**Specific profile**
+
+Verify that you can use a specific profile to communicate with z/OSMF by issuing the following command: 
+
+```
+zowe zosmf check status --zosmf-profile <profile_name>
+```
+
+The commands return a success or failure message and display information about your z/OSMF server. For example, the z/OSMF version number and a list of installed plug-ins. Report any failure to your systems administrator and use the information for diagnostic purposes.
+
 
 ## Setting Zowe CLI log levels
 
