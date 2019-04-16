@@ -2,11 +2,24 @@
 
 Zowe CLI is updated continuously. You can update Zowe CLI to the latest version using online registry method or the local package method. However, you can only update Zowe CLI using the method that you used to install Zowe CLI.
 
+- [(Optional) Identify the currently installed version of Zowe CLI](#optional-identify-the-currently-installed-version-of-zowe-cli)
+- [(Optional) Identify the currently installed versions of Zowe CLI plug-ins](#optional-identify-the-currently-installed-versions-of-zowe-cli-plug-ins)
+- [Update Zowe CLI from the online registry](#update-zowe-cli-from-the-online-registry)
+- [Update or revert Zowe CLI to a specific version](#update-or-revert-zowe-cli-to-a-specific-version)
+- [Update Zowe CLI from a local package](#update-zowe-cli-from-a-local-package)
+
 ## (Optional) Identify the currently installed version of Zowe CLI
 
-Issue the following command to identify the version of Zowe CLI that is currently installed on your computer:
+Issue the following command:
 ```
 zowe -V 
+```
+
+## (Optional) Identify the currently installed versions of Zowe CLI plug-ins
+
+Issue the following command:
+```
+zowe plugins list
 ```
 
 ## Update Zowe CLI from the online registry
@@ -19,13 +32,20 @@ You can update Zowe CLI to the latest version from the online registry on Window
 
 1. Issue the following command to update Zowe CLI to the latest version:
    ```
-   npm install -g @zowe/cli
+   npm install -g @brightside/core@lts-incremental
    ```
-2. Reinstall the plug-ins, and update existing plug-ins, using the following command:
+2. Reinstall the plug-ins and update existing plug-ins using the following command:
    ```
-   bright plugins install @zowe/db2 @zowe/cics
+   zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
    ```
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.
+
+## Update or revert Zowe CLI to a specific version
+
+Optionally, you can update Zowe CLI (or revert) to a specific version. The following example illustrates the syntax to update Zowe CLI to version 1.0.2:
+```
+npm install -g @brightside/core@1.0.2
+```
 
 ## Update Zowe CLI from a local package
 
