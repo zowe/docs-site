@@ -47,3 +47,7 @@ You can download the Version 1.1.x Zowe documentation on this website in PDF for
 A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
 
 [Download PDF](./Zowe_Overview.pdf)
+
+### Zowe CLI command reference guide 
+
+View the [CLI Command Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
