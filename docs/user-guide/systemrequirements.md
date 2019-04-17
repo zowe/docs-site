@@ -6,12 +6,10 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 - [Zowe Desktop requirements](#zowe-desktop-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
 
-## z/OS host requirements
-
-The following software is required for all Zowe components:
+## Common system requirements
 
 - z/OS Version 2.2 or later.
-- IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3.
+- IBM z/OS Management Facility (z/OSMF) Version 2.2 or Version 2.3
 
   z/OSMF is a prerequisite for the Zowe microservices, Zowe Desktop applications, and Zowe CLI. z/OSMF must be installed and running before you use Zowe.
 
@@ -20,15 +18,14 @@ The following software is required for all Zowe components:
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
   :::
 
-- **(Not required for Zowe CLI)** Node.js Version 6.14.4.1 or later *on the z/OS host* where you install the Zowe Application Server. 
+## Zowe Application Framework requirements
+
+- Node.js Version 6.14.4.1 or later *on the z/OS host* where you install the Zowe Application Server
 
    To install Node.js on z/OS, follow the instructions in [Installing IBM SDK for Node.js - z-OS](install-nodejs-zos.md).
 
-- **(Not required for Zowe CLI)** IBM SDK for Java Technology Edition V8 or later
-
-## Zowe Desktop requirements
-
-- 833 MB of HFS file space.
+- IBM SDK for Java Technology Edition V8 or later
+- 833 MB of HFS file space
 
 - Supported browsers:
     -   Google Chrome V54 or later
@@ -38,25 +35,16 @@ The following software is required for all Zowe components:
 
 ## Zowe CLI requirements
 
-Install the following software on your computer:
+Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems.
 
-- [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+- [**Node.js V8.0 or later**](https://nodejs.org/en/download/) on your computer
 
     **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed. As a best practice, we recommend that you update Node.js regularly to the latest Long Term Support (LTS) version.
 
-- **Node Package Manager V5.0 or later**
+- **Node Package Manager V5.0 or later** on your computer.
 
     npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-### Supported platforms
-
-Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems.
-
-Zowe CLI integrates with z/OSMF running on IBM z/OS v2.2 or later.
-
-**Important!**
-
-- Oracle Linux 6 is not supported.
 
 ### Free disk space
 
