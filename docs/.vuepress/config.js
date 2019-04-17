@@ -48,6 +48,7 @@ const ALL_PAGES = [{
       'user-guide/systemrequirements-zosmf-lite.md',
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
+      'user-guide/cli-updatingcli.md',
       'user-guide/uninstall.md',
     ],
   },
