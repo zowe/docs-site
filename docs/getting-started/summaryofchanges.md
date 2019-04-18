@@ -4,7 +4,19 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.1.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.1.1 (April 2019)](#version-1-1-1-april-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
+
+## Version 1.1.1 (April 2019)
+
+Version 1.1.1 contains the following changes since the last version.
+
+### What's new in API Mediation Layer
+
+### What's new in the Zowe App Server
+
+### What's new in the Zowe CLI and Plug-ins
+
 
 ## Version 1.1.0 (April 2019)
 
