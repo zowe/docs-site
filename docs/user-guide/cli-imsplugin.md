@@ -81,47 +81,13 @@ If you downloaded the Zowe CLI `zowe-cli-bundle.zip` package, complete the follo
     ```
     Successful validation of the IMS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
       
-## Setting up profiles
+## Creating user profiles
 
-You can set up an `ims` profile to retain your credentials, host, and port name for each subsequent action. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
+You can set up an `ims` profile to retain your credentials, host, and port name. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile: 
 
 ```
 zowe profiles create ims-profile <profileName> --host <hostname> --port <portnumber> --ims-connect-host <ims-hostname> --ims-connect-port <ims-portnumber> --user <username> --password <password>
 ```
-
-*Where:*
-
-- **profileName**
-
-    Specifies the name of the new ims profile. You can load this profile by using the name on commands that support the --ims-profile option.
-
-- **--host | -H**
-
-    Specifies the IMS Command Services server host name.
-
-- **--port  | -P**
-
-    Specifies the IMS Command Services server port. 
-
-- **--ims-connect-host | -ich**
-
-    Specifies the hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.
-
-- **--ims-connect-port | -icp**
-
-    Specifies the port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.
-
-- **--plex | -x**
-
-    Specifies the name of the IMSplex.
-
-- **--user  | -u**
-
-    Specifies the username for logging on to the system specified in hostname.
-
-- **--password | --pass**
-    
-    Specifies the password for logging on to the system specified in hostname.
 
 **Example: Setting up an IMS profile**
 
@@ -131,23 +97,7 @@ The following example creates an ims profile named 'ims123' to connect to IMS AP
 zowe profiles create ims-profile ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --ich zos124 --icp 1491 
 ```
 
-Entering the following command stores your profile information in a YAML file, and returns the following message:
-
-```
-Profile created successfully! Path:
-C:\Users\johndoe\.zowe\profiles\ims\ims123.yaml
-
-
-type:     ims
-name:     ims123
-host:     zos123
-port:     1490
-ims-connect-host: zos124
-ims-connect-port: 1491
-plex:     PLEX1
-username: ibmuser
-password: myp4ss 
-```
+**Note:** For more information, issue the command `zowe profiles create fmp-profile --help`
 
 ## Commands
 
