@@ -2,31 +2,22 @@
 
 You can extend Zowe CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
 
-**Note:** You can also [install existing plug-ins to Zowe CLI](../../user-guide/cli-extending.md).
-
-* [How can I contribute?](#how-can-i-contribute)
-* [Getting started](#getting-started)
-
 ## How can I contribute?
 You can contribute to Zowe CLI in the following ways:
 1. Add new commands, options, or other improvements to the base CLI.
 2. Develop a plug-in that users can install to Zowe CLI.
-
-See [Getting Started](#getting-started) to get started with development today!
 
 You might want to contribute to Zowe CLI to accomplish the following:
 * Provide new scriptable functionality for yourself, your organization, or to a broader community.
 * Make use of Zowe CLI infrastructure (profiles and programmatic APIs).
 * Participate in the Zowe CLI community space.
 
-The following plug-in projects have been developed:
+The following plug-ins have been developed:
 * [Zowe CLI Plug-in for IBM Db2](https://github.com/zowe/zowe-cli-db2-plugin)
 * [Zowe CLI Plug-in for IBM CICS](https://github.com/zowe/zowe-cli-cics-plugin)
 
 ## Getting started
-If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md).
-
-The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) contains a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects. Follow the associated [developer tutorials](#tutorials) to learn about how to work with our sample plug-in, build new commands, or build a new Zowe CLI plug-in.
+If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
 
 ### Tutorials
 Follow these tutorials to get started working with the sample plug-in:
@@ -39,13 +30,12 @@ Follow these tutorials to get started working with the sample plug-in:
 ### Plug-in Development Overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
 
-In addition to the configuration, a Zowe CLI plug-in will minimally contain the following:
+A Zowe CLI plug-in will minimally contain the following:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
 2. **Command definition** - The syntax definition for your command.
 3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the definition.
 
-## Developer Documentation and Guidelines
-In addition to the [tutorials](#tutorials), the following guidelines and documentation will assist you during development:
+The following guidelines and documentation will assist you during development:
 
 ### Imperative CLI Framework Documentation
 [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these supplementary documents during development to learn about specific features such as:
