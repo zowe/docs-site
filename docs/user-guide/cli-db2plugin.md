@@ -144,27 +144,13 @@ Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following
   - If your Db2 systems use a secure connection, you can also
     provide an SSL/TSL certificate file.
 
-To create a db2 profile in Zowe CLI, issue a command in the command shell in the following format:
+To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
 
 ```
 zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>  
 ```
 
-The profile is created successfully with the following
-output:
-
-```
-Profile created successfully! Path:
-/home/user/.zowe/profiles/db2/<profile name>.yaml
-type: db2
-name: <profile name>
-hostname: <host>
-port: <port>
-username: securely_stored
-password: securely_stored
-database: <database>
-Review the created profile and edit if necessary using the profile update command.
-```
+**Note** For more information, issue the command `zowe profiles create db2-profile --help`
 
 ## Commands  
 

@@ -81,21 +81,14 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
       
 ## Creating a user profile
 
-You can create a CICS user profile to avoid typing your connection details on every command. The `cics` profile contains your host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
-
-Issue the following command to create a cics profile: 
+You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile: 
 
 ```
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
-**Note:** For more information about the syntax, actions, and options, for a `profiles create` command, open Zowe CLI and issue the following command:
+**Note:** For more information, issue the command `zowe profiles create cis --help`
 
-```
-zowe profiles create cics -h
-```
-
-The result of the command displays as a success or failure message. You can use your profile when you issue commands in the `cics` command group.
 
 ## Commands
 
