@@ -36,7 +36,7 @@ Use the Languages setting in the personalization panel to change the desktop lan
 1. Click the personalization icon in the lower right corner.
 2. Click **Languages**.
 3. In the **Languages** dialog, click a language, and then click **Apply**.
-4. When you are prompted, restart the Zowe Desktop.
+4. When you are prompted, restart Zowe.
 
 ## Using Explorers within the Zowe Desktop
 The explorer server provides a sample web client that can be used to view and manipulate the Job Entry Subsystem (JES), data sets, z/OS UNIX System Services (USS), and System log.
