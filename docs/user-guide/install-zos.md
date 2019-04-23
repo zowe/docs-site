@@ -577,7 +577,7 @@ The manual installation consists of the following steps.
 
     **Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
 
-2. PPT Entry
+1. PPT Entry
 
     The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PPT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
 
@@ -590,7 +590,7 @@ The manual installation consists of the following steps.
     /SET SCH=xx
     ```
 
-3. APF-authorization
+1. APF-authorization
 
     Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a load library is APF-authorized by using the following TSO command:
 
@@ -610,11 +610,11 @@ The manual installation consists of the following steps.
     ```
     where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
-4. PARMLIB member
+1. PARMLIB member
 
     The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
 
-5. Security requirements for the cross memory server
+1. Security requirements for the cross memory server
 
     The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
 
@@ -659,7 +659,7 @@ The manual installation consists of the following steps.
       TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
       ```
 
-6. ICSF cryptographic services 
+1. ICSF cryptographic services 
 
     The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
 
@@ -700,86 +700,90 @@ The manual installation consists of the following steps.
     - CCA and/or PKCS #11 coprocessor for random number generation.
     - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2 if required.
 
+1. Security environment switching 
 
-7. Security environment switching 
+    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
 
-    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
+    
+    - If you use RACF, issue the following commands:
+      ```
+      RLIST FACILITY BPX.SERVER AUTHUSER
+      RLIST FACILITY BPX.DAEMON AUTHUSER
+      ```
+    - If you use CA Top Secret, issue the following commands:
+      ```
+      TSS WHOHAS IBMFAC(BPX.SERVER)
+      TSS WHOHAS IBMFAC(BPX.DAEMON)
+      ```
+    - If you use CA ACF2, issue the following commands:
+      ```
+      SET RESOURCE(FAC)
+      LIST BPX
+      ```
+  
+   If the user who runs the ZWESIS01 started task does not have UPDATE access to both facilities, follow the instructions below.
 
-    - You may already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. To check your environment examine and issue the below commands. Confirm that the two BPX facilities exist, and the user running the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
-      - If you use RACF, complete the following commands:
-        ```
-        RLIST FACILITY BPX.SERVER AUTHUSER
-        RLIST FACILITY BPX.DAEMON AUTHUSER
-        ```
-      - If you use CA Top Secret, complete the following commands:
-        ```
-        TSS WHOHAS IBMFAC(BPX.SERVER)
-        TSS WHOHAS IBMFAC(BPX.DAEMON)
-        ```
-      - If you use CA ACF2, complete the following commands:
-        ```
-        SET RESOURCE(FAC)
-        LIST BPX
-        ```
+   - If you use RACF, complete the following steps:
+      <details>
+      <summary>Click to Expand</summary>
 
-    - If the user running the ZWESIS01 started task does not have UPDATE acecss to both facilities, follow the below instructions
-      - If you use RACF, complete the following steps:
-          <details>
-            <summary>Click to Expand</summary>
-          - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+      1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+         ```
+         SETROPTS CLASSACT(FACILITY)             
+         SETROPTS RACLIST(FACILITY)                
+         ```
+     1. Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
+        ```
+        RDEFINE FACILITY BPX.SERVER UACC(NONE)
+        RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+        ```             
+      1. Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class. 
+         ```
+         PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         /* Activate these changes */
+         SETROPTS RACLIST(FACILITY) REFRESH      
+         ```
+      1. Issue the following commands to check whether permission has been successfully granted:
+         ```
+         RLIST FACILITY BPX.SERVER AUTHUSER
+         RLIST FACILITY BPX.DAEMON AUTHUSER
+         ```
+      </details>
+    - If you use CA Top Secret, complete the following steps:  
+        <details>
+        <summary>Click to Expand</summary>
+
+        1. Define the BPX Resource and access for IZUSVR.
+           ```
+           TSS ADD(`owner-acid`) IBMFAC(BPX.)
+           TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+           TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+           ```
+        1. Issue the following commands and review the output to check whether permission has been successfully granted:
             ```
-            SETROPTS CLASSACT(FACILITY)             
-            SETROPTS RACLIST(FACILITY)                
-            ```
-          - Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
-            ```
-            RDEFINE FACILITY BPX.SERVER UACC(NONE)
-            RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-            ```             
-          - Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
-            ```
-            PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-            PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-            /* Activate these changes */
-            SETROPTS RACLIST(FACILITY) REFRESH      
-            ```
-          - To check whether permission has been successfully granted, issue the following commands:
-            ```
-            RLIST FACILITY BPX.SERVER AUTHUSER
-            RLIST FACILITY BPX.DAEMON AUTHUSER
-            ```
-          </details>
-      - If you use CA Top Secret, complete the following steps:  
-          <details>
-            <summary>Click to Expand</summary>
-          - Define the BPX Resource and access for IZUSVR.
-            ```
-            TSS ADD(`owner-acid`) IBMFAC(BPX.)
-            TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
-            TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
-            ```
-          - To check whether permission has been successfully granted, issue the following commands and review the output:
-            ```
-            TSS WHOHAS IBMFAC(BPX.SERVER)
-            TSS WHOHAS IBMFAC(BPX.DAEMON)
-            ```
-          </details>
-      - If you use CA ACF2, complete the following steps:
-          <details>
-            <summary>Click to Expand</summary>
-          - Define the BPX Resource and access for IZUSVR.
-            ```
-            SET RESOURCE(FAC)
-            RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
-            RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
-            F ACF2,REBUILD(FAC)
-            ```
-          - To check whether permission has been succesfully granted, issue the following commands and review the output:
-            ```
-            SET RESOURCE(FAC)
-            LIST BPX
-            ```
-          </details>
+           TSS WHOHAS IBMFAC(BPX.SERVER)
+           TSS WHOHAS IBMFAC(BPX.DAEMON)
+           ```
+       </details>
+    - If you use CA ACF2, complete the following steps:
+        <details>
+          <summary>Click to Expand</summary>
+
+        1. Define the BPX Resource and access for IZUSVR.
+           ```
+           SET RESOURCE(FAC)
+           RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           F ACF2,REBUILD(FAC)
+           ```
+        1. Issue the following commands and review the output to check whether permission has been successfully granted:
+           ```
+           SET RESOURCE(FAC)
+           LIST BPX
+           ```
+        </details>
 
 ### Scripted install of the Zowe Cross Memory Server 
 
