@@ -102,7 +102,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
     ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '0.3.0-SNAPSHOT'
+        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
     ```
      * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
 
@@ -110,12 +110,12 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
         <dependency>
               <groupId>com.ca.mfaas.sdk</groupId>
               <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
-              <version>0.3.0-SNAPSHOT</version>
+              <version>1.1.0</version>
         </dependency>
     ```
      * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '0.3.0-SNAPSHOT'
+        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
         ```
 
      * If you use the Spring Boot release 2.0.x in a Maven build system, add the following code to the `pom.xml` file:  
@@ -123,7 +123,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
         <dependency>
                <groupId>com.ca.mfaas.sdk</groupId>
                <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
-               <version>0.3.0-SNAPSHOT</version>
+               <version>1.1.0</version>
         </dependency>
         ```
 3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
@@ -250,6 +250,24 @@ As an API service developer, you set multiple configuration settings in your app
           application:
               name: ${mfaas.discovery.serviceId}      
     ```
+    In order to run your application locally, you need to define variables used under the `environment` group. 
+    
+    ```yaml
+    ##############################################################################################
+   # Local configuration section
+    ##############################################################################################
+ 
+    environment:
+        serviceId: Your service id
+        serviceTitle: Your service title
+        serviceDescription: Your service description
+        discoveryEnabled: true
+        hostname: localhost
+        port: Your service port
+        discoveryLocations: https://localhost:10011/eureka/
+        ipAddress: 127.0.0.1
+    ```
+    
     **Important:** Add this configuration also to the `application.yml` used for testing. Failure to add this configuration to the `application.yml` will cause your tests to fail.
     
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.

@@ -70,7 +70,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
+    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.0')
     ```
 
 5.  In your project directory, run the `gradle build` command to build your project.
@@ -102,7 +102,7 @@ Use the following procedure if you use Maven as your build automation system.
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>0.2.0</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
