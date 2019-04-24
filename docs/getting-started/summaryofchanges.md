@@ -36,7 +36,7 @@ z/OSMF Lite is now available for non-production use such as development, proof-o
 - Improved the Zowe Editor App by adding app2app communication support that allows the application to open requested directories, dataset listings, and files.
 - Improved the Zowe App API by allowing subscription to close events on viewports instead of windows, which allows applications to better support Single App Mode.
 - Fixed a bug that generated an extraneous RACF audit message when you started ZSS.
-- Fixed a bug that would sometimes move application windows when you attempted to resized them.
+- Fixed a bug that would sometimes move application windows when you attempted to resize them.
 - Fixed a bug in the "Getting started with the ZOWE WebUi" tutorial documentation.
 - Fixed a bug that caused applications that made ZSS service requests to fail with an HTTP 401 error because of dropped session cookies.
 
