@@ -12,6 +12,7 @@ Zowe Version 1.1.0 and later releases include the following enhancements, releas
 Version 1.1.1 contains the following changes since the last version.
 
 ### What's new in the Zowe installer
+
 - Made the following installer improvements:
   - Check whether ICSF is configured before checking Node version to avoid runaway CPU.
   - Warn if the host name that is determined by the installer is not a valid IP address.
@@ -24,6 +25,16 @@ Version 1.1.1 contains the following changes since the last version.
 ### What's new in the Zowe App Server
 
 ### What's new in the Zowe CLI and Plug-ins
+
+### What's new in Zowe USS API
+
+Made the following enhancements:
+- Chtag detection and ascii/ebcdic conversion on GET & PUT requests
+- New optional header on GET Unix file content request to force conversion from ebcdic to ascii
+- New response header on GET Unix file content requests: E-Tag for overwrite detection and validation
+- Reintroduced PUT (update) Unix file content endpoint
+- Reintroduced Delete Unix file content endpoint
+- Reintroduced POST (create) Unix file or directory endpoint
 
 
 ## Version 1.1.0 (April 2019)
