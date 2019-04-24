@@ -25,6 +25,18 @@ Version 1.1.1 contains the following changes since the last version.
 ### What's new in the Zowe App Server
 
 ### What's new in the Zowe CLI and Plug-ins
+The Zowe CLI core component contains the following improvements and fixes:
+
+- The zowe `zos-workflows` command group now contains the following `active-workflow-details` options:
+
+    - `--steps-summary-only | --sso (boolean)`: An optional parameter that lets you list (only) the steps summary.
+    - `--skip-workflow-summary | --sws (boolean)`: An optional parameter that lets you skip the default workflow summary. 
+
+- The `zowe zos-workflows start` command was updated to help ensure that z/OSMF does not ignore the name of the z/OSMF workflow that you are attempting to start.
+
+- Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
+
+- You can now click the links on the Welcome to Zowe page and open the target URLs in a browser window. Note that the shell application that you are using must support the capability to display and click hyperlinks.
 
 ### What's new in Zowe USS API
 
