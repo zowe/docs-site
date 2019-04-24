@@ -7,6 +7,6 @@ You can install plug-ins to extend the capabilities of Zowe CLI. Plug-ins CLI t
 - [Install plug-ins](cli-installplugins.md)
 - [Zowe plug-in for IBM® CICS](cli-cicsplugin.md)
 - [Zowe plug-in for IBM® Db2® Database](cli-db2plugin.md)
-- [The Visual Studio Code (VSCode) Extension for Zowe](cli-vscodeplugin.md)
+- [Visual Studio Code (VSCode) Extension for Zowe](cli-vscodeplugin.md)
 
 **Note:** For information about how to create plug-in specific profiles, see the topic for the respective plug-in.
