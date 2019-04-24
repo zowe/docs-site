@@ -32,7 +32,7 @@ The Zowe CLI core component contains the following improvements and fixes:
     - `--steps-summary-only | --sso (boolean)`: An optional parameter that lets you list (only) the steps summary.
     - `--skip-workflow-summary | --sws (boolean)`: An optional parameter that lets you skip the default workflow summary. 
 
-- The `zowe zos-workflows start` command was updated to help ensure that z/OSMF does not ignore the name of the z/OSMF workflow that you are attempting to start.
+- Zowe CLI was updated to correct an issue where the `zowe zos-workflows start` command ignored the `-- workflow-name` argument.
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
