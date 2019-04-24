@@ -11,6 +11,14 @@ Zowe Version 1.1.0 and later releases include the following enhancements, releas
 
 Version 1.1.1 contains the following changes since the last version.
 
+### What's new in the Zowe installer
+- Made the following installer improvements:
+  - Check whether ICSF is configured before checking Node version to avoid runaway CPU.
+  - Warn if the host name that is determined by the installer is not a valid IP address.
+  - Fixed a bug where a numeric value is specified in ZOWE_HOST_NAME causing errors generating the Zowe certificate. 
+- Made the following improvements to the `zowe-check-prereqs.sh` script:
+  - Improvements for checking and validating the telnet and ssh port required by the Zowe Desktop applications.
+
 ### What's new in API Mediation Layer
 
 ### What's new in the Zowe App Server
