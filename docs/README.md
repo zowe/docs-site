@@ -36,11 +36,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.1.0.
+You can download the Version 1.1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.1.1.
 
 | Version | Download 
 | --- | ---
-| V1.1.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.1.1 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.1.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation_1.1.0.pdf)
 
 ### Zowe overview deck
 
