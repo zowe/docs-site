@@ -21,6 +21,24 @@ Version 1.1.1 contains the following changes since the last version.
   - Improvements for checking and validating the telnet and ssh port required by the Zowe Desktop applications.
 
 ### What's new in API Mediation Layer
+This release of Zowe API contains the following user experience improvements:
+- Prevented the Swagger UI container on the service detail page from
+spilling                                                                                                                             
+- Added a check for the availability of the z/OSMF URL contained in the  
+configuration. z/OSMF is used to verify users logging into the Catalog.  
+- Made PageNotFound error visible only in the debug log level.           
+- Fixed reporting that th eCatalog is down when it is started before the 
+Discovery Service.                                                       
+- Removed the bean overriding error message from the log.                
+- Fixed the state manipulation mechanism in the Catalog. As a result, no 
+restoring of the application state is performed.                         
+- Fixed the Catalog routing mechanism for a users who is already logged  
+in so that the user is not prompted to log in again.                     
+- A timeout has been set for Catalog login when z/OSMF is not responding.
+- A tile change in the Catalog is now propagated to the UI.              
+- Fixed a problem with an incorrect service homepage link in the Catalog.
+- The Catalog Login button has been disabled when the login request is in
+progress.  
 
 ### What's new in the Zowe App Server
 
