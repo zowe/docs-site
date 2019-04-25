@@ -42,7 +42,7 @@ progress.
 
 ### What's new in the Zowe App Server
 
-### What's new in the Zowe CLI and Plug-ins
+### What's new in Zowe CLI and Plug-ins
 The Zowe CLI core component contains the following improvements and fixes:
 
 - The zowe `zos-workflows` command group now contains the following `active-workflow-details` options:
@@ -54,7 +54,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- You can now click the links on the Welcome to Zowe page and open the target URLs in a browser window. Note that the shell application that you are using must support the capability to display and click hyperlinks.
+- You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 
 ### What's new in Zowe USS API
 
@@ -89,7 +89,7 @@ z/OSMF Lite is now available for non-production use such as development, proof-o
 - Fixed a bug in the "Getting started with the ZOWE WebUi" tutorial documentation.
 - Fixed a bug that caused applications that made ZSS service requests to fail with an HTTP 401 error because of dropped session cookies.
 
-### What's new in the Zowe CLI and Plug-ins
+### What's new in Zowe CLI and Plug-ins
 This release of Zowe CLI contains the following new and improved capabilities:
 - Added APIs to allow the definition of workflows
 - Added the option `max-concurrent-requests` to the `zowe zos-files upload dir-to-uss` command
