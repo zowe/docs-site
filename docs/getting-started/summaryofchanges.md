@@ -27,7 +27,7 @@ spilling
 - Added a check for the availability of the z/OSMF URL contained in the  
 configuration. z/OSMF is used to verify users logging into the Catalog.  
 - Made PageNotFound error visible only in the debug log level.           
-- Fixed reporting that th eCatalog is down when it is started before the 
+- Fixed reporting that the Catalog is down when it is started before the 
 Discovery Service.                                                       
 - Removed the bean overriding error message from the log.                
 - Fixed the state manipulation mechanism in the Catalog. As a result, no 
