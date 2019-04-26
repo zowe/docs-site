@@ -1,6 +1,14 @@
 # Installing Node.js on z/OS
 
-Installing Zowe requires Node.js Version 6.14.4.1 or later to be installed on the z/OS host where you install the Zowe Application Server. This section summarizes the required configuration steps for installing Node.js for Zowe.
+Installing Zowe requires Node.js Version 6.14.4.1 or later to be installed on the z/OS host where you install the Zowe Application Server. 
+
+## How to obtain IBM SDK for Node.js – z/OS
+
+IBM SDK for Node.js – z/OS, V6.0 (5655-SDK) is available at no license charge, as [announced in October 2018](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS918-171&appname=USN). You can obtain the free SDK for IBM Z Mainframe in one of several ways, depending on your requirements. For details, see the blog ["How to obtain IBM SDK for Node.js – z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
+
+To satisfy Zowe’s prerequisite for Node.js – z/OS, you can choose one of the following ways: 
+- Order the SMP/E version through your IBM representative for production use
+- Use the pax evaluation for non-production deployments
 
 ## Hardware and software requirements
 
@@ -15,6 +23,8 @@ IBM zEnterprise® 196 (z196) or newer
 - Integrated Cryptographic Service Facility (ICSF) must be configured and started.
 
 ## Installing Node.js
+
+The following section summarizes the required configuration steps for **installing the pax evaluation version of Node.js - z/OS** to run Zowe.
 
 1. Download the pax.Z file from the [Download](https://developer.ibm.com/node/sdk/ztp/#downloads-ztp) section to a z/OS machine.
 1. Extract the pax.Z file inside an installation directory of your choice. For example:
