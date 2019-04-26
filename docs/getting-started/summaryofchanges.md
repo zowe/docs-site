@@ -20,7 +20,7 @@ Version 1.2.0 contains the following changes since Version 1.1.0.
   - Improvements for checking and validating the telnet and ssh port required by the Zowe Desktop applications.
 
 ### What's new in API Mediation Layer
-This release of Zowe API contains the following user experience improvements:
+This release of Zowe API ML contains the following user experience improvements:
 - Prevented the Swagger UI container on the service detail page from
 spilling                                                                                                                             
 - Added a check for the availability of the z/OSMF URL contained in the  
