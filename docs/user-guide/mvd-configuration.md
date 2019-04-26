@@ -292,19 +292,19 @@ cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfi
 }
 ```
 
-## Applying role-based access control to application services
+## Applying role-based access control to dataservices
 
-To use role-based access control (RBAC) for Zowe service endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
+To use role-based access control (RBAC) for Zowe dataservice endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
 
-After you configure RBAC, when a Zowe application wants to access an endpoint, the application server communicates with the ZSS server to determine if the current user ID can access the endpoint identifier URL.
+After you configure RBAC, Zowe checks whether users have authority to perform actions that access another application's dataservices.
 
 #### How it works
 
-Most Zowe functionality is available as services. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications. Application plug-in services provide data and services from those application plug-ins. For more information, see [Dataservices](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#defining-a-dataservice).
+Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications. Application plug-in dataservices provide data and services from those application plug-ins. For more information, see [Dataservices](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#defining-a-dataservice).
 
-Plug-ins can also have endpoints that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These endpoints have scope (product/site/instance/user) and the data is stored and retrieved by path name.
+Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope (product/site/instance/user) and the data is stored and retrieved by path name.
 
-Zowe service endpoints are identified by URLs that are formatted like this:
+Zowe dataservice endpoints are identified by URLs that are formatted like this:
 
 `/<product>/plugins/<plugin id>/services/<service>/<version>/<path>`
 
@@ -314,11 +314,11 @@ For example:
 
 Where product is `ZLUX`, plugin id is `org.zowe.foo`, service is `baz`, version is `_current`, and path is `/users/fred`.
 
-To access endpoints when RBAC is enabled, users must have READ access to a corresponding SAF profile in the ZOWE class. SAF profiles have this format:
+To access dataservice endpoints when RBAC is enabled, users must have READ access to a corresponding SAF profile in the ZOWE class. SAF profiles have this format:
 
 `<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
 
-For example, to issue a POST request to the service endpoint documented above using the default Zowe Application Server instance, users must have READ access to the following SAF profile ("DEFAULT" is the default Zowe instance ID):
+For example, to issue a POST request to the dataservice endpoint documented above using the default Zowe Application Server instance, users must have READ access to the following SAF profile ("DEFAULT" is the default Zowe instance ID):
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
@@ -332,7 +332,7 @@ For example, using the default instance, users must have access to the following
 
 ### Enabling RBAC
 
-By default, RBAC is disabled and all authenticated Zowe users can access all services. To enable RBAC, follow these steps:
+By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
 1. Open the Zowe Application Server configuration JSON file. In the default server instance, the configuration file is `/zlux-app-server/config/zluxserver.json`.
 2. In the `dataserviceAuthentication` object, add `"rbac": true`.
