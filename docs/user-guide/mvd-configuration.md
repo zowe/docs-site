@@ -302,9 +302,9 @@ After you configure RBAC, Zowe checks whether users have authority to perform ac
 
 Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
-Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope (product/site/instance/user) and the data is stored and retrieved by path name.
+Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
 
-Zowe dataservice endpoints are identified by URLs that are formatted like this:
+Dataservice endpoints are identified by URLs that are formatted like this:
 
 `/<product>/plugins/<plugin id>/services/<service>/<version>/<path>`
 
@@ -314,19 +314,19 @@ For example:
 
 Where product is `ZLUX`, plugin id is `org.zowe.foo`, service is `baz`, version is `_current`, and path is `/users/fred`.
 
-To access dataservice endpoints when RBAC is enabled, users must have READ access to a corresponding SAF profile in the ZOWE class. SAF profiles have this format:
+To access dataservice endpoints when RBAC is enabled, users must have READ access to a corresponding System Authorization Facility (SAF) profile in the ZOWE class. SAF profiles have this format:
 
 `<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
 
-For example, to issue a POST request to the dataservice endpoint documented above using the default Zowe Application Server instance, users must have READ access to the following SAF profile ("DEFAULT" is the default Zowe instance ID):
+For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
-Configuration endpoints have SAF profiles with this format:
+Configuration endpoints have profiles with this format:
 
 `<product>.<instance id>.CFG.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
 
-For example, using the default instance, users must have access to the following SAF profile to access the instance-scoped configuration element “files”:
+For example, users must have READ access to the following profile to access the instance-scoped configuration element “files”:
 
 `ZLUX.DEFAULT.CFG.ORG_ZOWE_FOO.GET.INSTANCE.FILES`
 
