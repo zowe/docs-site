@@ -26,7 +26,7 @@ Follow these optional steps to configure the default connection to open for the 
     }
 ```    
 
-### Configuration file
+## Configuration file
 The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
 
 For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
@@ -35,7 +35,7 @@ An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-serv
 
 **Note:** All examples are based on the *zlux-app-server* repository.
 
-### Network configuration
+## Network configuration
 
 **Note:** The following attributes are to be defined in the server's JSON configuration file.
 
@@ -83,7 +83,7 @@ In the example configuration, both HTTP and HTTPS are specified:
     }
   }
 ```
-### Deploy configuration
+## Deploy configuration
 
 When the Zowe Application Server is running, it accesses the server's settings and reads or modifies the contents of its resource storage. All of this data is stored within the `Deploy` folder hierarchy, which is spread out into a several scopes:
 
@@ -108,7 +108,7 @@ These directories dictate where the [Configuration Dataservice](../extend/extend
 
 ```
 
-### Application plug-in configuration
+## Application plug-in configuration
 
 This topic describes application plug-ins that are defined in advance.
 
@@ -126,17 +126,17 @@ To include application plug-ins, define the location of the plug-ins directory i
   "pluginsDir":"../deploy/instance/ZLUX/plugins",
 ```
 
-### Logging configuration
+## Logging configuration
 
 For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
 
-### ZSS configuration
+## ZSS configuration
 
 Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
 
 The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 
-#### Connecting the Zowe Application Server to ZSS
+### Connecting the Zowe Application Server to ZSS
 
 When you run the Zowe Application Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
 
@@ -292,7 +292,76 @@ cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfi
 }
 ```
 
-### Enabling tracing
+## Applying role-based access control to dataservices
+
+To use role-based access control (RBAC) for Zowe dataservice endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
+
+After you configure RBAC, Zowe checks whether users have authority to perform actions that access another application's dataservices.
+
+#### How it works
+
+Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
+
+Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
+
+Dataservice endpoints are identified by URLs that are formatted like this:
+
+`/<product>/plugins/<plugin id>/services/<service>/<version>/<path>`
+
+For example:
+
+`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
+
+Where product is `ZLUX`, plugin id is `org.zowe.foo`, service is `baz`, version is `_current`, and path is `/users/fred`.
+
+To access dataservice endpoints when RBAC is enabled, users must have READ access to a corresponding System Authorization Facility (SAF) profile in the ZOWE class. SAF profiles have this format:
+
+`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
+
+For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+Configuration endpoints have profiles with this format:
+
+`<product>.<instance id>.CFG.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
+
+For example, users must have READ access to the following profile to access the instance-scoped configuration element “files”:
+
+`ZLUX.DEFAULT.CFG.ORG_ZOWE_FOO.GET.INSTANCE.FILES`
+
+### Enabling RBAC
+
+By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
+
+1. Open the Zowe Application Server configuration JSON file. In the default server instance, the configuration file is `/zlux-app-server/config/zluxserver.json`.
+2. In the `dataserviceAuthentication` object, add `"rbac": true`.
+
+### Creating generic authorization profiles
+
+Some endpoints can generate an unlimited number of URLs. For example, an endpoint that performs a DELETE action on any file would generate a different URL for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.DELETE.**` 
+
+You can create generic profile names using wildcards, such as asterisks (*). For information on generic profile naming, see [IBM documentation](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.icha100/egnoff.htm).
+
+### Configuring basic authorization
+
+We recommend configuring the following basic authorization:
+
+- To give administrators access to everything in Zowe, create a `ZLUX.**` profile and give them UPDATE access to it.
+- To give non-administrators basic access to the site and product, create a `ZLUX.*.ORG_ZOWE_*`  profile and give them READ access to it.
+- To prevent non-administrators from configuring endpoints at the product and instance levels, create a `ZLUX.DEFAULT.CFG.**` profile and do not give them access to it.
+- To give non-administrators all access to user, create a `ZLUX.DEFAULT.CFG.*.*.USER.**` profile and give them UPDATE access to it.
+
+
+### Endpoint URL length limitations
+SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that appliction developers maintain relatively short endpoint URL paths.
+
+For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#dataservice-endpoint-URL-lengths-and-RBAC)
+
+
+## Enabling tracing
 
 To obtain more information about how a server is working, you can enable tracing within the `zluxserver.json` file. 
 
