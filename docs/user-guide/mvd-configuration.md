@@ -136,7 +136,7 @@ Running ZSS requires a JSON configuration file that is similar or the same as th
 
 The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 
-#### Connecting the Zowe Application Server to ZSS
+### Connecting the Zowe Application Server to ZSS
 
 When you run the Zowe Application Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
 
