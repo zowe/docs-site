@@ -44,7 +44,6 @@ progress.
 - Added Zowe Desktop settings feature for specifying the Zowe desktop language.
 - Added German language files.
 - Fixed a bug by adding missing language files.
-- Added support for the API Mediation Layer to the Zowe Application Server.
 - Enabled faster load times by adding support for serving the Zowe Application Framework core components, such as the Desktop, as compressed files in gzip format.
 - Added support for application plug-ins to serve static content, such as HTML, JavaScript, and images, to browsers in gzip and brotli compressed files.
 
