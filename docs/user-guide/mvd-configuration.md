@@ -300,7 +300,7 @@ After you configure RBAC, Zowe checks whether users have authority to perform ac
 
 #### How it works
 
-Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications. Application plug-in dataservices provide data and services from those application plug-ins. For more information, see [Dataservices](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#defining-a-dataservice).
+Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
 Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope (product/site/instance/user) and the data is stored and retrieved by path name.
 
