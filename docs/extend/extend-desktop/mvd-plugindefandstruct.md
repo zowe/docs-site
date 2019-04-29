@@ -43,11 +43,11 @@ The `web` directory is where the server serves static content for an application
 
 ## Location of plug-in files
 
-The files that define a plug-in are located in the `pluginsDir` directory.
+The files that define a plug-in are located in the `plugins` directory.
 
 ### pluginsDir directory
 
-At startup, the server reads from the `pluginsDir` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
+At startup, the server reads from the `plugins` directory. The server loads the valid plug-ins that are found by the information that is provided in the JSON files.
 
 Within the `pluginsDir` directory are a collection of JSON files. Each file has two attributes, which serve to locate a plug-in on disk:
 
