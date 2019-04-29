@@ -22,10 +22,10 @@ Version 1.2.0 contains the following changes since Version 1.1.0.
 ### What's new in API Mediation Layer
 This release of Zowe API ML contains the following user experience improvements:
 - Prevented the Swagger UI container on the service detail page from
-spilling                                                                                                                             
+spilling.                                                                                                                             
 - Added a check for the availability of the z/OSMF URL contained in the  
 configuration. z/OSMF is used to verify users logging into the Catalog.  
-- Made PageNotFound error visible only in the debug log level.           
+- Made _PageNotFound_ error visible only in the debug log level.           
 - Fixed reporting that the Catalog is down when it is started before the 
 Discovery Service.                                                       
 - Removed the bean overriding error message from the log.                
