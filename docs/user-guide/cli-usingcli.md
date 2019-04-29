@@ -24,6 +24,10 @@ zowe <group, action, or object name> --help
 zowe zos-files create --help
 ```
 
+## Zowe CLI command reference guide 
+
+View the [CLI Command Reference Guide](../CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
+
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
 provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help). 
@@ -192,9 +196,6 @@ With the zosmf command group, you can perform the following tasks:
 ```
 zowe zosmf -h
 ```
-## CLI Command Reference 
-
-See the [CLI Reference document](../CLIReference_Zowe.pdf) to review a list of all commands, actions, and options in Zowe CLI. The reference document is based on the @lts-incremental version of the CLI.
 
 ## Writing scripts to automate mainframe actions
 

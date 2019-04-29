@@ -39,7 +39,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
     * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
 
-      **Note:** Ensure that zou are using valid Zowe Artifactory credentials.  
+      **Note:** Ensure that you are using valid Zowe Artifactory credentials.  
 
         ```
       maven {
@@ -203,10 +203,12 @@ As an API service developer, you set multiple configuration settings in your app
                       api_v1:
                           gateway-url: "api/v1"
                           service-url: ${mfaas.server.contextPath}
-
-                      api-doc:
-                          gateway-url: "api/v1/api-doc"
-                          service-url: ${mfaas.server.contextPath}/api-doc
+                  apiml:
+                      apiInfo:
+                          - apiId: ${mfaas.discovery.serviceId}
+                            gatewayUrl: api/v1
+                            swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+                            documentationUrl: https://www.zowe.org
                   mfaas:
                       api-info:
                           apiVersionProperties:
@@ -378,7 +380,6 @@ As an API service developer, you set multiple configuration settings in your app
 
         **Examples:**
         ```
-        api-doc
         api_v1
         api_v2
         ```
@@ -388,7 +389,21 @@ As an API service developer, you set multiple configuration settings in your app
       * `metadata-map.routed-services.<prefix>.serviceUrl`
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
-
+      * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
+      
+          Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
+          The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
+          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
+      * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
+      
+          The base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
+          
+      * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
+      
+          (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+      * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
+      
+          (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.             
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
@@ -443,28 +458,31 @@ To register with the API Mediation Layer, a service is required to have a certif
 1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
     When a service is running on localhost, the command can have the following format:
-
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-
+       
+    ```
+    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+    ```
+        
     Alternatively, for the purpose of local development, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 
 2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding the following code:
-
-        server:
-            ssl:
-                protocol: TLSv1.2
-                ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-                keyAlias: localhost
-                keyPassword: password
-                keyStore: keystore/localhost.keystore.p12
-                keyStoreType: PKCS12
-                keyStorePassword: password
-                trustStore: keystore/localhost.truststore.p12
-                trustStoreType: PKCS12
-                trustStorePassword: password
+       
+    ```
+    server:
+        ssl:
+            protocol: TLSv1.2
+            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            keyAlias: localhost
+            keyPassword: password
+            keyStore: keystore/localhost.keystore.p12
+            keyStoreType: PKCS12
+            keyStorePassword: password
+            trustStore: keystore/localhost.truststore.p12
+            trustStoreType: PKCS12
+            trustStorePassword: password
+     ```
 
 **Note:** You need to define both keystore and truststore even if your server is not using HTTPS port.
-
 
 ## Externalize API ML configuration parameters
 
@@ -478,7 +496,6 @@ The following list summarizes the API ML parameters that are set by the customer
    * `mfaas.service.hostname: ${environment.hostname}`
    * `mfaas.service.ipAddress: ${environment.ipAddress}`
    * `mfaas.server.port: ${environment.port}`
-
 
 **Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
 
@@ -528,10 +545,10 @@ To test that your API instance is working and is discoverable, use the following
 
  4. Check that you can access your API service endpoints through the Gateway.
 
-   **Example:**
-   ```
-   https://localhost:10010/api/v1/
-   ```
+    **Example:**
+    ```
+    https://localhost:10010/api/v1/
+    ```
 
  5. Check that you can still access your API service endpoints directly outside of the Gateway.
 
