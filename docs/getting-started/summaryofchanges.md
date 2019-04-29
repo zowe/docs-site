@@ -48,13 +48,17 @@ progress.
 - Added support for application plug-ins to serve static content, such as HTML, JavaScript, and images, to browsers in gzip and brotli compressed files.
 
 ### What's new in Zowe CLI and Plug-ins
+
 The Zowe CLI core component contains the following improvements and fixes:
+
+- The `zos-uss` command group is added to the core CLI. The commands let you issue Unix System Services shell commands by establishing an SSH connection to an SSH server. For more information, see [](../user-guide/cli-usingcli.md#zos-uss).
 
 - The zowe `zos-workflows` command group now contains the following `active-workflow-details` options:
 
     - `--steps-summary-only | --sso (boolean)`: An optional parameter that lets you list (only) the steps summary.
     - `--skip-workflow-summary | --sws (boolean)`: An optional parameter that lets you skip the default workflow summary. 
 
+-
 - Zowe CLI was updated to correct an issue where the `zowe zos-workflows start` command ignored the `-- workflow-name` argument.
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
