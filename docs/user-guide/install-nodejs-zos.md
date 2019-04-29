@@ -2,11 +2,11 @@
 
 Installing Zowe requires Node.js Version 6.14.4.1 or later to be installed on the z/OS host where you install the Zowe Application Server. 
 
-## How to obtain IBM SDK for Node.js – z/OS
+## How to obtain IBM SDK for Node.js - z/OS
 
-IBM SDK for Node.js – z/OS, V6.0 (5655-SDK) is available at no license charge, as [announced in October 2018](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS918-171&appname=USN). You can obtain the free SDK for IBM Z Mainframe in one of several ways, depending on your requirements. For details, see the blog ["How to obtain IBM SDK for Node.js – z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
+IBM SDK for Node.js - z/OS, V6.0 (5655-SDK) is available at no license charge, as [announced in October 2018](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS918-171&appname=USN). You can obtain the free SDK for IBM Z Mainframe in one of several ways, depending on your requirements. For details, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
 
-To satisfy Zowe’s prerequisite for Node.js – z/OS, you can choose one of the following ways: 
+To satisfy Zowe's prerequisite for Node.js - z/OS, you can choose one of the following ways: 
 - Order the SMP/E version through your IBM representative for production use
 - Use the pax evaluation for non-production deployments
 

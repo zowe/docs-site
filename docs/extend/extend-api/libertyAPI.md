@@ -24,7 +24,7 @@ Knowledge of the following development technologies is beneficial:
 - RestAPI's
 - zSystems development
 
-##  Zowe API Architecture Overview
+## Zowe API Architecture Overview
 
 Much of the Zowe infrastructure builds upon functionality provided by different applications and systems in z/OS some of which are microservices deployed on a Liberty server running on the Z system. As an example Zowe can access z/OSMF services that are aggregated with other functionality that provides new or more comprehensive functionality that allows new services to be created that also benefit from single-sign using **Lightweight Third Party** Authentication (LTPA) keys and centralized logging functions.
 
@@ -106,7 +106,7 @@ It is likely that the Zowe team will provide utility jar files that will either 
 described in 'Additional Jars'. Currently generic jar files such as Zowe utilities should be included in your war file. This may be revised
 later based upon future requirements.
 
-## Unit Testing
+## Unit Testing
 
 Aim for 100% coverage. In many cases it may be impossible or impractical to achieve either because code is auto-generated or covered in other
 tests. Use Jacoco to highlight where there are gaps.
@@ -116,7 +116,7 @@ are run and reporting afterwards.
 
 Examples of unit testing, the use of Mockito and PowerMock are in the src/test/java folder for the jzos sample.
 
-###  FV testing
+### FV testing
 
 For the purpose of testing applications in a live fully configured environment scenario it is necessary to create another testing specific
 project. You will notice that only the src/main/tests folder is populated. When running a Maven build the tests contained here are

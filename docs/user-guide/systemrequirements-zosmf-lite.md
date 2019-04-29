@@ -39,7 +39,7 @@ user assistance, so that you can more easily manage the day-to-day operations
 and administration of your mainframe z/OS systems.
 
 By following the steps in this guide, you can quickly enable z/OSMF on your z/OS
-system. This simplified approach to set-up, known as “z/OSMF Lite”, requires
+system. This simplified approach to set-up, known as "z/OSMF Lite", requires
 only a minimal amount of z/OS customization, but provides the key functions that
 are required by many exploiters, such as the open mainframe project (Zowe). 
 
@@ -121,7 +121,7 @@ For the best results with z/OSMF, use one of the following web browsers on your 
 
 -   Mozilla Firefox ESR Version 52 or later.
 
-To check your web browser’s level, click **About** in the web browser.
+To check your web browser's level, click **About** in the web browser.
 
 ## Creating a z/OSMF nucleus on your system
 
@@ -163,7 +163,7 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 4.	Connect your user ID to IZUADMIN group. 
     1. Download and customize job IZUAUTH.
-    2. Replace the ‘userid’ with your z/OSMF user ID. 
+    2. Replace the 'userid' with your z/OSMF user ID. 
     3. Submit the job on your z/OS system.
 
 
@@ -178,7 +178,7 @@ To verify, check the results of the job execution in the job log. For example, y
 2.  On the SDSF Status Display, enter **S** next to the job that you
     submitted.
 
-3.  Check the return code of the job. The job succeeds if ‘0000’ is returned.
+3.  Check the return code of the job. The job succeeds if '0000' is returned.
 
 #### Common errors
 
@@ -203,7 +203,7 @@ earlier system, the job mounts the file system at mount point `/var/zosmf`.
 
 #### Before you begin
 
-To perform this step, you need a user ID with “superuser” authority on the z/OS
+To perform this step, you need a user ID with "superuser" authority on the z/OS
 host system. For more information about how to define a user with superuser
 authority, see the publication [_z/OS UNIX System Services_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpx/bpx.htm).
 
@@ -288,7 +288,7 @@ Review the following messages and the corresponding resolutions as needed
 
 **Symptom**   | **Cause** | **Resolution**
 ---|---|---
-Not authorized to copy  into PROCLIB.     |      Your user ID doesn’t have the permission to modify PROCLIB.     |      Contact your security administrator.                   
+Not authorized to copy  into PROCLIB.     |      Your user ID doesn't have the permission to modify PROCLIB.     |      Contact your security administrator.                   
 Abend code B37 or E37. |     The data set runs out of space.      |          Use IEBCOPY utility to compress PROCLIB dataset before you copy it.                     
 
 
@@ -385,7 +385,7 @@ The following errors might occur during this step:
 ---|---|---
 z/OSMF welcome page does not load in your web browser. | The SSL handshake was not successful. This problem can be related to the browser certificate. | See [Certificate error in the Mozilla Firefox browser](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_FirefoxCertificateError.htm).
 To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts.| The user ID is not connected to the IZUADMIN group.  | Connect your user ID to the IZUADMIN group.                                
-To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | The password is expired.       | Log on to TSO using your z/OS User ID and password, you will be asked to change your password if it’s expired.          
+To log into z/OSMF, enter a valid z/OS user ID and password. Your account might be locked after too many incorrect log-in attempts. | The password is expired.       | Log on to TSO using your z/OS User ID and password, you will be asked to change your password if it's expired.          
 
 ### Mounting the z/OSMF user file system at IPL time
 
@@ -424,15 +424,15 @@ BPXPRMxx parmlib member. For example:
 
 On a z/OS V2R3 system with the PTF for APAR PI92211 installed:
 ```
-MOUNT FILESYSTEM(’IZU.SIZUUSRD’) TYPE(ZFS) MODE(RDWR)
+MOUNT FILESYSTEM('IZU.SIZUUSRD') TYPE(ZFS) MODE(RDWR)
 
-MOUNTPOINT(’/global/zosmf’) PARM(’AGGRGROW’) UNMOUNT
+MOUNTPOINT('/global/zosmf') PARM('AGGRGROW') UNMOUNT
 ```
 On a z/OS V2R2 or V2R3 system without PTF for APAR PI92211 installed:
 ```
-MOUNT FILESYSTEM(’IZU.SIZUUSRD’) TYPE(ZFS) MODE(RDWR)
+MOUNT FILESYSTEM('IZU.SIZUUSRD') TYPE(ZFS) MODE(RDWR)
 
-MOUNTPOINT(’/var/zosmf’) PARM(’AGGRGROW’) UNMOUNT
+MOUNTPOINT('/var/zosmf') PARM('AGGRGROW') UNMOUNT
 ```
 
 ####  Results
@@ -656,10 +656,10 @@ For information about working with z/OSMF log files, see [_z/OSMF Configuration 
 
 ```
 ICH420I PROGRAM CELQLIB FROM LIBRARY CEE.SCEERUN2 CAUSED THE ENVIRONMENT
- TO BECOME UNCONTROLLED.  
+ TO BECOME UNCONTROLLED.  
  
-BPXP014I ENVIRONMENT MUST BE CONTROLLED FOR DAEMON (BPX.DAEMON)         
-PROCESSING. 
+BPXP014I ENVIRONMENT MUST BE CONTROLLED FOR DAEMON (BPX.DAEMON)         
+PROCESSING. 
 ```
 
 If you see above error messages, check if your IZUANG0 procedure is up to date.
@@ -719,7 +719,7 @@ To modify the IZUSVR1 settings, follow these steps:
 
 **Setting**|**Purpose**|**Rules**| **Default**
 ---|---|---|---
- WLPDIR='directory-path'| WebSphere Liberty server code path. | The directory path must: Be a valid z/OS UNIX path name Be a full or absolute path name Be enclosed in quotation marks Begin with a forward slash ('/'). | Default: `/usr/lpp/zosmf/liberty`
+ WLPDIR='directory-path'| WebSphere Liberty server code path. | The directory path must: Be a valid z/OS UNIX path name Be a full or absolute path name Be enclosed in quotation marks Begin with a forward slash ('/'). | Default: `/usr/lpp/zosmf/liberty`
  USER_DIR=*filepath*  | z/OSMF data directory path. By default, the z/OSMF data directory is located in /global/zosmf. If you want to use a different path for the z/OSMF data directory, specify that value here, for example: USER_DIR=`/the/new/config/dir`. | Must be a valid z/OS UNIX path name.| Default: `/global/zosmf/`
 
 ## Appendix C. Adding more users to z/OSMF

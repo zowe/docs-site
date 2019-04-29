@@ -1,7 +1,7 @@
 # Zowe CLI plug-in for IBM Db2 Database
-The Zowe CLI plug-in for IBM® Db2® Database lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
+The Zowe CLI plug-in for IBM® Db2® Database lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
-Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
+Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
 
   - [Use Cases](#use-cases)
   - [Prerequisites](#prerequisites)
@@ -12,11 +12,11 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
   
 ## Use cases
 
-Use cases for Zowe CLI Db2 plug-in include:
-  - Execute SQL and interact with databases.
+Use cases for Zowe CLI Db2 plug-in include:
+  - Execute SQL and interact with databases.
   - Execute a file with SQL statements.
-  - Export tables to a local file on your computer in SQL format.
-  - Call a stored procedure and pass parameters.
+  - Export tables to a local file on your computer in SQL format.
+  - Call a stored procedure and pass parameters.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2@lts-incremental
+    zowe plugins install @brightside/db2@lts-incremental
     ```
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -44,7 +44,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
     zowe plugins validate db2
     ```
 
-    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
+    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
 3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
@@ -104,7 +104,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
     zowe plugins validate db2
     ```
 
-    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
+    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
 5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
@@ -134,20 +134,20 @@ The following steps are required for both the registry and offline package insta
 
 Before you start using the IBM Db2 plug-in, create a profile.
 
-Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following information:
+Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following information:
 
   - The Db2 server host name
   - The Db2 server port number
-  - The database name (you can also use the location)
-  - The user name
+  - The database name (you can also use the location)
+  - The user name
   - The password
   - If your Db2 systems use a secure connection, you can also
-    provide an SSL/TSL certificate file.
+    provide an SSL/TSL certificate file.
 
 To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
 
 ```
-zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>  
+zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>  
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
@@ -199,17 +199,17 @@ $ zowe db2 execute sql -q "SELECT DEPTNAME FROM DSN81210.DEPT WHERE DEPTNO='D01'
 
 ### Exporting a table in SQL format
 
-Issue the following command to export the `PROJ` table and save the generated SQL
+Issue the following command to export the `PROJ` table and save the generated SQL
 statements:
 
 ```
 $ zowe db2 export table DSN81210.PROJ
 ```
 
-Issue the following command to export the `PROJ` table and save the output to a file:
+Issue the following command to export the `PROJ` table and save the output to a file:
 
 ```
-$ zowe db2 export table DSN81210.PROJ --outfile projects-backup.sql 
+$ zowe db2 export table DSN81210.PROJ --outfile projects-backup.sql 
 ```
 
 You can also pipe the output to gzip for on-the-fly compression.

@@ -10,13 +10,13 @@ The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with 
 
 ## Use cases
 
-As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perform the following tasks:
+As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perform the following tasks:
 
-  - Deploy code changes to CICS applications that were developed with COBOL. 
-  - Deploy changes to CICS regions for testing or delivery. See the [define command](#defining-resources-to-cics) for an example of how you can define programs to CICS to assist with testing and delivery. 
+  - Deploy code changes to CICS applications that were developed with COBOL. 
+  - Deploy changes to CICS regions for testing or delivery. See the [define command](#defining-resources-to-cics) for an example of how you can define programs to CICS to assist with testing and delivery. 
   - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
   - Deploy build artifacts to CICS regions.
-  - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
+  - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @brightside/cics@lts-incremental
+    zowe plugins install @brightside/cics@lts-incremental
     ```
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
@@ -58,7 +58,7 @@ To install Zowe CLI from an online registry, complete the following steps:
     zowe plugins validate cics
     ```
 
-    Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
+    Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
 
 ### Installing from a local package
 
@@ -81,18 +81,18 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
       
 ## Creating a user profile
 
-You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile: 
+You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile: 
 
 ```
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
-**Note:** For more information, issue the command `zowe profiles create cis --help`
+**Note:** For more information, issue the command `zowe profiles create cis --help`
 
 
 ## Commands
 
-The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
+The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
 
   - [Defining resources to CICS](#defining-resources-to-cics)
   - [Deleting CICS resources](#deleting-cics-resources)
@@ -103,7 +103,7 @@ The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
 
 ### Defining resources to CICS
 
-The define command lets you define programs and transactions to CICS so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
+The define command lets you define programs and transactions to CICS so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
 
 ```
 zowe cics define -h
@@ -114,12 +114,12 @@ zowe cics define -h
 Define a program named `myProgram` to the region named `myRegion` in the CICS system definition (CSD) group `myGroup:`
 
 ```
-zowe cics define program myProgram myGroup --region-name myRegion
+zowe cics define program myProgram myGroup --region-name myRegion
 ```
 
 ### Deleting CICS resources
 
-The delete command lets you delete previously defined CICS programs or transactions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
+The delete command lets you delete previously defined CICS programs or transactions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
 
 ```
 zowe cics delete -h
@@ -135,7 +135,7 @@ zowe cics delete program PGM123 --region-name MYREGION
 
 ### Discarding CICS resources
 
-The discard command lets you remove existing CICS program or transaction definitions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
+The discard command lets you remove existing CICS program or transaction definitions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
 
 ```
 zowe cics discard -h
@@ -167,7 +167,7 @@ zowe cics get resource CICSProgram --region-name MYREGION
 
 ### Installing resources to CICS
 
-The install command lets you install resources, such as programs and transactions, to a CICS region so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
+The install command lets you install resources, such as programs and transactions, to a CICS region so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
 
 ``` 
 zowe cics install -h

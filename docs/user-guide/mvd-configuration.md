@@ -11,18 +11,18 @@ Follow these optional steps to configure the default connection to open for the 
 ```    
       "host": <hostname>
       "port": <port>
-      “security”: {
-      type: <”telnet” or “tls”>
+      "security": {
+      type: <"telnet" or "tls">
     }
 ```    
 ### Setting up the VT Terminal application plug-in
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ``` 
-    “host”:<hostname>
-    “port”:<port>
-    “security”: {
-      type: <”telnet” or “ssh”>
+    "host":<hostname>
+    "port":<port>
+    "security": {
+      type: <"telnet" or "ssh">
     }
 ```    
 
@@ -326,7 +326,7 @@ Configuration endpoints have profiles with this format:
 
 `<product>.<instance id>.CFG.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
 
-For example, users must have READ access to the following profile to access the instance-scoped configuration element “files”:
+For example, users must have READ access to the following profile to access the instance-scoped configuration element "files":
 
 `ZLUX.DEFAULT.CFG.ORG_ZOWE_FOO.GET.INSTANCE.FILES`
 

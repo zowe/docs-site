@@ -8,7 +8,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 <div class="features">
   <div class="feature">
     <h2><a href="./getting-started/overview.html">Getting Started</a></h2>
-    <p>Learn about Zowe architecture and components; read about what’s new and changed in the Release Notes.</p>
+    <p>Learn about Zowe architecture and components; read about what's new and changed in the Release Notes.</p>
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
