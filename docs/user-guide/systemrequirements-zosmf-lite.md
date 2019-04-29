@@ -728,13 +728,14 @@ Your security administrator can authorize more users to z/OSMF. Simply connect t
 
 You can create more user groups as needed, for example, one group per z/OSMF task.
 
-#### Before you Begin
+### Before you Begin
 Collect the z/OS user IDs that you want to add.
 
-#### Procedure
+### Procedure
 1.	On an RACF system, enter the CONNECT command for the user IDs to be granted authorization to z/OSMF resources:
 
   `CONNECT userid GROUP(IZUADMIN)`
-#### Results
+
+### Results
 
   The user IDs can now access z/OSMF.             

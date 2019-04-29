@@ -41,7 +41,7 @@ An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-serv
 
 The Zowe Application Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
 
-#### HTTP
+### HTTP
 
 To configure the server for HTTP, complete these steps:
 
@@ -49,7 +49,7 @@ To configure the server for HTTP, complete these steps:
 
 2. Define *port* within *http*. Where *port* is an integer parameter for the TCP port on which the server will listen. Specify 80 or a value between 1024-65535.
 
-#### HTTPS
+### HTTPS
 
 For HTTPS, specify the following parameters: 
 
@@ -66,7 +66,7 @@ For HTTPS, specify the following parameters:
 
 **Note:** When using HTTPS, you must specify *pfx*, or both *certificates* and *keys*.
 
-#### Network example
+### Network example
 
 In the example configuration, both HTTP and HTTPS are specified:
 
@@ -95,7 +95,7 @@ When the Zowe Application Server is running, it accesses the server's settings a
 
 These directories dictate where the [Configuration Dataservice](../extend/extend-desktop/mvd-configdataservice.md) stores content.
 
-#### Deploy example
+### Deploy example
 ```
 // All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the installation process.
@@ -118,7 +118,7 @@ To include application plug-ins, define the location of the plug-ins directory i
 
 **Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-app-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
 
-#### Plug-ins directory example
+### Plug-ins directory example
 ```
 // All paths relative to zlux-app-server/js or zlux-app-server/bin
 // In real installations, these values will be configured during the install process.
@@ -298,7 +298,7 @@ To use role-based access control (RBAC) for Zowe dataservice endpoints, enable R
 
 After you configure RBAC, Zowe checks whether users have authority to perform actions that access another application's dataservices.
 
-#### How it works
+### How it works
 
 Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
@@ -380,7 +380,7 @@ Specify the following settings inside the **logLevels** object.
 
 All settings are optional.
 
-#### Zowe Application Server tracing
+### Zowe Application Server tracing
 
 To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `zluxserver.json` file. 
 
@@ -418,7 +418,7 @@ Logging for dispatching network requests to plug-in dataservices.
 **_zsf.network**
 Logging for the HTTPS server status (connection, ports, IP, and so on)
 
-#### Log levels
+### Log levels
 
 The log levels are:
 
@@ -431,7 +431,7 @@ The log levels are:
 
 FINE, FINER, and FINEST are log levels for debugging, with increasing verbosity.
 
-#### Enabling tracing for ZSS 
+### Enabling tracing for ZSS 
 
 To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `zluxserver.json` file.
 
