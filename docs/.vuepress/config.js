@@ -297,7 +297,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.1.x',
+  description: 'Version 1.2.x',
   ga: 'UA-123892882-1',
   head: [
     [
