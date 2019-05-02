@@ -25,7 +25,11 @@ This release of Zowe API ML contains the following user experience improvements:
 spilling.                                                                                                                             
 - Added a check for the availability of the z/OSMF URL contained in the  
 configuration. z/OSMF is used to verify users logging into the Catalog.  
-- Made _PageNotFound_ error visible only in the debug log level.           
+- Made _PageNotFound_ error visible only in the debug log level.
+- Added zD&T-compatible ciphers and the TLS protocol restricted to 1.2.
+- Introduced support for VSCode development.
+- Introduced a common cipher configuration property.
+- Fixed URL transformation defects.
 - Fixed reporting that the Catalog is down when it is started before the 
 Discovery Service.                                                       
 - Removed the bean overriding error message from the log.                
