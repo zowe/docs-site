@@ -4,9 +4,9 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.2.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.2.0 (April 2019)](#version-1-2-0-april-2019)
+- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 
-## Version 1.2.0 (April 2019)
+## Version 1.2.0 (May 2019)
 
 Version 1.2.0 contains the following changes since Version 1.1.0.
 
