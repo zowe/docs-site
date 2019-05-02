@@ -70,38 +70,38 @@ As a deployment architecture, the z/OS Services are running as microservices wit
 </details>
 
 ### Zowe CLI
-Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
+Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
 
 <details>
 <summary> Click for more information </summary> 
 
-Zowe CLI provides the following benefits:
+Zowe CLI provides the following benefits:
 
-  - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
+  - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
   - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/cli-vscodeplugin.md).
-  - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
-  - Provides a more streamlined way to build software that integrates with z/OS. 
+  - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
+  - Provides a more streamlined way to build software that integrates with z/OS.
 
 **Note:** For information about prerequisites, software requirements, installing and upgrading Zowe CLI, see
 [Installing Zowe](../user-guide/installandconfig.md).
 
-#### Zowe CLI capabilities
+#### Zowe CLI capabilities
 
-With Zowe CLI, you can interact with z/OS remotely in the following ways:
+With Zowe CLI, you can interact with z/OS remotely in the following ways:
 
   - **Interact with mainframe files:**   
     Create, edit, download, and
-    upload mainframe files (data sets) directly from Zowe CLI. 
+    upload mainframe files (data sets) directly from Zowe CLI. 
   - **Submit jobs:**    
     Submit JCL from data sets or local storage, monitor the status, and view and download the output automatically.
   - **Issue TSO and z/OS console commands:**    
-    Issue TSO and console commands to the mainframe directly from Zowe CLI.
+    Issue TSO and console commands to the mainframe directly from Zowe CLI.
   - **Integrate z/OS actions into scripts:**    
-    Build local scripts that accomplish both mainframe and local tasks. 
+    Build local scripts that accomplish both mainframe and local tasks. 
   - **Produce responses as JSON documents:**    
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 

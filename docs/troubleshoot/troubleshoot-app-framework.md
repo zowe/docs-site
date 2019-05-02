@@ -29,7 +29,8 @@ For the Zowe Desktop to work, the node server that runs under the ZOWESVR starte
 
 To solve the problem, follow these steps: 
 1. Open the log file `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZOWESVR is started and only the last five files are kept.  
-1. Look for the message that starts with `ZIS status`.  
+
+2. Look for the message that starts with `ZIS status`.  
 
    When the desktop node server is able to communicate correctly, the line is followed by `- Ok`, so the log entry reads as follows:
 
@@ -55,3 +56,10 @@ To solve the problem, follow these steps:
     - Check that the user ID of the ZOWESVR started task is authorized to access the load module. There is a security check in place to ensure that only authorized code is able to call ZWESIS01 as it is an APF-authorized load module. The setup for each security manager is different and documented in the section "Security requirements for the cross memory server" in at [Manually installing the Zowe Cross Memory Server](../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
 
     ***Note*** If you are using RACF security manager a common reason for seeing `Permission Denied` is that the user running the started task ZOWESVR (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
+
+    If directly after the ```ZIS status - Failure``` maessage you see the line
+
+    ```
+    read failed ret code 1121 reason 0x76650446
+    ```
+    - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#configuring-zss-for-https)

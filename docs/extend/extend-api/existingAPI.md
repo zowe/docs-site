@@ -102,7 +102,7 @@ If the home page is not same as the base url add it in here
 
 ##### defaultGatewayUrl(n)
 This is the the gateway url that you want your redirect to work from. 
-You can create several  defaultGatewayUrl/defaultServiceUrl pairings. Normally this would cater for api, web socket (ws) and ui.
+You can create several defaultGatewayUrl/defaultServiceUrl pairings. Normally this would cater for api, web socket (ws) and ui.
 
 ##### defaultServiceUrl(n)
 The target url of the service

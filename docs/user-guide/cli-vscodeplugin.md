@@ -33,7 +33,7 @@ You can also watch the following video to learn how to install and use the Zowe 
 
 ## Use-Cases
 
-As an developer, you can use VSCode Extension for Zowe to perform the following tasks. 
+As an developer, you can use VSCode Extension for Zowe to perform the following tasks. 
 
 - View and filter mainframe data sets.
 - Create download, edit, upload, and delete PDS and PDS members.

@@ -1,6 +1,6 @@
 # Installing Zowe CLI
 
-Install Zowe CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). 
+Install Zowe CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). 
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
@@ -8,7 +8,7 @@ Install Zowe CLI on your computer. You can learn about new CLI features in the 
 
 Use one of the following methods to install Zowe CLI.
 
-- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
+- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
 - [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
 
 If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/troubleshoot-cli.md).
@@ -36,7 +36,7 @@ If you do not have internet access at your site, use the following method to ins
     -  *r* indicates the release number
     -  *m* indicates the modification number
 
-3. Open a command line window such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package (.zip file). Issue the following command to unzip the files:
+3. Open a command line window such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package (.zip file). Issue the following command to unzip the files:
 
     ```
     unzip zowe-cli-package-v.r.m.zip
@@ -54,7 +54,7 @@ If you do not have internet access at your site, use the following method to ins
     npm install -g zowe-cli.tgz 
     ```
 
-    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/troubleshoot-cli.md).
+    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/troubleshoot-cli.md).
 
     Zowe CLI is installed on your computer. See [Installing Plug-ins](cli-installplugins.md) for information about the commands for installing plug-ins from the package.
 
@@ -62,7 +62,7 @@ If you do not have internet access at your site, use the following method to ins
 
    **Tip:** Profiles are a Zowe CLI feature that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command.
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
 
 ### Installing Zowe CLI from an online registry
 
@@ -80,13 +80,13 @@ If your computer is connected to the Internet, you can use the following method 
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2.  Issue the following command to set the registry to the Zowe CLI scoped package. In addition to setting the scoped registry, your default registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
+2.  Issue the following command to set the registry to the Zowe CLI scoped package. In addition to setting the scoped registry, your default registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
     ```
     npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
     ```
 
-3.  Issue the following command to install Zowe CLI from the registry:
+3.  Issue the following command to install Zowe CLI from the registry:
 
     ```
     npm install -g @brightside/core@lts-incremental
@@ -100,7 +100,7 @@ If your computer is connected to the Internet, you can use the following method 
 
     **Note:** The IBM Db2 plug-in requires additional configuration. For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).
 
-After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+After you install and configure Zowe CLI, you can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
 
 
 

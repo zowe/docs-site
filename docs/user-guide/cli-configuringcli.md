@@ -198,7 +198,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 **Default profile**
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that your default profile can communicate with z/OSMF:
+After you [create a profile](#creating-zowe-cli-profiles), verify that your default profile can communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -206,7 +206,7 @@ zowe zosmf check status
 
 **Specific profile**
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that you can use a specific profile to communicate with z/OSMF:
+After you [create a profile](#creating-zowe-cli-profiles), verify that you can use a specific profile to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
@@ -228,7 +228,7 @@ You can set the log level to adjust the level of detail that is written to log f
 
 ## Setting the Zowe CLI home directory
 
-You can set the location on your computer where Zowe CLI creates the *.zowe* directory, which contains log files, profiles, and plug-ins for the product:
+You can set the location on your computer where Zowe CLI creates the *.zowe* directory, which contains log files, profiles, and plug-ins for the product:
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
