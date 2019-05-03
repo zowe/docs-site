@@ -5,7 +5,7 @@ The following information contains procedures and tips for meeting z/OSMF requir
 - [IBM z/OS Management Facility Configuration Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PartConfiguring.htm)
 - [IBM z/OS Management Facility Help](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izu/izu.htm)
 
-### z/OS requirements
+## z/OS requirements
 Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center
@@ -26,7 +26,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
   [695feec1]: https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izsc300/cloudProvOverview.htm "What is IBM Cloud Provisioning and Management for z/OS?"
   [0a0a3cac]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_SoftwarePrereqs.htm "Software prerequisites for z/OSMF"
 
-### Configuring z/OSMF
+## Configuring z/OSMF
 
 **Follow these steps:**
 
@@ -100,7 +100,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 - [Configure z/OS Management Facility for CA Technologies ACF2](https://docops.ca.com/ca-acf2-for-z-os/16-0/en/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2)
 
-#### z/OSMF REST services for the Zowe CLI
+## z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center

@@ -70,7 +70,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
+    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.0')
     ```
 
 5.  In your project directory, run the `gradle build` command to build your project.
@@ -102,7 +102,7 @@ Use the following procedure if you use Maven as your build automation system.
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>0.2.0</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
@@ -495,6 +495,7 @@ All API services require a certificate that is trusted by API Mediation Layer in
 
 2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
+    ```
         ssl:
             protocol: TLSv1.2
             ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
@@ -506,7 +507,11 @@ All API services require a certificate that is trusted by API Mediation Layer in
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
-
+     eureka:
+         instance:
+             nonSecurePortEnabled: false
+             securePortEnabled: true
+    ```
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
 ## Run your service

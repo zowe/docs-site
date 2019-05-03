@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.1.0'
+const CURRENT_ZOWE_VERSION = '1.2.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -48,6 +48,7 @@ const ALL_PAGES = [{
       'user-guide/systemrequirements-zosmf-lite.md',
       'user-guide/install-zos.md',
       'user-guide/cli-installcli.md',
+      'user-guide/cli-updatingcli.md',
       'user-guide/uninstall.md',
     ],
   },
@@ -307,7 +308,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.1.x',
+  description: 'Version 1.2.x',
   ga: 'UA-123892882-1',
   head: [
     [
@@ -328,6 +329,15 @@ module.exports = {
      deferSurvey:true,
     };`],
     ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
+    //embed hotjar
+    ['script', { }, `(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1291329,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`],   
   ],
   themeConfig: {
     docsDir: 'docs',
