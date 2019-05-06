@@ -70,7 +70,7 @@ Note that we are using the [fetch api](https://developer.mozilla.org/en-US/docs/
 
 ## Adding your App to the MVD
 
-While the zlux environment comes with predefined “apps” and explorers, you also have the ability to extend the system and add your own apps.
+While the zlux environment comes with predefined "apps" and explorers, you also have the ability to extend the system and add your own apps.
 
 ### Building your App for the MVD.
 

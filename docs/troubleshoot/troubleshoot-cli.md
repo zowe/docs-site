@@ -31,15 +31,15 @@ is an open issue on the npm GitHub repository to fix the defect.
 **Solution:**
 
 If you encounter this problem, some users report that repeatedly
-attempting to install Zowe CLI yields success. Some users also
+attempting to install Zowe CLI yields success. Some users also
 report success using the following workarounds:
 
-  - Issue the `npm cache clean` command.
+  - Issue the `npm cache clean` command.
 
-  - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](../user-guide/cli-installcli.html).
+  - Uninstall and reinstall Zowe CLI. For more information,
+    see [Install Zowe CLI](../user-guide/cli-installcli.html).
 
-  - `Add the --no-optional` flag to the end of the `npm install` command.
+  - `Add the --no-optional` flag to the end of the `npm install` command.
 
 ## `Sudo` syntax required to complete some installations
 
@@ -47,11 +47,11 @@ report success using the following workarounds:
 
 **Symptom:**
 
-The installation fails on Linux or macOS. 
+The installation fails on Linux or macOS. 
 
 **Solution:**
 
-Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo ` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
+Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo ` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
 
 ## `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
@@ -59,7 +59,7 @@ Depending on how you configured Node.js on Linux or macOS, you might need to add
 
 **Symptom:**
 
-You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product.
+You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product.
 
 **Solution:**
 
@@ -81,7 +81,7 @@ You attempt to issue node.js commands and you do not receive the expected  outpu
 
 **Solution:**
 
-There might be a program that is named *node* on your path. The Node.js installer automatically adds a program that is named *node* to your path. When there are pre-existing programs that are named *node* on your computer, the program that appears first in the path is used. To correct this behavior, change the order of the programs in the path so that Node.js appears first.
+There might be a program that is named *node* on your path. The Node.js installer automatically adds a program that is named *node* to your path. When there are pre-existing programs that are named *node* on your computer, the program that appears first in the path is used. To correct this behavior, change the order of the programs in the path so that Node.js appears first.
 
 ## Installation fails on Oracle Linux 6
 
@@ -90,9 +90,9 @@ There might be a program that is named *node* on your path. The Node.js instal
 **Symptom:**
 
 You receive error messages when you attempt to install the product on an
-Oracle Linux 6 operating system. 
+Oracle Linux 6 operating system. 
 
 **Solution:**
 
-Install the product on Oracle Linux 7 or another Linux or Windows OS. Zowe CLI is not compatible with Oracle Linux 6.
+Install the product on Oracle Linux 7 or another Linux or Windows OS. Zowe CLI is not compatible with Oracle Linux 6.
 

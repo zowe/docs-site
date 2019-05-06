@@ -27,9 +27,9 @@ The following attributes are valid for each dataservice in the *dataServices* ar
 
  Specify one of the following values:
 
-  - **router**: Router dataservices are dataservices that run under the proxy server, and use ExpressJS Routers for attaching actions to URLs and methods.
+  - **router**: Router dataservices that run under the proxy server, and use ExpressJS Routers for attaching actions to URLs and methods.
 
-  - **service**: Service dataservices are dataservices that run under ZSS, and utilize the API of ZSS dataservices for attaching actions to URLs and methods.
+  - **service**: Service dataservices that run under ZSS, and utilize the API of ZSS dataservices for attaching actions to URLs and methods.
 
 **name**
 
@@ -50,6 +50,35 @@ The name of the file that is the entry point for construction of the dataservice
 **dependenciesIncluded**
 
  Must be `true` for anything in the `pluginDefinition.json` file. (This setting is false only when adding dataservices to the server dynamically.)
+
+### Limiting the length of dataservice paths for RBAC
+If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
+
+To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to application services](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-application-services).
+
+SAF profiles have the following format:
+
+`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<dataservice path with forward slashes '/' replaced by periods '.'>`
+
+For example, to access this dataservice endpoint:
+
+`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
+
+Users must have READ access to the following profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
+
+`/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d` 
+
+So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
+
+The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
+
+To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
 
 ## Dataservice API
 

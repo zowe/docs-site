@@ -58,7 +58,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
       **Follow these steps:**
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://projectgiza.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
+      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://zowe.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
       2. Import the public key with the `gpg --import KEYS` command.
       3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
       4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
@@ -176,7 +176,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     ```yaml
     install:
-     rootDir=/var/zowe/1.0.1
+     rootDir=/var/zowe/1.2.0
 
     api-mediation:
       catalogPort=7552
@@ -352,7 +352,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
-     cd /var/zowe/1.0.1
+     cd /var/zowe/1.2.0
      /zowe/builds/install/zowe-config-stc.sh
      ```
     Alternatively, you can issue the commands manually:
@@ -418,13 +418,14 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     Each time you run the install script, it retrieves environment variable settings in the following ways. 
 	  - When the `.zowe-profile` file exists in the home diretory, the install script uses the values in this file to set the environment variables. 
-	  - When the `.zowe-profile` file does not exist, the install script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables.
+	  - When the `.zowe-profile` file does not exist, the install script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables. The install script does not update or execute the `.profile` file.
 
     You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
 
-     **Note**: If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
-
-    If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     **Notes**: 
+     - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
+     - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `zowe_profile` file in the current user's home directory.  
 
 2. Expanding the PAX files
 
@@ -853,7 +854,7 @@ Use your preferred REST API client to review the value of the status variable of
 https://hostName:basePort/api/v1/apicatalog/application/state
 ```
 
-The `hostName` is set during install, and `basePort` is set as the `gatewayHttpsPort` parameter.
+The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
 
 **Example:**
 

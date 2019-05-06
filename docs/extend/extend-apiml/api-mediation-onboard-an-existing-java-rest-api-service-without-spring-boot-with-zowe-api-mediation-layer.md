@@ -70,7 +70,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '0.2.0')
+    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.0')
     ```
 
 5.  In your project directory, run the `gradle build` command to build your project.
@@ -102,7 +102,7 @@ Use the following procedure if you use Maven as your build automation system.
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>0.2.0</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
@@ -270,9 +270,10 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
     - gatewayUrl: api/v1/api-doc
       serviceUrl: /hellospring/api-doc
     apiInfo:
-        title: HelloWorld Spring
-        description: REST API for a Spring Application
-        version: 1.0.0
+        - apiId: ${mfaas.discovery.serviceId}
+          gatewayUrl: api/v1
+          swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+          documentationUrl: https://zowe.github.io/docs-site
     catalogUiTile:
         id: helloworld-spring
         title: HelloWorld Spring REST API
@@ -381,18 +382,30 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
             Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
     
-    * **apiInfo.title**
-    
-        Specifies the title of your service API.
-    
-    * **apiInfo.description**
-    
-        Specifies the high-level function description of your service API.
-    
-    * **apiInfo.version**
-    
-        Specifies the actual version of the API in semantic format.
-    
+    * **apiInfo.apiId**
+
+        Specifies the API identifier that is registered in the API Mediation Layer installation.
+        The API ID uniquely identifies the API in the API Mediation Layer.
+        The same API can be provided by multiple services. The API ID can be used
+        to locate the same APIs that are provided by different services.
+        The creator of the API defines this ID.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.`.
+        We recommend that you use your organization as the prefix.
+
+    * **apiInfo.gatewayUrl**
+
+        The base path at the API Gateway where the API is available. Ensure that this is
+        the same path as the _gatewayUrl_ value in the _routes_ sections.
+
+    * **apiInfo.swaggerUrl**
+
+        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+        
+    * **apiInfo.documentationUrl**
+
+        (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+
     * **catalogUiTile.id**
     
         Specifies the unique identifier for the API services product family. 
@@ -482,6 +495,7 @@ All API services require a certificate that is trusted by API Mediation Layer in
 
 2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
+    ```
         ssl:
             protocol: TLSv1.2
             ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
@@ -493,7 +507,11 @@ All API services require a certificate that is trusted by API Mediation Layer in
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
-
+     eureka:
+         instance:
+             nonSecurePortEnabled: false
+             securePortEnabled: true
+    ```
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
 ## Run your service

@@ -41,6 +41,9 @@ The `lib` directory is where router-type dataservices are loaded by use in the Z
 
 The `web` directory is where the server serves static content for an application plug-in that includes the *webContent* attribute in its definition. Typically, this directory contains the output of a webpack build. Anything you place in this directory can be accessed by a client, so only include content that is intended to be consumed by clients.
 
+### Packaging applications as compressed files
+Application plug-in files can be served to browsers as compressed files in brotli (.br) or gzip (.gz) format. The file must be below the application's `/web` directory, and the browser must support the compression method. If there are multiple compressed files in the `/web` directory, the Zowe Application Server and browser perform runtime negotiation to decide which file to use.
+
 ## Location of plug-in files
 
 The files that define a plug-in are located in the `plugins` directory.

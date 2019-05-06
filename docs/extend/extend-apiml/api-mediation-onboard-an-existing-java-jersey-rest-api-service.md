@@ -64,7 +64,7 @@ Use the following procedure if you use Gradle as your build automation system.
 4. In the same _build.gradle_ file, add the following code to the dependencies code block to add the enabler-jersey artifact as a dependency of your project:
 
     ```groovy
-      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '0.2.0')
+      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '1.1.0')
     ```
     
 5. In your project directory, run the `gradle build` command to build your project.
@@ -99,7 +99,7 @@ Use the following procedure if you use Maven as your build automation system.
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>0.2.0</version>
+        <version>1.1.0</version>
     </dependency>
    ```
 3. Create a _settings.xml_ file and copy the following _xml_ code block which defines the credentials for the Artifactory:
@@ -172,9 +172,10 @@ Ensure that this file is placed in the _WEB-INF_ folder located in the module of
              - gatewayUrl: 
                serviceUrl: 
          apiInfo:
-             title: 
-             description: 
-             version: 
+             - apiId:
+               gatewayUrl:
+               swaggerUrl:
+               documentationUrl:
          catalogUiTile:
              id: 
              title: 
@@ -234,7 +235,7 @@ the defined code.
 
 ## Download Apache Tomcat and enable SSL
 
-To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the service uses HTTPS, configure Tomcat to use **SSL/TLS** protocol.
+To run Helloworld Jersey, requires the installation of Apache Tomcat. As the service uses HTTPS, configure Tomcat to use the SSL/TLS protocol.
 
 **Follow these steps:**
 
@@ -242,11 +243,11 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
 
 2.  Build Helloworld Jersey through IntelliJ or by running `gradlew helloworld-jersey:build` in the terminal. 
 
-3.  Enable HTTPS for Apache Tomcat. There are few additional steps to enable HTTPS for Apache Tomcat.
+3.  Enable HTTPS for Apache Tomcat with the following steps: 
 
-    a) Go to the `apache-tomcat-8.0.39-windows-x64\conf` directory
+    a) Go to the `apache-tomcat-8.0.39-windows-x64\conf` directory.
 
-    **Note:** (the full path depends on where you decided to install Tomcat)
+    **Note:** The full path depends on where you decided to install Tomcat.
     
     b) Open the `server.xml` file with a text editor as Administrator and add the following xml block:
         ```xml
@@ -257,7 +258,7 @@ To run Helloworld Jersey, requires the nstallation of Apache Tomcat. As the serv
                               keystorePass="password"
                                                     />
         ```
-        Be also sure to comment the HTTP connector which uses the same port.
+        Ensure to comment the HTTP connector which uses the same port.
     c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
     
        ```xml
@@ -294,7 +295,7 @@ After you externalize the parameters to make them readable through Tomcat and en
    
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
    
-3.  Navigate to following URL:
+3.  Navigate to the following URL:
         
     ```
     https://localhost:10011
