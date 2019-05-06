@@ -54,7 +54,7 @@ Line-height, traditionally known as leading, is one of several factors that dire
 
 ## Embed font
 
-To embed your selected fonts into a web page, copy this code into the `<head>` of your HTML document.
+To embed your selected fonts into a web page, copy the following code into the `<head>` of your HTML document.
 
 - Standard:
 
