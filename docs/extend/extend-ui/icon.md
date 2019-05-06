@@ -17,5 +17,4 @@ Icons are key component for a successful UI design because they are a visual way
 - **Desktop Friendly** – To use on the desktop or for a complete set of vectors, check out the cheatsheet.
 - **Accessibility-minded** – Font Awesome loves screen readers and helps make your icons accessible on the web.
 
-
 To learn more or download the library go to www.fontawesome.com

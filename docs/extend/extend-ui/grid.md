@@ -1,10 +1,10 @@
 # Grid
 
-Grid systems are used for creating page layouts through a series of rows and columns that house your content. Zowe uses a responsive, mobile first, fluid grid system that appropriately scales up to 12 columns as the device or view port size increases.
+Grid systems are used for creating page layouts through a series of rows and columns that house your content. Zowe uses a responsive, mobile-first, fluid grid system that appropriately scales up to 12 columns as the device or view port size increases.
 
 ## 12 column grid
 
-A 12 column grid is simply best practice. 12 is a well-distributed division as you have a good range of widths you can assign to content. It is a straight number, it is dividable by 2, 3, 4 and 6 so it allows enough flexibility. Many frameworks like Bootstrap and Pure use a 12 column grid as their default. Other grid systems like a 5 column grid can reduce flexibility, balance, and consistency.
+A 12 column grid is recommended. 12 is a well-distributed division that provides a good range of widths to assign to content. It is dividable by 2, 3, 4 and 6, which allows flexibility. Many frameworks, such as Bootstrap and Pure, use a 12 column grid by default. Other grid systems like a 5 column grid can reduce flexibility, balance, and consistency.
 
 ## Gutters
 
@@ -21,7 +21,7 @@ Zowe designs should be limited to 12 columns. If designers feel that they need f
 
 This can translate to percentages of the twelve columns. Using this method, a designer can create a folded, less granular grid. For example, if your component spans three equal columns, that is equal to 25% of twelve columns.
 
-Column count: 12 _
+Column count: 12 
 
 
 ## Margins

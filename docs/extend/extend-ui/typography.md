@@ -35,15 +35,15 @@ Roboto font family provides a wide range of weights. However, only SemiBold, Reg
 
 ## Body copy
 
-It's recommended to use two sizes for body copy. The first is UI specific. To maximize screen real estate we chose a smaller 14px / 0.875rem body copy size for the standard UI console. However, for areas that have prolonged reading, like Documentation, we use a larger body copy size of 16px / 1rem to enhance readability.
+We recommended that you use two sizes for body copy. The first size is UI specific. To maximize screen real estate we chose a smaller 14px / 0.875rem body copy size for the standard UI console. However, for areas that have prolonged reading, such as Documentation, we use a larger body copy size of 16px / 1rem to enhance readability.
 
 ## Line scale
 
-- 1.333 Perfect Fourth type scale - desktop
+- 1.333 Perfect Fourth-type scale - desktop
 
   ![type desktop sample](../../images/extender/type_scale_desktop-1024x533.png)
 
-- 1.2 Minor Third type scale - mobile
+- 1.2 Minor Third type-scale - mobile
 
   ![type mobile sample](../../images/extender/type_scale_mobile-1024x461.png)
 
