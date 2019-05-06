@@ -6,7 +6,7 @@ Color brings a design to life. Color is versatile; it's used to express emotion 
 
 The Zowe color palette is designed and implemented in a theme-able manner. The universal color variables are determined by common roles and usage; it is not based singularly on a color value (i.e. unique hex code). The same color value might be assigned to multiple variables in a theme's palette when the values have distinctly different roles.
 
-A universal variable can also have multiple associated roles when the color is consistently used across those roles. This allows for uniform color application across themes while giving each theme the freedom to express its own individuality at a more detailed level.
+A universal variable can also have multiple associated roles when the color is consistently used across those roles. This allows for uniform color application across themes, while giving each theme the freedom to express its own individuality at a more detailed level.
 
  ![color palette](../../images/extender/full_palette.png)
 
@@ -26,6 +26,6 @@ A universal variable can also have multiple associated roles when the color is c
 
 - Large Text (3:1): at least 24px / 19px semi-bold
 
-WCAG guidelines: https://www.w3.org/WAI/standards-guidelines/wcag/
+WCAG guidelines: [https://www.w3.org/WAI/standards-guidelines/wcag/](https://www.w3.org/WAI/standards-guidelines/wcag/)
 
-Contrast Checker Tool: https://webaim.org/resources/contrastchecker/
+Contrast Checker Tool: [https://webaim.org/resources/contrastchecker/](https://webaim.org/resources/contrastchecker/)
