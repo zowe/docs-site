@@ -41,7 +41,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate db2
+    zowe plugins validate @brightside/db2
     ```
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
@@ -101,7 +101,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL env
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate db2
+    zowe plugins validate @brightside/db2
     ```
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
