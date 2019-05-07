@@ -55,7 +55,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate cics
+    zowe plugins validate @brightside/cics
     ```
 
     Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
