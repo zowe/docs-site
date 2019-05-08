@@ -71,6 +71,7 @@ const ALL_PAGES = [{
     text: 'Zowe CLI extensions and plug-ins',
     items: [
       'user-guide/cli-extending.md',
+      'user-guide/cli-swreqplugins.md',
       'user-guide/cli-installplugins.md',
       'user-guide/cli-cicsplugin.md',
       'user-guide/cli-db2plugin.md',
