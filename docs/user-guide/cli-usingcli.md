@@ -12,14 +12,18 @@ To begin using the product, open a command line window and issue the following c
 zowe --help
 ```
 
+![Isuing the help command][GetHelp.gif]
+
 **Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
 ### Displaying command group, action, and object help
-You can use the `--help` global option get more information about a specific command group, action, or object. Use the following syntax to display group-level help and learn more about specific command groups (for example, *zos-jobs* and *zos-files*):
+
+You can use the `--help` global option get more information about a specific command group, action, or object.
 
 ```
 zowe <group, action, or object name> --help
 ```
+
 ```
 zowe zos-files create --help
 ```
