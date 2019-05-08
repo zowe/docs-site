@@ -15,7 +15,7 @@ To begin using the product, open a command line window and issue the following c
 zowe --help
 ```
 
-![Isuing the help command][../images/guides/cli/GetHelp.gif]
+![Issuing the help command](../images/guides/CLI/GetHelp.gif)
 
 **Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
