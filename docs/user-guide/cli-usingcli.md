@@ -6,13 +6,16 @@ This section contains information about using Zowe CLI.
 Zowe CLI contains a help system that is embedded directly into the command-line interface. When you want help with Zowe CLI, you issue help commands that provide you with information about the product, syntax, and usage.
 
 ### Displaying top-level help
+
+<!---your comment-->
+
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
 ```
 zowe --help
 ```
 
-![Isuing the help command][GetHelp.gif]
+![Isuing the help command][../images/guides/cli/GetHelp.gif]
 
 **Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
