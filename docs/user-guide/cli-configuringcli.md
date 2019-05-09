@@ -64,7 +64,7 @@ zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 
 After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
 
-#### Creating a profile that acesses API Mediation Layer 
+#### Creating a profile that accesses API Mediation Layer 
 
 You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 
