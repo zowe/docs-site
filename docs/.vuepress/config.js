@@ -132,12 +132,12 @@ const ALL_PAGES = [{
     {
      text: 'UI Guidelines',
       items: [
-        'extend/extend-ui/ui.md',
-        'extend/extend-ui/colors.md',
-        'extend/extend-ui/typography.md',
-        'extend/extend-ui/grid.md',
-        'extend/extend-ui/icon.md',
-        'extend/extend-ui/appicon.md',
+        'extend/guidelines-ui/ui.md',
+        'extend/guidelines-ui/colors.md',
+        'extend/guidelines-ui/typography.md',
+        'extend/guidelines-ui/grid.md',
+        'extend/guidelines-ui/icon.md',
+        'extend/guidelines-ui/appicon.md',
         ]
     }
   ]
