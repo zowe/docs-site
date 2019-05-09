@@ -54,3 +54,5 @@ A Zowe overview deck in PDF format is available for download. The information in
 ### Zowe CLI command reference guide 
 
 View the [CLI Command Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
+
+<p class="action"><a href="https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf" class="nav-link action-button"> <span>CLI Reference Guide</span></a></p>
