@@ -53,18 +53,18 @@ Create a profile, then use the profile when you issue a command.
 Substitute your connection details and issue the following command to create a profile with the name `myprofile123`:
 
 ```
-zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
+zowe profiles create zosmf-profile <myprofile123> --host <host123> --port <port123> --user <ibmuser> --password <pass123>
 ```
 
-Issue the following command to list all data sets under the username ibmuser on the system specified in `myprofile123`:
+Issue the following command to list all data sets under the username `ibmuser` on the system specified in `myprofile123`:
 
 ```
-zowe zos-files list data-set "ibmuser.* --zosmf-profile myprofile123
+zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
 After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
 
-#### Creating a profile that acesses API Mediation Layer 
+#### Creating a profile that accesses API Mediation Layer 
 
 You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
 
