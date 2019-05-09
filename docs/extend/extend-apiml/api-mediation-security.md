@@ -9,6 +9,7 @@
   - [Authorization](#authorization)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
   - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+  - [Setting Ciphers for API ML Services](#setting-ciphers-for-api-ml-services)
 - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -195,7 +196,6 @@ by other technologies used in Zowe (Node.js).
 
 - A client certificate is a certificate that is used for validation of the HTTPS client. The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client uses.
 
-
 ### Authentication to the Discovery Service
 
 The Discovery Service has the following types of users that require authentication:
@@ -207,6 +207,33 @@ The Discovery Service has the following types of users that require authenticati
 - **Services that need to register to the Discovery Service**
 
     These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
+
+### Setting ciphers for API ML services
+
+You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the gateway, discovery service, and API catalog.
+
+**Note:** You do not need to rebuild JAR files when you override the default values in shell scirpts.
+
+The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `$ZOWE_ROOT_DIR/api-mediation/scripts/api-mediation-start-*.sh`, where `*` expands to `gateway`, `catalog`, and `discovery`.
+Add the launch parameter of the shell script to set a cipher:
+
+```
+-Dapiml.security.ciphers=<cipher-list>
+```
+
+On localhost, you can override the default configuration in [config/local/gateway-service.yml](https://github.com/zowe/api-layer/blob/master/config/local/gateway-service.yml) (including other YAML files for development purposes).
+
+The following list shows default ciphers. The API ML services use the following cipher order:
+
+```
+   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+```
+
+Only IANA ciphers names are supported. For more information, see [Cipher Suites](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_suites) or [List of Ciphers](https://testssl.net/openssl-iana.mapping.html).
 
 ## Certificate management in Zowe API Mediation Layer
 
