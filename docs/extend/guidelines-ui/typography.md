@@ -54,25 +54,24 @@ Line-height, traditionally known as leading, is one of several factors that dire
 
 ## Embed font
 
-To embed your selected fonts into a web page, copy the following code into the `<head>` of your HTML document.
+To embed your selected fonts into a web page, copy the following code into the `<head>` of your HTML document:
 
-- Standard:
-
-  ```
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,500" rel="stylesheet">
-  ```
+```
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,500" rel="stylesheet">
+```
 
 ## Import font
 
-  ```
-  <style>
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,500');
-  </style>
-  ```
+```
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,500');
+</style>
+```
 
 ## Specify in CSS
 
 Use the following CSS rules to specify these families:
+
 ```
 font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Condensed', sans-serif;
