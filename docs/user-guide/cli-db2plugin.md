@@ -1,4 +1,4 @@
-# Zowe CLI plug-in for IBM Db2 Database
+# Zowe CLI Plug-in for IBM Db2 Database
 The Zowe CLI plug-in for IBM® Db2® Database lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
 Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
@@ -12,7 +12,8 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
   
 ## Use cases
 
-Use cases for Zowe CLI Db2 plug-in include:
+As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
+
   - Execute SQL and interact with databases.
   - Execute a file with SQL statements.
   - Export tables to a local file on your computer in SQL format.
@@ -20,15 +21,16 @@ Use cases for Zowe CLI Db2 plug-in include:
 
 ## Prerequisites
 
-Before you install the plug-in, meet the following prerequisites:
-
-  - [Install Zowe CLI](cli-installcli.md) on your computer.
+Before you install the plug-in, meet the prerequisites in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing
 
-There are **two methods** that you can use to install the Zowe CLI Plug-in for IBM Db2 Database - install from an online registry or install from the local package.
+Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2 Database:
 
-### Installing from online registry
+- [Install from an online registry](#installing-from-an-online-registry)
+- [Install from a local package](#installing-from-a-local-package)
+
+### Installing from an online registry
 
 If you installed Zowe CLI from **online registry**, complete the following steps:
 
@@ -48,7 +50,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 
 3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
-### Installing from local package
+### Installing from a local package
 
 Follow these procedures if you downloaded the Zowe installation package:
 
@@ -66,9 +68,9 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI. 
 
-#### Installing the Plug-in
+#### Installing the plug-in
 
-Now that the Db2 ODBC CLI driver is downloaded, set the IBM_DB_INSTALLER_URL environment variable and install the Db2 plug-in to Zowe CLI.
+Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` environment variable and install the Db2 plug-in to Zowe CLI.
 
 **Follow these steps:**
 
