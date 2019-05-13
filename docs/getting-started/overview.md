@@ -73,7 +73,7 @@ As a deployment architecture, the z/OS Services are running as microservices wit
 Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
 
 <details>
-<summary> Click for more information </summary> 
+<summary> Click for more information </summary>
 
 Zowe CLI provides the following benefits:
 
@@ -82,23 +82,23 @@ Zowe CLI provides the following benefits:
   - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
   - Provides a more streamlined way to build software that integrates with z/OS.
 
-**Note:** For information about prerequisites, software requirements, installing and upgrading Zowe CLI, see
+**Note:** For information about software requirements, installing, and upgrading Zowe CLI, see
 [Installing Zowe](../user-guide/installandconfig.md).
 
 #### Zowe CLI capabilities
 
 With Zowe CLI, you can interact with z/OS remotely in the following ways:
 
-  - **Interact with mainframe files:**   
+  - **Interact with mainframe files:**
     Create, edit, download, and
     upload mainframe files (data sets) directly from Zowe CLI. 
-  - **Submit jobs:**    
+  - **Submit jobs:**
     Submit JCL from data sets or local storage, monitor the status, and view and download the output automatically.
-  - **Issue TSO and z/OS console commands:**    
+  - **Issue TSO and z/OS console commands:**
     Issue TSO and console commands to the mainframe directly from Zowe CLI.
-  - **Integrate z/OS actions into scripts:**    
+  - **Integrate z/OS actions into scripts:**
     Build local scripts that accomplish both mainframe and local tasks. 
-  - **Produce responses as JSON documents:**    
+  - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
 For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
@@ -143,7 +143,7 @@ Services that comprise the API ML service ecosystem are located behind a gateway
 
 **Discovery Service**
 
-The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application achitectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
+The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application architectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
 
 **Discovery Service TLS/SSL**
 
@@ -155,7 +155,7 @@ The API Catalog is the catalog of published API services and their associated do
 
 **Catalog Security**
  
-Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the zOSMF API. 
+Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API. 
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
