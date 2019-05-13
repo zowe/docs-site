@@ -64,6 +64,17 @@ export default {
         return resolveNext(this.$page, this.sidebarItems)
       }
     }
+  },
+  // Customization code when page is updated
+  // - mounted will be triggered when page is re-loaded. It is triggered once until next fully reloading.
+  // - updated will be triggered when switching between pages, scrolling to another section of the 
+  //   page, etc. This event is NOT triggered when the page is reloaded.
+  // So we need to hook on both events.
+  mounted: () => {
+    window.ensureCopyToClipboard && window.ensureCopyToClipboard()
+  },
+  updated: () => {
+    window.ensureCopyToClipboard && window.ensureCopyToClipboard()
   }
 }
 
