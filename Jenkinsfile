@@ -151,7 +151,8 @@ node ('ibm-jenkins-slave-dind') {
         sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
-          sh 'npm run test:links'
+          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+          sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
         }
       }
     }
