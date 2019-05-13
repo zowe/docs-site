@@ -572,7 +572,7 @@ The manual installation consists of the following steps.
 
     Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set `zwes_loadlib`, for example, ZWES.SISLOAD.
 
-    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
+    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp -X ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
 
     Do not add the `zwes_loadlib` data set to the system LNKLST or LPALST concatenations. You must execute it by using a started task that uses a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
 
