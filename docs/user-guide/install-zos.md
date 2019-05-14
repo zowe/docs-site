@@ -144,7 +144,7 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-<!-- Plus one point re READ permission (at least) to the BPX.JOBNAME FACILITY class. This facility is needed for you to be albe to see names of STC. Info should be here https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm  -->
+<!-- TODO. Plus one point re READ permission (at least) to the BPX.JOBNAME FACILITY class. This facility is needed for you to be albe to see names of STC. Info should be here https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm  -->
 
 ## Installing the Zowe runtime on z/OS
 
@@ -168,14 +168,12 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
    <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
 
-    <!-- Here's a placeholder for the new parameters -->
-
     - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
 
       ```
       pfxCssN
       ```
-      <!-- Insert the example -->
+      <!-- TODO. Insert the example -->
       where:
       
         - `pfx` - prefix that contains up to four characters, for example, ZOWE.
@@ -278,7 +276,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       ```
       
 4. Select the ZOWESVR PROCLIB member.
-
+    <!-- TODO -->
     The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
 
     **Example:**
@@ -290,6 +288,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       dsName=auto
       memberName=ZOWESVR
     ```
+      <!-- TODO -->
     **Follow these steps:**
 
     a. Specify the dataset name of the PROCLIB member you want to use with the `dsName` tag.  For example,
