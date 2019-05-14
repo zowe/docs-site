@@ -25,11 +25,11 @@ If you installed Zowe CLI from a registry, confirm that NPM is set to target the
 npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 ```
 
-## Meeting the prerequisites
+## Meeting the software requirements
 
-Ensure that you meet the prerequisites for a plug-in before you install
-the plug-in to Zowe CLI. For documentation related to each plug-in,
-see [Extending Zowe CLI](cli-extending.md).
+Ensure that you meet the software requirements for a plug-in before you install
+the plug-in to Zowe CLI. For information related to each plug-in,
+see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing plug-ins
 

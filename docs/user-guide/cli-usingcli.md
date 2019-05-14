@@ -6,20 +6,27 @@ This section contains information about using Zowe CLI.
 Zowe CLI contains a help system that is embedded directly into the command-line interface. When you want help with Zowe CLI, you issue help commands that provide you with information about the product, syntax, and usage.
 
 ### Displaying top-level help
+
+<!---your comment-->
+
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
 ```
 zowe --help
 ```
 
+![Issuing the help command](../images/guides/CLI/GetHelp.gif)
+
 **Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
 
 ### Displaying command group, action, and object help
-You can use the `--help` global option get more information about a specific command group, action, or object. Use the following syntax to display group-level help and learn more about specific command groups (for example, *zos-jobs* and *zos-files*):
+
+You can use the `--help` global option get more information about a specific command group, action, or object.
 
 ```
 zowe <group, action, or object name> --help
 ```
+
 ```
 zowe zos-files create --help
 ```
