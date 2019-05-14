@@ -16,14 +16,14 @@ Another way to set up Zowe Application Framework is to have the Zowe Application
 
 Getting started with the server requires the following steps:
 
-0. [(Optional) Install git for z/OS](#0-optional-install-git-for-zos)
-1. [Acquire the source code](#1-acquire-the-source-code)
-1. [Acquire external components](#2-acquire-external-components)
-1. [Set the server configuration](#3-set-the-server-configuration)
-1. [Build application plug-ins](#4-build-application-plug-ins)
-1. [Deploy server configuration files](#5-deploy-server-configuration-files)
-1. [Run the server](#6-run-the-server)
-1. [Connect in a browser!](#7-connect-in-a-browser)
+0. [(Optional) Install git for z/OS](#_0-optional-install-git-for-z-os)
+1. [Acquire the source code](#_1-acquire-the-source-code)
+1. [Acquire external components](#_2-acquire-external-components)
+1. [Set the server configuration](#_3-set-the-server-configuration)
+1. [Build application plug-ins](#_4-build-application-plug-ins)
+1. [Deploy server configuration files](#_5-deploy-server-configuration-files)
+1. [Run the server](#_6-run-the-server)
+1. [Connect in a browser!](#_7-connect-in-a-browser)
 
 Follow each step and you will be on your way to your first Zowe Application Server instance.
 
