@@ -4,13 +4,13 @@ The Visual Studio Code (VSCode) Extension for Zowe lets you interact with data s
 
 **Note:** The primary documentation, for this plug-in is available on the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe). This topic is intended to be an overview of the extension.
 
-  - [Prerequisites](#prerequisites)
+  - [Software requirements](#software-requirements)
   - [Installing](#installing)
   - [Use Cases](#use-cases)
 
-## Prerequisites
+## Software requirements
 
-Before you use the VSCode extension, meet the following prerequisites on your computer:
+Before you use the VSCode extension, meet the following software requirements on your computer:
 
   - Install [VSCode](https://code.visualstudio.com/).
 
@@ -20,7 +20,7 @@ Before you use the VSCode extension, meet the following prerequisites on your co
 
 ## Installing
 
-1. Address [the prerequisites](#prerequisites).
+1. Address [the software requirements](#software-requirements).
 2. Open VSCode. Navigate to the **Extensions** tab on the left side of the UI.
 3. Click the green **Install** button to install the plug-in.
 4. Restart VSCode. The plug-in is now installed and available for use.
