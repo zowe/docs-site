@@ -30,12 +30,12 @@ def customParameters = []
 // >>>>>>>> parameters to control pipeline behavior
 customParameters.push(booleanParam(
   name: 'RUN_PUBLISH',
-  description: 'If run the publish step.',
+  description: 'If run the publish step. Only take effect when building on "master" and "v?.?.x" branches. This option provides a chance to disable publish on those branches.',
   defaultValue: true
 ))
 customParameters.push(string(
   name: 'PUBLISH_BRANCH',
-  description: 'Target branch to publish',
+  description: 'Target branch to publish. By default will be "gh-pages". If you specify a branch name starts with "gh-pages-test", you can always perform test publishing.',
   defaultValue: 'gh-pages',
   trim: true,
   required: true
@@ -49,12 +49,12 @@ customParameters.push(string(
 ))
 customParameters.push(booleanParam(
   name: 'FULL_SITE_LINKS_CHECK',
-  description: 'If run links check on all latest and archived versions, not only current build.',
+  description: 'If run links check on all latest and archived versions, not only checking current build.',
   defaultValue: false
 ))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
-  description: 'Github user credentials',
+  description: 'Github user credentials. Required to publish build result to gh-pages.',
   credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl',
   defaultValue: 'zowe-robot-github',
   required: true
