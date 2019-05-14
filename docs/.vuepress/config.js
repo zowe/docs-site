@@ -128,17 +128,6 @@ const ALL_PAGES = [{
         'extend/extend-desktop/iframe-sample.md',
         'extend/extend-desktop/angular-sample.md',
       ]
-    },
-    {
-     text: 'UI Guidelines',
-      items: [
-        'extend/guidelines-ui/ui.md',
-        'extend/guidelines-ui/colors.md',
-        'extend/guidelines-ui/typography.md',
-        'extend/guidelines-ui/grid.md',
-        'extend/guidelines-ui/icon.md',
-        'extend/guidelines-ui/appicon.md',
-        ]
     }
   ]
 },
@@ -171,7 +160,23 @@ const ALL_PAGES = [{
 {
   text: 'Contributing',
   baseuri: '/contributing.html',
-  link: 'contributing.md',
+  items: [
+    {
+      text: 'Contributing to documentation',
+      link: 'contributing.md'
+    },
+    {
+      text: 'UI Guidelines',
+       items: [
+         'extend/guidelines-ui/ui.md',
+         'extend/guidelines-ui/colors.md',
+         'extend/guidelines-ui/typography.md',
+         'extend/guidelines-ui/grid.md',
+         'extend/guidelines-ui/icon.md',
+         'extend/guidelines-ui/appicon.md'
+         ]
+     }
+  ]
 },
 {
   text: 'Appendix',
