@@ -144,6 +144,8 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
+<!-- Plus one point re READ permission (at least) to the BPX.JOBNAME FACILITY class. This facility is needed for you to be albe to see names of STC. Info should be here https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm  -->
+
 ## Installing the Zowe runtime on z/OS
 
 To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
@@ -161,60 +163,50 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
     - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
+    
+      You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-        You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
+   <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
 
     <!-- Here's a placeholder for the new parameters -->
 
-    - Zowe address space identifiers assosiated with USS processes in the zowe-install.yaml. Identifiers have certain components and use the following format:
+    - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
 
       ```
       pfxCssN
       ```
+      <!-- Insert the example -->
       where:
-
-        `pfx` - prefix that contains up to four characters, for example, ZOWE.
+      
+        - `pfx` - prefix that contains up to four characters, for example, ZOWE.
         
-        `C` - a component character that is similar to ones that are used for message IDs). The list of component characters is as follows:
-         **A** - API Mediation Layer
-         **C** - Zowe CLI
-         **D**  - Zowe Desktop
-         **S** - Zowe Application Server
-         **E** - Zowe Explorer
-         **S** - Zowe System Services
-         **Z** - ZSS process
-         **X** - Cross Memory Server`
+        - `C` - a component character that is similar to ones that are used for message IDs. The following list contains the component characters:
+          - **A** - API Mediation Layer
+          - **D**  - Zowe Desktop
+          - **E** - Zowe Explorer
+          - **S** - Zowe System Services
+          - **Z** - ZSS process
+          - **X** - Cross Memory Server`
 
-        `ss` - subcomponent (1 or 2 characters)
-          **GW** - API Gateway
-          **DS** - Discovery Service
-          **AC** - API Catalog
-          **AJ** - ? (part of Zowe Explorer)
-          **AD** - ? (part of Zowe Explorer)
-          **UD** - ? (part of Zowe Explorer)
-          **UJ** - ? (part of Zowe Explorer)
-          **UU** - ? (part of Zowe Explorer)
+        - `ss` - a subcomponent that consists of 1 or 2 characters:
+          - **GW** - API ML Gateway
+          - **DS** - API ML Discovery Service
+          - **AC** - API ML Catalog
+          - **AJ** - Explorer API Jobs
+          - **AD** - Explorer API Data Sets
+          - **UD** - Explorer UI Data Sets
+          - **UJ** - Explorer UI Jobs
+          - **UU** - Explorer UI USS
+          - **S** - Zowe Desktop Application Server
             
-        `N` - instance number (only 1 right now)
+        - `N` - instance number
           <!-- More clarity with the instance number needed. Why is it important? -->
           You should use the prefix for the main started task (+ number).
-  
-       If the prefix is ZOWE, then...:
 
-          ZOWE1
+          Example of the 1st instance of Zowe API ML Gateway identifier:
+          ```
           ZOWEAGW1
-          ZOWEADS1
-          ZOWEAAC1
-          ZOWEDS1
-          ZOWEEAJ1
-          ZOWEEAD1
-          ZOWEEUJ1
-          ZOWEEUD1
-          ZOWEEUU1
-          ZOWESZ1
-          ZOWESX1 
-        <!-- Are those examples? or real libraries? -->
-     
+          ```
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
     - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
@@ -228,6 +220,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```yaml
     install:
      rootDir=/var/zowe/1.2.0
+     prefix=ZOWE
 
     api-mediation:
       catalogPort=7552
