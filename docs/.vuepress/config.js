@@ -159,8 +159,26 @@ const ALL_PAGES = [{
 },
 {
   text: 'Contributing',
-  baseuri: '/contributing.html',
-  link: 'contributing.md',
+  baseuri: '/contribute/',
+  items: [
+    {
+      text: 'Contributing to documentation',
+      items: [
+        'contribute/contributing.md'
+      ]
+    },
+    {
+      text: 'UI Guidelines',
+       items: [
+         'contribute/guidelines-ui/ui.md',
+         'contribute/guidelines-ui/colors.md',
+         'contribute/guidelines-ui/typography.md',
+         'contribute/guidelines-ui/grid.md',
+         'contribute/guidelines-ui/icon.md',
+         'contribute/guidelines-ui/appicon.md'
+         ]
+     }
+  ]
 },
 {
   text: 'Appendix',
