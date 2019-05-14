@@ -164,6 +164,57 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
         You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
+    <!-- Here's a placeholder for the new parameters -->
+
+    - Zowe address space identifiers assosiated with USS processes in the zowe-install.yaml. Identifiers have certain components and use the following format:
+
+      ```
+      pfxCssN
+      ```
+      where:
+
+        `pfx` - prefix that contains up to four characters, for example, ZOWE.
+        
+        `C` - a component character that is similar to ones that are used for message IDs). The list of component characters is as follows:
+         **A** - API Mediation Layer
+         **C** - Zowe CLI
+         **D**  - Zowe Desktop
+         **S** - Zowe Application Server
+         **E** - Zowe Explorer
+         **S** - Zowe System Services
+         **Z** - ZSS process
+         **X** - Cross Memory Server`
+
+        `ss` - subcomponent (1 or 2 characters)
+          **GW** - API Gateway
+          **DS** - Discovery Service
+          **AC** - API Catalog
+          **AJ** - ? (part of Zowe Explorer)
+          **AD** - ? (part of Zowe Explorer)
+          **UD** - ? (part of Zowe Explorer)
+          **UJ** - ? (part of Zowe Explorer)
+          **UU** - ? (part of Zowe Explorer)
+            
+        `N` - instance number (only 1 right now)
+          <!-- More clarity with the instance number needed. Why is it important? -->
+          You should use the prefix for the main started task (+ number).
+  
+       If the prefix is ZOWE, then...:
+
+          ZOWE1
+          ZOWEAGW1
+          ZOWEADS1
+          ZOWEAAC1
+          ZOWEDS1
+          ZOWEEAJ1
+          ZOWEEAD1
+          ZOWEEUJ1
+          ZOWEEUD1
+          ZOWEEUU1
+          ZOWESZ1
+          ZOWESX1 
+        <!-- Are those examples? or real libraries? -->
+     
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
     - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
