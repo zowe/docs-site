@@ -30,7 +30,7 @@ def customParameters = []
 // >>>>>>>> parameters to control pipeline behavior
 customParameters.push(booleanParam(
   name: 'RUN_PUBLISH',
-  description: 'If run the piublish step.',
+  description: 'If run the publish step.',
   defaultValue: true
 ))
 customParameters.push(string(
@@ -46,6 +46,11 @@ customParameters.push(string(
   defaultValue: '',
   trim: true,
   required: false
+))
+customParameters.push(booleanParam(
+  name: 'FULL_SITE_LINKS_CHECK',
+  description: 'If run links check on all latest and archived versions, not only current build.',
+  defaultValue: false
 ))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
@@ -151,8 +156,12 @@ node ('ibm-jenkins-slave-dind') {
         sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
-          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-          sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
+          if (params.FULL_SITE_LINKS_CHECK) {
+            sh 'npm run test:links'
+          } else {
+            def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+            sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
+          }
         }
       }
     }
