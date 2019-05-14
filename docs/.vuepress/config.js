@@ -159,21 +159,23 @@ const ALL_PAGES = [{
 },
 {
   text: 'Contributing',
-  baseuri: '/contributing.html',
+  baseuri: '/contribute/',
   items: [
     {
       text: 'Contributing to documentation',
-      link: 'contributing.md'
+      items: [
+        'contribute/contributing.md'
+      ]
     },
     {
       text: 'UI Guidelines',
        items: [
-         'extend/guidelines-ui/ui.md',
-         'extend/guidelines-ui/colors.md',
-         'extend/guidelines-ui/typography.md',
-         'extend/guidelines-ui/grid.md',
-         'extend/guidelines-ui/icon.md',
-         'extend/guidelines-ui/appicon.md'
+         'contribute/guidelines-ui/ui.md',
+         'contribute/guidelines-ui/colors.md',
+         'contribute/guidelines-ui/typography.md',
+         'contribute/guidelines-ui/grid.md',
+         'contribute/guidelines-ui/icon.md',
+         'contribute/guidelines-ui/appicon.md'
          ]
      }
   ]
