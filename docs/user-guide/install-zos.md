@@ -259,7 +259,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
       - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
-      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-installsh-works).
+      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-install-sh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
 
@@ -344,7 +344,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
     ```
 
-    This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-zosmf-certificate) for more details.
+    This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
 
 
     
@@ -819,7 +819,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying z/OS Services installation](#verifying-zos-services-installation) 
+- [Verifying z/OS Services installation](#verifying-z-os-services-installation) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation

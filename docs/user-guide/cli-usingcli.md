@@ -42,7 +42,7 @@ provides the ability to interact with mainframe data sets. This article provides
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
 **Important!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
+completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-zowe-cli-profiles) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 
@@ -195,7 +195,7 @@ The zosmf command group lets you work with Zowe CLI profiles and get general inf
 With the zosmf command group, you can perform the following tasks:
 
 - Create and manage your Zowe CLI zosmf profiles. You must have at least one zosmf profile to issue most commands. Issue the `zowe help explain profiles` command in Zowe CLI to learn more about using profiles.
-- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-z-osmf).
+- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf).
 - Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 **Note:** For more information about `zosmf` syntax, actions, and options, open Zowe CLI and issue the following command:
