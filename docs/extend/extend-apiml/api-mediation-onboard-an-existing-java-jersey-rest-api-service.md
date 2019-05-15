@@ -113,8 +113,8 @@ Use the following procedure if you use Maven as your build automation system.
     <servers>
        <server>
            <id>libs-release</id>
-           <username>{username}</username>
-           <password>{password}</password>
+           <username>apilayer-build</username>
+           <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
        </server>
     </servers>
     </settings>

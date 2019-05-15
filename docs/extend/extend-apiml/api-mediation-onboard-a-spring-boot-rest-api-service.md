@@ -88,8 +88,8 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
         <servers>
            <server>
                <id>Gizaartificatory</id>
-               <username>{artifactoryUser}</username>
-               <password>{artifactoryPassword}</password>
+               <username>apilayer-build</username>
+               <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
            </server>
         </servers>
         </settings>
