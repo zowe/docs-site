@@ -65,6 +65,7 @@ export default {
       }
     }
   },
+  // MODIFICATION_FROM_THEME - starts
   // Customization code when page is updated
   // - mounted will be triggered when page is re-loaded. It is triggered once until next fully reloading.
   // - updated will be triggered when switching between pages, scrolling to another section of the 
@@ -76,6 +77,7 @@ export default {
   updated: () => {
     window.ensureCopyToClipboard && window.ensureCopyToClipboard()
   }
+  // MODIFICATION_FROM_THEME - ends
 }
 
 function resolvePrev(page, items) {
