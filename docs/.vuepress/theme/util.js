@@ -209,6 +209,10 @@ function resolveItem (item, pages, base, isNested) {
     return {
       type: 'group',
       title: item.title,
+      // MODIFICATION_FROM_THEME - starts
+      // also export section, so we know the root of the page item
+      section: item.section || '',
+      // MODIFICATION_FROM_THEME - ends
       children: children.map(child => resolveItem(child, pages, base, true)),
       collapsable: item.collapsable !== false
     }

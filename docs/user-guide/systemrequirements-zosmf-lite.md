@@ -508,7 +508,7 @@ TSOASMGR: ALLOWED: 50 IN USE: 0 HIGHCNT: 0
 
 1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
 2.	Review and edit job IZUTSSEC before you submit. You can review the IZUTSSEC section below for more details.
-3.	Submit IZUNUSEC as a batch job on your z/OS system.  
+3.	Submit IZUTSSEC as a batch job on your z/OS system.  
 
 #### IZUTSSEC
 IBM provides a set of jobs in `SYS1.SAMPLIB` with sample RACF commands to help with your z/OSMF configuration and its prerequisites. The IZUTSSEC job represents the authorizations that are needed for the z/OSMF TSO/E address space service. Your security administrator can edit and run the job.
