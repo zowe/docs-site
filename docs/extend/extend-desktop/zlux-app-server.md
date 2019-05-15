@@ -132,13 +132,13 @@ Second, from the system with the Zowe Application Server, start it with a few pa
 cd ../zlux-app-server/bin
 
 // Windows:
-nodeServer.bat <parameters>
+nodeCluster.bat <parameters>
 
 // Others:
-nodeServer.sh <parameters>
+nodeCluster.sh <parameters>
 ```
 
-Valid parameters for nodeServer are as follows:
+Valid parameters for nodeCluster are as follows:
 
 - _-h_: Specifies the hostname where ZSS can be found. Use as `-h \<hostname\>`
 - _-P_: Specifies the port where ZSS can be found. Use as `-P \<port\>`. This overrides _zssPort_ from the configuration file.
@@ -148,7 +148,7 @@ Valid parameters for nodeServer are as follows:
 
 In the example where we run ZSS on a host named `mainframe.zowe.com`, running on zssPort = 19997, the Zowe Application Server running on Windows could be started with the following:
 
-`nodeServer.bat -h mainframe.zowe.com -P 19997 -p 19998`
+`nodeCluster.bat -h mainframe.zowe.com -P 19997 -p 19998`
 
 After which we would be able to connect to the Zowe Application Server at port 19998.
 

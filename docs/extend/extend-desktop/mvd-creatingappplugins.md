@@ -20,7 +20,7 @@ If nothing is returned from the command, you can set the PATH using the *NODE_HO
 export NODE_HOME=node_installation_directory
 ```
 
-Using this directory, the node will be included on the PATH in `nodeServer.sh`. (`nodeServer.sh` is located in `zlux-app-server/bin`). 
+Using this directory, the node will be included on the PATH in `nodeCluster.sh`. (`nodeCluster.sh` is located in `zlux-app-server/bin`). 
 
 ## Using the sample application plug-in
 
