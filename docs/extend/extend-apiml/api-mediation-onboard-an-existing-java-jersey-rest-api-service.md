@@ -37,8 +37,8 @@ Use the following procedure if you use Gradle as your build automation system.
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
    
     # Artifactory credentials for builds:
-    mavenUser={username}
-    mavenPassword={password}
+    mavenUser=apilayer-build
+    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
     ```
 
     This file specifies the URL for the repository of the Artifactory. The enabler-jersey artifact is downloaded from this repository.
