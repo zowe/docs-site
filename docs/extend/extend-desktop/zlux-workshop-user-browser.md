@@ -270,7 +270,7 @@ Simply:
 Now you're ready to run the server and see your application plug-in.
 
 1. `cd /zlux-example-server/bin`.
-1. `./nodeServer.sh`.
+1. `./nodeCluster.sh`.
 1. Open your browser to `https://hostname:port`.
 1. Login with your credentials.
 1. Open the application plug-in on the bottom of the page with the green 'U' icon.
@@ -283,7 +283,7 @@ An application plug-in can have one or more [Dataservices](https://github.com/zo
 
 To demonstrate the use of a Dataservice, we'll add one to this application plug-in. The application plug-in needs to display a list of users, filtered by some value. Ordinarily, this sort of data would be contained within a database, where you can get rows in bulk and filter them in some manner. Retrieval of database contents, likewise, is a task that is easily representable through a REST API, so let's make one.
 
-1. Create a file, `workshop-user-browser-app/nodeServer/ts/tablehandler.ts`
+1. Create a file, `workshop-user-browser-app/nodeCluster/ts/tablehandler.ts`
    Add the following contents:
 
 ```typescript
@@ -333,7 +333,7 @@ This is boilerplate for making a Dataservice. We lightly wrap ExpressJS Routers 
 
 Let's move beyond hello world, and access this user table.
 
-1. Within `workshop-user-browser-app/nodeServer/ts/tablehandler.ts`, add a function for returning the rows of the user table.
+1. Within `workshop-user-browser-app/nodeCluster/ts/tablehandler.ts`, add a function for returning the rows of the user table.
 
 ```typescript
 const MY_VERSION = '0.0.1'
@@ -400,7 +400,7 @@ This REST API now allows for two GET calls to be made: one to root /, and the ot
 
 Now that the Dataservice is made, add it to our Plugin's definition so that the server is aware of it, and then build it so that the server can run it.
 
-1. Open a (third) command prompt to `workshop-user-browser-app/nodeServer`.
+1. Open a (third) command prompt to `workshop-user-browser-app/nodeCluster`.
 1. Install dependencies, `npm install`.
 1. Invoke the NPM build process, `npm run-script start`.
    1. If there are errors, go back to [building the dataservice].(#building-your-first-dataservice) and make sure the files look correct.
@@ -671,8 +671,8 @@ As we did previously in the [Adding Your application to the Desktop](#adding-you
 }
 ```
 
-3. Make sure the ./nodeServer is stopped before running `ant deploy` under `zlux-build`
-4. Restart the ./nodeServer under `zlux-app-server/bin` with the appropriate parameters passed in.
+3. Make sure the ./nodeCluster is stopped before running `ant deploy` under `zlux-build`
+4. Restart the ./nodeCluster under `zlux-app-server/bin` with the appropriate parameters passed in.
 5. Refresh the browser and verify that the app with a **Green S** is present in zLUX.
 
 ### Enabling Communication
