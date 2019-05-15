@@ -4,9 +4,9 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.2.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.2.0 (April 2019)](#version-1-2-0-april-2019)
+- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 
-## Version 1.2.0 (April 2019)
+## Version 1.2.0 (May 2019)
 
 Version 1.2.0 contains the following changes since Version 1.1.0.
 
@@ -25,7 +25,11 @@ This release of Zowe API ML contains the following user experience improvements:
 spilling.                                                                                                                             
 - Added a check for the availability of the z/OSMF URL contained in the  
 configuration. z/OSMF is used to verify users logging into the Catalog.  
-- Made _PageNotFound_ error visible only in the debug log level.           
+- Made _PageNotFound_ error visible only in the debug log level.
+- Added zD&T-compatible ciphers and the TLS protocol restricted to 1.2.
+- Introduced support for VSCode development.
+- Introduced a common cipher configuration property.
+- Fixed URL transformation defects.
 - Fixed reporting that the Catalog is down when it is started before the 
 Discovery Service.                                                       
 - Removed the bean overriding error message from the log.                

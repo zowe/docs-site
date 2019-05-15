@@ -20,7 +20,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 * [Zowe Explorer Jobs REST Server](#zowe-explorer-jobs-rest-server-dependency-attributions)
 * [Zowe ZSS Authentication Handler](#zowe-zss-authentication-handler-dependency-attributions)
 
-### Imperative CLI Framework Dependency Attributions 
+## Imperative CLI Framework Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Imperative CLI Framework | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.github.com/DefinitelyTyped/DefinitelyTyped.git) |
@@ -446,7 +446,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Imperative CLI Framework | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 | Imperative CLI Framework | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 
-### Zowe API Mediation Layer Dependency Attributions 
+## Zowe API Mediation Layer Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe API Mediation Layer | HdrHistogram |  v2.1.10 | Public Domain, per Creative Commons CC0, [Simplified BSD](http://opensource.org/licenses/bsd-license) | HdrHistogram |
@@ -2460,7 +2460,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe API Mediation Layer | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 | Zowe API Mediation Layer | zenscroll |  v4.0.2 | Unlicense | [zenscroll](https://www.github.com/zengabor/zenscroll.git) |
 
-### Zowe Application Framework Dependency Attributions 
+## Zowe Application Framework Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Application Framework | rxjs |  v6.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [rxjs](https://www.github.com/reactivex/rxjs.git) |
@@ -2743,7 +2743,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Application Framework | tslib |  v1.9.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](https://www.github.com/Microsoft/tslib.git) |
 | Zowe Application Framework | zone.js |  v0.8.29 | [MIT](http://opensource.org/licenses/mit-license) | [zone.js](https://www.github.com/angular/zone.js.git) |
 
-### Zowe CLI Dependency Attributions 
+## Zowe CLI Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe CLI | @brightside/imperative |  v2.0.0 | EPL 2.0 | [@brightside/imperative](https://www.github.com/zowe/imperative) |
@@ -3170,14 +3170,14 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 | Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 
-### Zowe CLI Plug-in for IBM CICS Dependency Attributions 
+## Zowe CLI Plug-in for IBM CICS Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe CLI Plug-in for IBM CICS | sax |  v1.2.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [sax](https://www.github.com/isaacs/sax-js.git) |
 | Zowe CLI Plug-in for IBM CICS | xml2js |  v0.4.19 | [MIT](http://opensource.org/licenses/mit-license) | [xml2js](https://www.github.com/Leonidas-from-XIV/node-xml2js.git) |
 | Zowe CLI Plug-in for IBM CICS | xmlbuilder |  v9.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js.git) |
 
-### Zowe CLI Plug-in for IBM Db2 Database Dependency Attributions 
+## Zowe CLI Plug-in for IBM Db2 Database Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe CLI Plug-in for IBM Db2 Database | ajv |  v6.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv.git) |
@@ -3284,7 +3284,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe CLI Plug-in for IBM Db2 Database | wrappy |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wrappy](https://www.github.com/npm/wrappy) |
 | Zowe CLI Plug-in for IBM Db2 Database | xtend |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [xtend](https://www.github.com/Raynos/xtend.git) |
 
-### Zowe Desktop Data Sets UI Plugin Dependency Attributions 
+## Zowe Desktop Data Sets UI Plugin Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Data Sets UI Plugin | @babel/runtime |  v7.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/runtime](https://www.github.com/babel/babel/tree/master/packages/babel-runtime) |
@@ -3349,7 +3349,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Data Sets UI Plugin | whatwg-fetch |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 | Zowe Desktop Data Sets UI Plugin | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 
-### Zowe Desktop Database Browser Plug-in Dependency Attributions 
+## Zowe Desktop Database Browser Plug-in Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Database Browser Plug-in | @angular/animations |  v6.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@angular/animations](https://www.github.com/angular/angular.git) |
@@ -3471,7 +3471,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Database Browser Plug-in | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 | Zowe Desktop Database Browser Plug-in | zone.js |  v0.8.29 | [MIT](http://opensource.org/licenses/mit-license) | [zone.js](https://www.github.com/angular/zone.js.git) |
 
-### Zowe Desktop Eclipse Orion-based React Editor Dependency Attributions 
+## Zowe Desktop Eclipse Orion-based React Editor Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Eclipse Orion-based React Editor | asap |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [asap](https://www.github.com/kriskowal/asap.git) |
@@ -3495,7 +3495,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Eclipse Orion-based React Editor | ua-parser-js |  v0.7.19 | (GPL-2.0 OR MIT) | [ua-parser-js](https://www.github.com/faisalman/ua-parser-js.git) |
 | Zowe Desktop Eclipse Orion-based React Editor | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 
-### Zowe Desktop JES UI Plugin Dependency Attributions 
+## Zowe Desktop JES UI Plugin Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop JES UI Plugin | @babel/runtime |  v7.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/runtime](https://www.github.com/babel/babel/tree/master/packages/babel-runtime) |
@@ -3561,7 +3561,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop JES UI Plugin | whatwg-fetch |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 | Zowe Desktop JES UI Plugin | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 
-### Zowe Desktop Sample React Application Dependency Attributions 
+## Zowe Desktop Sample React Application Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Sample React Application | @babel/code-frame |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://www.github.com/babel/babel/tree/master/packages/babel-code-frame) |
@@ -4710,7 +4710,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Sample React Application | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 | Zowe Desktop Sample React Application | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 
-### Zowe Desktop Web Plug-in Server Dependency Attributions 
+## Zowe Desktop Web Plug-in Server Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Web Plug-in Server | ansi-regex |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://www.github.com/chalk/ansi-regex.git) |
@@ -4769,7 +4769,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop Web Plug-in Server | yargs |  v12.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://www.github.com/yargs/yargs.git) |
 | Zowe Desktop Web Plug-in Server | yargs-parser |  v11.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.github.com/yargs/yargs-parser.git) |
 
-### Zowe Desktop z/OS Unix Files UI Plugin Dependency Attributions 
+## Zowe Desktop z/OS Unix Files UI Plugin Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop z/OS Unix Files UI Plugin | @babel/runtime |  v7.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/runtime](https://www.github.com/babel/babel/tree/master/packages/babel-runtime) |
@@ -4845,7 +4845,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Desktop z/OS Unix Files UI Plugin | whatwg-fetch |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 | Zowe Desktop z/OS Unix Files UI Plugin | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.github.com/github/fetch.git) |
 
-### Zowe Explorer Common REST Server Dependency Attributions 
+## Zowe Explorer Common REST Server Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Common REST Server | HdrHistogram |  v2.1.10 | Public Domain, per Creative Commons CC0, [Simplified BSD](http://opensource.org/licenses/bsd-license) | HdrHistogram |
@@ -4960,7 +4960,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Explorer Common REST Server | xml-path |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xml-path |
 | Zowe Explorer Common REST Server | xmlunit-core |  v2.5.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xmlunit-core |
 
-### Zowe Explorer Data Sets REST Server Dependency Attributions 
+## Zowe Explorer Data Sets REST Server Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Data Sets REST Server | HdrHistogram |  v2.1.10 | Public Domain, per Creative Commons CC0, [Simplified BSD](http://opensource.org/licenses/bsd-license) | HdrHistogram |
@@ -5035,7 +5035,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Explorer Data Sets REST Server | tomcat-embed-websocket |  v8.5.32 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
 | Zowe Explorer Data Sets REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
 
-### Zowe Explorer Jobs REST Server Dependency Attributions 
+## Zowe Explorer Jobs REST Server Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Jobs REST Server | HdrHistogram |  v2.1.10 | Public Domain, per Creative Commons CC0, [Simplified BSD](http://opensource.org/licenses/bsd-license) | HdrHistogram |
@@ -5110,7 +5110,7 @@ This section lists the third-party libraries for each Zowe component and the ass
 | Zowe Explorer Jobs REST Server | tomcat-embed-websocket |  v8.5.32 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
 | Zowe Explorer Jobs REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
 
-### Zowe ZSS Authentication Handler Dependency Attributions 
+## Zowe ZSS Authentication Handler Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub | 
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe ZSS Authentication Handler | bluebird |  v3.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [bluebird](https://www.github.com/petkaantonov/bluebird.git) |

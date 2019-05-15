@@ -30,12 +30,12 @@ def customParameters = []
 // >>>>>>>> parameters to control pipeline behavior
 customParameters.push(booleanParam(
   name: 'RUN_PUBLISH',
-  description: 'If run the piublish step.',
+  description: 'If run the publish step. Only take effect when building on "master" and "v?.?.x" branches. This option provides a chance to disable publish on those branches.',
   defaultValue: true
 ))
 customParameters.push(string(
   name: 'PUBLISH_BRANCH',
-  description: 'Target branch to publish',
+  description: 'Target branch to publish. By default will be "gh-pages". If you specify a branch name starts with "gh-pages-test", you can always perform test publishing.',
   defaultValue: 'gh-pages',
   trim: true,
   required: true
@@ -47,9 +47,14 @@ customParameters.push(string(
   trim: true,
   required: false
 ))
+customParameters.push(booleanParam(
+  name: 'FULL_SITE_LINKS_CHECK',
+  description: 'If run links check on all latest and archived versions, not only checking current build.',
+  defaultValue: false
+))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
-  description: 'Github user credentials',
+  description: 'Github user credentials. Required to publish build result to gh-pages.',
   credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl',
   defaultValue: 'zowe-robot-github',
   required: true
@@ -151,7 +156,12 @@ node ('ibm-jenkins-slave-dind') {
         sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
-          sh 'npm run test:links'
+          if (params.FULL_SITE_LINKS_CHECK) {
+            sh 'npm run test:links'
+          } else {
+            def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+            sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
+          }
         }
       }
     }
@@ -181,7 +191,7 @@ node ('ibm-jenkins-slave-dind') {
           sh """
             cd .deploy
             git add -A
-            git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
+            git commit -s -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
             git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
           """
         }

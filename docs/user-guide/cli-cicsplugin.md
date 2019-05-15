@@ -3,7 +3,7 @@
 The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
   - [Use Cases](#use-cases)
-  - [Prerequisites](#prerequisites)
+  - [Software requirements](#software-requirements)
   - [Installing](#installing)
   - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
@@ -18,21 +18,17 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfor
   - Deploy build artifacts to CICS regions.
   - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
 
-## Prerequisites
+## Software requirements
 
-Before you install the plug-in, meet the following prerequisites:
-
-  - [Install Zowe CLI](cli-installcli.md) on your computer. 
-  - Ensure that [IBM CICS Transaction Server v5.2](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) or later is installed and running in your mainframe environment.
-  - Ensure that [IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region. 
+Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing
 
-Use one of the two following methods that you can use to install the Zowe CLI Plug-in for IBM CICS:
+Use one of the following methods to install the Zowe CLI Plug-in for IBM CICS:
 
 - [Installing from an online registry](#installing-from-an-online-registry)
 
-- [Installing from local package](#installing-from-a-local-package)
+- [Installing from a local package](#installing-from-a-local-package)
 
 **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
@@ -55,7 +51,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate cics
+    zowe plugins validate @brightside/cics
     ```
 
     Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.

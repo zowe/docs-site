@@ -1,5 +1,7 @@
 # Frequently Asked Questions
 
+## Zowe CLI
+
 The following questions are frequently asked about Zowe CLI:
 
 - [Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?](#why-might-i-use-zowe-cli-versus-a-traditional-ispf-interface-to-perform-mainframe-tasks)
