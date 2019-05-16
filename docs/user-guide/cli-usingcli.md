@@ -42,7 +42,7 @@ provides the ability to interact with mainframe data sets. This article provides
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
 **Important!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-zowe-cli-profiles) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
+completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-zowe-cli-profiles) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 

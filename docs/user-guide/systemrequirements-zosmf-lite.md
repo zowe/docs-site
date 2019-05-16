@@ -8,7 +8,7 @@ This section provides information about requirements for z/OSMF Lite configurati
 2. [Assumptions](#assumptions)
 3. [Software Requirements](#software-requirements)
     1. [Minimum Java level](#minimum-java-level)
-    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-z-osmf-v2r3-and-later)
+    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere®-liberty-profile-z-osmf-v2r3-and-later)
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
 4. [Creating a z/OSMF nucleus on your system](#creating-a-z-osmf-nucleus-on-your-system)
