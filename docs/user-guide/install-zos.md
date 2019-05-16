@@ -592,7 +592,7 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 ```
 
 ## Installing the Zowe Cross Memory Server on z/OS
-
+<!-- TODO -->
 The Zowe Cross Memory Service is a started task angel that runs an authorized server application providing privileged cross-memory services to Zowe.  
 
 The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result. 
@@ -604,7 +604,7 @@ You can choose which method to use depending on your familiarity with z/OS confi
 Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
 ### Manually installing the Zowe Cross Memory Server
-
+<!-- TODO. Entire sub-section -->
 A number of files are included in the USS directory `zowe_install_dir/files/zss`.  If this directory is not present, you must create it by expanding the file `zowe_install_dir/files/zss.pax`.  To do this, first create the folder `zss` beneath `files` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`. 
 
 The manual installation consists of the following steps.
@@ -773,7 +773,7 @@ The manual installation consists of the following steps.
           ```
 
 ### Scripted install of the Zowe Cross Memory Server 
-
+<!-- TODO. Entire sub-section -->
 For users who have sufficient authority under their user ID to the z/OS instance they are installing the Zowe cross memory server into, there is a convenience script provided in `/zowe_install_dir/install/zowe-install-apf-server.sh`.
 
 - The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
@@ -827,7 +827,7 @@ where,
 After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT entry before you run `zowe-install-apf-server.sh`. 
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
-
+<!-- TODO. Entire sub-section -->
 The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
 
 ```
@@ -878,7 +878,7 @@ where:
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 ### Verifying z/OS Services installation
-
+<!-- TODO -->
 After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```
