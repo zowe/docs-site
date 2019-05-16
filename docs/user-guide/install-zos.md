@@ -356,7 +356,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
     
-
+<!-- TODO -->
 7. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
@@ -364,7 +364,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```
     zowe-install.sh  
     ```
-
+    <!-- Why not mention this before? or a part of preperation before the actual execution? -->
     You might receive the following error that the file cannot be executed:
 
     ```
@@ -388,11 +388,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```
 
     This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-zosmf-certificate) for more details.
-
-
     
 8. Configure Zowe as a started task.
-
+    <!-- TODO -->
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
      cd /var/zowe/1.2.0
@@ -401,7 +399,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     Alternatively, you can issue the commands manually:
     
     **Note:** You must replace `ZOWESVR` in the commands below with the name of your server that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file.
-
+    <!-- TODO -->
     - If you use RACF, issue the following commands:
 
       ```
@@ -456,7 +454,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
      - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
-
+    <!-- TODO -->
     When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
 
     Each time you run the install script, it retrieves environment variable settings in the following ways. 
@@ -483,7 +481,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     The install process will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result is reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
 
 4. Creating the PROCLIB member to run the Zowe runtime
-
+    <!-- TODO -->
     **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
 
     At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task. The install script does this automatically.  If the user specifies `dsName=auto`, or omits the `dsName` tag, or sets it to null by coding `dsName=`,  the install script proceeds as follows and stops after the first successful write to the destination PROCLIB. 
@@ -503,7 +501,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      ```
      Failed to put ZOWESVR.JCL in a PROCLIB dataset.
      ```
-
+    <!-- TODO -->
     In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZOWESVR.jcl` file to the preferred PROCLIB:  
 
      ```
@@ -525,7 +523,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
       ```
 
 ## Starting and stopping the Zowe runtime on z/OS
-
+<!-- TODO. Entire section -->
 Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
