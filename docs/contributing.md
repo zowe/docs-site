@@ -354,7 +354,7 @@ i.e.  | that is
 
 #### Spell out the full name and its abbreviation when the word appears for the first time. Use abbreviations in the texts that follow.
 
-Example: Mainframe Virtual Desktop (MVD)
+Example: role-based access control (RBAC)
 
 ### Structure and format<a name="Structure"></a>
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.

@@ -13,7 +13,7 @@ The following Zowe tutorials are available in Github.
 [sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
 :::
 
-## Internationalization in Angular Templates in Zowe zLUX 
+## Internationalization in Angular Templates in Zowe Application Server 
 
 :::tip Github Sample Repo:
 [sample-angular-app (Internationalization)](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md)

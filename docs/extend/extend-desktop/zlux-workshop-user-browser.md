@@ -29,7 +29,7 @@ So, let's get started!
    - [Adding your Dataservice to the Plugin Definition](#adding-your-dataservice-to-the-plugin-definition)
 1. [Adding your First Widget](#adding-your-first-widget)
    - [Adding your Dataservice to the App](#adding-your-dataservice-to-the-app)
-   - [Introducing ZLUX Grid](#introducing-zlux-grid)
+   - [Introducing Zowe Application Server Grid](#introducing-zlux-grid)
 1. [Adding Zowe App-to-App Communication](#adding-zowe-app-to-app-communication)
    - [Calling back to the Starter App](#calling-back-to-the-starter-app)
 
@@ -528,13 +528,13 @@ You might notice that we are referring to several instance variables that we hav
 
 Hopefully you are still running the command in the first command prompt, `npm run-script start`, which will rebuild your web content for the application whenever you make changes. You might see some errors, which we will resolve by adding the next portion of the application.
 
-### Introducing ZLUX Grid
+### Introducing Zowe Application Server Grid
 
 When **ngOnInit** runs, it will call out to the REST Dataservice and put the table row results into our cache, but we haven't yet visualized this in any way. We need to improve our HTML a bit to do that, and rather than reinvent the wheel, we have a table visualization library we can rely on: **ZLUX Grid**.
 
 If you inspect `package.json` in the **webClient** folder, you'll see that we've already included @zlux/grid as a dependency (as a link to one of the Zowe github repositories) so it should have been pulled into the **node_modules** folder during the `npm install` operation. We just need to include it in the Angular code to make use of it. To do so, complete these steps:
 
-1. Edit **webClient/src/app/userbrowser.module.ts**, adding import statements for the zlux widgets above and within the @NgModule statement:
+1. Edit **webClient/src/app/userbrowser.module.ts**, adding import statements for the Zowe Application Server widgets above and within the @NgModule statement:
 
 ```typescript
 import { ZluxGridModule } from '@zlux/grid';
@@ -608,7 +608,7 @@ Note the key functions of this template:
 
 - There is a button which when clicked will submit selected users (from the grid). We will implement this ability later.
 - We show or hide the grid based on a variable `ngIf="showGrid"` so that we can wait to show the grid until there is data to present.
-- The zlux-grid tag pulls the ZLUX Grid widget into our application, and it has many variables that can be set for visualization, as well as functions and modes.
+- The zlux-grid tag pulls the Zowe Application Server Grid widget into our application, and it has many variables that can be set for visualization, as well as functions and modes.
   - We allow the columns, rows, and metadata to be set dynamically by using the square bracket [ ] template syntax, and allow our code to be informed when the user selection of rows changes through `(selectionChange)="onTableSelectionChange($event)"`
 
 3. Small modification to **userbrowser-component.ts** to add the grid variable, and set up the aforementioned table selection event listener, both within the **UserBrowserComponent** Class:
@@ -621,7 +621,7 @@ onTableSelectionChange(rows: any[]):void{
 }
 ```
 
-The previous section, [Adding your Dataservice to the application](#adding-your-dataservice-to-the-app) set the variables that are fed into the ZLUX Grid widget, so at this point the application should be updated with the ability to present a list of users in a grid.
+The previous section, [Adding your Dataservice to the application](#adding-your-dataservice-to-the-app) set the variables that are fed into the Zowe Application Server Grid widget, so at this point the application should be updated with the ability to present a list of users in a grid.
 
 If you are still running `npm run-script start` in a command prompt, it should now show that the application has been successfully built, and that means we are ready to see the results. Reload your browser's webpage and open the user browser application once more. Do you see the list of users in columns and rows that can be sorted and selected? If so, great, you've built a simple yet useful application within Zowe! Let's move on to the last portion of the application tutorial where we hook the Starter application and the User Browser application together to accomplish a task.
 
@@ -673,7 +673,7 @@ As we did previously in the [Adding Your application to the Desktop](#adding-you
 
 3. Make sure the ./nodeCluster is stopped before running `ant deploy` under `zlux-build`
 4. Restart the ./nodeCluster under `zlux-app-server/bin` with the appropriate parameters passed in.
-5. Refresh the browser and verify that the app with a **Green S** is present in zLUX.
+5. Refresh the browser and verify that the app with a **Green S** is present in Zowe Application Server.
 
 ### Enabling Communication
 
@@ -792,7 +792,7 @@ this.submitSelectionAction = ZoweZLUX.dispatcher.makeAction(
 ```
 
 So, we created an Action which targets an open window of the Starter application, and provides it with an Object with a data attribute.
-We'll populate this object for the message to send to the application by getting the results from ZLUX Grid (`this.selectedRows` will be populated from `this.onTableSelectionChange`).
+We'll populate this object for the message to send to the application by getting the results from Zowe Application Server Grid (`this.selectedRows` will be populated from `this.onTableSelectionChange`).
 
 For the final change to this file, add a new method to the Class:
 
