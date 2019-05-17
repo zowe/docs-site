@@ -15,20 +15,31 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Set the MFS_LOG_LEVEL parameter to "debug" in the MFSxPRM member. The member resides in the RUNHLQ.CMFSOPTN data set.
+1. Navigate into ```<Zowe install directory>/api-mediation/scripts```
+
+2. You will find the shell scripts that are used to launch api mediation layer:
+    1. ```api-mediation-start-catalog.sh```
+    2. ```api-mediation-start-discovery.sh```
+    3. ```api-mediation-start-gateway.sh```
+
+3. Edit the file of the service, which you intend to enable debug mode for (EBCDIC encoding is used on MF)
+
+4. Find the line that contains the parameter and change it: 
     ```
-    MFS_LOG_LEVEL="debug"
+    -Dspring.profiles.include=debug \
     ```
-2. Restart the API ML internal services (Gateway, Discovery Service, and Catalog) as applicable to the problem that you are troubleshooting.
-You successfully enabled debug mode.
-3. Repeat the procedure that initially caused the problem.
-4. Review the debug messages and contact Support, if necessary.
-5. After you finish troubleshooting the error, set the MFS_LOG_LEVEL parameter back to the initial setting:
+
+5. Restart Zowe for the change to take effect. You successfully enabled debug mode.
+
+6. Repeat the procedure that initially caused the problem.
+
+7. Review the debug messages and contact Support, if necessary.
+
+8. After you finish troubleshooting the error, set the ```spring.profiles.include``` parameter back to the initial setting:
     ```
-    MFS_LOG_LEVEL=""
+    -Dspring.profiles.include= \
     ```
-6. Restart all API ML services (Gateway, Discovery Service, and Catalog).
-You successfully disabled debug mode.
+9. Restart Zowe for the change to take effect.You successfully disabled debug mode.
 
 ## Change the Log Level of Individual Code Components
 
