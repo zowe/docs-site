@@ -21,10 +21,13 @@ its performance and create large log files that consume a large volume of disk s
     - ```api-mediation-start-discovery.sh```
     - ```api-mediation-start-gateway.sh```
 
+<!--(EBCDIC encoding is used on MF) 
+it's just information--->
 2. Modify a file, which you intend to enable debug mode for.
-
-    **Note:** Use the EBCDIC encoding on Mainframe.
-<!-- TODO. p. 3 - what is THE parameter? -->
+   
+     **Note:** Use the EBCDIC encoding on Mainframe.
+<!-- TODO. p. 3 - what is THE parameter? 
+      spring.profiles.include-->
 3. Find the line that contains the parameter and change it: 
     ```
     -Dspring.profiles.include=debug \
@@ -33,7 +36,8 @@ its performance and create large log files that consume a large volume of disk s
 4. Restart Zowe for the change to take effect. 
     
     You successfully enabled debug mode.
-<!-- This should be the end of the procedure. Or the following steps should be optional or structured differently. -->
+<!-- This should be the end of the procedure. Or the following steps should be optional or structured differently. 
+It's end of enable debug mode. 5-8 is optional for revert back the debug mode(disable)-->
 5. Repeat the procedure that initially caused the problem.
 
 6. Review the debug messages and contact Support, if necessary.
@@ -75,6 +79,11 @@ This activates the application/loggers endpoints in each API ML internal service
     MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog 
     (by default, set to gateway port + 2).
     
+    **Exception:** For the catalog you will able to get list the available loggers by issuing the GET request for the given service URL:
+    ```
+    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
+    ```
+
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
     
     **Example:**
