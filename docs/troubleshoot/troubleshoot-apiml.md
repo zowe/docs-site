@@ -15,31 +15,36 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Navigate into ```<Zowe install directory>/api-mediation/scripts```
+1. Locate the following shell script files in the `<Zowe install directory>/api-mediation/scripts` directory:
 
-2. You will find the shell scripts that are used to launch api mediation layer:
-    1. ```api-mediation-start-catalog.sh```
-    2. ```api-mediation-start-discovery.sh```
-    3. ```api-mediation-start-gateway.sh```
+    - ```api-mediation-start-catalog.sh```
+    - ```api-mediation-start-discovery.sh```
+    - ```api-mediation-start-gateway.sh```
 
-3. Edit the file of the service, which you intend to enable debug mode for (EBCDIC encoding is used on MF)
+2. Modify a file, which you intend to enable debug mode for.
 
-4. Find the line that contains the parameter and change it: 
+    **Note:** Use the EBCDIC encoding on Mainframe.
+<!-- TODO. p. 3 - what is THE parameter? -->
+3. Find the line that contains the parameter and change it: 
     ```
     -Dspring.profiles.include=debug \
     ```
 
-5. Restart Zowe for the change to take effect. You successfully enabled debug mode.
+4. Restart Zowe for the change to take effect. 
+    
+    You successfully enabled debug mode.
+<!-- This should be the end of the procedure. Or the following steps should be optional or structured differently. -->
+5. Repeat the procedure that initially caused the problem.
 
-6. Repeat the procedure that initially caused the problem.
+6. Review the debug messages and contact Support, if necessary.
 
-7. Review the debug messages and contact Support, if necessary.
-
-8. After you finish troubleshooting the error, set the ```spring.profiles.include``` parameter back to the initial setting:
+7. After you finish troubleshooting the error, set the ```spring.profiles.include``` parameter back to the initial setting:
     ```
     -Dspring.profiles.include= \
     ```
-9. Restart Zowe for the change to take effect.You successfully disabled debug mode.
+8. Restart Zowe for the change to take effect.
+
+    You successfully disabled debug mode.
 
 ## Change the Log Level of Individual Code Components
 
