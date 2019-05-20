@@ -1,8 +1,11 @@
-# Documentation for code contributions 
+# Documentation Guidelines
 
-Documentation of Zowe comes in various forms depending on the subject being detailed.
+Documentation of Zowe comes in various forms depending on the subject being detailed. In general, consider how you can help end users and contributors through external documentation, in-product help, error messages, etc... and open an issue in [zowe/docs-site](https://github.com/zowe/docs-site) if you need assistance. 
 
-## Categories
+## Contributing to external documentation 
+The documentation for the Zowe project is completely open-source. See [How to contribute](../contributing.md) for more information about contributing to the documentation.
+
+## Component Categories
 
 ### Server Core
 Principles of operation and end-user guides (configuration, troubleshooting) should be documented on the wiki. Code documentation follows language-specific formats.
@@ -24,14 +27,14 @@ Principles of operation and end-user guides (configuration, troubleshooting) sho
 ### CLI Framework
 Principles of operation and end-user guides (configuration, troubleshooting) should be documented on the wiki. Code documentation follows language-specific formats.
 
-## Languages
+## Programming Languages
 Each of the common languages in Zowe have code-documentation-generation tools, each with their own in-code comment style requirements to adhere to in order to generate nice, readable API references. Objects and functions of interest should be commented in accordance to the language-specific tools to result in output that serves as the first point of documentation for APIs.
 
 ### Typescript
 When writing typescript code, comment objects and functions in compliance with JSDoc (http://usejsdoc.org/). If you are writing in an area of the codebase that does not yet have a definition file for jsdoc, be sure to define a configuration file that can be used for future documentation of that code.
 
-Java
+### Java
 When writing typescript code, comment objects and functions in the Javadoc format.
 
-C
+### C
 When writing C code, comment functions and structs in compliance with Doxygen (www.doxygen.org).
