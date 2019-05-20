@@ -177,6 +177,15 @@ const ALL_PAGES = [{
          'contribute/guidelines-ui/icon.md',
          'contribute/guidelines-ui/appicon.md'
          ]
+     },
+     {
+      text: 'Code Guidelines',
+       items: [
+         'contribute/guidelines-code/categories.md',
+         'contribute/guidelines-code/general.md',
+         'contribute/guidelines-code/code-and-patches.md',
+         'contribute/guidelines-code/documentation.md'
+         ]
      }
   ]
 },
