@@ -14,59 +14,33 @@ Disable debug mode when you are not troubleshooting. Running in debug mode while
 its performance and create large log files that consume a large volume of disk space.
 
 **Follow these steps:**
-<!-- Version 1 -->
+
 1. Locate the following shell script files in the `<Zowe install directory>/api-mediation/scripts` directory:
 
     - ```api-mediation-start-catalog.sh```
     - ```api-mediation-start-discovery.sh```
     - ```api-mediation-start-gateway.sh```
 
-2. Modify a file, which you intend to the enable debug mode for.
+2. Open a file, for which you want to enable the debug mode.
 
-<!-- TODO. p. 3 - what is THE parameter? 
-      spring.profiles.include-->
-3. Find the line that contains the `spring.profiles.include` parameter and modify its value to `debug`. For example: 
+3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`: 
     ```
     -Dspring.profiles.include=debug \
     ```
 
-4. Restart Zowe for the change to take effect. 
-    
-    You successfully enabled the debug mode, and can start to troubleshoot issues.
-    
-When you finish to troubleshoot in the debug mode, set the `spring.profiles.include` parameter back to the default `-Dspring.profiles.include= \` value, and restart Zowe to disable the debug mode.
-___
+4. Restart Zowe.
 
-**Follow these steps:**
-<!-- Version 2 -->
-1. Locate the following shell script files in the `<Zowe install directory>/api-mediation/scripts` directory:
+    You have enabled the debug mode.
 
-    - ```api-mediation-start-catalog.sh```
-    - ```api-mediation-start-discovery.sh```
-    - ```api-mediation-start-gateway.sh```
+5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, contact CA Support.
 
-2. Modify a file, which you intend to enable debug mode for.
-
-3. Find the line that contains the `spring.profiles.include` parameter and modify its value to `debug`. For example: 
-    ```
-    -Dspring.profiles.include=debug \
-    ```
-
-4. Restart Zowe for the change to take effect. 
-
-   You successfully enabled the debug mode.
-
-5. (Optional) Reproduce a bug that causes issues.
-
-6. (Optional) Review debug messages and, if necessary, contact the technical support.
-
-7. Set the ```spring.profiles.include``` parameter back to the default value:
+6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
     ```
     -Dspring.profiles.include= \
     ```
-8. Restart Zowe for the change to take effect.
+7. Restart Zowe.
 
-    You successfully disabled the debug mode.
+    You have disabled the debug mode.
  ___
 ## Change the Log Level of Individual Code Components
 
