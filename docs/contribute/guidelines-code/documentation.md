@@ -59,4 +59,4 @@ When writing TypeScript code, comment objects and functions in the Javadoc forma
 
 ### C
 
-When writing C code, comment functions and structures in compliance with [Doxygen](www.doxygen.org).
+When writing C code, comment functions and structures in compliance with Doxygen.
