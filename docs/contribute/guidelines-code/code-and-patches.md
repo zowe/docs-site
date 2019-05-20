@@ -1,4 +1,4 @@
-Pull Requests Guidelines
+# Pull requests guidelines
 Zowe uses git as its version control system. In particular, the git repositories are hosted on our github project. Therefore, in order to contribute code to Zowe you must do so in the form of a Pull Request. 
 Pull Request Guidelines
 Each pull request is made against a repository within which there are maintainers. Pull requests cannot be merged without the approval of at least one maintainer, who will be looking for the pull request to meet requirements as follows:
