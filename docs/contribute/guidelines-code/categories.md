@@ -10,7 +10,7 @@ The Zowe codebase consists of a few key areas, with both unique and shared guide
 - Zowe CLI and CLI Plug-ins
 - Imperative CLI Framework
 
-# Programming languages
+## Programming languages
 
 For each area of the codebase, there are established and favored programming languages. Each repository in Github identifies the primary language used. Some of the basic skills needed to contribute to the project include:
 
@@ -21,7 +21,7 @@ For each area of the codebase, there are established and favored programming lan
 
 **Note:** JavaScript is not recommended and should be avoided in favor of Typescript to utilize typing.
 
-# Component-specific guidelines and tutorials
+## Component-specific guidelines and tutorials
 
 This "Code Guidelines" section provides high-level best practices. Each component may have more specific contribution guidelines. Look for a CONTRIBUTING.md file in the component's GitHub repository for specific details.
 
