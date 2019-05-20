@@ -162,7 +162,7 @@ const ALL_PAGES = [{
   baseuri: '/contribute/',
   items: [
     {
-      text: 'Code Guidelines',
+      text: 'Code guidelines',
        items: [
          'contribute/guidelines-code/categories.md',
          'contribute/guidelines-code/general.md',
@@ -170,8 +170,8 @@ const ALL_PAGES = [{
          'contribute/guidelines-code/documentation.md'
          ]
      },
-     {
-      text: 'UI Guidelines',
+         {
+      text: 'UI guidelines',
        items: [
          'contribute/guidelines-ui/ui.md',
          'contribute/guidelines-ui/colors.md',
@@ -184,9 +184,10 @@ const ALL_PAGES = [{
     {
       text: 'Contributing to documentation',
       items: [
-        'contribute/contributing.md'
+         'contribute/contributing.md'
       ]
-    }
+    },
+
   ]
 },
 {
