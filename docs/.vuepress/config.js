@@ -85,6 +85,32 @@ const ALL_PAGES = [{
   baseuri: '/extend/',
   items: [
     {
+       text: 'Code guidelines',
+       items: [
+         'contribute/guidelines-code/categories.md',
+         'contribute/guidelines-code/general.md',
+         'contribute/guidelines-code/code-and-patches.md',
+         'contribute/guidelines-code/documentation.md'
+         ]
+     },
+         {
+       text: 'UI guidelines',
+       items: [
+         'contribute/guidelines-ui/ui.md',
+         'contribute/guidelines-ui/colors.md',
+         'contribute/guidelines-ui/typography.md',
+         'contribute/guidelines-ui/grid.md',
+         'contribute/guidelines-ui/icon.md',
+         'contribute/guidelines-ui/appicon.md'
+         ]
+     },
+    {
+      text: 'Contributing to documentation',
+      items: [
+         'contribute/contributing.md'
+      ]
+    },
+    {
       text: 'Developing for API Mediation Layer',
       items: [
         'extend/extend-apiml/api-mediation-onboard-overview.md',
