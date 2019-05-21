@@ -1,6 +1,6 @@
 # General code style guidelines
 
-All code written in the languages described in [Code categories](categories.md) should adhere to the following guidelines to facilitate collaboration and understanding:
+All code written in the languages described in [Code categories](categories.md) should adhere to the following guidelines to facilitate collaboration and understanding.
 
 **Note:** Uncertainties, unimplemented but known future action-items, and odd/specific constants should all be accompanied with a short comment to make others aware of the reasoning that went into the code.
 

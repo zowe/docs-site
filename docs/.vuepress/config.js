@@ -170,7 +170,7 @@ const ALL_PAGES = [{
          'contribute/guidelines-code/documentation.md'
          ]
      },
-         {
+    {
       text: 'UI guidelines',
        items: [
          'contribute/guidelines-ui/ui.md',
@@ -183,11 +183,8 @@ const ALL_PAGES = [{
      },
     {
       text: 'Contributing to documentation',
-      items: [
-         'contribute/contributing.md'
-      ]
-    },
-
+      link: 'contribute/contributing.md'
+    }
   ]
 },
 {
