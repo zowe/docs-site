@@ -1,0 +1,52 @@
+I, Adam-Battenburg hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: Adam.Battenburg@ibm.com
+
+27714fd7df14d72a463692e750d3c73f5c9ab673 Fixed build errors by fixing toc
+a5c7ead9c908b7d04eba5e36445f7c1ed846fd2d Add google site verification to head.
+d4172dda8984f1ddee978221bb06b209471a0fa5 Fix broken link
+164fd1bcc5737af7fb9e3d0c1c60d54a744b6c87 Moved work in progress to another branch
+81c5abc488f3c392aa90df1193b4690aff58a3f2 Changes to webui tutorial.
+946f2e2a3a0cc54ff2929d01d4021a11e991d9e9 Created new folder for work in progress content
+cb861bdd3181e06d5daf4988c383fa1fcaeda7fb Merged header-concept and changed samples repo links.
+7cfaaf0aaba263158c43456c7bdfd4e40cc9be16 header concept ui
+8c69b08285a80d505bd4b66106dfc1b41939a582 Build instructions for starter app.
+fd2dbe8fc793e0c65afb1eeefdd0ee61bfb76732 Ejected from default theme and added header.
+b1bd456f5aed4960d705590d83aa88d61607e055 Added environmental variable section
+1bef620e4e0c2bd8267ad66c7cd65c0aa53be83f Added section about starter app
+afdae7133560f7004ab914211e66af332cbe6c10 Missing character in code example
+7fefb4e72dab45b115928e7de42ffb2ba58697ab Remove add to zlux guide
+77f767fd0b3d85a8178d960175b667f4ae9326a6 Update tutorials
+85e7db79733720adc65a0ce4aa48d899bbde879d Update link
+ed0b8c8645b4939d0c181a288acf44b95058f926 Moved content between samples and tutorials.
+3ad6ac5c6110537dcb013ff8101fea12eb45f5c2 Update zowe references
+12d354b5ce551beb3cf3d9a9759d27a1d9f99a46 Add link to zowe.org
+ec39c113250c18ff35a365f151a255952d460738 Removed homepage individual links for UX purposes
+f448814e32f565062386fa0895aa6391d421d581 Delete extra PDF instance
+99f06c7acd79a914dc0bc65ea6aa70f56307560f Edit userguide link
+eb1fc7bbe186854916106365eb88e9f0760f628b Added link to PDF
+65904c7dba6329aaefe2a805afb57430b7b50d4a Added links of zLUX tutorials
+7f0a9addf584b5ead76f97bfd6207e6648fcd5d3 Added analytics
+54ba82922fe2b1f9eeb7dc1e1b87130f891c3a86 Closed open brackets
+a9e8c7406c53b87660aea86788bd1901edc3dfc0 Fixed all spelling mistakes
+2fb63018fa63ab76f7143a677e1591c1a6a1f460 Fix links.
+4aed6091b0aafdb6d0f946c81a5e033bef9bbd92 Remove dropdown for intro sections.
+d8c79b95df9b0fd34503e9bfed96944dfac93424 TOC changes, and additional content
+f042f47d0f3db0877134bfbb4add9ccaa948a7db Update JZOS API sample links
+c13dc23fb8c8b9b61679469d623c7f0b5ed32c06 Converted open HTML tag to code
+0c44e14f6b37964623eda6343b962ffafb915e6a Updated vuepress
+5e2eed204ff8c4d49b6daa3221b069344d69baa3 Fix TOC issues
+839ed1c1655a1a6cdd1102c20f3dc37473fb2537 Commented out problem image paths
+9ec1dbe0ca1377728e7829f46c7d789d5209cb5f Deploy script now uses yarn to avoid vulnerability warning.
+467b5e8c7e54c7d428a857e81ec4d63b1b71402c Fixed spelling mistakes and color theme.
+210d865d5817bad74ec06b2b047d7463d88d35b1 Switched homepage to HTML from Frontmatter. Updated vuepress and added global styling.
+c2349ce9220558cfc6e7066c612756cd3cd8646f Added to ReactJSUI guide.
+bd803b425a2ffb4e68d603669d2a8d4ffe28ff8d Changed examples to samples
+1937bae640a1204de9feae3f246d3e937063935b Added intro sections
+cd8f4c964d9b0b26ea52b5dfb5ed3055396d6ea8 Remove node_modules and add gitignore
+5b5a525976c8787fef0fad9816206ccc0d1fbd65 Update api sample text
+cbe0189cf0516101f3a4adacb9425b861a1f332b Update libertyAPI doc
+d2b155c2e156548d63caa48bd19f082776894c03 Added api guide to table of contents
+f943c99868b3bed74aa7fb58626677901deb6086 Update link in angular guide.
+6b6ea20be03eeb082b01508f92e97404d5cfc3b1 Further config tweaks
+fe978b709bac4b1d04e7be10fab42f51742692bb Fix config base and change dploy script to https
+0427b87cd6264b201f4d5fb064b720bf7850cbac Update config file and deploy script for repo
+f8245cc499d802e778ca23adbb1df5d0b5b94c60 initial commit
