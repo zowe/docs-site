@@ -18,13 +18,13 @@
     - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
     - [Log in to Discovery Service on localhost](#log-in-to-discovery-service-on-localhost)
-  - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
-    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
+  - [Zowe runtime on z/OS](#zowe-runtime-on-z-os)
+    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-z-os-installation-from-the-zowe-pax-file)
     - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-zos)
-    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
+    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
+    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
-    - [Trust a z/OSMF certificate](#trust-a-zosmf-certificate)
+    - [Trust a z/OSMF certificate](#trust-a-z-osmf-certificate)
     - [Disable certificate validation](#disable-certificate-validation)
 
 ## How API ML transport security works
