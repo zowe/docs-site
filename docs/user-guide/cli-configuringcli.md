@@ -38,7 +38,7 @@ Profiles let you store configuration details for use on multiple commands. You c
 **Notes:**
 - Profile values are stored on your computer in plaintext in the `C:\Users\<yourUsername>\.zowe\profiles` folder.
 - Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
-- For information about securely connecting to the server when you issue commands, see [Certificate Security](#certificate-security).
+- For information about securely connecting to the server when you issue commands, see [Certificate security](#certificate-security).
 
 #### Displaying profiles help
 To learn about the options available for creating `zosmf` profiles, issue the following command:
@@ -187,7 +187,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 
-**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to any of the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate Security](#certificate-security).
+**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to any of the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate security](#certificate-security).
 
 **Without a Profile**
 
