@@ -37,7 +37,8 @@ Profiles let you store configuration details for use on multiple commands. You c
 
 **Notes:**
 - Profile values are stored on your computer in plaintext in the `C:\Users\<yourUsername>\.zowe\profiles` folder.
-- Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command. 
+- Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
+- For information about securely connecting to the server when you issue commands, see [Certificate Security](#certificate-security).
 
 #### Displaying profiles help
 To learn about the options available for creating `zosmf` profiles, issue the following command:
@@ -186,7 +187,7 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 
-**Important!** By default, the server certificate is verified agains a list of Certificate Authorities (CAs) trusted by Mozilla to ensure that the CLI can trust the server. You can append the flag `--ru false` to any of the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate Security](#certificate-security).
+**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to any of the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate Security](#certificate-security).
 
 **Without a Profile**
 
@@ -216,7 +217,7 @@ The commands return a success or failure message and display information about y
 
 ## Certificate security
 
-Certificates authorizes communication between a server and client, such as z/OSMF and Zowe CLI. The client CLI must "trust" the server to successfully issue commands. Configure the server with certificates signed by a Certificate Authority (CA) trusted by Mozilla, trust a self-signed certificate using an environment variable, or bypass the requirement using a CLI flag.
+Certificates authorize communication between a server and client, such as z/OSMF and Zowe CLI. The client CLI must "trust" the server to successfully issue commands. Use one of the following methods to let the CLI communicate with the server:
 
 - [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca) 
 - [Extend trusted certificates on client](#extend-trusted-certificates-on-client) 
@@ -224,25 +225,32 @@ Certificates authorizes communication between a server and client, such as z/OSM
 
 ### Configure certificates signed by a Certificate Authority (CA) 
 
-System Administrators can configure the server with a certificate that is signed by a Certificate Authority (CA) trusted by Mozilla. The CLI automatically recognizes the service instance as "authorized"  when there is a CA in the certificate chain.
+System Administrators can configure the server with a certificate signed by a Certificate Authority (CA) trusted by Mozilla. When a CA trusted by Mozilla exists in the certificate chain, the CLI automatically recognizes the server and authorizes the connection.
 
-**More information:**
+**Related information:**
 
-- [Using certificates with z/OS client/server applications](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.icha700/icha700_Using_certificates_with_z_OS_client_server_applications.htm)
-- [Configuring the z/OSMF Key Ring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm) in the IBM Knowledge Center.
-- [Certificate Management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) 
+- [Using certificates with z/OS client/server applications](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.icha700/icha700_Using_certificates_with_z_OS_client_server_applications.htm) in the IBM Knowledge Center.
+- [Configuring the z/OSMF key ring and certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm) in the IBM Knowledge Center.
+- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) 
+- [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates) 
 
 ### Extend trusted certificates on client
 
-If your environment uses self-signed certificates rather than a CA trusted by Mozilla in the certificate chain, CLI users can download the certificate add it to the local list of trusted certificates. The `NODE_EXTRA_CERTS` environment variable lets you expand your list of trusted certificates.
+If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate. 
 
-[This blog post](https://medium.com/@dkelosky/zowe-cli-providing-node-extra-ca-certs-117727d936e5) outlines the process for trusting a certificate from the client CLI. 
+[This blog post](https://medium.com/@dkelosky/zowe-cli-providing-node-extra-ca-certs-117727d936e5) outlines the process for using environment variables to trust the self-signed certificate.
 
 ### Bypass certificate requirement with CLI flag
 
-If you do not have server certificates configured at your site, or you want to trust a known self-signed certificate, you can use the `--ru false` flag to pass commands. Setting the `--ru` flag to `false` rejects self-signed certificates and essentially bypasses the certificate requirement.
+If you do not have server certificates configured at your site, or you want to trust a known self-signed certificate, you can append the `--reject-unauthorized false` flag to your CLI commands. Setting the `--reject-unauthorized` flag to `false` rejects self-signed certificates and essentially bypasses the certificate requirement.
 
 **Important!** Understand the security implications of accepting self-signed certificates at your site before you use this command.
+
+**Example:**
+
+```
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> --reject-unauthorized false 
+```
 
 ## Setting Zowe CLI log levels
 
