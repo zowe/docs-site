@@ -24,14 +24,21 @@ Version 1.3.0 contains the following changes since Version 1.2.0.
 
 ### What's new in Zowe CLI and Plug-ins
 
-The following new commands are added: 
+The following new commands and enhancements are added:
+
 - Return a list archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+
 - Return a list of systems that are defined to a z/OSMF instance with the `zowe zosmf list systems` command. [(#348)](https://github.com/zowe/zowe-cli/pull/348)
 
-The following enhancements are added:
 - The `zowe uss issue ssh` command now returns the exit code of the shell command that you issued. [(#359)](https://github.com/zowe/zowe-cli/pull/359)
-- The `zowe files upload dtu` command now supports a file named `.zosattributes`. [()]()
 
+- The `zowe files upload dtu` command now supports the metatada file named `.zosattributes`. [(#366)](https://github.com/zowe/zowe-cli/pull/366)
+
+The following bugs are fixed:
+
+- Fixed an issue `zowe workflow ls aw` commands with the `--wn` option failed if there was a space in the workflow name. [(#356)](https://github.com/zowe/zowe-cli/pull/356)
+
+- Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
 ### What's new in Zowe API
 
