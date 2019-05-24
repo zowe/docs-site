@@ -67,7 +67,7 @@ After you create a profile, you can verify that it can communicate with z/OSMF. 
 
 #### Creating a profile that accesses API Mediation Layer 
 
-You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
+You can create profiles that access either an exposed API or API Mediation Layer (API ML) in the following ways:
 
 * When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
 
