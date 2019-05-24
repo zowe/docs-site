@@ -4,7 +4,7 @@ This section explains how to define and verify your connection to the mainframe 
 **Note** The configuration for the CLI is stored on your computer in a directory such as C:\Users\user01\.zowe. The configuration includes log files, your profile information, and CLI plug-ins that are installed. When you troubleshoot an issue with the CLI, the log files in the imperative and zowe folders contain valuable information.
 
 - [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
-- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf) 
+- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf) 
 - [Setting CLI log levels](#setting-zowe-cli-log-levels)
 - [Setting the CLI home directory](#setting-the-zowe-cli-home-directory)
 
@@ -33,7 +33,7 @@ The affect of the order is that if you omit an argument/option from the command 
 
 ### Creating Zowe CLI profiles
 
-Profiles are a Zowe CLI function that lets you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. 
+Profiles are a Zowe CLI function that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. 
 
 Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
 
@@ -62,7 +62,7 @@ Issue the following command to list all data sets under the username `ibmuser` o
 zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
+After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
 
 #### Creating a profile that accesses API Mediation Layer 
 
@@ -82,7 +82,7 @@ The following example illustrates the command to create a profile that connects 
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
 
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
+After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
 
 ### Defining Environment Variables
 You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
@@ -180,11 +180,11 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 
 **More Information:**
 - [API Mediation Layer](../getting-started/overview.md)
-- [Creating a profile to access API Mediation Layer](#creating-a-profile-to-access-an-api-mediation-layer)
+- [Creating a profile to access API Mediation Layer](#creating-a-profile-that-accesses-api-mediation-layer)
 
 ## Testing Zowe CLI connection to z/OSMF
 
-You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs. 
+You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 
 **Tip:** Append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
 

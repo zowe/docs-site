@@ -18,7 +18,7 @@ As an API developer, use this guide to onboard a Java REST API service that is b
 **Notes:** 
 * This onboarding procedure uses the Spring framework for implementation of a REST API service, and describes how to generate Swagger API documentation using a Springfox library.
 * If you use another framework that is based on a Servlet API, you can use `ServletContextListener` that is described later in this article.
-* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-context-listener) section in this article for details about how to register and unregister your service with the API Mediation Layer.
+* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API Mediation Layer.
 
 # Prerequisites
 * Ensure that your REST API service that is written in Java.
