@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.2.0'
+const CURRENT_ZOWE_VERSION = '1.3.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -318,7 +318,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.2.x',
+  description: 'Version 1.3.x',
   ga: 'UA-123892882-1',
   head: [
     [
