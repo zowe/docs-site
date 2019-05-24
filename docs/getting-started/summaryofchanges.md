@@ -14,7 +14,7 @@ Zowe Version 1.3.0 and later releases include the following enhancements, releas
 
 Version 1.3.0 contains the following changes since Version 1.2.0.
 
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [this issue](https://github.com/zowe/data-sets/issues/77)." -->
+<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
 
 ### What's new in the Zowe installer
 
@@ -23,6 +23,15 @@ Version 1.3.0 contains the following changes since Version 1.2.0.
 ### What's new in the Zowe App Server
 
 ### What's new in Zowe CLI and Plug-ins
+
+The following new commands are added: 
+- Return a list archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+- Return a list of systems that are defined to a z/OSMF instance with the `zowe zosmf list systems` command. [(#348)](https://github.com/zowe/zowe-cli/pull/348)
+
+The following enhancements are added:
+- The `zowe uss issue ssh` command now returns the exit code of the shell command that you issued. [(#359)](https://github.com/zowe/zowe-cli/pull/359)
+- The `zowe files upload dtu` command now supports a file named `.zosattributes`. [()]()
+
 
 ### What's new in Zowe API
 
