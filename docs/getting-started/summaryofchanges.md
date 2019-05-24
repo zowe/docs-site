@@ -21,6 +21,42 @@ Version 1.3.0 contains the following changes since Version 1.2.0.
 ### What's new in API Mediation Layer
 
 ### What's new in the Zowe App Server
+The following fixes and enhancements were added:
+
+- Added OWASP dependency checker to Zowe sub-projects for security checking. ([#126](https://github.com/zowe/zlux/issues/126))
+- Added new mode query parameter to API documentation. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
+- Added a port to the cookie name to differentiate multiple servers on same domain. ([#95](https://github.com/zowe/zlux-server-framework/pull/95))
+- Added internationalization to the Angular and React sample applications. ([#133](https://github.com/zowe/zlux/issues/133))
+- Added an HTML obfuscation shared function. ([#10](https://github.com/zowe/zlux-shared/pull/10))
+- Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
+- Improved bootstrap logging. ([#77](https://github.com/zowe/zlux-app-manager/pull/77))
+- Improved security by changing the way zlux cookies work. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
+- Improved security by adding a "mode=base64" option to the unixfile API. ([#127](https://github.com/zowe/zlux/issues/127))
+
+- Made the following fixes and enhancements to the Code Editor application:
+  - Added support for deleting files. ([#139](https://github.com/zowe/zlux/issues/139))
+  - Added a menu that provides options specific to the current language. ([#131](https://github.com/zowe/zlux/issues/131))
+  - Improved performance by loading files just in time. ([#128](https://github.com/zowe/zlux/issues/128))
+  - Fixed an issue by notifying users if the editor cannot open a file or data set. ([#148](https://github.com/zowe/zlux/issues/148))
+  - Fixed an issue by allowing users to open directories without using a leading slash. ([#90](https://github.com/zowe/zlux/issues/90))
+  - Fixed incorrect behavior when a tab is closed. ([#135](https://github.com/zowe/zlux/issues/135))
+  - Fixed an issue with not showing the content of files in Chrome and Safari. ([#100](https://github.com/zowe/zlux/issues/100))
+  - Fixed an issue with the file browser showing the incorrect sort order. ([#85](https://github.com/zowe/zlux/issues/85))
+- Made the following enhancements to support TopSecret:
+  - Added a user-profiles endpoint. ([#113](https://github.com/zowe/zlux/issues/113))
+  - Added an endpoint extraction for groups. ([#129](https://github.com/zowe/zlux/issues/129))
+- Fixed an issue by adding a call to load plug-in name translations that had been mistakenly removed. ([#85](https://github.com/zowe/zlux-server-framework/pull/85))
+- Fixed Russian language errors in translation files. ([#100](https://github.com/zowe/zlux-app-manager/pull/100))
+- Fixed several proxy issues. ([#93](https://github.com/zowe/zlux-server-framework/pull/93))
+- Fixed issue by adding a missing package-lock. ([#38](https://github.com/zowe/zlux-app-server/pull/38))
+- Fixed an issue by preventing extra, unused authentication plug-ins from throwing errors. This also fixed an issue with errors during ZSS server start up. ([#94](https://github.com/zowe/zlux-server-framework/pull/94), [#71](https://github.com/zowe/zlux/issues/71))
+- Fixed issues with configuration and terminal proxy. ([#96](https://github.com/zowe/zlux-server-framework/pull/96))
+- Fixed an issue with ZSS consuming ~50% of the CPU during file download. ([#147](https://github.com/zowe/zlux/issues/147))
+- Fixed a Desktop issue where pinned applications unexpectedly change positions on the taskbar. ([#78](https://github.com/zowe/zlux/issues/78))
+- Fixed several issues with App2App for IFrames. ([#24](https://github.com/zowe/zlux-platform/pull/24), [#107](https://github.com/zowe/zlux-app-manager/pull/107))
+- Fixed an incorrect module path. ([#101](https://github.com/zowe/zlux-server-framework/pull/101))
+
+- Fixed documentation issue by replacing "zLUX" with "Zowe Application Framework" and "MVD" with "Zowe Desktop." ([#214](https://github.com/zowe/docs-site/issues/214))
 
 ### What's new in Zowe CLI and Plug-ins
 
