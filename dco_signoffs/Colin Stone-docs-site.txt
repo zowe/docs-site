@@ -1,0 +1,5 @@
+I, Colin Stone hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: 30794003+Colin-Stone@users.noreply.github.com
+
+d98ad5db3d12414d60ebe8d61cf0ff32e01d4a64 Create libertyAPI.md
+
+Describing a war file for Atlas
