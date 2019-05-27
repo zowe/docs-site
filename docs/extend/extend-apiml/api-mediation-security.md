@@ -3,6 +3,7 @@
 - [How API ML transport security works](#how-api-ml-transport-security-works)
   - [Transport layer security](#transport-layer-security)
   - [Authentication](#authentication)
+  - [JWT Token](#jwt-token)
   - [Zowe API ML services](#zowe-api-ml-services)
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
