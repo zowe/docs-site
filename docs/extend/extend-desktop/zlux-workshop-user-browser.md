@@ -1,4 +1,4 @@
-# User Browser Tutorial
+# Tutorial: User Browser Workshop App
 
 This tutorial contains code snippets and descriptions that you can combine to build a complete application. It builds off the project skeleton code found at the [github project repo](https://github.com/zowe/workshop-user-browser-app).
 
