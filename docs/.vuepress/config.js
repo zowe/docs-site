@@ -274,6 +274,8 @@ const sidebarLinks = (allPages => {
 
         let convertedItem = {
           title: item.text,
+          // this is the root of the item
+          section: group.text,
           collapsable: false,
           children: []
         };

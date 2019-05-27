@@ -1,5 +1,8 @@
 <template>
   <div class="sidebar">
+    <!-- MODIFICATION_FROM_THEME - starts -->
+    <div class="sidebar-section" v-if="sectionTitle">{{ sectionTitle }}</div>
+    <!-- MODIFICATION_FROM_THEME - ends -->
     <NavLinks/>
     <slot name="top"/>
     <ul class="sidebar-links" v-if="items.length">
@@ -28,7 +31,10 @@ export default {
   props: ['items'],
   data () {
     return {
-      openGroupIndex: 0
+      openGroupIndex: 0,
+      // MODIFICATION_FROM_THEME - starts
+      sectionTitle: '',
+      // MODIFICATION_FROM_THEME - ends
     }
   },
   created () {
@@ -47,6 +53,11 @@ export default {
       )
       if (index > -1) {
         this.openGroupIndex = index
+      // MODIFICATION_FROM_THEME - starts
+        this.sectionTitle = this.items[this.openGroupIndex].section
+      } else {
+        this.sectionTitle = ''
+      // MODIFICATION_FROM_THEME - ends
       }
     },
     toggleGroup (index) {

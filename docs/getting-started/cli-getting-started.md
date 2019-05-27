@@ -50,7 +50,7 @@ Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) t
 
 To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
-### Listing all data sets under an HLQ
+### Listing all data sets under a high-level qualifier (HLQ)
 
 ```
 zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
@@ -59,7 +59,7 @@ zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --u
 ### Downloading a partitioned data-set (PDS) member to local file
 
 ```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --user user123 --pass mypassword123 --host host123
+zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
 See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
@@ -77,7 +77,7 @@ Most command groups require a `zosmf-profile`, but some plug-ins add their own p
 ### Creating a zosmf profile
 
 ```
-zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
+zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
 ```
 
 **Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
@@ -85,7 +85,7 @@ zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --
 ### Using a zosmf profile
 
 ```
-zowe zos-files download data-set "ibmuser.data.set(member)" -f "myfile.txt" --zosmf-profile myprofile123
+zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
 ```
 
 For detailed information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-configuringcli.md#defining-zowe-cli-connection-details)

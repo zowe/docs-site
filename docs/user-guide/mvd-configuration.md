@@ -358,7 +358,7 @@ We recommend configuring the following basic authorization:
 ### Endpoint URL length limitations
 SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that appliction developers maintain relatively short endpoint URL paths.
 
-For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#dataservice-endpoint-URL-lengths-and-RBAC)
+For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](../extend/extend-desktop/mvd-dataservices.md#limiting-the-length-of-dataservice-paths-for-rbac)
 
 
 ## Enabling tracing
