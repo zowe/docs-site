@@ -100,7 +100,7 @@ The primary prerequisites is Java on z/OS and the z/OS Management Facility enabl
 
 </details>
 
-**How is access security managed on z/OS?**
+### How is access security managed on z/OS?
 
 <details>
 
@@ -171,7 +171,7 @@ Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more in
 
 <summary> Click to show answer  </summary>
 
-For new developers, command line interfaces might be more familiar than an ISPF interface. Zowe CLI lets developers be productive from day-one by using familiar tools. Zowe CLI also lets developers write scripts that automate a sequence of mainframe actions. The scripts can then be executed from off-platform automation tools such as Jenkins automation server, or manually during development.
+For developers new to the mainframe, command-line interfaces might be more familiar than an ISPF interface. Zowe CLI lets developers be productive from day-one by using familiar tools. Zowe CLI also lets developers write scripts that automate a sequence of mainframe actions. The scripts can then be executed from off-platform automation tools such as Jenkins automation server, or manually during development.
 
 </details>
 
@@ -182,7 +182,7 @@ For new developers, command line interfaces might be more familiar than an ISPF 
 
 <summary> Click to show answer </summary>
 
-Zowe CLI is very flexible! It can work in conjunction with popular build and testing tools such as Gulp and Gradle, Mocha and Junit. Zowe CLI runs on a variety of operating systems, including Windows, macOS, and Linux. Zowe CLI scripts can be abstracted into automation tools such as Jenkins and TravisCI. This is a key advantage of the CLI - developers can integrate with modern tools that work best for them.
+Zowe CLI is very flexible; developers can integrate with modern tools that work best for them. It can work in conjunction with popular build and testing tools such as Gulp, Gradle, Mocha, and Junit. Zowe CLI runs on a variety of operating systems, including Windows, macOS, and Linux. Zowe CLI scripts can be abstracted into automation tools such as Jenkins and TravisCI. 
 
 </details>
 
