@@ -84,9 +84,9 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 
 Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org/home/). The convenience build can be easily installed and the Zowe capabilities seen in action. 
 
-To install the complete Zowe solution, see [Installing Zowe](https://zowe.github.io/docs-site/latest/user-guide/installandconfig.html).
+To install the complete Zowe solution, see [Installing Zowe](../user-guide/installandconfig.md).
 
-To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick start](https://zowe.github.io/docs-site/latest/getting-started/cli-getting-started.html).
+To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick start](cli-getting-started.md).
 
 </details>
 
@@ -97,10 +97,9 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 <summary> Click to show answer </summary>
 
-The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](https://zowe.github.io/docs-site/latest/user-guide/systemrequirements.html).
+The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.html).
 
 </details>
-
 
 **How is access security managed on z/OS?**
 
@@ -134,7 +133,7 @@ The best way to get started is to join a [Zowe Slack channel](https://slack.open
 
 For more information about emailing lists, community calendar, meeting minutes, and more, see [Contribute](https://zowe.org/contribute/) on Zowe.org.  
 
-For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](https://zowe.github.io/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html) on Zowe Docs.
+For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/api-mediation-onboard-overview.html) on Zowe Docs.
 
 </details>
 
@@ -160,7 +159,7 @@ IBM has contributed a free hands-on tutorial for Zowe. Visit the [Zowe Tutorial 
 
 The Zowe community is also currently working to provide a vendor-neutral site for an open z/OS build and sandbox environment.
 
-Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite (https://zowe.github.io/docs-site/latest/user-guide/systemrequirements-zosmf-lite.html) on Zowe Docs.
+Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite (../user-guide/systemrequirements-zosmf-lite.html) on Zowe Docs.
 
 </details>
 
