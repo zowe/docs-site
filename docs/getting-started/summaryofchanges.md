@@ -21,6 +21,7 @@ Version 1.3.0 contains the following changes since Version 1.2.0.
 ### What's new in API Mediation Layer
 
 ### What's new in the Zowe App Server
+
 Made the following fixes and enhancements:
 
 - Enhanced terminals to show the connection state and destination address in their titlebars. ([#14](https://github.com/zowe/docs-site/issues/14)), ([#13](https://github.com/zowe/docs-site/issues/13))
