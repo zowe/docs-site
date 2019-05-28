@@ -5,7 +5,6 @@ Check out the following FAQs to learn more about the purpose and function of Zow
 - [Zowe FAQ](#zowe-faq)
 - [Zowe CLI FAQ](#zowe-cli-faq)
 
-
 ## Zowe FAQ
 
 **What is Zowe?**
@@ -85,7 +84,7 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 
 Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org/home/). The convenience build can be easily installed and the Zowe capabilities seen in action. 
 
-To get started installing the complete Zowe solution, see [Installing Zowe](https://zowe.github.io/docs-site/latest/user-guide/installandconfig.html).
+To install the complete Zowe solution, see [Installing Zowe](https://zowe.github.io/docs-site/latest/user-guide/installandconfig.html).
 
 To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick start](https://zowe.github.io/docs-site/latest/getting-started/cli-getting-started.html).
 
@@ -98,66 +97,72 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 <summary> Click to show answer </summary>
 
-The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For more information, see [System requirements](https://zowe.github.io/docs-site/latest/user-guide/systemrequirements.html).
+The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](https://zowe.github.io/docs-site/latest/user-guide/systemrequirements.html).
 
 </details>
 
 
-**xxxxxxxx**
+**How is access security managed on z/OS?**
 
 <details>
 
 <summary> Click to show answer </summary>
 
-The Open Mainframe Project wants to encourage adoption of the technology and foster innovation plus allow new source code to be shared across the Zowe ecosystem. The open source code can be used by anyone provided they adhere to the licensing terms. 
+Zowe components use typical z/OS System authorization facility (SAF) calls for security.
 
 </details>
 
 
-**xxxxxxxx**
+**How is access to the Zowe open source managed?**
 
 <details>
 
 <summary> Click to show answer </summary>
 
-The Open Mainframe Project wants to encourage adoption of the technology and foster innovation plus allow new source code to be shared across the Zowe ecosystem. The open source code can be used by anyone provided they adhere to the licensing terms. 
+The source code for Zowe is maintained on an Open Mainframe Project GitHub server. Everyone has read access. "Committers" on the project have authority to alter the source code to make fixes or enhancements. A list of Committers is documented in the [Zowe Charter](https://zowe.org/Zowe-Charter.pdf).
 
 </details>
 
 
-**xxxxxxxx**
+**How do I get involved in the open source development?**
 
 <details>
 
 <summary> Click to show answer </summary>
 
-The Open Mainframe Project wants to encourage adoption of the technology and foster innovation plus allow new source code to be shared across the Zowe ecosystem. The open source code can be used by anyone provided they adhere to the licensing terms. 
+The best way to get started is to join a [Zowe Slack channel](https://slack.openmainframeproject.org/) and/or email distribution list and begin learning about the current capabilities, then contribute to future development. 
+
+For more information about emailing lists, community calendar, meeting minutes, and more, see [Contribute](https://zowe.org/contribute/) on Zowe.org.  
+
+For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](https://zowe.github.io/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html) on Zowe Docs.
 
 </details>
 
 
-**xxxxxxxx**
+**When will Zowe be completed?**
 
 <details>
 
 <summary> Click to show answer </summary>
 
-The Open Mainframe Project wants to encourage adoption of the technology and foster innovation plus allow new source code to be shared across the Zowe ecosystem. The open source code can be used by anyone provided they adhere to the licensing terms. 
+Zowe will continue to evolve in the coming years based on new ideas and new contributions from a growing community.
 
 </details>
 
 
+**Can I try Zowe without a z/OS instance?**
 
+<details>
 
+<summary> Click to show answer </summary>
 
+IBM has contributed a free hands-on tutorial for Zowe. Visit the [Zowe Tutorial page](https://developer.ibm.com/tutorials/zowe-step-by-step-tutorial/) to learn about adding new applications to the Zowe Desktop and and how to enable communication with other Zowe components.
 
+The Zowe community is also currently working to provide a vendor-neutral site for an open z/OS build and sandbox environment.
 
+Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite (https://zowe.github.io/docs-site/latest/user-guide/systemrequirements-zosmf-lite.html) on Zowe Docs.
 
-
-
-
-
-
+</details>
 
 
 
