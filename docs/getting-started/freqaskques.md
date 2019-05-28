@@ -7,7 +7,7 @@ Check out the following FAQs to learn more about the purpose and function of Zow
 
 ## Zowe FAQ
 
-**What is Zowe?**
+### What is Zowe?
 
 <details>
 
@@ -17,7 +17,7 @@ Zowe is an open source project within the [Open Mainframe Project](https://www.o
 
 </details>
 
-**Who is the target audience for using Zowe?**
+### Who is the target audience for using Zowe?
 
 <details>
 
@@ -27,7 +27,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 </details>
 
-**What language is Zowe written in?**
+### What language is Zowe written in?
 
 <details>
 
@@ -37,7 +37,7 @@ Zowe consists of several components. The primary languages are Java and JavaScri
 
 </details>
 
-**What is the licensing for Zowe?**
+### What is the licensing for Zowe?
 
 <details>
 
@@ -49,8 +49,7 @@ In the simplest terms (taken from the FAQs above) - "...if you have modified EPL
 
 </details>
 
-
-**Why is Zowe licensed using EPL2.0?**
+### Why is Zowe licensed using EPL2.0?
 
 <details>
 
@@ -61,7 +60,7 @@ The Open Mainframe Project wants to encourage adoption and innovation, and also 
 </details>
 
 
-**What are some examples of how Zowe technology might be used by z/OS products and applications?**
+### What are some examples of how Zowe technology might be used by z/OS products and applications?
 
 <details>
 
@@ -76,7 +75,7 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 </details>
 
 
-**What is the best way to get started with Zowe?**
+### What is the best way to get started with Zowe?
 
 <details>
 
@@ -91,7 +90,7 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 </details>
 
 
-**What are the prerequisites for Zowe?**
+### What are the prerequisites for Zowe?
 
 <details>
 
@@ -112,7 +111,7 @@ Zowe components use typical z/OS System authorization facility (SAF) calls for s
 </details>
 
 
-**How is access to the Zowe open source managed?**
+### How is access to the Zowe open source managed?
 
 <details>
 
@@ -123,7 +122,7 @@ The source code for Zowe is maintained on an Open Mainframe Project GitHub serve
 </details>
 
 
-**How do I get involved in the open source development?**
+### How do I get involved in the open source development?
 
 <details>
 
@@ -138,7 +137,7 @@ For information and tutorials about extending Zowe with a new plug-in or applica
 </details>
 
 
-**When will Zowe be completed?**
+### When will Zowe be completed?
 
 <details>
 
@@ -149,7 +148,7 @@ Zowe will continue to evolve in the coming years based on new ideas and new cont
 </details>
 
 
-**Can I try Zowe without a z/OS instance?**
+### Can I try Zowe without a z/OS instance?
 
 <details>
 
@@ -164,10 +163,7 @@ Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more in
 </details>
 
 
-
-
-
-### Zowe CLI FAQ
+## Zowe CLI FAQ
 
 **Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?**
 
@@ -180,7 +176,7 @@ For new developers, command line interfaces might be more familiar than an ISPF 
 </details>
 
 
-**With what tools is Zowe CLI compatible?**
+### With what tools is Zowe CLI compatible?
 
 <details>
 
@@ -191,7 +187,7 @@ Zowe CLI is very flexible! It can work in conjunction with popular build and tes
 </details>
 
 
-**Which method should I use to install Zowe CLI?**
+### Which method should I use to install Zowe CLI?
 
 <details>
 
@@ -206,7 +202,7 @@ You can install Zowe CLI using the following methods:
 </details>
 
 
-**How can I get help with using Zowe CLI?**
+### How can I get help with using Zowe CLI?
 
 <details>
 
@@ -218,7 +214,7 @@ You can install Zowe CLI using the following methods:
 
 </details>
 
-**How can I use Zowe CLI to automate mainframe actions?**
+### How can I use Zowe CLI to automate mainframe actions?
 
 <details>
 
@@ -230,7 +226,7 @@ You can install Zowe CLI using the following methods:
 </details>
 
 
-**How can I contribute to Zowe CLI?**
+### How can I contribute to Zowe CLI?
 
 <details>
 
