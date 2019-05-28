@@ -8,7 +8,7 @@ This section provides information about requirements for z/OSMF Lite configurati
 2. [Assumptions](#assumptions)
 3. [Software Requirements](#software-requirements)
     1. [Minimum Java level](#minimum-java-level)
-    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-z-osmf-v2r3-and-later)
+    2. [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere®-liberty-profile-z-osmf-v2r3-and-later)
     3. [System settings](#system-settings)
     4. [Web browser](#web-browser)
 4. [Creating a z/OSMF nucleus on your system](#creating-a-z-osmf-nucleus-on-your-system)
@@ -23,8 +23,7 @@ This section provides information about requirements for z/OSMF Lite configurati
     2. [Enabling the TSO REST services](#enabling-the-tso-rest-services)
     3. [Enabling the z/OSMF data set and file REST services](#enabling-the-z-osmf-data-set-and-file-rest-services)
     4. [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-z-osmf-workflow-rest-services-and-workflows-task-ui)
-6. [Successful](#successful)
-7. [Troubleshooting problems](#troubleshooting-problems)
+6. [Troubleshooting problems](#troubleshooting-problems)
     1. [Common problems and scenarios](#common-problems-and-scenarios)
     2. [Tools and techniques for troubleshooting](#tools-and-techniques-for-troubleshooting)
 
@@ -78,9 +77,10 @@ Information about installing these procedures is provided in [Copying the IBM pr
 Setting up z/OSMF Lite requires that you have access to a z/OS V2R2 system or later. Also, your z/OS system must meet the following minimum software requirements:
 
 - [Minimum Java level](#minimum-java-level)
-- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-z-osmf-v2r3-and-later)
+- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere®-liberty-profile-z-osmf-v2r3-and-later)
 - [System settings](#system-settings)
 - [Web browser](#web-browser)
+
 ### Minimum Java level
 
 Java™ must be installed and operational on your z/OS system, at the required minimum level. See the table that follows for the minimum level and default location. If you installed Java in another location, you must specify the JAVA_HOME statement in your IZUPRMxx parmlib member, as described in [Appendix A. Creating an IZUPRMxx parmlib member](#appendix-a-creating-an-izuprmxx-parmlib-member).   
@@ -389,7 +389,7 @@ To log into z/OSMF, enter a valid z/OS user ID and password. Your account might 
 
 ### Mounting the z/OSMF user file system at IPL time
 
-Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, update the BPXPRMxx parmlib member on your z/OS system.
+Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z-osmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, update the BPXPRMxx parmlib member on your z/OS system.
 
 ####  Before you begin
 
@@ -448,10 +448,10 @@ BPXF013I FILE SYSTEM IZU.SIZUUSRD WAS SUCCESSFULLY MOUNTED.
 You must enable a set of z/OSMF REST services for the Zowe framework.
 
 The following system changes are described in this topic:
-- [Enabling the z/OSMF JOB REST services](#enabling-the-zosmf-job-rest-services)
+- [Enabling the z/OSMF JOB REST services](#enabling-the-z-osmf-job-rest-services)
 - [Enabling the TSO REST services](#enabling-the-tso-rest-services)
-- [Enabling the z/OSMF data set and file REST services](#enabling-the-zosmf-data-set-and-file-rest-services)
-- [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-zosmf-workflow-rest-services-and-workflows-task-ui)
+- [Enabling the z/OSMF data set and file REST services](#enabling-the-z-osmf-data-set-and-file-rest-services)
+- [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-z-osmf-workflow-rest-services-and-workflows-task-ui)
 
 
 ### Enabling the z/OSMF JOB REST services
@@ -627,7 +627,7 @@ To verify, log on to z/OSMF (or refresh it) and verify that the Workflows task a
 
 At this point, you have completed the setup of z/OSMF Lite.
 
-Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-zosmf).
+Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-z-osmf).
 
 
 ## Troubleshooting problems

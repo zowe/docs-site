@@ -54,7 +54,7 @@ The name of the file that is the entry point for construction of the dataservice
 ### Limiting the length of dataservice paths for RBAC
 If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
 
-To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to application services](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-application-services).
+To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
 
 SAF profiles have the following format:
 
