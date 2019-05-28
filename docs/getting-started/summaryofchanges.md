@@ -29,17 +29,17 @@ Made the following fixes and enhancements:
 - Made the following enhancements to the ZSS server:
     - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
     - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
-- Security: App Server session cookie is now a browser session cookie rather than having an expiration date. Expiration is now tracked on the server side. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
+- Made the following enhancements to security: 
+    - App Server session cookie is now a browser session cookie rather than having an expiration date. Expiration is now tracked on the server side. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
+    - Added a "mode=base64" option to the unixfile API. [#127](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/127))
 - Added a port to the cookie name to differentiate multiple servers on same domain. ([#95](https://github.com/zowe/zlux-server-framework/pull/95))
 - Made the following fixes and enhancements to the Code Editor application:
-  - Added support for deleting files. ([#139](https://github.com/zowe/zlux/issues/139))
   - Added a menu framework to provide options specific to the current file/data set type. ([#131](https://github.com/zowe/zlux/issues/131))
   - Added ISPF-like syntax highlighting for JCL. ([#48](https://github.com/zowe/zlux/issues/48))
   - Fixed an issue by notifying users if the editor cannot open a file or data set. ([#148](https://github.com/zowe/zlux/issues/148))
   - Fixed an issue with event behavior when a tab is closed. ([#135](https://github.com/zowe/zlux/issues/135))
   - Fixed an issue with not showing the content of files in Chrome and Safari. ([#100](https://github.com/zowe/zlux/issues/100))
   - Fixed an issue with files shown without alphabetical sorting. ([#85](https://github.com/zowe/zlux/issues/85))
-  - Fixed an issue with no file or data set selected when an editor tab was closed. ([#41](https://github.com/zowe/zlux/issues/41))
 - Made the following fixes and enhancements to the TN3270 application ([#96](https://github.com/zowe/zlux-server-framework/pull/96)):
     - Fixed an issue where the application could not be configured to default to a TLS connection.
     - Fixed an issue where it could not handle a TN3270 connection, only TN3270E. 
@@ -52,11 +52,10 @@ Made the following fixes and enhancements:
   - Added an endpoint extraction for groups. ([#129](https://github.com/zowe/zlux/issues/129))
 - Fixed an issue with app names not being internationalized when translations were present. ([#85](https://github.com/zowe/zlux-server-framework/pull/85))
 - Fixed Russian language errors in translation files. ([#100](https://github.com/zowe/zlux-app-manager/pull/100))
-- Fixed several issues with proxying with the Application Server. ([#93](https://github.com/zowe/zlux-server-framework/pull/93))
+- Fixed several issues with using the Application Server as a proxy. ([#93](https://github.com/zowe/zlux-server-framework/pull/93))
 - Fixed an issue with the App Server throwing exceptions when authorization plugins were installed but not requested. ([#94](https://github.com/zowe/zlux-server-framework/pull/94), [#71](https://github.com/zowe/zlux/issues/71))
 - Fixed issues with configuration and terminal proxy. 
 - Fixed an issue with ZSS consuming excessive CPU during download. ([#147](https://github.com/zowe/zlux/issues/147))
-
 - Fixed documentation issue by replacing "zLUX" with "Zowe Application Framework" and "MVD" with "Zowe Desktop." ([#214](https://github.com/zowe/docs-site/issues/214))
 - Fixed an issue with terminals not connecting to a z/OS host if the Application Server was running off z/OS. ([#16](https://github.com/zowe/docs-site/issues/16))([#14](https://github.com/zowe/docs-site/issues/14))
 - Fixed an issue with an incorrect translation for word "Japanese" in Japanese. ([#108](https://github.com/zowe/docs-site/issues/108))
@@ -125,7 +124,7 @@ progress.
 - Fixed a bug by adding missing language files.
 - Enabled faster load times by adding support for serving the Zowe Application Framework core components, such as the Desktop, as compressed files in gzip format.
 - Added support for application plug-ins to serve static content, such as HTML, JavaScript, and images, to browsers in gzip and brotli compressed files.
-- Fixed a Code Editor bug by separating browsing of files and datasets.
+- Fixed a Code Editor bug by separating browsing of files and data sets.
 
 ### What's new in Zowe CLI and Plug-ins
 
