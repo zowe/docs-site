@@ -65,13 +65,13 @@ Made the following fixes and enhancements:
 
 The following new commands and enhancements are added:
 
-- Return a list archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+- Return a list of archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
 
 - Return a list of systems that are defined to a z/OSMF instance with the `zowe zosmf list systems` command. [(#348)](https://github.com/zowe/zowe-cli/pull/348)
 
 - The `zowe uss issue ssh` command now returns the exit code of the shell command that you issued. [(#359)](https://github.com/zowe/zowe-cli/pull/359)
 
-- The `zowe files upload dtu` command now supports the metatada file named `.zosattributes`. [(#366)](https://github.com/zowe/zowe-cli/pull/366)
+- The `zowe files upload dtu` command now supports the metadata file named `.zosattributes`. [(#366)](https://github.com/zowe/zowe-cli/pull/366)
 
 The following bugs are fixed:
 
