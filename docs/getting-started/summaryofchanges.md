@@ -125,6 +125,7 @@ progress.
 - Fixed a bug by adding missing language files.
 - Enabled faster load times by adding support for serving the Zowe Application Framework core components, such as the Desktop, as compressed files in gzip format.
 - Added support for application plug-ins to serve static content, such as HTML, JavaScript, and images, to browsers in gzip and brotli compressed files.
+- Fixed a Code Editor bug by separating browsing of files and datasets.
 
 ### What's new in Zowe CLI and Plug-ins
 
