@@ -30,7 +30,7 @@ const ALL_PAGES = [{
     link: 'getting-started/cli-getting-started.md'
   },
   {
-    text: 'Zowe CLI FAQs',
+    text: 'Zowe FAQs',
     link: 'getting-started/freqaskques.md'
   },
   ],
