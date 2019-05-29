@@ -19,6 +19,17 @@ Version 1.3.0 contains the following changes since Version 1.2.0.
 ### What's new in the Zowe installer
 
 ### What's new in API Mediation Layer
+<!-- TODO -->
+This release of Zowe API ML contains the following user experience improvements:
+
+- Added authentication endpoints (/login, /query) to the API Gateway 
+- Added the Gateway API Swagger document ([#305](https://github.com/zowe/api-layer/pull/305))
+- Added a new e2e test for GW, and update the detail service tile ([#309](https://github.com/zowe/api-layer/pull/309)) 
+- Removed a dependency of integration-enabler-java on the gateway-common ([#302](https://github.com/zowe/api-layer/pull/302))
+- Fixed the issue with the connection logic on headers to pass in the websocket ([#275](https://github.com/zowe/api-layer/pull/275)) 
+- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276)) 
+- Fixed the bug that causes JSON response to set incorrectly when unauthenticated 
+- Fixed error messages shown when a home page cannot be modified 
 
 ### What's new in the Zowe App Server
 
