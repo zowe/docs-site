@@ -158,14 +158,14 @@ IBM has contributed a free hands-on tutorial for Zowe. Visit the [Zowe Tutorial 
 
 The Zowe community is also currently working to provide a vendor-neutral site for an open z/OS build and sandbox environment.
 
-Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite (../user-guide/systemrequirements-zosmf-lite.html) on Zowe Docs.
+Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite](../user-guide/systemrequirements-zosmf-lite.html) on Zowe Docs.
 
 </details>
 
 
 ## Zowe CLI FAQ
 
-**Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?**
+### Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?
 
 <details>
 
