@@ -1,4 +1,4 @@
-# Application Icon
+# Application icon
 
 ## General rules
 
