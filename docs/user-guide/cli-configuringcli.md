@@ -33,40 +33,41 @@ The affect of the order is that if you omit an argument/option from the command 
 
 ### Creating Zowe CLI profiles
 
-Profiles are a Zowe CLI function that let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. 
+Profiles let you store configuration details for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. Switch between profiles to quickly target different mainframe subsystems.
 
-Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
+**Notes:**
+- Profile values are stored on your computer in plaintext in the `C:\Users\<yourUsername>\.zowe\profiles` folder.
+- Profiles are **not** required to use the CLI. You can choose to specify all connection details in options on every command.
+- For information about securely connecting to the server when you issue commands, see [Certificate security](#certificate-security).
 
 #### Displaying profiles help
-To learn about the options available for creating zosmf profiles, issue the following command. Refer to the available options in the help text to define your profile:
+To learn about the options available for creating `zosmf` profiles, issue the following command:
 
 ```
 zowe profiles create zosmf-profile --help
 ```
 
-#### Create and use a profile
+#### Creating and Using a profile
 
-Create a profile, then use the profile when you issue a command.
-
-**Example:**
-
-Substitute your connection details and issue the following command to create a profile with the name `myprofile123`:
+Create a profile, then use the profile when you issue a command. For example, substitute your connection details and issue the following command to create a profile with the name `myprofile123`:
 
 ```
-zowe profiles create zosmf-profile <myprofile123> --host <host123> --port <port123> --user <ibmuser> --password <pass123>
+zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
 ```
 
-Issue the following command to list all data sets under the username `ibmuser` on the system specified in `myprofile123`:
+Issue the following command to list all data sets under the username ibmuser on the system specified in `myprofile123`:
 
 ```
 zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
+After you create a profile, you can verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
+
+
 
 #### Creating a profile that accesses API Mediation Layer 
 
-You can create profiles that access an either an exposed API or API Mediation Layer (API ML) in the following ways:
+You can create profiles that access either an exposed API or API Mediation Layer (API ML) in the following ways:
 
 * When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
 
@@ -186,11 +187,11 @@ zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base
 
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 
-**Tip:** Append `--help` to the end of commands in the product to see the complete set of commands and options available to you. For example, issue `zowe profiles --help` to learn more about how to list profiles, switch your default profile, or create different profile types.
+**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to any of the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate security](#certificate-security).
 
 **Without a Profile**
 
-Verify that your CLI can communicate with z/OSMF:
+Verify that your CLI instance can communicate with z/OSMF.
 
 ```
 zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
@@ -198,7 +199,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 **Default profile**
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that your default profile can communicate with z/OSMF:
+After you [create a profile](#creating-zowe-cli-profiles), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -206,14 +207,50 @@ zowe zosmf check status
 
 **Specific profile**
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that you can use a specific profile to communicate with z/OSMF:
+After you [create a profile](#creating-zowe-cli-profiles), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
 ```
 
-The commands return a success or failure message and display information about your z/OSMF server. For example, the z/OSMF version number and a list of installed plug-ins. Report any failure to your systems administrator and use the information for diagnostic purposes.
+The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report any failure to your systems administrator and use the information for diagnostic purposes.
 
+## Certificate security
+
+Certificates authorize communication between a server and client, such as z/OSMF and Zowe CLI. The client CLI must "trust" the server to successfully issue commands. Use one of the following methods to let the CLI communicate with the server:
+
+- [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca) 
+- [Extend trusted certificates on client](#extend-trusted-certificates-on-client) 
+- [Bypass certificate requirement with CLI flag](#bypass-certificate-requirement-with-cli-flag) 
+
+### Configure certificates signed by a Certificate Authority (CA) 
+
+System Administrators can configure the server with a certificate signed by a Certificate Authority (CA) trusted by Mozilla. When a CA trusted by Mozilla exists in the certificate chain, the CLI automatically recognizes the server and authorizes the connection.
+
+**Related information:**
+
+- [Using certificates with z/OS client/server applications](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.icha700/icha700_Using_certificates_with_z_OS_client_server_applications.htm) in the IBM Knowledge Center.
+- [Configuring the z/OSMF key ring and certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm) in the IBM Knowledge Center.
+- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) 
+- [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates) 
+
+### Extend trusted certificates on client
+
+If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate. 
+
+[This blog post](https://medium.com/@dkelosky/zowe-cli-providing-node-extra-ca-certs-117727d936e5) outlines the process for using environment variables to trust the self-signed certificate.
+
+### Bypass certificate requirement with CLI flag
+
+If you do not have server certificates configured at your site, or you want to trust a known self-signed certificate, you can append the `--reject-unauthorized false` flag to your CLI commands. Setting the `--reject-unauthorized` flag to `false` rejects self-signed certificates and essentially bypasses the certificate requirement.
+
+**Important!** Understand the security implications of accepting self-signed certificates at your site before you use this command.
+
+**Example:**
+
+```
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> --reject-unauthorized false 
+```
 
 ## Setting Zowe CLI log levels
 
