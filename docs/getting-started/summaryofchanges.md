@@ -33,44 +33,39 @@ This release of Zowe API ML contains the following user experience improvements:
 
 
 ### What's new in the Zowe App Server
-
 Made the following fixes and enhancements:
-
-- Enhanced terminals to show the connection state and destination address in their titlebars. ([#14](https://github.com/zowe/docs-site/issues/14)), ([#13](https://github.com/zowe/docs-site/issues/13))
 - Added internationalization to the Angular and React sample applications. ([#133](https://github.com/zowe/zlux/issues/133))
 - Made the following enhancements to the ZSS server:
-    - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
-    - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
-- Made the following enhancements to security: 
-    - App Server session cookie is now a browser session cookie rather than having an expiration date. Expiration is now tracked on the server side. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
-    - Added a "mode=base64" option to the unixfile API. [#127](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/127))
+  - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
+  - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
+- Made the following enhancements to security:
+  - App Server session cookie is now a browser session cookie rather than having an expiration date. Expiration is now tracked on the server side. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
+  - Added a "mode=base64" option to the unixfile API. ([#127](https://github.com/zowe/zlux/issues/127))
 - Added a port to the cookie name to differentiate multiple servers on same domain. ([#95](https://github.com/zowe/zlux-server-framework/pull/95))
 - Made the following fixes and enhancements to the Code Editor application:
   - Added a menu framework to provide options specific to the current file/data set type. ([#131](https://github.com/zowe/zlux/issues/131))
-  - Added ISPF-like syntax highlighting for JCL. ([#48](https://github.com/zowe/zlux/issues/48))
+  - Added ISPF-like syntax highlighting for JCL. ([#48](https://github.com/zowe/zlux-editor/pull/48))
   - Fixed an issue by notifying users if the editor cannot open a file or data set. ([#148](https://github.com/zowe/zlux/issues/148))
   - Fixed an issue with event behavior when a tab is closed. ([#135](https://github.com/zowe/zlux/issues/135))
   - Fixed an issue with not showing the content of files in Chrome and Safari. ([#100](https://github.com/zowe/zlux/issues/100))
   - Fixed an issue with files shown without alphabetical sorting. ([#85](https://github.com/zowe/zlux/issues/85))
 - Made the following fixes and enhancements to the TN3270 application ([#96](https://github.com/zowe/zlux-server-framework/pull/96)):
-    - Fixed an issue where the application could not be configured to default to a TLS connection.
-    - Fixed an issue where it could not handle a TN3270 connection, only TN3270E. 
-    - Improved preference saving. Administrators can now store default values for terminal mod type, codepage, and screen dimensions.
+  - Fixed an issue where the application could not be configured to default to a TLS connection.
+  - Fixed an issue where it could not handle a TN3270 connection, only TN3270E. 
+    Improved preference saving. Administrators can now store default values for terminal mod type, codepage, and screen dimensions.
 - Made the following fixes and enhancements for App2App for IFrames ([#24](https://github.com/zowe/zlux-platform/pull/24), [#107](https://github.com/zowe/zlux-app-manager/pull/107)):
-    - Fixed an issue with an exception when handling App2App communication with IFrames.
-    - Added experimental support for App2App communication with an IFrame application as destination.
+  - Fixed an issue with an exception when handling App2App communication with IFrames.
+  - Added experimental support for App2App communication with an IFrame application as destination.
 - Made the following enhancements to support TopSecret:
   - Added a user-profiles endpoint. ([#113](https://github.com/zowe/zlux/issues/113))
   - Added an endpoint extraction for groups. ([#129](https://github.com/zowe/zlux/issues/129))
 - Fixed an issue with app names not being internationalized when translations were present. ([#85](https://github.com/zowe/zlux-server-framework/pull/85))
 - Fixed Russian language errors in translation files. ([#100](https://github.com/zowe/zlux-app-manager/pull/100))
 - Fixed several issues with using the Application Server as a proxy. ([#93](https://github.com/zowe/zlux-server-framework/pull/93))
-- Fixed an issue with the App Server throwing exceptions when authorization plugins were installed but not requested. ([#94](https://github.com/zowe/zlux-server-framework/pull/94), [#71](https://github.com/zowe/zlux/issues/71))
-- Fixed issues with configuration and terminal proxy. 
+- Fixed an issue with the App Server throwing exceptions when authorization plugins were installed but not requested. ([#94](https://github.com/zowe/zlux-server-framework/pull/94))
 - Fixed an issue with ZSS consuming excessive CPU during download. ([#147](https://github.com/zowe/zlux/issues/147))
 - Fixed documentation issue by replacing "zLUX" with "Zowe Application Framework" and "MVD" with "Zowe Desktop." ([#214](https://github.com/zowe/docs-site/issues/214))
-- Fixed an issue with terminals not connecting to a z/OS host if the Application Server was running off z/OS. ([#16](https://github.com/zowe/docs-site/issues/16))([#14](https://github.com/zowe/docs-site/issues/14))
-- Fixed an issue with an incorrect translation for word "Japanese" in Japanese. ([#108](https://github.com/zowe/docs-site/issues/108))
+- Fixed an issue with an incorrect translation for word "Japanese" in Japanese. ([#108](https://github.com/zowe/zlux-app-manager/pull/108))
 
 ### What's new in Zowe CLI and Plug-ins
 
