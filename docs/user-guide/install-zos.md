@@ -221,6 +221,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```yaml
 
      rootDir=/var/zowe/1.3.0
+     prefix=ZOWE
 
     api-mediation:
       catalogPort=7552
