@@ -499,3 +499,38 @@ If the directory or file cannot be created, the server will run (but it might no
 
 ### Retaining logs
 By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. 
+
+
+## Running multiple ZSS on the same host
+When concurent run of multiple ZSS is needed (for example I want to run different version of Zowe on one host) a further setup is needed.
+ 1) Start Zowe Cross Memory server with `NAME` parameter.  For example:
+     ```
+     /S ZWESIS01,NAME='ZWESIS_MYSRV'
+     ```
+     **NOTE:** Default value of  `NAME` is `ZWESIS_STD`.
+ 2) Update ZSS JSON configuration `zluxserver.json` to add `"privilegedServerName":"ZWESIS_MYSRV"`, an example:      
+      ```json
+      "rootDir":"../deploy",
+      "productDir":"../deploy/product",
+      "siteDir":"../deploy/site",
+      "instanceDir":"../deploy/instance",
+      "groupsDir":"../deploy/instance/groups",
+      "usersDir":"../deploy/instance/users",
+      "pluginsDir":"../deploy/instance/ZLUX/plugins",
+      "privilegedServerName":"ZWESIS_MYSRV",
+       "dataserviceAuthentication": { ... }
+     ```     
+     **NOTE:** Default location of json file is
+       ```
+       $ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json
+       ```
+  3) Recycle `ZOWESVR`
+  4) Verify 
+      * `ZWESIS01` job log contains a message 
+         ```
+         ZWES0004I Server name is 'ZWESIS_MYSRV      '
+         ```    
+      * `ZOWESVR` job log contains a message
+         ```
+         privilegedServerName is 'ZWESIS_MYSRV'
+         ```
