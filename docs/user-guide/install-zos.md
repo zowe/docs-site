@@ -146,8 +146,8 @@ Ensure that you meet the following software requirements before you install Zowe
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-<!-- TODO - The user ID that is used to perform the installation must have READ permission to the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
- https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm). -->
+- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+ https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
 ## Installing the Zowe runtime on z/OS
 
