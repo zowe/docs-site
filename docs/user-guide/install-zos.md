@@ -138,13 +138,16 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 ## Prerequisites
 
-- Before you start the installation on z/OS, ensure that your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
+Ensure that you meet the following software requirements before you install Zowe on z/OS:
+
+- Your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
 
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-<!-- TODO. Plus one point re READ permission (at least) to the BPX.JOBNAME FACILITY class. This facility is needed for you to be albe to see names of STC. Info should be here https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm  -->
+<!-- TODO - The user ID that is used to perform the installation must have READ permission to the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+ https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxb200/fclass.htm). -->
 
 ## Installing the Zowe runtime on z/OS
 
@@ -173,7 +176,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       ```
       pfxCssN
       ```
-      <!-- TODO. Insert the example -->
+
       where:
       
         - `pfx` - prefix that contains up to four characters, for example, ZOWE.
@@ -198,13 +201,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
           - **S** - Zowe Desktop Application Server
             
         - `N` - instance number
-          <!-- More clarity with the instance number needed. Why is it important? -->
+        
           You should use the prefix for the main started task (+ number).
 
-          Example of the 1st instance of Zowe API ML Gateway identifier:
-          ```
-          ZOWEAGW1
-          ```
+       **Example: 1st instance of Zowe API ML Gateway identifier**
+       ```
+       ZOWEAGW1
+      ```
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
     - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
