@@ -9,7 +9,7 @@ assignees: ''
 
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
-<!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contributing.html) for guidance on writing an actionable issue description. -->
+<!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contribute/contributing.html) for guidance on writing an actionable issue description. -->
 
 ## Is your request for enhancement related to a problem? Please describe.
 <!-- A clear and concise description of what the problem is. e.g., I'm always frustrated when [I am using the search feature to search topics...] -->

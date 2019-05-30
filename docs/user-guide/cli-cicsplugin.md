@@ -3,7 +3,7 @@
 The Zowe CLI Plug-in for IBM® CICS® lets you extend Zowe CLI to interact with CICS programs and transactions. The plug-in uses the IBM CICS® Management Client Interface (CMCI) API to achieve the interaction with CICS. For more information, see [CICS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
   - [Use Cases](#use-cases)
-  - [Prerequisites](#prerequisites)
+  - [Software requirements](#software-requirements)
   - [Installing](#installing)
   - [Creating a user profile](#creating-a-user-profile)
   - [Commands](#commands)
@@ -18,9 +18,9 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfor
   - Deploy build artifacts to CICS regions.
   - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
 
-## Prerequisites
+## Software requirements
 
-Before you install the plug-in, meet the prerequisites in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
+Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing
 
@@ -60,7 +60,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 
 If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` package, complete the following steps to install the Zowe CLI Plug-in for CICS:
 
-1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
+1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-a-local-package) for information about how to obtain and extract it.
 
 2. Issue the following command to install the plug-in:
 

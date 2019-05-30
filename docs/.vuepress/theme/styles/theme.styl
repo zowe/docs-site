@@ -5,6 +5,11 @@
 @require './arrow'
 @require './wrapper'
 @require './toc'
+// MODIFICATION_FROM_THEME - starts
+@require './tooltip'
+@require './clipboard'
+@require './details'
+// MODIFICATION_FROM_THEME - ends
 
 html, body
   padding 0
@@ -53,6 +58,16 @@ body
   box-sizing border-box
   border-right 1px solid $borderColor
   overflow-y auto
+  // MODIFICATION_FROM_THEME - starts
+  .sidebar-section
+    background-color #f0f0f0
+    color #333
+    font-size 1.25em
+    font-weight bold
+    margin 1.2rem 0.8rem -1rem 1rem
+    padding 0.8rem 1rem
+    border-radius 5px
+  // MODIFICATION_FROM_THEME - ends
 
 .content:not(.custom)
   @extend $wrapper

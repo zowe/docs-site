@@ -18,7 +18,7 @@ As an API developer, use this guide to onboard a Java REST API service that is b
 **Notes:** 
 * This onboarding procedure uses the Spring framework for implementation of a REST API service, and describes how to generate Swagger API documentation using a Springfox library.
 * If you use another framework that is based on a Servlet API, you can use `ServletContextListener` that is described later in this article.
-* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-context-listener) section in this article for details about how to register and unregister your service with the API Mediation Layer.
+* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API Mediation Layer.
 
 # Prerequisites
 * Ensure that your REST API service that is written in Java.
@@ -70,7 +70,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.0')
+    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.2')
     ```
 
 5.  In your project directory, run the `gradle build` command to build your project.
@@ -102,7 +102,7 @@ Use the following procedure if you use Maven as your build automation system.
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>1.1.0</version>
+        <version>1.1.2</version>
     </dependency>
     ```
 3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
@@ -263,12 +263,9 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
     healthCheckRelativeUrl: /application/health
     discoveryServiceUrls:
         - http://eureka:password@localhost:10011/eureka
-    routedServices:
-    - gatewayUrl: api/v1
-      serviceUrl: /hellospring/api/v1
-    
-    - gatewayUrl: api/v1/api-doc
-      serviceUrl: /hellospring/api-doc
+    routes:
+        - gatewayUrl: api/v1
+          serviceUrl: /hellospring/api/v1    
     apiInfo:
         - apiId: ${mfaas.discovery.serviceId}
           gatewayUrl: api/v1

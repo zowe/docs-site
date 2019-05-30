@@ -219,9 +219,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     **Example:**
 
     ```yaml
-    install:
-     rootDir=/var/zowe/1.2.0
-     prefix=ZOWE
+
+     rootDir=/var/zowe/1.3.0
 
     api-mediation:
       catalogPort=7552
@@ -305,7 +304,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
       - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
-      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-installsh-works).
+      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-install-sh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
 
@@ -390,13 +389,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
     ```
 
-    This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-zosmf-certificate) for more details.
+    This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
     
 8. Configure Zowe as a started task.
     <!-- TODO -->
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
-     cd /var/zowe/1.2.0
+     cd /var/zowe/1.3.0
      /zowe/builds/install/zowe-config-stc.sh
      ```
     Alternatively, you can issue the commands manually:
@@ -557,7 +556,7 @@ By default, Zowe uses the runtime version that you most recently installed. To s
 
 To test whether the API Mediation Layer is active, open the URL: `https://<hostname>:7554`. 
 
-The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos).
+The port number 7554 is the default API Gateway port. You can overwrite this port in the `zowe-install.yaml` file before the `zowe-install.sh` script is run. See Step 2 in [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os).
 
 ### Stopping the ZOWESVR PROC
 
@@ -616,13 +615,13 @@ The manual installation consists of the following steps.
 
     Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `files\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set `zwes_loadlib`, for example, ZWES.SISLOAD.
 
-    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
+    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp -X ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
 
     Do not add the `zwes_loadlib` data set to the system LNKLST or LPALST concatenations. You must execute it by using a started task that uses a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `files/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
 
     **Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
 
-2. PPT Entry
+1. PPT Entry
 
     The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PPT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
 
@@ -635,7 +634,7 @@ The manual installation consists of the following steps.
     /SET SCH=xx
     ```
 
-3. APF-authorization
+1. APF-authorization
 
     Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a load library is APF-authorized by using the following TSO command:
 
@@ -655,11 +654,11 @@ The manual installation consists of the following steps.
     ```
     where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
 
-4. PARMLIB member
+1. PARMLIB member
 
     The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `zowe_install_dir/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
 
-5. Security requirements for the cross memory server
+1. Security requirements for the cross memory server
 
     The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
 
@@ -704,7 +703,7 @@ The manual installation consists of the following steps.
       TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
       ```
 
-6. ICSF cryptographic services 
+1. ICSF cryptographic services 
 
     The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
 
@@ -745,35 +744,90 @@ The manual installation consists of the following steps.
     - CCA and/or PKCS #11 coprocessor for random number generation.
     - Enable FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION and RDEFINE CSFINPV2 if required.
 
+1. Security environment switching 
 
-7. Security environment switching 
+    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
 
-    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
+    
+    - If you use RACF, issue the following commands:
+      ```
+      RLIST FACILITY BPX.SERVER AUTHUSER
+      RLIST FACILITY BPX.DAEMON AUTHUSER
+      ```
+    - If you use CA Top Secret, issue the following commands:
+      ```
+      TSS WHOHAS IBMFAC(BPX.SERVER)
+      TSS WHOHAS IBMFAC(BPX.DAEMON)
+      ```
+    - If you use CA ACF2, issue the following commands:
+      ```
+      SET RESOURCE(FAC)
+      LIST BPX
+      ```
+  
+   If the user who runs the ZWESIS01 started task does not have UPDATE access to both facilities, follow the instructions below.
 
-    - If you use RACF, complete the following steps:
+   - If you use RACF, complete the following steps:
+      <details>
+      <summary>Click to Expand</summary>
 
-        - Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
-          ```
-          SETROPTS CLASSACT(FACILITY)             
-          SETROPTS RACLIST(FACILITY)                
-          ```
-        - Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
-          ```
-          RDEFINE FACILITY BPX.SERVER UACC(NONE)
-          RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-          ```             
-        - Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.  
-          ```
-          PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-          PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
-          /* Activate these changes */
-          SETROPTS RACLIST(FACILITY) REFRESH      
-          ```
-        - To check whether permission has been successfully granted, issue the following commands:
-          ```
-          RLIST FACILITY BPX.SERVER AUTHUSER
-          RLIST FACILITY BPX.DAEMON AUTHUSER
-          ```
+      1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+         ```
+         SETROPTS CLASSACT(FACILITY)             
+         SETROPTS RACLIST(FACILITY)                
+         ```
+     1. Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
+        ```
+        RDEFINE FACILITY BPX.SERVER UACC(NONE)
+        RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+        ```             
+      1. Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class. 
+         ```
+         PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         /* Activate these changes */
+         SETROPTS RACLIST(FACILITY) REFRESH      
+         ```
+      1. Issue the following commands to check whether permission has been successfully granted:
+         ```
+         RLIST FACILITY BPX.SERVER AUTHUSER
+         RLIST FACILITY BPX.DAEMON AUTHUSER
+         ```
+      </details>
+    - If you use CA Top Secret, complete the following steps:  
+        <details>
+        <summary>Click to Expand</summary>
+
+        1. Define the BPX Resource and access for IZUSVR.
+           ```
+           TSS ADD(`owner-acid`) IBMFAC(BPX.)
+           TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+           TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+           ```
+        1. Issue the following commands and review the output to check whether permission has been successfully granted:
+            ```
+           TSS WHOHAS IBMFAC(BPX.SERVER)
+           TSS WHOHAS IBMFAC(BPX.DAEMON)
+           ```
+       </details>
+    - If you use CA ACF2, complete the following steps:
+        <details>
+          <summary>Click to Expand</summary>
+
+        1. Define the BPX Resource and access for IZUSVR.
+           ```
+           SET RESOURCE(FAC)
+           RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           F ACF2,REBUILD(FAC)
+           ```
+        1. Issue the following commands and review the output to check whether permission has been successfully granted:
+           ```
+           SET RESOURCE(FAC)
+           LIST BPX
+           ```
+        </details>
 
 ### Scripted install of the Zowe Cross Memory Server 
 <!-- TODO. Entire sub-section -->
@@ -863,7 +917,7 @@ The script writes its messages to your terminal window.  The results are marked 
 Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying z/OS Services installation](#verifying-zos-services-installation) 
+- [Verifying z/OS Services installation](#verifying-z-os-services-installation) 
 - [Verifying API Mediation installation](#verifying-api-mediation-installation) 
 
 ### Verifying Zowe Application Framework installation

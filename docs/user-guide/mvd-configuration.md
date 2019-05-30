@@ -296,13 +296,13 @@ cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfi
 
 To use role-based access control (RBAC) for Zowe dataservice endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
 
-After you configure RBAC, Zowe checks whether users have authority to perform actions that access another application's dataservices.
+After you configure RBAC, Zowe checks users' authority to access dataservices.
 
 ### How it works
 
 Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
-Plug-ins can also have dataservices that control their [configuration](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These dataservices have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
+Plug-ins can also use [configuration service endpoints](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
 
 Dataservice endpoints are identified by URLs that are formatted like this:
 
@@ -358,7 +358,7 @@ We recommend configuring the following basic authorization:
 ### Endpoint URL length limitations
 SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that appliction developers maintain relatively short endpoint URL paths.
 
-For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-dataservices.html#dataservice-endpoint-URL-lengths-and-RBAC)
+For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](../extend/extend-desktop/mvd-dataservices.md#limiting-the-length-of-dataservice-paths-for-rbac)
 
 
 ## Enabling tracing

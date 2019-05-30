@@ -15,21 +15,33 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Set the MFS_LOG_LEVEL parameter to "debug" in the MFSxPRM member. The member resides in the RUNHLQ.CMFSOPTN data set.
-    ```
-    MFS_LOG_LEVEL="debug"
-    ```
-2. Restart the API ML internal services (Gateway, Discovery Service, and Catalog) as applicable to the problem that you are troubleshooting.
-You successfully enabled debug mode.
-3. Repeat the procedure that initially caused the problem.
-4. Review the debug messages and contact Support, if necessary.
-5. After you finish troubleshooting the error, set the MFS_LOG_LEVEL parameter back to the initial setting:
-    ```
-    MFS_LOG_LEVEL=""
-    ```
-6. Restart all API ML services (Gateway, Discovery Service, and Catalog).
-You successfully disabled debug mode.
+1. Locate the following shell script files in the `<Zowe install directory>/api-mediation/scripts` directory:
 
+    - ```api-mediation-start-catalog.sh```
+    - ```api-mediation-start-discovery.sh```
+    - ```api-mediation-start-gateway.sh```
+
+2. Open a file, for which you want to enable the debug mode.
+
+3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`: 
+    ```
+    -Dspring.profiles.include=debug \
+    ```
+
+4. Restart Zowe.
+
+    You have enabled the debug mode.
+
+5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, contact CA Support.
+
+6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
+    ```
+    -Dspring.profiles.include= \
+    ```
+7. Restart Zowe.
+
+    You have disabled the debug mode.
+ ___
 ## Change the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
@@ -59,6 +71,11 @@ This activates the application/loggers endpoints in each API ML internal service
     MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog 
     (by default, set to gateway port + 2).
     
+    **Exception:** For the catalog you will able to get list the available loggers by issuing the GET request for the given service URL:
+    ```
+    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
+    ```
+
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
     
     **Example:**

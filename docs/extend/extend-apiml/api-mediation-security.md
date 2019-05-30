@@ -7,6 +7,7 @@
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
   - [Authorization](#authorization)
+  - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
   - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
   - [Setting Ciphers for API ML Services](#setting-ciphers-for-api-ml-services)
@@ -18,13 +19,13 @@
     - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
     - [Log in to Discovery Service on localhost](#log-in-to-discovery-service-on-localhost)
-  - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
-    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-zos-installation-from-the-zowe-pax-file)
+  - [Zowe runtime on z/OS](#zowe-runtime-on-z-os)
+    - [Certificates for z/OS installation from the Zowe PAX file](#certificates-for-z-os-installation-from-the-zowe-pax-file)
     - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-zos)
-    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
+    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
+    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
-    - [Trust a z/OSMF certificate](#trust-a-zosmf-certificate)
+    - [Trust a z/OSMF certificate](#trust-a-z-osmf-certificate)
     - [Disable certificate validation](#disable-certificate-validation)
 
 ## How API ML transport security works
@@ -154,6 +155,11 @@ Authorization is a method used to determine access rights of an entity.
 In the API ML, authorization is performed by the z/OS security manager ([CA ACF2](https://www.ca.com/us/products/ca-acf2.html), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [CA Top Secret](https://www.ca.com/us/products/ca-top-secret.html)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
 
+### JWT Token
+
+The JWT Secret that signs JWT Token is a private key generated during installation. This key is stored in the `PKCS12` keystore and in a jwtsecret.key file, which are both located in a protected `/keystore/localhost` directory. The JWT token is signed with HS256 signature algorithm.
+
+
 ### API ML truststore and keystore
 
 A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
@@ -170,6 +176,7 @@ by other technologies used in Zowe (Node.js).
 - Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
 - Server certificate of the Discovery Service (with PK). This can be signed by the local CA
 - Server certificate of the Catalog (with PK). This can be signed by the local CA
+- Single private key of the JWT Token, with alias `jwtsecret`. This can exist as a separate key in the same directory as the keystore
 - The API ML keystore is used by API ML services
 
 **The API ML truststore**

@@ -3,11 +3,10 @@
 This section contains information about using Zowe CLI.
 
 ## Displaying Zowe CLI help
-Zowe CLI contains a help system that is embedded directly into the command-line interface. When you want help with Zowe CLI, you issue help commands that provide you with information about the product, syntax, and usage.
 
-### Displaying top-level help
+Zowe CLI contains a help system that is embedded directly into the command-line interface. Issue help commands that provide you with information about the product, syntax, and usage.
 
-<!---your comment-->
+### Displaying top-level help 
 
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
@@ -42,7 +41,7 @@ provides the ability to interact with mainframe data sets. This article provides
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
 **Important!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-a-zowe-cli-profile) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-zosmf) to help ensure that Zowe CLI can communicate with z/OS systems.
+completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-zowe-cli-profiles) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 
@@ -194,8 +193,8 @@ The zosmf command group lets you work with Zowe CLI profiles and get general inf
 
 With the zosmf command group, you can perform the following tasks:
 
-- Create and manage your Zowe CLI zosmf profiles. You must have at least one zosmf profile to issue most commands. Issue the `zowe help explain profiles` command in Zowe CLI to learn more about using profiles.
-- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-installcli.md#testing-zowe-cli-connection-to-z-osmf).
+- Create and manage your Zowe CLI `zosmf` profiles. Profiles let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. For more information, see [Creating profiles](cli-configuringcli.md#creating-zowe-cli-profiles).
+- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf).
 - Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 **Note:** For more information about `zosmf` syntax, actions, and options, open Zowe CLI and issue the following command:
