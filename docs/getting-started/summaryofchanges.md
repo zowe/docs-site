@@ -33,7 +33,7 @@ This release of Zowe API ML contains the following user experience improvements:
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
 
-- Added internationalization to the Angular and React sample applications. ([#133](https://github.com/zowe/zlux/issues/133))
+- Added internationalization to the Angular and React sample applications. ([#14](https://github.com/zowe/sample-angular-app/pull/14), [#9](https://github.com/zowe/sample-react-app/pull/9))
 - Made the following enhancements to the ZSS server:
   - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
   - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
