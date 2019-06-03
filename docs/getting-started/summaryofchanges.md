@@ -4,19 +4,17 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.3.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.3.0 (May 2019)](#version-1-3-0-may-2019)
+- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.3.0 (May 2019)
+## Version 1.3.0 (June 2019)
 
 Version 1.3.0 contains the following changes since Version 1.2.0.
 
 <!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
-
-### What's new in the Zowe installer
 
 ### What's new in API Mediation Layer
 <!-- TODO -->
@@ -86,7 +84,6 @@ The following bugs are fixed:
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
-### What's new in Zowe API
 
 ## Version 1.2.0 (May 2019)
 
