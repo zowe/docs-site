@@ -1,5 +1,5 @@
 # Updating Zowe on z/OS using Update Script
-
+<!-- TODO -->
 Zowe applications are updated continuously. Zowe on z/OS used to be updated in a way that you need to install a completely new version of Zowe. With the introduction of the update script you can optimize this process, and make installation and applying fixes faster and more seamless. 
 
 To use the most of the update script, you need to take the following actions:
