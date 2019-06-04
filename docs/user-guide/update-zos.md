@@ -1,18 +1,24 @@
 # Updating Zowe on z/OS using Update Script
 <!-- TODO -->
-Zowe applications are updated continuously. Zowe on z/OS used to be updated in a way that you need to install a completely new version of Zowe. With the introduction of the update script you can optimize this process, and make installation and applying fixes faster and more seamless. 
+Previously, Zowe on z/OS had to be updated by installing a new version of Zowe. With the introduction of the update script, you can optimize this process, and make installation faster and more seamless. 
 
-To use the most of the update script, you need to take the following actions:
+Use the update script to update Zowe on z/OS.
 
- ### Prerequisites
+### Prerequisites
 
- Ensure that you met the following requirements before you run the update script:
+Ensure that you met the following requirements before you run the update script:
 
   - Stop a running instance of Zowe
-  - Have the [pax file](https://zowe.org/download/) downloaded. To unpax the file run the following command
-  ```
- pax -ppx -rf <path/to/pax>
-  ```
+  - Download the [pax file](https://zowe.org/download/) and. To unpax the file run the following command
+    ```
+     pax -ppx -rf <path/to/pax>
+    ```
+    where:
+
+    - `<path/to/pax>` - a path to a directory with 
+
+
+### Update Zowe using Update Script
 
 Run the update script to update Zowe.
 
@@ -23,32 +29,44 @@ Run the update script to update Zowe.
     ```
     update.sh <path/to/zowe/install> 
     update.sd <path/to/unpaxed/new-zowe>
-    update.sh <LOADLIB.DS.NAME> <path/to/backup>
+    update.sh <LOADLIB.DS.NAME>
+    update.sh <path/to/backup>
     ```
-
+   <!-- TODO. Not sure this code block is correctly put, especially `update.sd <path/to/unpaxed/new-zowe>` -->
     where:
 
-    - `<path/to/zowe/install>` - path to a Zowe install     directory, which you want to update
-    - `<path/to/unpaxed/new-zowe>` - path to directory with     unpaxed new version of Zowe
-    - `<LOADLIB.DS.NAME>` - a dataset with a load module
-    - `<path/to/backup>` - path to directory where to back up
+    - `<path/to/zowe/install>` - path to a Zowe install directory
+    - `<path/to/unpaxed/new-zowe>` - path to a directory the with unpaxed new version of Zowe
+    <!-- TODO. Why do we need it? and what does an "unpaxed new version of Zowe" mean? A pax.Z file?  -->
+    - `<LOADLIB.DS.NAME>` - a data set with a load module
+    - `<path/to/backup>` - path to a directory where to back up
 
 2. Restart Zowe.
-You sucessfully updated Zowe. 
 
+You successfully updated Zowe.
 
-<!-- TODO.
+### Revert/Restore Zowe Installation
 
-Why do we need to revert 
+Zowe installation backup is created before an update starts. 
+<!-- TODO. Why is this important? How do we know the backup is created? Is this connected with? `update.sh <path/to/backup>` -->
+Restore a previous Zowe installation. 
 
-Revert steps
-Backup of Zowe installation is created before update starts. To restore follow these steps:
+**Follow these steps:**
 
-restore Zowe installation
-remove directory with Zowe installation
-rm -rf <path/to/zowe/install>
-copy backup to original location
-cp -r <path/to/backup> <path/to/zowe/install>
-restore LOADLIB module
-copy LOADLIB to load module DS
-cp -X -v <path/to/backup/>install_log/ZWESIS01 //'<LOADLIB.DS.NAME>(ZWESIS01)' -->
+1. Remove directory with Zowe installation by issuing the following command:
+   ```
+   rm -rf <path/to/zowe/install>
+   ```
+2. Copy a backup to the original location by issuing the following command:
+   ```
+   cp -r <path/to/backup> <path/to/zowe/install>
+   ```
+3. Restore LOADLIB module
+<!-- TODO. How do I restore the LOADLIB module? By issuing the command below? -->
+4. Copy the LOADLIB to load module data set by issuing the following command:
+    ```
+    cp -X -v <path/to/backup/>install_log/ZWESIS01 //'<LOADLIB.DS.NAME>(ZWESIS01)'
+    ```
+<!-- TODO. Is that the end of procedure? Where can a user perform these action? Should we point users at a specific 'tool'?-->
+
+You successfully restored Zowe.
