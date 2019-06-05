@@ -1,5 +1,5 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the Zowe Application Framework as a Mediation Layer client; configure connections for the terminal application plug-ins; or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+After you install Zowe, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
 
 ## Configuring the framework as a Mediation Layer client
 For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.
@@ -43,7 +43,7 @@ To verify that the server registered correctly, open the log file in the `zlux/z
 The registration process might take a few minutes. If the line is not there, make sure that the Mediation Layer values you enabled in the `zluxserver.json` file are correct.
 
 ### Accessing the Application Server
-To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 When accessed through the Mediation Layer, this is the Zowe Desktop URL:
 `https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
