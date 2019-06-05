@@ -1,5 +1,52 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, if needed.
+After you install Zowe, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+
+## Configuring the framework as a Mediation Layer client
+For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.
+
+This configuration is simpler to administer because the framework servers are accessible externally through a single port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
+
+You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `zlux-app-server/deploy/instance/ZLUX/serverConfig` directory.
+
+### Enabling the Application Server to register with the Mediation Layer
+1. Open the Application Server configuration file:
+   `zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+   The file might be in the `zlux-app-server/config` directory. If so, navigate to the `zlux-build` folder and run the `ant deploy` command to deploy the file to the correct location.
+
+2. Specify the following values:
+
+   - `mediationLayer`: If this object is not there, create it. It contains all of the key-value pairs.
+   - `server`: Container for most of the key-value pairs.
+   - `hostname` (string): Specify the hostname that the Application Server can use to access the Mediation Layer servers. The Mediation Layer servers must be on a single system.
+   - `port` (number): Specify the Mediation Layer discovery server TCP port.
+   - `gatewayPort` (number): Specify the gateway TCP port (used for single sign-on).
+   - `isHttps` (boolean): Specify `true` to use HTTPS (recommended).
+   - `enabled` (boolean): Specify `true` to enable the Application Server to use the Mediation Layer.
+
+    For example:
+   ```text
+       "mediationLayer": {
+         "server": {
+           "hostname": "localhost",
+           "port": 10011,
+           "gatewayPort": 10012,
+           "isHttps": true
+         },
+         "enabled": true
+       }
+   ```
+
+To verify that the server registered correctly, open the log file in the `zlux/zlux-app-server/log` directory. The following line should be at the bottom (with the current date and time):
+
+`[20xx-xx-xx xx:xx:xx.xxx _zsf.apiml INFO] - Eureka Client Registered`
+
+The registration process might take a few minutes. If the line is not there, make sure that the Mediation Layer values you enabled in the `zluxserver.json` file are correct.
+
+### Accessing the Application Server
+To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+When accessed through the Mediation Layer, this is the Zowe Desktop URL:
+`https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 ## Setting up terminal application plug-ins
 
