@@ -155,7 +155,7 @@ In the API ML, authorization is performed by the z/OS security manager ([CA ACF2
 
 ### JWT Token
 
-The JWT Secret that signs the JWT Token is a private key that is generated during an installation process. This key is stored in the `PKCS12` keystore and in a jwtsecret.key file, both of which are located in a `/keystore/localhost` directory that is protected. The JWT token is signed with the HS256 signature algorithm.
+The JWT Secret that signs the JWT Token is an asymmetric private key that is generated during installation. You can find the JWT Secret, alias "jwtsecret", in the  PKCS12 keystore /keystore/localhost/localhost.keystore.p12. The public key necessary to read the JWT Secret is called from the keystore. For easy access, you can find the `localhost.keystore.jwtsecret.cer` public key in the same in the same directory. The JWT token is signed with the RS256 signature algorithm. 
 
 ### API ML truststore and keystore
 
@@ -173,7 +173,7 @@ by other technologies used in Zowe (Node.js).
 - Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
 - Server certificate of the Discovery Service (with PK). This can be signed by the local CA
 - Server certificate of the Catalog (with PK). This can be signed by the local CA
-- Private key of the JWT Token, alias `jwtsecret`. The private key exist as a separate key in the same directory as the keystore
+- Private asymmetric key for the JWT token, alias `jwtsecret`. The public key is exported in the localhost.keystore.jwtsecret.cer folder named. 
 - The API ML keystore is used by API ML services
 
 **The API ML truststore**
