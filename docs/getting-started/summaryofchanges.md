@@ -12,8 +12,6 @@ Zowe Version 1.3.0 and later releases include the following enhancements, releas
 
 ## Version 1.3.0 (June 2019)
 
-Version 1.3.0 contains the following changes since Version 1.2.0.
-
 <!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
 
 ### What's new in API Mediation Layer
@@ -26,14 +24,17 @@ This release of Zowe API ML contains the following user experience improvements:
     - Fixed error messages shown when a home page cannot be modified 
 - Added a new e2e test for GW, and update the detail service tile ([#309](https://github.com/zowe/api-layer/pull/309)) 
 - Removed a dependency of integration-enabler-java on the gateway-common ([#302](https://github.com/zowe/api-layer/pull/302))
+- Removed access to the Discovery service UI with basic authentication [#313](https://github.com/zowe/api-layer/pull/313)  
 - Fixed the issue with the connection logic on headers to pass in the websocket ([#275](https://github.com/zowe/api-layer/pull/275)) 
-- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276)) 
+- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276))
+- Fixed the issue that causes the API ML Services display as UP, and makes the API doc available in the Catalog regardless whether the API ML Services stop [#287](https://github.com/zowe/api-layer/pull/287)
+- Fixed the issue that prevents the API Catalog to load under zLux 9 [314](https://github.com/zowe/api-layer/pull/314)
 
 
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
 
-- Added internationalization to the Angular and React sample applications. ([#14](https://github.com/zowe/sample-angular-app/pull/14), [#9](https://github.com/zowe/sample-react-app/pull/9))
+- Added internationalization to the Angular and React sample applications. ([#133](https://github.com/zowe/zlux/issues/133))
 - Made the following enhancements to the ZSS server:
   - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
   - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
@@ -84,6 +85,10 @@ The following bugs are fixed:
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
+### What's changed
+<!-- TODO. Fix the link once the doc is ready -->
+- An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](docs\user-guide\update-zos.md).
+    
 
 ## Version 1.2.0 (May 2019)
 
