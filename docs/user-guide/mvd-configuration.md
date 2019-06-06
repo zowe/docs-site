@@ -502,13 +502,27 @@ By default, the last five logs are retained. To specify a different number of lo
 
 
 ## Running multiple ZSS on the same host
-When concurent run of multiple ZSS is needed (for example I want to run different version of Zowe on one host) a further setup is needed.
- 1) Start Zowe Cross Memory server with `NAME` parameter.  For example:
-     ```
-     /S ZWESIS01,NAME='ZWESIS_MYSRV'
-     ```
-     **NOTE:** Default value of  `NAME` is `ZWESIS_STD`.
- 2) Update ZSS JSON configuration `zluxserver.json` to add `"privilegedServerName":"ZWESIS_MYSRV"`, an example:      
+When concurrent run of multiple ZSS is needed (for example I want to run different version of Zowe on one host) a further setup is needed.
+ 1) install a first instance of Zowe including ZSS
+ 1) install a second instance of Zowe including ZSS
+     * `zssPort=xxxx` (and other Zowe ports) in `zowe-install.yaml` have to be different from previous run
+ 1) Start 1st instance of Zowe `ZOWESVR` and  Zowe Cross Memory server `ZWESIS01`
+ 1) Start 2nd instance Zowe Cross Memory server with additional `NAME` parameter.  
+      * either issue MVS START `ZWESIS01` with additional parameter `NAME='ZWESIS_MYSRV'`
+        ```
+        /S ZWESIS01,NAME='ZWESIS_MYSRV'
+        ```
+        **NOTE:** Default value of  `NAME` is `ZWESIS_STD`.
+      * or  make a copy of the original `ZWESIS01` JCL with new name `ZWESISNN`, and change the `NAME` parameter at the top of the new JCL:
+          ```
+          //ZWESIS01  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M 
+          ```
+          Then start the new server normally:
+          ```
+          /S ZWESISNN
+          ````
+        **NOTE:**  Make sure that STC `ZWESISNN` has assigned the same STC userid as STC `ZWESIS01`.
+ 1) Update ZSS JSON configuration `zluxserver.json` of 2nd Zowe instance to add `"privilegedServerName":"ZWESIS_MYSRV"`, an example:      
       ```json
       "rootDir":"../deploy",
       "productDir":"../deploy/product",
@@ -524,13 +538,13 @@ When concurent run of multiple ZSS is needed (for example I want to run differen
        ```
        $ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json
        ```
-  3) Recycle `ZOWESVR`
-  4) Verify 
-      * `ZWESIS01` job log contains a message 
+  3) Start 2nd instance of `ZOWESVR`
+  4) Verify  
+      * `ZWESIS01` job log of 2nd instance contains a message 
          ```
          ZWES0004I Server name is 'ZWESIS_MYSRV      '
          ```    
-      * `ZOWESVR` job log contains a message
+      * `ZOWESVR` job log of 2nd instance contains a message
          ```
          privilegedServerName is 'ZWESIS_MYSRV'
          ```
