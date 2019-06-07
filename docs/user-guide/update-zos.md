@@ -56,6 +56,6 @@ Zowe installation backup is created before the update. Restore a previous Zowe i
    ```
 3. Restore the LOADLIB module by issuing the following command:
     ```
-    cp -r <path/to/zowe/install>/install_log/ZWESIS01 //'<LOADLIB.DS.NAME>(ZWESIS01)'
+    cp -r <path/to/backup/>install_log/ZWESIS01 //'<LOADLIB.DS.NAME>(ZWESIS01)'
     ```
 You successfully restored Zowe.
