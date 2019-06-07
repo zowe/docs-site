@@ -22,29 +22,23 @@ Run the update script to update Zowe.
 
 **Follow these steps:**
 
-1. Run the script by issuing the following command: 
+1. Run the shell script by issuing the following command: 
 
     ```
-    update.sh <path/to/zowe/install> 
-    update.sd <path/to/unpaxed/new-zowe>
-    update.sh <LOADLIB.DS.NAME>
-    update.sh <path/to/backup>
+    update.sh <path/to/zowe/install> <path/to/unpaxed/new-zowe> <LOADLIB.DS.NAME> <path/to/backup>
     ```
-   <!-- TODO. Not sure this code block is correctly put, especially `update.sd <path/to/unpaxed/new-zowe>` -->
     where:
-
-    - `<path/to/zowe/install>` - path to a Zowe install directory
-    - `<path/to/unpaxed/new-zowe>` - path to a directory the with unpaxed new version of Zowe
-    <!-- TODO. Why do we need it? and what does an "unpaxed new version of Zowe" mean? A pax.Z file?  -->
+    - `<path/to/zowe/install>` - a path to a Zowe install directory
+    - `<path/to/unpaxed/new-zowe>` - a path to a directory the with unpaxed new version of Zowe
     - `<LOADLIB.DS.NAME>` - a data set with a load module
-    - `<path/to/backup>` - path to a directory where to back up
-
+    - `<path/to/backup>` - a path to a directory where to back up
+            
 2. Restart Zowe.
 
 You successfully updated Zowe.
 
-### Revert/Restore Zowe Installation
-
+### Restore Zowe Installation
+<!-- TODO. new procedure steps - https://github.gwd.broadcom.net/MFD/zowe-short-term-update-script/blob/master/update_guide.md  -->
 Zowe installation backup is created before an update starts. 
 <!-- TODO. Why is this important? How do we know the backup is created? Is this connected with? `update.sh <path/to/backup>` -->
 Restore a previous Zowe installation. 
