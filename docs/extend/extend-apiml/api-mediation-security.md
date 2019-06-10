@@ -229,6 +229,8 @@ On localhost, you can override the default configuration in [config/local/gatewa
 
 The following list shows default ciphers. The API ML services use the following cipher order:
 
+**Note:** Ensure that the version of Java you use is compatible with the default cipherset.
+
 ```
    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
