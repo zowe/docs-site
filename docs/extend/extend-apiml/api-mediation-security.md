@@ -7,6 +7,7 @@
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
   - [Authorization](#authorization)
+  - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
   - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
   - [Setting Ciphers for API ML Services](#setting-ciphers-for-api-ml-services)
@@ -146,13 +147,15 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Authentication is service-dependent
     - Recommended to use the Authentication and Authorization Service for authentication
 
-
 ### Authorization
 
 Authorization is a method used to determine access rights of an entity.
 
 In the API ML, authorization is performed by the z/OS security manager ([CA ACF2](https://www.ca.com/us/products/ca-acf2.html), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [CA Top Secret](https://www.ca.com/us/products/ca-top-secret.html)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
+### JWT Token
+
+The JWT Secret that signs the JWT Token is an asymmetric private key that is generated during installation. You can find the JWT Secret, alias "jwtsecret", in the  PKCS12 keystore /keystore/localhost/localhost.keystore.p12. The public key necessary to read the JWT Secret is called from the keystore. For easy access, you can find the public key in the `localhost.keystore.jwtsecret.cer` directory. The JWT token is signed with the RS256 signature algorithm. 
 
 ### API ML truststore and keystore
 
@@ -170,6 +173,7 @@ by other technologies used in Zowe (Node.js).
 - Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
 - Server certificate of the Discovery Service (with PK). This can be signed by the local CA
 - Server certificate of the Catalog (with PK). This can be signed by the local CA
+- Private asymmetric key for the JWT token, alias `jwtsecret`. The  public key is exported to the `localhost.keystore.jwtsecret.cer` directory. 
 - The API ML keystore is used by API ML services
 
 **The API ML truststore**
@@ -225,10 +229,11 @@ On localhost, you can override the default configuration in [config/local/gatewa
 
 The following list shows default ciphers. The API ML services use the following cipher order:
 
+**Note:** Ensure that the version of Java you use is compatible with the default cipherset.
+
 ```
    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
-   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
    TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
    TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
 ```
