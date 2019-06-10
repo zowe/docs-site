@@ -87,7 +87,7 @@ The following bugs are fixed:
 
 ### What's changed
 <!-- TODO. Fix the link once the doc is ready -->
-- An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide.update-zos.md).
+- An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md).
     
 
 ## Version 1.2.0 (May 2019)
