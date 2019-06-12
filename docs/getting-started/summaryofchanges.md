@@ -85,9 +85,9 @@ The following bugs are fixed:
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
-### What's changed
+<!-- ### What's changed -->
 <!-- TODO. Fix the link once the doc is ready -->
-- An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md).
+<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
     
 
 ## Version 1.2.0 (May 2019)
