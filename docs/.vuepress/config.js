@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.2.0'
+const CURRENT_ZOWE_VERSION = '1.3.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -120,13 +120,7 @@ const ALL_PAGES = [{
         'extend/extend-desktop/mvd-errorreportingui.md',
         'extend/extend-desktop/mvd-logutility.md',
         'extend/extend-desktop/zlux-app-server.md',
-        'extend/extend-desktop/zlux-tutorials.md',
-        'extend/extend-desktop/starter-intro.md',
-        'extend/extend-desktop/zlux-workshop-starter-app.md',
         'extend/extend-desktop/zlux-workshop-user-browser.md',
-        'extend/extend-desktop/ui-intro.md',
-        'extend/extend-desktop/iframe-sample.md',
-        'extend/extend-desktop/angular-sample.md',
       ]
     }
   ]
@@ -325,7 +319,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.2.x',
+  description: 'Version 1.3.x',
   ga: 'UA-123892882-1',
   head: [
     [

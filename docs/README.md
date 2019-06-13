@@ -23,7 +23,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Get troubleshooting tips to help you understand and effectively resolve problems with Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="./contributing.html">Contributing</a></h2>
+    <h2><a href="./contribute/contributing.html">Contributing</a></h2>
     <p>Learn about how you can contribute to this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
   </div>
   <div class="feature">
@@ -36,12 +36,14 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.2.0.
+You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.3.0.
 
 | Version | Download 
 | --- | ---
-| V1.2.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.3.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.2.0 | [PDF](./Zowe_Documentation_1.2.0.pdf)
 | V1.1.0 | [PDF](./Zowe_Documentation_1.1.0.pdf)
+| V1.1.0 | [PDF](./Zowe_Documentation_1.0.0.pdf)
 
 ### Zowe CLI command reference guide 
 
@@ -53,6 +55,4 @@ Detailed documentation on commands, actions, and options in Zowe CLI. The refere
 
 A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
 
-[Download PDF](Zowe_Overview.pdf)
-
-[Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
+[Download PDF](Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)

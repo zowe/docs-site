@@ -48,6 +48,8 @@ If you do not have internet access at your site, use the following method to ins
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the .zip file. You can extract the contents of the zip file to your preferred location.
 
+    **Optional:** Double-click the Zowe CLI installation package to extract its contents into the directory where you downloaded the package. (Windows and Mac computers contain built-in software that lets you extract .zip files into a preferred location.)
+
 4. Issue the following command against the extracted directory to install Zowe CLI on your computer:
 
     ```

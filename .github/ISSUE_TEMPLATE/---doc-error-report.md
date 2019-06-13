@@ -9,7 +9,7 @@ assignees: ''
 
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
-<!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contributing.html) for guidance on writing an actionable issue description. -->
+<!-- See [How to contribute](https://zowe.github.io/docs-site/latest/contribute/contributing.html) for guidance on writing an actionable issue description. -->
 
 ## Description
 <!-- A clear and concise description of what the error is.-->

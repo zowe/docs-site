@@ -2,12 +2,93 @@
 
 Learn about what is new, changed, removed, and known issues in Zowe. 
 
-Zowe Version 1.2.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.3.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.3.0 (June 2019)
+
+<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
+
+### What's new in API Mediation Layer
+<!-- TODO -->
+This release of Zowe API ML contains the following user experience improvements:
+
+- Added authentication endpoints (/login, /query) to the API Gateway 
+- Added the Gateway API Swagger document ([#305](https://github.com/zowe/api-layer/pull/305))
+    - Fixed the bug that causes JSON response to set incorrectly when unauthenticated 
+    - Fixed error messages shown when a home page cannot be modified 
+- Added a new e2e test for GW, and update the detail service tile ([#309](https://github.com/zowe/api-layer/pull/309)) 
+- Removed a dependency of integration-enabler-java on the gateway-common ([#302](https://github.com/zowe/api-layer/pull/302))
+- Removed access to the Discovery service UI with basic authentication ([#313](https://github.com/zowe/api-layer/pull/313))  
+- Fixed the issue with the connection logic on headers to pass in the websocket ([#275](https://github.com/zowe/api-layer/pull/275)) 
+- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276))
+- Fixed the issue that causes the API ML Services display as UP, and makes the API doc available in the Catalog regardless whether the API ML Services stop ([#287](https://github.com/zowe/api-layer/pull/287))
+- Fixed the issue that prevents the API Catalog to load under zLux 9 ([314](https://github.com/zowe/api-layer/pull/314))
+
+
+### What's new in the Zowe App Server
+Made the following fixes and enhancements:
+
+- Added internationalization to the Angular and React sample applications. ([#133](https://github.com/zowe/zlux/issues/133))
+- Made the following enhancements to the ZSS server:
+  - Added support for Zowe on z/OS version 2.4. ([#15](https://github.com/zowe/zss/issues/15))
+  - Updated documentation for query parameter to file API. ([#48](https://github.com/zowe/zlux-app-server/pull/48))
+- Made the following enhancements to security:
+  - App Server session cookie is now a browser session cookie rather than having an expiration date. Expiration is now tracked on the server side. ([#132](https://github.com/zowe/zlux/issues/132), [#97](https://github.com/zowe/zlux-server-framework/pull/97), [#81](https://github.com/zowe/zlux-server-framework/issues/81))
+  - Added a "mode=base64" option to the unixfile API. ([#127](https://github.com/zowe/zlux/issues/127))
+- Added a port to the cookie name to differentiate multiple servers on same domain. ([#95](https://github.com/zowe/zlux-server-framework/pull/95))
+- Made the following fixes and enhancements to the Code Editor application:
+  - Added a menu framework to provide options specific to the current file/data set type. ([#131](https://github.com/zowe/zlux/issues/131))
+  - Added ISPF-like syntax highlighting for JCL. ([#48](https://github.com/zowe/zlux-editor/pull/48))
+  - Fixed an issue by notifying users if the editor cannot open a file or data set. ([#148](https://github.com/zowe/zlux/issues/148))
+  - Fixed an issue with event behavior when a tab is closed. ([#135](https://github.com/zowe/zlux/issues/135))
+  - Fixed an issue with not showing the content of files in Chrome and Safari. ([#100](https://github.com/zowe/zlux/issues/100))
+  - Fixed an issue with files shown without alphabetical sorting. ([#85](https://github.com/zowe/zlux/issues/85))
+- Made the following fixes and enhancements to the TN3270 application ([#96](https://github.com/zowe/zlux-server-framework/pull/96)):
+  - Fixed an issue where the application could not be configured to default to a TLS connection.
+  - Fixed an issue where it could not handle a TN3270 connection, only TN3270E. 
+    Improved preference saving. Administrators can now store default values for terminal mod type, codepage, and screen dimensions.
+- Made the following fixes and enhancements for App2App for IFrames ([#24](https://github.com/zowe/zlux-platform/pull/24), [#107](https://github.com/zowe/zlux-app-manager/pull/107)):
+  - Fixed an issue with an exception when handling App2App communication with IFrames.
+  - Added experimental support for App2App communication with an IFrame application as destination.
+- Made the following enhancements to support TopSecret:
+  - Added a user-profiles endpoint. ([#113](https://github.com/zowe/zlux/issues/113))
+  - Added an endpoint extraction for groups. ([#129](https://github.com/zowe/zlux/issues/129))
+- Fixed an issue with app names not being internationalized when translations were present. ([#85](https://github.com/zowe/zlux-server-framework/pull/85))
+- Fixed Russian language errors in translation files. ([#100](https://github.com/zowe/zlux-app-manager/pull/100))
+- Fixed several issues with using the Application Server as a proxy. ([#93](https://github.com/zowe/zlux-server-framework/pull/93))
+- Fixed an issue with the App Server throwing exceptions when authorization plugins were installed but not requested. ([#94](https://github.com/zowe/zlux-server-framework/pull/94))
+- Fixed an issue with ZSS consuming excessive CPU during download. ([#147](https://github.com/zowe/zlux/issues/147))
+- Fixed documentation issue by replacing "zLUX" with "Zowe Application Framework" and "MVD" with "Zowe Desktop." ([#214](https://github.com/zowe/docs-site/issues/214))
+- Fixed an issue with an incorrect translation for word "Japanese" in Japanese. ([#108](https://github.com/zowe/zlux-app-manager/pull/108))
+
+### What's new in Zowe CLI and Plug-ins
+
+The following new commands and enhancements are added:
+
+- Return a list of archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+
+- Return a list of systems that are defined to a z/OSMF instance with the `zowe zosmf list systems` command. [(#348)](https://github.com/zowe/zowe-cli/pull/348)
+
+- The `zowe uss issue ssh` command now returns the exit code of the shell command that you issued. [(#359)](https://github.com/zowe/zowe-cli/pull/359)
+
+- The `zowe files upload dtu` command now supports the metadata file named `.zosattributes`. [(#366)](https://github.com/zowe/zowe-cli/pull/366)
+
+The following bugs are fixed:
+
+- Fixed an issue where `zowe workflow ls aw` commands with the `--wn` option failed if there was a space in the workflow name. [(#356)](https://github.com/zowe/zowe-cli/pull/356)
+
+- Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
+
+<!-- ### What's changed -->
+<!-- TODO. Fix the link once the doc is ready -->
+<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
+    
 
 ## Version 1.2.0 (May 2019)
 
@@ -53,6 +134,7 @@ progress.
 - Fixed a bug by adding missing language files.
 - Enabled faster load times by adding support for serving the Zowe Application Framework core components, such as the Desktop, as compressed files in gzip format.
 - Added support for application plug-ins to serve static content, such as HTML, JavaScript, and images, to browsers in gzip and brotli compressed files.
+- Fixed a Code Editor bug by separating browsing of files and data sets.
 
 ### What's new in Zowe CLI and Plug-ins
 
