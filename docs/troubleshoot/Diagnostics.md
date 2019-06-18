@@ -9,6 +9,7 @@ As a Zowe user, you can easily get access to diagnostics data that helps you tro
  - Configuration parameters
      - Installation log
      - Scripts that are called from [run-zowe.sh] (link to the repo?)
+     <!-- TODO, Do I have to insert a link to the .sh file? -->
  - Versions:
     - manifest.json
     - z/OS version
@@ -21,4 +22,17 @@ As a Zowe user, you can easily get access to diagnostics data that helps you tro
  - /bin/ps-A -opid,jobname,time,args grep $ (zowe_STC-prefix)
  - Certificates diagnostics - in install.log 
 
-The script that will gather the diagnoistics is https://github.gwd.broadcom.net/ad670553/shell-scrips/blob/master/zowe-support.sh 
+<!-- The script that will gather the diagnoistics is https://github.gwd.broadcom.net/ad670553/shell-scrips/blob/master/zowe-support.sh  -->
+
+## Troubleshoot Zowe
+
+Use the script to troubleshoot Zowe.
+
+**Follow these steps:**
+
+1. Run the `zowe-support.sh` script.
+2. Send the output file to Zowe support team.
+<!-- TODO What is Zowe support team? Slack Channel? Do we provide a link to some support channel here? -->
+3. Troubleshoot Zowe using help from the Zowe support team.
+
+You successfully troubleshooted Zowe.
