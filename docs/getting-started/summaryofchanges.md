@@ -24,11 +24,11 @@ This release of Zowe API ML contains the following user experience improvements:
     - Fixed error messages shown when a home page cannot be modified 
 - Added a new e2e test for GW, and update the detail service tile ([#309](https://github.com/zowe/api-layer/pull/309)) 
 - Removed a dependency of integration-enabler-java on the gateway-common ([#302](https://github.com/zowe/api-layer/pull/302))
-- Removed access to the Discovery service UI with basic authentication [#313](https://github.com/zowe/api-layer/pull/313)  
+- Removed access to the Discovery service UI with basic authentication ([#313](https://github.com/zowe/api-layer/pull/313))  
 - Fixed the issue with the connection logic on headers to pass in the websocket ([#275](https://github.com/zowe/api-layer/pull/275)) 
 - Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276))
-- Fixed the issue that causes the API ML Services display as UP, and makes the API doc available in the Catalog regardless whether the API ML Services stop [#287](https://github.com/zowe/api-layer/pull/287)
-- Fixed the issue that prevents the API Catalog to load under zLux 9 [314](https://github.com/zowe/api-layer/pull/314)
+- Fixed the issue that causes the API ML Services display as UP, and makes the API doc available in the Catalog regardless whether the API ML Services stop ([#287](https://github.com/zowe/api-layer/pull/287))
+- Fixed the issue that prevents the API Catalog to load under zLux 9 ([314](https://github.com/zowe/api-layer/pull/314))
 
 
 ### What's new in the Zowe App Server
@@ -85,9 +85,9 @@ The following bugs are fixed:
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
-### What's changed
+<!-- ### What's changed -->
 <!-- TODO. Fix the link once the doc is ready -->
-- An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](docs\user-guide\update-zos.md).
+<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
     
 
 ## Version 1.2.0 (May 2019)
