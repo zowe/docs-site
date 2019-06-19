@@ -23,11 +23,11 @@ As a Zowe user, you can easily get access to diagnostics data that helps you tro
 
 ## Troubleshoot Zowe
 
-Use the script to troubleshoot Zowe.
+Use the `zowe-support.sh` script to troubleshoot Zowe.
 
 **Follow these steps:**
 
-1. Run the `zowe-support.sh` script by issuing the following commands:
+1. Run the script by issuing the following commands:
    ```
    cd $ZOWE_ROOT_DIR/scripts
    ./zowe-support.sh
