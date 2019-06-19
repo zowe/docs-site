@@ -50,12 +50,12 @@ You can download the Version 1.x Zowe documentation on this website in PDF forma
 Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI. It is available in two formats: a PDF document, and a ZIP file containing HTML help viewable in a web browser.
 
 <p class="action">
-<a href="https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
-<a href="https://zowe.github.io/docs-site/latest/zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
+<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
+<a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
 </p>
 
 ### Zowe overview deck
 
 A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
 
-[Download PDF](Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
+[Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
