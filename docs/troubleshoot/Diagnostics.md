@@ -1,6 +1,6 @@
 # Troubleshooting Zowe using Diagnostics Data
-<!-- TODO -->
-As a Zowe user, you can easily get access to diagnostics data that helps you troubleshoot issues. By running the UNIX script on z/OS, you receive a set of output files, which contain diagnostics data necessary for successful troubleshooting of Zowe. The output is compressed in a .pax.Z archive. The script captures the following set of diagnostics data:
+
+As a Zowe user, you can easily get access to diagnostics data that helps you troubleshoot issues. By running the UNIX script on z/OS, you receive a set of output files, which contain diagnostics data necessary for successful troubleshooting of Zowe. The script is located in the folder with the rest of scripts, and the output file the diagnostics data is compressed in a .pax.Z archive. The script captures the following set of diagnostics data:
 
  - Started task output
     - Zowe server started task
