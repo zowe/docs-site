@@ -221,6 +221,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```yaml
 
      rootDir=/var/zowe/1.3.0
+     prefix=ZOWE
 
     api-mediation:
       catalogPort=7552
@@ -231,7 +232,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       externalCertificateAuthorities=
       verifyCertificatesOfServices=true
       enableSso=false
-      zosmfKeyring=IZUKeyring.IZUDFTL
+      zosmfKeyring=IZUKeyring.IZUDFLT
       zosmfUser=IZUSVR
 
     zos-services:
@@ -949,7 +950,7 @@ where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatew
 Use your preferred REST API client to review the value of the status variable of the API Catalog service that is routed through the API Gateway using the following URL:
 
 ```
-https://hostName:basePort/api/v1/apicatalog/application/state
+https://hostName:basePort/api/v1/apicatalog/application/health
 ```
 
 The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
@@ -959,7 +960,7 @@ The `hostName` is set during install, and `basePort` is set as the `gatewayPort`
 The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
 
 ```
-$ curl -v -k --silent https://hostName:basePort/api/v1/apicatalog/application/state 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
+$ curl -v -k --silent https://hostName:basePort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
 UP
 ```
 

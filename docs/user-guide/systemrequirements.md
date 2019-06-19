@@ -28,10 +28,10 @@ Before installing Zowe, ensure that your environment meets the prerequisites.
 - 833 MB of HFS file space
 
 - Supported browsers:
-    -   Google Chrome V54 or later
-    -   Mozilla Firefox V44 or later
-    -   Safari V11 or later
-    -   Microsoft Edge (Windows 10)
+    -   Google Chrome V66 or later
+    -   Mozilla Firefox V60 or later
+    -   Safari V11.1 or later
+    -   Microsoft Edge 17 (Windows 10)
 
 ## Zowe CLI requirements
 
