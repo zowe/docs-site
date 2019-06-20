@@ -28,7 +28,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="https://zowe.org/home/">Getting Help</a></h2>
-    <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>  
+    <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>
   </div>
 </div>
 
@@ -38,21 +38,24 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.3.0.
 
-| Version | Download 
+| Version | Download
 | --- | ---
 | V1.3.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
 | V1.2.0 | [PDF](./Zowe_Documentation_1.2.0.pdf)
 | V1.1.0 | [PDF](./Zowe_Documentation_1.1.0.pdf)
 | V1.1.0 | [PDF](./Zowe_Documentation_1.0.0.pdf)
 
-### Zowe CLI command reference guide 
+### Zowe CLI command reference guide
 
-Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
+Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI. It is available in two formats: a PDF document, and a ZIP file containing HTML help viewable in a web browser.
 
-<p class="action"><a href="https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference</span></a></p>
+<p class="action">
+<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
+<a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
+</p>
 
 ### Zowe overview deck
 
-A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
+A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
 
-[Download PDF](Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
+[Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
