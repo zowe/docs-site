@@ -1,6 +1,6 @@
-# Troubleshooting Zowe using Diagnostics Data
+# Troubleshooting Zowe
 
-As a Zowe user, you can get access to diagnostics data that helps to troubleshoot Zowe issues. By running the UNIX script on z/OS, you receive a set of output files, which contain diagnostics data necessary for successful troubleshooting of Zowe. The script is located in the folder with the rest of scripts, and the output file the diagnostics data is compressed in a .pax.Z archive. The script captures the following set of diagnostics data:
+To ensure that the Zowe Support Team can effectively troubleshoot your issue, the Zowe team introduces a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the script in the folder with the rest of Zowe scripts. The script captures the following data:
 
  - Started task output
     - Zowe server started task
@@ -21,9 +21,9 @@ As a Zowe user, you can get access to diagnostics data that helps to troubleshoo
  - /bin/ps-A -opid,jobname,time,args grep $ (zowe_STC-prefix)
  - Certificates diagnostics - in install.log 
 
-## Troubleshoot Zowe
+## Contact the Support Team to Troubleshoot Zowe
 
-Use the `zowe-support.sh` script to troubleshoot Zowe with the help of Zowe support team.
+Run the `zowe-support.sh` script to capture diagnostics data necessary for effective troubleshooting.
 
 **Follow these steps:**
 
@@ -32,7 +32,7 @@ Use the `zowe-support.sh` script to troubleshoot Zowe with the help of Zowe supp
    cd $ZOWE_ROOT_DIR/scripts
    ./zowe-support.sh
    ```
-2. Send the .pax.Z output file to Zowe support team.
-3. Let the Zowe support team help you Troubleshoot Zowe.
+2. Send the .pax.Z output file to [Zowe support team](slack channel link?).
 
-You successfully troubleshooted Zowe.
+The Zowe Support Team then starts to troubleshoot your issue, using the data you provided. 
+
