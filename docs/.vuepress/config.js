@@ -134,7 +134,7 @@ const ALL_PAGES = [{
       link: 'troubleshoot/troubleshooting.md'
     },
     {
-      text: 'Diagnostics',
+      text: 'Troubleshoot with the Help of the Support Team',
       link: 'troubleshoot/troubleshoot-diagnostics.md'
     },
     {
