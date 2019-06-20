@@ -1,4 +1,4 @@
-# Troubleshooting Zowe
+# Troubleshooting Zowe through the Support Team
 
 To ensure that the Zowe Support Team can effectively troubleshoot your issue, the Zowe team introduces a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the script in the folder with the rest of Zowe scripts. The script captures the following data:
 
