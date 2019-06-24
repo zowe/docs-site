@@ -134,10 +134,6 @@ const ALL_PAGES = [{
       link: 'troubleshoot/troubleshooting.md'
     },
     {
-      text: 'Troubleshoot with the Help of the Support Team',
-      link: 'troubleshoot/troubleshoot-diagnostics.md'
-    },
-    {
       text: 'API Mediation Layer',
       link: 'troubleshoot/troubleshoot-apiml.md'
     },
