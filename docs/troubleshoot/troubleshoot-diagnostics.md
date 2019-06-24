@@ -1,6 +1,6 @@
 # Troubleshooting Zowe through the Support Team
 
-To ensure that the Zowe Support Team can effectively troubleshoot Zowe, the Brightside team introduces a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the script in the folder with the rest of Zowe scripts. The script captures the following data:
+To ensure that the Zowe Support Team can effectively troubleshoot Zowe, the Brightside team introduces a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `ZOWEDIR/scripts` folder with the rest of Zowe scripts. The script captures the following data:
 
  - Started task output
     - Zowe server started task
@@ -27,7 +27,7 @@ Contact the Zowe Support Team to address and troubleshoot a Zowe issue.
 
 **Follow these steps:**
 
-1. Contact the Zowe Support Team at the [Broadcom Case Management System](link.here) to address your issues.
+1. Contact the Zowe Support Team at the [Broadcom Case Management System](link.here) to address your issues.``
 
 2. Get instructions from the Support Team on whether you need to run the  script that collects diagnostics data. 
 
