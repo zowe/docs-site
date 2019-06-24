@@ -23,17 +23,19 @@ To ensure that the Zowe Support Team can effectively troubleshoot Zowe, the Brig
 
 ## Contact the Support Team to Troubleshoot Zowe
 
-Ensure that you need to use the diagnostics script by filing a ticket to review your issue. Contact the Zowe Support Team to address a Zowe issue.
+Contact the Zowe Support Team to address and troubleshoot a Zowe issue.
 
 **Follow these steps:**
 
-1. Contact the Zowe Support Team at the [Broadcom Case Management System](link.here) to determine whether you need to run diagnostics script, or just wait for your issue to be resolved.
+1. Contact the Zowe Support Team at the [Broadcom Case Management System](link.here) to address your issues.
 
-2. (Optional) Run the `zowe-support.sh` script by issuing the following commands:
+2. Get instructions from the Support Team on whether you need to run the  script that collects diagnostics data. 
+
+3. If the Support team instructs you, run the `zowe-support.sh` script by issuing the following commands:
    ```
    cd $ZOWE_ROOT_DIR/scripts
    ./zowe-support.sh
    ```
-   2a. Send the .pax.Z output file to Zowe Support Team.
+4. Send the .pax.Z output file to Zowe Support Team for further troubleshooting.
 
 The Zowe Support Team then starts to troubleshoot your issue, using the data you provided. 
