@@ -6,7 +6,7 @@ This section contains information about using Zowe CLI.
 
 Zowe CLI contains a help system that is embedded directly into the command-line interface. Issue help commands that provide you with information about the product, syntax, and usage.
 
-### Displaying top-level help 
+### Displaying top-level help
 
 To begin using the product, open a command line window and issue the following command to view the top-level help descriptions:
 
@@ -30,13 +30,13 @@ zowe <group, action, or object name> --help
 zowe zos-files create --help
 ```
 
-## Zowe CLI command reference guide 
+## Zowe CLI command reference guide
 
-View the [CLI Command Reference Guide](../CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
+View the <a href="../web_help/index.html" target="_blank">CLI Command Reference Guide</a> for a detailed documentation on commands, actions, and options in Zowe CLI. It is also available for download as a [PDF document](../CLIReference_Zowe.pdf), or a [ZIP file](../zowe_web_help.zip) containing HTML help viewable in a web browser. The reference document is based on the `@lts-incremental` version of the CLI.
 
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
-provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help). 
+provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help).
 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 
@@ -48,14 +48,14 @@ Zowe CLI contains the following command groups:
 ### plugins
 
 The plugins command group lets you install and manage third-party
-plug-ins for the product. Plug-ins extend the functionality of Zowe CLI in the form of new commands. 
+plug-ins for the product. Plug-ins extend the functionality of Zowe CLI in the form of new commands.
 
 With the plugins command group, you can perform the following tasks:
 
-- Install or uninstall third-party plug-ins. 
-- Display a list of installed plug-ins. 
+- Install or uninstall third-party plug-ins.
+- Display a list of installed plug-ins.
 - Validate that a plug-in integrates with the base product
-properly. 
+properly.
 
 **Note:** For more information about `plugins` syntax, actions, and options, open Zowe CLI and issue the following
 command:
@@ -136,7 +136,7 @@ With the zos-jobs command group, you can perform the following tasks:
 
 - Submit jobs from JCL that resides on the mainframe or a local file.
 - List jobs and spool files for a job.
-- View the status of a job or view a spool file from a job. 
+- View the status of a job or view a spool file from a job.
 
 **Note:** For more information about `zos-jobs` syntax, actions, and options, open Zowe CLI and issue the following command:
 
@@ -205,7 +205,7 @@ zowe zosmf -h
 
 ## Writing scripts to automate mainframe actions
 
-You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI. 
+You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
 
 - [Writing a Script](#writing-a-script)
 - [Example: Clean up Temporary Data Sets](#exampleOne)
@@ -239,13 +239,13 @@ The script runs and prints the output in your terminal. You can run scripts manu
 
 The script in this example lists specified data sets, then loops through the list of data sets and deletes each file. You can use a similar script to clean up temporary data sets after use.
 
-**Note:** This script must be run from a bash terminal. 
+**Note:** This script must be run from a bash terminal.
 
 ```
 #!/bin/bash
 set -e
 # Project cleanup script - deletes temporary project data sets
-# Obtain the list of temporary project data sets 
+# Obtain the list of temporary project data sets
 dslist=$(zowe files ls ds "my.project.ds*")
 # Delete each data set in the list
 IFS=$'\n'

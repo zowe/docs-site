@@ -232,7 +232,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       externalCertificateAuthorities=
       verifyCertificatesOfServices=true
       enableSso=false
-      zosmfKeyring=IZUKeyring.IZUDFTL
+      zosmfKeyring=IZUKeyring.IZUDFLT
       zosmfUser=IZUSVR
 
     zos-services:

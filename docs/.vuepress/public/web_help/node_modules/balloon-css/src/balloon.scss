@@ -1,0 +1,420 @@
+//
+// Variables
+// -----------------------------------------
+
+$balloon-bg:             fade-out(#101010, .05) !default;
+$balloon-base-size:      12px !default;
+$balloon-arrow-size:     5px !default;
+$balloon-move:           4px !default;
+
+
+//
+// Mixins
+// -----------------------------------------
+
+@mixin arrow-down() {
+  width: 0;
+  height: 0;
+  border: $balloon-arrow-size solid transparent;
+  border-top-color: var(--balloon-color);
+}
+
+@mixin arrow-up() {
+  width: 0;
+  height: 0;
+  border: $balloon-arrow-size solid transparent;
+  border-bottom-color: var(--balloon-color);
+}
+
+@mixin arrow-left() {
+  width: 0;
+  height: 0;
+  border: $balloon-arrow-size solid transparent;
+  border-right-color: var(--balloon-color);
+}
+
+@mixin arrow-right() {
+  width: 0;
+  height: 0;
+  border: $balloon-arrow-size solid transparent;
+  border-left-color: var(--balloon-color);
+}
+
+@mixin base-effects () {
+  opacity: 0;
+  pointer-events: none;
+  transition: all .18s ease-out .18s;
+}
+
+@mixin no-effects () {
+  transition: none;
+}
+
+@mixin normalized-text() {
+  text-indent: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-shadow: none;
+  font-size: var(--balloon-font-size);
+}
+
+
+//
+// Styles
+// -----------------------------------------
+
+:root {
+  --balloon-color: #{$balloon-bg};
+  --balloon-font-size: #{$balloon-base-size};
+  --balloon-move: #{$balloon-move};
+}
+
+// IE 11 button bugfix
+button[aria-label] {
+  overflow: visible;
+}
+
+[aria-label] {
+  position: relative; // alt. absolute or fixed
+
+  // Fixing iOS Safari event issue.
+  // More info at: https://goo.gl/w8JF4W
+  cursor: pointer;
+
+  &:after {
+    @include base-effects();
+    @include normalized-text();
+
+    background: var(--balloon-color);
+    border-radius: 2px;
+    color: #fff;
+    content: attr(aria-label);
+    padding: .5em 1em;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  &:before {
+    @include arrow-down();
+    @include base-effects();
+
+    content: "";
+    position: absolute;
+    z-index: 10;
+  }
+
+  &:hover, &[data-balloon-visible], &:not([data-balloon-nofocus]):focus {
+    &:before,
+    &:after {
+      opacity: 1;      
+      pointer-events: none;
+    }
+  }
+  
+  &:not([data-balloon-pos]) {
+    &:after {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: $balloon-arrow-size + 5px;;
+      transform: translate(-50%, var(--balloon-move));
+      transform-origin: top;
+    }
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, var(--balloon-move));
+      transform-origin: top;
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(-50%, 0);
+      }
+
+      &:before {
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
+  &.font-awesome:after {
+    font-family: FontAwesome, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  &[data-balloon-break] {
+    &:after {
+      white-space: pre;
+    }
+
+    &[data-balloon-length] {
+      &:after {
+        white-space: pre-line;
+        word-break: break-word;
+      }
+    }
+  }
+
+  &[data-balloon-blunt] {
+    &:before,
+    &:after {
+      @include no-effects();
+    }
+  }
+
+  &[data-balloon-pos="up"] {
+    &:after {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: $balloon-arrow-size + 5px;;
+      transform: translate(-50%, var(--balloon-move));
+      transform-origin: top;
+    }
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, var(--balloon-move));
+      transform-origin: top;
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(-50%, 0);
+      }
+
+      &:before {
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="up-left"] {
+    &:after {
+      bottom: 100%;
+      left: 0;
+      margin-bottom: $balloon-arrow-size + 5px;;
+      transform: translate(0, var(--balloon-move));
+      transform-origin: top;
+    }
+    &:before {
+      bottom: 100%;
+      left: 5px;
+      transform: translate(0, var(--balloon-move));
+      transform-origin: top;
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, 0);
+      }
+
+      &:before {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="up-right"] {
+    &:after {
+      bottom: 100%;
+      right: 0;
+      margin-bottom: $balloon-arrow-size + 5px;;
+      transform: translate(0, var(--balloon-move));
+      transform-origin: top;
+    }
+    &:before {
+      bottom: 100%;
+      right: 5px;
+      transform: translate(0, var(--balloon-move));
+      transform-origin: top;
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, 0);
+      }
+
+      &:before {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="down"] {
+    &:after {
+      left: 50%;
+      margin-top: $balloon-arrow-size + 5px;;
+      top: 100%;
+      transform: translate(-50%, calc(var(--balloon-move) * -1));
+    }
+
+    &:before {
+      @include arrow-up();
+
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, calc(var(--balloon-move) * -1));
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(-50%, 0);
+      }
+
+      &:before {
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="down-left"] {
+    &:after {
+      left: 0;
+      margin-top: $balloon-arrow-size + 5px;;
+      top: 100%;
+      transform: translate(0, calc(var(--balloon-move) * -1));
+    }
+
+    &:before {
+      @include arrow-up();
+
+      left: 5px;
+      top: 100%;
+      transform: translate(0, calc(var(--balloon-move) * -1));
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, 0);
+      }
+
+      &:before {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="down-right"] {
+    &:after {
+      right: 0;
+      margin-top: $balloon-arrow-size + 5px;;
+      top: 100%;
+      transform: translate(0, calc(var(--balloon-move) * -1));
+    }
+
+    &:before {
+      @include arrow-up();
+
+      right: 5px;
+      top: 100%;
+      transform: translate(0, calc(var(--balloon-move) * -1));
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, 0);
+      }
+
+      &:before {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  &[data-balloon-pos="left"] {
+    &:after {
+      margin-right: $balloon-arrow-size + 5px;;
+      right: 100%;
+      top: 50%;
+      transform: translate(var(--balloon-move), -50%);
+    }
+
+    &:before {
+      @include arrow-right();
+
+      right: 100%;
+      top: 50%;
+      transform: translate(var(--balloon-move), -50%);
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, -50%);
+      }
+
+      &:before {
+        transform: translate(0, -50%);
+      }
+    }
+
+  }
+
+  &[data-balloon-pos="right"] {
+    &:after {
+
+      left: 100%;
+      margin-left: $balloon-arrow-size + 5px;;
+      top: 50%;
+      transform: translate(calc(var(--balloon-move) * -1), -50%);
+    }
+
+    &:before {
+      @include arrow-left();
+
+      left: 100%;
+      top: 50%;
+      transform: translate(calc(var(--balloon-move) * -1), -50%);
+    }
+
+    &:hover, &[data-balloon-visible] {
+      &:after {
+        transform: translate(0, -50%);
+      }
+
+      &:before {
+        transform: translate(0, -50%);
+      }
+    }
+  }
+
+  &[data-balloon-length="small"] {
+    &:after {
+      white-space: normal;
+      width: 80px;
+    }
+  }
+
+  &[data-balloon-length="medium"] {
+    &:after {
+      white-space: normal;
+      width: 150px;
+    }
+  }
+
+  &[data-balloon-length="large"] {
+    &:after {
+      white-space: normal;
+      width: 260px;
+    }
+  }
+
+  &[data-balloon-length="xlarge"] {
+    &:after {
+      white-space: normal;
+      width: 380px;
+
+      @media screen and (max-width: 768px) {
+        white-space: normal;
+        width: 90vw;
+      }
+    }
+  }
+
+  &[data-balloon-length="fit"] {
+    &:after {
+      white-space: normal;
+      width: 100%;
+    }
+  }
+}
