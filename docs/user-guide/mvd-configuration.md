@@ -339,6 +339,79 @@ cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfi
 }
 ```
 
+### Installing additional ZSS instances
+After you install Zowe, you can install and configure additional instances of ZSS on the same z/OS server. You might want to do this to test different ZSS versions.
+
+The following steps assume you have installed a Zowe runtime instance (which includes ZSS), and that you are installing a second runtime instance to install an additional ZSS.
+
+1. To stop the installed Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /C ZOWESVR
+   ```
+
+2. Install a new Zowe runtime by following steps in [Installing Zowe on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html#obtaining-and-preparing-the-installation-file).
+
+   **Note:** In the `zowe-install.yaml` configuration file, specify ports that are not used by the first Zowe runtime.
+
+3. To restart the first Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+   ```
+
+   Where `'$ZOWE_ROOT_DIR'` is the first Zowe runtime root directory. By default the command starts the most recently installed runtime unless you specify the root directory of the runtime that you want to start.
+
+4. To specify a name for the new ZSS instance, follow these steps:
+
+   1. Copy the PROCLIB member JCL named ZWESIS01 that was installed with the new runtime.
+
+   2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
+
+   3. Edit the JCL, and in the  `NAME` parameter specify a unique name for the cross-memory server, for example:
+
+      ```
+      //ZWESIS02  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M
+      ```
+
+      Where `ZWESIS_MYSRV` is the unique name of the new ZSS.
+
+5. To start the new ZSS, in SDSF enter the following command:
+
+   ```
+    /S ZWESIS02
+   ```
+
+6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is IZUSVR.
+
+7. In the new ZSS `zluxserver.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
+
+   ```
+   "rootDir":"../deploy",
+   "productDir":"../deploy/product",
+   "siteDir":"../deploy/site",
+   "instanceDir":"../deploy/instance",
+   "groupsDir":"../deploy/instance/groups",
+   "usersDir":"../deploy/instance/users",
+   "pluginsDir":"../deploy/instance/ZLUX/plugins",
+   "privilegedServerName":"ZWESIS_MYSRV",
+    "dataserviceAuthentication": { ... }
+   ```
+
+   **Note:** The default location of `zluxserver.jason` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+
+8. To start the new Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /S ZOWESVR
+   ```
+
+9. To verify that the new ZSS is correctly installed and configured, check for the following messages in the log files:
+
+   - In the new ZSS instance job log (for example, "ZWESIS02"), you should see the message `ZWES0004I Server name is 'ZWESIS_MYSRV'`.
+   - In the new "ZOWESVR" server job log, you should see the message `privilegedServerName is 'ZWESIS_MYSRV'`.
+
+
 ## Applying role-based access control to dataservices
 
 To use role-based access control (RBAC) for Zowe dataservice endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
