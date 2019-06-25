@@ -706,7 +706,7 @@ The manual installation consists of the following steps.
 
 1. ICSF cryptographic services 
 
-    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
+    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class in order to generate symmetric keys.
 
     When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
     - The ICSF or CSF job that runs on your z/OS system.
@@ -747,7 +747,7 @@ The manual installation consists of the following steps.
 
 1. Security environment switching 
 
-    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
+    The node zssServer running under USS needs the ability to change the security environment of its process in order to associate itself with the security context of the logged in user when responding to API requests, also known as impersonation.  To switch the security environment, the user ID asscoaited with the ZOWESVR started task IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
 
     You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
     

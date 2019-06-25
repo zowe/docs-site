@@ -111,7 +111,7 @@ Example:
 
 #### Make headings brief, descriptive, grammatically parallel, and, if possible, task oriented.
 
-#### If the subject is a functional overview, begin a heading with words such as Introduction or Overview rather than contriving a pseudo-task-oriented heading that begins with Understanding, Using, Introducing, or Learning.
+If the subject is a functional overview, begin a heading with words such as Introduction or Overview rather than contriving a pseudo-task-oriented heading that begins with Understanding, Using, Introducing, or Learning.
 
 ### Technical elements<a name="ui"></a>
 
