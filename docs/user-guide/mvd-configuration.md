@@ -398,7 +398,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
     "dataserviceAuthentication": { ... }
    ```
 
-   **Note:** The default location of `zluxserver.jason` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+   **Note:** The default location of `zluxserver.json` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
 
 8. To start the new Zowe runtime, in SDSF enter the following command:
 
