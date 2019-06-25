@@ -31,14 +31,14 @@
 <body>
     <div id="panel-container">
         <div id="panel-left">
-            <img id="header-image" alt="logo" src="./img/logo.png">
+            <img id="header-image" alt="" src="./img/logo.png" onerror="this.style.opacity='0'">
             <a href="./index.html"><h2 id="header-text"></h2></a>
 
-            <div id="tree-bar">
-                <input id="tree-search" class="form-control" type="search" placeholder="Search...">
-                <div id="tree-view-dropdown" class="dropdown">
-                    <button id="tree-view-button" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</button>
-                    <div class="dropdown-menu" aria-labelledby="tree-view-button">
+            <div id="tree-bar" class="input-group">
+                <input id="tree-search" class="form-control" type="search" placeholder="Search..." aria-label="Text input with dropdown button">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</button>
+                    <div class="dropdown-menu">
                         <a id="tree-view-toggle" class="dropdown-item" href="#" onclick="toggleTreeView(); return false;">Switch to List View</a>
                         <a id="tree-expand-all" class="dropdown-item" href="#" onclick="expandAll(true); return false;">Expand All</a>
                         <a id="tree-collapse-all" class="dropdown-item" href="#" onclick="expandAll(false); return false;">Collapse All</a>
@@ -52,7 +52,9 @@
         </div>
 
         <div id="panel-right">
-            <iframe id="docs-page"></iframe>
+            <div id="docs-wrapper">
+                <iframe id="docs-page"></iframe>
+            </div>
         </div>
     </div>
     <script>
