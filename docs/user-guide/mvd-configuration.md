@@ -395,22 +395,22 @@ The following steps assume you have installed a Zowe runtime instance (which inc
    "usersDir":"../deploy/instance/users",
    "pluginsDir":"../deploy/instance/ZLUX/plugins",
    "privilegedServerName":"ZWESIS_MYSRV",
-    "dataserviceAuthentication": { ... }
+   "dataserviceAuthentication": { ... }
    ```
 
    **Note:** The default location of `zluxserver.json` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
 
-8. To start the new Zowe runtime, in SDSF enter the following command:
+8. Run the `zlux-build/deploy.sh` command redeploy and make the `zluxserver.json` change take effect.
+
+9. To start the new Zowe runtime, in SDSF enter the following command:
 
    ```text
    /S ZOWESVR
    ```
 
-9. To verify that the new ZSS is correctly installed and configured, check for the following messages in the log files:
+10. To verify that the new ZSS is correctly installed, check for the following messages in the `ZOWESVR` server job log:
 
-   - In the new ZSS instance job log (for example, "ZWESIS02"), you should see the message `ZWES0004I Server name is 'ZWESIS_MYSRV'`.
-   - In the new "ZOWESVR" server job log, you should see the message `privilegedServerName is 'ZWESIS_MYSRV'`.
-
+   `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
 ## Applying role-based access control to dataservices
 
