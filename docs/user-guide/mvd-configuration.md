@@ -408,7 +408,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
    /S ZOWESVR
    ```
 
-10. To verify that the new ZSS is correctly installed, check for the following messages in the `ZOWESVR` server job log:
+10. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
