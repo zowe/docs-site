@@ -23,6 +23,10 @@
     }
 }
 
+.btn-copy {
+    font-size: small;
+}
+
 [aria-label] {
     cursor: default;
 }
