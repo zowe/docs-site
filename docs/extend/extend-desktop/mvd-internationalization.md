@@ -8,13 +8,13 @@ For detailed information on Angular or React, see their documentation. For detai
 After you internationalize your application, you can view it by following steps in [Changing the desktop language](https://zowe.github.io/docs-site/latest/user-guide/mvd-using.html#changing-the-desktop-language).
 
 ## Internationalizing Angular applications
-To internationalize Zowe applications using the Angular framework, take the following steps:
+Zowe applications that use the Angular framework depend on `.xlf` formatted files to store static translated content and `.json` files to store dynamic translated content. These files must be in the application's `web/assets/i18n` folder at runtime. Each translated language will have its own file.
 
-1. Save translated static content in `.xlf` files and save translated dynamic content in `.json` files. Include language codes in the file names, for example `messages.de.json` and `messages.de.xlf`. For examples, see the [Sample Angular Application files](https://github.com/zowe/sample-angular-app/tree/master/webClient/src/assets/i18n).
-   
-2. Create the following directory in your application structure, and move the `.xlf` and `.json` files there: `<my_app>/webClient/src/assets/i18n`
+To internationalize an application, you must install Angular-compatible internationalization libraries. Be aware that libraries can be better suited to either static or dynamic HTML elements. The examples in this task use the ngx-i18nsupport library for static content and angular-l10n for dynamic content.
 
-4. To install internationalization libraries, use the `npm` command, for example:
+To internationalize Zowe Angular applications, take the following steps:
+
+1. To install internationalization libraries, use the `npm` command, for example:
 
    ```
    npm install --save-dev ngx-i18nsupport
@@ -22,9 +22,9 @@ To internationalize Zowe applications using the Angular framework, take the foll
    ```
    **Note** `--save-dev` commits the library to the application's required libraries list for future use.
 
-5. To support the CLI tools and to control output, create a `webClient/tsconfig.i18n.json` typescript file and add the following content:
+2. To support the CLI tools and to control output, create a `webClient/tsconfig.i18n.json` typescript file and add the following content:
    
-   ```typescript
+   ```json
       {
      "extends": "../../zlux-app-manager/virtual-desktop/plugin-config/tsconfig.ngx-i18n.json",
        
@@ -41,18 +41,68 @@ To internationalize Zowe applications using the Angular framework, take the foll
    
    For example, see this file in the [Sample Angular Application](https://github.com/zowe/sample-angular-app/blob/master/webClient/tsconfig.i18n.json).
    
-5. In the static elements in your HTML files, tag translatable content with the i18n attribute within an Angular template, for example:
+3. In the static elements in your HTML files, tag translatable content with the i18n attribute within an Angular template, for example:
 
    ```html
    <div>
        <p i18n="welcome message@@welcome">Welcome</p>
    </div>
    ```
-   The attribute must include a message ID, for example the `@@welcome` above.
+   The attribute should include a message ID, for example the `@@welcome` above.
 
-6. For dynamic translated content, follow these steps:
+4. To configure static translation builds, take the following steps:
 
-   a) Import and utilize angular-l10n objects within an Angular component, for example:
+    a. In the `webClient/package.json` script, add the following line:
+
+    ```json
+    "i18n": "ng-xi18n -p tsconfig.i18n.json --i18nFormat=xlf --outFile=messages.xlf && xliffmerge -p xliffmerge.json",
+    ```
+
+    b. In the in `webClient` directory, create a `xliffmerge.json` file and add the following content:
+
+    ```json
+    {
+      "xliffmergeOptions": {
+        "srcDir": "src/assets/i18n",
+        "genDir": "src/assets/i18n",
+        "i18nFile": "messages.xlf",
+        "i18nBaseFile": "messages",
+        "i18nFormat": "xlf",
+        "encoding": "UTF-8",
+        "defaultLanguage": "en",
+        "languages": ["fr","ru"],
+        "useSourceAsTarget": true
+      }
+    }
+    ```
+     The i18n script reads this file and generates a `messages.[lang].xlf` file for each language specified in the `languages` parameter. In places the `.xlf` files in the `src/assets/i18n directory`. Each file contains the untranslated source text from the HTML files. In the `languages` parameter, specify the codes for each language you will translate.
+
+5. Run the following command to run the i18n script and extract i18n tagged HTML elements to `.xlf` files:
+
+    ```
+    npm run i18n
+    ```
+
+    **Note** If you change static translated content, you must run the `npm run build` command to build the application, and then run the `npm run i18n` command.
+
+6. In each `.xlf` file, replace `target` element strings with translated versions of the `source` element strings. For example:
+
+    ```xml
+    <source>App Request Test</source>
+    <target>Test de Demande à l'App</target>
+    ```
+
+7. Run the following command to rebuild the application:
+
+    ```
+    npm run build
+    ```
+
+    When you [switch the Zowe Desktop](https://zowe.github.io/docs-site/latest/user-guide/mvd-using.html#changing-the-desktop-language) to one of the application's translated languages, the application displays the translated strings.
+
+9. For dynamic translated content, follow these steps:
+
+   a. Import and utilize angular-l10n objects within an Angular component, for example:
 
    ```typescript
    import { LocaleService, TranslationService, Language } from 'angular-l10n';
@@ -79,7 +129,7 @@ To internationalize Zowe applications using the Angular framework, take the foll
    }
    ```
 
-   b) In the related Angular template, you can implement `myDynamicMessage` as an ordinary substitutable string, for example:
+   b. In the related Angular template, you can implement `myDynamicMessage` as an ordinary substitutable string, for example:
 
    ```html
    <div>
@@ -89,12 +139,12 @@ To internationalize Zowe applications using the Angular framework, take the foll
 
 7. To configure static translation builds, take the following steps:
 
-   a) In the `webClient/package.json` script, add the following line:
+   a. In the `webClient/package.json` script, add the following line:
 
    ```json
    "i18n": "ng-xi18n -p tsconfig.i18n.json --i18nFormat=xlf  --outFile=messages.xlf && xliffmerge -p xliffmerge.json",
    ```
-   b) In the in `webClient` directory, create a `xliffmerge.json` file and add the following content:
+   b. In the in `webClient` directory, create a `xliffmerge.json` file and add the following content:
    ```json
    {
      "xliffmergeOptions": {
@@ -112,28 +162,29 @@ To internationalize Zowe applications using the Angular framework, take the foll
    ```
    **Note** If you change static translated content, you must run the `npm run build` command to build the application, and then run the `npm run i18n` command.
 
-8. Create logic to copy the translation files to the `web/assets` directory during the webpack process, for example in the sample application, the following JavaScript in the `copy-webpack-plugin` file copies the files:
-   ```javascript
-   var config = {
-     'entry': [
-       path.resolve(__dirname, './src/plugin.ts')
-     ],
-     'output': {
-       'path': path.resolve(__dirname, '../web'),
-       'filename': 'main.js',
-     },
-     'plugins': [
-       new CopyWebpackPlugin([
-         {
-           from: path.resolve(__dirname, './src/assets'),
-           to: path.resolve('../web/assets')
-         }
-       ])
-     ]
-   };
-   ```
+10. Create logic to copy the translation files to the `web/assets` directory during the webpack process, for example in the sample application, the following JavaScript in the `copy-webpack-plugin` file copies the files:
+   
+       ```javascript
+        var config = {
+        'entry': [
+          path.resolve(__dirname, './src/plugin.ts')
+          ],
+        'output': {
+          'path': path.resolve(__dirname, '../web'),
+          'filename': 'main.js',
+          },
+      'plugins': [
+          new CopyWebpackPlugin([
+            {
+              from: path.resolve(__dirname, './src/assets'),
+              to: path.resolve('../web/assets')
+            }
+          ])
+        ]
+      };
+      ```
 
-   Note: Do not edit files in the `web/assets/i18n` directory. They are overwritten by each build.
+     **Note:** Do not edit files in the `web/assets/i18n` directory. They are overwritten by each build.
 
 ## Internationalizing React applications
 
