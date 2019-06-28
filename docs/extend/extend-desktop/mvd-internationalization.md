@@ -58,7 +58,7 @@ To internationalize Zowe Angular applications, take the following steps:
     "i18n": "ng-xi18n -p tsconfig.i18n.json --i18nFormat=xlf --outFile=messages.xlf && xliffmerge -p xliffmerge.json",
     ```
 
-    b. In the in `webClient` directory, create a `xliffmerge.json` file and add the following content:
+    b. In the in `webClient` directory, create a `xliffmerge.json` file, add the following content, and specify the codes for each language you will translate in the `languages` parameter:
 
     ```json
     {
@@ -75,7 +75,7 @@ To internationalize Zowe Angular applications, take the following steps:
       }
     }
     ```
-     The i18n script reads this file and generates a `messages.[lang].xlf` file for each language specified in the `languages` parameter. In places the `.xlf` files in the `src/assets/i18n directory`. Each file contains the untranslated source text from the HTML files. In the `languages` parameter, specify the codes for each language you will translate.
+     When you run the i18n script, it reads this file and generates a `messages.[lang].xlf` file in the `src/assets/i18n directory` for each language specified in the `languages` parameter. Each file contains the untranslated text from the i18n-tagged HTML elements.
 
 5. Run the following command to run the i18n script and extract i18n tagged HTML elements to `.xlf` files:
 
@@ -83,7 +83,7 @@ To internationalize Zowe Angular applications, take the following steps:
     npm run i18n
     ```
 
-    **Note** If you change static translated content, you must run the `npm run build` command to build the application, and then run the `npm run i18n` command.
+    **Note** If you change static translated content, you must run the `npm run build` command to build the application, and then re-run the `npm run i18n` command to extract the tagged content again.
 
 6. In each `.xlf` file, replace `target` element strings with translated versions of the `source` element strings. For example:
 
@@ -136,32 +136,7 @@ To internationalize Zowe Angular applications, take the following steps:
      <textarea class="response" placeholder="Response" i18n-placeholder="@@myStaticPlaceholder" >{{myDynamicMessage}}</textarea>
    </div>
    ```
-
-7. To configure static translation builds, take the following steps:
-
-   a. In the `webClient/package.json` script, add the following line:
-
-   ```json
-   "i18n": "ng-xi18n -p tsconfig.i18n.json --i18nFormat=xlf  --outFile=messages.xlf && xliffmerge -p xliffmerge.json",
-   ```
-   b. In the in `webClient` directory, create a `xliffmerge.json` file and add the following content:
-   ```json
-   {
-     "xliffmergeOptions": {
-       "srcDir": "src/assets/i18n",
-       "genDir": "src/assets/i18n",
-       "i18nFile": "messages.xlf",
-       "i18nBaseFile": "messages",
-       "i18nFormat": "xlf",
-       "encoding": "UTF-8",
-       "defaultLanguage": "en",
-       "languages": ["ru"],
-       "useSourceAsTarget": true
-     }
-   }
-   ```
-   **Note** If you change static translated content, you must run the `npm run build` command to build the application, and then run the `npm run i18n` command.
-
+   
 10. Create logic to copy the translation files to the `web/assets` directory during the webpack process, for example in the sample application, the following JavaScript in the `copy-webpack-plugin` file copies the files:
    
        ```javascript
