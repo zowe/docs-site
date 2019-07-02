@@ -63,3 +63,16 @@ To solve the problem, follow these steps:
     read failed ret code 1121 reason 0x76650446
     ```
     - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#configuring-zss-for-https)
+
+## Server startup problem ret=1115
+
+**Symptom:**
+When ZOWESVR is restarted, the following message is returned in the output of the ZSS server log:
+```
+server startup problem ret=1115
+```
+
+**Solution:**
+This message means that some other process is already listening on port 7542, either at address 127.0.0.1 (localhost) or at 0.0.0.0 (all addresses). This prevents the ZSS server from starting.
+
+One possibility is that a previously running ZSS server did not shut down correctly, and either the the operating system has not released the socket after the ZSS server shut down, or the ZSS server is still running.
