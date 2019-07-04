@@ -1,4 +1,4 @@
-# Troubleshooting Zowe CLI
+# Known Zowe CLI Issues
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe CLI.
 
