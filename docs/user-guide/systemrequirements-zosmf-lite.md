@@ -134,9 +134,19 @@ The following system changes are described in this chapter:
 - [Accessing the z/OSMF Welcome page](#accessing-the-z-osmf-welcome-page)
 - [Mounting the z/OSMF user file system at IPL time](#mounting-the-z-osmf-user-file-system-at-ipl-time)
 
-The sample jobs that you might use are available for download:
 
-[Download sample jobs](../zosmf_lite_samples.zip)
+The following sample jobs that you might use are included in the package and available for download:
+
+- IZUAUTH
+- IZUICSEC
+- IZUNUSEC_V2R2
+- IZUNUSEC_V2R3
+- IZUPRM00
+- IZURFSEC
+- IZUTSSEC
+- IZUWFSEC
+
+[**Download sample jobs**](../zosmf_lite_samples.zip)
 
 Check out the video for a demo of the process:
 
@@ -506,7 +516,7 @@ TSOASMGR: ALLOWED: 50 IN USE: 0 HIGHCNT: 0
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
 2.	Review and edit job IZUTSSEC before you submit. You can review the IZUTSSEC section below for more details.
 3.	Submit IZUTSSEC as a batch job on your z/OS system.  
 
