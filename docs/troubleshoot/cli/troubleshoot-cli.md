@@ -8,8 +8,8 @@ These instructions apply to Zowe CLI installed on Windows, Mac OSX and Linux sys
 
 ## Resolving The Problem
 Please answer these questions about the problem and then follow the steps below:
-- What CLI problem did you observe on the system?
 - Is the CLI part of another node application (e.g. VSCode), or is it a general installation
 - Which queue managers are you trying to administer, and on what systems are they located?
 - Which operating system version are you running on?
+- What shell/terminal are you using (bash, cmd, powershell, etc)?
 - Are the relevant API endpoints online and valid.
