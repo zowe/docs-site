@@ -10,7 +10,6 @@ You should endeavor to retrieve the following:
 ## Identify the currently installed version of Zowe CLI
 
 Issue the following command:
-
 ```
 zowe -V 
 ```
@@ -79,10 +78,3 @@ If the user is having trouble installing Zowe CLI from an npm registry, gatherin
 ```
 npm config ls -l
 ```
-
-
-
-
-
-
-
