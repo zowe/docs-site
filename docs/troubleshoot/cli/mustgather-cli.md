@@ -66,6 +66,22 @@ There are two sets of logs to be aware of the imperative log which generally con
 ### Profile configuration
 Contains connnection information. **Important\!** The profile directory may contain "sensitive" information and so if requested any password or other sensitive refernces need tgo be obfuscated.
 
+## Node.js and npm
+Zowe CLI should be compatible with Node.js v8 and greater. 
+
+To gather Node.js and npm versions, use the following:
+```
+node --version
+npm --version
+```
+
+### npm configuration 
+If the user is having trouble installing Zowe CLI from an npm registry, gathering their npm configuration will help identify issues with registry settings, global install paths, proxy settings, etc.
+```
+npm config ls -l
+```
+
+
 
 
 
