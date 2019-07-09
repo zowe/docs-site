@@ -78,3 +78,22 @@ If the user is having trouble installing Zowe CLI from an npm registry, gatherin
 ```
 npm config ls -l
 ```
+### npm log files
+In case of errors, npm will create log files in `npm_cache\_logs` location. To get the `npm_cache` location for specific OS you can run:
+```
+npm config get cache
+```
+By default npm keeps only 10 log files, but sometimes more are needed. You can instruct the user to increase the log count by doing:
+```
+npm config set logs-max 50
+```
+- this command will increase the log count to 50, so that more log files will be kept on the system. Now the user can run tests multiple times and will not loose the log files. They can later be passed to Support for analysis. 
+
+As the log files are created only when an npm conmmand fails, but you are interested to see what is executed, you can increase the loglevel of npm by doing:
+```
+npm config set loglevel verbose
+```
+- this way, you can see on the stdout all actions taken by npm. (if command is successful, it still does not generate a log file)
+- log levels to choose from:   
+"silent", "error", "warn", "notice", "http", "timing", "info", "verbose", "silly", with "notice" as the default one. 
+- alternatively, you can pass `--loglevel verbose` on the command line, but this only works with npm related commands. By setting this in the config, it also works when you issue some `zowe` commands that use npm.(for ex. `zowe plugins install @zowe/cics`)
