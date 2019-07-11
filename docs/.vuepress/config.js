@@ -182,11 +182,14 @@ const ALL_PAGES = [{
   ]
 },
 {
-  text: 'Appendix',
+  text: 'References',
   hideInPdf: true,
   canHideFirst: true,
   baseuri: '/appendix/',
   items: [
+    {
+      text: 'Zowe CLI command reference', link: 'https://zowe.github.io/docs-site/latest/web_help/index.html'
+    },
     {
     text: 'Bill of Materials',
     items: [
@@ -429,11 +432,6 @@ module.exports = {
       ...navbarLinks,
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
-      {
-        text: 'Feedback',
-        canHideFirst: true,
-        link: 'https://forms.gle/Ztu9AjgV6HRr1kEs9'
-      },
       {
         text: 'Zowe.org',
         link: 'https://zowe.org',
