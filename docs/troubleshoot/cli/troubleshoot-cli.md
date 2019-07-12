@@ -13,3 +13,4 @@ Please answer these questions about the problem and then follow the steps below:
 - Which operating system version are you running on?
 - What shell/terminal are you using (bash, cmd, powershell, etc)?
 - Are the relevant API endpoints online and valid.
+- Is there already an issue that covers this scenario [CLI Issues](https://github.com/zowe/zowe-cli/issues)

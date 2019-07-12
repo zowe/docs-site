@@ -152,6 +152,7 @@ const ALL_PAGES = [{
         'troubleshoot/cli/zosmf-cli.md',
         'troubleshoot/cli/mustgather-cli.md',
         'troubleshoot/cli/known-cli.md',
+        'troubleshoot/cli/cli-issue.md',
       ]
     }
     ]

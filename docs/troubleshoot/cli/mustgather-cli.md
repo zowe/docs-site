@@ -59,7 +59,7 @@ The values for these can be **echo**ed
 
 ### Location of logs
 
-There are two sets of logs to be aware of the imperative log which generally contains installation and configuration information and the zowe log which contains information about interaction between CLI and the server endpoints.
+There are two sets of logs to be aware of the imperative log which generally contains installation and configuration information and the zowe log which contains information about interaction between CLI and the server endpoints. These should be analyzed for relevant information reagrding what has caused an issue.
 
 ### Profile configuration
 Contains connnection information. **Important\!** The profile directory may contain "sensitive" information and so if requested any password or other sensitive refernces need tgo be obfuscated.
