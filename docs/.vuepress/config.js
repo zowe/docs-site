@@ -113,6 +113,7 @@ const ALL_PAGES = [{
         'extend/extend-desktop/mvd-creatingappplugins.md',
         'extend/extend-desktop/mvd-plugindefandstruct.md',
         'extend/extend-desktop/mvd-dataservices.md',
+        'extend/extend-desktop/mvd-internationalization.md',
         'extend/extend-desktop/mvd-desktopandwindowmgt.md',
         'extend/extend-desktop/mvd-configdataservice.md',
         'extend/extend-desktop/mvd-uribroker.md',
@@ -339,7 +340,7 @@ module.exports = {
       disableHashing: true,
      deferSurvey:true,
     };`],
-    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 1200000);`],
+    ['script', { }, `setTimeout( function(){showNpsSurvey && showNpsSurvey();}, 3600000);`],
     // embed copy-to-clipboard code
     ['script', {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js'

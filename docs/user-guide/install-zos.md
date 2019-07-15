@@ -138,11 +138,16 @@ To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/O
 
 ## Prerequisites
 
-- Before you start the installation on z/OS, ensure that your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
+Ensure that you meet the following software requirements before you install Zowe on z/OS:
+
+- Your environment meets the necessary prerequisites that are described in  [System requirements](systemrequirements.md).
 
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
+
+- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+ https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
 ## Installing the Zowe runtime on z/OS
 
@@ -161,9 +166,47 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
     - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.
+      You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-        You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
+   <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
 
+    - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
+
+      ```
+      pfxCssN
+      ```
+
+      where:
+      
+        - `pfx` - prefix that contains up to four characters, for example, ZOWE.
+        
+        - `C` - a component character that is similar to ones that are used for message IDs. The following list contains the component characters:
+          - **A** - API Mediation Layer
+          - **D**  - Zowe Desktop
+          - **E** - Zowe Explorer
+          - **S** - Zowe System Services
+          - **Z** - ZSS process
+          - **X** - Cross Memory Server`
+
+        - `ss` - a subcomponent that consists of 1 or 2 characters:
+          - **GW** - API ML Gateway
+          - **DS** - API ML Discovery Service
+          - **AC** - API ML Catalog
+          - **AJ** - Explorer API Jobs
+          - **AD** - Explorer API Data Sets
+          - **UD** - Explorer UI Data Sets
+          - **UJ** - Explorer UI Jobs
+          - **UU** - Explorer UI USS
+          - **S** - Zowe Desktop Application Server
+            
+        - `N` - instance number
+        
+          You should use the prefix for the main started task (+ number).
+
+       **Example: 1st instance of Zowe API ML Gateway identifier**
+       ```
+       ZOWEAGW1
+      ```
     - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
 
     - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
@@ -177,6 +220,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```yaml
     install:
      rootDir=/tmp/zowe/1.3.0
+     prefix=ZOWE
 
     api-mediation:
       catalogPort=7552
@@ -234,7 +278,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       ```
       
 4. Select the ZOWESVR PROCLIB member.
-
+    <!-- TODO -->
     The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
 
     **Example:**
@@ -246,6 +290,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       dsName=auto
       memberName=ZOWESVR
     ```
+      <!-- TODO -->
     **Follow these steps:**
 
     a. Specify the dataset name of the PROCLIB member you want to use with the `dsName` tag.  For example,
@@ -313,7 +358,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
     
-
+<!-- TODO -->
 7. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
@@ -321,7 +366,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```
     zowe-install.sh  
     ```
-
+    <!-- Why not mention this before? or a part of preperation before the actual execution? -->
     You might receive the following error that the file cannot be executed:
 
     ```
@@ -345,11 +390,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```
 
     This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
-
-
     
 8. Configure Zowe as a started task.
-
+    <!-- TODO -->
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
      cd /var/zowe/1.3.0
@@ -358,7 +401,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     Alternatively, you can issue the commands manually:
     
     **Note:** You must replace `ZOWESVR` in the commands below with the name of your server that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file.
-
+    <!-- TODO -->
     - If you use RACF, issue the following commands:
 
       ```
@@ -413,7 +456,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
      - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
-
+    <!-- TODO -->
     When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
 
     Each time you run the install script, it retrieves environment variable settings in the following ways. 
@@ -440,7 +483,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     The install process will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result is reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
 
 4. Creating the PROCLIB member to run the Zowe runtime
-
+    <!-- TODO -->
     **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
 
     At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task. The install script does this automatically.  If the user specifies `dsName=auto`, or omits the `dsName` tag, or sets it to null by coding `dsName=`,  the install script proceeds as follows and stops after the first successful write to the destination PROCLIB. 
@@ -460,7 +503,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      ```
      Failed to put ZOWESVR.JCL in a PROCLIB dataset.
      ```
-
+    <!-- TODO -->
     In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZOWESVR.jcl` file to the preferred PROCLIB:  
 
      ```
@@ -482,7 +525,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
       ```
 
 ## Starting and stopping the Zowe runtime on z/OS
-
+<!-- TODO. Entire section -->
 Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZOWESVR PROC, all of these components start. The Zowe Application Server startup script also starts the zSS server, so starting the ZOWESVR PROC starts all the required servers. Stopping ZOWESVR PROC stops all of the servers that run as independent Unix processes.
 
 ### Starting the ZOWESVR PROC
@@ -551,7 +594,7 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 ```
 
 ## Installing the Zowe Cross Memory Server on z/OS
-
+<!-- TODO -->
 The Zowe Cross Memory Service is a started task angel that runs an authorized server application providing privileged cross-memory services to Zowe.  
 
 The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result. 
@@ -563,7 +606,7 @@ You can choose which method to use depending on your familiarity with z/OS confi
 Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
 ### Manually installing the Zowe Cross Memory Server
-
+<!-- TODO. Entire sub-section -->
 A number of files are included in the USS directory `zowe_install_dir/files/zss`.  If this directory is not present, you must create it by expanding the file `zowe_install_dir/files/zss.pax`.  To do this, first create the folder `zss` beneath `files` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`. 
 
 The manual installation consists of the following steps.
@@ -662,7 +705,7 @@ The manual installation consists of the following steps.
 
 1. ICSF cryptographic services 
 
-    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class.
+    The user IZUSVR who runs ZOWESVR will need READ access to CSFRNGL in the CSFSERV class in order to generate symmetric keys.
 
     When using ICSF services, you need to define or check the following configurations depending on whether ICSF is already installed.
     - The ICSF or CSF job that runs on your z/OS system.
@@ -703,7 +746,7 @@ The manual installation consists of the following steps.
 
 1. Security environment switching 
 
-    The user IZUSVR who runs the ZWESIS01 started task needs the ability to change the security environment of its process.  This enables the program ZWESIS01 to associate itself with the security context of the logged in user when responding to API requests.  To switch the security environment, the user ID IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
+    The node zssServer running under USS needs the ability to change the security environment of its process in order to associate itself with the security context of the logged in user when responding to API requests, also known as impersonation.  To switch the security environment, the user ID asscoaited with the ZOWESVR started task IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. 
 
     You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
     
@@ -787,7 +830,7 @@ The manual installation consists of the following steps.
         </details>
 
 ### Scripted install of the Zowe Cross Memory Server 
-
+<!-- TODO. Entire sub-section -->
 For users who have sufficient authority under their user ID to the z/OS instance they are installing the Zowe cross memory server into, there is a convenience script provided in `/zowe_install_dir/install/zowe-install-apf-server.sh`.
 
 - The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
@@ -841,7 +884,7 @@ where,
 After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT entry before you run `zowe-install-apf-server.sh`. 
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
-
+<!-- TODO. Entire sub-section -->
 The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
 
 ```
@@ -892,7 +935,7 @@ where:
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 ### Verifying z/OS Services installation
-
+<!-- TODO -->
 After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```
@@ -906,7 +949,7 @@ where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatew
 Use your preferred REST API client to review the value of the status variable of the API Catalog service that is routed through the API Gateway using the following URL:
 
 ```
-https://hostName:basePort/api/v1/apicatalog/application/state
+https://hostName:basePort/api/v1/apicatalog/application/health
 ```
 
 The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
@@ -916,7 +959,7 @@ The `hostName` is set during install, and `basePort` is set as the `gatewayPort`
 The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
 
 ```
-$ curl -v -k --silent https://hostName:basePort/api/v1/apicatalog/application/state 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
+$ curl -v -k --silent https://hostName:basePort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
 UP
 ```
 

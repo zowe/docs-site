@@ -1,5 +1,52 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the terminal application plug-ins or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, if needed.
+After you install Zowe, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+
+## Configuring the framework as a Mediation Layer client
+For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.
+
+This configuration is simpler to administer because the framework servers are accessible externally through a single port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
+
+You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `zlux-app-server/deploy/instance/ZLUX/serverConfig` directory.
+
+### Enabling the Application Server to register with the Mediation Layer
+1. Open the Application Server configuration file:
+   `zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+   The file might be in the `zlux-app-server/config` directory. If so, navigate to the `zlux-build` folder and run the `ant deploy` command to deploy the file to the correct location.
+
+2. Specify the following values:
+
+   - `mediationLayer`: If this object is not there, create it. It contains all of the key-value pairs.
+   - `server`: Container for most of the key-value pairs.
+   - `hostname` (string): Specify the hostname that the Application Server can use to access the Mediation Layer servers. The Mediation Layer servers must be on a single system.
+   - `port` (number): Specify the Mediation Layer discovery server TCP port.
+   - `gatewayPort` (number): Specify the gateway TCP port (used for single sign-on).
+   - `isHttps` (boolean): Specify `true` to use HTTPS (recommended).
+   - `enabled` (boolean): Specify `true` to enable the Application Server to use the Mediation Layer.
+
+    For example:
+   ```text
+       "mediationLayer": {
+         "server": {
+           "hostname": "localhost",
+           "port": 10011,
+           "gatewayPort": 10012,
+           "isHttps": true
+         },
+         "enabled": true
+       }
+   ```
+
+To verify that the server registered correctly, open the log file in the `zlux/zlux-app-server/log` directory. The following line should be at the bottom (with the current date and time):
+
+`[20xx-xx-xx xx:xx:xx.xxx _zsf.apiml INFO] - Eureka Client Registered`
+
+The registration process might take a few minutes. If the line is not there, make sure that the Mediation Layer values you enabled in the `zluxserver.json` file are correct.
+
+### Accessing the Application Server
+To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+When accessed through the Mediation Layer, this is the Zowe Desktop URL:
+`https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 ## Setting up terminal application plug-ins
 
@@ -291,6 +338,79 @@ cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfi
   }
 }
 ```
+
+### Installing additional ZSS instances
+After you install Zowe, you can install and configure additional instances of ZSS on the same z/OS server. You might want to do this to test different ZSS versions.
+
+The following steps assume you have installed a Zowe runtime instance (which includes ZSS), and that you are installing a second runtime instance to install an additional ZSS.
+
+1. To stop the installed Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /C ZOWESVR
+   ```
+
+2. Install a new Zowe runtime by following steps in [Installing Zowe on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html#obtaining-and-preparing-the-installation-file).
+
+   **Note:** In the `zowe-install.yaml` configuration file, specify ports that are not used by the first Zowe runtime.
+
+3. To restart the first Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+   ```
+
+   Where `'$ZOWE_ROOT_DIR'` is the first Zowe runtime root directory. By default the command starts the most recently installed runtime unless you specify the root directory of the runtime that you want to start.
+
+4. To specify a name for the new ZSS instance, follow these steps:
+
+   1. Copy the PROCLIB member JCL named ZWESIS01 that was installed with the new runtime.
+
+   2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
+
+   3. Edit the JCL, and in the  `NAME` parameter specify a unique name for the cross-memory server, for example:
+
+      ```
+      //ZWESIS02  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M
+      ```
+
+      Where `ZWESIS_MYSRV` is the unique name of the new ZSS.
+
+5. To start the new ZSS, in SDSF enter the following command:
+
+   ```
+    /S ZWESIS02
+   ```
+
+6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is IZUSVR.
+
+7. In the new ZSS `zluxserver.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
+
+   ```
+   "rootDir":"../deploy",
+   "productDir":"../deploy/product",
+   "siteDir":"../deploy/site",
+   "instanceDir":"../deploy/instance",
+   "groupsDir":"../deploy/instance/groups",
+   "usersDir":"../deploy/instance/users",
+   "pluginsDir":"../deploy/instance/ZLUX/plugins",
+   "privilegedServerName":"ZWESIS_MYSRV",
+   "dataserviceAuthentication": { ... }
+   ```
+
+   **Note:** The default location of `zluxserver.json` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+
+8. Run the `zlux-build/deploy.sh` command redeploy and make the `zluxserver.json` change take effect.
+
+9. To start the new Zowe runtime, in SDSF enter the following command:
+
+   ```text
+   /S ZOWESVR
+   ```
+
+10. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
+
+   `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
 ## Applying role-based access control to dataservices
 

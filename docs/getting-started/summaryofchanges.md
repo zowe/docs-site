@@ -4,19 +4,34 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.3.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.3.0 (May 2019)](#version-1-3-0-may-2019)
+- [Version 1.4.0 (June 2019)](#version-1-4-0-july-2019)
+- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.3.0 (May 2019)
+## Version 1.4.0 (July 2019)
 
-Version 1.3.0 contains the following changes since Version 1.2.0.
+<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### What's new in API Mediation Layer
+
+This release of Zowe API ML contains the following improvements:
+
+
+### What's new in the Zowe App Server
+Made the following fixes and enhancements:
+
+
+### What's new in Zowe CLI and Plug-ins
+
+The following new commands and enhancements are added:
+
+
+## Version 1.3.0 (June 2019)
 
 <!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
-
-### What's new in the Zowe installer
 
 ### What's new in API Mediation Layer
 <!-- TODO -->
@@ -28,8 +43,11 @@ This release of Zowe API ML contains the following user experience improvements:
     - Fixed error messages shown when a home page cannot be modified 
 - Added a new e2e test for GW, and update the detail service tile ([#309](https://github.com/zowe/api-layer/pull/309)) 
 - Removed a dependency of integration-enabler-java on the gateway-common ([#302](https://github.com/zowe/api-layer/pull/302))
+- Removed access to the Discovery service UI with basic authentication ([#313](https://github.com/zowe/api-layer/pull/313))  
 - Fixed the issue with the connection logic on headers to pass in the websocket ([#275](https://github.com/zowe/api-layer/pull/275)) 
-- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276)) 
+- Fixed the bug 264: Bypass the API Gateway when the server returns 302 ([#276](https://github.com/zowe/api-layer/pull/276))
+- Fixed the issue that causes the API ML Services display as UP, and makes the API doc available in the Catalog regardless whether the API ML Services stop ([#287](https://github.com/zowe/api-layer/pull/287))
+- Fixed the issue that prevents the API Catalog to load under zLux 9 ([314](https://github.com/zowe/api-layer/pull/314))
 
 
 ### What's new in the Zowe App Server
@@ -86,7 +104,10 @@ The following bugs are fixed:
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
 
-### What's new in Zowe API
+<!-- ### What's changed -->
+<!-- TODO. Fix the link once the doc is ready -->
+<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
+    
 
 ## Version 1.2.0 (May 2019)
 
