@@ -3,6 +3,18 @@
   "link": "latest/"
 },
 {
+  "text": "v1.2.x",
+  "link": "v1-2-x/"
+},
+{
+  "text": "v1.1.x",
+  "link": "v1-1-x/"
+},
+{
+  "text": "v1.0.x",
+  "link": "v1-0-x/"
+},
+{
   "text": "v0.9.x",
   "link": "v0-9-x/"
 }]
