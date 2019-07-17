@@ -11,7 +11,7 @@ Use one of the following methods to install Zowe CLI.
 - [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
 - [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
 
-If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/troubleshoot-cli.md).
+If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 ### Installing Zowe CLI from a local package
 
