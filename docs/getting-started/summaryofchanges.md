@@ -31,7 +31,6 @@ You can now explore the Zowe CLI command help in an interactive online format. S
 The following new commands and enhancements are added:
 - The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. ([#32](https://github.com/zowe/vscode-extension-for-zowe/issues/32))
 - You can now archive z/OS workflows using a wildcard. ([(#391)](https://github.com/zowe/zowe-cli/pull/435))
-- xxx[(#111)]()
 
 The following bugs are fixed: 
 
