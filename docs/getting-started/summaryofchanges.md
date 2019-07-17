@@ -30,13 +30,13 @@ You can now explore the Zowe CLI command help in an interactive online format. S
 
 The following new commands and enhancements are added:
 - The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. ([#32](https://github.com/zowe/vscode-extension-for-zowe/issues/32))
-- You can now archive z/OS workflows using a wildcard. [(#391)](https://github.com/zowe/zowe-cli/pull/435)
-- xxx[(#111)]()
+- You can now archive z/OS workflows using a wildcard. ([(#391)](https://github.com/zowe/zowe-cli/pull/435))
 - xxx[(#111)]()
 
 The following bugs are fixed: 
 
 - Fixed an issue where examples for `zowe files list uss-files` were slightly incorrect. [(#440)](https://github.com/zowe/zowe-cli/issues/440)
+- Improved error message for `zowe db2 call procedure` command. ([(#22)](https://github.com/zowe/zowe-cli-db2-plugin/issues/22))
 
 ## Version 1.3.0 (June 2019)
 
