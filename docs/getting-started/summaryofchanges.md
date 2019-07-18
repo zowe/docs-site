@@ -23,14 +23,14 @@ This release of Zowe API ML contains the following improvements:
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
 
-
 ### What's new in Zowe CLI and Plug-ins
 
 You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](https://zowe.github.io/docs-site/latest/web_help/index.html).
 
 The following new commands and enhancements are added:
 - The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. ([#32](https://github.com/zowe/vscode-extension-for-zowe/issues/32))
-- You can now archive z/OS workflows using a wildcard. ([(#391)](https://github.com/zowe/zowe-cli/pull/435))
+- You can now archive z/OS workflows using a wildcard. ([(#435)](https://github.com/zowe/zowe-cli/pull/435))
+- The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. ([(#482)](https://github.com/zowe/zowe-cli/pull/482))
 
 The following bugs are fixed: 
 
