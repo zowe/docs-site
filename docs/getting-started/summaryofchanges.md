@@ -28,14 +28,14 @@ Made the following fixes and enhancements:
 You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](https://zowe.github.io/docs-site/latest/web_help/index.html).
 
 The following new commands and enhancements are added:
-- The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. ([#32](https://github.com/zowe/vscode-extension-for-zowe/issues/32))
-- You can now archive z/OS workflows using a wildcard. ([(#435)](https://github.com/zowe/zowe-cli/pull/435))
-- The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. ([(#482)](https://github.com/zowe/zowe-cli/pull/482))
+- The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. [(#32)](https://github.com/zowe/vscode-extension-for-zowe/issues/32)
+- You can now archive z/OS workflows using a wildcard. [(#435)](https://github.com/zowe/zowe-cli/pull/435)
+- The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. [(#482)](https://github.com/zowe/zowe-cli/pull/482)
 
 The following bugs are fixed: 
 
 - Fixed an issue where examples for `zowe files list uss-files` were slightly incorrect. [(#440)](https://github.com/zowe/zowe-cli/issues/440)
-- Improved error message for `zowe db2 call procedure` command. ([(#22)](https://github.com/zowe/zowe-cli-db2-plugin/issues/22))
+- Improved error message for `zowe db2 call procedure` command. [(#22)](https://github.com/zowe/zowe-cli-db2-plugin/issues/22)
 
 ## Version 1.3.0 (June 2019)
 
