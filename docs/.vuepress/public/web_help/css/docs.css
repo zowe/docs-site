@@ -30,6 +30,3 @@
 [aria-label] {
     cursor: default;
 }
-
-@import "../../node_modules/github-markdown-css/github-markdown.css";
-@import "../../node_modules/balloon-css/balloon.min.css";
