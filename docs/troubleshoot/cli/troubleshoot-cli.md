@@ -25,7 +25,7 @@ For instructions on how to collect the information, see [Gathering information f
 
 The following information is also useful to collect:
 
-- If you are experiencing HTTP errors, see [zosmf-cli.md](zosmf-cli.md) for more details about what to collect. 
+- If you are experiencing HTTP errors, see [z/OSMF troubleshooting](zosmf-cli.md) for information to collect. 
 - Is the CLI part of another Node application, such as VSCode, or is it a general installation?
 - Which operating system version are you running on?
 - What shell/terminal are you using (bash, cmd, powershell, etc...)?
