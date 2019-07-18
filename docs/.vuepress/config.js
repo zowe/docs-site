@@ -149,8 +149,8 @@ const ALL_PAGES = [{
       text: 'Troubleshooting Zowe CLI',
       items: [
         'troubleshoot/cli/troubleshoot-cli.md',
-        'troubleshoot/cli/zosmf-cli.md',
         'troubleshoot/cli/mustgather-cli.md',
+        'troubleshoot/cli/zosmf-cli.md',
         'troubleshoot/cli/known-cli.md',
         'troubleshoot/cli/cli-issue.md',
       ]

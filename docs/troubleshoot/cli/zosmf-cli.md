@@ -1,4 +1,4 @@
-# z/OSMF Troubleshooting
+# z/OSMF troubleshooting
 The core command groups use the z/OSMF REST APIs which can experience any number of problems.
 
 If the user is experiencing HTTP 500 errors with the CLI, consider gathering the following:
