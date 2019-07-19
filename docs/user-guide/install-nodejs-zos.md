@@ -1,6 +1,6 @@
 # Installing Node.js on z/OS
 
-Installing Zowe requires Node.js Version 6.14.4.1 or later to be installed on the z/OS host where you install the Zowe Application Server. 
+Installing Zowe requires Node.js version 6.14.4.1 or later (version 8 is not currently supported) to be installed on the z/OS host where you install the Zowe Application Server. 
 
 ## How to obtain IBM SDK for Node.js - z/OS
 
@@ -17,11 +17,13 @@ To satisfy Zowe's prerequisite for Node.js - z/OS, you can choose one of the fol
 IBM zEnterprise® 196 (z196) or newer
 
 **Software:**
-- Node.js v6 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_6.0.0/com.ibm.nodejs.zos.v6.doc/plan.htm) for all prerequisites): 
+- Node.js version 6 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_6.0.0/com.ibm.nodejs.zos.v6.doc/plan.htm) for all prerequisites): 
     - z/OS V2R2 with PTF UI46658 or z/OS V2R3
+<!--
 - Node.js v8 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/smpe.htm) for all prerequisites):
    - z/OS 2.2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
    - z/OS 2.3: PTFs UI61308, UI61376 and UI61747 (APARs PH07107, PH08353 and PH09543)
+-->
 - z/OS UNIX System Services enabled
 - Integrated Cryptographic Service Facility (ICSF) configured and started.
 
