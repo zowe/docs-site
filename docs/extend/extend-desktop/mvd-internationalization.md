@@ -272,22 +272,22 @@ To display the translated application name and description in the Desktop, take 
 
 5. Create logic to copy the translation files to the `web/assets` directory during the webpack process. For example, in the [Sample Angular Application](https://github.com/zowe/sample-angular-app/blob/master/webClient/webpack.config.js) the following JavaScript in the `webClient/webpack.config.js` file copies files to the `web/assets` directory:
 
-```javascript
-var config = {
-  'entry': [
-    path.resolve(__dirname, './src/plugin.ts')
-  ],
-  'output': {
-    'path': path.resolve(__dirname, '../web'),
-    'filename': 'main.js',
-  },
-  'plugins': [
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, './src/assets'),
-        to: path.resolve('../web/assets')
-      }
-    ])
-  ]
-};
-```
+    ```javascript
+    var config = {
+      'entry': [
+        path.resolve(__dirname, './src/plugin.ts')
+      ],
+      'output': {
+        'path': path.resolve(__dirname, '../web'),
+        'filename': 'main.js',
+      },
+      'plugins': [
+        new CopyWebpackPlugin([
+          {
+            from: path.resolve(__dirname, './src/assets'),
+            to: path.resolve('../web/assets')
+          }
+        ])
+      ]
+    };
+    ```
