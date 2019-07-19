@@ -113,6 +113,7 @@ const ALL_PAGES = [{
         'extend/extend-desktop/mvd-creatingappplugins.md',
         'extend/extend-desktop/mvd-plugindefandstruct.md',
         'extend/extend-desktop/mvd-dataservices.md',
+        'extend/extend-desktop/mvd-internationalization.md',
         'extend/extend-desktop/mvd-desktopandwindowmgt.md',
         'extend/extend-desktop/mvd-configdataservice.md',
         'extend/extend-desktop/mvd-uribroker.md',
