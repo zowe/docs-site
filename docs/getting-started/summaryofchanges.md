@@ -23,6 +23,21 @@ This release of Zowe API ML contains the following improvements:
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
 
+- Added the ability for the App Server Framework to defer to managers for dataservices that are not written in NodeJS or C. The first implementation is a manager of Java servlet type dataservices, where the App Server manages Tomcat instances when Tomcat is present. ([#158](https://github.com/zowe/zlux/issues/158))
+- Added a tomcat xml configuration file with substitutions for values (ports, keys, certificates) necessary for the App Server to manage one or more instances of Tomcat for hosting servlet dataservices. Also added a new section to the zluxserver.json file to describe dataservice providers such as the aforementioned Tomcat Java Servlet one. (#49)
+- Added Swagger API documentation support. Application developers can include a Swagger 2.0 JSON or YAML file in the app's /doc/swagger directory for each REST data service. Each file must have the same name as the data service. Developers can then reference the files at runtime using a new app route: /ZLUX/plugins/PLUGINID/catalogs/swagger. They can reference individual services at: /ZLUX/plugins/PLUGINID/catalogs/swagger/SERVICENAME. If swagger documents are not present, the server will contextual knowledge to show some default values. ([#159](https://github.com/zowe/zlux/issues/159))
+- The following new REST and cross-memory services have been added ([#32](https://github.com/zowe/zss/pull/32)):
+    - Extract RACF user profiles
+    - Define/delete/permit general RACF resource profiles (limited to a single class)
+    - Add/remove RACF groups
+    - Connect users to RACF groups (for a limited set of group prefixes)
+    - Check RACF user access levels (limited to a single class)
+- Fixed multiple issues in the File Editor App. ([#88](https://github.com/zowe/zlux/issues/88))
+- Fixed issue where the cascading position of new windows were wrong when that application was maximized. ([#102](https://github.com/zowe/zlux/issues/102))
+- Fixed issue where the file tabs in File Editor app were vertically scrollable, and where the close button would not be accessible for long file names. ([#170](https://github.com/zowe/zlux/issues/170))
+- Updated the package lock files in all repositories to fix vulnerable dependencies. ([#163](https://github.com/zowe/zlux/issues/163))
+- Fixed an issue where the Desktop used the roboto-latin-regular font for all text, which would not display well with non-latin languages. Now the fallback font is sans-serif. ([#166](https://github.com/zowe/zlux/issues/166))
+
 ### What's new in Zowe CLI and Plug-ins
 
 You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](https://zowe.github.io/docs-site/latest/web_help/index.html).
