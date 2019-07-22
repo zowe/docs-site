@@ -57,7 +57,7 @@ Environment variables are available to specify logging level and the CLI home di
 
 You can set the location on your computer for the Zowe CLI home directory, which contains log files, profiles, and plug-ins for the product. 
 
-**Tip!** The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in each folder and switch between them using the environment variable. 
+**Tip!** The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in multiple folders, then switch between them using the environment variable. 
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
