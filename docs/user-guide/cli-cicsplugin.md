@@ -39,19 +39,19 @@ To install Zowe CLI from an online registry, complete the following steps:
 1. Set your npm registry if you did not already do so when you installed Zowe CLI. Issue the following command:
 
     ```
-    npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+    npm config set @zowe:registry
     ```
 
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @brightside/cics@lts-incremental
+    zowe plugins install @zowe/cics
     ```
 
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate @brightside/cics
+    zowe plugins validate @zowe/cics
     ```
 
     Successful validation of the IBM CICS plug-in returns the response: `Successfully validated`.
@@ -71,7 +71,7 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
 3. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
   
     ```
-    zowe plugins validate @brightside/cics
+    zowe plugins validate @zowe/cics
     ```
     Successful validation of the CICS plug-in returns the response: `Successfully validated`. You can safely ignore `*** Warning:` messages related to Imperative CLI Framework.
       
