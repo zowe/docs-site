@@ -18,20 +18,22 @@ Before you install Zowe CLI, download and install [Node.js and npm.](https://nod
 ### Installing Zowe CLI core
 
 ```
-npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+npm config set @zowe:registry 
 ```
 
 ```
-npm install @brightside/core@lts-incremental -g
+npm install @zowe/cli -g
 ```
 
 ### Installing CLI plug-ins 
 
+The command installs the IBM CICS and IBM IMS plug-ins:
+
 ```
-zowe plugins install @brightside/cics@lts-incremental
+zowe plugins install @zowe/cics@latest @zowe/ims@latest
 ```
 
-The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install.](../user-guide/cli-db2plugin.md#installing)
+The IBM Db2 plug-in requires [additional configuration to install.](../user-guide/cli-db2plugin.md#installing)
 
 For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
