@@ -186,6 +186,20 @@ Zowe CLI is very flexible; developers can integrate with modern tools that work 
 
 </details>
 
+### Where can I use the CLI?
+
+<details>
+
+<summary> Click to show answer </summary>
+
+| **Usage Scenario**    | **Example**  |
+|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Interactive use, in a command prompt or bash terminal. | Perform one-off tasks such as submitting a batch job.                                                            |
+| Interactive use, in an IDE terminal                    | Download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
+| Scripting, to simplify repetitive tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
+| Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
+
+</details>
 
 ### Which method should I use to install Zowe CLI?
 
@@ -243,3 +257,4 @@ As a developer, you can extend Zowe CLI in the following ways:
     **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md#how-can-i-contribute).
 
 </details>
+
