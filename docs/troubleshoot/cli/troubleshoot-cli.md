@@ -15,7 +15,7 @@ These instructions apply to Zowe CLI installed on Windows, Mac OS X, and Linux s
 
 ## Resolving the problem 
 
-Collect the following information, at minimum:
+Collect the following information to help diagnose the issue:
 
 - Zowe CLI version installed.
 - List of plug-ins installed and their version numbers.
