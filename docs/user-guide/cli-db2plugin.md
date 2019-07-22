@@ -32,18 +32,18 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 ### Installing from an online registry
 
-If you installed Zowe CLI from **online registry**, complete the following steps:
+If you installed Zowe CLI from the **online registry**, follow these steps:
 
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2@lts-incremental
+    zowe plugins install @zowe/db2
     ```
 
 2. After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate @brightside/db2
+    zowe plugins validate @zowe/db2
     ```
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
@@ -74,7 +74,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 
 **Follow these steps:**
 
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic **Install Zowe CLI from local package** in [Installing Zowe CLI](cli-installcli.md) for information about how to obtain and extract it.
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-a-local-package) for information about how to obtain and extract it.
 
 2. From a command line window, set the `IBM_DB_INSTALLER_URL` environment variable by issuing the following command:
 
@@ -103,7 +103,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
 
     ```
-    zowe plugins validate @brightside/db2
+    zowe plugins validate @zowe/db2
     ```
 
     Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.

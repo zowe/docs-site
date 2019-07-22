@@ -2,27 +2,24 @@
 
 Use commands in the plugins command group to install and manage plug-ins for Zowe CLI.
 
-**Important!** Plug-ins can gain control of your CLI application
-legitimately during the execution of every command. Install third-party
-plug-ins at your own risk. We make no warranties regarding
-the use of third-party plug-ins.
+**Important!** Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
 You can install the following plug-ins:
   - **Zowe CLI Plug-in for IBM CICS**
 
-    Use `@brightside/cics@lts-incremental` in your command syntax to install, update, and validate the plug-in. 
+    Use `@zowe/cics` in your command syntax to install, update, and validate the plug-in. 
   - **Zowe CLI Plug-in for IBM Db2 Database**  
   
-    Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+    Use `@zowe/db2` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
 
 ## Setting the registry
 
 If you installed Zowe CLI from the zowe-cli-bundle.zip distributed with the Zowe PAX media, proceed to the [Install step](#installing-plug-ins).
 
-If you installed Zowe CLI from a registry, confirm that NPM is set to target the registry by issuing the following command: 
+If you installed Zowe CLI from a registry, confirm that NPM is set to target the public npm registry by issuing the following command: 
 
 ```
-npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+npm config set @zowe:registry
 ```
 
 ## Meeting the software requirements
@@ -70,14 +67,14 @@ zowe plugins install [plugin...] [--registry <registry>]
     plug-in that is named "my-plugin" from a specified registry:
 
     ```
-    zowe plugins install @brightside/my-plugin@lts-incremental
+    zowe plugins install @zowe/my-plugin@lts-incremental
     ```
 
   - The following example illustrates the syntax to use to install a
     specific version of "my-plugins" 
 
     ```
-     zowe plugins install @brightside/my-plugin@"^1.2.3"
+     zowe plugins install @zowe/my-plugin@"^1.2.3"
     ```
     
 
@@ -105,7 +102,7 @@ zowe plugins validate [plugin]
     specified installed plug-in:
 
     ```
-    zowe plugins validate @brightside/my-plugin
+    zowe plugins validate @zowe/my-plugin
     ```
 
   - The following example illustrates the syntax to use to validate all
@@ -144,14 +141,14 @@ zowe plugins update [plugin...] [--registry <registry>]
     installed plug-in to the latest version:
 
     ```
-    zowe plugins update @brightside/my-plugin@lts-incremental
+    zowe plugins update @zowe/my-plugin
     ```
 
   - The following example illustrates the syntax to use to update a
     plug-in to a specific version:
 
     ```
-    zowe plugins update @brightside/my-plugin@"^1.2.3"
+    zowe plugins update @zowe/my-plugin
     ```
 
 ## Uninstalling plug-ins
@@ -177,5 +174,5 @@ zowe plugins uninstall [plugin]
 - The following example illustrates the syntax to use to uninstall a plug-in:
 
   ```
-  zowe plugins uninstall @brightside/my-plugin
+  zowe plugins uninstall @zowe/my-plugin
   ```
