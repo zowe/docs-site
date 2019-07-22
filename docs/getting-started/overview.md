@@ -100,6 +100,8 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
     Build local scripts that accomplish both mainframe and local tasks. 
   - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
+  - **Create and manage z/OS workflows on z/OS:**
+    Create, start, list, and delete z/OSMF workflows on z/OS system. 
 
 For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
 

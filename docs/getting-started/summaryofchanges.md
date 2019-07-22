@@ -69,6 +69,21 @@ Made the following fixes and enhancements:
 
 ### What's new in Zowe CLI and Plug-ins
 
+
+**`@latest` version (forward development)**
+
+Zowe now offers an `@latest` (forward-development) branch of Zowe CLI that includes new features for validation. You can obtain the package on [Zowe.org](Zowe.org/downloads), install from an online registry. 
+
+The following new commands and enhancements are added:
+
+- The IMS plug-in is now available [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+
+The following bugs are fixed:
+
+- some bug fixed [(#391)](https://github.com/zowe/zowe-cli/pull/391)
+
+**`@lts-incremental` version** 
+
 The following new commands and enhancements are added:
 
 - Return a list of archived z/OSMF workflows with the `zowe zos-workflows list arw` command. [(#391)](https://github.com/zowe/zowe-cli/pull/391)
@@ -84,6 +99,8 @@ The following bugs are fixed:
 - Fixed an issue where `zowe workflow ls aw` commands with the `--wn` option failed if there was a space in the workflow name. [(#356)](https://github.com/zowe/zowe-cli/pull/356)
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
+
+
 
 <!-- ### What's changed -->
 <!-- TODO. Fix the link once the doc is ready -->
