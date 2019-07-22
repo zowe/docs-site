@@ -147,6 +147,43 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Authentication is service-dependent
     - Recommended to use the Authentication and Authorization Service for authentication
 
+#### Authentication endpoints
+
+The API Gateway contains two REST API authentication endpoints: `auth/login` and `auth/query`.
+
+The `login` endpoint allows to authenticate mainframe user credentials and returns authentication token. The login request requires the user credentials in one of the following formats:
+  * Basic access authentication
+  * JSON body, which provides an object with the user credentials 
+
+The response is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`.
+
+The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
+The query request requires the token in one of the following formats: 
+  * Cookie named `apimlAuthenticationToken`
+  * Bearer authentication  
+  
+The response is a JSON object, which contains information associated with the token.
+
+#### Security Service Client library
+
+The `security-service-client-spring` library provides authentication providers and filters to handle the authentication against the z/OSMF service. 
+There are two providers:
+
+1. The `Gateway Login Provider` that verifies credentials against z/OSMF service
+2. The `Gateway Token Provider` that authenticate the JWT token provided by z/OSMF
+
+The library also contains three filters:
+
+1. The `Basic Content Filter` that authenticates the credentials from the basic authorization header
+2. The `Cookie Content Filter` that authenticates the JWT token stored in the cookie
+3. The `Login Filter` that processes the authentication requests with the username and password in a JSON format.
+
+This component can be used by any client which needs authentication provider against z/OSMF. 
+
+#### Dummy Authentication Provider
+
+The `Dummy Authentication Provider` implements a simple authentication for development purpose, using dummy credentials (username:  `user`, password `user`). It allows API Gateway to run without authenticating with the z/OSMF service.
+
 ### Authorization
 
 Authorization is a method used to determine access rights of an entity.
@@ -594,3 +631,4 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-catalog.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
+
