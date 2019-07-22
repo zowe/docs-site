@@ -2,7 +2,7 @@
 
 ## Problem
 
-The CLI is experiencing a problem. You need to collect information that will help you resolve the issue. 
+Zowe CLI is experiencing a problem. You need to collect information that will help you resolve the issue. 
 
 ### Environment
 
@@ -10,7 +10,7 @@ These instructions apply to Zowe CLI installed on Windows, Mac OS X, and Linux s
 
 ## Before reaching out for support
 
-1. Is there already a GitHub Issue (open or closed) that covers the problem? Check [CLI Issues](https://github.com/zowe/zowe-cli/issues).
+1. Is there already a GitHub issue (open or closed) that covers the problem? Check [CLI Issues](https://github.com/zowe/zowe-cli/issues).
 2. Review the current list of [Known issues](known-cli.md) in documentation. Also try searching using the Zowe Docs search bar.
 
 ## Resolving the problem 
