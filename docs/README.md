@@ -62,12 +62,12 @@ A Zowe overview deck in PDF format is available for download. The information in
 
 [Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
 
-## Give Feedback
+## Feedback
 
 Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
 
 [Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues)
 
-We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address the feedback.
+We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
 
 [Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update)
