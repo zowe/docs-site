@@ -6,9 +6,8 @@ To ensure that the Zowe Support Team can effectively troubleshoot Zowe, the Brig
     - Zowe server started task
     - Zowe Cross Memory started task (STC)
         - Zowe CLI or REXX (TSO output command, STATUS, capture all)
- - Configuration parameters
-     - Installation log
-     - Scripts that are called from `run-zowe.sh`
+- Zowe Install log
+- Scripts that are called from `run-zowe.sh`
  - Versions:
     - manifest.json
     - z/OS version
@@ -18,8 +17,7 @@ To ensure that the Zowe Support Team can effectively troubleshoot Zowe, the Brig
     - Zowe app server 
     - zLUX app server
  - Process list with CPU info
- - /bin/ps-A -opid,jobname,time,args grep $ (zowe_STC-prefix)
- - Certificates diagnostics - in install.log 
+    - /bin/ps-A -opid,jobname,time,args grep $ (zowe_STC-prefix)
 
 ## Contact the Support Team to Troubleshoot Zowe
 
