@@ -219,7 +219,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     ```yaml
     install:
-     rootDir=/tmp/zowe/1.3.0
+     rootDir=/tmp/zowe/1.4.0
      prefix=ZOWE
 
     api-mediation:
@@ -395,7 +395,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     <!-- TODO -->
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the Zowe runtime directory that you specified in the `install:rootDir` in the `zowe-install.yaml` file, and execute the script from the `/install` directory that is created by the `pax` command.  For example:
      ```
-     cd /var/zowe/1.3.0
+     cd /var/zowe/1.4.0
      /zowe/builds/install/zowe-config-stc.sh
      ```
     Alternatively, you can issue the commands manually:
