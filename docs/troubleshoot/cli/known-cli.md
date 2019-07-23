@@ -1,4 +1,4 @@
-# Troubleshooting Zowe CLI
+# Known Zowe CLI issues
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe CLI.
 
@@ -17,7 +17,7 @@ To correct this behavior, verify the following:
 - Node.js and NPM are installed.
 - PATH contains the correct path to the NodeJS folder.
 
-**More Information:** [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
+**More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements.md)
 
 ## `npm install -g `Command Fails Due to an EPERM Error
 
@@ -37,7 +37,7 @@ report success using the following workarounds:
   - Issue the `npm cache clean` command.
 
   - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](../user-guide/cli-installcli.html).
+    see [Install Zowe CLI](../../user-guide/cli-installcli.html).
 
   - `Add the --no-optional` flag to the end of the `npm install` command.
 
