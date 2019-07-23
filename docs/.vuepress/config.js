@@ -189,7 +189,7 @@ const ALL_PAGES = [{
   items: [
     {
       text: 'Zowe CLI command reference',
-      link: '../https://zowe.github.io/docs-site/latest/web_help/index.html'
+      link: '..https://zowe.github.io/docs-site/latest/web_help/index.html'
     },
     {
     text: 'Bill of Materials',
