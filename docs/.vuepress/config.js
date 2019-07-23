@@ -189,20 +189,15 @@ const ALL_PAGES = [{
   items: [
     {
       text: 'Zowe CLI command reference',
-      items: 
-      ['web_help/index.html']
+      link: '#zowe-cli-command-reference-guide'
     },
     {
     text: 'Bill of Materials',
-    items: [
-      'appendix/bill-of-materials.md'
-    ]
+    link: 'appendix/bill-of-materials.md'
   },
   {
     text: 'Third-Party Software Requirements',
-    items: [
-      'appendix/tpsr.md'
-    ]
+    link: 'appendix/tpsr.md'
   }],
 },
 ];
