@@ -19,6 +19,31 @@ Zowe Version 1.4.0 and later releases include the following enhancements, releas
 
 This release of Zowe API ML contains the following improvements:
 
+- JWT token configuration
+  - RS256 is used as a token encryption algorithm
+  - JWT secret string is generated at the time of installation and exported as a ```.pem``` file for use by other services
+  - JWT secret string is stored in a key store in PKCS 11 format under "jwtsecret" name
+
+- SonarQube problems fixed
+  - Various fixes from SonarQube scan
+
+- API Mediation Layer log format aligned with other Zowe services:
+    ```
+    %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\(%logger{15},%file:%line\)){cyan} %msg%n
+    ```
+    
+- Added an NPM command to register certificates on Windows. The following command installs the certificate to trusted root certification authorities:
+    ```
+    npm run register-certificates-win
+    ```
+
+- Cookie persistence changed
+  - Changed the API Mediation Layer cookie from persistent to session. The cookie gets cleared between browser sessions.
+
+- Fixed high CPU usage occurrence replicated in Broadcom ([#282](https://github.com/zowe/api-layer/issues/282))
+  - Changed configuration of LatencyUtils to decrease idle CPU consumption by API ML services
+
+- API Mediation layer now builds using OpenJDK with OpenJ9 JVM
 
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
