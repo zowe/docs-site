@@ -183,13 +183,14 @@ const ALL_PAGES = [{
 },
 {
   text: 'References',
-  baseuri: '/appendix/',
+  baseuri: '/',
   hideInPdf: true,
   canHideFirst: true,
   items: [
     {
       text: 'Zowe CLI command reference',
-      link: '..https://zowe.github.io/docs-site/latest/web_help/index.html'
+      items: 
+      ['web_help/index.html']
     },
     {
     text: 'Bill of Materials',
