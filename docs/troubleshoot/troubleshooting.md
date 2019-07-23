@@ -6,4 +6,4 @@ To isolate and resolve Zowe problems, you can use the troubleshooting and suppor
 - [Troubleshooting API Mediation Layer](troubleshoot-apiml.md)
 - [Troubleshooting Zowe Application Framework](troubleshoot-app-framework.md)
 - [Troubleshooting z/OS Services](troubleshoot-zos-services.md)
-- [Troubleshooting Zowe CLI](troubleshoot-cli.md)
+- [Troubleshooting Zowe CLI](cli/troubleshoot-cli.md)

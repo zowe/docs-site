@@ -4,12 +4,7 @@ Get started with Zowe CLI quickly and easily.
 
 **Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 
-- [Installing](#installing)
-- [Where can I use the CLI?](#where-can-i-use-the-cli)
-- [Issuing your first commands](#issuing-your-first-commands)
-- [Using profiles](#using-profiles)
-- [Writing scripts](#writing-scripts)
-- [Next steps](#next-steps)
+[[toc]]
 
 ## Installing 
 
@@ -34,15 +29,6 @@ zowe plugins install @brightside/cics@lts-incremental
 The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install.](../user-guide/cli-db2plugin.md#installing)
 
 For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
-
-## Where can I use the CLI?
-
-| **Usage Scenario**    | **Example**  |
-|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Interactive use, in a command prompt or bash terminal. | Perform one-off tasks such as submitting a batch job.                                                            |
-| Interactive use, in an IDE terminal                    | Download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
-| Scripting, to simplify repetitive tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
-| Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
 
 ## Issuing your first commands
 

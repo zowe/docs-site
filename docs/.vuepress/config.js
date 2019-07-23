@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.3.0'
+const CURRENT_ZOWE_VERSION = '1.4.0'
 // root base url for all versions
 const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
@@ -147,8 +147,14 @@ const ALL_PAGES = [{
       link: 'troubleshoot/troubleshoot-zos-services.md'
     },
     {
-      text: 'Zowe CLI',
-      link: 'troubleshoot/troubleshoot-cli.md'
+      text: 'Troubleshooting Zowe CLI',
+      items: [
+        'troubleshoot/cli/troubleshoot-cli.md',
+        'troubleshoot/cli/mustgather-cli.md',
+        'troubleshoot/cli/zosmf-cli.md',
+        'troubleshoot/cli/known-cli.md',
+        'troubleshoot/cli/cli-issue.md',
+      ]
     }
     ]
 },
@@ -183,22 +189,22 @@ const ALL_PAGES = [{
   ]
 },
 {
-  text: 'Appendix',
+  text: 'References',
+  baseuri: '/',
   hideInPdf: true,
   canHideFirst: true,
-  baseuri: '/appendix/',
   items: [
     {
+      text: 'Zowe CLI command reference',
+      link: '#zowe-cli-command-reference-guide'
+    },
+    {
     text: 'Bill of Materials',
-    items: [
-      'appendix/bill-of-materials.md'
-    ]
+    link: 'appendix/bill-of-materials.md'
   },
   {
     text: 'Third-Party Software Requirements',
-    items: [
-      'appendix/tpsr.md'
-    ]
+    link: 'appendix/tpsr.md'
   }],
 },
 ];
@@ -320,7 +326,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.3.x',
+  description: 'Version 1.4.x',
   ga: 'UA-123892882-1',
   head: [
     [
@@ -430,11 +436,6 @@ module.exports = {
       ...navbarLinks,
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
-      {
-        text: 'Feedback',
-        canHideFirst: true,
-        link: 'https://forms.gle/Ztu9AjgV6HRr1kEs9'
-      },
       {
         text: 'Zowe.org',
         link: 'https://zowe.org',

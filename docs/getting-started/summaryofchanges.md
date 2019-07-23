@@ -2,7 +2,7 @@
 
 Learn about what is new, changed, removed, and known issues in Zowe. 
 
-Zowe Version 1.3.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.4.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.4.0 (June 2019)](#version-1-4-0-july-2019)
 - [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
@@ -19,13 +19,38 @@ Zowe Version 1.3.0 and later releases include the following enhancements, releas
 
 This release of Zowe API ML contains the following improvements:
 
+- JWT token configuration
+  - RS256 is used as a token encryption algorithm
+  - JWT secret string is generated at the time of installation and exported as a ```.pem``` file for use by other services
+  - JWT secret string is stored in a key store in PKCS 11 format under "jwtsecret" name
+
+- SonarQube problems fixed
+  - Various fixes from SonarQube scan
+
+- API Mediation Layer log format aligned with other Zowe services:
+    ```
+    %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\(%logger{15},%file:%line\)){cyan} %msg%n
+    ```
+    
+- Added an NPM command to register certificates on Windows. The following command installs the certificate to trusted root certification authorities:
+    ```
+    npm run register-certificates-win
+    ```
+
+- Cookie persistence changed
+  - Changed the API Mediation Layer cookie from persistent to session. The cookie gets cleared between browser sessions.
+
+- Fixed high CPU usage occurrence replicated in Broadcom ([#282](https://github.com/zowe/api-layer/issues/282))
+  - Changed configuration of LatencyUtils to decrease idle CPU consumption by API ML services
+
+- API Mediation layer now builds using OpenJDK with OpenJ9 JVM
 
 ### What's new in the Zowe App Server
 Made the following fixes and enhancements:
 
 - Added the ability for the App Server Framework to defer to managers for dataservices that are not written in NodeJS or C. The first implementation is a manager of Java servlet type dataservices, where the App Server manages Tomcat instances when Tomcat is present. ([#158](https://github.com/zowe/zlux/issues/158))
 - Added a tomcat xml configuration file with substitutions for values (ports, keys, certificates) necessary for the App Server to manage one or more instances of Tomcat for hosting servlet dataservices. Also added a new section to the zluxserver.json file to describe dataservice providers such as the aforementioned Tomcat Java Servlet one. (#49)
-- Added Swagger API documentation support. Application developers can include a Swagger 2.0 JSON or YAML file in the app's /doc/swagger directory for each REST data service. Each file must have the same name as the data service. Developers can then reference the files at runtime using a new app route: /ZLUX/plugins/PLUGINID/catalogs/swagger. They can reference individual services at: /ZLUX/plugins/PLUGINID/catalogs/swagger/SERVICENAME. If swagger documents are not present, the server will contextual knowledge to show some default values. ([#159](https://github.com/zowe/zlux/issues/159))
+- Added Swagger API documentation support. Application developers can include a Swagger 2.0 JSON or YAML file in the app's /doc/swagger directory for each REST data service. Each file must have the same name as the data service. Developers can then reference the files at runtime using a new app route: /ZLUX/plugins/PLUGINID/catalogs/swagger. They can reference individual services at: /ZLUX/plugins/PLUGINID/catalogs/swagger/SERVICENAME. If swagger documents are not present, the server will use contextual knowledge to show some default values. ([#159](https://github.com/zowe/zlux/issues/159))
 - The following new REST and cross-memory services have been added ([#32](https://github.com/zowe/zss/pull/32)):
     - Extract RACF user profiles
     - Define/delete/permit general RACF resource profiles (limited to a single class)
