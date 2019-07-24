@@ -40,14 +40,6 @@ If you installed Zowe CLI from the **online registry**, follow these steps:
     zowe plugins install @zowe/db2
     ```
 
-2. After the command execution completes, issue the following command to validate that the installation completed successfully.
-
-    ```
-    zowe plugins validate @zowe/db2
-    ```
-
-    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
-
 3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ### Installing from a local package
@@ -99,14 +91,6 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
     ```
     zowe plugins install zowe-db2.tgz
     ```
-
-4. (Optional) After the command execution completes, issue the following command to validate that the installation completed successfully.
-
-    ```
-    zowe plugins validate @zowe/db2
-    ```
-
-    Successful validation of the IBM Db2 plug-in returns the response: `Successfully validated`.
 
 5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
