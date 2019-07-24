@@ -168,18 +168,6 @@ The query request requires the token in one of the following formats:
   
 The response is a JSON object, which contains information associated with the token.
 
-#### Dummy Authentication Provider
-
-The `Dummy Authentication Provider` implements a simple authentication for development purpose, using dummy credentials (username:  `user`, password `user`). It allows API Gateway to run without authenticating with the z/OSMF service.
-
-To enable it, add the following block in your yaml configuration file for `API Gateway`:
-```yaml
-apiml:
-  security:
-    auth:
-      provider: dummy
-```
-
 #### z/OSMF Authentication Provider 
 
 The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. 
@@ -190,6 +178,18 @@ apiml:
     auth:
       provider: zosmf
       zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+```
+
+#### Dummy Authentication Provider
+
+The `Dummy Authentication Provider` implements a simple authentication for development purpose, using dummy credentials (username:  `user`, password `user`). It allows API Gateway to run without authenticating with the z/OSMF service.
+
+To enable it, add the following block in your yaml configuration file for `API Gateway`:
+```yaml
+apiml:
+  security:
+    auth:
+      provider: dummy
 ```
 
 ### Authorization
