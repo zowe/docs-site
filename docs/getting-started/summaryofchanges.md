@@ -1,10 +1,16 @@
-# Release notes for Zowe Pre-Release 2.0 
+# Release notes - Pre-Release 2.0 
 
-Learn about what is new or changed in the Zowe Pre-Release 2.0 version. You can download the Zowe CLI Pre-Release package [here](https://zowe.org/download/), or follow instructions to install the CLI from an online registry [here](../user-guide/cli-installcli.md).
+Learn about what is new or changed in the Zowe Pre-Release 2.0 version. **Pre-Release** means that the package contains additional features and enhancements that are not included in the current Zowe LTS version.  
 
-**Pre-Release** means that the package contains additional features and enhancements that are not included in the current Zowe LTS version. 
+## How can I obtain the Pre-Release version? 
+
+You can [download the Zowe CLI Pre-Release package](https://zowe.org/download/), or follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
+
+WHAT DO WE NEED TO SAY ABOUT MIGRATING FROM OTHER VERSION?
 
 ## What's new in Zowe CLI and plug-ins
+
+You can [download the Zowe CLI Pre-Release package](https://zowe.org/download/), or follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
 
 The following new commands and enhancements are added:
 
@@ -30,6 +36,6 @@ Zowe CLI is associated with version tags in a Node Package Manager (npm) registr
     
     The Pre-Release (or forward-development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, y
 
-You can learn more about the CLI versioning scheme [here](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md). 
-Learn more about 
+Learn more about the Zowe CLI versioning scheme [here.](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md)
 
+Learn more about symantic versioning [here.](https://semver.org/)
