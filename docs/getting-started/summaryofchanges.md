@@ -1,16 +1,8 @@
 # Release notes - Pre-Release 2.0 
 
-Learn about what is new or changed in the Zowe Pre-Release 2.0 version. **Pre-Release** means that the package contains additional features and enhancements that are not included in the current Zowe LTS version.  
-
-## How can I obtain the Pre-Release version? 
-
-You can [download the Zowe CLI Pre-Release package](https://zowe.org/download/), or follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
-
-WHAT DO WE NEED TO SAY ABOUT MIGRATING FROM OTHER VERSION?
+Learn about what is new or changed in the Zowe Pre-Release 2.0 version. **Pre-Release** means that the package contains additional features and enhancements that are not yet included in the current Zowe LTS version.  
 
 ## What's new in Zowe CLI and plug-ins
-
-You can [download the Zowe CLI Pre-Release package](https://zowe.org/download/), or follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
 
 The following new commands and enhancements are added:
 
@@ -23,6 +15,14 @@ The following bugs are fixed:
 <!-- ### What's changed -->
 <!-- TODO. Fix the link once the doc is ready -->
 <!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
+
+## Install the Pre-Release version 
+
+Do one of the following: 
+- [Download the Zowe CLI Pre-Release package](https://zowe.org/download/) from Zowe.org.
+- Follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
+
+WHAT DO WE NEED TO SAY ABOUT MIGRATING FROM OTHER VERSION?
 
 ## Understanding CLI versions
 
