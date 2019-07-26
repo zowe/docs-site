@@ -6,11 +6,19 @@ Use commands in the plugins command group to install and manage plug-ins for Zow
 
 You can install the following plug-ins:
   - **Zowe CLI Plug-in for IBM CICS**
-
     Use `@zowe/cics` in your command syntax to install, update, and validate the plug-in. 
+
   - **Zowe CLI Plug-in for IBM Db2 Database**  
   
     Use `@zowe/db2` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+
+  - **Zowe CLI Plug-in for IBM IMS**  
+
+    Use `@zowe/db2` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+  
+  - **Zowe CLI Plug-in for IBM MQ**  
+
+    Use `@zowe/mq` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
 
 ## Setting the registry
 
@@ -47,7 +55,7 @@ zowe plugins install [plugin...] [--registry <registry>]
     specify a specific version of a plug-in to install. For example, `zowe plugins install pluginName@^1.0.0`.
 
     **Tip:** You can install multiple plug-ins with one command. For
-    example, issue `zowe plugins install plugin1 plugin2 plugin3`
+    example, issue `zowe plugins install plugin1 plugin2 plugin3` 
 
   - **`[--registry <registry>]`**  
     (Optional) Specifies a registry URL from which to install a plug-in

@@ -22,10 +22,10 @@ npm install @zowe/cli -g
 
 ### Installing CLI plug-ins 
 
-The command installs the IBM CICS and IBM IMS plug-ins:
+The command installs the IBM CICS, IBM IMS, and IBM MQ plug-ins:
 
 ```
-zowe plugins install @zowe/cics@latest @zowe/ims@latest
+zowe plugins install @zowe/cics @zowe/ims @zowe/mq
 ```
 
 The IBM Db2 plug-in requires [additional configuration to install.](../user-guide/cli-db2plugin.md#installing)
