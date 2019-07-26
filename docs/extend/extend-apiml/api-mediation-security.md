@@ -177,7 +177,8 @@ APIML contains two providers in order to handle authentication for the API Gatew
 
 #### z/OSMF Authentication Provider 
 
-The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. 
+The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
+
 To enable it, add the following block in your yaml configuration file for `API Gateway`:
 ```yaml
 apiml:
@@ -258,7 +259,7 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    These users need to provide valid user ID and password to the z/OS system where Zowe is installed
+    The username and password is not required anymore. Instead, the access is protected by a certificate. However, it will be changed to security client soon.
 
 - **Services that need to register to the Discovery Service**
 
