@@ -159,14 +159,14 @@ The `/login` endpoint allows to authenticate mainframe user credentials and retu
   * Basic access authentication
   * JSON with user credentials 
 
-The response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`.
+When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`, otherwise it returns a 401 status code.
 
 The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
 The query request requires the token in one of the following formats: 
   * Cookie named `apimlAuthenticationToken`
   * Bearer authentication  
   
-The response to the request is a JSON object, which contains information associated with the token.
+When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token, otherwise it returns a 401 status code. 
 
 #### z/OSMF Authentication Provider 
 
