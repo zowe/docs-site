@@ -642,21 +642,20 @@ in following shell scripts:
 
 ## Security Service Client library
 
-The `security-service-client-spring` library provides authentication and protection against security providers.
+The `security-service-client-spring` library provides authentication and protection by using security providers.
 The library contains providers, filters and handlers as Spring components. This library can be used by any Spring client that needs authentication provider against z/OSMF or dummy authentication. 
 
  Authentication request is processed by these providers:
   
-   - `GatewayLoginProvider.java` class in `com.ca.apiml.security.login` package that verifies credentials against z/OSMF service
-   - `GatewayTokenProvider.java` class in `com.ca.apiml.security.token` package that authenticates the JWT token provided by z/OSMF
+   - `com.ca.apiml.security.login.GatewayLoginProvider.java` that verifies credentials against z/OSMF service or the dummy provider
+   - `com.ca.apiml.security.token.GatewayTokenProvider.java` that authenticates the JWT token provided by z/OSMF
 
 The library also contains three Spring Security filters:
 
-1. The `BasicContentFilter.java` class in `com.ca.apiml.security.content` package that authenticates the credentials from the basic authorization header. This filter can be used in a `SecurityConfiguration` in order to secure content with a basic authentication
-2. The `CookieContentFilter.java` class in `com.ca.apiml.security.content` package that authenticates the JWT token stored in the cookie by extracting the username and the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in a cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider` which calls the `/query`
+1. The `BasicContentFilter.java` class in `com.ca.apiml.security.content` package that authenticates the credentials from the basic authorization header. This filter can be used in a `SecurityConfiguration` in order to secure content with a basic authentication. This filter can be used in a `SecurityConfiguration` class (a sample [here](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) in order to process the `/login` requests
+2. The `CookieContentFilter.java` class in `com.ca.apiml.security.content` package that authenticates the JWT token stored in the cookie by extracting the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in a cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider` which calls the `/query` endpoint
 3. The `LoginFilter.java` class in `com.ca.apiml.security.login` package that processes the authentication requests with the username and password in a JSON format. This filter can be used in a `SecurityConfiguration` class in order to process the `/login` requests
 
-For more information about the Spring Security Architecture and about how filters work, check [here]([https://spring.io/guides/topicals/spring-security-architecture).
 
 There are also several handlers such as:
 1. The `SuccessfulLoginHandler` to handle the successful login
@@ -665,5 +664,7 @@ There are also several handlers such as:
 4. The `FailedAuthenticationHandler` to handle authentication error
 5. The `ResourceAccessExceptionHandler` to handle other possible scenarios, such as `GatewayNotFoundException` or `ServiceNotAccessibleException`
 
-
+Additional information about the Spring Security Architecture and about how filters work can be found in the following links: 
+   - https://spring.io/guides/topicals/spring-security-architecture
+   - https://www.baeldung.com/security-spring
 
