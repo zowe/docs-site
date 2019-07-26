@@ -47,7 +47,7 @@ You can download the Version 1.x Zowe documentation on this website in PDF forma
 
 ### Zowe CLI command reference guide
 
-Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI. It is available for download in two formats: a PDF document, and a ZIP file containing HTML help viewable in a web browser.
+Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@latest` version of the CLI. It is available for download in two formats: a PDF document, and a ZIP file containing HTML help viewable in a web browser.
 
 <p class="action">
 <a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse Online</span></a>
