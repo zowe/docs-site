@@ -76,7 +76,7 @@ zowe plugins install [plugin...] [--registry <registry>]
     plug-in that is named "my-plugin" from a specified registry:
 
     ```
-    zowe plugins install @zowe/my-plugin@lts-incremental
+    zowe plugins install @zowe/my-plugin@latest
     ```
 
   - The following example illustrates the syntax to use to install a
