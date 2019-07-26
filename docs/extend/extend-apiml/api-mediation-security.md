@@ -7,7 +7,7 @@
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
     - [Authentication endpoints](#authentication-endpoints)
-    - [z/OSMF Authentication Provider](#z/osmf-authentication-provider)
+    - [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
     - [Dummy Authentication Provider](#dummy-authentication-provider)
   - [Authorization](#authorization)
   - [JWT Token](#jwt-token)
