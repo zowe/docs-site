@@ -7,8 +7,9 @@
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
     - [Authentication endpoints](#authentication-endpoints)
-    - [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
-    - [Dummy Authentication Provider](#dummy-authentication-provider)
+    - [Authentication providers](#authentication-providers)
+      - [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
+      - [Dummy Authentication Provider](#dummy-authentication-provider)
   - [Authorization](#authorization)
   - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
@@ -171,7 +172,7 @@ The query request requires the token in one of the following formats:
   
 When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token, otherwise it returns a 401 status code. 
 
-## Authentication Providers
+### Authentication providers
 
 APIML contains two providers in order to handle authentication for the API Gateway: the `z/OSMF Authentication Provider` and the `Dummy Authentication Provider`.
 
@@ -651,12 +652,12 @@ in following shell scripts:
 ## Security Service Client library
 
 The `security-service-client-spring` library enables authentication and protection using security providers.
-The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate using z/OSMF or dummy authentication.
+The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
 
  The following providers process authentication requests:
   
-   - `com.ca.apiml.security.login.GatewayLoginProvider` class that verifies credentials against z/OSMF service or the dummy provider
-   - `com.ca.apiml.security.token.GatewayTokenProvider` class that authenticates the JWT token provided by z/OSMF
+   - `com.ca.apiml.security.login.GatewayLoginProvider` class that verifies mainframe credentials 
+   - `com.ca.apiml.security.token.GatewayTokenProvider` class that authenticates the JWT token 
 
 The library also contains the following Spring Security filters:
 
