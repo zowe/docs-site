@@ -5,6 +5,7 @@ Use commands in the plugins command group to install and manage plug-ins for Zow
 **Important!** Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
 You can install the following plug-ins:
+
   - **Zowe CLI Plug-in for IBM CICS**
     Use `@zowe/cics` in your command syntax to install, update, and validate the plug-in. 
 
@@ -14,11 +15,11 @@ You can install the following plug-ins:
 
   - **Zowe CLI Plug-in for IBM IMS**  
 
-    Use `@zowe/db2` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+    Use `@zowe/ims` in your command syntax to install, update, and validate the IBM IMS plug-in.
   
   - **Zowe CLI Plug-in for IBM MQ**  
 
-    Use `@zowe/mq` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+    Use `@zowe/mq` in your command syntax to install, update, and validate the IBM MQ plug-in.
 
 ## Setting the registry
 

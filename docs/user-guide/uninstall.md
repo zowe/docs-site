@@ -98,18 +98,18 @@ The following steps describe how to list the profiles that you created, delete t
     - If you installed Zowe CLI from the package, issue the following command
 
         ```
-        npm uninstall --global @brightside/core
+        npm uninstall -g @zowe/cli
         ```
 
     - If you installed Zowe CLI from the online registry, issue the following command:
     
         ```
-        npm uninstall --global brightside
+        npm uninstall -g cli
         ```
 
         The uninstall process removes all Zowe CLI installation directories and files from your computer.
 
-6. Delete the `C:\Users\<user_name>\.brightside` directory on your computer. The directory contains the Zowe CLI log files and other miscellaneous files that were generated when you used the product.
+6. Delete the `C:\Users\<user_name>\.zowe` directory on your computer. The directory contains the Zowe CLI log files and other miscellaneous files that were generated when you used the product.
 
     **Tip:** Deleting the directory does not harm your computer.
 

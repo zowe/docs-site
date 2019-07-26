@@ -71,7 +71,7 @@ If you have restricted internet access at your site, use the following method to
     ```
 
     ```
-    zowe plugins install zowe-db2.tgz 
+    zowe plugins install zowe-mq.tgz 
     ```
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing). For more information about available plug-ins, how to install multiple plug-ins, or update to a specific version of a plug-in see [Extending Zowe CLI](cli-extending.md).

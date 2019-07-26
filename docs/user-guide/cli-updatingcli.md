@@ -27,20 +27,20 @@ zowe plugins list
 
 You can update Zowe CLI to the latest version from the online registry on Windows, Mac, and Linux computers.
 
-**Note:** The following steps assume that you set the `npm` registries for the `@brightside` scopes as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
+**Note:** The following steps assume that you set the `npm` registry as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
 
 **Follow these steps:**
 
-1. Issue the following command to update Zowe CLI to the most recent `@lts-incremental` version:
+1. Issue the following command to update Zowe CLI to the most recent `@latest` version:
 
    ```
-   npm install -g @brightside/core@lts-incremental
+   npm install -g @zowe/cli
    ```
 
 2. Reinstall the plug-ins and update existing plug-ins using the following command:
 
    ```
-   zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
+   zowe plugins install @zowe/cics @zowe/db2 @zowe/ims @zowe/mq
    ```
 
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.
@@ -50,7 +50,7 @@ You can update Zowe CLI to the latest version from the online registry on Window
 Optionally, you can update Zowe CLI (or revert) to a known version. The following example illustrates the syntax to update Zowe CLI to version 3.3.1:
 
 ```
-npm install -g @brightside/core@3.3.1
+npm install -g @zowe/cli@3.3.1
 ```
 
 ## Update Zowe CLI from a local package
