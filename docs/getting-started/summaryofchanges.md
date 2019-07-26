@@ -90,7 +90,7 @@ The following new commands and enhancements are added:
 - The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. [(#32)](https://github.com/zowe/vscode-extension-for-zowe/issues/32)
 - You can now archive z/OS workflows using a wildcard. [(#435)](https://github.com/zowe/zowe-cli/pull/435)
 - The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. [(#482)](https://github.com/zowe/zowe-cli/pull/482)
-- The CLI now exploits all available options for the z/OS data set and file REST interface provided in z/OSMF v2.3. [(#491)](
+- The CLI now exploits all "z/OS data set and file REST interface" options that are provided in z/OSMF v2.3. [(#491)](
 https://github.com/zowe/zowe-cli/pull/491)
 
 The following bugs are fixed:
