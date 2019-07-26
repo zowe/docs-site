@@ -7,7 +7,7 @@ This tutorial demonstrates how to extend the plug-in that is bundled with this s
 2. Creating a new command definition
 3. Creating a new handler
 
-We'll do this by using `@brightside/imperative` infrastructure to surface REST API data on our Zowe CLI plug-in.
+We'll do this by using `@zowe/imperative` infrastructure to surface REST API data on our Zowe CLI plug-in.
 
 Specifically, we're going to show data from [this URI](https://jsonplaceholder.typicode.com/todos) by [Typicode](https://jsonplaceholder.typicode.com/).
 Typicode serves sample REST JSON data for testing purposes.
@@ -41,7 +41,7 @@ Adjacent to the existing file named `zowe-cli-sample-plugin/src/api/Files.ts`, c
 
 ```typescript
 import { ITodo } from "./doc/ITodo";
-import { RestClient, AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
+import { RestClient, AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 
 export class Typicode {
 
@@ -63,7 +63,7 @@ export class Typicode {
 ```
 
 The `Typicode` class provides two programmatic APIs, `getTodos` and `getTodo`, to get an array of `ITodo` objects or a specific
-`ITodo` respectively. The Node.js APIs use `@brightside/imperative` infrastructure to provide logging, parameter validation,
+`ITodo` respectively. The Node.js APIs use `@zowe/imperative` infrastructure to provide logging, parameter validation,
 and to call a REST API. See the [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) for more information.
 
 ### Exporting interface and programmatic API for other Node.js applications

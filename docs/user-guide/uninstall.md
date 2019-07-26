@@ -112,9 +112,3 @@ The following steps describe how to list the profiles that you created, delete t
 6. Delete the `C:\Users\<user_name>\.zowe` directory on your computer. The directory contains the Zowe CLI log files and other miscellaneous files that were generated when you used the product.
 
     **Tip:** Deleting the directory does not harm your computer.
-
-7.  If you installed Zowe CLI from the online registry, issue the following command to clear your scoped npm registry:
-
-    ```
-    npm config set @brightside:registry
-    ```
