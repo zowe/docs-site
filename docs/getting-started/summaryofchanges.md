@@ -21,20 +21,24 @@ The following bugs are fixed:
 
 ## Installing Pre-Release CLI
 
-If you **do not** currently have Zowe CLI installed, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+If you **do not** have Zowe CLI installed on your computer, see [Installing Zowe CLI](../user-guide/cli-installcli.md) to install this version of CLI and plug-ins. 
 
 If you currently have the `@lts-incremetal` version installed, follow these steps to convert to `@latest`:
 
-1. Follow the procedure to [Uninstall the CLI](../user-guide/). 
-2. Use one of the following methods to install the `@latest` version.
+1. Use one of the following methods to install the `@latest` version of CLI and plug-ins. 
 
     - [Download the Zowe CLI Pre-Release package](https://zowe.org/download/) from Zowe.org.
 
     - Follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md). 
 
-3. Issue the `zowe --help` command to initiate the CLI. This creates the `.zowe` home directory on your computer. You can then recreate CLI profiles manually, or migrate them if you saved profiles to your computer. 
+2. Review the Breaking Changes in the following section, then take corrective action if the changes apply to you. This proceess might involve editing existing scripts or recreating your profiles. 
 
-3. Review the Breaking Changes in the following section, then take corrective action if the changes apply to you. 
+<!-- 
+1. Uninstall the CLI. 
+2. Install latest
+3. Issue the `zowe --help` command to initiate the CLI. This creates the `.zowe` home directory on your computer. You can then recreate CLI profiles manually, or migrate them if you saved profiles to your computer.  
+4. Address breaking changes 
+--> 
 
 ### Breaking changes
 
@@ -44,11 +48,11 @@ If you currently have the `@lts-incremetal` version installed, follow these step
 
 Zowe CLI is associated with version tags in a Node Package Manager (npm) registry. The downloadable packages that you install are associated with a specific tag. You can also use tags in command syntax to install or update the product to a specific version. 
 
-- `npm install -g @zowe/cli@lts-incremental` 
+- `npm install -g @brightside/core@lts-incremental` 
         
     Installs the LTS version of the product. Provides new features, enhancements, and bug fixes, but does **not** introduce breaking changes. 
 
-- `@latest` 
+- `npm install -g @zowe/cli@latest` 
     
     The Pre-Release (or forward-development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, you might have to take corrective action when breaking changes are introduced. 
 
