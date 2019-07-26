@@ -171,6 +171,10 @@ The query request requires the token in one of the following formats:
   
 When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token, otherwise it returns a 401 status code. 
 
+## Authentication Providers
+
+APIML contains two providers in order to handle authentication for the API Gateway: the `z/OSMF Authentication Provider` and the `Dummy Authentication Provider`.
+
 #### z/OSMF Authentication Provider 
 
 The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. 
