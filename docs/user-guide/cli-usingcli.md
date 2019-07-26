@@ -32,7 +32,7 @@ zowe zos-files create --help
 
 ## Zowe CLI command reference guide
 
-View the <a href="../web_help/index.html" target="_blank">CLI Command Reference Guide</a> for a detailed documentation on commands, actions, and options in Zowe CLI. It is also available for download as a [PDF document](../CLIReference_Zowe.pdf), or a [ZIP file](../zowe_web_help.zip) containing HTML help viewable in a web browser. The reference document is based on the `@lts-incremental` version of the CLI.
+View the <a href="../web_help/index.html" target="_blank">CLI Command Reference Guide</a> for a detailed documentation on commands, actions, and options in Zowe CLI. It is also available for download as a [PDF document](../CLIReference_Zowe.pdf), or a [ZIP file](../zowe_web_help.zip) containing HTML help viewable in a web browser. The reference document is based on the `@latest` version of the CLI.
 
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
