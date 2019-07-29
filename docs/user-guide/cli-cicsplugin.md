@@ -16,7 +16,11 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfor
 
 ## Commands 
 
-<!-- TODO - add link to web help @latest-->
+For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
+
+- <a href="../web_help/index.html" target="_blank">Browse Online</a>
+- <a href="../zowe_web_help.zip">Download (ZIP)</a>
+- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
 
 ## Software requirements
 
@@ -73,6 +77,3 @@ zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <passw
 ```
 
 **Note:** For more information, issue the command `zowe profiles create cis --help`
-
-
-## Commands
