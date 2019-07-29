@@ -652,30 +652,30 @@ in following shell scripts:
 ## Security Service Client library
 
 The `security-service-client-spring` library enables authentication and protection using security providers.
-The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
+The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate the mainframe user credentials.
 
 The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService` which provides facility for performing login and validating the jwt token. It allows to:
 
   - Login to the API Gateway with username and password and retrieve the valid JWT token
   - Verify the JWT token validity and return the JWT token data
   
- The following providers process authentication requests:
+ The following providers process the authentication requests:
   
-   - `com.ca.apiml.security.login.GatewayLoginProvider` class that verifies mainframe credentials 
-   - `com.ca.apiml.security.token.GatewayTokenProvider` class that authenticates the JWT token 
+   - `com.ca.apiml.security.login.GatewayLoginProvider` - Verifies the mainframe credentials 
+   - `com.ca.apiml.security.token.GatewayTokenProvider` - Authenticates the JWT token 
 
 The library also contains the following Spring Security filters:
 
-- The `com.ca.apiml.security.content.BasicContentFilter` to authenticate the credentials from the basic authorization header. The `com.ca.apiml.security.content.BasicContentFilter` can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- The `com.ca.apiml.security.content.CookieContentFilter` to authenticate the JWT token that is stored in the cookie by extracting the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
-- The `com.ca.apiml.security.login.LoginFilter` to process authentication requests with a username and password in a JSON format and it can be used in a `SecurityConfiguration`. The credentials are passed to the `GatewayLoginProvider` to process the `/login` request.
+- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The `com.ca.apiml.security.content.BasicContentFilter` can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie by extracting the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+- `com.ca.apiml.security.login.LoginFilter` - Processes the authentication requests with the username and password in the JSON format and it can be used in a `SecurityConfiguration`. The credentials are passed to the `GatewayLoginProvider` to process the `/login` request.
 
 
 There are also several handlers such as:
-1. The `SuccessfulLoginHandler` to handle the successful login
-2. The `UnauthorizedHandler` to handle unauthorized access
-3. The `BasicAuthUnauthorizedHandler` to handle unauthorized access
-4. The `FailedAuthenticationHandler` to handle authentication error
-5. The `ResourceAccessExceptionHandler` to handle other possible scenarios, such as `GatewayNotFoundException` or `ServiceNotAccessibleException`
+- `SuccessfulLoginHandler` - Handles the successful login
+- `UnauthorizedHandler` Handles unauthorized access
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access
+- `FailedAuthenticationHandler` - Handles authentication error
+- `ResourceAccessExceptionHandler` - Handles other possible scenarios, such as `GatewayNotFoundException` or `ServiceNotAccessibleException`
 
 For more information, see [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture), and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
