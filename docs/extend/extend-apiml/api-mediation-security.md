@@ -654,6 +654,11 @@ in following shell scripts:
 The `security-service-client-spring` library enables authentication and protection using security providers.
 The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
 
+The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService` which provides facility for performing login and validating the jwt token. It allows to:
+
+  - Login to the API Gateway with username and password and retrieve the valid JWT token
+  - Verify the JWT token validity and return the JWT token data
+  
  The following providers process authentication requests:
   
    - `com.ca.apiml.security.login.GatewayLoginProvider` class that verifies mainframe credentials 
