@@ -14,7 +14,6 @@ As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database t
   - Export tables to a local file on your computer in SQL format.
   - Call a stored procedure and pass parameters.
 
-
 ## Commands 
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
@@ -22,7 +21,6 @@ For detailed documentation on commands, actions, and options available in this p
 - <a href="../web_help/index.html" target="_blank">Browse Online</a>
 - <a href="../zowe_web_help.zip">Download (ZIP)</a>
 - <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
-
 
 ## Software requirements
 
@@ -45,7 +43,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
     zowe plugins install @brightside/db2@lts-incremental
     ```
 
-3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
+2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ### Installing from a local package
 

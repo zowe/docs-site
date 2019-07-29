@@ -18,6 +18,14 @@ As an application developer, you can use Zowe CLI Plug-in for IBM CICS to perfor
   - Deploy build artifacts to CICS regions.
   - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
 
+## Commands 
+
+For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
+
+- <a href="../web_help/index.html" target="_blank">Browse Online</a>
+- <a href="../zowe_web_help.zip">Download (ZIP)</a>
+- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
+
 ## Software requirements
 
 Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
@@ -84,111 +92,3 @@ zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <passw
 ```
 
 **Note:** For more information, issue the command `zowe profiles create cis --help`
-
-
-## Commands
-
-The Zowe CLI Plug-in for IBM CICS adds the following commands to Zowe CLI:
-
-  - [Defining resources to CICS](#defining-resources-to-cics)
-  - [Deleting CICS resources](#deleting-cics-resources)
-  - [Discarding CICS resources](#discarding-cics-resources)
-  - [Getting CICS resources](#getting-cics-resources)
-  - [Installing resources to CICS](#installing-resources-to-cics)
-  - [Refreshing CICS programs](#refreshing-cics-programs)
-
-### Defining resources to CICS
-
-The define command lets you define programs and transactions to CICS so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
-
-```
-zowe cics define -h
-```
-
-**Example:**
-
-Define a program named `myProgram` to the region named `myRegion` in the CICS system definition (CSD) group `myGroup:`
-
-```
-zowe cics define program myProgram myGroup --region-name myRegion
-```
-
-### Deleting CICS resources
-
-The delete command lets you delete previously defined CICS programs or transactions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
-
-```
-zowe cics delete -h
-```
-
-**Example:**
-
-Delete a program named PGM123 from the CICS region named MYREGION:
-
-```
-zowe cics delete program PGM123 --region-name MYREGION
-```
-
-### Discarding CICS resources
-
-The discard command lets you remove existing CICS program or transaction definitions to help you deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
-
-```
-zowe cics discard -h
-```
-
-**Example:**
-
-Discard a program named PGM123 from the CICS region named MYREGION:
-
-```
-zowe cics discard program PGM123 --region-name MYREGION
-```
-
-### Getting CICS resources
-
-The get command lets you get a list of programs and transactions that are installed in your CICS region so that you can determine if they were installed successfully and defined properly. To display a list of objects and options, issue the following command:
-
-```
-zowe cics get -h
-```
-
-**Example:**
-
-Return a list of program resources from a CICS region named MYREGION:
-
-```
-zowe cics get resource CICSProgram --region-name MYREGION
-```
-
-### Installing resources to CICS
-
-The install command lets you install resources, such as programs and transactions, to a CICS region so that you can deploy and test the changes to your CICS application. To display a list of possible objects and options, issue the following command:
-
-``` 
-zowe cics install -h
-```
-
-**Example:**
-
-Install a transaction named TRN1 to the region named MYREGION in the CSD group named MYGRP:
-
-```
-zowe cics install transaction TRN1 MYGRP --region-name MYREGION
-```
-
-### Refreshing CICS programs
-
-The refresh command lets you refresh changes to a CICS program so that you can deploy and test the changes to your CICS application. To display a list of objects and options, issue the following command:
-
-```
-zowe cics refresh -h
-```
-
-**Example:**
-
-Refresh a program named PGM123 from the region named MYREGION:
-
-```
-zowe cics refresh PGM123 --region-name MYREGION
-```
