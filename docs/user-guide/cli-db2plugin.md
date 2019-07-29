@@ -142,6 +142,5 @@ zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <us
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
-
-## Commands  
+ 
 
