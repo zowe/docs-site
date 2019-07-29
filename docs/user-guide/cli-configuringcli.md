@@ -3,11 +3,7 @@ This section explains how to define and verify your connection to the mainframe 
 
 **Note** The configuration for the CLI is stored on your computer in a directory such as C:\Users\user01\.zowe. The configuration includes log files, your profile information, and CLI plug-ins that are installed. When you troubleshoot an issue with the CLI, the log files in the imperative and zowe folders contain valuable information.
 
-- [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
-- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf) 
-- [Setting CLI log levels](#setting-zowe-cli-log-levels)
-- [Setting the CLI home directory](#setting-the-zowe-cli-home-directory)
-
+[[toc]]
 
 ## Defining Zowe CLI connection details
 
@@ -259,8 +255,8 @@ You can set the log level to adjust the level of detail that is written to log f
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
-| `ZOWE\_APP\_LOG\_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
-| `ZOWE\_IMPERATIVE\_LOG\_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
 ## Setting the Zowe CLI home directory
 
@@ -268,4 +264,4 @@ You can set the location on your computer where Zowe CLI creates the *.zowe* dir
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
-| `ZOWE\_CLI\_HOME`  | Zowe CLI home directory location | Any valid path on your computer | Your computer default home directory |
+| `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | C:\Users\\<username\>\\.zowe |

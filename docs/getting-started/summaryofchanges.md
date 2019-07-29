@@ -1,45 +1,47 @@
-# Release notes - Pre-Release 2.0 
+# Release notes - Zowe Active Development Version
 
-Learn about what is new or changed in the **Zowe Pre-Release 2.0 version**. Pre-Release means that the package contains additional features and enhancements that are not yet included in the current Zowe LTS version. 
+Learn about what is new or changed in the **Zowe Active Development Version**. Zowe Active Development contains additional features and enhancements that are not yet included in the current Zowe LTS version. 
 
-**Note** At this time, Pre-Release only applies to the Zowe CLI component.
+**Note:** At this time, Active Development Version is equivalent to the `@latest` version of the CLI component.
 
-## @latest highlights
+## Active Development Version highlights
 
-The following new plug-ins are available and compatible with `@latest` core CLI: 
+**Features and enhancements:**
+
+- The CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+
+**New compatible plug-ins:**
 
 - The [Zowe CLI Plug-in for IBM IMS](../user-guide/cli-imsplugin.md) is now available. 
 - The [Zowe CLI Plug-in for IBM MQ](https://github.com/zowe/zowe-cli-mq-plugin#zowe-mq-plug-in) is now available.
 
-The following new commands and enhancements are added: 
+## Installing Active Development CLI
 
-- Pretend that this is some feature [(#391)](https://github.com/zowe/zowe-cli/pull/391)
--`zos-workflows` group 
-
-- 
-
-## Installing Pre-Release CLI
+**First-time install:**
 
 If you **do not** have Zowe CLI installed on your computer, see [Installing Zowe CLI](../user-guide/cli-installcli.md) to install this version of CLI and plug-ins. 
 
-If you currently have the `@lts-incremetal` version installed, follow these steps to convert to `@latest`:
+**Updating from @lts-incremental:**
 
-1. Optional copy profiles into folder. 
+If you currently have the `@lts-incremetal` CLI version installed, follow these steps to convert to `@latest`:
+
+1. (Optional) If you want to preserve your existing profiles, save the contents of the `profiles` folder in your Zowe home directory to another location on your computer. For more information about the home directory, see [Configuring CLI](../user-guide/cli-configuringcli.md#setting-the-zowe-cli-home-directory).
+
 2. Use one of the following methods to reinstall the `@latest` version of CLI and plug-ins. 
 
     - [Download the Zowe CLI Pre-Release package](https://zowe.org/download/) from Zowe.org.
 
     - Follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md). 
 
-    Note: ignore warnings
+3. Review the [Breaking Changes](#breaking-changes) in the following section, then take corrective action if the changes apply to you. This ensures that your user profiles and dependent scripts continue to function.
 
-3. Review the Breaking Changes in the following section, then take corrective action if the changes apply to you. This proceess might involve editing existing scripts or recreating your profiles. 
+You installed the `@latest` Zowe CLI! Remember to adjust your profiles and scripts accordingly if you switch back to `@lts-incremental`.
 
-@latest is installed!
+## Breaking changes
 
-### Breaking changes
 
-This stuff done changed
+take corrective action if the changes apply to you. This ensures that your user profiles and dependent scripts continue to function.
+A breaking change can cause problems with existing functionality when you upgrade to the @next (the latest Community Edition) version of Zowe CLI. For example, scripts that you wrote previously might fail, user profiles might become invalid, and the product might not integrate with plug-ins properly. We recommend that you take corrective action for the following issues when you upgrade:
 
 - https://github.com/zowe/zowe-cli/pull/331 
 
