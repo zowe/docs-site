@@ -190,7 +190,7 @@ apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF 
 
 The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` allows API Gateway to run without authenticating with the z/OSMF service.
 
-To enable it, use the following properties for `API Gateway`:
+To enable it, use the following property for `API Gateway`:
 ```
 apiml.security.auth.provider: dummy
 ```
