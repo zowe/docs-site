@@ -253,7 +253,7 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    The username and password is not required anymore. Instead, the access is protected by a certificate. However, it will be changed to security client soon.
+    The access is protected by a certificate.
 
 - **Services that need to register to the Discovery Service**
 
@@ -647,10 +647,10 @@ in following shell scripts:
 The `security-service-client-spring` library enables authentication and protection using security providers.
 The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate the mainframe user credentials.
 
-The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService` which provides facility for performing login and validating the jwt token. It allows to:
+The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService` which provides facility for performing login and validating the jwt token. It contains two methods:
 
-  - Login to the API Gateway with username and password and retrieve the valid JWT token
-  - Verify the JWT token validity and return the JWT token data
+  - The `login` method, that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
+  - The `query` method, that allows to verify the JWT token validity and return the JWT token data
   
  The following providers process the authentication requests:
   
@@ -659,8 +659,8 @@ The core class of the library is `com.ca.apiml.security.service.GatewaySecurityS
 
 The library also contains the following Spring Security filters:
 
-- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The `com.ca.apiml.security.content.BasicContentFilter` can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie by extracting the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. This filter can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
 
 There are also several handlers such as:
 - `SuccessfulLoginHandler` - Handles the successful login
