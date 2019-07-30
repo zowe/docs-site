@@ -662,8 +662,6 @@ The library also contains the following Spring Security filters:
 
 - `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The `com.ca.apiml.security.content.BasicContentFilter` can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
 - `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie by extracting the JWT token from it. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
-- `com.ca.apiml.security.login.LoginFilter` - Processes the authentication requests with the username and password in the JSON format and it can be used in a `SecurityConfiguration`. The credentials are passed to the `GatewayLoginProvider` to process the `/login` request.
-
 
 There are also several handlers such as:
 - `SuccessfulLoginHandler` - Handles the successful login
