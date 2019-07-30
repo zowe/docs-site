@@ -172,33 +172,27 @@ The query request requires the token in one of the following formats:
   
 When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token, otherwise it returns a 401 status code. 
 
-### Authentication providers
+#### Authentication providers
 
 APIML contains two providers in order to handle authentication for the API Gateway: the `z/OSMF Authentication Provider` and the `Dummy Authentication Provider`.
 
-#### z/OSMF Authentication Provider 
+##### z/OSMF Authentication Provider 
 
 The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
 
-To enable it, add the following block in your yaml configuration file for `API Gateway`:
-```yaml
-apiml:
-  security:
-    auth:
-      provider: zosmf
-      zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+To enable it, use the following properties for `API Gateway`:
+```
+apiml.security.auth.provider: zosmf
+apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
 ```
 
-#### Dummy Authentication Provider
+##### Dummy Authentication Provider
 
 The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` allows API Gateway to run without authenticating with the z/OSMF service.
 
-To enable it, add the following block in your yaml configuration file for `API Gateway`:
-```yaml
-apiml:
-  security:
-    auth:
-      provider: dummy
+To enable it, use the following properties for `API Gateway`:
+```
+apiml.security.auth.provider: dummy
 ```
 
 ### Authorization
@@ -674,8 +668,9 @@ The library also contains the following Spring Security filters:
 There are also several handlers such as:
 - `SuccessfulLoginHandler` - Handles the successful login
 - `UnauthorizedHandler` Handles unauthorized access
-- `BasicAuthUnauthorizedHandler` - Handles unauthorized access
-- `FailedAuthenticationHandler` - Handles authentication error
-- `ResourceAccessExceptionHandler` - Handles other possible scenarios, such as `GatewayNotFoundException` or `ServiceNotAccessibleException`
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access for basic authentication
+- `FailedAuthenticationHandler` - Handles authentication failure
+- `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
+- `AuthExceptionHandler` - Handles exceptions thrown during authentication process
 
 For more information, see [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture), and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
