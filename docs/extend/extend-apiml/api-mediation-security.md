@@ -135,6 +135,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
     - API Gateway handles authentication. 
     - There are two authentication endpoints that allow to authenticate the resource by providers
+    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token.
 
 - **API Catalog**
 
@@ -151,8 +152,6 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
     - Authentication is service-dependent
     - Recommended to use the Authentication and Authorization Service for authentication
-
-Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token.
 
 
 #### Authentication endpoints
