@@ -162,24 +162,28 @@ The `/login` endpoint allows to authenticate mainframe user credentials and retu
   * Basic access authentication
   * JSON with user credentials 
 
-When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`, otherwise it returns a 401 status code.
+1. When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. 
+2.  When authentication failed, a user gets 401 status code.
 
 The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
 The query request requires the token in one of the following formats: 
   * Cookie named `apimlAuthenticationToken`
   * Bearer authentication  
   
-When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token, otherwise it returns a 401 status code. 
+1. When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token
+2. When authentication failed, a user gets 401 status code. 
 
 #### Authentication providers
 
-APIML contains two providers in order to handle authentication for the API Gateway: the `z/OSMF Authentication Provider` and the `Dummy Authentication Provider`.
+API ML contains the following providers to handle authentication for the API Gateway:
+* `z/OSMF Authentication Provider`
+* `Dummy Authentication Provider`
 
 ##### z/OSMF Authentication Provider 
 
 The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
 
-To enable it, use the following properties for `API Gateway`:
+Use the following properties of API Gateway to enable the `z/OSMF Authentication Provider`:
 ```
 apiml.security.auth.provider: zosmf
 apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
@@ -189,7 +193,7 @@ apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF 
 
 The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` allows API Gateway to run without authenticating with the z/OSMF service.
 
-To enable it, use the following property for `API Gateway`:
+Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
 ```
 apiml.security.auth.provider: dummy
 ```
@@ -647,10 +651,10 @@ in following shell scripts:
 The `security-service-client-spring` library enables authentication and protection using security providers.
 The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate the mainframe user credentials.
 
-The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService` which provides facility for performing login and validating the jwt token. It contains two methods:
+The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService`, which provides facility to perform login and to validate the jwt token. The `com.ca.apiml.security.service.GatewaySecurityService` has the following methods :
 
-  - The `login` method, that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
-  - The `query` method, that allows to verify the JWT token validity and return the JWT token data
+  - The `login` method that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
+  - The `query` method that allows to verify the JWT token validity and return the JWT token data
   
  The following providers process the authentication requests:
   
