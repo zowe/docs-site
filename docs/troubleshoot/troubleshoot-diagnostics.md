@@ -1,4 +1,4 @@
-# Troubleshooting Zowe through the Support Team
+# Troubleshooting Zowe through Zowe Community
 
 To help Zowe Community effectively troubleshoot Zowe, we introduce a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `ZOWEDIR/scripts` folder with the rest of Zowe scripts. The script captures the following data:
 
@@ -17,7 +17,7 @@ To help Zowe Community effectively troubleshoot Zowe, we introduce a script that
     - Zowe app server 
     - zLUX app server
  - Process list with CPU info
-    - /bin/ps-A -opid,jobname,time,args grep $ (zowe_STC-prefix)
+    - /bin/ps -A -o pid,jobname,time,args grep $ (zowe_STC-prefix)
 
 ## Contact Zowe Community to Troubleshoot Zowe
 
@@ -36,4 +36,4 @@ Contact Zowe Community to address and troubleshoot a Zowe issue.
    ```
 4. Send the .pax.Z output file to Community member for further troubleshooting.
 
-The Community members start to troubleshoot your issue.
+Community members start to troubleshoot your issue.
