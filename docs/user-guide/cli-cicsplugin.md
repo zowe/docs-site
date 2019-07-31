@@ -49,7 +49,7 @@ To install Zowe CLI from an online registry, complete the following steps:
 2. Open a command line window and issue the following command:
 
     ``` 
-    zowe plugins install @zowe/cics
+    zowe plugins install @zowe/cics-for-zowe-cli
     ```
 
 The plug-in is installed to Zowe CLI. 
@@ -63,7 +63,7 @@ If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` pack
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-cli-cics.tgz
+    zowe plugins install cics-for-zowe-cli.tgz
     ```
 
 The plug-in is installed to Zowe CLI. 

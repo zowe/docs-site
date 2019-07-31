@@ -1,9 +1,8 @@
 # Zowe CLI Plug-in for IBM Db2 Database
 The Zowe CLI plug-in for IBM® Db2® Database lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
-Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
-
 [[toc]]
+
 ## Use cases
 
 As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
@@ -39,10 +38,10 @@ If you installed Zowe CLI from the **online registry**, follow these steps:
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @zowe/db2
+    zowe plugins install @zowe/db2-for-zowe-cli
     ```
 
-3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
+2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 The plug-in is installed to Zowe CLI. 
 
@@ -93,7 +92,7 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 2. Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install zowe-db2.tgz
+    zowe plugins install db2-for-zowe-cli.tgz
     ```
 
 5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
