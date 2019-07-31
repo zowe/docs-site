@@ -6,6 +6,10 @@
   - [Zowe API ML services](#zowe-api-ml-services)
   - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Authentication for API ML services](#authentication-for-api-ml-services)
+    - [Authentication endpoints](#authentication-endpoints)
+    - [Authentication providers](#authentication-providers)
+      - [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
+      - [Dummy Authentication Provider](#dummy-authentication-provider)
   - [Authorization](#authorization)
   - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
@@ -26,8 +30,9 @@
     - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
     - [Trust a z/OSMF certificate](#trust-a-z-osmf-certificate)
-    - [Disable certificate validation](#disable-certificate-validation)
-
+    - [Disable certificate validation](#disable-certificate-validation)  
+- [Security Service Client library](#security-service-client-library)
+  
 ## How API ML transport security works
 
 Security within the API Mediaiton Layer (API ML) is performed on several levels. This article describes how API ML uses Transport Layer Security (TLS). As a system administrator or API developer, use this guide to familiarize yourself with the following security concepts:  
@@ -43,7 +48,7 @@ Authentication is the method of how an entity, whether it be a user (API Client)
 API ML uses the following authentication methods:
 
 - **User ID and password** 
-    - The user ID and password are used to retreive authentication tokens. 
+    - The user ID and password are used to retrieve authentication tokens. 
     - Requests originate from a user.
     - The user ID and password are validated by a z/OS security manager and
     a token is issued that is then used to access the API service.
@@ -128,8 +133,9 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
 - **API Gateway**
 
-    - API Gateway currently does not handle authentication. 
-    - Requests are sent to the API services that need to handle authentication
+    - API Gateway handles authentication. 
+    - There are two authentication endpoints that allow to authenticate the resource by providers
+    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token.
 
 - **API Catalog**
 
@@ -146,6 +152,51 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
     - Authentication is service-dependent
     - Recommended to use the Authentication and Authorization Service for authentication
+
+
+#### Authentication endpoints
+
+The API Gateway contains two REST API authentication endpoints: `auth/login` and `auth/query`.
+
+The `/login` endpoint allows to authenticate mainframe user credentials and returns an authentication token. The login request requires the user credentials in one of the following formats:
+  * Basic access authentication
+  * JSON with user credentials 
+
+1. When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. 
+2.  When authentication failed, a user gets 401 status code.
+
+The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
+The query request requires the token in one of the following formats: 
+  * Cookie named `apimlAuthenticationToken`
+  * Bearer authentication  
+  
+1. When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token
+2. When authentication failed, a user gets 401 status code. 
+
+#### Authentication providers
+
+API ML contains the following providers to handle authentication for the API Gateway:
+* `z/OSMF Authentication Provider`
+* `Dummy Authentication Provider`
+
+##### z/OSMF Authentication Provider 
+
+The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
+
+Use the following properties of API Gateway to enable the `z/OSMF Authentication Provider`:
+```
+apiml.security.auth.provider: zosmf
+apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+```
+
+##### Dummy Authentication Provider
+
+The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` allows API Gateway to run without authenticating with the z/OSMF service.
+
+Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
+```
+apiml.security.auth.provider: dummy
+```
 
 ### Authorization
 
@@ -206,7 +257,7 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    These users need to provide valid user ID and password to the z/OS system where Zowe is installed
+    The access is protected by a certificate.
 
 - **Services that need to register to the Discovery Service**
 
@@ -430,7 +481,7 @@ The `local-ca-filename` is the path to the keystore that is used to sign your ne
 
 #### Add a service with an existing certificate to API ML on z/OS
 
-The API Mediation Layer requires validatation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validatation of the full certificate chain. Use one of the following methods:
+The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain. Use one of the following methods:
 
 - Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
 
@@ -594,3 +645,33 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-catalog.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
+
+## Security Service Client library
+
+The `security-service-client-spring` library enables authentication and protection using security providers.
+The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
+
+The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService`, which provides facility to perform login and to validate the jwt token. The `com.ca.apiml.security.service.GatewaySecurityService` has the following methods :
+
+  - The `login` method that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
+  - The `query` method that allows to verify the JWT token validity and return the JWT token data
+  
+ The following providers process the authentication requests:
+  
+   - `com.ca.apiml.security.login.GatewayLoginProvider` - Verifies the mainframe credentials 
+   - `com.ca.apiml.security.token.GatewayTokenProvider` - Authenticates the JWT token 
+
+The library also contains the following Spring Security filters:
+
+- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. This filter can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+
+There are also several handlers such as:
+- `SuccessfulLoginHandler` - Handles the successful login
+- `UnauthorizedHandler` Handles unauthorized access
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in case of basic authentication
+- `FailedAuthenticationHandler` - Handles authentication failure
+- `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
+- `AuthExceptionHandler` - Handles exceptions thrown during authentication process
+
+For more information, see [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture), and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
