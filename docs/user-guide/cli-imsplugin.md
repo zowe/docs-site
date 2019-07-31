@@ -13,19 +13,15 @@ As an application developer or DevOps administrator, you can use Zowe CLI Plug-i
 
 ## Commands 
 
-<!-- TODO - add link to web help @latest-->
+For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
+
+- <a href="../web_help/index.html" target="_blank">Browse Online</a>
+- <a href="../zowe_web_help.zip">Download (ZIP)</a>
+- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
 
 ## Software requirements
 
-Before you install the plug-in, meet the following prerequisites:
-
-* [Install Zowe CLI](cli-installcli.md) on your computer.
-
-* Ensure that [IBM® IMS™ v14.1.0](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_14.1.0/com.ibm.ims14.doc/ims_product_landing_v14.html) or later is installed and running in your mainframe environment.
-
-* Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.html). IMS Connect is required so that IBM IMS Operations APIs can function. 
-
-* Configure [IBM IMS Operations APIs](https://github.com/zowe/ims-operations-api) to enable communication between the CLI and the IMS instance.
+Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing
 
