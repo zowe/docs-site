@@ -76,4 +76,4 @@ You can set up a CICS profile to avoid typing your connection details on every c
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
 ```
 
-**Note:** For more information, issue the command `zowe profiles create cis --help`
+**Note:** For more information, issue the command `zowe profiles create cics --help`

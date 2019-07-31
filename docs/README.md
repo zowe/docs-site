@@ -36,11 +36,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.3.0.
+You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.4.0.
 
 | Version | Download
 | --- | ---
-| V1.3.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.4.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.3.0 | [PDF](./Zowe_Documentation_1.3.0.pdf)
 | V1.2.0 | [PDF](./Zowe_Documentation_1.2.0.pdf)
 | V1.1.0 | [PDF](./Zowe_Documentation_1.1.0.pdf)
 | V1.0.0 | [PDF](./Zowe_Documentation_1.0.0.pdf)
@@ -60,3 +61,13 @@ Detailed documentation on commands, actions, and options in Zowe CLI. The refere
 A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
 
 [Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
+
+## Feedback
+
+Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
+
+[Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues)
+
+We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
+
+[Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update)
