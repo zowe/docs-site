@@ -649,7 +649,7 @@ in following shell scripts:
 ## Security Service Client library
 
 The `security-service-client-spring` library enables authentication and protection using security providers.
-The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate the mainframe user credentials.
+The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
 
 The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService`, which provides facility to perform login and to validate the jwt token. The `com.ca.apiml.security.service.GatewaySecurityService` has the following methods :
 
@@ -669,7 +669,7 @@ The library also contains the following Spring Security filters:
 There are also several handlers such as:
 - `SuccessfulLoginHandler` - Handles the successful login
 - `UnauthorizedHandler` Handles unauthorized access
-- `BasicAuthUnauthorizedHandler` - Handles unauthorized access for basic authentication
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in case of basic authentication
 - `FailedAuthenticationHandler` - Handles authentication failure
 - `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
 - `AuthExceptionHandler` - Handles exceptions thrown during authentication process
