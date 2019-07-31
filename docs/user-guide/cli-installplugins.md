@@ -34,7 +34,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
       ```
       zowe plugins install <my-plugin>
       ```
-    **Note:** Replace <my-plugin> with the installation command syntax in the following table:
+    **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
 
     | Plug-in | Installation Command Syntax |
     |---------|-----------------------------|
@@ -44,7 +44,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | Zowe CLI Plug-in for IBM MQ| `@zowe/mq-for-zowe-cli` |
     |    |    |
 
-5.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the <my-plugin> names with one space.
+5.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
     zowe plugins install @zowe/<my-plugin1> @zowe/<my-plugin2> @zowe/<my-plugin3> ...
     ```
@@ -86,9 +86,9 @@ Application developers and systems programmers can install CA Brightside plug-in
 5.  Issue the following command to install the plug-in:
 
     ```
-    zowe plugins install <my-plug-in>
+    zowe plugins install <my-plugin>
     ```
-    Replace <my-plug-in> with the tgz file name listed in the following table:
+    Replace `<my-plugin>` with the .tgz file name listed in the following table:
 
     | Plug-in | `.tgz` File Name |
     |---------|-----------------|
