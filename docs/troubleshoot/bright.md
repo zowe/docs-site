@@ -16,7 +16,7 @@ To help the Support Team effectively troubleshoot Zowe, Broadcom introduces a sc
  - Additional logs
     - Zowe app server 
     - zLUX app server
- - Process list with CPU info that cointains the following data points: 
+ - Process list with CPU info that contains the following data points: 
    - Running command and all arguments of the command
    - Real time that has elapsed since the process started
    - Job name
