@@ -22,15 +22,11 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 **Follow these steps:**
 1. Ensure that you meet the software requirements for a plug-in before you install the plug-in to Zowe CLI. For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
-2.  Issue the following command to clear any previous registry that you might have set for the @zowe scope and return to default:
-      ```
-      npm config set @zowe:registry 
-      ```
-3.  Set the NPM registry target to the public npm registry by issuing the following command:
+2.  Set the NPM registry target to the public npm registry by issuing the following command:
       ```
       npm config set @zowe:registry
       ```
-4.  Issue the following command to install a plug-in:
+3.  Issue the following command to install a plug-in:
       ```
       zowe plugins install <my-plugin>
       ```
@@ -44,13 +40,13 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | Zowe CLI Plug-in for IBM MQ| `@zowe/mq-for-zowe-cli` |
     |    |    |
 
-5.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
+4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
     zowe plugins install @zowe/<my-plugin1> @zowe/<my-plugin2> @zowe/<my-plugin3> ...
     ```
     **Note:** The Zowe CLI Plug-in for IBM Db2 Database requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [Zowe CLI Plug-in for IBM Db2 Database](.cli-db2plugin.md).
 
-6.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
+5.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
 
 ## Installing plug-ins from a local package
 
