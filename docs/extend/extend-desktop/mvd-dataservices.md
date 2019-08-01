@@ -55,7 +55,7 @@ The name of the file that is the entry point for construction of the dataservice
 ## Defining Java dataservices
 In addition to other types of dataservice, you can use Java (also called java-war) dataservices in your applications. Java dataservices are powered by Java Servlets.
 
-Java dataservices require more effort to configure than other dataservices. To use a Java dataservice you must meet the prerequisites, define the dataservice in your plug-in definition, and define the Java Application Server library to the Zowe Application Server.
+To use a Java dataservice you must meet the prerequisites, define the dataservice in your plug-in definition, and define the Java Application Server library to the Zowe Application Server.
 
 ### Prerequisites
 
