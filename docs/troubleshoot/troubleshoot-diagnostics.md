@@ -23,9 +23,7 @@ To help Zowe Community effectively troubleshoot Zowe, we introduce a script that
    - Process ID as a decimal number
    - Parent process ID as a decimal number
    - Processor time that the process used
-   - effective user ID of the process, as a user name if possible and as a decimal user ID otherwise
-   <!-- TODO. fix the last sentence. Unclear -->
-   - 
+   - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible)
 
 ## Contact Zowe Community to Troubleshoot Zowe
 
