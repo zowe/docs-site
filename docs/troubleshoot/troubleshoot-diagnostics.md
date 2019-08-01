@@ -16,8 +16,16 @@ To help Zowe Community effectively troubleshoot Zowe, we introduce a script that
  - Additional logs
     - Zowe app server 
     - zLUX app server
- - Process list with CPU info
-    - /bin/ps -A -o pid,jobname,time,args grep $ (zowe_STC-prefix)
+ - Process list with CPU info with the following data points: 
+   - Running command and all arguments of the command
+   - Real time that has elapsed since the process started
+   - Job name
+   - Process ID as a decimal number
+   - Parent process ID as a decimal number
+   - Processor time that the process used
+   - effective user ID of the process, as a user name if possible and as a decimal user ID otherwise
+   <!-- TODO. fix the last sentence. Unclear -->
+   - 
 
 ## Contact Zowe Community to Troubleshoot Zowe
 
