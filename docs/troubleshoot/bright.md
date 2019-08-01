@@ -16,9 +16,17 @@ To help the Support Team effectively troubleshoot Zowe, Broadcom introduces a sc
  - Additional logs
     - Zowe app server 
     - zLUX app server
- - Process list with CPU info
-    - /bin/ps -A -o pid,jobname,time,args grep $ (zowe_STC-prefix)
-    - extra CPU data (will be added)
+ - Process list with CPU info that cointains the following data points: 
+   - Running command and all arguments of the command
+   - Real time that has elapsed since the process started
+   - Job name
+   - Process ID as a decimal number
+   - Parent process ID as a decimal number
+   - Processor time that the process used
+   - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible)
+   - Process state
+   - Waiting time in an abbreviated format
+   - Current syscall
 
 ## Contact the Support Team to Troubleshoot Zowe
 
