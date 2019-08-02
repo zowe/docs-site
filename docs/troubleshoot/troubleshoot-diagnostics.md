@@ -1,6 +1,6 @@
-# Troubleshooting Zowe through Zowe Community
+# Troubleshooting Zowe through Zowe Open Community
 
-To help Zowe Community effectively troubleshoot Zowe, we introduce a script that captures the diagnostics data that is required for successful troubleshooting. By running the UNIX script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `ZOWEDIR/scripts` folder with the rest of Zowe scripts. The script captures the following data:
+To help Zowe Open Community effectively troubleshoot Zowe, we introduce a shell script that captures diagnostics data that is required for successful troubleshooting. By running the shell script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `ZOWEDIR/scripts` folder with the rest of Zowe scripts. The script captures the following data:
 
  - Started task output
     - Zowe server started task
@@ -25,13 +25,13 @@ To help Zowe Community effectively troubleshoot Zowe, we introduce a script that
    - Processor time that the process used
    - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible)
 
-## Contact Zowe Community to Troubleshoot Zowe
+## Contact Zowe Open Community to Troubleshoot Zowe
 
-Contact Zowe Community to address and troubleshoot a Zowe issue.
+Contact Zowe Open Community to address and troubleshoot a Zowe issue.
 
 **Follow these steps:**
 
-1. Contact Zowe Community in [Slack](https://app.slack.com/client/T1BAJVCTY/C1BAK03LN) to address your issues.
+1. Contact Open Zowe Community in [Slack](https://app.slack.com/client/T1BAJVCTY/C1BAK03LN) to address your issues.
 
 2. Get instructions from the Community on whether you need to run the  script that collects diagnostics data. If you do not need to run the script, the Community will proceed with troubleshooting.
 
@@ -40,6 +40,6 @@ Contact Zowe Community to address and troubleshoot a Zowe issue.
    cd $ZOWE_ROOT_DIR/scripts
    ./zowe-support.sh
    ```
-4. Send the .pax.Z output file to Community member for further troubleshooting.
+4. Send the .pax.Z output file to Community members for further troubleshooting.
 
 Community members start to troubleshoot your issue.
