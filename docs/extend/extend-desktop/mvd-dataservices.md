@@ -1,6 +1,6 @@
 # Dataservices
 
-Dataservices are dynamic backend components in Zowe plug-in applications. You can add them to your applications to make the application do more than receive static content from the proxy server. Each dataservice defines a URL space that the server can use to run extensible code from the application. Dataservices are mainly intended to create REST APIs and Websocket channels.
+Dataservices are dynamic backend components of Zowe plug-in applications. You can add them to your applications to make the application do more than receive static content from the proxy server. Each dataservice defines a URL space that the server can use to run extensible code from the application. Dataservices are mainly intended to create REST APIs and WebSocket channels.
 
 ## Defining dataservices
 
@@ -42,7 +42,7 @@ To define your dataservice, create a set of keys and values for your dataservice
 
 **fileName**
 
-The name of the file that is the entry point for construction of the dataservice, relative to the application's `/lib` directory. For example, the `sample-app` value is a file name (`"helloWorld.js"`) without a path. So its typescript code is transpiled to javascript files that are placed into the `/lib` directory.
+The name of the file that is the entry point for construction of the dataservice, relative to the application's `/lib` directory. For example, for the `sample-app` the `fileName` value is `"helloWorld.js"` - without a path. So its typescript code is transpiled to JavaScript files that are placed directly into the `/lib` directory.
 
 **routerFactory (Optional)**
 
@@ -50,7 +50,7 @@ The name of the file that is the entry point for construction of the dataservice
 
 **dependenciesIncluded**
 
- Must be `true` for anything in the `pluginDefinition.json` file. (Only specify false when you are adding dataservices to the server dynamically.)
+ Specify `true` for anything in the `pluginDefinition.json` file. Only specify `false` when you are adding dataservices to the server dynamically.
 
 ## Defining Java dataservices
 In addition to other types of dataservice, you can use Java (also called java-war) dataservices in your applications. Java dataservices are powered by Java Servlets.
@@ -177,14 +177,13 @@ To avoid this issue, we recommend that you maintain relatively short endpoint UR
 
 ## Dataservice APIs
 
-The API for a dataservice can be categorized as Router-based or ZSS-based, and Websocket or not.
-
-**Note:** Each Router dataservice can safely import express, express-ws, and bluebird without requiring the modules to be present, because these modules exist in the proxy server's directory and the *NODE_MODULES* environment variable can include this directory.
+Dataservice APIs can be categorized as Router-based or ZSS-based, and either WebSocket or not. 
 
 ### Router-based dataservices
 
+Each Router dataservice can safely import Express, express-ws, and bluebird without requiring the modules to be present, because these modules exist in the proxy server's directory and the *NODE_MODULES* environment variable can include this directory.
 
-#### HTTP/REST router dataservices
+#### HTTP/REST Router dataservices
 
 Router-based dataservices must return a (bluebird) Promise that resolves to an ExpressJS router upon success. For more information, see the ExpressJS guide on use of Router middleware: [Using Router Middleware](http://expressjs.com/en/guide/using-middleware.html#middleware.router).
 
@@ -194,13 +193,13 @@ The Promise for the Router can be within a Factory export function, as mentioned
 
 An example is available in `sample-app/nodeServer/ts/helloWorld.ts`
 
-#### Websocket router dataservices
+#### WebSocket Router dataservices
 
-ExpressJS routers are fairly flexible, so the contract to create the Router for Websockets is not significantly different.
+ExpressJS routers are fairly flexible, so the contract to create the Router for WebSockets is not significantly different.
 
-Here, the express-ws package is used, which adds websockets through the ws package to ExpressJS. The two changes between a websocket-based router and a normal router are that the method is 'ws', as in `router.ws(<url>,<callback>)`, and  the callback provides the websocket on which you must define event listeners.
+Here, the express-ws package is used, which adds WebSockets through the ws package to ExpressJS. The two changes between a WebSocket-based router and a normal router are that the method is 'ws', as in `router.ws(<url>,<callback>)`, and  the callback provides the WebSocket on which you must define event listeners.
 
-See the ws and express-ws topics on [www.npmjs.com](https://www.npmjs.com) for more information about how they work, as the API for websocket router dataservices is primarily provided in these packages.
+See the ws and express-ws topics on [www.npmjs.com](https://www.npmjs.com) for more information about how they work, as the API for WebSocket router dataservices is primarily provided in these packages.
 
 An example is available in `zlux-server-framework/plugins/terminal-proxy/lib/terminalProxy.js`
 
@@ -239,3 +238,27 @@ An object that contains more context from the plug-in scope, including:
     - **app**: Information about the product, which includes the *productCode* (for example: `ZLUX`).
 
     - **user**: Configuration information of the server, such as the port on which it is listening.
+
+## Documenting dataservices
+It is recommended that you document your RESTful application dataservices in OpenAPI (Swagger) specification documents. The Zowe Application Server hosts Swagger files for users to view at runtime.
+
+To document a dataservice, take the following steps:
+
+1. Create a `.yaml` or `.json` file that describes the dataservice in valid [Swagger 2.0](https://swagger.io/specification/v2/) format. Zowe validates the file at runtime.
+
+2. Name the file with the same name as the dataservice. Optionally, you can include the dataservice version number in the format: `<name>_<number>`. For example, a Swagger file for a dataservice named `user` must be named either `users.yaml` or `users_1.1.0.yaml`.
+
+3. Place the Swagger file in the `/doc/swagger` directory below your application plug-in directory, for example:
+
+   `/zlux-server-framework/plugins/<servicename>/doc/swagger/<servicename_1.1.0>.yaml`
+
+
+
+At runtime, the Zowe Application Server does the following:
+
+- Dynamically substitutes known values in the files, such as the hostname and whether the endpoint is accessible via HTTP versus HTTPS.
+- Builds documentation for each dataservice and for each application plug-in, in the following locations:
+  - Dataservice documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger/servicename` 
+  - Application plug-in documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger`
+
+- In application plug-in documentation, displays only stubs for undocumented dataservices, stating that the dataservice exists but showing no details. Undocumented dataservices include non-REST dataservices such as WebSocket services.
