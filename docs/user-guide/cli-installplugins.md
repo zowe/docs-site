@@ -133,6 +133,49 @@ zowe plugins validate [plugin]
     ```
     zowe plugins validate
     ```
+## Update Plug-ins
+
+THIS - TOPIC - IS - UNDER - CONSTRUCTION
+
+Issue the `update` command to install the latest version or a specific version of a plug-in that you installed previously. The `update` command has the following syntax:
+
+```
+zowe plugins update [plugin...] [--registry <registry>]
+```
+
+
+## Uninstall Plug-ins
+
+Issue the uninstall command to uninstall plug-ins from Zowe CLI. After the uninstall process completes successfully, the product no longer contains the plug-in configuration.
+
+The uninstall command contains the following syntax:
+```
+zowe plugins uninstall [plugin]
+```
+- `[plugin]`
+
+    Specifies the name of the plug-in that you want to uninstall.
+
+The following table describes the uninstallation command synstax for each plug-in:
+
+ | Plug-in | Uinstallation Command Syntax |
+ |---------|-----------------------------|
+ | Zowe CLI Plug-in for IBM CICS | `@zowe/cics-for-zowe-cli` |
+ | Zowe CLI Plug-in for IBM Db2 Database| `@zowe/db2-for-zowe-cli` |
+ | Zowe CLI Plug-in for IBM IMS| `@zowe/ims-for-zowe-cli`|
+ | Zowe CLI Plug-in for IBM MQ| `@zowe/mq-for-zowe-cli` |
+ |    |    |
+
+**Example:**
+
+The following example illustrates the command to uinstall the Zowe Plug-in for CICS:
+```
+zowe plugins uninstall @zowe/cics-for-zowe-cli
+```
+
+
+
+
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++
