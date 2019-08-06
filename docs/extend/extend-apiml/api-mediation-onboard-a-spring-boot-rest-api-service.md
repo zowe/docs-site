@@ -133,7 +133,6 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      ```  
   You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
 
-
 ## Add API ML onboarding configuration
 
 As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
