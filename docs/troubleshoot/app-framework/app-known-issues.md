@@ -1,5 +1,6 @@
 # Known Zowe Application Framework issues
 
+`Tip:` Check [logs](app-mustgather.md) first
 
 ## Unable to log in to the Zowe Desktop
 
@@ -64,3 +65,58 @@ server startup problem ret=1115
 This message means that some other process is already listening on port 7542, either at address 127.0.0.1 (localhost) or at 0.0.0.0 (all addresses). This prevents the ZSS server from starting.
 
 One possibility is that a previously running ZSS server did not shut down correctly, and either the the operating system has not released the socket after the ZSS server shut down, or the ZSS server is still running.
+
+
+## Added new plugin, but could not locate plugin on zowe desktop
+
+**Symptom:**  
+Added new zowe application plugin to web desktop, but plugin do not appear on zowe desktop
+
+**Basic Troubleshooting:**   
+Lets say plugin identifier of your app in `org.zowe.sampleapp`, search for its identifier string in [node server logs](app-mustgather.md)
+
+If plugin loaded successfully, you will find the following statement in your log
+```
+[2019-08-06 13:54:21.341 _zsf.bootstrap INFO] - Plugin org.zowe.sampleapp at path=zlux\org.zowe.sampleapp loaded.
+```
+If error, you can find error message here:
+```
+[2019-08-06 13:54:21.208 _zsf.bootstrap WARNING] - Error: org.zowe.sampleapp 
+```
+All successfully installed plugin can be found using following url:    
+`https://my.mainframe.com:8544/plugins?type=application`
+
+If plugin identifier string is not found in node server logs, please check if you have *plugin locator* defined and present in directory `/zlux-app-server/deploy/instance/ZLUX/plugins/`. Plugin locator is a json file usually defined as same name as plugin identifier eg in this case it would be `org.zowe.sampleapp.json`
+
+```
+ # navigate to zlux app server instance
+ cd <zlux_root_folder>/zlux-app-server
+
+ #navigate to all the included plugin
+ cd deploy/instance/ZLUX/plugins
+
+ # try find sample app plugin locator file
+ cat org.zowe.sampleapp.json
+```
+Make sure path defined with `pluginLocation` attribute in plugin locator json is correct and if relative it should be relative to zlux-app-server/bin.
+
+Read more about it [here](https://zowe.github.io/docs-site/latest/extend/extend-desktop/zlux-workshop-user-browser.html#adding-your-app-to-the-desktop)
+
+## Error: You must specify MVD_DESKTOP_DIR in your environment
+
+**Symptom:** 
+
+Plugin build in your local environment using `npm run start` or `npm run build` is failed with error message about missing environment variable MVD_DESKTOP_DIR. 
+
+**Solution:**   
+This message means you have to specify MVD_DESKTOP_DIR environment variable with path of zowe virtual desktop directory. Run the following commands in your windows console or linux bash to define one.
+
+Windows
+```
+export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+```
+
+Mac Os/Linux
+```
+set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+```

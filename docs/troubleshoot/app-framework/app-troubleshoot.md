@@ -11,9 +11,9 @@ When no solution to your problem is available in this section, collect as much o
 
  - z/OS release level
  - Zowe version and release level
- - Log output from the Zowe Application Server
  - Zowe Application Configuration
  - Zowe Application Server Ports 
+ - Log output from the Zowe Application Server
  - Error message codes
  - JavaScript console output (Web Developer toolkit accessible by pressing F12)
  - Screen captures (if applicable)

@@ -2,7 +2,7 @@
 
 When necessary, you can raise GitHub issues against the Zowe zlux core repository [here](https://github.com/zowe/zlux/issues). It is suggested that you use either the bug or enhancement template.
 
-If you have issue regarding any particular application like [Code Editor](https://github.com/zowe/zlux-editor/issues), [JES Explorer](https://github.com/zowe/explorer-jes/issues), raise an issue under its own app project.
+If you have an issue regarding any particular application like [Code Editor](https://github.com/zowe/zlux-editor/issues), [JES Explorer](https://github.com/zowe/explorer-jes/issues), raise an issue under specific application project.
 
 ## Raising a bug report
 
