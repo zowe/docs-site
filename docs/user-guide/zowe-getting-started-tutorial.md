@@ -93,13 +93,13 @@ Use the Job Entry Subsystem (JES) Explorer to query JES jobs with filters and vi
 
 1. From the job filter results, click the job named **SDSF**. The data sets for this job are listed.
     
-   <img src="../images/common/scenario1-job-listed.png" alt="Job filters in JES" width="230">
+   ![Job filters in JES](../images/common/scenario1-job-listed.png)
 
 1. Click **JESJCL** to open the JESJCL data set. The contents of this data set are displayed. You can also select other data sets to view their contents.
    
    **Tip:** You can hover over the text in purple color to display a hover help window.
 
-   <img src="../images/common/2-3.png" alt="Hover help" width="530">
+   ![Hover help](../images/common/2-3.png)
 
 
 You used the JES Explorer to query the JES jobs with filters and viewed the related steps, files, and status.
@@ -177,7 +177,7 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 1. Scroll down to find the MVS Explorer icon and pin this application to the desktop for later use.
 1. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
 
-   <img src="../images/common/zowe-mvs-filter.png" alt="The filter in MVS Explorer" width="450">
+   <img src="../images/common/zowe-mvs-filter.png" alt="The filter in MVS Explorer" width="400">
 
 1. Enter `USER.Z23B.PARMLIB` in the **Filter** field to locate this data set and then click to expand it. Ensure that there is no extra space before the data set member name that you enter.
 
@@ -187,12 +187,11 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
    
 1. Enter **ZTRIAL** as the data set member name and click **OK** to create the data set member.
 
-   <img src="../images/common/scenario1-enter-dataset-name.png" alt="Enter data set member name" width="480">
-
+   <img src="../images/common/scenario1-enter-dataset-name.png" alt="Enter data set member name" width="400">
 
 1. Click the data set member you just created and edit it by adding a new sentence, for example, `First change to Zowe zTrial`.
 
-   <img src="../images/common/zowe-mvs-dataset-edit.png" alt="Edit data set" width="600">
+   ![Edit data set](../images/common/zowe-mvs-dataset-edit.png)
 
 1. Click **SAVE** to save your edits.
 
@@ -269,7 +268,7 @@ Use the MVS Explorer to view the data set changes in the previous step.
 
 1. Locate the data set member **USER.Z23B.PARMLIB** > **ZTRIAL** and click the refresh icon. You will see the changes you just made by using Zowe CLI.
 
-   <img src="../images/common/scenario1-cli-change-success.png" alt="Changes made in Zowe CLI takes effect" width="600">
+   ![Changes made in Zowe CLI takes effect](../images/common/scenario1-cli-change-success.png)
 
 Congratulations! You have explored several applications on the Zowe Desktop and learned how to work with them.
 
