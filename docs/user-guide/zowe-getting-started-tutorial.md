@@ -4,8 +4,7 @@
 
 ## Learning objectives
 
-This tutorial walks you through the Zowe interfaces including the Zowe Desktop and the Zowe CLI,
-with several simple tasks to help you get familiar with Zowe. 
+This tutorial walks you through the Zowe interfaces including the Zowe Desktop and the Zowe CLI, with several simple tasks to help you get familiar with Zowe. 
 
 - If you are new to Zowe, start with this tutorial to explore the base Zowe features and functions.
 - If you are already familiar with Zowe interfaces and capabilities, you can go directly to the **Extending** section which guides you to extend Zowe by creating your own APIs or applications.
@@ -24,7 +23,7 @@ As an introductory scenario, no previous knowledge of Zowe is needed.
 
 ## Estimated time
 
-This tutorial guides you through the steps in roughly 20 minutes. 
+This tutorial guides you through the steps in roughly 20 minutes. If you explore other concepts related to this tutorial, it can take longer to complete.
 
 ## Prerequisites and assumptions - before you begin
 
@@ -41,7 +40,7 @@ For information about how to install Zowe, see [Installing Zowe](https://zowe.gi
      - Username: `ibmuser`
      - Password: `sys1`
 
-- It is assumed that you perform the tasks in a Windows environment and that you have VS Code installed.
+- It is assumed that you perform the tasks in a Windows environment and that you have VS Code installed. 
 
 ## Logging in to the Zowe Desktop
 
@@ -52,6 +51,7 @@ The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org
 - *myHost* is the host on which you are running the Zowe Application Server.
 - *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`. For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
+**Procedure**
 
 1. In the address field, enter the URL to access the Zowe Desktop. In this tutorial, the following URL is used as an example.
    
@@ -73,7 +73,8 @@ Next, you will use the JES Explorer application to query the jobs with filters a
 ## Querying JES jobs and viewing related status in JES Explorer
 
 Use the Job Entry Subsystem (JES) Explorer to query JES jobs with filters and view the related status.
-Procedure
+
+**Procedure**
 
 1. Click the Start menu in the Zowe Desktop.
    
@@ -83,7 +84,7 @@ Procedure
 
 1. Click the **Job Filters** column to expand the filter criteria. You can filter jobs on various criteria by Owner, Prefix, Job ID, and Status. By default, the jobs are filtered by Owner. In this tutorial, the example owner is `IBMUSER`.
     
-    ![Job filters in JES](../images/common/2-2.png)
+   ![Job filters in JES](../images/common/2-2.png)
 
 1. To query the jobs starting with `SDSF` and in an active status, clear the field of **Owner**, then enter `SDSF*` in the **Prefix** field and select **ACTIVE** from the **Status** drop-down list, and click **APPLY**.
 
@@ -112,6 +113,7 @@ You will use the TN3270 application plug-in to view the same job that you filter
 
 Zowe not only provides new modern applications to interact with z/OS®, but also integrates the traditional TN3270 tool that you are familiar with. This TN3270 application plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs.
 
+**Procedure**
 
 1. From the taskbar at the bottom of the Zowe Desktop, click the TN3270 icon to open the TN3270 application plug-in.
 
@@ -134,6 +136,7 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
    You successfully log on to TSO.
 
 1. When you see the following screen, press Enter. The **ISPF Primary Option Menu** is displayed.
+
    ![Screen capture that shows how to enter ISPF](../images/common/scenario1-enter-ispf.png)
 
 1. Access SDSF to view output from a job. To do this, 
@@ -145,7 +148,6 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
    1. Type `5` and press Enter.
       
       ![Screen capture that shows how to enter the 5 command in the panel](../images/common/scenario1-enter-5.png)
-
 
 1. To view the jobs in an active status, type `DA` at the command input prompt and press Enter. The jobs that are running are displayed.
 
@@ -170,10 +172,11 @@ Close the TN3270 window. In the next step, you will use the MVS Explorer to make
 
 Use the MVS Explorer to create and edit a data set member and save the changes. The MVS Explorer view allows you to browse the MVS file system by creating filters against data set names.
 
+**Procedure**
 
 1. Click the Start menu on Zowe Desktop.
 1. Scroll down to find the MVS Explorer icon and pin this application to the desktop for later use.
-1. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the filter string `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
+1. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
 
    ![The filter in MVS Explorer](../images/common/zowe-mvs-filter.png)
 
@@ -206,6 +209,8 @@ Leave the MVS Explorer window open because we will look at the contents of the d
 Use Zowe CLI to download the same data set that you edited by using MVS Explorer in the previous step, edit it, and upload the changes to the mainframe.
 
 Zowe CLI is a command line interface that allows you to interact with z/OS from various other platforms, such as cloud or distributed systems, to submit jobs, issue TSO and z/OS console commands, integrate z/OS actions into scripts, and produce responses as JSON documents. With this extensible and scriptable interface, you can tie in mainframes to distributed DevOps pipelines and build in automation.
+
+**Procedure**
 
 1. Start the Command Prompt or a terminal in your local desktop. In this tutorial, it;s assumed that you use Windows Command Prompt.
 
@@ -258,6 +263,8 @@ Close the Command Prompt window. In the next step, you will open the MVS Explore
 ## Viewing the data set changes in MVS Explorer
 
 Use the MVS Explorer to view the data set changes in the previous step.
+
+**Procedure**
 
 1. Back to the Zowe desktop, open the MVS Explorer application again.
 
