@@ -1,27 +1,26 @@
 # Gathering information to troubleshoot Zowe Application Framework
 
-Follow these instructions to gather specific pieces of information to help troubleshoot Zowe CLI issues.
+Gather the following information to troubleshoot Zowe Application Framework issues:
 
- - z/OS release level
- - Zowe version and release level
- - Zowe Application Configuration
- - Zowe Application Server Ports 
- - Log output from the Zowe Application Server
- - Error message codes
- - JavaScript console output (Web Developer toolkit accessible by pressing F12)
- - Screen captures (if applicable)
- - Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version).
+ - [z/OS release level](#z-os-release-level)
+ - [Zowe version and release level](#zowe-version-and-release-level)
+ - [Zowe application configuration](#zowe-application-configuration)
+ - [Zowe Application Server Ports](#zowe-application-server-ports) 
+ - [Log output from the Zowe Application Server](#log-output-from-the-zowe-application-server)
+ - [Error message codes](#error-message-codes)
+ - [JavaScript console output (Web Developer toolkit accessible by pressing F12)](#javascript-console-output)
+ - [Screen captures (if applicable)](#screen-captures)
+ - [Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version)](#other-relevant-information)
 
 ## z/OS release level
-From the console, issue the following command to verify the version of z/OS:  
+To find the z/OS release level, issue the following command in SDSF:  
 
 ```
 /D IPLINFO
 ```
+Check the output for the release level, for example: `RELEASE z/OS 02.02.00`
 
-Output:
-Part of the output contains the release, for example `RELEASE z/OS 02.02.00`
-
+<a href="#top">Back to top</a>
 
 ## Zowe version and release level
 ```
@@ -47,6 +46,7 @@ Displays zowe version
   }
 
 ```
+<a href="#top">Back to top</a>
 
 ## Zowe Application Configuration
 
@@ -65,6 +65,7 @@ cat zluxserver.json
 
 Read more about app server [configuration](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html) in zowe application framework **user guide** section.
 
+<a href="#top">Back to top</a>
 
 ## Zowe Application Server Ports 
  
@@ -83,6 +84,7 @@ Read more about app server [configuration](https://zowe.github.io/docs-site/late
   cat 2019-05-02-17-13-09.log | grep ZOWE_ZSS_SERVER_PORT
 
  ```
+ <a href="#top">Back to top</a>
 
 ## Log output from the Zowe Application Server
 There are two major components of zowe application server- `ZLUX` & `ZSS`, they log to different files.
@@ -118,15 +120,23 @@ nodeServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
 ```
 
+<a href="#top">Back to top</a>
+
 ## Error message codes
 It is advisable to look into log files for capturing error codes. 
+
+<a href="#top">Back to top</a>
 
 ## Javascript Console Output
 
 Web Developer toolkit is accessible by pressing F12.      
 Read more about it [here](https://developers.google.com/web/tools/chrome-devtools/open)
 
+<a href="#top">Back to top</a>
+
 ## Screen Captures
+
+<a href="#top">Back to top</a>
 
 ## Other relevant information
 NodeJS – v6.14.4 minimum for z/OS, elsewhere 6, 8, and 10 work well.
@@ -143,6 +153,7 @@ Java – v8 minimum
 ```
 java -version
 ```
+<a href="#top">Back to top</a>
 
 
 
