@@ -7,3 +7,4 @@ To isolate and resolve Zowe problems, you can use the troubleshooting and suppor
 - [Troubleshooting Zowe Application Framework](troubleshoot-app-framework.md)
 - [Troubleshooting z/OS Services](troubleshoot-zos-services.md)
 - [Troubleshooting Zowe CLI](cli/troubleshoot-cli.md)
+- [Troubleshooting Zowe using Diagnostics Data Script](troubleshoot-diagnostics.md)
