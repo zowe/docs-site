@@ -157,7 +157,7 @@ const ALL_PAGES = [{
         'troubleshoot/cli/cli-issue.md',
       ]
     }
-    ],
+    ]
 },
 {
   text: 'Contributing',
