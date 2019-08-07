@@ -277,7 +277,7 @@ Did you find this tutorial useful? Here are some next steps.
 ### Go deeper with Zowe
 In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and TN3270 to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI. 
 
-For more information, see the [User Guide](../user-guide/mvd-using.md).
+For more information, see the [User Guide](mvd-using.md).
 
 For a complete list of available CLI commands, explore the Zowe CLI [Command Reference Guide](cli-usingcli.md#zowe-cli-command-reference-guide).
 
