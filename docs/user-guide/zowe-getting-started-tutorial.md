@@ -1,5 +1,4 @@
 # Getting started tutorial
-
 [[toc]]
 
 ## Learning objectives
@@ -25,15 +24,15 @@ As an introductory scenario, no previous knowledge of Zowe is needed.
 
 This tutorial guides you through the steps in roughly 20 minutes. If you explore other concepts related to this tutorial, it can take longer to complete.
 
-## Prerequisites and assumptions - before you begin
+## Prerequisites and assumptions
 
-At this stage, it is assumed that you have already successfully installed Zowe. You are ready to launch Zowe Desktop and Zowe CLI.
+Before you begin, it is assumed that you have already successfully installed Zowe. You are ready to launch Zowe Desktop and Zowe CLI.
 
 For information about how to install Zowe, see [Installing Zowe](https://zowe.github.io/docs-site/latest/user-guide/installandconfig.html).
 
 **Important!**  
 
-- In this tutorial, the following parameters are used as an example. You must replace them with your own URL when you follow the tutorial in your own environment.
+- In this tutorial, the following parameters are used as an example. You must replace them with your own settings when you follow the tutorial in your own environment.
 
    - URL to access the Zowe Desktop: `https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
    - Mainframe credentials: 
@@ -57,11 +56,11 @@ The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org
    
    ```https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html```
 
-   ![Log in to Zowe Desktop](../images/common/zowe-desktop-login.png)
+   <img src="../images/common/zowe-desktop-login.png" alt="Zowe Desktop login" width="300">
    
 1. On the login page of the Zowe Desktop, enter your mainframe credentials. In this tutorial, the following ID is used as an example.
-   
-   ![Zowe desktop introduction](../images/common/2-4.png)
+
+   <img src="../images/common/2-4.png" alt="Enter mainframe credentials" width="300">
 
 1. Press Enter.
 
@@ -78,29 +77,29 @@ Use the Job Entry Subsystem (JES) Explorer to query JES jobs with filters and vi
 
 1. Click the Start menu in the Zowe Desktop.
    
-   ![The start menu of Zowe desktop](../images/common/2-1.png)
+   <img src="../images/common/2-1.png" width="300">
 
 1. Scroll down to find the JES Explorer icon and click to open it. The JES Explorer is displayed. If prompted to provide credentials for authentication, enter your mainframe credentials.
 
 1. Click the **Job Filters** column to expand the filter criteria. You can filter jobs on various criteria by Owner, Prefix, Job ID, and Status. By default, the jobs are filtered by Owner. In this tutorial, the example owner is `IBMUSER`.
-    
-   ![Job filters in JES](../images/common/2-2.png)
+
+   <img src="../images/common/2-2.png" alt="Job filters in JES" width="280">
 
 1. To query the jobs starting with `SDSF` and in an active status, clear the field of **Owner**, then enter `SDSF*` in the **Prefix** field and select **ACTIVE** from the **Status** drop-down list, and click **APPLY**.
 
    **Note:** Wildcard is supported. Valid wildcard characters are asterisk (*), percent sign (%), and question mark (?).
-   
-   ![Query jobs](../images/common/scenario1-jes-filter.gif)
+
+   <img src="../images/common/scenario1-jes-filter.gif" alt="Query jobs" width="300">
 
 1. From the job filter results, click the job named **SDSF**. The data sets for this job are listed.
     
-   ![Job filters in JES](../images/common/scenario1-job-listed.png)
+   <img src="../images/common/scenario1-job-listed.png" alt="Job filters in JES" width="230">
 
 1. Click **JESJCL** to open the JESJCL data set. The contents of this data set are displayed. You can also select other data sets to view their contents.
    
    **Tip:** You can hover over the text in purple color to display a hover help window.
 
-   ![hover help](../images/common/2-3.png)
+   <img src="../images/common/2-3.png" alt="Hover help" width="530">
 
 
 You used the JES Explorer to query the JES jobs with filters and viewed the related steps, files, and status.
@@ -117,54 +116,54 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
 
 1. From the taskbar at the bottom of the Zowe Desktop, click the TN3270 icon to open the TN3270 application plug-in.
 
-   ![TN3270 application plug-in](../images/common/3-1.png)
+   <img src="../images/common/3-1.png" alt="TN3270 application plug-in" width="400">
 
    The TN3270 panel is displayed, which offers selections to access various mainframe services.
 
-   ![TN3270 terminal](../images/common/zowe-tn3270-welcome.png)
+   <img src="../images/common/zowe-tn3270-welcome.png" alt="TN3270 terminal" width="400">
 
 1. Enter the following command and press Enter to log on to TSO.
 
    ```LOGON ibmuser```
 
-   ![TSO/E LOGON panel](../images/common/scenario1-tn3270-logon.png)
-   
+   <img src="../images/common/scenario1-tn3270-logon.png" alt="TSO/E LOGON panel" width="400">
+
 1. On the TSO/E LOGON panel, enter the password `sys1` in the **Password** field and press Enter.
 
-   ![Screen capture that shows how to enter password on the TSO/E LOGON panel](../images/common/zowe-tn3270-logon.png)
+   <img src="../images/common/zowe-tn3270-logon.png" alt="Screen capture that shows how to enter password on the TSO/E LOGON panel" width="400">
 
    You successfully log on to TSO.
 
 1. When you see the following screen, press Enter. The **ISPF Primary Option Menu** is displayed.
 
-   ![Screen capture that shows how to enter ISPF](../images/common/scenario1-enter-ispf.png)
+   <img src="../images/common/scenario1-enter-ispf.png" alt="Screen capture that shows how to enter ISPF" width="400">
 
 1. Access SDSF to view output from a job. To do this, 
       
    1. Type `M` at the **Option** prompt and press Enter.
 
-      ![Screen capture that shows how to enter the M command in the panel](../images/common/scenario1-enter-m.png)
+      <img src="../images/common/scenario1-enter-m.png" alt="Screen capture that shows how to enter the M command in the panel" width="400">
 
    1. Type `5` and press Enter.
       
-      ![Screen capture that shows how to enter the 5 command in the panel](../images/common/scenario1-enter-5.png)
+      <img src="../images/common/scenario1-enter-5.png" alt="Screen capture that shows how to enter the 5 command in the panel" width="400">
 
 1. To view the jobs in an active status, type `DA` at the command input prompt and press Enter. The jobs that are running are displayed.
 
-   ![Screen capture that shows how to enter the DA command in the panel](../images/common/scenario1-enter-da.png)
+   <img src="../images/common/scenario1-enter-da.png" alt="Screen capture that shows how to enter the DA command in the panel" width="400">
 
 1. To query the jobs that start with `SDSF`, type prefix `sdsf; owner *` at the command input prompt and press Enter.
-
-   ![Screen capture that shows how to enter the PREFIX SDSF command in the panel](../images/common/scenario1-enter-prefix.png)
+   
+   <img src="../images/common/scenario1-enter-prefix.png" alt="Screen capture that shows how to enter the PREFIX SDSF command in the panel" width="400">
+   
 
 1. To view the contents of the job, type `S` next to the job name `SDSF` and press Enter.
 
-   ![Screen capture that shows how to enter the S command to view contents of a job](../images/common/scenario1-view-content-tn3270.png)
+   <img src="../images/common/scenario1-view-content-tn3270.png" alt="Screen capture that shows how to enter the S command to view contents of a job" width="400">
 
    The contents of the job are displayed.
    
-   ![Screen capture that shows the contents of a job](../images/common/scenario1-displayed-content-tn3270.png)
-
+   <img src="../images/common/scenario1-displayed-content-tn3270.png" alt="Screen capture that shows the contents of a job" width="400">
 
 Close the TN3270 window. In the next step, you will use the MVS Explorer to make changes to a data set.
 
@@ -178,22 +177,22 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 1. Scroll down to find the MVS Explorer icon and pin this application to the desktop for later use.
 1. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
 
-   ![The filter in MVS Explorer](../images/common/zowe-mvs-filter.png)
+   <img src="../images/common/zowe-mvs-filter.png" alt="The filter in MVS Explorer" width="450">
 
 1. Enter `USER.Z23B.PARMLIB` in the **Filter** field to locate this data set and then click to expand it. Ensure that there is no extra space before the data set member name that you enter.
 
 1. Right-click the `USER.Z23B.PARMLIB` data set and select **New Dataset Member**.
 
-   ![Right click](../images/common/scenario1-create-dataset-member.png)
+   <img src="../images/common/scenario1-create-dataset-member.png" alt="Right click" width="300">
    
 1. Enter **ZTRIAL** as the data set member name and click **OK** to create the data set member.
 
-   ![Enter data set member name](../images/common/scenario1-enter-dataset-name.png)
+   <img src="../images/common/scenario1-enter-dataset-name.png" alt="Enter data set member name" width="480">
 
 
 1. Click the data set member you just created and edit it by adding a new sentence, for example, `First change to Zowe zTrial`.
-   
-   ![Edit data set](../images/common/zowe-mvs-dataset-edit.png)
+
+   <img src="../images/common/zowe-mvs-dataset-edit.png" alt="Edit data set" width="600">
 
 1. Click **SAVE** to save your edits.
 
@@ -269,8 +268,8 @@ Use the MVS Explorer to view the data set changes in the previous step.
 1. Back to the Zowe desktop, open the MVS Explorer application again.
 
 1. Locate the data set member **USER.Z23B.PARMLIB** > **ZTRIAL** and click the refresh icon. You will see the changes you just made by using Zowe CLI.
-   
-   ![Changes made in Zowe CLI takes effect](../images/common/scenario1-cli-change-success.png)
+
+   <img src="../images/common/scenario1-cli-change-success.png" alt="Changes made in Zowe CLI takes effect" width="600">
 
 Congratulations! You have explored several applications on the Zowe Desktop and learned how to work with them.
 
