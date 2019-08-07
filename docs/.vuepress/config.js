@@ -156,6 +156,10 @@ const ALL_PAGES = [{
         'troubleshoot/cli/cli-issue.md',
       ]
     }
+    {
+      text: 'Troubleshooting Zowe using Diagnostics Data Script',
+      link: 'troubleshoot/troubleshoot-diagnostics.md'
+    },
     ]
 },
 {
