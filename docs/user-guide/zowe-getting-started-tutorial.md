@@ -59,12 +59,14 @@ The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org
    <img src="../images/common/zowe-desktop-login.png" alt="Zowe Desktop login" width="300">
    
 2. On the login page of the Zowe Desktop, enter your mainframe credentials. In this tutorial, the following ID is used as an example:
-
-   <img src="../images/common/2-4.png" alt="Enter mainframe credentials" width="300">
+   - Username: ibmuser
+   - Password: sys1   
 
 3. Press Enter.
 
 Upon authentication of your user name and password, the Zowe Desktop opens. Several applications are pinned to the taskbar. Click the Start menu to see a list of applications that are installed by default. You can pin other applications to the taskbar by right-clicking the application icon and selecting **Pin to taskbar**.
+
+<img src="../images/common/2-4.png" alt="Enter mainframe credentials" width="300">
 
 Next, you will use the JES Explorer application to query the jobs with filters and view the related status.
 
@@ -106,7 +108,7 @@ Close the JES Explorer window. Next, you'll use the TN3270 application plug-in i
 
 ## Using TN3270 in Zowe Desktop to view the job
 
-You will use the TN3270 application plug-in to view the same job that you filtered out in the previous task. 
+Use the TN3270 application plug-in to view the same job that you filtered out in the previous task.
 
 Zowe not only provides new modern applications to interact with z/OS®, but also integrates the traditional TN3270 tool that you are familiar with. This TN3270 application plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs.
 
@@ -272,7 +274,7 @@ Congratulations! You explored several applications on the Zowe Desktop and learn
 
 ## Next steps
 
-Did you find this tutorial useful? Here are some next steps.
+Here are some next steps.
 
 ### Go deeper with Zowe
 In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and TN3270 to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI. 
@@ -284,6 +286,11 @@ For a complete list of available CLI commands, explore the Zowe CLI [Command Ref
 ### Try the Extending Zowe scenarios
 
 You can add your own application plug-ins to Zowe. See how easy it is to extend Zowe to create your own APIs and applications by reading the [Extending](../extend/extend-apiml/api-mediation-onboard-overview.md) section.
+
+### Give feedback
+Did you find this tutorial useful? You can tell us what you think about this tutorial via an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9). 
+
+If you encounter any problems or have an idea for improving this tutorial, you can create a GitHub issue [here](https://github.com/zowe/docs-site/issues).
 
 
 
