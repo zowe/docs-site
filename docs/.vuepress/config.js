@@ -140,7 +140,11 @@ const ALL_PAGES = [{
     },
     {
       text: 'Zowe Application Framework',
-      link: 'troubleshoot/troubleshoot-app-framework.md'
+      items: ['troubleshoot/app-framework/app-troubleshoot.md',
+      'troubleshoot/app-framework/app-mustgather.md',
+      'troubleshoot/app-framework/app-known-issues.md',
+      'troubleshoot/app-framework/app-issue.md'
+      ]
     },
     {
       text: 'Zowe z/OS Services',
