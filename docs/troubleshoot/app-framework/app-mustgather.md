@@ -18,7 +18,10 @@ To find the z/OS release level, issue the following command in SDSF:
 ```
 /D IPLINFO
 ```
-Check the output for the release level, for example: `RELEASE z/OS 02.02.00`
+Check the output for the release level, for example: 
+```
+RELEASE z/OS 02.02.00
+```
 
 <a href="#top">Back to top</a>
 
@@ -28,7 +31,8 @@ Check the output for the release level, for example: `RELEASE z/OS 02.02.00`
   cat manifest.json
 ```
 
-Output:
+**Output:**
+
 Displays zowe version
 ```  
   {
@@ -48,9 +52,9 @@ Displays zowe version
 ```
 <a href="#top">Back to top</a>
 
-## Zowe Application Configuration
+## Zowe application configuration
 
-Configuration file help customize app server, and is important to look at while troubleshooting
+Configuration file helps customize the Zowe app server, and is important to look at while you troubleshoot.
 
 ```
 # navigate to zowe installation folder
@@ -63,11 +67,11 @@ cd zlux-app-server/deploy/instance/ZLUX/serverConfig
 cat zluxserver.json
 ```
 
-Read more about app server [configuration](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html) in zowe application framework **user guide** section.
+Read more about the Zowe app server [configuration](../../user-guide/mvd-configuration.md) in the Zowe User Guide.
 
 <a href="#top">Back to top</a>
 
-## Zowe Application Server Ports 
+## Zowe Application Server ports 
  
  ```
   # navigate to zowe installation folder
@@ -87,18 +91,16 @@ Read more about app server [configuration](https://zowe.github.io/docs-site/late
  <a href="#top">Back to top</a>
 
 ## Log output from the Zowe Application Server
-There are two major components of zowe application server- `ZLUX` & `ZSS`, they log to different files.
+There are two major components of Zowe application server:  `ZLUX` and `ZSS`.  They log to different files.
 
-Default location for logs for both zlux and zss is folder `zlux-app-server/log`
-Log location can be customized using environment variable.
+The default location for logs for both zlux and zss is folder `zlux-app-server/log`. You can customize the log location by using the environment variable.
 
 ```
 env | grep ZLUX_NODE_LOG_DIR 
 env | grep ZSS_LOG_DIR  
 ```
 
-Read more about controlling log location [here](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#controlling-the-logging-location)
-
+Read more about controlling the log location [here](../../user-guide/mvd-configuration.html#controlling-the-logging-location).
 
 ```
 # navigate to zowe installation folder
@@ -113,8 +115,9 @@ cd zlux-app-server/log
 ls -lt
 ```
 
-Output: 
-List of files by most recent timestamp for both nodeServer as well ZSS
+**Output:**
+
+List of files by most recent timestamp for both nodeServer as well ZSS.
 ```
 nodeServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
@@ -127,19 +130,23 @@ It is advisable to look into log files for capturing error codes.
 
 <a href="#top">Back to top</a>
 
-## Javascript Console Output
+## Javascript console output
 
 Web Developer toolkit is accessible by pressing F12.      
-Read more about it [here](https://developers.google.com/web/tools/chrome-devtools/open)
+
+Read more about it [here](https://developers.google.com/web/tools/chrome-devtools/open).
 
 <a href="#top">Back to top</a>
 
-## Screen Captures
+## Screen captures
+
+If possible, add a screen capture of the issue.
 
 <a href="#top">Back to top</a>
 
 ## Other relevant information
-NodeJS – v6.14.4 minimum for z/OS, elsewhere 6, 8, and 10 work well.
+
+Node.js – v6.14.4 minimum for z/OS, elsewhere v6, v8, and v10 work well.
 ```
 node -v
 ```

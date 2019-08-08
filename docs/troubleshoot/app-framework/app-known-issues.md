@@ -41,9 +41,9 @@ To solve the problem, follow these steps:
 
     If there is an authorization problem, the message might include `Permission Denied`. For example:
 
-   ```
-   ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=33, description='Permission denied'
-   ```
+    ```
+    ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=33, description='Permission denied'
+    ```
     Check that the user ID of the ZOWESVR started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
 
     **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZOWESVR (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
@@ -89,7 +89,7 @@ If the plug-in did not load successfully, you will find the following message:
 ```
 If the identifier is not in the logs, make sure the plug-in's locator file is in the `/zlux-app-server/deploy/instance/ZLUX/plugins/` directory. The plug-in locator is a `.json` file, usually with same name as the identifier, for example `org.zowe.sampleapp.json`. Open the file and make sure that the path defined with the `pluginLocation` attribute is correct. If the path is relative, make sure it is relative to the `zlux-app-server/bin` directory. 
 
-For more information on loading plug-ins to the Desktop, see [Adding Your App to the Desktop](../../extend/extend-desktop/zlux-workshop-user-browser.html#adding-your-app-to-the-desktop)
+For more information on loading plug-ins to the Desktop, see [Adding Your App to the Desktop](../../extend/extend-desktop/zlux-workshop-user-browser.html#adding-your-app-to-the-desktop).
 
 
 ## Error: You must specify MVD_DESKTOP_DIR in your environment
@@ -101,12 +101,12 @@ A plug-in build in your local environment using `npm run start` or `npm run buil
 **Solution:**   
 Add the Zowe Desktop directory path to the MVD_DESKTOP_DIR environment variable. To specify the path, run the following commands in your Windows console or Linux bash shell:
 
-Windows
-```
-export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
-```
+- Windows
+  ```
+  export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  ```
 
-Mac Os/Linux
-```
-set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
-```
+- Mac Os/Linux
+  ```
+  set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  ```

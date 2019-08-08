@@ -6,7 +6,7 @@ For issues with particular applications, such as [Code Editor](https://github.co
 
 ## Raising a bug report
 
-Please provide as much of the information listed on [Troubleshooting Framework](app-troubleshoot.md) as possible. Anyone working on the issue might need to request this and other information if it is not supplied initially. A description of the error and how it can be reproduced is the most important information.
+Please provide as much of the information listed on [Troubleshooting Zowe Application Framework](app-troubleshoot.md) as possible. Anyone working on the issue might need to request this and other information if it is not supplied initially. A description of the error and how it can be reproduced is the most important information.
 
 ## Raising an enhancement report
 
