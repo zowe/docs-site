@@ -270,7 +270,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
         - apiId: ${mfaas.discovery.serviceId}
           gatewayUrl: api/v1
           swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
-          documentationUrl: https://docs.zowe.org
+          documentationUrl: https://zowe.github.io/docs-site
     catalogUiTile:
         id: helloworld-spring
         title: HelloWorld Spring REST API
