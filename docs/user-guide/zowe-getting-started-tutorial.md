@@ -228,7 +228,7 @@ Zowe CLI is a command-line interface that lets you interact with z/OS from vario
 
    ![Screen capture that shows a list of data sets after running the command](../images/common/scenario1-cli-list-dataset.png)
 
-4. To download all the data set members of USER.Z23B.PARMLIB, enter the following command:
+4. To download all the data set members of USER.Z23B.PARMLIB to your current directory, enter the following command:
 
    ```zowe zos-files download all-members "USER.Z23B.PARMLIB"```
 
@@ -236,7 +236,7 @@ Zowe CLI is a command-line interface that lets you interact with z/OS from vario
 
    ![Screen capture that shows the data set is downloaded successfully](../images/common/scenario1-cli-downloaded.png)
 
-5. Use the text editor to open the data set member named ZTRIAL by entering the following command:
+5. To open the data set member named ZTRIAL in a text editor, issue the following command. Ensure that you issue the command in the same directory where you downloaded the member: 
 
    ```code USER/Z23B/PARMLIB/ZTRIAL.txt```
 
