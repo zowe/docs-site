@@ -62,4 +62,4 @@ To solve the problem, follow these steps:
     ```
     read failed ret code 1121 reason 0x76650446
     ```
-    - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](../user-guide/mvd-configuration.html#configuring-zss-for-https)
+    - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#configuring-zss-for-https)
