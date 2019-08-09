@@ -3,7 +3,7 @@
 Documentation of Zowe comes in various forms depending on the subject being detailed. In general, consider how you can help end users and contributors through external documentation, in-product help, error messages, etc... and open an issue in [zowe/docs-site](https://github.com/zowe/docs-site) if you need assistance.
 
 ## Contributing to external documentation 
-The external documentation for the Zowe project, [Zowe Docs](https://zowe.github.io/docs-site/latest/), is completely open-source. See [How to contribute](../contributing.md) for more information about contributing to the documentation.
+The external documentation for the Zowe project, [Zowe Docs](/latest/), is completely open-source. See [How to contribute](../contributing.md) for more information about contributing to the documentation.
 
 Consider: Release Notes, Install/Config/User Guides, Developer Tutorials, etc... 
 
