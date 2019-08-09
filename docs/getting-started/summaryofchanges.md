@@ -151,7 +151,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- The [CLI Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
+- The [CLI Reference Guide](../latest/CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
 
 - You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 
