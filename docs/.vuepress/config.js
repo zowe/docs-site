@@ -2,7 +2,7 @@
 const ZOWE_VERSIONS = require('./versions.json')
 const CURRENT_ZOWE_VERSION = '1.3.0'
 // root base url for all versions
-const ROOT_BASE_URL = '/docs-site'
+const ROOT_BASE_URL = '/'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
 // so we convert it to dash
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'latest').replace(/\./g, '-')

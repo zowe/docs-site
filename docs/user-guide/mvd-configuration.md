@@ -349,7 +349,7 @@ After you configure RBAC, Zowe checks users' authority to access dataservices.
 
 Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
-Plug-ins can also use [configuration service endpoints](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
+Plug-ins can also use [configuration service endpoints](/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
 
 Dataservice endpoints are identified by URLs that are formatted like this:
 
