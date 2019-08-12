@@ -31,7 +31,7 @@ zowe zos-files create --help
 
 ### Web help
 
-You can also launch interactive help in your Web browser. Web help is custom-generated to include all currently installed plug-ins. Issue the following command:
+You can launch interactive command help in your Web browser. Web help is custom-generated to include commands for all currently installed plug-ins. Issue the following command:
 
 ```
 zowe --help-web
