@@ -23,11 +23,7 @@ zowe --help
 
 ### Group/action/object help
 
-Append `--help` to commands learn more about a specific command group, action, or object:
-
-```
-zowe <group, action, or object name> --help
-```
+You can append `--help` to commands learn about a specific command group, action, or object. For example, issue the following command:
 
 ```
 zowe zos-files create --help
@@ -35,7 +31,7 @@ zowe zos-files create --help
 
 ### Web help
 
-You can also launch interactive help in your Web browser. The Web help is custom-generated to include all currently installed plug-ins. Issue the following command:
+You can also launch interactive help in your Web browser. Web help is custom-generated to include all currently installed plug-ins. Issue the following command:
 
 ```
 zowe --help-web
