@@ -7,7 +7,7 @@ Zowe CLI has a command-line help system that helps you to learn about the comman
 - [Top-level help](#top-level-help)
 - [Group/action/object help](#group-action-object-help)
 - [Web help](#web-help)
-
+- [Zowe CLI command reference](#zowe-cli-command-reference)
 
 ### Top-level help
 
@@ -35,17 +35,17 @@ zowe zos-files create --help
 
 ### Web help
 
-Launch interactive help in your Web browser. The help content will be custom-generated to include all currently installed plug-ins:
+To launch interactive help in your Web browser, issue the following command. The help content is custom-generated to include all currently installed plug-ins:
 
 ```
 zowe --help-web
 ```
 
-**Note:** Appending `--help-web` to a specific command will automatically open the appropriate page for that command.
+**Tip:** Append `--help-web` to a specific command or action to launch directly into the appropriate page for that command.
 
-## Zowe CLI command reference
+### Zowe CLI command reference
 
-Command reference help is available for download in three formats: a copy of the interactive web help, a ZIP file that contains the HTML web help, and a static PDF:
+Command reference is available for download in three formats: a static copy of the interactive web help, a ZIP file that contains the HTML web help, and a static PDF:
 
 - <a href="../web_help/index.html" target="_blank">Browse Online</a>
 - <a href="../zowe_web_help.zip">Download (ZIP)</a>
