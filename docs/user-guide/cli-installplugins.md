@@ -5,10 +5,10 @@ Use commands in the plugins command group to install and manage plug-ins for Zow
 **Important!** Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
 You can install the following plug-ins:
-- Zowe CLI Plug-in for IBM CICS
-- Zowe CLI Plug-in for IBM Db2 Database
-- Zowe CLI Plug-in for IBM IMS
-- Zowe CLI Plug-in for IBM MQ
+- IBM® CICS® Plug-in for Zowe CLI
+- IBM® Db2® Plug-in for Zowe CLI
+- IBM® IMS™ Plug-in for Zowe CLI
+- IBM® MQ Plug-in for Zowe CLI
 
 You install Zowe CLI plugins using either of the following methods:
 
@@ -38,17 +38,17 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
     | Plug-in | Installation Command Syntax |
     |---------|-----------------------------|
-    | Zowe CLI Plug-in for IBM CICS | `@zowe/cics-for-zowe-cli` |
-    | Zowe CLI Plug-in for IBM Db2 Database| `@zowe/db2-for-zowe-cli` |
-    | Zowe CLI Plug-in for IBM IMS| `@zowe/ims-for-zowe-cli`|
-    | Zowe CLI Plug-in for IBM MQ| `@zowe/mq-for-zowe-cli` |
+    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
+    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
+    | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
+    | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
     |    |    |
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
     zowe plugins install @zowe/<my-plugin1> @zowe/<my-plugin2> @zowe/<my-plugin3> ...
     ```
-    **Note:** The Zowe CLI Plug-in for IBM Db2 Database requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [Zowe CLI Plug-in for IBM Db2 Database](.cli-db2plugin.md).
+    **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](.cli-db2plugin.md).
 
 5.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
 
@@ -94,10 +94,10 @@ Application developers and systems programmers can install CA Brightside plug-in
 
     | Plug-in | `.tgz` File Name |
     |---------|-----------------|
-    | Zowe CLI Plug-in for IBM CICS | `cics-for-zowe.cli.tgz` |
-    | Zowe CLI Plug-in for IBM Db2 Database | `db2-for-zowe-cli.tgz` |
-    | Zowe CLI Plug-in for IBM IMS | `ims-for-zowe-cli.tgz`|
-    | Zowe CLI Plug-in for IBM MQ |`mq-for-zowe-cli.tgz`|
+    | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe.cli.tgz` |
+    | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
+    | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
+    | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
 
 6.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
 
@@ -120,15 +120,15 @@ zowe plugins validate [plugin]
 
     |Plug-in|Syntax|
     |-|-|
-    |Zowe CLI Plug-in for IBM CICS|`@zowe/cics`|
-    |Zowe CLI Plug-in for IBM Db2 Database|`@zowe/db2`|
-    |Zowe CLI Plug-in for IBM IMS|`@zowe/ims`|
-    |Zowe CLI Plug-in for IBM MQ|`@zowe/mq`|
+    |IBM CICS Plug-in for Zowe CLI|`@zowe/cics`|
+    |IBM Db2 Plug-in for Zowe CLI|`@zowe/db2`|
+    |IBM IMS Plug-in for Zowe CLI|`@zowe/ims`|
+    |IBM MQ Plug-in for Zowe CLI|`@zowe/mq`|
     |||
 
 **Examples: Validate plug-ins**
 
-  - The following example illustrates the syntax to use to validate the Zowe CLI Plug-in for IBM CICS:
+  - The following example illustrates the syntax to use to validate the IBM CICS Plug-in for Zowe CLI:
 
     ```
     zowe plugins validate @zowe/cics
@@ -195,10 +195,10 @@ The following table describes the uninstallation command synstax for each plug-i
 
  | Plug-in | Uinstallation Command Syntax |
  |---------|-----------------------------|
- | Zowe CLI Plug-in for IBM CICS | `@zowe/cics-for-zowe-cli` |
- | Zowe CLI Plug-in for IBM Db2 Database| `@zowe/db2-for-zowe-cli` |
- | Zowe CLI Plug-in for IBM IMS| `@zowe/ims-for-zowe-cli`|
- | Zowe CLI Plug-in for IBM MQ| `@zowe/mq-for-zowe-cli` |
+ | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
+ | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
+ | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
+ | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
  |    |    |
 
 **Example:**
