@@ -12,8 +12,12 @@ You can install the following plug-ins:
 
 You install Zowe CLI plugins using either of the following methods:
 
-- Install Zowe CLI plug-ins from an online registry. With this method, you install the plug-ins from an online, NPM registry. Use this method when your computer ***can*** access the Internet. For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
-- Install Zowe CLI plug-ins from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` file. Use this method when your computer ***cannot*** access the Internet. For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
+- Install Zowe CLI plug-ins from an online registry. With this method, you install the plug-ins from an online, NPM registry. Use this method when your computer ***can*** access the Internet. 
+
+    For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
+- Install Zowe CLI plug-ins from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` file. Use this method when your computer ***cannot*** access the Internet.
+
+    For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
 ## Installing plug-ins from an online registry
 
@@ -54,7 +58,9 @@ Application developers and systems programmers can install CA Brightside plug-in
 
 **Follow these steps:**
 
-1.  Ensure that you meet the software requirements for a plug-in before you install the plug-in to Zowe CLI. For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
+1.  Ensure that you meet the software requirements for a plug-in before you install the plug-in to Zowe CLI.
+
+    For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 2.  Obtain the installation files.
 
@@ -133,18 +139,45 @@ zowe plugins validate [plugin]
     ```
     zowe plugins validate
     ```
-## Update plug-ins
+## Updating plug-ins
 
 You can update Zowe CLI plug-ins from an online registry or from a local package.
 
 ### Update plug-ins from an online registry
 
-Issue the `update` command to install the latest version or a specific version of a plug-in that you installed previously. The `update` command has the following syntax:
+Issue the `update` command to install the latest stable version or a specific version of a plug-in that you installed previously. The `update` command has the following syntax:
 
 ```
 zowe plugins update [plugin...] [--registry <registry>]
 ```
 
+-  [plugin...]
+
+    Specifies the name of an installed plug-in that you want to update. The name of the plug-in is not always the same as the name of the NPM package. You can use npm semantic versioning to specify a plug-in version to which to update. For more information, see npm semver.
+
+-  [--registry <registry>]
+
+    (Optional) Specifies a registry URL that is different from the registry URL of the original installation.
+
+**Examples: Update plug-ins**
+
+The following example illustrates the syntax to use to update an installed plug-in to the latest version:
+
+```
+zowe plugins update @zowe/my-plugin@lts-incremental
+```
+
+The following example illustrates the syntax to use to update a plug-in to a specific version:
+
+```
+zowe plugins update @zowe/my-plugin@"^1.2.3"
+```
+
+### Update plug-ins from a a local package
+
+You can update plug-ins from a local package. You acquire the media from the [Zowe Download](https://zowe.org/download/) website and update the plug-ins using the `zowe plugins install` command.
+
+To update plug-ins from a local package, follow the steps that are described in [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
 ## Uninstall Plug-ins
 
