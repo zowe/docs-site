@@ -646,32 +646,42 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
 
-## Security Service Client library
-
-The `security-service-client-spring` library enables authentication and protection using security providers.
-The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
-
-The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService`, which provides facility to perform login and to validate the jwt token. The `com.ca.apiml.security.service.GatewaySecurityService` has the following methods :
-
-  - The `login` method that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
-  - The `query` method that allows to verify the JWT token validity and return the JWT token data
+## Security Service Client Library
+ 
+The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation.
+The library is divided into two parts:
+  - Reusable part for building Spring security `com.ca.apiml.security.common`
+  - Part for enabling the security client `com.ca.apiml.security.client`
+ 
+### @EnableApimlAuth:
+Use `@EnableApimlAuth` annotation to enable the security client and integration of the `security-service-client-spring` library. The annotation handles necessary component scans, creates the `GatewaySecurityService`, and starts the Gateway lookup logic.
+ 
+### Gateway lookup logic: 
+Security client uses `GatewayClient` Spring component to represent a Gateway instance. After the Spring context starts, the lookup logic scans the embedded Discovery client to find the Gateway instance and sets it to `GatewayClient`. This happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
+ 
+### Useful classes: 
+The core class of the library is `com.ca.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
+ 
+  - The `login` method - Allows to login to the API Gateway with a username and password and retrieve the valid JWT token
+  - The `query` method - Allows to verify the JWT token validity and return the JWT token data
   
  The following providers process the authentication requests:
   
-   - `com.ca.apiml.security.login.GatewayLoginProvider` - Verifies the mainframe credentials 
-   - `com.ca.apiml.security.token.GatewayTokenProvider` - Authenticates the JWT token 
-
+   - `com.ca.apiml.security.client.login.GatewayLoginProvider` - Verifies the mainframe credentials 
+   - `com.ca.apiml.security.client.token.GatewayTokenProvider` - Authenticates the JWT token 
+ 
 The library also contains the following Spring Security filters:
-
-- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. This filter can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
-
+ 
+- `com.ca.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `com.ca.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+ 
 There are also several handlers such as:
 - `SuccessfulLoginHandler` - Handles the successful login
 - `UnauthorizedHandler` Handles unauthorized access
-- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in case of basic authentication
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in the case of basic authentication
 - `FailedAuthenticationHandler` - Handles authentication failure
 - `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
 - `AuthExceptionHandler` - Handles exceptions thrown during authentication process
+ 
 
-For more information, see [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture), and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
+For more information, see [Api Catalog security configuration](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java) (Reference usage of the library), [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture) and [Security with Spring Tutorial](https://www.baeldung.com/security-spring)
