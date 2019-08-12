@@ -11,7 +11,7 @@ Zowe CLI has a command-line help system that helps you to learn about the comman
 
 ### Top-level help
 
-To view top-level help, which lists the available command groups and plug-ins, open a command-line and issue the following command:
+To view top-level help, open a command-line and issue the following command:
 
 ```
 zowe --help
@@ -19,19 +19,21 @@ zowe --help
 
 ![Issuing the help command](../images/guides/CLI/GetHelp.gif)
 
-**Tip:** The command `zowe` initiates the product on a command line. All Zowe CLI commands begin with `zowe.`
+**Tip:** All Zowe CLI commands begin with `zowe.`
 
 ### Group/action/object help
 
-You can append `--help` to commands learn about a specific command group, action, or object. For example, issue the following command:
+You can append `--help` to learn about a specific command group, action, or object. 
+
+For example, issue the following command to learn more about the `create` action in the `zos-files` group:
 
 ```
 zowe zos-files create --help
 ```
 
-### Web help
+### Interactive Web help
 
-You can launch interactive command help in your Web browser. Web help is custom-generated to include commands for all currently installed plug-ins. Issue the following command:
+You can launch interactive help in your Web browser. Web help is custom-generated to include commands for all currently installed plug-ins. Issue the following command:
 
 ```
 zowe --help-web
