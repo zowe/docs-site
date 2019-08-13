@@ -59,7 +59,8 @@ Overview of steps required to install Zowe Open Source Project (Base).
   2. [Download the Zowe SMP/E package](#download-the-zowe-smp/e-package)
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
-  5. Create SMP/E enviornment (optional)
+  5. [Sample Jobs](#sample-jobs)
+  5. [Create SMP/E environment (optional)](#Create-smp/e-environment-(optional))
   6. Perform SMP/E Receive
   7. Allocate SMP/E target and distribution libraries
   8. Allocate and mount z/OS UNIX file system (optional)
@@ -79,17 +80,6 @@ Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external re
 - MACLIB
 
 **Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
-<< TODO - Where does this section belong ? >>
-### Sample Jobs ?? 
-
-The following sample installation jobs are provided as part of the project to help you install Zowe: <!--Needs a list of sample jobs-->
-
-Job Name | Job Type | Description | RELFILE
---| --| --| --|
-INGALLOC | ALLOCATE | Sample job to allocate target and distribution libraries | IBM.JWRE41F.F3
-KAHALLOC | ALLOCATE | Sample job to allocate target and distribution libraries for Monitoring Agent and TEP support  | IBM.HKAH35T.F2
-
-**Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high level qualifier. <!--Needs verification-->
 
 ### Download the Zowe SMP/E package
 
@@ -309,3 +299,61 @@ newname="@PREFIX@.ZOWE.AZWE002.F4"/>
 </GIMUNZIP>
 //*
 ```
+### Sample Jobs
+
+The following sample installation jobs are provided as part of the project to help you install Zowe: 
+
+Job Name | Job Type | Description | RELFILE
+--| --| --| --|
+ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
+ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
+ZWE3ALOC | ALLOCATE | Sample job to allocate, create mountpoint, and mount zFS data sets
+ZWE5MK | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
+ZWE6DDEF | DDDEF | Sample job to define SMP/E DDDEFs | ZOWE.AZWE001.F1
+ZWE7APLY | APPLY | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
+
+**Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high level qualifier. 
+
+You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E Receive](#perform-smp/e-receive)) then copy the jobs from the RELFILES to a work data set for editing and submission.
+
+You can also copy the sample installation jobs from the product files by submitting the following job.  Before you submit the job, add a job care and change the lowercase parameters to uppercase values to meet the requirements of your site.
+
+```
+//STEP1    EXEC PGM=IEBCOPY
+//SYSPRINT DD SYSOUT=*
+//IN       DD DSN=ZOWE.AZWE001.F1,
+//            DISP=SHR,
+//*           VOL=SER=filevol,
+//            UNIT=SYSALLDA
+//OUT      DD DSNAME=jcl-library-name,
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(5,5,5)),
+//*           VOL=SER=dasdvol,
+//            UNIT=SYSALLDA
+//SYSUT3   DD UNIT=SYSALLDA,SPACE=(CYL,(1,1))
+//SYSIN    DD *
+    COPY INDD=IN,OUTDD=OUT
+/*
+```
+**__Note:__ When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high level qualifier, as documented in section [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
+
+See the following information to update the statements in the previous sample:
+
+IN:   
+* __filevol__ is the volume serial of the DASD device where the downloaded files reside.
+
+OUT:  
+* __jcl-library-name__ is the name of the output data set where the sample jobs are stored.  
+__dasdvol__ is the volume serial of the DASD device where the output data set resides. Uncomment the statement is a volume serial must be provided.  
+
+### Create SMP/E environment (optional)
+
+If you are using an existing CSI, do not run the sample job ZWE1SMPE.
+
+If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job propvided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+
+
+
