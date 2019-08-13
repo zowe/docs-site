@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-files delete data-set-vsam</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-files.html">zos-files</a> → <a href="zowe_zos-files_delete.html">delete</a> → <a href="zowe_zos-files_delete_data-set-vsam.html">data-set-vsam</a></h2>
+<p>Delete a VSAM cluster permanently</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files delete data-set-vsam &lt;dataSetName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the VSAM cluster that you want to delete</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--erase</code>  | <code>-e</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to overwrite the data component for the cluster with binary
+zeros. This option is ignored if the NOERASE attribute was specified when the
+cluster was defined or altered.</li>
+</ul>
+</li>
+<li><p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to delete the VSAM cluster regardless of its retention
+period or date.</li>
+</ul>
+</li>
+</ul>
+<h4 id="required-options">Required Options</h4>
+<ul>
+<li><p><code>--for-sure</code>  | <code>-f</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to confirm that you want to delete the VSAM cluster
+permanently.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Delete the VSAM data set named &#39;ibmuser.cntl.vsam&#39;:</p>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f">Copy</button></li>
+</ul>
+</li>
+<li><p>Delete all expired VSAM data sets that match
+&#39;ibmuser.AAA.**.FFF&#39;:</p>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f">Copy</button></li>
+</ul>
+</li>
+<li><p>Delete a non-expired VSAM data set named
+&#39;ibmuser.cntl.vsam&#39;:</p>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge">Copy</button></li>
+</ul>
+</li>
+<li><p>Delete an expired VSAM data set named &#39;ibmuser.cntl.vsam&#39; by
+overwriting the components with zeros:</p>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
