@@ -1,11 +1,11 @@
 # z/OSMF troubleshooting
 The core command groups use the z/OSMF REST APIs which can experience any number of problems.
 
-If the user is experiencing HTTP 500 errors with the CLI, consider gathering the following:
+If you encounter HTTP 500 errors with the CLI, consider gathering the following information:
 1. The IZU* (IZUSVR and IZUANG) joblogs (z/OSMF server)
 2. z/OSMF USS logs (default location: /global/zosmf/data/logs - but may change depending on installation)
 
-If the user is experiencing HTTP 401 errors with the CLI, consider gathering the following:
+If you encounter HTTP 401 errors with the CLI, consider gathering the following information:
 1. Any security violations for the TSO user in SYSLOG
 
 ## Alternate methods
