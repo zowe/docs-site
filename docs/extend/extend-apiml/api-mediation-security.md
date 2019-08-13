@@ -648,15 +648,15 @@ in following shell scripts:
 
 ## Security Service Client Library
 
-The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation, and consists of two parts:
-  - `com.ca.apiml.security.common` - Components necessary to build Spring security
-  - `com.ca.apiml.security.client` - Enables the security client and Gateway lookup
+The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation, and consists of the following components:
+  - `com.ca.apiml.security.common` - Components that are necessary to build Spring security
+  - `com.ca.apiml.security.client` - Components that enables the security client and Gateway lookup
 
 #### @EnableApimlAuth annotation
 Use `@EnableApimlAuth` annotation to enable the security client and integration of the `security-service-client-spring` library. The annotation handles necessary component scans, creates the `GatewaySecurityService`, and starts the Gateway lookup logic.
 
 #### Gateway lookup logic 
-Security client uses `GatewayClient` Spring component to represent a Gateway instance. After the Spring context starts, the lookup logic scans the embedded Discovery client to find the Gateway instance and sets it to `GatewayClient`. This happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
+Security client uses the `GatewayClient` Spring component to represent a Gateway instance. Lookup logic scans the embedded Discovery client and sets a Gateway instance to ‘Gateway Client’ after the Spring context starts. The scanning process happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
 
 #### Useful classes
 The core class of the library is `com.ca.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
@@ -672,7 +672,7 @@ The core class of the library is `com.ca.apiml.security.client.service.GatewaySe
 The library contains the following Spring security filters and handlers:
 
 - `com.ca.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `com.ca.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+- `com.ca.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The JWT token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
 - `SuccessfulLoginHandler` - Handles the successful login
 - `UnauthorizedHandler` - Handles unauthorized access
 - `BasicAuthUnauthorizedHandler` - Handles unauthorized access in the case of basic authentication
