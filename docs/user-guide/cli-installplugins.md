@@ -48,7 +48,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     ```
     zowe plugins install @zowe/<my-plugin1> @zowe/<my-plugin2> @zowe/<my-plugin3> ...
     ```
-    **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](.cli-db2plugin.md).
+    **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
 
 5.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
 
