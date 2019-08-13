@@ -1,6 +1,6 @@
 # Installing Zowe SMP/E Alpha
 
-## Installation Requirements and Considations
+## Installation Requirements and Considerations
 
 The following sections identify the system requirements for installing and actibating Zowe.  The following terminology is used:
 
@@ -18,7 +18,7 @@ The following sections identify the system requirements for installing and actib
 
 << To be Completed >>
 
-## Installation Reqruiements and Considations
+## Installation Requirements and Considerations
 
 << To be Completed >>
 
@@ -58,7 +58,7 @@ Overview of steps required to install Zowe Open Source Project (Base).
   1. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
   2. [Download the Zowe SMP/E package](#download-the-zowe-smp/e-package)
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
-  4. Extract and expand the compress SMPMCS and RELFILEs
+  4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
   5. Create SMP/E enviornment (optional)
   6. Perform SMP/E Receive
   7. Allocate SMP/E target and distribution libraries
@@ -180,32 +180,81 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 ### Upload the download package to the host 
 
+These instructions are also in the AZWE001.readme.txt file that you downloaded.
+
 Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. 
 
-There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.
+There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold. and the following values are assumed
+
+User enters: | JValues | 
+--| --| 
+mvsaddr | TCP/IP address or hostname of the z/OS system
+tsouid | Your TSO user ID
+tsopw | Your TSO password
+d: | Location of the downloaded files
+@zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
 **IMPORTANT:**
 The #pax file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
 
 Sample FTP upload scenario:
 
-From your workstation COMMAND PROMPT panel
-- enter:  ftp your_host_system_name
-- login with your userid and password
-- enter:  cd @zfs_path@
-- enter:  ascii
-- enter:  put #readme
-- enter:  binary
-- enter:  put #pax
-- enter:  quit
+_C:/>__ftp mvsaddr___   
+_Connected to mvsaddr._  
+_200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%._ 
+_220 Connection will close if idle for more than 5 minutes._  
+_User (mvsaddr:(none)): __tsouid___  
+_331 Send password please_  
+_Password: __tsopw___  
+_230 tsouid is loadded on.  Working directory is "tsouid."._  
+_ftp> __cd @zfs_path@___  
+_250 HFS directory @zfs_path@ is the current working directory_  
+_ftp> __ascii___  
+_200 Representation type is Ascii NonPrint_  
+_ftp> __put c:/AZWE001.readme.txt___  
+_200 Port request OK._  
+_150 Storing data set @zfs_path@/AZWE001.readme.txt_  
+_250 Transfer completed successfully._  
+_ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)_  
+_ftp __binary___  
+_200 Representation type is Image_  
+_ftp> __put c:\AZWE001.pax.Z___  
+_200 Port request OK._  
+_145 Storing data set @zfs_path@/AZWE001.pax.Z_  
+_250 Transfer completed successfully._  
+_ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)_ 
+_ftp: __quit___  
+_221 Quit command received.  Goodbye._  
+
+**If you are unable to connect with ftp and only able to use sftp**
+
+The commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_.  Because _sftp_ only suports binary file transfer the ___ascii___ and ___binary___ commands should be ommitted. After you transfer the AZWE001.readme.txt file it will be in an ASCII codepage so you will need to convert it to EBCDIC before it can be used.
+
+To transfer AZWE001.readme.txt to EBCDIC log onto the distribution system using ssh and run an ICONV command
+
+_C:>/__ssh tsouid@mvsaddr___  
+_tsouid@mvsaddr's password: __tsopw___  
+_/u/tsouid:>_  
+_cd:@zfs_path@_  
+_@zfs_path:>_  
+_@zfs_path:>iconv -f ISO8859-1 -t IBM-1047 AZWE001.readme.txt > AZWE001.readme.EBCDIC_  
+_@zfs_path:>rm AZWE001.readme.txt_  
+_@zfs_path:>mv AZWE001.readme.EBCDIC AZWE001.readme.txt_  
+_@zfs_path:>exit_  
+_C:>/_  
 
 ### Extract and expand the compressed SMPMCS and RELFILEs
 
 The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to expand the compressed SMPMCS and RELFILEs from the uploaded AZWE001.pax.Z file into data sets for use by the SMP/E RECEIVE job. The JCL is repeated here for your convenience. 
 
+  * @zfs_path@ matches the variable you spein the previous step.
+   * If the 'oshell' command gets a RC=256 and message "pax: checksum error on tape (got ee2e, expected 0) then the archive file was not uploaded to the host in binary format.
+   * GIMUNZIP allocates data sets to match the definintions of the original data sets. You may encounter errors if your SMS ACS routines alter the attributes used by GIMUNZIP. If this occurs, specify a non-SMS managed volume for the GINUMZIP allocation of the data sets. For example:  
+   _storclas-"storage_class" volume="data_set_volume"_  
+   _newname-"..."/>_  
+   
 ```
 //EXTRACT  JOB <job parameters>
-//*
 //*   - Change:
 //*       @PREFIX@
 //*       ----+----1----+----2
@@ -222,14 +271,14 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
 //*
 //* Note: If the 'oshell' command has a RC=256 and message
 //* "pax: checksum error on tape (got ee2e, expected 0)", then the
-//* #pax
+//* AZWE002.pax.Z
 //* archive file was not uploaded to the host in binary format.
 //UNPAX    EXEC PGM=IKJEFT01,REGION=0M,COND=(0,LT)
 //SYSEXEC  DD DISP=SHR,DSN=SYS1.SBPXEXEC
 //SYSTSPRT DD SYSOUT=*
 //SYSTSIN  DD *
   oshell cd @zfs_path@/ ; +
-    pax -rvf #pax
+    pax -rvf AZWE002.pax.Z
 //*
 //* Note: GIMUNZIP allocates data sets to match the definitions of
 //* the original data sets. You may encounter errors if your SMS ACS
@@ -248,27 +297,15 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
 //SMPDIR   DD PATHDISP=KEEP,
 // PATH='@zfs_path@/'
 //SYSIN    DD *
+<GIMUNZIP>
+<ARCHDEF archid="AZWE002.SMPMCS"
+newname="@PREFIX@.ZOWE.AZWE002.SMPMCS"/>
+<ARCHDEF archid="AZWE002.F1"
+newname="@PREFIX@.ZOWE.AZWE002.F1"/>
+<ARCHDEF archid="AZWE002.F2"
+newname="@PREFIX@.ZOWE.AZWE002.F2"/>
+<ARCHDEF archid="AZWE002.F4"
+newname="@PREFIX@.ZOWE.AZWE002.F4"/>
+</GIMUNZIP>
+//*
 ```
-
-### Create SMP/E environment (optional)
-
-### Perform SMP/E RECEIVE
-
-### Allocate SMP/E Target and Distribution Libraries
-
-### Allocate File System Paths
-
-### Create DDDEF Entries
-
-### Perform SMP/E APPLY
-
-### Perform SMP/E ACCEPT
-
-### Run REPORT CROSSZONE
-
-## Activating Zowe
-
-### File System Execution
-
-## Product Customization                
-
