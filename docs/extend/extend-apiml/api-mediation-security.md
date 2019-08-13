@@ -32,7 +32,10 @@
     - [Trust a z/OSMF certificate](#trust-a-z-osmf-certificate)
     - [Disable certificate validation](#disable-certificate-validation)  
 - [Security Service Client library](#security-service-client-library)
-  
+    - [@EnableApimlAuth annotation](#@enableApimlAuth-annotation)
+    - [Gateway lookup logic](#gateway-lookup-logic)
+    - [Useful classes](#useful-classes)
+
 ## How API ML transport security works
 
 Security within the API Mediaiton Layer (API ML) is performed on several levels. This article describes how API ML uses Transport Layer Security (TLS). As a system administrator or API developer, use this guide to familiarize yourself with the following security concepts:  
