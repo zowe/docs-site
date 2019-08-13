@@ -1,6 +1,38 @@
 # Installing Zowe SMP/E Alpha
 
-## Installing Zowe SMP/E Alpha
+## Installation Requirements and Considations
+
+The following sections identify the system requirements for installing and actibating Zowe.  The following terminology is used:
+
+  * *Driving System:* the system on which SMP/E is executed to install the program.
+
+  * *Target system:* the system on which the program is configured and run
+
+ Use separate driving and target systems in the following situations:
+
+  * When you install a new level of a product that is already installed, the new level of the product will replace the old one. By installing the new level onto a separate target system, you can test the new level and keep the old one in production at the same time.
+
+  * When you install a product that shares libraries or load modules with other products, the installation can disript the other products. By installing the product onto a separate target system, you can assess these impacts without disrupting your production system.
+
+## Driving System Requirements
+
+<< To be Completed >>
+
+## Installation Reqruiements and Considations
+
+<< To be Completed >>
+
+## Installation Instructions
+
+This chapter describes the installation method and the step-by-step procedures to install and activate the functions of Zowe.
+
+Please note the following points:
+
+  * If you want to install Zowe into its own SMP/E environment, consult the SMP/E manuals for instrcutions on creating and initializing the SMPCSI and SMP/E control data sets.
+
+  * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
+
+  * You can use the SMP/E dialogs instead of the sample jobs to accomplish the SMP/E installation steps.
 
 ### SMP/E considerations for installing Zowe
 
@@ -16,9 +48,28 @@ the SMP/E manuals for instructions on updating the global zone.
 **Table: SMP/E Options Subentry Values**  <!--Needs input-->
 Subentry | Value | Comment
 -- | --| --| 
-DSSPACE | ???  | Space allocation
+DSSPACE | (1200,1200,1400)  | Space allocation
 PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
+### Overview of the installation steps
+
+Overview of steps required to install Zowe Open Source Project (Base).
+
+  1. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
+  2. [Download the Zowe SMP/E package](#download-the-zowe-smp/e-package)
+  3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
+  4. Extract and expand the compress SMPMCS and RELFILEs
+  5. Create SMP/E enviornment (optional)
+  6. Perform SMP/E Receive
+  7. Allocate SMP/E target and distribution libraries
+  8. Allocate and mount z/OS UNIX file system (optional)
+  9. Allocate z/OS UNIX paths
+  10. Create DDDEF entries
+  11. Perform SMP/E APPLY
+  12. Perform SMP/E ACCEPT
+  13. Run REPORT CROSSZONE
+
+<< TODO - Where does this section belong ? >>
 ### SMP/E CALLLIBS Processing
 
 Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: <!--Needs a list of libraries-->
@@ -28,7 +79,7 @@ Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external re
 - MACLIB
 
 **Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
-
+<< TODO - Where does this section belong ? >>
 ### Sample Jobs ?? 
 
 The following sample installation jobs are provided as part of the project to help you install Zowe: <!--Needs a list of sample jobs-->
@@ -59,10 +110,6 @@ You will receive 2 files on your desktop.
    The README file contains an optional job FILESYS to set up a new ZSS file system.
 
    The rest of the README is a single job EXTRACT.
-
-### Overview of the installation steps
-
-
 
 ### Allocate file system to hold the download package
 
@@ -129,6 +176,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
     MODE(RDWR) TYPE(ZFS) PARM('AGGRGROW')
 //*
 ```
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly
 
 ### Upload the download package to the host 
 
