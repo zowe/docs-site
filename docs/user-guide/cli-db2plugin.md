@@ -1,16 +1,17 @@
-# Zowe CLI Plug-in for IBM Db2 Database
-The Zowe CLI plug-in for IBM® Db2® Database lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
+# IBM® Db2® Plug-in for Zowe CLI
+
+The IBM Db2 Plug-in for Zowe CLI lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
 [[toc]]
 
 ## Use cases
 
-As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
+As an application developer, you can use IBM Db2 Plug-in for Zowe CLI to perform the following tasks:
 
-  - Execute SQL and interact with databases.
-  - Execute a file with SQL statements.
-  - Export tables to a local file on your computer in SQL format.
-  - Call a stored procedure and pass parameters.
+- Execute SQL and interact with databases.
+- Execute a file with SQL statements.
+- Export tables to a local file on your computer in SQL format.
+- Call a stored procedure and pass parameters.
 
 ## Commands 
 
@@ -26,7 +27,7 @@ Before you install the plug-in, meet the software requirements in [Software requ
 
 ## Installing
 
-Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2 Database:
+Use one of the following methods to install the the IBM Db2 Plug-in for Zowe CLI:
 
 - [Install from an online registry](#installing-from-an-online-registry)
 - [Install from a local package](#installing-from-a-local-package)
@@ -139,6 +140,4 @@ To create a db2 profile in Zowe CLI, issue the following command with your conne
 zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>  
 ```
 
-**Note** For more information, issue the command `zowe profiles create db2-profile --help`
- 
-
+**Note:** For more information, issue the command `zowe profiles create db2-profile --help`.
