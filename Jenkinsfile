@@ -17,7 +17,7 @@ def allowPublishing = false
 def isTestPublishing = false
 def publishTargetPath = 'latest'
 def isMasterBranch = env.BRANCH_NAME == 'master'
-def isReleaseBranch = env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/
+def isReleaseBranch = (env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/ || env.BRANCH_NAME == "forward-development")
 
 def opts = []
 // keep last 20 builds for regular branches, no keep for pull requests
