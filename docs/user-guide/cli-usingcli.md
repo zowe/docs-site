@@ -33,7 +33,7 @@ zowe zos-files create --help
 
 ### Interactive Web help
 
-You can launch interactive help in your Web browser. Web help is custom-generated to include commands for all currently installed plug-ins. Issue the following command:
+You can launch an interactive form of help in your Web browser. Web help is custom-generated to include commands for all currently installed plug-ins. Issue the following command:
 
 ```
 zowe --help-web
@@ -43,7 +43,7 @@ zowe --help-web
 
 ### Zowe CLI command reference
 
-Command reference is available for download in three formats: a static copy of the interactive web help, a ZIP file that contains the HTML web help, and a static PDF:
+Command reference is available for download in three formats: a static copy of the interactive Web help, a ZIP file that contains the HTML web help, and a static PDF:
 
 - <a href="../web_help/index.html" target="_blank">Browse Online</a>
 - <a href="../zowe_web_help.zip">Download (ZIP)</a>

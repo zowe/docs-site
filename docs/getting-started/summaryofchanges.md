@@ -9,6 +9,7 @@ Learn about what is new or changed in the **Zowe Active Development Version**. Z
 **Features and enhancements:**
 
 - The CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+- You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
 
 **New compatible plug-ins:**
 
