@@ -61,11 +61,11 @@ Overview of steps required to install Zowe Open Source Project (Base).
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
   5. [Sample Jobs](#sample-jobs)
   5. [Create SMP/E environment (optional)](#Create-smp/e-environment-(optional))
-  6. Perform SMP/E Receive
-  7. Allocate SMP/E target and distribution libraries
-  8. Allocate and mount z/OS UNIX file system (optional)
-  9. Allocate z/OS UNIX paths
-  10. Create DDDEF entries
+  6. [Perform SMP/E Receive](#perform-smp/e-receive)
+  7. [Allocate SMP/E target and distribution libraries](#allocate-smp/e-target-and-distribution-libraries)
+  8. [Allocate and mount z/OS UNIX file system (optional)](allocate,-create-and-mount-ZSF-Files-(Optional))
+  9. [Allocate z/OS UNIX paths](#allocate-z/os-unix-paths)
+  10. [Create DDDEF entries](#create-dddef-entries)
   11. Perform SMP/E APPLY
   12. Perform SMP/E ACCEPT
   13. Run REPORT CROSSZONE
@@ -353,6 +353,95 @@ If you are using an existing CSI, do not run the sample job ZWE1SMPE.
 If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job propvided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Perform SMP/E RECEIVE
+
+Edit and submit sample job ZWE2RCVE to perform the SMP/E RECEIVE for Zowe. Consult the instructions in the sample job for more information.
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Allocate SMP/E Target and Distributions Libraries
+
+Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information,
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Allocate, create and mount ZSF Files (Optional)
+
+This job allocates, creates a mountpoint, and mounts zFS data sets.
+
+If youi plan to install Zowe into a new z/OS UNIX file system, you can edit and submit the optional ZWE4ZFS job to perform the following tasks.
+
+  * Create the z/OS UNIX file system
+  * Create a mountpoint
+  * Mount the z/OS UNIX file system on the mountpoint
+
+Consult the instructions in the sample job for more information.
+
+The recommended z/OS UNIX file system type is zFS. The recommended mountpoint is _usr/lpp/zowe._
+
+Before running the sample job to create the z/OS UNIX file system, you must ensure that OMVS is active on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
+
+If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IPL time. This action can be helpful if an IPL occurs before the installation is completed,
+
+```
+MOUNT FILESYSTEM('#dsn')
+ MOUNTPOINT('/usr/lpp/zowe')
+ MODE(RDWR)        /* can be MODE(READ) */
+ TYPE(ZFS) PARM('AGGRGROW') /* zFS, with extents */
+```
+See the following information to update the statements in the previous sample:
+
+  * __#dsn__ is the name of the data set holding the z/OS UNIX file system.
+  * ___usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Allocate z/OS UNIX Paths
+
+The target system HFS or zFS data set must be mounted on the driving system when running the sample ZWE5MKD job since the job will create paths in the HFS or zFS.
+
+Before running the sample job to cr
+
+The eate the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted to the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
+
+If ou plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system to the driving system for Zowe.
+
+<!Should this be /usr/lpp/zowe/v1?>
+
+The recommended mountpoint is _usr/lpp/zowe._
+
+Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths or zFS paths for Zowe. Consult the instructions in the sample job for more information.
+
+If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IP time. Thsi action can be helpful if an IP occurs before the installation is completed.
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Create DDDEF Entries
+
+Edit and submit sample job ZWE6DDEF to create DDDEF entries for the SMP/E target and distribution libraries for Zowe. Consule the instructions in the sample job for more information.
+
+__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+
+### Perform SMP/E APPLY
+
+* 1.Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
+
+* The latest HOLDDATA is available through several different portals, including http://service.software.ibm.com/holddata/390holddata.html. The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine if any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
+
+* You should install the FMIs regardless of the statues of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
+
+
+* To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do _not_ bypass the PRE, ID, REQ, and IFREQ on the APPLY CHECK. The SMP/E root cause analysis identifies the cause only of _errors_ and not of _warnings_ (SMP/E treats bypassed PRE, ID, REQ, and IFREQ conditions as warnings, instead of errors).
+
+* Here are sample APPLY commands:
+
+* 1. To ensure that all recommended and critical service is installed with the FMIDs, receive the latest HOLDDATA and use the APPLY CHECK command as follows
+
+
+
+
+
 
 
 
