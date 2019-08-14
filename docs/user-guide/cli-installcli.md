@@ -6,6 +6,10 @@ These instructions apply to the Active Development (@latest) branch of the CLI, 
 
 Learn more about new CLI features in the [Release notes](../getting-started/summaryofchanges.md). If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
+<!--
+TODO Add this to master version of this article: 
+These instructions apply to the Stable (@lts-incremental) branch of the CLI, which has stable features and bug fixes. If you want a version with the latest features as they are developed, refer to the [Active Development Zowe CLI installation instructions](http://localhost:8080/docs-site/latest/user-guide/cli-installcli.html).  -->
+
 ## Methods to install Zowe CLI
 
 Use one of the following methods to install Zowe CLI.
