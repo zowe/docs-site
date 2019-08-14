@@ -14,7 +14,7 @@ zowe -V
 
 Zowe CLI versions may vary depending upon if the `@latest` or `@lts-incremental` version is installed.   
 
-For the `@latest` (forward-development) version:
+For the `@latest` (active-development) version:
 
 ```
 npm list -g @zowe/cli

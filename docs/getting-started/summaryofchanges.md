@@ -71,7 +71,7 @@ Zowe CLI is associated with version tags in a Node Package Manager (npm) registr
 
 - `npm install -g @zowe/cli@latest` 
     
-    The Pre-Release (or forward-development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, you might have to take corrective action when breaking changes are introduced. 
+    The Pre-Release (or active-development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, you might have to take corrective action when breaking changes are introduced. 
 
 Learn more about the Zowe CLI versioning scheme [here.](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md)
 
