@@ -1,6 +1,6 @@
 # Installing Zowe CLI
 
-Install Zowe CLI forward-development version on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
+Install Zowe CLI active-development version on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
 **Important!** These instructions apply to the forward development (@latest) branch of the CLI, which accepts breaking changes. If you want stable features and bug fixes, refer to the stable Zowe release documentation (@lts-incremental). 
 
