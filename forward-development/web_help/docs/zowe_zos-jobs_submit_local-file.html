@@ -24,19 +24,20 @@ Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
 <ul>
 <li><p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>View all spool content for specified job ID</li>
+<li>Print all spool output. If you use this option you will wait the job to
+complete.</li>
 </ul>
 </li>
 <li><p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
 <ul>
-<li>The local directory you would like to download the output for the job to.
-Creates a subdirectory using the jobID as the name and files are titled based on
-DD names.</li>
+<li>The local directory you would like to download the output of the job. Creates a
+subdirectory using the jobID as the name and files are titled based on DD
+names. If you use this option you will wait the job to complete.</li>
 </ul>
 </li>
 <li><p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
-<li>A file extension to save the job output with</li>
+<li>A file extension to save the job output with. Default is &#39;.txt&#39;.</li>
 </ul>
 </li>
 </ul>
