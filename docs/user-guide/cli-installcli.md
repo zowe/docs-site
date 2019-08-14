@@ -1,9 +1,10 @@
 # Installing Zowe CLI
 
-## Active Development Version
-Install Zowe CLI forward-development version on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
+## Active Development version
 
-**Important!** These instructions apply to the forward development (@latest) branch of the CLI, which accepts breaking changes. If you want stable features and bug fixes, refer to the stable Zowe release documentation (@lts-incremental). 
+These instructions apply to the Active Development (@latest) branch of the CLI, which accepts breaking changes. If you want a version with stable features and bug fixes, refer to the [Stable Zowe CLI installation instructions](https://zowe.github.io/docs-site/v1-2-x/extend/extend-cli/cli-devTutorials.html). 
+
+Learn more about new CLI features in the [Release notes](../getting-started/summaryofchanges.md). If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
 ## Methods to install Zowe CLI
 
@@ -115,7 +116,12 @@ If your computer is connected to the Internet, you can use the following method 
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing). For more information about available plug-ins, how to install multiple plug-ins, or update to a specific version of a plug-in see [Extending Zowe CLI](cli-extending.md).
 
-Zowe CLI is installed on your computer. You can issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profiles.
+Zowe CLI is installed on your computer. You can issue the `zowe --help` command to view a list of available commands. 
+
+**More information:** 
+- [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). 
+- [Test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profiles.
+
 
 
 
