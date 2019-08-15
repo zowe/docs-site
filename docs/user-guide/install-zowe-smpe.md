@@ -800,10 +800,10 @@ APAR numbers are provided in this document to assist in locating PTFs that may b
 
 ## Trademarks
 
-ZOWE, the ZOWE logo, and zowe.org are trademarks or registered trademarks of Linux Foundation, registered in many jurisdictions worldwide. Other product and service names might be trademarks of Linux Foundation or other companies. 
+Zowe, the Zowe logo, and zowe.org are trademarks or registered trademarks of Linux Foundation, registered in many jurisdictions worldwide. Other product and service names might be trademarks of Linux Foundation or other companies. 
 
 ## Reader's Comments
-ß
+
 Program Directory for Zowe Open Source Project (Base), August 2019
 
 We appreciate your input on this publication. Feel free to comment on the clarity, accuracy, and completeness of the information or give us any other feedback that you might have.
