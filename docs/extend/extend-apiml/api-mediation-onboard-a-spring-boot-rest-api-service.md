@@ -6,30 +6,11 @@ Zowe API Mediation Layer (API ML) provides a single point of access for mainfram
 
 As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-1. [Prepare an existing Spring Boot REST API for onboarding](#prepare-an-existing-spring-boot-rest-api-for-onboarding)
-2. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
-3. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
-4. [Externalize API ML configuration parameters](#externalize-api-ml-configuration-parameters)
-5. [Test your service](#test-your-service)
-6. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
-
-## Prepare an existing Spring Boot REST API for onboarding
-The Spring Boot API onboarding process follows these general steps. Further detail about how to perform these steps is described later in this article.
-
-**Follow these steps:**
-
-1. Add enabler annotations to your service code and update the build scripts:
-    * **@EnableApiDiscovery**
-
-        This annotation exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to enable/make your micro service discoverable in the Zowe ecosystem.
-
-        **Note:** The @EnableApiDiscovery annotation uses the Spring Fox library. If your service uses this library already, some fine tuning may be necessary.
-     * **@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})**
-
-        This annotation makes an API documentation endpoint visible within the Spring context.  
-2. Update your service configuration file to include Zowe API Mediation Layer specific settings.
-3. Externalize the API ML site-specific configuration settings.
-4. Test your changes.
+1. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
+2. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
+3. [Externalize API ML configuration parameters](#externalize-api-ml-configuration-parameters)
+4. [Test your service](#test-your-service)
+5. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 ## Add Zowe API enablers to your service
 In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifactory repository definition to the list of repositories, then add the Spring enabler to the list of your dependencies, and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
@@ -129,7 +110,13 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
 
     *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
+
+        Makes an API documentation endpoint visible within the Spring context.
     *  `@EnableApiDiscovery`
+
+        Exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to make your micro service discoverable in the Zowe ecosystem.
+
+        **Note:** The @EnableApiDiscovery annotation uses the Spring Fox library. If your service uses the library already, some fine tuning may be necessary.
 
     **Example:**   
 
@@ -145,7 +132,6 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      public class DiscoverableClientSampleApplication {...
      ```  
   You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
-
 
 ## Add API ML onboarding configuration
 

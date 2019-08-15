@@ -11,6 +11,12 @@ Zowe Version 1.4.0 and later releases include the following enhancements, releas
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+
+<!--ADD TO 1.5.0 for CLI section 
+- You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
+-->
+
+
 ## Version 1.4.0 (August 2019)
 
 <!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
