@@ -2,28 +2,127 @@
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Installing Zowe SMP/E Alpha](#installing-zowe-smpe-alpha)
-	- [Installation Requirements and Considerations](#installation-requirements-and-considerations)
+- [Introduction](#Introduction)  
+  - [Zowe Description](#zowe-description)
+  - [Zowe FMIDs](#zowe-fmids)
+- [Program Materials](#program-materials)
+  - [Basic Machine-Readable Material](#basic-machine-readable-material)
+  - [Program Publications](#program-publications)
+  - [Program Source Materials](#program-source-materials)
+  - [Publications Useful During Installation](#publications-useful-during-installation)
+- [Program Support](#prorgram-support)
+  - [Statement of Support Procedures](#statement-of-support-procedures)
+- [Program and Service Level Information](#program-and-service-level-information)
+  - [Program Level Information](#program-level-information)
+  - [Service Level Information](#service-level-information)
+- [Program and Service Level Information](#program-and-service-level-information)
+- [Installation Requirements and Considerations](#installation-requirements-and-considerations)
 	- [Driving System Requirements](#driving-system-requirements)
-	- [Installation Instructions](#installation-instructions)
-		- [SMP/E considerations for installing Zowe](#smpe-considerations-for-installing-zowe)
-		- [SMP/E Options Subentry Values](#smpe-options-subentry-values)
-		- [SMP/E CALLLIBS Processing](#smpe-calllibs-processing)
-		- [Overview of the installation steps](#overview-of-the-installation-steps)
-		- [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
-		- [Allocate file system to hold the download package](#allocate-file-system-to-hold-the-download-package)
-		- [Upload the download package to the host](#upload-the-download-package-to-the-host)
-		- [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
-		- [Sample Jobs](#sample-jobs)
-		- [Create SMP/E environment (optional)](#create-smpe-environment-optional)
-		- [Perform SMP/E RECEIVE](#perform-smpe-receive)
-		- [Allocate SMP/E Target and Distributions Libraries](#allocate-smpe-target-and-distributions-libraries)
-		- [Allocate, create and mount ZSF Files (Optional)](#allocate-create-and-mount-zsf-files-optional)
-		- [Allocate z/OS UNIX Paths](#allocate-zos-unix-paths)
-		- [Create DDDEF Entries](#create-dddef-entries)
-		- [Perform SMP/E APPLY](#perform-smpe-apply)
+      - [Driving System Machine Requirements](#driving-system-machine-requirements)
+      - [Program System Programming Requirements](##driving-system-programming-requirements)
+  - [Target System Requirements](#target-system-requirements)
+    - [Target System Machine Requirements](#target-system-machine-requirements)
+    - [Target System Programming Requirements](#target-system-programming-requirements)   
+    - [DASD Storage Requirements](#dasd-storage-requirements)
+  - [FMIDs Deleted](#fmids-deleted)
+- [Installation Instructions](#installation-instructions)
+	- [SMP/E considerations for installing Zowe](#smpe-considerations-for-installing-zowe)
+	- [SMP/E Options Subentry Values](#smpe-options-subentry-values)
+	- [Overview of the installation steps](#overview-of-the-installation-steps)
+	- [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
+	- [Allocate file system to hold the download package](#allocate-file-system-to-hold-the-download-package)
+	- [Upload the download package to the host](#upload-the-download-package-to-the-host)
+	- [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
+	- [Sample Jobs](#sample-jobs)
+	- [Create SMP/E environment (optional)](#create-smpe-environment-optional)
+	- [Perform SMP/E RECEIVE](#perform-smpe-receive)
+	- [Allocate SMP/E Target and Distributions Libraries](#allocate-smpe-target-and-distributions-libraries)
+	- [Allocate, create and mount ZSF Files (Optional)](#allocate-create-and-mount-zsf-files-optional)
+	- [Allocate z/OS UNIX Paths](#allocate-zos-unix-paths)
+	- [Create DDDEF Entries](#create-dddef-entries)
+	- [Perform SMP/E APPLY](#perform-smpe-apply)    
+  - [Perform SMP/E Accept](#perform-smpe-accept)
+
 
 <!-- /TOC -->
+
+# Introduction
+
+This program directory is intended for system programmers who are responsible for program installation and maintenance. It contains information about the material and procedures associated with the installation of Zowe Open Source Project (Base). This publication refers to Zowe Open Source Project (Base) as Zowe.
+
+The Program Directory contains the following sections"
+
+  - **Program Materials** identifies the basic program materials and documentation for Zowe
+
+  - **Program Support** describes the support available for Zowe
+
+  - **Program and Service Level Information** lists the APARs (program level) and PTFs (service level) that have been incorporated into Zowe.
+
+  - **Installation Requirements and Considerations** identifies the resources and consideations that are required for installing and using Zowe.
+
+  - **Installation Instructions** provides detailed installation instructions for Zowe. It also describes the procedures for activating the functions of Zowe, or refers to appropriate publications.  
+
+### Zowe Description
+
+Zowe is an open source project created to host technologies that benefit the Z platform.  It is managed by the Open Mainframe Project who are part of the Linux Foundation.  More information can be obtained on https://zowe.org 
+
+### Zowe FMIDs
+
+Zowe consists of the following FMIDs:
+
+  * AZWE001
+
+## Program Materials
+
+Basic Machine-Readable Materials are materials that are supplied under the base license and are required for the use of the product.
+
+### Basic Machine-Readable Material
+
+The distribution medium for this program is downloadable files. This program is in SMP/E RELFILE format and is installed by using SMP/E. See [Installation Instructions](#installation-instructions) for more information about how to install the program
+
+### Program Publications
+
+The Zowe documentation can be obtained from the Zowe onlin library https://zowe.github.io/docs-site/latest 
+
+No optional publications are provided for Zowe.
+
+### Program Source Materials
+
+No program source materials or viewable program listings are provided for Zowe. However, program source materials can be downloaded from https://github.com/zowe/ 
+
+### Publications Useful During Installation
+
+You might want to use the publications listed below during the installation of Zowe
+
+Publication Title | Form Number 
+-- | --| --|
+IBM SMP/E for z/OS User's Guide | SA23-2277 
+IBM SMP/E for z/OS Commands  | SA23-2275 
+IBM SMP/E for z/OS Reference | SA23-2276
+IBM SMP/E for z/OS MNessages, Codes and Diagnosis | GA32-0883 
+
+These and other publications can be obtained from https://www.ibm.com/shop/publications/order 
+
+## Program Support
+
+This section describes the support available for Zowe.
+Because this is an alpha release of the Zowe FMID package for early testing and adoption no formal support is offered over and above that which the open source community can provide. Additional support may be available through other entities outside of the Open Mainframe Project and Linux Foundation which offers no warranty and provides the package under the terms of the EPL v2.0 license (TODO - Needs more legaleze here)
+
+### Statement of Support Procedures
+
+Report any problems which you feel might be an error in the product materials to the Zowe community via https://github.com/zowe/community/issues/new/choose. You may be asked to gather and submit additional diagnostics to assist the community in their analysis.
+
+## Program and Service Level Information
+
+This section identifies the program and relevant service levels of Zowe. The program level refers to the APAR fixes that have been incorporated into the program. The service level refers to the PTFs that have been incorporated into the program.
+
+### Program Level Information
+
+All APARs of previous releases of Zowe that were resolved before August 2019 have een incorporated into Zowe.
+
+### Service Level Information
+
+No PTFs against this release of Zowe have been incorporated into the product package.
 
 ## Installation Requirements and Considerations
 
@@ -43,7 +142,200 @@ Use separate driving and target systems in the following situations:
 
 This section describes the environment of the driving system required to install Zowe.
 
-<< To be Completed >>
+### Driving System Machine Requirements
+
+The driving system can be run in any hardware environment that supports the required software
+
+### Driving System Programming Requirements
+
+Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy these APARs | Included in the shipped product ? 
+-- | --| --| -- | -- |
+5650-ZOS | z/OS | V2.2.0 or the lowest supported zOS level, whichever is more recent | N/A | No |
+
+**Note:** SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
+
+**Note:** Installation might require migration to new z/OS releases to be service supported. See https://www-01.ibm.com/software/support/lifecycle/index_z.html.
+
+Zowe is installed into a file system, either HFS or zFS. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
+
+If you plan to install Zowe in a zFS file system, this requires that zFS be active on the driving system. Information on activating and using zFS can be found in _z/OS Distributed File Service zSeries File System Administration (SC24-5989)._
+
+## Target System Requirements
+
+This section describes the environment of the target system required to install and use Zowe.
+
+Zowe installs in the z/OS (Z038) SREL.
+
+### Target System Machine Requirements
+
+The target system can run in any hardware environment that supports the required software.
+
+### Target System Programming Requirements
+
+**Installation Requisites**  
+
+Installation requisites identify products that are required and must be present on the system or products that are not required but should be present on the system for the successful installation of this product.
+
+Mandatory installation requisites identify products that are required on the system for the successful installation of this product. These products are specified as PREs or REQs.
+
+Zowe has no mandatory installation requisites.
+
+Conditional installation requisites identify products that are not required for successful installation of this product but can resolve such things as certain warning messages at installation time. These products are specified as IF REQs.
+
+Zowe has no conditional installation requisites.
+
+**Operational Requisites**  
+
+Operational requisites are products that are required and must be present on the system or products that are not required but should be present on the system for this product to operate all or part of its functions.
+
+Mandatory operational requisites identify products that are required for this product to operate its basic functions. 
+
+**Target System Mandatory Operational Requisites** 
+
+ Program Number |Product Name and Minimum VRM/Service Level
+| --| --| 
+5650-ZOS | IBM z/OS Management Facility V2.2.0 or higher
+5655-SDK |	IBM SDK for Node.js - z/OS V6.14.4.1 or higher
+5655-DGH |	IBM 64-bit SDK for z/OS Java Technology Edition V8.0.0
+
+Conditional operational requisites identify products that are not required for this product to operate its basic functions but are required at run time for this product to operate specific functions. These products are specified as IF REQs.
+
+Zowe has no conditional operational requisites.
+
+**Toleration/Coexistence Requisites** 
+
+Toleration/coexistence requisites identify products that must be present on sharing systems. These systems can be other systems in a multisystem environment (not necessarily sysplex), a shared DASD environment (such as test and production), or systems that reuse the same DASD environment at different time intervals.
+
+Zowe has no toleration/coexistence requisites.
+
+**Incompatibility (Negative) Requisites** 
+
+Negative requisites identify products that must not be installed on the same system as this product.
+
+Zowe has no negative requisites.
+
+### DASD Storage Requirements
+
+Zowe libraries can reside on all supported DASD types.
+
+**Total DASD Space Required by Zowe** 
+Library Type | Total Space Required in 3390 Trks | Description
+| --| --| --|
+Target |30 Tracks	| 
+Distribution | 12030 Tracks	| 
+File System(s) | 9000 Tracks | 
+Web Download | 26111 Tracks | These are temporary data sets, which can be removed after the SMP/E install. 
+
+**Notes:**
+
+  1. For non-RECFM U data sets, we recommend using system-determined block sizes for efficient DASD utilization. For RECFM U data sets, we recommend using a block size of 32760, which is most efficient from the performance and DASD utilization perspective.
+
+  2. Abbreviations used for data set types are shown as follows.
+    
+  - **U**	Unique data set, allocated by this product and used by only this product. This table provides all the required information to determine the correct storage for this data set. You do not need to refer to other tables or program directories for the data set size.
+
+  - **S** 	Shared data set, allocated by this product and used by this product and other products. To determine the correct storage needed for this data set, add the storage size given in this table to those given in other tables (perhaps in other program directories). If the data set already exists, it must have enough free space to accommodate the storage size given in this table.
+ - **E** 	Existing shared data set, used by this product and other products. This data set is not allocated by this product. To determine the correct storage for this data set, add the storage size given in this table to those given in other tables (perhaps in other program directories). If the data set already exists, it must have enough free space to accommodate the storage size given in this table.
+
+If you currently have a previous release of this product installed in these libraries, the installation of this release will delete the old release and reclaim the space that was used by the old release and any service that had been installed. You can determine whether these libraries have enough space by deleting the old release with a dummy function, compressing the libraries, and comparing the space requirements with the free space in the libraries.
+
+For more information about the names and sizes of the required data sets, see [Allocate SMP/E Target and Distribution Libraries](#allocate-smpe/e-target-and-distribution-libraries).
+
+Abbreviations used for the file system path type are as follows.
+
+  **N**	New path, created by this product.
+
+  **X**	Path created by this product, but might already exist from a previous release.
+
+  **P**	Previously existing path, created by another product.
+
+  4. All target and distribution libraries listed have the following attributes:
+  * The default name of the data set can be changed.
+  * The default block size of the data set can be changed.
+  * The data set can be merged with another data set that has equivalent characteristics.
+  * The data set can be either a PDS or a PDSE, with some exceptions. If the value in the "ORG" column specifies "PDS", the data set must be a PDS. If the value in "DIR Blks" column specifies "N/A", the data set must be a PDSE.
+
+  5. All target libraries listed have the following attributes:
+  * These data sets can be SMS-managed, but they are not required to be SMS-managed.
+  * These data sets are not required to reside on the IPL volume.
+  * The values in the "Member Type" column are not necessarily the actual SMP/E element types that are identified in the SMPMCS.
+
+  6. All target libraries that are listed and contain load modules have the following attributes:
+  * These data sets can not be in the LPA, with some exceptions. If the value in the "Member Type" column specifies "LPA", it is advised to place the data set in the LPA.
+  * These data sets can be in the LNKLST.
+  * These data sets are not required to be APF-authorized, with some exceptions. If the value in the "Member Type" column specifies "APF", the data set must be APF-authorized.
+
+****Storage Requirements for SMP/E Work Data Sets**
+
+Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+| --| --| --| --| --| --| --|
+SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
+SYSUT1 |U	| SEQ	| -- | --	| (20,200) |0
+
+**Storage Requirements for SMP/E Data Sets**
+
+Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+| --| --| --| --| --| --| --|
+SMPPTS | S | PDSE | FB | 80 | (12000,3000) | 50
+
+
+The following figures describe the target and distribution libraries and file system paths required to install Zowe. The storage requirements of Zowe must be added to the storage required by other programs that have data in the same library or path.
+
+**Note:** Use the data in these tables to determine which libraries can be merged into common data sets. In addition, since some ALIAS names may not be unique, ensure that no naming conflicts will be introduced before merging libraries. 
+
+**Storage Requirements for Zowe Target Libraries** 
+
+**Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference
+
+Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
+| --| --| --| --| --| --| --| --| --|
+SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
+SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+
+**Zowe File System Paths**
+
+DDNAME | TYPE | Path Name
+| --| --| --|
+SZWEZFS | X | /usr/lpp/zowe/SMPE
+
+**Storage Requirements for Zowe Distribution Libraries
+Library** 
+
+**Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference
+
+Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+| --| --| --| --| --| --| --|
+AZWEAUTH | U | PDSE | U | 0 | 15 | N/A
+AZWESAMP | U | PDSE | FB | 80 | 15 | 5
+AZWEZFS | U | PDSE | VB | 6995 | 12000 | 30
+
+The following figures list data sets that are not used by Zowe, but are required as input for SMP/E. 
+
+**Storage Requirements for Zowe Web Download Data Sets**
+
+
+Data Set Name | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+| --| --| --| --| --| --| --|
+hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
+hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
+hlq.ZOWE.AZWE001.F3 | U | PDSE | U | 0 | 5 | N/A
+hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
+hlq.ZOWE.AZWE001.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
+z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
+
+**Note:**  These are temporary data sets, which can be removed after the SMP/E install.
+
+### FMIDs Deleted
+
+Installing Zowe might result in the deletion of other FMIDs. To see which FMIDs will be deleted, examine the ++VER statement in the SMPMCS of the product.
+
+If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
+
+**Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
+
+**Special Considerations** 
+
+Zowe has no special considerations for the target system.
 
 ## Installation Instructions
 
@@ -72,17 +364,6 @@ Subentry | Value | Comment
 DSSPACE | (1200,1200,1400)  | Space allocation
 PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
-<< TODO - Where does this section belong ? >>
-### SMP/E CALLLIBS Processing
-
-Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: <!--Needs a list of libraries-->
-
-- CSSLIB
-- DSNLOAD
-- MACLIB
-
-**Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
-
 ### Overview of the installation steps
 
 Overview of steps required to download and install Zowe Open Source Project (Base).
@@ -98,9 +379,9 @@ Overview of steps required to download and install Zowe Open Source Project (Bas
   9. [Allocate and mount z/OS UNIX file system (optional)](allocate,-create-and-mount-ZSF-Files-(Optional))
   10. [Allocate z/OS UNIX paths](#allocate-z/os-unix-paths)
   11. [Create DDDEF entries](#create-dddef-entries)
-  12. Perform SMP/E APPLY
-  13. Perform SMP/E ACCEPT
-  14. Run REPORT CROSSZONE
+  12. [Perform SMP/E APPLY](#perform-smpe/e-apply)
+  13. [Perform SMP/E ACCEPT](#perform-smp/e-accept)
+  14. [Run REPORT CROSSZONE](#run-report-crosszone)
 
 ### Download the Zowe SMP/E package
 
@@ -301,7 +582,7 @@ newname="@PREFIX@.ZOWE.AZWE001.F4"/>
 </GIMUNZIP>
 //*
 ```
-### Sample Jobs
+### Sample Installation Jobs
 
 The following sample installation jobs are provided as part of the project to help you install Zowe:
 
@@ -436,3 +717,112 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
    Here are sample APPLY commands:
 
    1. To ensure that all recommended and critical service is installed with the FMIDs, receive the latest HOLDDATA and use the APPLY CHECK command as follows
+
+   ```
+   APPLY S(fmid,fmid,...) CHECK   
+   FORFMID(fmid,fmid,...)
+   SOURCEID(RSU*)
+   FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
+   GROUPEXTEND .
+   ```
+    * Some HIPER APARs might not have fixing PTFs available yet.  You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
+
+    * This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
+
+   2. To install the FMIDs without regard for unresolved HIPER APARs , you can add the BYPASS(HOLDCLASS(HIPER)) operand to the APPLY CHECK command. This will allow you to install FMIDs, even though one of more unresolved HIPER APARs exist. After the FMIDs are installed, use the SMP/E REPORT ERRSYSMODS command to identify unresolved HIPER APARs and any fixing PTFs.
+
+    ```
+    APPLY S(fmid,fmid,...) CHECK
+    FORFMID(fmid,fmid,...)
+    SOURCEID(RSU*)
+    FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
+    GROUPEXTEND
+    BYPASS(HOLDCLASS(HIPER)) .
+     ..any other parameters documented in the program directory
+    ```
+  * This method is requicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Ctegory IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
+
+  * If you byapss HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are availabile by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
+
+2. After you take actions that are indieicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
+
+**Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+
+**Expected Return Codes and Messages from APPLY CHECK:** You will receive a return code of 0 if the job runs correctly.
+
+**Expected Return Codes and Messages from APPLY:** You will receive a return code of 0 if the job runs correctly.
+
+### Perform SMP/E ACCEPT
+
+Edit and submit sample job ZWE8ACPT to perform an SMP/E ACCEPT CHECK for Zowe. Consult the instructions in the sample job for more information.
+
+To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do not bypass the PRE, ID, REQ, and IFREQ on the ACCEPT CHECK. The SMP/E root cause analysis identifies the cause of errors but not warnings (SMP/E treats bypassed PRE, ID, REQ, and IFREQ conditions as warnings rather than errors).
+
+Before you use SMP/E to load new distribution libraries, it is recommended that you set the ACCJCLIN indicator in the distribution zone. In this way, you can save the entries that are produced from JCLIN in the distribution zone whenever a SYSMOD that contains inline JCLIN is accepted. For more information about the ACCJCLIN indicator, see the description of inline JCLIN in the SMP/E Commands book for details.
+
+After you take actions that are indicated by the ACCEPT CHECK, remove the CHECK operand and run the job again to perform the ACCEPT.
+
+**Note:** The GROUPEXTEND operand indicates that SMP/E accepts all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+
+**Expected Return Codes and Messages from ACCEPT CHECK:** You will receive a return code of 0 if this job runs correctly.
+
+If PTFs that contain replacement modules are accepted, SMP/E ACCEPT processing will link-edit or bind the modules into the distribution libraries. During this processing, the Linkage Editor or Binder might issue messages that indicate unresolved external references, which will result in a return code of 4 during the ACCEPT phase. You can ignore these messages, because the distribution libraries are not executable and the unresolved external references do not affect the executable system libraries.
+
+**Expected Return Codes and Messages from ACCEPT:** You will receive a return code of 0 if this job runs correctly.
+
+### Run REPORT CROSSZONE
+
+The SMP/E REPORT CROSSZONE command identifies requisites for products that are installed in separate zones. This command also creates APPLY and ACCEPT commands in the SMPPUNCH data set. You can use the APPLY and ACCEPT commands to install those cross-zone requisites that the SMP/E REPORT CROSSZONE command identifies.
+
+After you install Zowe, it is recommended that you run REPORT CROSSZONE against the new or updated target and distribution zones. REPORT CROSSZONE requires a global zone with ZONEINDEX entries that describe all the target and distribution libraries to be reported on.
+
+For more information about REPORT CROSSZONE, see the SMP/E manuals.
+
+### Cleaning Up Obsolete Data Sets, Paths, and DDDEFs
+
+The web download data sets listed in [Sample Installation Jobs](#sample-installation-jobs) (section DASD Storage Requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E install.
+
+## Activating Zowe
+
+### File System Execution
+
+If you mount the file system in which you have installed Zowe in read-only mode during execution, then you do not have to take further actions to activate Zowe.
+
+## Product Customization
+
+The publication __Zowe Documentation__ contains the necessary information to customize and use Zowe.
+
+Additional documentation can be found at https://zowe.github.io/docs-site/latest 
+
+## Notices
+
+APAR numbers are provided in this document to assist in locating PTFs that may be required. Ongoing problem reporting may result in additional APARs being created. Therefore, the APAR lists in this document may not be complete.
+
+## Trademarks
+
+ZOWE, the ZOWE logo, and zowe.org are trademarks or registered trademarks of Linux Foundation, registered in many jurisdictions worldwide. Other product and service names might be trademarks of Linux Foundation or other companies. 
+
+## Reader's Comments
+ß
+Program Directory for Zowe Open Source Project (Base), August 2019
+
+We appreciate your input on this publication. Feel free to comment on the clarity, accuracy, and completeness of the information or give us any other feedback that you might have.
+
+Report your comments in https://github.com/zowe/community/issues/new/choose.
+
+Thank you for your participation.
+
+-----------------
+
+??? Where does this section belong ???
+
+<< TODO - Where does this section belong ? >>
+### SMP/E CALLLIBS Processing
+
+Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: <!--Needs a list of libraries-->
+
+- CSSLIB
+- DSNLOAD
+- MACLIB
+
+**Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
