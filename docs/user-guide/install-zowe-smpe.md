@@ -41,7 +41,7 @@
 	- [Allocate z/OS UNIX Paths](#allocate-zos-unix-paths)
 	- [Create DDDEF Entries](#create-dddef-entries)
 	- [Perform SMP/E APPLY](#perform-smpe-apply)    
-  - [Perform SMP/E Accept](#perform-smpe-accept)
+  - [Perform SMP/E ACCEPT](#perform-smpe-accept)
 
 
 <!-- /TOC -->
@@ -343,7 +343,7 @@ This section describes the installation method and the step-by-step procedures t
 
 Please note the following points:
 
-  * If you want to install Zowe into its own SMP/E environment, consult the SMP/E manuals for instrcutions on creating and initializing the SMPCSI and SMP/E control data sets.
+  * If you want to install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
 
   * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
 
@@ -395,7 +395,7 @@ Overview of steps required to download and install Zowe Open Source Project (Bas
 
   - **AZWE001.readme.txt (EBCDIC)**
 
-     The README file AZWE001.readme.txt is a single JCL file containing jobs with all the job steps you need to perform the installation, with comprehensive comments on how to tailor them. This is a sample job that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
+     The README file AZWE001.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
 
      Review this file on your desktop and follow the instructions that apply to your system.
 
@@ -537,6 +537,50 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
   * GIMUNZIP allocates data sets to match the definintions of the original data sets. You may encounter errors if your SMS ACS routines alter the attributes used by GIMUNZIP. If this occurs, specify a non-SMS managed volume for the GINUMZIP allocation of the data sets. For example:  
    _storclas-"storage_class" volume="data_set_volume"_  
    _newname-"..."/>_  
+  * Normally, your Automatic Class Selection (ACS) routines decide which volumes to use.   Depending on your ACS configuration, and whether your system has constraints on disk space, units, or volumes, some supplied SMP/E jobs might fail due to volume allocation errors.  
+
+#### GIMUNZIP
+
+The GIMUNZIP  job may issue allocation error messages for SYSUT1 similar to these:  
+```
+IEF244I ZWE0GUNZ GIMUNZIP - UNABLE TO ALLOCATE 1 UNIT(S)  577      
+        AT LEAST 1 OFFLINE UNIT(S) NEEDED.                         
+IEF877E ZWE0GUNZ NEEDS 1 UNIT(S)  578                              
+FOR GIMUNZIP SYSUT1                                        
+FOR VOLUME SCRTCH-   1                                     
+OFFLINE                                                    
+0AA4-0AA6 0AD0-0AD4                                        
+:       
+*07 IEF238D ZWE0GUNZ - REPLY DEVICE NAME OR 'CANCEL'.           
+ CNZ2605I At 10.10.22 the system will automatically  581        
+ reply: CANCEL                                                  
+ to the following WTOR:                                         
+ 0007 IEF238D ZWE0GUNZ - REPLY DEVICE NAME OR 'CANCEL'.         
+ R 0007,CANCEL                                                  
+ IKJ56883I FILE SYSUT1 NOT ALLOCATED, REQUEST CANCELED          
+ -                                         --TIMINGS (MINS.)--  
+ -JOBNAME  STEPNAME PROCSTEP    RC   EXCP    TCB    SRB  CLOCK  
+ -ZWE0GUNZ                      12   2311 ******    .00    2.4  
+ -ZWE0GUNZ ENDED.  NAME-                     TOTAL TCB CPU TIME=
+ $HASP395 ZWE0GUNZ ENDED - RC=0012                                                                                 
+```
+and the job will end with RC=12.  If this happens, add a TEMPDS control statement to the existing SYSIN as shown below:
+```
+//SYSIN    DD *                     
+<GIMUNZIP>                          
+<TEMPDS volume="&VOLSER"> </TEMPDS>  
+<ARCHDEF archid="&FMID..SMPMCS"
+newname="@PREFIX@.ZOWE.&FMID..SMPMCS"/>
+<ARCHDEF archid="&FMID..F1"
+newname="@PREFIX@.ZOWE.&FMID..F1"/>
+<ARCHDEF archid="&FMID..F2"
+newname="@PREFIX@.ZOWE.&FMID..F2"/>
+<ARCHDEF archid="&FMID..F4"
+newname="@PREFIX@.ZOWE.&FMID..F4"/>
+</GIMUNZIP>                         
+//*                                 
+```
+where `&VOLSER` is a DISK volume with sufficient free space to hold temporary copies of the RELFILES.  As a guide, this may require 1,000 cylinders, or about 650 MB. 
 
 ```
 //EXTRACT  JOB <job parameters>
@@ -599,7 +643,7 @@ ZWE7APLY | APPLY | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
 
 You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E Receive](#perform-smp/e-receive)), then copy the jobs from the RELFILES to a work data set for editing and submission.
 
-You can also copy the sample installation jobs from the product files by submitting the following job.  Before you submit the job, add a job care and change the lowercase parameters to uppercase values to meet the requirements of your site.
+You can also copy the sample installation jobs from the product files by submitting the following job.  Before you submit the job, add a job statement and change the lowercase parameters to uppercase values to meet the requirements of your site.
 
 ```
 //STEP1    EXEC PGM=IEBCOPY
@@ -628,6 +672,42 @@ See the following information to update the statements in the previous sample:
 - OUT:  
   * __jcl-library-name__ is the name of the output data set where the sample jobs are stored.  
   * __dasdvol__ is the volume serial of the DASD device where the output data set resides. Uncomment the statement is a volume serial must be provided.  
+  
+The following supplied jobs might fail due to disk space allocation errors, as mentioned above for GIMUNZIP:
+
+#### ZWE2RCVE
+```
+IEC032I E37-04,IGC0005E,ZWE2RCVE,RECEIVE,SMPTLIB,0AC0,USER10,  
+ZOE.SMPE.AZWE001.F4                                            
+```
+Add space and directory allocations to this SMPCNTL statement in the preceding ZWE1SMPE job
+```
+ADD DDDEF(SMPTLIB)  UNIT(SYSALLDA) .  
+```
+to make it as below
+```
+ADD DDDEF(SMPTLIB) CYL SPACE(2,1) DIR(10)  UNIT(SYSALLDA) .  
+```
+
+#### ZWE1SMPE and ZWE4ZFS  
+Example error
+```
+IDC3506I REQUIRED VOLUMES AND/OR DEVICETYPES HAVE BEEN OMITTED        
+IDC3003I FUNCTION TERMINATED. CONDITION CODE IS 12                    
+                                                                      
+IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 12    
+```
+Un-comment the `VOLUMES(...)` control statements and refer to the comments at the start of the JCL job for related necessary changes.
+
+#### ZWEMKDIR,  ZWE1SMPE, ZWE2RCVE, ZWE3ALOC,  ZWE4ZFS and ZWE5MKD
+Example error
+```
+IEF257I ZWE3ALOC ALLOCD ALLOCD AZWEZFS - SPACE REQUESTED NOT AVAILABLE     
+IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.                    
+```
+Un-comment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
+
+
 
 ### Create SMP/E environment (optional)
 
