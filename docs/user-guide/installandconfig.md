@@ -27,7 +27,7 @@ To uninstall Zowe, see [Uninstalling Zowe](uninstall.md).
 
 The following information is required during the installation process of API Mediation Layer and Zowe Application Framework. Make the decisions before the installation.
 
-- The HFS directory where you install Zowe, for example, `/var/zowe`.
+- The HFS directory where you install Zowe.
 - The HFS directory that contains a 64-bit Java™ 8 JRE.
 - The z/OSMF installation directory, for example, `/usr/lpp/zosmf/lib`.
 - The API Mediation Layer HTTP and HTTPS port numbers. You will be asked for 3 unique port numbers.
