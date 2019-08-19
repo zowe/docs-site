@@ -921,12 +921,11 @@ Thank you for your participation.
 << TODO - Where does this section belong ? >>
 ### SMP/E CALLLIBS Processing
 
-Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: <!--Needs a list of libraries-->
-
+Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: 
+<!--Needs a list of libraries-->
+<!--
 - CSSLIB
 - DSNLOAD
 - MACLIB
-
 **Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
-
 -->
