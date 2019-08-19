@@ -8,18 +8,19 @@ plug-ins at your own risk. We make no warranties regarding
 the use of third-party plug-ins.
 
 You can install the following plug-ins:
-  - **Zowe CLI Plug-in for IBM CICS**
+  - **IBM CICS Plug-in for Zowe CLI**
 
     Use `@brightside/cics@lts-incremental` in your command syntax to install, update, and validate the plug-in. 
-  - **Zowe CLI Plug-in for IBM Db2 Database**  
+
+  - **IBM Db2 Database for Zowe CLI**  
   
-    Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the IBM Db2 Database plug-in.
+    Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the plug-in.
 
 ## Setting the registry
 
-If you installed Zowe CLI from the zowe-cli-bundle.zip distributed with the Zowe PAX media, proceed to the [Install step](#installing-plug-ins).
+If you installed Zowe CLI from the bundle distributed with the Zowe PAX media, proceed to the [Install step](#installing-plug-ins).
 
-If you installed Zowe CLI from a registry, confirm that NPM is set to target the registry by issuing the following command: 
+If you installed Zowe CLI from an online registry, confirm that NPM is set to target the registry by issuing the following command: 
 
 ```
 npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
