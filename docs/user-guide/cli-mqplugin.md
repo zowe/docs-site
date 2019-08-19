@@ -66,25 +66,6 @@ Download the Zowe PAX file from the [Zowe Download](https://zowe.org/download/) 
 
 The plug-in is installed to Zowe CLI.
 
-## (Optional) Validating the plug-in
-
-The validation process helps to ensure the following conditions:
--   The installation process completed successfully.
--   The plug-in does ***not*** contain commands, options, and arguement that conflict (possess the same names) as the other plug-ins that are installed in your Zowe CLI installation.
-
-**Follow these steps:**
-
-1. Issue the following command:
-    ```
-    zowe plugins validate @zowe/mq-for-zowe-cli
-    ```
-    When you install the plug-in successfully, the following message displays:
-    ```
-    Validation results for plugin 'mq':
-    Successfully validated.
-    ``` 
-    **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.
-
 ## Creating a user profile
 
 You can create an `mq` user profile to avoid typing your connection details on every command. An `mq` profile contains the host, port, username, and password for the MQ Rest API server of your choice. You can create multiple profiles and switch between them as needed.
