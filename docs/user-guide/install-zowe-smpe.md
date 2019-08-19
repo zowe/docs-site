@@ -100,7 +100,7 @@ No program source materials or viewable program listings are provided for Zowe. 
 
 You might want to use the publications listed below during the installation of Zowe.
 
-Publication Title | Form Number
+Publication Title | Form Number |  
 -- | --| --
 IBM SMP/E for z/OS User's Guide | SA23-2277
 IBM SMP/E for z/OS Commands  | SA23-2275
