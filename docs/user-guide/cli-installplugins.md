@@ -10,11 +10,12 @@ You can install the following plug-ins:
 - IBM® IMS™ Plug-in for Zowe CLI
 - IBM® MQ Plug-in for Zowe CLI
 
-You install Zowe CLI plugins using either of the following methods:
+You install Zowe CLI plug-ins using either of the following methods:
 
-- Install Zowe CLI plug-ins from an online registry. With this method, you install the plug-ins from an online, NPM registry. Use this method when your computer ***can*** access the Internet. 
+- Install Zowe CLI plug-ins from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
 
     For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
+
 - Install Zowe CLI plug-ins from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` file. Use this method when your computer ***cannot*** access the Internet.
 
     For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
@@ -24,7 +25,7 @@ You install Zowe CLI plugins using either of the following methods:
 Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The procedure assumes that you previously installed the core CLI.
 
 **Follow these steps:**
-1. Ensure that you meet the software requirements for a plug-in before you install the plug-in to Zowe CLI. For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
+1. Meet the software requirements before you install the plug-in to Zowe CLI. For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 2.  Set the NPM registry target to the public npm registry by issuing the following command:
       ```

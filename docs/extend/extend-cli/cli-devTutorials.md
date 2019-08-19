@@ -13,8 +13,10 @@ You might want to contribute to Zowe CLI to accomplish the following:
 * Participate in the Zowe CLI community space.
 
 The following plug-ins have been developed:
-* [Zowe CLI Plug-in for IBM Db2](https://github.com/zowe/zowe-cli-db2-plugin)
-* [Zowe CLI Plug-in for IBM CICS](https://github.com/zowe/zowe-cli-cics-plugin)
+* [IBM CICS Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-cics-plugin)
+* [IBM Db2 Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-db2-plugin)
+* [IBM IMS Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ims-plugin)
+* [IBM MQ Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-mq-plugin)
 
 ## Getting started
 If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.

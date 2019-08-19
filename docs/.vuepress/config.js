@@ -62,6 +62,7 @@ const ALL_PAGES = [{
   {
     text: 'Using Zowe',
     items: [
+      'user-guide/zowe-getting-started-tutorial.md',
       'user-guide/mvd-using.md',
       'user-guide/api-mediation-api-catalog.md',
       'user-guide/cli-usingcli.md',
@@ -141,7 +142,11 @@ const ALL_PAGES = [{
     },
     {
       text: 'Zowe Application Framework',
-      link: 'troubleshoot/troubleshoot-app-framework.md'
+      items: ['troubleshoot/app-framework/app-troubleshoot.md',
+      'troubleshoot/app-framework/app-mustgather.md',
+      'troubleshoot/app-framework/app-known-issues.md',
+      'troubleshoot/app-framework/app-issue.md'
+      ]
     },
     {
       text: 'Zowe z/OS Services',
@@ -156,7 +161,11 @@ const ALL_PAGES = [{
         'troubleshoot/cli/known-cli.md',
         'troubleshoot/cli/cli-issue.md',
       ]
-    }
+    },
+    {
+      text: 'Troubleshooting Zowe using Diagnostics Data Script',
+      link: 'troubleshoot/troubleshoot-diagnostics.md'
+    },
     ]
 },
 {
