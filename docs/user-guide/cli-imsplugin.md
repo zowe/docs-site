@@ -1,6 +1,6 @@
 # IBM® IMS™ Plug-in for Zowe CLI
 
-The Zowe CLI Plug-in for IBM IMS lets you extend Zowe CLI such that it can interact with IMS resources (regions, programs and transactions). You can use the plug-in to start, stop, and query regions and start, stop, query, and update programs and transactions.
+The IBM IMS Plug-in for Zowe CLI lets you extend Zowe CLI such that it can interact with IMS resources (regions, programs and transactions). You can use the plug-in to start, stop, and query regions and start, stop, query, and update programs and transactions.
 
 **Note:** For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims) on the IBM  Knowledge Center.
 
@@ -8,7 +8,7 @@ The Zowe CLI Plug-in for IBM IMS lets you extend Zowe CLI such that it can inter
 
 ## Use cases
 
-As an application developer or DevOps administrator, you can use Zowe CLI Plug-in for IBM IMS to perform the following tasks:
+As an application developer or DevOps administrator, you can use IBM IMS Plug-in for Zowe CLI to perform the following tasks:
 
 - Refresh IMS transactions, programs, and dependent IMS regions.  
 - Deploy application code into IMS production or test systems.

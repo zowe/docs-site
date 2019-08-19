@@ -13,8 +13,10 @@ Learn about what is new or changed in the **Zowe Active Development Version**. Z
 
 **New compatible plug-ins:**
 
-- The [Zowe CLI Plug-in for IBM IMS](../user-guide/cli-imsplugin.md) is now available. 
-- The [Zowe CLI Plug-in for IBM MQ](https://github.com/zowe/zowe-cli-mq-plugin#zowe-mq-plug-in) is now available.
+In addition to the CICS and Db2 plug-ins, the following plug-ins are now available for the Active Development version: 
+
+- The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
+- The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
 
 ## Installing Active Development CLI
 
@@ -67,11 +69,11 @@ Zowe CLI is associated with version tags in a Node Package Manager (npm) registr
 
 - `npm install -g @brightside/core@lts-incremental` 
         
-    Installs the LTS version of the product. Provides new features, enhancements, and bug fixes, but does **not** introduce breaking changes. 
+    Installs the `@lts-incremental` (Stable) version of the product. Provides new features, enhancements, and bug fixes, but does **not** introduce breaking changes. 
 
 - `npm install -g @zowe/cli@latest` 
     
-    The Pre-Release (or active-development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, you might have to take corrective action when breaking changes are introduced. 
+    The `@latest` (Active Development) version of the product. Introduces new features, enhancements, bug fixes, and major breaking changes. If you use this version, you might have to take corrective action when breaking changes are introduced. 
 
 Learn more about the Zowe CLI versioning scheme [here.](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md)
 
