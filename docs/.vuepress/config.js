@@ -162,7 +162,7 @@ module.exports = {
     }],
     ['./docs/.vuepress/plugins/hotjar/index.js', {
       'hjid': '1291329',
-  }],
+    }],
   ],
   themeConfig: {
     docsDir: 'docs',
