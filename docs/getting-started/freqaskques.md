@@ -81,7 +81,7 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 
 <summary> Click to show answer </summary>
 
-Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org/home/). The convenience build can be easily installed and the Zowe capabilities seen in action. 
+Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org). The convenience build can be easily installed and the Zowe capabilities seen in action. 
 
 To install the complete Zowe solution, see [Installing Zowe](../user-guide/installandconfig.md).
 
@@ -117,7 +117,7 @@ Zowe components use typical z/OS System authorization facility (SAF) calls for s
 
 <summary> Click to show answer </summary>
 
-The source code for Zowe is maintained on an Open Mainframe Project GitHub server. Everyone has read access. "Committers" on the project have authority to alter the source code to make fixes or enhancements. A list of Committers is documented in the [Zowe Charter](https://zowe.org/Zowe-Charter.pdf).
+The source code for Zowe is maintained on an Open Mainframe Project GitHub server. Everyone has read access. "Committers" on the project have authority to alter the source code to make fixes or enhancements. A list of Committers is documented in [Committers to the Zowe project](https://github.com/zowe/community/blob/master/COMMITTERS.md).
 
 </details>
 
@@ -130,7 +130,7 @@ The source code for Zowe is maintained on an Open Mainframe Project GitHub serve
 
 The best way to get started is to join a [Zowe Slack channel](https://slack.openmainframeproject.org/) and/or email distribution list and begin learning about the current capabilities, then contribute to future development. 
 
-For more information about emailing lists, community calendar, meeting minutes, and more, see [Contribute](https://zowe.org/contribute/) on Zowe.org.  
+For more information about emailing lists, community calendar, meeting minutes, and more, see the [Zowe Community](https://github.com/zowe/community/blob/master/README.md) GitHub repo.
 
 For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/api-mediation-onboard-overview.md) on Zowe Docs.
 
