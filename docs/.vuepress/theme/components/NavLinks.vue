@@ -5,7 +5,7 @@
   >
     <!-- user links -->
     <div
-      class="nav-item"
+      :class="['nav-item', {'can-hide-first': item.canHideFirst }]"
       v-for="item in userLinks"
       :key="item.link"
     >
@@ -174,4 +174,12 @@ export default {
     &:hover, &.router-link-active
       margin-bottom -2px
       border-bottom 2px solid lighten($accentColor, 8%)
+
+@media (max-width: $MQMobileMiddle) {
+  .navbar {
+    .can-hide-first {
+      display: none;
+    }
+  }
+}
 </style>
