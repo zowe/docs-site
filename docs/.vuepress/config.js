@@ -148,15 +148,6 @@ module.exports = {
         content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
       }
     ],
-    //embed hotjar
-    ['script', { }, `(function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1291329,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`],   
   ],
   plugins: [
     ['@vuepress/back-to-top', true],
@@ -169,6 +160,9 @@ module.exports = {
         'offeringId': 'ece49543-bfcc-4d5c-a9c2-64b23b1366c3',
         'timeout': 3600000
     }],
+    ['./docs/.vuepress/plugins/hotjar/index.js', {
+      'hjid': '1291329',
+  }],
   ],
   themeConfig: {
     docsDir: 'docs',
