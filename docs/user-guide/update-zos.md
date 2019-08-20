@@ -7,7 +7,7 @@ In the past, to update Zowe on z/OS, you had to install a new version of Zowe on
 Ensure that you meet the following requirements before you run the update script:
 
   - Stop a running instance of Zowe.
-  - Download and unpaсk the [pax file](https://zowe.org/download/). Use the following command to unpack the file:
+  - Download and unpaсk the [pax file](https://zowe.org/#download). Use the following command to unpack the file:
     ```
      pax -ppx -rf <path/to/pax>
     ```
