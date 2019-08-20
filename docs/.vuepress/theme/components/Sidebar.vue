@@ -1,42 +1,34 @@
 <template>
-  <div class="sidebar">
+  <aside class="sidebar">
     <!-- MODIFICATION_FROM_THEME - starts -->
     <div class="sidebar-section" v-if="sectionTitle">{{ sectionTitle }}</div>
     <!-- MODIFICATION_FROM_THEME - ends -->
     <NavLinks/>
     <slot name="top"/>
-    <ul class="sidebar-links" v-if="items.length">
-      <li v-for="(item, i) in items" :key="i">
-        <SidebarGroup v-if="item.type === 'group'"
-          :item="item"
-          :first="i === 0"
-          :open="i === openGroupIndex"
-          :collapsable="item.collapsable"
-          @toggle="toggleGroup(i)"/>
-        <SidebarLink v-else :item="item"/>
-      </li>
-    </ul>
+    <SidebarLinks :depth="0" :items="items"/>
     <slot name="bottom"/>
-  </div>
+  </aside>
 </template>
 
 <script>
-import SidebarGroup from './SidebarGroup.vue'
-import SidebarLink from './SidebarLink.vue'
-import NavLinks from './NavLinks.vue'
-import { isActive } from './util'
+import SidebarLinks from '@theme/components/SidebarLinks.vue'
+import NavLinks from '@theme/components/NavLinks.vue'
+import { isActive } from '../util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, NavLinks },
+  name: 'Sidebar',
+
+  components: { SidebarLinks, NavLinks },
+
   props: ['items'],
+
+  // MODIFICATION_FROM_THEME - starts
   data () {
     return {
-      openGroupIndex: 0,
-      // MODIFICATION_FROM_THEME - starts
       sectionTitle: '',
-      // MODIFICATION_FROM_THEME - ends
     }
   },
+
   created () {
     this.refreshIndex()
   },
@@ -45,44 +37,37 @@ export default {
       this.refreshIndex()
     }
   },
+
   methods: {
     refreshIndex () {
+      const resolveOpenGroupIndex = function (route, items) {
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i]
+          if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
+            return i
+          }
+        }
+        return -1
+      }
       const index = resolveOpenGroupIndex(
         this.$route,
         this.items
       )
       if (index > -1) {
-        this.openGroupIndex = index
-      // MODIFICATION_FROM_THEME - starts
-        this.sectionTitle = this.items[this.openGroupIndex].section
+        this.sectionTitle = this.items[index].section
       } else {
         this.sectionTitle = ''
-      // MODIFICATION_FROM_THEME - ends
       }
-    },
-    toggleGroup (index) {
-      this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     },
     isActive (page) {
       return isActive(this.$route, page.path)
     }
   }
-}
-
-function resolveOpenGroupIndex (route, items) {
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i]
-    if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
-      return i
-    }
-  }
-  return -1
+  // MODIFICATION_FROM_THEME - ends
 }
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
-
 .sidebar
   ul
     padding 0
@@ -101,8 +86,14 @@ function resolveOpenGroupIndex (route, items) {
       line-height 1.25rem
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
-  .sidebar-links
+  & > .sidebar-links
     padding 1.5rem 0
+    & > li > a.sidebar-link
+      font-size 1.1em
+      line-height 1.7
+      font-weight bold
+    & > li:not(:first-child)
+      margin-top .75rem
 
 @media (max-width: $MQMobile)
   .sidebar
@@ -110,6 +101,6 @@ function resolveOpenGroupIndex (route, items) {
       display block
       .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after
         top calc(1rem - 2px)
-    .sidebar-links
+    & > .sidebar-links
       padding 1rem 0
 </style>

@@ -15,8 +15,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
+    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
+    "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "replace": "^1.0.0",
-    "vuepress": "^0.14.1",
+    "vuepress": "^1.0.3",
     "w3c-linkchecker-local": "^0.2.1"
   }
 }

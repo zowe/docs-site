@@ -263,6 +263,7 @@ const navbarLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
+console.log('>>>>> navbarLinks:', JSON.stringify(navbarLinks), "\n\n");
 
 const sidebarLinks = (allPages => {
   let result = {};
@@ -315,6 +316,7 @@ const sidebarLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
+console.log('>>>>> sidebarLinks:', JSON.stringify(sidebarLinks), "\n\n");
 
 const pdfLinks = (allPages => {
   let result = [];
@@ -329,6 +331,7 @@ const pdfLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
+console.log('>>>>> pdfLinks:', JSON.stringify(navbarLinks), "\n\n");
 
 module.exports = {
   title: 'Zowe Docs',
@@ -336,7 +339,9 @@ module.exports = {
   base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
   description: 'Version 1.4.x',
-  ga: 'UA-123892882-1',
+  extraWatchFiles: [
+    '.vuepress/theme/'
+  ],
   head: [
     [
       'meta',
@@ -422,13 +427,19 @@ module.exports = {
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`],   
   ],
+  plugins: [
+    ['@vuepress/back-to-top', true],
+    ['@vuepress/google-analytics', {
+        'ga': 'UA-123892882-1'
+    }]
+  ],
   themeConfig: {
     docsDir: 'docs',
     // define Zowe versions
     versions: ZOWE_VERSIONS,
     // expose this to render versioning urls
     rootBaseUrl: ROOT_BASE_URL,
-    repo: `https://github.com/zowe${ROOT_BASE_URL}`,
+    repo: `https://github.com/zowe/docs-site`,
     editLinks: true,
     editLinkText: 'Propose content change in GitHub',
     lastUpdated: 'Last Updated', // string | boolean
