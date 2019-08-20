@@ -29,7 +29,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/#download) website, click **Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
     **Note:**
     -  *v* indicates the version
