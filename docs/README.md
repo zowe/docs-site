@@ -27,7 +27,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Learn about how you can contribute to this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="https://zowe.org/home/">Getting Help</a></h2>
+    <h2><a href="https://zowe.org">Getting Help</a></h2>
     <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>
   </div>
 </div>
