@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar">
     <!-- MODIFICATION_FROM_THEME - starts -->
-    <div class="sidebar-section" v-if="sectionTitle">{{ sectionTitle }}</div>
+    <SideBarSection :items="items"/>
     <!-- MODIFICATION_FROM_THEME - ends -->
     <NavLinks/>
     <slot name="top"/>
@@ -13,57 +13,13 @@
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
-import { isActive } from '../util'
 
 export default {
   name: 'Sidebar',
 
   components: { SidebarLinks, NavLinks },
 
-  props: ['items'],
-
-  // MODIFICATION_FROM_THEME - starts
-  data () {
-    return {
-      sectionTitle: '',
-    }
-  },
-
-  created () {
-    this.refreshIndex()
-  },
-  watch: {
-    '$route' () {
-      this.refreshIndex()
-    }
-  },
-
-  methods: {
-    refreshIndex () {
-      const resolveOpenGroupIndex = function (route, items) {
-        for (let i = 0; i < items.length; i++) {
-          const item = items[i]
-          if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
-            return i
-          }
-        }
-        return -1
-      }
-      const index = resolveOpenGroupIndex(
-        this.$route,
-        this.items
-      )
-      if (index > -1) {
-        this.sectionTitle = this.items[index].section
-      } else {
-        this.sectionTitle = ''
-      }
-    },
-    isActive (page) {
-      return isActive(this.$route, page.path)
-    }
-  }
-  // MODIFICATION_FROM_THEME - ends
+  props: ['items']
 }
 </script>
 

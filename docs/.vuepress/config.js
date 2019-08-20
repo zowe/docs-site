@@ -431,7 +431,8 @@ module.exports = {
     ['@vuepress/back-to-top', true],
     ['@vuepress/google-analytics', {
         'ga': 'UA-123892882-1'
-    }]
+    }],
+    './docs/.vuepress/plugins/sidebar-section/index.js'
   ],
   themeConfig: {
     docsDir: 'docs',
