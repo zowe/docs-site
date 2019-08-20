@@ -1,7 +1,8 @@
-// MODIFICATION_FROM_THEME
-// Reference: https://clipboardjs.com/
-// Below styles provide mouseover show/hide clipboard icon on top-right corner of
-// pre.language-* > code section.
+/*
+- Reference: https://clipboardjs.com/
+- Below styles provide mouseover show/hide clipboard icon on top-right corner of
+- pre.language-* > code section.
+*/
 
 pre[class*="language-"] {
     position: relative;

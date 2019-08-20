@@ -1,5 +1,6 @@
-// MODIFICATION_FROM_THEME
-// https://medium.freecodecamp.org/a-step-by-step-guide-to-making-pure-css-tooltips-3d5a3e237346
+/*
+Reference https://medium.freecodecamp.org/a-step-by-step-guide-to-making-pure-css-tooltips-3d5a3e237346
+*/
 
 [tooltip]{
   position:relative;
