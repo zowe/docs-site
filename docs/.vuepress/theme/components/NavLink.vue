@@ -2,12 +2,22 @@
   <router-link
     class="nav-link"
     :to="link"
-    v-if="!isExternal(link)"
+    v-if="!isExternal(link) && !isVersionLink"
     :exact="exact"
+    replace
   >
+    <!-- MODIFICATION_FROM_THEME added <img> condition -->
     <img v-if="item.image" :src="imageUrl" :title="item.text" :width="item.imageWidth" :height="item.imageHeight" />
     <span :class="{'not-in-navbar': item.image}">{{ item.text }}</span>
   </router-link>
+  <!-- MODIFICATION_FROM_THEME added for listing versions without certain css class and target -->
+  <a
+    v-else-if="isVersionLink"
+    :href="link"
+    class="nav-link"
+  >
+    {{ item.text }}
+  </a>
   <a
     v-else
     :href="link"
@@ -15,8 +25,10 @@
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
+    <!-- MODIFICATION_FROM_THEME added <img> condition -->
     <img v-if="item.image" :src="imageUrl" :title="item.text" :width="item.imageWidth" :height="item.imageHeight" style="vertical-align:top" />
     <span :class="{'not-in-navbar': item.image}">{{ item.text }}</span>
+    <!-- MODIFICATION_FROM_THEME removed <OutboundLink/> -->
   </a>
 </template>
 
