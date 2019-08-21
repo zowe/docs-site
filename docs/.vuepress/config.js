@@ -61,7 +61,6 @@ const navbarLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
-console.log('>>>>> navbarLinks:', JSON.stringify(navbarLinks), "\n\n");
 
 const sidebarLinks = (allPages => {
   let result = {};
@@ -114,7 +113,6 @@ const sidebarLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
-console.log('>>>>> sidebarLinks:', JSON.stringify(sidebarLinks), "\n\n");
 
 const pdfLinks = (allPages => {
   let result = [];
@@ -129,7 +127,6 @@ const pdfLinks = (allPages => {
 
   return result;
 })(ALL_PAGES);
-console.log('>>>>> pdfLinks:', JSON.stringify(navbarLinks), "\n\n");
 
 module.exports = {
   title: 'Zowe Docs',
