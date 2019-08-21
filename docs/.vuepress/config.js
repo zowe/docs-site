@@ -124,6 +124,10 @@ const ALL_PAGES = [{
         'extend/extend-desktop/zlux-app-server.md',
         'extend/extend-desktop/zlux-workshop-user-browser.md',
       ]
+    },
+    {
+      text: 'Zowe Conformance Program',
+      link: 'extend/zowe-conformance-program.md'
     }
   ]
 },
