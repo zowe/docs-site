@@ -32,20 +32,10 @@ _Please note: if you encounter `JavaScript heap out of memory` error with the bu
 
 All build results will be put under `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/latest/` folder.
 
-You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser.
-
-One way to do this is using Python Simple HTTP Server. The below approach should work on Mac and Linux.
-
-Since the relative path of the docs-site is `/docs-site`, let's create a symbolic link for it with:
+You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser. The below shows how to start the web server with Docker:
 
 ```
-ln -s .deploy docs-site
-```
-
-Then start the web server with command:
-
-```
-python -m SimpleHTTPServer 8080
+docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/html/docs-site:ro --rm nginx
 ```
 
 Now you are able to visit `http://localhost:8080/docs-site/latest/` to check the content.
