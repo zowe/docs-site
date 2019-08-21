@@ -15,7 +15,7 @@ def slackChannel = '#test-build-notify'
 def githubRepository = 'zowe/docs-site'
 def allowPublishing = false
 def isTestPublishing = false
-def publishTargetPath = 'latest'
+def publishTargetPath = 'stable'
 def isMasterBranch = env.BRANCH_NAME == 'master'
 def isReleaseBranch = env.BRANCH_NAME ==~ /^v[0-9]+\.[0-9]+\.[0-9x]+$/
 
@@ -42,7 +42,7 @@ customParameters.push(string(
 ))
 customParameters.push(string(
   name: 'PUBLISH_PATH',
-  description: 'Target URL path to publish. Default is "latest" for master branch, "v?.?.x" for v?.?.x release branches.',
+  description: 'Target URL path to publish. Default is "stable" for master branch, "v?.?.x" for v?.?.x release branches.',
   defaultValue: '',
   trim: true,
   required: false
@@ -127,12 +127,17 @@ node ('ibm-jenkins-slave-dind') {
         if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
         cd ..
       """
-      if (!fileExists('.deploy/latest/index.html')) {
-        // this is the old documentation directory structure, latest folder doesn't exist
+      if (!fileExists('.deploy/stable/index.html')) {
+        // this is the old documentation directory structure, stable folder doesn't exist
         // we need to migrate to new structure
         if (isMasterBranch || isTestPublishing) {
-          // clean the .deploy folder to generate latest folder
-          sh 'rm -fr .deploy/*'
+          if (fileExists('.deploy/latest/index.html')) {
+            // we have latest, means it's first run after we migrate from latest to stable
+            sh 'mv .deploy/latest .deploy/stable'
+          } else {
+            // clean the .deploy folder to generate stable folder
+            sh 'rm -fr .deploy/*'
+          }
         } else {
           error 'Migration "gh-pages" from old directory structure can only be done on master branch.'
         }
@@ -160,7 +165,7 @@ node ('ibm-jenkins-slave-dind') {
             sh 'npm run test:links'
           } else {
             def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-            sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
+            sh "npm run test:links -- --start-point /${publishTargetPathConverted}/"
           }
         }
       }
