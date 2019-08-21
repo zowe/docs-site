@@ -130,8 +130,8 @@ $navbar-horizontal-padding = 1.5rem
   .site-description
     font-size 0.7rem
     position absolute
-    left 5rem
-    top 1.7rem
+    left 1.5rem
+    top 1.8rem
     color #6a8bad
     z-index 9999
 
@@ -144,5 +144,5 @@ $navbar-horizontal-padding = 1.5rem
       padding-left 1.5rem
     // MODIFICATION_FROM_THEME newly added
     .site-description
-      left 7.5rem
+      left 4rem
 </style>
