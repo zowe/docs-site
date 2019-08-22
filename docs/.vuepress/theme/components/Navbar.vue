@@ -131,7 +131,8 @@ $navbar-horizontal-padding = 1.5rem
     font-size 0.7rem
     position absolute
     left 1.5rem
-    top 1.8rem
+    top 2.5rem
+    line-height 0.7rem
     color #6a8bad
     z-index 9999
 
