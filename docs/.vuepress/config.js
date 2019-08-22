@@ -1,11 +1,9 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
 const CURRENT_ZOWE_VERSION = '1.0.1'
-// root base url for all versions
-const ROOT_BASE_URL = '/docs-site'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
 // so we convert it to dash
-const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'latest').replace(/\./g, '-')
+const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'stable').replace(/\./g, '-')
 // this holds list of all pages
 // IMPORTANT: if you have new pages, please update this constant
 // 
@@ -293,7 +291,7 @@ const pdfLinks = (allPages => {
 module.exports = {
   title: 'Zowe Docs',
   version: CURRENT_ZOWE_VERSION,
-  base: `${ROOT_BASE_URL}/${PUBLISH_TARGET_PATH}/`,
+  base: `/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
   description: 'Version 1.0.x',
   ga: 'UA-123892882-1',
@@ -321,9 +319,7 @@ module.exports = {
     docsDir: 'docs',
     // define Zowe versions
     versions: ZOWE_VERSIONS,
-    // expose this to render versioning urls
-    rootBaseUrl: ROOT_BASE_URL,
-    repo: `https://github.com/zowe${ROOT_BASE_URL}`,
+    repo: `https://github.com/zowe/docs-site`,
     editLinks: true,
     editLinkText: 'Propose content change in GitHub.',
     lastUpdated: 'Last Updated', // string | boolean
