@@ -4,7 +4,7 @@
     :to="link"
     v-if="!isExternal(link) && !isVersionLink"
     :exact="exact"
-    replace 
+    replace
   >
     <!-- MODIFICATION_FROM_THEME added <img> condition -->
     <img v-if="item.image" :src="imageUrl" :title="item.text" :width="item.imageWidth" :height="item.imageHeight" />
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { isExternal, isMailto, isTel, ensureExt } from './util'
+import { isExternal, isMailto, isTel, ensureExt } from '../util'
 
 export default {
   props: {
@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     link () {
-      return ensureExt(this.item.link)
+      return this.item.link && ensureExt(this.item.link) || ''
     },
     // MODIFICATION_FROM_THEME newly added
     isVersionLink () {

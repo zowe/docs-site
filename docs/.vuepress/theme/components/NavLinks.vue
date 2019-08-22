@@ -1,19 +1,32 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || repoLink">
+  <nav
+    class="nav-links"
+    v-if="userLinks.length || repoLink"
+  >
     <!-- user links -->
     <div
       :class="['nav-item', {'can-hide-first': item.canHideFirst }]"
       v-for="item in userLinks"
-      :key="item.link">
-      <DropdownLink v-if="item.type === 'links'" :item="item"/>
-      <NavLink v-else :item="item"/>
+      :key="item.link"
+    >
+      <DropdownLink
+        v-if="item.type === 'links'"
+        :item="item"
+      />
+      <NavLink
+        v-else
+        :item="item"
+      />
     </div>
+
     <!-- repo link -->
-    <a v-if="repoLink"
+    <a
+      v-if="repoLink"
       :href="repoLink"
       class="repo-link"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       <!-- MODIFICATION_FROM_THEME: repoLabel text link is replaced with img tag below -->
       <img v-if="repoLabel == 'GitHub'" :src="githubLogo" width="20" height="20" style="vertical-align:top" :title="repoLabel" />
       <span :class="{'not-in-navbar': repoLabel == 'GitHub'}">{{ repoLabel }}</span>
@@ -23,17 +36,20 @@
 </template>
 
 <script>
-import DropdownLink from './DropdownLink.vue'
-import { resolveNavLinkItem } from './util'
-import NavLink from './NavLink.vue'
+import DropdownLink from '@theme/components/DropdownLink.vue'
+import { resolveNavLinkItem } from '../util'
+import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink, DropdownLink },
+
   computed: {
     userNav () {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
+
     nav () {
+      // MODIFICATION_FROM_THEME, newly added - started
       // parse versions settings
       const versionsIndex = this.userNav.findIndex(one => one.tags && one.tags.indexOf('versions') > -1)
       if (versionsIndex > -1) {
@@ -51,6 +67,7 @@ export default {
           this.userNav.splice(versionsIndex, 1)
         }
       }
+      // MODIFICATION_FROM_THEME, newly added - ended
 
       // parse locales settings
       const { locales } = this.$site
@@ -82,6 +99,7 @@ export default {
       }
       return this.userNav
     },
+
     userLinks () {
       return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
@@ -89,10 +107,12 @@ export default {
         })
       })
     },
+
     // MODIFICATION_FROM_THEME, newly added
     githubLogo () {
       return this.$site.base + 'assets/github-mark-32px.png'
     },
+
     repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
@@ -101,6 +121,7 @@ export default {
           : `https://github.com/${repo}`
       }
     },
+
     repoLabel () {
       if (!this.repoLink) return
       if (this.$site.themeConfig.repoLabel) {
@@ -123,8 +144,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
-
 .nav-links
   display inline-block
   a
@@ -133,17 +152,14 @@ export default {
     &:hover, &.router-link-active
       color $accentColor
   .nav-item
-    cursor pointer
     position relative
     display inline-block
     margin-left 1.5rem
     line-height 2rem
+    &:first-child
+      margin-left 0
   .repo-link
     margin-left 1.5rem
-
-.navbar
-  .not-in-navbar
-    display: none
 
 @media (max-width: $MQMobile)
   .nav-links
@@ -158,4 +174,12 @@ export default {
     &:hover, &.router-link-active
       margin-bottom -2px
       border-bottom 2px solid lighten($accentColor, 8%)
+
+@media (max-width: $MQMobileMiddle) {
+  .navbar {
+    .can-hide-first {
+      display: none;
+    }
+  }
+}
 </style>
