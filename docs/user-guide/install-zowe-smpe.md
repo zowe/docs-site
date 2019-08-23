@@ -889,9 +889,9 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 
 ## Zowe customization
 
-The publication __Zowe Documentation__ contains the necessary information to customize and use Zowe.
-
-Additional documentation can be found on the Zowe doc site at [https://zowe.github.io/docs-site/latest](https://zowe.github.io/docs-site/latest).
+You can find the necessary information about customizing and using Zowe on the Zowe doc site.
+- For information about how to customize Zowe, see [Configuring Zowe](mvd-configuration.md).
+- For information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 
 <!-- The following are commented out for the use of a program directory in bookmaster format

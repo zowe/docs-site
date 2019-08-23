@@ -31,6 +31,7 @@
           "user-guide/systemrequirements-zosmf.md",
           "user-guide/systemrequirements-zosmf-lite.md",
           "user-guide/install-zos.md",
+          "user-guide/install-zowe-smpe.md",
           "user-guide/cli-installcli.md",
           "user-guide/cli-updatingcli.md",
           "user-guide/uninstall.md"
