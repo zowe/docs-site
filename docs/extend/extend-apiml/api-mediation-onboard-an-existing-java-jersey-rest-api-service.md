@@ -3,13 +3,13 @@
 
 As an API developer, use this guide to onboard your Java Jersey REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-The following procedure is an overview of steps to onboard a Java Jersey REST API application with the API Mediation Layer. 
+The following procedure is an overview of steps to onboard a Java Jersey REST API application with the API Mediation Layer.
 
 **Follow these steps:**
 
 1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
 
-2. [Add API ML Onboarding Configuration](add-api-ml-onboarding-configuration)
+2. [Add API ML Onboarding Configuration](#add-api-ml-onboarding-configuration)
 
 3. [Externalize Parameters](#externalize-parameters)
 
@@ -21,23 +21,23 @@ The following procedure is an overview of steps to onboard a Java Jersey REST AP
 
 The first step to onboard a Java Jersey REST API into the Zowe ecosystem is to get enabler annotations from the Artifactory. Enablers prepare your service for discovery and for the retrieval of Swagger documentation.
 
-You can use either Gradle or Maven build automation systems. 
+You can use either Gradle or Maven build automation systems.
 
 ### Gradle guide
 Use the following procedure if you use Gradle as your build automation system.
 
 **Tip:** To migrate from Maven to Gradle, go to your project directory and run `gradle init`. This converts the Maven build to a Gradle build by generating a _setting.gradle_ file and a _build.gradle_ file.
-         
+
 **Follow these steps:**
 
 1.  Create a _gradle.properties_ file in the root of your project.
- 
+
 2.  In the _gradle.properties_ file, set the following URL of the repository and customize the values of your credentials to access the repository.
 
     ```
     # Repository URL for getting the enabler-jersey artifact (`integration-enabler-java`)
     artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-   
+
     # Artifactory credentials for builds:
     mavenUser=apilayer-build
     mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
@@ -62,23 +62,23 @@ Use the following procedure if you use Gradle as your build automation system.
 
     ```
     The `ext` object declares the `mavenRepository` property. This property is used as the project repository.
-   
+
 4. In the same _build.gradle_ file, add the following code to the dependencies code block to add the enabler-jersey artifact as a dependency of your project:
 
     ```groovy
       compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '1.1.0')
     ```
-    
+
 5. In your project directory, run the `gradle build` command to build your project.
-    
+
 ### Maven guide
 
 Use the following procedure if you use Maven as your build automation system.
 
-**Tip:** To migrate from Gradle to Maven, go to your project directory and run `gradle install`. This command automatically generates a *pom-default.xml* inside the _build/poms_ subfolder where all of the dependencies are contained. 
+**Tip:** To migrate from Gradle to Maven, go to your project directory and run `gradle install`. This command automatically generates a *pom-default.xml* inside the _build/poms_ subfolder where all of the dependencies are contained.
 
 **Follow these steps:**
-     
+
 1. Add the following _xml_ tags within the newly created *pom.xml* file:
 
    ```xml
@@ -92,7 +92,7 @@ Use the following procedure if you use Maven as your build automation system.
           </snapshots>
         </repository>
       </repositories>
-   ``` 
+   ```
 
     This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifact.
 
@@ -122,7 +122,7 @@ Use the following procedure if you use Maven as your build automation system.
     </settings>
     ```
 4. Copy the _settings.xml_ file inside `${user.home}/.m2/` directory.
-    
+
 5. In the directory of your project, run the `mvn package` command to build the project.
 
 ## Add API ML Onboarding Configuration
@@ -228,13 +228,12 @@ As an API service developer, you set multiple configuration settings in your app
           application:
               name: ${mfaas.discovery.serviceId}      
     ```
-    In order to run your application locally, you need to define variables used under the `environment` group. 
-    
+    In order to run your application locally, you need to define variables used under the `environment` group.
+
     ```yaml
     ##############################################################################################
    # Local configuration section
     ##############################################################################################
- 
     environment:
         serviceId: Your service id
         serviceTitle: Your service title
@@ -245,9 +244,9 @@ As an API service developer, you set multiple configuration settings in your app
         discoveryLocations: https://localhost:10011/eureka/
         ipAddress: 127.0.0.1
     ```
-    
+
     **Important:** Add this configuration also to the `application.yml` used for testing. Failure to add this configuration to the `application.yml` will cause your tests to fail.
-    
+
 2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
     **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
@@ -386,19 +385,19 @@ As an API service developer, you set multiple configuration settings in your app
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
       * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
-      
+          
           Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
           The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
-      
+
           The base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
-          
+
       * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
-      
+
           (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
       * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
-      
+
           (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.             
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
@@ -454,15 +453,15 @@ To register with the API Mediation Layer, a service is required to have a certif
 1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
     When a service is running on localhost, the command can have the following format:
-       
+
     ```
     <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
     ```
-        
+
     Alternatively, for the purpose of local development, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 
 2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding the following code:
-       
+
     ```
     server:
         ssl:
@@ -488,32 +487,32 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 ## Externalize parameters
 
-In order to externalize parameters, you have to create a `ServletContextListener`. To  create your own 
-`ServletContextListener`, register a `ServletContextListener` and enable it to read all 
+In order to externalize parameters, you have to create a `ServletContextListener`. To  create your own
+`ServletContextListener`, register a `ServletContextListener` and enable it to read all
 the properties defined inside the .*yml* file.
 
 **Follow these steps:**
 
-1. Define parameters that you want to externalize in a _.yml_ file. 
+1. Define parameters that you want to externalize in a _.yml_ file.
 Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `com.ca.mfaas.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the `yml` file follows the correct structure. The following example shows the structure of the 'yml' file:
-  
+
     **Example:**
-    
+
       ```yaml
-         serviceId: 
+         serviceId:
          eureka:
-             hostname: 
-             ipAddress: 
-             port: 
-         title: 
-         description: 
-         defaultZone: 
-         baseUrl: 
+             hostname:
+             ipAddress:
+             port:
+         title:
+         description:
+         defaultZone:
+         baseUrl:
          homePageRelativeUrl:
-         statusPageRelativeUrl: 
-         healthCheckRelativeUrl: 
+         statusPageRelativeUrl:
+         healthCheckRelativeUrl:
          discoveryServiceUrls:
-             
+
          ssl:
              verifySslCertificatesOfServices: true
              protocol: TLSv1.2
@@ -526,46 +525,46 @@ Ensure that this file is placed in the _WEB-INF_ folder located in the module of
              trustStorePassword: password
              trustStoreType: PKCS12
          routes:
-             - gatewayUrl: 
-               serviceUrl: 
-             - gatewayUrl: 
-               serviceUrl: 
-             - gatewayUrl: 
-               serviceUrl: 
-             - gatewayUrl: 
-               serviceUrl: 
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
          apiInfo:
              - apiId:
                gatewayUrl:
                swaggerUrl:
                documentationUrl:
          catalogUiTile:
-             id: 
-             title: 
-             description: 
-             version: 
+             id:
+             title:
+             description:
+             version:
 
       ```
 
-2. Before the web application is started (Tomcat), create a `ServletContextListener` to run 
-the defined code. 
+2. Before the web application is started (Tomcat), create a `ServletContextListener` to run
+the defined code.
 
     **Example:**
      ```java
                 package com.ca.hwsjersey.listener;
-                
+
                 import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
                 import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
                 import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
                 import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
-                
+
                 import javax.servlet.ServletContextEvent;
                 import javax.servlet.ServletContextListener;
-                
-                
+
+
                 public class ApiDiscoveryListener implements ServletContextListener {
                     private ApiMediationClient apiMediationClient;
-                
+
                     @Override
                     public void contextInitialized(ServletContextEvent sce) {
                         apiMediationClient = new ApiMediationClientImpl();
@@ -573,7 +572,7 @@ the defined code.
                         ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
                         apiMediationClient.register(config);
                     }
-                
+
                     @Override
                     public void contextDestroyed(ServletContextEvent sce) {
                         apiMediationClient.unregister();
@@ -585,11 +584,11 @@ the defined code.
 3. Register the listener. Use one of the following two options:
 
     * Add the ```@WebListener``` annotation to the servlet.
-    * Reference the listener by adding the following code block to the 
+    * Reference the listener by adding the following code block to the
     deployment descriptor _web.xml_.
 
-      **Example:** 
-      
+      **Example:**
+
       ``` xml
       <listener>
         <listener-class>your.class.package.path</listener-class>
@@ -602,16 +601,16 @@ To run Helloworld Jersey, requires the installation of Apache Tomcat. As the ser
 
 **Follow these steps:**
 
-1.  Download Apache Tomcat 8.0.39 and install it. 
+1.  Download Apache Tomcat 8.0.39 and install it.
 
-2.  Build Helloworld Jersey through IntelliJ or by running `gradlew helloworld-jersey:build` in the terminal. 
+2.  Build Helloworld Jersey through IntelliJ or by running `gradlew helloworld-jersey:build` in the terminal.
 
-3.  Enable HTTPS for Apache Tomcat with the following steps: 
+3.  Enable HTTPS for Apache Tomcat with the following steps:
 
     a) Go to the `apache-tomcat-8.0.39-windows-x64\conf` directory.
 
     **Note:** The full path depends on where you decided to install Tomcat.
-    
+
     b) Open the `server.xml` file with a text editor as Administrator and add the following xml block:
         ```xml
                <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -623,7 +622,7 @@ To run Helloworld Jersey, requires the installation of Apache Tomcat. As the ser
         ```
         Ensure to comment the HTTP connector which uses the same port.
     c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
-    
+
        ```xml
         <security-constraint>
                 <web-resource-collection>
@@ -653,24 +652,24 @@ After you externalize the parameters to make them readable through Tomcat and en
     * Discovery Service
     * API Catalog Service
 
-2. Run `gradlew tomcatRun` with these additional parameters: `-Djavax.net.ssl.trustStore="<your-project-directory>\api-layer\keystore\localhost\localhost.truststore.p12" -Djavax.net.ssl.trustStorePassword="password"`. 
+2. Run `gradlew tomcatRun` with these additional parameters: `-Djavax.net.ssl.trustStore="<your-project-directory>\api-layer\keystore\localhost\localhost.truststore.p12" -Djavax.net.ssl.trustStorePassword="password"`.
    If you need some more information about SSL configuration status while deploying, use this parameter `-Djavax.net.debug=SSL`.
-   
+
    **Tip:** Wait for the services to be ready. This process may take a few minutes.
-   
+
 3.  Navigate to the following URL:
-        
+
     ```
     https://localhost:10011
     ```
-    
-    Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service. 
-        
+
+    Enter _eureka_ as a username and _password_ as a password and check if the service is registered to the discovery service.
+
     Go to the following URL to reach the API Catalog through the Gateway (port 10010) and check if the API documentation of the service is retrieved:
-    
+
     ```
     https://localhost:10010/ui/v1/apicatalog/#/dashboard
     ```
-    
-  You successfully onboarded your Java Jersey application if see your service 
-    running and can access the API documentation. 
+
+  You successfully onboarded your Java Jersey application if see your service
+    running and can access the API documentation.

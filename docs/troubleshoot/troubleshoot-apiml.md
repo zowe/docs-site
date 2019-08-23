@@ -6,9 +6,9 @@ As an API Mediation Layer user, you may encounter problems with the functioning 
 
 Use debug mode to activate the following functions:
 
-- Display additional debug messages for the API ML 
+- Display additional debug messages for API ML
 - Enable changing log level for individual code components
-    
+
 **Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
 its performance and create large log files that consume a large volume of disk space.
@@ -23,7 +23,7 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Open a file, for which you want to enable the debug mode.
 
-3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`: 
+3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`:
     ```
     -Dspring.profiles.include=debug \
     ```
@@ -55,31 +55,31 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     GET scheme://hostname:port/application/loggers
     ```
-    
+
     Where:
     - **scheme**
-    
+
         API ML service scheme (http or https)
-    
+
     - **hostname**
-    
+
         API ML service hostname
-    
+
     - **port**
-    
+
         TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
-    MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog 
+    MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
     (by default, set to gateway port + 2).
-    
+
     **Exception:** For the catalog you will able to get list the available loggers by issuing the GET request for the given service URL:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
     ```
 
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
-    
+
     **Example:**
- 
+
     ```
     HTTPie command:
     http GET https://lpar.ca.com:10000/application/loggers
@@ -94,7 +94,7 @@ This activates the application/loggers endpoints in each API ML internal service
      }
     }
     ```
- 
+
 3. Alternatively, you extract the configuration of a specific logger using the extended **GET** request:
 
     ```
@@ -105,7 +105,7 @@ This activates the application/loggers endpoints in each API ML internal service
     - **{name}**
 
          is the logger name
-    
+
 4. Change the log level of the given component of the API ML internal service. Use the POST request for the given service URL:
 
     ```
@@ -122,9 +122,9 @@ This activates the application/loggers endpoints in each API ML internal service
     Where:
 
     - **level**
-    
+
         is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
-    
+
     **Example:**
 
     ```
@@ -133,14 +133,14 @@ This activates the application/loggers endpoints in each API ML internal service
 
 
 
-## Known Issues 
+## Known Issues
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
-When z/OS TCP/IP stack is restarted, it is possible that the internal services of API Mediation Layer 
-(Gateway, Catalog, and Discovery Service) stop accepting all incoming connections, go into a continuous loop, 
+When z/OS TCP/IP stack is restarted, it is possible that the internal services of API Mediation Layer
+(Gateway, Catalog, and Discovery Service) stop accepting all incoming connections, go into a continuous loop,
 and write a numerous error messages in the log.
 
 **Sample message:**
@@ -148,16 +148,16 @@ and write a numerous error messages in the log.
 The following message is a typical error message displayed in STDOUT:
 
 ```
-2018-Sep-12 12:17:22.850. org.apache.tomcat.util.net.NioEndpoint -- Socket accept failed java.io.IOException: EDC5122I Input/output error. 
+2018-Sep-12 12:17:22.850. org.apache.tomcat.util.net.NioEndpoint -- Socket accept failed java.io.IOException: EDC5122I Input/output error.
 
 .at sun.nio.ch.ServerSocketChannelImpl.accept0(Native Method) ~.na:1.8.0.
 .at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:478) ~.na:1.8.0.
 .at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:287) ~.na:1.8.0.
-.at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:455) ~.tomcat-coyote-8.5.29.jar!/:8.5.29. 
+.at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:455) ~.tomcat-coyote-8.5.29.jar!/:8.5.29.
 .at java.lang.Thread.run(Thread.java:811) .na:2.9 (12-15-2017).
 ```
 **Solution:**
 
-Restart API Mediation Layer. 
+Restart API Mediation Layer.
 
-**Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart TCP/IP stack while the API ML is running.
+**Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart the TCP/IP stack while API ML is running.

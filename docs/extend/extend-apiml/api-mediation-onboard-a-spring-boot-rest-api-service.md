@@ -176,6 +176,18 @@ As an API service developer, you set multiple configuration settings in your app
               scheme: http
               port: ${environment.port}
               contextPath: /yourServiceUrlPrefix
+          security:
+              sslEnabled: true
+              protocol: TLSv1.2
+              ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+              keyAlias: localhost
+              keyPassword: password
+              keyStore: keystore/ssl_local/localhost.keystore.p12
+              keyStoreType: PKCS12
+              keyStorePassword: password
+              trustStore: keystore/ssl_local/localhost.truststore.p12
+              trustStoreType: PKCS12
+              trustStorePassword: password
 
       eureka:
           instance:
@@ -231,6 +243,18 @@ As an API service developer, you set multiple configuration settings in your app
           port: ${mfaas.server.port}
           servlet:
               contextPath: ${mfaas.server.contextPath}
+          ssl:
+              enabled: ${mfaas.security.sslEnabled}
+              protocol: ${mfaas.security.protocol}
+              ciphers: ${mfaas.security.ciphers}
+              keyStore: ${mfaas.security.keyStore}
+              keyAlias: ${mfaas.security.keyAlias}
+              keyPassword: ${mfaas.security.keyPassword}
+              keyStorePassword: ${mfaas.security.keyStorePassword}
+              keyStoreType: ${mfaas.security.keyStoreType}
+              trustStore: ${mfaas.security.trustStore}
+              trustStoreType: ${mfaas.security.trustStoreType}
+              trustStorePassword: ${mfaas.security.trustStorePassword}
 
       spring:
           application:

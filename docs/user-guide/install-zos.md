@@ -28,7 +28,7 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release. 
 
-To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/download/) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the *Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
