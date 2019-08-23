@@ -502,7 +502,7 @@ _220 Connection will close if idle for more than 5 minutes._
 _User (mvsaddr:(none)): __tsouid___  
 _331 Send password please_  
 _Password: __tsopw___  
-_230 tsouid is loadded on.  Working directory is "tsouid."._  
+_230 tsouid is loaded on.  Working directory is "tsouid."._  
 _ftp> __cd @zfs_path@___  
 _250 HFS directory @zfs_path@ is the current working directory_  
 _ftp> __ascii___  
@@ -648,11 +648,11 @@ Job Name | Job Type | Description | RELFILE
 ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
 ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
 ZWE3ALOC | ALLOCATE | Sample job to allocate, create mountpoint, and mount zFS data sets
-ZWE5MK | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
+ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
 ZWE6DDEF | DDDEF | Sample job to define SMP/E DDDEFs | ZOWE.AZWE001.F1
 ZWE7APLY | APPLY | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
 
-**Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high level qualifier.
+**Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier.
 
 You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E Receive](#perform-smp/e-receive)), then copy the jobs from the RELFILES to a work data set for editing and submission.
 
@@ -732,7 +732,7 @@ Uncomment the `VOL=SER=&...` control statements and refer to the comments at the
 
 If you are using an existing CSI, do not run the sample job ZWE1SMPE.
 
-If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job propvided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information
+If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
@@ -760,7 +760,7 @@ If you plan to install Zowe into a new z/OS UNIX file system, you can edit and s
 
 Consult the instructions in the sample job for more information.
 
-The recommended z/OS UNIX file system type is zFS. The recommended mountpoint is _usr/lpp/zowe._
+The recommended z/OS UNIX file system type is zFS. The recommended mountpoint is _/usr/lpp/zowe._
 
 Before running the sample job to create the z/OS UNIX file system, you must ensure that OMVS is active on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
@@ -789,7 +789,7 @@ If you plan to install Zowe into a new HFS or zFS file system, you must create t
 
 <!Should this be /usr/lpp/zowe/v1?>
 
-The recommended mountpoint is _usr/lpp/zowe._
+The recommended mountpoint is _/usr/lpp/zowe._
 
 Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths or zFS paths for Zowe. Consult the instructions in the sample job for more information.
 
@@ -809,7 +809,7 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
    The latest HOLDDATA is available through several different portals, including http://service.software.ibm.com/holddata/390holddata.html. The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine if any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
-   You should install the FMIDs regardless of the statues of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
+   You should install the FMIDs regardless of the status of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
 
    To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do _not_ bypass the PRE, ID, REQ, and IFREQ on the APPLY CHECK. The SMP/E root cause analysis identifies the cause only of _errors_ and not of _warnings_ (SMP/E treats bypassed PRE, ID, REQ, and IFREQ conditions as warnings, instead of errors).
 
@@ -839,11 +839,11 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
     BYPASS(HOLDCLASS(HIPER)) .
      ..any other parameters documented in the program directory
     ```
-  * This method is requicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Ctegory IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
+  * This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
 
-  * If you byapss HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are availabile by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
+  * If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
 
-2. After you take actions that are indieicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
+2. After you take actions that are indicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
 
 **Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
 
