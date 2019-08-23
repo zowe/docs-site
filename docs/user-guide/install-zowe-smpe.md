@@ -159,7 +159,7 @@ The driving system can be run in any hardware environment that supports the requ
 
 Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy these APARs | Included in the shipped product ?
 -- | --| --| -- | -- |
-5650-ZOS | z/OS | V2.2.0 or the lowest supported zOS level, whichever is more recent | N/A | No |
+5650-ZOS | z/OS | V2.2.0 or later | N/A | No |
 
 **Note:** SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
 
