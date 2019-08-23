@@ -38,18 +38,18 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 You can download the Version 1.1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.1.0.
 
-| Version | Download 
+| Version | Download
 | --- | ---
-| V1.1.0 | [PDF](https://zowe.github.io/docs-site/latest/Zowe_Documentation.pdf)
+| V1.1.0 | [PDF](https://docs.zowe.org/v-1-1-x/Zowe_Documentation.pdf)
 
 ### Zowe overview deck
 
-A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more. 
+A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
 
 [Download PDF](Zowe_Overview.pdf)
 
 [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
 
-### Zowe CLI command reference guide 
+### Zowe CLI command reference guide
 
-View the [CLI Command Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
+View the [CLI Command Reference Guide](./CLIReference_Zowe.pdf) for a detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.
