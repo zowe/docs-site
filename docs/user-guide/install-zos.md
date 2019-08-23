@@ -28,7 +28,7 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release. 
 
-To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/download/) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the *Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
@@ -146,7 +146,19 @@ Ensure that you meet the following software requirements before you install Zowe
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
+  ```
+  RLIST FACILITY BPX.JOBNAME AUTHUSER
+  ```
+  
+  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+  ```
+  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
+  SETROPTS RACLIST(FACILITY) REFRESH
+  ```
+
+  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
  https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
 ## Installing the Zowe runtime on z/OS
@@ -165,8 +177,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
 2. Review the `zowe-install.yaml` file which contains the following properties:
 
-    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory, such as `/var/zowe/v.r.m`.
-    
+    - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
       You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
    <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
@@ -219,8 +230,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     **Example:**
 
     ```yaml
-
-     rootDir=/var/zowe/1.3.0
+    install:
+     rootDir=/tmp/zowe/1.4.0
      prefix=ZOWE
 
     api-mediation:
@@ -517,10 +528,10 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     You can tailor the JCL at this line
 
       ```
-      //ZOWESVR   PROC SRVRPATH='/zowe/install/path'
+      //ZOWESVR   PROC SRVRPATH='{{root_dir}}'
       ```
 
-    to replace the `/zowe/install/path` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+    to replace the `{{root_dir}}` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
       ```
       /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'

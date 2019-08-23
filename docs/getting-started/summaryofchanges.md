@@ -2,13 +2,107 @@
 
 Learn about what is new, changed, removed, and known issues in Zowe. 
 
-Zowe Version 1.3.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.4.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
 - [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+
+<!--ADD TO 1.5.0 for CLI section 
+- You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
+-->
+
+
+## Version 1.4.0 (August 2019)
+
+<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### What's new in API Mediation Layer
+
+This release of Zowe API ML contains the following improvements:
+
+- JWT token configuration
+  - RS256 is used as a token encryption algorithm
+  - JWT secret string is generated at the time of installation and exported as a ```.pem``` file for use by other services
+  - JWT secret string is stored in a key store in PKCS 11 format under "jwtsecret" name
+
+- SonarQube problems fixed
+  - Various fixes from SonarQube scan
+
+- API Mediation Layer log format aligned with other Zowe services:
+    ```
+    %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\(%logger{15},%file:%line\)){cyan} %msg%n
+    ```
+    
+- Added an NPM command to register certificates on Windows. The following command installs the certificate to trusted root certification authorities:
+    ```
+    npm run register-certificates-win
+    ```
+
+- Cookie persistence changed
+  - Changed the API Mediation Layer cookie from persistent to session. The cookie gets cleared between browser sessions.
+
+- Fixed high CPU usage occurrence replicated in Broadcom ([#282](https://github.com/zowe/api-layer/issues/282))
+  - Changed configuration of LatencyUtils to decrease idle CPU consumption by API ML services
+
+- API Mediation layer now builds using OpenJDK with OpenJ9 JVM
+
+### What's new in the Zowe App Server
+Made the following fixes and enhancements:
+
+- Added the ability for the App Server Framework to defer to managers for dataservices that are not written in NodeJS or C. The first implementation is a manager of Java servlet type dataservices, where the App Server manages Tomcat instances when Tomcat is present. ([#158](https://github.com/zowe/zlux/issues/158))
+- Added a tomcat xml configuration file with substitutions for values (ports, keys, certificates) necessary for the App Server to manage one or more instances of Tomcat for hosting servlet dataservices. Also added a new section to the zluxserver.json file to describe dataservice providers such as the aforementioned Tomcat Java Servlet one. (#49)
+- Added Swagger API documentation support. Application developers can include a Swagger 2.0 JSON or YAML file in the app's /doc/swagger directory for each REST data service. Each file must have the same name as the data service. Developers can then reference the files at runtime using a new app route: /ZLUX/plugins/PLUGINID/catalogs/swagger. They can reference individual services at: /ZLUX/plugins/PLUGINID/catalogs/swagger/SERVICENAME. If swagger documents are not present, the server will use contextual knowledge to show some default values. ([#159](https://github.com/zowe/zlux/issues/159))
+- The following new REST and cross-memory services have been added ([#32](https://github.com/zowe/zss/pull/32)):
+    - Extract RACF user profiles
+    - Define/delete/permit general RACF resource profiles (limited to a single class)
+    - Add/remove RACF groups
+    - Connect users to RACF groups (for a limited set of group prefixes)
+    - Check RACF user access levels (limited to a single class)
+- Fixed multiple issues in the File Editor App. ([#88](https://github.com/zowe/zlux/issues/88))
+- Fixed multiple ZSS file and dataset API issues ([#49](https://github.com/zowe/zss/pull/49) [#42](https://github.com/zowe/zowe-common-c/pull/42) [#40](https://github.com/zowe/zowe-common-c/pull/40) [#44](https://github.com/zowe/zowe-common-c/pull/44) [#45](https://github.com/zowe/zowe-common-c/pull/45))
+- Remove several CSS styles from the Desktop to prevent bleed-in of styles to Apps ([#117](https://github.com/zowe/zlux-app-manager/pull/117))
+- Fixed incorrect count of open Apps upon logging in more than once per browser session ([#123](https://github.com/zowe/zlux-app-manager/pull/123))
+Add OMVS information API to uribroker ([#116](https://github.com/zowe/zlux-app-manager/pull/116))
+- Enhanced auth plugin structure for application framework that lists auth capabilities ([#118](https://github.com/zowe/zlux-server-framework/pull/118) [#14](https://github.com/zowe/zosmf-auth/pull/14) [#19](https://github.com/zowe/zss-auth/pull/19))
+- Improved searching for node libraries for dataservices within an plugin ([#114](https://github.com/zowe/zlux-server-framework/pull/114))
+- Editor & File Explorer Widget Changes
+    - Unix directory listing now starts in the user's home directory ([#16](https://github.com/zowe/zlux-file-explorer/pull/16))
+    - JCL syntax coloring revision ([#73](https://github.com/zowe/zlux-editor/pull/73))
+    - Cursor, scroll position and text selection is now kept while switching tabs in editor ([#71](https://github.com/zowe/zlux-editor/pull/71))
+    - Editor now scrolls tab bar to newest tab when opening, and tab scrolling improved when closing tabs ([#69](https://github.com/zowe/zlux-editor/pull/69))
+    - Tab name, tooltip, and scroll fixes ([#55](https://github.com/zowe/zlux-editor/pull/55) [#60](https://github.com/zowe/zlux-editor/pull/60) [#63](https://github.com/zowe/zlux-editor/pull/63))
+    - Change in double and single click behavior of file explorer widget ([#21](https://github.com/zowe/zlux-file-explorer/pull/21))
+    - Fix to show language menu on new file ([#62](https://github.com/zowe/zlux-editor/pull/62))
+    - Fix to keep language menu within the bounds of app window ([#59](https://github.com/zowe/zlux-editor/pull/59))
+    - Fix to the delete file prompt ([#61](https://github.com/zowe/zlux-editor/pull/61))
+    - Fix to allow closing of multiple editor instances ([#22](https://github.com/zowe/zlux-file-explorer/pull/22))
+    - Fix to query datasets correctly by making queries uppercase ([#65](https://github.com/zowe/zlux-editor/pull/65))
+- Fixed issue where the cascading position of new windows were wrong when that application was maximized. ([#102](https://github.com/zowe/zlux/issues/102))
+- Fixed issue where the file tabs in File Editor app were vertically scrollable, and where the close button would not be accessible for long file names. ([#170](https://github.com/zowe/zlux/issues/170))
+- Updated the package lock files in all repositories to fix vulnerable dependencies. ([#163](https://github.com/zowe/zlux/issues/163))
+- Fixed an issue where the Desktop used the roboto-latin-regular font for all text, which would not display well with non-latin languages. Now the fallback font is sans-serif. ([#118](https://github.com/zowe/zlux-app-manager/pull/118))
+
+### What's new in Zowe CLI and Plug-ins
+
+You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](https://zowe.github.io/docs-site/latest/web_help/index.html).
+
+The following new commands and enhancements are added:
+
+- The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. [(#32)](https://github.com/zowe/vscode-extension-for-zowe/issues/32)
+- You can now archive z/OS workflows using a wildcard. [(#435)](https://github.com/zowe/zowe-cli/pull/435)
+- The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. [(#482)](https://github.com/zowe/zowe-cli/pull/482)
+- The CLI now exploits all "z/OS data set and file REST interface" options that are provided in z/OSMF v2.3. [(#491)](
+https://github.com/zowe/zowe-cli/pull/491)
+
+The following bugs are fixed:
+
+- Fixed an issue where examples for `zowe files list uss-files` were slightly incorrect. [(#440)](https://github.com/zowe/zowe-cli/issues/440)
+- Improved error message for `zowe db2 call procedure` command. [(#22)](https://github.com/zowe/zowe-cli-db2-plugin/issues/22)
 
 ## Version 1.3.0 (June 2019)
 
@@ -239,7 +333,7 @@ During product operation of the Zowe Cross Memory Server which was introduced in
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
 
-- Zowe CLI Plugin for IBM CICS was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
+- IBM CICS Plug-in for Zowe CLI was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
 
 ### What's new in the Zowe REST APIs
 
