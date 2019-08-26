@@ -1,6 +1,6 @@
 # Release notes
 
-Learn about what is new, changed, removed, and known issues in Zowe. 
+Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.2.0 and later releases include the following enhancements, release by release.
 
@@ -18,7 +18,7 @@ Version 1.2.0 contains the following changes since Version 1.1.0.
 - Made the following installer improvements:
   - Check whether ICSF is configured before checking Node version to avoid runaway CPU.
   - Warn if the host name that is determined by the installer is not a valid IP address.
-  - Fixed a bug where a numeric value is specified in ZOWE_HOST_NAME causing errors generating the Zowe certificate. 
+  - Fixed a bug where a numeric value is specified in ZOWE_HOST_NAME causing errors generating the Zowe certificate.
 - Made the following improvements to the `zowe-check-prereqs.sh` script:
   - Improvements for checking and validating the telnet and ssh port required by the Zowe Desktop applications.
 
@@ -33,10 +33,10 @@ configuration. z/OSMF is used to verify users logging into the Catalog.
 - Introduced support for VSCode development.
 - Introduced a common cipher configuration property.
 - Fixed URL transformation defects.
-- Fixed reporting that the Catalog is down when it is started before the 
+- Fixed reporting that the Catalog is down when it is started before the
 Discovery Service.                                                       
 - Removed the bean overriding error message from the log.                
-- Fixed the state manipulation mechanism in the Catalog. As a result, no 
+- Fixed the state manipulation mechanism in the Catalog. As a result, no
 restoring of the application state is performed.                         
 - Fixed the Catalog routing mechanism for a users who is already logged  
 in so that the user is not prompted to log in again.                     
@@ -63,13 +63,13 @@ The Zowe CLI core component contains the following improvements and fixes:
 - The zowe `zos-workflows` command group now contains the following `active-workflow-details` options:
 
     - `--steps-summary-only | --sso (boolean)`: An optional parameter that lets you list (only) the steps summary.
-    - `--skip-workflow-summary | --sws (boolean)`: An optional parameter that lets you skip the default workflow summary. 
+    - `--skip-workflow-summary | --sws (boolean)`: An optional parameter that lets you skip the default workflow summary.
 
 - Zowe CLI was updated to correct an issue where the `zowe zos-workflows start` command ignored the `-- workflow-name` argument.
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- The [CLI Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
+- The [CLI Reference Guide](https://docs.zowe.org/stable/latest/CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
 
 - You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 
@@ -186,7 +186,7 @@ Version 1.0.0 contains the following changes since the Open Beta release.
 
 -  **Breaking change to Zowe CLI**: The `--pass` command option is changed to `--password` for all core Zowe CLI commands for clarity and to be consistent with plug-ins. If you have zosmf profiles that you created prior to January 11, 2019, you must recreate them to use the `--password` option. The aliases `--pw` and `--pass` still function when you issue commands as they did prior to this breaking change. You do not need to modify scripts that use  `--pass`.
 
-- The `@next` npm tag used to install Zowe CLI is deprecated. Use the `@latest` npm tag to install the product with the online registry method. 
+- The `@next` npm tag used to install Zowe CLI is deprecated. Use the `@latest` npm tag to install the product with the online registry method.
 
 ### What's new in the Zowe Desktop
 

@@ -63,8 +63,6 @@ Follow these steps:
 
 This section gives writing style guidelines for the Zowe documentation. These are guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation in a pull request.
 
-  [8c024bb7]: https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request "https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html#sending-a-github-pull-request"
-
 :arrow_right: [Headings and titles](#headings)
 
 :arrow_right: [Technical elements](#ui)
