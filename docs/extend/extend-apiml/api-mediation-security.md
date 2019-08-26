@@ -260,8 +260,14 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    The access is protected by a certificate.
-
+    HTTP mode: the access is protected by basic Eureka authentication.
+    
+    HTTPS mode: the access is protected by mainframe credentials (basic or token) or x509 certificate.
+    The `application/**` endpoint is protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or x509 certificate.
+    The `eureka/**` endpoint is protected by the x509 certificate.
+    
+    The `application/health` and `application/info` endpoints do not require authentication in both mode.
+    
 - **Services that need to register to the Discovery Service**
 
     These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
