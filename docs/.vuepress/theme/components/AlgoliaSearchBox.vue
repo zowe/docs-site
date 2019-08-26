@@ -17,7 +17,6 @@ export default {
 
   mounted () {
     this.initialize(this.options, this.$lang)
-    console.log('????',this.options)
   },
 
   methods: {
