@@ -30,7 +30,7 @@ def customParameters = []
 // >>>>>>>> parameters to control pipeline behavior
 customParameters.push(booleanParam(
   name: 'RUN_PUBLISH',
-  description: 'If run the piublish step.',
+  description: 'If run the publish step.',
   defaultValue: true
 ))
 customParameters.push(string(
