@@ -150,7 +150,7 @@ node ('ibm-jenkins-slave-dind') {
             sh 'npm run test:links'
           } else {
             def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-            sh "npm run test:links -- --start-point /docs-site/${publishTargetPathConverted}/"
+            sh "npm run test:links -- --start-point /${publishTargetPathConverted}/"
           }
         }
       }
