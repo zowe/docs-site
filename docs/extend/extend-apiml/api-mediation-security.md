@@ -150,6 +150,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators) 
+    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token.
 
 - **API Services**
 
@@ -260,17 +261,25 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    HTTP mode: the access is protected by basic Eureka authentication.
+    - HTTP mode: the access is protected by basic Eureka authentication.
     
-    HTTPS mode: the access is protected by mainframe credentials (basic or token) or x509 certificate.
+    - HTTPS mode: the access is protected by mainframe credentials (basic or token) or x509 certificate.
     The `application/**` endpoint is protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or x509 certificate.
     The `eureka/**` endpoint is protected by the x509 certificate.
+    The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
+    Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
+    Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
+    The following is an example of how to access Discovery Service from CLI with full certificate validation:
+    `http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
+
     
-    The `application/health` and `application/info` endpoints do not require authentication in both mode.
+   The `application/health` and `application/info` endpoints do not require authentication in both mode.
     
 - **Services that need to register to the Discovery Service**
 
     These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
+
+**Note:** API Gateway needs first to be registered to the Discovery Service in order provide authentication using mainframe credentials.
 
 ### Setting ciphers for API ML services
 
@@ -343,18 +352,7 @@ https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certifica
 
 #### Log in to Discovery Service on localhost
 
-To access Discovery Service on localhost provide a valid client certificate.
-
-The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
-
-Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
-
-Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
-
-The following is an example of how to access Discovery Service from CLI with full certificate validation:
-
-`http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
-
+To access Discovery Service on localhost provide valid mainframe credentials or token.
 
 ### Zowe runtime on z/OS
 
