@@ -47,6 +47,11 @@ customParameters.push(string(
   trim: true,
   required: false
 ))
+customParameters.push(booleanParam(
+  name: 'FULL_SITE_LINKS_CHECK',
+  description: 'If run links check on all latest and archived versions, not only checking current build.',
+  defaultValue: false
+))
 customParameters.push(credentials(
   name: 'GITHUB_CREDENTIALS',
   description: 'Github user credentials',
@@ -141,7 +146,12 @@ node ('ibm-jenkins-slave-dind') {
         sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
-          sh 'npm run test:links'
+          if (params.FULL_SITE_LINKS_CHECK) {
+            sh 'npm run test:links'
+          } else {
+            def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
+            sh "npm run test:links -- --start-point /${publishTargetPathConverted}/"
+          }
         }
       }
     }
