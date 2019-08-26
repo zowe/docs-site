@@ -41,12 +41,12 @@ export default {
               // this.$router.push(new URL(suggestion.url).pathname)
               // issue: this will redirect the page with duplicate site base
               // MODIFICATION_FROM_THEME - new
-              let p = new URL(suggestion.url).pathname
+              let { pathname, hash } = new URL(suggestion.url)
               const baseUrl = this.$site.base;
-              if (baseUrl && p.substr(0, baseUrl.length) === baseUrl) {
-                p = p.substr(baseUrl.length - 1)
+              if (baseUrl && pathname.substr(0, baseUrl.length) === baseUrl) {
+                pathname = pathname.substr(baseUrl.length - 1)
               }
-              this.$router.push(p)
+              this.$router.push(`${pathname}${hash}`)
               // MODIFICATION_FROM_THEME - end
             }
           }
