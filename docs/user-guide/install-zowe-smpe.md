@@ -189,29 +189,29 @@ Installation requisites identify products that are required and must be present 
 
 Mandatory installation requisites identify products that are required on the system for the successful installation of Zowe. These products are specified as PREs or REQs.
 
-Zowe has no mandatory installation requisites.
+*Zowe has no mandatory installation requisites.*
 
 Conditional installation requisites identify products that are not required for successful installation of Zowe but can resolve such things as certain warning messages at installation time. These products are specified as IF REQs.
 
-Zowe has no conditional installation requisites.
+*Zowe has no conditional installation requisites.*
 
 **Operational requisites**  
 
-Operational requisites are products that are required and must be present on the system or products that are not required but should be present on the system for Zowe to operate all or part of its functions.
+Operational requisites are products that are required and must be present on the system, or, products that are not required but should be present on the system for Zowe to operate all or part of its functions.
 
 Mandatory operational requisites identify products that are required for this product to operate its basic functions. The following tables lists the target system mandatory operational requisites for Zowe.
 
 Program Number |Product Name and Minimum VRM/Service Level
 --| --|
 5650-ZOS |  IBM z/OS Management Facility V2.2.0 or higher
-5655-SDK |	IBM SDK for Node.js - z/OS V6.14.4.1 or higher
+5655-SDK |	IBM SDK for Node.js - z/OS V8.16.0 or higher
 5655-DGH |	IBM 64-bit SDK for z/OS Java Technology Edition V8.0.0
 
 Conditional operational requisites identify products that are not required for Zowe to operate its basic functions but are required at run time for Zowe to operate specific functions. These products are specified as IF REQs. Zowe has no conditional operational requisites.
 
 **Toleration/coexistence requisites**
 
-Toleration/coexistence requisites identify products that must be present on sharing systems. These systems can be other systems in a multi-system environment (not necessarily sysplex), a shared DASD environment (such as test and production), or systems that reuse the same DASD environment at different time intervals.
+Toleration/coexistence requisites identify products that must be present on sharing systems. These systems can be other systems in a multi-system environment (not necessarily Parallel Sysplex<sup>TM</sup>), a shared DASD environment (such as test and production), or systems that reuse the same DASD environment at different time intervals.
 
 Zowe has no toleration/coexistence requisites.
 
@@ -277,14 +277,14 @@ Web Download | 26111 Tracks | These are temporary data sets, which can be remove
 
 **Storage requirements for SMP/E work data sets**
 
-Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks
+Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 --| --| --| --| --| --| --
 SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
 SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
 
 **Storage requirements for SMP/E data sets**
 
-Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks
+Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 --| --| --| --| --| --| --|
 SMPPTS | S | PDSE | FB | 80 | (12000,3000) | 50
 
@@ -312,7 +312,7 @@ SZWEZFS | X | /usr/lpp/zowe/SMPE
 
 **Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
 
-Library DDNAME | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
 --| --| --| --| --| --| --|
 AZWEAUTH | U | PDSE | U | 0 | 15 | N/A
 AZWESAMP | U | PDSE | FB | 80 | 15 | 5
@@ -322,7 +322,7 @@ The following figures list data sets that are not used by Zowe, but are required
 
 **Table:** Storage requirements for Zowe web download data sets**
 
-Data Set Name | TYPE | ORG | RECFML | RECL | No. of 3390 Trks | No. of DIR Blks|
+Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
 --| --| --| --| --| --| --|
 hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
