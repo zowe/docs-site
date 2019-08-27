@@ -1,6 +1,6 @@
 # Zowe CLI quick start
 
-Get started with **Active Development (@latest) CLI version** quickly and easily. If you want a version with stable features and bug fixes, refer to the [Stable Zowe CLI Quick start instructions](https://zowe.github.io/docs-site/latest/getting-started/cli-getting-started.html). 
+Get started with **Active Development (@latest) CLI version** quickly and easily. If you want a version with stable features and bug fixes, refer to the [Stable Zowe CLI Quick start instructions](https://docs.zowe.org/stable/getting-started/cli-getting-started.html). 
 
 <!--TODO add to master 
 Get started with the **Stable (@lts-incremental) CLI version** quickly and easily. If you want a version with the latest features as they are developed, refer to the [Active Development Zowe CLI quick start instructions]().
