@@ -181,7 +181,7 @@ node ('ibm-jenkins-slave-dind') {
           sh """
             cd .deploy
             git add -A
-            git commit -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
+            git commit -s -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
             git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
           """
         }
