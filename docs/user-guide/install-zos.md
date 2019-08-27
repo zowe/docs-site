@@ -283,28 +283,26 @@ The file `/scripts/zowe-install.yaml` contains `key:value` pairs used to configu
      prefix=ZOWE
     ```
 
-    in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the 1st instance of Zowe API ML Gateway identifier will be
+    in the `/config/zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the 1st instance of Zowe API ML Gateway identifier will be
 
     ```
     ZOWEAG1
     ```
-   
+#### Port allocations
 
-  - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
+  - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service; API Gateway, API Discovery and API Catalog.  
 
-  - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
+  - z/OS Services has HTTPS ports for each of its micro-services; jobs and the data sets.
 
-  - z/OS desktop apps has three ports for each of its explorer apps
+  - z/OS desktop apps has three ports for each of its explorer apps; USS Explorer, MVS Explorer, JES Explorer
 
   - The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
 
-    **Example:**
+  The port values are defined in `/config/zowe-configure.yaml`.  
 
-    ```yaml
-    install:
-     rootDir=/tmp/zowe/1.4.0
-     prefix=ZOWE
+  **Example:**
 
+  ```
     api-mediation:
       catalogPort=7552
       discoveryPort=7553
@@ -329,11 +327,11 @@ The file `/scripts/zowe-install.yaml` contains `key:value` pairs used to configu
     zlux-server:
      httpsPort=8544
      zssPort=8542
-    ```
+  ```
 
-    **Notes:**
+  **Notes:**
     -  If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
-    - Comments are not supported in the YAML file, apart from lines starting with '#' in column one.
+
 
 3. Determine which ports are not available.
 
