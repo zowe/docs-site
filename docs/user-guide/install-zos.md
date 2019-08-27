@@ -12,7 +12,7 @@ While the steps to obtain and install the convenience build or SMP/E build are d
 1. [Obtaining and preparing the SMP/E distribution](#obtaining-and-preparing-the-SMP/E-distribution)
 2. [Prerequisites](#prerequisites)
 3. [Installing the Zowe convenience build on z/OS](#installing-the-zowe-convenience-build-on-z/os)
-    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-install-sh-works)   
+    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-install.sh-works)   
 3. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
 4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-z-os)        
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
@@ -216,54 +216,87 @@ You might receive the following error that the file cannot be executed:
   
   Each time the install script runs it create a log file that contains more information.  This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`.   This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
 
-## Configuring a Zowe runtime directory
+## Configuring the Zowe runtime directory
 
-   <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
+After you have installed Zowe through the either the convenience build and running `zowe-install.sh -I` or through the SMP/E distribution and runnig the RECEIVE and APPLY jobs, you will have a Zowe runtime directory.  
 
-    - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
+For the convenience build the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the `zowe-install.yaml`.  
 
-      ```
-      pfxCssN
-      ```
+After the install step the Zowe runtime must be configured before it can be started.  This is done by running the script `/scripts/zowe-configure.sh`.  Before running the script you should check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables), held in `/scripts/zowe-install.yaml`, as these are used to configure Zowe during execution of `zowe-configure.sh`.  
 
-      where:
+1.  #### Environment variables
+
+    To configure the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the configuration script will attempt to locate default values.
+
+     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
+     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
+     - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
+   
+    When you run the configuration script for the first time, the script attempts to locate environment variables. The configuration script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file to avoid having to define them each time a runtime is configured.    
+
+    Each time you run the configuration script, it retrieves environment variable settings in the following ways. 
+	  - When the `.zowe-profile` file exists in the home directory, the install script uses the values in this file to set the environment variables. 
+	  - When the `.zowe-profile` file does not exist, the configuration script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables. The install script does not update or execute the `.profile` file.
+
+    You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
+
+     **Notes**: 
+     - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
+     - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `zowe_profile` file in the current user's home directory.  
+
+2. ### Configuration variables 
+
+The file `/scripts/zowe-install.yaml` contains `key:value` pairs used to configure the Zowe runtime.  
+
+#### Address space name
+
+- `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes.  This is so that the individual address spaces can be distinguished from each other in RMF records or SDSF views.  
+    
+  STC names have certain components and use the following format:
+
+      pfxSSn
+    
+    where:
       
-        - `pfx` - prefix that contains up to four characters, for example, ZOWE.
-        
-        - `C` - a component character that is similar to ones that are used for message IDs. The following list contains the component characters:
-          - **A** - API Mediation Layer
-          - **D**  - Zowe Desktop
-          - **E** - Zowe Explorer
-          - **S** - Zowe System Services
-          - **Z** - ZSS process
-          - **X** - Cross Memory Server`
-
-        - `ss` - a subcomponent that consists of 1 or 2 characters:
-          - **GW** - API ML Gateway
-          - **DS** - API ML Discovery Service
-          - **AC** - API ML Catalog
-          - **AJ** - Explorer API Jobs
-          - **AD** - Explorer API Data Sets
-          - **UD** - Explorer UI Data Sets
-          - **UJ** - Explorer UI Jobs
-          - **UU** - Explorer UI USS
-          - **S** - Zowe Desktop Application Server
+    - `pfx` - prefix that contains up to four characters, for example, `ZOWE`.
+      
+    - `SS` - a subcomponent that consists of 1 or 2 characters:
+      - **AG** - API ML Gateway
+      - **AD** - API ML Discovery Service
+      - **AC** - API ML Catalog
+      - **EJ** - Explorer API Jobs
+      - **ED** - Explorer API Data Sets
+      - **UD** - Explorer UI Data Sets
+      - **UJ** - Explorer UI Jobs
+      - **UU** - Explorer UI USS
+      - **DT** - Zowe Desktop Application Server
             
-        - `N` - instance number
+    - `N` - instance number
         
-          You should use the prefix for the main started task (+ number).
+      You should use the prefix for the main started task (+ number).
 
-       **Example: 1st instance of Zowe API ML Gateway identifier**
-       ```
-       ZOWEAGW1
-      ```
-    - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
+   **Example:**
 
-    - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
+    ```yaml
+    install:
+     prefix=ZOWE
+    ```
 
-    - z/OS desktop apps has three ports for each of its explorer apps
+    in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the 1st instance of Zowe API ML Gateway identifier will be
 
-    - The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
+    ```
+    ZOWEAG1
+    ```
+   
+
+  - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service.
+
+  - z/OS Services has HTTPS ports for the jobs and the data sets microservices.
+
+  - z/OS desktop apps has three ports for each of its explorer apps
+
+  - The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
 
     **Example:**
 
@@ -354,7 +387,7 @@ You might receive the following error that the file cannot be executed:
       - Do not enclose the dataset name in quotes.
       - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
       - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
-      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-install-sh-works).
+      - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  For further details, see [How the install script zowe-install.sh works](#how-the-install-script-zowe-install.sh-works).
 
     b.  Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example, 
 
@@ -475,41 +508,7 @@ You might receive the following error that the file cannot be executed:
       TSS ADD(userid)  PROFILE(IZUADMIN)
       TSS ADD(userid)  GROUP(IZUADMGP)
       ```
-
-### How the install script zowe-install.sh works
-
-The ```zowe-install.sh``` script performs two main steps.  The first of these is to create a runtime folder and the second is to configure the runtime folder in preparation for the Zowe z/OS components being launched as a started task.  
-
-When you run ```zowe-install.sh -I``` it will only perform the install step to create the runtime folder and populate it with the Zowe runtime artifacts.  Having run ```zowe-install.sh -I``` you can delete the install folder.
-
-If you have obtained the Zowe SMP/E build then you will install Zowe using the instructions at <<<Link to SMP/E>>>
-
-After the install step the Zowe runtime must be configured before it can be started.  This is done by running the script ```/scripts/zowe-configure.sh```.  
-
-If you are installing the convenience build and wish to combine the install and configure steps into a single command you can run ```zowe-install.sh``` without the ```-I``` parameter and this will combine the install to runtime folder and configure runtime folder together.  For SMP/E you must run the configuration step as the SMP/E install will not peform any configuration of the Zowe runtime folder.
-
-When the `zowe-install.sh` script runs, it performs a number of steps broken down into the following sections. Review the sections to help you undertand messsages and issues  that might occur when you run the script and actions you can take to resolve the issues.
-
-1.  Environment variables
-
-    To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
-
-     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
-     - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
-     - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
-    <!-- TODO -->
-    When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
-
-    Each time you run the install script, it retrieves environment variable settings in the following ways. 
-	  - When the `.zowe-profile` file exists in the home diretory, the install script uses the values in this file to set the environment variables. 
-	  - When the `.zowe-profile` file does not exist, the install script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables. The install script does not update or execute the `.profile` file.
-
-    You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
-
-     **Notes**: 
-     - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
-     - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
-     - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `zowe_profile` file in the current user's home directory.  
+JRWJRWJRW
 
 2. Expanding the PAX files
 
