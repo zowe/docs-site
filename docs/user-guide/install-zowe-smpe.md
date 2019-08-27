@@ -649,10 +649,12 @@ Job Name | Job Type | Description | RELFILE
 --| --| --| --|
 ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
 ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
-ZWE3ALOC | ALLOCATE | Sample job to allocate, create mountpoint, and mount zFS data sets
+ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1
+ZWE4ZFS | ALLOMZFS | Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
 ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
 ZWE6DDEF | DDDEF | Sample job to define SMP/E DDDEFs | ZOWE.AZWE001.F1
 ZWE7APLY | APPLY | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
+ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
 
 **Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier.
 
@@ -806,6 +808,10 @@ Edit and submit sample job ZWE6DDEF to create DDDEF entries for the SMP/E target
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
 ### Perform SMP/E APPLY
+
+In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
+
+**Follow these steps**
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
