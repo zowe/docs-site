@@ -2,12 +2,18 @@
 
 To install Zowe on z/OS,  there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner. 
 
-Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
+The Zowe z/OS binaries are distributed in two formats that are obtained installed differently but contain the same contents.  
 
-1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
+The first format is known as a convenience build that is installed through running shell script within a Unix System Services (USS) shell. The second format is an SMP/E RELFILE that can be installed through SMP/E.  
+
+While the steps to obtain and install the convenience build or SMP/E build are different the steps to configure a Zowe runtime are the same irrespective of how the build was obtained and installed.  
+
+1. [Obtaining and preparing the convenience build file](#obtaining-and-preparing-the-installation-file)
+1. [Obtaining and preparing the SMP/E distribution](#obtaining-and-preparing-the-SMP/E-distribution)
 2. [Prerequisites](#prerequisites)
-3. [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os)
+3. [Installing the Zowe convenience build on z/OS](#installing-the-zowe-convenience-build-on-z/os)
     - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-install-sh-works)   
+3. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
 4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-z-os)        
     - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
     - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
@@ -18,7 +24,7 @@ Follow the instructions in this topic to obtain the installation file for z/OS r
 7. [Verifying installation](#verifying-installation)        
 8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
-## Obtaining and preparing the installation file
+## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
 
@@ -136,6 +142,11 @@ To download the PAX file, open your web browser and click the *Zowe z/OS Compone
 
      **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
+## Obtaining and preparing the SMP/E distribution
+
+The steps to obtain, and install the SMP/E build are covered in the  chapter [Installing Zowe SMP/E Alpha](./install-zowe-smpe.md)  
+**Note** The SMP/E build is currently in alpha which means that is it available for eary testing.  Please provide any feedback about your experience with SMP/E as issues in https://github.com/zowe/zowe-install-packaging/issues/new.  
+
 ## Prerequisites
 
 Ensure that you meet the following software requirements before you install Zowe on z/OS:
@@ -161,7 +172,7 @@ Ensure that you meet the following software requirements before you install Zowe
   For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
  https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
-## Installing the Zowe runtime on z/OS
+## Installing the Zowe convenience build on z/OS
 
 To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
 
@@ -179,6 +190,33 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
       You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
+
+3. Execute the `zowe-install.sh` script.
+
+ The `zowe-install.sh` mode performs two steps.  The first of these is to install a Zowe runtime into the `root_dir` folder.  The second is to configure the instance so that it can be launched.
+
+ When installing the Zowe runtime from the convenience build it is possible to perform both the install and configure steps as a single command by running `zowe-install.sh` without any arguments.  The documentation steps below describe the steps separately where the creation of the runtime directory is broken apart from its configuration.  The configuration step is the same for a Zowe runtime whether it was installed from a convenience build or from an SMP/E distribution.  
+ 
+  With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
+
+  ```
+  zowe-install,sh -I
+  ```
+You might receive the following error that the file cannot be executed:
+
+  ```
+  zowe-install.sh: cannot execute
+  ```
+
+  The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
+
+  ```
+  chmod u+x zowe-install.sh
+  ```
+  
+  Each time the install script runs it create a log file that contains more information.  This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`.   This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
+
+## Configuring a Zowe runtime directory
 
    <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
 
@@ -371,28 +409,8 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
     
 <!-- TODO -->
-7. Execute the `zowe-install.sh` script.
 
-    With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
-    ```
-    zowe-install.sh  
-    ```
-    <!-- Why not mention this before? or a part of preperation before the actual execution? -->
-    You might receive the following error that the file cannot be executed:
-
-    ```
-    zowe-install.sh: cannot execute
-    ```
-    The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
-
-    ```
-    chmod u+x zowe-install.sh
-    ```
-   
-   When the script runs, it echos its progress to the shell and attempts to determine and validate the location of the prerequisites including z/OSMF, Java, and Node. When the script cannot determine the location of these prerequisites, you will be prompted for their location.
-
-    Each time the install script runs it create a log file that contains more information.  This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`.   This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
     
     You may also receive the following message:
 
@@ -459,6 +477,15 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       ```
 
 ### How the install script `zowe-install.sh` works
+The ```zowe-install.sh``` script performs two main steps.  The first of these is to create a runtime folder and the second is to configure the runtime folder in preparation for the Zowe z/OS components being launched as a started task.  
+
+When you run ```zowe-install.sh -I``` it will only perform the install step to create the runtime folder and populate it with the Zowe runtime artifacts.  Having run ```zowe-install.sh -I``` you can delete the install folder.
+
+If you have obtained the Zowe SMP/E build then you will install Zowe using the instructions at <<<Link to SMP/E>>>
+
+After the install step the Zowe runtime must be configured before it can be started.  This is done by running the script ```/scripts/zowe-configure.sh```.  
+
+If you are installing the convenience build and wish to combine the install and configure steps into a single command you can run ```zowe-install.sh``` without the ```-I``` parameter and this will combine the install to runtime folder and configure runtime folder together.  For SMP/E you must run the configuration step as the SMP/E install will not peform any configuration of the Zowe runtime folder.
 
 When the `zowe-install.sh` script runs, it performs a number of steps broken down into the following sections. Review the sections to help you undertand messsages and issues  that might occur when you run the script and actions you can take to resolve the issues.
 
