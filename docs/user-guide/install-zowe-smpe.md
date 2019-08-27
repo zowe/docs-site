@@ -70,7 +70,7 @@ The Program Directory contains the following sections:
 
 ### Zowe description
 
-Zowe is an open source project created to host technologies that benefit the Z platform.  It is managed by the Open Mainframe Project who are part of the Linux Foundation.  More information can be found on https://zowe.org.
+Zowe is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about [Zowe](https://zowe.org) is available at https://zowe.org.
 
 ### Zowe FMIDs
 
@@ -84,7 +84,7 @@ Basic Machine-Readable Materials are materials that are supplied under the base 
 
 ### Basic machine-readable material
 
-The distribution medium for this program is downloadable files. This program is in SMP/E RELFILE format and is installed by using SMP/E. See [Installation instructions](#installation-instructions) for more information about how to install the program.
+The distribution medium for this program is via downloadable files. This program is in SMP/E RELFILE format and is installed using SMP/E. See [Installation instructions](#installation-instructions) for more information about how to install the program.
 
 ### Program publications
 
@@ -94,18 +94,18 @@ No optional publications are provided for Zowe.
 
 ### Program source materials
 
-No program source materials or viewable program listings are provided for Zowe. However, program source materials can be downloaded from the Zowe GitHub repositories at [https://github.com/zowe/](https://github.com/zowe/).
+No program source materials or viewable program listings are provided for Zowe in the SMP/E installation package. However, program source materials can be downloaded from the Zowe GitHub repositories at [https://github.com/zowe/](https://github.com/zowe/).
 
 ### Publications useful during installation
 
-You might want to use the publications listed below during the installation of Zowe.
+Publications listed below will be helpful during the installation of Zowe.
 
 Publication Title | Form Number  
 -- | --
-IBM SMP/E for z/OS User's Guide | SA23-2277
-IBM SMP/E for z/OS Commands  | SA23-2275
-IBM SMP/E for z/OS Reference | SA23-2276
-IBM SMP/E for z/OS Messages, Codes, and Diagnosis | GA32-0883
+[IBM SMP/E for z/OS User's Guide](https://www.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232277/$file/gim3000_v2r3.pdf) | SA23-2277
+[IBM SMP/E for z/OS Commands](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232275/$file/gim1000_v2r3.pdf)  | SA23-2275
+[IBM SMP/E for z/OS Reference](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232276/$file/gim2000_v2r3.pdf) | SA23-2276
+[IBM SMP/E for z/OS Messages, Codes, and Diagnosis](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3ga320883/$file/gim0000_v2r3.pdf) | GA32-0883
 
 These and other publications can be obtained from [https://www.ibm.com/shop/publications/order](https://www.ibm.com/shop/publications/order).
 
@@ -113,13 +113,15 @@ These and other publications can be obtained from [https://www.ibm.com/shop/publ
 
 This section describes the support available for Zowe.
 
-Because this is an alpha release of the Zowe FMID package for early testing and adoption, no formal support is offered over and above that which the Zowe open source community can provide. Additional support may be available through other entities outside of the Open Mainframe Project and Linux Foundation which offers no warranty and provides the package under the terms of the EPL v2.0 license.
+Because this is an alpha release of the Zowe FMID package for early testing and adoption, no formal support is offered.  Support is available through the Zowe Community.  Please review [Community Engagement](https://github.com/zowe/community/blob/master/README.md#communication-channels) is available via Slack and e-mail.  Slack is the preferred interaction channel.
+
+Additional support may be available through other entities outside of the Open Mainframe Project and Linux Foundation which offers no warranty and provides the package under the terms of the EPL v2.0 license.
 
 <!--TODO - Needs more legalese here-->
 
 ### Statement of support procedures
 
-Report any problems which you feel might be an error in the product materials to the Zowe community via the Zowe GitHub community repo at [https://github.com/zowe/community/issues/new/choose](https://github.com/zowe/community/issues/new/choose). You may be asked to gather and submit additional diagnostics to assist the community in their analysis.
+Report any problems which you feel might be an error in the product materials to the Zowe community via the Zowe GitHub community repo at [https://github.com/zowe/community/issues/new/choose](https://github.com/zowe/community/issues/new/choose). You may be asked to gather and submit additional diagnostics to assist the Zowe Community for analysis and resolution.
 
 ## Program and service level information
 
@@ -127,11 +129,11 @@ This section identifies the program and relevant service levels of Zowe. The pro
 
 ### Program level information
 
-All issues of previous releases of Zowe that were resolved before August 2019 have been incorporated into Zowe.
+All issues of previous releases of Zowe that were resolved before August 2019 have been incorporated into this packaging of Zowe.
 
 ### Service level information
 
-No PTFs against this release of Zowe have been incorporated into the product package.
+Given this is the first release of the SMP/E package, thus, no PTFs have been created.
 
 ## Installation requirements and considerations
 
@@ -144,7 +146,7 @@ The following sections identify the system requirements for installing and activ
 Use separate driving and target systems in the following situations:
 
   * When you install a new level of a product that is already installed, the new level of the product will replace the old one. By installing the new level onto a separate target system, you can test the new level and keep the old one in production at the same time.
-
+<!--TODO - Is this standard nomenclature ?  Some customers won't have multiples to test with.  The above statement doesn't make sense. We need better separation of concerns ...  (@hogstrom) -->
   * When you install a product that shares libraries or load modules with other products, the installation can disrupt the other products. By installing the product onto a separate target system, you can assess these impacts without disrupting your production system.
 
 ### Driving system requirements
@@ -163,11 +165,11 @@ Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy 
 
 **Note:** SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
 
-**Note:** Installation might require migration to new z/OS releases to be service supported. See [https://www-01.ibm.com/software/support/lifecycle/index_z.html](https://www-01.ibm.com/software/support/lifecycle/index_z.html).
+**Note:** Installation might require migration to a new z/OS releases to be service supported. See [https://www-01.ibm.com/software/support/lifecycle/index_z.html](https://www-01.ibm.com/software/support/lifecycle/index_z.html).
 
 Zowe is installed into a file system, either HFS or zFS. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
 
-If you plan to install Zowe in a zFS file system, this requires that zFS be active on the driving system. Information on activating and using zFS can be found in _z/OS Distributed File Service zSeries File System Administration (SC24-5989)._
+If you plan to install Zowe in a zFS file system, this requires that zFS be active on the driving system. Information on activating and using zFS can be found in [z/OS Distributed File Service zSeries File System Administration](https://www.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3SC236887/$file/ioea700_v2r3.pdf) (SC24-5989)._
 
 ### Target system requirements
 
