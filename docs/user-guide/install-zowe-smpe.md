@@ -84,7 +84,7 @@ Basic Machine-Readable Materials are materials that are supplied under the base 
 
 ### Basic machine-readable material
 
-The distribution medium for this program is downloadable files. This program is in SMP/E RELFILE format and is installed by using SMP/E. See [Installation Instructions](#installation-instructions) for more information about how to install the program.
+The distribution medium for this program is downloadable files. This program is in SMP/E RELFILE format and is installed by using SMP/E. See [Installation instructions](#installation-instructions) for more information about how to install the program.
 
 ### Program publications
 
@@ -372,7 +372,7 @@ PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
 ### Overview of the installation steps
 
-Overview of steps required to download and install Zowe Open Source Project (Base).
+Follow these high-level steps to download and install Zowe Open Source Project (Base).
 
   1. [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
   2. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
@@ -392,7 +392,7 @@ Overview of steps required to download and install Zowe Open Source Project (Bas
 
 ### Download the Zowe SMP/E package
 
-  To download the Zowe SMP/E package, open your web browser and click the **DOWNLOAD Zowe SMP/E Alpha** button on the [Zowe Download](https://zowe.org/download/) website to save the files to a folder on your desktop.
+  To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/#download) website. Click the **Zowe SMP/E Alpha** button to save the files to a folder on your desktop.
 
   You will receive 2 files on your desktop.
 
@@ -542,10 +542,12 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
 
   * @zfs_path@ matches the variable that you specified in the previous step.
   * If the 'oshell' command gets a RC=256 and message "pax: checksum error on tape (got ee2e, expected 0), then the archive file was not uploaded to the host in binary format.
-  * GIMUNZIP allocates data sets to match the definitions of the original data sets. You may encounter errors if your SMS ACS routines alter the attributes used by GIMUNZIP. If this occurs, specify a non-SMS managed volume for the GINUMZIP allocation of the data sets. For example:  
-   _storclas-"storage_class" volume="data_set_volume"_  
-   _newname-"..."/>_  
-  * Normally, your Automatic Class Selection (ACS) routines decide which volumes to use.   Depending on your ACS configuration, and whether your system has constraints on disk space, units, or volumes, some supplied SMP/E jobs might fail due to volume allocation errors.  
+  * GIMUNZIP allocates data sets to match the definitions of the original data sets. You might encounter errors if your SMS ACS routines alter the attributes used by GIMUNZIP. If this occurs, specify a non-SMS managed volume for the GINUMZIP allocation of the data sets. For example:  
+	   ```
+     storclas-"storage_class" volume="data_set_volume"  
+     newname-"..."/>
+	   ```
+  * Normally, your Automatic Class Selection (ACS) routines decide which volumes to use.  Depending on your ACS configuration, and whether your system has constraints on disk space, units, or volumes, some supplied SMP/E jobs might fail due to volume allocation errors. See [GIMUNZIP](#gimunzip) for more details.
 
   ```
   //EXTRACT  JOB <job parameters>
@@ -692,15 +694,15 @@ The following supplied jobs might fail due to disk space allocation errors, as m
 
 ```
 IEC032I E37-04,IGC0005E,ZWE2RCVE,RECEIVE,SMPTLIB,0AC0,USER10,  
-ZOE.SMPE.AZWE001.F4                                            
+ZOWE.SMPE.AZWE001.F4                                            
 ```
-Add space and directory allocations to this SMPCNTL statement in the preceding ZWE1SMPE job
+Add space and directory allocations to this SMPCNTL statement in the preceding ZWE1SMPE job:
 
 ```
 ADD DDDEF(SMPTLIB)  UNIT(SYSALLDA) .  
 ```
 
-to make it as below:
+This makes it as below:
 
 ```
 ADD DDDEF(SMPTLIB) CYL SPACE(2,1) DIR(10)  UNIT(SYSALLDA) .  
@@ -742,13 +744,13 @@ Edit and submit sample job ZWE2RCVE to perform the SMP/E RECEIVE for Zowe. Consu
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
-### Allocate SMP/E Target and Distributions Libraries
+### Allocate SMP/E target and distributions libraries
 
 Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
-### Allocate, create and mount ZSF Files (Optional)
+### Allocate, create and mount ZSF files (Optional)
 
 This job allocates, creates a mountpoint, and mounts zFS data sets.
 
@@ -779,7 +781,7 @@ See the following information to update the statements in the previous sample:
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
-### Allocate z/OS UNIX Paths
+### Allocate z/OS UNIX paths
 
 The target system HFS or zFS data set must be mounted on the driving system when running the sample ZWE5MKD job since the job will create paths in the HFS or zFS.
 
@@ -787,7 +789,7 @@ Before running the sample job to create the paths in the file system, you must e
 
 If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system to the driving system for Zowe.
 
-<!Should this be /usr/lpp/zowe/v1?>
+<!--Should this be /usr/lpp/zowe/v1?-->
 
 The recommended mountpoint is _/usr/lpp/zowe._
 
@@ -797,7 +799,7 @@ If you create a new file system for this product, consider updating the BPXPRMxx
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
-### Create DDDEF Entries
+### Create DDDEF entries
 
 Edit and submit sample job ZWE6DDEF to create DDDEF entries for the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
@@ -817,13 +819,13 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
    1. To ensure that all recommended and critical service is installed with the FMIDs, receive the latest HOLDDATA and use the APPLY CHECK command as follows
 
-   ```
-   APPLY S(fmid,fmid,...) CHECK   
-   FORFMID(fmid,fmid,...)
-   SOURCEID(RSU*)
-   FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
-   GROUPEXTEND .
-   ```
+    ```
+    APPLY S(fmid,fmid,...) CHECK   
+    FORFMID(fmid,fmid,...)
+    SOURCEID(RSU*)
+    FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
+    GROUPEXTEND .
+    ```
     * Some HIPER APARs might not have fixing PTFs available yet.  You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
 
     * This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
@@ -839,9 +841,9 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
     BYPASS(HOLDCLASS(HIPER)) .
      ..any other parameters documented in the program directory
     ```
-  * This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
+    * This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
 
-  * If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
+    * If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
 
 2. After you take actions that are indicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
 
@@ -921,7 +923,7 @@ Thank you for your participation.
 << TODO - Where does this section belong ? >>
 ### SMP/E CALLLIBS Processing
 
-Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries: 
+Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries:
 <!--Needs a list of libraries-->
 <!--
 - CSSLIB
