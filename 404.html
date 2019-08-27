@@ -75,37 +75,28 @@
     </div>
 
     <script type="text/javascript">
-      var url = document && document.location && document.location.href;
-      var redirectTo = function(url) {
-        // update html elements
-        var nu = document.getElementById('new-doc-link');
-        if (nu) {
-          nu.href = url;
-        }
-        var p = document.getElementById('legacy-url');
-        if (p) {
-          p.style.display = 'block';
-        }
-
-        // redirect
-        setTimeout(function() {
-          window.location.replace(url);
-        }, 10000);
-      };
+      var url = document && document.location && document.location.href, newurl;
       if (url) {
         var m = url.match(/^(https?:\/\/[^\/]+\/[^\/]+\/)(.+)$/);
         if (m && m[2] && m[2].substr(0, 7) !== 'latest/' &&
           !m[2].match(/^v[0-9]+-[0-9]+-[0-9x]+\//)) {
           // this is a legacy link without version, redirect to latest version
-          redirectTo(m[1] + 'latest/' + m[2]);
-        }
+          newurl = m[1] + 'latest/' + m[2];
 
-        // wrong search result
-        m = url.match(/^(https?:\/\/[^\/]+\/)docs-site\/([^\/]+\/)docs-site\/([^\/]+\/)(.*)$/);
-        if (m && m[2] && m[3] && m[2] === m[3]) {
-          // a wrong search result like:
-          // https://www.zowe.org/docs-site/latest/docs-site/latest/extend/extend-cli/cli-setting-up.html
-          redirectTo('https://www.zowe.org/docs-site/' + m[2] + m[4]);
+          // update html elements
+          var nu = document.getElementById('new-doc-link');
+          if (nu) {
+            nu.href = newurl;
+          }
+          var p = document.getElementById('legacy-url');
+          if (p) {
+            p.style.display = 'block';
+          }
+
+          // redirect
+          setTimeout(function() {
+            window.location.replace(newurl);
+          }, 10000);
         }
       }
     </script>
