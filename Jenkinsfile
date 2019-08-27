@@ -127,21 +127,6 @@ node ('ibm-jenkins-slave-dind') {
         if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
         cd ..
       """
-      if (!fileExists('.deploy/stable/index.html')) {
-        // this is the old documentation directory structure, stable folder doesn't exist
-        // we need to migrate to new structure
-        if (isMasterBranch || isTestPublishing) {
-          if (fileExists('.deploy/latest/index.html')) {
-            // we have latest, means it's first run after we migrate from latest to stable
-            sh 'mv .deploy/latest .deploy/stable'
-          } else {
-            // clean the .deploy folder to generate stable folder
-            sh 'rm -fr .deploy/*'
-          }
-        } else {
-          error 'Migration "gh-pages" from old directory structure can only be done on master branch.'
-        }
-      }
       if (isMasterBranch) {
         // alway try to update default pages from master branch
         sh 'cp -r gh-pages-default/. .deploy/'
