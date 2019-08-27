@@ -263,9 +263,9 @@ The Discovery Service has the following types of users that require authenticati
   
     - HTTP mode: the access is protected by basic Eureka authentication.
     
-    - HTTPS mode: the access is protected by mainframe credentials (basic or token) or x509 certificate.
-    The `application/**` endpoint is protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or x509 certificate.
-    The `eureka/**` endpoint is protected by the x509 certificate.
+    - HTTPS mode: the access is protected by mainframe credentials (basic or token) or client certificate.
+    The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or x509 certificate.
+    The `eureka/**` endpoints are protected by the client certificate.
     The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
     Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
     Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
@@ -352,7 +352,17 @@ https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certifica
 
 #### Log in to Discovery Service on localhost
 
-To access Discovery Service on localhost provide valid mainframe credentials or token.
+To access Discovery Service on localhost using HTTPS, provide valid mainframe credentials or token.
+Below is the table showing the different security techniques used to protect the Discovery Service endpoints in both HTTP and HTTPS mode.
+    
+|                                      |               |                               |                               |
+|--------------------------------------|---------------|-------------------------------|-------------------------------|
+| ENDPOINT                             | HTTP          | HTTPS                         | HTTPS without cert validation |
+| UI (eureka homepage)                 | basic(static) | basic(MF), token              | basic(MF), token              |
+| application/**                       | basic(static) | basic(MF), token              | basic(MF), token              |
+| application/health, application/info | free          | free                          | free                          |
+| eureka/**                            | basic(static) | certificate                   | certificate                   |
+| discovery/**                         | basic(static) | certificate, basic(MF), token | certificate, basic(MF), token |
 
 ### Zowe runtime on z/OS
 
