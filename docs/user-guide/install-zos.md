@@ -476,7 +476,8 @@ You might receive the following error that the file cannot be executed:
       TSS ADD(userid)  GROUP(IZUADMGP)
       ```
 
-### How the install script `zowe-install.sh` works
+### How the install script zowe-install.sh works
+
 The ```zowe-install.sh``` script performs two main steps.  The first of these is to create a runtime folder and the second is to configure the runtime folder in preparation for the Zowe z/OS components being launched as a started task.  
 
 When you run ```zowe-install.sh -I``` it will only perform the install step to create the runtime folder and populate it with the Zowe runtime artifacts.  Having run ```zowe-install.sh -I``` you can delete the install folder.
