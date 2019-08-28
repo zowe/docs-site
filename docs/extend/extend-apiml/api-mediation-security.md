@@ -162,20 +162,18 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
 The API Gateway contains two REST API authentication endpoints: `auth/login` and `auth/query`.
 
-The `/login` endpoint allows to authenticate mainframe user credentials and returns an authentication token. The login request requires the user credentials in one of the following formats:
+The `/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
   * Basic access authentication
   * JSON with user credentials 
 
-1. When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. 
-2.  When authentication failed, a user gets 401 status code.
+When authentication is successful the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
 
-The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
-The query request requires the token in one of the following formats: 
-  * Cookie named `apimlAuthenticationToken`
+The `/query` endpoint validates the token and retrieves the information associated with the token.
+The query request requires the token through one of the following methods: 
+  * A cookie named `apimlAuthenticationToken`
   * Bearer authentication  
   
-1. When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token
-2. When authentication failed, a user gets 401 status code. 
+When authentication is successful the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code. 
 
 #### Authentication providers
 
