@@ -255,13 +255,11 @@ by other technologies used in Zowe (Node.js).
 
 ### Authentication to the Discovery Service
 
-There are two modes to run the Discovery Service: HTTP and HTTPS.
+Authentication to the Discovery Service supports only HTTPS.
  
 **Note:** API Gateway first needs to be registered to the Discovery Service to provide authentication using mainframe credentials.
   
-- HTTP mode: Access is protected by basic Eureka authentication.
-    
-- HTTPS mode: Access is protected by mainframe credentials (basic or token) or client certificate.
+Access to the Discovery Service is protected by mainframe credentials (basic or token) or client certificate using HTTPS.
  The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or a client certificate.
  The `eureka/**` endpoints are protected by the client certificate to allow for the other services to register without mainframe credentials or token.
  The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
@@ -273,18 +271,18 @@ There are two modes to run the Discovery Service: HTTP and HTTPS.
  http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
  ```
 
- The `application/health` and `application/info` endpoints do not require authentication in either mode.
+ The `application/health` and `application/info` endpoints do not require authentication.
    
-The following table shows the different security techniques used to protect the Discovery Service endpoints in both HTTP and HTTPS modes:    
+The following table shows the different security techniques used to protect the Discovery Service endpoints:   
    
-|                                      |               |                               |                               |
-|--------------------------------------|---------------|-------------------------------|-------------------------------|
-| ENDPOINT                             | HTTP          | HTTPS                         | HTTPS without cert validation |
-| UI (eureka homepage)                 | basic(static) | basic(MF), token              | basic(MF), token              |
-| application/**                       | basic(static) | basic(MF), token              | basic(MF), token              |
-| application/health, application/info | free          | free                          | free                          |
-| eureka/**                            | basic(static) | certificate                   | certificate                   |
-| discovery/**                         | basic(static) | certificate, basic(MF), token | certificate, basic(MF), token | 
+|                                      |                               |                               |
+|--------------------------------------|-------------------------------|-------------------------------|
+| ENDPOINT                             | HTTPS                         | HTTPS without cert validation |
+| UI (eureka homepage)                 | basic(MF), token              | basic(MF), token              |
+| application/**                       | basic(MF), token              | basic(MF), token              |
+| application/health, application/info | free                          | free                          |
+| eureka/**                            | certificate                   | certificate                   |
+| discovery/**                         | certificate, basic(MF), token | certificate, basic(MF), token | 
    
     
 ### Setting ciphers for API ML services
