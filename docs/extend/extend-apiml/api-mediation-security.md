@@ -265,13 +265,13 @@ There are several authentication mechanisms, depending on the desired endpoint, 
 | eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore. |
 | discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication | 
 
-**Note:** Some endpoints are protected by mainframe authentication. The authentication function is provided by API Gateway. Until Gateway registers itself to Discovery service, this functionality is not available.
+**Note:** Some endpoints are protected by mainframe authentication. The authentication function is provided by the API Gateway. This functionality is not available until the Gateway registers itself to the Discovery Service.
 
 Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
  
-  Some utilities including HTTPie require the certificate to be in PEM format. Exported certificate in .pem format is located here: `keystore/localhost/localhost.pem`.
+  Some utilities including HTTPie require the certificate to be in PEM format. The exported certificate in .pem format is located here: `keystore/localhost/localhost.pem`.
   
- The following example shows HTTPie command to access Discovery service endpoint for listing registered services, with providing the client certificate:
+ The following example shows HTTPie command to access the Discovery Service endpoint for listing registered services and provides the client certificate:
     
  ```
  http --cert=keystore/localhost/localhost.pem --verify=false -j GET https://localhost:10011/eureka/apps/
