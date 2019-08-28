@@ -261,21 +261,21 @@ There are two modes to run the Discovery Service: HTTP and HTTPS.
  
 **Note:** API Gateway first needs to be registered to the Discovery Service to provide authentication using mainframe credentials.
   
-    - HTTP mode: Access is protected by basic Eureka authentication.
+- HTTP mode: Access is protected by basic Eureka authentication.
     
-    - HTTPS mode: Access is protected by mainframe credentials (basic or token) or client certificate.
-    The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or a client certificate.
-    The `eureka/**` endpoints are protected by the client certificate to allow for the other services to register without mainframe credentials or token.
-    The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
-    Some utilities including HTTPie require the certificate to be in PEM format and stored in `keystore/localhost/localhost.pem`.
-    Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
-    The following example shows how to access the Discovery Service from the CLI with full certificate validation with the client certificate using HTTPie:
+- HTTPS mode: Access is protected by mainframe credentials (basic or token) or client certificate.
+ The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or a client certificate.
+ The `eureka/**` endpoints are protected by the client certificate to allow for the other services to register without mainframe credentials or token.
+ The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
+ Some utilities including HTTPie require the certificate to be in PEM format and stored in `keystore/localhost/localhost.pem`.
+ Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
+ The following example shows how to access the Discovery Service from the CLI with full certificate validation with the client certificate using HTTPie:
     
-    ```
-    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
-    ```
+ ```
+ http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
+ ```
 
-   The `application/health` and `application/info` endpoints do not require authentication in both modes.
+ The `application/health` and `application/info` endpoints do not require authentication in either mode.
    
 The following table shows the different security techniques used to protect the Discovery Service endpoints in both HTTP and HTTPS modes:    
    
