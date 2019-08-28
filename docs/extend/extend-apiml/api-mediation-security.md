@@ -268,24 +268,26 @@ The Discovery Service has the following types of users that require authenticati
     The `eureka/**` endpoints are protected by the client certificate.
     The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
     Some utilities including HTTPie require the certificate to be in PEM format and stored in `keystore/localhost/localhost.pem`.
-    Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
-    The following example shows how to access Discovery Service from CLI with full certificate validation:
-    `http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
-
+    Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
+    The following example shows how to access the Discovery Service from CLI with full certificate validation:
     
-   The `application/health` and `application/info` endpoints do not require authentication in both mode.
+    ```
+    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
+    ```
+
+   The `application/health` and `application/info` endpoints do not require authentication in both modes.
     
 - **Services that need to register to the Discovery Service**
 
-    These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
+    These services are not users that have a user ID and password but are other services. They authenticate using a client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
 
-**Note:** API Gateway needs first to be registered to the Discovery Service in order provide authentication using mainframe credentials.
+**Note:** API Gateway first needs to be registered to the Discovery Service to provide authentication using mainframe credentials.
 
 ### Setting ciphers for API ML services
 
-You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the gateway, discovery service, and API catalog.
+You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the Gateway, Discovery Service, and API Catalog.
 
-**Note:** You do not need to rebuild JAR files when you override the default values in shell scirpts.
+**Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 
 The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `$ZOWE_ROOT_DIR/api-mediation/scripts/api-mediation-start-*.sh`, where `*` expands to `gateway`, `catalog`, and `discovery`.
 Add the launch parameter of the shell script to set a cipher:
@@ -296,7 +298,7 @@ Add the launch parameter of the shell script to set a cipher:
 
 On localhost, you can override the default configuration in [config/local/gateway-service.yml](https://github.com/zowe/api-layer/blob/master/config/local/gateway-service.yml) (including other YAML files for development purposes).
 
-The following list shows default ciphers. The API ML services use the following cipher order:
+The following list shows the default ciphers. API ML services use the following cipher order:
 
 **Note:** Ensure that the version of Java you use is compatible with the default cipherset.
 
@@ -322,7 +324,7 @@ The certificates are described in more detail in the https://github.com/zowe/api
 
 #### Certificate management script
 
-Zowe API Mediation Layer provides a script that can used on Windows, Mac, Linux, and z/OS
+Zowe API Mediation Layer provides a script that can be used on Windows, Mac, Linux, and z/OS
 to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
 This script is stored in [scripts/apiml_cm.sh](https://github.com/zowe/api-layer/blob/master/scripts/apiml_cm.sh).
@@ -352,8 +354,8 @@ https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certifica
 
 #### Log in to Discovery Service on localhost
 
-To access Discovery Service on localhost using HTTPS, provide valid mainframe credentials or token.
-Below is the table showing the different security techniques used to protect the Discovery Service endpoints in both HTTP and HTTPS mode.
+To access Discovery Service on localhost using HTTPS, provide valid mainframe credentials or a token.
+The following table shows the different security techniques used to protect the Discovery Service endpoints in both HTTP and HTTPS modes.
     
 |                                      |               |                               |                               |
 |--------------------------------------|---------------|-------------------------------|-------------------------------|
@@ -368,7 +370,7 @@ Below is the table showing the different security techniques used to protect the
 
 #### Certificates for z/OS installation from the Zowe PAX file
 
-Certificates for the API ML local CA and API ML service are automatically generated by installing the Zowe runtime on z/OS from the PAX file. Following the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html) 
+Certificates for the API ML local CA and API ML service are automatically generated by installing Zowe runtime on z/OS from the PAX file. Follow the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html) 
 
 These certificates are generated by the certificate management script `apiml_cm.sh` that is installed to `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.    
 
@@ -383,12 +385,12 @@ API ML keystore and truststore:
     - contains the APIML server certificate signed by the local CA and private key for the server
     
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local/localhost.truststore.p12` 
-    - use to validate trust when communicating with the services that are registered to the APIML
+    - use to validate trust when communicating with services that are registered to the APIML
     - contains the root certificate of the local CA (not the server certificate)
     - contains the local CA public certificate
     - can contain additional certificate to trust services that are not signed by local CA
 
-API ML keystores and truststores needs be accessible by the user ID that executes the Zowe runtime.
+API ML keystores and truststores need be accessible by the user ID that executes the Zowe runtime.
 
 Local CA:
 
@@ -398,23 +400,23 @@ Local CA:
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.keystore.p12`
     - private key of the local CA 
 
-The local CA keystore is only accessible by the user that is installs and manages the Zowe runtime. 
+The local CA keystore is only accessible by the user that installs and manages the Zowe runtime. 
 
 
 #### Import the local CA certificate to your browser
 
 Trust in the API ML server is a necessary precondition to properly encrypt traffic between web browsers and REST API client applications. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
-**Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
+**Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory used for the Zowe runtime during installation.
 
-The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
+The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 **Follow these steps:**
 
 1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
 
     - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**
-    Issue teh following command:
+    Issue the following command:
 
     `zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer`
 
@@ -426,7 +428,7 @@ The certificate is stored in UTF-8 encoding so you need to transfer it as a bina
     get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
     ```
 
-    To verify that the file has been transferred correctly, open the file. The following heading and closing shoulf appear: 
+    To verify that the file has been transferred correctly, open the file. The following heading and closing should appear: 
    
     ```
     -----BEGIN CERTIFICATE-----
@@ -474,22 +476,23 @@ scripts/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <
 
 The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
 
-The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore. For example: `/opt/myservice/keystore/service.keystore`.
+The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore. 
+
+**Example:** `/opt/myservice/keystore/service.keystore`.
 
 The `service-truststore` contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that will be generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
-The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN has contain host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration. For example:
+The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
 
-`"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
+**Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
 **Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
-The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. For example:
+The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. 
 
-`"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
+**Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
-
-The `service-validity` is the number of days after that the certificate will expire.
+The `service-validity` is the number of days after until the certificate expires.
 
 The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
