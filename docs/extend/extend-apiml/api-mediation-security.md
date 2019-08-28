@@ -261,15 +261,15 @@ The Discovery Service has the following types of users that require authenticati
 
 - **Administrators and developers who need to log in to the homepage of the Discovery Service**
   
-    - HTTP mode: the access is protected by basic Eureka authentication.
+    - HTTP mode: Access is protected by basic Eureka authentication.
     
-    - HTTPS mode: the access is protected by mainframe credentials (basic or token) or client certificate.
-    The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or x509 certificate.
+    - HTTPS mode: Access is protected by mainframe credentials (basic or token) or client certificate.
+    The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or a x509 certificate.
     The `eureka/**` endpoints are protected by the client certificate.
     The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
-    Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
-    Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
-    The following is an example of how to access Discovery Service from CLI with full certificate validation:
+    Some utilities including HTTPie require the certificate to be in PEM format and stored in `keystore/localhost/localhost.pem`.
+    Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
+    The following example shows how to access Discovery Service from CLI with full certificate validation:
     `http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
 
     
