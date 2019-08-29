@@ -156,7 +156,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 
     Specifies the name of an installed plug-in that you want to update. The name of the plug-in is not always the same as the name of the NPM package. You can use npm semantic versioning to specify a plug-in version to which to update. For more information, see npm semver.
 
--  [--registry <registry>]
+-  [--registry \<registry>\]
 
     (Optional) Specifies a registry URL that is different from the registry URL of the original installation.
 
