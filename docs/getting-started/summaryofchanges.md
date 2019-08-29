@@ -33,17 +33,17 @@ If you *do not* have Zowe CLI installed on your computer, refer to [Installing Z
 
 **Updating from @lts-incremental:**
 
-If you *currently have the `@lts-incremetal` CLI version installed*, follow these steps to convert to `@latest`:
+If you *currently have the Stable `lts-incremental` CLI version installed, follow these steps to convert to Active Development:
 
-1. (Optional) If you want to preserve your existing profiles, save the contents of the `profiles` folder in your Zowe home directory to another location on your computer. For more information about the home directory, see [Configuring CLI](../user-guide/cli-configuringcli.md#setting-the-zowe-cli-home-directory).
+1. (Optional) To preserve your existing profiles, save the contents of the `profiles` folder in your Zowe home directory to another location on your computer. For more information about the home directory, see [Configuring CLI](../user-guide/cli-configuringcli.md#setting-the-zowe-cli-home-directory).
 
 2. Use one of the following methods to reinstall the `@latest` version of CLI and plug-ins. 
 
     - [Download the Zowe CLI Pre-Release package](https://zowe.org/download/) from Zowe.org.
 
-    - Follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md). 
+    - Follow instructions to [install the CLI from an online registry](../user-guide/cli-installcli.md).
 
-3. Review the [Breaking Changes](#breaking-changes) in the following section, then take corrective action if the changes apply to you. This ensures that your user profiles and dependent scripts continue to function.
+3. Due to differences in the versions, you might need to make changes to your existing profiles and scripts. Review the [Breaking Changes](#breaking-changes) in the following section, then take corrective action if the changes affects you. 
 
 You installed the `@latest` Zowe CLI! Remember to adjust your profiles and scripts accordingly if you switch back to `@lts-incremental`.
 
