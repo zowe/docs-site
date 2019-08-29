@@ -161,3 +161,132 @@ The following message is a typical error message displayed in STDOUT:
 Restart API Mediation Layer.
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart the TCP/IP stack while API ML is running.
+
+### SEC0002 error when logging in to API Catalog
+
+SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
+
+<img src="Error.png" alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
+
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZOWESVR joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+
+```
+2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
+```
+
+Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
+
+- [Connection refused](#connection-refused)
+- [Missing z/OSMF host name in subject alternative names](#missing-z/osmf-host-name-in-subject-alternative-names)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-z/osmf-host-name-in-subject-alternative-names)
+
+#### Connection refused
+
+In the following message, failure to connect to API Catalog occurs when connection is refused:
+
+```
+Connect to ABC12.slv.broadcom.net:1443 .ABC12.slv.broadcom.net/127.0.0.1. failed: EDC8128I Connection refused.; nested exception is org.apache.http.conn.HttpHostConnectException: 
+```
+The reason for the refused connection message is either invalid z/OSMF configuration or z/OSMF being unavailable. The preceding message indicates that z/OSMF is not on the 127.0.0.1:1443 interface.
+
+**Solution:**
+
+#### Configure z/OSMF
+
+Make sure that z/OSMF is running and is on 127.0.0.1:1443 interface, and try to log in to API Catalog again. If you get the same error message, change z/OSMF configuration.
+
+**Follow these steps:**
+
+1. Locate the z/OSMF PARMLIB member IZUPRMxx.
+
+    For example, locate IZUPRM00 member in SYS1.PARMLIB.
+    
+2. Change the current `HOSTNAME` configuration to `HOSTNAME('*')`.
+3. Change the current `HTTP_SSL_PORT` configuration to `HTTP_SSL_PORT('1443')`.
+
+    **Important!** If you change the port in the z/OSMF configuration file, all your applications lose connection to z/OSMF.
+
+For more information, see [Syntax rules for IZUPRMxx](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_IZUPRMxx.htm).
+
+If changing the z/OSMF configuration does not fix the issue, reconfigure Zowe.
+
+**Follow these steps:**
+
+1. Open `.zowe_profile` in the home directory of the user who installed Zowe.
+2. Modify the value of the `ZOWE_ZOSMF_PORT` variable. 
+3. Reinstall Zowe.
+
+
+#### Missing z/OSMF host name in subject alternative names
+
+In following message, failure to connect to API Catalog is caused by a missing z/OSMF host name in the subject alternative names:
+
+```
+Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..; nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..
+```
+
+**Solutions:**
+
+Fix the missing z/OSMF host name in subject alternative names using the following methods:
+
+**Note:** Apply the insecure fix only if you use API Catalog for testing purposes.
+
+- [Secure fix](#Secure-fix)
+- [Insecure fix](#insecure-fix)
+
+#### Secure fix
+
+**Follow these steps:**
+
+1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
+2. Navigate to `$ZOWE_RUNTIME/api-mediation` and run the following command:
+    ```
+    scripts/apiml_cm.sh --action trust-zosmf 
+    ```
+
+    2a. (Optional) If you do not use the default z/OSMF userid (IZUSVR) and keyring (IZUKeyring.IZUDFLT), issue the following command: 
+
+       scripts/apiml_cm.sh --action trust-zosmf--zosmf-userid **ZOSMF_USER** --zosmf-keyring **ZOSMF_KEYRING**
+    
+    where;
+    - `--zosmf-keyring` and `--zosmf-userid` - options that override the default userid and keyring accordingly.
+
+#### Insecure fix
+
+**Follow these steps:**
+
+1. Set the value of the `verifyCertificatesOfServices` property to `false` in `zowe-install.yaml` to disable verification of certificates in Zowe.
+2. Reinstall Zowe.
+
+#### Invalid z/OSMF host name in subject alternative names
+
+In the following message, failure to connect to API Catalog is caused by an invalid z/OSMF host name in the subject alternative names:
+
+```
+Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: [abc12.ca.com, abc12, localhost, abc12-slck, abc12-slck.ca.com, abc12-slck1, abc12-slck1.ca.com, abc12-slck2, abc12-slck2.ca.com, usilabc12, usilabc12.ca.com]; 
+nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: [abc12.ca.com, abc12, localhost, abc12-slck, abc12-slck.ca.com, abc12-slck1, abc12-slck1.ca.com, abc12-slck2, abc12-slck2.ca.com, usilabc12, usilabc12.ca.com]
+```
+
+**Solutions:**
+
+Fix the invalid z/OSMF host name in the subject alternative names using the following methods:
+
+- [Request a new certificate](#request-a-new-certificate)
+- [Change the ZOWE_EXPLORER_HOST variable](#change-the-zowe_explorer_host-variable)
+
+#### Request a new certificate
+
+Request a new certificate that contains a valid z/OSMF host name in the subject alternative names.
+
+#### Change the ZOWE_EXPLORER_HOST variable
+
+Change `ZOWE_EXPLORER_HOST` variable to fix the issue.
+
+**Follow these steps:**
+
+1. Open .zowe_profile in the home directory of the user who installed Zowe.
+2. Change  `ZOWE_EXPLORER_HOST` to a host name from the subject alternative names of the z/OSMF certificate. For example, issue the following command:
+    ```
+    export ZOWE_EXPLORER_HOST=SAN (change this to the correct one > in the code block).
+    ```
+3. Reinstall Zowe. 
