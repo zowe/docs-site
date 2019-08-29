@@ -13,7 +13,7 @@
   - [Authorization](#authorization)
   - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
-  - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+  - [Discovery Service authentication](#discovery-service-authentication)
   - [Setting Ciphers for API ML Services](#setting-ciphers-for-api-ml-services)
 - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
@@ -253,37 +253,29 @@ by other technologies used in Zowe (Node.js).
 
 - A client certificate is a certificate that is used for validation of the HTTPS client. The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client uses.
 
-### Authentication to the Discovery Service
+### Discovery Service authentication
 
-Authentication to the Discovery Service supports only HTTPS.
+There are several authentication mechanisms, depending on the desired endpoint, as described by the following matrix:
+
+| Endpoint | Authentication method | Note |             
+|----|-----|------|
+| UI (eureka homepage)                 | basic auth(MF), token              | see note about mainframe authentication  |
+| application/**                       | basic auth(MF), token              |  see note about mainframe authentication  |
+| application/health, application/info | none                          |     |
+| eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore. |
+| discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication | 
+
+**Note:** Some endpoints are protected by mainframe authentication. The authentication function is provided by the API Gateway. This functionality is not available until the Gateway registers itself to the Discovery Service.
+
+Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
  
-**Note:** API Gateway first needs to be registered to the Discovery Service to provide authentication using mainframe credentials.
+  Some utilities including HTTPie require the certificate to be in PEM format. The exported certificate in .pem format is located here: `keystore/localhost/localhost.pem`.
   
-Access to the Discovery Service is protected by mainframe credentials (basic or token) or client certificate using HTTPS.
- The `application/**` endpoints are protected by mainframe credentials (basic or token) and the `discovery/**` endpoint is protected by mainframe credentials (basic or token) or a client certificate.
- The `eureka/**` endpoints are protected by the client certificate to allow for the other services to register without mainframe credentials or token.
- The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
- Some utilities including HTTPie require the certificate to be in PEM format and stored in `keystore/localhost/localhost.pem`.
- Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
- The following example shows how to access the Discovery Service from the CLI with full certificate validation with the client certificate using HTTPie:
+ The following example shows HTTPie command to access the Discovery Service endpoint for listing registered services and provides the client certificate:
     
  ```
- http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/
+ http --cert=keystore/localhost/localhost.pem --verify=false -j GET https://localhost:10011/eureka/apps/
  ```
-
- The `application/health` and `application/info` endpoints do not require authentication.
-   
-The following table shows the different security techniques used to protect the Discovery Service endpoints:   
-   
-|                                      |                               |                               |
-|--------------------------------------|-------------------------------|-------------------------------|
-| ENDPOINT                             | HTTPS                         | HTTPS without cert validation |
-| UI (eureka homepage)                 | basic(MF), token              | basic(MF), token              |
-| application/**                       | basic(MF), token              | basic(MF), token              |
-| application/health, application/info | free                          | free                          |
-| eureka/**                            | certificate                   | certificate                   |
-| discovery/**                         | certificate, basic(MF), token | certificate, basic(MF), token | 
-   
     
 ### Setting ciphers for API ML services
 
