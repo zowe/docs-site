@@ -32,9 +32,9 @@ The command installs the IBM CICS, IBM IMS, and IBM MQ plug-ins:
 zowe plugins install @zowe/cics @zowe/ims @zowe/mq
 ```
 
-The IBM Db2 plug-in requires [additional configuration to install.](../user-guide/cli-db2plugin.md#installing)
+The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
 
-For a list of available plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
+For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
 
 ## Issuing your first commands
 
