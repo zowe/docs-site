@@ -177,6 +177,8 @@ In the documentation below, the steps of creating the runtime directory and conf
     zowe-install,sh -I
     ```
 
+    **Note** If you leave off the `-I` parameter then the `zowe-install.sh` script will run an install and configure back to back.  If you choose to do this then make sure that you have reviewed [Configuring the Zowe runtime directory](./configure-zowe-runtime.md##configuring-the-zowe-runtime-directory).  The recommended approach is to run `zowe-install.sh -I` to create the runtime directory and then separately configure that directory.  
+
     You might receive the following error that the file cannot be executed:
 
     ```
