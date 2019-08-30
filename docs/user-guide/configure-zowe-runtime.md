@@ -392,9 +392,12 @@ You can choose which method to use depending on your familiarity with z/OS confi
 
 Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
+#### Creating the xmem-server/zss directory
+
+A number of files used by both manual and scripted install are included in the USS directory `/xmem-server/zss`.  If this directory is not present in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
+
 ### Manually installing the Zowe Cross Memory Server
 <!-- TODO. Entire sub-section -->
-A number of files are included in the USS directory `/xmem-server/zss`.  If this directory is not present in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
 
 The manual installation consists of the following steps.
 
@@ -620,7 +623,7 @@ The manual installation consists of the following steps.
 
 ### Scripted install of the Zowe Cross Memory Server
 
-For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `/xmem-server/zowe-install-apf-server.sh`.
+For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `/xmem-server/zowe-install-apf-server.sh`.  If this script does not exist review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory)
 
 - The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
 - The script will not create the PPT entry which must be done manually.  This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).

@@ -310,7 +310,6 @@ Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
 --| --| --| --| --| --| --|
 hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE001.F3 | U | PDSE | U | 0 | 5 | N/A
 hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
 hlq.ZOWE.AZWE001.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
 z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A

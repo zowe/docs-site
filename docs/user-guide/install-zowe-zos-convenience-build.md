@@ -173,12 +173,12 @@ In this documentation, the steps of creating the runtime directory and configuri
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
     ```
-    zowe-install,sh -I
+    zowe-install.sh -I
     ```
 
-    **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). The recommended approach is to run `zowe-install.sh -I` to create the runtime directory and then separately configure that directory.
+    **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory using the `rootDir:` value. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). If you run `zowe-install.sh` without the `-I` parameter the file `zowe-install.yaml` containing parameter values used to drive the configuration will be in the same `/install` directory as location of `zowe-install.sh`.  If you use the `-I` option and configure post install which is the recommended approach the `zowe-install.yaml` file will be in the `scripts/config` directory of the `rootDir:`.
 
-    You might receive the following error that the file cannot be executed:
+    During execution of `zowe-install.sh` You might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute
