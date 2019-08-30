@@ -11,7 +11,7 @@ Welcome to Zowe Active Development documentation.
 - The version is equivalent to the `@latest` version of Zowe CLI.
 - When migrating from one CLI version to the other, you might need to edit user your profiles and reinstall plug-ins due to differences between versions. 
 
-## Active Development highlights
+## Version highlights
 
 **New compatible plug-ins:**
 
@@ -25,7 +25,7 @@ In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are av
 - Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
 - You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide/cli-usingcli.md#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
 
-## Installing Active Development CLI
+## Installing or Updating
 
 ### First-time install
 
