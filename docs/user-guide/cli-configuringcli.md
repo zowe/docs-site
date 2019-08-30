@@ -61,7 +61,7 @@ Issue the following command to list all data sets under the username ibmuser on 
 zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
-After you create a profile, you can verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf).
+After you create a profile, you can verify that it can communicate with z/OSMF. For more information, see [Testing Connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
 
 
 
