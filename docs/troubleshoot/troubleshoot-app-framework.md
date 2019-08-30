@@ -1,8 +1,8 @@
 # Troubleshooting Zowe Application Framework
 
-The following topics contain information that can help you troubleshoot problems that occur when you install and use the Zowe Application Framework. 
+The following topics contain information that can help you troubleshoot problems that occur when you install and use the Zowe Application Framework.
 
-When no solution to your problem is available in this section, collect as much of the following information as possible and open an issue in Zowe GitHub with the collected information to help Zowe diagnose the problem. 
+When no solution to your problem is available in this section, collect as much of the following information as possible and open an issue in Zowe GitHub with the collected information to help Zowe diagnose the problem.
 
  - Zowe version and release level
  - z/OS release level
@@ -17,7 +17,7 @@ When no solution to your problem is available in this section, collect as much o
 
 **Symptom:**
 
-When you attempt to log in to the Zowe Desktop, you receive the following error message that is displayed beneath the **Username** and **Password** fields. 
+When you attempt to log in to the Zowe Desktop, you receive the following error message that is displayed beneath the **Username** and **Password** fields.
 
 ```
 Authentication failed for 1 types:  Types: ["zss"]
@@ -27,7 +27,7 @@ Authentication failed for 1 types:  Types: ["zss"]
 
 For the Zowe Desktop to work, the node server that runs under the ZOWESVR started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESIS01 started task. You encounter this authentication failure error if the communication cannot occur.
 
-To solve the problem, follow these steps: 
+To solve the problem, follow these steps:
 1. Open the log file `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZOWESVR is started and only the last five files are kept.  
 
 2. Look for the message that starts with `ZIS status`.  
@@ -62,4 +62,4 @@ To solve the problem, follow these steps:
     ```
     read failed ret code 1121 reason 0x76650446
     ```
-    - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#configuring-zss-for-https)
+    - IF you are using AT/TLS then this the configuration of the Application Framework server may be incomplete, specifically the addition of the ```"attls" : true``` statement into the ```zluxserver.json``` file.  See the documentation section at [Configuring Zowe App Server for HTTPS communication with ZSS](../user-guide/mvd-configuration.md#configuring-zss-for-https)

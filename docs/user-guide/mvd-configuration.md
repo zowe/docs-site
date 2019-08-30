@@ -65,7 +65,7 @@ Follow these optional steps to configure the default connection to open for the 
 ### Setting up the VT Terminal application plug-in
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
-``` 
+```
     "host":<hostname>
     "port":<port>
     "security": {
@@ -74,11 +74,11 @@ Follow these optional steps to configure the default connection to open for the 
 ```    
 
 ## Configuration file
-The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
+The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more.
 
-For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
+For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed.
 
-An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-server` repository, in the `config` directory. 
+An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-server` repository, in the `config` directory.
 
 **Note:** All examples are based on the *zlux-app-server* repository.
 
@@ -86,21 +86,21 @@ An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-serv
 
 **Note:** The following attributes are to be defined in the server's JSON configuration file.
 
-The Zowe Application Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
+The Zowe Application Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both).
 
 ### HTTP
 
 To configure the server for HTTP, complete these steps:
 
-1. Define an attribute *http* within the top-level *node* attribute. 
+1. Define an attribute *http* within the top-level *node* attribute.
 
 2. Define *port* within *http*. Where *port* is an integer parameter for the TCP port on which the server will listen. Specify 80 or a value between 1024-65535.
 
 ### HTTPS
 
-For HTTPS, specify the following parameters: 
+For HTTPS, specify the following parameters:
 
-1. Define an attribute *https* within the top-level *node* attribute. 
+1. Define an attribute *https* within the top-level *node* attribute.
 
 2. Define the following within *https*:
 
@@ -187,7 +187,7 @@ The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS li
 
 When you run the Zowe Application Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
 
-- *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
+- *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>"
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
 ### Configuring ZSS for HTTPS
@@ -211,7 +211,7 @@ Use the IBM Resource Access Control Facility (RACF) to create a CA certificate a
     OU('[organizational_unit]') +                                       
     O('[organization_name]') +                                         
     L('[locality]') SP('[state_or_province]') C('[country]')) +           
-    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) + 
+    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) +
     WITHLABEL('[ca_label]') +                            
     NOTAFTER(DATE([xxxx/xx/xx])) +                       
     SIZE(2048)
@@ -225,7 +225,7 @@ Use the IBM Resource Access Control Facility (RACF) to create a CA certificate a
     OU('[organizational_unit]') +                                       
     O('[organization_name]') +                                         
     L('[locality]') SP('[state_or_province]') C('[country]')) +           
-    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) + 
+    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) +
     WITHLABEL('[personal_label]') +                            
     NOTAFTER(DATE([xxxx/xx/xx])) +                       
     SIZE(2048) +
@@ -235,7 +235,7 @@ Use the IBM Resource Access Control Facility (RACF) to create a CA certificate a
 3. Enter the following command to create a RACF key ring and connect the personal certificate to the key ring:
   ```
   RACDCERT ID([cert_owner]) ADDRING([ring_name])                
-  RACDCERT CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name])) 
+  RACDCERT CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name]))
   ```
 
 4. Enter the following command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
@@ -271,19 +271,19 @@ TTLSRule                          ATTLS1~ZSS
   TTLSConnectionActionRef         cAct1~ZSS
 }  
 TTLSGroupAction                   gAct1~ZSS
-{ 
+{
   TTLSEnabled                     On
   Trace                           1
-} 
+}
 TTLSEnvironmentAction             eAct1~ZSS
-{ 
+{
   HandshakeRole                   Server
   EnvironmentUserInstance         0
   TTLSKeyringParmsRef             key~ZSS
   Trace                           1
 }  
 TTLSConnectionAction              cAct1~ZSS
-{ 
+{
   HandshakeRole                   Server
   TTLSCipherParmsRef              cipherZSS
   TTLSConnectionAdvancedParmsRef  cAdv1~ZSS
@@ -298,19 +298,19 @@ TTLSConnectionAdvancedParms       cAdv1~ZSS
   CertificateLabel                [personal_label]
 }  
 TTLSKeyringParms                  key~ZSS
-{ 
+{
   Keyring                         [ring_name]
-} 
+}
 TTLSCipherParms                   cipher~ZSS                          
 {                                                                       
   V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
   V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 
-  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
   V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
   V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
-  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 }       
 ```
 
@@ -349,7 +349,7 @@ After you configure RBAC, Zowe checks users' authority to access dataservices.
 
 Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
 
-Plug-ins can also use [configuration service endpoints](https://zowe.github.io/docs-site/latest/extend/extend-desktop/mvd-configdataservice.html#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
+Plug-ins can also use [configuration service endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
 
 Dataservice endpoints are identified by URLs that are formatted like this:
 
@@ -388,7 +388,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 Some endpoints can generate an unlimited number of URLs. For example, an endpoint that performs a DELETE action on any file would generate a different URL for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
 
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.DELETE.**` 
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.DELETE.**`
 
 You can create generic profile names using wildcards, such as asterisks (*). For information on generic profile naming, see [IBM documentation](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.icha100/egnoff.htm).
 
@@ -410,10 +410,10 @@ For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC
 
 ## Enabling tracing
 
-To obtain more information about how a server is working, you can enable tracing within the `zluxserver.json` file. 
+To obtain more information about how a server is working, you can enable tracing within the `zluxserver.json` file.
 
 For example:
- 
+
 ```
 "logLevels": {
   "_zsf.routing": 0,
@@ -429,7 +429,7 @@ All settings are optional.
 
 ### Zowe Application Server tracing
 
-To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `zluxserver.json` file. 
+To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `zluxserver.json` file.
 
 The log prefix for the Zowe Application Server is **_zsf**, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the **_zsf** prefix.)
 
@@ -478,7 +478,7 @@ The log levels are:
 
 FINE, FINER, and FINEST are log levels for debugging, with increasing verbosity.
 
-### Enabling tracing for ZSS 
+### Enabling tracing for ZSS
 
 To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `zluxserver.json` file.
 
@@ -489,28 +489,28 @@ The log prefix for ZSS is **_zss**. The following are the logger names that you 
 **_zss.traceLevel:**
 Controls general server logging verbosity.
 
-**_zss.fileTrace:** 
+**_zss.fileTrace:**
 Logs file serving behavior (if file serving is enabled).
 
-**_zss.socketTrace:** 
+**_zss.socketTrace:**
 Logs general TCP Socket behavior.
 
-**_zss.httpParseTrace:** 
+**_zss.httpParseTrace:**
 Logs parsing of HTTP messages.
 
-**_zss.httpDispatchTrace:** 
+**_zss.httpDispatchTrace:**
 Logs dispatching of HTTP messages to dataservices.
 
-**_zss.httpHeadersTrace:** 
+**_zss.httpHeadersTrace:**
 Logs parsing and setting of HTTP headers.
 
-**_zss.httpSocketTrace:** 
+**_zss.httpSocketTrace:**
 Logs TCP socket behavior for HTTP.
 
-**_zss.httpCloseConversationTrace:** 
+**_zss.httpCloseConversationTrace:**
 Logs HTTP behavior for when an HTTP conversation ends.
 
-**_zss.httpAuthTrace:** 
+**_zss.httpAuthTrace:**
 Logs behavior for session security.
 
 When you are finished specifying the settings, save the `zluxserver.json` file.
@@ -522,7 +522,7 @@ The Zowe Application Framework log files contain processing messages and statist
 
 - Zowe Application Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
 - ZSS: `zlux-app-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
- 
+
 The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
 
 
@@ -532,9 +532,9 @@ The log information is written to a file and to the screen. (On Windows, logs ar
 
 #### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
 
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Application Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging). 
+To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Application Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging).
 
-When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold. 
+When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold.
 
 #### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
 
@@ -545,4 +545,4 @@ If you set the log file name for the Zowe Application Server by setting the *ZLU
 If the directory or file cannot be created, the server will run (but it might not perform logging properly).
 
 ### Retaining logs
-By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted. 
+By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
