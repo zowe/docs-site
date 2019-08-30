@@ -2,203 +2,203 @@
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://zowe.github.io/docs-site/</loc>
+    <loc>https://docs.zowe.org/</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/aboutthisdoc.html</loc>
+    <loc>https://docs.zowe.org/user-guide/aboutthisdoc.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/about.html</loc>
+    <loc>https://docs.zowe.org/about.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/intro.html</loc>
+    <loc>https://docs.zowe.org/guides/intro.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/overview.html</loc>
+    <loc>https://docs.zowe.org/user-guide/overview.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/intro.html</loc>
+    <loc>https://docs.zowe.org/samples/intro.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/summaryofchanges.html</loc>
+    <loc>https://docs.zowe.org/user-guide/summaryofchanges.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/download-pdf.html</loc>
+    <loc>https://docs.zowe.org/user-guide/download-pdf.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/starter-intro.html</loc>
+    <loc>https://docs.zowe.org/samples/starter-intro.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/installandconfig.html</loc>
+    <loc>https://docs.zowe.org/user-guide/installandconfig.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/zlux-example-server.html</loc>
+    <loc>https://docs.zowe.org/guides/zlux-example-server.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/systemrequirements.html</loc>
+    <loc>https://docs.zowe.org/user-guide/systemrequirements.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-installcli.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-installcli.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/api-mediation-usingapiml.html</loc>
+    <loc>https://docs.zowe.org/guides/api-mediation-usingapiml.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/api-mediation-api-catalog.html</loc>
+    <loc>https://docs.zowe.org/user-guide/api-mediation-api-catalog.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/zlux-workshop-starter-app.html</loc>
+    <loc>https://docs.zowe.org/samples/zlux-workshop-starter-app.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/gettingstarted.html</loc>
+    <loc>https://docs.zowe.org/user-guide/gettingstarted.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/troubleshootinstall.html</loc>
+    <loc>https://docs.zowe.org/user-guide/troubleshootinstall.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/uninstall.html</loc>
+    <loc>https://docs.zowe.org/user-guide/uninstall.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/Zowe_User_Guide.pdf</loc>
+    <loc>https://docs.zowe.org/Zowe_User_Guide.pdf</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-extending.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-extending.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-installplugins.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-installplugins.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/installroadmap.html</loc>
+    <loc>https://docs.zowe.org/user-guide/installroadmap.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-usingcli.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-usingcli.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/usingapis.html</loc>
+    <loc>https://docs.zowe.org/user-guide/usingapis.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/using.html</loc>
+    <loc>https://docs.zowe.org/user-guide/using.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/install-zos.html</loc>
+    <loc>https://docs.zowe.org/user-guide/install-zos.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/ReactJSUI.html</loc>
+    <loc>https://docs.zowe.org/guides/ReactJSUI.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/api-intro.html</loc>
+    <loc>https://docs.zowe.org/samples/api-intro.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-zluxconfiguration.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-zluxconfiguration.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/zlux-workshop-user-browser.html</loc>
+    <loc>https://docs.zowe.org/guides/zlux-workshop-user-browser.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/usingzlux.html</loc>
+    <loc>https://docs.zowe.org/user-guide/usingzlux.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/guides/cli-developPlugins.html</loc>
+    <loc>https://docs.zowe.org/guides/cli-developPlugins.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-db2plugin.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-db2plugin.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-logutility.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-logutility.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-cicsplugin.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-cicsplugin.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-extendingzlux.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-extendingzlux.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/cli-configuringcli.html</loc>
+    <loc>https://docs.zowe.org/user-guide/cli-configuringcli.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-configdataservice.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-configdataservice.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/ui-intro.html</loc>
+    <loc>https://docs.zowe.org/samples/ui-intro.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-uribroker.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-uribroker.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-apptoappcommunication.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-apptoappcommunication.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-zluxplugindefandstruct.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-zluxplugindefandstruct.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-errorreportingui.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-errorreportingui.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-zluxdataservices.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-zluxdataservices.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/react-sample.html</loc>
+    <loc>https://docs.zowe.org/samples/react-sample.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-desktopandwindowmgt.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-desktopandwindowmgt.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/angular-sample.html</loc>
+    <loc>https://docs.zowe.org/samples/angular-sample.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/user-guide/mvd-creatingzluxappplugins.html</loc>
+    <loc>https://docs.zowe.org/user-guide/mvd-creatingzluxappplugins.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>https://zowe.github.io/docs-site/samples/iframe-sample.html</loc>
+    <loc>https://docs.zowe.org/samples/iframe-sample.html</loc>
     <changefreq>always</changefreq>
   </url>
 </urlset>

@@ -5,7 +5,7 @@ The steps below use the [Zowe Sample Angular Application](https://github.com/zow
 
 For detailed information on Angular or React, see their documentation. For detailed information on specific internationalization libraries, see their documentation. You can also reference the Sample Angular Application [internationalization tutorial](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md).
 
-After you internationalize your application, you can view it by following steps in [Changing the desktop language](https://zowe.github.io/docs-site/latest/user-guide/mvd-using.html#changing-the-desktop-language).
+After you internationalize your application, you can view it by following steps in [Changing the desktop language](../../user-guide/mvd-using.md#changing-the-desktop-language).
 
 ## Internationalizing Angular applications
 Zowe applications that use the Angular framework depend on `.xlf` formatted files to store static translated content and `.json` files to store dynamic translated content. These files must be in the application's `web/assets/i18n` folder at runtime. Each translated language will have its own file.
@@ -98,7 +98,7 @@ To internationalize Zowe Angular applications, take the following steps:
     npm run build
     ```
 
-    When you [switch the Zowe Desktop](https://zowe.github.io/docs-site/latest/user-guide/mvd-using.html#changing-the-desktop-language) to one of the application's translated languages, the application displays the translated strings.
+    When you [switch the Zowe Desktop](../../user-guide/mvd-using.md#changing-the-desktop-language) to one of the application's translated languages, the application displays the translated strings.
 
 9. For dynamic translated content, follow these steps:
 

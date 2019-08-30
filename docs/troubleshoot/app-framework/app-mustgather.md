@@ -23,8 +23,6 @@ Check the output for the release level, for example:
 RELEASE z/OS 02.02.00
 ```
 
-<a href="#top">Back to top</a>
-
 ## Zowe version and release level
 ```
   cd <zowe-installation-directory>
@@ -50,7 +48,6 @@ Displays zowe version
   }
 
 ```
-<a href="#top">Back to top</a>
 
 ## Zowe application configuration
 
@@ -69,8 +66,6 @@ cat zluxserver.json
 
 Read more about the Zowe app server [configuration](../../user-guide/mvd-configuration.md) in the Zowe User Guide.
 
-<a href="#top">Back to top</a>
-
 ## Zowe Application Server ports 
  
  ```
@@ -88,7 +83,6 @@ Read more about the Zowe app server [configuration](../../user-guide/mvd-configu
   cat 2019-05-02-17-13-09.log | grep ZOWE_ZSS_SERVER_PORT
 
  ```
- <a href="#top">Back to top</a>
 
 ## Log output from the Zowe Application Server
 There are two major components of Zowe application server:  `ZLUX` and `ZSS`.  They log to different files.
@@ -123,12 +117,8 @@ nodeServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
 ```
 
-<a href="#top">Back to top</a>
-
 ## Error message codes
 It is advisable to look into log files for capturing error codes. 
-
-<a href="#top">Back to top</a>
 
 ## Javascript console output
 
@@ -136,13 +126,9 @@ Web Developer toolkit is accessible by pressing F12.
 
 Read more about it [here](https://developers.google.com/web/tools/chrome-devtools/open).
 
-<a href="#top">Back to top</a>
-
 ## Screen captures
 
 If possible, add a screen capture of the issue.
-
-<a href="#top">Back to top</a>
 
 ## Other relevant information
 
@@ -160,16 +146,3 @@ Java – v8 minimum
 ```
 java -version
 ```
-<a href="#top">Back to top</a>
-
-
-
-
-
-
-
-
-
-
-
-  
