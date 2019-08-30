@@ -1,0 +1,47 @@
+/*
+- Reference: https://clipboardjs.com/
+- Below styles provide mouseover show/hide clipboard icon on top-right corner of
+- pre.language-* > code section.
+*/
+
+pre[class*="language-"] {
+    position: relative;
+    overflow: visible;
+}
+pre[class*="language-"] .btn-copy-to-clipboard {
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 5px 2px 7px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+pre[class*="language-"]:hover .btn-copy-to-clipboard,pre[class*="language-"] .btn-copy-to-clipboard:focus {
+    opacity: 1
+}
+
+.btn-copy-to-clipboard {
+    position: relative;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #eee;
+    background-image: linear-gradient(#fcfcfc,#eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    z-index: 999999;
+}

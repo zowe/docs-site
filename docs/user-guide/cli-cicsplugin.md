@@ -28,7 +28,7 @@ Before you install the plug-in, meet the software requirements in [Software requ
 
 ## Installing
 
-Use one of the following methods to install the IBM CICS Plug-in for Zowe CLI:
+Use one of the following methods to install the plug-in:
 
 - [Installing from an online registry](#installing-from-an-online-registry)
 
