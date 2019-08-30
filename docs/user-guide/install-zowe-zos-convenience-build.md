@@ -133,9 +133,9 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
 **Follow these steps:**
 
-- [Step 1: Locate the install directory]()
-- [Step 2: Review the `zowe-install.yaml` file]()
-- [Step 3: Execute the `zowe-install.sh` script]()
+- [Step 1: Locate the install directory](#step-1:-locate-the-install-directory)
+- [Step 2: Review the `zowe-install.yaml` file](#step-2:-review-the-`zowe-install.yaml`-file)
+- [Step 3: Execute the `zowe-install.sh` script](#step-3:-install-and-configure-the-zowe-runtime)
 
 ### Step 1: Locate the install directory
 
