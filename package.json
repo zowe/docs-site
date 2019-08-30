@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: pending to verify dead links.\"",
-    "test:links": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url / --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --timeout 120 --exclude \"https?:\\/\\/((?![^/]*zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|zowe\\.github\\.io)[^/]*)/\" ./.deploy/",
-    "test:links:stable": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url /stable/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --timeout 120 --exclude \"https?:\\/\\/((?![^/]*zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|zowe\\.github\\.io)[^/]*)/\" ./.deploy/stable/",
+    "test:links": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url / --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --timeout 120 --exclude \"https?:\\/\\/((?![^/]*zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|docs\\.zowe\\.org|zowe\\.github\\.io)[^/]*)/\" ./.deploy/",
+    "test:links:stable": "w3c-linkchecker-local --checklink-command docker --base-domain zowe-docs-test-links --base-url /stable/ --summary --recursive --ignore-robots-forbidden --ignore-broken-fragments --ignore-redirection --timeout 120 --exclude \"https?:\\/\\/((?![^/]*zowe-docs-test-links|zowe\\.org|www\\.zowe\\.org|docs\\.zowe\\.org|zowe\\.github\\.io)[^/]*)/\" ./.deploy/stable/",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:pdf": "./docs/.pdf/build.sh"
