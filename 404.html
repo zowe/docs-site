@@ -70,33 +70,58 @@
 
       <div id="suggestions">
         <a href="https://zowe.org">Zowe.org</a> &mdash;
-        <a href="https://zowe.github.io/docs-site/">Zowe Docs</a>
+        <a href="https://docs.zowe.org/">Zowe Docs</a>
       </div>
     </div>
 
     <script type="text/javascript">
-      var url = document && document.location && document.location.href, newurl;
+      var url = document && document.location && document.location.href,
+        need,
+        newUrl = 'https://docs.zowe.org/';
+      var redirectTo = function(url) {
+        // update html elements
+        var nu = document.getElementById('new-doc-link');
+        if (nu) {
+          nu.href = url;
+        }
+        var p = document.getElementById('legacy-url');
+        if (p) {
+          p.style.display = 'block';
+        }
+
+        // redirect
+        setTimeout(function() {
+          window.location.replace(url);
+        }, 10000);
+      };
       if (url) {
-        var m = url.match(/^(https?:\/\/[^\/]+\/[^\/]+\/)(.+)$/);
-        if (m && m[2] && m[2].substr(0, 7) !== 'latest/' &&
-          !m[2].match(/^v[0-9]+-[0-9]+-[0-9x]+\//)) {
-          // this is a legacy link without version, redirect to latest version
-          newurl = m[1] + 'latest/' + m[2];
-
-          // update html elements
-          var nu = document.getElementById('new-doc-link');
-          if (nu) {
-            nu.href = newurl;
+        var m = url.match(/^https?:\/\/([^\/]+\/)([^\/]+\/)(.+)$/);
+        if (m) {
+          need = false;
+          if (m[1] !== 'docs.zowe.org/') {
+            need = true;
           }
-          var p = document.getElementById('legacy-url');
-          if (p) {
-            p.style.display = 'block';
+          if (m[2] === 'docs-site/') {
+            // this is legacy url, we need to remove /docs-site
+            need = true;
+          } else {
+            m[3] = m[2] + m[3];
           }
-
-          // redirect
-          setTimeout(function() {
-            window.location.replace(newurl);
-          }, 10000);
+          if (m[3].substr(0, 7) === 'latest/') {
+            need = true;
+            newUrl += 'stable/' + m[3].substr(7);
+          } else if (m[3].substr(0, 7) !== 'stable/' &&
+                    m[3].substr(0, 19) !== 'active-development/' &&
+                    !m[3].match(/^v[0-9]+-[0-9]+-[0-9x]+\//)) {
+            // this is a legacy link without version, redirect to latest version
+            need = true;
+            newUrl += 'stable/' + m[3];
+          } else {
+            newUrl += m[3];
+          }
+          if (need) {
+            redirectTo(newUrl);
+          }
         }
       }
     </script>
