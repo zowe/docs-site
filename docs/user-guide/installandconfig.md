@@ -1,11 +1,5 @@
 # Planning the installation
 
-**Contents**
-
-- [Installation roadmap](#installation-roadmap)
-- [Methods of installing Zowe z/OS components](#methods-of-installing-zowe-zos-components)
-- [Planning the installation of Zowe z/OS components](#planning-the-installation-of-zowe-zos-components)
-
 The installation of Zowe consists of two independent processes: installing Zowe runtime on z/OS and installing Zowe CLI on your computer.
 
 When you install Zowe runtime on z/OS, there are two parts:

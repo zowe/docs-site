@@ -874,7 +874,7 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 ## Zowe customization
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
-- For information about how to customize Zowe, see [Configuring Zowe](mvd-configuration.md).
+- For information about how to configure and start the Zowe runtime, see [Configuring the Zowe runtime](configure-zowe-runtime.md).
 - For information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 

@@ -28,22 +28,20 @@ The Zowe z/OS binaries are distributed in the following formats. They contain th
   - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
   - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to RECEIVE the file.
 
-  **Note:** The SMP/E build is currently in alpha, which means that it is available for early testing. You can provide any feedback about your experience with Zowe SMP/E as issues in the [Zowe zowe-install-packaging GitHub repo](https://github.com/zowe/zowe-install-packaging/issues/new).
+  **Note:** The SMP/E build is currently in alpha, which means that it is available for early testing. You can provide any feedback about your experience with Zowe SMP/E as issues in the [zowe-install-packaging GitHub repo](https://github.com/zowe/zowe-install-packaging/issues/new).
 
 While the procedure to obtain and install the convenience build or SMP/E build are different, the procedure to configure a Zowe runtime are the same irrespective of how the build is obtained and installed.
 
 ## High-level installation process
 
-The general process of installing Zowe on z/OS are as follows:
+The high-level process of installing Zowe on z/OS is as follows:
 
 1. Obtain and install the Zowe build.
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E Alpha](install-zowe-smpe.md).
-
 2. Configure the Zowe runtime. See [Configuring the Zowe runtime](configure-zowe-runtime.md).
-
-3. Verify that the Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
+3. Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
 
 ## Looking for troubleshooting help?
 
-If you encounter unexpected behavior when installing or verifying Zowe runtime, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for troubleshooting tips.
+If you encounter unexpected behavior when installing or verifying the Zowe runtime on z/OS, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for tips.

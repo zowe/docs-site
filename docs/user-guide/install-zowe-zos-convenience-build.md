@@ -3,7 +3,7 @@
 You install the Zowe convenience build by running shell script within a Unix System Services (USS) shell.
 
 1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
-2. [Installing the Zowe convenience build on z/OS](#installing-the-zowe-convenience-build-on-zos)
+2. [Installing the Zowe runtime](#installing-the-zowe-runtime)
 	- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
 	- [Step 2: Review the `zowe-install.yaml` file](#step-2-review-the-zowe-installyaml-file)
 	- [Step 3: Execute the `zowe-install.sh` script](#step-3-execute-the-zowe-installsh-script)
@@ -18,7 +18,7 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.
 
-To download the PAX file, open your web browser and click the *Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
@@ -127,14 +127,15 @@ To download the PAX file, open your web browser and click the *Zowe z/OS Compone
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
 
-## Installing the Zowe convenience build on z/OS
+## Installing the Zowe runtime
 
 To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
 
 **Follow these steps:**
-[Step 1: Locate the install directory]()
-[Step 2: Review the `zowe-install.yaml` file]()
-[Step 3: Execute the `zowe-install.sh` script]()
+
+- [Step 1: Locate the install directory]()
+- [Step 2: Review the `zowe-install.yaml` file]()
+- [Step 3: Execute the `zowe-install.sh` script]()
 
 ### Step 1: Locate the install directory
 
@@ -148,24 +149,22 @@ Navigate to the directory where the installation archive is extracted. Locate th
 
 ### Step 2: Review the `zowe-install.yaml` file
 
-Review the `zowe-install.yaml` file which contains the following property used by the installation:
+Review the `zowe-install.yaml` file which contains the `install:rootDir` property that is used by the installation.
 
-`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
+`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
 
 You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-### Step 3: Execute the `zowe-install.sh` script
+### Step 3: Install and configure the Zowe runtime
 
-**About this step**
-
-The `zowe-install.sh` mode performs two steps.
+You install and configure the Zowe runtime by executing the `zowe-install.sh` script. The `zowe-install.sh` mode performs two steps.
 
 1. Install a Zowe runtime into the `root_dir` folder.  
-2. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces.
+2. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces. 
 
-When installing the Zowe runtime from the convenience build, it is possible to perform both the installation and configuration steps as a single command by running `zowe-install.sh` without any arguments. However, the recommended approach is to perform the installation by running the `zowe-install.sh -I` option which just performs the first installation step to create the runtime directory. You can then configure the runtime directory separately.
+It's recommended that you install the Zowe runtime first by running the `zowe-install.sh -I` option that just performs the first installation step to create the runtime directory. Then, configure the runtime directory separately following instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). Alternatively, you can both install and configure the Zowe runtime by running a single command `zowe-install.sh` without the `-I` parameter. In this case, ensure that you review [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory) before you run the command `zowe-install.sh`.
 
-In the documentation below, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
+In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
 **Follow these steps:**
 
@@ -177,7 +176,7 @@ In the documentation below, the steps of creating the runtime directory and conf
     zowe-install,sh -I
     ```
 
-    **Note** If you leave off the `-I` parameter then the `zowe-install.sh` script will run an install and configure back to back.  If you choose to do this then make sure that you have reviewed [Configuring the Zowe runtime directory](./configure-zowe-runtime.md##configuring-the-zowe-runtime-directory).  The recommended approach is to run `zowe-install.sh -I` to create the runtime directory and then separately configure that directory.  
+    **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). The recommended approach is to run `zowe-install.sh -I` to create the runtime directory and then separately configure that directory.
 
     You might receive the following error that the file cannot be executed:
 

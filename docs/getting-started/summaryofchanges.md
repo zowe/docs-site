@@ -19,8 +19,9 @@ Zowe Version 1.4.0 and later releases include the following enhancements, releas
 -->
 ## Zowe SMP/E Alpha (August 2019)
 
-A pre-release of the Zowe SMP/E install is now available. This alpha release, based on Zowe Version 1.4.0, should not be used in production. For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
-
+A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment. 
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website. 
+- For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
 
