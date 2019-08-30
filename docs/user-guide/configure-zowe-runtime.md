@@ -4,8 +4,8 @@ After you install Zowe through either the convenience build by running the `zowe
 
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
-   - [Environment variables](#environment-variables)
-   - [Configuration variables](#configuration-variables)
+   1. [Environment variables](#environment-variables)
+   1. [Configuration variables](#configuration-variables)
       - [Address space name](#address-space-name)
       - [Port allocations](#port-allocations)
       - [PROCLIB member name](#proclib-member-name)
@@ -16,13 +16,13 @@ After you install Zowe through either the convenience build by running the `zowe
     1. [Configuring ZOWESVR to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
     1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
 1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
-	- [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-	- [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
-
-- [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
-    - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
-- [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+    1. [Creating the xmem-server/zss directory](#creating-the-xmem-server/zss-directory)
+	  1. [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
+	  1. [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
+1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
+    1. [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
+    1. [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
+1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
 
 ## Prerequisites
 
@@ -392,7 +392,7 @@ You can choose which method to use depending on your familiarity with z/OS confi
 
 Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
-#### Creating the xmem-server/zss directory
+### Creating the xmem-server/zss directory
 
 A number of files used by both manual and scripted install are included in the USS directory `/xmem-server/zss`.  If this directory is not present in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
 
