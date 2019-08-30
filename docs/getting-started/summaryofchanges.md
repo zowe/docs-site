@@ -35,7 +35,7 @@ If you *do not* have Zowe CLI installed on your computer, refer to [Installing Z
 
 Follow these steps to convert an `lts-incremental` (Stable) CLI version to a `latest` (Active Development) version:
 
-1. (Optional) If you created user plug-in profiles (for example, cics, db2, etc..) that you want to preseve, copy the profiles from the Zowe home directory to another directory on your computer. The default Zowe profile location is `C:\Users\\<username\>\\.zowe\profiles`.
+1. (Optional) To preserve plug-in user profiles that you created (for example, cics, db2, etc..), copy the contents of `C:\Users\<username>\.zowe\profiles` to another  directory on your computer.
 
 2.  Uninstall plug-ins, if any. For more information, see [Uninstall plug-ins](../user-guide/cli-installplugins.md#uninstall-plug-ins).
    
@@ -47,9 +47,9 @@ Follow these steps to convert an `lts-incremental` (Stable) CLI version to a `la
 
 4. (Optional) Import any plug-in profiles back into your `C:\Users\\<username\>\\.zowe\profiles` folder. 
 
-You installed the `@latest` Zowe CLI! We recommend that you issue some familiar commands and run scripts to ensure that your user profiles and scripts are compatible. eview the [Breaking Changes](#breaking-changes) and take corrective action if the changes affected your profiles or scripts.  
+You updated to `@latest` Zowe CLI! We recommend that you issue familiar commands and run scripts to ensure that your profiles/scripts are compatible. If the migration affected your profiles or scripts, review the [Breaking Changes](#breaking-changes) and take corrective action. 
 
-**Migrating back to Stable CLI**
+### Migrating back to Stable CLI
 
 Follow a similar procedure to the one above to migrate from `latest` (Active Development) back to `lts-incremental` Stable. Store your plug-in profiles, uninstall plug-ins, then follow the [Stable CLI installation instructions](https://docs.zowe.org/stable/user-guide/cli-installcli.html#methods-to-install-zowe-cli) to install the CLI and plug-ins.
 
@@ -61,7 +61,7 @@ If your commands or scripts return warnings/errors after updating, account for t
 
 - The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
 
-- The `--pass` option is changed to `--password` all commands and profiles. The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe zosmf create profile` command and use the new option name `--password`. 
+- The `--pass` option is changed to `--password`  for all commands and profiles. The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe zosmf create profile` command and use the new option name `--password`. 
     
 - You can enter a value of `PROMPT*` to enable interactive prompting for any command-line option. If you created scripts where any option was defined with  a value of `PROMPT*`, the script will not function properly in this version. 
 
