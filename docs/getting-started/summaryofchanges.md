@@ -52,7 +52,7 @@ You installed the `@latest` Zowe CLI!
 
 **Migrating back to Stable CLI**
 
-Follow a similar procedure to migrate from Active Development back to Stable. Uninstall your plug-ins, then follow the [Stable CLI installation instructions](). 
+Follow a similar procedure to migrate from Active Development back to Stable. Uninstall your plug-ins, then follow the [Stable CLI installation instructions](https://docs.zowe.org/stable/user-guide/cli-installcli.html). 
 
 After migrating, always verify that your scripts and profiles are still functional. 
 
