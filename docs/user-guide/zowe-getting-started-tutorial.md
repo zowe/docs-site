@@ -28,7 +28,7 @@ This tutorial guides you through the steps in roughly 20 minutes. If you explore
 
 Before you begin, it is assumed that you have already successfully installed Zowe. You are ready to launch Zowe Desktop and Zowe CLI.
 
-For information about how to install Zowe, see [Installing Zowe](https://zowe.github.io/docs-site/latest/user-guide/installandconfig.html).
+For information about how to install Zowe, see [Installing Zowe](installandconfig.md).
 
 **Important!**  
 
@@ -292,7 +292,7 @@ In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the sam
 
 For more information, see the [User Guide](mvd-using.md).
 
-For a complete list of available CLI commands, explore the Zowe CLI [Command Reference Guide](cli-usingcli.md#zowe-cli-command-reference-guide).
+For a complete list of available CLI commands, explore the Zowe CLI [Command Reference Guide](cli-usingcli.md#zowe-cli-command-reference).
 
 ### Try the Extending Zowe scenarios
 
