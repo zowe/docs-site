@@ -161,6 +161,11 @@ module.exports = {
       'hjid': '1291329',
     }],
   ],
+  markdown: {
+    toc: {
+      includeLevel: [2]
+    }
+  },
   themeConfig: {
     docsDir: 'docs',
     // define Zowe versions
