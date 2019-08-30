@@ -124,7 +124,7 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 ### Service level information
 
-Given this is the first release of the SMP/E package, thus, no PTFs have been created.
+Since this is the first release of the SMP/E package, no PTFs have been created.
 
 ## Installation requirements and considerations
 
@@ -269,6 +269,8 @@ Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
 SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
 
+In the table above, (20,200) specifies a primary allocaton of 20 tracks, and a secondary allocation of 200 tracks.  
+
 **Storage requirements for SMP/E data sets**
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
@@ -310,7 +312,6 @@ Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
 --| --| --| --| --| --| --|
 hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE001.F3 | U | PDSE | U | 0 | 5 | N/A
 hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
 hlq.ZOWE.AZWE001.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
 z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
@@ -621,7 +622,7 @@ where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary c
 
 ### Sample installation jobs
 
-The following sample installation jobs are provided as part of the project to help you install Zowe:
+The following sample installation jobs are provided in `hlq.ZOWE.AZWE001.F1`, or equivalent, as part of the project to help you install Zowe:
 
 Job Name | Job Type | Description | RELFILE
 --| --| --| --|
@@ -757,7 +758,7 @@ MOUNT FILESYSTEM('#dsn')
 See the following information to update the statements in the previous sample:
 
   * __#dsn__ is the name of the data set holding the z/OS UNIX file system.
-  * ___usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted.
+  * ___/usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted.
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
@@ -765,17 +766,17 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 The target system HFS or zFS data set must be mounted on the driving system when running the sample ZWE5MKD job since the job will create paths in the HFS or zFS.
 
-Before running the sample job to create the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted to the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
+Before running the sample job to create the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
-If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system to the driving system for Zowe.
+If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system on the driving system for Zowe.
 
 <!--Should this be /usr/lpp/zowe/v1?-->
 
 The recommended mountpoint is _/usr/lpp/zowe._
 
-Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths or zFS paths for Zowe. Consult the instructions in the sample job for more information.
+Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths for Zowe. Consult the instructions in the sample job for more information.
 
-If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IP time. This action can be helpful if an IP occurs before the installation is completed.
+If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IPL time. This action can be helpful if an IPL occurs before the installation is completed.
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
