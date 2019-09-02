@@ -4,6 +4,8 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.4.0 and later releases include the following enhancements, release by release.
 
+
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
 - [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
 - [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
@@ -15,7 +17,11 @@ Zowe Version 1.4.0 and later releases include the following enhancements, releas
 <!--ADD TO 1.5.0 for CLI section 
 - You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
 -->
+## Zowe SMP/E Alpha (August 2019)
 
+A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment. 
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website. 
+- For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
 
