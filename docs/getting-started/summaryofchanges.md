@@ -6,10 +6,10 @@ Welcome to Zowe Active Development documentation.
 
 ## What is Active Development?
 
-- Active Development is a forward branch that includes features that are notyet included in the Zowe Stable version. 
-- You can switch between Stable and Active Development documentation using the **Versions** drop-down in the navigation bar.
+- Active Development is a forward-version that includes features not yet included in the Zowe Stable version. 
+- You can switch between Stable and Active Development documentation using the **Versions** drop-down in the navigation bar. The Release notes, installation processes, and development tutorials are different in each version.
 - The version is equivalent to the `@latest` version of Zowe CLI.
-- When migrating from one CLI version to the other, you might need to edit user your profiles and reinstall plug-ins due to differences between versions. 
+- When migrating from one CLI version to another, you might need to edit user your profiles and reinstall plug-ins due to differences between versions. 
 
 ## Version highlights
 
@@ -51,7 +51,7 @@ You updated to `@latest` Zowe CLI! We recommend that you issue familiar commands
 
 ### Migrating back to Stable CLI
 
-Follow a similar procedure to the one above to migrate from `latest` (Active Development) back to `lts-incremental` Stable. Store your plug-in profiles, uninstall plug-ins, then follow the [Stable CLI installation instructions](https://docs.zowe.org/stable/user-guide/cli-installcli.html#methods-to-install-zowe-cli) to install the CLI and plug-ins.
+Follow a similar procedure as above to migrate from `latest` (Active Development) back to `lts-incremental` (Stable): Copy your plug-in profiles, uninstall plug-ins, then follow the [Stable CLI installation instructions](https://docs.zowe.org/stable/user-guide/cli-installcli.html#methods-to-install-zowe-cli) to update CLI and plug-ins.
 
 After migrating, always verify that your scripts and profiles are still functional. 
 
@@ -63,13 +63,13 @@ If your commands or scripts return warnings/errors after updating, account for t
 
 - The `--pass` option is changed to `--password`  for all commands and profiles. The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe zosmf create profile` command and use the new option name `--password`. 
     
-- You can enter a value of `PROMPT*` to enable interactive prompting for any command-line option. If you created scripts where any option was defined with  a value of `PROMPT*`, the script will not function properly in this version. 
+- You can enter a value of `PROMPT*` to enable interactive prompting for any command-line option. If you created scripts where any option was defined with the actual value `PROMPT*`, the script will not function properly in this version. 
 
-- The `@next` npm tag, previously used to install the Active Development version, is depricated. `@latest` is the correct syntax for this version. 
+- The `@next` npm tag, previously used to install the Active Development version, is depricated. `@latest` is the correct syntax to install this version. 
 
 ## Understanding CLI version tags
 
-Zowe CLI is associated with version tags in a Node Package Manager (npm) registry. The downloadable packages that you install are associated with a specific tag. You can also use tags in command syntax to install or update the product to a specific version. 
+Zowe CLI is associated with version tags in a Node Package Manager (npm) registry. The packages that you install are associated with a specific tag or version stream. You use tags in command syntax to install or update the product to a specific version. 
 
 - `npm install -g @brightside/core@lts-incremental` 
         
