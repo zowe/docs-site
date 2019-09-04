@@ -61,42 +61,46 @@ You installed Zowe CLI plug-ins.
 
 ## Installing plug-ins from a local package
 
-Application developers and systems programmers can install CA Brightside plug-ins from a local package on Windows, macOS, and Linux computers, or on any computer that has limited or no access to the Internet. The procedure assumes that you previously installed the core CLI.
+Install plug-ins from a local package on any computer that has limited or no access to the Internet. The procedure assumes that you previously installed the core CLI.
 
 **Follow these steps:**
 
-1.  Ensure that you meet the software requirements for a plug-in before you install the plug-in to Zowe CLI.
-
-    For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
-
+1.  Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
+   
 2.  Obtain the installation files.
 
     From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
     **Note:** `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number
 
-3. Open a command line window such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package. Issue the following command to unzip the files:
+3. Open a command-line window such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package. Issue the following command to unzip the files:
 
     ```
     unzip zowe-cli-package-v.r.m.zip
     ````
+
     **Example:**
+
     ```
     unzip zowe-cli-package-1.0.1.zip
     ```
-    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, you can extract the contents of the .zip file to your preferred location.
 
-4.  Open a command line window and change the local directory where you extracted the zip file.
+    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
+
+4.  Open a command-line window and change to the local directory where you extracted the zip file.
 
     **Example:**
+
     ```
     cd C:\Users\userID\my_downloads\<file_name>.zip
     ```
+
 5.  Issue the following command to install the plug-in:
 
     ```
     zowe plugins install <my-plugin>
     ```
+
     Replace `<my-plugin>` with the .tgz file name listed in the following table:
 
     | Plug-in | `.tgz` File Name |
@@ -106,13 +110,11 @@ Application developers and systems programmers can install CA Brightside plug-in
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
     | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
 
-6.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
+You installed Zowe CLI plug-ins. 
 
 ## Validating plug-ins
 
 Issue the plug-in validation command to run tests against all plug-ins (or against a plug-in that you specify) to verify that the plug-ins integrate properly with Zowe CLI. The tests confirm that the plug-in does not conflict with existing command groups in the base application. The command response provides you with details or error messages about how the plug-ins integrate with Zowe CLI.
-
-Perform validation after you install the plug-ins to help ensure that it integrates with Zowe CLI.
 
 The `validate` command has the following syntax:
 
@@ -146,6 +148,7 @@ zowe plugins validate [plugin]
     ```
     zowe plugins validate
     ```
+
 ## Updating plug-ins
 
 You can update Zowe CLI plug-ins from an online registry or from a local package.
@@ -180,17 +183,18 @@ The following example illustrates the syntax to use to update a plug-in to a spe
 zowe plugins update @zowe/my-plugin@"^1.2.3"
 ```
 
-### Update plug-ins from a a local package
+### Update plug-ins from a local package
 
 You can update plug-ins from a local package. You acquire the media from the [Zowe Download](https://zowe.org/download/) website and update the plug-ins using the `zowe plugins install` command.
 
-To update plug-ins from a local package, follow the steps that are described in [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
+To update plug-ins from a local package, follow the steps described in [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
 ## Uninstall Plug-ins
 
-Issue the uninstall command to uninstall plug-ins from Zowe CLI. After the uninstall process completes successfully, the product no longer contains the plug-in configuration.
+Issue the `uninstall` command to uninstall plug-ins from Zowe CLI. After the uninstall process completes successfully, the product no longer contains the plug-in configuration.
 
 The uninstall command contains the following syntax:
+
 ```
 zowe plugins uninstall [plugin]
 ```

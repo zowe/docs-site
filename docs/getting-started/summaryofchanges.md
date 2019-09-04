@@ -35,7 +35,7 @@ If you *do not* have Zowe CLI installed on your computer, refer to [Installing Z
 
 Follow these steps to convert an `lts-incremental` (Stable) CLI version to a `latest` (Active Development) version:
 
-1. (Optional) To preserve plug-in user profiles that you created (for example, cics, db2, etc..), copy the contents of `C:\Users\<username>\.zowe\profiles` to another  directory on your computer.
+1. (Optional) To preserve plug-in user profiles that you created (for example, cics, db2, etc..), copy the contents of `C:\Users\<username>\.zowe\profiles` to another directory on your computer using OS commands or file explorer.
 
 2.  Uninstall plug-ins, if any. For more information, see [Uninstall plug-ins](../user-guide/cli-installplugins.md#uninstall-plug-ins).
    
@@ -45,7 +45,7 @@ Follow these steps to convert an `lts-incremental` (Stable) CLI version to a `la
 
     - Follow instructions to [install this version from an online registry](../user-guide/cli-installcli.md#installing-zowe-cli-from-an-online-registry).
 
-4. (Optional) Import any plug-in profiles back into your `C:\Users\\<username\>\\.zowe\profiles` folder. 
+4. (Optional) To reestablish your user profiles (if any), move the files that you saved in Step 1 back into your `C:\Users\\<username\>\\.zowe\profiles` folder. 
 
 You updated to `@latest` Zowe CLI! We recommend that you issue familiar commands and run scripts to ensure that your profiles/scripts are compatible. If the migration affected your profiles or scripts, review the [Breaking Changes](#breaking-changes) and take corrective action. 
 
