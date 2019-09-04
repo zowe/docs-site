@@ -28,13 +28,11 @@ Before you install the plug-in, meet the software requirements in [Software requ
 
 ## Installing
 
-Ypu can use one of the following methods to install the Zowe CLI Plug-in for IBM IMS:
+Use one of the following methods to install or update the plug-in:
 
-- [Installing from online registry](#installing-from-online-registry)
+- [Installing plug-ins from an online registry](cli-installplugins.md#installing-plug-ins-from-an-online-registry)
 
-- [Installing from local package](#installing-from-local-package)
-
-**Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
+- [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
 ## Creating user profiles
 
