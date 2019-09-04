@@ -1,40 +1,46 @@
 # Installing Zowe CLI plug-ins
 
-Use commands in the plugins command group to install and manage plug-ins for Zowe CLI.
+Use commands in the `plugins` command group to install and manage Zowe CLI plug-ins.
 
 **Important!** Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
-You can install the following plug-ins:
+You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
 - IBM® Db2® Plug-in for Zowe CLI
 - IBM® IMS™ Plug-in for Zowe CLI
 - IBM® MQ Plug-in for Zowe CLI
+- [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
 
-You install Zowe CLI plug-ins using either of the following methods:
+Use either of the following methods to install plug-ins:
 
-- Install Zowe CLI plug-ins from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
+- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
 
     For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
 
-- Install Zowe CLI plug-ins from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` file. Use this method when your computer ***cannot*** access the Internet.
+- Install from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` files. Use this method when your computer ***cannot*** access the Internet.
 
     For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
 ## Installing plug-ins from an online registry
 
-Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The procedure assumes that you previously installed the core CLI.
+Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The procedures in this article assume that you previously installed the core CLI.
 
 **Follow these steps:**
-1. Meet the software requirements before you install the plug-in to Zowe CLI. For information related to each plug-in, see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
-2.  Set the NPM registry target to the public npm registry by issuing the following command:
+1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
+
+2.  Set the target registry to the public NPM registry by issuing the following command:
+   
       ```
       npm config set @zowe:registry
       ```
+
 3.  Issue the following command to install a plug-in:
+   
       ```
       zowe plugins install <my-plugin>
       ```
+
     **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
 
     | Plug-in | Installation Command Syntax |
@@ -47,11 +53,11 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
-    zowe plugins install @zowe/<my-plugin1> @zowe/<my-plugin2> @zowe/<my-plugin3> ...
+    zowe plugins install <@zowe/my-plugin1> <@zowe/my-plugin2> <@zowe/my-plugin3> ...
     ```
     **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
 
-5.  (Optional) You can can validate plug-ins to verify that the plug-ins installed successfully. For more information see, [Validating plug-ins](#validating-plug-ins).
+You installed Zowe CLI plug-ins. 
 
 ## Installing plug-ins from a local package
 
@@ -204,7 +210,8 @@ The following table describes the uninstallation command synstax for each plug-i
 
 **Example:**
 
-The following example illustrates the command to uinstall the Zowe Plug-in for CICS:
+The following example illustrates the command to uninstall the CICS plug-in:
+
 ```
 zowe plugins uninstall @zowe/cics-for-zowe-cli
 ```
