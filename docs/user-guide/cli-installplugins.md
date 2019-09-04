@@ -27,7 +27,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
 1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
 
-2.  Set the target registry to the public NPM registry by issuing the following command:
+2.  Set the proper target registry by issuing the following command:
    
       ```
       npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside

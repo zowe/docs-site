@@ -8,8 +8,8 @@ Install Zowe CLI on your computer. You can learn about new CLI features in the [
 
 Use one of the following methods to install Zowe CLI.
 
-- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
-- [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
+- [Installing Zowe CLI](#installing-zowe-cli)
+  - [Methods to install Zowe CLI](#methods-to-install-zowe-cli)
 
 If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
