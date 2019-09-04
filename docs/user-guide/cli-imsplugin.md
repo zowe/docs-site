@@ -36,34 +36,6 @@ Ypu can use one of the following methods to install the Zowe CLI Plug-in for IBM
 
 **Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
 
-### Installing from online registry
-
-To install Zowe CLI from an online registry, complete the following steps:
-
-1. Set your npm registry if you did not already do so when you installed Zowe CLI. Issue the following command:
-
-    ```
-    npm config set @zowe:registry
-    ```
-
-2. Open a command line window and issue the following command:
-
-    ``` 
-    zowe plugins install @zowe/ims-for-zowe-cli
-    ```
-
-### Installing from local package
-
-If you downloaded the Zowe CLI `zowe-cli-bundle.zip` package, complete the following steps to install the plug-in.
-
-1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.html#installing-zowe-cli-from-local-package) for information about how to obtain and extract it.
-
-2. Issue the following command to install the plug-in:
-
-    ```
-    zowe plugins install ims-for-zowe-cli.tgz
-    ```
-
 ## Creating user profiles
 
 You can set up an `ims` profile to retain your credentials, host, and port name. You can create multiple profiles and switch between them as needed. Issue the following command to create an `ims` profile:

@@ -204,7 +204,7 @@ zowe plugins uninstall [plugin]
 
 The following table describes the uninstallation command synstax for each plug-in:
 
- | Plug-in | Uinstallation Command Syntax |
+ | Plug-in | Uninstallation Command Syntax |
  |---------|-----------------------------|
  | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
  | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
