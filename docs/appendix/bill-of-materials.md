@@ -71,9 +71,10 @@ The following materials are distributed with Zowe binaries:
 
 | File Path | Description | Source Location | Build Script(s) | 
 | --------- | ----------- | --------------- | --------------- |
-| <>/zowe-cli-package-*.zip | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
+| <>/zowe-cli-package-*.zip | Zowe CLI package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
 | licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | n/a | Build coming soon |  
 | zowe-cli-*.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
-| zowe-cics-*.tgz | Zowe CLI Plug-in for IBM® CICS® | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 
+| zowe-cics-*.tgz |  IBM® CICS® Plug-in for Zowe CLI | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 
 | zowe-db2-*.tgz | Zowe CLI Plug-in for IBM® Db2® for z/OS® | [zowe-cli-db2-plugin](https://github.com/zowe/zowe-cli-db2-plugin) | [zowe-cli-db2-plugin pipeline](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/Jenkinsfile) | 
-    
+| zowe-ims-*.tgz | IBM® IMS™ Plug-in for Zowe CLI | [zowe-cli-mq-plugin](https://github.com/zowe/zowe-cli-mq-plugin) | [zowe-cli-mq-plugin](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/Jenkinsfile) |
+| zowe-mq-*.tgz | IBM® MQ Plug-in for Zowe CLI  | [zowe-cli-ims-plugin](https://github.com/zowe/zowe-cli-ims-plugin) | [zowe-cli-ims-plugin pipeline](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/Jenkinsfile) |
