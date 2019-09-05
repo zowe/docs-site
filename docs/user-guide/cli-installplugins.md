@@ -43,14 +43,12 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
     | Plug-in | Installation Command Syntax |
     |---------|-----------------------------|
-    | IBM CICS Plug-in for Zowe CLI | `@brightside/cics-for-zowe-cli` |
-    | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2-for-zowe-cli` |
-    | IBM IMS Plug-in for Zowe CLI| `@brightside/ims-for-zowe-cli`|
-    | IBM MQ Plug-in for Zowe CLI| `@brightside/mq-for-zowe-cli` |
+    | IBM CICS Plug-in for Zowe CLI | `@brightside/cics@lts-incremental` |
+    | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2@lts-incremental` |
     |    |    |
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
-5.  
+   
     ```
     zowe plugins install <@brightside/my-plugin1> <@brightside/my-plugin2> <@brightside/my-plugin3> ...
     ```
@@ -69,7 +67,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
    
 2.  Obtain the installation files.
 
-    From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
+    From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
     **Note:** `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number
 
@@ -105,10 +103,8 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     | Plug-in | `.tgz` File Name |
     |---------|-----------------|
-    | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe.cli.tgz` |
-    | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
-    | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
-    | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
+    | IBM CICS Plug-in for Zowe CLI | `cics.tgz` |
+    | IBM Db2 Plug-in for Zowe CLI | `db2.tgz` |
 
 You installed Zowe CLI plug-ins. 
 
@@ -131,8 +127,6 @@ zowe plugins validate [plugin]
     |-|-|
     |IBM CICS Plug-in for Zowe CLI|`@brightside/cics`|
     |IBM Db2 Plug-in for Zowe CLI|`@brightside/db2`|
-    |IBM IMS Plug-in for Zowe CLI|`@brightside/ims`|
-    |IBM MQ Plug-in for Zowe CLI|`@brightside/mq`|
     |||
 
 **Examples: Validate plug-ins**
@@ -198,6 +192,7 @@ The uninstall command contains the following syntax:
 ```
 zowe plugins uninstall [plugin]
 ```
+
 - `[plugin]`
 
     Specifies the name of the plug-in that you want to uninstall.
@@ -206,10 +201,8 @@ The following table describes the uninstallation command synstax for each plug-i
 
  | Plug-in | Uninstallation Command Syntax |
  |---------|-----------------------------|
- | IBM CICS Plug-in for Zowe CLI | `@brightside/cics-for-zowe-cli` |
- | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2-for-zowe-cli` |
- | IBM IMS Plug-in for Zowe CLI| `@brightside/ims-for-zowe-cli`|
- | IBM MQ Plug-in for Zowe CLI| `@brightside/mq-for-zowe-cli` |
+ | IBM CICS Plug-in for Zowe CLI | `@brightside/cics` |
+ | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2` |
  |    |    |
 
 **Example:**
@@ -217,109 +210,6 @@ The following table describes the uninstallation command synstax for each plug-i
 The following example illustrates the command to uninstall the CICS plug-in:
 
 ```
-zowe plugins uninstall @brightside/cics-for-zowe-cli
-```ugins" 
-
-    ```
-     zowe plugins install @brightside/my-plugin@"^1.2.3"
-    ```
-    
-
-## Validating plug-ins
-
-Issue the plug-in validation command to run tests against all plug-ins (or against a plug-in that you specify) to verify that the plug-ins integrate properly with Zowe CLI. The tests confirm that the plug-in does not conflict with existing command groups in the base application. The command response provides you with details or error messages about how the plug-ins integrate with Zowe CLI. 
-
-Perform validation after you install the plug-ins to help ensure that it integrates with Zowe CLI.
-
-The `validate` command has the following syntax:
-
-```
-zowe plugins validate [plugin]
+zowe plugins uninstall @brightside/cics
 ```
 
-  - **`[plugin]`**  
-    (Optional) Specifies the name of the plug-in that you want to
-    validate. If you do not specify a plug-in name, the command
-    validates all installed plug-ins. The name of the plug-in is not
-    always the same as the name of the NPM package.
-
-**Examples: Validate plug-ins**
-
-  - The following example illustrates the syntax to use to validate a
-    specified installed plug-in:
-
-    ```
-    zowe plugins validate @brightside/my-plugin
-    ```
-
-  - The following example illustrates the syntax to use to validate all
-    installed plug-ins:
-
-    ```
-    zowe plugins validate
-    ```
-
-## Updating plug-ins
-
-Issue the `update` command to install the latest version or a specific
-version of a plug-in that you installed previously. The `update` command
-has the following syntax:
-
-```
-zowe plugins update [plugin...] [--registry <registry>]
-```
-
-  - **`[plugin...]`** 
-
-    Specifies the name of an installed plug-in that you want to update.
-    The name of the plug-in is not always the same as the name of the
-    NPM package. You can use npm semantic versioning to specify a
-    plug-in version to which to update. For more information,
-    see [npm semver](https://docs.npmjs.com/misc/semver).
-
-  - **`[--registry <registry>]`**
-
-    (Optional) Specifies a registry URL that is different from the
-    registry URL of the original installation. 
-
-**Examples: Update plug-ins**
-
-  - The following example illustrates the syntax to use to update an
-    installed plug-in to the latest version:
-
-    ```
-    zowe plugins update @brightside/my-plugin@lts-incremental
-    ```
-
-  - The following example illustrates the syntax to use to update a
-    plug-in to a specific version:
-
-    ```
-    zowe plugins update @brightside/my-plugin@"^1.2.3"
-    ```
-
-## Uninstalling plug-ins
-
-Issue the `uninstall` command to uninstall plug-ins from a base
-application. After the uninstall process completes successfully,
-the product no longer contains the plug-in
-configuration.
-
-**Tip:** The command is equivalent to using [npm uninstall](https://docs.npmjs.com/cli/uninstall) to uninstall a package.
-
-The `uninstall` command contains the following syntax:
-
-```
-zowe plugins uninstall [plugin]
-```
-
-  - **`[plugin]`**   
-    Specifies the plug-in name to uninstall.
-
-**Example: Uninstall plug-ins**
-
-- The following example illustrates the syntax to use to uninstall a plug-in:
-
-  ```
-  zowe plugins uninstall @brightside/my-plugin
-  ```
