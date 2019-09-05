@@ -105,7 +105,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     | Plug-in | `.tgz` File Name |
     |---------|-----------------|
-    | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe.cli.tgz` |
+    | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe-cli.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
     | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
