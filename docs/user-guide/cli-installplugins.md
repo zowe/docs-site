@@ -129,10 +129,10 @@ zowe plugins validate [plugin]
 
     |Plug-in|Syntax|
     |-|-|
-    |IBM CICS Plug-in for Zowe CLI|`@zowe/cics`|
-    |IBM Db2 Plug-in for Zowe CLI|`@zowe/db2`|
-    |IBM IMS Plug-in for Zowe CLI|`@zowe/ims`|
-    |IBM MQ Plug-in for Zowe CLI|`@zowe/mq`|
+    |IBM CICS Plug-in for Zowe CLI|`@zowe/cics-for-zowe-cli`|
+    |IBM Db2 Plug-in for Zowe CLI|`@zowe/db2-for-zowe-cli`|
+    |IBM IMS Plug-in for Zowe CLI|`@zowe/ims-for-zowe-cli`|
+    |IBM MQ Plug-in for Zowe CLI|`@zowe/mq-for-zowe-cli`|
     |||
 
 **Examples: Validate plug-ins**
