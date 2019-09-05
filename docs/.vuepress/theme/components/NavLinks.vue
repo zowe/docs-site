@@ -58,7 +58,7 @@ export default {
         this.userNav[versionsIndex].items = this.$site.themeConfig.versions.map(one => {
           return {
             text: one.text,
-            link: `${this.$site.themeConfig.rootBaseUrl}/${one.link}`,
+            link: `/${one.link}`,
             tags: ['versions']
           }
         })
