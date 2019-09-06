@@ -13,7 +13,7 @@ Before you clone the repository, create a local development folder named `zowe-t
 
 ## Branches 
 
-There are two branches in the repository that correspond to different Zowe CLI versions. You can develop your plug-in in accordance with two branches so that users can install your plug-in into either `@latest` or `@lts-incremental` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users. 
+There are two branches in the repository that correspond to different Zowe CLI versions. You can develop two branches of your plug-in so that users can install your plug-in into either `@latest` or `@lts-incremental` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users. 
 
 The `lts-incremental` branch of Sample Plug-in is compatible with the `@lts-incremental` version of core CLI (Zowe Stable release). The `master` branch of Sample Plug-in is compatible with `@latest` version of core CLI (Zowe Active Development release).
 
