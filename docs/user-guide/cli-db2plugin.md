@@ -14,15 +14,13 @@ As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database t
   - Export tables to a local file on your computer in SQL format.
   - Call a stored procedure and pass parameters.
 
-<!--
 ## Commands 
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
-- <a href="./web_help/index.html" target="_blank">Browse Online</a>
-- <a href="./zowe_web_help.zip">Download (ZIP)</a>
-- <a href=".CLIReference_Zowe.pdf">Download (PDF)</a>
--->
+- <a href="../web_help/index.html" target="_blank">Browse Online</a>
+- <a href="../zowe_web_help.zip">Download (ZIP)</a>
+- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
 
 ## Software requirements
 
@@ -45,7 +43,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
     zowe plugins install @brightside/db2@lts-incremental
     ```
 
-3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
+2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ### Installing from a local package
 
@@ -142,65 +140,3 @@ zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <us
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
-
-## Commands  
-
-The following commands can be issued with the Zowe CLI Plug-in for IBM Db2:
-
-- [Calling a stored procedure](#calling-a-stored-procedure)
-- [Executing an SQL statement](#executing-an-sql-statement)
-- [Exporting a table in SQL format](#exporting-a-table-in-sql-format)
-
-
-**Tip:** At any point, you can issue the help command `-h` to see a list of available commands.
-
-### Calling a stored procedure
-
-Issue the following command to call a stored procedure that returns a result set:
-
-```
-$ zowe db2 call sp "DEMOUSER.EMPBYNO('000120')"
-```
-
-Issue the following command to call a stored procedure and pass parameters:
-
-```
-$ zowe db2 call sp "DEMOUSER.SUM(40, 2, ?)" --parameters 0
-```
-
-Issue the following command to call a stored procedure and pass a placeholder buffer:
-
-```
-$ zowe db2 call sp "DEMOUSER.TIME1(?)" --parameters "....placeholder..
-```
-
-### Executing an SQL statement
-
-Issue the following command to count rows in the EMP table:
-
-```
-$ zowe db2 execute sql -q "SELECT COUNT(*) AS TOTAL FROM DSN81210.EMP;"
-```
-
-Issue the following command to get a department name by ID:
-
-```
-$ zowe db2 execute sql -q "SELECT DEPTNAME FROM DSN81210.DEPT WHERE DEPTNO='D01'
-```
-
-### Exporting a table in SQL format
-
-Issue the following command to export the `PROJ` table and save the generated SQL
-statements:
-
-```
-$ zowe db2 export table DSN81210.PROJ
-```
-
-Issue the following command to export the `PROJ` table and save the output to a file:
-
-```
-$ zowe db2 export table DSN81210.PROJ --outfile projects-backup.sql 
-```
-
-You can also pipe the output to gzip for on-the-fly compression.

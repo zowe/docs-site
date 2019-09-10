@@ -28,7 +28,7 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release. 
 
-To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/download/) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the *Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
@@ -146,7 +146,19 @@ Ensure that you meet the following software requirements before you install Zowe
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
+  ```
+  RLIST FACILITY BPX.JOBNAME AUTHUSER
+  ```
+  
+  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+  ```
+  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
+  SETROPTS RACLIST(FACILITY) REFRESH
+  ```
+
+  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
  https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
 ## Installing the Zowe runtime on z/OS

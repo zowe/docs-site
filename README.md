@@ -4,7 +4,7 @@
 
 ### Prepare Development Environment
 
-You will need node.js and npm installed on your local computer.
+You will need node.js >= 8 and npm installed on your local computer.
 
 To prepare your local development environment, run this command:
 
@@ -20,17 +20,31 @@ npm run docs:dev
 
 Then you can access the documentation with URL `http://localhost:8080/docs-site/latest/`. Every time if you modify and save a documentation file, the local development build will be triggered automatically, then you can refresh your browser to see the changes.
 
-### Test Your Modifications
+### Build Documentation For Production
 
-You will need `Docker` to run broken links test. Check https://www.docker.com/get-started to install Docker.
-
-You can test broken links with these commands. First compile the documentation with command:
+You can build documentation with this command:
 
 ```
 npm run docs:build
 ```
 
-Then run broken links test with this command:
+_Please note: if you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`._
+
+All build results will be put under `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/latest/` folder.
+
+You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser. The below shows how to start the web server with Docker:
+
+```
+docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/html/docs-site:ro --rm nginx
+```
+
+Now you are able to visit `http://localhost:8080/docs-site/latest/` to check the content.
+
+### Test Your Modifications
+
+You will need `Docker` to run broken links test. Check https://www.docker.com/get-started to install Docker.
+
+After you build the documentation described above, you can run broken links test with this command:
 
 ```
 npm run test:links:latest
@@ -119,9 +133,4 @@ The above warning / error message includes several informations:
 
 ### Build PDF
 
-Launch the build script with command `npm run docs:pdf`. The build result will be put into `.deploy/.pdf/out` folder if there are no errors.
-
-To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js` `ALL_PAGES` property.
-
 Check [Build PDF](docs/.pdf/README.md) for details explanations.
-

@@ -4,14 +4,20 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.4.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.4.0 (June 2019)](#version-1-4-0-july-2019)
+- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
 - [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
 - [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.4.0 (July 2019)
+
+<!--ADD TO 1.5.0 for CLI section 
+- You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
+-->
+
+
+## Version 1.4.0 (August 2019)
 
 <!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
@@ -327,7 +333,7 @@ During product operation of the Zowe Cross Memory Server which was introduced in
 
 - A [CLI quick start guide](cli-getting-started.md) is now available for users who are familiar with command-line tools and want to get up and running quickly.
 
-- Zowe CLI Plugin for IBM CICS was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
+- IBM CICS Plug-in for Zowe CLI was updated to support communication over HTTPS. Users can enable https by specifying `--protocol https` when creating a profile or issuing a command. For backwards compatibility, HTTP remains the default protocol.
 
 ### What's new in the Zowe REST APIs
 

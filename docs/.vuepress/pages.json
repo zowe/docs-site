@@ -1,0 +1,205 @@
+[{
+    "text": "Getting Started",
+    "baseuri": "/getting-started/",
+    "items": [{
+        "text": "Zowe overview",
+        "items": ["getting-started/overview.md", "getting-started/zowe-architecture.md"]
+      },
+      {
+        "text": "Release notes",
+        "link": "getting-started/summaryofchanges.md"
+      },
+      {
+        "text": "Zowe CLI quick start",
+        "link": "getting-started/cli-getting-started.md"
+      },
+      {
+        "text": "Zowe FAQs",
+        "link": "getting-started/freqaskques.md"
+      }
+    ]
+  },
+  {
+    "text": "User Guide",
+    "baseuri": "/user-guide/",
+    "items": [{
+        "text": "Installing Zowe",
+        "items": [
+          "user-guide/installandconfig.md",
+          "user-guide/systemrequirements.md",
+          "user-guide/install-nodejs-zos.md",
+          "user-guide/systemrequirements-zosmf.md",
+          "user-guide/systemrequirements-zosmf-lite.md",
+          "user-guide/install-zos.md",
+          "user-guide/cli-installcli.md",
+          "user-guide/cli-updatingcli.md",
+          "user-guide/uninstall.md"
+        ]
+      },
+      {
+        "text": "Configuring Zowe",
+        "items": [
+          "user-guide/mvd-configuration.md",
+          "user-guide/cli-configuringcli.md"
+        ]
+      },
+      {
+        "text": "Using Zowe",
+        "items": [
+          "user-guide/zowe-getting-started-tutorial.md",
+          "user-guide/mvd-using.md",
+          "user-guide/api-mediation-api-catalog.md",
+          "user-guide/cli-usingcli.md"
+        ]
+      },
+      {
+        "text": "Zowe CLI extensions and plug-ins",
+        "items": [
+          "user-guide/cli-extending.md",
+          "user-guide/cli-swreqplugins.md",
+          "user-guide/cli-installplugins.md",
+          "user-guide/cli-cicsplugin.md",
+          "user-guide/cli-db2plugin.md",
+          "user-guide/cli-vscodeplugin.md"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Extending",
+    "baseuri": "/extend/",
+    "items": [{
+        "text": "Developing for API Mediation Layer",
+        "items": [
+          "extend/extend-apiml/api-mediation-onboard-overview.md",
+          "extend/extend-apiml/api-mediation-security.md",
+          "extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md",
+          "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
+          "extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md",
+          "extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md"
+        ]
+      },
+      {
+        "text": "Developing for Zowe CLI",
+        "items": [
+          "extend/extend-cli/cli-devTutorials.md",
+          "extend/extend-cli/cli-setting-up.md",
+          "extend/extend-cli/cli-installing-sample-plugin.md",
+          "extend/extend-cli/cli-extending-a-plugin.md",
+          "extend/extend-cli/cli-developing-a-plugin.md",
+          "extend/extend-cli/cli-implement-profiles.md"
+        ]
+      },
+      {
+        "text": "Developing for Zowe Application Framework",
+        "items": [
+          "extend/extend-desktop/mvd-extendingzlux.md",
+          "extend/extend-desktop/mvd-creatingappplugins.md",
+          "extend/extend-desktop/mvd-plugindefandstruct.md",
+          "extend/extend-desktop/mvd-dataservices.md",
+          "extend/extend-desktop/mvd-internationalization.md",
+          "extend/extend-desktop/mvd-desktopandwindowmgt.md",
+          "extend/extend-desktop/mvd-configdataservice.md",
+          "extend/extend-desktop/mvd-uribroker.md",
+          "extend/extend-desktop/mvd-apptoappcommunication.md",
+          "extend/extend-desktop/mvd-errorreportingui.md",
+          "extend/extend-desktop/mvd-logutility.md",
+          "extend/extend-desktop/zlux-app-server.md",
+          "extend/extend-desktop/zlux-workshop-user-browser.md"
+        ]
+      },
+      {
+        "text": "Zowe Conformance Program",
+        "link": "extend/zowe-conformance-program.md"
+      }
+    ]
+  },
+  {
+    "text": "Troubleshooting",
+    "baseuri": "/troubleshoot/",
+    "items": [{
+        "text": "Overview",
+        "link": "troubleshoot/troubleshooting.md"
+      },
+      {
+        "text": "API Mediation Layer",
+        "link": "troubleshoot/troubleshoot-apiml.md"
+      },
+      {
+        "text": "Zowe Application Framework",
+        "items": [
+          "troubleshoot/app-framework/app-troubleshoot.md",
+          "troubleshoot/app-framework/app-mustgather.md",
+          "troubleshoot/app-framework/app-known-issues.md",
+          "troubleshoot/app-framework/app-issue.md"
+        ]
+      },
+      {
+        "text": "Zowe z/OS Services",
+        "link": "troubleshoot/troubleshoot-zos-services.md"
+      },
+      {
+        "text": "Troubleshooting Zowe CLI",
+        "items": [
+          "troubleshoot/cli/troubleshoot-cli.md",
+          "troubleshoot/cli/mustgather-cli.md",
+          "troubleshoot/cli/zosmf-cli.md",
+          "troubleshoot/cli/known-cli.md",
+          "troubleshoot/cli/cli-issue.md"
+        ]
+      },
+      {
+        "text": "Troubleshooting Zowe using Diagnostics Data Script",
+        "link": "troubleshoot/troubleshoot-diagnostics.md"
+      }
+    ]
+  },
+  {
+    "text": "Contributing",
+    "baseuri": "/contribute/",
+    "items": [{
+        "text": "Code guidelines",
+        "items": [
+          "contribute/guidelines-code/categories.md",
+          "contribute/guidelines-code/general.md",
+          "contribute/guidelines-code/code-and-patches.md",
+          "contribute/guidelines-code/documentation.md"
+        ]
+      },
+      {
+        "text": "UI guidelines",
+        "items": [
+          "contribute/guidelines-ui/ui.md",
+          "contribute/guidelines-ui/colors.md",
+          "contribute/guidelines-ui/typography.md",
+          "contribute/guidelines-ui/grid.md",
+          "contribute/guidelines-ui/icon.md",
+          "contribute/guidelines-ui/appicon.md"
+        ]
+      },
+      {
+        "text": "Contributing to documentation",
+        "link": "contribute/contributing.md"
+      }
+    ]
+  },
+  {
+    "text": "References",
+    "baseuri": "/",
+    "hideInPdf": true,
+    "canHideFirst": true,
+    "items": [{
+        "text": "Zowe CLI command reference",
+        "link": "#zowe-cli-command-reference-guide"
+      },
+      {
+        "text": "Bill of Materials",
+        "link": "appendix/bill-of-materials.md"
+      },
+      {
+        "text": "Third-Party Software Requirements",
+        "link": "appendix/tpsr.md"
+      }
+    ]
+  }
+]
