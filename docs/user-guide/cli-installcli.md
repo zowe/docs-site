@@ -8,8 +8,8 @@ Install Zowe CLI on your computer. You can learn about new CLI features in the [
 
 Use one of the following methods to install Zowe CLI.
 
-- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
-- [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
+- [Installing Zowe CLI](#installing-zowe-cli)
+  - [Methods to install Zowe CLI](#methods-to-install-zowe-cli)
 
 If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
@@ -29,7 +29,7 @@ If you do not have internet access at your site, use the following method to ins
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/#download) website, click **Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
     **Note:**
     -  *v* indicates the version
@@ -97,7 +97,7 @@ If your computer is connected to the Internet, you can use the following method 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    zowe plugins install @brightside/cics@lts-incremental
+    zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
     ```
 
     **Note:** The IBM Db2 plug-in requires additional configuration. For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).

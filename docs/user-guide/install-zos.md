@@ -28,7 +28,7 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release. 
 
-To download the PAX file, open your web browser and click the *DOWNLOAD Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/download/) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the *Zowe z/OS Components* button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
@@ -146,7 +146,19 @@ Ensure that you meet the following software requirements before you install Zowe
 
 - The user ID that is used to perform the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
-- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+- The user ID that is used to perform the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
+  ```
+  RLIST FACILITY BPX.JOBNAME AUTHUSER
+  ```
+  
+  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+  ```
+  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
+  SETROPTS RACLIST(FACILITY) REFRESH
+  ```
+
+  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
  https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
 
 ## Installing the Zowe runtime on z/OS
@@ -168,7 +180,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     - `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number,for example, 1.0.0 or 1.2.11 . The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
       You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
-   <!-- -  is the directory that Zowe installs to create a Zowe runtime. -->
+     - `install:userDir` is the directory that Zowe will begin to use to store configuration. Previously (in Zowe 1.4 and before) all user configuration was stored within the Zowe root directory structure, but in order to improve the upgradability of the Zowe system, moving forward separate runtime binaries and configuration will be separated. The default directory is `~/zowe-user-dir` which create the `zowe-user-dir` directory within the home directory of the user id that ran Zowe configuration. For an enterprise SMP/E install it is recommended to instead have this in a centralised place such as `/global/zowe`, ensuring that this directory is writable by the user id that runs the Zowe started task.
 
     - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
 
@@ -220,6 +232,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```yaml
     install:
      rootDir=/tmp/zowe/1.4.0
+     userDir=~/zowe-user-dir
      prefix=ZOWE
 
     api-mediation:
@@ -454,7 +467,6 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
     To prepare the environment for the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the install script will attempt to locate default values.
 
-     - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
      - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
     <!-- TODO -->
@@ -468,7 +480,7 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
 
      **Notes**: 
      - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
-     - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
+     - If the environment variables for `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
      - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `zowe_profile` file in the current user's home directory.  
 
 2. Expanding the PAX files

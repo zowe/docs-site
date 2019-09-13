@@ -13,7 +13,7 @@
   - [Authorization](#authorization)
   - [JWT Token](#jwt-token)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
-  - [Authentication to the Discovery Service](#authentication-to-the-discovery-service)
+  - [Discovery Service authentication](#discovery-service-authentication)
   - [Setting Ciphers for API ML Services](#setting-ciphers-for-api-ml-services)
 - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
@@ -32,7 +32,10 @@
     - [Trust a z/OSMF certificate](#trust-a-z-osmf-certificate)
     - [Disable certificate validation](#disable-certificate-validation)  
 - [Security Service Client library](#security-service-client-library)
-  
+    - [@EnableApimlAuth annotation](#@enableApimlAuth-annotation)
+    - [Gateway lookup logic](#gateway-lookup-logic)
+    - [Useful classes](#useful-classes)
+
 ## How API ML transport security works
 
 Security within the API Mediaiton Layer (API ML) is performed on several levels. This article describes how API ML uses Transport Layer Security (TLS). As a system administrator or API developer, use this guide to familiarize yourself with the following security concepts:  
@@ -147,6 +150,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators) 
+    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token.
 
 - **API Services**
 
@@ -158,20 +162,18 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
 The API Gateway contains two REST API authentication endpoints: `auth/login` and `auth/query`.
 
-The `/login` endpoint allows to authenticate mainframe user credentials and returns an authentication token. The login request requires the user credentials in one of the following formats:
+The `/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
   * Basic access authentication
   * JSON with user credentials 
 
-1. When successfully authenticated, the response to the request is an empty body and a token in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. 
-2.  When authentication failed, a user gets 401 status code.
+When authentication is successful the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
 
-The `/query` endpoint allows to validate the token and retrieves the information associated with the token.
-The query request requires the token in one of the following formats: 
-  * Cookie named `apimlAuthenticationToken`
+The `/query` endpoint validates the token and retrieves the information associated with the token.
+The query request requires the token through one of the following methods: 
+  * A cookie named `apimlAuthenticationToken`
   * Bearer authentication  
   
-1. When successfully authenticated, the response to the request is a JSON object, which contains information associated with the token
-2. When authentication failed, a user gets 401 status code. 
+When authentication is successful the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code. 
 
 #### Authentication providers
 
@@ -251,23 +253,35 @@ by other technologies used in Zowe (Node.js).
 
 - A client certificate is a certificate that is used for validation of the HTTPS client. The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client uses.
 
-### Authentication to the Discovery Service
+### Discovery Service authentication
 
-The Discovery Service has the following types of users that require authentication:
+There are several authentication mechanisms, depending on the desired endpoint, as described by the following matrix:
 
-- **Administrators and developers who need to log in to the homepage of the Discovery Service**
+| Endpoint | Authentication method | Note |             
+|----|-----|------|
+| UI (eureka homepage)                 | basic auth(MF), token              | see note about mainframe authentication  |
+| application/**                       | basic auth(MF), token              |  see note about mainframe authentication  |
+| application/health, application/info | none                          |     |
+| eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore. |
+| discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication | 
+
+**Note:** Some endpoints are protected by mainframe authentication. The authentication function is provided by the API Gateway. This functionality is not available until the Gateway registers itself to the Discovery Service.
+
+Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
+ 
+  Some utilities including HTTPie require the certificate to be in PEM format. The exported certificate in .pem format is located here: `keystore/localhost/localhost.pem`.
   
-    The access is protected by a certificate.
-
-- **Services that need to register to the Discovery Service**
-
-    These services are not users that have a user ID and password but are other services. They authenticate using client certificate. The client certificate is the same TLS certificate that the service uses for HTTPS communication. 
-
+ The following example shows HTTPie command to access the Discovery Service endpoint for listing registered services and provides the client certificate:
+    
+ ```
+ http --cert=keystore/localhost/localhost.pem --verify=false -j GET https://localhost:10011/eureka/apps/
+ ```
+    
 ### Setting ciphers for API ML services
 
-You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the gateway, discovery service, and API catalog.
+You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the Gateway, Discovery Service, and API Catalog.
 
-**Note:** You do not need to rebuild JAR files when you override the default values in shell scirpts.
+**Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 
 The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `$ZOWE_ROOT_DIR/api-mediation/scripts/api-mediation-start-*.sh`, where `*` expands to `gateway`, `catalog`, and `discovery`.
 Add the launch parameter of the shell script to set a cipher:
@@ -278,7 +292,7 @@ Add the launch parameter of the shell script to set a cipher:
 
 On localhost, you can override the default configuration in [config/local/gateway-service.yml](https://github.com/zowe/api-layer/blob/master/config/local/gateway-service.yml) (including other YAML files for development purposes).
 
-The following list shows default ciphers. The API ML services use the following cipher order:
+The following list shows the default ciphers. API ML services use the following cipher order:
 
 **Note:** Ensure that the version of Java you use is compatible with the default cipherset.
 
@@ -304,7 +318,7 @@ The certificates are described in more detail in the https://github.com/zowe/api
 
 #### Certificate management script
 
-Zowe API Mediation Layer provides a script that can used on Windows, Mac, Linux, and z/OS
+Zowe API Mediation Layer provides a script that can be used on Windows, Mac, Linux, and z/OS
 to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
 This script is stored in [scripts/apiml_cm.sh](https://github.com/zowe/api-layer/blob/master/scripts/apiml_cm.sh).
@@ -332,26 +346,16 @@ The instructions are described at:
 https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services
 
 
-#### Log in to Discovery Service on localhost
+#### Service registration to Discovery Service on localhost
 
-To access Discovery Service on localhost provide a valid client certificate.
-
-The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore.
-
-Some utilities including HTTPie require the certificate to be in PEM format. You can find it in `keystore/localhost/localhost.pem`.
-
-Since the Discovery Service is using HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate which is store at `keystore/local_ca/localca.cer`.
-
-The following is an example of how to access Discovery Service from CLI with full certificate validation:
-
-`http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j GET https://localhost:10011/eureka/apps/`
+To register a new service to the Discovery Service using HTTPS, provide a valid client certificate that is trusted by the Discovery Service.  
 
 
 ### Zowe runtime on z/OS
 
 #### Certificates for z/OS installation from the Zowe PAX file
 
-Certificates for the API ML local CA and API ML service are automatically generated by installing the Zowe runtime on z/OS from the PAX file. Following the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html) 
+Certificates for the API ML local CA and API ML service are automatically generated by installing Zowe runtime on z/OS from the PAX file. Follow the instructions in [Installing the Zowe runtime on z/OS](https://zowe.github.io/docs-site/latest/user-guide/install-zos.html) 
 
 These certificates are generated by the certificate management script `apiml_cm.sh` that is installed to `$ZOWE_ROOT_DIR/api-mediation/scripts/apiml_cm.sh`.    
 
@@ -366,12 +370,12 @@ API ML keystore and truststore:
     - contains the APIML server certificate signed by the local CA and private key for the server
     
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local/localhost.truststore.p12` 
-    - use to validate trust when communicating with the services that are registered to the APIML
+    - use to validate trust when communicating with services that are registered to the APIML
     - contains the root certificate of the local CA (not the server certificate)
     - contains the local CA public certificate
     - can contain additional certificate to trust services that are not signed by local CA
 
-API ML keystores and truststores needs be accessible by the user ID that executes the Zowe runtime.
+API ML keystores and truststores need be accessible by the user ID that executes the Zowe runtime.
 
 Local CA:
 
@@ -381,23 +385,23 @@ Local CA:
   * `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.keystore.p12`
     - private key of the local CA 
 
-The local CA keystore is only accessible by the user that is installs and manages the Zowe runtime. 
+The local CA keystore is only accessible by the user that installs and manages the Zowe runtime. 
 
 
 #### Import the local CA certificate to your browser
 
 Trust in the API ML server is a necessary precondition to properly encrypt traffic between web browsers and REST API client applications. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
-**Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory that was used for the Zowe runtime during installation.
+**Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer` where `$ZOWE_ROOT_DIR`  is the directory used for the Zowe runtime during installation.
 
-The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate that your browser is going to trust, it is recommended to use a secure connection for transfer.
+The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 **Follow these steps:**
 
 1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
 
     - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**
-    Issue teh following command:
+    Issue the following command:
 
     `zowe zos-files download uss-file --binary $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer`
 
@@ -409,7 +413,7 @@ The certificate is stored in UTF-8 encoding so you need to transfer it as a bina
     get $ZOWE_ROOT_DIR/api-mediation/keystore/local_ca/localca.cer
     ```
 
-    To verify that the file has been transferred correctly, open the file. The following heading and closing shoulf appear: 
+    To verify that the file has been transferred correctly, open the file. The following heading and closing should appear: 
    
     ```
     -----BEGIN CERTIFICATE-----
@@ -457,22 +461,23 @@ scripts/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <
 
 The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
 
-The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore. For example: `/opt/myservice/keystore/service.keystore`.
+The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore. 
+
+**Example:** `/opt/myservice/keystore/service.keystore`.
 
 The `service-truststore` contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that will be generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
-The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN has contain host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration. For example:
+The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
 
-`"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
+**Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
 **Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
-The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. For example:
+The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates. 
 
-`"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
+**Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
-
-The `service-validity` is the number of days after that the certificate will expire.
+The `service-validity` is the number of days after until the certificate expires.
 
 The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
@@ -646,32 +651,38 @@ in following shell scripts:
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-discovery.sh`
 - `$ZOWE_RUNTIME/api-mediation/scripts/api-mediation-start-gateway.sh`
 
-## Security Service Client library
+## Security Service Client Library
 
-The `security-service-client-spring` library enables authentication and protection using security providers.
-The library contains providers, filters and handlers as Spring components. The `security-service-client-spring` library enables any Spring client to authenticate mainframe user credentials.
+The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation, and consists of the following components:
+  - `com.ca.apiml.security.common` - Components that are necessary to build Spring security
+  - `com.ca.apiml.security.client` - Components that enables the security client and Gateway lookup
 
-The core class of the library is `com.ca.apiml.security.service.GatewaySecurityService`, which provides facility to perform login and to validate the jwt token. The `com.ca.apiml.security.service.GatewaySecurityService` has the following methods :
+#### @EnableApimlAuth annotation
+Use `@EnableApimlAuth` annotation to enable the security client and integration of the `security-service-client-spring` library. The annotation handles necessary component scans, creates the `GatewaySecurityService`, and starts the Gateway lookup logic.
 
-  - The `login` method that allows to login to the API Gateway with username and password and retrieve the valid JWT token. 
-  - The `query` method that allows to verify the JWT token validity and return the JWT token data
+#### Gateway lookup logic 
+Security client uses the `GatewayClient` Spring component to represent a Gateway instance. Lookup logic scans the embedded Discovery client and sets a Gateway instance to ‘Gateway Client’ after the Spring context starts. The scanning process happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
+
+#### Useful classes
+The core class of the library is `com.ca.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
+
+  - `login` - Allows to login to the API Gateway with a username and password and retrieve the valid JWT token
+  - `query` - Allows to verify the JWT token validity and return the JWT token data
   
- The following providers process the authentication requests:
+ The following providers process authentication requests:
   
-   - `com.ca.apiml.security.login.GatewayLoginProvider` - Verifies the mainframe credentials 
-   - `com.ca.apiml.security.token.GatewayTokenProvider` - Authenticates the JWT token 
+   - `com.ca.apiml.security.client.login.GatewayLoginProvider` - Verifies the mainframe credentials 
+   - `com.ca.apiml.security.client.token.GatewayTokenProvider` - Authenticates the JWT token
 
-The library also contains the following Spring Security filters:
+The library contains the following Spring security filters and handlers:
 
-- `com.ca.apiml.security.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. This filter can be used in `SecurityConfiguration`(see a [sample](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java)) class to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `com.ca.apiml.security.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter can be used in a `SecurityConfiguration` in order to secure content with a token stored in the cookie. The token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
-
-There are also several handlers such as:
+- `com.ca.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `com.ca.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The JWT token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
 - `SuccessfulLoginHandler` - Handles the successful login
-- `UnauthorizedHandler` Handles unauthorized access
-- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in case of basic authentication
+- `UnauthorizedHandler` - Handles unauthorized access
+- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in the case of basic authentication
 - `FailedAuthenticationHandler` - Handles authentication failure
 - `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
 - `AuthExceptionHandler` - Handles exceptions thrown during authentication process
 
-For more information, see [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture), and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
+For more information, see [Api Catalog security configuration](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java) (Reference usage of the library), [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture) and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
