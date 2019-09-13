@@ -414,7 +414,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 ## Applying role-based access control to dataservices
 
-To use role-based access control (RBAC) for Zowe dataservice endpoints, enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints.
+To use role-based access control (RBAC) for Zowe dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. If you are using RACF, your first task must be to define the ZOWE RACF class.
 
 After you configure RBAC, Zowe checks users' authority to access dataservices.
 
@@ -449,6 +449,35 @@ Configuration endpoints have profiles with this format:
 For example, users must have READ access to the following profile to access the instance-scoped configuration element "files":
 
 `ZLUX.DEFAULT.CFG.ORG_ZOWE_FOO.GET.INSTANCE.FILES`
+
+### Defining the RACF ZOWE class
+If you use RACF security, take the following steps define the ZOWE class to the CDT class:
+
+1. Make sure that the CDT class is active and RACLISTed.
+2. In TSO, issue the following command:
+    ```
+    RDEFINE CDT ZOWE UACC(NONE)
+    CDTINFO(
+        DEFAULTUACC(NONE)
+        FIRST(ALPHA) OTHER(ALPHA,NATIONAL,NUMERIC,SPECIAL)
+        MAXLENGTH(246)
+        POSIT(607)
+        RACLIST(DISALLOWED))
+    ```
+    If you receive the following message, ignore it:
+    ```
+    "Warning: The POSIT value is not within the recommended ranges for installation use. The valid ranges are 19-56 and 128-527."
+    ```
+3. In TSO, issue the following command to refresh the CDT class:
+    ```
+    SETROPTS RACLIST(CDT) REFRESH
+    ```
+4. In TSO, issue the following command to activate the ZOWE class:
+    ```
+    SETROPTS CLASSACT(ZOWE)
+    ```
+
+For more information RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Enabling RBAC
 
