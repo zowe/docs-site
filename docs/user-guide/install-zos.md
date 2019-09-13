@@ -181,6 +181,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 
      - `install:userDir` is the directory that Zowe will begin to use to store configuration. Previously (in Zowe 1.4 and before) all user configuration was stored within the Zowe root directory structure, but in order to improve the upgradability of the Zowe system, moving forward separate runtime binaries and configuration will be separated. The default directory is `~/zowe-user-dir` which create the `zowe-user-dir` directory within the home directory of the user id that ran Zowe configuration. For an enterprise SMP/E install it is recommended to instead have this in a centralised place such as `/global/zowe`, ensuring that this directory is writable by the user id that runs the Zowe started task.
+     Note: Please ensure that the account that runs Zowe (default of IZUSVR) has permission to write to this directory (for example by changing the group to be owned by the zosmf Admin Group and given write access to groups), or Zowe will not start correctly.
 
     - `install:prefix` defines a prefix for Zowe address space STC name assosiated with USS processes. STC names have certain components and use the following format:
 
@@ -231,9 +232,13 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     ```yaml
     install:
-     rootDir=/tmp/zowe/1.4.0
-     userDir=~/zowe-user-dir
-     prefix=ZOWE
+      rootDir=/tmp/zowe/1.4.0
+      userDir=~/zowe-user-dir
+      prefix=ZOWE
+
+    zosmf:
+      zosmfUserid=IZUSVR
+      zosmfAdminGroup=IZUADMIN
 
     api-mediation:
       catalogPort=7552
@@ -245,7 +250,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       verifyCertificatesOfServices=true
       enableSso=false
       zosmfKeyring=IZUKeyring.IZUDFLT
-      zosmfUser=IZUSVR
 
     zos-services:
       jobsAPIPort=8545
