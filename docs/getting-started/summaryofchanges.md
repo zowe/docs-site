@@ -4,17 +4,40 @@ Learn about what is new, changed, removed, and known issues in Zowe.
 
 Zowe Version 1.4.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
-- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
-- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
-- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
-- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
-- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+- [Release notes](#release-notes)
+  - [Version 1.5.0 (September 2019)](#version-150-september-2019)
+  - [Version 1.4.0 (August 2019)](#version-140-august-2019)
+  - [Version 1.3.0 (June 2019)](#version-130-june-2019)
+  - [Version 1.2.0 (May 2019)](#version-120-may-2019)
+  - [Version 1.1.0 (April 2019)](#version-110-april-2019)
+  - [Version 1.0.1 (March 2019)](#version-101-march-2019)
+  - [Version 1.0.0 (February 2019)](#version-100-february-2019)
 
+## Version 1.5.0 (September 2019)
 
-<!--ADD TO 1.5.0 for CLI section 
+<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### What's new in API Mediation Layer
+
+The following features and enhancements are added:
+
+The following bugs are fixed:
+
+### What's new in the Zowe App Server
+
+The following features and enhancements are added:
+
+The following bugs are fixed:
+
+### What's new in Zowe CLI and Plug-ins
+
+The following commands and enhancements are added:
+
 - You can issue a command to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
--->
+  
+The following bugs are fixed:
+
+
 
 
 ## Version 1.4.0 (August 2019)
