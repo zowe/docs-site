@@ -9,7 +9,7 @@ The IBM CICS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with CICS
 As an application developer, you can use IBM CICS Plug-in for Zowe CLI to perform the following tasks:
 
   - Deploy code changes to CICS applications that were developed with COBOL. 
-  - Deploy changes to CICS regions for testing or delivery. See the [define command](#defining-resources-to-cics) for an example of how you can define programs to CICS to assist with testing and delivery. 
+  - Deploy changes to CICS regions for testing or delivery. See the [define command](#commands) for an example of how you can define programs to CICS to assist with testing and delivery. 
   - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
   - Deploy build artifacts to CICS regions.
   - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
