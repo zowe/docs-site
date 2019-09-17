@@ -3,7 +3,7 @@ You can internationalize Zowe application plug-ins using Angular and React frame
 
 The steps below use the [Zowe Sample Angular Application](https://github.com/zowe/sample-angular-app/) and [Zowe Sample React Application](https://github.com/zowe/sample-react-app) as examples. Your applications might have slightly different requirements, for example the React Sample Application requires the react-i18next library, but your application might require a different React library. 
 
-For detailed information on Angular or React, see their documentation. For detailed information on specific internationalization libraries, see their documentation. You can also reference the Sample Angular Application [internationalization tutorial](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md).
+For detailed information on Angular or React, see their documentation. For detailed information on specific internationalization libraries, see their documentation. You can also reference the Sample Angular Application [internationalization tutorial](https://github.com/zowe/sample-angular-app/blob/lab/step-2-i18n-complete/README.md), and watch a video on how to [internationalize your Angular application](https://www.youtube.com/watch?v=kkCC2u1NQy4&feature=youtu.be).
 
 After you internationalize your application, you can view it by following steps in [Changing the desktop language](https://zowe.github.io/docs-site/latest/user-guide/mvd-using.html#changing-the-desktop-language).
 
