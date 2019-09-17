@@ -4,19 +4,15 @@ To install Zowe on z/OS,  there are two parts. The first part is the Zowe runtim
 
 Follow the instructions in this topic to obtain the installation file for z/OS runtime components and run the installation scripts. 
 
-1. [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
-2. [Prerequisites](#prerequisites)
-3. [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-z-os)
-    - [How the install script `zowe-install.sh` works](#how-the-install-script-zowe-install-sh-works)   
-4. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-z-os)        
-    - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)  
-5. [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-z-os)
-    - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-    - [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
-6. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-z-os)
-7. [Verifying installation](#verifying-installation)        
-8. [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
+- [Installing Zowe on z/OS](#installing-zowe-on-zos)
+  - [Obtaining and preparing the installation file](#obtaining-and-preparing-the-installation-file)
+  - [Prerequisites](#prerequisites)
+  - [Installing the Zowe runtime on z/OS](#installing-the-zowe-runtime-on-zos)
+  - [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
+  - [Installing the Zowe Cross Memory Server on z/OS](#installing-the-zowe-cross-memory-server-on-zos)
+  - [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+  - [Verifying installation](#verifying-installation)
+  - [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
 
 ## Obtaining and preparing the installation file
 
@@ -232,7 +228,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     ```yaml
     install:
-      rootDir=/tmp/zowe/1.4.0
+      rootDir=/tmp/zowe/1.5.0
       userDir=~/zowe-user-dir
       prefix=ZOWE
 
