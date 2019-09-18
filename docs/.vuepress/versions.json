@@ -1,6 +1,6 @@
 [{
-  "text": "Latest",
-  "link": "latest/"
+  "text": "Stable",
+  "link": "stable/"
 },
 {
   "text": "v1.4.x",

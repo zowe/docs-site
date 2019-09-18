@@ -6,6 +6,7 @@ Zowe Version 1.5.0 and later releases include the following enhancements, releas
 
 - [Release notes](#release-notes)
   - [Version 1.5.0 (September 2019)](#version-150-september-2019)
+  - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
   - [Version 1.4.0 (August 2019)](#version-140-august-2019)
   - [Version 1.3.0 (June 2019)](#version-130-june-2019)
   - [Version 1.2.0 (May 2019)](#version-120-may-2019)
@@ -36,9 +37,12 @@ The following commands and enhancements are added:
 - You can append `--help-web` to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
   
 The following bugs are fixed:
+∑
+## Zowe SMP/E Alpha (August 2019)
 
-
-
+A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment. 
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website. 
+- For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
 
@@ -112,7 +116,7 @@ Add OMVS information API to uribroker ([#116](https://github.com/zowe/zlux-app-m
 
 ### What's new in Zowe CLI and Plug-ins
 
-You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](https://zowe.github.io/docs-site/latest/web_help/index.html).
+You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](../web_help/index.html).
 
 The following new commands and enhancements are added:
 
@@ -268,7 +272,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- The [CLI Reference Guide](https://zowe.github.io/docs-site/latest/CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
+- The [CLI Reference Guide](../CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI. 
 
 - You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 

@@ -42,8 +42,4 @@ Contact Zowe Open Community to address and troubleshoot a Zowe issue.
    ```
 4. Send the .pax.Z output file to Community members for further troubleshooting.
 
-<<<<<<< HEAD
-Community members start to troubleshoot your issue.
-=======
 Community members will help you troubleshoot an issue.
->>>>>>> master
