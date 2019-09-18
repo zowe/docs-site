@@ -76,7 +76,6 @@ The following commands and enhancements are added:
 
 - You can append `--help-web` to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
   
-The following bugs are fixed:
 
 ## Zowe SMP/E Alpha (August 2019)
 
