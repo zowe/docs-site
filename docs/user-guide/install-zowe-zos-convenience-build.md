@@ -1,6 +1,6 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe convenience build by running shell script within a Unix System Services (USS) shell.
+You install the Zowe&trade; convenience build by running shell script within a Unix System Services (USS) shell.
 
 1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
 2. [Installing the Zowe runtime](#installing-the-zowe-runtime)

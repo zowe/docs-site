@@ -56,7 +56,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 **Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
-   The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe CLI's RestConsoles API require Version 2.3.
+   The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3.
 
 3. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
 

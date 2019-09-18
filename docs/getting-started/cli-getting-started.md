@@ -1,6 +1,6 @@
 # Zowe CLI quick start
 
-Get started with Zowe CLI quickly and easily.
+Get started with Zowe&trade; CLI quickly and easily.
 
 **Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 

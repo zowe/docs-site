@@ -1,7 +1,7 @@
 
 # Java Jersey REST APIs
 
-As an API developer, use this guide to onboard your Java Jersey REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
+As an API developer, use this guide to onboard your Java Jersey REST API service into the Zowe&trade; API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
 The following procedure is an overview of steps to onboard a Java Jersey REST API application with the API Mediation Layer.
 

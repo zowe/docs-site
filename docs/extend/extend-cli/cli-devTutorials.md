@@ -1,6 +1,6 @@
 # Developing for Zowe CLI
 
-You can extend Zowe CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
+You can extend Zowe&trade; CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
 
 ## How can I contribute?
 You can contribute to Zowe CLI in the following ways:

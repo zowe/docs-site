@@ -1,6 +1,6 @@
 # Known Zowe CLI issues
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe CLI.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; CLI.
 
 ## *Command not found* message displays when issuing `npm install` commands
 

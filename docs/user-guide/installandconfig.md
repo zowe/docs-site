@@ -1,6 +1,6 @@
 # Planning the installation
 
-The installation of Zowe consists of two independent processes: installing Zowe runtime on z/OS and installing Zowe CLI on your computer.
+The installation of Zowe&trade; consists of two independent processes: installing Zowe runtime on z/OS and installing Zowe CLI on your computer.
 
 When you install Zowe runtime on z/OS, there are two parts:
 - The first part is to install the Zowe Application Framework, the API Mediation Layer, and a number of micro services that provide capability to both.

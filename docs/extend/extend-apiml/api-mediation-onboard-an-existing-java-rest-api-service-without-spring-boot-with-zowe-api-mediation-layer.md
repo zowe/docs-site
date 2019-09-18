@@ -1,6 +1,6 @@
 # Java REST APIs service without Spring Boot
 
-As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot with the Zowe API Mediation Layer. This article outlines a step-by-step process to onboard a Java REST API application with the API Mediation Layer. More detail about each of these steps is described later in this article.
+As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot with the Zowe&trade; API Mediation Layer. This article outlines a step-by-step process to onboard a Java REST API application with the API Mediation Layer. More detail about each of these steps is described later in this article.
 
 **Follow these steps:**
 1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)

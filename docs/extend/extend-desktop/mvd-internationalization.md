@@ -1,5 +1,5 @@
 # Internationalizing applications
-You can internationalize Zowe application plug-ins using Angular and React frameworks. Internationalized applications display in translated languages and include structures for ongoing translation updates.
+You can internationalize Zowe&trade; application plug-ins using Angular and React frameworks. Internationalized applications display in translated languages and include structures for ongoing translation updates.
 
 The steps below use the [Zowe Sample Angular Application](https://github.com/zowe/sample-angular-app/) and [Zowe Sample React Application](https://github.com/zowe/sample-react-app) as examples. Your applications might have slightly different requirements, for example the React Sample Application requires the react-i18next library, but your application might require a different React library. 
 

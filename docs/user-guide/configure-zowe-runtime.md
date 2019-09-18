@@ -1,6 +1,6 @@
 # Configuring the Zowe runtime
 
-After you install Zowe through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
+After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
 
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)

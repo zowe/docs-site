@@ -1,6 +1,6 @@
 # System requirements
 
-Before installing Zowe, ensure that your environment meets the prerequisites.
+Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
 
 - [Common sytem requirements](#common-system-requirements)
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)

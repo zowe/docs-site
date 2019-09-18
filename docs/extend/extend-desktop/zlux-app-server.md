@@ -1,6 +1,6 @@
 # Tutorial: Stand up a local version of the Example Zowe Application Server
 
-The `zlux-app-server` repository is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
+The `zlux-app-server` repository is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe&trade; Application Server with a few applications included.
 
 ## Server layout
 

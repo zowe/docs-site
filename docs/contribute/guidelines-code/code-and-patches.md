@@ -1,6 +1,6 @@
 # Pull requests guidelines
 
-The Zowe source code is stored in GitHub repositories under the [Zowe GitHub project](https://github.com/zowe). You contribute to the project through Pull Requests in GitHub.  
+The Zowe&trade; source code is stored in GitHub repositories under the [Zowe GitHub project](https://github.com/zowe). You contribute to the project through Pull Requests in GitHub.  
 
 Each pull request is made against a repository that has assigned "maintainers". Pull requests cannot be merged without the approval of at least one maintainer, who will review Pull Requests to ensure that they meet the following criteria:
 
