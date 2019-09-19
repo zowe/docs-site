@@ -57,10 +57,10 @@ The following features and enhancements are added:
 - Add keyboard shortcuts to open and close tabs ([#81](https://github.com/zowe/zlux-editor/pull/81))
 - Add loading indicator for dataset loading ([#34](https://github.com/zowe/zlux-file-explorer/pull/34))
 - Compress the terminals with gzip for improved initial load time, same as was done with the editor previously ([#22](https://github.com/zowe/tn3270-ng2/pull/22), [#23](https://github.com/zowe/vt-ng2/pull/23))
-- Made the following enhancements to the JES Explorer App ([#99](https://github.com/zowe/explorer-jes/pull/99))
-  - Add ability to open and view multiple Spool files at once 
-  - Migrate from V0 to V1 of Material UI 
-  - Migrate from V15 to V16 of React
+- Made the following enhancements to the JES Explorer App 
+  - Add ability to open and view multiple Spool files at once ([#99](https://github.com/zowe/explorer-jes/pull/99))
+  - Migrate from V0 to V1 of Material UI ([#98](https://github.com/zowe/explorer-jes/pull/98))
+  - Migrate from V15 to V16 of React ([#98](https://github.com/zowe/explorer-jes/pull/98))
 
 The following bugs are fixed:
 - New directories/files from Unix file API would have no permissions ([#75](https://github.com/zowe/zowe-common-c/pull/75))
