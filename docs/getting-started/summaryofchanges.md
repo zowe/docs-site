@@ -4,15 +4,14 @@ Learn about what is new, changed, removed, and known issues in Zowe&trade;.
 
 Zowe Version 1.5.0 and later releases include the following enhancements, release by release.
 
-- [Release notes](#release-notes)
-  - [Version 1.5.0 (September 2019)](#version-150-september-2019)
-  - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
-  - [Version 1.4.0 (August 2019)](#version-140-august-2019)
-  - [Version 1.3.0 (June 2019)](#version-130-june-2019)
-  - [Version 1.2.0 (May 2019)](#version-120-may-2019)
-  - [Version 1.1.0 (April 2019)](#version-110-april-2019)
-  - [Version 1.0.1 (March 2019)](#version-101-march-2019)
-  - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+- [Version 1.5.0 (September 2019)](#version-150-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-140-august-2019)
+- [Version 1.3.0 (June 2019)](#version-130-june-2019)
+- [Version 1.2.0 (May 2019)](#version-120-may-2019)
+- [Version 1.1.0 (April 2019)](#version-110-april-2019)
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
 
 ## Version 1.5.0 (September 2019)
 
@@ -27,8 +26,48 @@ The following bugs are fixed:
 ### What's new in the Zowe App Server
 
 The following features and enhancements are added:
+- Adds dynamic logging functionality for plugins ([#60](https://github.com/zowe/zss/pull/60), [#63](https://github.com/zowe/zowe-common-c/pull/63))
+- Top Secret updates to the security lookup API ([#74,](https://github.com/zowe/zowe-common-c/pull/74)[#71,](https://github.com/zowe/zss/pull/71)[#72](https://github.com/zowe/zss/pull/72))
+- Accept basic auth header as an option for login ([#80](https://github.com/zowe/zowe-common-c/pull/80))
+- JSON parsing enhancements for UTF8, and printing to buffer ([#67](https://github.com/zowe/zowe-common-c/pull/67))
+- Optimization, memory bugfix and improved tracing for authentication ([#72](https://github.com/zowe/zowe-common-c/pull/72))
+- Performance optimization for app thumbnail snapshots: Fixed a bug causing slowdown relative to number of apps open ([#131](https://github.com/zowe/zlux-app-manager/pull/131))
+- Translations: Added missing language translations about session lifecycle ([#137](https://github.com/zowe/zlux-app-manager/pull/137))
+- Logger reorganized for Zowe-wide log format unification. Includes i18n-able message ID support & new info. See [#90](https://github.com/zowe/zlc/issues/90) ([#17](https://github.com/zowe/zlux-shared/pull/17), [#119](https://github.com/zowe/zlux-app-manager/pull/119), [#116](https://github.com/zowe/zlux-server-framework/pull/116), [#142](https://github.com/zowe/zlux-app-manager/pull/142), [#35](https://github.com/zowe/zlux-platform/pull/35), [#19](https://github.com/zowe/zlux-shared/pull/19), [#132](https://github.com/zowe/zlux-server-framework/pull/132), [#146](https://github.com/zowe/zlux-app-manager/pull/146), [#126](https://github.com/zowe/zlux-server-framework/pull/126), [#139](https://github.com/zowe/zlux-app-manager/pull/139), [#67](https://github.com/zowe/zlux-app-server/pull/67), [#133](https://github.com/zowe/zlux-server-framework/pull/133), [#21](https://github.com/zowe/zlux-shared/pull/21))
+- Establish rules & recommendations for conformance ([#142](https://github.com/zowe/zlux/issues/142))
+- Launchbar menu of apps now has same context menu properties as pinned apps ([#140](https://github.com/zowe/zlux-app-manager/pull/140))
+- Properties App now shows the ID of the chosen plugin ([#140](https://github.com/zowe/zlux-app-manager/pull/140))
+- Added group permission for plugin access when installing via install script ([#125](https://github.com/zowe/zlux-server-framework/pull/125))
+- Updated URIBroker include new parameter for searching datasets with included trailing qualifiers ([#34](https://github.com/zowe/zlux-platform/pull/34), [#138](https://github.com/zowe/zlux-app-manager/pull/138))
+- App2App communication now allows you to target a specific app instance, as well as to request minimization or maximization ([#38](https://github.com/zowe/zlux-platform/pull/38), [#148](https://github.com/zowe/zlux-app-manager/pull/148))
+- Configuration Dataservice now can load plugin defaults from the plugin's own folder ([#129](https://github.com/zowe/zlux-server-framework/pull/129))
+- Configuration Dataservice can now support GET like HEAD ([#140](https://github.com/zowe/zlux-server-framework/pull/140))
+- Configuration Dataservice can now utilize binaries as opposed to JSON. This mode does not process the objects, just stores & retrieves. ([#130](https://github.com/zowe/zlux-server-framework/pull/130))
+- Added a notification menu, popup & API where messages can be sent by administrators to individual or all end users ([#36](https://github.com/zowe/zlux-platform/pull/36), [#144](https://github.com/zowe/zlux-app-manager/pull/144))
+- Doc: Configuration Dataservice Swagger document updated for new features ([#136](https://github.com/zowe/zlux-server-framework/pull/136))
+- Desktop now supports loading a custom wallpaper, and the launchbar & maximized window style has been changed to improve screen real estate ([#151](https://github.com/zowe/zlux-app-manager/pull/151))
+- The App Server configuration and log verbosity can now be viewed and updated on-the-fly via a REST API ([#66](https://github.com/zowe/zlux-app-server/pull/66), [#128](https://github.com/zowe/zlux-server-framework/pull/128))
+- The App Server environment parameters and log output can now be viewed via a REST API ([#66](https://github.com/zowe/zlux-app-server/pull/66), [#128](https://github.com/zowe/zlux-server-framework/pull/128))
+- The App Server can now have Application plugins added, removed, and upgraded on-the-fly via a REST API ([#137,](https://github.com/zowe/zlux-server-framework/pull/137) [#69](https://github.com/zowe/zlux-app-server/pull/69))
+- A dataservice can now import another import dataservice, as long as this chain eventually resolves to a non-import dataservice ([#139](https://github.com/zowe/zlux-server-framework/pull/139))
+- You can now open any Zowe App in its own browser tab by right clicking its icon and choosing "Open in new browser window" ([#149](https://github.com/zowe/zlux-app-manager/pull/149), [#150](https://github.com/zowe/zlux-app-manager/pull/150))
+- Icons improved for datasets that are migrated/archived ([#30](https://github.com/zowe/zlux-file-explorer/pull/30))
+- Support App2App to open a given dataset ([#87](https://github.com/zowe/zlux-editor/pull/87), [#35](https://github.com/zowe/zlux-file-explorer/pull/35))
+- Navigate the editor menu bar via keyboard ([#85](https://github.com/zowe/zlux-editor/pull/85))
+- Add keyboard shortcuts to open and close tabs ([#81](https://github.com/zowe/zlux-editor/pull/81))
+- Add loading indicator for dataset loading ([#34](https://github.com/zowe/zlux-file-explorer/pull/34))
+- Compress the terminals with gzip for improved initial load time, same as was done with the editor previously ([#22](https://github.com/zowe/tn3270-ng2/pull/22), [#23](https://github.com/zowe/vt-ng2/pull/23))
 
 The following bugs are fixed:
+- New directories/files from Unix file API would have no permissions ([#75](https://github.com/zowe/zowe-common-c/pull/75))
+- Properties App can now be reused when clicking property of a second app ([#140](https://github.com/zowe/zlux-app-manager/pull/140))
+- Logout did not clear dispatcher App instance tracking ([#32](https://github.com/zowe/zlux-platform/pull/32))
+- Iframe Apps were not gaining mouse focus correctly ([#37](https://github.com/zowe/zlux-platform/pull/37), [#145](https://github.com/zowe/zlux-app-manager/pull/145))
+- Remove placeholder swagger from swagger response when plugin-provided swagger is found ([#139](https://github.com/zowe/zlux-server-framework/pull/139))
+- ZSS Dataservices could fail due to incorrect impersonation environment variable setting (_BPX_SHAREAS) ([#68](https://github.com/zowe/zlux-app-server/pull/68))
+- Restore focus of text on window restore ([#84](https://github.com/zowe/zlux-editor/pull/84))
+- Reposition menu from menu bar on edge/firefox ([#82](https://github.com/zowe/zlux-editor/pull/82))
+- Could not open the SSH terminal in single window mode ([#21](https://github.com/zowe/vt-ng2/pull/21))
 
 ### What's new in Zowe CLI and Plug-ins
 
@@ -36,8 +75,7 @@ The following commands and enhancements are added:
 
 - You can append `--help-web` to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
   
-The following bugs are fixed:
-∑
+
 ## Zowe SMP/E Alpha (August 2019)
 
 A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment. 
