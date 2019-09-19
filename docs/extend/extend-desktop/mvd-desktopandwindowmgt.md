@@ -1,6 +1,6 @@
 # Zowe Desktop and window management
 
-The Zowe Desktop is a web component of Zowe, which is an implementation of `MVDWindowManagement`, the interface that is used to create a window manager.
+The Zowe&trade; Desktop is a web component of Zowe, which is an implementation of `MVDWindowManagement`, the interface that is used to create a window manager.
 
 The code for this software is in the `zlux-app-manager` repository.
 

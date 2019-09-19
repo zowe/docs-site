@@ -61,7 +61,7 @@ API ML uses the following authentication methods:
 
 ### Zowe API ML services
 
-The following range of service types apply to the Zowe API ML:
+The following range of service types apply to the Zowe&trade; API ML:
 
 - **Zowe API ML services**
 

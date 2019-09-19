@@ -1,6 +1,6 @@
 # Troubleshooting 
 
-To isolate and resolve Zowe problems, you can use the troubleshooting and support information in this section.
+To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and support information in this section.
 
 **Topics**
 - [Troubleshooting API Mediation Layer](troubleshoot-apiml.md)

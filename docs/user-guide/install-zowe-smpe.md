@@ -63,7 +63,7 @@ The Program Directory contains the following sections:
 
 ### Zowe description
 
-Zowe is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
+Zowe&trade; is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
 
 ### Zowe FMIDs
 

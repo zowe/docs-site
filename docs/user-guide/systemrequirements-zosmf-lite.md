@@ -40,7 +40,7 @@ and administration of your mainframe z/OS systems.
 By following the steps in this guide, you can quickly enable z/OSMF on your z/OS
 system. This simplified approach to set-up, known as "z/OSMF Lite", requires
 only a minimal amount of z/OS customization, but provides the key functions that
-are required by many exploiters, such as the open mainframe project (Zowe). 
+are required by many exploiters, such as the open mainframe project (Zowe&trade;). 
 
 A z/OSMF Lite configuration is applicable to any future expansions you make to
 z/OSMF, such as adding more optional services and plug-ins.

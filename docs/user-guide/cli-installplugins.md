@@ -1,6 +1,6 @@
 # Installing Zowe CLI plug-ins
 
-Use commands in the `plugins` command group to install and manage Zowe CLI plug-ins.
+Use commands in the `plugins` command group to install and manage Zowe&trade; CLI plug-ins.
 
 **Important!** Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 

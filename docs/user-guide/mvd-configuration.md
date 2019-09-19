@@ -1,5 +1,5 @@
 # Zowe Application Framework configuration
-After you install Zowe, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+After you install Zowe&trade;, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
 
 ## Configuring the framework as a Mediation Layer client
 For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.

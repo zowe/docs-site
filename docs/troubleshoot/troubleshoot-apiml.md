@@ -28,7 +28,7 @@ its performance and create large log files that consume a large volume of disk s
     -Dspring.profiles.include=debug \
     ```
 
-4. Restart Zowe.
+4. Restart Zowe&trade;.
 
     You have enabled the debug mode.
 

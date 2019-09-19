@@ -7,7 +7,7 @@ The profile definition is placed in the `imperative.ts` file.
 from a secure credential manager and retain host/port information (so that you can easily swap to different servers)
 from the CLI).
 
-By default, if your plug-in is installed into Zowe CLI that contains a profile definition like this, commands will automatically 
+By default, if your plug-in is installed into Zowe&trade; CLI that contains a profile definition like this, commands will automatically 
 be created under `zowe profiles ...` to create, validate, set default, list, etc... for your profile.
 
 ```typescript
