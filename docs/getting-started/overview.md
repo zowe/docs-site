@@ -4,6 +4,8 @@ Zowe&trade; is an open source project created to host technologies that benefit 
 
 ## Zowe Demo Video 
 
+Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick demo of Zowe.
+
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/NX20ZMRoTtk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Component Overview
@@ -15,7 +17,7 @@ Zowe consists of the following components:
 A web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function.  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services.
 
 <details>
-<summary> Click for more information </summary>
+<summary> Learn more </summary>
 
 The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. The Zowe Application Framework contains a web UI that has the following features:
 
@@ -48,7 +50,7 @@ The Zowe Application Framework consists of the following components:
 Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
 <details>
-<summary> Click for more information </summary>
+<summary> Learn more </summary>
 
 Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
 
@@ -73,7 +75,7 @@ As a deployment architecture, the z/OS Services are running as microservices wit
 Zowe CLI is a command-line interface that lets application developers interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets application developers use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. It provides a set of utilities and services for application developers that want to become efficient in supporting and building z/OS applications quickly.
 
 <details>
-<summary> Click for more information </summary>
+<summary> Learn more </summary>
 
 Zowe CLI provides the following benefits:
 
@@ -117,7 +119,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for Single Sign On (SSO).
 
 <details>
-<summary> Click for more information </summary>
+<summary> Learn more </summary>
 
 The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer consists of three components: the Gateway, the Discovery Service, and the Catalog. The Gateway provides secure communication across loosely coupled API services. The Discovery Service enables you to determine the location and status of service instances running inside the API ML ecosystem. The Catalog provides an easy-to-use interface to view all discovered services, their associated APIs, and Swagger documentation in a user-friendly manner. 
 

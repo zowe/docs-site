@@ -27,7 +27,7 @@ The following bugs are fixed:
 
 The following features and enhancements are added:
 - Adds dynamic logging functionality for plugins ([#60](https://github.com/zowe/zss/pull/60), [#63](https://github.com/zowe/zowe-common-c/pull/63))
-- Top Secret updates to the security lookup API ([#74,](https://github.com/zowe/zowe-common-c/pull/74)[#71,](https://github.com/zowe/zss/pull/71)[#72](https://github.com/zowe/zss/pull/72))
+- Top Secret updates to the security lookup API ([#71](https://github.com/zowe/zss/pull/71), [#72](https://github.com/zowe/zss/pull/72), [#74](https://github.com/zowe/zowe-common-c/pull/74))
 - Accept basic auth header as an option for login ([#80](https://github.com/zowe/zowe-common-c/pull/80))
 - JSON parsing enhancements for UTF8, and printing to buffer ([#67](https://github.com/zowe/zowe-common-c/pull/67))
 - Optimization, memory bugfix and improved tracing for authentication ([#72](https://github.com/zowe/zowe-common-c/pull/72))

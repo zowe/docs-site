@@ -4,5 +4,4 @@ Zowe&trade; is a collection of components that together form a framework that al
 
 The following diagram depicts the high level Zowe architecture.
 
-
-<img src="../images/common/zowe-architecture.png" alt="Zowe Architecture Diagram" width="1400px"/> 
+<img src="../images/common/zowe-architecture.png" alt="Zowe Architecture Diagram" width="600px"/> 

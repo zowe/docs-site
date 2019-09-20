@@ -382,7 +382,7 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
 
 If the user ID and password or pass phrase are valid, you are authenticated to z/OSMF. The Welcome page of IBM z/OS Management Facility tab opens in the main area. At the top right of the screen, Welcome *<your_user_ID>* is displayed. In the UI, only the options you are allowed to use are displayed.
 
-![](../images/zosmf/Welcome.png)
+<img src="../images/zosmf/Welcome.png" alt="Welcome" width="400px"/> 
 
 You have successfully configured the z/OSMF nucleus.
 
