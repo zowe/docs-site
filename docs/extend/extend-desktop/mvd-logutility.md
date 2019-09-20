@@ -44,6 +44,44 @@ See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.
 
 (Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
+## Using log message IDs
+To make technical support for your application easier, create IDs for common log messages and use substitution to generate them. When you use IDs, people fielding support calls can identify and solve problems more quickly. IDs are particularly helpful if your application is translated, because it avoids users having to explain problems using language that the tech support person might not understand.
+
+To use log message IDs, take the following steps:
+
+1. Depending on how your application is structured, create message files in the following locations:
+   - Web log messages: `\src\assets\i18n\log\messages_{language}.json`
+   - App server log messages: `\lib\assets\i18n\log\messages_{language}.json`
+
+2. In the files, create ID-message pairs using the following format:
+
+   ```
+   { "id1": "value1", "id2": "value2" [...] }
+   ```
+
+   Where "id#" is the message ID and "value#" is the text. For example:
+
+    ```
+    { "A001": "Application created.", "A002": "Application deleted." [...] }
+    ```
+
+3. Reference the IDs in your code, for example:
+
+   ```
+   this.log.info("A0001")
+   ```
+
+   Which compiles to:
+
+   ```
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Application created.
+   ```
+
+   Or in Russian:
+
+   ```
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Приложение создано.
+   ```
 
 ## Logger API
 
