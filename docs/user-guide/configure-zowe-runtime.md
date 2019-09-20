@@ -386,7 +386,7 @@ The Zowe Cross Memory Service is a started task angel that runs an authorized se
 
 The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result.
 - Manually
-- Use the script  `/xmem-server/zowe-install-apf-server.sh` that reads configuration parameters from the file `/xmem-server/zowe/zowe-install-apf-server.yaml`
+- Use the script  `xmem-server/zowe-install-apf-server.sh` that reads configuration parameters from the file `xmem-server/zowe-install-apf-server.yaml`
 
 You can choose which method to use depending on your familiarity with z/OS configuration steps that are required for the manual path, together with the authority and privileges of your user ID if you choose to run the automated path.
 
