@@ -21,7 +21,12 @@ Zowe Version 1.5.0 and later releases include the following enhancements, releas
 
 The following features and enhancements are added:
 
+- The Discovery Service UI now enables the user to log in using mainframe credentials or by providing a valid client certificate.
+- REST endpoints now accept basic authentication by providing a username and password.
+
 The following bugs are fixed:
+
+- A defect has been resolved where previously an authentication message was thrown in the service detail page when the swagger JSON document link was clicked requiring the user to provide mainframe credentials. REST endpoints now accept basic authentication.
 
 ### What's new in the Zowe App Server
 
