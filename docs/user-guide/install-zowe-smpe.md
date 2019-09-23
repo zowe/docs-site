@@ -320,9 +320,9 @@ z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
 
 ### FMIDs deleted
 
-Installing Zowe might result in the deletion of other FMIDs. To see which FMIDs will be deleted, examine the ++VER statement in the SMPMCS of the product.
+Installing Zowe might result in the deletion of other FMIDs. 
 
-If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
+To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
 
 **Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
 
