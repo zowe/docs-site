@@ -77,7 +77,7 @@ To use log message IDs, take the following steps:
    DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Application created.
    ```
 
-   Or in Russian:
+   Or in another supported language, such as Russian:
 
    ```
    DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Приложение создано.
