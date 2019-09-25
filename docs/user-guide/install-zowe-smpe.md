@@ -717,7 +717,11 @@ Uncomment the `VOL=SER=&...` control statements and refer to the comments at the
 
 If you are using an existing CSI, do not run the sample job ZWE1SMPE.
 
-If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
+If you choose to create a new SMP/E environment for this install, a sample job is provided or you may choose to use your own JCL. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
+
+**Note:** If you want to use the default of letting your Automatic Class Selection (ACS) routines decide which volume to use, comment out the following line in the sample job ZWE1SMPE.
+
+```// SET CSIVOL=#csivol```
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
