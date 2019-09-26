@@ -383,7 +383,7 @@ You will receive 2 files on your desktop.
 
      The SMP/E input data sets to install Zowe are provided as compressed files in AZWE001.pax.Z. This pax archive file holds the SMP/E MCS and RELFILEs.
 
-  - **AZWE001.readme.txt (EBCDIC)**
+  - **AZWE001.readme.txt (text)**
 
      The README file AZWE001.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
 
