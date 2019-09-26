@@ -23,7 +23,7 @@ npm install @brightside/core@lts-incremental -g
 ### Installing CLI plug-ins 
 
 ```
-zowe plugins install @brightside/cics@lts-incremental
+zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
 ```
 
 The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
