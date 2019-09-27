@@ -27,7 +27,7 @@ Follow these steps:
 1. `cd` to your `zowe-tutorial` folder.
 2. `git clone https://github.com/zowe/zowe-cli-sample-plugin`
 3. `cd` to your `zowe-cli-sample-plugin` folder.
-4. Switch your local branch to `lts-incremental`
+4. `git checkout lts-incremental`
 5. `npm install`
 6. `npm run build`
 
