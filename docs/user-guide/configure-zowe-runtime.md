@@ -242,7 +242,7 @@ You can use an existing certificate with the following procedure.
 
 **Follow these steps:**
 
-1. Update the value of `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-configure.sh` file. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only the PKCS12 keystore with the password set to `password` are supported.
+1. Update the value of `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only the PKCS12 keystore with the password set to `password` are supported.
 
 2. Update the value of `externalCertificateAlias` to the alias of the server certificate in the keystore.
 
