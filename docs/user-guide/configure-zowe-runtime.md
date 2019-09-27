@@ -48,9 +48,9 @@ After you install Zowe through either the convenience build by running the `zowe
 
 ## Configuring the Zowe runtime directory
 
-You configure the Zowe runtime directory by running the script `/scripts/zowe-configure.sh`.
+You configure the Zowe runtime directory by running the script `/scripts/configure/zowe-configure.sh`.
 
-Before you run the script `/scripts/zowe-configure.sh`, check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables) in the `/scripts/zowe-install.yaml` file, as these are used to configure Zowe during execution of `zowe-configure.sh`.
+Before you run the script `zowe-configure.sh`, check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables) in the `/scripts/configure/zowe-install.yaml` file, as these are used to configure Zowe during execution of the script `zowe-configure.sh`.
 
 For the convenience build, the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the `zowe-install.yaml`.  
 
@@ -75,9 +75,10 @@ You can create, edit, or delete the `.zowe_profile` file (as needed) before each
 - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `.zowe_profile` file in the current user's home directory.  
 - Ensure that the value of the `ZOWE_IPADDRESS` variable is set correctly for your system.  This should be the IP address of your z/OS system which is externally accessible from clients who want to use Zowe.  This is particularly important for zD&T and cloud systems, where `ping` or `dig` on z/OS would return a different IP address from the one that external clients would use to access z/OS.   
+
 ### Configuration variables
 
-The file `/scripts/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
+The file `/scripts/configure/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
 
 #### Address space name
 
@@ -113,14 +114,14 @@ You should use the prefix for the main started task (+ number).
   prefix=ZOWE
   ```
 
-  in the `/config/zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
+  in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
 
   ```
   ZOWEAG1
   ```
 #### Port allocations
 
-The port values are defined in `/config/zowe-configure.yaml`.  
+The port values are defined in the `zowe-install.yaml` file.  
 
 - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service; API Gateway, API Discovery and API Catalog.  
 - z/OS Services has HTTPS ports for each of its micro-services; jobs and the data sets.
@@ -172,7 +173,7 @@ To determine which ports are not available, follow these steps:
    TSO NETSTAT PORTLIST
    ```
 
-The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.
+The `zowe-install.yaml` file also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.
 
@@ -187,7 +188,7 @@ The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 2
 
 When the Zowe runtime is launched, it is run under a z/OS started task (STC). The PROCLIB can be automatically created if desired, for example if the install is being run as part of a pipeline. Alternatively，you can disable auto-creation by commenting out the `zowe-server-proclib:` block.
 
-The `/config/zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
+The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
 
 **Example:**
 
@@ -386,7 +387,7 @@ The Zowe Cross Memory Service is a started task angel that runs an authorized se
 
 The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result.
 - Manually
-- Use the script  `xmem-server/zowe-install-apf-server.sh` that reads configuration parameters from the file `xmem-server/zowe-install-apf-server.yaml`
+- Use the script  `/xmem-server/zowe-install-apf-server.sh` that reads configuration parameters from the file `/xmem-server/zowe-install-apf-server.yaml`
 
 You can choose which method to use depending on your familiarity with z/OS configuration steps that are required for the manual path, together with the authority and privileges of your user ID if you choose to run the automated path.
 
