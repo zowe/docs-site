@@ -100,7 +100,7 @@
         }, 10000);
       };
       if (url) {
-        var m = url.match(/^https?:\/\/([^\/]+\/)([^\/]+\/)(.*)$/);
+        var m = url.match(/^https?:\/\/([^\/]+\/)([^\/]+)(.*)$/);
         if (m) {
           need = false;
           if (m[1] !== 'docs.zowe.org/') {
@@ -112,7 +112,7 @@
           } else {
             m[3] = m[2] + m[3];
           }
-          if (m[3].substr(0, 7) === 'latest/') {
+          if (m[3].substr(0, 7) === 'latest/' || m[3] == 'latest') {
             need = true;
             newUrl += 'stable/' + m[3].substr(7);
           } else if (m[3].substr(0, 7) !== 'stable/' &&
