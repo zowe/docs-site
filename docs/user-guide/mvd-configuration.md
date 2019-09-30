@@ -654,24 +654,24 @@ You can use an API to retrieve and edit Zowe Application Server and ZSS server c
 
 The API returns the following information in a JSON response:
 
-| API                                                | Description                                                  |
-| -------------------------------------------------- | ------------------------------------------------------------ |
-| /server                                            | Returns a list of accessible server endpoints for the Zowe Application Server. |
-| /server/config                                     | Returns the Zowe Application Server configuration from the `zluxserver.json` file. |
-| /server/log                                        | Returns the contents of the Zowe Application Server log file. |
-| /server/loglevels                                  | Returns the verbosity levels set in the Zowe Application Server logger. |
-| /server/environment                                | Returns Zowe Application Server environment information, such as the operating system version, node server version, and process ID. |
-| /server/reload                                     | Reloads the Zowe Application Server. Only available in cluster mode. |
-| /server/agent                                      | Returns a list of accessible server endpoints for the ZSS server. |
-| /server/agent/config                               | Returns the ZSS server configuration from the `zluxserver.json` file. |
-| /server/agent/log                                  | Returns the contents of the ZSS log file.                    |
-| /server/agent/loglevels                            | Returns the verbosity levels of the ZSS logger.              |
-| /server/agent/environment                          | Returns ZSS environment information.                         |
-| /server/config/attrib                              | Specify values for server configuration attributes in the `zluxserver.json` file. You can change a subset of configuration values. |
-| /server/logLevels/name/:componentName/level/:level | Specify the logger that you are using and a verbosity level. |
-| /plugins (GET)                                     | Returns a list of all plugins and their dataservices.        |
-| /plugins (PUT)                                     | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode. |
-| /plugins/:id (DELETE)                              | Deletes a plugin. Only available in cluster mode.            |
+| API                                                       | Description                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------ |
+| /server (GET)                                             | Returns a list of accessible server endpoints for the Zowe Application Server. |
+| /server/config (GET)                                      | Returns the Zowe Application Server configuration from the `zluxserver.json` file. |
+| /server/log (GET)                                         | Returns the contents of the Zowe Application Server log file. |
+| /server/loglevels (GET)                                   | Returns the verbosity levels set in the Zowe Application Server logger. |
+| /server/environment (GET)                                 | Returns Zowe Application Server environment information, such as the operating system version, node server version, and process ID. |
+| /server/reload (GET)                                      | Reloads the Zowe Application Server. Only available in cluster mode. |
+| /server/agent (GET)                                       | Returns a list of accessible server endpoints for the ZSS server. |
+| /server/agent/config (GET)                                | Returns the ZSS server configuration from the `zluxserver.json` file. |
+| /server/agent/log (GET)                                   | Returns the contents of the ZSS log file.                    |
+| /server/agent/loglevels (GET)                             | Returns the verbosity levels of the ZSS logger.              |
+| /server/agent/environment (GET)                           | Returns ZSS environment information.                         |
+| /server/config/:attrib (POST)                             | Specify values for server configuration attributes in the `zluxserver.json` file. You can change a subset of configuration values. |
+| /server/logLevels/name/:componentName/level/:level (POST) | Specify the logger that you are using and a verbosity level. |
+| /plugins (GET)                                            | Returns a list of all plugins and their dataservices.        |
+| /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode. |
+| /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode.            |
 
 Swagger API documentation is provided in the `/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/. 
 
