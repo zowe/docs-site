@@ -16,13 +16,14 @@ APIML uses a customized infrastructure for the messages format (both REST API re
 *Example:* 
 ```yaml
 messages:
-    - key: org.zowe.sample.apiservice.greeting.empty
-      number: ZWEASA001
-      type: ERROR
-      text: "The provided name is empty. Provide a %s that is not empty."
+    - key: org.zowe.sample.{TYPE}.apiservice.greeting.empty
+           number: ZWEASA001
+           type: ERROR
+           text: "The provided name %s is empty."
   
 ```
 
+Note: `org.zowe.sample.{TYPE}.apiservice.greeting.empty` is recommended way to define message key. {TYPE} can be api or log keyword.
 
 ## Message Service
 
@@ -40,15 +41,27 @@ To create the message, there is a method called `Message createMessage(String ke
 
 *Example:* 
 ```java
-Message message = messageService.createMessage('org.zowe.sample.apiservice.greeting.empty', 'apiml');
+Message message = messageService.createMessage("org.zowe.sample.{TYPE}.apiservice.greeting.empty" "apiml");
 ```
 
 The created message can be converted according its type (REST API response or log message).
 
 1. For REST API response:
 
-    - `mapToView` - returns UI model as a list of API message. It can be used for Rest APIS error messages
-    - `mapToApiMessage` - returns UI model as a single API message.
+    - `mapToView` - returns UI model as a list of API message. It can be used for Rest APIS error messages. **OUTPUT:**
+    ```json
+        {
+            "messages": [
+              {
+                        "messageType": "ERROR",
+                        "messageNumber": "ZWEASA001",
+                        "messageContent": "The provided name 'test' is empty.",
+                        "messageKey": "org.zowe.sample.api.apiservice.greeting.empty"
+                   }
+            ]
+        }
+    ```
+    - `mapToApiMessage` - returns UI model as a single API message. OUTPUT
 
 2. For log messages:
     - `mapToLogMessage` - returns log message as a text. Currently it returns same text as mapToReadableText
@@ -58,51 +71,43 @@ The created message can be converted according its type (REST API response or lo
 
 The `com.ca.mfaas.message.log.ApimLogger` component allows to control messages though the Message Service component.
 
-If a class require the the Message Service functionality (reading and creation of the message), the `com.ca.mfaas.message.log.ApimLogger` component can be inject into the class using an injector called `com.ca.mfaas.product.logging.apimlLogInjector`.
-It detects whether any class has a field with an annotation called `com.ca.mfaas.product.logging.annotations.InjectApimlLogger`.
-
-The code sample below shows how to inject che `com.ca.mfaas.message.log.ApimLogger` component and enable the Message Service functionality for log messages into the generic class.
+```yaml
+messages:
+    - key: org.zowe.sample.log.apiservice.greeting.empty
+           number: ZWEASA001
+           type: DEBUG
+           text: "The provided name %s is empty."
+  
+```
 
 *Example:* 
 
 ```java
-@EnableApimlLogger
-public class DiscoverableClientSampleApplication implements ApplicationListener<ApplicationReadyEvent> {
-```
+package com.ca.mfaas.client.configuration;
 
-```java
-package com.ca.mfaas.client.ws;
-
+import com.ca.mfaas.message.core.MessageService;
 import com.ca.mfaas.message.log.ApimlLogger;
-import com.ca.mfaas.product.logging.annotations.InjectApimlLogger;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
-@Component
-@SuppressWarnings("squid:S1075")
-public class DiscoverableClientWebSocketConfigurer implements WebSocketConfigurer {
+public class SampleClass {
 
-    @InjectApimlLogger
-    private ApimlLogger logger = ApimlLogger.empty();
+    private final ApimlLogger logger;
 
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        String webSocketPath = "/ws/uppercase";
+    public SampleClass(MessageService messageService) {
+        logger = ApimlLogger.of(SampleClass.class, messageService);
+    }
 
-        logger.log("com.ca.mfaas.log.sampleservice.registeringWebSocket", webSocketPath);
-
-        registry.addHandler(new WebSocketServerHandler(), webSocketPath).setAllowedOrigins("*");
-
-        webSocketPath = "/ws/header";
-        logger.log("com.ca.mfaas.log.sampleservice.registeringWebSocket", webSocketPath);
-
-        registry.addHandler(new HeaderSocketServerHandler(), webSocketPath);
+    public void process() {
+        logger.log("org.zowe.sample.log.apiservice.greeting.empty", "apiml");
     }
 }
 
 ```
+
+**OUTPUT:**
+```shell
+ERROR (c.c.m.c.c.SampleClass) CSR0002E The provided name 'apiml' is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
+```
+
 
 
 
