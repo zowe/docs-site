@@ -21,9 +21,10 @@ API ML uses a customizable infrastructure to format both REST API error messages
 
 - Message `text` - a description of the issue
 
-The following example shows the message definition
+The following example shows the message definition.
 
 **Example:**  
+
 ```yaml
 messages:
     - key: org.zowe.sample.apiservice.{TYPE}.greeting.empty
@@ -43,9 +44,10 @@ Use the following process to create a message.
 
 **Follow these steps:**
 
-1. Load messages from a `yaml` file. 
+1. Load messages from the `yaml` file. 
 
 **Example:**
+
     ```java
     MessageService messageService = new YamlMessageService();
     messageService.loadMessages("/api-messages.yml");
@@ -54,6 +56,7 @@ Use the following process to create a message.
 2. Use the `Message createMessage(String key, Object... parameters);` method to create a message. 
 
 **Example:**
+
     ```java
     Message message = messageService.createMessage("org.zowe.sample.apiservice.{TYPE}.greeting.empty", "test");
     ```
@@ -70,6 +73,7 @@ When you map a REST API response,  use the following methods:
 The following example is a result of using the `mapToView` method. 
 
 **Example:**
+
 ```JSON
 {
 "messages": [
@@ -85,6 +89,7 @@ The following example is a result of using the `mapToView` method.
 The following example is the result of using the `mapToApiMessage` method.
 
 **Example:**
+
 ```JSON
 {
   "messageKey": "org.zowe.sample.apiservice.{TYPE}.greeting.empty",
@@ -101,6 +106,7 @@ The `com.ca.mfaas.message.log.ApimLogger` component controls messages through th
 The following example uses the `log` message definition in a `yaml` file.
 
 **Example:** 
+
 ```yaml
 messages:
     - key: org.zowe.sample.apiservice.log.greeting.empty
@@ -113,13 +119,15 @@ When you map a log message, use `mapToLogMessage` to return a log message as tex
 The following example is the output of the `mapToLogMessage`.
 
 **Example:**
+
 ```
 ZWEASA001D The provided ‘test’ name is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
 ```
 
-Use the `ApimlLogger` to log messages, which are defined in the yaml file.
+Use the `ApimlLogger` to log messages which are defined in the yaml file.
 
 **Example:**
+
 ```java
 package com.ca.mfaas.client.configuration;
 
@@ -146,6 +154,7 @@ public class SampleClass {
 The following example shows the output of a successful `ApimlLogger` usage.
 
 **Example:**
+
 ```shell
 DEBUG (c.c.m.c.c.SampleClass) ZWEASA001D The provided 'test' name  is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
 ```
