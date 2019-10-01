@@ -11,16 +11,17 @@ The API ML Message Service component unifies and stores REST API error messages 
 
 API ML uses a customizable infrastructure to format both REST API error messages and log messages. `yaml` files make it possible to centralize both API error messages and log messages. Messages have the following definitions:
 
-- Message `number` - a typical mainframe message ID (excluding the severity code)
 - Message `key` - a unique ID in the form of a dot-delimited string that describes the reason for the message. The `key` enables the UI or the console to show a meaningful and localized message. 
 
     **Tips:** 
     
-    - We recommend to use the format `org.zowe.sample.apiservice.{TYPE}.greeting.empty` to define the message key. `{TYPE}` can be the api or log keyword. 
+    - We recommend using the format `org.zowe.sample.apiservice.{TYPE}.greeting.empty` to define the message key. `{TYPE}` can be the api or log keyword. 
 
-    - Use the message `key` and not the message `number`. The message `number` makes the code less readable, and increases the possibilty of errors when renumbering values inside the `number`.
+    - Use the message `key` and not the message `number`. The message `number` makes the code less readable, and increases the possibility of errors when renumbering values inside the `number`.
 
-- Message `type` - There are two Massage types: REST API error messages and Log messages.
+- Message `number` - a typical mainframe message ID (excluding the severity code)
+
+- Message `type` - There are two Massage types:
     - REST API error messages: `ERROR`
     - Log messages: `ERROR`, `WARNING`, `INFO`, `DEBUG`, or `TRACE`
 
@@ -73,7 +74,7 @@ You can map the `Message` either to a REST API response or to a log message.
 
 When you map a REST API response,  use the following methods:
 
-- `mapToView` - returns a UI model as a list of API Message, and can be used for Rest APIS error messages
+- `mapToView` - returns a UI model as a list of API Message, and can be used for Rest API error messages
 - `mapToApiMessage` - returns a UI model as a single API Message
 
 The following example is a result of using the `mapToView` method. 
