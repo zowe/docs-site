@@ -243,7 +243,16 @@ public class MfaasController {
     ```
     ```
 
-3. HeartBeat
+3. Sending a heartbeat to API Meditation Layer Discovery Service
+
+After successful registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat for certain amount of time it will remove the service instance from the registry.
+
+Note: We recommend that the interval for the heartbeat is no longer than 30 seconds.
+
+Use the PUT HTTP method in the following format to tell the Discovery Service that your service is available:
+
+https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}
+
 
 ## Add configuration for Discovery client
 After you add API-ML integration endpoints, you are ready to add service configuration for Discovery client.
