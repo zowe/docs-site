@@ -1,34 +1,29 @@
 # API Mediation Layer Message Service Component
-<!-- TODO. Not the final version of title -->
 
-<!-- TODO. What is the message services in API ML? Who uses it? and Why?>
-What is the problem of definition redundancy? Earlier, users needed to provide messages either as a REST API response in case of errors, or as log messages {as what?} {and to achieve what? -->
-
-API ML Message Service component unifies and stores REST API error message and log messages in a single file. The Message Service component enables users to mitigate the problem of the message definition redundancy. Having the component optimize development process.
+The API ML Message Service component unifies and stores REST API error messages and log messages in a single file. The Message Service component enables users to mitigate the problem of message definition redundancy which helps to optimize the development process.
 
 ## Message Definition
 
-APIML uses a customized infrastructure to format both the REST API error messages and log messages. `yaml` files allow to centralize both the error and log messages. The messages inside a `yaml` file contain:
+API ML uses a customizable infrastructure to format both the REST API error messages and log messages. `yaml` files make it possible to centralize both API error messages and log messages. The messages have the following definitions:
 
-1. Message `number` - typical mainframe message ID (excluding the severity code). 
-2. Message `key` - a unique ID in a form of a dot delimited string that describes the reason for the message. The `key` enables the UI or the console to show a meaningful and localized message. 
+- Message `number` - a typical mainframe message ID (excluding the severity code). 
+- Message `key` - a unique ID in the form of a dot-delimited string that describes the reason for the message. The `key` enables the UI or the console to show a meaningful and localized message. 
 
     **Tips:** 
     
-    - We recommend to use `org.zowe.sample.apiservice.{TYPE}.greeting.empty` as a format to define the message key. `{TYPE}` can be api   or log keyword. 
+    - We recommend to use the format `org.zowe.sample.apiservice.{TYPE}.greeting.empty` to define the message key. `{TYPE}` can be the api or log keyword. 
 
-    - Avoid using the the message 'number' instead of the message 'key', because it might make code less readable, and make the renumbering of values inside the `number` difficult and error-prone.
-    <!-- TODO. Check with other writer. -->
+    - Use the message `key` and not the message `number`. The message `number` makes the code less readable, and increases the possibilty of errors when the renumbering of values inside the `number`.
 
-3. Message `type` that represents the type of the message in the following cases:
-    - For log messages:
-    (`ERROR`, `WARNING`, `INFO`, `DEBUG`, or `TRACE`)
-    - For REST API error messages:
-    (`ERROR`)
-<!-- TODO. Severity of what? How can 'type' represent the severity level? Severity is a different characteristic.-->
-4. Message `text` that describes an issue
+- Message `type` - There are two Massage types: REST API error messages and Log messages.
+    - REST API error messages: `ERROR`
+    - Log messages: `ERROR`, `WARNING`, `INFO`, `DEBUG`, or `TRACE`
 
-**Example: The message definition** 
+- Message `text` - a description of the issue
+
+The following example shows the message definition
+
+**Example:**  
 ```yaml
 messages:
     - key: org.zowe.sample.apiservice.{TYPE}.greeting.empty
@@ -37,50 +32,41 @@ messages:
       text: "The provided '%s' name is empty."
 ```
 
-<!-- ## {Some big heading}
-This chapter unifies two following sections:
-- Creating the message
-- Mapping the message -->
+## Creating a message
 
-### Creating a message
+Use the following classes when you create a message:
 
+- `com.ca.mfaas.message.core.MessageService` - lets you create a message from a file.
+- `com.ca.mfaas.message.yaml.YamlMessageService` - implements `com.ca.mfaas.message.core.MessageService` so that `com.ca.mfaas.message.yaml.YamlMessageService` can read message information from a `yaml` file, and create a message with message parameters.
 
-
-When you create a message, you'll have to consider/use the following classes:
-
-- `com.ca.mfaas.message.core.MessageService` - lets you create a message from the centralized file.
-- `com.ca.mfaas.message.yaml.YamlMessageService` - implements `com.ca.mfaas.message.core.MessageService` so that `com.ca.mfaas.message.yaml.YamlMessageService` can read message information from a yaml file, and create a message with message parameters that are passed by users. 
-
-Create a message.
+Use the follwoing process to create a message.
 
 **Follow these steps:**
 
-1. Load messages from a `yaml` file. For example:
+1. Load messages from a `yaml` file. 
+**Example:**
     ```java
     MessageService messageService = new YamlMessageService();
     messageService.loadMessages("/api-messages.yml");
     messageService.loadMessages("/log-messages.yml");
     ```
-2. Use the `Message createMessage(String key, Object... parameters);` method to create a message. For example:
+2. Use the `Message createMessage(String key, Object... parameters);` method to create a message. 
+**Example:**
     ```java
     Message message = messageService.createMessage("org.zowe.sample.apiservice.{TYPE}.greeting.empty", "test");
     ```
 
----
+## Mapping the message
 
-<!-- TODO. These 2 paragraph are original. -->
-
-### Mapping the message
-
-You can map `Message` either to a REST API response or to a log message. 
+You can map the `Message` either to a REST API response or to a log message. 
 
 When you map a REST API response,  use the following methods:
 
 - `mapToView` - returns a UI model as a list of API Message, and can be used for Rest APIS error messages.
 - `mapToApiMessage` - returns a UI model as a single API Message.
 
-The result of the `mapToView` looks like:
-
+The following example is a result of using the `mapToView` method. 
+**Example:**
 ```JSON
 {
 "messages": [
@@ -93,9 +79,8 @@ The result of the `mapToView` looks like:
   ]
 }
 ```
-
-The result of the `mapToApiMessage` looks like:
-
+The following example is the result of using the `mapToApiMessage` method.
+**Example:**
 ```JSON
 {
   "messageKey": "org.zowe.sample.apiservice.{TYPE}.greeting.empty",
@@ -105,20 +90,29 @@ The result of the `mapToApiMessage` looks like:
 }
 ```
 
-## API ML Logger
+### API ML Logger 
 
+The `com.ca.mfaas.message.log.ApimLogger` component controls messages through the Message Service component. 
 
-The `com.ca.mfaas.message.log.ApimLogger` component controls messages through the Message Service component. {add another sentence - the meta is too short}
-
+The following example uses the `log` message definition in a `yaml` file.
+**Example:** 
 ```yaml
 messages:
-    - key: org.zowe.sample.log.apiservice.greeting.empty
+    - key: org.zowe.sample.apiservice.log.greeting.empty
       number: ZWEASA001
       type: DEBUG
-      text: "The provided name %s is empty."
+      text: "The provided '%s' name is empty."
 ```
 
-*Example:*
+When you map a log message, use `mapToLogMessage` to return a log message as text.
+The following example is the output of the `mapToLogMessage`.
+**Example:**
+```
+ZWEASA001D The provided ‘test’ name is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
+```
+
+Use the `ApimlLogger` to log messages, which are defined in the yaml file.
+**Example:**
 ```java
 package com.ca.mfaas.client.configuration;
 
@@ -135,22 +129,15 @@ public class SampleClass {
    }
 
    public void process() {
-       logger.log(“org.zowe.sample.log.apiservice.greeting.empty”, “test”);
+       logger.log(“org.zowe.sample.apiservice.log.greeting.empty”, “test”);
 
    }
 
 }
 ```
 
-**OUTPUT:**
+The following example shows the output of the successful `ApimlLogger` usage.
+**Example:**
 ```shell
 DEBUG (c.c.m.c.c.SampleClass) ZWEASA001D The provided 'test' name  is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
 ```
-
-When you map a log message, use `mapToLogMessage` that returns a log message as text.
-
-The result of the `mapToLogMessage` looks like:
-```
-ZWEASA001E The provided ‘test’ name is empty. {43abb594-3415-4ed5-a0b5-23e306a91124}
-```
-<!-- TODO. Maybe we should delete the part about the `mapToLogMessage` message -->
