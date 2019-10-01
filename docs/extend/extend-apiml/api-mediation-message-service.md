@@ -46,16 +46,17 @@ Use the following process to create a message.
 
 1. Load messages from the `yaml` file. 
 
-**Example:**
+   **Example:**
 
     ```java
     MessageService messageService = new YamlMessageService();
     messageService.loadMessages("/api-messages.yml");
     messageService.loadMessages("/log-messages.yml");
     ```
+    
 2. Use the `Message createMessage(String key, Object... parameters);` method to create a message. 
 
-**Example:**
+   **Example:**
 
     ```java
     Message message = messageService.createMessage("org.zowe.sample.apiservice.{TYPE}.greeting.empty", "test");
