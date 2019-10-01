@@ -1,42 +1,60 @@
 # Java REST APIs service without Spring Boot
 
-This article is a part of a guides series, whcih outline REST API services onboarding process on (Zowe) API-ML (API-ML for short).
+This article is a part of a guides series, whcih outline REST API services onboarding process on ZOWE API Mediation Layer (ZOWE API-ML or just API-ML for short). 
+
+ZOWE API-ML is a lightweight API management system based on following Netflix components:
+* Eureka - a discovery service used for services registration and discovery
+* Zuul reverse proxy / API Gateway
 
 In order to onboard a REST style <font color='green'>service</font> on API-ML, it is necessary to:
-*  provide service discovery information including base URI, home page, status page and health check end-point
-* provide routing metadata of all service end-points for the API ML Gateway
+*  provide service discovery information e.g. base URI, home page, status page and health check end-point, etc.
+* provide routing metadata of service end-points - used by API-ML Gateway to route HTTP requests
 * provide service description and API documentation metadata for the API Catalog
-* register the service with (Zowe) Discovery Service instance using all the above 
+* register the service with Eureka discovery service instance using all the above 
 
-All the actions above can be achieved by preparing the corresponding data and calling directly a REST end-point of Eureka Discovery service. An other option is to use <font color='green'>(one of)</font> our API-ML enabler library/ies which make this task significantly easier. 
+While all the tasks above can be done by preparing corresponding configuration data and calling directly the dedicated Eureka registration end-point, it is significantly easier to use <font color='green'>(one of)</font> our API-ML enabler library/ies.
 
-This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> built using plain Java language (without Spring Boot or SpringFramework dependencies). For instructions how to utilize other types of API-ML enablers, please follow the links bellow:
+This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without dependency on Spring Cloud, Spring Boot or even SpringFramework. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. The Plain Java Enabler and SpringCloud Eureka Client use different configuration approaches and if both are used the result state of the discovery registry will be unpredictable.
+
+
+For instructions how to utilize other types of API-ML enablers, please follow the links bellow:
 
 * [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 * [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
-**Follow these steps:**
+
+**To onboard your REST service on API-ML, follow these steps:**
 1. [Project configuration](#project-configuration)
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
-2. [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
 
-3. [Add API-ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
+2. [Source code changes](#source-code-changes)
+    * [Add API-ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
+    * [Service registration](#service-registration)
+        * [Add a context listener class](#add-a-context-listener-class)
+        * [Register a context listener](#register-a-context-listener)
+        * [Read service configuration](#read-service-configuration)
+        * [Initialize Eureka Client](#initialize-eureka-client)
+        * [Register with Eureka discovery service](#register-with-eureka-discovery)
 
-4. [Add Discovery Client configuration](#add-configuration-for-discovery-client)
+    * <font color="red">TODO: HeartBeat</font>
 
-5. [Add a context listener](#add-a-context-listener)
-    * [Add a context listener class](#add-a-context-listener-class)
-    * [Register a context listener](#register-a-context-listener)
+3. [Service configuration](#service-configuration)
+    * [Eureka discovery service](#eureka-discovery-service)
+    * [REST service information](#rest-service-information)
+    * [API information](#api-information)
+    * [API Catalog information](#api-catalog-information)
 
-6. [Run your service](#run-your-service)
+4. [API documentation](#api-documentation)
+    * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
+    * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-7. [Validate your REST service is discoverable by the API ML Discovery Service](#optional-validate-discovery-of-the-api-service-by-the-discovery-service)
+5. [Build and Run your service](#run-your-service)
+
+6. [Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
 
 **Notes:** 
-* Some steps are shared with onboarding process of other types of API services. The common steps are marked as <font color='green'>(COM)</font>*
-* The plain Java enabler library can be used in projects based on SpringFramework or Spring Boot framework. It should not be used iin projects depending on Netflix Spring Cloud components.
-<font color='yellow'>
+<font color='yellow'> TODO: REMOVE?
 * This guide describes how to generate Swagger API documentation using a Springfox library.
 * If you use another framework that is based on a Servlet API, you can use `ServletContextListener` that is described later in this article.
 * If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API-ML.
@@ -45,7 +63,7 @@ This guide describes a step-by-step process of onboarding a REST API <font color
 # Prerequisites
 * Your REST API service written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
-* The service is secured by digital certificate according to TLS v?.? specification
+* The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
 
 
 ## Project configuration
@@ -90,7 +108,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion")
+    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     ```
 *Note* At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust accordnigly.
  
@@ -151,9 +169,336 @@ Use the following procedure if you use Maven as your build automation system.
 
 5.  In the directory of your project, run the `mvn package` command to build the project.
 
+## Source code changes
+
+1. API-ML integration endpoints
+
+To integrate your service with the API-ML, add the following endpoints to your application:
+* **Swagger documentation endpoint**
+
+    The endpoint for the Swagger documentation.
+
+* **Health endpoint**
+
+    The endpoint used for health checks by the Discovery Service.
+
+* **Info endpoint**
+
+    The endpoint to get information about the service.
+
+The following java code is an example of these endpoints added to the Spring Controller:
+
+**Example:**
+
+```java
+package com.ca.mfaas.hellospring.controller;
+
+import com.ca.mfaas.eurekaservice.model.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
+
+@Controller
+@ApiIgnore
+public class MfaasController {
+
+    @GetMapping("/api-doc")
+    public String apiDoc() {
+        return "forward:/v2/api-docs";
+    }
+
+    @GetMapping("/application/health")
+    public @ResponseBody Health getHealth() {
+        return new Health("UP");
+    }
+
+    @GetMapping("/application/info")
+    public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
+    }
+}
+```
+
+2. Service registration
+    * Add a context listener class
+    ```
+    ```
+
+    * Register a context listener
+    ```
+    ```
+
+    * Read service configuration
+    ```
+    ```
+
+    * Initialize Eureka Client
+    ```
+    ```
+
+    * Register with Eureka discovery service
+    ```
+    ```
+
+3. HeartBeat
+
+## Add configuration for Discovery client
+After you add API-ML integration endpoints, you are ready to add service configuration for Discovery client.
+
+**Follow these steps:**
+
+
+## Service configuration
+
+Your service configuration is expected to be provided in `service-configuration.yml` file located in your resources directory. The configuration can be externalized <font color="red">TODO: Explain HOW </font>
+
+Place the following example configuration to your `service-configuration.yml`:
+
+    ```yaml
+    serviceId: hellospring
+    title: HelloWorld Spring REST API
+    description: POC for exposing a Spring REST API
+    baseUrl: http://localhost:10020/hellospring
+    homePageRelativeUrl:
+    statusPageRelativeUrl: /application/info
+    healthCheckRelativeUrl: /application/health
+    discoveryServiceUrls:
+        - http://eureka:password@localhost:10011/eureka
+    routes:
+        - gatewayUrl: api/v1
+          serviceUrl: /hellospring/api/v1    
+    apiInfo:
+        - apiId: ${mfaas.discovery.serviceId}
+          gatewayUrl: api/v1
+          swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+    catalog:
+        tile:
+            id: helloworld-spring
+            title: HelloWorld Spring REST API
+            description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+            version: 1.0.0
+    ```
+
+The content of the configuration file is structured as follows:
+
+1. REST service information
+
+* **Service identification**
+
+    The following list describes the service identification properties:
+    ```
+    serviceId: hellospring
+    title: Hello Spring REST API
+    description: Example for exposing a Spring REST API
+    ```
+
+    , where:
+    - **serviceId**
+    
+        Specifies the service instance identifier that is registered in the API-ML installation. 
+        The service ID is used in the URL for routing to the API service through the gateway. 
+        The service ID uniquely identifies instances of a microservice in the API-ML. 
+        The system administrator at the customer site defines this parameter.
+        
+        **Important!**  Ensure that the service ID is set properly with the following considerations:
+    
+        * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
+        * The same service ID should be set only for multiple API service instances for API scalability.
+        * The service ID value must contain only lowercase alphanumeric characters.
+        * The service ID cannot contain more than 40 characters.
+        * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+        
+        **Examples:**
+        * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+            ```
+            https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+            ```
+        * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+            ```
+            http://gateway:port/api/v1/vantageprod1/endpoint1/...
+            ```
+    * **title**
+    
+        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+        **Tip:** We recommend that you provide a specific default value of the `title`.
+        Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+    
+    * **description**
+    
+        Specifies a short description of the API service.
+    
+        **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+    
+        This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+    
+        **Tip:** Describe the service so that the end user knows the function of the service.
+
+* **Administrative end-points**
+    ```
+    baseUrl: http://localhost:10021/hellospring
+    homePageRelativeUrl:
+    statusPageRelativeUrl: /application/info
+    healthCheckRelativeUrl: /application/health
+    ```
+
+    * **baseUrl**
+    
+        Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+        
+        * **homePageRelativeUrl**
+        * **statusPageRelativeUrl**
+        * **healthCheckRelativeUrl**. 
+        
+        **Examples:** 
+        * `http://host:port/servicename` for HTTP service
+        * `https://host:port/servicename` for HTTPS service
+
+    * **homePageRelativeUrl** 
+    
+        Specifies the relative path to the home page of your service. The path should start with `/`.
+        If your service has no home page, leave this parameter blank.
+    
+        **Examples:**
+        * `homePageRelativeUrl: ` The service has no home page
+        * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
+    
+    * **statusPageRelativeUrl**
+    
+        Specifies the relative path to the status page of your service.
+        This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
+        Start this path with `/`.
+    
+        **Example:**
+        * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
+    * **healthCheckRelativeUrl**
+    
+        Specifies the relative path to the health check endpoint of your service. 
+        This is the endpoint that you defined in the `MfaasController` controller in the 
+        `getHealth` method. Start this URL with `/`.
+    
+        **Example:**
+        * `healthCheckRelativeUrl: /application/health`. This results in the URL:
+        `${baseUrl}/application/health`
+
+
+2. Eureka discovery service
+    ```
+    discoveryServiceUrls:
+    - https://localhost:10011/eureka
+    - http://......
+    ```
+       
+    * **discoveryServiceUrls**
+    
+        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
+    
+        **Example:**
+        * `http://eureka:password@141.202.65.33:10311/eureka/`
+
+3. **Security configuration**
+    * Setup key store with the service certificate
+
+        All API services are required to provide a TLS certificate trusted by API-ML in order to register with it.
+
+*Note:* Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+
+    If the service runs on localhost, the command uses the following format:
+
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+
+    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+
+* Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+
+    ```
+    ssl:
+        protocol: TLSv1.2
+        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+        keyAlias: localhost
+        keyPassword: password
+        keyStore: keystore/localhost.keystore.p12
+        keyStoreType: PKCS12
+        keyStorePassword: password
+        trustStore: keystore/localhost.truststore.p12
+        trustStoreType: PKCS12
+        trustStorePassword: password
+**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+    ```
+
+3. REST API information
+    * Routing information
+    ```
+    routes:
+        - gatewayUrl: api
+        serviceUrl: /hellospring
+        - gatewayUrl: api/v1
+        serviceUrl: /hellospring/api/v1
+        - gatewayUrl: api/v1/api-doc
+        serviceUrl: /hellospring/api-doc
+    ```
+     
+    * **routedServices**
+    
+        The routing rules between the gateway service and your service.
+        * **routedServices.gatewayUrl**
+        
+            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+            gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+        * **routedServices.serviceUrl**
+        
+            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+            gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+
+4. **API documentation**
+    ```
+    apiInfo:
+        - apiId: org.zowe.hellospring
+        gatewayUrl: api/v1
+        swaggerUrl: http://localhost:10021/hellospring/api-doc
+    ```
+   * **apiInfo.apiId**
+
+        Specifies the API identifier that is registered in the API-ML installation.
+        The API ID uniquely identifies the API in the API-ML.
+        The same API can be provided by multiple services. The API ID can be used
+        to locate the same APIs that are provided by different services.
+        The creator of the API defines this ID.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.`.
+        We recommend that you use your organization as the prefix.
+
+    * **apiInfo.gatewayUrl**
+
+        The base path at the API Gateway where the API is available. Ensure that this is
+        the same path as the _gatewayUrl_ value in the _routes_ sections.
+
+    * **apiInfo.swaggerUrl**
+
+        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+        
+    * **apiInfo.documentationUrl**
+
+        (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+
+
+4. API Catalog information
+    ```
+    catalog:
+        tile:
+            id: cademoapps
+            title: Sample API Mediation Layer Applications
+            description: Sample application integrating a service to API-ML
+            version: 1.0.0
+    ```
+
 ## (Optional) Add Swagger API documentation to your project
 If your application already has Swagger API documentation enabled, skip this step. 
 Use the following procedure if your application does not have Swagger API documentation.
+
 
 **Follow these steps:**
 
@@ -220,213 +565,8 @@ Use the following procedure if your application does not have Swagger API docume
 3.  Customize this configuration according to your specifications. For more information about customization properties, 
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
-## Add endpoints to your API for API-ML integration
-To integrate your service with the API-ML, add the following endpoints to your application:
-* **Swagger documentation endpoint**
 
-    The endpoint for the Swagger documentation.
-
-* **Health endpoint**
-
-    The endpoint used for health checks by the Discovery Service.
-
-* **Info endpoint**
-
-    The endpoint to get information about the service.
-
-The following java code is an example of these endpoints added to the Spring Controller:
-
-**Example:**
-
-```java
-package com.ca.mfaas.hellospring.controller;
-
-import com.ca.mfaas.eurekaservice.model.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import springfox.documentation.annotations.ApiIgnore;
-
-@Controller
-@ApiIgnore
-public class MfaasController {
-
-    @GetMapping("/api-doc")
-    public String apiDoc() {
-        return "forward:/v2/api-docs";
-    }
-
-    @GetMapping("/application/health")
-    public @ResponseBody Health getHealth() {
-        return new Health("UP");
-    }
-
-    @GetMapping("/application/info")
-    public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
-    }
-}
-```
-
-## Add configuration for Discovery client
-After you add API-ML integration endpoints, you are ready to add service configuration for Discovery client.
-
-**Follow these steps:**
-1.  Create the file `service-configuration.yml` in your resources directory.
-
-2.  Add the following configuration to your `service-configuration.yml`:
-
-    ```yaml
-    serviceId: hellospring
-    title: HelloWorld Spring REST API
-    description: POC for exposing a Spring REST API
-    baseUrl: http://localhost:10020/hellospring
-    homePageRelativeUrl:
-    statusPageRelativeUrl: /application/info
-    healthCheckRelativeUrl: /application/health
-    discoveryServiceUrls:
-        - http://eureka:password@localhost:10011/eureka
-    routes:
-        - gatewayUrl: api/v1
-          serviceUrl: /hellospring/api/v1    
-    apiInfo:
-        - apiId: ${mfaas.discovery.serviceId}
-          gatewayUrl: api/v1
-          swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
-          documentationUrl: https://zowe.github.io/docs-site
-    catalogUiTile:
-        id: helloworld-spring
-        title: HelloWorld Spring REST API
-        description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-        version: 1.0.0
-    ```
 3.  Customize your configuration parameters to correspond with your API service specifications.
-
-    The following list describes the configuration parameters:
-    * **serviceId**
-    
-        Specifies the service instance identifier that is registered in the API-ML installation. 
-        The service ID is used in the URL for routing to the API service through the gateway. 
-        The service ID uniquely identifies instances of a microservice in the API-ML. 
-        The system administrator at the customer site defines this parameter.
-        
-        **Important!**  Ensure that the service ID is set properly with the following considerations:
-    
-        * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
-        * The same service ID should be set only for multiple API service instances for API scalability.
-        * The service ID value must contain only lowercase alphanumeric characters.
-        * The service ID cannot contain more than 40 characters.
-        * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
-        
-        **Examples:**
-        * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
-            ```
-            https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
-            ```
-        * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
-            ```
-            http://gateway:port/api/v1/vantageprod1/endpoint1/...
-            ```
-    * **title**
-    
-        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
-
-        **Tip:** We recommend that you provide a specific default value of the `title`.
-        Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
-    
-    * **description**
-    
-        Specifies a short description of the API service.
-    
-        **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
-    
-        This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
-    
-        **Tip:** Describe the service so that the end user knows the function of the service.
-    
-    * **baseUrl**
-    
-        Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
-        
-        * **homePageRelativeUrl**
-        * **statusPageRelativeUrl**
-        * **healthCheckRelativeUrl**. 
-        
-        **Examples:** 
-        * `http://host:port/servicename` for HTTP service
-        * `https://host:port/servicename` for HTTPS service
-    
-    * **homePageRelativeUrl** 
-    
-        Specifies the relative path to the home page of your service. The path should start with `/`.
-        If your service has no home page, leave this parameter blank.
-    
-        **Examples:**
-        * `homePageRelativeUrl: ` The service has no home page
-        * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
-    
-    * **statusPageRelativeUrl**
-    
-        Specifies the relative path to the status page of your service.
-        This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
-        Start this path with `/`.
-    
-        **Example:**
-        * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
-    * **healthCheckRelativeUrl**
-    
-        Specifies the relative path to the health check endpoint of your service. 
-        This is the endpoint that you defined in the `MfaasController` controller in the 
-        `getHealth` method. Start this URL with `/`.
-    
-        **Example:**
-        * `healthCheckRelativeUrl: /application/health`. This results in the URL:
-        `${baseUrl}/application/health`
-    
-    * **discoveryServiceUrls**
-    
-        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
-    
-        **Example:**
-        * `http://eureka:password@141.202.65.33:10311/eureka/`
-    
-    * **routedServices**
-    
-        The routing rules between the gateway service and your service.
-        * **routedServices.gatewayUrl**
-        
-            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-            gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-        * **routedServices.serviceUrl**
-        
-            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-            gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
-    
-    * **apiInfo.apiId**
-
-        Specifies the API identifier that is registered in the API-ML installation.
-        The API ID uniquely identifies the API in the API-ML.
-        The same API can be provided by multiple services. The API ID can be used
-        to locate the same APIs that are provided by different services.
-        The creator of the API defines this ID.
-        The API ID needs to be a string of up to 64 characters
-        that uses lowercase alphanumeric characters and a dot: `.`.
-        We recommend that you use your organization as the prefix.
-
-    * **apiInfo.gatewayUrl**
-
-        The base path at the API Gateway where the API is available. Ensure that this is
-        the same path as the _gatewayUrl_ value in the _routes_ sections.
-
-    * **apiInfo.swaggerUrl**
-
-        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
-        
-    * **apiInfo.documentationUrl**
-
-        (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
 
     * **catalogUiTile.id**
     
@@ -499,42 +639,6 @@ deployment descriptor `web.xml` to register a context listener:
     <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
 </listener>
 ```
-
-
-## Setup key store with the service certificate
-
-All API services require a certificate that is trusted by API-ML in order to register with it.
-
-**Follow these steps:**
-
-1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
-
-    If the service runs on localhost, the command uses the following format:
-
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-
-    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
-
-2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
-
-    ```
-        ssl:
-            protocol: TLSv1.2
-            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-            keyAlias: localhost
-            keyPassword: password
-            keyStore: keystore/localhost.keystore.p12
-            keyStoreType: PKCS12
-            keyStorePassword: password
-            trustStore: keystore/localhost.truststore.p12
-            trustStoreType: PKCS12
-            trustStorePassword: password
-     eureka:
-         instance:
-             nonSecurePortEnabled: false
-             securePortEnabled: true
-    ```
-**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
 ## Run your service
 After you add all configurations and controllers, you are ready to run your service in the API-ML ecosystem.
