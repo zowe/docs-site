@@ -2,6 +2,11 @@
 
 The API ML Message Service component unifies and stores REST API error messages and log messages in a single file. The Message Service component enables users to mitigate the problem of message definition redundancy which helps to optimize the development process.
 
+- [Message Definition](#message-definition)
+- [Creating a message](#creating-a-message)
+- [Mapping a message](#mapping-a-message)
+- [API ML Logger](#api-ml-logger)
+
 ## Message Definition
 
 API ML uses a customizable infrastructure to format both REST API error messages and log messages. `yaml` files make it possible to centralize both API error messages and log messages. Messages have the following definitions:
@@ -62,7 +67,7 @@ Use the following process to create a message.
     Message message = messageService.createMessage("org.zowe.sample.apiservice.{TYPE}.greeting.empty", "test");
     ```
 
-## Mapping the message
+## Mapping a message
 
 You can map the `Message` either to a REST API response or to a log message. 
 
