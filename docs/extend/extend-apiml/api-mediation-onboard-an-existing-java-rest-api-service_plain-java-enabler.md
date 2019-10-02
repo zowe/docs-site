@@ -1,31 +1,32 @@
 # Java REST APIs service without Spring Boot
 
-This article is a part of a guides series, whcih outline REST API services onboarding process on ZOWE API Mediation Layer (ZOWE API-ML or just API-ML for short). 
+This article is a part of a guides series, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). 
 
-ZOWE API-ML is a lightweight API management system based on following Netflix components:
+ZOWE API ML is a lightweight API management system based on following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
-* Zuul reverse proxy / API Gateway
+* Zuul - reverse proxy / API Gateway
 
-In order to onboard a REST style <font color='green'>service</font> on API-ML, it is necessary to:
-*  provide service discovery information e.g. base URI, home page, status page and health check end-point, etc.
-* provide routing metadata of service end-points - used by API-ML Gateway to route HTTP requests
-* provide service description and API documentation metadata for the API Catalog
-* register the service with Eureka discovery service instance using all the above 
+The following requirements are necessary to onboard a REST API to the API ML:
 
-While all the tasks above can be done by preparing corresponding configuration data and calling directly the dedicated Eureka registration end-point, it is significantly easier to use <font color='green'>(one of)</font> our API-ML enabler library/ies.
+* Provide service discovery information including but not limited to the base URI, home page, status page, and health check end-point.
+* Provide routing metadata of service end-points. This metadata is used by the API ML Gateway to route HTTP requests.
+* Provide a service description and API documentation metadata for the API Catalog.
+* Register the service with the Eureka discovery service instance with the service discovery information, the routing metadata, and the service description and API documentation metadata.
 
-This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without dependency on Spring Cloud, Spring Boot or even SpringFramework. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. The Plain Java Enabler and SpringCloud Eureka Client use different configuration approaches and if both are used the result state of the discovery registry will be unpredictable.
+**Tip:**
 
+We recommend you onboard your service using the API ML enabler libraries. While it is possible, we do not recommend preparing corresponding configuration data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming.
 
-For detailed information about the onboarding process and Eureka functionality and configuration please visit this page: <font color="red">TODO: provide link</font>
-
-For instructions how to utilize other API-ML enablers types, please follow the links bellow:
-
-* [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md)
-* [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot or SpringFramework. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since the Plain Java Enabler and SpringCloud Eureka Client use different configuration approaches, using both makes the result state of the discovery registry unpredictable.
 
 
-**To onboard your REST service on API-ML, follow these steps:**
+For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
+
+For instructions how to utilize other API-ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+
+**Onboarding your REST service on API-ML**
+
+The following process outlines the process of onboarding your REST service: 
 
 [I. Prerequisites](#I-prerequisites)
 
