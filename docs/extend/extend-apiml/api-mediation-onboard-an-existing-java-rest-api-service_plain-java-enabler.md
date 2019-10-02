@@ -17,18 +17,23 @@ While all the tasks above can be done by preparing corresponding configuration d
 This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without dependency on Spring Cloud, Spring Boot or even SpringFramework. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. The Plain Java Enabler and SpringCloud Eureka Client use different configuration approaches and if both are used the result state of the discovery registry will be unpredictable.
 
 
-For instructions how to utilize other types of API-ML enablers, please follow the links bellow:
+For detailed information about the onboarding process and Eureka functionality and configuration please visit this page: <font color="red">TODO: provide link</font>
+
+For instructions how to utilize other API-ML enablers types, please follow the links bellow:
 
 * [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 * [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 
 **To onboard your REST service on API-ML, follow these steps:**
-1. [Project configuration](#project-configuration)
+
+[I. Prerequisites](#I-prerequisites)
+
+[II. Project configuration](#II-project-configuration)
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-2. [Source code changes](#source-code-changes)
+[III Source code changes](#III-source-code-changes)
     * [Add API-ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
     * [Service registration](#service-registration)
         * [Add a context listener class](#add-a-context-listener-class)
@@ -39,19 +44,19 @@ For instructions how to utilize other types of API-ML enablers, please follow th
 
     * <font color="red">TODO: HeartBeat</font>
 
-3. [Service configuration](#service-configuration)
+[IV. Service configuration](#IV-service-configuration)
     * [Eureka discovery service](#eureka-discovery-service)
     * [REST service information](#rest-service-information)
     * [API information](#api-information)
     * [API Catalog information](#api-catalog-information)
 
-4. [API documentation](#api-documentation)
+[V. API documentation](#V-api-documentation)
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-5. [Build and Run your service](#run-your-service)
+[VI. Build and Run your service](#VI-run-your-service)
 
-6. [Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
+[VII. Validate your REST service is discoverable and end points operational](#VII-validate-discovery-of-the-api-service-by-the-discovery-service)
 
 **Notes:** 
 <font color='yellow'> TODO: REMOVE?
@@ -60,13 +65,15 @@ For instructions how to utilize other types of API-ML enablers, please follow th
 * If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API-ML.
 </font>
 
-# Prerequisites
+
+## I. Prerequisites
+
 * Your REST API service written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
 
 
-## Project configuration
+## II. Project configuration
 
 You can use either Gradle or Maven build automation systems. 
 
@@ -169,7 +176,7 @@ Use the following procedure if you use Maven as your build automation system.
 
 5.  In the directory of your project, run the `mvn package` command to build the project.
 
-## Source code changes
+## III. Source code changes
 
 1. API-ML integration endpoints
 
@@ -254,17 +261,14 @@ Use the PUT HTTP method in the following format to tell the Discovery Service th
 https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}
 
 
-## Add configuration for Discovery client
+
+## IV. Service configuration
+
 After you add API-ML integration endpoints, you are ready to add service configuration for Discovery client.
 
-**Follow these steps:**
+Your service configuration is expected to be provided in `service-configuration.yml` file located in your resources directory. 
 
-
-## Service configuration
-
-Your service configuration is expected to be provided in `service-configuration.yml` file located in your resources directory. The configuration can be externalized <font color="red">TODO: Explain HOW </font>
-
-Place the following example configuration to your `service-configuration.yml`:
+The following code snippet shows `service-configuration.yml` content as an example configuration of service with serviceId "hellowspring":
 
     ```yaml
     serviceId: hellospring
@@ -291,7 +295,11 @@ Place the following example configuration to your `service-configuration.yml`:
             version: 1.0.0
     ```
 
-The content of the configuration file is structured as follows:
+The configuration can be externalized <font color="red">TODO: Explain HOW </font>
+
+**Follow these steps:**
+
+The content and the structure of the configuration file above is split in parts and explaned as follows:
 
 1. REST service information
 
@@ -411,15 +419,22 @@ The content of the configuration file is structured as follows:
 3. **Security configuration**
     * Setup key store with the service certificate
 
-        All API services are required to provide a TLS certificate trusted by API-ML in order to register with it.
+All API services are required to provide a TLS certificate trusted by API-ML in order to register with it.
 
 *Note:* Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
-    If the service runs on localhost, the command uses the following format:
+
+If the service runs on localhost, the command uses the following format:
 
        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
 
-    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for local development.
+
+Alternatively, copy or use the 
+
+    `<api-layer-repository>/keystore/localhost.truststore.p12` 
+
+in your service without generating a new certificate, for local development.
+
 
 * Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
@@ -435,6 +450,7 @@ The content of the configuration file is structured as follows:
         trustStore: keystore/localhost.truststore.p12
         trustStoreType: PKCS12
         trustStorePassword: password
+
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
     ```
 
@@ -504,10 +520,9 @@ The content of the configuration file is structured as follows:
             version: 1.0.0
     ```
 
-## (Optional) Add Swagger API documentation to your project
-If your application already has Swagger API documentation enabled, skip this step. 
-Use the following procedure if your application does not have Swagger API documentation.
+## V. API documentation
 
+Use the following procedure to add Swagger API documentation to your project.
 
 **Follow these steps:**
 
@@ -649,7 +664,7 @@ deployment descriptor `web.xml` to register a context listener:
 </listener>
 ```
 
-## Run your service
+## VI. Run your service
 After you add all configurations and controllers, you are ready to run your service in the API-ML ecosystem.
 
 **Follow these steps:**
@@ -676,7 +691,7 @@ After you add all configurations and controllers, you are ready to run your serv
 
 You successfully onboarded your Java application with the API-ML if your service is running and you can access the API documentation. 
 
-## (Optional) Validate discovery of the API service by the Discovery Service
+## VII. (Optional) Validate discovery of the API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
 
 **Follow these steps:**
