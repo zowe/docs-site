@@ -1,10 +1,12 @@
 # Java REST APIs service without Spring Boot
 
-This article is a part of a guides series, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). 
+This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot or SpringFramework.
 
 ZOWE API ML is a lightweight API management system based on following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
+
+## Requirements for onboarding a REST API to the API ML
 
 The following requirements are necessary to onboard a REST API to the API ML:
 
@@ -15,26 +17,23 @@ The following requirements are necessary to onboard a REST API to the API ML:
 
 **Tip:**
 
-We recommend you onboard your service using the API ML enabler libraries. While it is possible, we do not recommend preparing corresponding configuration data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming.
-
-This guide describes a step-by-step process of onboarding a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot or SpringFramework. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since the Plain Java Enabler and SpringCloud Eureka Client use different configuration approaches, using both makes the result state of the discovery registry unpredictable.
-
+We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
 
 For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
 For instructions how to utilize other API-ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
-**Onboarding your REST service on API-ML**
+**Onboarding your REST service to API ML**
 
 The following process outlines the process of onboarding your REST service: 
 
-[I. Prerequisites](#I-prerequisites)
+[Prerequisites](#prerequisites)
 
-[II. Project configuration](#II-project-configuration)
+[Project configuration](#project-configuration)
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-[III Source code changes](#III-source-code-changes)
+[Source code changes](#source-code-changes)
     * [Add API-ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
     * [Service registration](#service-registration)
         * [Add a context listener class](#add-a-context-listener-class)
@@ -45,47 +44,46 @@ The following process outlines the process of onboarding your REST service:
 
     * <font color="red">TODO: HeartBeat</font>
 
-[IV. Service configuration](#IV-service-configuration)
+[Service configuration](#service-configuration)
     * [Eureka discovery service](#eureka-discovery-service)
     * [REST service information](#rest-service-information)
     * [API information](#api-information)
     * [API Catalog information](#api-catalog-information)
 
-[V. API documentation](#V-api-documentation)
+[API documentation](#api-documentation)
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-[VI. Build and Run your service](#VI-run-your-service)
+[Build and Run your service](#run-your-service)
 
-[VII. Validate your REST service is discoverable and end points operational](#VII-validate-discovery-of-the-api-service-by-the-discovery-service)
+[Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
 
 **Notes:** 
 <font color='yellow'> TODO: REMOVE?
 * This guide describes how to generate Swagger API documentation using a Springfox library.
 * If you use another framework that is based on a Servlet API, you can use `ServletContextListener` that is described later in this article.
-* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API-ML.
+* If you use a framework that does not have a `ServletContextListener` class, see the [add context listener](#add-a-context-listener) section in this article for details about how to register and unregister your service with the API ML.
 </font>
 
+## Prerequisites
 
-## I. Prerequisites
-
-* Your REST API service written in Java can be deployed and run on z/OS.
+* Your REST API service is written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
 
 
-## II. Project configuration
+## Project configuration
 
-You can use either Gradle or Maven build automation systems. 
+You can use either Gradle or Maven build automation systems. Use the appropriate configuration procedure corresponding to your build automation system. 
 
 ### Gradle guide
 Use the following procedure if you use Gradle as your build automation system.
 
 **Follow these steps:**
 
-1.  If not already exists, create a *gradle.properties* file in the root of your project.
+1.  Create a *gradle.properties* file in the root of your project if one does not already exist.
  
-2.  In the *gradle.properties* file, set the URL of the <font color="yellow">ZOWE (aka Giza)</font> Artifactory, containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
+2.  In the *gradle.properties* file, set the URL of the <font color="yellow">ZOWE (aka Giza)</font> Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -114,14 +112,13 @@ Use the following procedure if you use Gradle as your build automation system.
 
     The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
 
-4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
+4.  In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     ```
-*Note* At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust accordnigly.
- 
+**Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
 
-5.  In your project home directory, run `gradle clean build` command to build your project. Alternatively you may run gradlew to use gradle version specificly working for your project.
+5.  In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run gradlew to use the specific gradle version that is working on your project.
 
 <font color="red">**TODO** What gradle version is minimum required for Plain Java Enabler?</font>
 
@@ -177,9 +174,11 @@ Use the following procedure if you use Maven as your build automation system.
 
 5.  In the directory of your project, run the `mvn package` command to build the project.
 
-## III. Source code changes
+## Source code changes
 
-1. API-ML integration endpoints
+**Follow these steps:**
+
+1. Add API ML integration endpoints
 
 To integrate your service with the API-ML, add the following endpoints to your application:
 * **Swagger documentation endpoint**
@@ -230,7 +229,8 @@ public class MfaasController {
 }
 ```
 
-2. Service registration
+2. Register your service:
+
     * Add a context listener class
     ```
     ```
@@ -251,25 +251,25 @@ public class MfaasController {
     ```
     ```
 
-3. Sending a heartbeat to API Meditation Layer Discovery Service
+3. Implement a periodic call (heartbeat) to the API Meditation Layer Discovery Service
 
-After successful registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat for certain amount of time it will remove the service instance from the registry.
+After successful registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat after certain period of time, it removes the service instance from the registry.
 
-Note: We recommend that the interval for the heartbeat is no longer than 30 seconds.
+**Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
 
 Use the PUT HTTP method in the following format to tell the Discovery Service that your service is available:
 
 https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}
 
+After you add API ML integration endpoints, you are ready to add service configuration for Discovery client.
 
+## Service configuration
 
-## IV. Service configuration
+Provide your service configuration in the `service-configuration.yml` file located in your resources directory. 
 
-After you add API-ML integration endpoints, you are ready to add service configuration for Discovery client.
+The following code snippet shows `service-configuration.yml` content as an example configuration of a service with the serviceId "hellowspring":
 
-Your service configuration is expected to be provided in `service-configuration.yml` file located in your resources directory. 
-
-The following code snippet shows `service-configuration.yml` content as an example configuration of service with serviceId "hellowspring":
+**Example:**
 
     ```yaml
     serviceId: hellospring
@@ -300,7 +300,7 @@ The configuration can be externalized <font color="red">TODO: Explain HOW </font
 
 **Follow these steps:**
 
-The content and the structure of the configuration file above is split in parts and explaned as follows:
+The content and the structure of the configuration file above is split into parts and explaned as follows:
 
 1. REST service information
 
