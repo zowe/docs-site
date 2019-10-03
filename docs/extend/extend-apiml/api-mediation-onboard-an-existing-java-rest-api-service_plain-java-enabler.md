@@ -179,9 +179,15 @@ Use the following procedure if you use Maven as your build automation system.
 
 ## Source code changes
 
-**Follow these steps:**
+Several changes are required in the source code to successully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
-1. Add the following endpoints to your application:
+* Adding endpoints
+* Registering your service to API ML
+* Implementing a periodic call (heartbeat) to the API ML
+
+### Adding endpoints
+ 
+Add the following endpoints to your application:
 
    * **Swagger documentation endpoint**
 
@@ -230,30 +236,31 @@ Use the following procedure if you use Maven as your build automation system.
        }
    }
    ```
+### Registering your service to API ML
 
-2. Register your service:
+**Follow these steps:**
 
-    * Add a context listener class
-    ```
-    ```
-
-    * Register a context listener
+1. Add a context listener class
     ```
     ```
 
-    * Read service configuration
+2. Register a context listener
     ```
     ```
 
-    * Initialize Eureka Client
+3. Read service configuration
     ```
     ```
 
-    * Register with Eureka discovery service
+4. Initialize Eureka Client
     ```
     ```
 
-3. Implement a periodic call (heartbeat) to the API Meditation Layer Discovery Service
+5. Register with Eureka discovery service
+    ```
+    ```
+
+### Implement a periodic call (heartbeat) to the API ML Discovery Service
 
 After successful registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat after certain period of time, it removes the service instance from the registry.
 
