@@ -14,3 +14,5 @@ docs-site
 # OS temp files
 .DS_Store
 .vscode/last.sql
+
+.idea

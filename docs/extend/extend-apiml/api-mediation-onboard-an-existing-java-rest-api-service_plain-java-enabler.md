@@ -70,7 +70,9 @@ The following process outlines the process of onboarding your REST service:
 
 ## Prerequisites
 
-* Your REST API service is written in Java can be deployed and run on z/OS.
+## I. Prerequisites
+
+* Your REST API service written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
 
@@ -630,70 +632,12 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
         Increase the number of the version when you introduce new changes to the product family details of the API services 
         including the title and description.
 
-## Add a context listener
-The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
-the API-ML when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method 
-before the application shuts down to unregister the application in API-ML.
 
-**Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` 
-to register and unregister your application.
+## Build and run your service
 
-### Add a context listener class
-Add the following code block to add a context listener class:
-```java
-package com.ca.mfaas.hellospring.listener;
+1. Execute 
 
-import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
-import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
-import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
-import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
-
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-
-
-public class ApiDiscoveryListener implements ServletContextListener {
-    private ApiMediationClient apiMediationClient;
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        apiMediationClient = new ApiMediationClientImpl();
-        String configurationFile = "/service-configuration.yml";
-        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
-        apiMediationClient.register(config);
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        apiMediationClient.unregister();
-    }
-}
-```
-
-### Register a context listener
-Register a context listener to start Discovery client. Add the following code block to the 
-deployment descriptor `web.xml` to register a context listener:
-``` xml
-<listener>
-    <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
-</listener>
-```
-
-## VI. Run your service
-After you add all configurations and controllers, you are ready to run your service in the API-ML ecosystem.
-
-**Follow these steps:**
-
-1.  Run the following services to onboard your application: 
-    
-    * Gateway Service  
-    * Discovery Service
-    * API Catalog Service
-
-    **Tip:** For more information about how to run the API-ML locally, 
-
-    see [Running the API-ML on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
-
+    `gradle clean build`
 
 2.  Run your Java application. 
 
@@ -706,7 +650,7 @@ After you add all configurations and controllers, you are ready to run your serv
 
 You successfully onboarded your Java application with the API-ML if your service is running and you can access the API documentation. 
 
-## VII. (Optional) Validate discovery of the API service by the Discovery Service
+## (Optional) Validate discovery of the API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
 
 **Follow these steps:**
