@@ -268,7 +268,7 @@ After successful registration, a service must send a heartbeat periodically to t
 
 Use the PUT HTTP method in the following format to tell the Discovery Service that your service is available:
 
-https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}
+`https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
 
 After you add API ML integration endpoints, you are ready to add service configuration for Discovery client.
 
@@ -307,9 +307,14 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
 The configuration can be externalized <font color="red">TODO: Explain HOW </font>
 
-**Follow these steps:**
+The content and the structure of the configuration file example above is broken into several parts:
 
-The content and the structure of the configuration file above is split into parts and explaned as follows:
+- Eureka discovery service 
+- REST service information
+- API information
+- API Catalog information
+
+ 
 
 1. REST service information
 
