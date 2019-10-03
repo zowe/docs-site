@@ -36,8 +36,8 @@ The following process outlines the process of onboarding your REST service:
 
 3. [Source code changes](#source-code-changes)
 
-    * [Add API ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
-    * [Service registration](#service-registration)
+    * [Adding endpoints](#adding-endpoints)
+    * [Registering your service to API ML](#registering-your-service-to-api-ml))
     
         * [Add a context listener class](#add-a-context-listener-class)
         * [Register a context listener](#register-a-context-listener)
@@ -45,7 +45,7 @@ The following process outlines the process of onboarding your REST service:
         * [Initialize Eureka Client](#initialize-eureka-client)
         * [Register with Eureka discovery service](#register-with-eureka-discovery)
 
-    * <font color="red">TODO: HeartBeat</font>
+    * [Implement a periodic call (heartbeat) to the API ML Discovery Service](implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
 
 4. [Service configuration](#service-configuration)
     * [Eureka discovery service](#eureka-discovery-service)
