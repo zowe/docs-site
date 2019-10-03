@@ -52,6 +52,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 3.  Add the following Gradle code block to the `build.gradle` file:
 
+
     ```gradle
     ext.mavenRepository = {
         maven {
