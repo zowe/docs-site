@@ -81,7 +81,7 @@ The distribution medium for this program is via downloadable files. This program
 
 ### Program publications
 
-You can obtain the Zowe documentation from the Zowe doc site at [https://zowe.github.io/docs-site/latest](https://zowe.github.io/docs-site/latest). No optional publications are provided for Zowe.
+You can obtain the Zowe documentation from the Zowe doc site at [https://docs.zowe.org/](https://docs.zowe.org/). No optional publications are provided for Zowe.
 
 ### Program source materials
 
