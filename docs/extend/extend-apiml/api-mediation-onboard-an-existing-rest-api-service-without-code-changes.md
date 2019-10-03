@@ -397,4 +397,3 @@ The following procedure enables you to refresh the API definitions after you cha
 
     * It can take up to 30 seconds for the API Gateway to pick up the new routing.
 
-    * The basic authentication will be replaced by client certificates when the Discovery Service is updated to use HTTPS.

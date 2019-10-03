@@ -1,6 +1,6 @@
 # Troubleshooting Zowe Application Framework
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe Application Framework.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; Application Framework.
 
 Before you reach out for support:
 

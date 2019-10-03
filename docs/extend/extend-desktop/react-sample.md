@@ -42,7 +42,7 @@ Make sure that you first expose an API to connect to before following the steps 
 
 ## Verify the Install
 
-Upon restarting the server, navigate to the Zowe Application Server.
+Upon restarting the server, navigate to the Zowe&trade; Application Server.
 
 - This can be found at: `https://<base>:<port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
 

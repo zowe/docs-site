@@ -1,6 +1,6 @@
 # Configuring the Zowe runtime
 
-After you install Zowe through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
+After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
 
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
@@ -58,7 +58,6 @@ For the convenience build, the location of the Zowe runtime directory will be th
 
 To configure the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the configuration script will attempt to locate default values.
 
-- `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
 - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
 
@@ -75,9 +74,30 @@ You can create, edit, or delete the `.zowe_profile` file (as needed) before each
 - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
 - Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `.zowe_profile` file in the current user's home directory.  
 - Ensure that the value of the `ZOWE_IPADDRESS` variable is set correctly for your system.  This should be the IP address of your z/OS system which is externally accessible from clients who want to use Zowe.  This is particularly important for zD&T and cloud systems, where `ping` or `dig` on z/OS would return a different IP address from the one that external clients would use to access z/OS.   
+
 ### Configuration variables
 
-The file `/scripts/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
+The file `/scripts/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime. 
+
+#### Directory to store user configuration
+
+`install:userDir` is the directory that Zowe will begin to use to store configuration. Previously (in Zowe 1.4 and before) all user configuration was stored within the Zowe root directory structure, but in order to improve the upgradability of the Zowe system, moving forward separate runtime binaries and configuration will be separated. The default directory is `~/zowe-user-dir` which create the `zowe-user-dir` directory within the home directory of the user id that ran Zowe configuration. For an enterprise SMP/E install it is recommended to instead have this in a centralised place such as `/global/zowe`, ensuring that this directory is writable by the user id that runs the Zowe started task.
+
+**Note:** Please ensure that the account that runs Zowe (default of IZUSVR) has permission to write to this directory (for example by changing the group to be owned by the zosmf Admin Group and given write access to groups), or Zowe will not start correctly.
+
+**Example:**
+
+```yaml
+  install:
+    rootDir=/tmp/zowe/1.5.0
+    userDir=~/zowe-user-dir
+    prefix=ZOWE
+
+  zosmf:
+    zosmfUserid=IZUSVR
+    zosmfAdminGroup=IZUADMIN
+
+```
 
 #### Address space name
 
@@ -140,7 +160,6 @@ The port values are defined in `/config/zowe-configure.yaml`.
       verifyCertificatesOfServices=true
       enableSso=false
       zosmfKeyring=IZUKeyring.IZUDFLT
-      zosmfUser=IZUSVR
 
     zos-services:
       jobsAPIPort=8545
