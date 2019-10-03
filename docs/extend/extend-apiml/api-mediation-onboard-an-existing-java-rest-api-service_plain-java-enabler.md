@@ -15,27 +15,30 @@ The following requirements are necessary to onboard a REST API to the API ML:
 * Provide a service description and API documentation metadata for the API Catalog.
 * Register the service with the Eureka discovery service instance with the service discovery information, the routing metadata, and the service description and API documentation metadata.
 
-**Tip:**
+  **Tip:**
 
-We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
+  We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration    data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
 
-For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
+  For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
-For instructions how to utilize other API-ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+  For instructions how to utilize other API-ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 **Onboarding your REST service to API ML**
 
 The following process outlines the process of onboarding your REST service: 
 
-[Prerequisites](#prerequisites)
+1. [Prerequisites](#prerequisites)
 
-[Project configuration](#project-configuration)
+2. [Project configuration](#project-configuration)
+
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-[Source code changes](#source-code-changes)
-    * [Add API-ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
+3. [Source code changes](#source-code-changes)
+
+    * [Add API ML integration endpoints to your service](#add-endpoints-to-your-api-for-api-mediation-layer-integration)
     * [Service registration](#service-registration)
+    
         * [Add a context listener class](#add-a-context-listener-class)
         * [Register a context listener](#register-a-context-listener)
         * [Read service configuration](#read-service-configuration)
@@ -44,19 +47,19 @@ The following process outlines the process of onboarding your REST service:
 
     * <font color="red">TODO: HeartBeat</font>
 
-[Service configuration](#service-configuration)
+4. [Service configuration](#service-configuration)
     * [Eureka discovery service](#eureka-discovery-service)
     * [REST service information](#rest-service-information)
     * [API information](#api-information)
     * [API Catalog information](#api-catalog-information)
 
-[API documentation](#api-documentation)
+5. [API documentation](#api-documentation)
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-[Build and Run your service](#run-your-service)
+6. [Build and Run your service](#run-your-service)
 
-[Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
+7. [Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
 
 **Notes:** 
 <font color='yellow'> TODO: REMOVE?
@@ -81,9 +84,9 @@ Use the following procedure if you use Gradle as your build automation system.
 
 **Follow these steps:**
 
-1.  Create a *gradle.properties* file in the root of your project if one does not already exist.
+1. Create a *gradle.properties* file in the root of your project if one does not already exist.
  
-2.  In the *gradle.properties* file, set the URL of the <font color="yellow">ZOWE (aka Giza)</font> Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
+2. In the *gradle.properties* file, set the URL of the <font color="yellow">ZOWE (aka Giza)</font> Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -94,7 +97,7 @@ Use the following procedure if you use Gradle as your build automation system.
     mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
     ```
 
-3.  Add the following Gradle code block to the `build.gradle` file:
+3. Add the following Gradle code block to the `build.gradle` file:
 
     ```gradle
     ext.mavenRepository = {
@@ -112,13 +115,13 @@ Use the following procedure if you use Gradle as your build automation system.
 
     The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
 
-4.  In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
+4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     ```
-**Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
+    **Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
 
-5.  In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run gradlew to use the specific gradle version that is working on your project.
+5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run gradlew to use the specific gradle version that is working on your project.
 
 <font color="red">**TODO** What gradle version is minimum required for Plain Java Enabler?</font>
 
@@ -129,7 +132,7 @@ Use the following procedure if you use Maven as your build automation system.
 
 **Follow these steps:**
 
-1.  Add the following *xml* tags within the newly created `pom.xml` file:
+1. Add the following *xml* tags within the newly created `pom.xml` file:
     ```xml
     <repositories>
         <repository>
@@ -145,7 +148,7 @@ Use the following procedure if you use Maven as your build automation system.
 
     This file specifies the URL of the repository of the Artifactory where you download the enabler-java artifacts.
 
-2.  In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
+2. In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
     ```xml
     <dependency>
         <groupId>com.ca.mfaas.sdk</groupId>
@@ -153,7 +156,7 @@ Use the following procedure if you use Maven as your build automation system.
         <version>1.1.2</version>
     </dependency>
     ```
-3.  Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
+3. Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -170,64 +173,63 @@ Use the following procedure if you use Maven as your build automation system.
     </servers>
     </settings>
     ```
-4.  Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+4. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-5.  In the directory of your project, run the `mvn package` command to build the project.
+5. In the directory of your project, run the `mvn package` command to build the project.
 
 ## Source code changes
 
 **Follow these steps:**
 
-1. Add API ML integration endpoints
+1. Add the following endpoints to your application:
 
-To integrate your service with the API-ML, add the following endpoints to your application:
-* **Swagger documentation endpoint**
+   * **Swagger documentation endpoint**
 
-    The endpoint for the Swagger documentation.
+     The endpoint for the Swagger documentation.
 
-* **Health endpoint**
+   * **Health endpoint**
 
-    The endpoint used for health checks by the Discovery Service.
+     The endpoint used for health checks by the Discovery Service.
 
-* **Info endpoint**
+   * **Info endpoint**
 
-    The endpoint to get information about the service.
+     The endpoint to get information about the service.
 
-The following java code is an example of these endpoints added to the Spring Controller:
+   The following java code is an example of these endpoints added to the Spring Controller:
 
-**Example:**
+   **Example:**
 
-```java
-package com.ca.mfaas.hellospring.controller;
+   ```java
+   package com.ca.mfaas.hellospring.controller;
 
-import com.ca.mfaas.eurekaservice.model.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import springfox.documentation.annotations.ApiIgnore;
+   import com.ca.mfaas.eurekaservice.model.*;
+   import org.springframework.stereotype.Controller;
+   import org.springframework.web.bind.annotation.GetMapping;
+   import org.springframework.web.bind.annotation.ResponseBody;
+   import springfox.documentation.annotations.ApiIgnore;
 
-@Controller
-@ApiIgnore
-public class MfaasController {
+   @Controller
+   @ApiIgnore
+   public class MfaasController {
 
-    @GetMapping("/api-doc")
-    public String apiDoc() {
-        return "forward:/v2/api-docs";
-    }
+       @GetMapping("/api-doc")
+       public String apiDoc() {
+           return "forward:/v2/api-docs";
+       }
 
-    @GetMapping("/application/health")
-    public @ResponseBody Health getHealth() {
+       @GetMapping("/application/health")
+       public @ResponseBody Health getHealth() {
         return new Health("UP");
-    }
+       }
 
-    @GetMapping("/application/info")
-    public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
-    }
-}
-```
+       @GetMapping("/application/info")
+       public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
+           HttpHeaders headers = new HttpHeaders();
+           headers.add("Content-Type", "application/json");
+           return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
+       }
+   }
+   ```
 
 2. Register your service:
 
@@ -271,30 +273,30 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
 **Example:**
 
-    ```yaml
-    serviceId: hellospring
-    title: HelloWorld Spring REST API
-    description: POC for exposing a Spring REST API
-    baseUrl: http://localhost:10020/hellospring
-    homePageRelativeUrl:
-    statusPageRelativeUrl: /application/info
-    healthCheckRelativeUrl: /application/health
-    discoveryServiceUrls:
-        - http://eureka:password@localhost:10011/eureka
-    routes:
-        - gatewayUrl: api/v1
-          serviceUrl: /hellospring/api/v1    
-    apiInfo:
-        - apiId: ${mfaas.discovery.serviceId}
-          gatewayUrl: api/v1
-          swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
-    catalog:
-        tile:
-            id: helloworld-spring
-            title: HelloWorld Spring REST API
-            description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-            version: 1.0.0
-    ```
+ ```yaml
+ serviceId: hellospring
+ title: HelloWorld Spring REST API
+ description: POC for exposing a Spring REST API
+ baseUrl: http://localhost:10020/hellospring
+ homePageRelativeUrl:
+ statusPageRelativeUrl: /application/info
+ healthCheckRelativeUrl: /application/health
+ discoveryServiceUrls:
+     - http://eureka:password@localhost:10011/eureka
+ routes:
+     - gatewayUrl: api/v1
+       serviceUrl: /hellospring/api/v1    
+ apiInfo:
+     - apiId: ${mfaas.discovery.serviceId}
+       gatewayUrl: api/v1
+       swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+ catalog:
+     tile:
+         id: helloworld-spring
+         title: HelloWorld Spring REST API
+         description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+         version: 1.0.0
+ ```
 
 The configuration can be externalized <font color="red">TODO: Explain HOW </font>
 
@@ -313,7 +315,7 @@ The content and the structure of the configuration file above is split into part
     description: Example for exposing a Spring REST API
     ```
 
-    , where:
+    where:
     - **serviceId**
     
         Specifies the service instance identifier that is registered in the API-ML installation. 
@@ -420,9 +422,9 @@ The content and the structure of the configuration file above is split into part
 3. **Security configuration**
     * Setup key store with the service certificate
 
-All API services are required to provide a TLS certificate trusted by API-ML in order to register with it.
+All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
 
-*Note:* Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+**Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
 
 If the service runs on localhost, the command uses the following format:
