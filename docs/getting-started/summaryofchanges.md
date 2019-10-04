@@ -23,6 +23,14 @@ In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are av
 **Features and enhancements:**
 
 - Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+- The following new commands were added for interacting with file systems: 
+    - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
+    - `zowe zos-files mount fs` [#431](https://github.com/zowe/zowe-cli/issues/431)
+    - `zowe zos-files unmount fs` [#432](https://github.com/zowe/zowe-cli/issues/432)
+- The following new command was added for creating USS files and directories
+    - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
+    - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
+
 
 ## Installing or Updating
 
