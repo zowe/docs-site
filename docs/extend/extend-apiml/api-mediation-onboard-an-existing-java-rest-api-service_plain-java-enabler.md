@@ -321,7 +321,7 @@ The content and the structure of the configuration file example above is broken 
 
 * **Service identification**
 
-    The following list describes the service identification properties:
+    The following snippet describes the service identification properties:
     ```
     serviceId: hellospring
     title: Hello Spring REST API
@@ -371,12 +371,15 @@ The content and the structure of the configuration file example above is broken 
         **Tip:** Describe the service so that the end user knows the function of the service.
 
 * **Administrative end-points**
+
+
     ```
     baseUrl: http://localhost:10021/hellospring
     homePageRelativeUrl:
     statusPageRelativeUrl: /application/info
     healthCheckRelativeUrl: /application/health
     ```
+   where:
 
     * **baseUrl**
     
@@ -417,10 +420,45 @@ The content and the structure of the configuration file example above is broken 
         * `healthCheckRelativeUrl: /application/health`. This results in the URL:
         `${baseUrl}/application/health`
 
+       #### API Security 
 
+      To configure security, set up a key store with the service certificate.
+
+      All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
+
+      **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+
+      If the service runs on localhost, the command uses the following format:
+
+      ```
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+      ```
+
+      Alternatively, copy or use the 
+
+       `<api-layer-repository>/keystore/localhost.truststore.p12` 
+
+      in your service without generating a new certificate, for local development.
+
+
+      * Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+         ```
+          ssl:
+              protocol: TLSv1.2
+              ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+              keyAlias: localhost
+              keyPassword: password
+              keyStore: keystore/localhost.keystore.p12
+              keyStoreType: PKCS12
+              keyStorePassword: password
+              trustStore: keystore/localhost.truststore.p12
+              trustStoreType: PKCS12
+              trustStorePassword: password
+         ```
+         **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 ### Eureka discovery service
 
-The following list describes the Eureka discovery service properties:
+Eureka discovery service parameters are included in the following snippet: 
 
 ```
     discoveryServiceUrls:
@@ -437,78 +475,50 @@ The following list describes the Eureka discovery service properties:
 
     `http://eureka:password@141.202.65.33:10311/eureka/`
 
-**Security configuration**
-    * Setup key store with the service certificate
 
-All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
+### API routing information
 
-**Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+The following snippet describes the API routing information properties:
+   
+```
+routes:
+    - gatewayUrl: api
+    serviceUrl: /hellospring
+    - gatewayUrl: api/v1
+     serviceUrl: /hellospring/api/v1
+    - gatewayUrl: api/v1/api-doc
+    serviceUrl: /hellospring/api-doc
+```
+   where:
 
-
-If the service runs on localhost, the command uses the following format:
-
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-
-
-Alternatively, copy or use the 
-
-    `<api-layer-repository>/keystore/localhost.truststore.p12` 
-
-in your service without generating a new certificate, for local development.
-
-
-* Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
-
-    ```
-    ssl:
-        protocol: TLSv1.2
-        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-        keyAlias: localhost
-        keyPassword: password
-        keyStore: keystore/localhost.keystore.p12
-        keyStoreType: PKCS12
-        keyStorePassword: password
-        trustStore: keystore/localhost.truststore.p12
-        trustStoreType: PKCS12
-        trustStorePassword: password
-
-**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
-    ```
-
-3. API routing information
-    * Routing information
-    ```
-    routes:
-        - gatewayUrl: api
-        serviceUrl: /hellospring
-        - gatewayUrl: api/v1
-        serviceUrl: /hellospring/api/v1
-        - gatewayUrl: api/v1/api-doc
-        serviceUrl: /hellospring/api-doc
-    ```
-     
-    * **routedServices**
+* **routedServices**
     
-        The routing rules between the gateway service and your service.
+    The routing rules between the gateway service and your service.
         * **routedServices.gatewayUrl**
         
-            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-        * **routedServices.serviceUrl**
+
+* **routedServices.serviceUrl**
         
-            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
+    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
-4. **API documentation**
-    ```
-    apiInfo:
-        - apiId: org.zowe.hellospring
-        gatewayUrl: api/v1
-        swaggerUrl: http://localhost:10021/hellospring/api-doc
-    ```
-   * **apiInfo.apiId**
+### API info
 
-        Specifies the API identifier that is registered in the API-ML installation.
+The following snippet describes API information properties:
+
+```
+apiInfo:
+    - apiId: org.zowe.hellospring
+    gatewayUrl: api/v1
+    swaggerUrl: http://localhost:10021/hellospring/api-doc
+```
+where:
+
+* **apiInfo.apiId**
+
+    Specifies the API identifier that is registered in the API-ML installation.
         The API ID uniquely identifies the API in the API-ML.
         The same API can be provided by multiple services. The API ID can be used
         to locate the same APIs that are provided by different services.
@@ -517,9 +527,9 @@ in your service without generating a new certificate, for local development.
         that uses lowercase alphanumeric characters and a dot: `.`.
         We recommend that you use your organization as the prefix.
 
-    * **apiInfo.gatewayUrl**
+* **apiInfo.gatewayUrl**
 
-        The base path at the API Gateway where the API is available. Ensure that this is
+    The base path at the API Gateway where the API is available. Ensure that this is
         the same path as the _gatewayUrl_ value in the _routes_ sections.
 
     * **apiInfo.swaggerUrl**
@@ -531,17 +541,24 @@ in your service without generating a new certificate, for local development.
         (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
 
 
-4. API Catalog information
-    ```
-    catalog:
-        tile:
-            id: cademoapps
-            title: Sample API Mediation Layer Applications
-            description: Sample application integrating a service to API-ML
-            version: 1.0.0
-    ```
+### API Catalog information
 
-## V. API documentation
+The following snippet describes API Catalog information properties:
+
+```
+catalog:
+    tile:
+       id: cademoapps
+       title: Sample API Mediation Layer Applications
+       description: Sample application integrating a service to API-ML
+       version: 1.0.0
+```
+where:
+
+**TO DO: list and describe Catalog parameters.**
+
+
+## API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
 
