@@ -636,7 +636,7 @@
 | Imperative CLI Framework | jest-config |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
 | Imperative CLI Framework | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
 | Imperative CLI Framework | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| Imperative CLI Framework | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](mattphillips) |
+| Imperative CLI Framework | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://github.com/facebook/jest/tree/master/packages/jest-each) |
 | Imperative CLI Framework | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
 | Imperative CLI Framework | jest-environment-node |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
 | Imperative CLI Framework | jest-get-type |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-get-type](https://www.npmjs.com/package/jest-get-type) |
@@ -2449,7 +2449,7 @@
 | Zowe API Mediation Layer | chardet |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [chardet](https://www.github.com/runk/node-chardet) |
 | Zowe API Mediation Layer | check |  v1.0.0 | SEE LICENSE IN LICENSE | [check](https://www.github.com/msiebuhr/node-check/) |
 | Zowe API Mediation Layer | check-more-types |  v2.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [check-more-types](https://www.github.com/kensho/check-more-types) |
-| Zowe API Mediation Layer | cheerio |  v1.0.0-rc.3 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](mat.io) |
+| Zowe API Mediation Layer | cheerio |  v1.0.0-rc.3 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](https://github.com/cheeriojs/cheerio) |
 | Zowe API Mediation Layer | chokidar |  v1.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
 | Zowe API Mediation Layer | chokidar |  v2.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
 | Zowe API Mediation Layer | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
@@ -3044,7 +3044,7 @@
 | Zowe API Mediation Layer | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
 | Zowe API Mediation Layer | jest-docblock |  v21.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
 | Zowe API Mediation Layer | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| Zowe API Mediation Layer | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](mattphillips) |
+| Zowe API Mediation Layer | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://github.com/facebook/jest/tree/master/packages/jest-each) |
 | Zowe API Mediation Layer | jest-environment-enzyme |  v7.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-enzyme](https://www.github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-environment-enzyme#readme) |
 | Zowe API Mediation Layer | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
 | Zowe API Mediation Layer | jest-environment-jsdom-fourteen |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom-fourteen](https://www.npmjs.com/package/jest-environment-jsdom-fourteen) |
@@ -5671,7 +5671,7 @@
 | Zowe Application Framework | md5.js |  v1.3.5 | [MIT](http://opensource.org/licenses/mit-license) | [md5.js](https://www.github.com/crypto-browserify/md5.js) |
 | Zowe Application Framework | mem |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com/) |
 | Zowe Application Framework | memory-fs |  v0.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [memory-fs](https://www.github.com/webpack/memory-fs) |
-| Zowe Application Framework | merge-options |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge-options](schnittstabil.de) |
+| Zowe Application Framework | merge-options |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge-options](https://github.com/schnittstabil/merge-options) |
 | Zowe Application Framework | micromatch |  v2.3.11 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/jonschlinkert/micromatch) |
 | Zowe Application Framework | micromatch |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
 | Zowe Application Framework | micromatch |  v3.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
@@ -5913,7 +5913,7 @@
 | Zowe Application Framework | urix |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [urix](https://www.npmjs.com/package/urix) |
 | Zowe Application Framework | url |  v0.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [url](https://www.npmjs.com/package/url) |
 | Zowe Application Framework | url-loader |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [url-loader](https://www.github.com/webpack-contrib/url-loader) |
-| Zowe Application Framework | url-slug |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [url-slug](sbtoledo.github.io) |
+| Zowe Application Framework | url-slug |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [url-slug](https://github.com/stldo/url-slug) |
 | Zowe Application Framework | use |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [use](https://www.github.com/jonschlinkert/use) |
 | Zowe Application Framework | user-home |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [user-home](http://sindresorhus.com) |
 | Zowe Application Framework | util |  v0.10.3 | [MIT](http://opensource.org/licenses/mit-license) | [util](https://www.github.com/defunctzombie/node-util) |
@@ -7896,7 +7896,7 @@
 | Zowe CLI | jest-config |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
 | Zowe CLI | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
 | Zowe CLI | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| Zowe CLI | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](mattphillips) |
+| Zowe CLI | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://github.com/facebook/jest/tree/master/packages/jest-each) |
 | Zowe CLI | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
 | Zowe CLI | jest-environment-node |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
 | Zowe CLI | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
@@ -8887,7 +8887,7 @@
 | Zowe CLI Plug-in for IBM CICS | jest-config |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
 | Zowe CLI Plug-in for IBM CICS | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
 | Zowe CLI Plug-in for IBM CICS | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| Zowe CLI Plug-in for IBM CICS | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](mattphillips) |
+| Zowe CLI Plug-in for IBM CICS | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://github.com/facebook/jest/tree/master/packages/jest-each) |
 | Zowe CLI Plug-in for IBM CICS | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
 | Zowe CLI Plug-in for IBM CICS | jest-environment-node |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
 | Zowe CLI Plug-in for IBM CICS | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
@@ -10439,7 +10439,7 @@
 | Zowe Desktop Data Sets UI Plugin | change-emitter |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [change-emitter](https://www.github.com/acdlite/change-emitter#readme) |
 | Zowe Desktop Data Sets UI Plugin | chardet |  v0.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chardet](https://www.github.com/runk/node-chardet) |
 | Zowe Desktop Data Sets UI Plugin | check-error |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [check-error](http://alogicalparadox.com) |
-| Zowe Desktop Data Sets UI Plugin | cheerio |  v0.22.0 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](mat.io) |
+| Zowe Desktop Data Sets UI Plugin | cheerio |  v0.22.0 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](https://github.com/cheeriojs/cheerio) |
 | Zowe Desktop Data Sets UI Plugin | chokidar |  v2.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
 | Zowe Desktop Data Sets UI Plugin | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
 | Zowe Desktop Data Sets UI Plugin | cipher-base |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [cipher-base](https://www.github.com/crypto-browserify/cipher-base#readme) |
@@ -13686,7 +13686,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | change-emitter |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [change-emitter](https://www.github.com/acdlite/change-emitter#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | chardet |  v0.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chardet](https://www.github.com/runk/node-chardet) |
 | Zowe Desktop z/OS Unix Files UI Plugin | check-error |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [check-error](http://alogicalparadox.com) |
-| Zowe Desktop z/OS Unix Files UI Plugin | cheerio |  v0.22.0 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](mat.io) |
+| Zowe Desktop z/OS Unix Files UI Plugin | cheerio |  v0.22.0 | [MIT](http://opensource.org/licenses/mit-license) | [cheerio](https://github.com/cheeriojs/cheerio) |
 | Zowe Desktop z/OS Unix Files UI Plugin | chokidar |  v2.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
 | Zowe Desktop z/OS Unix Files UI Plugin | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ci-info |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
