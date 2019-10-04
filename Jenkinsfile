@@ -136,7 +136,7 @@ node ('ibm-jenkins-slave-dind') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh "PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build"
+        sh "PUBLISH_TARGET_PATH=${publishTargetPath} NODE_OPTIONS=--max_old_space_size=4096 npm run docs:build"
       }
     }
 
