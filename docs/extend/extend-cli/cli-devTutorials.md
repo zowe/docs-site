@@ -1,28 +1,28 @@
-# Developing for Zowe CLI
+# Developing for Zowe CLI (Active Development Version)
 
-You can extend Zowe CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
+You can extend Zowe CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins. 
 
-## How can I contribute?
-You can contribute to Zowe CLI in the following ways:
+**Note:** The tutorials in this branch of documentation are specific to the Active Development version, or `@latest` CLI. For Stable instructions, see [Stable Zowe CLI Development Tutorials](https://zowe.github.io/docs-site/stable/extend/extend-cli/cli-devTutorials.html). We recommend that you create both versions of your plug-in in separate branches. 
+
+## How to contribute
+
 1. Add new commands, options, or other improvements to the base CLI.
 2. Develop a plug-in that users can install to Zowe CLI.
 
-You might want to contribute to Zowe CLI to accomplish the following:
-* Provide new scriptable functionality for yourself, your organization, or to a broader community.
+## Benefits of contributing
+
+* Provide new scriptable functionality to yourself, your organization, or to a broader community.
 * Make use of Zowe CLI infrastructure (profiles and programmatic APIs).
 * Participate in the Zowe CLI community space.
 
-The following plug-ins have been developed:
-* [IBM CICS Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-cics-plugin)
-* [IBM Db2 Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-db2-plugin)
-* [IBM IMS Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ims-plugin)
-* [IBM MQ Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-mq-plugin)
-
 ## Getting started
-If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
+
+If you want to start working with code immediately, clone the [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) and extend it or follow our [tutorials](#tutorials). The repository includes a sample plug-in that adheres to the project contribution guidleines. You can also check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md).
 
 ### Tutorials
+
 Follow these tutorials to get started working with the sample plug-in:
+
 1. **[Setting up](cli-setting-up.md)** - Clone the project and prepare your local environment.
 2. **[Installing a plug-in](cli-installing-sample-plugin.md)** - Install the sample plug-in to Zowe CLI and run as-is.
 3. **[Extending a plug-in](cli-extending-a-plugin.md)** - Extend the sample plug-in with a new by creating a programmatic API, definition, and handler.

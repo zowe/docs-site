@@ -9,7 +9,7 @@ The IBM CICS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with CICS
 As an application developer, you can use IBM CICS Plug-in for Zowe CLI to perform the following tasks:
 
   - Deploy code changes to CICS applications that were developed with COBOL. 
-  - Deploy changes to CICS regions for testing or delivery. See the [define command](#defining-resources-to-cics) for an example of how you can define programs to CICS to assist with testing and delivery. 
+  - Deploy changes to CICS regions for testing or delivery. See the [define command](#commands) for an example of how you can define programs to CICS to assist with testing and delivery. 
   - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
   - Deploy build artifacts to CICS regions.
   - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
@@ -28,45 +28,11 @@ Before you install the plug-in, meet the software requirements in [Software requ
 
 ## Installing
 
-Use one of the following methods to install the plug-in:
+Use one of the following methods to install or update the plug-in:
 
-- [Installing from an online registry](#installing-from-an-online-registry)
+- [Installing plug-ins from an online registry](cli-installplugins.md#installing-plug-ins-from-an-online-registry)
 
-- [Installing from a local package](#installing-from-a-local-package)
-
-**Note:** For more information about how to install multiple plug-ins, update to a specific version of a plug-ins, and install from specific registries, see [Install Plug-ins](cli-installplugins.md).
-
-### Installing from an online registry
-
-To install Zowe CLI from an online registry, complete the following steps:
-
-1. Set your npm registry if you did not already do so when you installed Zowe CLI. Issue the following command:
-
-    ```
-    npm config set @zowe:registry
-    ```
-
-2. Open a command line window and issue the following command:
-
-    ``` 
-    zowe plugins install @zowe/cics-for-zowe-cli
-    ```
-
-The plug-in is installed to Zowe CLI.
-
-### Installing from a local package
-
-If you downloaded the Zowe PAX file and extracted the `zowe-cli-bundle.zip` package, complete the following steps to install the plug-in.
-
-1. Open a command line window and change the local directory where you extracted the `zowe-cli-bundle.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see the topic [Install Zowe CLI from local package](cli-installcli.md#installing-zowe-cli-from-a-local-package) for information about how to obtain and extract it.
-
-2. Issue the following command to install the plug-in:
-
-    ```
-    zowe plugins install cics-for-zowe-cli.tgz
-    ```
-
-The plug-in is installed to Zowe CLI.
+- [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
 ## Creating user profiles
 

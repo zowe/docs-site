@@ -1,4 +1,4 @@
-# Zowe CLI quick start
+# Zowe CLI quick start (Active Development)
 
 Get started with **Active Development (@latest) CLI version** quickly and easily. If you want a version with stable features and bug fixes, refer to the [Stable Zowe CLI Quick start instructions](https://docs.zowe.org/stable/getting-started/cli-getting-started.html). 
 
@@ -29,10 +29,10 @@ npm install @zowe/cli -g
 The command installs the IBM CICS, IBM IMS, and IBM MQ plug-ins:
 
 ```
-zowe plugins install @zowe/cics @zowe/ims @zowe/mq
+zowe plugins install @zowe/cics @zowe/ims @zowe/db2 @zowe/mq
 ```
 
-The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+The IBM Db2 plug-in requires [additional configuration to use](../user-guide/cli-db2plugin.md#installing).
 
 For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
 

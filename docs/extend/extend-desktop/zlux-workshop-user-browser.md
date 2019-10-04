@@ -29,7 +29,7 @@ So, let's get started!
    - [Adding your Dataservice to the Plugin Definition](#adding-your-dataservice-to-the-plugin-definition)
 1. [Adding your First Widget](#adding-your-first-widget)
    - [Adding your Dataservice to the App](#adding-your-dataservice-to-the-app)
-   - [Introducing Zowe Application Server Grid](#introducing-zlux-grid)
+   - [Introducing Zowe Application Server Grid](#introducing-zowe-application-server-grid)
 1. [Adding Zowe App-to-App Communication](#adding-zowe-app-to-app-communication)
    - [Calling back to the Starter App](#calling-back-to-the-starter-app)
 

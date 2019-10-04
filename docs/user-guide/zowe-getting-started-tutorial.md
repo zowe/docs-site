@@ -292,7 +292,7 @@ In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the sam
 
 For more information, see the [User Guide](mvd-using.md).
 
-For a complete list of available CLI commands, explore the Zowe CLI [Command Reference Guide](cli-usingcli.md#zowe-cli-command-reference-guide).
+For a complete list of available CLI commands, explore the Zowe CLI [Command Reference Guide](cli-usingcli.md#zowe-cli-command-reference).
 
 ### Try the Extending Zowe scenarios
 

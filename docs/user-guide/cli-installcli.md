@@ -72,6 +72,10 @@ If you have restricted internet access at your site, use the following method to
     ```
     zowe plugins install zowe-cics.tgz 
     ```
+    
+    ```
+    zowe plugins install zowe-db2.tgz 
+    ```
 
     ```
     zowe plugins install zowe-ims.tgz 
