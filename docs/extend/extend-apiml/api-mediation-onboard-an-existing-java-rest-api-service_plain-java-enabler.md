@@ -70,8 +70,6 @@ The following process outlines the process of onboarding your REST service:
 
 ## Prerequisites
 
-## I. Prerequisites
-
 * Your REST API service written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
@@ -292,6 +290,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
  healthCheckRelativeUrl: /application/health
  discoveryServiceUrls:
      - http://eureka:password@localhost:10011/eureka
+ sec    
  routes:
      - gatewayUrl: api/v1
        serviceUrl: /hellospring/api/v1    
@@ -311,14 +310,14 @@ The configuration can be externalized <font color="red">TODO: Explain HOW </font
 
 The content and the structure of the configuration file example above is broken into several parts:
 
+- REST service information 
+    - API Security
 - Eureka discovery service 
-- REST service information
-- API information
+- API routing information
+- API info (API Documentation)
 - API Catalog information
 
- 
-
-1. REST service information
+### REST service information
 
 * **Service identification**
 
@@ -419,21 +418,26 @@ The content and the structure of the configuration file example above is broken 
         `${baseUrl}/application/health`
 
 
-2. Eureka discovery service
-    ```
+### Eureka discovery service
+
+The following list describes the Eureka discovery service properties:
+
+```
     discoveryServiceUrls:
     - https://localhost:10011/eureka
     - http://......
-    ```
-       
-    * **discoveryServiceUrls**
-    
-        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
-    
-        **Example:**
-        * `http://eureka:password@141.202.65.33:10311/eureka/`
+```
+ where:      
 
-3. **Security configuration**
+* **discoveryServiceUrls**
+    
+    Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
+    
+     **Example:**
+
+    `http://eureka:password@141.202.65.33:10311/eureka/`
+
+**Security configuration**
     * Setup key store with the service certificate
 
 All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
@@ -471,7 +475,7 @@ in your service without generating a new certificate, for local development.
 **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
     ```
 
-3. REST API information
+3. API routing information
     * Routing information
     ```
     routes:
