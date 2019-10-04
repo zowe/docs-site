@@ -28,7 +28,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - Supported browsers:
     -   Google Chrome V66 or later
     -   Mozilla Firefox V60 or later
-    -   Safari V11.1 or later
+    -   Safari V12.0 or later
     -   Microsoft Edge 17 (Windows 10)
 
 ## Zowe CLI requirements
