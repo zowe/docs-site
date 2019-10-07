@@ -403,7 +403,7 @@ where:
     * `http://host:port/servicename` for HTTP service
     * `https://host:port/servicename` for HTTPS service
 
-    * **homePageRelativeUrl** 
+* **homePageRelativeUrl** 
     
     Specifies the relative path to the home page of your service. The path should start with `/`.
     If your service has no home page, leave this parameter blank.
@@ -450,19 +450,19 @@ Use the following procedure to configure security.
 
     All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
 
-      **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+    **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
-      If the service runs on localhost, the command uses the following format:
+    If the service runs on localhost, the command uses the following format:
 
-      ```
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-      ```
+    ```
+    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+    ```
 
-      (Optional) Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
+2. (Optional) Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
 
-       `<api-layer-repository>/keystore/localhost.truststore.p12` 
+     `<api-layer-repository>/keystore/localhost.truststore.p12` 
 
-2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+3. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
       ```
     ssl:
         protocol: TLSv1.2
