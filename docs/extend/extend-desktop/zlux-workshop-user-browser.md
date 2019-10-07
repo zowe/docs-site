@@ -4,7 +4,7 @@ This tutorial contains code snippets and descriptions that you can combine to bu
 
 By the end of this tutorial, you will:
 
-1. Know how to create an application that displays on the Zowe Desktop
+1. Know how to create an application that displays on the Zowe&trade; Desktop
 1. Know how to create a Dataservice which implements a simple REST API
 1. Be introduced to Typescript programming
 1. Be introduced to simple Angular web development

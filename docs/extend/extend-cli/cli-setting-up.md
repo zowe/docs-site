@@ -1,6 +1,5 @@
 # Setting up your development environment
-
-Before you follow the development tutorials for creating a Zowe CLI plug-in, follow these steps to set up your environment.
+Before you follow the development tutorials for creating a Zowe&trade; CLI plug-in, follow these steps to set up your environment.
 
 ## Prequisites
 
@@ -19,7 +18,6 @@ The `lts-incremental` branch of Sample Plug-in is compatible with the `@lts-incr
 
 For more information about the versioning scheme, see [Maintaner Versioning](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) in the Zowe CLI repository. 
 
-
 ### Clone zowe-cli-sample-plugin and build from source
 Clone the repository into your development folder to match the following structure:
 ```
@@ -30,8 +28,9 @@ Follow these steps:
 1. `cd` to your `zowe-tutorial` folder.
 2. `git clone https://github.com/zowe/zowe-cli-sample-plugin`
 3. `cd` to your `zowe-cli-sample-plugin` folder.
-4. `npm install`
-5. `npm run build`
+4. `git checkout lts-incremental`
+5. `npm install`
+6. `npm run build`
 
     The first time that you build, the script will interactively ask you for the location of your Zowe CLI directory. Subsequent builds will not ask again.
 

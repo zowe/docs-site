@@ -63,7 +63,7 @@ The Program Directory contains the following sections:
 
 ### Zowe description
 
-Zowe is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
+Zowe&trade; is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
 
 ### Zowe FMIDs
 
@@ -81,7 +81,7 @@ The distribution medium for this program is via downloadable files. This program
 
 ### Program publications
 
-You can obtain the Zowe documentation from the Zowe doc site at [https://zowe.github.io/docs-site/latest](https://zowe.github.io/docs-site/latest). No optional publications are provided for Zowe.
+You can obtain the Zowe documentation from the Zowe doc site at [https://docs.zowe.org/](https://docs.zowe.org/). No optional publications are provided for Zowe.
 
 ### Program source materials
 
@@ -92,7 +92,7 @@ No program source materials or viewable program listings are provided for Zowe i
 Publications listed below are helpful during the installation of Zowe.
 
 Publication Title | Form Number  
--- | --
+---|---
 [IBM SMP/E for z/OS User's Guide](https://www.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232277/$file/gim3000_v2r3.pdf) | SA23-2277
 [IBM SMP/E for z/OS Commands](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232275/$file/gim1000_v2r3.pdf)  | SA23-2275
 [IBM SMP/E for z/OS Reference](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232276/$file/gim2000_v2r3.pdf) | SA23-2276
@@ -149,9 +149,9 @@ The driving system can be run in any hardware environment that supports the requ
 
 #### Driving system programming requirements
 
-Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy these APARs | Included in the shipped product ?
--- | --| --| -- | -- |
-5650-ZOS | z/OS | V2.2.0 or later | N/A | No |
+Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy these APARs | Included in the shipped product?
+---|---|---|---|---
+5650-ZOS | z/OS | V2.2.0 or later | N/A | No 
 
 **Notes:**
 - SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
@@ -192,7 +192,7 @@ Operational requisites are products that are required and must be present on the
 Mandatory operational requisites identify products that are required for this product to operate its basic functions. The following tables lists the target system mandatory operational requisites for Zowe.
 
 Program Number |Product Name and Minimum VRM/Service Level
---| --|
+---|---
 5650-ZOS |  IBM z/OS Management Facility V2.2.0 or higher
 5655-SDK |	IBM SDK for Node.js - z/OS V8.16.0 or higher
 5655-DGH |	IBM 64-bit SDK for z/OS Java Technology Edition V8.0.0
@@ -218,7 +218,7 @@ Zowe libraries can reside on all supported DASD types.
 **Total DASD space required by Zowe**
 
 Library Type | Total Space Required in 3390 Trks | Description
---| --| --
+---|---|---
 Target |30 Tracks	| /
 Distribution | 12030 Tracks	| /
 File System(s) | 9000 Tracks | /
@@ -265,7 +265,7 @@ Web Download | 26111 Tracks | These are temporary data sets, which can be remove
 **Storage requirements for SMP/E work data sets**
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
---| --| --| --| --| --| --
+---|---|---|---|---|---|---
 SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
 SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
 
@@ -274,7 +274,7 @@ In the table above, (20,200) specifies a primary allocaton of 20 tracks, and a s
 **Storage requirements for SMP/E data sets**
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
---| --| --| --| --| --| --|
+---|---|---|---|---|---|---
 SMPPTS | S | PDSE | FB | 80 | (12000,3000) | 50
 
 The following figures describe the target and distribution libraries and file system paths required to install Zowe. The storage requirements of Zowe must be added to the storage required by other programs that have data in the same library or path.
@@ -286,30 +286,30 @@ The following figures describe the target and distribution libraries and file sy
 **Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
---| --| --| --| --| --| --| --| --
+---|---|---|---|---|---|---|---|---
 SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
 SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
 
 **Zowe file system paths**
 
 DDNAME | TYPE | Path Name
---| --| --|
+---|---|---
 SZWEZFS | X | /usr/lpp/zowe/SMPE
 
 **Storage requirements for Zowe distribution libraries**
 
 **Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
 
-Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
---| --| --| --| --| --| --|
+Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
+---|---|---|---|---|---|---
 AZWEAUTH | U | PDSE | U | 0 | 15 | N/A
 AZWESAMP | U | PDSE | FB | 80 | 15 | 5
 AZWEZFS | U | PDSE | VB | 6995 | 12000 | 30
 
 The following figures list data sets that are not used by Zowe, but are required as input for SMP/E.
 
-Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks|
---| --| --| --| --| --| --|
+Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
+---|---|---|---|---|---|---
 hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
@@ -320,9 +320,9 @@ z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
 
 ### FMIDs deleted
 
-Installing Zowe might result in the deletion of other FMIDs. To see which FMIDs will be deleted, examine the ++VER statement in the SMPMCS of the product.
+Installing Zowe might result in the deletion of other FMIDs. 
 
-If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
+To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
 
 **Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
 
@@ -349,7 +349,7 @@ Use the SMP/E RECEIVE, APPLY, and ACCEPT commands to install this release of Zow
 The recommended values for certain SMP/E CSI subentries are shown in the following table. Using values lower than the recommended values can result in failures in the installation. DSSPACE is a subentry in the GLOBAL options entry. PEMAX is a subentry of the GENERAL entry in the GLOBAL options entry. See the SMP/E manuals for instructions on updating the global zone.
 
 Subentry | Value | Comment
--- | --| --|
+---|---|---
 DSSPACE | (1200,1200,1400)  | Space allocation
 PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
@@ -462,8 +462,8 @@ Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in 
 
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
 
-User enters: | Values |
---| --|
+User enters: | Values 
+---|---
 mvsaddr | TCP/IP address or hostname of the z/OS system
 tsouid | Your TSO user ID
 tsopw | Your TSO password
@@ -625,7 +625,7 @@ where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary c
 The following sample installation jobs are provided in `hlq.ZOWE.AZWE001.F1`, or equivalent, as part of the project to help you install Zowe:
 
 Job Name | Job Type | Description | RELFILE
---| --| --| --|
+---|---|---|---
 ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
 ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
 ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1

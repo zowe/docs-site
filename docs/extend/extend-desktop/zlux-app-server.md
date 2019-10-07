@@ -1,6 +1,6 @@
 # Tutorial: Stand up a local version of the Example Zowe Application Server
 
-The `zlux-app-server` repository is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe Application Server with a few applications included.
+The `zlux-app-server` repository is an example of a server built upon the application framework. Within the repository, you will find a collection of build, deploy, and run scripts and configuration files that will help you to configure a simple Zowe&trade; Application Server with a few applications included.
 
 ## Server layout
 
@@ -34,22 +34,28 @@ If you'd like to go this route, you can find git for z/OS free of charge here: h
 
 ### 1. Acquire the source code
 
-To get started, first clone or download the GitHub capstone repository [https://github.com/zowe/zlux](https://github.com/zowe/zlux). 
-
-**Note:** Make sure that you have your SSH key set up and added to GitHub. For how to do this, see [Generating SSH keys](https://help.github.com/articles/connecting-to-github-with-ssh/).
-
-Because we will be configuring ZSS on z/OS's USS, and the Zowe Application Server on a LUW host, you will need to place the contents on both systems. 
-If you are using git, use the following commands. 
-
+To get started, first clone (or download) the code necessary to build zss and the zss cross memory server. If using git, the following commands should be used on z/OS:
+```
+git clone --recursive git@github.com:zowe/zss.git
+```
+Afterwards, clone (or download) the github capstone repository, [https://github.com/zowe/zlux](https://github.com/zowe/zlux) As we'll be configuring ZSS on z/OS's USS, and the zLUX App Server on a LUW host, you'll need to put the contents on both systems. If using git, the following commands should be used:
 ```
 git clone --recursive git@github.com:zowe/zlux.git
 cd zlux
 git submodule foreach "git checkout master"
-cd zlux-build
 ```
+By default the trivial authentication backend is enabled which always returns successful unless authentication information provided is in an incorrect format. To use ZSS as an authentication backend, clone (or download) the `zss-auth` plugin code into the `zlux` directory:
+```
+git clone git@github.com:zowe/zss-auth.git
+```
+To bring Apps to zLUX App server, you need to clone (or download) corresponding repositories into `zlux`. For example, clone (or download) the following to get sample apps source code:
+```
+git clone git@github.com:zowe/sample-angular-app.git
+git clone git@github.com:zowe/sample-react-app.git
+git clone git@github.com:zowe/sample-iframe-app.git
+```
+At this point, you'll have the latest code from each repository on your system. Continue from within zlux-app-server.
 
-At this point, you have the latest code from each repository on your system.
-Continue from within `zlux-app-server`.
 
 ### 2. Acquire external components
 

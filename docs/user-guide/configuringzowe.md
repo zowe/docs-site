@@ -1,3 +1,3 @@
 # Configuring Zowe
 
-Follow these procedures to configure the components of Zowe.
+Follow these procedures to configure the components of Zowe&trade;.

@@ -1,6 +1,6 @@
 # Java  REST APIs with Spring Boot
 
-Zowe API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
+Zowe&trade; API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
 
 **Note:** Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 

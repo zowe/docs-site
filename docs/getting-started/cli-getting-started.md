@@ -8,7 +8,12 @@ Get started with the **Stable (@lts-incremental) CLI version** quickly and easil
 
 **Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
 
-[[toc]]
+- [Zowe CLI quick start (Active Development)](#zowe-cli-quick-start-active-development)
+  - [Installing](#installing)
+  - [Issuing your first commands](#issuing-your-first-commands)
+  - [Using profiles](#using-profiles)
+  - [Writing scripts](#writing-scripts)
+  - [Next Steps](#next-steps)
 
 ## Installing 
 

@@ -1,6 +1,6 @@
 # Updating Zowe on z/OS using Update Script
 
-In the past, to update Zowe on z/OS, you had to install a new version of Zowe on top of an existing one. With the introduction of the Zowe update script, the update process becomes faster and more seamless. You can update Zowe on z/OS using shell.
+In the past, to update Zowe&trade; on z/OS, you had to install a new version of Zowe on top of an existing one. With the introduction of the Zowe update script, the update process becomes faster and more seamless. You can update Zowe on z/OS using shell.
 
 ### Prerequisites
 
