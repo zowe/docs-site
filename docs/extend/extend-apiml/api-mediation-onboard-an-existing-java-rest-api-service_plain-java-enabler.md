@@ -1,6 +1,6 @@
 # Java REST APIs service without Spring Boot
 
-This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot or SpringFramework.
+This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 ZOWE API ML is a lightweight API management system based on following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
@@ -13,7 +13,7 @@ The following requirements are necessary to onboard a REST API to the API ML:
 * Provide service discovery information including but not limited to the base URI, home page, status page, and health check end-point.
 * Provide routing metadata of service end-points. This metadata is used by the API ML Gateway to route HTTP requests.
 * Provide a service description and API documentation metadata for the API Catalog.
-* Register the service with the Eureka discovery service instance with the service discovery information, the routing metadata, and the service description and API documentation metadata.
+* Register the service with the Eureka discovery service instance with service discovery information, routing metadata, and a service description, and API documentation metadata.
 
   **Tip:**
 
@@ -21,11 +21,11 @@ The following requirements are necessary to onboard a REST API to the API ML:
 
   For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
-  For instructions how to utilize other API-ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+  For instructions about how to utilize other API ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 **Onboarding your REST service to API ML**
 
-The following process outlines the process of onboarding your REST service: 
+The following steps outline the process of onboarding your REST service. Each step is described in further detail in this article. 
 
 1. [Prerequisites](#prerequisites)
 
@@ -70,6 +70,8 @@ The following process outlines the process of onboarding your REST service:
 
 ## Prerequisites
 
+Ensure that the following prerequisites are satified before you begin the onboarding process:
+
 * Your REST API service written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
@@ -113,7 +115,9 @@ Use the following procedure if you use Gradle as your build automation system.
     repositories mavenRepositories
     ```
 
-    The `ext` object declares the `mavenRepository` property. This property is used as the project repository. 
+    where:
+
+    * **`ext`**  declares the `mavenRepository` property. This property is used as the project repository. 
 
 4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     ```gradle
@@ -121,7 +125,7 @@ Use the following procedure if you use Gradle as your build automation system.
     ```
     **Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
 
-5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run gradlew to use the specific gradle version that is working on your project.
+5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working on your project.
 
 <font color="red">**TODO** What gradle version is minimum required for Plain Java Enabler?</font>
 
@@ -262,7 +266,7 @@ Add the following endpoints to your application:
 
 ### Implement a periodic call (heartbeat) to the API ML Discovery Service
 
-After successful registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat after certain period of time, it removes the service instance from the registry.
+After successful registration, configure your service to send a heartbeat periodically to the Discovery Service. This hearbeat indicates that the service is available. When the Discovery Service does not receive a heartbeat after set period of time, it removes the service instance from the registry.
 
 **Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
 
@@ -270,7 +274,7 @@ Use the PUT HTTP method in the following format to tell the Discovery Service th
 
 `https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
 
-After you add API ML integration endpoints, you are ready to add service configuration for Discovery client.
+After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
 ## Service configuration
 
@@ -306,67 +310,68 @@ The following code snippet shows `service-configuration.yml` content as an examp
          version: 1.0.0
  ```
 
-The configuration can be externalized <font color="red">TODO: Explain HOW </font>
+**Note:** The configuration can be externalized <font color="red">TODO: Explain HOW </font>
 
 The content and the structure of the configuration file example above is broken into several parts:
 
-- REST service information 
-    - API Security
+- REST service identification 
+- Administrative endpoints
+- API Security
 - Eureka discovery service 
 - API routing information
 - API info (API Documentation)
 - API Catalog information
 
-### REST service information
+### REST service identification
 
-* **Service identification**
+The following snippet describes the service identification properties:
+```
+serviceId: hellospring
+title: Hello Spring REST API
+description: Example for exposing a Spring REST API
+```
 
-    The following snippet describes the service identification properties:
-    ```
-    serviceId: hellospring
-    title: Hello Spring REST API
-    description: Example for exposing a Spring REST API
-    ```
-
-    where:
-    - **serviceId**
+where:
+* **serviceId**
     
-        Specifies the service instance identifier that is registered in the API-ML installation. 
-        The service ID is used in the URL for routing to the API service through the gateway. 
-        The service ID uniquely identifies instances of a microservice in the API-ML. 
-        The system administrator at the customer site defines this parameter.
+    Specifies the service instance identifier that is registered in the API-ML installation. 
+    The service ID is used in the URL for routing to the API service through the gateway. 
+    The service ID uniquely identifies instances of a microservice in the API-ML. 
+    The system administrator at the customer site defines this parameter.
         
-        **Important!**  Ensure that the service ID is set properly with the following considerations:
+    **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-        * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
-        * The same service ID should be set only for multiple API service instances for API scalability.
-        * The service ID value must contain only lowercase alphanumeric characters.
-        * The service ID cannot contain more than 40 characters.
-        * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+    * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
+    * The same service ID should be set only for multiple API service instances for API scalability.
+    * The service ID value must contain only lowercase alphanumeric characters.
+    * The service ID cannot contain more than 40 characters.
+    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
         
-        **Examples:**
-        * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
-            ```
-            https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
-            ```
-        * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
-            ```
-            http://gateway:port/api/v1/vantageprod1/endpoint1/...
-            ```
-    * **title**
-    
-        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+    **Examples:**
+    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+            
+       ```
+       https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+       ```
 
-        **Tip:** We recommend that you provide a specific default value of the `title`.
+    * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+    ```
+    http://gateway:port/api/v1/vantageprod1/endpoint1/...
+    ```
+* **title**
+    
+  Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+  **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
-    * **description**
+* **description**
     
-        Specifies a short description of the API service.
+    Specifies a short description of the API service.
     
-        **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
     
-        This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
     
         **Tip:** Describe the service so that the end user knows the function of the service.
 
@@ -422,7 +427,11 @@ The content and the structure of the configuration file example above is broken 
 
        #### API Security 
 
-      To configure security, set up a key store with the service certificate.
+      To configure security.
+      
+      **Follow these steps:**
+
+      1. set up a key store with the service certificate.
 
       All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
 
@@ -434,12 +443,9 @@ The content and the structure of the configuration file example above is broken 
        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
       ```
 
-      Alternatively, copy or use the 
+      Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
 
        `<api-layer-repository>/keystore/localhost.truststore.p12` 
-
-      in your service without generating a new certificate, for local development.
-
 
       * Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
          ```
