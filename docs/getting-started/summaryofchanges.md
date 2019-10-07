@@ -31,7 +31,6 @@ In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are av
     - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
     - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
 
-
 ## Installing or Updating
 
 ### First-time install
