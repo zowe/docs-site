@@ -1,6 +1,6 @@
 # Introduction
 
-This style guide is the visual language that represents Zowe. It is a living document that will be updated based on the needs of our users and software requirements.
+This style guide is the visual language that represents Zowe&trade;. It is a living document that will be updated based on the needs of our users and software requirements.
 
 ## Clear
 Our users rely on our software to help them be efficient in their work. The interfaces and experiences that we design should be clear so that there is never confusion about where to click or how to take the next step. Users should always feel confident in their actions.

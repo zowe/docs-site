@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Check out the following FAQs to learn more about the purpose and function of Zowe. 
+Check out the following FAQs to learn more about the purpose and function of Zowe&trade;. 
 
 - [Zowe FAQ](#zowe-faq)
 - [Zowe CLI FAQ](#zowe-cli-faq)

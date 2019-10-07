@@ -1,6 +1,6 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe convenience build by running shell script within a Unix System Services (USS) shell.
+You install the Zowe&trade; convenience build by running shell script within a Unix System Services (USS) shell.
 
 1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
 2. [Installing the Zowe runtime](#installing-the-zowe-runtime)
@@ -151,7 +151,7 @@ Navigate to the directory where the installation archive is extracted. Locate th
 
 Review the `zowe-install.yaml` file which contains the `install:rootDir` property that is used by the installation.
 
-`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.   
+`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.  
 
 You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
 

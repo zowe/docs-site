@@ -2,7 +2,7 @@
 
 ## Problem
 
-Zowe CLI is experiencing a problem. You need to collect information that will help you resolve the issue. 
+Zowe&trade; CLI is experiencing a problem. You need to collect information that will help you resolve the issue. 
 
 ### Environment
 

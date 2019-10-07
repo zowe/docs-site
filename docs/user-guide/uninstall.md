@@ -1,6 +1,6 @@
 # Uninstalling Zowe
 
-You can uninstall Zowe if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
+You can uninstall Zowe&trade; if you no longer need to use it. Follow these procedures to uninstall each Zowe component.
 
 - [Uninstalling  Zowe from z/OS](#uninstalling-zowe-from-z-os)
 - [Uninstalling Zowe CLI from the desktop](#uninstalling-zowe-cli-from-the-desktop)

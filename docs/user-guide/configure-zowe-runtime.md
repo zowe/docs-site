@@ -1,6 +1,6 @@
 # Configuring the Zowe runtime
 
-After you install Zowe through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
+After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
 
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
@@ -58,7 +58,6 @@ For the convenience build, the location of the Zowe runtime directory will be th
 
 To configure the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the configuration script will attempt to locate default values.
 
-- `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
 - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
 
@@ -141,7 +140,6 @@ The port values are defined in the `scripts/configure/zowe-install.yaml` file.
       verifyCertificatesOfServices=true
       enableSso=false
       zosmfKeyring=IZUKeyring.IZUDFLT
-      zosmfUser=IZUSVR
 
     zos-services:
       jobsAPIPort=8545

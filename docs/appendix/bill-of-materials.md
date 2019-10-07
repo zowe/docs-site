@@ -1,6 +1,6 @@
 # Zowe Binaries - Bill of Materials
 
-The following materials are distributed with Zowe binaries:
+The following materials are distributed with Zowe&trade; binaries:
 
 ## Zowe PAX 
 

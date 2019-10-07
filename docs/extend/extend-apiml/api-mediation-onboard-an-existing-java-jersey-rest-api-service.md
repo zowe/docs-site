@@ -1,7 +1,7 @@
 
 # Java Jersey REST APIs
 
-As an API developer, use this guide to onboard your Java Jersey REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
+As an API developer, use this guide to onboard your Java Jersey REST API service into the Zowe&trade; API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
 The following procedure is an overview of steps to onboard a Java Jersey REST API application with the API Mediation Layer.
 
@@ -234,7 +234,6 @@ As an API service developer, you set multiple configuration settings in your app
     ##############################################################################################
    # Local configuration section
     ##############################################################################################
-
     environment:
         serviceId: Your service id
         serviceTitle: Your service title
@@ -386,7 +385,7 @@ As an API service developer, you set multiple configuration settings in your app
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
       * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
-
+          
           Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
           The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.

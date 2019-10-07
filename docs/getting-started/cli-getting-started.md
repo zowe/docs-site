@@ -1,8 +1,22 @@
 # Zowe CLI quick start
 
-Get started with Zowe CLI quickly and easily.
+Get started with Zowe&trade; CLI quickly and easily.
 
 **Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
+
+- [Installing](#installing)
+     - [Installing Zowe CLI core](#installing-zowe-cli-core)
+     - [Installing CLI plug-ins](#installing-cli-plug-ins)
+- [Issuing your first commands](#issuing-your-first-commands)
+     - [Listing all data sets under a high-level qualifier (HLQ)](#listing-all-data-sets-under-a-high-level-qualifier-hlq)
+     - [Downloading a partitioned data-set (PDS) member to local file](#downloading-a-partitioned-data-set-pds-member-to-local-file)
+- [Using profiles](#using-profiles)
+     - [Profile types](#profile-types)
+     - [Creating a zosmf profile](#creating-a-zosmf-profile)
+     - [Using a zosmf profile](#using-a-zosmf-profile)
+- [Writing scripts](#writing-scripts)
+     - [Example:](#example)
+- [Next Steps](#next-steps)
 
 ## Installing 
 

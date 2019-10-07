@@ -1,6 +1,6 @@
 # Troubleshooting z/OS Services
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe z/OS Services.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; z/OS Services.
 
 ## z/OS Services are unavailable
 
