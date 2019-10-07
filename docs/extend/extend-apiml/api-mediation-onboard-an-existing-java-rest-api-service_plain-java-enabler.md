@@ -29,37 +29,37 @@ The following steps outline the process of onboarding your REST service. Each st
 
 1. [Prerequisites](#prerequisites)
 
-2. [Project configuration](#project-configuration)
+2. [Configuring your project](#configuring-your-project)
 
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-3. [Source code changes](#source-code-changes)
+3. [Changing your source code](#changing-your-source-code)
 
     * [Adding endpoints](#adding-endpoints)
     * [Registering your service to API ML](#registering-your-service-to-api-ml))
     
-        * [Add a context listener class](#add-a-context-listener-class)
-        * [Register a context listener](#register-a-context-listener)
-        * [Read service configuration](#read-service-configuration)
-        * [Initialize Eureka Client](#initialize-eureka-client)
-        * [Register with Eureka discovery service](#register-with-eureka-discovery)
+        * [Adding a context listener class](#adding-a-context-listener-class)
+        * [Register a context listener](#registering-a-context-listener)
+        * [Reading service configuration](#reading-service-configuration)
+        * [Initializing Eureka Client](#initializing-eureka-client)
+        * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
 
-    * [Implement a periodic call (heartbeat) to the API ML Discovery Service](implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
+    * [Implementing a periodic call (heartbeat) to the API ML Discovery Service](implementing-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
 
-4. [Service configuration](#service-configuration)
+4. [Configuring your service](#configuring-your-service)
     * [Eureka discovery service](#eureka-discovery-service)
     * [REST service information](#rest-service-information)
     * [API information](#api-information)
     * [API Catalog information](#api-catalog-information)
 
-5. [API documentation](#api-documentation)
+5. [Documenting your API](#documenting-your-api)
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-6. [Build and Run your service](#run-your-service)
+6. [Building and Run your service](#building-and-running-your-service)
 
-7. [Validate your REST service is discoverable and end points operational](#validate-discovery-of-the-api-service-by-the-discovery-service)
+7. [Validating your REST service is discoverable and end points operational](#validating-your-rest-api-is discoverable)
 
 **Notes:** 
 <font color='yellow'> TODO: REMOVE?
@@ -117,7 +117,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
     where:
 
-    * **`ext`**  declares the `mavenRepository` property. This property is used as the project repository. 
+    * **ext**  declares the `mavenRepository` property. This property is used as the project repository. 
 
 4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     ```gradle
@@ -376,64 +376,64 @@ where:
         **Tip:** Describe the service so that the end user knows the function of the service.
 
 * **Administrative end-points**
+The following snippet describes the administrative end-point properties:
 
+```
+baseUrl: http://localhost:10021/hellospring
+homePageRelativeUrl:
+statusPageRelativeUrl: /application/info
+healthCheckRelativeUrl: /application/health
+```
+where:
 
-    ```
-    baseUrl: http://localhost:10021/hellospring
-    homePageRelativeUrl:
-    statusPageRelativeUrl: /application/info
-    healthCheckRelativeUrl: /application/health
-    ```
-   where:
-
-    * **baseUrl**
+* **baseUrl**
     
-        Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
         
-        * **homePageRelativeUrl**
-        * **statusPageRelativeUrl**
-        * **healthCheckRelativeUrl**. 
+    * **homePageRelativeUrl**
+    * **statusPageRelativeUrl**
+    * **healthCheckRelativeUrl**. 
         
-        **Examples:** 
-        * `http://host:port/servicename` for HTTP service
-        * `https://host:port/servicename` for HTTPS service
+    **Examples:** 
+    * `http://host:port/servicename` for HTTP service
+    * `https://host:port/servicename` for HTTPS service
 
     * **homePageRelativeUrl** 
     
-        Specifies the relative path to the home page of your service. The path should start with `/`.
-        If your service has no home page, leave this parameter blank.
+    Specifies the relative path to the home page of your service. The path should start with `/`.
+    If your service has no home page, leave this parameter blank.
     
-        **Examples:**
-        * `homePageRelativeUrl: ` The service has no home page
-        * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
+    **Examples:**
+    * `homePageRelativeUrl: ` The service has no home page
+    * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
     
     * **statusPageRelativeUrl**
     
-        Specifies the relative path to the status page of your service.
-        This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
-        Start this path with `/`.
+    Specifies the relative path to the status page of your service.
+    This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
+    Start this path with `/`.
     
-        **Example:**
-        * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
+    **Example:**
+    * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
     * **healthCheckRelativeUrl**
     
-        Specifies the relative path to the health check endpoint of your service. 
-        This is the endpoint that you defined in the `MfaasController` controller in the 
-        `getHealth` method. Start this URL with `/`.
+    Specifies the relative path to the health check endpoint of your service. 
+    This is the endpoint that you defined in the `MfaasController` controller in the 
+    `getHealth` method. Start this URL with `/`.
     
-        **Example:**
-        * `healthCheckRelativeUrl: /application/health`. This results in the URL:
-        `${baseUrl}/application/health`
+    **Example:**
+    * `healthCheckRelativeUrl: /application/health`. This results in the URL:
+    `${baseUrl}/application/health`
 
-       #### API Security 
+### API Security 
 
-      To configure security.
+Use the following procedure to configure security.
       
-      **Follow these steps:**
+**Follow these steps:**
 
-      1. set up a key store with the service certificate.
+1. Set up a key store with the service certificate.
 
-      All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
+    All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
 
       **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
@@ -443,33 +443,33 @@ where:
        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
       ```
 
-      Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
+      (Optional) Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
 
        `<api-layer-repository>/keystore/localhost.truststore.p12` 
 
       * Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
-         ```
-          ssl:
-              protocol: TLSv1.2
-              ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-              keyAlias: localhost
-              keyPassword: password
-              keyStore: keystore/localhost.keystore.p12
-              keyStoreType: PKCS12
-              keyStorePassword: password
-              trustStore: keystore/localhost.truststore.p12
-              trustStoreType: PKCS12
-              trustStorePassword: password
-         ```
-         **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+      ```
+    ssl:
+        protocol: TLSv1.2
+        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+        keyAlias: localhost
+        keyPassword: password
+        keyStore: keystore/localhost.keystore.p12
+        keyStoreType: PKCS12
+        keyStorePassword: password
+        trustStore: keystore/localhost.truststore.p12
+        trustStoreType: PKCS12
+        trustStorePassword: password
+    ```
+    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 ### Eureka discovery service
 
 Eureka discovery service parameters are included in the following snippet: 
 
 ```
-    discoveryServiceUrls:
-    - https://localhost:10011/eureka
-    - http://......
+discoveryServiceUrls:
+- https://localhost:10011/eureka
+- http://......
 ```
  where:      
 
@@ -499,8 +499,9 @@ routes:
 
 * **routedServices**
     
-    The routing rules between the gateway service and your service.
-        * **routedServices.gatewayUrl**
+    Specifies the routing rules between the gateway service and your service.
+
+* **routedServices.gatewayUrl**
         
     Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
@@ -508,7 +509,7 @@ routes:
 * **routedServices.serviceUrl**
         
     Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-            gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+    gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
 ### API info
 
@@ -570,7 +571,7 @@ Use the following procedure to add Swagger API documentation to your project.
 
 **Follow these steps:**
 
-1.  Add a Springfox Swagger dependency.
+1. Add a Springfox Swagger dependency.
 
     * For Gradle add the following dependency in `build.gradle`:
 
@@ -587,7 +588,7 @@ Use the following procedure to add Swagger API documentation to your project.
         </dependency>
         ```
 
-2.  Add a Spring configuration class to your project:
+2. Add a Spring configuration class to your project:
 
     ```java
     package com.ca.mfaas.hellospring.configuration;
@@ -630,11 +631,11 @@ Use the following procedure to add Swagger API documentation to your project.
         }
     }
     ```
-3.  Customize this configuration according to your specifications. For more information about customization properties, 
+3. Customize this configuration according to your specifications. For more information about customization properties, 
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
 
-3.  Customize your configuration parameters to correspond with your API service specifications.
+3. Customize your configuration parameters to correspond with your API service specifications.
 
     * **catalogUiTile.id**
     
@@ -662,9 +663,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 ## Building and running your service
 
-1. Execute 
-
-    `gradle clean build`
+1. Execute `gradle clean build`
 
 2.  Run your Java application. 
 
