@@ -50,7 +50,8 @@ file.</li>
 <ul>
 <li>Includes a list of variables for the workflow. The variables that you specify
 here take precedence over the variables that are specified in the workflow
-variable input file.</li>
+variable input file. Make sure the value meets all regular expression
+requirements set for the corresponding variable.</li>
 </ul>
 </li>
 <li><p><code>--assign-to-owner</code>  | <code>--ato</code> <em>(boolean)</em></p>
@@ -185,10 +186,10 @@ TESTID.DATA:</p>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using uss file
 &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
-owner &quot;MYSYSID&quot; and with variable DUMMYVAR value DUMMYVAL and assign it to the
-owner:</p>
+owner &quot;MYSYSID&quot; and with variables VAR1 and VAR2 with values DUMMYVAL1 and
+DUMMYVAL2, and assign it to the owner:</p>
 <ul>
-<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --variables DUMMYVAR=DUMMYVAL --owner &quot;MYSYSID&quot; --assign-to-owner</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --variables DUMMYVAR=DUMMYVAL --owner &quot;MYSYSID&quot; --assign-to-owner">Copy</button></li>
+<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner">Copy</button></li>
 </ul>
 </li>
 </ul>
