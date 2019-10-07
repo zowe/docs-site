@@ -1,0 +1,246 @@
+[33mcommit ede6c717a3698c1554c88a5d966fd5dc04abecec[m
+Author: Andrew Jandacek <janan07@ca.com>
+Date:   Mon Oct 7 13:26:41 2019 +0200
+
+    fix formatting
+
+[33mcommit e1325d237cfd9f799b4a35bccc8660002199ded2[m
+Author: Andrew Jandacek <janan07@ca.com>
+Date:   Fri Oct 4 14:48:00 2019 +0200
+
+    Refactor text
+
+[33mcommit 304100f8e72ac46637ea7161799a4feb47dea620[m
+Author: Andrew Jandacek <janan07@ca.com>
+Date:   Fri Oct 4 11:55:49 2019 +0200
+
+    refactor text
+
+[33mcommit d8c1818abbfc90f27303a673441db69f9ba02025[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Thu Oct 3 10:11:08 2019 +0200
+
+    WIP: Structure change: Source code section moved up
+
+[33mcommit c097e5f63fd0c04a15c0538146de8ad19a342cb2[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Thu Oct 3 15:59:43 2019 +0200
+
+    Merged with Andrew's version
+
+[33mcommit 14cd3a994f3aaf081578fc872f2dad0783226578[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Thu Oct 3 15:42:36 2019 +0200
+
+    Fix formatting
+
+[33mcommit 44668057b7eece38acc7eb77bc3b59d2116aa065[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Thu Oct 3 15:16:22 2019 +0200
+
+    Fix broken links
+
+[33mcommit d443a61dad413edf0caa4fd6d95822935d21ca1e[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Thu Oct 3 15:08:22 2019 +0200
+
+    Refactor formatting
+
+[33mcommit 953ea29b047897ccb38010f75b308be055893936[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Thu Oct 3 11:40:48 2019 +0200
+
+    Reformat/refactor text
+
+[33mcommit 93b19e73460665fbb530d5f1338d43ffe2169221[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Thu Oct 3 10:51:54 2019 +0200
+
+    Refactor text
+
+[33mcommit b3d620994c4c3c8b83a5f8da3554dbf3ce7523b5[m
+Author: Andrew Jandacek <38347291+janan07@users.noreply.github.com>
+Date:   Wed Oct 2 13:54:17 2019 +0200
+
+    Refactor meta-description
+
+[33mcommit 11b73cc819bd4af56300c2f833aa0db4718fbfa6[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Wed Oct 2 11:27:02 2019 +0200
+
+    WIP: Properties definition and TODO-s
+
+[33mcommit aaf5ed63df0173e662d2acc03086de4bed6e48e2[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Tue Oct 1 17:43:50 2019 +0200
+
+    WIP: changes.
+
+[33mcommit 63b013c621afd171a6df86f96494e575eebc39a1[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Tue Oct 1 16:44:16 2019 +0200
+
+    Introduction and documentation structure.
+
+[33mcommit 37f007bb425f40265b2801490ac5389a5d1bcfa8[m
+Author: pz891284 <pavlin.zahariev@broadcom.com>
+Date:   Mon Sep 30 18:39:45 2019 +0200
+
+    WIP: Java endabler guide down to integration end points
+
+[33mcommit ef808254a75ce98da3ab95790053ab0af9408852[m
+Merge: 629e2a39 c9cc6756
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 16:40:37 2019 -0400
+
+    Merge pull request #635 from zowe/quick-faq-update
+    
+    update troubleshooting path
+
+[33mcommit c9cc675621eefb4442b42567d8f18f5bf0b7f752[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 16:15:17 2019 -0400
+
+    minor updates to troubleshooting
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit 36647f5468d46e271ecfdc2a13220d2af0f40227[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 16:12:13 2019 -0400
+
+    update troubleshooting path
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit 629e2a39db56bc0d1d86981b7ab5ec8cae153b46[m
+Merge: f8d83d3d 9728520d
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 13:08:00 2019 -0400
+
+    Merge pull request #634 from zowe/quick-faq-update
+    
+    remove section from quickstart
+
+[33mcommit 9728520deb78c312fb8e85c06afbd37e1ddad187[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 12:50:46 2019 -0400
+
+    remove section from quickstart
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit f8d83d3d492d0a1d638b0a8c44fa51299aece7e1[m
+Merge: 3344fb87 4f483200
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Mon Jul 22 09:43:28 2019 -0400
+
+    Merge pull request #633 from zowe/minor-fixes-cli
+    
+    Some fixes to the Zowe CLI troubleshooting
+
+[33mcommit 4f483200c10648a4f215612730e2bf3a7252b371[m
+Author: nannanli <nannanli@cn.ibm.com>
+Date:   Mon Jul 22 11:54:09 2019 +0800
+
+    Some fixes to the Zowe CLI troubleshooting
+    
+    - Fixed a list that is displayed in blank on the doc site. Removed the extra spaces.
+    - Changed to second person for some descriptions. It targets at users so used "you".
+    - Siome other small enhancements.
+    
+    Signed-off-by: nannanli <nannanli@cn.ibm.com>
+
+[33mcommit 3344fb87f42af087c7370e1bbf4a5dd51d934d15[m
+Merge: 247e2b8d e46b28fb
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Fri Jul 19 15:09:00 2019 -0400
+
+    Merge pull request #631 from zowe/trouble-addition
+    
+    Small addition to cli troubleshooting
+
+[33mcommit e46b28fbdd1821539d62b007a5fb669bb56b967a[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Fri Jul 19 13:53:39 2019 -0400
+
+    fix typos
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit 247e2b8de1ac3e2623be74afc1abdee52a64aa6c[m
+Merge: bdc4ccb2 d23a6531
+Author: Colin Stone <30794003+Colin-Stone@users.noreply.github.com>
+Date:   Fri Jul 19 15:00:18 2019 +0100
+
+    Merge pull request #626 from zowe/trouble
+    
+    Expand trouble shooting section to include detail L2 support should understand
+
+[33mcommit d23a653156c2251441aff60162ad4fc798080fbe[m
+Merge: 67591456 bdc4ccb2
+Author: Colin Stone <30794003+Colin-Stone@users.noreply.github.com>
+Date:   Fri Jul 19 14:36:21 2019 +0100
+
+    Merge branch 'master' into trouble
+
+[33mcommit bdc4ccb2d157800f92bd4330cda501ece942db31[m
+Merge: 9b708ba8 5cd81831
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Fri Jul 19 09:35:50 2019 -0400
+
+    Merge pull request #628 from zowe/rebuild-web-help
+    
+    Rebuild web help
+
+[33mcommit 67591456e4234300fae3b42d84e0b4ef682e46cc[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Thu Jul 18 16:23:50 2019 -0400
+
+    linkfix
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit 56d2fa4422dc223d7aa38b2d2ca5103077cdf661[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Thu Jul 18 16:20:04 2019 -0400
+
+    review cont
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit a5e75a62fbfac5dc734c2ab07168920521c05100[m
+Author: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+Date:   Thu Jul 18 14:56:26 2019 -0400
+
+    grammar review and organizing content
+    
+    Signed-off-by: BrandonJenkins14 <36675406+BrandonJenkins14@users.noreply.github.com>
+
+[33mcommit 5cd8183133a6be5f8e578c9b5bded11e128823ca[m
+Author: Timothy Johnson <timothy.johnson@broadcom.com>
+Date:   Thu Jul 18 14:50:56 2019 -0400
+
+    Fix broken links in web help CSS
+    
+    Signed-off-by: Timothy Johnson <timothy.johnson@broadcom.com>
+
+[33mcommit ca7da28a117ade63a21fa6fa8d04aba5c29992d0[m
+Author: Timothy Johnson <timothy.johnson@broadcom.com>
+Date:   Thu Jul 18 13:58:49 2019 -0400
+
+    Rebuild web help
+    
+    Signed-off-by: Timothy Johnson <timothy.johnson@broadcom.com>
+
+[33mcommit 3fa564feec959af26a6b838fcc68f6554be68112[m
+Author: Alexandru-Dumitru <alexandru.dumitru@broadcom.com>
+Date:   Thu Jul 18 14:37:13 2019 +0200
+
+    adding DCO signoff file
+    
+    Signed-off-by: Alexandru-Dumitru <alexandru.dumitru@broadcom.com>
+
+[33mcommit 2f29f556ac7913fce2ee939212a3823669011b95[m
+Author: Colin-Stone <30794003+Colin-Stone@users.noreply.github.com>
+Date:   Wed Jul 17 19:56:38 2019 +010

@@ -77,7 +77,7 @@ Ensure that the following prerequisites are satified before you begin the onboar
 * The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
 
 
-## Project configuration
+## Configuring your project
 
 You can use either Gradle or Maven build automation systems. Use the appropriate configuration procedure corresponding to your build automation system. 
 
@@ -181,7 +181,7 @@ Use the following procedure if you use Maven as your build automation system.
 
 5. In the directory of your project, run the `mvn package` command to build the project.
 
-## Source code changes
+## Changing your source code
 
 Several changes are required in the source code to successully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
@@ -264,7 +264,7 @@ Add the following endpoints to your application:
     ```
     ```
 
-### Implement a periodic call (heartbeat) to the API ML Discovery Service
+### Implementing a periodic call (heartbeat) to the API ML Discovery Service
 
 After successful registration, configure your service to send a heartbeat periodically to the Discovery Service. This hearbeat indicates that the service is available. When the Discovery Service does not receive a heartbeat after set period of time, it removes the service instance from the registry.
 
@@ -276,7 +276,7 @@ Use the PUT HTTP method in the following format to tell the Discovery Service th
 
 After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
-## Service configuration
+## Configuring your service
 
 Provide your service configuration in the `service-configuration.yml` file located in your resources directory. 
 
@@ -660,7 +660,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
         including the title and description.
 
 
-## Build and run your service
+## Building and running your service
 
 1. Execute 
 
@@ -677,7 +677,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 You successfully onboarded your Java application with the API-ML if your service is running and you can access the API documentation. 
 
-## (Optional) Validate discovery of the API service by the Discovery Service
+## (Optional) Validating the discovery of your API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
 
 **Follow these steps:**
