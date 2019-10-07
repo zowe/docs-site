@@ -2,6 +2,8 @@
 
 This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
+**Note:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
+
 ZOWE API ML is a lightweight API management system based on following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
@@ -59,7 +61,7 @@ The following steps outline the process of onboarding your REST service. Each st
 
 6. [Building and Run your service](#building-and-running-your-service)
 
-7. [Validating your REST service is discoverable and end points operational](#validating-your-rest-api-is discoverable)
+7. (Optional) [Validating the discovery of your API service by the Discovery Service](#validating-the-discovery-of-your-api-service-by-the-discovery-service)
 
 **Notes:** 
 <font color='yellow'> TODO: REMOVE?
