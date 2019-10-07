@@ -119,7 +119,9 @@ Use the following procedure if you use Gradle as your build automation system.
 
     where:
 
-    * **ext**  declares the `mavenRepository` property. This property is used as the project repository. 
+    * **ext** 
+    
+       Declares the `mavenRepository` property. This property is used as the project repository. 
 
 4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     ```gradle
@@ -272,7 +274,7 @@ After successful registration, configure your service to send a heartbeat period
 
 **Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
 
-Use the PUT HTTP method in the following format to tell the Discovery Service that your service is available:
+Use the `PUT` HTTP method in the following format to tell the Discovery Service that your service is available:
 
 `https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
 
@@ -377,10 +379,11 @@ where:
     
         **Tip:** Describe the service so that the end user knows the function of the service.
 
-* **Administrative end-points**
-The following snippet describes the administrative end-point properties:
+### Administrative endpoints 
 
-```
+   The following snippet describes the administrative endpoint properties:
+   
+   ```
 baseUrl: http://localhost:10021/hellospring
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
@@ -409,23 +412,33 @@ where:
     * `homePageRelativeUrl: ` The service has no home page
     * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
     
-    * **statusPageRelativeUrl**
+    
+* **statusPageRelativeUrl**
     
     Specifies the relative path to the status page of your service.
     This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
     Start this path with `/`.
     
     **Example:**
-    * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
-    * **healthCheckRelativeUrl**
+
+    `statusPageRelativeUrl: /application/info`
+    
+     The result URL will be 
+     
+     `${baseUrl}/application/info` 
+
+* **healthCheckRelativeUrl**
     
     Specifies the relative path to the health check endpoint of your service. 
     This is the endpoint that you defined in the `MfaasController` controller in the 
     `getHealth` method. Start this URL with `/`.
     
     **Example:**
-    * `healthCheckRelativeUrl: /application/health`. This results in the URL:
-    `${baseUrl}/application/health`
+
+    `healthCheckRelativeUrl: /application/health`. 
+    
+     This results in the URL: 
+    `${baseUrl}/application/health` 
 
 ### API Security 
 
@@ -449,7 +462,7 @@ Use the following procedure to configure security.
 
        `<api-layer-repository>/keystore/localhost.truststore.p12` 
 
-      * Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
       ```
     ssl:
         protocol: TLSv1.2
@@ -464,7 +477,10 @@ Use the following procedure to configure security.
         trustStorePassword: password
     ```
     **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+
 ### Eureka discovery service
+
+Add Eureja discovery parameters to your service.
 
 Eureka discovery service parameters are included in the following snippet: 
 
@@ -485,6 +501,8 @@ discoveryServiceUrls:
 
 
 ### API routing information
+
+Add API routing information to your service.
 
 The following snippet describes the API routing information properties:
    
@@ -514,6 +532,8 @@ routes:
     gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
 ### API info
+
+Add API info parameters to your service.
 
 The following snippet describes API information properties:
 
@@ -551,6 +571,8 @@ where:
 
 
 ### API Catalog information
+
+Add API Catalog information to your service.
 
 The following snippet describes API Catalog information properties:
 
@@ -664,6 +686,8 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 
 ## Building and running your service
+
+**Follow these steps:**
 
 1. Execute `gradle clean build`
 
