@@ -2,9 +2,9 @@
 
 This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Note:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
+**Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
 
-ZOWE API ML is a lightweight API management system based on following Netflix components:
+ZOWE API ML is a lightweight API management system based on the following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
 
@@ -12,20 +12,24 @@ ZOWE API ML is a lightweight API management system based on following Netflix co
 
 The following requirements are necessary to onboard a REST API to the API ML:
 
-* Provide service discovery information including but not limited to the base URI, home page, status page, and health check endpoint.
-* Provide routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests.
-* Provide a service description and API documentation metadata for the API Catalog.
-* Register the service with the Eureka discovery service instance with service discovery information, routing metadata, and a service description, and API documentation metadata.
+* Service discovery information including but not limited to the base URI, home page, status page, and health check endpoint
+* Routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests
+* A service description and API documentation metadata for the API Catalog
+* Registeration of the service with the Eureka discovery service instance. Registration includes providing service discovery information, routing metadata, a service description, and API documentation metadata.
 
-  **Tip:**
+**Tip:**
 
-  We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration    data and calling the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
+ We recommend you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two in combination makes the result state of the discovery registry unpredictable.
 
-  For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
+**Note:**
 
-  For instructions about how to utilize other API ML enablers types, see [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
-**Onboarding your REST service to API ML**
+  For instructions about how to utilize other API ML enablers types, see the following links: 
+  * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
+  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+
+## Onboarding your REST service to API ML
 
 The following steps outline the process of onboarding your REST service. Each step is described in further detail in this article. 
 
@@ -274,7 +278,7 @@ After successful registration, configure your service to send a heartbeat period
 
 **Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
 
-Use the `PUT` HTTP method in the following format to tell the Discovery Service that your service is available:
+<font color="yellow">Where is the PUT command issued?</font> Use the `PUT` HTTP method in the following format to tell the Discovery Service that your service is available:
 
 `https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
 
@@ -377,7 +381,7 @@ where:
     
      This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
     
-        **Tip:** Describe the service so that the end user knows the function of the service.
+  **Tip:** Describe the service so that the end user knows the function of the service.
 
 ### Administrative endpoints 
 
@@ -397,7 +401,7 @@ where:
         
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
-    * **healthCheckRelativeUrl**. 
+    * **healthCheckRelativeUrl** 
         
     **Examples:** 
     * `http://host:port/servicename` for HTTP service
