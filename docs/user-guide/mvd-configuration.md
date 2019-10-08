@@ -649,8 +649,8 @@ If the directory or file cannot be created, the server will run (but it might no
 ### Retaining logs
 By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
-## Administering the servers and plugins with the Core Dataservice
-You can use the Zowe Core Dataservice to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. Before you can access the API, an administrator must configure Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices) and then authorize you to access it.
+## Administering the servers and plugins using an API
+You can use the API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. Before you can access the API, an administrator must configure Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices) and then authorize you to access it.
 
 The API returns the following information in a JSON response:
 
