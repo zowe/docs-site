@@ -418,7 +418,7 @@ To apply role-based access control (RBAC) to dataservice endpoints, you must ena
 
 You can apply access control to Zowe endpoints and to your application endpoints.
 
-Zowe provides endpoints for configuration, core, and service dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information]() from the Application Framework and ZSS servers. 
+Zowe provides endpoints for configuration, core, and service dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. 
 
 ### Defining the RACF ZOWE class
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
@@ -476,6 +476,8 @@ SAF profiles have the following format:
 For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+For configuration endpoint profiles use the service code CFG. For core endpoints use COR. For service endpoints use SVC.
 
 ### Creating generic authorization profiles
 Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
@@ -640,7 +642,7 @@ If the directory or file cannot be created, the server will run (but it might no
 By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
 ## Administering the servers and plugins using an API
-You can use the API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. Before you can access the API, an administrator must configure Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices) and then authorize you to access it.
+You can use a REST API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
 
 The API returns the following information in a JSON response:
 
