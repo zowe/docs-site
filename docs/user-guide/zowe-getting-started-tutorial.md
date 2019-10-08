@@ -1,9 +1,25 @@
 # Getting started tutorial
-[[toc]]
+
+**Contents**
+
+- [Learning objectives](#learning-objectives)
+- [Estimated time](#estimated-time)
+- [Prerequisites and assumptions](#prerequisites-and-assumptions)
+- [Logging in to the Zowe Desktop](#logging-in-to-the-zowe-desktop)
+- [Querying JES jobs and viewing related status in JES Explorer](#querying-jes-jobs-and-viewing-related-status-in-jes-explorer)
+- [Using TN3270 in Zowe Desktop to view the job](#using-tn3270-in-zowe-desktop-to-view-the-job)
+- [Editing a data set in MVS Explorer](#editing-a-data-set-in-mvs-explorer)
+- [Using the Zowe CLI to edit a data set](#using-the-zowe-cli-to-edit-a-data-set)
+- [Viewing the data set changes in MVS Explorer](#viewing-the-data-set-changes-in-mvs-explorer)
+- [Next steps](#next-steps)
+   - [Go deeper with Zowe](#go-deeper-with-zowe)
+   - [Try the Extending Zowe scenarios](#try-the-extending-zowe-scenarios)
+   - [Give feedback](#give-feedback)
+
 
 ## Learning objectives
 
-This tutorial walks you through the Zowe interfaces, including the Zowe Desktop and Zowe CLI, with several simple tasks to help you get familiar with Zowe. 
+This tutorial walks you through the Zowe&trade; interfaces, including the Zowe Desktop and Zowe CLI, with several simple tasks to help you get familiar with Zowe. 
 
 - If you are new to Zowe, start with this tutorial to explore the base Zowe features and functions.
 - If you are already familiar with Zowe interfaces and capabilities, you might want to visit the **Extending** section which guides you to extend Zowe by creating your own APIs or applications.

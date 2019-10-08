@@ -1,6 +1,6 @@
 # Gathering information to troubleshoot Zowe CLI
 
-Follow these instructions to gather specific pieces of information to help troubleshoot Zowe CLI issues.
+Follow these instructions to gather specific pieces of information to help troubleshoot Zowe&trade; CLI issues.
 
 [[toc]]
 

@@ -8,7 +8,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 <div class="features">
   <div class="feature">
     <h2><a href="./getting-started/overview.html">Getting Started</a></h2>
-    <p>Learn about Zowe architecture, components, and how to quickly get started with Zowe CLI. Read about what's new and changed in the Release Notes. Get answers to your frequently asked questions (FAQs).</p>
+    <p>Learn about Zowe&trade; architecture, components, and how to quickly get started with Zowe CLI. Read about what's new and changed in the Release Notes. Get answers to your frequently asked questions (FAQs).</p>
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
@@ -40,11 +40,12 @@ You can download the Version 1.x Zowe documentation on this website in PDF forma
 
 | Version | Download
 | --- | ---
-| V1.4.0 | [PDF](https://docs.zowe.org/stable/Zowe_Documentation.pdf)
-| V1.3.0 | [PDF](./Zowe_Documentation_1.3.0.pdf)
-| V1.2.0 | [PDF](./Zowe_Documentation_1.2.0.pdf)
-| V1.1.0 | [PDF](./Zowe_Documentation_1.1.0.pdf)
-| V1.0.0 | [PDF](./Zowe_Documentation_1.0.0.pdf)
+| V1.5.0 | [PDF](https://docs.zowe.org/stable/Zowe_Documentation.pdf)
+| V1.4.0 | [PDF](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)
+| V1.3.0 | [PDF](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)
+| V1.2.0 | [PDF](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)
+| V1.1.0 | [PDF](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)
+| V1.0.x | [PDF](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)
 
 ### Zowe CLI command reference guide
 
@@ -64,9 +65,9 @@ A Zowe overview deck in PDF format is available for download. The information in
 
 ## Feedback
 
-Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
+Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up. 
 
-[Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues)
+[Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
 
 We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
 

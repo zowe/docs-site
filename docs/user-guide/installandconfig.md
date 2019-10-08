@@ -1,6 +1,6 @@
 # Planning the installation
 
-The installation of Zowe consists of two independent processes: installing Zowe runtime on z/OS and installing Zowe CLI on your computer.
+The installation of Zowe&trade; consists of two independent processes: installing Zowe runtime on z/OS and installing Zowe CLI on your computer.
 
 When you install Zowe runtime on z/OS, there are two parts:
 - The first part is to install the Zowe Application Framework, the API Mediation Layer, and a number of micro services that provide capability to both.
@@ -14,12 +14,12 @@ The Zowe CLI is not installed on z/OS and runs on a personal computer. The follo
 
 Installing Zowe involves several steps that you must complete in the order listed. Review the following table that presents the task-flow for preparing your environment and installing and configuring Zowe before you begin the installation process.
 
-| Tasks | Details
-| --- | ---
-| 1. Review the pre-installation planning information and prepare your environment to meet the installation prerequisites. | See [Planning the installation of Zowe z/OS components](#planning-the-installation-of-zowe-z-os-components) and [System requirements](systemrequirements.md).
-| 2. Allocate enough space for the installation. |  The installation process requires approximately 1 GB of available space. After you install Zowe on z/OS, API Mediation Layer requires approximately 150MB of space, and the Zowe Application Framework requires approximately 50 MB of space before configuration. Zowe CLI requires approximately 200 MB of space on your computer.
-| 3. Install components of Zowe. | To install Zowe on z/OS, see [Installing Zowe on z/OS](install-zos.md).<br/> To install Zowe CLI on a computer, see [Installing Zowe CLI](cli-installcli.md).
-| 4. (Optional) Troubleshoot problems that occur during installation. | See [Troubleshooting](../troubleshoot/troubleshooting.md).
+Tasks | Details
+---|---
+1. Review the pre-installation planning information and prepare your environment to meet the installation prerequisites. | See [Planning the installation of Zowe z/OS components](#planning-the-installation-of-zowe-z-os-components) and [System requirements](systemrequirements.md).
+2. Allocate enough space for the installation. |  The installation process requires approximately 1 GB of available space. After you install Zowe on z/OS, API Mediation Layer requires approximately 150MB of space, and the Zowe Application Framework requires approximately 50 MB of space before configuration. Zowe CLI requires approximately 200 MB of space on your computer.
+3. Install components of Zowe. | To install Zowe on z/OS, see [Installing Zowe on z/OS](install-zos.md).<br/> To install Zowe CLI on a computer, see [Installing Zowe CLI](cli-installcli.md).
+4. (Optional) Troubleshoot problems that occur during installation. | See [Troubleshooting](../troubleshoot/troubleshooting.md).
 
 To uninstall Zowe, see [Uninstalling Zowe](uninstall.md).
 

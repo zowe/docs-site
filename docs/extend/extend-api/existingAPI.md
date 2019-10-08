@@ -2,7 +2,7 @@
 
 (WORK IN PROGRESS)
 
-In this tutorial we consider how an organisation with a product or tool with an existing Rest API can be rapidly Onboarded to Zowe by getting that product or tool registered with the API Gateway. This would then allow the product to be available from a central location and benefit from other Zowe API Mediation layer functionality. To do this we need a method for defining the service to the gateway
+In this tutorial we consider how an organisation with a product or tool with an existing Rest API can be rapidly Onboarded to Zowe&trade; by getting that product or tool registered with the API Gateway. This would then allow the product to be available from a central location and benefit from other Zowe API Mediation layer functionality. To do this we need a method for defining the service to the gateway
 
 As the example product we are using a simple Spring Boot sample app that can be downloaded here: [spring-boot-jzos-sample](https://github.com/zowe/spring-boot-jzos-sample). If you have your own example skip the "Get your app running" section we can adapt your script for that.
 

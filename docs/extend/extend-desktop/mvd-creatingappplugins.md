@@ -32,7 +32,7 @@ To build the sample application plug-in, node and npm must be included in the PA
 
 - If you change the source code for the sample application, you must rebuild it.
 
-- If you want to modify `sample-app`, you must run `npm install` in the Zowe Desktop and the `sample-app/webClient`. Then, you can run `npm run build` in `sample-app/webClient`.
+- If you want to modify `sample-app`, you must run `npm install` in the Zowe&trade; Desktop and the `sample-app/webClient`. Then, you can run `npm run build` in `sample-app/webClient`.
 
 - Ensure that you set the `MVD_DESKTOP_DIR` system variable to the Zowe Desktop plug-in location. For example: `<ZLUX_CAP>/zlux-app-manager/virtual-desktop`.
 

@@ -2,7 +2,7 @@
 
 ## Displaying Zowe CLI help
 
-Zowe CLI has a command-line help system that helps you to learn about the commands, actions, and options available in the product.
+Zowe&trade; CLI has a command-line help system that helps you to learn about the commands, actions, and options available in the product.
 
 - [Top-level help](#top-level-help)
 - [Group, action, and object help](#group-action-and-object-help)

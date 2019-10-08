@@ -1,6 +1,6 @@
 # Known Zowe Application Framework issues
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe Application Framework.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; Application Framework.
 
 Most of the solutions below identify issues by referring to the Zowe [logs](app-mustgather.md). To identify and resolve issues, you should become familiar with their names and locations.
 

@@ -37,16 +37,16 @@ Services that belong to the same product family are displayed on the same tile.
      even when the service and all service instances stop.  
     * Descriptive information about the service and a link to the home page of the service is displayed.
 
-    **Example:**
-
-    ![controller detail](../images/api-mediation/newswagger.png)
+    **Example:** 
+           
+    <img src="../images/api-mediation/newswagger.png" alt="controller detail" width="500px"/> 
 
 3. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
  the endpoint description, and the full structure of the endpoint.
 
     **Example:**
 
-    ![endpoint detail](../images/api-mediation/expanded.png)
+    <img src="../images/api-mediation/expanded.png" alt="endpoint detail" width="500px"/> 
 
     **Notes:**
 

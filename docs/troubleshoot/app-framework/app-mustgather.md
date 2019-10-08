@@ -1,6 +1,6 @@
 # Gathering information to troubleshoot Zowe Application Framework
 
-Gather the following information to troubleshoot Zowe Application Framework issues:
+Gather the following information to troubleshoot Zowe&trade; Application Framework issues:
 
  - [z/OS release level](#z-os-release-level)
  - [Zowe version and release level](#zowe-version-and-release-level)

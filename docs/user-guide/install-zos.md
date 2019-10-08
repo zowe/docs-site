@@ -1,6 +1,6 @@
 # Installing Zowe on z/OS
 
-To install Zowe on z/OS,  there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
+To install Zowe&trade; on z/OS,  there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
 
 - [Before you begin](#before-you-begin)
 - [Methods of installing Zowe on z/OS](#methods-of-installing-zowe-on-zos)

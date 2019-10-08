@@ -120,7 +120,7 @@ If your computer is connected to the Internet, you can use the following method 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    zowe plugins install @zowe/cics @zowe/ims @zowe/mq
+    zowe plugins install @zowe/cics @zowe/db2 @zowe/ims @zowe/mq 
     ```
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing). For more information about available plug-ins, how to install multiple plug-ins, or update to a specific version of a plug-in see [Extending Zowe CLI](cli-extending.md).

@@ -1,6 +1,6 @@
 # Software requirements for Zowe CLI plug-ins
 
-Before you use Zowe CLI plug-ins, complete the following steps:
+Before you use Zowe&trade; CLI plug-ins, complete the following steps:
 
 1. Install [Zowe CLI](cli-installcli.md) on your computer.
 2. Complete the following configurations:

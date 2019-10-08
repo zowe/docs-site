@@ -24,6 +24,7 @@ Use the API Catalog to view services, API documentation, descriptive information
     
     **Example:**
     ![Service Detail Information](diagrams/service-detail-info.PNG)
+
  **Note:** The state of the service is indicated in the tab. If at least one instance of the service is running, the state of the service is represented with a checkmark ![checkmark](diagrams/green-check.jpg). If no instances of the service are currently running the state of the service is represented as an 'x' ![x](diagrams/x-graphic.jpg). At least one instance of a service must be started and registered with the discovery service for it to be visible in the API Catalog. If a service was started and the corresponding API documentation was viewed, then that information is cached and is visible even when the service and all instances are stopped.  
 4. Click the tab to view the API documentation for that service.
    Descriptive information about the service and a link to the home page of the service is displayed.
