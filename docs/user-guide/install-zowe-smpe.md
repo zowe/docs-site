@@ -81,7 +81,7 @@ The distribution medium for this program is via downloadable files. This program
 
 ### Program publications
 
-You can obtain the Zowe documentation from the Zowe doc site at [https://zowe.github.io/docs-site/latest](https://zowe.github.io/docs-site/latest). No optional publications are provided for Zowe.
+You can obtain the Zowe documentation from the Zowe doc site at [https://docs.zowe.org/](https://docs.zowe.org/). No optional publications are provided for Zowe.
 
 ### Program source materials
 
@@ -320,9 +320,9 @@ z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
 
 ### FMIDs deleted
 
-Installing Zowe might result in the deletion of other FMIDs. To see which FMIDs will be deleted, examine the ++VER statement in the SMPMCS of the product.
+Installing Zowe might result in the deletion of other FMIDs. 
 
-If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
+To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
 
 **Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
 
@@ -383,7 +383,7 @@ You will receive 2 files on your desktop.
 
      The SMP/E input data sets to install Zowe are provided as compressed files in AZWE001.pax.Z. This pax archive file holds the SMP/E MCS and RELFILEs.
 
-  - **AZWE001.readme.txt (EBCDIC)**
+  - **AZWE001.readme.txt (text)**
 
      The README file AZWE001.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
 
@@ -717,7 +717,11 @@ Uncomment the `VOL=SER=&...` control statements and refer to the comments at the
 
 If you are using an existing CSI, do not run the sample job ZWE1SMPE.
 
-If you choose to create a new SMP/E environment for this install, a sample job is provided of you may choose to use your own JCL. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
+If you choose to create a new SMP/E environment for this install, a sample job is provided or you may choose to use your own JCL. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
+
+**Note:** If you want to use the default of letting your Automatic Class Selection (ACS) routines decide which volume to use, comment out the following line in the sample job ZWE1SMPE.
+
+```// SET CSIVOL=#csivol```
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
