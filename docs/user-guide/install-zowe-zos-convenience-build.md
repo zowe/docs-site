@@ -46,22 +46,27 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
       In addition to the SHA512 hash, the hash is also verifiable. This is done by digitally signing the hash text file with a KEY from one of the Zowe developers.
 
-      **Follow these steps:**
+      After you download the official build, in the post download page, there is section `Verify Hash and Signature of Zowe Binary` - `Step 2 - Verify With Signature File`, which includes the link to the `.asc` file. Or you can fetch the `.asc` with this url pattern: `https://d1xozlojgf8voe.cloudfront.net/builds/<version>/zowe-<version>.pax.asc`. For example, download link for version `v1.4.0` is https://d1xozlojgf8voe.cloudfront.net/builds/1.4.0/zowe-1.4.0.pax.asc.
 
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://zowe.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
-      2. Import the public key with the `gpg --import KEYS` command.
-      3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
-      4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
-      5. Verify the file with the `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax` command.
-      6. Optional: You can remove the imported key with the `gpg --delete-key DC8633F77D1253C3` command.
+      You also need the public key in this folder: https://github.com/zowe/zowe-install-packaging/tree/master/signing_keys.
 
-     When you see output similar to the following one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
+      **Then you can verify the build following these steps:**
 
-     ```
-     gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
-     gpg: using RSA key DC8633F77D1253C3
-     gpg: Good signature from "Matt Hogstrom (CODE SIGNING KEY) " [full]
-     ```
+      - Import the public key with command: `gpg --import <KEY>`. The `<KEY>` should either be the key file list in [Available Keys](#available-keys) section. For example: `gpg --import KEYS.matt`.
+      - Optional, if you never use gpg before, you can generate your personal key first: `gpg --gen-key`. This is required if you want to sign the imported key. Otherwise, please proceed to next step.
+      - Optional, sign the downloaded public key with command: `gpg --sign-key <KEY-SHORT-ID>`. For example: `gpg --sign-key DC8633F77D1253C3`.
+      - Verify the file with command: `gpg --verify zowe-<version>.pax.asc zowe-<version>.pax`. For example: `gpg --verify zowe-1.4.0.pax.asc zowe-1.4.0.pax`.
+      - Optional, you can remove the imported key with command: `gpg --delete-key <KEY-SHORT-ID>`. For example: `gpg --delete-key DC8633F77D1253C3`.
+
+      If you see output like this that matches the info in the public key you downloaded you can be assured that the binary file you have has come from the Zowe project.
+
+      ```
+      gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
+      gpg:         using RSA key DC8633F77D1253C3
+      gpg: Good signature from "Matt Hogstrom (CODE SIGNING KEY) " [full]
+      ```
+
+      *Note: the key ID and signature shown above are depended on which key is used to sign the build.*
 
 2. Transfer the PAX file to z/OS.
 
