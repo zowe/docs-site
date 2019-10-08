@@ -193,9 +193,9 @@ Use the following procedure if you use Maven as your build automation system.
 
 Several changes are required in the source code to successfully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
-* Adding endpoints
-* Registering your service to API ML
-* Implementing a periodic call (heartbeat) to the API ML
+* [Adding endpoints](#adding-endpoints)
+* [Registering your service to API ML](#registering-your-service-to-api-ml)
+* [Implementing a periodic call (heartbeat) to the API ML](#implementing-a-periodic-call-(heartbeat)-to-the-api-ml)
 
 ### Adding endpoints
  
@@ -322,13 +322,13 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
 The content and the structure of the configuration file example above is broken into several parts:
 
-- REST service identification 
-- Administrative endpoints
-- API Security
-- Eureka discovery service 
-- API routing information
-- API info (API Documentation)
-- API Catalog information
+- [REST service identification](#rest-service-identification) 
+- [Administrative endpoints](#administrative-endpoints)
+- [API Security](#api-security)
+- [Eureka discovery service](#eureka-discovery-service) 
+- [API routing information](api-routing-information)
+- [API info](#api-info) (API Documentation)
+- [API Catalog information](#api-catalog-information)
 
 ### REST service identification
 
@@ -445,7 +445,7 @@ where:
 
 ### API Security 
 
-Use the following procedure to configure security.
+Use the following procedure to configure API security.
       
 **Follow these steps:**
 
@@ -689,6 +689,8 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 
 ## Building and running your service
+
+After you customize your configuration parameters, you are ready to build and run your service.
 
 **Follow these steps:**
 
