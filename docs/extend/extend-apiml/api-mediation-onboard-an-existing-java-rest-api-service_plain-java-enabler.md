@@ -288,7 +288,7 @@ After you add API ML integration endpoints, you are ready to add service configu
 
 Provide your service configuration in the `service-configuration.yml` file located in your resources directory. 
 
-The following code snippet shows `service-configuration.yml` content as an example configuration of a service with the serviceId "hellowspring":
+The following code snippet shows `service-configuration.yml` content as an example of a service configuration with the serviceId "hellowspring".
 
 **Example:**
 
@@ -332,7 +332,10 @@ The content and the structure of the configuration file example above is broken 
 
 ### REST service identification
 
-The following snippet describes the service identification properties:
+The following snippet is an example of the service identification properties.
+
+**Example:**
+
 ```
 serviceId: hellospring
 title: Hello Spring REST API
@@ -385,7 +388,7 @@ where:
 
 ### Administrative endpoints 
 
-   The following snippet describes the administrative endpoint properties:
+   The following snippet presents the format of the administrative endpoint properties:
    
    ```
 baseUrl: http://localhost:10021/hellospring
@@ -485,7 +488,7 @@ Use the following procedure to configure API security.
 
 Add Eureka discovery parameters to your service.
 
-Eureka discovery service parameters are included in the following snippet: 
+Eureka discovery service parameters are presented in the following snippet: 
 
 ```
 discoveryServiceUrls:
@@ -507,7 +510,9 @@ discoveryServiceUrls:
 
 Add API routing information to your service.
 
-The following snippet describes the API routing information properties:
+The following snippet is an example of the API routing information properties.
+
+**Example:**
    
 ```
 routes:
@@ -538,7 +543,7 @@ routes:
 
 Add API info parameters to your service.
 
-The following snippet describes API information properties:
+The following snippet presents the API information properties:
 
 ```
 apiInfo:
@@ -577,7 +582,7 @@ where:
 
 Add API Catalog information to your service.
 
-The following snippet describes API Catalog information properties:
+The following snippet presents API Catalog information properties:
 
 ```
 catalog:
@@ -661,8 +666,9 @@ Use the following procedure to add Swagger API documentation to your project.
 3. Customize this configuration according to your specifications. For more information about customization properties, 
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
-
 3. Customize your configuration parameters to correspond with your API service specifications.
+
+   where:
 
     * **catalogUiTile.id**
     
