@@ -12,18 +12,18 @@ ZOWE API ML is a lightweight API management system based on following Netflix co
 
 The following requirements are necessary to onboard a REST API to the API ML:
 
-* Provide service discovery information including but not limited to the base URI, home page, status page, and health check end-point.
-* Provide routing metadata of service end-points. This metadata is used by the API ML Gateway to route HTTP requests.
+* Provide service discovery information including but not limited to the base URI, home page, status page, and health check endpoint.
+* Provide routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests.
 * Provide a service description and API documentation metadata for the API Catalog.
 * Register the service with the Eureka discovery service instance with service discovery information, routing metadata, and a service description, and API documentation metadata.
 
   **Tip:**
 
-  We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration    data and calling the dedicated Eureka registration end-point directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
+  We recommend you onboard your service using the API ML enabler libraries.  We do not recommend preparing corresponding configuration    data and calling the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Since configuration in the Plain Java Enabler and SpringCloud Eureka Client are different, using the two in combination makes the result state of the discovery registry unpredictable.
 
   For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
-  For instructions about how to utilize other API ML enablers types, see [Spring Boot API-ML Enabler](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Existing REST API Service - no code changes needed](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+  For instructions about how to utilize other API ML enablers types, see [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) or [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 **Onboarding your REST service to API ML**
 
@@ -39,7 +39,7 @@ The following steps outline the process of onboarding your REST service. Each st
 3. [Changing your source code](#changing-your-source-code)
 
     * [Adding endpoints](#adding-endpoints)
-    * [Registering your service to API ML](#registering-your-service-to-api-ml))
+    * [Registering your service to API ML](#registering-your-service-to-api-ml)
     
         * [Adding a context listener class](#adding-a-context-listener-class)
         * [Register a context listener](#registering-a-context-listener)
@@ -59,7 +59,7 @@ The following steps outline the process of onboarding your REST service. Each st
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-6. [Building and Run your service](#building-and-running-your-service)
+6. [Building and Running your service](#building-and-running-your-service)
 
 7. (Optional) [Validating the discovery of your API service by the Discovery Service](#validating-the-discovery-of-your-api-service-by-the-discovery-service)
 
@@ -72,11 +72,11 @@ The following steps outline the process of onboarding your REST service. Each st
 
 ## Prerequisites
 
-Ensure that the following prerequisites are satified before you begin the onboarding process:
+Ensure that the following prerequisites are satified before you begin this onboarding process:
 
-* Your REST API service written in Java can be deployed and run on z/OS.
+* Your REST API service is written in Java can be deployed and run on z/OS. (<font color='yellow'> What makes a service deployable and able to run on z/OS</font>)
 * The service has an endpoint that generates Swagger documentation.
-* The service container is secured by digital certificate according to TLS v?.? and accept requests on HTTPS only.
+* The service container is secured by digital certificate according to TLS v?.? and only accepts requests on HTTPS.
 
 
 ## Configuring your project
@@ -187,7 +187,7 @@ Use the following procedure if you use Maven as your build automation system.
 
 ## Changing your source code
 
-Several changes are required in the source code to successully onboard your REST API to the API ML. Changes to the source code include the following steps: 
+Several changes are required in the source code to successfully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
 * Adding endpoints
 * Registering your service to API ML
@@ -199,15 +199,15 @@ Add the following endpoints to your application:
 
    * **Swagger documentation endpoint**
 
-     The endpoint for the Swagger documentation.
+     The endpoint for the Swagger documentation
 
    * **Health endpoint**
 
-     The endpoint used for health checks by the Discovery Service.
+     The endpoint used for health checks by the Discovery Service
 
    * **Info endpoint**
 
-     The endpoint to get information about the service.
+     The endpoint to get information about the service
 
    The following java code is an example of these endpoints added to the Spring Controller:
 
@@ -338,9 +338,9 @@ description: Example for exposing a Spring REST API
 where:
 * **serviceId**
     
-    Specifies the service instance identifier that is registered in the API-ML installation. 
+    Specifies the service instance identifier that is registered in the API ML installation. <font color='yellow'> (in the API ML installation file?)</font>
     The service ID is used in the URL for routing to the API service through the gateway. 
-    The service ID uniquely identifies instances of a microservice in the API-ML. 
+    The service ID uniquely identifies instances of a microservice in the API ML. 
     The system administrator at the customer site defines this parameter.
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
@@ -423,9 +423,8 @@ where:
 
     `statusPageRelativeUrl: /application/info`
     
-     The result URL will be 
-     
-     `${baseUrl}/application/info` 
+     This results in the URL:  
+    `${baseUrl}/application/info` 
 
 * **healthCheckRelativeUrl**
     
@@ -437,7 +436,7 @@ where:
 
     `healthCheckRelativeUrl: /application/health`. 
     
-     This results in the URL: 
+     This results in the URL:  
     `${baseUrl}/application/health` 
 
 ### API Security 
@@ -448,7 +447,7 @@ Use the following procedure to configure security.
 
 1. Set up a key store with the service certificate.
 
-    All API services are required to provide a TLS certificate trusted by API ML in order to register with it.
+    All API services require a TLS certificate trusted by API ML in order to register with the API ML.
 
     **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
@@ -458,7 +457,7 @@ Use the following procedure to configure security.
     <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
     ```
 
-2. (Optional) Alternatively, copy or use the following snippet in your service without generating a new certificate, for local development:
+2. (Optional) For local development, copy or use the following snippet in your service without generating a new certificate:
 
      `<api-layer-repository>/keystore/localhost.truststore.p12` 
 
@@ -476,11 +475,11 @@ Use the following procedure to configure security.
         trustStoreType: PKCS12
         trustStorePassword: password
     ```
-    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+    **Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
 
 ### Eureka discovery service
 
-Add Eureja discovery parameters to your service.
+Add Eureka discovery parameters to your service.
 
 Eureka discovery service parameters are included in the following snippet: 
 
@@ -561,13 +560,13 @@ where:
     The base path at the API Gateway where the API is available. Ensure that this is
         the same path as the _gatewayUrl_ value in the _routes_ sections.
 
-    * **apiInfo.swaggerUrl**
+* **apiInfo.swaggerUrl**
 
-        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
-    * **apiInfo.documentationUrl**
+* **apiInfo.documentationUrl** <font color="yellow">This parameter is not contained in the aforementioned example </font>
 
-        (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+    (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
 
 
 ### API Catalog information
@@ -689,7 +688,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 **Follow these steps:**
 
-1. Execute `gradle clean build`
+1. Execute `gradle clean build`.
 
 2.  Run your Java application. 
 
@@ -700,7 +699,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
     https://localhost:10010/ui/v1/apicatalog/
     ``` 
 
-You successfully onboarded your Java application with the API-ML if your service is running and you can access the API documentation. 
+You successfully onboarded your Java application with the API ML if your service is running and you can access the API documentation. 
 
 ## (Optional) Validating the discovery of your API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
