@@ -414,41 +414,9 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 ## Applying role-based access control to dataservices
 
-To use role-based access control (RBAC) for Zowe dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. If you are using RACF, your first task must be to define the ZOWE RACF class.
+To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
-After you configure RBAC, Zowe checks users' authority to access dataservices.
-
-### How it works
-
-Most Zowe functionality is available as dataservices. For example, Zowe Application Framework plug-in services provide the infrastructure for creating web applications, and application plug-in dataservices provide data and services from that application.
-
-Plug-ins can also use [configuration service endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice). These endpoints have scope at the product, site, instance, and user level, and the data is stored and retrieved by path name.
-
-Dataservice endpoints are identified by URLs that are formatted like this:
-
-`/<product>/plugins/<plugin id>/services/<service>/<version>/<path>`
-
-For example:
-
-`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
-
-Where product is `ZLUX`, plugin id is `org.zowe.foo`, service is `baz`, version is `_current`, and path is `/users/fred`.
-
-To access dataservice endpoints when RBAC is enabled, users must have READ access to a corresponding System Authorization Facility (SAF) profile in the ZOWE class. SAF profiles have this format:
-
-`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
-
-For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
-
-Configuration endpoints have profiles with this format:
-
-`<product>.<instance id>.CFG.<pluginid_with_underscores>.<service>.<HTTP method>.<url with forward slashes '/' replaced by periods '.'>`
-
-For example, users must have READ access to the following profile to access the instance-scoped configuration element "files":
-
-`ZLUX.DEFAULT.CFG.ORG_ZOWE_FOO.GET.INSTANCE.FILES`
+You can apply access control to Zowe endpoints and to your application endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. Any dataservice added as part of an application plugin is a service dataservice. 
 
 ### Defining the RACF ZOWE class
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
@@ -486,22 +454,44 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 1. Open the Zowe Application Server configuration JSON file. In the default server instance, the configuration file is `/zlux-app-server/config/zluxserver.json`.
 2. In the `dataserviceAuthentication` object, add `"rbac": true`.
 
+### Creating authorization profiles
+For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
+
+Endpoints are identified by URIs in the following format:
+
+`/<product>/plugins/<plugin_id>/services/<service>/<version>/<path>`
+
+For example:
+
+`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
+
+Where the path is `/users/fred`.
+
+SAF profiles have the following format:
+
+`<product>.<instance_id>.<service>.<pluginid_with_underscores>.<service>.<HTTP_method>.<url_with_forward_slashes_replaced_by_periods>`
+
+For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+For configuration dataservice endpoint profiles use the service code `CFG`. For core dataservice endpoints use `COR`. For all other dataservice endpoints use `SVC`.
+
 ### Creating generic authorization profiles
+Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
 
-Some endpoints can generate an unlimited number of URLs. For example, an endpoint that performs a DELETE action on any file would generate a different URL for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.DELETE.**` 
+`ZLUX.DEFAULT.COR.ORG_ZOWE_FOO.BAZ.DELETE.**` 
 
 You can create generic profile names using wildcards, such as asterisks (*). For information on generic profile naming, see [IBM documentation](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.icha100/egnoff.htm).
 
 ### Configuring basic authorization
 
-We recommend configuring the following basic authorization:
+The following are recommended for basic authorization:
 
-- To give administrators access to everything in Zowe, create a `ZLUX.**` profile and give them UPDATE access to it.
-- To give non-administrators basic access to the site and product, create a `ZLUX.*.ORG_ZOWE_*`  profile and give them READ access to it.
-- To prevent non-administrators from configuring endpoints at the product and instance levels, create a `ZLUX.DEFAULT.CFG.**` profile and do not give them access to it.
-- To give non-administrators all access to user, create a `ZLUX.DEFAULT.CFG.*.*.USER.**` profile and give them UPDATE access to it.
+- To give administrators access to everything in Zowe, create the following profile and give them UPDATE access to it: `ZLUX.**`
+- To give non-administrators basic access to the site and product, create the following profile and give them READ access to it: `ZLUX.*.ORG_ZOWE_*`
+- To prevent non-administrators from configuring endpoints at the product and instance levels, create the following profile and do not give them access to it: `ZLUX.DEFAULT.CFG.**`
+- To give non-administrators all access to user, create the following profile and give them UPDATE access to it: `ZLUX.DEFAULT.CFG.*.*.USER.**`
 
 
 ### Endpoint URL length limitations
@@ -650,7 +640,7 @@ If the directory or file cannot be created, the server will run (but it might no
 By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
 ## Administering the servers and plugins using an API
-You can use the API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. Before you can access the API, an administrator must configure Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices) and then authorize you to access it.
+You can use a REST API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
 
 The API returns the following information in a JSON response:
 
