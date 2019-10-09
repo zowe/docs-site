@@ -416,9 +416,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
-You can apply access control to Zowe endpoints and to your application endpoints.
-
-Zowe provides endpoints for configuration, core, and service dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. 
+You can apply access control to Zowe endpoints and to your application endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. Any dataservice added as part of an application plugin is a service dataservice. 
 
 ### Defining the RACF ZOWE class
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
@@ -477,7 +475,7 @@ For example, to issue a POST request to the dataservice endpoint documented abov
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
-For configuration endpoint profiles use the service code CFG. For core endpoints use COR. For service endpoints use SVC.
+For configuration dataservice endpoint profiles use the service code `CFG`. For core dataservice endpoints use `COR`. For all other dataservice endpoints use `SVC`.
 
 ### Creating generic authorization profiles
 Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
