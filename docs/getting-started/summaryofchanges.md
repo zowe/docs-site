@@ -21,6 +21,11 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
 No changes were made to API ML in this release. 
 
 ### What's new in the Zowe App Server
+The following features and enhancements are added:
+
+- Added pass through express router ws patcher in case plug-ins need it. [#152](https://github.com/zowe/zlux-server-framework/pull/152), [#149](https://github.com/zowe/zlux-server-framework/pull/149)
+- Updated security plugins to manage proxied headers so that unnecessary things are not put into the browser.[#152](https://github.com/zowe/zlux-server-framework/pull/152), [#26](https://github.com/zowe/zss-auth/pull/26)
+- Clear cookie on complete logout.[#152](https://github.com/zowe/zlux-server-framework/pull/152)
 
 ### What's new in Zowe CLI and Plug-ins
 
