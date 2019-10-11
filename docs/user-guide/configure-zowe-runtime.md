@@ -48,11 +48,11 @@ After you install Zowe&trade; through either the convenience build by running th
 
 ## Configuring the Zowe runtime directory
 
-You configure the Zowe runtime directory by running the script `/scripts/zowe-configure.sh`.
+You configure the Zowe runtime directory by running the script `scripts/configure/zowe-configure.sh`.
 
-Before you run the script `/scripts/zowe-configure.sh`, check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables) in the `/scripts/zowe-install.yaml` file, as these are used to configure Zowe during execution of `zowe-configure.sh`.
+Before you run the script `scripts/configure/zowe-configure.sh`, check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables) in the `scripts/configure/zowe-install.yaml` file, as these are used to configure Zowe during execution of the script `zowe-configure.sh`.
 
-For the convenience build, the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the `zowe-install.yaml`.  
+For the convenience build, the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the file `scripts/configure/zowe-install.yaml`.  
 
 ### Environment variables
 
@@ -77,27 +77,7 @@ You can create, edit, or delete the `.zowe_profile` file (as needed) before each
 
 ### Configuration variables
 
-The file `/scripts/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime. 
-
-#### Directory to store user configuration
-
-`install:userDir` is the directory that Zowe will begin to use to store configuration. Previously (in Zowe 1.4 and before) all user configuration was stored within the Zowe root directory structure, but in order to improve the upgradability of the Zowe system, moving forward separate runtime binaries and configuration will be separated. The default directory is `~/zowe-user-dir` which create the `zowe-user-dir` directory within the home directory of the user id that ran Zowe configuration. For an enterprise SMP/E install it is recommended to instead have this in a centralised place such as `/global/zowe`, ensuring that this directory is writable by the user id that runs the Zowe started task.
-
-**Note:** Please ensure that the account that runs Zowe (default of IZUSVR) has permission to write to this directory (for example by changing the group to be owned by the zosmf Admin Group and given write access to groups), or Zowe will not start correctly.
-
-**Example:**
-
-```yaml
-  install:
-    rootDir=/tmp/zowe/1.5.0
-    userDir=~/zowe-user-dir
-    prefix=ZOWE
-
-  zosmf:
-    zosmfUserid=IZUSVR
-    zosmfAdminGroup=IZUADMIN
-
-```
+The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
 
 #### Address space name
 
@@ -133,14 +113,14 @@ You should use the prefix for the main started task (+ number).
   prefix=ZOWE
   ```
 
-  in the `/config/zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
+  in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
 
   ```
   ZOWEAG1
   ```
 #### Port allocations
 
-The port values are defined in `/config/zowe-configure.yaml`.  
+The port values are defined in the `scripts/configure/zowe-install.yaml` file.  
 
 - Zowe API Mediation Layer has three HTTPS ports, one for each micro-service; API Gateway, API Discovery and API Catalog.  
 - z/OS Services has HTTPS ports for each of its micro-services; jobs and the data sets.
@@ -191,7 +171,7 @@ To determine which ports are not available, follow these steps:
    TSO NETSTAT PORTLIST
    ```
 
-The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.
+The `zowe-install.yaml` file also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.
 
@@ -206,7 +186,7 @@ The `zowe-install.yaml` also contains the telnet and SSH port with defaults of 2
 
 When the Zowe runtime is launched, it is run under a z/OS started task (STC). The PROCLIB can be automatically created if desired, for example if the install is being run as part of a pipeline. Alternatively，you can disable auto-creation by commenting out the `zowe-server-proclib:` block.
 
-The `/config/zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
+The `scripts/configure/zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
 
 **Example:**
 
@@ -260,7 +240,7 @@ You can use an existing certificate with the following procedure.
 
 **Follow these steps:**
 
-1. Update the value of `externalCertificate` in the `api-mediation` section of the `zowe-configure.yaml` file. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only the PKCS12 keystore with the password set to `password` are supported.
+1. Update the value of `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only the PKCS12 keystore with the password set to `password` are supported.
 
 2. Update the value of `externalCertificateAlias` to the alias of the server certificate in the keystore.
 
@@ -293,7 +273,7 @@ This error does not interfere with installation progress and can be remediated a
 
 The next configuration step is to set the file and directory permissions correctly to allow the Zowe runtime servers to start and operate successfully.
 
-The configuration script will execute the file `/scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.
+The configuration script will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.
 - If the script is successful, the result is reported.  
 - If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  
 - If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
@@ -338,7 +318,7 @@ You can tailor the JCL at this line
 //ZOWESVR   PROC SRVRPATH='{{root_dir}}'
 ```
 
-to replace the `root_dir` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+to replace the `root_dir` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `scripts/configure/zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
 
 ```
 /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
@@ -352,7 +332,7 @@ To configure ZOWESVR to run as a STC under the user ID of IZUSVR, there is a con
 
 Alternatively, if you do not wish to run this script, the steps below describe how to manually perform the steps to configure ZOWESVR to run under the IZUSVR user ID.  
 
-**Note:** You must replace `ZOWESVR` in the commands below with the name of your PROCLIB member that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file.
+**Note:** You must replace `ZOWESVR` in the commands below with the name of your PROCLIB member that you specified as `memberName=ZOWESVR` in the `scripts/configure/zowe-install.yaml` file.
 
 - If you use RACF, issue the following commands:
 
@@ -413,7 +393,7 @@ Once the cross memory server is installed and started, there will be started tas
 
 ### Creating the xmem-server/zss directory
 
-A number of files used by both manual and scripted install are included in the USS directory `/xmem-server/zss`.  If this directory is not present in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
+A number of files used by both manual and scripted install are included in the USS directory `xmem-server/zss`.  If this directory is not present in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
 
 ### Manually installing the Zowe Cross Memory Server
 <!-- TODO. Entire sub-section -->
@@ -642,7 +622,7 @@ The manual installation consists of the following steps.
 
 ### Scripted install of the Zowe Cross Memory Server
 
-For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `/xmem-server/zowe-install-apf-server.sh`.  If this script does not exist review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory)
+For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `xmem-server/zowe-install-apf-server.sh`.  If this script does not exist review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory)
 
 - The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
 - The script will not create the PPT entry which must be done manually.  This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
