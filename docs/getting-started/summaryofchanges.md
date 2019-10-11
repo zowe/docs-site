@@ -1,9 +1,10 @@
-# Release notes
+# Release notes <!-- omit in toc -->
 
 Learn about what is new, changed, removed, and known issues in Zowe&trade;. 
 
 Zowe Version 1.5.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.6.0 (October 2019)](#version-160-october-2019)
 - [Version 1.5.0 (September 2019)](#version-150-september-2019)
 - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
 - [Version 1.4.0 (August 2019)](#version-140-august-2019)
@@ -12,6 +13,13 @@ Zowe Version 1.5.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+## Version 1.6.0 (October 2019)
+
+### What's new in Zowe CLI and Plug-ins
+
+### What's new in the Zowe App Server
+
+### What's new in Zowe CLI and Plug-ins
 
 ## Version 1.5.0 (September 2019)
 
