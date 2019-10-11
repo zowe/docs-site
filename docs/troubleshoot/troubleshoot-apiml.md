@@ -2,6 +2,134 @@
 
 As an API Mediation Layer user, you may encounter problems with the functioning of API ML. This article presents known API ML issues and their solutions.
 
+## Error Message Codes
+
+The following error message codes may appear on logs or API responses. You can use the following documentation of the messages to solve an issue. 
+
+- ZWEAD100
+  Discovery service is configured to use insecure HTTP protocol
+  Reason:
+  Http protocol does not offer any message transport security.
+  Action:
+  Do not use this mode in production environment and switch to Https instead.
+
+- ZWEAD101
+  Static Api definition directory '%s' is not a directory or does not exist
+  Reason:
+  One of specified static Api definition directories does not exist or is not a directory.
+  Action:
+  Review the static Api definition directories and their setup. The static definition directories is specified either in parmlib (for Brightside Apiml) or as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
+
+- ZWEAD102
+  Error loading static Api definition file '%s'
+  Reason:
+  Problem during reading (IO operation) of specific static Api definition file. 
+  Action:
+  Make sure the file data is not corrupted or in wrong encoding.
+
+- ZWEAD103
+  Unable to process static Api definition data: '%s'
+  Reason:
+  Problem parsing static Api definition file. 
+  Action:
+  Review the mentioned static api definition file for errors, refer to specific log message to see what is the exact problem cause:
+  
+  ServiceId is not defined in the file '%s'. The instance will not be created
+  Make sure to specify ServiceId
+  The instanceBaseUrls parameter of %s is not defined. The instance will not be created.
+  Make sure to specify InstanceBaseUrl property
+  The API Catalog UI tile ID %s is invalid. The service %s will not have API Catalog UI tile
+  Specify correct catalog title ID
+  One of the instanceBaseUrl of %s is not defined. The instance will not be created.
+  Make sure to specify InstanceBaseUrl property
+  The URL %s does not contain a hostname. The instance of %s will not be created
+  Specified URL is malformed. Make sure to specify valid URL
+  The URL %s does not contain a port number. The instance of %s will not be created
+  Specified URL is missing port number. Make sure to specify valid URL
+  The URL %s is malformed. The instance of %s will not be created: %s
+  Specified URL is malformed. Make sure to specify valid URL
+  The hostname of URL %s is unknown. The instance of %s will not be created: %s
+  Specified URL’s hostname is invalid. Make sure to specify valid hostname
+  Invalid protocol
+  Specified URL’s protocol is invalid. Make sure to specify valid protocol
+
+- ZWEAD104
+  Could not read properties from: '%s'
+  Reason:
+  Build Info properties file was empty or null
+  Action:
+  Make sure that META-INF/build-info.properties and META-INF/git.properties exist and are not empty. 
+
+- ZWEAD105
+  ΙΟ Error reading properties from: '%s' Details: '%s'
+  Reason:
+  Error while reading Build Info properties file
+  Action:
+  Make sure that META-INF/build-info.properties and META-INF/git.properties exist and are not corrupted. 
+  
+- ZWEAD106
+  Error in HTTPS configuration: '%s'
+  Reason:
+  Uknown error while setting up HTTP client during service initialization. System will exit after this.
+  Action:
+  Try to start the service again in debug mode to get a more descriptive message. This error indicates it was not a configuration issue. 
+  
+- ZWEAD107
+  Invalid parameter in metadata: '%s'
+  Reason:
+  While parsing the service metadata, an invalid apiInfo parameter was found.
+  Action:
+  Remove or fix the referenced metadata parameter
+  
+- ZWEAD108
+  The service is not verifying the TLS/SSL certificates of the services
+  Reason:
+  Warning that SSL Context will be created without verifying certificates.
+  Action: 
+  If this was not an intentional use, stop the service, set verifySslCertificatesOfServices parameter to True and restart
+  
+- ZWEAD109
+  Error initializing HTTP client: '%s'
+  Reason:
+  Error while initializing HTTP Client. The sslContextBuilder was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
+  Action:
+  
+- ZWEAD110
+  Unsecure HTTP is used to connect to Discovery Service
+  Reason:
+  This service is registered to Discovery service with unsecure HTTP protocol
+  Action:
+  It is advisabl to restart the discovery service with verifySslCertificatesOfServices parameter set to true and make your service use SSL certification
+
+- ZWEAD111
+  Error loading secret key: '%s'
+  Reason:
+  Error has occurred while reading the secret key from keystore or keyring. Key could be loaded but could not be encoded in base64 format
+  Action:
+  Make sure the key referred is in right format and is not corrupt.
+  
+- ZWEAD112
+  Error loading secret key: '%s'
+  Reason: 
+  Error has occurred while loading the secret key from keystore or keyring
+  Action: 
+  Make sure the key exists and the passwords, paths and aliases are correct. 
+  
+- ZWEAD113
+  Error loading public key: '%s'
+  Reason:
+  Error has occurred while loading the public key from keystore or keyring
+  Action:
+  Make sure the key and keystore exists and the paths and aliases are correct.
+
+- ZWEAD114
+  z/OSMF service name not found. Set property apiml.security.auth.zosmfServiceId to your service name.
+  Reason:
+  Parameter zosmfserviceId was not configured correctly and could not be validated.
+  Action:
+  Make sure that the parameter apiml.security.auth.zosmfServiceId is correctly filled with a valid zosmf instance URL
+
+
 ## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
