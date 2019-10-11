@@ -13,6 +13,7 @@ Zowe Version 1.5.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+  
 ## Version 1.6.0 (October 2019)
 
 ### What's new in Zowe CLI and Plug-ins
