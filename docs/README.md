@@ -40,7 +40,8 @@ You can download the Version 1.x Zowe documentation on this website in PDF forma
 
 | Version | Download
 | --- | ---
-| V1.5.0 | [PDF](https://docs.zowe.org/stable/Zowe_Documentation.pdf)
+| V1.6.0 | [PDF](https://docs.zowe.org/stable/Zowe_Documentation.pdf)
+| V1.5.0 | [PDF](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)
 | V1.4.0 | [PDF](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)
 | V1.3.0 | [PDF](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)
 | V1.2.0 | [PDF](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)
