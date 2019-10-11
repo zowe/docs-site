@@ -16,11 +16,15 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
   
 ## Version 1.6.0 (October 2019)
 
-### What's new in Zowe CLI and Plug-ins
+### What's new in API Mediation Layer
+
+No changes were made to API ML in this release. 
 
 ### What's new in the Zowe App Server
 
 ### What's new in Zowe CLI and Plug-ins
+
+No changes were made to the CLI in this release. 
 
 ## Version 1.5.0 (September 2019)
 
