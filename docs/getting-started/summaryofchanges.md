@@ -16,11 +16,18 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
   
 ## Version 1.6.0 (October 2019)
 
-### What's new in API Mediation Layer
+###API Mediation Layer
 
 No changes were made to API ML in this release. 
 
-### What's new in the Zowe App Server
+### Zowe App Server
+
+### Visual Studio Code (VSC) Extension for Zowe 
+
+The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension, 
+
+You can [download the latest version](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) from the VSC Marketplace. 
+
 
 ### What's new in Zowe CLI and Plug-ins
 
