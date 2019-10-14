@@ -253,6 +253,9 @@ The following steps outline the process of registering your service with the APi
 - [Add a context listener class](#add-a-context-listener)
 - [Register a context listener](#register-a-context-listener)
 - [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
+- [Reading service configuration](#reading-service-configuration)
+- [Initializing Eureka Client](#initializing-eureka-client)
+- [Registering with Eureka discovery service](#registering-with-eureka-discovery-service)
 
 **Follow these steps:**
 
@@ -306,25 +309,23 @@ The following steps outline the process of registering your service with the APi
 
 3. Add security settings to your sevice configuration. 
 
-    **Note:** All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
-
-    **Follow these steps:**
-
-    1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+    **Note:** Before you add security to your service configuration, first follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost).  
+    All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
     
-        If the service runs on localhost, the command uses the following format:
-        ```
-        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-        ```
+    If the service runs on localhost, the command uses the following format:
+
+    ```
+    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+    ```
         
-        Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
+    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
 
-    2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+    Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
-        ```
-        ssl:
-            protocol: TLSv1.2
-            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+    ```
+    ssl:
+        protocol: TLSv1.2
+        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
             keyAlias: localhost
             keyPassword: password
             keyStore: keystore/localhost.keystore.p12
@@ -333,43 +334,42 @@ The following steps outline the process of registering your service with the APi
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
-        eureka:
-            instance:
-                nonSecurePortEnabled: false
-                securePortEnabled: true
-        ```
+    eureka:
+         instance:
+            nonSecurePortEnabled: false
+            securePortEnabled: true
+    ```
 
-        **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
-    3. Read the service configuration file.
+4. Read the service configuration file.
 
-        To register your service with API ML discovery service, read your service configuration from the context listener **contextInitialized** implementation:
+    To register your service with API ML discovery service, read your service configuration from the context listener **contextInitialized** implementation:
 
-        ```
-        @Override
-        public void contextInitialized(ServletContextEvent sce) {
-            String configurationFile = "/service-configuration.yml";
-            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
-            ...
-        ```
-
-    4. Register with Eureka discovery service
-        ```
+     ```
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        String configurationFile = "/service-configuration.yml";
+        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
         ...
-        new ApiMediationClientImpl().register(config);
-        }
-        ```
+    ```
 
-    5. Unregister your service 
+5. Register with Eureka discovery service
+    ```
+    ...
+    new ApiMediationClientImpl().register(config);
+    }
+    ```
+
+6. Unregister your service 
 Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
 
-        ```
-        @Override
-        public void contextDestroyed(ServletContextEvent sce) {
-        apiMediationClient.unregister();
-        }
-        ```
-
+    ```
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+    apiMediationClient.unregister();
+    }
+    ```
 
 ### Implementing a periodic call (heartbeat) to the API ML Discovery Service
 
