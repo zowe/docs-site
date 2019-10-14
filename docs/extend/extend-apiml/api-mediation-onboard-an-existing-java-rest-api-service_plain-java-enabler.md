@@ -44,7 +44,8 @@ The following steps outline the process of onboarding your REST service. Each st
     * [Registering your service to API ML](#registering-your-service-to-api-ml)
     
         * [Adding a context listener class](#adding-a-context-listener-class)
-        * [Register a context listener](#registering-a-context-listener)
+        * [Registering a context listener](#registering-a-context-listener)
+        * [Adding security settings](#adding-security-settings-to-your-sevice-configuration)
         * [Reading service configuration](#reading-service-configuration)
         * [Initializing Eureka Client](#initializing-eureka-client)
         * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
@@ -307,7 +308,7 @@ The following steps outline the process of registering your service with the APi
     </listener>
     ```
 
-3. Add security settings to your sevice configuration. 
+3. Adding security settings to your sevice configuration. 
 
     **Note:** Before you add security to your service configuration, first follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost).  
     All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
