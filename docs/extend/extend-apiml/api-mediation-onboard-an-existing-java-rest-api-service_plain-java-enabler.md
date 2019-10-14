@@ -40,8 +40,8 @@ The following steps outline the process of onboarding your REST service. Each st
 
 3. [Changing your source code](#changing-your-source-code)
 
-    * [Adding endpoints](#adding-endpoints)
-    * [Registering your service to API ML](#registering-your-service-to-api-ml)
+    * [Add endpoints](#add-endpoints)
+    * [Register your service to API ML](#register-your-service-to-api-ml)
     
         * [Adding a context listener class](#adding-a-context-listener-class)
         * [Registering a context listener](#registering-a-context-listener)
@@ -50,7 +50,7 @@ The following steps outline the process of onboarding your REST service. Each st
         * [Initializing Eureka Client](#initializing-eureka-client)
         * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
 
-    * [Implementing a periodic call (heartbeat) to the API ML Discovery Service](implementing-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
+    * [Implement a periodic call (heartbeat) to the API ML Discovery Service](implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
 
 4. [Configuring your service](#configuring-your-service)
     - [REST service identification](#rest-service-identification) 
@@ -199,7 +199,7 @@ Several changes are required in the source code to successfully onboard your RES
 * <font color="red">[Registering your service to API ML]</font>(#registering-your-service-to-api-ml)
 * [Implementing a periodic call (heartbeat) to the API ML](#implementing-a-periodic-call-(heartbeat)-to-the-api-ml)
 
-### Adding endpoints
+### Add endpoints
  
 Add the following endpoints to your application:
 
@@ -250,7 +250,7 @@ Add the following endpoints to your application:
        }
    }
    ```
-### Registering your service to API ML
+### Register your service to API ML
 
 The following steps outline the process of registering your service with the APi ML:
 
@@ -376,7 +376,7 @@ Use ContextListener **contextDestroyed** method to unregister your service insta
     }
     ```
 
-### Implementing a periodic call (heartbeat) to the API ML Discovery Service
+### Implement a periodic call (heartbeat) to the API ML Discovery Service
 
 After successful registration, configure your service to send a heartbeat periodically to the Discovery Service. This hearbeat indicates that the service is available. When the Discovery Service does not receive a heartbeat after set period of time, it removes the service instance from the registry.
 
