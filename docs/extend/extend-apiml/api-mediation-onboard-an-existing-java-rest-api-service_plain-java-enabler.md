@@ -254,9 +254,10 @@ The following steps outline the process of registering your service with the APi
 - [Add a context listener class](#add-a-context-listener)
 - [Register a context listener](#register-a-context-listener)
 - [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
-- [Reading service configuration](#reading-service-configuration)
-- [Initializing Eureka Client](#initializing-eureka-client)
-- [Registering with Eureka discovery service](#registering-with-eureka-discovery-service)
+- [Read service configuration](#read-service-configuration)
+- [Initialize Eureka Client](#initialize-eureka-client)
+- [Register with Eureka discovery service](#register-with-eureka-discovery-service)
+- [Unregister your service](#unregister-your-service)
 
 **Follow these steps:**
 
@@ -308,7 +309,7 @@ The following steps outline the process of registering your service with the APi
     </listener>
     ```
 
-3. Adding security settings to your sevice configuration. 
+3. Add security settings to your sevice configuration. 
 
     **Note:** Before you add security to your service configuration, first follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost).  
     All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
