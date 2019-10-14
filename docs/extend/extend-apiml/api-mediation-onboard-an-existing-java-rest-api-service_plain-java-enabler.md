@@ -256,7 +256,6 @@ The following steps outline the process of registering your service with the APi
 
 - [Add a context listener class](#add-a-context-listener)
 - [Register a context listener](#register-a-context-listener)
-- [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
 - [Read service configuration](#read-service-configuration)
 - [Initialize Eureka Client](#initialize-eureka-client)
 - [Register with Eureka discovery service](#register-with-eureka-discovery-service)
