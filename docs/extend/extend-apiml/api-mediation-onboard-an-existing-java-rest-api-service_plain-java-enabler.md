@@ -312,42 +312,11 @@ The following steps outline the process of registering your service with the APi
     </listener>
     ```
 
-3. Add security settings to your sevice configuration. 
-
-    **Note:** Before you add security to your service configuration, first follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost).  
-    All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
+3. Read the service configuration file.
     
-    If the service runs on localhost, the command uses the following format:
+    <font color="red">Where is this added? 
 
-    ```
-    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-    ```
-        
-    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
-
-    Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
-
-    ```
-    ssl:
-        protocol: TLSv1.2
-        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-            keyAlias: localhost
-            keyPassword: password
-            keyStore: keystore/localhost.keystore.p12
-            keyStoreType: PKCS12
-            keyStorePassword: password
-            trustStore: keystore/localhost.truststore.p12
-            trustStoreType: PKCS12
-            trustStorePassword: password
-    eureka:
-         instance:
-            nonSecurePortEnabled: false
-            securePortEnabled: true
-    ```
-
-    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
-
-4. Read the service configuration file.
+    In the ... add the following code block:</font>
 
     To register your service with API ML discovery service, read your service configuration from the context listener **contextInitialized** implementation:
 
@@ -359,15 +328,26 @@ The following steps outline the process of registering your service with the APi
         ...
     ```
 
-5. Register with Eureka discovery service
+4. Register with Eureka discovery service.
+
+<font color="red">Where is this added? </font>
+
+   <font color="red"> In the ... add the following code block:</font>
+
     ```
     ...
     new ApiMediationClientImpl().register(config);
     }
     ```
 
-6. Unregister your service 
-Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
+5. Unregister your service.
+
+    Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
+
+<font color="red">Where is this added? </font>
+
+   <font color="red"> In the ... add the following code block:</font>
+
 
     ```
     @Override
