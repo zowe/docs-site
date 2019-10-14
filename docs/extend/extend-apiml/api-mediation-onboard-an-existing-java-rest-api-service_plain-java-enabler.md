@@ -78,7 +78,7 @@ Ensure that the following prerequisites are satified before you begin this onboa
 
 * Your REST API service is written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
-* The service container is secured by digital certificate according to TLS v1.2 and accepts requests on HTTPS.
+* The service container is secured by a digital certificate according to TLS v1.2 and accepts requests on HTTPS.
 
 
 ## Configuring your project
@@ -134,8 +134,7 @@ Use the following procedure if you use Gradle as your build automation system.
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
 
 **Note:** 
-  - At time of writing the Plain Java Enabler is build with Gradle v 4.9.
-  s
+At time of writing the Plain Java Enabler is build with Gradle v 4.9.
 
 ### Maven guide
 
@@ -249,16 +248,23 @@ Add the following endpoints to your application:
    ```
 ### Registering your service to API ML
 
+The following steps outline the process of registering your service with the APi ML:
+
+- [Add a context listener class](#add-a-context-listener)
+- [Register a context listener](#register-a-context-listener)
+- [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
+
 **Follow these steps:**
 
-1. Add a context listener class
-The context listener invokes the `apiMediationClient.register(config)` method to register the application with the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method before the application shuts down to unregister the application in API Mediation Layer.
+1. Add a context listener class.
 
-**Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` to register and unregister your application.
+    The context listener invokes the `apiMediationClient.register(config)` method to register the application with the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method before the application shuts down to unregister the application in API Mediation Layer.
 
-Add the following code block to add a context listener class:
+    **Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` to register and unregister your application.
+
+    Add the following code block to add a context listener class:
+
     ```
-
     package com.ca.mfaas.hellospring.listener;
 
     import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
@@ -290,29 +296,30 @@ Add the following code block to add a context listener class:
 
 2. Register a context listener
 
-Register a context listener to start Discovery client. Add the following code block to the deployment descriptor `web.xml` to register a context listener:
+    Register a context listener to start Discovery client. Add the following code block to the deployment descriptor `web.xml` to register a context listener:
 
-``` xml
+    ``` xml
     <listener>
         <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
     </listener>
-```
+    ```
 
 3. Add security settings to sevice configuration 
 
-All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
+    All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
 
-**Follow these steps:**
+    **Follow these steps:**
 
-1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
-
-    If the service runs on localhost, the command uses the following format:
-
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-
+    1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+    
+        If the service runs on localhost, the command uses the following format:
+    ```
+    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+    ```
+        
     Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
 
-2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+    2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
     ```
         ssl:
@@ -331,10 +338,10 @@ All API services require a certificate that is trusted by API Mediation Layer in
              nonSecurePortEnabled: false
              securePortEnabled: true
     ```
-**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
 
-4. Read the service configuration file
-In order to register your service with API ML discovery service, read your service configuration from the contezt listener **contextInitialized** implementation:
+    3. Read the service configuration file
+In order to register your service with API ML discovery service, read your service configuration from the context listener **contextInitialized** implementation:
 
     ```
     @Override
@@ -344,13 +351,13 @@ In order to register your service with API ML discovery service, read your servi
         ...
     ```
 
-5. Register with Eureka discovery service
+    4. Register with Eureka discovery service
     ```
         ...
         new ApiMediationClientImpl().register(config);
     }
     ```
-6. Unregister your service 
+    5. Unregister your service 
 Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
     ```
     @Override
