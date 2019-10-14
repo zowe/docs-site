@@ -53,10 +53,13 @@ The following steps outline the process of onboarding your REST service. Each st
     * [Implementing a periodic call (heartbeat) to the API ML Discovery Service](implementing-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) <font color="red">TODO: HeartBeat</font>
 
 4. [Configuring your service](#configuring-your-service)
-    * [Eureka discovery service](#eureka-discovery-service)
-    * [REST service information](#rest-service-information)
-    * [API information](#api-information)
-    * [API Catalog information](#api-catalog-information)
+    - [REST service identification](#rest-service-identification) 
+    - [Administrative endpoints](#administrative-endpoints)
+    - [API Security](#api-security)
+    - [Eureka discovery service](#eureka-discovery-service) 
+    - [API routing information](api-routing-information)
+    - [API info](#api-info) (API Documentation)
+    - [API Catalog information](#api-catalog-information)
 
 5. [Documenting your API](#documenting-your-api)
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
