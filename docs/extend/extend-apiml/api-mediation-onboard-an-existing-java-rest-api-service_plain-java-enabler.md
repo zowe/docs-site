@@ -195,9 +195,9 @@ Use the following procedure if you use Maven as your build automation system.
 
 Several changes are required in the source code to successfully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
-* [Adding endpoints](#adding-endpoints)
-* <font color="red">[Registering your service to API ML]</font>(#registering-your-service-to-api-ml)
-* [Implementing a periodic call (heartbeat) to the API ML](#implementing-a-periodic-call-(heartbeat)-to-the-api-ml)
+* [Add endpoints](#adding-endpoints)
+* [Register your service to API ML](#register-your-service-to-api-ml)
+* [Implement a periodic call (heartbeat) to the API ML](#implementing-a-periodic-call-(heartbeat)-to-the-api-ml)
 
 ### Add endpoints
  
