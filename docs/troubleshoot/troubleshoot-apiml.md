@@ -15,11 +15,11 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Open a file, `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
 
-2. Find the api mediation layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
+2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
 
-3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`:
+3. Find the line that contains the `spring.profiles.include` parameter and change its value to `debug`:
     ```
     -Dspring.profiles.include=debug \
     ```
@@ -37,7 +37,7 @@ its performance and create large log files that consume a large volume of disk s
 7. Restart Zowe.
 
     You have disabled the debug mode.
- ___
+
 ## Change the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
