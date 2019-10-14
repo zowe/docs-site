@@ -31,10 +31,6 @@ Follow these steps:
 5. `npm install`
 6. `npm run build`
 
-    The first time that you build, the script will interactively ask you for the location of your Zowe CLI directory. Subsequent builds will not ask again.
-
-    The build script creates symbolic links. On Windows, you might need to have Administrator privileges to create those symbolic links.
-
 ### (Optional) Run the automated tests
 We recommend running automated tests on all code changes. Follow these steps:
 

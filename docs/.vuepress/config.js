@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.5.0'
+const CURRENT_ZOWE_VERSION = '1.6.0'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
 // so we convert it to dash
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'stable').replace(/\./g, '-')
@@ -131,7 +131,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.5.x',
+  description: 'Version 15.x',
   extraWatchFiles: [
     '.vuepress/theme/'
   ],
