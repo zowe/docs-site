@@ -93,13 +93,14 @@ The following error message codes may appear on logs or API responses. You can u
   Reason:
   Error while initializing HTTP Client. The sslContextBuilder was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
   Action:
+  Contact support to get more help.
   
 - ZWEAD110
   Unsecure HTTP is used to connect to Discovery Service
   Reason:
   This service is registered to Discovery service with unsecure HTTP protocol
   Action:
-  It is advisabl to restart the discovery service with verifySslCertificatesOfServices parameter set to true and make your service use SSL certification
+  If you are in production, it is recommended to restart your service with verifySslCertificatesOfServices parameter set to true and have your service use SSL certification
 
 - ZWEAD111
   Error loading secret key: '%s'
@@ -128,7 +129,51 @@ The following error message codes may appear on logs or API responses. You can u
   Parameter zosmfserviceId was not configured correctly and could not be validated.
   Action:
   Make sure that the parameter apiml.security.auth.zosmfServiceId is correctly filled with a valid zosmf instance URL
+  
+- ZWEAM114
+  Error initializing SSL/TLS context: '%s'
+  Reason: 
+  An error occurred while trying to initialize the context for SSL connection regarding truststore. 
+  Action:
+  Check that your truststore has no issues. If there is no problem in truststore, contact support.
+  
+- key: ZWEAM115
+  Truststore Password configuration parameter is not defined
+  Reason:
+  Your truststore password was not set in configuration
+  Action:
+  Fill the parameter server.ssl.trustStorePassword at your service's properties or yaml file with the correct password for your truststore.
+  
+- key: ZWEAM116
+  Truststore configuration parameter is not defined but it is required"
+  Reason:
+  The truststore usage has been set as mandatory, yet the truststore location was not provided. 
+  Action:
+  If you need the truststore, edit the server.ssl.truststore, server.ssl.truststorePassword and server.ssl.truststoreType parameters with some valid data. 
+  If you do not require the truststore, change the trustStoreRequired boolean parameter to false
+  
 
+- key: ZWEAM117
+  Keystore not found, server.ssl.keyStore configuration parameter is not defined
+  Reason:
+  Your keystore path was not set in configuration
+  Action:
+  Fill the parameter server.ssl.keyStore at your service's properties or yaml file with the correct path to your keystore.
+    
+- ZWEAM118
+  Keystore password not found, server.ssl.keyStorePassword configuration parameter is not defined
+  Reason:
+  Your keystore password was not set in configuration
+  Action:
+  Fill the parameter server.ssl.keyStorePassword at your service's properties or yaml file with the correct password to your keystore.
+  
+- key: ZWEAM119
+  Invalid key alias '%s'
+  Reason:
+  The key alias you provided was not found                       
+  Action:
+  Make sure that the key alias provided for the key exists in the provided keystore. 
+                          
 
 ## Enable API ML Debug Mode
 
