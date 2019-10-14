@@ -45,7 +45,6 @@ The following steps outline the process of onboarding your REST service. Each st
     
         * [Adding a context listener class](#adding-a-context-listener-class)
         * [Registering a context listener](#registering-a-context-listener)
-        * [Adding security settings](#adding-security-settings-to-your-sevice-configuration)
         * [Reading service configuration](#reading-service-configuration)
         * [Initializing Eureka Client](#initializing-eureka-client)
         * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
