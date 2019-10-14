@@ -1,16 +1,17 @@
-# Java REST APIs service without Spring Boot
+# REST APIs service plain Java enabler
 
-This article is a part of a series of onboarding guides, which outlines the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This guide is a part of a series of onboarding guides, which outline the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This article describes a step-by-step process to onboard a REST API <font color='yellow'>application</font>/<font color="green">service</font> using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 **Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
 
 ZOWE API ML is a lightweight API management system based on the following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
+* Ribbon - load ballancer
 
 ## Requirements for onboarding a REST API to the API ML
 
-The following requirements are necessary to onboard a REST API to the API ML:
+The following criteria must be satisfied to onboard a REST API to the API ML:
 
 * Service discovery information including but not limited to the base URI, home page, status page, and health check endpoint
 * Routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests
@@ -21,9 +22,6 @@ The following requirements are necessary to onboard a REST API to the API ML:
 
  We recommend you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two in combination makes the result state of the discovery registry unpredictable.
 
-**Note:**
-
-For detailed information about the onboarding process and Eureka functionality and configuration see: <font color="red">TODO: provide link</font>
 
   For instructions about how to utilize other API ML enablers types, see the following links: 
   * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
@@ -78,9 +76,9 @@ The following steps outline the process of onboarding your REST service. Each st
 
 Ensure that the following prerequisites are satified before you begin this onboarding process:
 
-* Your REST API service is written in Java can be deployed and run on z/OS. (<font color='yellow'> What makes a service deployable and able to run on z/OS</font>)
+* Your REST API service is written in Java can be deployed and run on z/OS.
 * The service has an endpoint that generates Swagger documentation.
-* The service container is secured by digital certificate according to TLS v?.? and only accepts requests on HTTPS.
+* The service container is secured by digital certificate according to TLS v1.2 and accepts requests on HTTPS.
 
 
 ## Configuring your project
@@ -94,7 +92,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 1. Create a *gradle.properties* file in the root of your project if one does not already exist.
  
-2. In the *gradle.properties* file, set the URL of the <font color="yellow">ZOWE (aka Giza)</font> Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
+2. In the *gradle.properties* file, set the URL of the ZOWE (aka Giza) Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -133,10 +131,11 @@ Use the following procedure if you use Gradle as your build automation system.
     ```
     **Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
 
-5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working on your project.
+5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
 
-<font color="red">**TODO** What gradle version is minimum required for Plain Java Enabler?</font>
-
+**Note:** 
+  - At time of writing the Plain Java Enabler is build with Gradle v 4.9.
+  s
 
 ### Maven guide
 
@@ -194,7 +193,7 @@ Use the following procedure if you use Maven as your build automation system.
 Several changes are required in the source code to successfully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
 * [Adding endpoints](#adding-endpoints)
-* [Registering your service to API ML](#registering-your-service-to-api-ml)
+* <font color="red">[Registering your service to API ML]</font>(#registering-your-service-to-api-ml)
 * [Implementing a periodic call (heartbeat) to the API ML](#implementing-a-periodic-call-(heartbeat)-to-the-api-ml)
 
 ### Adding endpoints
@@ -253,24 +252,113 @@ Add the following endpoints to your application:
 **Follow these steps:**
 
 1. Add a context listener class
+The context listener invokes the `apiMediationClient.register(config)` method to register the application with the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method before the application shuts down to unregister the application in API Mediation Layer.
+
+**Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` to register and unregister your application.
+
+Add the following code block to add a context listener class:
     ```
+
+    package com.ca.mfaas.hellospring.listener;
+
+    import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
+    import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
+    import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
+    import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+
+    import javax.servlet.ServletContextEvent;
+    import javax.servlet.ServletContextListener;
+
+
+    public class ApiDiscoveryListener implements ServletContextListener {
+        private ApiMediationClient apiMediationClient;
+
+        @Override
+        public void contextInitialized(ServletContextEvent sce) {
+            apiMediationClient = new ApiMediationClientImpl();
+            String configurationFile = "/service-configuration.yml";
+            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+            apiMediationClient.register(config);
+        }
+
+        @Override
+        public void contextDestroyed(ServletContextEvent sce) {
+            apiMediationClient.unregister();
+        }
+    }
     ```
 
 2. Register a context listener
-    ```
-    ```
 
-3. Read service configuration
-    ```
-    ```
+Register a context listener to start Discovery client. Add the following code block to the deployment descriptor `web.xml` to register a context listener:
 
-4. Initialize Eureka Client
+``` xml
+    <listener>
+        <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
+    </listener>
+```
+
+3. Add security settings to sevice configuration 
+
+All API services require a certificate that is trusted by API Mediation Layer in order to register with it.
+
+**Follow these steps:**
+
+1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+
+    If the service runs on localhost, the command uses the following format:
+
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+
+    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
+
+2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+
     ```
+        ssl:
+            protocol: TLSv1.2
+            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            keyAlias: localhost
+            keyPassword: password
+            keyStore: keystore/localhost.keystore.p12
+            keyStoreType: PKCS12
+            keyStorePassword: password
+            trustStore: keystore/localhost.truststore.p12
+            trustStoreType: PKCS12
+            trustStorePassword: password
+     eureka:
+         instance:
+             nonSecurePortEnabled: false
+             securePortEnabled: true
+    ```
+**Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+
+4. Read the service configuration file
+In order to register your service with API ML discovery service, read your service configuration from the contezt listener **contextInitialized** implementation:
+
+    ```
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        String configurationFile = "/service-configuration.yml";
+        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+        ...
     ```
 
 5. Register with Eureka discovery service
     ```
+        ...
+        new ApiMediationClientImpl().register(config);
+    }
     ```
+6. Unregister your service 
+Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
+    ```
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        apiMediationClient.unregister();
+    }
+    ```
+
 
 ### Implementing a periodic call (heartbeat) to the API ML Discovery Service
 
