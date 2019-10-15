@@ -301,7 +301,7 @@ its performance and create large log files that consume a large volume of disk s
 
     You have enabled the debug mode.
 
-5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, contact CA Support.
+5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
 6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
     ```
