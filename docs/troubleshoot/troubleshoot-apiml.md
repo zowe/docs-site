@@ -16,7 +16,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the static Api definition directories and their setup. The static definition directories is specified either in parmlib (for Brightside Apiml) or as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
+  Review the static Api definition directories and their setup. The static definition directories is specified as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
 
 - ### ZWEAD701
 
