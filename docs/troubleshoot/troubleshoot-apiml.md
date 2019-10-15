@@ -6,19 +6,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-- ### ZWEAD100
-
-  Discovery service is configured to use insecure HTTP protocol
-
-  **Reason:**
-
-  Http protocol does not offer any message transport security.
-
-  **Action:**
-
-  Do not use this mode in production environment and switch to Https instead.
-
-- ### ZWEAD101
+- ### ZWEAD700
 
   Static Api definition directory '%s' is not a directory or does not exist
 
@@ -30,7 +18,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Review the static Api definition directories and their setup. The static definition directories is specified either in parmlib (for Brightside Apiml) or as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
 
-- ### ZWEAD102
+- ### ZWEAD701
 
   Error loading static Api definition file '%s'
 
@@ -42,7 +30,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Make sure the file data is not corrupted or in wrong encoding.
 
-- ### ZWEAD103
+- ### ZWEAD702
 
   Unable to process static Api definition data: '%s'
   Reason:
@@ -69,98 +57,110 @@ The following error message codes may appear on logs or API responses. Use the f
   Invalid protocol
   Specified URL’s protocol is invalid. Make sure to specify valid protocol
 
-- ZWEAD104
+- ### ZWEAD703
+
+  I/O problem occurred during reading static Api definition directory: '%s'
+
+  **Reason:**
+
+  Property files of type .yml were not found 
+
+  **Action:**
+
+  Review the paths and validity yof your yaml files. 
+  
+- ZWEAM100
   Could not read properties from: '%s'
   Reason:
   Build Info properties file was empty or null
   Action:
   Make sure that META-INF/build-info.properties and META-INF/git.properties exist and are not empty. 
 
-- ZWEAD105
+- ZWEAM101
   ΙΟ Error reading properties from: '%s' Details: '%s'
   Reason:
   Error while reading Build Info properties file
   Action:
   Make sure that META-INF/build-info.properties and META-INF/git.properties exist and are not corrupted. 
   
-- ZWEAD106
+- ZWEAM401
   Error in HTTPS configuration: '%s'
   Reason:
   Uknown error while setting up HTTP client during service initialization. System will exit after this.
   Action:
   Try to start the service again in debug mode to get a more descriptive message. This error indicates it was not a configuration issue. 
   
-- ZWEAD107
+- ZWEAM600
   Invalid parameter in metadata: '%s'
   Reason:
   While parsing the service metadata, an invalid apiInfo parameter was found.
   Action:
   Remove or fix the referenced metadata parameter
   
-- ZWEAD108
+- ZWEAM500
   The service is not verifying the TLS/SSL certificates of the services
   Reason:
   Warning that SSL Context will be created without verifying certificates.
   Action: 
   If this was not an intentional use, stop the service, set verifySslCertificatesOfServices parameter to True and restart
   
-- ZWEAD109
+- ZWEAM400
   Error initializing HTTP client: '%s'
   Reason:
   Error while initializing HTTP Client. The sslContextBuilder was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
   Action:
   Contact support to get more help.
   
-- ZWEAD110
-  Unsecure HTTP is used to connect to Discovery Service
+- ZWEAM501
+  Service is configured to use insecure HTTP protocol. For production use, please switch to HTTPS instead.
   Reason:
   This service is registered to Discovery service with unsecure HTTP protocol
   Action:
   If you are in production, it is recommended to restart your service with verifySslCertificatesOfServices parameter set to true and have your service use SSL certification
 
-- ZWEAD111
-  Error loading secret key: '%s'
+- ZWEAM502
+  Error reading secret key: '%s'
   Reason:
   Error has occurred while reading the secret key from keystore or keyring. Key could be loaded but could not be encoded in base64 format
   Action:
   Make sure the key referred is in right format and is not corrupt.
   
-- ZWEAD112
+- ZWEAM503
   Error loading secret key: '%s'
   Reason: 
   Error has occurred while loading the secret key from keystore or keyring
   Action: 
   Make sure the key exists and the passwords, paths and aliases are correct. 
   
-- ZWEAD113
+- ZWEAM504
   Error loading public key: '%s'
   Reason:
   Error has occurred while loading the public key from keystore or keyring
   Action:
   Make sure the key and keystore exists and the paths and aliases are correct.
 
-- ZWEAD114
+- ZWEAM601
   z/OSMF service name not found. Set property apiml.security.auth.zosmfServiceId to your service name.
   Reason:
   Parameter zosmfserviceId was not configured correctly and could not be validated.
   Action:
   Make sure that the parameter apiml.security.auth.zosmfServiceId is correctly filled with a valid zosmf instance URL
   
-- ZWEAM114
+- ZWEAM505
   Error initializing SSL/TLS context: '%s'
   Reason: 
   An error occurred while trying to initialize the context for SSL connection regarding truststore. 
   Action:
   Check that your truststore has no issues. If there is no problem in truststore, contact support.
   
-- key: ZWEAM115
+- key: ZWEAM506
   Truststore Password configuration parameter is not defined
   Reason:
   Your truststore password was not set in configuration
   Action:
   Fill the parameter server.ssl.trustStorePassword at your service's properties or yaml file with the correct password for your truststore.
   
-- key: ZWEAM116
+- key: ZWEAM507
   Truststore configuration parameter is not defined but it is required"
   Reason:
   The truststore usage has been set as mandatory, yet the truststore location was not provided. 
@@ -169,21 +169,21 @@ The following error message codes may appear on logs or API responses. Use the f
   If you do not require the truststore, change the trustStoreRequired boolean parameter to false
   
 
-- key: ZWEAM117
+- key: ZWEAM508
   Keystore not found, server.ssl.keyStore configuration parameter is not defined
   Reason:
   Your keystore path was not set in configuration
   Action:
   Fill the parameter server.ssl.keyStore at your service's properties or yaml file with the correct path to your keystore.
     
-- ZWEAM118
+- ZWEAM509
   Keystore password not found, server.ssl.keyStorePassword configuration parameter is not defined
   Reason:
   Your keystore password was not set in configuration
   Action:
   Fill the parameter server.ssl.keyStorePassword at your service's properties or yaml file with the correct password to your keystore.
   
-- key: ZWEAM119
+- key: ZWEAM510
   Invalid key alias '%s'
   Reason:
   The key alias you provided was not found                       
