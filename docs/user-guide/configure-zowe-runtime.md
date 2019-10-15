@@ -91,6 +91,8 @@ where:
 
 - `pfx` - prefix that contains up to four characters, for example, `ZOWE`.
 
+- `n` - instance number
+
 - `SS` - a subcomponent that consists of 1 or 2 characters:
    - **AG** - API ML Gateway
    - **AD** - API ML Discovery Service
@@ -101,8 +103,6 @@ where:
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
    - **DT** - Zowe Desktop Application Server
-
-- `N` - instance number
 
 You should use the prefix for the main started task (+ number).
 
@@ -116,7 +116,7 @@ You should use the prefix for the main started task (+ number).
   in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
 
   ```
-  ZOWEAG1
+  ZOWE1AG
   ```
 #### Port allocations
 
