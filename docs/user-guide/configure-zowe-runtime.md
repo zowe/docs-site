@@ -85,7 +85,7 @@ The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that c
 
 STC names have certain components and use the following format:
 
-```pfxSSn```
+```pfxnSS```
 
 where:
 
