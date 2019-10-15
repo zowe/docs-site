@@ -186,7 +186,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure the key and keystore exist and the paths and aliases are correct.
 
-- ###ZWEAM601
+- ### ZWEAM601
 
   z/OSMF service name not found. Set the property apiml.security.auth.zosmfServiceId to your service name.
 
