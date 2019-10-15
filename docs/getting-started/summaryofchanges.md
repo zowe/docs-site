@@ -16,26 +16,21 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
   
 ## Version 1.6.0 (October 2019)
 
-### What's new in the API Mediation Layer
-
-No changes were made to API ML in this release. 
+No changes were made to API ML or Zowe CLI in this release. 
 
 ### What's new in the Zowe App Server
+
 The following features and enhancements are added:
 
 - Added pass through express router ws patcher in case plug-ins need it. [#152](https://github.com/zowe/zlux-server-framework/pull/152), [#149](https://github.com/zowe/zlux-server-framework/pull/149)
 - Updated security plugins to manage proxied headers so that unnecessary things are not put into the browser.[#152](https://github.com/zowe/zlux-server-framework/pull/152), [#26](https://github.com/zowe/zss-auth/pull/26)
 - Clear cookie on complete logout.[#152](https://github.com/zowe/zlux-server-framework/pull/152)
-- 
+
 ### What's new in the Visual Studio Code (VSC) Extension for Zowe 
 
 The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension, 
 
-You can [download the latest version](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) from the VSC Marketplace. 
-
-### What's new in Zowe CLI and Plug-ins
-
-No changes were made to the CLI in this release. 
+You can [download the latest version](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) from the VSC Marketplace.
 
 ## Version 1.5.0 (September 2019)
 
