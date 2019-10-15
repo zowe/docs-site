@@ -18,55 +18,13 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.
 
-To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you download the PAX file, follow the instructions to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
-1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.
-
-    **Notes:**
-
-    - The commands in the following steps are tested on both Mac OS X V10.13.6 and Ubuntu V16.04 and V17.10.
-    - Ensure that you have GPG installed. Click [here](https://www.gnupg.org/) to download and install GPG.
-    - The `v.r.m` in the commands of this step is a variable. You must replace it with the actual PAX file version, for example, `0.9.0`.
-
-    **Step 1:  Verify the hash code.**
-
-      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://projectgiza.org/Downloads/post_download.html). Then, run the following commands to check:
-
-      ```
-      (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
-      ```
-
-      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary `zowe-v.r.m.pax.sha512.my` file.
-
-      You can also use other commands such as `sha512`, `sha512sum`, or `openssl dgst -sha512` to generate `SHA512` hash code. These hash code results are in a different format from what Zowe provides but the values are the same.
-
-    **Step 2. Verify with signature file.**
-
-      In addition to the SHA512 hash, the hash is also verifiable. This is done by digitally signing the hash text file with a KEY from one of the Zowe developers.
-
-      After you download the official build, in the post download page, there is section `Verify Hash and Signature of Zowe Binary` - `Step 2 - Verify With Signature File`, which includes the link to the `.asc` file. Or you can fetch the `.asc` with this url pattern: `https://d1xozlojgf8voe.cloudfront.net/builds/<version>/zowe-<version>.pax.asc`. For example, download link for version `v1.4.0` is https://d1xozlojgf8voe.cloudfront.net/builds/1.4.0/zowe-1.4.0.pax.asc.
-
-      You also need the public key in this folder: https://github.com/zowe/zowe-install-packaging/tree/master/signing_keys.
-
-      **Then you can verify the build following these steps:**
-
-      - Import the public key with command: `gpg --import <KEY>`. The `<KEY>` should either be the key file list in [Available Keys](#available-keys) section. For example: `gpg --import KEYS.matt`.
-      - Optional, if you never use gpg before, you can generate your personal key first: `gpg --gen-key`. This is required if you want to sign the imported key. Otherwise, please proceed to next step.
-      - Optional, sign the downloaded public key with command: `gpg --sign-key <KEY-SHORT-ID>`. For example: `gpg --sign-key DC8633F77D1253C3`.
-      - Verify the file with command: `gpg --verify zowe-<version>.pax.asc zowe-<version>.pax`. For example: `gpg --verify zowe-1.4.0.pax.asc zowe-1.4.0.pax`.
-      - Optional, you can remove the imported key with command: `gpg --delete-key <KEY-SHORT-ID>`. For example: `gpg --delete-key DC8633F77D1253C3`.
-
-      If you see output like this that matches the info in the public key you downloaded you can be assured that the binary file you have has come from the Zowe project.
-
-      ```
-      gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
-      gpg:         using RSA key DC8633F77D1253C3
-      gpg: Good signature from "Matt Hogstrom (CODE SIGNING KEY) " [full]
-      ```
-
-      *Note: the key ID and signature shown above are depended on which key is used to sign the build.*
+1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project. 
+   
+   Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=v.r.m` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
 2. Transfer the PAX file to z/OS.
 
