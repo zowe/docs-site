@@ -162,16 +162,16 @@ You can run the installation process multiple times with different values in the
 You install and configure the Zowe runtime by executing the `zowe-install.sh` script. The `zowe-install.sh` mode performs three steps.
 
 1. Install Zowe runtime directories and files into the `root_dir` directory.  
-2. Install MVS artefacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  
+2. Install MVS artifacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  
 3. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces. 
 
 It's recommended that you install the Zowe runtime first by running the `zowe-install.sh -I` option that just performs the first installation step to create the runtime directory. Then, configure the runtime directory separately following instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). Alternatively, you can both install and configure the Zowe runtime by running a single command `zowe-install.sh` without the `-I` parameter. In this case, ensure that you review [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory) before you run the command `zowe-install.sh`.
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-**Follow these steps to install Zowe artefacts**
+**Follow these steps to install Zowe artifacts**
 
-1. Install Zowe creating the USS runtime directory, and the PDS SAMPLIB and LOADLIB
+1. Create the USS runtime directory, and the PDS SAMPLIB and LOADLIB.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
@@ -181,7 +181,7 @@ In this documentation, the steps of creating the runtime directory and configuri
 
     **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory using the `rootDir:` value. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). If you run `zowe-install.sh` without the `-I` parameter the file `zowe-install.yaml` containing parameter values used to drive the configuration will be in the same `/install` directory as location of `zowe-install.sh`.  If you use the `-I` option and configure post install which is the recommended approach the `zowe-install.yaml` file will be in the `scripts/config` directory of the `rootDir:`.
 
-    During execution of `zowe-install.sh` You might receive the following error that the file cannot be executed:
+    During execution of `zowe-install.sh`, you might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute
