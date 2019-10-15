@@ -32,6 +32,7 @@ its performance and create large log files that consume a large volume of disk s
 
     You have enabled the debug mode.
 
+5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, you can raise GitHub issues against the Zowe API Mediation Layer repository [here](https://github.com/zowe/api-layer/issues) or get support from the Zowe community via Slack at [https://slack.openmainframeproject.org](https://slack.openmainframeproject.org).
 
 6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
     ```
