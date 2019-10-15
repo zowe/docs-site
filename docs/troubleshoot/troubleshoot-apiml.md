@@ -1,33 +1,49 @@
 # Troubleshooting API ML
 
-As an API Mediation Layer user, you may encounter problems with the functioning of API ML. This article presents known API ML issues and their solutions.
+As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 
 ## Error Message Codes
 
-The following error message codes may appear on logs or API responses. You can use the following documentation of the messages to solve an issue. 
+The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-- ZWEAD100
+- ### ZWEAD100
+
   Discovery service is configured to use insecure HTTP protocol
-  Reason:
+
+  **Reason:**
+
   Http protocol does not offer any message transport security.
-  Action:
+
+  **Action:**
+
   Do not use this mode in production environment and switch to Https instead.
 
-- ZWEAD101
+- ### ZWEAD101
+
   Static Api definition directory '%s' is not a directory or does not exist
-  Reason:
+
+  **Reason:**
+
   One of specified static Api definition directories does not exist or is not a directory.
-  Action:
+
+  **Action:**
+
   Review the static Api definition directories and their setup. The static definition directories is specified either in parmlib (for Brightside Apiml) or as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
 
-- ZWEAD102
+- ### ZWEAD102
+
   Error loading static Api definition file '%s'
-  Reason:
+
+  **Reason:**
+
   Problem during reading (IO operation) of specific static Api definition file. 
-  Action:
+
+  **Action:**
+
   Make sure the file data is not corrupted or in wrong encoding.
 
-- ZWEAD103
+- ### ZWEAD103
+
   Unable to process static Api definition data: '%s'
   Reason:
   Problem parsing static Api definition file. 
