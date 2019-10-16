@@ -89,11 +89,11 @@ STC names have certain components and use the following format:
 
 where:
 
-- `pfx` - prefix that contains up to four characters, for example, `ZOWE`.
+- `pfx` - Prefix that contains up to four characters, for example, `ZOWE`.
 
-- `n` - instance number
+- `n` - Instance number
 
-- `SS` - a subcomponent that consists of 1 or 2 characters:
+- `SS` - A subcomponent. `SS` can be one of the following values:
    - **AG** - API ML Gateway
    - **AD** - API ML Discovery Service
    - **AC** - API ML Catalog
@@ -104,7 +104,7 @@ where:
    - **UU** - Explorer UI USS
    - **DT** - Zowe Desktop Application Server
 
-You should use the prefix for the main started task (+ number).
+The STC name of the main started task is `pfxnSV`. To view all the STCs for your instance of ZOWE in SDSF, you can use the PREFIX `pfxn*`.
 
 **Example:**
 
