@@ -89,7 +89,7 @@ The following constants and functions are available on the central logging objec
 
 | Attribute | Type | Description | Arguments |
 |-----------|------|-------------|-----------|
-| `makeComponentLogger` | function | Creates a component logger - Automatically done by the application framework for dataservices and web content | `componentIDString`  |
+| `makeComponentLogger` | function | Returns an existing logger of this name, or creates a new component logger if no logger of the specified name exists - Automatically done by the application framework for dataservices and web content | `componentIDString`  |
 | `setLogLevelForComponentName` | function | Sets the verbosity of an existing component logger | `componentIDString`, `logLevel`  |
 
 ## Component Logger API
