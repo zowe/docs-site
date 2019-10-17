@@ -11,7 +11,7 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 For details, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
 
 **Known issue** with node 8.16.1 and [Zowe desktop encoding](https://github.com/ibmruntimes/node/issues/142).   
-*Work around* Use node 8.6.0 which is available at  
+*Work around* Use node 8.16.0 which is available at  
 https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos (select `ibm-trial-node-v8.16.0-os390-s390x.pax.Z`)
 
 ## Hardware and software requirements
