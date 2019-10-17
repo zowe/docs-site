@@ -1,6 +1,10 @@
 [{
-  "text": "Stable",
-  "link": "stable/"
+  "text": "Active Development",
+  "link": "active-development/"
+},
+{
+"text": "Stable",
+"link": "stable/"
 },
 {
   "text": "v1.3.x",
