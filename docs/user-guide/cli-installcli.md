@@ -14,9 +14,8 @@ These instructions apply to the Stable (@lts-incremental) branch of the CLI, whi
 
 Use one of the following methods to install Zowe CLI.
 
-- [Installing Zowe CLI](#installing-zowe-cli)
-  - [Active Development version](#active-development-version)
-  - [Methods to install Zowe CLI](#methods-to-install-zowe-cli)
+- [Local Package](#installing-zowe-cli-from-a-local-package) 
+- [Online Registry](#installing-zowe-cli-from-an-online-registry) 
 
 If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
@@ -36,7 +35,7 @@ If you have restricted internet access at your site, use the following method to
 
         npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
-2. Obtain the installation files. From the Zowe [Download](https://zowe.org/#download) website, click **Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
+2. Obtain the installation files. From the Zowe [Download](https://zowe.org/#download) website, click **Zowe CLI (Active Development)** under **Downloads > Pre-Release Builds** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip`. 
 
     **Note:**
     -  *v* indicates the version
