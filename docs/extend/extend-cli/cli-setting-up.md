@@ -1,5 +1,5 @@
 # Setting up your development environment
-Before you follow the development tutorials for creating a Zowe CLI plug-in, follow these steps to set up your environment.
+Before you follow the development tutorials for creating a Zowe&trade; CLI plug-in, follow these steps to set up your environment.
 
 ## Prequisites
 [Install Zowe CLI](../../user-guide/cli-installcli.html#methods-to-install-zowe-cli).
@@ -8,6 +8,14 @@ Before you follow the development tutorials for creating a Zowe CLI plug-in, fol
 To create your development space, you will clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin) from source.
 
 Before you clone the repository, create a local development folder named `zowe-tutorial`. You will clone and build all projects in this folder.
+
+## Branches 
+
+There are two branches in the repository that correspond to different Zowe CLI versions. You can develop two branches of your plug-in so that users can install your plug-in into either `@latest` or `@lts-incremental` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users. 
+
+The `lts-incremental` branch of Sample Plug-in is compatible with the `@lts-incremental` version of core CLI (Zowe Stable release). The `master` branch of Sample Plug-in is compatible with `@latest` version of core CLI (Zowe Active Development release).
+
+For more information about the versioning scheme, see [Maintaner Versioning](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) in the Zowe CLI repository. 
 
 ### Clone zowe-cli-sample-plugin and build from source
 Clone the repository into your development folder to match the following structure:
@@ -19,12 +27,9 @@ Follow these steps:
 1. `cd` to your `zowe-tutorial` folder.
 2. `git clone https://github.com/zowe/zowe-cli-sample-plugin`
 3. `cd` to your `zowe-cli-sample-plugin` folder.
-4. `npm install`
-5. `npm run build`
-
-    The first time that you build, the script will interactively ask you for the location of your Zowe CLI directory. Subsequent builds will not ask again.
-
-    The build script creates symbolic links. On Windows, you might need to have Administrator privileges to create those symbolic links.
+4. `git checkout lts-incremental`
+5. `npm install`
+6. `npm run build`
 
 ### (Optional) Run the automated tests
 We recommend running automated tests on all code changes. Follow these steps:

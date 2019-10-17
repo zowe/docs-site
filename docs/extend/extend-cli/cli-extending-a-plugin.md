@@ -7,7 +7,7 @@ This tutorial demonstrates how to extend the plug-in that is bundled with this s
 2. Creating a new command definition
 3. Creating a new handler
 
-We'll do this by using `@brightside/imperative` infrastructure to surface REST API data on our Zowe CLI plug-in.
+We'll do this by using `@brightside/imperative` infrastructure to surface REST API data on our Zowe&trade; CLI plug-in.
 
 Specifically, we're going to show data from [this URI](https://jsonplaceholder.typicode.com/todos) by [Typicode](https://jsonplaceholder.typicode.com/).
 Typicode serves sample REST JSON data for testing purposes.

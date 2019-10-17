@@ -1,92 +1,116 @@
-# Installing plug-ins
+# Installing Zowe CLI plug-ins
 
-Use commands in the plugins command group to install and manage plug-ins for Zowe CLI.
+Use commands in the `plugins` command group to install and manage Zowe&trade; CLI plug-ins.
 
-**Important!** Plug-ins can gain control of your CLI application
-legitimately during the execution of every command. Install third-party
-plug-ins at your own risk. We make no warranties regarding
-the use of third-party plug-ins.
+**Important!** Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
-You can install the following plug-ins:
-  - **IBM CICS Plug-in for Zowe CLI**
+You can install the following Zowe plug-ins:
+- IBM® CICS® Plug-in for Zowe CLI
+- IBM® Db2® Plug-in for Zowe CLI
+- [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
 
-    Use `@brightside/cics@lts-incremental` in your command syntax to install, update, and validate the plug-in. 
+Use either of the following methods to install plug-ins:
 
-  - **IBM Db2 Database for Zowe CLI**  
-  
-    Use `@brightside/db2@lts-incremental` in your command syntax to install, update, and validate the plug-in.
+- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
 
-## Setting the registry
+    For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
 
-If you installed Zowe CLI from the bundle distributed with the Zowe PAX media, proceed to the [Install step](#installing-plug-ins).
+- Install from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` files. Use this method when your computer ***cannot*** access the Internet.
 
-If you installed Zowe CLI from an online registry, confirm that NPM is set to target the registry by issuing the following command: 
+    For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
-```
-npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
-```
+## Installing plug-ins from an online registry
 
-## Meeting the software requirements
+Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The procedures in this article assume that you previously installed the core CLI.
 
-Ensure that you meet the software requirements for a plug-in before you install
-the plug-in to Zowe CLI. For information related to each plug-in,
-see [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
+**Follow these steps:**
 
-## Installing plug-ins
+1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
 
-Issue an `install `command to install plug-ins to Zowe CLI. The
-`install` command contains the following syntax:
+2.  Set the proper target registry by issuing the following command:
+   
+      ```
+      npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+      ```
 
-```
-zowe plugins install [plugin...] [--registry <registry>]
-```
+3.  Issue the following command to install a plug-in:
+   
+      ```
+      zowe plugins install <my-plugin>
+      ```
 
-  - **`[plugin...]`**   
-    (Optional) Specifies the name of a plug-in, an npm package, or a
-    pointer to a (local or remote) URL. When you do not specify a
-    plug-in version, the command installs the latest plug-in version and
-    specifies the prefix that is stored in npm save-prefix. For more
-    information, see [npm save prefix](https://docs.npmjs.com/misc/config#save-prefix). For more
-    information about npm semantic versioning, see [npm semver](https://docs.npmjs.com/misc/semver). Optionally, you can
-    specify a specific version of a plug-in to install. For example, `zowe plugins install pluginName@^1.0.0`.
+    **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
 
-    **Tip:** You can install multiple plug-ins with one command. For
-    example, issue `zowe plugins install plugin1 plugin2 plugin3`
+    | Plug-in | Installation Command Syntax |
+    |---------|-----------------------------|
+    | IBM CICS Plug-in for Zowe CLI | `@brightside/cics@lts-incremental` |
+    | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2@lts-incremental` |
+    |    |    |
 
-  - **`[--registry <registry>]`**  
-    (Optional) Specifies a registry URL from which to install a plug-in
-    when you do not use `npm config set` to set the registry initially. 
-
-**Examples: Install plug-ins**
-
-  - The following example illustrates the syntax to use to install a 
-    plug-in that is distributed with the zowe-cli-bundle.zip.
-    If you are using zowe-cli-bundle.zip, issue the following command for each plug-in .tgz file:
-    
+4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
+   
     ```
-    zowe plugins install ./zowe-cli-cics.tgz 
-    ```
-
-  - The following example illustrates the syntax to use to install a
-    plug-in that is named "my-plugin" from a specified registry:
-
-    ```
-    zowe plugins install @brightside/my-plugin@lts-incremental
-    ```
-
-  - The following example illustrates the syntax to use to install a
-    specific version of "my-plugins" 
-
-    ```
-     zowe plugins install @brightside/my-plugin@"^1.2.3"
+    zowe plugins install <@brightside/my-plugin1> <@brightside/my-plugin2> <@brightside/my-plugin3> ...
     ```
     
+    **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
+
+You installed Zowe CLI plug-ins. 
+
+## Installing plug-ins from a local package
+
+Install plug-ins from a local package on any computer that has limited or no access to the Internet. The procedure assumes that you previously installed the core CLI.
+
+**Follow these steps:**
+
+1.  Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
+   
+2.  Obtain the installation files.
+
+    From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
+
+    **Note:** `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number
+
+3. Open a command-line window such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package. Issue the following command to unzip the files:
+
+    ```
+    unzip zowe-cli-package-v.r.m.zip
+    ````
+
+    **Example:**
+
+    ```
+    unzip zowe-cli-package-1.0.1.zip
+    ```
+
+    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
+
+4.  Open a command-line window and change to the local directory where you extracted the zip file.
+
+    **Example:**
+
+    ```
+    cd C:\Users\userID\my_downloads\<file_name>.zip
+    ```
+
+5.  Issue the following command to install the plug-in:
+
+    ```
+    zowe plugins install <my-plugin>
+    ```
+
+    Replace `<my-plugin>` with the .tgz file name listed in the following table:
+
+    | Plug-in | `.tgz` File Name |
+    |---------|-----------------|
+    | IBM CICS Plug-in for Zowe CLI | `cics.tgz` |
+    | IBM Db2 Plug-in for Zowe CLI | `db2.tgz` |
+
+You installed Zowe CLI plug-ins. 
 
 ## Validating plug-ins
 
-Issue the plug-in validation command to run tests against all plug-ins (or against a plug-in that you specify) to verify that the plug-ins integrate properly with Zowe CLI. The tests confirm that the plug-in does not conflict with existing command groups in the base application. The command response provides you with details or error messages about how the plug-ins integrate with Zowe CLI. 
-
-Perform validation after you install the plug-ins to help ensure that it integrates with Zowe CLI.
+Issue the plug-in validation command to run tests against all plug-ins (or against a plug-in that you specify) to verify that the plug-ins integrate properly with Zowe CLI. The tests confirm that the plug-in does not conflict with existing command groups in the base application. The command response provides you with details or error messages about how the plug-ins integrate with Zowe CLI.
 
 The `validate` command has the following syntax:
 
@@ -97,20 +121,23 @@ zowe plugins validate [plugin]
   - **`[plugin]`**  
     (Optional) Specifies the name of the plug-in that you want to
     validate. If you do not specify a plug-in name, the command
-    validates all installed plug-ins. The name of the plug-in is not
-    always the same as the name of the NPM package.
+    validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
+
+    |Plug-in|Syntax|
+    |-|-|
+    |IBM CICS Plug-in for Zowe CLI|`@brightside/cics`|
+    |IBM Db2 Plug-in for Zowe CLI|`@brightside/db2`|
+    |||
 
 **Examples: Validate plug-ins**
 
-  - The following example illustrates the syntax to use to validate a
-    specified installed plug-in:
+  - The following example illustrates the syntax to use to validate the IBM CICS Plug-in for Zowe CLI:
 
     ```
-    zowe plugins validate @brightside/my-plugin
+    zowe plugins validate @brightside/cics
     ```
 
-  - The following example illustrates the syntax to use to validate all
-    installed plug-ins:
+  - The following example illustrates the syntax to use to validate all installed plug-ins:
 
     ```
     zowe plugins validate
@@ -118,65 +145,71 @@ zowe plugins validate [plugin]
 
 ## Updating plug-ins
 
-Issue the `update` command to install the latest version or a specific
-version of a plug-in that you installed previously. The `update` command
-has the following syntax:
+You can update Zowe CLI plug-ins from an online registry or from a local package.
+
+### Update plug-ins from an online registry
+
+Issue the `update` command to install the latest stable version or a specific version of a plug-in that you installed previously. The `update` command has the following syntax:
 
 ```
 zowe plugins update [plugin...] [--registry <registry>]
 ```
 
-  - **`[plugin...]`** 
+-  [plugin...]
 
-    Specifies the name of an installed plug-in that you want to update.
-    The name of the plug-in is not always the same as the name of the
-    NPM package. You can use npm semantic versioning to specify a
-    plug-in version to which to update. For more information,
-    see [npm semver](https://docs.npmjs.com/misc/semver).
+    Specifies the name of an installed plug-in that you want to update. The name of the plug-in is not always the same as the name of the NPM package. You can use npm semantic versioning to specify a plug-in version to which to update. For more information, see npm semver.
 
-  - **`[--registry <registry>]`**
+-  [--registry \<registry>\]
 
-    (Optional) Specifies a registry URL that is different from the
-    registry URL of the original installation. 
+    (Optional) Specifies a registry URL that is different from the registry URL of the original installation.
 
 **Examples: Update plug-ins**
 
-  - The following example illustrates the syntax to use to update an
-    installed plug-in to the latest version:
+The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
-    ```
-    zowe plugins update @brightside/my-plugin@lts-incremental
-    ```
+```
+zowe plugins update @brightside/my-plugin@lts-incremental
+```
 
-  - The following example illustrates the syntax to use to update a
-    plug-in to a specific version:
+The following example illustrates the syntax to use to update a plug-in to a specific version:
 
-    ```
-    zowe plugins update @brightside/my-plugin@"^1.2.3"
-    ```
+```
+zowe plugins update @brightside/my-plugin@"^1.2.3"
+```
 
-## Uninstalling plug-ins
+### Update plug-ins from a local package
 
-Issue the `uninstall` command to uninstall plug-ins from a base
-application. After the uninstall process completes successfully,
-the product no longer contains the plug-in
-configuration.
+You can update plug-ins from a local package. You acquire the media from the [Zowe Download](https://zowe.org/download/) website and update the plug-ins using the `zowe plugins install` command.
 
-**Tip:** The command is equivalent to using [npm uninstall](https://docs.npmjs.com/cli/uninstall) to uninstall a package.
+To update plug-ins from a local package, follow the steps described in [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
-The `uninstall` command contains the following syntax:
+## Uninstall Plug-ins
+
+Issue the `uninstall` command to uninstall plug-ins from Zowe CLI. After the uninstall process completes successfully, the product no longer contains the plug-in configuration.
+
+The uninstall command contains the following syntax:
 
 ```
 zowe plugins uninstall [plugin]
 ```
 
-  - **`[plugin]`**   
-    Specifies the plug-in name to uninstall.
+- `[plugin]`
 
-**Example: Uninstall plug-ins**
+    Specifies the name of the plug-in that you want to uninstall.
 
-- The following example illustrates the syntax to use to uninstall a plug-in:
+The following table describes the uninstallation command synstax for each plug-in:
 
-  ```
-  zowe plugins uninstall @brightside/my-plugin
-  ```
+ | Plug-in | Uninstallation Command Syntax |
+ |---------|-----------------------------|
+ | IBM CICS Plug-in for Zowe CLI | `@brightside/cics` |
+ | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2` |
+ |    |    |
+
+**Example:**
+
+The following example illustrates the command to uninstall the CICS plug-in:
+
+```
+zowe plugins uninstall @brightside/cics
+```
+

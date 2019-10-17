@@ -13,7 +13,7 @@ The logging utility is based on the following objects:
 
 ## Logger IDs
 
-Because Zowe application plug-ins have unique identifiers, both dataservices and an application plug-in's web content are provided with a component logger that knows this unique ID such that messages that are logged can be prefixed with the ID. With the association of logging to IDs, you can control verbosity of logs by setting log verbosity by ID.
+Because Zowe&trade; application plug-ins have unique identifiers, both dataservices and an application plug-in's web content are provided with a component logger that knows this unique ID such that messages that are logged can be prefixed with the ID. With the association of logging to IDs, you can control verbosity of logs by setting log verbosity by ID.
 
 ## Accessing logger objects
 
@@ -51,7 +51,7 @@ The following constants and functions are available on the central logging objec
 
 | Attribute | Type | Description | Arguments |
 |-----------|------|-------------|-----------|
-| `makeComponentLogger` | function | Creates a component logger - Automatically done by the application framework for dataservices and web content | `componentIDString`  |
+| `makeComponentLogger` | function | Returns an existing logger of this name, or creates a new component logger if no logger of the specified name exists - Automatically done by the application framework for dataservices and web content | `componentIDString`  |
 | `setLogLevelForComponentName` | function | Sets the verbosity of an existing component logger | `componentIDString`, `logLevel`  |
 
 ## Component Logger API
