@@ -10,7 +10,7 @@ Learn more about new CLI features in the [Release notes](../getting-started/summ
 TODO Add this to master version of this article: 
 These instructions apply to the Stable (@lts-incremental) branch of the CLI, which has stable features and bug fixes. If you want a version with the latest features as they are developed, refer to the [Active Development Zowe CLI installation instructions]().  -->
 
-## Methods to install Zowe CLI
+## Methods to install Zowe CLI <!-- omit in toc -->
 
 Use one of the following methods to install Zowe CLI.
 
