@@ -18,50 +18,13 @@ The Zowe installation file for Zowe z/OS components are distributed as a PAX fil
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.
 
-To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you obtain the PAX file, follow the procedures below to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you download the PAX file, follow the instructions to verify the PAX file and prepare it to install the Zowe runtime.
 
 **Follow these steps:**
 
-1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.
-
-    **Notes:**
-
-    - The commands in the following steps are tested on both Mac OS X V10.13.6 and Ubuntu V16.04 and V17.10.
-    - Ensure that you have GPG installed. Click [here](https://www.gnupg.org/) to download and install GPG.
-    - The `v.r.m` in the commands of this step is a variable. You must replace it with the actual PAX file version, for example, `0.9.0`.
-
-    **Step 1:  Verify the hash code.**
-
-      Download the hash code file `zowe-v.r.m.pax.sha512` from the [Zowe website](https://projectgiza.org/Downloads/post_download.html). Then, run the following commands to check:
-
-      ```
-      (gpg --print-md SHA512 zowe-v.r.m.pax > zowe-v.r.m.pax.sha512.my) && diff zowe-v.r.m.pax.sha512.my zowe-v.r.m.pax.sha512 && echo matched || echo "not match"
-      ```
-
-      When you see "matched", it means the PAX file that you download is the same one that is officially distributed by the Zowe project. You can delete the temporary `zowe-v.r.m.pax.sha512.my` file.
-
-      You can also use other commands such as `sha512`, `sha512sum`, or `openssl dgst -sha512` to generate `SHA512` hash code. These hash code results are in a different format from what Zowe provides but the values are the same.
-
-    **Step 2. Verify with signature file.**
-
-      In addition to the SHA512 hash, the hash is also verifiable. This is done by digitally signing the hash text file with a KEY from one of the Zowe developers.
-
-      **Follow these steps:**
-
-      1. Download the signature file `zowe-v.r.m.pax.asc` from [https://zowe.org/Downloads/post_download.html](https://projectgiza.org/Downloads/post_download.html), and download the public key `KEYS` from https://github.com/zowe/release-management/.
-      2. Import the public key with the `gpg --import KEYS` command.
-      3. If you have never used gpg before, generate keys with the `gpg --gen-key` command.
-      4. Sign the downloaded public key with the `gpg --sign-key DC8633F77D1253C3` command.
-      5. Verify the file with the `gpg --verify zowe-v.r.m.pax.asc zowe-v.r.m.pax` command.
-      6. Optional: You can remove the imported key with the `gpg --delete-key DC8633F77D1253C3` command.
-
-     When you see output similar to the following one, it means the PAX file that you download is the same one that is officially distributed by the Zowe project.
-
-     ```
-     gpg: Signature made Tue 14 Aug 2018 08:29:46 AM EDT
-     gpg: using RSA key DC8633F77D1253C3
-     gpg: Good signature from "Matt Hogstrom (CODE SIGNING KEY) " [full]
-     ```
+1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project. 
+   
+   Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=v.r.m` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
 2. Transfer the PAX file to z/OS.
 
@@ -149,26 +112,29 @@ Navigate to the directory where the installation archive is extracted. Locate th
 
 ### Step 2: Review the `zowe-install.yaml` file
 
-Review the `zowe-install.yaml` file which contains the `install:rootDir` property that is used by the installation.
+Review the `zowe-install.yaml` file which contains the `install:rootDir` and `install:datasetPrefix` properties that are used by the installation.
 
-`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.  
+`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.  The directory will be created during the install so it should be empty before the install script `zowe-install.sh` is executed.
 
-You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. Ensure that the directory where Zowe will be installed is empty. The install script exits if the directory is not empty and creates the directory if it does not exist.
+`install:datasetPrefix` is a PDS prefix used to create two data sets: `SZWESAMP` which is a fixed block 80 samplib used to store JCL, and `SZWEAUTH` which is a load library.  The default value in `zowe-install.yaml` is `datasetPrefix={userid}.ZWE` where `{userid}` is subsituted by the install script with the current TSO user ID. For example, if user `JANEDOE` runs the install script from their TSO OMVS or SSH session, the partitioned data sets `JANEDOE.ZWE.SZWEAUTH` and `JANEDOE.ZWE.SZWESAMP` will be created.  The value of `datasetPrefix` can be changed to match your site's conventions. For example, `datasetPrefix=OPENSRC.ZOWE` will create the partitioned data sets `OPENSRC.ZOWE.SZWESAMP` and `OPENSRC.ZOWE.SZWEAUTH`.
+
+You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. 
 
 ### Step 3: Install and configure the Zowe runtime
 
-You install and configure the Zowe runtime by executing the `zowe-install.sh` script. The `zowe-install.sh` mode performs two steps.
+You install and configure the Zowe runtime by executing the `zowe-install.sh` script. The `zowe-install.sh` mode performs three steps.
 
-1. Install a Zowe runtime into the `root_dir` folder.  
-2. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces. 
+1. Install Zowe runtime directories and files into the `root_dir` directory.  
+2. Install MVS artifacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  
+3. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces. 
 
 It's recommended that you install the Zowe runtime first by running the `zowe-install.sh -I` option that just performs the first installation step to create the runtime directory. Then, configure the runtime directory separately following instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). Alternatively, you can both install and configure the Zowe runtime by running a single command `zowe-install.sh` without the `-I` parameter. In this case, ensure that you review [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory) before you run the command `zowe-install.sh`.
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-**Follow these steps:**
+**Follow these steps to install Zowe artifacts**
 
-1. Create the Zowe runtime directory.
+1. Create the USS runtime directory, and the PDS SAMPLIB and LOADLIB.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
 
@@ -178,7 +144,7 @@ In this documentation, the steps of creating the runtime directory and configuri
 
     **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory using the `rootDir:` value. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). If you run `zowe-install.sh` without the `-I` parameter the file `zowe-install.yaml` containing parameter values used to drive the configuration will be in the same `/install` directory as location of `zowe-install.sh`.  If you use the `-I` option and configure post install which is the recommended approach the `zowe-install.yaml` file will be in the `scripts/config` directory of the `rootDir:`.
 
-    During execution of `zowe-install.sh` You might receive the following error that the file cannot be executed:
+    During execution of `zowe-install.sh`, you might receive the following error that the file cannot be executed:
 
     ```
     zowe-install.sh: cannot execute

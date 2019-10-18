@@ -136,7 +136,7 @@ node ('ibm-jenkins-slave-dind') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh "PUBLISH_TARGET_PATH=${publishTargetPath} npm run docs:build"
+        sh "PUBLISH_TARGET_PATH=${publishTargetPath} NODE_OPTIONS=--max_old_space_size=4096 npm run docs:build"
       }
     }
 
@@ -158,7 +158,12 @@ node ('ibm-jenkins-slave-dind') {
 
     stage('pdf') {
       ansiColor('xterm') {
-        sh 'npm run docs:pdf'
+        // lock building pdf step since the docker pulling image stage cause build failure
+        lock('building-docs-pdf') {
+          timeout(time: 1, unit: 'HOURS') {
+            sh 'npm run docs:pdf'
+          }
+        }
         if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
           def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
           sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPathConverted}/"
