@@ -9,27 +9,27 @@ ZOWE API ML is a lightweight API management system based on the following Netfli
 * Zuul - reverse proxy / API Gateway
 * Ribbon - load ballancer
 
-## Requirements for onboarding a REST API to the API ML
+## Requirements to onboard a REST API with the API ML
 
-The following criteria must be satisfied to onboard a REST API to the API ML:
+The following criteria must be satisfied to onboard a REST API with the API ML:
 
-* Service discovery information including but not limited to the base URI, home page, status page, and health check endpoint
-* Routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests
-* A service description and API documentation metadata for the API Catalog
+* Service discovery information including, but not limited to, the base URI, home page, status page, and health check endpoint.
+* Routing metadata of service endpoints. This metadata is used by the API ML Gateway to route HTTP requests.
+* A service description and API documentation metadata for the API Catalog.
 * Registeration of the service with the Eureka discovery service instance. Registration includes providing service discovery information, routing metadata, a service description, and API documentation metadata.
 
 **Tip:**
 
- We recommend you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two in combination makes the result state of the discovery registry unpredictable.
+ We recommend you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration settings in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two in combination makes the result state of the discovery registry unpredictable.
 
 
   For instructions about how to utilize other API ML enablers types, see the following links: 
   * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
-## Onboarding your REST service to API ML
+## Onboarding your REST service with API ML
 
-The following steps outline the process of onboarding your REST service. Each step is described in further detail in this article. 
+The following steps outline the process of onboarding your REST service with the API ML. Each step is described in further detail in this article. 
 
 1. [Prerequisites](#prerequisites)
 
@@ -74,7 +74,7 @@ Ensure that the following prerequisites are satified before you begin this onboa
 
 ## Configuring your project
 
-You can use either Gradle or Maven build automation systems. Use the appropriate configuration procedure corresponding to your build automation system. 
+You can use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
 ### Gradle guide
 Use the following procedure if you use Gradle as your build automation system.
@@ -111,6 +111,7 @@ Use the following procedure if you use Gradle as your build automation system.
     ```
 
 4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
+
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     ```
@@ -118,8 +119,8 @@ Use the following procedure if you use Gradle as your build automation system.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
 
-**Note:** 
-At time of writing the Plain Java Enabler is build with Gradle v 4.9.
+    **Note:** 
+At time of writing the Plain Java Enabler is built with Gradle v 4.9.
 
 ### Maven guide
 
@@ -151,7 +152,7 @@ Use the following procedure if you use Maven as your build automation system.
         <version>1.1.2</version>
     </dependency>
     ```
-3. Create a `settings.xml` file and copy the following *xml* code block which defines the credentials for the Artifactory:
+3. Create a `settings.xml` file and copy the following *xml* code block that defines the credentials for the Artifactory:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -233,7 +234,7 @@ description: Example for exposing a Spring REST API
 where:
 * **serviceId**
     
-    Specifies the service instance identifier that is registered in the API ML installation.
+    specifies the service instance identifier that is registered in the API ML installation.
     The service ID is used in the URL for routing to the API service through the gateway. 
     The service ID uniquely identifies instances of a microservice in the API ML. 
     The system administrator at the customer site defines this parameter.
@@ -254,21 +255,23 @@ where:
        ```
 
     * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
-    ```
-    http://gateway:port/api/v1/vantageprod1/endpoint1/...
-    ```
+       ```
+       http://gateway:port/api/v1/vantageprod1/endpoint1/...
+       ```
 * **title**
     
-  Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+  specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
   **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
 * **description**
     
-    Specifies a short description of the API service.
+    specifies a short description of the API service.
     
-    **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+    **Example:** 
+    
+    "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
     
      This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
     
@@ -288,7 +291,7 @@ where:
 
 * **baseUrl**
     
-    Specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+    specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
         
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
@@ -300,7 +303,7 @@ where:
 
 * **homePageRelativeUrl** 
     
-    Specifies the relative path to the home page of your service. The path should start with `/`.
+    specifies the relative path to the home page of your service. The path should start with `/`.
     If your service has no home page, leave this parameter blank.
     
     **Examples:**
@@ -310,7 +313,7 @@ where:
     
 * **statusPageRelativeUrl**
     
-    Specifies the relative path to the status page of your service.
+    specifies the relative path to the status page of your service.
     This is the endpoint that you defined in the `MfaasController` controller in the `getDiscoveryInfo` method.
     Start this path with `/`.
     
@@ -323,7 +326,7 @@ where:
 
 * **healthCheckRelativeUrl**
     
-    Specifies the relative path to the health check endpoint of your service. 
+    specifies the relative path to the health check endpoint of your service. 
     This is the endpoint that you defined in the `MfaasController` controller in the 
     `getHealth` method. Start this URL with `/`.
     
@@ -387,7 +390,7 @@ discoveryServiceUrls:
 
 * **discoveryServiceUrls**
     
-    Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
+    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
     
      **Example:**
 
@@ -415,7 +418,7 @@ routes:
 
 * **routedServices**
     
-    Specifies the routing rules between the gateway service and your service.
+    specifies the routing rules between the gateway service and your service.
 
 * **routedServices.gatewayUrl**
         
@@ -446,9 +449,8 @@ where:
 
 * **apiInfo.apiId**
 
-    Specifies the API identifier that is registered in the API-ML installation.
-        The API ID uniquely identifies the API in the API-ML.
-        The same API can be provided by multiple services. The API ID can be used
+    specifies the API identifier that is registered in the API ML installation.
+        The API ID uniquely identifies the API in the API ML. Multiple services can provide the same API. The API ID can be used
         to locate the same APIs that are provided by different services.
         The creator of the API defines this ID.
         The API ID needs to be a string of up to 64 characters
@@ -457,16 +459,17 @@ where:
 
 * **apiInfo.gatewayUrl**
 
-    The base path at the API Gateway where the API is available. Ensure that this is
-        the same path as the _gatewayUrl_ value in the _routes_ sections.
+    specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the _gatewayUrl_ value in the _routes_ sections.
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+    (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
 * **apiInfo.documentationUrl** 
 
-    (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation. For example:
+    (Optional) specifies the link to external documentation, if necessary. The link to the external documentation can be included along with the Swagger documentation. 
+    
+    **Example:**
     ```
     apiInfo:
         - apiId: org.zowe.hellospring
