@@ -729,7 +729,7 @@ The following steps outline the process of registering your service with API ML:
     }
     ```
 
-### Implementing a periodic call (heartbeat) to the API ML discovery service
+### Implementing a periodic call (heartbeat) to the API ML Discovery Service
 
 Eureka client needs to renew the lease by sending heartbeats every 30 seconds. The renewal informs the Eureka server that the instance is still alive. If the server hasn't seen a renewal for 90 seconds, it removes the instance out of its registry. It is advisable not to change the renewal interval since the server uses that information to determine if there is a wide spread problem with the client to server communication.
 
@@ -841,5 +841,4 @@ If your service is not visible in the API Catalog, you can check if your service
 2. Enter *eureka* as a username and *password* as a password.
 3. Check if your application appears in the Discovery Service UI.
 
-If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure 
-that your configuration settings are correct. 
+If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct. 
