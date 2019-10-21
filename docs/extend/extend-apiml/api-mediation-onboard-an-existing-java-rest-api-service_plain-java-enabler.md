@@ -467,7 +467,7 @@ where:
         
 * **apiInfo.documentationUrl** 
 
-    (Optional) specifies the link to external documentation, if necessary. The link to the external documentation can be included along with the Swagger documentation. 
+    (Optional) specifies the link to the external documentation, if necessary. The link to the external documentation can be included along with the Swagger documentation. 
     
     **Example:**
     ```
@@ -482,9 +482,13 @@ where:
 
 Add API Catalog information to your service.
 
-    API ML Catalog UI displays information about discoverable REST services registered with API ML discovery. REST services provide metadata used by the catalog to configure services representation.
-    The catalog can group corelated services in so called `tile`, provided that these services are configured with the same value for `catalog.tile.id` metadata parameter. Bellow is provided an example configuration of a service tile in the catalog:
+The API ML Catalog UI displays information about discoverable REST services registered with API ML discovery. REST services provide metadata used by the catalog to configure services representation.
+The catalog can group corelated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
+The following code block is an example of configuration of a service tile in the catalog:
+
+ADD THE EXAMPLE HERE:
+**Example:**
 
 Provide configuration parameters for displaying your service in API ML Catalog UI.
 
@@ -503,25 +507,27 @@ The following snippet presents API Catalog information properties:
 
 * **catalog.tile.id**
     
-    Specifies the unique identifier for the API services product family. 
-    This is the grouping value used by the API-ML to group multiple API services 
-    together into "tiles". 
+    specifies the unique identifier for the API services product family. 
+    This is the grouping value used by the API ML to group multiple API services 
+    together into tiles. 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
-    Specify a value that does not interfere with API services from other products.
+
+    **Tip:**  Specify a value that does not interfere with API services from other products.
     
 * **catalog.tile.title**
     
-    Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
 * **catalog.tile.description**
     
-    Specifies the detailed description of the API services product family. 
-    This value is displayed in the API catalog UI dashboard as the tile description.
+    specifies the detailed description of the API services product family. 
+    This value is displayed in the API Catalog UI dashboard as the tile description.
     
 * **catalog.tile.version**
     
-    Specifies the semantic version of this API Catalog tile. 
-    Increase the number of the version when you introduce new changes to the product family details of the API services 
+    specifies the semantic version of this API Catalog tile. 
+
+    **Note:** Ensure that you increase the number of the version when you introduce new changes to the product family details of the API services 
     including the title and description.
 
 
@@ -542,7 +548,7 @@ Add the following endpoints to your application:
 
    * **Health endpoint**
 
-     The endpoint used for health checks by the Discovery Service
+     The endpoint used for health checks by the discovery service
 
    * **Info endpoint**
 
@@ -583,10 +589,10 @@ Add the following endpoints to your application:
        }
    }
    ```
-### Registering your service to API ML
-In the following paragraphs we use snippets of code and configuration from our sample service helloapiml-plain-java-sample
+### Registering your service with API ML
+In the following paragraphs we use snippets of code and configuration from our sample service helloapiml-plain-java-sample.
 
-The following steps outline the process of registering your service with the APi ML:
+The following steps outline the process of registering your service with API ML:
 
 - [Add a web application context listener class](#add-a-web-application-context-listener)
 - [Register a web application context listener](#register-a-web-application-context-listener)
@@ -599,11 +605,11 @@ The following steps outline the process of registering your service with the APi
 
 **Follow these steps:**
 
-1. Add a web application context listener class
+1. Add a web application context listener class.
 
     The web application context listener implements two methods to perform necessary actions at application start-up time and also when the application context is destroyed:
 
-     - `contextInitialized` method invokes the `apiMediationClient.register(config)` method to register the application with the API Mediation Layer when the application starts. 
+     - `contextInitialized` method invokes the `apiMediationClient.register(config)` method to register the application with API Mediation Layer when the application starts. 
      - `contextDestroyed` method invokes the `apiMediationClient.unregister()` method when the application shuts down to unregister the application from API Mediation Layer.
 
     
@@ -640,7 +646,7 @@ The following steps outline the process of registering your service with the APi
     }
     ```
 
-2. Register a web application context listener
+2. Register a web application context listener.
 
     Add the following code block to the deployment descriptor `web.xml` to register a context listener:
     ``` xml
@@ -649,21 +655,23 @@ The following steps outline the process of registering your service with the APi
     </listener>
     ```
 
-    When the application context is initialized, the web application container will invoke the corresponding listener method, whcih will load your service configuration and will register your service with Eureka discovery.
+    When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
 
 3. Add security settings to your service configuration. 
 
-    All API services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
+    **Note:** All API services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
 
-    **Note:** Before you add security to your service configuration, first reffer to the following document  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost), which provides detailed information about the security set-up .  
+    **Tip:** Before you add security to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
     
-    API ML provides a shell script, which can be used in Linux environment to create the security material in case your service runs on localhost. Run the script with the folowing parameters:
+    API ML provides a shell script, which can be used in a Linux environment to create the security material if your service runs on localhost.
+    
+    Run the script with the following parameters:
 
     ```
     <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
     ```
         
-    Alternatively, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate, for localhost development.
+    Alternatively, for localhost development, you can copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 
     Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
 
@@ -685,13 +693,15 @@ The following steps outline the process of registering your service with the APi
             securePortEnabled: true
     ```
 
-    **Note:** You need to define both key store and trust store even if your server is not using HTTPS port.
+    **Note:** Ensure that you define both the key store and the trust store even if your server is not using an HTTPS port.
 
 4. Load the service configuration file.
 
-    Load your service configuration from the `service-configuration.yml` file, which is described in section [Configuring your service](#configuring-your-service) above. 
+    Load your service configuration from the `service-configuration.yml` file, which is described in the preceding section: [Configuring your service](#configuring-your-service). 
     
     Use the following code as an example of how to load the service configuration:
+
+    **Example:**
      ```
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -701,15 +711,16 @@ The following steps outline the process of registering your service with the APi
         ...
     ```
 
-5. Register with Eureka discovery service
+5. Register with Eureka discovery service.
     ```
     ...
         new ApiMediationClientImpl().register(config);
     }
     ```
 
-6. Unregister your service 
-Use ContextListener **contextDestroyed** method to unregister your service instance from Eureka discovery service:
+6. Unregister your service.
+
+    Use the `contextDestroyed` method to unregister your service instance from Eureka discovery service in the following format:
 
     ```
     @Override
@@ -718,7 +729,8 @@ Use ContextListener **contextDestroyed** method to unregister your service insta
     }
     ```
 
-### Implementing a periodic call (heartbeat) to the API ML Discovery Service
+### Implementing a periodic call (heartbeat) to the API ML discovery service
+
 Eureka client needs to renew the lease by sending heartbeats every 30 seconds. The renewal informs the Eureka server that the instance is still alive. If the server hasn't seen a renewal for 90 seconds, it removes the instance out of its registry. It is advisable not to change the renewal interval since the server uses that information to determine if there is a wide spread problem with the client to server communication.
 
 **Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
@@ -752,7 +764,9 @@ Use the following procedure to add Swagger API documentation to your project.
         </dependency>
         ```
 
-2. Add a Spring configuration class to your project - for example:
+2. Add a Spring configuration class to your project.
+
+   **Example:**
 
     ```java
     package com.ca.mfaas.hellospring.configuration;
