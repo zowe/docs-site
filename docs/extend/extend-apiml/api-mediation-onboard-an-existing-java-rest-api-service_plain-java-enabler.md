@@ -482,34 +482,26 @@ where:
 
 Add API Catalog information to your service.
 
-The API ML Catalog UI displays information about discoverable REST services registered with API ML discovery. REST services provide metadata used by the catalog to configure services representation.
+The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. Information discplayed in the catalog is defined by the metadata provided by your service during registration. 
 The catalog can group corelated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following code block is an example of configuration of a service tile in the catalog:
 
-ADD THE EXAMPLE HERE:
 **Example:**
-
-Provide configuration parameters for displaying your service in API ML Catalog UI.
-
-The following snippet presents API Catalog information properties:
-
-    ```
+ ```
     catalog:
       tile:
         id: apimediationlayer
         title:  API Mediation Layer API
         description: The API Mediation Layer for z/OS internal API services.
         version: 1.0.0
-    ```
+```
 
    where:
 
 * **catalog.tile.id**
     
-    specifies the unique identifier for the API services product family. 
-    This is the grouping value used by the API ML to group multiple API services 
-    together into tiles. 
+    specifies the unique identifier for the product family of API services. This is a value used by the API ML to group multiple API services together into tiles. 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
@@ -657,28 +649,40 @@ The following steps outline the process of registering your service with API ML:
 
     When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
 
-3. Add security settings to your service configuration. 
+3. Add security settings to your service configuration .yml file. 
 
     **Note:** All API services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
 
-    **Tip:** Before you add security to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
+    **Tip:** Before you add security settings to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
     
-    API ML provides a shell script, which can be used in a Linux environment to create the security material if your service runs on localhost.
-    
-    Run the script with the following parameters:
+    **Follow these steps:**
 
-    ```
-    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-    ```
-        
-    Alternatively, for localhost development, you can copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
+    1. To secure your service with a certificate, use one of the following two options:
 
-    Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
+    * Use a certificate provided in `<api-layer-repository>/keystore/localhost`
 
-    ```
-    ssl:
-        protocol: TLSv1.2
-        ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+    * To customize your certificate, you can generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`
+   
+        If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, you can now provide the configuration properties: `alias`, `path`, `password` in your .yml configuration file.
+
+        **Note:** The keystore password is `password`.
+
+        If you are generating a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
+
+        ```
+        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+        ```
+
+        The certificates will be generated in the keystore subfolder of the folder where the script is executed.
+
+        **Note:** The keystore password is `password`.
+   
+    2. Update the configuration of your service `service-configuration.yml` to contain the SSL configuration by adding the following code:
+
+        ```
+        ssl:
+            protocol: TLSv1.2
+            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
             keyAlias: localhost
             keyPassword: password
             keyStore: keystore/localhost.keystore.p12
@@ -687,13 +691,9 @@ The following steps outline the process of registering your service with API ML:
             trustStore: keystore/localhost.truststore.p12
             trustStoreType: PKCS12
             trustStorePassword: password
-    eureka:
-         instance:
-            nonSecurePortEnabled: false
-            securePortEnabled: true
-    ```
+        ```
 
-    **Note:** Ensure that you define both the key store and the trust store even if your server is not using an HTTPS port.
+        **Note:** Ensure that you define both the key store and the trust store even if your server is not using an HTTPS port.
 
 4. Load the service configuration file.
 
