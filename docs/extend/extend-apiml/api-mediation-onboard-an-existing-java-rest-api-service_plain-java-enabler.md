@@ -1,6 +1,6 @@
 # REST APIs service plain Java enabler
 
-This guide is a part of a series of onboarding guides, which outline the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This article describes a step-by-step process to onboard a REST API service using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is a part of a series of onboarding guides, which outline the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API service using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 **Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
 
@@ -206,7 +206,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
          version: 1.0.0
  ```
 
-**Note:** The configuration can be externalized <font color="red">TODO: Link to the exsting documentation about extenalizing properties - locall and on MF</font>
+**Note:** The configuration can be externalized <font color="red">TODO: Link to the existing documentation about externalizing properties - local and on MF</font>
 
 The content and the structure of the configuration file example above is broken into several parts:
 
