@@ -71,7 +71,8 @@ If your commands or scripts return warnings/errors after updating, account for t
     
 - You can enter a value of `PROMPT*` to enable interactive prompting for any command-line option. If you created scripts where any option was defined with the actual value `PROMPT*`, the script will not function properly in this version. 
 
-- The `@next` npm tag, previously used to install the Active Development version, is depricated. `@latest` is the correct syntax to install this version. 
+- The `@next` npm tag, previously used to install the Active Development version, is deprecated
+. `@latest` is the correct syntax to install this version. 
 
 ## Understanding CLI version tags
 
