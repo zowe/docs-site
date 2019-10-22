@@ -242,7 +242,7 @@ where:
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
     * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
-    * The same service ID should be set only for multiple API service instances for API scalability.
+    * The same service ID should only be set for multiple API service instances for API scalability.
     * The service ID value must contain only lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
     * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
@@ -254,26 +254,30 @@ where:
        https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
        ```
 
-    * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+    * If a customer system administrator sets the service ID to `vantageprod1`, the API URL in the API Gateway appears as the following URL:
        ```
        http://gateway:port/api/v1/vantageprod1/endpoint1/...
        ```
 * **title**
     
-  specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+  specifies the human readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+
+  **Examples:**
+    
+    * Endevor Prod
+    * Sysview LPAR1
 
   **Tip:** We recommend that you provide a specific default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
 * **description**
     
-    specifies a short description of the API service.
+    specifies a short description of the API service. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator. 
+
+    **Examples:** 
     
-    **Example:** 
-    
-    "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
-    
-     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+    * CA Endevor SCM - Production Instance 
+    * CA SYSVIEW running on LPAR1 
     
   **Tip:** Describe the service so that the end user knows the function of the service.
 
@@ -455,7 +459,8 @@ where:
         The creator of the API defines this ID.
         The API ID needs to be a string of up to 64 characters
         that uses lowercase alphanumeric characters and a dot: `.`.
-        We recommend that you use your organization as the prefix.
+        
+    **Tip:** We recommend that you use your organization as the prefix.
 
 * **apiInfo.gatewayUrl**
 
@@ -482,10 +487,10 @@ where:
 
 Add API Catalog information to your service.
 
-The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. Information discplayed in the catalog is defined by the metadata provided by your service during registration. 
-The catalog can group corelated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
+The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. Information displayed in the catalog is defined by the metadata provided by your service during registration. 
+The catalog can group corelated services in the same tile if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
-The following code block is an example of configuration of a service tile in the catalog:
+The following code block is an example of configuration of a service tile in the catalog.
 
 **Example:**
  ```
@@ -501,14 +506,14 @@ The following code block is an example of configuration of a service tile in the
 
 * **catalog.tile.id**
     
-    specifies the unique identifier for the product family of API services. This is a value used by the API ML to group multiple API services together into tiles. 
+    specifies the unique identifier for the product family of API services. This value is used by the API ML to group multiple API services together into the same tile. 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
     
 * **catalog.tile.title**
     
-    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
+    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the title of the tile.
     
 * **catalog.tile.description**
     
@@ -546,7 +551,7 @@ Add the following endpoints to your application:
 
      The endpoint to get information about the service
 
-   In Spring based implementations, the following java code provides an example of these endpoints added to the Spring Controller:
+   In Spring based implementations, the following java code provides an example of these endpoints added to the Spring Controller.
 
    **Example:**
 
@@ -582,7 +587,7 @@ Add the following endpoints to your application:
    }
    ```
 ### Registering your service with API ML
-In the following paragraphs we use snippets of code and configuration from our sample service helloapiml-plain-java-sample.
+In the following paragraphs we use snippets of code and configuration from our sample service `helloapiml-plain-java-sample`.
 
 The following steps outline the process of registering your service with API ML:
 
@@ -606,7 +611,9 @@ The following steps outline the process of registering your service with API ML:
 
     
     
-    The following code snippet is an example of a context listener class implementation:
+    The following code snippet is an example of a context listener class implementation.
+
+    **Example:**
 
     ```
     package com.ca.mfaas.hellospring.listener;
@@ -649,25 +656,29 @@ The following steps outline the process of registering your service with API ML:
 
     When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
 
-3. Add security settings to your service configuration .yml file. 
+3. Add security settings to your service configuration `.yml` file. 
 
     **Note:** All API services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
 
     **Tip:** Before you add security settings to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
+
+
     
     **Follow these steps:**
 
     1. To secure your service with a certificate, use one of the following two options:
 
-    * Use a certificate provided in `<api-layer-repository>/keystore/localhost`
+    * (Option 1) Use a certificate provided in `<api-layer-repository>/keystore/localhost`
 
-    * To customize your certificate, you can generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`
+    * (Option 2) Generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`. This option allows you to customize your certificate
    
-        If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, you can now provide the configuration properties: `alias`, `path`, `password` in your .yml configuration file.
+        Use the procedure corresponding to the option you use.
+
+        (Option 1) If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, you can now provide the configuration properties: `alias`, `path`, `password` in your `.yml` configuration file.
 
         **Note:** The keystore password is `password`.
 
-        If you are generating a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
+        (Option 2) If you are generating a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
 
         ```
         <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
