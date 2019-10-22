@@ -591,7 +591,7 @@ The following steps outline the process of registering your service with API ML:
 - [Add a web application context listener class](#add-a-web-application-context-listener)
 - [Register a web application context listener](#register-a-web-application-context-listener)
 - [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
-- [Load service configuration](#load-service-configuration
+- [Load service configuration](#load-service-configuration)
 - [Register with Eureka discovery service](#register-with-eureka-discovery-service)
 - [Unregister your service](#unregister-your-service)
 
