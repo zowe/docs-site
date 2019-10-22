@@ -673,9 +673,7 @@ The following steps outline the process of registering your service with API ML:
         (Option 1) If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, add the configuration properties: `alias`, `path`, `password` to your `.yml` configuration file.
 
         **Note:** The keystore password is `password`.
-
-        <font color="red"> Can we include a snippet with these three configuration properties?</font>
-
+      
 
         (Option 2) If you generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
 
