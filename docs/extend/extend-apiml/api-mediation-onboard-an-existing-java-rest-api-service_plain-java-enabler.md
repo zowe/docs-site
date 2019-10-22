@@ -2,7 +2,7 @@
 
 This article is a part of a series of onboarding guides, which outline the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API service using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
+**Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
 ZOWE API ML is a lightweight API management system based on the following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
@@ -39,25 +39,20 @@ The following steps outline the process of onboarding your REST service with the
     * [Maven guide](#maven-guide)
 
 3. [Configuring your service](#configuring-your-service)
+    * [REST service identification](#rest-service-identification)
+    * [Administrative endpoints](#administrative-endpoints)
+    * [API Security](#api-security)
     * [Eureka discovery service](#eureka-discovery-service)
-    * [REST service information](#rest-service-information)
-    * [API information](#api-information)
+    * [API routing information](#api-routing-information)
+    * [API info](#api-info)
     * [API Catalog information](#api-catalog-information)
-
 
 4. [Changing your source code](#changing-your-source-code)
     * [Add endpoints](#add-endpoints)
     * [Register your service to API ML](#register-your-service-to-api-ml)
-        * [Add a web application context listener class](#add-a-web-application-context-listener-class)
-        * [Registering a context listener](#registering-a-context-listener)
-        * [Reading service configuration](#reading-service-configuration)
-        * [Initializing Eureka Client](#initializing-eureka-client)
-        * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
     * [Implement a periodic call (heartbeat) to the API ML Discovery Service](implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) 
 
 5. [Documenting your API](#documenting-your-api)
-    * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
-    * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
 6. [Building and Running your service](#building-and-running-your-service)
 
@@ -532,10 +527,11 @@ The following code block is an example of configuration of a service tile in the
 
 Several changes are required in the source code to successfully onboard your REST API to the API ML. Changes to the source code include the following steps: 
 
-* [Adding endpoints](#adding-endpoints)
-* [Registering your service to API ML](#registering-your-service-to-api-ml)
+* [Add endpoints](#add-endpoints)
+* [Register your service to API ML](#register-your-service-to-api-ml)
+* [Implement a periodic call (heartbeat) to the API ML Discovery Service](#implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service)
 
-### Adding endpoints
+### Add endpoints
  
 Add the following endpoints to your application:
 
@@ -586,7 +582,8 @@ Add the following endpoints to your application:
        }
    }
    ```
-### Registering your service with API ML
+### Register your service with API ML
+
 In the following paragraphs we use snippets of code and configuration from our sample service `helloapiml-plain-java-sample`.
 
 The following steps outline the process of registering your service with API ML:
@@ -594,15 +591,14 @@ The following steps outline the process of registering your service with API ML:
 - [Add a web application context listener class](#add-a-web-application-context-listener)
 - [Register a web application context listener](#register-a-web-application-context-listener)
 - [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
-- [Load service configuration](#load-service-configuration)
-- [Initialize Eureka Client](#initialize-eureka-client)
+- [Load service configuration](#load-service-configuration
 - [Register with Eureka discovery service](#register-with-eureka-discovery-service)
 - [Unregister your service](#unregister-your-service)
 
 
 **Follow these steps:**
 
-1. Add a web application context listener class.
+1. #### Add a web application context listener class.
 
     The web application context listener implements two methods to perform necessary actions at application start-up time and also when the application context is destroyed:
 
@@ -645,7 +641,7 @@ The following steps outline the process of registering your service with API ML:
     }
     ```
 
-2. Register a web application context listener.
+2. #### Register a web application context listener.
 
     Add the following code block to the deployment descriptor `web.xml` to register a context listener:
     ``` xml
@@ -656,29 +652,32 @@ The following steps outline the process of registering your service with API ML:
 
     When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
 
-3. Add security settings to your service configuration `.yml` file. 
+3. #### Add security settings to service configuration. 
 
     **Note:** All API services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
 
     **Tip:** Before you add security settings to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
 
-
-    
     **Follow these steps:**
 
-    1. To secure your service with a certificate, use one of the following two options:
+    1. Use the certificate that is provided or generate a customizable certificate.
+    
+        To secure your service with a certificate, use one of the following two options:
 
     * (Option 1) Use a certificate provided in `<api-layer-repository>/keystore/localhost`
 
-    * (Option 2) Generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`. This option allows you to customize your certificate
+    * (Option 2) Generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`. This option allows you to customize your certificate.
    
         Use the procedure corresponding to the option you use.
 
-        (Option 1) If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, you can now provide the configuration properties: `alias`, `path`, `password` in your `.yml` configuration file.
+        (Option 1) If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, add the configuration properties: `alias`, `path`, `password` to your `.yml` configuration file.
 
         **Note:** The keystore password is `password`.
 
-        (Option 2) If you are generating a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
+        <font color="red"> Can we include a snippet with these three configuration properties?</font>
+
+
+        (Option 2) If you generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
 
         ```
         <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
@@ -706,7 +705,7 @@ The following steps outline the process of registering your service with API ML:
 
         **Note:** Ensure that you define both the key store and the trust store even if your server is not using an HTTPS port.
 
-4. Load the service configuration file.
+4. #### Load service configuration.
 
     Load your service configuration from the `service-configuration.yml` file, which is described in the preceding section: [Configuring your service](#configuring-your-service). 
     
@@ -722,14 +721,14 @@ The following steps outline the process of registering your service with API ML:
         ...
     ```
 
-5. Register with Eureka discovery service.
+5. #### Register with Eureka discovery service.
     ```
     ...
         new ApiMediationClientImpl().register(config);
     }
     ```
 
-6. Unregister your service.
+6. #### Unregister your service.
 
     Use the `contextDestroyed` method to unregister your service instance from Eureka discovery service in the following format:
 
@@ -740,7 +739,7 @@ The following steps outline the process of registering your service with API ML:
     }
     ```
 
-### Implementing a periodic call (heartbeat) to the API ML Discovery Service
+### Implement a periodic call (heartbeat) to the API ML Discovery Service
 
 Eureka client needs to renew the lease by sending heartbeats every 30 seconds. The renewal informs the Eureka server that the instance is still alive. If the server hasn't seen a renewal for 90 seconds, it removes the instance out of its registry. It is advisable not to change the renewal interval since the server uses that information to determine if there is a wide spread problem with the client to server communication.
 
@@ -752,7 +751,7 @@ The heartbeat is issued by EurekaClient using `PUT` HTTP method in the following
 
 After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
-## API documentation
+## Documenting your API 
 
 Use the following procedure to add Swagger API documentation to your project.
 
@@ -832,7 +831,7 @@ After you customize your configuration parameters, you are ready to build and ru
 
 1. Execute `gradle clean build`.
 
-2.  Run your Java application. 
+2. Run your Java application. 
 
     **Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes.
 
@@ -852,4 +851,4 @@ If your service is not visible in the API Catalog, you can check if your service
 2. Enter *eureka* as a username and *password* as a password.
 3. Check if your application appears in the Discovery Service UI.
 
-If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct. 
+If your service appears in the Discovery Service UI but is not visible in the API Catalog, verify that your configuration settings are correct. 
