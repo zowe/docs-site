@@ -4,6 +4,29 @@ The following topics contain information that can help you troubleshoot problems
 
 Most of the solutions below identify issues by referring to the Zowe [logs](app-mustgather.md). To identify and resolve issues, you should become familiar with their names and locations.
 
+## Desktop apps fail to load
+
+**Symptom:**
+
+When you open apps in the desktop they display a page with the message "The plugin failed to load."
+
+**Solution:**
+
+NodeJS v8.16.1 performs auto-encoding in a way that breaks Zowe apps. See [https://github.com/ibmruntimes/node/issues/142](https://github.com/ibmruntimes/node/issues/142) for details.
+
+Use node v8.16.0 which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `ibm-trial-node-v8.16.0-os390-s390x.pax.Z` file.
+
+## NODEJSAPP disables immediately
+
+**Symptom:**
+
+If you receive the message CEE5207E The signal SIGABRT was received in stderr, you might have reached the limit for shared message queues on your LPAR.
+
+**Solution:**
+
+When Node.js applications are terminated by a SIGKILL signal, shared message queues might not be deallocated. In the IBM "[Troubleshooting Node.js applications](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.5.0/troubleshooting/node/node-troubleshooting.html)" documentation, see the section titled **If the NODEJSAPP disables immediately**.
+
+
 ## Cannot log in to the Zowe Desktop
 
 **Symptom:**
