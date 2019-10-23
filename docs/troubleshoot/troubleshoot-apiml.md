@@ -12,11 +12,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  One of specified static API definition directories does not exist or is not a directory.
+  One of the specified static API definition directories does not exist or is not a directory.
 
   **Action:**
 
-  Review the static API definition directories and their setup. The static definition directories is specified as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
+  Review the static API definition directories and their setup. The static definition directories is specified as a launch parameter to a discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
 
 ### ZWEAD701E
 
@@ -28,7 +28,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure the file data is not corrupted or incorrectly encoded.
+  Ensure that the file data is not corrupted or incorrectly encoded.
 
 ### ZWEAD702W
 
@@ -41,18 +41,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Review the mentioned static API definition file for errors. 
-  Refer to the specific log message to see what is the exact problem cause:
+  Refer to the specific log message to see what is the exact cause of the problem:
   
   - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId. 
-  - The instanceBaseUrls parameter of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
-  - The API Catalog UI tile ID %s is invalid. The service %s will not have API Catalog UI tile. Specify the correct catalog title ID.
+  - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
+  - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
   - One of the instanceBaseUrl of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
   - The URL %s does not contain a hostname. The instance of %s will not be created. The specified URL is malformed. Make sure to specify valid URL.
   - The URL %s does not contain a port number. The instance of %s will not be created. 
-  - The specified URL is missing port number. Make sure to specify a valid URL.
+  - The specified URL is missing a port number. Make sure to specify a valid URL.
   - The URL %s is malformed. The instance of %s will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
-  - The hostname of URL %s is unknown. The instance of %s will not be created: Thes pecified URL’s hostname is invalid. Make sure to specify valid hostname
-  - Invalid protocol. The specified URL’s protocol is invalid. Make sure to specify valid protocol
+  - The hostname of URL %s is unknown. The instance of %s will not be created: Thes specified hostname of the URL is invalid. Make sure to specify valid hostname.
+  - Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
 
 ### ZWEAD703E
 
@@ -64,7 +64,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the paths and validity of your .yml files. 
+  Review the paths for validity of your .yml files. 
   
 ### ZWEAM100E
 
@@ -76,7 +76,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that META-INF/build-info.properties and META-INF/git.properties exist and are not empty. 
+  Ensure that `META-INF/build-info.properties` and `META-INF/git.properties` exist and are not empty. 
 
 ### ZWEAM101E
 
@@ -88,7 +88,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that META-INF/build-info.properties and META-INF/git.properties exist and are not corrupted. 
+  Ensure that `META-INF/build-info.properties` and `META-INF/git.properties` exist and are not corrupted. 
   
 ### ZWEAM401E
 
@@ -124,7 +124,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If this was not an intentional use, stop the service and set the verifySslCertificatesOfServices parameter to `True`. Then restart the service.
+  If this was not an intentional use, stop the service and set the `verifySslCertificatesOfServices` parameter to `true`. Then restart the service.
   
 ### ZWEAM400E
 
@@ -132,7 +132,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  An error occurred while initializing the HTTP Client. The sslContextBuilder was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
+  An error occurred while initializing the HTTP Client. The `sslContextBuilder` was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
 
   **Action:**
 
@@ -148,7 +148,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If you are in production, restart your service with the verifySslCertificatesOfServices parameter set to `true` and have your service use SSL certification.
+  If you are in production, restart your service with the `verifySslCertificatesOfServices` parameter set to `true` and have your service use SSL certification.
 
 ### ZWEAM502E
 
@@ -188,15 +188,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM601E
 
-  z/OSMF service name not found. Set the property apiml.security.auth.zosmfServiceId to your service name.
+  z/OSMF service name not found. Set the parameter `apiml.security.auth.zosmfServiceId` to your service name.
 
   **Reason:**
 
-  The parameter zosmfserviceId was not configured correctly and could not be validated.
+  The parameter `zosmfserviceId` was not configured correctly and could not be validated.
 
   **Action:**
 
-  Ensure that the parameter apiml.security.auth.zosmfServiceId is correctly entered with a valid zosmf instance URL.
+  Ensure that the parameter `apiml.security.auth.zosmfServiceId` is correctly entered with a valid zosmf instance URL.
   
 ### ZWEAM505E
 
@@ -220,7 +220,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the parameter server.ssl.trustStorePassword in the properties or yaml file contains the correct password for your truststore.
+  Ensure that the parameter `server.ssl.trustStorePassword` in the properties or yaml file contains the correct password for your truststore.
   
 ### ZWEAM507E
 
@@ -232,8 +232,8 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If you need a truststore, edit the server.ssl.truststore, server.ssl.truststorePassword and server.ssl.truststoreType parameters with valid data. 
-  If you do not require a truststore, change the trustStoreRequired boolean parameter to `false`.
+  If you need a truststore, edit the `server.ssl.truststore`, `server.ssl.truststorePassword` and `server.ssl.truststoreType` parameters with valid data. 
+  If you do not require a truststore, change the `trustStoreRequired` boolean parameter to `false`.
 
 ### ZWEAM508E
 
@@ -245,7 +245,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the correct path to your keystore is contained in the parameter server.ssl.keyStore in the properties or yaml file of your service.
+  Ensure that the correct path to your keystore is contained in the parameter `server.ssl.keyStore` in the properties or yaml file of your service.
     
 ### ZWEAM509E
 
@@ -257,7 +257,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the correct password to your keystore in the parameter server.ssl.keyStorePassword is contained in the properties or yaml file of your service.
+  Ensure that the correct password to your keystore in the parameter `server.ssl.keyStorePassword` is contained in the properties or yaml file of your service.
   
 ### ZWEAM510E
 
