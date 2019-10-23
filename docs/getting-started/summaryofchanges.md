@@ -1,6 +1,6 @@
 # Release notes <!-- omit in toc -->
 
-Learn about what is new, changed, removed, and known issues in Zowe&trade;. 
+Learn about what is new, changed, or removed in Zowe&trade;. 
 
 Zowe Version 1.6.0 and later releases include the following enhancements, release by release.
 
