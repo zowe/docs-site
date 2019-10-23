@@ -648,7 +648,6 @@ where,
 - _install:proclib_ is the data set name that the ZWESIS01 JCL member that is used to start the ZWESIS01 started task will be copied into, for example, USER.PROCLIB.
 - _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB.  Choose a value such as IZUSVR.PARMLIB.
 - _install:loadlib_ is the data set name where the ZWESIS01 load module will be copied into.  This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
-- _zssCrossMemoryServerName_ is the name of the ZSS Cross Memory Server. By default, the name is `ZWESIS_STD`.
 
 ```
  # APF server users
@@ -668,8 +667,8 @@ where,
 where,
 
 - _users:zoweUser_ is the TSO user ID that the ZOWESVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
-- _tssFacilityOwner_ 
-- _users:stcUser_ is the user ID that the ZWESIS01 started task will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
+- _tssFacilityOwner_ - If you specify `auto` (which must be lower case), the result of running the command `id -u -n` will be used as the value. Otherwise, the given value will be used.
+- _users:stcUser_ is - the user ID that the ZWESIS01 started task will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
 - _users:stcUserUid_.  This is the Unix user ID of the TSO user ID used to run the ZWESIS01 started task. If the user ID is IZUSVR to see the Unix user ID enter the command `id IZUSVR` which will return the stcUserUid in the uid result.  In the example below IZUSVR has a uid of 210, so `users:stcUserUid=210` should be entered.  
 
     ```
