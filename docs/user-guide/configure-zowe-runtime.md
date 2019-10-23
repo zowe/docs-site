@@ -639,12 +639,16 @@ Because the parameters that are used to control the script are contained in the 
    parmlib=
    # LOADLIB dataset name (${USER}.LOADLIB by default)
    loadlib=
+   # ZSS server name (default name is ZWESIS_STD),
+   # make sure that this equals to zssCrossMemoryServerName in zlux-server in zowe-install.yaml
+   zssCrossMemoryServerName=ZWESIS_STD
 ```
 
 where,
 - _install:proclib_ is the data set name that the ZWESIS01 JCL member that is used to start the ZWESIS01 started task will be copied into, for example, USER.PROCLIB.
 - _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB.  Choose a value such as IZUSVR.PARMLIB.
 - _install:loadlib_ is the data set name where the ZWESIS01 load module will be copied into.  This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
+- _zssCrossMemoryServerName_ is the name of the ZSS Cross Memory Server. The default name is `ZWESIS_STD`. If you want to run only one version of Zowe, you can use the default name. If you want to run different versions of Zowe in parallel, you must specify a unique name for each Zowe instance. If you want to test a new version of Zowe in parallel to an older version, you must change the default name to a unique one when you install the new version.
 
 ```
  # APF server users
