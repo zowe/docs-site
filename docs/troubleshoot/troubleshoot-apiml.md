@@ -6,57 +6,57 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-### ZWEAD700
+### ZWEAD700W
 
-  Static Api definition directory '%s' is not a directory or does not exist
-
-  **Reason:**
-
-  One of specified static Api definition directories does not exist or is not a directory.
-
-  **Action:**
-
-  Review the static Api definition directories and their setup. The static definition directories is specified as a launch parameter to discovery service jar. The property key is: apiml.discovery.staticApiDefinitionsDirectories
-
-### ZWEAD701
-
-  Error loading static Api definition file '%s'
+  Static API definition directory '%s' is not a directory or does not exist
 
   **Reason:**
 
-  A problem occurred while reading (IO operation) of a specific static Api definition file. 
+  One of the specified static API definition directories does not exist or is not a directory.
 
   **Action:**
 
-  Ensure the file data is not corrupted or incorrectly encoded.
+  Review the static API definition directories and their setup. The static definition directories is specified as a launch parameter to a discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
 
-### ZWEAD702
+### ZWEAD701E
 
-  Unable to process static Api definition data: '%s'
+  Error loading static API definition file '%s'
 
   **Reason:**
 
-  A problem occurred while parsing a static Api definition file. 
+  A problem occurred while reading (IO operation) of a specific static API definition file. 
 
   **Action:**
 
-  Review the mentioned static api definition file for errors. 
-  Refer to the specific log message to see what is the exact problem cause:
+  Ensure that the file data is not corrupted or incorrectly encoded.
+
+### ZWEAD702W
+
+  Unable to process static API definition data: '%s'
+
+  **Reason:**
+
+  A problem occurred while parsing a static API definition file. 
+
+  **Action:**
+
+  Review the mentioned static API definition file for errors. 
+  Refer to the specific log message to see what is the exact cause of the problem:
   
   - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId. 
-  - The instanceBaseUrls parameter of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
-  - The API Catalog UI tile ID %s is invalid. The service %s will not have API Catalog UI tile. Specify the correct catalog title ID.
+  - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
+  - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
   - One of the instanceBaseUrl of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
   - The URL %s does not contain a hostname. The instance of %s will not be created. The specified URL is malformed. Make sure to specify valid URL.
   - The URL %s does not contain a port number. The instance of %s will not be created. 
-  - The specified URL is missing port number. Make sure to specify a valid URL.
+  - The specified URL is missing a port number. Make sure to specify a valid URL.
   - The URL %s is malformed. The instance of %s will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
-  - The hostname of URL %s is unknown. The instance of %s will not be created: Thes pecified URL’s hostname is invalid. Make sure to specify valid hostname
-  - Invalid protocol. The specified URL’s protocol is invalid. Make sure to specify valid protocol
+  - The hostname of URL %s is unknown. The instance of %s will not be created: Thes specified hostname of the URL is invalid. Make sure to specify valid hostname.
+  - Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
 
-### ZWEAD703
+### ZWEAD703E
 
-  I/O problem occurred during reading static Api definition directory: '%s'
+  I/O problem occurred during reading static API definition directory: '%s'
 
   **Reason:**
 
@@ -64,9 +64,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the paths and validity of your .yml files. 
+  Review the paths for validity of your .yml files. 
   
-### ZWEAM100
+### ZWEAM100E
 
   Could not read properties from: '%s'
 
@@ -76,9 +76,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that META-INF/build-info.properties and META-INF/git.properties exist and are not empty. 
+  Ensure that `META-INF/build-info.properties` and `META-INF/git.properties` exist and are not empty. 
 
-### ZWEAM101
+### ZWEAM101E
 
   ΙΟ Error reading properties from: '%s' Details: '%s'
 
@@ -88,9 +88,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that META-INF/build-info.properties and META-INF/git.properties exist and are not corrupted. 
+  Ensure that `META-INF/build-info.properties` and `META-INF/git.properties` exist and are not corrupted. 
   
-### ZWEAM401
+### ZWEAM401E
 
   Error in HTTPS configuration: '%s'
 
@@ -102,7 +102,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Start the service again in debug mode to get a more descriptive message. This error indicates it is not a configuration issue. 
   
-### ZWEAM600
+### ZWEAM600W
 
   Invalid parameter in metadata: '%s'
 
@@ -114,7 +114,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Remove or fix the referenced metadata parameter.
   
-### ZWEAM500
+### ZWEAM500W
 
   The service is not verifying the TLS/SSL certificates of the services
 
@@ -124,21 +124,21 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If this was not an intentional use, stop the service and set the verifySslCertificatesOfServices parameter to `True`. Then restart the service.
+  If this was not an intentional use, stop the service and set the `verifySslCertificatesOfServices` parameter to `true`. Then restart the service.
   
-### ZWEAM400
+### ZWEAM400E
 
   Error initializing HTTP client: '%s'
 
   **Reason:**
 
-  An error occurred while initializing the HTTP Client. The sslContextBuilder was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
+  An error occurred while initializing the HTTP Client. The `sslContextBuilder` was disrupted either when trusting the connection or while building the secure socket protocol implementation. 
 
   **Action:**
 
   Contact support for assistance. 
   
-### ZWEAM501
+### ZWEAM501W
 
   Service is configured to use insecure HTTP protocol. For production use, please switch to HTTPS instead.
   
@@ -148,9 +148,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If you are in production, restart your service with the verifySslCertificatesOfServices parameter set to `true` and have your service use SSL certification.
+  If you are in production, restart your service with the `verifySslCertificatesOfServices` parameter set to `true` and have your service use SSL certification.
 
-### ZWEAM502
+### ZWEAM502E
 
   Error reading secret key: '%s'
   
@@ -162,7 +162,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure that the specified key is in the right format and is not corrupt.
   
-### ZWEAM503
+### ZWEAM503E
 
   Error loading secret key: '%s'
   
@@ -174,7 +174,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure the key exists and the passwords, paths, and aliases are correct. 
   
-### ZWEAM504
+### ZWEAM504E
 
   Error loading public key: '%s'
   
@@ -186,19 +186,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure the key and keystore exist and the paths and aliases are correct.
 
-### ZWEAM601
+### ZWEAM601E
 
-  z/OSMF service name not found. Set the property apiml.security.auth.zosmfServiceId to your service name.
+  z/OSMF service name not found. Set the parameter `apiml.security.auth.zosmfServiceId` to your service name.
 
   **Reason:**
 
-  The parameter zosmfserviceId was not configured correctly and could not be validated.
+  The parameter `zosmfserviceId` was not configured correctly and could not be validated.
 
   **Action:**
 
-  Ensure that the parameter apiml.security.auth.zosmfServiceId is correctly entered with a valid zosmf instance URL.
+  Ensure that the parameter `apiml.security.auth.zosmfServiceId` is correctly entered with a valid zosmf instance URL.
   
-### ZWEAM505
+### ZWEAM505E
 
   Error initializing SSL/TLS context: '%s'
   
@@ -210,7 +210,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check that your truststore is correct. If no problems are determined in the truststore, contact support.
   
-### ZWEAM506
+### ZWEAM506E
 
   Truststore Password configuration parameter is not defined
 
@@ -220,9 +220,9 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the parameter server.ssl.trustStorePassword in the properties or yaml file contains the correct password for your truststore.
+  Ensure that the parameter `server.ssl.trustStorePassword` in the properties or yaml file contains the correct password for your truststore.
   
-### ZWEAM507
+### ZWEAM507E
 
   Truststore configuration parameter is not defined but it is required
   
@@ -232,10 +232,10 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  If you need a truststore, edit the server.ssl.truststore, server.ssl.truststorePassword and server.ssl.truststoreType parameters with valid data. 
-  If you do not require a truststore, change the trustStoreRequired boolean parameter to `false`.
+  If you need a truststore, edit the `server.ssl.truststore`, `server.ssl.truststorePassword` and `server.ssl.truststoreType` parameters with valid data. 
+  If you do not require a truststore, change the `trustStoreRequired` boolean parameter to `false`.
 
-### ZWEAM508
+### ZWEAM508E
 
   Keystore not found, server.ssl.keyStore configuration parameter is not defined
 
@@ -245,9 +245,9 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the correct path to your keystore is contained in the parameter server.ssl.keyStore in the properties or yaml file of your service.
+  Ensure that the correct path to your keystore is contained in the parameter `server.ssl.keyStore` in the properties or yaml file of your service.
     
-### ZWEAM509
+### ZWEAM509E
 
   Keystore password not found, server.ssl.keyStorePassword configuration parameter is not defined
   
@@ -257,9 +257,9 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Action:**
 
-  Ensure that the correct password to your keystore in the parameter server.ssl.keyStorePassword is contained in the properties or yaml file of your service.
+  Ensure that the correct password to your keystore in the parameter `server.ssl.keyStorePassword` is contained in the properties or yaml file of your service.
   
-### ZWEAM510
+### ZWEAM510E
 
   Invalid key alias '%s'
 
