@@ -381,15 +381,15 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 ## The Zowe Cross Memory Server
 
-The Zowe Cross Memory Service is a started task angel that runs an authorized server application providing privileged cross-memory services to Zowe.  It must be installed, configured and launched for the Zowe desktop to be able to operate.  It is not required for the Zowe API Mediation Layer to be launched and able to operate.   
+The Zowe Cross Memory Service is a started task angel that runs an authorized server application and its auxiliary address spaces, providing privileged cross-memory services to Zowe.  It must be installed, configured and launched for the Zowe desktop to be able to operate.  It is not required for the Zowe API Mediation Layer to be launched and able to operate.   
 
-The server runs as a started task and requires an APF authorized load library, a program properties table (PPT) entry, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result.
+The server and address spaces run as started tasks and require APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can create these by using one of the following methods. The two methods achieve the same end result.
 - Manually
 - Use the script  `xmem-server/zowe-install-apf-server.sh` that reads configuration parameters from the file `xmem-server/zowe-install-apf-server.yaml`
 
 You can choose which method to use depending on your familiarity with z/OS configuration steps that are required for the manual path, together with the authority and privileges of your user ID if you choose to run the automated path.
 
-Once the cross memory server is installed and started, there will be started task ZWESIS01 that runs the load library ZWESIS01.  The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
+Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
 ### Creating the xmem-server/zss directory
 
@@ -400,22 +400,27 @@ A number of files used by both manual and scripted install are included in the U
 
 The manual installation consists of the following steps.
 
-1. ZWESIS01 load module and proclib
+1. ZWESIS01 and ZWESAUX load modules and proclib
 
-    Zowe Cross Memory Server consists of a single load module with the name ZWESIS01.  The load module is supplied in the `xmem-server\zss\LOADLIB\ZWESIS01` file.  This must be copied to a user-defined data set `zwes_loadlib`, for example, ZWES.SISLOAD.
+    Zowe Cross Memory Server consists of two load modules with the names ZWESIS01 and ZWESAUX.  The load modules are supplied in the ZWESIS01 and ZWESAUX files in the `xmem-server\zss\LOADLIB` directory. You must copy these files to a user-defined data set `zwes_loadlib`, for example, ZWES.SISLOAD.
 
-    You can copy the ZWESIS01 file to your `zwes_loadlib` data set by using the command `cp -X ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`.  The `zwes_loadlib` must be a PDSE due to language requirements.  
+    You can copy the ZWESIS01 and ZWESAUX files to your `zwes_loadlib` data set by using the following commands:
+    `cp -X ZWESIS01 "//'zwes_loadlib(ZWESIS01)'"`
+    `cp -X ZWESAUX "//'zwes_loadlib(ZWESAUX)'"`
 
-    Do not add the `zwes_loadlib` data set to the system LNKLST or LPALST concatenations. You must execute it by using a started task that uses a STEPLIB DD statement so that the appropriate version of the software is loaded correctly.  A sample JCL for the PROCLIB is provided in `xmem-server/zss/SAMPLIB/ZWESIS01`.  Copy this to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
+    The `zwes_loadlib` must be a PDSE due to language requirements.  
 
-    **Note:**  The user that is assigned to the started task must have an OMVS segment.  The cross memory server loads the module to LPA for its PC-cp services.
+    Do not add the `zwes_loadlib` data set to the system LNKLST or LPALST concatenations. You must execute it by using started tasks that use a STEPLIB DD statement so that the appropriate version of the software is loaded correctly. Sample JCL for the PROCLIB is provided in ZWESIS01 and ZWESAUX files in the `xmem-server/zss/SAMPLIB` directory. Copy these to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.  
+
+    **Note:**  The user IDs that are assigned to the started tasks must have a valid OMVS segment and read access to the product data sets. The cross memory server loads the modules to LPA for its PC-cp services.
 
 1. PPT Entry
 
-    The Zowe cross memory server must run in key 4 and be non-swappable.  For the server to start in this environment, you must add a corresponding PPT entry to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entry to the SCHEDxx member:
+    The Zowe cross memory server and its auxiliary address spaces must run in key 4 and be non-swappable. For the servers to start in this environment, you must add corresponding PPT entries to the SCHEDxx member of the system PARMLIB. For example, add the following PPT entries to the SCHEDxx member:
 
     ```
     PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
+    PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP
     ```
     After you edit the PARMLIB, issue the following command to make the SCHEDxx changes effective:
 
@@ -425,12 +430,12 @@ The manual installation consists of the following steps.
 
 1. APF-authorization
 
-    Due to the nature of the services the Zowe cross memory server provides, its load library requires APF-authorization. It is possible to check whether a load library is APF-authorized by using the following TSO command:
+    Due to the nature of the services the Zowe cross memory server provides, its load libraries require APF-authorization. It is possible to check whether a load library is APF-authorized by using the following TSO command:
 
     ```
     D PROG,APF,DSNAME=ZWES.SISLOAD
     ```
-    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 and ZWESAUX load modules.
 
     To dynamically add the load library to the APF list, run one of the following TSO commands:
 
@@ -441,15 +446,15 @@ The manual installation consists of the following steps.
     SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,SMS
     (If the load library is SMS-Managed library)
     ```
-    where the value of DSNAME is the name of the data set that contains the ZWESIS01 load module.
+    where the value of DSNAME is the name of the data set that contains the ZWESIS01 and ZWESAUX load modules.
 
 1. PARMLIB member
 
-    The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `xmem-server/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values.  You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
+    The Zowe cross memory server started task requires a valid ZWESISPxx PARMLIB member to be found at startup. The file `xmem-server/files/zss/SAMPLIB/ZWESIP00` contains the default configuration values. You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESIS01 started task JCL.
 
 1. Security requirements for the cross memory server
 
-    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers.  This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
+    The Zowe cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers. This is done by using the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. The following examples assume that you will be running the ZOWESVR STC under the IZUSVR user.
 
     - If you use RACF, issue the following commands:
 
@@ -491,6 +496,9 @@ The manual installation consists of the following steps.
       TSS ADD(`owner-acid`) IBMFAC(ZWES.)
       TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
       ```
+**Note** ZSS Cross Memory Server treats ‘no decision’ style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the user will be denied.
+
+ZSS Cross Memory Server clients, might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
 1. ICSF cryptographic services
 
@@ -537,7 +545,7 @@ The manual installation consists of the following steps.
 
     The node zssServer running under USS needs the ability to change the security environment of its process in order to associate itself with the security context of the logged in user when responding to API requests, also known as impersonation.  To switch the security environment, the user ID asscoaited with the ZOWESVR started task IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
 
-    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 started task (IZUSVR by default) has UPDATE access to both facilities.
+    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 and ZWESAUX started tasks (IZUSVR by default) has UPDATE access to both facilities.
 
     - If you use RACF, issue the following commands:
       ```
@@ -555,7 +563,7 @@ The manual installation consists of the following steps.
       LIST BPX
       ```
 
-   If the user who runs the ZWESIS01 started task does not have UPDATE access to both facilities, follow the instructions below.
+   If the user who runs the ZWESIS01 and ZWESAUX started tasks does not have UPDATE access to both facilities, follow the instructions below.
 
    - If you use RACF, complete the following steps:
       <details>
@@ -622,10 +630,10 @@ The manual installation consists of the following steps.
 
 ### Scripted install of the Zowe Cross Memory Server
 
-For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `xmem-server/zowe-install-apf-server.sh`.  If this script does not exist review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory)
+For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Zowe cross memory server, a convenience script is provided in `xmem-server/zowe-install-apf-server.sh`. If this script does not exist review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory)
 
 - The script will create the APF authorized load library, copy the load module, create the PROCLIB, define the `ZWES.IS` FACILITY class and give READ access to the ZOWESVR user ID.  
-- The script will not create the PPT entry which must be done manually.  This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
+- The script will not create the PPT entry which must be done manually. This is done using the steps described in step "5. Security requirements for the cross memory server" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
 - The script will not create anything for the ICSF cryptographic services.  These are described in step "6. ICSF cryptographic services" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
 
 Because the parameters that are used to control the script are contained in the file `xmem-server/zowe-install-apf-server.yaml`, you must edit this file before running the `zowe-install-apf-server.sh` script with appropriate values.
@@ -642,9 +650,9 @@ Because the parameters that are used to control the script are contained in the 
 ```
 
 where,
-- _install:proclib_ is the data set name that the ZWESIS01 JCL member that is used to start the ZWESIS01 started task will be copied into, for example, USER.PROCLIB.
-- _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB.  Choose a value such as IZUSVR.PARMLIB.
-- _install:loadlib_ is the data set name where the ZWESIS01 load module will be copied into.  This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
+- _install:proclib_ is the data set name that the ZWESIS01 and ZWESAUX JCL members that are used to start the ZWESIS01 and ZWESAUX started tasks will be copied into, for example, USER.PROCLIB.
+- _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB. Choose a value such as IZUSVR.PARMLIB.
+- _install:loadlib_ is the data set name that the ZWESIS01 and ZWESAUX load modules will be copied into. This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
 
 ```
  # APF server users
@@ -670,7 +678,7 @@ where,
    uid=210(IZUSVR) gid=202(IZUADMIN) groups=205(IZUSECAD)
     ```
 
-- _users:stcGroup_ is the user group that the ZWESIS01 started task will be run under.  Enter the same values as the user group that is running ZOWESVR, so choose IZUADMIN.
+- _users:stcGroup_ is the user group that the ZWESIS01 and ZWESAUX started tasks will be run under. Enter the same values as the user group that is running ZOWESVR, so choose IZUADMIN.
 
 After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT entry before you run `zowe-install-apf-server.sh`.
 
@@ -745,15 +753,15 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
 
-The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. To start this, issue the operator start command through SDSF:
+The Zowe Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+```
+/S ZWESIS01,REUSASID=YES
+```
 
-```
-/S ZWESIS01
-```
 To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
 ```
 /P ZWESIS01
 ```
 
-**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZWESIS01 angel process.  If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server.  Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR.  The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
+**Note:** The starting and stopping of the ZOWESVR for the main Zowe servers is independent of the ZWESIS01 angel process. If you are running more than one ZOWESVR instance on the same LPAR, then these will be sharing the same ZWESIS01 cross memory server. Stopping ZWESIS01 will affect the behavior of all Zowe servers on the same LPAR. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.
