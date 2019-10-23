@@ -20,7 +20,7 @@ Use node v8.16.0 which is available at [https://www.ibm.com/ca-en/marketplace/sd
 
 **Symptom:**
 
-If you receive the message CEE5207E The signal SIGABRT was received in stderr, you might have reached the limit for shared message queues on your LPAR.
+If you receive the message `CEE5207E The signal SIGABRT was received in stderr`, you might have reached the limit for shared message queues on your LPAR.
 
 **Solution:**
 
