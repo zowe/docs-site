@@ -712,6 +712,33 @@ IEF257I ZWE3ALOC ALLOCD ALLOCD AZWEZFS - SPACE REQUESTED NOT AVAILABLE
 IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.                    
 ```
 Uncomment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
+### Prepare the Zowe SMP/E Installation Jobs with Velocity Template Language (VTL) Command-line Interface or Python Script (Optional)
+The Velocity Template Language (VTL) Command-line Interface and Python Script simplifies the Zowe SMP/E installation jobs customization using the YAML file.  To install and use the Velocity Template Language (VTL) Command-line Interface, refer to https://github.com/plavjanik/vtl-cli.
+
+
+To prepare the custom Zowe SMP/E installation jobs, edit the YAML file and execute the VTL command or python script. The YAML and the corresponding VTL files are located in the ZOWE SMP/E repository. Perform the following steps to prepare the customized jobs:
+1.	Download the YMAL and VTL files to your system from …….
+2.	Open the YAML file, replace the default variable values with the custom values to meet your site requirements. 
+3.	Generate the custom JCLs with one of the following options:
+    - **VTL Command**
+
+         Generates a single custom JCL in the specified location. 
+         Execute the following VTL command for each JCL to generate a custom JCL.file using a YAML.file and the corresponding VTL.file with the output encoded in UTF-8:
+           ```
+          java -jar path/to/vtl-cli.jar --yaml-context YAMLfile VTLfile -o JCL.file –oe UTF8 
+           ```
+          Where:
+          * path/to/vtl-cli.jar is the path to the vtl-cli.jar jar file that is used to execute the java -jar vtl-cli.jar 
+          * YAMLfile is the path to the YAML file that includes the JCL variables that you edited to create customized installation jobs.
+          * VTLfile is the path to VTL file that includes the conditions to execute the JCLs.
+          * JCL.file is the output file for the customized JCL.
+          * UTF8 (optional) is the used encoding of the output file. 
+    - **Python Script**
+
+        Generates multiple custom JCLS in the specified location. 
+        If you want to generate the custom JCLs of all the YAML-VTL pairs, use the JclGenerator.py script. To use the script, you must have python installed on your system and the YAML VTL files must be in the ready_templates sub-directory that is on same level as the generator file. After you run the script in Python, the custom JCLs are generated in the separate directory. This generator does not perform any changes to local system. 
+        
+After you execute the VTL command or Python script the customized JCLs are generated in the specified location.  
 
 ### Create SMP/E environment (Optional)
 
