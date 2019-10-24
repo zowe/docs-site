@@ -736,6 +736,8 @@ where,
  users:
   # User to run Zowe server (required, no default values)
   zoweUser=
+  # TSS Facility Owner (Required for TSS. 'auto' supplies the running user)
+  tssFacilityOwner=auto
   # APF server STC user (ZWESISTC by default)
   stcUser=
   # APF server STC user UID (required if STC user doesn't exist)
@@ -747,6 +749,7 @@ where,
 where,
 
 - _users:zoweUser_ is the TSO user ID that the ZOWESVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
+- _tssFacilityOwner_ - If you specify `auto` (which must be lower case), the result of running the command `id -u -n` will be used as the value. Otherwise, the given value will be used.
 - _users:stcUser_ is the user ID that the ZWESIS01 and ZWESAUX started tasks will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
 - _users:stcUserUid_.  This is the Unix user ID of the TSO user ID used to run the ZWESIS01 and ZWESAUX started tasks. If the user ID is IZUSVR to see the Unix user ID enter the command `id IZUSVR` which will return the stcUserUid in the uid result.  In the example below IZUSVR has a uid of 210, so `users:stcUserUid=210` should be entered.  
 
