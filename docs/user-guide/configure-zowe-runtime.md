@@ -596,9 +596,11 @@ To manually install the Cross Memory Server, take the following steps:
 
 1. Configure security environment switching:
 
-    When responding to API requests, the node zssServer running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation. To enable impersonation, you must grant the user ID associated with the zssServer started task UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+    When responding to API requests, the node zssServer running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation.
+    
+    Typically, the zssServer runs under the ZOWESVR started task. So to enable impersonation, you must grant the user ID associated with the ZOWESVR started task UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
 
-    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user who runs the zssServer started task has UPDATE access to both facilities.
+    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user who runs the ZOWESVR started task has UPDATE access to both facilities.
 
     - If you use RACF, issue the following commands:
       ```
@@ -622,7 +624,7 @@ To manually install the Cross Memory Server, take the following steps:
       LIST BPX
       ```
 
-   If the user who runs the zssServer started task does not have UPDATE access to both facilities, follow the instructions below.
+   If the user who runs the ZOWESVR started task does not have UPDATE access to both facilities, follow the instructions below.
 
    - If you use RACF, complete the following steps:
       <details>
@@ -642,12 +644,12 @@ To manually install the Cross Memory Server, take the following steps:
          ```
          RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
          ```             
-      1. Having activated and RACLIST the FACILITY class, the user ID who runs the zssServer started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+      1. Having activated and RACLIST the FACILITY class, the user ID who runs the ZOWESVR started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
          ```
-         PERMIT BPX.SERVER CLASS(FACILITY) ID(<zss_server_user>) ACCESS(UPDATE)
+         PERMIT BPX.SERVER CLASS(FACILITY) ID(<zowesvr_user>) ACCESS(UPDATE)
          ```
          ```
-         PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zss_server_user>) ACCESS(UPDATE)
+         PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowesvr_user>) ACCESS(UPDATE)
          /* Activate these changes */
          ```
          ```
@@ -671,10 +673,10 @@ To manually install the Cross Memory Server, take the following steps:
            TSS ADD(`owner-acid`) IBMFAC(BPX.)
            ```
            ```
-           TSS PERMIT(<zss_server_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+           TSS PERMIT(<zowesvr_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
            ```
            ```
-           TSS PERMIT(<zss_server_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+           TSS PERMIT(<zowesvr_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
            ```
       1. Issue the following commands and review the output to check whether permission has been successfully granted:
            ```
@@ -689,15 +691,15 @@ To manually install the Cross Memory Server, take the following steps:
       <details>
       <summary>Click to Expand</summary>
 
-      1. Define the BPX Resource and access for <zss_server_user>.
+      1. Define the BPX Resource and access for <zowesvr_user>.
            ```
            SET RESOURCE(FAC)
            ```
            ```
-           RECKEY BPX ADD(SERVER ROLE(<zss_server_user>) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(SERVER ROLE(<zowesvr_user>) SERVICE(UPDATE) ALLOW)
            ```
            ```
-           RECKEY BPX ADD(DAEMON ROLE(<zss_server_user>) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(DAEMON ROLE(<zowesvr_user>) SERVICE(UPDATE) ALLOW)
            ```
            ```
            F ACF2,REBUILD(FAC)
