@@ -16,9 +16,9 @@ After you install Zowe&trade; through either the convenience build by running th
     1. [Configuring ZOWESVR to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
     1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
 1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
-    1. [Creating the xmem-server/zss directory](#creating-the-xmem-server/zss-directory)
+    1. [Creating the Cross Memory Server directory](#creating-the-cross-memory-server-directory)
 	  1. [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-	  1. [Scripted install of the Zowe Cross Memory Server](#scripted-install-of-the-zowe-cross-memory-server)
+	  1. [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
 1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
     1. [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
     1. [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
@@ -381,17 +381,17 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 ## The Zowe Cross Memory Server
 
-The Zowe Cross Memory Server is a started task angel that runs an authorized server application and its auxiliary address spaces, providing privileged cross-memory services to Zowe. To operate, the Zowe Desktop requires that the service be installed, configured, and started. The Zowe API Mediation Layer does not require the service.
+The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. To operate, the Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not require the server.
 
-The server and address spaces run as started tasks. To configure the service, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the service one two ways:
+The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. To configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
 - Manually
-- Using the script `xmem-server/zowe-install-apf-server.sh`, which reads configuration parameters from the file `xmem-server/zowe-install-apf-server.yaml`
+- Using the script
 
 Before you choose a method, read the documentation below. The manual configuration requires familiarity with z/OS. Running the script requires the ID of the user to have certain authorities and priviledges.
 
 Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
 
-### Creating the xmem-server/zss directory
+### Creating the Cross Memory Server directory
 
 A number of files used by both manual and scripted installation are included in the USS directory `xmem-server/zss`.  If this directory is not in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
 
@@ -459,7 +459,9 @@ To manually install the Cross Memory Server, take the following steps:
 
 1. Configure SAF:
 
-    The Cross Memory Server performs a sequence of SAF checks to protect its services from unauthorized callers. To do this, it uses the FACILITY class and an entry for `ZWES.IS`. Valid callers must have `READ` access to the `ZWES.IS` class. To activate the FACILITY class, define a ZWES.IS profile, and grant the IZUSVR user READ access (these commands assume that you will be running the ZOWESVR STC under the IZUSVR user), use the following commands:
+    The Cross Memory Server performs a sequence of SAF checks to protect its services from unauthorized callers. To do this, it uses the FACILITY class and a `ZWES.IS` entry. Valid callers must have READ access to the `ZWES.IS` profile. Those callers include the STC user under which the ZOWESVR started task runs. It is recommended that you also grant READ access to the STC user under which the ZWESAUX started task runs.
+    
+    To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the ZOWESVR and ZWESAUX users, issue the following commands. (The commands assume that you will run the ZOWESVR STC under the IZUSVR user):
 
     - If you use RACF, issue the following commands:
 
@@ -482,6 +484,10 @@ To manually install the Cross Memory Server, take the following steps:
         ```
         PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)
         ```
+        ```
+        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwesaux_user>) ACCESS(READ)
+        ```
+        where `<zwesaux_user>` is the user under which the ZWESAUX started task runs.
         ```
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
@@ -590,9 +596,9 @@ To manually install the Cross Memory Server, take the following steps:
 
 1. Configure security environment switching:
 
-    The node zssServer running under USS needs the ability to change the security environment of its process in order to associate itself with the security context of the logged in user when responding to API requests, also known as impersonation.  To switch the security environment, the user ID asscoaited with the ZOWESVR started task IZUSVR must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
+    When responding to API requests, the node zssServer running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation. To enable impersonation, you must grant the user ID associated with the zssServer started task UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes.
 
-    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to  confirm that the two BPX facilities exist and the user who runs the ZWESIS01 and ZWESAUX started tasks (IZUSVR by default) has UPDATE access to both facilities.
+    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user who runs the zssServer started task has UPDATE access to both facilities.
 
     - If you use RACF, issue the following commands:
       ```
@@ -616,7 +622,7 @@ To manually install the Cross Memory Server, take the following steps:
       LIST BPX
       ```
 
-   If the user who runs the ZWESIS01 and ZWESAUX started tasks does not have UPDATE access to both facilities, follow the instructions below.
+   If the user who runs the zssServer started task does not have UPDATE access to both facilities, follow the instructions below.
 
    - If you use RACF, complete the following steps:
       <details>
@@ -636,12 +642,12 @@ To manually install the Cross Memory Server, take the following steps:
          ```
          RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
          ```             
-      1. Having activated and RACLIST the FACILITY class, the user ID who runs the ZWESIS01 started task (by default IZUSVR) must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+      1. Having activated and RACLIST the FACILITY class, the user ID who runs the zssServer started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
          ```
-         PERMIT BPX.SERVER CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         PERMIT BPX.SERVER CLASS(FACILITY) ID(<zss_server_user>) ACCESS(UPDATE)
          ```
          ```
-         PERMIT BPX.DAEMON CLASS(FACILITY) ID(IZUSVR) ACCESS(UPDATE)
+         PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zss_server_user>) ACCESS(UPDATE)
          /* Activate these changes */
          ```
          ```
@@ -660,15 +666,15 @@ To manually install the Cross Memory Server, take the following steps:
       <details>
       <summary>Click to Expand</summary>
 
-      1. Define the BPX Resource and access for IZUSVR.
+      1. Define the BPX Resource and access for <zss_server_user>.
            ```
            TSS ADD(`owner-acid`) IBMFAC(BPX.)
            ```
            ```
-           TSS PERMIT(IZUSVR) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+           TSS PERMIT(<zss_server_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
            ```
            ```
-           TSS PERMIT(IZUSVR) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+           TSS PERMIT(<zss_server_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
            ```
       1. Issue the following commands and review the output to check whether permission has been successfully granted:
            ```
@@ -683,15 +689,15 @@ To manually install the Cross Memory Server, take the following steps:
       <details>
       <summary>Click to Expand</summary>
 
-      1. Define the BPX Resource and access for IZUSVR.
+      1. Define the BPX Resource and access for <zss_server_user>.
            ```
            SET RESOURCE(FAC)
            ```
            ```
-           RECKEY BPX ADD(SERVER ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(SERVER ROLE(<zss_server_user>) SERVICE(UPDATE) ALLOW)
            ```
            ```
-           RECKEY BPX ADD(DAEMON ROLE(IZUSVR) SERVICE(UPDATE) ALLOW)
+           RECKEY BPX ADD(DAEMON ROLE(<zss_server_user>) SERVICE(UPDATE) ALLOW)
            ```
            ```
            F ACF2,REBUILD(FAC)
@@ -707,13 +713,15 @@ To manually install the Cross Memory Server, take the following steps:
 
 ### Installing the Cross Memory Server using the script
 
-For users who have sufficient authority under their user ID on the z/OS instance where they are installing the Cross Memory Server, a convenience script is provided in `xmem-server/zowe-install-apf-server.sh`. If this script does not exist, review the section [Creating the xmem-server/zss directory](#Creating-the-xmem-server/zss-directory).
+Users with sufficient z/OS authority can install the Cross Memory Server using a script. The script, `xmem-server/zowe-install-apf-server.sh`, reads configuration parameters from the  `xmem-server/zowe-install-apf-server.yaml` file. The script creates the APF authorized load library, copies the load modules, creates the PROCLIB, defines the `ZWES.IS` FACILITY class, and grants READ access to the STC user under which the ZOWESVR started task runs. It does not perform the following tasks:
 
-- The script creates the APF authorized load library, copies the load modules, creates the PROCLIB, defines the `ZWES.IS` FACILITY class, and grants READ access to the ZOWESVR user ID.  
-- The script does not create the PPT entry, which you must do manually using the steps described in the step "Add PPT entries to the system PARMLIB" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
-- The script will not create anything for the ICSF cryptographic services.  These are described in step "Configure an ICSF cryptographic services environment" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server).
+- Grant READ access to the STC user under which the ZWESAUX started task runs, which is recommended. You must grant access by following the step "Configure SAF" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
+- Create the required PPT entries. You must create these by following the step "Add PPT entries to the system PARMLIB" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
+- Configure anything for ICSF cryptographic services. If you have this environment, follow the step "Configure an ICSF cryptographic services environment" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
 
-Because the parameters that are used to control the script are contained in the file `xmem-server/zowe-install-apf-server.yaml`, you must edit this file before running the `zowe-install-apf-server.sh` script with appropriate values.
+#### Installing using the script
+
+1. Specify the following data set parameters in the `xmem-server/zowe-install-apf-server.yaml` file:
 
 ```
  # Datasets that APF server will be installed into
@@ -731,6 +739,8 @@ where,
 - _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB. Choose a value such as IZUSVR.PARMLIB.
 - _install:loadlib_ is the data set name that the ZWESIS01 and ZWESAUX load modules will be copied into. This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
 
+2. Specify the following user parameters in the `xmem-server/zowe-install-apf-server.yaml` file:
+
 ```
  # APF server users
  users:
@@ -744,9 +754,9 @@ where,
   stcGroup=
 ```
 
-where,
+where:
 
-- _users:zoweUser_ is the TSO user ID that the ZOWESVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the cross memory server.
+- _users:zoweUser_ is the TSO user ID that the ZOWESVR started task runs under.  For the majority of installs, this will be IZUSVR, so enter IZUSVR as the value, and the script will give this user access to the `READ ZWES.IS FACILITY` class that allows Zowe to use the Cross Memory Server.
 - _users:stcUser_ is the user ID that the ZWESIS01 and ZWESAUX started tasks will be run under.  Enter the same value as the user ID that is running ZOWESVR, so choose IZUSVR.
 - _users:stcUserUid_.  This is the Unix user ID of the TSO user ID used to run the ZWESIS01 and ZWESAUX started tasks. If the user ID is IZUSVR to see the Unix user ID enter the command `id IZUSVR` which will return the stcUserUid in the uid result.  In the example below IZUSVR has a uid of 210, so `users:stcUserUid=210` should be entered.  
 
@@ -757,7 +767,9 @@ where,
 
 - _users:stcGroup_ is the user group that the ZWESIS01 and ZWESAUX started tasks will be run under. Enter the same values as the user group that is running ZOWESVR, so choose IZUADMIN.
 
-After you edit the `zowe-install-apf-server.yaml` file with values, add a PPT entry before you run `zowe-install-apf-server.sh`.
+3. Add required PPT entries, grant the ZWESAUX user READ access, and if necessary configure an ICSF cryptographic services environment. 
+
+4. Run the `zowe-install-apf-server.sh` script.
 
 ## Starting and stopping the Zowe runtime on z/OS
 
@@ -830,7 +842,7 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
 
-The Cross Memory server is as a started tasks from the JCL in the PROCLIB members ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+The Cross Memory server is run as a started task from the JCL in the PROCLIB members ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
 ```
 /S ZWESIS01,REUSASID=YES
 ```
