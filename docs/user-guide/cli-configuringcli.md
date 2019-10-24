@@ -3,6 +3,13 @@ This section explains how to define and verify your connection to the mainframe 
 
 **Note:** The configuration for the CLI is stored on your computer in a directory such as C:\Users\user01\.zowe. The configuration includes log files, your profile information, and CLI plug-ins that are installed. When you troubleshoot an issue with the CLI, the log files in the imperative and zowe folders contain valuable information.
 
+- [Configuring Zowe CLI](#configuring-zowe-cli)
+  - [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
+  - [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf)
+  - [Certificate security](#certificate-security)
+  - [Setting Zowe CLI log levels](#setting-zowe-cli-log-levels)
+  - [Setting the Zowe CLI home directory](#setting-the-zowe-cli-home-directory)
+
 [[toc]]
 
 ## Defining Zowe CLI connection details

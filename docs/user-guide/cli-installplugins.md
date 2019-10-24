@@ -84,6 +84,12 @@ Install plug-ins from a local package on any computer that has limited or no acc
     ```
     unzip zowe-cli-package-1.0.1.zip
     ```
+    unzip zowe-cli-package-1.0.1.zip
+    ```
+
+    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
+
+4.  Open a command-line window and change to the local directory where you extracted the zip file.
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
 
