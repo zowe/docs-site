@@ -23,9 +23,9 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Open a file, for which you want to enable the debug mode.
 
-3. Find the line which contains the `spring.profiles.include` parameter and change the value to `debug`:
+3. Find the line which contains the `LOG_LEVEL=` parameter and set the value to `debug`:
     ```
-    -Dspring.profiles.include=debug \
+    LOG_LEVEL=debug
     ```
 
 4. Restart Zowe&trade;.
