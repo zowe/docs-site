@@ -707,7 +707,7 @@ The following steps outline the process of registering your service with API ML:
 
     Load your service configuration from the `service-configuration.yml` file, which is described in the preceding section: [Configuring your service](#configuring-your-service). 
     
-    Use the following code as an example of how to load the service configuration:
+    Use the following code as an example of how to load the service configuration.
 
     **Example:**
      ```
@@ -721,6 +721,8 @@ The following steps outline the process of registering your service with API ML:
 
 5. #### Register with Eureka discovery service.
     ```
+ <font color="red"> We should add a step here. For eample, Add the following code to registeer with Eureka discovery service. </font>   
+ 
     ...
         new ApiMediationClientImpl().register(config);
     }
