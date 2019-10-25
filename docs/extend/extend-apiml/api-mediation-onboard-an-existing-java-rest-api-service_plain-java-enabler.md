@@ -50,7 +50,6 @@ The following steps outline the process of onboarding your REST service with the
 4. [Changing your source code](#changing-your-source-code)
     * [Add endpoints](#add-endpoints)
     * [Register your service to API ML](#register-your-service-to-api-ml)
-    * [Implement a periodic call (heartbeat) to the API ML Discovery Service](implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service) 
 
 5. [Documenting your API](#documenting-your-api)
 
@@ -529,7 +528,6 @@ Several changes are required in the source code to successfully onboard your RES
 
 * [Add endpoints](#add-endpoints)
 * [Register your service to API ML](#register-your-service-to-api-ml)
-* [Implement a periodic call (heartbeat) to the API ML Discovery Service](#implement-a-periodic-call-(heartbeat)-to-the-api-ml-discovery-service)
 
 ### Add endpoints
  
@@ -720,13 +718,16 @@ The following steps outline the process of registering your service with API ML:
     ```
 
 5. #### Register with Eureka discovery service.
-    ```
- <font color="red"> We should add a step here. For eample, Add the following code to registeer with Eureka discovery service. </font>   
- 
-    ...
-        new ApiMediationClientImpl().register(config);
-    }
-    ```
+    
+   Create an `ApiMediationClientImpl` object and call the instance method `register` with the loaded configuration.
+
+    **Example:**  
+    
+        ```
+        ...
+         new ApiMediationClientImpl().register(config);
+        }
+        ```
 
 6. #### Unregister your service.
 
@@ -739,17 +740,7 @@ The following steps outline the process of registering your service with API ML:
     }
     ```
 
-### Implement a periodic call (heartbeat) to the API ML Discovery Service
 
-Eureka client needs to renew the lease by sending heartbeats every 30 seconds. The renewal informs the Eureka server that the instance is still alive. If the server hasn't seen a renewal for 90 seconds, it removes the instance out of its registry. It is advisable not to change the renewal interval since the server uses that information to determine if there is a wide spread problem with the client to server communication.
-
-**Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
-
-The heartbeat is issued by EurekaClient using `PUT` HTTP method in the following format:
-
-`https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
-
-After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
 ## Documenting your API 
 
