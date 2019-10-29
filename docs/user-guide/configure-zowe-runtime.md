@@ -81,7 +81,7 @@ The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that c
 
 #### Directory that stores configuration
 
-`install:userDir` is the directory that Zowe uses to store configuration. Ensure that the account that runs Zowe (default of IZUSVR) has permission to write to this directory.
+`install:userDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-user-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-user-dir` directory. 
 
 #### Address space name
 
@@ -102,7 +102,7 @@ where:
    - **AD** - API ML Discovery Service
    - **AC** - API ML Catalog
    - **EJ** - Explorer API Jobs
-   - **ED** - Explorer API Data Sets
+   - **EF** - Explorer API Data Sets
    - **UD** - Explorer UI Data Sets
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
