@@ -573,10 +573,10 @@ Add the following endpoints to your application:
        }
 
        @GetMapping("/application/info")
-       public @ResponseBody ResponseEntity<EmptyJsonResponse> getDiscoveryInfo() {
+       public @ResponseBody ResponseEntity<Your_Custom_Service_Info_Response_Class> getDiscoveryInfo() {
            HttpHeaders headers = new HttpHeaders();
            headers.add("Content-Type", "application/json");
-           return new ResponseEntity(new EmptyJsonResponse(), headers, HttpStatus.OK);
+           return new ResponseEntity(new Your_Custom_Service_Info_Response_Class(), headers, HttpStatus.OK);
        }
    }
    ```
