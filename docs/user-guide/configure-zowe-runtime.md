@@ -27,7 +27,7 @@ After you install Zowe&trade; through either the convenience build by running th
 
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
-- The user ID that is used to perform the configuration part of the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.html#trust-a-z-osmf-certificate) topic.
+- The user ID that is used to perform the configuration part of the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) topic.
 
 - The user ID that is used to perform the configuration part of the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
   ```
@@ -93,15 +93,18 @@ where:
 - `n` - Instance number
 
 - `SS` - A subcomponent. `SS` can be one of the following values:
-   - **AG** - API ML Gateway
-   - **AD** - API ML Discovery Service
    - **AC** - API ML Catalog
+   - **AD** - API ML Discovery Service
+   - **AG** - API ML Gateway
+   - **DS** - Node.js instance for the ZSS Server
+   - **DT** - Zowe Desktop Application Server
+   - **EF** - Explorer API Data Sets
    - **EJ** - Explorer API Jobs
-   - **ED** - Explorer API Data Sets
+   - **SZ** - ZSS Server
    - **UD** - Explorer UI Data Sets
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
-   - **DT** - Zowe Desktop Application Server
+   
 
 The STC name of the main started task is `pfxnSV`. To view all the STCs for your instance of ZOWE in SDSF, you can use the PREFIX `pfxn*`.
 
@@ -110,6 +113,7 @@ The STC name of the main started task is `pfxnSV`. To view all the STCs for your
   ```yaml
   install:
   prefix=ZOWE
+  instance=1
   ```
 
   in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
@@ -266,7 +270,7 @@ apiml_cm.sh --action trust-zosmf has failed.
 WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
 ```
 
-This error does not interfere with installation progress and can be remediated after the installation completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.html#trust-a-z-osmf-certificate) for more details.
+This error does not interfere with installation progress and can be remediated after the installation completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
 
 #### Unix File Permissions
 
