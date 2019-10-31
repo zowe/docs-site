@@ -131,7 +131,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 15.x',
+  description: 'Version 1.6.x',
   extraWatchFiles: [
     '.vuepress/theme/'
   ],
