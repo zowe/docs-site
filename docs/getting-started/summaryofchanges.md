@@ -1,6 +1,6 @@
 # Release notes <!-- omit in toc -->
 
-Learn about what is new, changed, removed, and known issues in Zowe&trade;. 
+Learn about what is new, changed, or removed in Zowe&trade;. 
 
 Zowe Version 1.6.0 and later releases include the following enhancements, release by release.
 
@@ -22,14 +22,21 @@ No changes were made to API ML or Zowe CLI in this release.
 
 The following features and enhancements are added:
 
+- Added two NodeJS issues to the App Framework Troubleshooting section. [#786](https://github.com/zowe/docs-site/pull/786)
 - Added a REST API for new core dataservices to administer the servers and plugins. [#82](https://github.com/zowe/zss/pull/82)
 - Added pass through express router ws patcher in case plug-ins need it. [#152](https://github.com/zowe/zlux-server-framework/pull/152), [#149](https://github.com/zowe/zlux-server-framework/pull/149)
 - Updated security plugins to manage proxied headers so that unnecessary things are not put into the browser.[#152](https://github.com/zowe/zlux-server-framework/pull/152), [#26](https://github.com/zowe/zss-auth/pull/26)
 - Clear cookie on complete logout.[#152](https://github.com/zowe/zlux-server-framework/pull/152)
 
+### What's new in Zowe CLI
+
+The following enhancement was added: 
+
+- The `--wait-for-output` and the `--wait-for-active` options were added. You can append these options to a `zowe zos-jobs submit` command to either wait for the job to be active, or wait for the job to complete and enter OUTPUT status. If you do not specify `--vasc`, you can use these options to check job return codes without issuing `zowe zos-jobs view job-status-by-jobid <jobid>`.
+
 ### What's new in the Visual Studio Code (VSC) Extension for Zowe 
 
-The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension, 
+The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension.
 
 You can [download the latest version](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) from the VSC Marketplace.
 

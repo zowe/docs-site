@@ -146,7 +146,7 @@ The following sample jobs that you might use are included in the package and ava
 - IZUTSSEC
 - IZUWFSEC
 
-[**Download sample jobs**](../zosmf_lite_samples.zip)
+[**Download sample jobs**](https://docs.zowe.org/stable/zosmf_lite_samples.zip)
 
 Check out the video for a demo of the process:
 
