@@ -420,7 +420,7 @@ To manually install the Cross Memory Server, take the following steps:
 
 1. Add PPT entries to the system PARMLIB:
 
-    a. The Cross Memory Server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, you must add PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB. To add PPT entries, you can issue the following commands:
+    a. The Cross Memory Server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
 
     ```
     PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
