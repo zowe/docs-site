@@ -92,8 +92,8 @@ The following error message codes may appear on logs or API responses. Use the f
   Refer to the specific message to identify the exact problem.
   possible causes can include:
   - Incorrect security algorithm
-  - Keystore invalid or corrupted
-  - Certificate invalid or corrupted
+  - The keystore is invalid or corrupted
+  - The certificate is invalid or corrupted
 
 ### ZWEAM500W
 
@@ -361,7 +361,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Please refer to the specific message to troubleshoot.
+  Refer to the specific message to troubleshoot.
 
 ### ZWEAS101E
 
@@ -373,7 +373,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use the correct HTTP request method.
+  Use the correct HTTP request method that is supported for the URL.
 
 ### ZWEAS102E
 
@@ -397,7 +397,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Check if both the service and Gateway are correctly registered in the Discovery service. Allow some time after the services are discovered for the information to propagate to individual services.
+  Check that both the service and Gateway are correctly registered in the Discovery service. Allow some time after the services are discovered for the information to propagate to individual services.
 
 ### ZWEAS104E
 
@@ -457,7 +457,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Plrovide a valid token.
+  Provide a valid token.
 
 ### ZWEAS131E
 
