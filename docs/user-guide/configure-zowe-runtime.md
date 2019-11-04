@@ -381,15 +381,21 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 ## The Zowe Cross Memory Server
 
-The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. To operate, the Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not require the server.
+The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. The Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not.
 
-The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. To configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
+### Overview
+
+The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server occupies the master address space and it starts, controls, and delegates work to the auxiliary address spaces. You do not need to start the auxiliary address spaces manually.
+
+An example use case would be a system service that requires supervisor state but can't run in cross memory mode. The service could run in an AUX address space and be invoked by the Cross Memory Server, which would act as a proxy for unauthorized users of that system service. 
+
+To install and configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
 - Manually
 - Using the script
 
 Before you choose a method, read the documentation below. The manual configuration requires familiarity with z/OS. Running the script requires the ID of the user to have certain authorities and priviledges.
 
-Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
+Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization.
 
 ### Creating the Cross Memory Server directory
 
