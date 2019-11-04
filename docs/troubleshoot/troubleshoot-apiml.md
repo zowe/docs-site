@@ -15,18 +15,15 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Locate the following shell script files in the `<Zowe install directory>/api-mediation/scripts` directory:
+1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
 
-    - ```api-mediation-start-catalog.sh```
-    - ```api-mediation-start-discovery.sh```
-    - ```api-mediation-start-gateway.sh```
+2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
 
-2. Open a file, for which you want to enable the debug mode.
+3. Find the line that contains the `spring.profiles.include` parameter and change its value to `debug`:
 
-3. Find the line which contains the `LOG_LEVEL=` parameter and set the value to `debug`:
-    ```
-    LOG_LEVEL=debug
-    ```
+   ```
+    -Dspring.profiles.include=debug \
+   ```
 
 4. Restart Zowe&trade;.
 
@@ -41,7 +38,7 @@ its performance and create large log files that consume a large volume of disk s
 7. Restart Zowe.
 
     You have disabled the debug mode.
- ___
+
 ## Change the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
@@ -239,7 +236,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Navigate to `$ZOWE_RUNTIME/api-mediation` and run the following command:
+2. Navigate to `$ZOWE_RUNTIME/components/api-mediation` and run the following command:
     ```
     scripts/apiml_cm.sh --action trust-zosmf 
     ```
@@ -255,7 +252,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Follow these steps:**
 
-1. Set the value of the `verifyCertificatesOfServices` property to `false` in `zowe-install.yaml` to disable verification of certificates in Zowe.
+1. Set the value of the `VERIFY_CERTIFICATES` property to `false` in `$ZOWE_RUNTIME/scripts/internal/run-zowe.sh` to disable verification of certificates in Zowe.
 2. Reinstall Zowe.
 
 #### Invalid z/OSMF host name in subject alternative names
