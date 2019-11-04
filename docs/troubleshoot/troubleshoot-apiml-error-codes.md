@@ -141,7 +141,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Rrefer to the specific message to identify the exact problem.
+  Refer to the specific message to identify the exact problem.
   Possible causes include:
   - An incorrect security algorithm
   - The keystore is invalid or corrupted
