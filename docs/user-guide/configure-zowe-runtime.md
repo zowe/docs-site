@@ -385,21 +385,28 @@ The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. 
 
 ### Overview
 
-The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server occupies the master address space and it starts, controls, and delegates work to the auxiliary address spaces. You do not need to start the auxiliary address spaces manually.
+The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server uses the master address space and starts, controls, and delegates work to the auxiliary (AUX) address spaces.
 
-An example use case would be a system service that requires supervisor state but can't run in cross memory mode. The service could run in an AUX address space and be invoked by the Cross Memory Server, which would act as a proxy for unauthorized users of that system service. 
+An example use case would be a system service that requires supervisor state but cannot run in cross-memory mode. The service can run in an AUX address space and be invoked by the Cross Memory Server, which acts as a proxy for unauthorized users of the service. 
 
 To install and configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
 - Manually
-- Using the script
+- Using a script
 
-Before you choose a method, read the documentation below. The manual configuration requires familiarity with z/OS. Running the script requires the ID of the user to have certain authorities and priviledges.
+Before you choose a method, read the documentation below. Manual installation requires familiarity with z/OS. Running the script requires the ID of the user to have required authorities and priviledges.
 
-Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization.
+The server runs under the started task ZWESIS01. The auxiliary address spaces run under the started task ZWESAUX. The ZWESIS01 started task starts and stops the ZWESAUX task as needed. You do not start or stop the ZWESAUX manually.
+
+The ZWESIS01 started task runs the load library ZWESIS01, serves the ZOWESVR started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESAUX started task runs the load library ZWESAUX.
 
 ### Creating the Cross Memory Server directory
 
-A number of files used by both manual and scripted installation are included in the USS directory `xmem-server/zss`.  If this directory is not in the Zowe runtime directory, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
+A number of files used by both manual and scripted installation are included in the USS directory `xmem-server/zss`. If this directory is not in the Zowe runtime directory, follow these steps to create it and extract the `xmem-server/zss.pax` file, which places the files into it:
+
+1. Navigate to the `xmem-server` directory.
+2. To create the `zss` directory, enter the command: `mkdir zss`
+3. To navigate to the `zss` directory, enter the command: `cd zss`
+4. To extract the `zss.pax` file and place required files into the `xmem-server/zss` directory, enter the command: `pax -ppx -rf ../zss.pax`
 
 ### Manually installing the Zowe Cross Memory Server
 <!-- TODO. Entire sub-section -->
@@ -857,6 +864,7 @@ The Cross Memory server is run as a started task from the JCL in the PROCLIB mem
 ```
 /S ZWESIS01,REUSASID=YES
 ```
+The ZWESIS01 task starts and stops the ZWEAUX task as needed. Do not start the ZWEAUX manually.
 
 To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
