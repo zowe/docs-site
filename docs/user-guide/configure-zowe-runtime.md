@@ -385,7 +385,7 @@ The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. 
 
 ### Overview
 
-The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server uses the master address space and starts, controls, and delegates work to the auxiliary (AUX) address spaces.
+The Cross Memory Server has two components: an angel process server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server uses the angel process server address space and starts, controls, and delegates work to the auxiliary (AUX) address spaces.
 
 An example use case would be a system service that requires supervisor state but cannot run in cross-memory mode. The service can run in an AUX address space and be invoked by the Cross Memory Server, which acts as a proxy for unauthorized users of the service. 
 
@@ -395,9 +395,9 @@ To install and configure the Cross Memory Server, you must create or edit APF au
 
 Before you choose a method, read the documentation below. Manual installation requires familiarity with z/OS. Running the script requires the ID of the user to have required authorities and priviledges.
 
-The server runs under the started task ZWESIS01. The auxiliary address spaces run under the started task ZWESAUX. The ZWESIS01 started task starts and stops the ZWESAUX task as needed. You do not start or stop the ZWESAUX manually.
+The angel process server runs under the started task ZWESIS01. The auxiliary address spaces run under the started task ZWESAUX. The ZWESIS01 started task starts and stops the ZWESAUX task as needed. You do not start or stop the ZWESAUX manually.
 
-The ZWESIS01 started task runs the load library ZWESIS01, serves the ZOWESVR started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESAUX started task runs the load library ZWESAUX.
+The ZWESIS01 started task runs the load module ZWESIS01, serves the ZOWESVR started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESAUX started task runs the load module ZWESAUX.
 
 ### Creating the Cross Memory Server directory
 
@@ -860,11 +860,11 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
 
-The Cross Memory server is run as a started task from the JCL in the PROCLIB members ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+The Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
 ```
 /S ZWESIS01,REUSASID=YES
 ```
-The ZWESIS01 task starts and stops the ZWEAUX task as needed. Do not start the ZWEAUX manually.
+The ZWESIS01 task starts and stops the ZWEAUX task as needed. Do not start the ZWEAUX task manually.
 
 To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
