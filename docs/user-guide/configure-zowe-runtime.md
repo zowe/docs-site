@@ -79,6 +79,10 @@ You can create, edit, or delete the `.zowe_profile` file (as needed) before each
 
 The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
 
+#### Directory that stores configuration
+
+`install:userDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-user-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-user-dir` directory. 
+
 #### Address space name
 
 `install:prefix` defines a prefix for Zowe address space STC name associated with USS processes. With this, the individual address spaces can be distinguished from each other in RMF records or SDSF views.  
@@ -98,7 +102,7 @@ where:
    - **AD** - API ML Discovery Service
    - **AC** - API ML Catalog
    - **EJ** - Explorer API Jobs
-   - **ED** - Explorer API Data Sets
+   - **EF** - Explorer API Data Sets
    - **UD** - Explorer UI Data Sets
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
@@ -328,9 +332,9 @@ to replace the `root_dir` with the location of the Zowe runtime directory that c
 
 The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  This only needs to be done once per z/OS system and would be typically done the first time you configure a Zowe runtime.  If the Zowe runtime is uninstalled or a new Zowe is installed and configured, you do not need to re-run the step to associate the ZOWESVR STC with the Zowe user ID of IZUSVR.  
 
-To configure ZOWESVR to run as a STC under the user ID of IZUSVR, there is a convenience script `/scripts/zowe-config-stc.sh` that is provided in the runtime folder.  
+To configure ZOWESVR to run as a STC under the user ID of IZUSVR, you can run the convenience script `scripts/configure/zowe-config-stc.sh` in the runtime folder.  
 
-Alternatively, if you do not wish to run this script, the steps below describe how to manually perform the steps to configure ZOWESVR to run under the IZUSVR user ID.  
+Alternatively, if you do not wish to run this script, you can manually configure ZOWESVR to run under the IZUSVR user ID by taking the following steps.
 
 **Note:** You must replace `ZOWESVR` in the commands below with the name of your PROCLIB member that you specified as `memberName=ZOWESVR` in the `scripts/configure/zowe-install.yaml` file.
 
