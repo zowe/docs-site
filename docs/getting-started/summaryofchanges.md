@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.6.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
 - [Version 1.6.0 (October 2019)](#version-160-october-2019)
 - [Version 1.5.0 (September 2019)](#version-150-september-2019)
 - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
@@ -13,6 +14,42 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.7.0 (November 2019)
+
+<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+#### API Mediation Layer
+- 
+- 
+
+#### Zowe App Server
+- 
+- 
+
+#### Zowe CLI
+- 
+- 
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+- 
+- 
+
+#### Zowe App Server
+- 
+- 
+
+#### Zowe CLI
+- 
+- 
   
 ## Version 1.6.0 (October 2019)
 
