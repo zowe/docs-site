@@ -4,8 +4,8 @@
 * [Zowe API Mediation Layer](#zowe-api-mediation-layer-dependency-attributions)
 * [Zowe Application Framework](#zowe-application-framework-dependency-attributions)
 * [Zowe CLI](#zowe-cli-dependency-attributions)
-* [IBM&reg CICS&reg Plug-in for Zowe CLI](#ibm&reg-cics&reg-plug-in-for-zowe-cli-dependency-attributions)
-* [IBM&reg Db2&reg Plug-in for Zowe CLI](#ibm&reg-db2&reg-plug-in-for-zowe-cli-dependency-attributions)
+* [IBM® CICS® Plug-in for Zowe CLI](#ibm®-cics®-plug-in-for-zowe-cli-dependency-attributions)
+* [IBM® Db2® Plug-in for Zowe CLI](#ibm®-db2®-plug-in-for-zowe-cli-dependency-attributions)
 * [Zowe Desktop Data Sets UI Plugin](#zowe-desktop-data-sets-ui-plugin-dependency-attributions)
 * [Zowe Desktop Eclipse Orion-based React Editor](#zowe-desktop-eclipse-orion-based-react-editor-dependency-attributions)
 * [Zowe Desktop JES UI Plugin](#zowe-desktop-jes-ui-plugin-dependency-attributions)
@@ -8516,1379 +8516,1379 @@
 | Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### IBM&reg CICS&reg Plug-in for Zowe CLI Dependency Attributions 
+### IBM® CICS® Plug-in for Zowe CLI Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/core |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/core](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/generator |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/generator](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/helper-function-name |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-function-name](https://www.npmjs.com/package/@babel/helper-function-name) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/helper-get-function-arity |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-get-function-arity](https://www.npmjs.com/package/@babel/helper-get-function-arity) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/helper-plugin-utils |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-plugin-utils](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/helper-split-export-declaration |  v7.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-split-export-declaration](https://www.npmjs.com/package/@babel/helper-split-export-declaration) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/helpers |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helpers](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/highlight |  v7.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/highlight](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/parser |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/parser](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/plugin-syntax-object-rest-spread |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/plugin-syntax-object-rest-spread](https://www.npmjs.com/package/@babel/plugin-syntax-object-rest-spread) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/template |  v7.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/template](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/traverse |  v7.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/traverse](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @babel/types |  v7.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/types](https://babeljs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @brightside/imperative |  v2.7.4 | EPL-2.0 | [@brightside/imperative](https://www.npmjs.com/package/@brightside/imperative) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @cnakazawa/watch |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@cnakazawa/watch](https://www.github.com/mikeal/watch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/console |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/console](https://www.npmjs.com/package/@jest/console) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/core |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/core](https://jestjs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/environment |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/environment](https://www.npmjs.com/package/@jest/environment) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/fake-timers |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/fake-timers](https://www.npmjs.com/package/@jest/fake-timers) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/reporters |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/reporters](https://jestjs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/source-map |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/source-map](https://www.npmjs.com/package/@jest/source-map) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/test-result |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/test-result](https://www.npmjs.com/package/@jest/test-result) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/test-sequencer |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/test-sequencer](https://www.npmjs.com/package/@jest/test-sequencer) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/transform |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/transform](https://www.npmjs.com/package/@jest/transform) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @jest/types |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/types](https://www.npmjs.com/package/@jest/types) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__core |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__core](https://www.npmjs.com/package/@types/babel__core) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__generator |  v7.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__template |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/events |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/events](https://www.npmjs.com/package/@types/events) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/fs-extra |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/glob |  v7.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/handlebars |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/handlebars](https://www.npmjs.com/package/@types/handlebars) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/highlight.js |  v9.12.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/highlight.js](https://www.npmjs.com/package/@types/highlight.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/istanbul-lib-coverage |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/istanbul-lib-report |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-report](https://www.npmjs.com/package/@types/istanbul-lib-report) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/jest |  v24.0.19 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/jest-diff |  v20.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest-diff](https://www.npmjs.com/package/@types/jest-diff) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.144 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/marked |  v0.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/marked](https://www.npmjs.com/package/@types/marked) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/node |  v12.11.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/node |  v8.10.56 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/shelljs |  v0.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/shelljs](https://www.npmjs.com/package/@types/shelljs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs-parser |  v13.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @typescript-eslint/typescript-estree |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | abab |  v2.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn |  v5.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn |  v6.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ajv |  v6.10.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-parser |  v3.2.9 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-regex |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | app-module-path |  v2.2.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [app-module-path](https://www.github.com/patrick-steele-idem/app-module-path-node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | aproba |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [aproba](https://www.github.com/iarna/aproba) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | are-we-there-yet |  v1.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [are-we-there-yet](https://www.github.com/iarna/are-we-there-yet) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | arr-diff |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | arr-flatten |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-flatten](https://www.github.com/jonschlinkert/arr-flatten) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | arr-union |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-union](https://www.github.com/jonschlinkert/arr-union) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | array-equal |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [array-equal](http://jongleberry.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | array-unique |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | arrify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [arrify](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](https://joyent.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | assert-plus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assert-plus](https://www.npmjs.com/package/assert-plus) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | assign-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assign-symbols](https://www.github.com/jonschlinkert/assign-symbols) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ast-module-types |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [ast-module-types](https://www.github.com/mrjoelkemp/node-ast-module-types) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | astral-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [astral-regex](https://www.github.com/kevva) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | async-limiter |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.npmjs.com/package/async-limiter) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](http://www.futurealoof.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | aws4 |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [aws4](https://www.github.com/mhart) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | babel-jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-jest](https://www.npmjs.com/package/babel-jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | babel-plugin-istanbul |  v5.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [babel-plugin-istanbul](https://www.github.com/istanbuljs/babel-plugin-istanbul#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | babel-plugin-jest-hoist |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-jest-hoist](https://www.npmjs.com/package/babel-plugin-jest-hoist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | babel-preset-jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-jest](https://www.npmjs.com/package/babel-preset-jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | balanced-match |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [balanced-match](https://www.github.com/juliangruber/balanced-match) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | base |  v0.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [base](https://www.github.com/node-base/base) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | bcrypt-pbkdf |  v1.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | bootstrap |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [bootstrap](https://getbootstrap.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | brace-expansion |  v1.1.11 | [MIT](http://opensource.org/licenses/mit-license) | [brace-expansion](https://www.github.com/juliangruber/brace-expansion) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | braces |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/micromatch/braces) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | browser-process-hrtime |  v0.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [browser-process-hrtime](https://www.npmjs.com/package/browser-process-hrtime) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | browser-resolve |  v1.11.3 | [MIT](http://opensource.org/licenses/mit-license) | [browser-resolve](https://www.npmjs.com/package/browser-resolve) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | bs-logger |  v0.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [bs-logger](https://www.npmjs.com/package/bs-logger) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | bser |  v2.1.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [bser](https://facebook.github.io/watchman/docs/bser.html) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | buffer-from |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-from](https://www.npmjs.com/package/buffer-from) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | builtin-modules |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [builtin-modules](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cache-base |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cache-base](https://www.github.com/jonschlinkert/cache-base) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | callsites |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [callsites](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | capture-exit |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | chart.js |  v2.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [chart.js](https://www.chartjs.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | chartjs-color |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color](https://www.npmjs.com/package/chartjs-color) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | chartjs-color-string |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color-string](https://www.npmjs.com/package/chartjs-color-string) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ci-info |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | circular-json |  v0.5.9 | [MIT](http://opensource.org/licenses/mit-license) | [circular-json](https://www.github.com/WebReflection/circular-json) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cli-cursor |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cli-spinners |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | clone |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [clone](http://paul.vorba.ch/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | co |  v4.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [co](https://www.npmjs.com/package/co) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | code-point-at |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [code-point-at](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | collection-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [collection-visit](https://www.github.com/jonschlinkert/collection-visit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | color-convert |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | color-convert |  v1.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | color-name |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/dfcreative/color-name) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | color-name |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/colorjs/color-name) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | colors |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [colors](https://www.github.com/Marak/colors.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | combined-stream |  v1.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [combined-stream](https://www.github.com/felixge/node-combined-stream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | commander |  v2.20.3 | [MIT](http://opensource.org/licenses/mit-license) | [commander](https://www.npmjs.com/package/commander) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | commondir |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [commondir](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | component-emitter |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [component-emitter](https://www.npmjs.com/package/component-emitter) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | concat-map |  v0.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [concat-map](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | console-control-strings |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [console-control-strings](http://re-becca.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | convert-source-map |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [convert-source-map](https://www.github.com/thlorenz/convert-source-map) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cross-spawn |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](http://indigounited.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cross-spawn |  v6.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](https://www.github.com/moxystudio/node-cross-spawn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cssom |  v0.3.8 | [MIT](http://opensource.org/licenses/mit-license) | [cssom](https://www.npmjs.com/package/cssom) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cssstyle |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssstyle](https://www.github.com/jsakas/CSSStyleDeclaration) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | dashdash |  v1.14.1 | [MIT](http://opensource.org/licenses/mit-license) | [dashdash](http://trentm.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | data-urls |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [data-urls](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | dataobject-parser |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [dataobject-parser](https://www.github.com/Gigzolo/dataobject-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | date-format |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [date-format](https://www.npmjs.com/package/date-format) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | dateformat |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dateformat](https://www.github.com/felixge/node-dateformat) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | debug |  v2.6.9 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | debug |  v3.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | debug |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | decamelize |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decamelize](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | decode-uri-component |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decode-uri-component](https://www.github.com/SamVerschueren) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | deep-extend |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [deep-extend](https://www.github.com/unclechu/node-deep-extend) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | deep-is |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [deep-is](http://thlorenz.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | deepmerge |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [deepmerge](https://www.github.com/KyleAMathews/deepmerge) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | defaults |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [defaults](https://www.npmjs.com/package/defaults) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | define-properties |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [define-properties](https://www.npmjs.com/package/define-properties) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | define-property |  v0.2.5 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | define-property |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | define-property |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | delayed-stream |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delayed-stream](https://www.github.com/felixge/node-delayed-stream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | delegates |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delegates](https://www.npmjs.com/package/delegates) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | dependency-tree |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dependency-tree](https://www.github.com/mrjoelkemp/node-dependency-tree) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detect-libc |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detect-libc](https://www.npmjs.com/package/detect-libc) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detect-newline |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-newline](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-amd |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-amd](https://www.github.com/mrjoelkemp/node-detective-amd) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-cjs |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-cjs](https://www.github.com/mrjoelkemp/node-detective-cjs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-es6 |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-es6](https://www.github.com/mrjoelkemp/node-detective-es6) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-less |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [detective-less](https://www.github.com/Mike-Dax/node-detective-less) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-postcss |  v3.0.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detective-postcss](https://www.npmjs.com/package/detective-postcss) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-sass |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-sass](https://www.github.com/mrjoelkemp/node-detective-sass) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-scss |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-scss](https://www.github.com/dependents/node-detective-scss) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-stylus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-stylus](https://www.github.com/mrjoelkemp/node-detective-stylus) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | detective-typescript |  v5.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-typescript](https://www.github.com/pahen/detective-typescript) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | diff |  v3.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | diff |  v4.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | diff-sequences |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [diff-sequences](https://www.npmjs.com/package/diff-sequences) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | diff2html |  v2.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [diff2html](https://diff2html.xyz/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | domexception |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [domexception](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | enhanced-resolve |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | es-abstract |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | es-to-primitive |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | escodegen |  v1.12.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [escodegen](https://www.github.com/estools/escodegen) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | esprima |  v3.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | esprima |  v4.0.1 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | estraverse |  v4.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [estraverse](https://www.github.com/estools/estraverse) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | esutils |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esutils](https://www.github.com/estools/esutils) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | exec-sh |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [exec-sh](https://www.npmjs.com/package/exec-sh) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | execa |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | execa |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | exit |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [exit](https://www.github.com/cowboy/node-exit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | expand-brackets |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | expect |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [expect](https://www.npmjs.com/package/expect) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extend |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend](http://www.justmoon.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extend-shallow |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extend-shallow |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extglob |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/micromatch/extglob) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extsprintf |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | extsprintf |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fast-deep-equal |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fast-deep-equal](https://www.github.com/epoberezkin/fast-deep-equal#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fast-json-stable-stringify |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fast-json-stable-stringify](https://www.github.com/epoberezkin/fast-json-stable-stringify) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fast-levenshtein |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [fast-levenshtein](http://www.hiddentao.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fb-watchman |  v2.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [fb-watchman](https://facebook.github.io/watchman/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | file-exists-dazinatorfork |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [file-exists-dazinatorfork](https://www.github.com/dazinator/file-exists) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | filing-cabinet |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [filing-cabinet](https://www.github.com/mrjoelkemp/node-filing-cabinet) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | find |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [find](https://www.github.com/yuanchuan/find#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | find-up |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | find-up |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | flatten |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [flatten](http://jesusabdullah.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | for-in |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [for-in](https://www.github.com/jonschlinkert/for-in) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | forever-agent |  v0.6.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [forever-agent](http://www.futurealoof.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | form-data |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [form-data](http://debuggable.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fragment-cache |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [fragment-cache](https://www.github.com/jonschlinkert/fragment-cache) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fs-extra |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fs-extra |  v7.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fs-extra |  v8.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fs-minipass |  v1.2.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-minipass](https://www.github.com/npm/fs-minipass#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fs.realpath |  v1.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs.realpath](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | fsevents |  v1.2.9 | unknown | fsevents |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | function-bind |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [function-bind](https://www.github.com/Raynos/function-bind) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | gauge |  v2.7.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [gauge](https://www.github.com/iarna/gauge) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-amd-module-type |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-amd-module-type](https://www.github.com/mrjoelkemp/node-get-amd-module-type) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-caller-file |  v1.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-caller-file |  v2.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-own-enumerable-property-symbols |  v3.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-own-enumerable-property-symbols](https://www.github.com/mightyiam/get-own-enumerable-property-symbols#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-stream |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-stream |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | get-value |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [get-value](https://www.github.com/jonschlinkert/get-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | getpass |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [getpass](https://www.npmjs.com/package/getpass) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | glob |  v7.1.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | glob |  v7.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | globals |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [globals](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | gonzales-pe |  v4.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [gonzales-pe](https://www.github.com/tonyganch/gonzales-pe) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | graceful-fs |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [graceful-fs](https://www.npmjs.com/package/graceful-fs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | graphviz |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [graphviz](http://algorithmique.net/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | growly |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [growly](http://ibrahimalrajhi.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | handlebars |  v4.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [handlebars](http://www.handlebarsjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | har-schema |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [har-schema](https://www.github.com/ahmadnassri/har-schema) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | har-validator |  v5.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [har-validator](https://www.github.com/ahmadnassri/node-har-validator) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [has](https://www.github.com/tarruda/has) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-flag |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-symbols](http://ljharb.codes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-unicode |  v2.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [has-unicode](https://www.github.com/iarna/has-unicode) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-value |  v0.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-values |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | has-values |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | highlight.js |  v9.15.10 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | hogan.js |  v3.0.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [hogan.js](https://www.github.com/hogan.js/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | holderjs |  v2.9.6 | [MIT](http://opensource.org/licenses/mit-license) | [holderjs](http://holderjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | homedir-polyfill |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [homedir-polyfill](https://www.github.com/doowb/homedir-polyfill) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | hosted-git-info |  v2.8.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [hosted-git-info](https://www.github.com/npm/hosted-git-info) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | html-encoding-sniffer |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [html-encoding-sniffer](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | http-signature |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [http-signature](https://www.github.com/joyent/node-http-signature/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | iconv-lite |  v0.4.24 | [MIT](http://opensource.org/licenses/mit-license) | [iconv-lite](https://www.github.com/ashtuchkin/iconv-lite) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ignore-walk |  v3.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ignore-walk](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | import-local |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [import-local](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | imurmurhash |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [imurmurhash](https://www.github.com/jensyt/imurmurhash-js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | indexes-of |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [indexes-of](https://www.github.com/dominictarr/indexes-of) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | inflight |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inflight](https://www.github.com/isaacs/inflight) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | inherits |  v2.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inherits](https://www.npmjs.com/package/inherits) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ini |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ini](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | interpret |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [interpret](http://gulpjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | invariant |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [invariant](https://www.npmjs.com/package/invariant) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | invert-kv |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](http://https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-accessor-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-accessor-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-arrayish |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-arrayish](https://www.github.com/qix-) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-buffer |  v1.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-buffer](http://feross.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-callable |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-callable](http://ljharb.codes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-ci |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-ci](https://www.github.com/watson/is-ci) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-data-descriptor |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-data-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-date-object |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-date-object](https://www.npmjs.com/package/is-date-object) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-descriptor |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-extendable |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-extendable |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-extglob |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extglob](https://www.github.com/jonschlinkert/is-extglob) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-fullwidth-code-point |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-fullwidth-code-point |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-generator-fn |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-generator-fn](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-glob |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-glob](https://www.github.com/micromatch/is-glob) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-number |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-obj |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-obj](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-plain-object |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-plain-object](https://www.github.com/jonschlinkert/is-plain-object) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-regex |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-regex](https://www.github.com/ljharb/is-regex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-regexp |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-regexp](http://https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-relative-path |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-relative-path](https://www.github.com/mrjoelkemp/is-relative-path) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-stream |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-stream](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-symbol |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-symbol](https://www.npmjs.com/package/is-symbol) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-typedarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-typedarray](https://www.github.com/hughsk/is-typedarray) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-url |  v1.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-url](https://www.npmjs.com/package/is-url) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-windows |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-windows](https://www.github.com/jonschlinkert/is-windows) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | is-wsl |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-wsl](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | isarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [isarray](https://www.github.com/juliangruber/isarray) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | isexe |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [isexe](https://www.github.com/isaacs/isexe#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | isobject |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | isobject |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | isstream |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [isstream](https://www.github.com/rvagg/isstream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | istanbul-lib-coverage |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-coverage](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | istanbul-lib-instrument |  v3.3.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-instrument](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | istanbul-lib-report |  v2.0.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | istanbul-lib-source-maps |  v3.0.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | istanbul-reports |  v2.2.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest](https://jestjs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-changed-files |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-changed-files](https://www.npmjs.com/package/jest-changed-files) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-cli |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-cli](https://jestjs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-config |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://mattphillips.io) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-environment-node |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-get-type |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-get-type](https://www.npmjs.com/package/jest-get-type) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-haste-map |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-haste-map](https://www.npmjs.com/package/jest-haste-map) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-html-reporter |  v2.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [jest-html-reporter](https://www.github.com/Hargne/jest-html-reporter#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-jasmine2 |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-jasmine2](https://www.npmjs.com/package/jest-jasmine2) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-junit |  v3.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [jest-junit](https://www.npmjs.com/package/jest-junit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-leak-detector |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-leak-detector](https://www.npmjs.com/package/jest-leak-detector) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-matcher-utils |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-matcher-utils](https://www.npmjs.com/package/jest-matcher-utils) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-message-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-message-util](https://www.npmjs.com/package/jest-message-util) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-mock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-mock](https://www.npmjs.com/package/jest-mock) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-pnp-resolver |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [jest-pnp-resolver](https://www.github.com/arcanis/jest-pnp-resolver) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-regex-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-regex-util](https://www.npmjs.com/package/jest-regex-util) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-resolve |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve](https://www.npmjs.com/package/jest-resolve) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-resolve-dependencies |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve-dependencies](https://www.npmjs.com/package/jest-resolve-dependencies) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-runner |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runner](https://www.npmjs.com/package/jest-runner) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-runtime |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runtime](https://www.npmjs.com/package/jest-runtime) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-serializer |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-serializer](https://www.npmjs.com/package/jest-serializer) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-snapshot |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-snapshot](https://www.npmjs.com/package/jest-snapshot) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-stare |  v1.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-stare](https://www.npmjs.com/package/jest-stare) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-util](https://www.npmjs.com/package/jest-util) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-validate |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-validate](https://www.npmjs.com/package/jest-validate) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-watcher |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-watcher](https://jestjs.io/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jest-worker |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jquery |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jquery](https://jquery.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | js-yaml |  v3.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsbn |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsbn](https://www.npmjs.com/package/jsbn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsdom |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsdom](https://www.npmjs.com/package/jsdom) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsesc |  v2.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [jsesc](https://mths.be/jsesc) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | json-parse-better-errors |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [json-parse-better-errors](https://www.npmjs.com/package/json-parse-better-errors) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | json-schema |  v0.2.3 | BSD* | [json-schema](https://www.npmjs.com/package/json-schema) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | json-schema-traverse |  v0.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-schema-traverse](https://www.github.com/epoberezkin/json-schema-traverse#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | json-stringify-safe |  v5.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [json-stringify-safe](https://www.github.com/isaacs/json-stringify-safe) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | json5 |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [json5](http://json5.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsonfile |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsonfile](https://www.npmjs.com/package/jsonfile) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsonschema |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsonschema](https://www.npmjs.com/package/jsonschema) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | jsprim |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsprim](https://www.npmjs.com/package/jsprim) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | kind-of |  v3.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | kind-of |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | kind-of |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | kind-of |  v6.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | kleur |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [kleur](https://lukeed.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lcid |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | left-pad |  v1.3.0 | WTFPL | [left-pad](https://www.npmjs.com/package/left-pad) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | leven |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [leven](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | levenshtein |  v1.0.5 | Public Domain | [levenshtein](http://gf3.ca) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | levn |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [levn](https://www.github.com/gkz/levn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | load-json-file |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | load-json-file |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | locate-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | locate-path |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lodash |  v4.17.15 | [MIT](http://opensource.org/licenses/mit-license) | [lodash](https://lodash.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash-deep](https://www.github.com/marklagendijk/lodash-deep) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lodash.memoize |  v4.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.memoize](https://lodash.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lodash.sortby |  v4.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.sortby](https://lodash.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lodash.unescape |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.unescape](https://lodash.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | log-symbols |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [log-symbols](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | log4js |  v3.0.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | lru-cache |  v4.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [lru-cache](https://www.npmjs.com/package/lru-cache) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | madge |  v3.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | make-error |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | makeerror |  v1.0.11 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [makeerror](https://www.npmjs.com/package/makeerror) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | map-cache |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [map-cache](https://www.github.com/jonschlinkert/map-cache) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | map-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [map-visit](https://www.github.com/jonschlinkert/map-visit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | marked |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | marked |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mem |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | memory-fs |  v0.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [memory-fs](https://www.github.com/webpack/memory-fs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | merge |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge](https://www.github.com/yeikos/js.merge) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | merge-stream |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [merge-stream](https://www.npmjs.com/package/merge-stream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | micromatch |  v3.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mime-db |  v1.40.0 | [MIT](http://opensource.org/licenses/mit-license) | [mime-db](https://www.npmjs.com/package/mime-db) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mime-types |  v2.1.24 | [MIT](http://opensource.org/licenses/mit-license) | [mime-types](https://www.npmjs.com/package/mime-types) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mimic-fn |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minimatch |  v3.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minimatch](http://blog.izs.me) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minimist |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minimist |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minimist |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minimist |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minipass |  v2.9.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minipass](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | minizlib |  v1.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [minizlib](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mixin-deep |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [mixin-deep](https://www.github.com/jonschlinkert/mixin-deep) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mkdirp |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mkdirp |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | module-definition |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-definition](https://www.github.com/mrjoelkemp/module-definition) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | moment |  v2.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | mustache |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nan |  v2.14.0 | [MIT](http://opensource.org/licenses/mit-license) | [nan](https://www.npmjs.com/package/nan) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nanomatch |  v1.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [nanomatch](https://www.github.com/micromatch/nanomatch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | natural-compare |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [natural-compare](https://www.github.com/litejs/natural-compare-lite) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | needle |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [needle](https://www.npmjs.com/package/needle) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | neo-async |  v2.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [neo-async](https://www.github.com/suguru03/neo-async) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nice-try |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [nice-try](https://www.github.com/electerious/nice-try) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | node-int64 |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-int64](https://www.npmjs.com/package/node-int64) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | node-modules-regexp |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-modules-regexp](https://www.github.com/jamestalmage) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | node-notifier |  v5.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [node-notifier](https://www.github.com/mikaelbr/node-notifier#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | node-pre-gyp |  v0.12.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [node-pre-gyp](https://www.npmjs.com/package/node-pre-gyp) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | node-source-walk |  v4.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-source-walk](https://www.github.com/mrjoelkemp/node-source-walk) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nopt |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [nopt](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nopt |  v4.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [nopt](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | normalize-package-data |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [normalize-package-data](https://www.npmjs.com/package/normalize-package-data) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | normalize-path |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [normalize-path](https://www.github.com/jonschlinkert/normalize-path) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | npm-bundled |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-bundled](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | npm-packlist |  v1.4.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-packlist](https://www.npmjs.com/package/npm-packlist) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | npm-run-path |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [npm-run-path](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | npmlog |  v4.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npmlog](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | number-is-nan |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [number-is-nan](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | nwsapi |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [nwsapi](http://javascript.nwbox.com/nwsapi/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | oauth-sign |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [oauth-sign](http://www.futurealoof.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object-inspect |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/substack/object-inspect) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object.getownpropertydescriptors |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [object.getownpropertydescriptors](https://www.npmjs.com/package/object.getownpropertydescriptors) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | object.pick |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.pick](https://www.github.com/jonschlinkert/object.pick) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | once |  v1.4.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [once](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | onetime |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [onetime](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | opener |  v1.5.1 | (WTFPL OR MIT) | [opener](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | optimist |  v0.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [optimist](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | optionator |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [optionator](https://www.github.com/gkz/optionator) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ora |  v3.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [ora](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | os-homedir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-homedir](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | os-locale |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | os-tmpdir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-tmpdir](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | osenv |  v0.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [osenv](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-each-series |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-each-series](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-finally |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-finally](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-limit |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-limit |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-locate |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-locate |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-reduce |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-reduce](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-try |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | p-try |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | parse-json |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | parse-json |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | parse-ms |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-ms](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | parse-passwd |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-passwd](https://www.github.com/doowb/parse-passwd) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | parse5 |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse5](https://www.github.com/inikulin/parse5) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pascalcase |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [pascalcase](https://www.github.com/jonschlinkert/pascalcase) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-exists |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-is-absolute |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-is-absolute](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-key |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-key](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-parse |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [path-parse](https://www.github.com/jbgutierrez/path-parse#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-type |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | path-type |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | performance-now |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [performance-now](https://www.github.com/braveg1rl/performance-now) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pify |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pify |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pify |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pirates |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pirates](https://www.github.com/ariporad/pirates#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pkg-dir |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-dir](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pkg-up |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-up](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pluralize |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pluralize](http://blakeembrey.me) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pn |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pn](https://www.npmjs.com/package/pn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | popper.js |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [popper.js](https://popper.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | posix-character-classes |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [posix-character-classes](https://www.github.com/jonschlinkert/posix-character-classes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | postcss |  v7.0.20 | [MIT](http://opensource.org/licenses/mit-license) | [postcss](https://postcss.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | postcss-values-parser |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-values-parser](https://shellscape.org) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | precinct |  v6.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [precinct](https://www.github.com/mrjoelkemp/node-precinct) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | prelude-ls |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [prelude-ls](http://preludels.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pretty-format |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-format](https://www.npmjs.com/package/pretty-format) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pretty-ms |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-ms](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | prettyjson |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prettyjson](http://rafeca.com/prettyjson) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | process-nextick-args |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | progress |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | progress |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | prompts |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prompts](https://terkel.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | prr |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [prr](https://www.github.com/rvagg/prr) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pseudomap |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [pseudomap](https://www.github.com/isaacs/pseudomap#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | psl |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [psl](https://lupomontero.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | pump |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | punycode |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | qs |  v6.5.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rc |  v1.2.8 | (BSD-2-Clause OR MIT OR Apache-2.0) | [rc](https://) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | react-is |  v16.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [react-is](https://reactjs.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | read-pkg |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | read-pkg |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | read-pkg-up |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | read-pkg-up |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | readable-stream |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | realpath-native |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [realpath-native](https://www.npmjs.com/package/realpath-native) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rechoir |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rechoir](https://www.github.com/tkellen/node-rechoir) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | regex-not |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [regex-not](https://www.github.com/jonschlinkert/regex-not) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | remove-trailing-separator |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [remove-trailing-separator](https://www.github.com/darsain/remove-trailing-separator#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | repeat-element |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-element](https://www.github.com/jonschlinkert/repeat-element) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | repeat-string |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-string](https://www.github.com/jonschlinkert/repeat-string) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | request |  v2.88.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [request](https://www.npmjs.com/package/request) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | request-promise-core |  v1.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-core](https://www.github.com/request/promise-core#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | request-promise-native |  v1.0.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-native](https://www.github.com/request/request-promise-native#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | require-directory |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [require-directory](https://www.github.com/troygoode/node-require-directory/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | require-main-filename |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | require-main-filename |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | requirejs |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [requirejs](https://www.github.com/jrburke/r.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | requirejs-config-file |  v3.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [requirejs-config-file](https://www.npmjs.com/package/requirejs-config-file) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve |  v1.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve |  v1.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve-cwd |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-cwd](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve-dependency-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-dependency-path](https://www.github.com/mrjoelkemp/node-resolve-dependency-path) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve-from |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-from](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | resolve-url |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-url](https://www.npmjs.com/package/resolve-url) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | restore-cursor |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [restore-cursor](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ret |  v0.1.15 | [MIT](http://opensource.org/licenses/mit-license) | [ret](https://www.github.com/fent) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rfdc |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [rfdc](https://www.github.com/davidmarkclements/rfdc#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rimraf |  v2.6.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rimraf |  v2.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | rsvp |  v4.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [rsvp](https://www.github.com/tildeio/rsvp.js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | safe-buffer |  v5.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | safe-buffer |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | safe-regex |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-regex](https://www.github.com/substack/safe-regex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | safer-buffer |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safer-buffer](https://www.github.com/ChALkeR) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sane |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [sane](https://www.github.com/amasad/sane) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sass-lookup |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [sass-lookup](https://www.github.com/mrjoelkemp/node-sass-lookup) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sax |  v1.2.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [sax](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | semver |  v5.7.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | semver |  v5.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | semver |  v6.3.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | set-blocking |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [set-blocking](https://www.github.com/yargs/set-blocking#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | set-value |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [set-value](https://www.github.com/jonschlinkert/set-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shaven |  v0.8.1 | [MIT](http://opensource.org/licenses/mit-license) | [shaven](http://adriansieber.com/shaven) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shebang-command |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-command](https://www.github.com/kevva) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shebang-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shebang-regex |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shelljs |  v0.8.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [shelljs](https://www.github.com/shelljs/shelljs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | shellwords |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [shellwords](https://www.github.com/jimmycuadra/shellwords) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | signal-exit |  v3.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [signal-exit](https://www.github.com/tapjs/signal-exit) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sisteransi |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [sisteransi](https://terkel.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | slash |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [slash](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | snapdragon |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon](https://www.github.com/jonschlinkert/snapdragon) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | snapdragon-node |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-node](https://www.github.com/jonschlinkert/snapdragon-node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | snapdragon-util |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-util](https://www.github.com/jonschlinkert/snapdragon-util) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map |  v0.5.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map |  v0.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map-resolve |  v0.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-resolve](https://www.npmjs.com/package/source-map-resolve) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map-support |  v0.4.18 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map-support |  v0.5.13 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | source-map-url |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-url](https://www.npmjs.com/package/source-map-url) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | spdx-correct |  v3.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [spdx-correct](https://kemitchell.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | spdx-exceptions |  v2.2.0 | CC-BY-3.0 | [spdx-exceptions](https://www.npmjs.com/package/spdx-exceptions) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | spdx-expression-parse |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [spdx-expression-parse](http://kemitchell.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | spdx-license-ids |  v3.0.5 | CC0-1.0 | [spdx-license-ids](https://www.github.com/shinnn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | split-string |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [split-string](https://www.github.com/jonschlinkert/split-string) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sprintf-js |  v1.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sprintf-js](http://alexei.ro/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | sshpk |  v1.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [sshpk](https://www.github.com/arekinath/node-sshpk#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | stack-trace |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [stack-trace](https://www.github.com/felixge/node-stack-trace) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | stack-utils |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stack-utils](https://www.github.com/jamestalmage) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | static-extend |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [static-extend](https://www.github.com/jonschlinkert/static-extend) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | stealthy-require |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [stealthy-require](https://www.github.com/analog-nico/stealthy-require#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | streamroller |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [streamroller](https://www.npmjs.com/package/streamroller) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string-length |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-length](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string-width |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string-width |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string-width |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string.prototype.trimleft |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimleft](https://www.npmjs.com/package/string.prototype.trimleft) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string.prototype.trimright |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimright](https://www.npmjs.com/package/string.prototype.trimright) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | string_decoder |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/nodejs/string_decoder) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | stringify-object |  v3.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [stringify-object](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-ansi |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-ansi |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-bom |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-eof |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-eof](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | strip-json-comments |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-json-comments](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | stylus-lookup |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stylus-lookup](https://www.github.com/mrjoelkemp/node-stylus-lookup) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | supports-color |  v5.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | supports-color |  v6.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tapable |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [tapable](https://www.github.com/webpack/tapable) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tar |  v4.4.13 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | temp |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [temp](https://www.npmjs.com/package/temp) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | test-exclude |  v5.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [test-exclude](https://istanbul.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | throat |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [throat](https://www.npmjs.com/package/throat) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tmpl |  v1.0.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tmpl](https://www.github.com/nshah/nodejs-tmpl) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | to-fast-properties |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-fast-properties](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | to-object-path |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-object-path](https://www.github.com/jonschlinkert/to-object-path) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | to-regex |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex](https://www.github.com/jonschlinkert/to-regex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | to-regex-range |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tough-cookie |  v2.4.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tough-cookie |  v2.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tr46 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tr46](https://www.npmjs.com/package/tr46) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | traverse-chain |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [traverse-chain](https://www.npmjs.com/package/traverse-chain) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ts-jest |  v24.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tslint |  v5.20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tweetnacl |  v0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | typedoc |  v0.14.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc](http://typedoc.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | typedoc-default-themes |  v0.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](http://typedoc.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | typescript |  v3.2.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | typescript |  v3.6.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | uglify-js |  v3.6.4 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | uniq |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [uniq](https://www.npmjs.com/package/uniq) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | unset-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [unset-value](https://www.github.com/jonschlinkert/unset-value) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | uri-js |  v4.2.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uri-js](https://www.github.com/garycourt/uri-js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | urix |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [urix](https://www.npmjs.com/package/urix) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | use |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [use](https://www.github.com/jonschlinkert/use) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | util-deprecate |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [util-deprecate](https://www.github.com/TooTallNate/util-deprecate) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | util.promisify |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [util.promisify](https://www.github.com/ljharb/util.promisify#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | uuid |  v3.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [uuid](https://www.npmjs.com/package/uuid) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | v8flags |  v3.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [v8flags](http://gulpjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | validate-npm-package-license |  v3.0.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [validate-npm-package-license](https://kemitchell.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | verror |  v1.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [verror](https://www.npmjs.com/package/verror) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | w3c-hr-time |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [w3c-hr-time](https://www.npmjs.com/package/w3c-hr-time) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | walkdir |  v0.0.12 | [MIT](http://opensource.org/licenses/mit-license) | [walkdir](https://www.github.com/soldair/node-walkdir) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | walker |  v1.0.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [walker](https://www.github.com/daaku/nodejs-walker) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wcwidth |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wcwidth](https://www.github.com/timoxley/wcwidth#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | webidl-conversions |  v4.0.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [webidl-conversions](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | whatwg-encoding |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-encoding](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | whatwg-mimetype |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-mimetype](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | whatwg-url |  v6.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | whatwg-url |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | which |  v1.3.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which](http://blog.izs.me) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | which-module |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which-module](https://www.github.com/nexdrew/which-module#readme) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wide-align |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wide-align](http://re-becca.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wordwrap |  v0.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wordwrap |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wrap-ansi |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wrap-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wrap-ansi |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | wrappy |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wrappy](https://www.github.com/npm/wrappy) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | write-file-atomic |  v2.4.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [write-file-atomic](https://www.github.com/iarna/write-file-atomic) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ws |  v5.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [ws](https://www.github.com/websockets/ws) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | xml |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [xml](https://www.github.com/dylang/node-xml) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | xml-name-validator |  v3.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [xml-name-validator](https://domenic.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | xml2js |  v0.4.19 | [MIT](http://opensource.org/licenses/mit-license) | [xml2js](https://www.github.com/Leonidas-from-XIV/node-xml2js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | xmlbuilder |  v13.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | xmlbuilder |  v9.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | y18n |  v3.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | y18n |  v4.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yallist |  v2.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yallist |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yamljs |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yamljs](https://www.npmjs.com/package/yamljs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs |  v13.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs |  v14.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs-parser |  v10.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs-parser |  v13.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs-parser |  v15.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/core |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/core](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/generator |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/generator](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/helper-function-name |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-function-name](https://www.npmjs.com/package/@babel/helper-function-name) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/helper-get-function-arity |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-get-function-arity](https://www.npmjs.com/package/@babel/helper-get-function-arity) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/helper-plugin-utils |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-plugin-utils](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/helper-split-export-declaration |  v7.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helper-split-export-declaration](https://www.npmjs.com/package/@babel/helper-split-export-declaration) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/helpers |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/helpers](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/highlight |  v7.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/highlight](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/parser |  v7.6.4 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/parser](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/plugin-syntax-object-rest-spread |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/plugin-syntax-object-rest-spread](https://www.npmjs.com/package/@babel/plugin-syntax-object-rest-spread) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/template |  v7.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/template](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/traverse |  v7.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/traverse](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @babel/types |  v7.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/types](https://babeljs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @brightside/imperative |  v2.7.4 | EPL-2.0 | [@brightside/imperative](https://www.npmjs.com/package/@brightside/imperative) |
+| IBM® CICS® Plug-in for Zowe CLI | @cnakazawa/watch |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@cnakazawa/watch](https://www.github.com/mikeal/watch) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/console |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/console](https://www.npmjs.com/package/@jest/console) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/core |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/core](https://jestjs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/environment |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/environment](https://www.npmjs.com/package/@jest/environment) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/fake-timers |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/fake-timers](https://www.npmjs.com/package/@jest/fake-timers) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/reporters |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/reporters](https://jestjs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/source-map |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/source-map](https://www.npmjs.com/package/@jest/source-map) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/test-result |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/test-result](https://www.npmjs.com/package/@jest/test-result) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/test-sequencer |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/test-sequencer](https://www.npmjs.com/package/@jest/test-sequencer) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/transform |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/transform](https://www.npmjs.com/package/@jest/transform) |
+| IBM® CICS® Plug-in for Zowe CLI | @jest/types |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@jest/types](https://www.npmjs.com/package/@jest/types) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/babel__core |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__core](https://www.npmjs.com/package/@types/babel__core) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/babel__generator |  v7.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/babel__template |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/events |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/events](https://www.npmjs.com/package/@types/events) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/fs-extra |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/glob |  v7.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/handlebars |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/handlebars](https://www.npmjs.com/package/@types/handlebars) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/highlight.js |  v9.12.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/highlight.js](https://www.npmjs.com/package/@types/highlight.js) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/istanbul-lib-coverage |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/istanbul-lib-report |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-report](https://www.npmjs.com/package/@types/istanbul-lib-report) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/jest |  v24.0.19 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/jest-diff |  v20.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest-diff](https://www.npmjs.com/package/@types/jest-diff) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/lodash |  v4.14.144 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/marked |  v0.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/marked](https://www.npmjs.com/package/@types/marked) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/node |  v12.11.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/node |  v8.10.56 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/shelljs |  v0.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/shelljs](https://www.npmjs.com/package/@types/shelljs) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/yargs |  v13.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM® CICS® Plug-in for Zowe CLI | @types/yargs-parser |  v13.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | @typescript-eslint/typescript-estree |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
+| IBM® CICS® Plug-in for Zowe CLI | abab |  v2.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
+| IBM® CICS® Plug-in for Zowe CLI | acorn |  v5.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM® CICS® Plug-in for Zowe CLI | acorn |  v6.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM® CICS® Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
+| IBM® CICS® Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
+| IBM® CICS® Plug-in for Zowe CLI | ajv |  v6.10.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-parser |  v3.2.9 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-regex |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
+| IBM® CICS® Plug-in for Zowe CLI | app-module-path |  v2.2.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [app-module-path](https://www.github.com/patrick-steele-idem/app-module-path-node) |
+| IBM® CICS® Plug-in for Zowe CLI | aproba |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [aproba](https://www.github.com/iarna/aproba) |
+| IBM® CICS® Plug-in for Zowe CLI | are-we-there-yet |  v1.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [are-we-there-yet](https://www.github.com/iarna/are-we-there-yet) |
+| IBM® CICS® Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
+| IBM® CICS® Plug-in for Zowe CLI | arr-diff |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
+| IBM® CICS® Plug-in for Zowe CLI | arr-flatten |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-flatten](https://www.github.com/jonschlinkert/arr-flatten) |
+| IBM® CICS® Plug-in for Zowe CLI | arr-union |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-union](https://www.github.com/jonschlinkert/arr-union) |
+| IBM® CICS® Plug-in for Zowe CLI | array-equal |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [array-equal](http://jongleberry.com) |
+| IBM® CICS® Plug-in for Zowe CLI | array-unique |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
+| IBM® CICS® Plug-in for Zowe CLI | arrify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [arrify](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](https://joyent.com) |
+| IBM® CICS® Plug-in for Zowe CLI | assert-plus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assert-plus](https://www.npmjs.com/package/assert-plus) |
+| IBM® CICS® Plug-in for Zowe CLI | assign-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assign-symbols](https://www.github.com/jonschlinkert/assign-symbols) |
+| IBM® CICS® Plug-in for Zowe CLI | ast-module-types |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [ast-module-types](https://www.github.com/mrjoelkemp/node-ast-module-types) |
+| IBM® CICS® Plug-in for Zowe CLI | astral-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [astral-regex](https://www.github.com/kevva) |
+| IBM® CICS® Plug-in for Zowe CLI | async-limiter |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.npmjs.com/package/async-limiter) |
+| IBM® CICS® Plug-in for Zowe CLI | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
+| IBM® CICS® Plug-in for Zowe CLI | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](http://www.futurealoof.com) |
+| IBM® CICS® Plug-in for Zowe CLI | aws4 |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [aws4](https://www.github.com/mhart) |
+| IBM® CICS® Plug-in for Zowe CLI | babel-jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-jest](https://www.npmjs.com/package/babel-jest) |
+| IBM® CICS® Plug-in for Zowe CLI | babel-plugin-istanbul |  v5.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [babel-plugin-istanbul](https://www.github.com/istanbuljs/babel-plugin-istanbul#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | babel-plugin-jest-hoist |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-jest-hoist](https://www.npmjs.com/package/babel-plugin-jest-hoist) |
+| IBM® CICS® Plug-in for Zowe CLI | babel-preset-jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-jest](https://www.npmjs.com/package/babel-preset-jest) |
+| IBM® CICS® Plug-in for Zowe CLI | balanced-match |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [balanced-match](https://www.github.com/juliangruber/balanced-match) |
+| IBM® CICS® Plug-in for Zowe CLI | base |  v0.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [base](https://www.github.com/node-base/base) |
+| IBM® CICS® Plug-in for Zowe CLI | bcrypt-pbkdf |  v1.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf) |
+| IBM® CICS® Plug-in for Zowe CLI | bootstrap |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [bootstrap](https://getbootstrap.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | brace-expansion |  v1.1.11 | [MIT](http://opensource.org/licenses/mit-license) | [brace-expansion](https://www.github.com/juliangruber/brace-expansion) |
+| IBM® CICS® Plug-in for Zowe CLI | braces |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/micromatch/braces) |
+| IBM® CICS® Plug-in for Zowe CLI | browser-process-hrtime |  v0.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [browser-process-hrtime](https://www.npmjs.com/package/browser-process-hrtime) |
+| IBM® CICS® Plug-in for Zowe CLI | browser-resolve |  v1.11.3 | [MIT](http://opensource.org/licenses/mit-license) | [browser-resolve](https://www.npmjs.com/package/browser-resolve) |
+| IBM® CICS® Plug-in for Zowe CLI | bs-logger |  v0.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [bs-logger](https://www.npmjs.com/package/bs-logger) |
+| IBM® CICS® Plug-in for Zowe CLI | bser |  v2.1.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [bser](https://facebook.github.io/watchman/docs/bser.html) |
+| IBM® CICS® Plug-in for Zowe CLI | buffer-from |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-from](https://www.npmjs.com/package/buffer-from) |
+| IBM® CICS® Plug-in for Zowe CLI | builtin-modules |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [builtin-modules](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | cache-base |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cache-base](https://www.github.com/jonschlinkert/cache-base) |
+| IBM® CICS® Plug-in for Zowe CLI | callsites |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [callsites](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | capture-exit |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
+| IBM® CICS® Plug-in for Zowe CLI | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
+| IBM® CICS® Plug-in for Zowe CLI | chart.js |  v2.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [chart.js](https://www.chartjs.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | chartjs-color |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color](https://www.npmjs.com/package/chartjs-color) |
+| IBM® CICS® Plug-in for Zowe CLI | chartjs-color-string |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color-string](https://www.npmjs.com/package/chartjs-color-string) |
+| IBM® CICS® Plug-in for Zowe CLI | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | ci-info |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
+| IBM® CICS® Plug-in for Zowe CLI | circular-json |  v0.5.9 | [MIT](http://opensource.org/licenses/mit-license) | [circular-json](https://www.github.com/WebReflection/circular-json) |
+| IBM® CICS® Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
+| IBM® CICS® Plug-in for Zowe CLI | cli-cursor |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | cli-spinners |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
+| IBM® CICS® Plug-in for Zowe CLI | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
+| IBM® CICS® Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
+| IBM® CICS® Plug-in for Zowe CLI | clone |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [clone](http://paul.vorba.ch/) |
+| IBM® CICS® Plug-in for Zowe CLI | co |  v4.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [co](https://www.npmjs.com/package/co) |
+| IBM® CICS® Plug-in for Zowe CLI | code-point-at |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [code-point-at](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | collection-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [collection-visit](https://www.github.com/jonschlinkert/collection-visit) |
+| IBM® CICS® Plug-in for Zowe CLI | color-convert |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
+| IBM® CICS® Plug-in for Zowe CLI | color-convert |  v1.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
+| IBM® CICS® Plug-in for Zowe CLI | color-name |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/dfcreative/color-name) |
+| IBM® CICS® Plug-in for Zowe CLI | color-name |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/colorjs/color-name) |
+| IBM® CICS® Plug-in for Zowe CLI | colors |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [colors](https://www.github.com/Marak/colors.js) |
+| IBM® CICS® Plug-in for Zowe CLI | combined-stream |  v1.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [combined-stream](https://www.github.com/felixge/node-combined-stream) |
+| IBM® CICS® Plug-in for Zowe CLI | commander |  v2.20.3 | [MIT](http://opensource.org/licenses/mit-license) | [commander](https://www.npmjs.com/package/commander) |
+| IBM® CICS® Plug-in for Zowe CLI | commondir |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [commondir](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | component-emitter |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [component-emitter](https://www.npmjs.com/package/component-emitter) |
+| IBM® CICS® Plug-in for Zowe CLI | concat-map |  v0.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [concat-map](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | console-control-strings |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [console-control-strings](http://re-becca.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | convert-source-map |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [convert-source-map](https://www.github.com/thlorenz/convert-source-map) |
+| IBM® CICS® Plug-in for Zowe CLI | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | cross-spawn |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](http://indigounited.com) |
+| IBM® CICS® Plug-in for Zowe CLI | cross-spawn |  v6.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](https://www.github.com/moxystudio/node-cross-spawn) |
+| IBM® CICS® Plug-in for Zowe CLI | cssom |  v0.3.8 | [MIT](http://opensource.org/licenses/mit-license) | [cssom](https://www.npmjs.com/package/cssom) |
+| IBM® CICS® Plug-in for Zowe CLI | cssstyle |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssstyle](https://www.github.com/jsakas/CSSStyleDeclaration) |
+| IBM® CICS® Plug-in for Zowe CLI | dashdash |  v1.14.1 | [MIT](http://opensource.org/licenses/mit-license) | [dashdash](http://trentm.com) |
+| IBM® CICS® Plug-in for Zowe CLI | data-urls |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [data-urls](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | dataobject-parser |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [dataobject-parser](https://www.github.com/Gigzolo/dataobject-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | date-format |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [date-format](https://www.npmjs.com/package/date-format) |
+| IBM® CICS® Plug-in for Zowe CLI | dateformat |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dateformat](https://www.github.com/felixge/node-dateformat) |
+| IBM® CICS® Plug-in for Zowe CLI | debug |  v2.6.9 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
+| IBM® CICS® Plug-in for Zowe CLI | debug |  v3.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
+| IBM® CICS® Plug-in for Zowe CLI | debug |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
+| IBM® CICS® Plug-in for Zowe CLI | decamelize |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decamelize](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | decode-uri-component |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decode-uri-component](https://www.github.com/SamVerschueren) |
+| IBM® CICS® Plug-in for Zowe CLI | deep-extend |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [deep-extend](https://www.github.com/unclechu/node-deep-extend) |
+| IBM® CICS® Plug-in for Zowe CLI | deep-is |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [deep-is](http://thlorenz.com) |
+| IBM® CICS® Plug-in for Zowe CLI | deepmerge |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [deepmerge](https://www.github.com/KyleAMathews/deepmerge) |
+| IBM® CICS® Plug-in for Zowe CLI | defaults |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [defaults](https://www.npmjs.com/package/defaults) |
+| IBM® CICS® Plug-in for Zowe CLI | define-properties |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [define-properties](https://www.npmjs.com/package/define-properties) |
+| IBM® CICS® Plug-in for Zowe CLI | define-property |  v0.2.5 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® CICS® Plug-in for Zowe CLI | define-property |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® CICS® Plug-in for Zowe CLI | define-property |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® CICS® Plug-in for Zowe CLI | delayed-stream |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delayed-stream](https://www.github.com/felixge/node-delayed-stream) |
+| IBM® CICS® Plug-in for Zowe CLI | delegates |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delegates](https://www.npmjs.com/package/delegates) |
+| IBM® CICS® Plug-in for Zowe CLI | dependency-tree |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dependency-tree](https://www.github.com/mrjoelkemp/node-dependency-tree) |
+| IBM® CICS® Plug-in for Zowe CLI | detect-libc |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detect-libc](https://www.npmjs.com/package/detect-libc) |
+| IBM® CICS® Plug-in for Zowe CLI | detect-newline |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-newline](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-amd |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-amd](https://www.github.com/mrjoelkemp/node-detective-amd) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-cjs |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-cjs](https://www.github.com/mrjoelkemp/node-detective-cjs) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-es6 |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-es6](https://www.github.com/mrjoelkemp/node-detective-es6) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-less |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [detective-less](https://www.github.com/Mike-Dax/node-detective-less) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-postcss |  v3.0.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detective-postcss](https://www.npmjs.com/package/detective-postcss) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-sass |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-sass](https://www.github.com/mrjoelkemp/node-detective-sass) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-scss |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-scss](https://www.github.com/dependents/node-detective-scss) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-stylus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detective-stylus](https://www.github.com/mrjoelkemp/node-detective-stylus) |
+| IBM® CICS® Plug-in for Zowe CLI | detective-typescript |  v5.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [detective-typescript](https://www.github.com/pahen/detective-typescript) |
+| IBM® CICS® Plug-in for Zowe CLI | diff |  v3.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
+| IBM® CICS® Plug-in for Zowe CLI | diff |  v4.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
+| IBM® CICS® Plug-in for Zowe CLI | diff-sequences |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [diff-sequences](https://www.npmjs.com/package/diff-sequences) |
+| IBM® CICS® Plug-in for Zowe CLI | diff2html |  v2.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [diff2html](https://diff2html.xyz/) |
+| IBM® CICS® Plug-in for Zowe CLI | domexception |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [domexception](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
+| IBM® CICS® Plug-in for Zowe CLI | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
+| IBM® CICS® Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
+| IBM® CICS® Plug-in for Zowe CLI | enhanced-resolve |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
+| IBM® CICS® Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
+| IBM® CICS® Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
+| IBM® CICS® Plug-in for Zowe CLI | es-abstract |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM® CICS® Plug-in for Zowe CLI | es-to-primitive |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
+| IBM® CICS® Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
+| IBM® CICS® Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | escodegen |  v1.12.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [escodegen](https://www.github.com/estools/escodegen) |
+| IBM® CICS® Plug-in for Zowe CLI | esprima |  v3.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | esprima |  v4.0.1 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | estraverse |  v4.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [estraverse](https://www.github.com/estools/estraverse) |
+| IBM® CICS® Plug-in for Zowe CLI | esutils |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esutils](https://www.github.com/estools/esutils) |
+| IBM® CICS® Plug-in for Zowe CLI | exec-sh |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [exec-sh](https://www.npmjs.com/package/exec-sh) |
+| IBM® CICS® Plug-in for Zowe CLI | execa |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | execa |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | exit |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [exit](https://www.github.com/cowboy/node-exit) |
+| IBM® CICS® Plug-in for Zowe CLI | expand-brackets |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
+| IBM® CICS® Plug-in for Zowe CLI | expect |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [expect](https://www.npmjs.com/package/expect) |
+| IBM® CICS® Plug-in for Zowe CLI | extend |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend](http://www.justmoon.net) |
+| IBM® CICS® Plug-in for Zowe CLI | extend-shallow |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
+| IBM® CICS® Plug-in for Zowe CLI | extend-shallow |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
+| IBM® CICS® Plug-in for Zowe CLI | extglob |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/micromatch/extglob) |
+| IBM® CICS® Plug-in for Zowe CLI | extsprintf |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
+| IBM® CICS® Plug-in for Zowe CLI | extsprintf |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
+| IBM® CICS® Plug-in for Zowe CLI | fast-deep-equal |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fast-deep-equal](https://www.github.com/epoberezkin/fast-deep-equal#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | fast-json-stable-stringify |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fast-json-stable-stringify](https://www.github.com/epoberezkin/fast-json-stable-stringify) |
+| IBM® CICS® Plug-in for Zowe CLI | fast-levenshtein |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [fast-levenshtein](http://www.hiddentao.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | fb-watchman |  v2.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [fb-watchman](https://facebook.github.io/watchman/) |
+| IBM® CICS® Plug-in for Zowe CLI | file-exists-dazinatorfork |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [file-exists-dazinatorfork](https://www.github.com/dazinator/file-exists) |
+| IBM® CICS® Plug-in for Zowe CLI | filing-cabinet |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [filing-cabinet](https://www.github.com/mrjoelkemp/node-filing-cabinet) |
+| IBM® CICS® Plug-in for Zowe CLI | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
+| IBM® CICS® Plug-in for Zowe CLI | find |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [find](https://www.github.com/yuanchuan/find#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | find-up |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | find-up |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | flatten |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [flatten](http://jesusabdullah.net) |
+| IBM® CICS® Plug-in for Zowe CLI | for-in |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [for-in](https://www.github.com/jonschlinkert/for-in) |
+| IBM® CICS® Plug-in for Zowe CLI | forever-agent |  v0.6.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [forever-agent](http://www.futurealoof.com) |
+| IBM® CICS® Plug-in for Zowe CLI | form-data |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [form-data](http://debuggable.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | fragment-cache |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [fragment-cache](https://www.github.com/jonschlinkert/fragment-cache) |
+| IBM® CICS® Plug-in for Zowe CLI | fs-extra |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® CICS® Plug-in for Zowe CLI | fs-extra |  v7.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® CICS® Plug-in for Zowe CLI | fs-extra |  v8.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® CICS® Plug-in for Zowe CLI | fs-minipass |  v1.2.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-minipass](https://www.github.com/npm/fs-minipass#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | fs.realpath |  v1.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs.realpath](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | fsevents |  v1.2.9 | unknown | fsevents |
+| IBM® CICS® Plug-in for Zowe CLI | function-bind |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [function-bind](https://www.github.com/Raynos/function-bind) |
+| IBM® CICS® Plug-in for Zowe CLI | gauge |  v2.7.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [gauge](https://www.github.com/iarna/gauge) |
+| IBM® CICS® Plug-in for Zowe CLI | get-amd-module-type |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-amd-module-type](https://www.github.com/mrjoelkemp/node-get-amd-module-type) |
+| IBM® CICS® Plug-in for Zowe CLI | get-caller-file |  v1.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | get-caller-file |  v2.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | get-own-enumerable-property-symbols |  v3.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-own-enumerable-property-symbols](https://www.github.com/mightyiam/get-own-enumerable-property-symbols#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | get-stream |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | get-stream |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | get-value |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [get-value](https://www.github.com/jonschlinkert/get-value) |
+| IBM® CICS® Plug-in for Zowe CLI | getpass |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [getpass](https://www.npmjs.com/package/getpass) |
+| IBM® CICS® Plug-in for Zowe CLI | glob |  v7.1.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | glob |  v7.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | globals |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [globals](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | gonzales-pe |  v4.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [gonzales-pe](https://www.github.com/tonyganch/gonzales-pe) |
+| IBM® CICS® Plug-in for Zowe CLI | graceful-fs |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [graceful-fs](https://www.npmjs.com/package/graceful-fs) |
+| IBM® CICS® Plug-in for Zowe CLI | graphviz |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [graphviz](http://algorithmique.net/) |
+| IBM® CICS® Plug-in for Zowe CLI | growly |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [growly](http://ibrahimalrajhi.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | handlebars |  v4.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [handlebars](http://www.handlebarsjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | har-schema |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [har-schema](https://www.github.com/ahmadnassri/har-schema) |
+| IBM® CICS® Plug-in for Zowe CLI | har-validator |  v5.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [har-validator](https://www.github.com/ahmadnassri/node-har-validator) |
+| IBM® CICS® Plug-in for Zowe CLI | has |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [has](https://www.github.com/tarruda/has) |
+| IBM® CICS® Plug-in for Zowe CLI | has-flag |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | has-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-symbols](http://ljharb.codes) |
+| IBM® CICS® Plug-in for Zowe CLI | has-unicode |  v2.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [has-unicode](https://www.github.com/iarna/has-unicode) |
+| IBM® CICS® Plug-in for Zowe CLI | has-value |  v0.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
+| IBM® CICS® Plug-in for Zowe CLI | has-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
+| IBM® CICS® Plug-in for Zowe CLI | has-values |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
+| IBM® CICS® Plug-in for Zowe CLI | has-values |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
+| IBM® CICS® Plug-in for Zowe CLI | highlight.js |  v9.15.10 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | hogan.js |  v3.0.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [hogan.js](https://www.github.com/hogan.js/) |
+| IBM® CICS® Plug-in for Zowe CLI | holderjs |  v2.9.6 | [MIT](http://opensource.org/licenses/mit-license) | [holderjs](http://holderjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | homedir-polyfill |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [homedir-polyfill](https://www.github.com/doowb/homedir-polyfill) |
+| IBM® CICS® Plug-in for Zowe CLI | hosted-git-info |  v2.8.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [hosted-git-info](https://www.github.com/npm/hosted-git-info) |
+| IBM® CICS® Plug-in for Zowe CLI | html-encoding-sniffer |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [html-encoding-sniffer](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | http-signature |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [http-signature](https://www.github.com/joyent/node-http-signature/) |
+| IBM® CICS® Plug-in for Zowe CLI | iconv-lite |  v0.4.24 | [MIT](http://opensource.org/licenses/mit-license) | [iconv-lite](https://www.github.com/ashtuchkin/iconv-lite) |
+| IBM® CICS® Plug-in for Zowe CLI | ignore-walk |  v3.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ignore-walk](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | import-local |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [import-local](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | imurmurhash |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [imurmurhash](https://www.github.com/jensyt/imurmurhash-js) |
+| IBM® CICS® Plug-in for Zowe CLI | indexes-of |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [indexes-of](https://www.github.com/dominictarr/indexes-of) |
+| IBM® CICS® Plug-in for Zowe CLI | inflight |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inflight](https://www.github.com/isaacs/inflight) |
+| IBM® CICS® Plug-in for Zowe CLI | inherits |  v2.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inherits](https://www.npmjs.com/package/inherits) |
+| IBM® CICS® Plug-in for Zowe CLI | ini |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ini](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | interpret |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [interpret](http://gulpjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | invariant |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [invariant](https://www.npmjs.com/package/invariant) |
+| IBM® CICS® Plug-in for Zowe CLI | invert-kv |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](http://https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-accessor-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-accessor-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-arrayish |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-arrayish](https://www.github.com/qix-) |
+| IBM® CICS® Plug-in for Zowe CLI | is-buffer |  v1.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-buffer](http://feross.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | is-callable |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-callable](http://ljharb.codes) |
+| IBM® CICS® Plug-in for Zowe CLI | is-ci |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-ci](https://www.github.com/watson/is-ci) |
+| IBM® CICS® Plug-in for Zowe CLI | is-data-descriptor |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-data-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-date-object |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-date-object](https://www.npmjs.com/package/is-date-object) |
+| IBM® CICS® Plug-in for Zowe CLI | is-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-descriptor |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
+| IBM® CICS® Plug-in for Zowe CLI | is-extendable |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
+| IBM® CICS® Plug-in for Zowe CLI | is-extendable |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
+| IBM® CICS® Plug-in for Zowe CLI | is-extglob |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extglob](https://www.github.com/jonschlinkert/is-extglob) |
+| IBM® CICS® Plug-in for Zowe CLI | is-fullwidth-code-point |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-fullwidth-code-point |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-generator-fn |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-generator-fn](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-glob |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-glob](https://www.github.com/micromatch/is-glob) |
+| IBM® CICS® Plug-in for Zowe CLI | is-number |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
+| IBM® CICS® Plug-in for Zowe CLI | is-obj |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-obj](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-plain-object |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-plain-object](https://www.github.com/jonschlinkert/is-plain-object) |
+| IBM® CICS® Plug-in for Zowe CLI | is-regex |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-regex](https://www.github.com/ljharb/is-regex) |
+| IBM® CICS® Plug-in for Zowe CLI | is-regexp |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-regexp](http://https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-relative-path |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-relative-path](https://www.github.com/mrjoelkemp/is-relative-path) |
+| IBM® CICS® Plug-in for Zowe CLI | is-stream |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-stream](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | is-symbol |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-symbol](https://www.npmjs.com/package/is-symbol) |
+| IBM® CICS® Plug-in for Zowe CLI | is-typedarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-typedarray](https://www.github.com/hughsk/is-typedarray) |
+| IBM® CICS® Plug-in for Zowe CLI | is-url |  v1.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-url](https://www.npmjs.com/package/is-url) |
+| IBM® CICS® Plug-in for Zowe CLI | is-windows |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-windows](https://www.github.com/jonschlinkert/is-windows) |
+| IBM® CICS® Plug-in for Zowe CLI | is-wsl |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-wsl](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | isarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [isarray](https://www.github.com/juliangruber/isarray) |
+| IBM® CICS® Plug-in for Zowe CLI | isexe |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [isexe](https://www.github.com/isaacs/isexe#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | isobject |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
+| IBM® CICS® Plug-in for Zowe CLI | isobject |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
+| IBM® CICS® Plug-in for Zowe CLI | isstream |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [isstream](https://www.github.com/rvagg/isstream) |
+| IBM® CICS® Plug-in for Zowe CLI | istanbul-lib-coverage |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-coverage](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | istanbul-lib-instrument |  v3.3.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-instrument](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | istanbul-lib-report |  v2.0.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | istanbul-lib-source-maps |  v3.0.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | istanbul-reports |  v2.2.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | jest |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest](https://jestjs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-changed-files |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-changed-files](https://www.npmjs.com/package/jest-changed-files) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-cli |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-cli](https://jestjs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-config |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-diff |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-docblock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-each |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-each](https://mattphillips.io) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-environment-jsdom |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-environment-node |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-get-type |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-get-type](https://www.npmjs.com/package/jest-get-type) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-haste-map |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-haste-map](https://www.npmjs.com/package/jest-haste-map) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-html-reporter |  v2.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [jest-html-reporter](https://www.github.com/Hargne/jest-html-reporter#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-jasmine2 |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-jasmine2](https://www.npmjs.com/package/jest-jasmine2) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-junit |  v3.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [jest-junit](https://www.npmjs.com/package/jest-junit) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-leak-detector |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-leak-detector](https://www.npmjs.com/package/jest-leak-detector) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-matcher-utils |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-matcher-utils](https://www.npmjs.com/package/jest-matcher-utils) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-message-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-message-util](https://www.npmjs.com/package/jest-message-util) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-mock |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-mock](https://www.npmjs.com/package/jest-mock) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-pnp-resolver |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [jest-pnp-resolver](https://www.github.com/arcanis/jest-pnp-resolver) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-regex-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-regex-util](https://www.npmjs.com/package/jest-regex-util) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-resolve |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve](https://www.npmjs.com/package/jest-resolve) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-resolve-dependencies |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve-dependencies](https://www.npmjs.com/package/jest-resolve-dependencies) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-runner |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runner](https://www.npmjs.com/package/jest-runner) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-runtime |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runtime](https://www.npmjs.com/package/jest-runtime) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-serializer |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-serializer](https://www.npmjs.com/package/jest-serializer) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-snapshot |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-snapshot](https://www.npmjs.com/package/jest-snapshot) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-stare |  v1.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-stare](https://www.npmjs.com/package/jest-stare) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-util |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-util](https://www.npmjs.com/package/jest-util) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-validate |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-validate](https://www.npmjs.com/package/jest-validate) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-watcher |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-watcher](https://jestjs.io/) |
+| IBM® CICS® Plug-in for Zowe CLI | jest-worker |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
+| IBM® CICS® Plug-in for Zowe CLI | jquery |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jquery](https://jquery.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
+| IBM® CICS® Plug-in for Zowe CLI | js-yaml |  v3.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
+| IBM® CICS® Plug-in for Zowe CLI | jsbn |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsbn](https://www.npmjs.com/package/jsbn) |
+| IBM® CICS® Plug-in for Zowe CLI | jsdom |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsdom](https://www.npmjs.com/package/jsdom) |
+| IBM® CICS® Plug-in for Zowe CLI | jsesc |  v2.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [jsesc](https://mths.be/jsesc) |
+| IBM® CICS® Plug-in for Zowe CLI | json-parse-better-errors |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [json-parse-better-errors](https://www.npmjs.com/package/json-parse-better-errors) |
+| IBM® CICS® Plug-in for Zowe CLI | json-schema |  v0.2.3 | BSD* | [json-schema](https://www.npmjs.com/package/json-schema) |
+| IBM® CICS® Plug-in for Zowe CLI | json-schema-traverse |  v0.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-schema-traverse](https://www.github.com/epoberezkin/json-schema-traverse#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | json-stringify-safe |  v5.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [json-stringify-safe](https://www.github.com/isaacs/json-stringify-safe) |
+| IBM® CICS® Plug-in for Zowe CLI | json5 |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [json5](http://json5.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | jsonfile |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsonfile](https://www.npmjs.com/package/jsonfile) |
+| IBM® CICS® Plug-in for Zowe CLI | jsonschema |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsonschema](https://www.npmjs.com/package/jsonschema) |
+| IBM® CICS® Plug-in for Zowe CLI | jsprim |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsprim](https://www.npmjs.com/package/jsprim) |
+| IBM® CICS® Plug-in for Zowe CLI | kind-of |  v3.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® CICS® Plug-in for Zowe CLI | kind-of |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® CICS® Plug-in for Zowe CLI | kind-of |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® CICS® Plug-in for Zowe CLI | kind-of |  v6.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® CICS® Plug-in for Zowe CLI | kleur |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [kleur](https://lukeed.com) |
+| IBM® CICS® Plug-in for Zowe CLI | lcid |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | left-pad |  v1.3.0 | WTFPL | [left-pad](https://www.npmjs.com/package/left-pad) |
+| IBM® CICS® Plug-in for Zowe CLI | leven |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [leven](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | levenshtein |  v1.0.5 | Public Domain | [levenshtein](http://gf3.ca) |
+| IBM® CICS® Plug-in for Zowe CLI | levn |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [levn](https://www.github.com/gkz/levn) |
+| IBM® CICS® Plug-in for Zowe CLI | load-json-file |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | load-json-file |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | locate-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | locate-path |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | lodash |  v4.17.15 | [MIT](http://opensource.org/licenses/mit-license) | [lodash](https://lodash.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash-deep](https://www.github.com/marklagendijk/lodash-deep) |
+| IBM® CICS® Plug-in for Zowe CLI | lodash.memoize |  v4.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.memoize](https://lodash.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | lodash.sortby |  v4.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.sortby](https://lodash.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | lodash.unescape |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.unescape](https://lodash.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | log-symbols |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [log-symbols](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | log4js |  v3.0.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
+| IBM® CICS® Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
+| IBM® CICS® Plug-in for Zowe CLI | lru-cache |  v4.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [lru-cache](https://www.npmjs.com/package/lru-cache) |
+| IBM® CICS® Plug-in for Zowe CLI | madge |  v3.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
+| IBM® CICS® Plug-in for Zowe CLI | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | make-error |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
+| IBM® CICS® Plug-in for Zowe CLI | makeerror |  v1.0.11 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [makeerror](https://www.npmjs.com/package/makeerror) |
+| IBM® CICS® Plug-in for Zowe CLI | map-cache |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [map-cache](https://www.github.com/jonschlinkert/map-cache) |
+| IBM® CICS® Plug-in for Zowe CLI | map-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [map-visit](https://www.github.com/jonschlinkert/map-visit) |
+| IBM® CICS® Plug-in for Zowe CLI | marked |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | marked |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | mem |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | memory-fs |  v0.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [memory-fs](https://www.github.com/webpack/memory-fs) |
+| IBM® CICS® Plug-in for Zowe CLI | merge |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge](https://www.github.com/yeikos/js.merge) |
+| IBM® CICS® Plug-in for Zowe CLI | merge-stream |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [merge-stream](https://www.npmjs.com/package/merge-stream) |
+| IBM® CICS® Plug-in for Zowe CLI | micromatch |  v3.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
+| IBM® CICS® Plug-in for Zowe CLI | mime-db |  v1.40.0 | [MIT](http://opensource.org/licenses/mit-license) | [mime-db](https://www.npmjs.com/package/mime-db) |
+| IBM® CICS® Plug-in for Zowe CLI | mime-types |  v2.1.24 | [MIT](http://opensource.org/licenses/mit-license) | [mime-types](https://www.npmjs.com/package/mime-types) |
+| IBM® CICS® Plug-in for Zowe CLI | mimic-fn |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | minimatch |  v3.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minimatch](http://blog.izs.me) |
+| IBM® CICS® Plug-in for Zowe CLI | minimist |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® CICS® Plug-in for Zowe CLI | minimist |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® CICS® Plug-in for Zowe CLI | minimist |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® CICS® Plug-in for Zowe CLI | minimist |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® CICS® Plug-in for Zowe CLI | minipass |  v2.9.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minipass](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | minizlib |  v1.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [minizlib](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | mixin-deep |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [mixin-deep](https://www.github.com/jonschlinkert/mixin-deep) |
+| IBM® CICS® Plug-in for Zowe CLI | mkdirp |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | mkdirp |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | module-definition |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-definition](https://www.github.com/mrjoelkemp/module-definition) |
+| IBM® CICS® Plug-in for Zowe CLI | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
+| IBM® CICS® Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | moment |  v2.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
+| IBM® CICS® Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
+| IBM® CICS® Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
+| IBM® CICS® Plug-in for Zowe CLI | mustache |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
+| IBM® CICS® Plug-in for Zowe CLI | nan |  v2.14.0 | [MIT](http://opensource.org/licenses/mit-license) | [nan](https://www.npmjs.com/package/nan) |
+| IBM® CICS® Plug-in for Zowe CLI | nanomatch |  v1.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [nanomatch](https://www.github.com/micromatch/nanomatch) |
+| IBM® CICS® Plug-in for Zowe CLI | natural-compare |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [natural-compare](https://www.github.com/litejs/natural-compare-lite) |
+| IBM® CICS® Plug-in for Zowe CLI | needle |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [needle](https://www.npmjs.com/package/needle) |
+| IBM® CICS® Plug-in for Zowe CLI | neo-async |  v2.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [neo-async](https://www.github.com/suguru03/neo-async) |
+| IBM® CICS® Plug-in for Zowe CLI | nice-try |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [nice-try](https://www.github.com/electerious/nice-try) |
+| IBM® CICS® Plug-in for Zowe CLI | node-int64 |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-int64](https://www.npmjs.com/package/node-int64) |
+| IBM® CICS® Plug-in for Zowe CLI | node-modules-regexp |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-modules-regexp](https://www.github.com/jamestalmage) |
+| IBM® CICS® Plug-in for Zowe CLI | node-notifier |  v5.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [node-notifier](https://www.github.com/mikaelbr/node-notifier#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | node-pre-gyp |  v0.12.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [node-pre-gyp](https://www.npmjs.com/package/node-pre-gyp) |
+| IBM® CICS® Plug-in for Zowe CLI | node-source-walk |  v4.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-source-walk](https://www.github.com/mrjoelkemp/node-source-walk) |
+| IBM® CICS® Plug-in for Zowe CLI | nopt |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [nopt](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | nopt |  v4.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [nopt](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | normalize-package-data |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [normalize-package-data](https://www.npmjs.com/package/normalize-package-data) |
+| IBM® CICS® Plug-in for Zowe CLI | normalize-path |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [normalize-path](https://www.github.com/jonschlinkert/normalize-path) |
+| IBM® CICS® Plug-in for Zowe CLI | npm-bundled |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-bundled](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | npm-packlist |  v1.4.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-packlist](https://www.npmjs.com/package/npm-packlist) |
+| IBM® CICS® Plug-in for Zowe CLI | npm-run-path |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [npm-run-path](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | npmlog |  v4.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npmlog](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | number-is-nan |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [number-is-nan](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | nwsapi |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [nwsapi](http://javascript.nwbox.com/nwsapi/) |
+| IBM® CICS® Plug-in for Zowe CLI | oauth-sign |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [oauth-sign](http://www.futurealoof.com) |
+| IBM® CICS® Plug-in for Zowe CLI | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
+| IBM® CICS® Plug-in for Zowe CLI | object-inspect |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/substack/object-inspect) |
+| IBM® CICS® Plug-in for Zowe CLI | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
+| IBM® CICS® Plug-in for Zowe CLI | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
+| IBM® CICS® Plug-in for Zowe CLI | object.getownpropertydescriptors |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [object.getownpropertydescriptors](https://www.npmjs.com/package/object.getownpropertydescriptors) |
+| IBM® CICS® Plug-in for Zowe CLI | object.pick |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.pick](https://www.github.com/jonschlinkert/object.pick) |
+| IBM® CICS® Plug-in for Zowe CLI | once |  v1.4.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [once](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | onetime |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [onetime](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | opener |  v1.5.1 | (WTFPL OR MIT) | [opener](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | optimist |  v0.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [optimist](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | optionator |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [optionator](https://www.github.com/gkz/optionator) |
+| IBM® CICS® Plug-in for Zowe CLI | ora |  v3.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [ora](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | os-homedir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-homedir](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | os-locale |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | os-tmpdir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-tmpdir](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | osenv |  v0.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [osenv](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | p-each-series |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-each-series](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-finally |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-finally](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-limit |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-limit |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-locate |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-locate |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-reduce |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-reduce](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-try |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | p-try |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | parse-json |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | parse-json |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | parse-ms |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-ms](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | parse-passwd |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-passwd](https://www.github.com/doowb/parse-passwd) |
+| IBM® CICS® Plug-in for Zowe CLI | parse5 |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse5](https://www.github.com/inikulin/parse5) |
+| IBM® CICS® Plug-in for Zowe CLI | pascalcase |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [pascalcase](https://www.github.com/jonschlinkert/pascalcase) |
+| IBM® CICS® Plug-in for Zowe CLI | path-exists |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | path-is-absolute |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-is-absolute](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | path-key |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-key](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | path-parse |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [path-parse](https://www.github.com/jbgutierrez/path-parse#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | path-type |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | path-type |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | performance-now |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [performance-now](https://www.github.com/braveg1rl/performance-now) |
+| IBM® CICS® Plug-in for Zowe CLI | pify |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | pify |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | pify |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | pirates |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pirates](https://www.github.com/ariporad/pirates#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | pkg-dir |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-dir](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | pkg-up |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-up](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | pluralize |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pluralize](http://blakeembrey.me) |
+| IBM® CICS® Plug-in for Zowe CLI | pn |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pn](https://www.npmjs.com/package/pn) |
+| IBM® CICS® Plug-in for Zowe CLI | popper.js |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [popper.js](https://popper.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | posix-character-classes |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [posix-character-classes](https://www.github.com/jonschlinkert/posix-character-classes) |
+| IBM® CICS® Plug-in for Zowe CLI | postcss |  v7.0.20 | [MIT](http://opensource.org/licenses/mit-license) | [postcss](https://postcss.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | postcss-values-parser |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-values-parser](https://shellscape.org) |
+| IBM® CICS® Plug-in for Zowe CLI | precinct |  v6.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [precinct](https://www.github.com/mrjoelkemp/node-precinct) |
+| IBM® CICS® Plug-in for Zowe CLI | prelude-ls |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [prelude-ls](http://preludels.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | pretty-format |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-format](https://www.npmjs.com/package/pretty-format) |
+| IBM® CICS® Plug-in for Zowe CLI | pretty-ms |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-ms](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | prettyjson |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prettyjson](http://rafeca.com/prettyjson) |
+| IBM® CICS® Plug-in for Zowe CLI | process-nextick-args |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
+| IBM® CICS® Plug-in for Zowe CLI | progress |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
+| IBM® CICS® Plug-in for Zowe CLI | progress |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
+| IBM® CICS® Plug-in for Zowe CLI | prompts |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prompts](https://terkel.com) |
+| IBM® CICS® Plug-in for Zowe CLI | prr |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [prr](https://www.github.com/rvagg/prr) |
+| IBM® CICS® Plug-in for Zowe CLI | pseudomap |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [pseudomap](https://www.github.com/isaacs/pseudomap#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | psl |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [psl](https://lupomontero.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | pump |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
+| IBM® CICS® Plug-in for Zowe CLI | punycode |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
+| IBM® CICS® Plug-in for Zowe CLI | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
+| IBM® CICS® Plug-in for Zowe CLI | qs |  v6.5.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
+| IBM® CICS® Plug-in for Zowe CLI | rc |  v1.2.8 | (BSD-2-Clause OR MIT OR Apache-2.0) | [rc](https://) |
+| IBM® CICS® Plug-in for Zowe CLI | react-is |  v16.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [react-is](https://reactjs.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | read-pkg |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | read-pkg |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | read-pkg-up |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | read-pkg-up |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | readable-stream |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
+| IBM® CICS® Plug-in for Zowe CLI | realpath-native |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [realpath-native](https://www.npmjs.com/package/realpath-native) |
+| IBM® CICS® Plug-in for Zowe CLI | rechoir |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rechoir](https://www.github.com/tkellen/node-rechoir) |
+| IBM® CICS® Plug-in for Zowe CLI | regex-not |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [regex-not](https://www.github.com/jonschlinkert/regex-not) |
+| IBM® CICS® Plug-in for Zowe CLI | remove-trailing-separator |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [remove-trailing-separator](https://www.github.com/darsain/remove-trailing-separator#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | repeat-element |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-element](https://www.github.com/jonschlinkert/repeat-element) |
+| IBM® CICS® Plug-in for Zowe CLI | repeat-string |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-string](https://www.github.com/jonschlinkert/repeat-string) |
+| IBM® CICS® Plug-in for Zowe CLI | request |  v2.88.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [request](https://www.npmjs.com/package/request) |
+| IBM® CICS® Plug-in for Zowe CLI | request-promise-core |  v1.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-core](https://www.github.com/request/promise-core#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | request-promise-native |  v1.0.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-native](https://www.github.com/request/request-promise-native#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | require-directory |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [require-directory](https://www.github.com/troygoode/node-require-directory/) |
+| IBM® CICS® Plug-in for Zowe CLI | require-main-filename |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | require-main-filename |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | requirejs |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [requirejs](https://www.github.com/jrburke/r.js) |
+| IBM® CICS® Plug-in for Zowe CLI | requirejs-config-file |  v3.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [requirejs-config-file](https://www.npmjs.com/package/requirejs-config-file) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve |  v1.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve |  v1.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve-cwd |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-cwd](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve-dependency-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-dependency-path](https://www.github.com/mrjoelkemp/node-resolve-dependency-path) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve-from |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-from](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | resolve-url |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-url](https://www.npmjs.com/package/resolve-url) |
+| IBM® CICS® Plug-in for Zowe CLI | restore-cursor |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [restore-cursor](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | ret |  v0.1.15 | [MIT](http://opensource.org/licenses/mit-license) | [ret](https://www.github.com/fent) |
+| IBM® CICS® Plug-in for Zowe CLI | rfdc |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [rfdc](https://www.github.com/davidmarkclements/rfdc#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | rimraf |  v2.6.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | rimraf |  v2.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | rsvp |  v4.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [rsvp](https://www.github.com/tildeio/rsvp.js) |
+| IBM® CICS® Plug-in for Zowe CLI | safe-buffer |  v5.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
+| IBM® CICS® Plug-in for Zowe CLI | safe-buffer |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
+| IBM® CICS® Plug-in for Zowe CLI | safe-regex |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-regex](https://www.github.com/substack/safe-regex) |
+| IBM® CICS® Plug-in for Zowe CLI | safer-buffer |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safer-buffer](https://www.github.com/ChALkeR) |
+| IBM® CICS® Plug-in for Zowe CLI | sane |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [sane](https://www.github.com/amasad/sane) |
+| IBM® CICS® Plug-in for Zowe CLI | sass-lookup |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [sass-lookup](https://www.github.com/mrjoelkemp/node-sass-lookup) |
+| IBM® CICS® Plug-in for Zowe CLI | sax |  v1.2.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [sax](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | semver |  v5.7.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
+| IBM® CICS® Plug-in for Zowe CLI | semver |  v5.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
+| IBM® CICS® Plug-in for Zowe CLI | semver |  v6.3.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
+| IBM® CICS® Plug-in for Zowe CLI | set-blocking |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [set-blocking](https://www.github.com/yargs/set-blocking#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | set-value |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [set-value](https://www.github.com/jonschlinkert/set-value) |
+| IBM® CICS® Plug-in for Zowe CLI | shaven |  v0.8.1 | [MIT](http://opensource.org/licenses/mit-license) | [shaven](http://adriansieber.com/shaven) |
+| IBM® CICS® Plug-in for Zowe CLI | shebang-command |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-command](https://www.github.com/kevva) |
+| IBM® CICS® Plug-in for Zowe CLI | shebang-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | shebang-regex |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | shelljs |  v0.8.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [shelljs](https://www.github.com/shelljs/shelljs) |
+| IBM® CICS® Plug-in for Zowe CLI | shellwords |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [shellwords](https://www.github.com/jimmycuadra/shellwords) |
+| IBM® CICS® Plug-in for Zowe CLI | signal-exit |  v3.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [signal-exit](https://www.github.com/tapjs/signal-exit) |
+| IBM® CICS® Plug-in for Zowe CLI | sisteransi |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [sisteransi](https://terkel.com) |
+| IBM® CICS® Plug-in for Zowe CLI | slash |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [slash](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | snapdragon |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon](https://www.github.com/jonschlinkert/snapdragon) |
+| IBM® CICS® Plug-in for Zowe CLI | snapdragon-node |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-node](https://www.github.com/jonschlinkert/snapdragon-node) |
+| IBM® CICS® Plug-in for Zowe CLI | snapdragon-util |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-util](https://www.github.com/jonschlinkert/snapdragon-util) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map |  v0.5.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map |  v0.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map-resolve |  v0.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-resolve](https://www.npmjs.com/package/source-map-resolve) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map-support |  v0.4.18 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map-support |  v0.5.13 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
+| IBM® CICS® Plug-in for Zowe CLI | source-map-url |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-url](https://www.npmjs.com/package/source-map-url) |
+| IBM® CICS® Plug-in for Zowe CLI | spdx-correct |  v3.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [spdx-correct](https://kemitchell.com) |
+| IBM® CICS® Plug-in for Zowe CLI | spdx-exceptions |  v2.2.0 | CC-BY-3.0 | [spdx-exceptions](https://www.npmjs.com/package/spdx-exceptions) |
+| IBM® CICS® Plug-in for Zowe CLI | spdx-expression-parse |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [spdx-expression-parse](http://kemitchell.com) |
+| IBM® CICS® Plug-in for Zowe CLI | spdx-license-ids |  v3.0.5 | CC0-1.0 | [spdx-license-ids](https://www.github.com/shinnn) |
+| IBM® CICS® Plug-in for Zowe CLI | split-string |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [split-string](https://www.github.com/jonschlinkert/split-string) |
+| IBM® CICS® Plug-in for Zowe CLI | sprintf-js |  v1.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sprintf-js](http://alexei.ro/) |
+| IBM® CICS® Plug-in for Zowe CLI | sshpk |  v1.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [sshpk](https://www.github.com/arekinath/node-sshpk#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | stack-trace |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [stack-trace](https://www.github.com/felixge/node-stack-trace) |
+| IBM® CICS® Plug-in for Zowe CLI | stack-utils |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stack-utils](https://www.github.com/jamestalmage) |
+| IBM® CICS® Plug-in for Zowe CLI | static-extend |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [static-extend](https://www.github.com/jonschlinkert/static-extend) |
+| IBM® CICS® Plug-in for Zowe CLI | stealthy-require |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [stealthy-require](https://www.github.com/analog-nico/stealthy-require#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | streamroller |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [streamroller](https://www.npmjs.com/package/streamroller) |
+| IBM® CICS® Plug-in for Zowe CLI | string-length |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-length](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | string-width |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | string-width |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | string-width |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | string.prototype.trimleft |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimleft](https://www.npmjs.com/package/string.prototype.trimleft) |
+| IBM® CICS® Plug-in for Zowe CLI | string.prototype.trimright |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimright](https://www.npmjs.com/package/string.prototype.trimright) |
+| IBM® CICS® Plug-in for Zowe CLI | string_decoder |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/nodejs/string_decoder) |
+| IBM® CICS® Plug-in for Zowe CLI | stringify-object |  v3.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [stringify-object](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-ansi |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-ansi |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-bom |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-eof |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-eof](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | strip-json-comments |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-json-comments](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | stylus-lookup |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stylus-lookup](https://www.github.com/mrjoelkemp/node-stylus-lookup) |
+| IBM® CICS® Plug-in for Zowe CLI | supports-color |  v5.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | supports-color |  v6.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
+| IBM® CICS® Plug-in for Zowe CLI | tapable |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [tapable](https://www.github.com/webpack/tapable) |
+| IBM® CICS® Plug-in for Zowe CLI | tar |  v4.4.13 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | temp |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [temp](https://www.npmjs.com/package/temp) |
+| IBM® CICS® Plug-in for Zowe CLI | test-exclude |  v5.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [test-exclude](https://istanbul.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | throat |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [throat](https://www.npmjs.com/package/throat) |
+| IBM® CICS® Plug-in for Zowe CLI | tmpl |  v1.0.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tmpl](https://www.github.com/nshah/nodejs-tmpl) |
+| IBM® CICS® Plug-in for Zowe CLI | to-fast-properties |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-fast-properties](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | to-object-path |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-object-path](https://www.github.com/jonschlinkert/to-object-path) |
+| IBM® CICS® Plug-in for Zowe CLI | to-regex |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex](https://www.github.com/jonschlinkert/to-regex) |
+| IBM® CICS® Plug-in for Zowe CLI | to-regex-range |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
+| IBM® CICS® Plug-in for Zowe CLI | tough-cookie |  v2.4.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
+| IBM® CICS® Plug-in for Zowe CLI | tough-cookie |  v2.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
+| IBM® CICS® Plug-in for Zowe CLI | tr46 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tr46](https://www.npmjs.com/package/tr46) |
+| IBM® CICS® Plug-in for Zowe CLI | traverse-chain |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [traverse-chain](https://www.npmjs.com/package/traverse-chain) |
+| IBM® CICS® Plug-in for Zowe CLI | ts-jest |  v24.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
+| IBM® CICS® Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
+| IBM® CICS® Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
+| IBM® CICS® Plug-in for Zowe CLI | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | tslint |  v5.20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
+| IBM® CICS® Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
+| IBM® CICS® Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
+| IBM® CICS® Plug-in for Zowe CLI | tweetnacl |  v0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
+| IBM® CICS® Plug-in for Zowe CLI | typedoc |  v0.14.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc](http://typedoc.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | typedoc-default-themes |  v0.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](http://typedoc.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | typescript |  v3.2.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | typescript |  v3.6.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | uglify-js |  v3.6.4 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| IBM® CICS® Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
+| IBM® CICS® Plug-in for Zowe CLI | uniq |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [uniq](https://www.npmjs.com/package/uniq) |
+| IBM® CICS® Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | unset-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [unset-value](https://www.github.com/jonschlinkert/unset-value) |
+| IBM® CICS® Plug-in for Zowe CLI | uri-js |  v4.2.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uri-js](https://www.github.com/garycourt/uri-js) |
+| IBM® CICS® Plug-in for Zowe CLI | urix |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [urix](https://www.npmjs.com/package/urix) |
+| IBM® CICS® Plug-in for Zowe CLI | use |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [use](https://www.github.com/jonschlinkert/use) |
+| IBM® CICS® Plug-in for Zowe CLI | util-deprecate |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [util-deprecate](https://www.github.com/TooTallNate/util-deprecate) |
+| IBM® CICS® Plug-in for Zowe CLI | util.promisify |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [util.promisify](https://www.github.com/ljharb/util.promisify#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | uuid |  v3.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [uuid](https://www.npmjs.com/package/uuid) |
+| IBM® CICS® Plug-in for Zowe CLI | v8flags |  v3.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [v8flags](http://gulpjs.com/) |
+| IBM® CICS® Plug-in for Zowe CLI | validate-npm-package-license |  v3.0.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [validate-npm-package-license](https://kemitchell.com) |
+| IBM® CICS® Plug-in for Zowe CLI | verror |  v1.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [verror](https://www.npmjs.com/package/verror) |
+| IBM® CICS® Plug-in for Zowe CLI | w3c-hr-time |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [w3c-hr-time](https://www.npmjs.com/package/w3c-hr-time) |
+| IBM® CICS® Plug-in for Zowe CLI | walkdir |  v0.0.12 | [MIT](http://opensource.org/licenses/mit-license) | [walkdir](https://www.github.com/soldair/node-walkdir) |
+| IBM® CICS® Plug-in for Zowe CLI | walker |  v1.0.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [walker](https://www.github.com/daaku/nodejs-walker) |
+| IBM® CICS® Plug-in for Zowe CLI | wcwidth |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wcwidth](https://www.github.com/timoxley/wcwidth#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | webidl-conversions |  v4.0.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [webidl-conversions](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | whatwg-encoding |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-encoding](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch) |
+| IBM® CICS® Plug-in for Zowe CLI | whatwg-mimetype |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-mimetype](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | whatwg-url |  v6.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
+| IBM® CICS® Plug-in for Zowe CLI | whatwg-url |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
+| IBM® CICS® Plug-in for Zowe CLI | which |  v1.3.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which](http://blog.izs.me) |
+| IBM® CICS® Plug-in for Zowe CLI | which-module |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which-module](https://www.github.com/nexdrew/which-module#readme) |
+| IBM® CICS® Plug-in for Zowe CLI | wide-align |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wide-align](http://re-becca.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | wordwrap |  v0.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | wordwrap |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
+| IBM® CICS® Plug-in for Zowe CLI | wrap-ansi |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | wrap-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | wrap-ansi |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® CICS® Plug-in for Zowe CLI | wrappy |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wrappy](https://www.github.com/npm/wrappy) |
+| IBM® CICS® Plug-in for Zowe CLI | write-file-atomic |  v2.4.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [write-file-atomic](https://www.github.com/iarna/write-file-atomic) |
+| IBM® CICS® Plug-in for Zowe CLI | ws |  v5.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [ws](https://www.github.com/websockets/ws) |
+| IBM® CICS® Plug-in for Zowe CLI | xml |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [xml](https://www.github.com/dylang/node-xml) |
+| IBM® CICS® Plug-in for Zowe CLI | xml-name-validator |  v3.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [xml-name-validator](https://domenic.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | xml2js |  v0.4.19 | [MIT](http://opensource.org/licenses/mit-license) | [xml2js](https://www.github.com/Leonidas-from-XIV/node-xml2js) |
+| IBM® CICS® Plug-in for Zowe CLI | xmlbuilder |  v13.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
+| IBM® CICS® Plug-in for Zowe CLI | xmlbuilder |  v9.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
+| IBM® CICS® Plug-in for Zowe CLI | y18n |  v3.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
+| IBM® CICS® Plug-in for Zowe CLI | y18n |  v4.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
+| IBM® CICS® Plug-in for Zowe CLI | yallist |  v2.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | yallist |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
+| IBM® CICS® Plug-in for Zowe CLI | yamljs |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yamljs](https://www.npmjs.com/package/yamljs) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs |  v13.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs |  v14.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs-parser |  v10.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs-parser |  v13.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs-parser |  v15.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® CICS® Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### IBM&reg Db2&reg Plug-in for Zowe CLI Dependency Attributions 
+### IBM® Db2® Plug-in for Zowe CLI Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @babel/highlight |  v7.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/highlight](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @brightside/imperative |  v2.7.4 | EPL-2.0 | [@brightside/imperative](https://www.npmjs.com/package/@brightside/imperative) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/fs-extra |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/handlebars |  v4.0.31 | [MIT](http://opensource.org/licenses/mit-license) | [@types/handlebars](https://www.npmjs.com/package/@types/handlebars) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/highlight.js |  v9.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/highlight.js](https://www.npmjs.com/package/@types/highlight.js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/ibm_db |  v2.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/ibm_db](https://www.npmjs.com/package/@types/ibm_db) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/jest |  v24.0.19 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/jest-diff |  v20.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest-diff](https://www.npmjs.com/package/@types/jest-diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.144 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.74 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/marked |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/marked](https://www.npmjs.com/package/@types/marked) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/minimatch |  v2.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/node |  v12.11.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/node |  v8.10.56 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/shelljs |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/shelljs](https://www.npmjs.com/package/@types/shelljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | abab |  v2.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn |  v5.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn |  v6.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ajv |  v6.10.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-parser |  v3.2.9 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-regex |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-styles |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | anymatch |  v1.3.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/es128/anymatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | append-transform |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [append-transform](https://www.github.com/jamestalmage) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | aproba |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [aproba](https://www.github.com/iarna/aproba) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | are-we-there-yet |  v1.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [are-we-there-yet](https://www.github.com/iarna/are-we-there-yet) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | arr-diff |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | arr-diff |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | arr-flatten |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-flatten](https://www.github.com/jonschlinkert/arr-flatten) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | arr-union |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-union](https://www.github.com/jonschlinkert/arr-union) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | array-equal |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [array-equal](http://jongleberry.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | array-unique |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | array-unique |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | arrify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [arrify](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](https://joyent.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | assert-plus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assert-plus](https://www.npmjs.com/package/assert-plus) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | assign-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assign-symbols](https://www.github.com/jonschlinkert/assign-symbols) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | astral-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [astral-regex](https://www.github.com/kevva) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | async |  v2.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [async](https://caolan.github.io/async/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | async-each |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [async-each](https://www.github.com/paulmillr/async-each/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | async-limiter |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.npmjs.com/package/async-limiter) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](http://www.futurealoof.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | aws4 |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [aws4](https://www.github.com/mhart) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-code-frame |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-code-frame](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-core |  v6.26.3 | [MIT](http://opensource.org/licenses/mit-license) | [babel-core](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-generator |  v6.26.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-generator](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-helpers |  v6.24.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-helpers](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-jest](https://www.npmjs.com/package/babel-jest) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-messages |  v6.23.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-messages](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-plugin-istanbul |  v4.1.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [babel-plugin-istanbul](https://www.github.com/istanbuljs/babel-plugin-istanbul#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-plugin-jest-hoist |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-jest-hoist](https://www.npmjs.com/package/babel-plugin-jest-hoist) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-plugin-syntax-object-rest-spread |  v6.13.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-syntax-object-rest-spread](https://www.npmjs.com/package/babel-plugin-syntax-object-rest-spread) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-plugin-transform-es2015-modules-commonjs |  v6.26.2 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-transform-es2015-modules-commonjs](https://www.npmjs.com/package/babel-plugin-transform-es2015-modules-commonjs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-plugin-transform-strict-mode |  v6.24.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-transform-strict-mode](https://www.npmjs.com/package/babel-plugin-transform-strict-mode) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-preset-jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-jest](https://www.npmjs.com/package/babel-preset-jest) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-register |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-register](https://www.npmjs.com/package/babel-register) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-runtime |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-runtime](https://www.npmjs.com/package/babel-runtime) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-template |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-template](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-traverse |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-traverse](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babel-types |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-types](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | babylon |  v6.18.0 | [MIT](http://opensource.org/licenses/mit-license) | [babylon](https://babeljs.io/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | balanced-match |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [balanced-match](https://www.github.com/juliangruber/balanced-match) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | base |  v0.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [base](https://www.github.com/node-base/base) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bcrypt-pbkdf |  v1.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | big-integer |  v1.6.47 | Unlicense | [big-integer](https://www.npmjs.com/package/big-integer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | binary |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [binary](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | binary-extensions |  v1.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [binary-extensions](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bindings |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [bindings](https://www.github.com/TooTallNate/node-bindings) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bl |  v1.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [bl](https://www.github.com/rvagg/bl) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bluebird |  v3.4.7 | [MIT](http://opensource.org/licenses/mit-license) | [bluebird](https://www.github.com/petkaantonov/bluebird) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bootstrap |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [bootstrap](https://getbootstrap.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | brace-expansion |  v1.1.11 | [MIT](http://opensource.org/licenses/mit-license) | [brace-expansion](https://www.github.com/juliangruber/brace-expansion) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | braces |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/jonschlinkert/braces) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | braces |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/micromatch/braces) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | browser-process-hrtime |  v0.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [browser-process-hrtime](https://www.npmjs.com/package/browser-process-hrtime) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | browser-resolve |  v1.11.3 | [MIT](http://opensource.org/licenses/mit-license) | [browser-resolve](https://www.npmjs.com/package/browser-resolve) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | bser |  v2.1.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [bser](https://facebook.github.io/watchman/docs/bser.html) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-alloc |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-alloc](https://www.npmjs.com/package/buffer-alloc) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-alloc-unsafe |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-alloc-unsafe](https://www.npmjs.com/package/buffer-alloc-unsafe) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-fill |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-fill](https://www.npmjs.com/package/buffer-fill) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-from |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-from](https://www.npmjs.com/package/buffer-from) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-indexof-polyfill |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-indexof-polyfill](https://www.github.com/sarosia/buffer-indexof-polyfill#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffer-shims |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-shims](https://www.npmjs.com/package/buffer-shims) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | buffers |  v0.1.1 | UNKNOWN | [buffers](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | builtin-modules |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [builtin-modules](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cache-base |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cache-base](https://www.github.com/jonschlinkert/cache-base) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | callsites |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [callsites](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | capture-exit |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chainsaw |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [chainsaw](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chalk |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chart.js |  v2.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [chart.js](https://www.chartjs.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chartjs-color |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color](https://www.npmjs.com/package/chartjs-color) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chartjs-color-string |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color-string](https://www.npmjs.com/package/chartjs-color-string) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chokidar |  v1.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ci-info |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | circular-json |  v0.5.9 | [MIT](http://opensource.org/licenses/mit-license) | [circular-json](https://www.github.com/WebReflection/circular-json) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cliui |  v4.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | co |  v4.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [co](https://www.npmjs.com/package/co) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | code-point-at |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [code-point-at](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | collection-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [collection-visit](https://www.github.com/jonschlinkert/collection-visit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | color-convert |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | color-convert |  v1.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | color-name |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/dfcreative/color-name) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | color-name |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/colorjs/color-name) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | colors |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [colors](https://www.github.com/Marak/colors.js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | combined-stream |  v1.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [combined-stream](https://www.github.com/felixge/node-combined-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | commander |  v2.20.3 | [MIT](http://opensource.org/licenses/mit-license) | [commander](https://www.npmjs.com/package/commander) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | component-emitter |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [component-emitter](https://www.npmjs.com/package/component-emitter) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | concat-map |  v0.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [concat-map](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | console-control-strings |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [console-control-strings](http://re-becca.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | convert-source-map |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [convert-source-map](https://www.github.com/thlorenz/convert-source-map) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | core-js |  v2.6.10 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cpx |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cpx](https://www.github.com/mysticatea/cpx) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cross-spawn |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](http://indigounited.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cross-spawn |  v6.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](https://www.github.com/moxystudio/node-cross-spawn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cssom |  v0.3.8 | [MIT](http://opensource.org/licenses/mit-license) | [cssom](https://www.npmjs.com/package/cssom) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | cssstyle |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssstyle](https://www.github.com/jsakas/CSSStyleDeclaration) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | dashdash |  v1.14.1 | [MIT](http://opensource.org/licenses/mit-license) | [dashdash](http://trentm.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | data-urls |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [data-urls](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | dataobject-parser |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [dataobject-parser](https://www.github.com/Gigzolo/dataobject-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | date-format |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [date-format](https://www.npmjs.com/package/date-format) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | dateformat |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dateformat](https://www.github.com/felixge/node-dateformat) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | debug |  v2.6.9 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | debug |  v3.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | decamelize |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decamelize](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | decode-uri-component |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decode-uri-component](https://www.github.com/SamVerschueren) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | deep-extend |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [deep-extend](https://www.github.com/unclechu/node-deep-extend) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | deep-is |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [deep-is](http://thlorenz.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | deepmerge |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [deepmerge](https://www.github.com/KyleAMathews/deepmerge) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | default-require-extensions |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [default-require-extensions](https://www.github.com/jamestalmage) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | define-properties |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [define-properties](https://www.npmjs.com/package/define-properties) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | define-property |  v0.2.5 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | define-property |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | define-property |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | delayed-stream |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delayed-stream](https://www.github.com/felixge/node-delayed-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | delegates |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delegates](https://www.npmjs.com/package/delegates) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | detect-indent |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-indent](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | detect-libc |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detect-libc](https://www.npmjs.com/package/detect-libc) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | detect-newline |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-newline](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | diff |  v3.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | diff |  v4.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | diff2html |  v2.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [diff2html](https://diff2html.xyz/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | domexception |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [domexception](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | duplexer |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [duplexer](https://www.github.com/Raynos/duplexer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | duplexer2 |  v0.1.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [duplexer2](http://www.fknsrs.biz/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | es-abstract |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | es-to-primitive |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | escodegen |  v1.12.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [escodegen](https://www.github.com/estools/escodegen) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | esprima |  v3.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | esprima |  v4.0.1 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | estraverse |  v4.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [estraverse](https://www.github.com/estools/estraverse) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | esutils |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esutils](https://www.github.com/estools/esutils) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | exec-sh |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [exec-sh](https://www.npmjs.com/package/exec-sh) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | execa |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | execa |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | exit |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [exit](https://www.github.com/cowboy/node-exit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | expand-brackets |  v0.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | expand-brackets |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | expand-range |  v1.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [expand-range](https://www.github.com/jonschlinkert/expand-range) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | expect |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [expect](https://www.npmjs.com/package/expect) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extend |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend](http://www.justmoon.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extend-shallow |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extend-shallow |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extglob |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/jonschlinkert/extglob) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extglob |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/micromatch/extglob) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extsprintf |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | extsprintf |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fast-deep-equal |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fast-deep-equal](https://www.github.com/epoberezkin/fast-deep-equal#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fast-json-stable-stringify |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fast-json-stable-stringify](https://www.github.com/epoberezkin/fast-json-stable-stringify) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fast-levenshtein |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [fast-levenshtein](http://www.hiddentao.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fb-watchman |  v2.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [fb-watchman](https://facebook.github.io/watchman/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | file-uri-to-path |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-uri-to-path](https://www.github.com/TooTallNate/file-uri-to-path) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | filename-regex |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [filename-regex](https://www.github.com/regexhq/filename-regex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fileset |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [fileset](https://www.github.com/mklabs/node-fileset) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fill-range |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | find-index |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [find-index](https://www.github.com/jsdf/find-index) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | find-up |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | find-up |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | find-up |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | for-in |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [for-in](https://www.github.com/jonschlinkert/for-in) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | for-own |  v0.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [for-own](https://www.github.com/jonschlinkert/for-own) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | forever-agent |  v0.6.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [forever-agent](http://www.futurealoof.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | form-data |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [form-data](http://debuggable.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fragment-cache |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [fragment-cache](https://www.github.com/jonschlinkert/fragment-cache) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-constants |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-constants](https://www.github.com/mafintosh/fs-constants) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-extra |  v4.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-extra |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-extra |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-extra |  v8.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs-minipass |  v1.2.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-minipass](https://www.github.com/npm/fs-minipass#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fs.realpath |  v1.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs.realpath](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fsevents |  v1.2.9 | unknown | fsevents |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | fstream |  v1.0.12 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fstream](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | function-bind |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [function-bind](https://www.github.com/Raynos/function-bind) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | gauge |  v2.7.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [gauge](https://www.github.com/iarna/gauge) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | get-caller-file |  v1.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | get-caller-file |  v2.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | get-stream |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | get-stream |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | get-value |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [get-value](https://www.github.com/jonschlinkert/get-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | getpass |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [getpass](https://www.npmjs.com/package/getpass) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | glob |  v7.1.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | glob |  v7.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | glob-base |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [glob-base](https://www.github.com/jonschlinkert/glob-base) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | glob-parent |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob-parent](https://www.github.com/es128/glob-parent) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | glob2base |  v0.0.12 | [MIT](http://opensource.org/licenses/mit-license) | [glob2base](https://www.github.com/wearefractal/glob2base) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | globals |  v9.18.0 | [MIT](http://opensource.org/licenses/mit-license) | [globals](http://https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | graceful-fs |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [graceful-fs](https://www.npmjs.com/package/graceful-fs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | growly |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [growly](http://ibrahimalrajhi.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | handlebars |  v4.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [handlebars](http://www.handlebarsjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | har-schema |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [har-schema](https://www.github.com/ahmadnassri/har-schema) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | har-validator |  v5.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [har-validator](https://www.github.com/ahmadnassri/node-har-validator) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [has](https://www.github.com/tarruda/has) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-ansi |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-flag |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-flag |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-symbols](http://ljharb.codes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-unicode |  v2.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [has-unicode](https://www.github.com/iarna/has-unicode) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-value |  v0.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-values |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | has-values |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | highlight.js |  v9.15.10 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | hogan.js |  v3.0.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [hogan.js](https://www.github.com/hogan.js/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | holderjs |  v2.9.6 | [MIT](http://opensource.org/licenses/mit-license) | [holderjs](http://holderjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | home-or-tmp |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [home-or-tmp](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | homedir-polyfill |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [homedir-polyfill](https://www.github.com/doowb/homedir-polyfill) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | hosted-git-info |  v2.8.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [hosted-git-info](https://www.github.com/npm/hosted-git-info) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | html-encoding-sniffer |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [html-encoding-sniffer](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | http-signature |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [http-signature](https://www.github.com/joyent/node-http-signature/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ibm_db |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [ibm_db](https://www.github.com/ibmdb/node-ibm_db/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | iconv-lite |  v0.4.24 | [MIT](http://opensource.org/licenses/mit-license) | [iconv-lite](https://www.github.com/ashtuchkin/iconv-lite) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ignore-walk |  v3.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ignore-walk](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | import-local |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [import-local](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | imurmurhash |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [imurmurhash](https://www.github.com/jensyt/imurmurhash-js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | inflight |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inflight](https://www.github.com/isaacs/inflight) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | inherits |  v2.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inherits](https://www.npmjs.com/package/inherits) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ini |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ini](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | interpret |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [interpret](http://gulpjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | invariant |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [invariant](https://www.npmjs.com/package/invariant) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | invert-kv |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](http://https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | invert-kv |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-accessor-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-accessor-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-arrayish |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-arrayish](https://www.github.com/qix-) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-binary-path |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-binary-path](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-buffer |  v1.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-buffer](http://feross.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-callable |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-callable](http://ljharb.codes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-ci |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-ci](https://www.github.com/watson/is-ci) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-data-descriptor |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-data-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-date-object |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-date-object](https://www.npmjs.com/package/is-date-object) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-descriptor |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-dotfile |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [is-dotfile](https://www.github.com/jonschlinkert/is-dotfile) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-equal-shallow |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [is-equal-shallow](https://www.github.com/jonschlinkert/is-equal-shallow) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-extendable |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-extendable |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-extglob |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-extglob](https://www.github.com/jonschlinkert/is-extglob) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-finite |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-finite](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-fullwidth-code-point |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-fullwidth-code-point |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-generator-fn |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-generator-fn](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-glob |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-glob](https://www.github.com/jonschlinkert/is-glob) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-number |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-number |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-number |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-plain-object |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-plain-object](https://www.github.com/jonschlinkert/is-plain-object) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-posix-bracket |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-posix-bracket](https://www.github.com/jonschlinkert/is-posix-bracket) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-primitive |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-primitive](https://www.github.com/jonschlinkert/is-primitive) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-regex |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-regex](https://www.github.com/ljharb/is-regex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-stream |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-stream](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-symbol |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-symbol](https://www.npmjs.com/package/is-symbol) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-typedarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-typedarray](https://www.github.com/hughsk/is-typedarray) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-utf8 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-utf8](https://www.npmjs.com/package/is-utf8) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-windows |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-windows](https://www.github.com/jonschlinkert/is-windows) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | is-wsl |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-wsl](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | isarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [isarray](https://www.github.com/juliangruber/isarray) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | isexe |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [isexe](https://www.github.com/isaacs/isexe#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | isobject |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | isobject |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | isstream |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [isstream](https://www.github.com/rvagg/isstream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-api |  v1.3.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-api](https://www.github.com/istanbuljs/istanbuljs#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-lib-coverage |  v1.2.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-coverage](https://www.github.com/istanbuljs/istanbuljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-lib-hook |  v1.2.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-hook](https://www.github.com/istanbuljs/istanbuljs#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-lib-instrument |  v1.10.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-instrument](https://www.github.com/istanbuljs/istanbuljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-lib-report |  v1.1.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://www.github.com/istanbuljs/istanbuljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-lib-source-maps |  v1.2.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://www.github.com/istanbuljs/istanbuljs#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | istanbul-reports |  v1.5.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://www.github.com/istanbuljs/istanbuljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest](http://facebook.github.io/jest/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-changed-files |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-changed-files](https://www.npmjs.com/package/jest-changed-files) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-cli |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-cli](http://facebook.github.io/jest/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-config |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-diff |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-docblock |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-environment-jsdom |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-environment-node |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-get-type |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-get-type](https://www.npmjs.com/package/jest-get-type) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-haste-map |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-haste-map](https://www.npmjs.com/package/jest-haste-map) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-html-reporter |  v2.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [jest-html-reporter](https://www.github.com/Hargne/jest-html-reporter#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-jasmine2 |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-jasmine2](https://www.npmjs.com/package/jest-jasmine2) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-junit |  v3.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [jest-junit](https://www.npmjs.com/package/jest-junit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-leak-detector |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-leak-detector](https://www.npmjs.com/package/jest-leak-detector) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-matcher-utils |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-matcher-utils](https://www.npmjs.com/package/jest-matcher-utils) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-message-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-message-util](https://www.npmjs.com/package/jest-message-util) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-mock |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-mock](https://www.npmjs.com/package/jest-mock) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-regex-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-regex-util](https://www.npmjs.com/package/jest-regex-util) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-resolve |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve](https://www.npmjs.com/package/jest-resolve) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-resolve-dependencies |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve-dependencies](https://www.npmjs.com/package/jest-resolve-dependencies) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-runner |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runner](https://www.npmjs.com/package/jest-runner) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-runtime |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runtime](https://www.npmjs.com/package/jest-runtime) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-serializer |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-serializer](https://www.npmjs.com/package/jest-serializer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-snapshot |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-snapshot](https://www.npmjs.com/package/jest-snapshot) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-stare |  v1.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-stare](https://www.npmjs.com/package/jest-stare) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-util](https://www.npmjs.com/package/jest-util) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-validate |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-validate](https://www.npmjs.com/package/jest-validate) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jest-worker |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jquery |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jquery](https://jquery.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | js-tokens |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | js-yaml |  v3.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsbn |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsbn](https://www.npmjs.com/package/jsbn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsdom |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsdom](https://www.npmjs.com/package/jsdom) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsesc |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsesc](https://mths.be/jsesc) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | json-schema |  v0.2.3 | BSD* | [json-schema](https://www.npmjs.com/package/json-schema) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | json-schema-traverse |  v0.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-schema-traverse](https://www.github.com/epoberezkin/json-schema-traverse#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | json-stable-stringify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-stable-stringify](https://www.github.com/substack/json-stable-stringify) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | json-stringify-safe |  v5.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [json-stringify-safe](https://www.github.com/isaacs/json-stringify-safe) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | json5 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [json5](http://json5.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsonfile |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsonfile](https://www.npmjs.com/package/jsonfile) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsonify |  v0.0.0 | Public Domain | [jsonify](http://crockford.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsonschema |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsonschema](https://www.npmjs.com/package/jsonschema) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | jsprim |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsprim](https://www.npmjs.com/package/jsprim) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | kind-of |  v3.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | kind-of |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | kind-of |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | kind-of |  v6.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lcid |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lcid |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | left-pad |  v1.3.0 | WTFPL | [left-pad](https://www.npmjs.com/package/left-pad) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | leven |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [leven](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | levenshtein |  v1.0.5 | Public Domain | [levenshtein](http://gf3.ca) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | levn |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [levn](https://www.github.com/gkz/levn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | listenercount |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [listenercount](https://www.npmjs.com/package/listenercount) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | load-json-file |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | load-json-file |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | locate-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | locate-path |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lodash |  v4.17.15 | [MIT](http://opensource.org/licenses/mit-license) | [lodash](https://lodash.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash-deep](https://www.github.com/marklagendijk/lodash-deep) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lodash.sortby |  v4.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.sortby](https://lodash.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | log4js |  v3.0.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | lru-cache |  v4.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [lru-cache](https://www.npmjs.com/package/lru-cache) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | make-error |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | makeerror |  v1.0.11 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [makeerror](https://www.npmjs.com/package/makeerror) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | map-age-cleaner |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [map-age-cleaner](https://www.github.com/SamVerschueren) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | map-cache |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [map-cache](https://www.github.com/jonschlinkert/map-cache) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | map-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [map-visit](https://www.github.com/jonschlinkert/map-visit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | marked |  v0.3.19 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | marked |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | math-random |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [math-random](https://www.npmjs.com/package/math-random) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mem |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mem |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | merge |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge](https://www.github.com/yeikos/js.merge) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | merge-stream |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge-stream](https://www.npmjs.com/package/merge-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | micromatch |  v2.3.11 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/jonschlinkert/micromatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | micromatch |  v3.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mime-db |  v1.40.0 | [MIT](http://opensource.org/licenses/mit-license) | [mime-db](https://www.npmjs.com/package/mime-db) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mime-types |  v2.1.24 | [MIT](http://opensource.org/licenses/mit-license) | [mime-types](https://www.npmjs.com/package/mime-types) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mimic-fn |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mimic-fn |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minimatch |  v3.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minimatch](http://blog.izs.me) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minimist |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minimist |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minimist |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minipass |  v2.9.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minipass](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | minizlib |  v1.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [minizlib](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mixin-deep |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [mixin-deep](https://www.github.com/jonschlinkert/mixin-deep) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mkdirp |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mkdirp |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | moment |  v2.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | mustache |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nan |  v2.14.0 | [MIT](http://opensource.org/licenses/mit-license) | [nan](https://www.npmjs.com/package/nan) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nanomatch |  v1.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [nanomatch](https://www.github.com/micromatch/nanomatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | natural-compare |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [natural-compare](https://www.github.com/litejs/natural-compare-lite) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | needle |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [needle](https://www.npmjs.com/package/needle) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | neo-async |  v2.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [neo-async](https://www.github.com/suguru03/neo-async) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nice-try |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [nice-try](https://www.github.com/electerious/nice-try) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | node-int64 |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-int64](https://www.npmjs.com/package/node-int64) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | node-notifier |  v5.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [node-notifier](https://www.github.com/mikaelbr/node-notifier#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | node-pre-gyp |  v0.12.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [node-pre-gyp](https://www.npmjs.com/package/node-pre-gyp) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nopt |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [nopt](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nopt |  v4.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [nopt](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | normalize-package-data |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [normalize-package-data](https://www.npmjs.com/package/normalize-package-data) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | normalize-path |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [normalize-path](https://www.github.com/jonschlinkert/normalize-path) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | npm-bundled |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-bundled](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | npm-packlist |  v1.4.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-packlist](https://www.npmjs.com/package/npm-packlist) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | npm-run-path |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [npm-run-path](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | npmlog |  v4.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npmlog](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | number-is-nan |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [number-is-nan](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | nwsapi |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [nwsapi](http://javascript.nwbox.com/nwsapi/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | oauth-sign |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [oauth-sign](http://www.futurealoof.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object-inspect |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/substack/object-inspect) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object.getownpropertydescriptors |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [object.getownpropertydescriptors](https://www.npmjs.com/package/object.getownpropertydescriptors) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object.omit |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.omit](https://www.github.com/jonschlinkert/object.omit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | object.pick |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.pick](https://www.github.com/jonschlinkert/object.pick) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | once |  v1.4.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [once](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | opener |  v1.5.1 | (WTFPL OR MIT) | [opener](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | optimist |  v0.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [optimist](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | optionator |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [optionator](https://www.github.com/gkz/optionator) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | os-homedir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-homedir](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | os-locale |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | os-locale |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | os-tmpdir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-tmpdir](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | osenv |  v0.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [osenv](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-defer |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-defer](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-finally |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-finally](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-is-promise |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-is-promise](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-limit |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-limit |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-locate |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-locate |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-try |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | p-try |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | parse-glob |  v3.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [parse-glob](https://www.github.com/jonschlinkert/parse-glob) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | parse-json |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | parse-passwd |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-passwd](https://www.github.com/doowb/parse-passwd) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | parse5 |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse5](https://www.github.com/inikulin/parse5) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pascalcase |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [pascalcase](https://www.github.com/jonschlinkert/pascalcase) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-exists |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-exists |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-is-absolute |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-is-absolute](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-key |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-key](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-parse |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [path-parse](https://www.github.com/jbgutierrez/path-parse#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-type |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | path-type |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | performance-now |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [performance-now](https://www.github.com/braveg1rl/performance-now) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pify |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pinkie |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [pinkie](https://www.github.com/floatdrop) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pinkie-promise |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pinkie-promise](https://www.github.com/floatdrop) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pkg-dir |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-dir](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pkg-up |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pn |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pn](https://www.npmjs.com/package/pn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | popper.js |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [popper.js](https://popper.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | posix-character-classes |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [posix-character-classes](https://www.github.com/jonschlinkert/posix-character-classes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | prelude-ls |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [prelude-ls](http://preludels.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | preserve |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [preserve](https://www.github.com/jonschlinkert/preserve) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pretty-format |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-format](https://www.npmjs.com/package/pretty-format) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | prettyjson |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prettyjson](http://rafeca.com/prettyjson) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | private |  v0.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [private](https://www.github.com/benjamn/private) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | process-nextick-args |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | process-nextick-args |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | progress |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | progress |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pseudomap |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [pseudomap](https://www.github.com/isaacs/pseudomap#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | psl |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [psl](https://lupomontero.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pump |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | pump |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | punycode |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | q |  v1.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [q](https://www.github.com/kriskowal/q) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | qs |  v6.5.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | randomatic |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [randomatic](https://www.github.com/jonschlinkert/randomatic) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rc |  v1.2.8 | (BSD-2-Clause OR MIT OR Apache-2.0) | [rc](https://) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | read-pkg |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | read-pkg |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | read-pkg-up |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | read-pkg-up |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | readable-stream |  v2.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | readable-stream |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | readdirp |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [readdirp](https://www.github.com/paulmillr/readdirp) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | realpath-native |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [realpath-native](https://www.npmjs.com/package/realpath-native) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rechoir |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rechoir](https://www.github.com/tkellen/node-rechoir) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | regenerator-runtime |  v0.11.1 | [MIT](http://opensource.org/licenses/mit-license) | [regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | regex-cache |  v0.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [regex-cache](https://www.github.com/jonschlinkert/regex-cache) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | regex-not |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [regex-not](https://www.github.com/jonschlinkert/regex-not) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | remove-trailing-separator |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [remove-trailing-separator](https://www.github.com/darsain/remove-trailing-separator#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | repeat-element |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-element](https://www.github.com/jonschlinkert/repeat-element) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | repeat-string |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-string](https://www.github.com/jonschlinkert/repeat-string) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | repeating |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeating](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | request |  v2.88.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [request](https://www.npmjs.com/package/request) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | request-promise-core |  v1.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-core](https://www.github.com/request/promise-core#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | request-promise-native |  v1.0.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-native](https://www.github.com/request/request-promise-native#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | require-directory |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [require-directory](https://www.github.com/troygoode/node-require-directory/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | require-main-filename |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | require-main-filename |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | resolve |  v1.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | resolve |  v1.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | resolve-cwd |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-cwd](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | resolve-from |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-from](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | resolve-url |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-url](https://www.npmjs.com/package/resolve-url) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ret |  v0.1.15 | [MIT](http://opensource.org/licenses/mit-license) | [ret](https://www.github.com/fent) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rfdc |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [rfdc](https://www.github.com/davidmarkclements/rfdc#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rimraf |  v2.6.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rimraf |  v2.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | rsvp |  v3.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rsvp](https://www.npmjs.com/package/rsvp) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | safe-buffer |  v5.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | safe-buffer |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | safe-regex |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-regex](https://www.github.com/substack/safe-regex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | safer-buffer |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safer-buffer](https://www.github.com/ChALkeR) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | sane |  v2.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [sane](https://www.github.com/amasad/sane) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | sax |  v1.2.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [sax](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | semver |  v5.7.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | semver |  v5.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | set-blocking |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [set-blocking](https://www.github.com/yargs/set-blocking#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | set-value |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [set-value](https://www.github.com/jonschlinkert/set-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | setimmediate |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [setimmediate](https://www.npmjs.com/package/setimmediate) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shaven |  v0.8.1 | [MIT](http://opensource.org/licenses/mit-license) | [shaven](http://adriansieber.com/shaven) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shebang-command |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-command](https://www.github.com/kevva) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shebang-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shell-quote |  v1.7.2 | [MIT](http://opensource.org/licenses/mit-license) | [shell-quote](https://www.github.com/substack/node-shell-quote) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shelljs |  v0.7.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [shelljs](https://www.github.com/shelljs/shelljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | shellwords |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [shellwords](https://www.github.com/jimmycuadra/shellwords) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | signal-exit |  v3.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [signal-exit](https://www.github.com/tapjs/signal-exit) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | slash |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [slash](http://https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | snapdragon |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon](https://www.github.com/jonschlinkert/snapdragon) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | snapdragon-node |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-node](https://www.github.com/jonschlinkert/snapdragon-node) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | snapdragon-util |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-util](https://www.github.com/jonschlinkert/snapdragon-util) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map |  v0.5.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map |  v0.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map-resolve |  v0.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-resolve](https://www.npmjs.com/package/source-map-resolve) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map-support |  v0.4.18 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map-support |  v0.5.13 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | source-map-url |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-url](https://www.npmjs.com/package/source-map-url) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | spdx-correct |  v3.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [spdx-correct](https://kemitchell.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | spdx-exceptions |  v2.2.0 | CC-BY-3.0 | [spdx-exceptions](https://www.npmjs.com/package/spdx-exceptions) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | spdx-expression-parse |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [spdx-expression-parse](http://kemitchell.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | spdx-license-ids |  v3.0.5 | CC0-1.0 | [spdx-license-ids](https://www.github.com/shinnn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | split-string |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [split-string](https://www.github.com/jonschlinkert/split-string) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | sprintf-js |  v1.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sprintf-js](http://alexei.ro/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | sshpk |  v1.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [sshpk](https://www.github.com/arekinath/node-sshpk#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | stack-trace |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [stack-trace](https://www.github.com/felixge/node-stack-trace) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | stack-utils |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stack-utils](https://www.github.com/jamestalmage) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | static-extend |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [static-extend](https://www.github.com/jonschlinkert/static-extend) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | stealthy-require |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [stealthy-require](https://www.github.com/analog-nico/stealthy-require#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | streamroller |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [streamroller](https://www.npmjs.com/package/streamroller) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string-length |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-length](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string-width |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string-width |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string-width |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string.prototype.trimleft |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimleft](https://www.npmjs.com/package/string.prototype.trimleft) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string.prototype.trimright |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimright](https://www.npmjs.com/package/string.prototype.trimright) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string_decoder |  v0.10.31 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/rvagg/string_decoder) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | string_decoder |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/nodejs/string_decoder) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-ansi |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-ansi |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-bom |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-bom |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-eof |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-eof](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | strip-json-comments |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-json-comments](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | subarg |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [subarg](https://www.github.com/substack/subarg) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | supports-color |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | supports-color |  v3.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | supports-color |  v5.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tar |  v4.4.13 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tar-fs |  v1.16.3 | [MIT](http://opensource.org/licenses/mit-license) | [tar-fs](https://www.github.com/mafintosh/tar-fs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tar-stream |  v1.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [tar-stream](https://www.github.com/mafintosh/tar-stream) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | targz |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [targz](https://www.github.com/miskun/targz#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | test-exclude |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [test-exclude](https://www.github.com/istanbuljs/istanbuljs#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | throat |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [throat](https://www.npmjs.com/package/throat) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tmpl |  v1.0.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tmpl](https://www.github.com/nshah/nodejs-tmpl) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | to-buffer |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-buffer](https://www.github.com/mafintosh/to-buffer) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | to-fast-properties |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [to-fast-properties](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | to-object-path |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-object-path](https://www.github.com/jonschlinkert/to-object-path) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | to-regex |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex](https://www.github.com/jonschlinkert/to-regex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | to-regex-range |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tough-cookie |  v2.4.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tough-cookie |  v2.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tr46 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tr46](https://www.npmjs.com/package/tr46) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | traverse |  v0.3.9 | [MIT](http://opensource.org/licenses/mit-license) | [traverse](https://www.npmjs.com/package/traverse) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | trim-right |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [trim-right](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ts-jest |  v22.4.6 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://www.github.com/kulshekhar/ts-jest#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tslint |  v5.20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tweetnacl |  v0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | typedoc |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc](http://typedoc.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | typedoc-default-themes |  v0.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](http://typedoc.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | typescript |  v2.4.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | uglify-js |  v3.6.4 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | unset-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [unset-value](https://www.github.com/jonschlinkert/unset-value) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | unzipper |  v0.8.14 | [MIT](http://opensource.org/licenses/mit-license) | [unzipper](https://www.npmjs.com/package/unzipper) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | uri-js |  v4.2.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uri-js](https://www.github.com/garycourt/uri-js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | urix |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [urix](https://www.npmjs.com/package/urix) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | use |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [use](https://www.github.com/jonschlinkert/use) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | util-deprecate |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [util-deprecate](https://www.github.com/TooTallNate/util-deprecate) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | util.promisify |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [util.promisify](https://www.github.com/ljharb/util.promisify#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | uuid |  v3.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [uuid](https://www.npmjs.com/package/uuid) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | v8flags |  v3.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [v8flags](http://gulpjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | validate-npm-package-license |  v3.0.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [validate-npm-package-license](https://kemitchell.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | verror |  v1.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [verror](https://www.npmjs.com/package/verror) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | w3c-hr-time |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [w3c-hr-time](https://www.npmjs.com/package/w3c-hr-time) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | walker |  v1.0.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [walker](https://www.github.com/daaku/nodejs-walker) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | watch |  v0.18.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [watch](https://www.github.com/mikeal/watch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | webidl-conversions |  v4.0.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [webidl-conversions](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | whatwg-encoding |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-encoding](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | whatwg-mimetype |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-mimetype](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | whatwg-url |  v6.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | whatwg-url |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | which |  v1.3.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which](http://blog.izs.me) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | which-module |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which-module](https://www.github.com/nexdrew/which-module#readme) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wide-align |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wide-align](http://re-becca.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wordwrap |  v0.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wordwrap |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wrap-ansi |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wrap-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wrap-ansi |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | wrappy |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wrappy](https://www.github.com/npm/wrappy) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | write-file-atomic |  v2.4.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [write-file-atomic](https://www.github.com/iarna/write-file-atomic) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ws |  v5.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [ws](https://www.github.com/websockets/ws) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | xml |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [xml](https://www.github.com/dylang/node-xml) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | xml-name-validator |  v3.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [xml-name-validator](https://domenic.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | xmlbuilder |  v13.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | xtend |  v4.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xtend](https://www.github.com/Raynos/xtend) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | y18n |  v3.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | y18n |  v4.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yallist |  v2.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yallist |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yamljs |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yamljs](https://www.npmjs.com/package/yamljs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs |  v10.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs |  v11.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs |  v14.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs-parser |  v15.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | @babel/highlight |  v7.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/highlight](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | @brightside/imperative |  v2.7.4 | EPL-2.0 | [@brightside/imperative](https://www.npmjs.com/package/@brightside/imperative) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/fs-extra |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/handlebars |  v4.0.31 | [MIT](http://opensource.org/licenses/mit-license) | [@types/handlebars](https://www.npmjs.com/package/@types/handlebars) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/highlight.js |  v9.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/highlight.js](https://www.npmjs.com/package/@types/highlight.js) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/ibm_db |  v2.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/ibm_db](https://www.npmjs.com/package/@types/ibm_db) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/jest |  v24.0.19 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/jest-diff |  v20.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest-diff](https://www.npmjs.com/package/@types/jest-diff) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/lodash |  v4.14.144 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/lodash |  v4.14.74 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/marked |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/marked](https://www.npmjs.com/package/@types/marked) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/minimatch |  v2.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/node |  v12.11.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/node |  v8.10.56 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/shelljs |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/shelljs](https://www.npmjs.com/package/@types/shelljs) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
+| IBM® Db2® Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM® Db2® Plug-in for Zowe CLI | abab |  v2.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
+| IBM® Db2® Plug-in for Zowe CLI | acorn |  v5.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM® Db2® Plug-in for Zowe CLI | acorn |  v6.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM® Db2® Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
+| IBM® Db2® Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
+| IBM® Db2® Plug-in for Zowe CLI | ajv |  v6.10.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-parser |  v3.2.9 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-regex |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-styles |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | anymatch |  v1.3.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/es128/anymatch) |
+| IBM® Db2® Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
+| IBM® Db2® Plug-in for Zowe CLI | append-transform |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [append-transform](https://www.github.com/jamestalmage) |
+| IBM® Db2® Plug-in for Zowe CLI | aproba |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [aproba](https://www.github.com/iarna/aproba) |
+| IBM® Db2® Plug-in for Zowe CLI | are-we-there-yet |  v1.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [are-we-there-yet](https://www.github.com/iarna/are-we-there-yet) |
+| IBM® Db2® Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
+| IBM® Db2® Plug-in for Zowe CLI | arr-diff |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
+| IBM® Db2® Plug-in for Zowe CLI | arr-diff |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-diff](https://www.github.com/jonschlinkert/arr-diff) |
+| IBM® Db2® Plug-in for Zowe CLI | arr-flatten |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-flatten](https://www.github.com/jonschlinkert/arr-flatten) |
+| IBM® Db2® Plug-in for Zowe CLI | arr-union |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [arr-union](https://www.github.com/jonschlinkert/arr-union) |
+| IBM® Db2® Plug-in for Zowe CLI | array-equal |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [array-equal](http://jongleberry.com) |
+| IBM® Db2® Plug-in for Zowe CLI | array-unique |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
+| IBM® Db2® Plug-in for Zowe CLI | array-unique |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [array-unique](https://www.github.com/jonschlinkert/array-unique) |
+| IBM® Db2® Plug-in for Zowe CLI | arrify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [arrify](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](https://joyent.com) |
+| IBM® Db2® Plug-in for Zowe CLI | assert-plus |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assert-plus](https://www.npmjs.com/package/assert-plus) |
+| IBM® Db2® Plug-in for Zowe CLI | assign-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [assign-symbols](https://www.github.com/jonschlinkert/assign-symbols) |
+| IBM® Db2® Plug-in for Zowe CLI | astral-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [astral-regex](https://www.github.com/kevva) |
+| IBM® Db2® Plug-in for Zowe CLI | async |  v2.6.3 | [MIT](http://opensource.org/licenses/mit-license) | [async](https://caolan.github.io/async/) |
+| IBM® Db2® Plug-in for Zowe CLI | async-each |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [async-each](https://www.github.com/paulmillr/async-each/) |
+| IBM® Db2® Plug-in for Zowe CLI | async-limiter |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [async-limiter](https://www.npmjs.com/package/async-limiter) |
+| IBM® Db2® Plug-in for Zowe CLI | asynckit |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [asynckit](https://www.github.com/alexindigo/asynckit#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | atob |  v2.1.2 | (MIT OR Apache-2.0) | [atob](https://git.coolaj86.com/coolaj86/atob.js.git) |
+| IBM® Db2® Plug-in for Zowe CLI | aws-sign2 |  v0.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [aws-sign2](http://www.futurealoof.com) |
+| IBM® Db2® Plug-in for Zowe CLI | aws4 |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [aws4](https://www.github.com/mhart) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-code-frame |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-code-frame](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-core |  v6.26.3 | [MIT](http://opensource.org/licenses/mit-license) | [babel-core](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-generator |  v6.26.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-generator](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-helpers |  v6.24.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-helpers](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-jest](https://www.npmjs.com/package/babel-jest) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-messages |  v6.23.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-messages](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-plugin-istanbul |  v4.1.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [babel-plugin-istanbul](https://www.github.com/istanbuljs/babel-plugin-istanbul#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-plugin-jest-hoist |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-jest-hoist](https://www.npmjs.com/package/babel-plugin-jest-hoist) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-plugin-syntax-object-rest-spread |  v6.13.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-syntax-object-rest-spread](https://www.npmjs.com/package/babel-plugin-syntax-object-rest-spread) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-plugin-transform-es2015-modules-commonjs |  v6.26.2 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-transform-es2015-modules-commonjs](https://www.npmjs.com/package/babel-plugin-transform-es2015-modules-commonjs) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-plugin-transform-strict-mode |  v6.24.1 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-transform-strict-mode](https://www.npmjs.com/package/babel-plugin-transform-strict-mode) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-preset-jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-jest](https://www.npmjs.com/package/babel-preset-jest) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-register |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-register](https://www.npmjs.com/package/babel-register) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-runtime |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-runtime](https://www.npmjs.com/package/babel-runtime) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-template |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-template](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-traverse |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-traverse](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babel-types |  v6.26.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-types](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | babylon |  v6.18.0 | [MIT](http://opensource.org/licenses/mit-license) | [babylon](https://babeljs.io/) |
+| IBM® Db2® Plug-in for Zowe CLI | balanced-match |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [balanced-match](https://www.github.com/juliangruber/balanced-match) |
+| IBM® Db2® Plug-in for Zowe CLI | base |  v0.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [base](https://www.github.com/node-base/base) |
+| IBM® Db2® Plug-in for Zowe CLI | bcrypt-pbkdf |  v1.0.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf) |
+| IBM® Db2® Plug-in for Zowe CLI | big-integer |  v1.6.47 | Unlicense | [big-integer](https://www.npmjs.com/package/big-integer) |
+| IBM® Db2® Plug-in for Zowe CLI | binary |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [binary](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | binary-extensions |  v1.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [binary-extensions](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | bindings |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [bindings](https://www.github.com/TooTallNate/node-bindings) |
+| IBM® Db2® Plug-in for Zowe CLI | bl |  v1.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [bl](https://www.github.com/rvagg/bl) |
+| IBM® Db2® Plug-in for Zowe CLI | bluebird |  v3.4.7 | [MIT](http://opensource.org/licenses/mit-license) | [bluebird](https://www.github.com/petkaantonov/bluebird) |
+| IBM® Db2® Plug-in for Zowe CLI | bootstrap |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [bootstrap](https://getbootstrap.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | brace-expansion |  v1.1.11 | [MIT](http://opensource.org/licenses/mit-license) | [brace-expansion](https://www.github.com/juliangruber/brace-expansion) |
+| IBM® Db2® Plug-in for Zowe CLI | braces |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/jonschlinkert/braces) |
+| IBM® Db2® Plug-in for Zowe CLI | braces |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [braces](https://www.github.com/micromatch/braces) |
+| IBM® Db2® Plug-in for Zowe CLI | browser-process-hrtime |  v0.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [browser-process-hrtime](https://www.npmjs.com/package/browser-process-hrtime) |
+| IBM® Db2® Plug-in for Zowe CLI | browser-resolve |  v1.11.3 | [MIT](http://opensource.org/licenses/mit-license) | [browser-resolve](https://www.npmjs.com/package/browser-resolve) |
+| IBM® Db2® Plug-in for Zowe CLI | bser |  v2.1.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [bser](https://facebook.github.io/watchman/docs/bser.html) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-alloc |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-alloc](https://www.npmjs.com/package/buffer-alloc) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-alloc-unsafe |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-alloc-unsafe](https://www.npmjs.com/package/buffer-alloc-unsafe) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-fill |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-fill](https://www.npmjs.com/package/buffer-fill) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-from |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-from](https://www.npmjs.com/package/buffer-from) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-indexof-polyfill |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-indexof-polyfill](https://www.github.com/sarosia/buffer-indexof-polyfill#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | buffer-shims |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [buffer-shims](https://www.npmjs.com/package/buffer-shims) |
+| IBM® Db2® Plug-in for Zowe CLI | buffers |  v0.1.1 | UNKNOWN | [buffers](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | builtin-modules |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [builtin-modules](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | cache-base |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cache-base](https://www.github.com/jonschlinkert/cache-base) |
+| IBM® Db2® Plug-in for Zowe CLI | callsites |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [callsites](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | capture-exit |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
+| IBM® Db2® Plug-in for Zowe CLI | chainsaw |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [chainsaw](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | chalk |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
+| IBM® Db2® Plug-in for Zowe CLI | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
+| IBM® Db2® Plug-in for Zowe CLI | chart.js |  v2.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [chart.js](https://www.chartjs.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | chartjs-color |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color](https://www.npmjs.com/package/chartjs-color) |
+| IBM® Db2® Plug-in for Zowe CLI | chartjs-color-string |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [chartjs-color-string](https://www.npmjs.com/package/chartjs-color-string) |
+| IBM® Db2® Plug-in for Zowe CLI | chokidar |  v1.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [chokidar](https://www.github.com/paulmillr/chokidar) |
+| IBM® Db2® Plug-in for Zowe CLI | chownr |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [chownr](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | ci-info |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
+| IBM® Db2® Plug-in for Zowe CLI | circular-json |  v0.5.9 | [MIT](http://opensource.org/licenses/mit-license) | [circular-json](https://www.github.com/WebReflection/circular-json) |
+| IBM® Db2® Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
+| IBM® Db2® Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
+| IBM® Db2® Plug-in for Zowe CLI | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
+| IBM® Db2® Plug-in for Zowe CLI | cliui |  v4.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
+| IBM® Db2® Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
+| IBM® Db2® Plug-in for Zowe CLI | co |  v4.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [co](https://www.npmjs.com/package/co) |
+| IBM® Db2® Plug-in for Zowe CLI | code-point-at |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [code-point-at](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | collection-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [collection-visit](https://www.github.com/jonschlinkert/collection-visit) |
+| IBM® Db2® Plug-in for Zowe CLI | color-convert |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
+| IBM® Db2® Plug-in for Zowe CLI | color-convert |  v1.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
+| IBM® Db2® Plug-in for Zowe CLI | color-name |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/dfcreative/color-name) |
+| IBM® Db2® Plug-in for Zowe CLI | color-name |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/colorjs/color-name) |
+| IBM® Db2® Plug-in for Zowe CLI | colors |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [colors](https://www.github.com/Marak/colors.js) |
+| IBM® Db2® Plug-in for Zowe CLI | combined-stream |  v1.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [combined-stream](https://www.github.com/felixge/node-combined-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | commander |  v2.20.3 | [MIT](http://opensource.org/licenses/mit-license) | [commander](https://www.npmjs.com/package/commander) |
+| IBM® Db2® Plug-in for Zowe CLI | component-emitter |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [component-emitter](https://www.npmjs.com/package/component-emitter) |
+| IBM® Db2® Plug-in for Zowe CLI | concat-map |  v0.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [concat-map](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | console-control-strings |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [console-control-strings](http://re-becca.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | convert-source-map |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [convert-source-map](https://www.github.com/thlorenz/convert-source-map) |
+| IBM® Db2® Plug-in for Zowe CLI | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | core-js |  v2.6.10 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
+| IBM® Db2® Plug-in for Zowe CLI | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | cpx |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cpx](https://www.github.com/mysticatea/cpx) |
+| IBM® Db2® Plug-in for Zowe CLI | cross-spawn |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](http://indigounited.com) |
+| IBM® Db2® Plug-in for Zowe CLI | cross-spawn |  v6.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [cross-spawn](https://www.github.com/moxystudio/node-cross-spawn) |
+| IBM® Db2® Plug-in for Zowe CLI | cssom |  v0.3.8 | [MIT](http://opensource.org/licenses/mit-license) | [cssom](https://www.npmjs.com/package/cssom) |
+| IBM® Db2® Plug-in for Zowe CLI | cssstyle |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssstyle](https://www.github.com/jsakas/CSSStyleDeclaration) |
+| IBM® Db2® Plug-in for Zowe CLI | dashdash |  v1.14.1 | [MIT](http://opensource.org/licenses/mit-license) | [dashdash](http://trentm.com) |
+| IBM® Db2® Plug-in for Zowe CLI | data-urls |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [data-urls](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | dataobject-parser |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [dataobject-parser](https://www.github.com/Gigzolo/dataobject-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | date-format |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [date-format](https://www.npmjs.com/package/date-format) |
+| IBM® Db2® Plug-in for Zowe CLI | dateformat |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [dateformat](https://www.github.com/felixge/node-dateformat) |
+| IBM® Db2® Plug-in for Zowe CLI | debug |  v2.6.9 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
+| IBM® Db2® Plug-in for Zowe CLI | debug |  v3.2.6 | [MIT](http://opensource.org/licenses/mit-license) | [debug](https://www.npmjs.com/package/debug) |
+| IBM® Db2® Plug-in for Zowe CLI | decamelize |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decamelize](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | decode-uri-component |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [decode-uri-component](https://www.github.com/SamVerschueren) |
+| IBM® Db2® Plug-in for Zowe CLI | deep-extend |  v0.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [deep-extend](https://www.github.com/unclechu/node-deep-extend) |
+| IBM® Db2® Plug-in for Zowe CLI | deep-is |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [deep-is](http://thlorenz.com) |
+| IBM® Db2® Plug-in for Zowe CLI | deepmerge |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [deepmerge](https://www.github.com/KyleAMathews/deepmerge) |
+| IBM® Db2® Plug-in for Zowe CLI | default-require-extensions |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [default-require-extensions](https://www.github.com/jamestalmage) |
+| IBM® Db2® Plug-in for Zowe CLI | define-properties |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [define-properties](https://www.npmjs.com/package/define-properties) |
+| IBM® Db2® Plug-in for Zowe CLI | define-property |  v0.2.5 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® Db2® Plug-in for Zowe CLI | define-property |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® Db2® Plug-in for Zowe CLI | define-property |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [define-property](https://www.github.com/jonschlinkert/define-property) |
+| IBM® Db2® Plug-in for Zowe CLI | delayed-stream |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delayed-stream](https://www.github.com/felixge/node-delayed-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | delegates |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [delegates](https://www.npmjs.com/package/delegates) |
+| IBM® Db2® Plug-in for Zowe CLI | detect-indent |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-indent](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | detect-libc |  v1.0.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [detect-libc](https://www.npmjs.com/package/detect-libc) |
+| IBM® Db2® Plug-in for Zowe CLI | detect-newline |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [detect-newline](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | diff |  v3.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
+| IBM® Db2® Plug-in for Zowe CLI | diff |  v4.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [diff](https://www.npmjs.com/package/diff) |
+| IBM® Db2® Plug-in for Zowe CLI | diff2html |  v2.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [diff2html](https://diff2html.xyz/) |
+| IBM® Db2® Plug-in for Zowe CLI | domexception |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [domexception](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | duplexer |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [duplexer](https://www.github.com/Raynos/duplexer) |
+| IBM® Db2® Plug-in for Zowe CLI | duplexer2 |  v0.1.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [duplexer2](http://www.fknsrs.biz/) |
+| IBM® Db2® Plug-in for Zowe CLI | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
+| IBM® Db2® Plug-in for Zowe CLI | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
+| IBM® Db2® Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
+| IBM® Db2® Plug-in for Zowe CLI | es-abstract |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM® Db2® Plug-in for Zowe CLI | es-to-primitive |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
+| IBM® Db2® Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
+| IBM® Db2® Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | escodegen |  v1.12.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [escodegen](https://www.github.com/estools/escodegen) |
+| IBM® Db2® Plug-in for Zowe CLI | esprima |  v3.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | esprima |  v4.0.1 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esprima](http://esprima.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | estraverse |  v4.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [estraverse](https://www.github.com/estools/estraverse) |
+| IBM® Db2® Plug-in for Zowe CLI | esutils |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [esutils](https://www.github.com/estools/esutils) |
+| IBM® Db2® Plug-in for Zowe CLI | exec-sh |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [exec-sh](https://www.npmjs.com/package/exec-sh) |
+| IBM® Db2® Plug-in for Zowe CLI | execa |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | execa |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [execa](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | exit |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [exit](https://www.github.com/cowboy/node-exit) |
+| IBM® Db2® Plug-in for Zowe CLI | expand-brackets |  v0.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
+| IBM® Db2® Plug-in for Zowe CLI | expand-brackets |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [expand-brackets](https://www.github.com/jonschlinkert/expand-brackets) |
+| IBM® Db2® Plug-in for Zowe CLI | expand-range |  v1.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [expand-range](https://www.github.com/jonschlinkert/expand-range) |
+| IBM® Db2® Plug-in for Zowe CLI | expect |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [expect](https://www.npmjs.com/package/expect) |
+| IBM® Db2® Plug-in for Zowe CLI | extend |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend](http://www.justmoon.net) |
+| IBM® Db2® Plug-in for Zowe CLI | extend-shallow |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
+| IBM® Db2® Plug-in for Zowe CLI | extend-shallow |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [extend-shallow](https://www.github.com/jonschlinkert/extend-shallow) |
+| IBM® Db2® Plug-in for Zowe CLI | extglob |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/jonschlinkert/extglob) |
+| IBM® Db2® Plug-in for Zowe CLI | extglob |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [extglob](https://www.github.com/micromatch/extglob) |
+| IBM® Db2® Plug-in for Zowe CLI | extsprintf |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
+| IBM® Db2® Plug-in for Zowe CLI | extsprintf |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [extsprintf](https://www.npmjs.com/package/extsprintf) |
+| IBM® Db2® Plug-in for Zowe CLI | fast-deep-equal |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [fast-deep-equal](https://www.github.com/epoberezkin/fast-deep-equal#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | fast-json-stable-stringify |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fast-json-stable-stringify](https://www.github.com/epoberezkin/fast-json-stable-stringify) |
+| IBM® Db2® Plug-in for Zowe CLI | fast-levenshtein |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [fast-levenshtein](http://www.hiddentao.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | fb-watchman |  v2.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [fb-watchman](https://facebook.github.io/watchman/) |
+| IBM® Db2® Plug-in for Zowe CLI | file-uri-to-path |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-uri-to-path](https://www.github.com/TooTallNate/file-uri-to-path) |
+| IBM® Db2® Plug-in for Zowe CLI | filename-regex |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [filename-regex](https://www.github.com/regexhq/filename-regex) |
+| IBM® Db2® Plug-in for Zowe CLI | fileset |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [fileset](https://www.github.com/mklabs/node-fileset) |
+| IBM® Db2® Plug-in for Zowe CLI | fill-range |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
+| IBM® Db2® Plug-in for Zowe CLI | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
+| IBM® Db2® Plug-in for Zowe CLI | find-index |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [find-index](https://www.github.com/jsdf/find-index) |
+| IBM® Db2® Plug-in for Zowe CLI | find-up |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | find-up |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | find-up |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [find-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | for-in |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [for-in](https://www.github.com/jonschlinkert/for-in) |
+| IBM® Db2® Plug-in for Zowe CLI | for-own |  v0.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [for-own](https://www.github.com/jonschlinkert/for-own) |
+| IBM® Db2® Plug-in for Zowe CLI | forever-agent |  v0.6.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [forever-agent](http://www.futurealoof.com) |
+| IBM® Db2® Plug-in for Zowe CLI | form-data |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [form-data](http://debuggable.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | fragment-cache |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [fragment-cache](https://www.github.com/jonschlinkert/fragment-cache) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-constants |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-constants](https://www.github.com/mafintosh/fs-constants) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-extra |  v4.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-extra |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-extra |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-extra |  v8.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [fs-extra](https://www.github.com/jprichardson/node-fs-extra) |
+| IBM® Db2® Plug-in for Zowe CLI | fs-minipass |  v1.2.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-minipass](https://www.github.com/npm/fs-minipass#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | fs.realpath |  v1.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs.realpath](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | fsevents |  v1.2.9 | unknown | fsevents |
+| IBM® Db2® Plug-in for Zowe CLI | fstream |  v1.0.12 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fstream](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | function-bind |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [function-bind](https://www.github.com/Raynos/function-bind) |
+| IBM® Db2® Plug-in for Zowe CLI | gauge |  v2.7.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [gauge](https://www.github.com/iarna/gauge) |
+| IBM® Db2® Plug-in for Zowe CLI | get-caller-file |  v1.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | get-caller-file |  v2.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [get-caller-file](https://www.github.com/stefanpenner/get-caller-file#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | get-stream |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | get-stream |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [get-stream](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | get-value |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [get-value](https://www.github.com/jonschlinkert/get-value) |
+| IBM® Db2® Plug-in for Zowe CLI | getpass |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [getpass](https://www.npmjs.com/package/getpass) |
+| IBM® Db2® Plug-in for Zowe CLI | glob |  v7.1.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | glob |  v7.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | glob-base |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [glob-base](https://www.github.com/jonschlinkert/glob-base) |
+| IBM® Db2® Plug-in for Zowe CLI | glob-parent |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [glob-parent](https://www.github.com/es128/glob-parent) |
+| IBM® Db2® Plug-in for Zowe CLI | glob2base |  v0.0.12 | [MIT](http://opensource.org/licenses/mit-license) | [glob2base](https://www.github.com/wearefractal/glob2base) |
+| IBM® Db2® Plug-in for Zowe CLI | globals |  v9.18.0 | [MIT](http://opensource.org/licenses/mit-license) | [globals](http://https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | graceful-fs |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [graceful-fs](https://www.npmjs.com/package/graceful-fs) |
+| IBM® Db2® Plug-in for Zowe CLI | growly |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [growly](http://ibrahimalrajhi.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | handlebars |  v4.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [handlebars](http://www.handlebarsjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | har-schema |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [har-schema](https://www.github.com/ahmadnassri/har-schema) |
+| IBM® Db2® Plug-in for Zowe CLI | har-validator |  v5.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [har-validator](https://www.github.com/ahmadnassri/node-har-validator) |
+| IBM® Db2® Plug-in for Zowe CLI | has |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [has](https://www.github.com/tarruda/has) |
+| IBM® Db2® Plug-in for Zowe CLI | has-ansi |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | has-flag |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | has-flag |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-flag](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | has-symbols |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-symbols](http://ljharb.codes) |
+| IBM® Db2® Plug-in for Zowe CLI | has-unicode |  v2.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [has-unicode](https://www.github.com/iarna/has-unicode) |
+| IBM® Db2® Plug-in for Zowe CLI | has-value |  v0.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
+| IBM® Db2® Plug-in for Zowe CLI | has-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-value](https://www.github.com/jonschlinkert/has-value) |
+| IBM® Db2® Plug-in for Zowe CLI | has-values |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
+| IBM® Db2® Plug-in for Zowe CLI | has-values |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [has-values](https://www.github.com/jonschlinkert/has-values) |
+| IBM® Db2® Plug-in for Zowe CLI | highlight.js |  v9.15.10 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | hogan.js |  v3.0.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [hogan.js](https://www.github.com/hogan.js/) |
+| IBM® Db2® Plug-in for Zowe CLI | holderjs |  v2.9.6 | [MIT](http://opensource.org/licenses/mit-license) | [holderjs](http://holderjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | home-or-tmp |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [home-or-tmp](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | homedir-polyfill |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [homedir-polyfill](https://www.github.com/doowb/homedir-polyfill) |
+| IBM® Db2® Plug-in for Zowe CLI | hosted-git-info |  v2.8.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [hosted-git-info](https://www.github.com/npm/hosted-git-info) |
+| IBM® Db2® Plug-in for Zowe CLI | html-encoding-sniffer |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [html-encoding-sniffer](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | http-signature |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [http-signature](https://www.github.com/joyent/node-http-signature/) |
+| IBM® Db2® Plug-in for Zowe CLI | ibm_db |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [ibm_db](https://www.github.com/ibmdb/node-ibm_db/) |
+| IBM® Db2® Plug-in for Zowe CLI | iconv-lite |  v0.4.24 | [MIT](http://opensource.org/licenses/mit-license) | [iconv-lite](https://www.github.com/ashtuchkin/iconv-lite) |
+| IBM® Db2® Plug-in for Zowe CLI | ignore-walk |  v3.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ignore-walk](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | import-local |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [import-local](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | imurmurhash |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [imurmurhash](https://www.github.com/jensyt/imurmurhash-js) |
+| IBM® Db2® Plug-in for Zowe CLI | inflight |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inflight](https://www.github.com/isaacs/inflight) |
+| IBM® Db2® Plug-in for Zowe CLI | inherits |  v2.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inherits](https://www.npmjs.com/package/inherits) |
+| IBM® Db2® Plug-in for Zowe CLI | ini |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ini](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | interpret |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [interpret](http://gulpjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | invariant |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [invariant](https://www.npmjs.com/package/invariant) |
+| IBM® Db2® Plug-in for Zowe CLI | invert-kv |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](http://https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | invert-kv |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-accessor-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-accessor-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-accessor-descriptor](https://www.github.com/jonschlinkert/is-accessor-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-arrayish |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-arrayish](https://www.github.com/qix-) |
+| IBM® Db2® Plug-in for Zowe CLI | is-binary-path |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-binary-path](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-buffer |  v1.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-buffer](http://feross.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | is-callable |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-callable](http://ljharb.codes) |
+| IBM® Db2® Plug-in for Zowe CLI | is-ci |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-ci](https://www.github.com/watson/is-ci) |
+| IBM® Db2® Plug-in for Zowe CLI | is-data-descriptor |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-data-descriptor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-data-descriptor](https://www.github.com/jonschlinkert/is-data-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-date-object |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-date-object](https://www.npmjs.com/package/is-date-object) |
+| IBM® Db2® Plug-in for Zowe CLI | is-descriptor |  v0.1.6 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-descriptor |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-descriptor](https://www.github.com/jonschlinkert/is-descriptor) |
+| IBM® Db2® Plug-in for Zowe CLI | is-dotfile |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [is-dotfile](https://www.github.com/jonschlinkert/is-dotfile) |
+| IBM® Db2® Plug-in for Zowe CLI | is-equal-shallow |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [is-equal-shallow](https://www.github.com/jonschlinkert/is-equal-shallow) |
+| IBM® Db2® Plug-in for Zowe CLI | is-extendable |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
+| IBM® Db2® Plug-in for Zowe CLI | is-extendable |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-extendable](https://www.github.com/jonschlinkert/is-extendable) |
+| IBM® Db2® Plug-in for Zowe CLI | is-extglob |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-extglob](https://www.github.com/jonschlinkert/is-extglob) |
+| IBM® Db2® Plug-in for Zowe CLI | is-finite |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-finite](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-fullwidth-code-point |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-fullwidth-code-point |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-fullwidth-code-point](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-generator-fn |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-generator-fn](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-glob |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-glob](https://www.github.com/jonschlinkert/is-glob) |
+| IBM® Db2® Plug-in for Zowe CLI | is-number |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
+| IBM® Db2® Plug-in for Zowe CLI | is-number |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
+| IBM® Db2® Plug-in for Zowe CLI | is-number |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-number](https://www.github.com/jonschlinkert/is-number) |
+| IBM® Db2® Plug-in for Zowe CLI | is-plain-object |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-plain-object](https://www.github.com/jonschlinkert/is-plain-object) |
+| IBM® Db2® Plug-in for Zowe CLI | is-posix-bracket |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-posix-bracket](https://www.github.com/jonschlinkert/is-posix-bracket) |
+| IBM® Db2® Plug-in for Zowe CLI | is-primitive |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-primitive](https://www.github.com/jonschlinkert/is-primitive) |
+| IBM® Db2® Plug-in for Zowe CLI | is-regex |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [is-regex](https://www.github.com/ljharb/is-regex) |
+| IBM® Db2® Plug-in for Zowe CLI | is-stream |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-stream](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | is-symbol |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-symbol](https://www.npmjs.com/package/is-symbol) |
+| IBM® Db2® Plug-in for Zowe CLI | is-typedarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-typedarray](https://www.github.com/hughsk/is-typedarray) |
+| IBM® Db2® Plug-in for Zowe CLI | is-utf8 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [is-utf8](https://www.npmjs.com/package/is-utf8) |
+| IBM® Db2® Plug-in for Zowe CLI | is-windows |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [is-windows](https://www.github.com/jonschlinkert/is-windows) |
+| IBM® Db2® Plug-in for Zowe CLI | is-wsl |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [is-wsl](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | isarray |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [isarray](https://www.github.com/juliangruber/isarray) |
+| IBM® Db2® Plug-in for Zowe CLI | isexe |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [isexe](https://www.github.com/isaacs/isexe#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | isobject |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
+| IBM® Db2® Plug-in for Zowe CLI | isobject |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [isobject](https://www.github.com/jonschlinkert/isobject) |
+| IBM® Db2® Plug-in for Zowe CLI | isstream |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [isstream](https://www.github.com/rvagg/isstream) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-api |  v1.3.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-api](https://www.github.com/istanbuljs/istanbuljs#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-lib-coverage |  v1.2.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-coverage](https://www.github.com/istanbuljs/istanbuljs) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-lib-hook |  v1.2.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-hook](https://www.github.com/istanbuljs/istanbuljs#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-lib-instrument |  v1.10.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-instrument](https://www.github.com/istanbuljs/istanbuljs) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-lib-report |  v1.1.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://www.github.com/istanbuljs/istanbuljs) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-lib-source-maps |  v1.2.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://www.github.com/istanbuljs/istanbuljs#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | istanbul-reports |  v1.5.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://www.github.com/istanbuljs/istanbuljs) |
+| IBM® Db2® Plug-in for Zowe CLI | jest |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest](http://facebook.github.io/jest/) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-changed-files |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-changed-files](https://www.npmjs.com/package/jest-changed-files) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-cli |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-cli](http://facebook.github.io/jest/) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-config |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-config](https://www.npmjs.com/package/jest-config) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-diff |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-diff](https://www.npmjs.com/package/jest-diff) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-docblock |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-docblock](https://www.npmjs.com/package/jest-docblock) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-environment-jsdom |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-jsdom](https://www.npmjs.com/package/jest-environment-jsdom) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-environment-node |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-environment-node](https://www.npmjs.com/package/jest-environment-node) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-environment-node-debug |  v2.0.0 | UNKNOWN | [jest-environment-node-debug](https://www.github.com/NikhilVerma/jest-environment-node-debug-fixed#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-get-type |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-get-type](https://www.npmjs.com/package/jest-get-type) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-haste-map |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-haste-map](https://www.npmjs.com/package/jest-haste-map) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-html-reporter |  v2.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [jest-html-reporter](https://www.github.com/Hargne/jest-html-reporter#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-jasmine2 |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-jasmine2](https://www.npmjs.com/package/jest-jasmine2) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-junit |  v3.7.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [jest-junit](https://www.npmjs.com/package/jest-junit) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-leak-detector |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-leak-detector](https://www.npmjs.com/package/jest-leak-detector) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-matcher-utils |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-matcher-utils](https://www.npmjs.com/package/jest-matcher-utils) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-message-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-message-util](https://www.npmjs.com/package/jest-message-util) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-mock |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-mock](https://www.npmjs.com/package/jest-mock) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-regex-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-regex-util](https://www.npmjs.com/package/jest-regex-util) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-resolve |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve](https://www.npmjs.com/package/jest-resolve) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-resolve-dependencies |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-resolve-dependencies](https://www.npmjs.com/package/jest-resolve-dependencies) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-runner |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runner](https://www.npmjs.com/package/jest-runner) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-runtime |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-runtime](https://www.npmjs.com/package/jest-runtime) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-serializer |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-serializer](https://www.npmjs.com/package/jest-serializer) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-snapshot |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-snapshot](https://www.npmjs.com/package/jest-snapshot) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-stare |  v1.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-stare](https://www.npmjs.com/package/jest-stare) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-util |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-util](https://www.npmjs.com/package/jest-util) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-validate |  v22.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [jest-validate](https://www.npmjs.com/package/jest-validate) |
+| IBM® Db2® Plug-in for Zowe CLI | jest-worker |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
+| IBM® Db2® Plug-in for Zowe CLI | jquery |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jquery](https://jquery.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | js-tokens |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
+| IBM® Db2® Plug-in for Zowe CLI | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
+| IBM® Db2® Plug-in for Zowe CLI | js-yaml |  v3.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
+| IBM® Db2® Plug-in for Zowe CLI | jsbn |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsbn](https://www.npmjs.com/package/jsbn) |
+| IBM® Db2® Plug-in for Zowe CLI | jsdom |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsdom](https://www.npmjs.com/package/jsdom) |
+| IBM® Db2® Plug-in for Zowe CLI | jsesc |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsesc](https://mths.be/jsesc) |
+| IBM® Db2® Plug-in for Zowe CLI | json-schema |  v0.2.3 | BSD* | [json-schema](https://www.npmjs.com/package/json-schema) |
+| IBM® Db2® Plug-in for Zowe CLI | json-schema-traverse |  v0.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-schema-traverse](https://www.github.com/epoberezkin/json-schema-traverse#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | json-stable-stringify |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [json-stable-stringify](https://www.github.com/substack/json-stable-stringify) |
+| IBM® Db2® Plug-in for Zowe CLI | json-stringify-safe |  v5.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [json-stringify-safe](https://www.github.com/isaacs/json-stringify-safe) |
+| IBM® Db2® Plug-in for Zowe CLI | json5 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [json5](http://json5.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | jsonfile |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsonfile](https://www.npmjs.com/package/jsonfile) |
+| IBM® Db2® Plug-in for Zowe CLI | jsonify |  v0.0.0 | Public Domain | [jsonify](http://crockford.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | jsonschema |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsonschema](https://www.npmjs.com/package/jsonschema) |
+| IBM® Db2® Plug-in for Zowe CLI | jsprim |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsprim](https://www.npmjs.com/package/jsprim) |
+| IBM® Db2® Plug-in for Zowe CLI | kind-of |  v3.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® Db2® Plug-in for Zowe CLI | kind-of |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® Db2® Plug-in for Zowe CLI | kind-of |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® Db2® Plug-in for Zowe CLI | kind-of |  v6.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
+| IBM® Db2® Plug-in for Zowe CLI | lcid |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | lcid |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lcid](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | left-pad |  v1.3.0 | WTFPL | [left-pad](https://www.npmjs.com/package/left-pad) |
+| IBM® Db2® Plug-in for Zowe CLI | leven |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [leven](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | levenshtein |  v1.0.5 | Public Domain | [levenshtein](http://gf3.ca) |
+| IBM® Db2® Plug-in for Zowe CLI | levn |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [levn](https://www.github.com/gkz/levn) |
+| IBM® Db2® Plug-in for Zowe CLI | listenercount |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [listenercount](https://www.npmjs.com/package/listenercount) |
+| IBM® Db2® Plug-in for Zowe CLI | load-json-file |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | load-json-file |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [load-json-file](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | locate-path |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | locate-path |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [locate-path](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | lodash |  v4.17.15 | [MIT](http://opensource.org/licenses/mit-license) | [lodash](https://lodash.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash-deep](https://www.github.com/marklagendijk/lodash-deep) |
+| IBM® Db2® Plug-in for Zowe CLI | lodash.sortby |  v4.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [lodash.sortby](https://lodash.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | log4js |  v3.0.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
+| IBM® Db2® Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
+| IBM® Db2® Plug-in for Zowe CLI | lru-cache |  v4.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [lru-cache](https://www.npmjs.com/package/lru-cache) |
+| IBM® Db2® Plug-in for Zowe CLI | make-error |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
+| IBM® Db2® Plug-in for Zowe CLI | makeerror |  v1.0.11 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [makeerror](https://www.npmjs.com/package/makeerror) |
+| IBM® Db2® Plug-in for Zowe CLI | map-age-cleaner |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [map-age-cleaner](https://www.github.com/SamVerschueren) |
+| IBM® Db2® Plug-in for Zowe CLI | map-cache |  v0.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [map-cache](https://www.github.com/jonschlinkert/map-cache) |
+| IBM® Db2® Plug-in for Zowe CLI | map-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [map-visit](https://www.github.com/jonschlinkert/map-visit) |
+| IBM® Db2® Plug-in for Zowe CLI | marked |  v0.3.19 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | marked |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [marked](https://marked.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | math-random |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [math-random](https://www.npmjs.com/package/math-random) |
+| IBM® Db2® Plug-in for Zowe CLI | mem |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | mem |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mem](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | merge |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge](https://www.github.com/yeikos/js.merge) |
+| IBM® Db2® Plug-in for Zowe CLI | merge-stream |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [merge-stream](https://www.npmjs.com/package/merge-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | micromatch |  v2.3.11 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/jonschlinkert/micromatch) |
+| IBM® Db2® Plug-in for Zowe CLI | micromatch |  v3.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [micromatch](https://www.github.com/micromatch/micromatch) |
+| IBM® Db2® Plug-in for Zowe CLI | mime-db |  v1.40.0 | [MIT](http://opensource.org/licenses/mit-license) | [mime-db](https://www.npmjs.com/package/mime-db) |
+| IBM® Db2® Plug-in for Zowe CLI | mime-types |  v2.1.24 | [MIT](http://opensource.org/licenses/mit-license) | [mime-types](https://www.npmjs.com/package/mime-types) |
+| IBM® Db2® Plug-in for Zowe CLI | mimic-fn |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | mimic-fn |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mimic-fn](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | minimatch |  v3.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minimatch](http://blog.izs.me) |
+| IBM® Db2® Plug-in for Zowe CLI | minimist |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® Db2® Plug-in for Zowe CLI | minimist |  v0.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® Db2® Plug-in for Zowe CLI | minimist |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [minimist](https://www.github.com/substack/minimist) |
+| IBM® Db2® Plug-in for Zowe CLI | minipass |  v2.9.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [minipass](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | minizlib |  v1.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [minizlib](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | mixin-deep |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [mixin-deep](https://www.github.com/jonschlinkert/mixin-deep) |
+| IBM® Db2® Plug-in for Zowe CLI | mkdirp |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | mkdirp |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | moment |  v2.24.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
+| IBM® Db2® Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
+| IBM® Db2® Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
+| IBM® Db2® Plug-in for Zowe CLI | mustache |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
+| IBM® Db2® Plug-in for Zowe CLI | nan |  v2.14.0 | [MIT](http://opensource.org/licenses/mit-license) | [nan](https://www.npmjs.com/package/nan) |
+| IBM® Db2® Plug-in for Zowe CLI | nanomatch |  v1.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [nanomatch](https://www.github.com/micromatch/nanomatch) |
+| IBM® Db2® Plug-in for Zowe CLI | natural-compare |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [natural-compare](https://www.github.com/litejs/natural-compare-lite) |
+| IBM® Db2® Plug-in for Zowe CLI | needle |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [needle](https://www.npmjs.com/package/needle) |
+| IBM® Db2® Plug-in for Zowe CLI | neo-async |  v2.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [neo-async](https://www.github.com/suguru03/neo-async) |
+| IBM® Db2® Plug-in for Zowe CLI | nice-try |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [nice-try](https://www.github.com/electerious/nice-try) |
+| IBM® Db2® Plug-in for Zowe CLI | node-int64 |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [node-int64](https://www.npmjs.com/package/node-int64) |
+| IBM® Db2® Plug-in for Zowe CLI | node-notifier |  v5.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [node-notifier](https://www.github.com/mikaelbr/node-notifier#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | node-pre-gyp |  v0.12.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [node-pre-gyp](https://www.npmjs.com/package/node-pre-gyp) |
+| IBM® Db2® Plug-in for Zowe CLI | nopt |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [nopt](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | nopt |  v4.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [nopt](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | normalize-package-data |  v2.5.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [normalize-package-data](https://www.npmjs.com/package/normalize-package-data) |
+| IBM® Db2® Plug-in for Zowe CLI | normalize-path |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [normalize-path](https://www.github.com/jonschlinkert/normalize-path) |
+| IBM® Db2® Plug-in for Zowe CLI | npm-bundled |  v1.0.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-bundled](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | npm-packlist |  v1.4.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npm-packlist](https://www.npmjs.com/package/npm-packlist) |
+| IBM® Db2® Plug-in for Zowe CLI | npm-run-path |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [npm-run-path](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | npmlog |  v4.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [npmlog](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | number-is-nan |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [number-is-nan](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | nwsapi |  v2.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [nwsapi](http://javascript.nwbox.com/nwsapi/) |
+| IBM® Db2® Plug-in for Zowe CLI | oauth-sign |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [oauth-sign](http://www.futurealoof.com) |
+| IBM® Db2® Plug-in for Zowe CLI | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
+| IBM® Db2® Plug-in for Zowe CLI | object-inspect |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/substack/object-inspect) |
+| IBM® Db2® Plug-in for Zowe CLI | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
+| IBM® Db2® Plug-in for Zowe CLI | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
+| IBM® Db2® Plug-in for Zowe CLI | object.getownpropertydescriptors |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [object.getownpropertydescriptors](https://www.npmjs.com/package/object.getownpropertydescriptors) |
+| IBM® Db2® Plug-in for Zowe CLI | object.omit |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.omit](https://www.github.com/jonschlinkert/object.omit) |
+| IBM® Db2® Plug-in for Zowe CLI | object.pick |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.pick](https://www.github.com/jonschlinkert/object.pick) |
+| IBM® Db2® Plug-in for Zowe CLI | once |  v1.4.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [once](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | opener |  v1.5.1 | (WTFPL OR MIT) | [opener](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | optimist |  v0.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [optimist](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | optionator |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [optionator](https://www.github.com/gkz/optionator) |
+| IBM® Db2® Plug-in for Zowe CLI | os-homedir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-homedir](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | os-locale |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | os-locale |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [os-locale](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | os-tmpdir |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [os-tmpdir](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | osenv |  v0.1.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [osenv](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | p-defer |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-defer](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-finally |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-finally](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-is-promise |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-is-promise](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-limit |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-limit |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [p-limit](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-locate |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-locate |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-locate](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-try |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | p-try |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [p-try](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | parse-glob |  v3.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [parse-glob](https://www.github.com/jonschlinkert/parse-glob) |
+| IBM® Db2® Plug-in for Zowe CLI | parse-json |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-json](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | parse-passwd |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse-passwd](https://www.github.com/doowb/parse-passwd) |
+| IBM® Db2® Plug-in for Zowe CLI | parse5 |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [parse5](https://www.github.com/inikulin/parse5) |
+| IBM® Db2® Plug-in for Zowe CLI | pascalcase |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [pascalcase](https://www.github.com/jonschlinkert/pascalcase) |
+| IBM® Db2® Plug-in for Zowe CLI | path-exists |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | path-exists |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-exists](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | path-is-absolute |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-is-absolute](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | path-key |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [path-key](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | path-parse |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [path-parse](https://www.github.com/jbgutierrez/path-parse#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | path-type |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | path-type |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [path-type](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | performance-now |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [performance-now](https://www.github.com/braveg1rl/performance-now) |
+| IBM® Db2® Plug-in for Zowe CLI | pify |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [pify](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | pinkie |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [pinkie](https://www.github.com/floatdrop) |
+| IBM® Db2® Plug-in for Zowe CLI | pinkie-promise |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [pinkie-promise](https://www.github.com/floatdrop) |
+| IBM® Db2® Plug-in for Zowe CLI | pkg-dir |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-dir](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | pkg-up |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pkg-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | pn |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [pn](https://www.npmjs.com/package/pn) |
+| IBM® Db2® Plug-in for Zowe CLI | popper.js |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [popper.js](https://popper.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | posix-character-classes |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [posix-character-classes](https://www.github.com/jonschlinkert/posix-character-classes) |
+| IBM® Db2® Plug-in for Zowe CLI | prelude-ls |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [prelude-ls](http://preludels.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | preserve |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [preserve](https://www.github.com/jonschlinkert/preserve) |
+| IBM® Db2® Plug-in for Zowe CLI | pretty-format |  v22.4.3 | [MIT](http://opensource.org/licenses/mit-license) | [pretty-format](https://www.npmjs.com/package/pretty-format) |
+| IBM® Db2® Plug-in for Zowe CLI | prettyjson |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [prettyjson](http://rafeca.com/prettyjson) |
+| IBM® Db2® Plug-in for Zowe CLI | private |  v0.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [private](https://www.github.com/benjamn/private) |
+| IBM® Db2® Plug-in for Zowe CLI | process-nextick-args |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
+| IBM® Db2® Plug-in for Zowe CLI | process-nextick-args |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [process-nextick-args](https://www.github.com/calvinmetcalf/process-nextick-args) |
+| IBM® Db2® Plug-in for Zowe CLI | progress |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
+| IBM® Db2® Plug-in for Zowe CLI | progress |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [progress](https://www.npmjs.com/package/progress) |
+| IBM® Db2® Plug-in for Zowe CLI | pseudomap |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [pseudomap](https://www.github.com/isaacs/pseudomap#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | psl |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [psl](https://lupomontero.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | pump |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
+| IBM® Db2® Plug-in for Zowe CLI | pump |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [pump](https://www.npmjs.com/package/pump) |
+| IBM® Db2® Plug-in for Zowe CLI | punycode |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
+| IBM® Db2® Plug-in for Zowe CLI | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
+| IBM® Db2® Plug-in for Zowe CLI | q |  v1.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [q](https://www.github.com/kriskowal/q) |
+| IBM® Db2® Plug-in for Zowe CLI | qs |  v6.5.2 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
+| IBM® Db2® Plug-in for Zowe CLI | randomatic |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [randomatic](https://www.github.com/jonschlinkert/randomatic) |
+| IBM® Db2® Plug-in for Zowe CLI | rc |  v1.2.8 | (BSD-2-Clause OR MIT OR Apache-2.0) | [rc](https://) |
+| IBM® Db2® Plug-in for Zowe CLI | read-pkg |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | read-pkg |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | read-pkg-up |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | read-pkg-up |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [read-pkg-up](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | readable-stream |  v2.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | readable-stream |  v2.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [readable-stream](https://www.npmjs.com/package/readable-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | readdirp |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [readdirp](https://www.github.com/paulmillr/readdirp) |
+| IBM® Db2® Plug-in for Zowe CLI | realpath-native |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [realpath-native](https://www.npmjs.com/package/realpath-native) |
+| IBM® Db2® Plug-in for Zowe CLI | rechoir |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rechoir](https://www.github.com/tkellen/node-rechoir) |
+| IBM® Db2® Plug-in for Zowe CLI | regenerator-runtime |  v0.11.1 | [MIT](http://opensource.org/licenses/mit-license) | [regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime) |
+| IBM® Db2® Plug-in for Zowe CLI | regex-cache |  v0.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [regex-cache](https://www.github.com/jonschlinkert/regex-cache) |
+| IBM® Db2® Plug-in for Zowe CLI | regex-not |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [regex-not](https://www.github.com/jonschlinkert/regex-not) |
+| IBM® Db2® Plug-in for Zowe CLI | remove-trailing-separator |  v1.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [remove-trailing-separator](https://www.github.com/darsain/remove-trailing-separator#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | repeat-element |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-element](https://www.github.com/jonschlinkert/repeat-element) |
+| IBM® Db2® Plug-in for Zowe CLI | repeat-string |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeat-string](https://www.github.com/jonschlinkert/repeat-string) |
+| IBM® Db2® Plug-in for Zowe CLI | repeating |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [repeating](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | request |  v2.88.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [request](https://www.npmjs.com/package/request) |
+| IBM® Db2® Plug-in for Zowe CLI | request-promise-core |  v1.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-core](https://www.github.com/request/promise-core#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | request-promise-native |  v1.0.7 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [request-promise-native](https://www.github.com/request/request-promise-native#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | require-directory |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [require-directory](https://www.github.com/troygoode/node-require-directory/) |
+| IBM® Db2® Plug-in for Zowe CLI | require-main-filename |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | require-main-filename |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [require-main-filename](https://www.github.com/yargs/require-main-filename#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | resolve |  v1.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | resolve |  v1.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | resolve-cwd |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-cwd](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | resolve-from |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-from](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | resolve-url |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [resolve-url](https://www.npmjs.com/package/resolve-url) |
+| IBM® Db2® Plug-in for Zowe CLI | ret |  v0.1.15 | [MIT](http://opensource.org/licenses/mit-license) | [ret](https://www.github.com/fent) |
+| IBM® Db2® Plug-in for Zowe CLI | rfdc |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [rfdc](https://www.github.com/davidmarkclements/rfdc#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | rimraf |  v2.6.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | rimraf |  v2.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [rimraf](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | rsvp |  v3.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [rsvp](https://www.npmjs.com/package/rsvp) |
+| IBM® Db2® Plug-in for Zowe CLI | safe-buffer |  v5.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
+| IBM® Db2® Plug-in for Zowe CLI | safe-buffer |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-buffer](https://www.github.com/feross/safe-buffer) |
+| IBM® Db2® Plug-in for Zowe CLI | safe-regex |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [safe-regex](https://www.github.com/substack/safe-regex) |
+| IBM® Db2® Plug-in for Zowe CLI | safer-buffer |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [safer-buffer](https://www.github.com/ChALkeR) |
+| IBM® Db2® Plug-in for Zowe CLI | sane |  v2.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [sane](https://www.github.com/amasad/sane) |
+| IBM® Db2® Plug-in for Zowe CLI | sax |  v1.2.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [sax](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | semver |  v5.7.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
+| IBM® Db2® Plug-in for Zowe CLI | semver |  v5.7.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
+| IBM® Db2® Plug-in for Zowe CLI | set-blocking |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [set-blocking](https://www.github.com/yargs/set-blocking#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | set-value |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [set-value](https://www.github.com/jonschlinkert/set-value) |
+| IBM® Db2® Plug-in for Zowe CLI | setimmediate |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [setimmediate](https://www.npmjs.com/package/setimmediate) |
+| IBM® Db2® Plug-in for Zowe CLI | shaven |  v0.8.1 | [MIT](http://opensource.org/licenses/mit-license) | [shaven](http://adriansieber.com/shaven) |
+| IBM® Db2® Plug-in for Zowe CLI | shebang-command |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-command](https://www.github.com/kevva) |
+| IBM® Db2® Plug-in for Zowe CLI | shebang-regex |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [shebang-regex](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | shell-quote |  v1.7.2 | [MIT](http://opensource.org/licenses/mit-license) | [shell-quote](https://www.github.com/substack/node-shell-quote) |
+| IBM® Db2® Plug-in for Zowe CLI | shelljs |  v0.7.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [shelljs](https://www.github.com/shelljs/shelljs) |
+| IBM® Db2® Plug-in for Zowe CLI | shellwords |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [shellwords](https://www.github.com/jimmycuadra/shellwords) |
+| IBM® Db2® Plug-in for Zowe CLI | signal-exit |  v3.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [signal-exit](https://www.github.com/tapjs/signal-exit) |
+| IBM® Db2® Plug-in for Zowe CLI | slash |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [slash](http://https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | snapdragon |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon](https://www.github.com/jonschlinkert/snapdragon) |
+| IBM® Db2® Plug-in for Zowe CLI | snapdragon-node |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-node](https://www.github.com/jonschlinkert/snapdragon-node) |
+| IBM® Db2® Plug-in for Zowe CLI | snapdragon-util |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon-util](https://www.github.com/jonschlinkert/snapdragon-util) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map |  v0.5.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map |  v0.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [source-map](https://www.github.com/mozilla/source-map) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map-resolve |  v0.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-resolve](https://www.npmjs.com/package/source-map-resolve) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map-support |  v0.4.18 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map-support |  v0.5.13 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-support](https://www.npmjs.com/package/source-map-support) |
+| IBM® Db2® Plug-in for Zowe CLI | source-map-url |  v0.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [source-map-url](https://www.npmjs.com/package/source-map-url) |
+| IBM® Db2® Plug-in for Zowe CLI | spdx-correct |  v3.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [spdx-correct](https://kemitchell.com) |
+| IBM® Db2® Plug-in for Zowe CLI | spdx-exceptions |  v2.2.0 | CC-BY-3.0 | [spdx-exceptions](https://www.npmjs.com/package/spdx-exceptions) |
+| IBM® Db2® Plug-in for Zowe CLI | spdx-expression-parse |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [spdx-expression-parse](http://kemitchell.com) |
+| IBM® Db2® Plug-in for Zowe CLI | spdx-license-ids |  v3.0.5 | CC0-1.0 | [spdx-license-ids](https://www.github.com/shinnn) |
+| IBM® Db2® Plug-in for Zowe CLI | split-string |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [split-string](https://www.github.com/jonschlinkert/split-string) |
+| IBM® Db2® Plug-in for Zowe CLI | sprintf-js |  v1.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sprintf-js](http://alexei.ro/) |
+| IBM® Db2® Plug-in for Zowe CLI | sshpk |  v1.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [sshpk](https://www.github.com/arekinath/node-sshpk#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | stack-trace |  v0.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [stack-trace](https://www.github.com/felixge/node-stack-trace) |
+| IBM® Db2® Plug-in for Zowe CLI | stack-utils |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [stack-utils](https://www.github.com/jamestalmage) |
+| IBM® Db2® Plug-in for Zowe CLI | static-extend |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [static-extend](https://www.github.com/jonschlinkert/static-extend) |
+| IBM® Db2® Plug-in for Zowe CLI | stealthy-require |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [stealthy-require](https://www.github.com/analog-nico/stealthy-require#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | streamroller |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [streamroller](https://www.npmjs.com/package/streamroller) |
+| IBM® Db2® Plug-in for Zowe CLI | string-length |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-length](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | string-width |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | string-width |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | string-width |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string-width](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | string.prototype.trimleft |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimleft](https://www.npmjs.com/package/string.prototype.trimleft) |
+| IBM® Db2® Plug-in for Zowe CLI | string.prototype.trimright |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [string.prototype.trimright](https://www.npmjs.com/package/string.prototype.trimright) |
+| IBM® Db2® Plug-in for Zowe CLI | string_decoder |  v0.10.31 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/rvagg/string_decoder) |
+| IBM® Db2® Plug-in for Zowe CLI | string_decoder |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [string_decoder](https://www.github.com/nodejs/string_decoder) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-ansi |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-ansi |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-bom |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-bom |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-bom](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-eof |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [strip-eof](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | strip-json-comments |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [strip-json-comments](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | subarg |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [subarg](https://www.github.com/substack/subarg) |
+| IBM® Db2® Plug-in for Zowe CLI | supports-color |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | supports-color |  v3.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | supports-color |  v5.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
+| IBM® Db2® Plug-in for Zowe CLI | tar |  v4.4.13 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | tar-fs |  v1.16.3 | [MIT](http://opensource.org/licenses/mit-license) | [tar-fs](https://www.github.com/mafintosh/tar-fs) |
+| IBM® Db2® Plug-in for Zowe CLI | tar-stream |  v1.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [tar-stream](https://www.github.com/mafintosh/tar-stream) |
+| IBM® Db2® Plug-in for Zowe CLI | targz |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [targz](https://www.github.com/miskun/targz#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | test-exclude |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [test-exclude](https://www.github.com/istanbuljs/istanbuljs#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | throat |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [throat](https://www.npmjs.com/package/throat) |
+| IBM® Db2® Plug-in for Zowe CLI | tmpl |  v1.0.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tmpl](https://www.github.com/nshah/nodejs-tmpl) |
+| IBM® Db2® Plug-in for Zowe CLI | to-buffer |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-buffer](https://www.github.com/mafintosh/to-buffer) |
+| IBM® Db2® Plug-in for Zowe CLI | to-fast-properties |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [to-fast-properties](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | to-object-path |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-object-path](https://www.github.com/jonschlinkert/to-object-path) |
+| IBM® Db2® Plug-in for Zowe CLI | to-regex |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex](https://www.github.com/jonschlinkert/to-regex) |
+| IBM® Db2® Plug-in for Zowe CLI | to-regex-range |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
+| IBM® Db2® Plug-in for Zowe CLI | tough-cookie |  v2.4.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
+| IBM® Db2® Plug-in for Zowe CLI | tough-cookie |  v2.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
+| IBM® Db2® Plug-in for Zowe CLI | tr46 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tr46](https://www.npmjs.com/package/tr46) |
+| IBM® Db2® Plug-in for Zowe CLI | traverse |  v0.3.9 | [MIT](http://opensource.org/licenses/mit-license) | [traverse](https://www.npmjs.com/package/traverse) |
+| IBM® Db2® Plug-in for Zowe CLI | trim-right |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [trim-right](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | ts-jest |  v22.4.6 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://www.github.com/kulshekhar/ts-jest#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
+| IBM® Db2® Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
+| IBM® Db2® Plug-in for Zowe CLI | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | tslint |  v5.20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
+| IBM® Db2® Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
+| IBM® Db2® Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
+| IBM® Db2® Plug-in for Zowe CLI | tweetnacl |  v0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
+| IBM® Db2® Plug-in for Zowe CLI | typedoc |  v0.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc](http://typedoc.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | typedoc-default-themes |  v0.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](http://typedoc.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | typescript |  v2.4.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | uglify-js |  v3.6.4 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| IBM® Db2® Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
+| IBM® Db2® Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | unset-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [unset-value](https://www.github.com/jonschlinkert/unset-value) |
+| IBM® Db2® Plug-in for Zowe CLI | unzipper |  v0.8.14 | [MIT](http://opensource.org/licenses/mit-license) | [unzipper](https://www.npmjs.com/package/unzipper) |
+| IBM® Db2® Plug-in for Zowe CLI | uri-js |  v4.2.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uri-js](https://www.github.com/garycourt/uri-js) |
+| IBM® Db2® Plug-in for Zowe CLI | urix |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [urix](https://www.npmjs.com/package/urix) |
+| IBM® Db2® Plug-in for Zowe CLI | use |  v3.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [use](https://www.github.com/jonschlinkert/use) |
+| IBM® Db2® Plug-in for Zowe CLI | util-deprecate |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [util-deprecate](https://www.github.com/TooTallNate/util-deprecate) |
+| IBM® Db2® Plug-in for Zowe CLI | util.promisify |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [util.promisify](https://www.github.com/ljharb/util.promisify#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | uuid |  v3.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [uuid](https://www.npmjs.com/package/uuid) |
+| IBM® Db2® Plug-in for Zowe CLI | v8flags |  v3.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [v8flags](http://gulpjs.com/) |
+| IBM® Db2® Plug-in for Zowe CLI | validate-npm-package-license |  v3.0.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [validate-npm-package-license](https://kemitchell.com) |
+| IBM® Db2® Plug-in for Zowe CLI | verror |  v1.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [verror](https://www.npmjs.com/package/verror) |
+| IBM® Db2® Plug-in for Zowe CLI | w3c-hr-time |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [w3c-hr-time](https://www.npmjs.com/package/w3c-hr-time) |
+| IBM® Db2® Plug-in for Zowe CLI | walker |  v1.0.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [walker](https://www.github.com/daaku/nodejs-walker) |
+| IBM® Db2® Plug-in for Zowe CLI | watch |  v0.18.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [watch](https://www.github.com/mikeal/watch) |
+| IBM® Db2® Plug-in for Zowe CLI | webidl-conversions |  v4.0.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [webidl-conversions](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | whatwg-encoding |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-encoding](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | whatwg-fetch |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch) |
+| IBM® Db2® Plug-in for Zowe CLI | whatwg-mimetype |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-mimetype](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | whatwg-url |  v6.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
+| IBM® Db2® Plug-in for Zowe CLI | whatwg-url |  v7.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [whatwg-url](https://www.npmjs.com/package/whatwg-url) |
+| IBM® Db2® Plug-in for Zowe CLI | which |  v1.3.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which](http://blog.izs.me) |
+| IBM® Db2® Plug-in for Zowe CLI | which-module |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [which-module](https://www.github.com/nexdrew/which-module#readme) |
+| IBM® Db2® Plug-in for Zowe CLI | wide-align |  v1.1.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wide-align](http://re-becca.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | wordwrap |  v0.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | wordwrap |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [wordwrap](http://substack.net) |
+| IBM® Db2® Plug-in for Zowe CLI | wrap-ansi |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | wrap-ansi |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | wrap-ansi |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [wrap-ansi](https://sindresorhus.com) |
+| IBM® Db2® Plug-in for Zowe CLI | wrappy |  v1.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [wrappy](https://www.github.com/npm/wrappy) |
+| IBM® Db2® Plug-in for Zowe CLI | write-file-atomic |  v2.4.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [write-file-atomic](https://www.github.com/iarna/write-file-atomic) |
+| IBM® Db2® Plug-in for Zowe CLI | ws |  v5.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [ws](https://www.github.com/websockets/ws) |
+| IBM® Db2® Plug-in for Zowe CLI | xml |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [xml](https://www.github.com/dylang/node-xml) |
+| IBM® Db2® Plug-in for Zowe CLI | xml-name-validator |  v3.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [xml-name-validator](https://domenic.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | xmlbuilder |  v13.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xmlbuilder](https://www.github.com/oozcitak/xmlbuilder-js) |
+| IBM® Db2® Plug-in for Zowe CLI | xtend |  v4.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [xtend](https://www.github.com/Raynos/xtend) |
+| IBM® Db2® Plug-in for Zowe CLI | y18n |  v3.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
+| IBM® Db2® Plug-in for Zowe CLI | y18n |  v4.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [y18n](https://www.github.com/yargs/y18n) |
+| IBM® Db2® Plug-in for Zowe CLI | yallist |  v2.1.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | yallist |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yallist](http://blog.izs.me/) |
+| IBM® Db2® Plug-in for Zowe CLI | yamljs |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [yamljs](https://www.npmjs.com/package/yamljs) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs |  v10.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs |  v11.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs |  v14.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](https://yargs.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs-parser |  v15.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
+| IBM® Db2® Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
 ### Zowe Desktop Data Sets UI Plugin Dependency Attributions 
 | Component | Third-party Software | Version | License | GitHub |

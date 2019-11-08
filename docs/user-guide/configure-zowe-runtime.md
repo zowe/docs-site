@@ -78,6 +78,10 @@ You can create, edit, or delete the `.zowe_profile` file (as needed) before each
 
 The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
 
+#### Directory that stores configuration
+
+`install:userDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-user-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-user-dir` directory. 
+
 #### Address space name
 
 `install:prefix` defines a prefix for Zowe address space STC name associated with USS processes. With this, the individual address spaces can be distinguished from each other in RMF records or SDSF views.  
