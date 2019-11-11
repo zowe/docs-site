@@ -14,6 +14,7 @@ ZOWE API ML is a lightweight API management system based on the following Netfli
 
   For instructions about how to utilize other API ML enablers types, see the following links: 
   * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
+  * [api-mediation-onboard-your-service](api-mediation-onboard-your-service.md) TODO: Rename document and link 
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 ## Onboarding your REST service with API ML
@@ -164,28 +165,34 @@ The following code snippet shows `service-configuration.yml` content as an examp
  ```yaml
  serviceId: sampleservice
  title: Hello API ML 
- description: API ML REST API Service
- baseUrl: https://localhost:10020/sampleservice
+ description: Sample API ML REST API Service
+ baseUrl: https://localhost:10022/sampleservice
+ serviceIpAddress: 127.0.0.1
+
  homePageRelativeUrl: /application/home
  statusPageRelativeUrl: /application/info
  healthCheckRelativeUrl: /application/health
+ 
  discoveryServiceUrls:
      - https://localhost:10011/eureka
  
  routes:
      - gatewayUrl: api/v1
        serviceUrl: /sampleservice/api/v1    
+ 
  apiInfo:
-     - apiId: ${mfaas.discovery.serviceId}
+     - apiId: org.zowe.sampleservice
        gatewayUrl: api/v1
-       swaggerUrl: https://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
+       swaggerUrl: http://localhost:10022/sampleservice/api-doc
+ 
  catalog:
      tile:
          id: sampleservice
          title: Hello API ML
-         description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
+         description: Proof of Concept application to demonstrate exposing a REST API in the ZOWE API ML 
          version: 1.0.0
-ssl:
+
+ ssl:
     protocol: TLSv1.2
     ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
     keyAlias: localhost
@@ -419,7 +426,6 @@ apiInfo:
     gatewayUrl: api/v1
     swaggerUrl: http://localhost:10021/sampleservice/api-doc
     documentationUrl: http://your.service.documentation.url
- 
 ```
 
 where:
