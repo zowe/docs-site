@@ -4,7 +4,7 @@
 This article describes the ZOWE API ML REST services onboarding configuration parameters.
 The parameter descriptions provided in this document are valid for all API ML onboarding methods that use either the API ML onboarding enabler or plain REST calls to the API ML Discovery Service. Configuration formats that are currently supported are _YAML_ for onboarding enablers and _XML_ for making direct REST calls to the API ML discovery service.
 
-the configuration structure as well as the configuration format are different depending on the selected onboarding method. For example, if the configuration method uses a YAML file, a parameter will be addressed with the following format:
+the configuration structure as well as the configuration format are different depending on the selected onboarding method. For example, if the configuration method uses a _YAML_ file, a parameter will be addressed with the following format:
   
     top-category:
         embeded-category-1:
@@ -12,7 +12,7 @@ the configuration structure as well as the configuration format are different de
                 parameter-name: parameter-value
     
     
- If `XML` configuration is used, the same parameter definition has the following format:
+ If _XML_ configuration is used, the same parameter definition has the following format:
 
     <top-category>
         <embeded-category-1>
