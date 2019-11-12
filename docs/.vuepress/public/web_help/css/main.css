@@ -13,6 +13,10 @@ html, body {
     height: 100%;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 #cmd-tree {
     flex: 1;
     height: 100%;

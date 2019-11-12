@@ -12,12 +12,243 @@
 <p>For additional Zowe CLI documentation, visit <a href="https://zowe.github.io/docs-site">https://zowe.github.io/docs-site</a></p>
 <p>For Zowe CLI support, visit <a href="https://zowe.org">https://zowe.org</a></p>
 
-<hr>
-<a name="zowe_cics"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a></h2>
+
+<h4 id="global-options">Global Options</h4>
+<ul>
+<li><p><code>--response-format-json</code>  | <code>--rfj</code> <em>(boolean)</em></p>
+<ul>
+<li>Produce JSON formatted data from a command</li>
+</ul>
+</li>
+<li><p><code>--help</code>  | <code>-h</code> <em>(boolean)</em></p>
+<ul>
+<li>Display help text</li>
+</ul>
+</li>
+<li><p><code>--help-examples</code>  <em>(boolean)</em></p>
+<ul>
+<li>Not available for top tier Zowe group</li>
+</ul>
+</li>
+<li><p><code>--help-web</code>  | <code>--hw</code> <em>(boolean)</em></p>
+<ul>
+<li>Display HTML help in browser</li>
+</ul>
+</li>
+</ul>
+<div class="page-break print-only"><h4>Table of Contents</h4>
+<ul><li><a href="#zowe_cics">cics</a><ul><li><a href="#zowe_cics_define">define | def</a><ul><li><a href="#zowe_cics_define_program">program | prog</a></li>
+</ul><ul><li><a href="#zowe_cics_define_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_cics_delete">delete | del</a><ul><li><a href="#zowe_cics_delete_program">program | prog</a></li>
+</ul><ul><li><a href="#zowe_cics_delete_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_cics_discard">discard | dis</a><ul><li><a href="#zowe_cics_discard_program">program | prog</a></li>
+</ul><ul><li><a href="#zowe_cics_discard_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_cics_get">get</a><ul><li><a href="#zowe_cics_get_resource">resource | res</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_cics_install">install | ins</a><ul><li><a href="#zowe_cics_install_program">program | prog</a></li>
+</ul><ul><li><a href="#zowe_cics_install_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_cics_refresh">refresh | ref</a><ul><li><a href="#zowe_cics_refresh_program">program | prog</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_config">config</a><ul><li><a href="#zowe_config_get">get | ge</a></li>
+</ul><ul><li><a href="#zowe_config_list">list | li</a></li>
+</ul><ul><li><a href="#zowe_config_reset">reset | re</a></li>
+</ul><ul><li><a href="#zowe_config_set">set | se</a></li>
+</ul></li>
+<li><a href="#zowe_db2">db2</a><ul><li><a href="#zowe_db2_call">call</a><ul><li><a href="#zowe_db2_call_procedure">procedure | proc | sp</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_db2_execute">execute</a><ul><li><a href="#zowe_db2_execute_sql">sql</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_db2_export">export</a><ul><li><a href="#zowe_db2_export_table">table</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_ims">ims</a><ul><li><a href="#zowe_ims_query">query | qry</a><ul><li><a href="#zowe_ims_query_program">program | pgm</a></li>
+</ul><ul><li><a href="#zowe_ims_query_region">region | reg</a></li>
+</ul><ul><li><a href="#zowe_ims_query_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_ims_start">start | sta</a><ul><li><a href="#zowe_ims_start_program">program | pgm</a></li>
+</ul><ul><li><a href="#zowe_ims_start_region">region | reg</a></li>
+</ul><ul><li><a href="#zowe_ims_start_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_ims_stop">stop | sto</a><ul><li><a href="#zowe_ims_stop_program">program | pgm</a></li>
+</ul><ul><li><a href="#zowe_ims_stop_region">region | reg</a></li>
+</ul><ul><li><a href="#zowe_ims_stop_transaction">transaction | tran</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_ims_update">update | upd</a><ul><li><a href="#zowe_ims_update_program">program | pgm</a></li>
+</ul><ul><li><a href="#zowe_ims_update_transaction">transaction | tran</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_mq">mq</a><ul><li><a href="#zowe_mq_run">run</a><ul><li><a href="#zowe_mq_run_mqsc">mqsc</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_plugins">plugins</a><ul><li><a href="#zowe_plugins_install">install</a></li>
+</ul><ul><li><a href="#zowe_plugins_list">list</a></li>
+</ul><ul><li><a href="#zowe_plugins_uninstall">uninstall</a></li>
+</ul><ul><li><a href="#zowe_plugins_update">update</a></li>
+</ul><ul><li><a href="#zowe_plugins_validate">validate</a></li>
+</ul></li>
+<li><a href="#zowe_profiles">profiles</a><ul><li><a href="#zowe_profiles_create">create | cre</a><ul><li><a href="#zowe_profiles_create_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_db2-profile">db2-profile | db2</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_ims-profile">ims-profile | ims</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_mq-profile">mq-profile | mq</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_ssh-profile">ssh-profile | ssh</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_tso-profile">tso-profile | tso</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_zosmf-profile">zosmf-profile | zosmf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_profiles_delete">delete | rm</a><ul><li><a href="#zowe_profiles_delete_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_db2-profile">db2-profile | db2</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_ims-profile">ims-profile | ims</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_mq-profile">mq-profile | mq</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_ssh-profile">ssh-profile | ssh</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_tso-profile">tso-profile | tso</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_zosmf-profile">zosmf-profile | zosmf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_profiles_list">list | ls</a><ul><li><a href="#zowe_profiles_list_cics-profiles">cics-profiles | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_db2-profiles">db2-profiles | db2</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_ims-profiles">ims-profiles | ims</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_mq-profiles">mq-profiles | mq</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_ssh-profiles">ssh-profiles | ssh</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_tso-profiles">tso-profiles | tso</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_zosmf-profiles">zosmf-profiles | zosmf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_profiles_set-default">set-default | set</a><ul><li><a href="#zowe_profiles_set-default_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_db2-profile">db2-profile | db2</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_ims-profile">ims-profile | ims</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_mq-profile">mq-profile | mq</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_ssh-profile">ssh-profile | ssh</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_tso-profile">tso-profile | tso</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_zosmf-profile">zosmf-profile | zosmf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_profiles_update">update | upd</a><ul><li><a href="#zowe_profiles_update_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_db2-profile">db2-profile | db2</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_ims-profile">ims-profile | ims</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_mq-profile">mq-profile | mq</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_ssh-profile">ssh-profile | ssh</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_tso-profile">tso-profile | tso</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_zosmf-profile">zosmf-profile | zosmf</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_provisioning">provisioning | pv</a><ul><li><a href="#zowe_provisioning_delete">delete | del</a><ul><li><a href="#zowe_provisioning_delete_instance">instance | i</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_provisioning_list">list | ls</a><ul><li><a href="#zowe_provisioning_list_catalog-templates">catalog-templates | ct</a></li>
+</ul><ul><li><a href="#zowe_provisioning_list_instance-info">instance-info | ii</a></li>
+</ul><ul><li><a href="#zowe_provisioning_list_instance-variables">instance-variables | iv</a></li>
+</ul><ul><li><a href="#zowe_provisioning_list_registry-instances">registry-instances | ri</a></li>
+</ul><ul><li><a href="#zowe_provisioning_list_template-info">template-info | ti</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_provisioning_perform">perform | perf</a><ul><li><a href="#zowe_provisioning_perform_action">action | act</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_provisioning_provision">provision | prov</a><ul><li><a href="#zowe_provisioning_provision_template">template | tem</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-console">zos-console | console</a><ul><li><a href="#zowe_zos-console_collect">collect</a><ul><li><a href="#zowe_zos-console_collect_sync-responses">sync-responses | sr</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-console_issue">issue</a><ul><li><a href="#zowe_zos-console_issue_command">command | cmd</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-files">zos-files | files</a><ul><li><a href="#zowe_zos-files_create">create | cre</a><ul><li><a href="#zowe_zos-files_create_data-set-binary">data-set-binary | bin</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_data-set-c">data-set-c | dsc</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_data-set-classic">data-set-classic | classic</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_data-set-partitioned">data-set-partitioned | pds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_data-set-sequential">data-set-sequential | ps</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_data-set-vsam">data-set-vsam | vsam</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_uss-directory">uss-directory | dir</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_uss-file">uss-file | file</a></li>
+</ul><ul><li><a href="#zowe_zos-files_create_zos-file-system">zos-file-system | zfs</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_delete">delete | del</a><ul><li><a href="#zowe_zos-files_delete_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_delete_data-set-vsam">data-set-vsam | vsam</a></li>
+</ul><ul><li><a href="#zowe_zos-files_delete_uss-file">uss-file | uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_delete_zos-file-system">zos-file-system | zfs</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_download">download | dl</a><ul><li><a href="#zowe_zos-files_download_all-members">all-members | am</a></li>
+</ul><ul><li><a href="#zowe_zos-files_download_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
+</ul><ul><li><a href="#zowe_zos-files_invoke_ams-statements">ams-statements | as</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_list">list | ls</a><ul><li><a href="#zowe_zos-files_list_all-members">all-members | am</a></li>
+</ul><ul><li><a href="#zowe_zos-files_list_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_list_file-system">file-system | fs</a></li>
+</ul><ul><li><a href="#zowe_zos-files_list_uss-files">uss-files | uss</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_mount">mount</a><ul><li><a href="#zowe_zos-files_mount_file-system">file-system | fs</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_unmount">unmount | umount</a><ul><li><a href="#zowe_zos-files_unmount_file-system">file-system | fs</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_upload">upload | ul</a><ul><li><a href="#zowe_zos-files_upload_dir-to-pds">dir-to-pds | dtp</a></li>
+</ul><ul><li><a href="#zowe_zos-files_upload_dir-to-uss">dir-to-uss | dtu</a></li>
+</ul><ul><li><a href="#zowe_zos-files_upload_file-to-data-set">file-to-data-set | ftds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_upload_file-to-uss">file-to-uss | ftu</a></li>
+</ul><ul><li><a href="#zowe_zos-files_upload_stdin-to-data-set">stdin-to-data-set | stds</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-jobs">zos-jobs | jobs</a><ul><li><a href="#zowe_zos-jobs_cancel">cancel | can</a><ul><li><a href="#zowe_zos-jobs_cancel_job">job</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_delete">delete | del</a><ul><li><a href="#zowe_zos-jobs_delete_job">job</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_download">download | dl</a><ul><li><a href="#zowe_zos-jobs_download_output">output | o</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_list">list | ls</a><ul><li><a href="#zowe_zos-jobs_list_jobs">jobs | js</a></li>
+</ul><ul><li><a href="#zowe_zos-jobs_list_spool-files-by-jobid">spool-files-by-jobid | sfbj</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_submit">submit | sub</a><ul><li><a href="#zowe_zos-jobs_submit_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-jobs_submit_local-file">local-file | lf</a></li>
+</ul><ul><li><a href="#zowe_zos-jobs_submit_stdin">stdin | in</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_view">view | vw</a><ul><li><a href="#zowe_zos-jobs_view_job-status-by-jobid">job-status-by-jobid | jsbj</a></li>
+</ul><ul><li><a href="#zowe_zos-jobs_view_spool-file-by-id">spool-file-by-id | sfbi</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-tso">zos-tso | tso</a><ul><li><a href="#zowe_zos-tso_issue">issue</a><ul><li><a href="#zowe_zos-tso_issue_command">command | cmd</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-tso_ping">ping</a><ul><li><a href="#zowe_zos-tso_ping_address-space">address-space | as</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-tso_send">send</a><ul><li><a href="#zowe_zos-tso_send_address-space">address-space | as</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-tso_start">start | st</a><ul><li><a href="#zowe_zos-tso_start_address-space">address-space | as</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-tso_stop">stop | sp</a><ul><li><a href="#zowe_zos-tso_stop_address-space">address-space | as</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-uss">zos-uss | uss</a><ul><li><a href="#zowe_zos-uss_issue">issue | iss</a><ul><li><a href="#zowe_zos-uss_issue_ssh">ssh | ssh</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zos-workflows">zos-workflows | wf</a><ul><li><a href="#zowe_zos-workflows_archive">archive</a><ul><li><a href="#zowe_zos-workflows_archive_active-workflow">active-workflow | aw</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-workflows_create">create | cre</a><ul><li><a href="#zowe_zos-workflows_create_workflow-from-data-set">workflow-from-data-set | wfds</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_create_workflow-from-local-file">workflow-from-local-file | wflf</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_create_workflow-from-uss-file">workflow-from-uss-file | wfuf</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-workflows_delete">delete | del</a><ul><li><a href="#zowe_zos-workflows_delete_active-workflow">active-workflow | aw</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_delete_archived-workflow">archived-workflow | arw</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-workflows_list">list | ls</a><ul><li><a href="#zowe_zos-workflows_list_active-workflow-details">active-workflow-details | awd</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_list_active-workflows">active-workflows | aw</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_list_archived-workflows">archived-workflows | arw</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_list_definition-file-details">definition-file-details | dfd</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-workflows_start">start | sta</a><ul><li><a href="#zowe_zos-workflows_start_workflow-full">workflow-full | wf</a></li>
+</ul><ul><li><a href="#zowe_zos-workflows_start_workflow-step">workflow-step | ws</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_zosmf">zosmf</a><ul><li><a href="#zowe_zosmf_check">check</a><ul><li><a href="#zowe_zosmf_check_status">status</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zosmf_list">list</a><ul><li><a href="#zowe_zosmf_list_systems">systems</a></li>
+</ul></li>
+</ul></li>
+</ul></div>
+<hr class="no-print">
+<a name="zowe_cics"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a></h2>
 <p>Interact with IBM CICS programs and transactions.</p>
-<a name="zowe_cics_define"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_define">define</a></h2>
+<a name="zowe_cics_define"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_define">define</a></h2>
 <p>Define new resources (for example, programs) to CICS through IBM CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_define_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_define">define</a> → <a href="#zowe_cics_define_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_cics_define_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_define">define</a> › <a href="#zowe_cics_define_program">program</a></h3>
 <p>Define a new program to CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics define program &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -106,7 +337,7 @@ the CSD group MYGRP:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_cics_define_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_define">define</a> → <a href="#zowe_cics_define_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_cics_define_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_define">define</a> › <a href="#zowe_cics_define_transaction">transaction</a></h3>
 <p>Define a new transaction to CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics define transaction &lt;transactionName&gt; &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -201,9 +432,9 @@ to the region named MYREGION in the CSD group MYGRP:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_cics_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_delete">delete</a></h2>
+<a name="zowe_cics_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_delete">delete</a></h2>
 <p>Delete resources (for example, programs) from CICS through IBM CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_delete_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_delete">delete</a> → <a href="#zowe_cics_delete_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_cics_delete_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_delete">delete</a> › <a href="#zowe_cics_delete_program">program</a></h3>
 <p>Delete a program from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics delete program &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -292,7 +523,7 @@ MYREGION:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_cics_delete_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_delete">delete</a> → <a href="#zowe_cics_delete_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_cics_delete_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_delete">delete</a> › <a href="#zowe_cics_delete_transaction">transaction</a></h3>
 <p>Delete a transaction from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics delete transaction &lt;transactionName&gt; &lt;csdGroup&gt; [options]</p>
@@ -381,9 +612,9 @@ MYREGION:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_cics_discard"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_discard">discard</a></h2>
+<a name="zowe_cics_discard"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_discard">discard</a></h2>
 <p>Discard resources (for example, programs) from CICS through IBM CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_discard_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_discard">discard</a> → <a href="#zowe_cics_discard_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_cics_discard_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_discard">discard</a> › <a href="#zowe_cics_discard_program">program</a></h3>
 <p>Discard a program from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics discard program &lt;programName&gt; [options]</p>
@@ -466,7 +697,7 @@ MYREGION:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_cics_discard_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_discard">discard</a> → <a href="#zowe_cics_discard_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_cics_discard_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_discard">discard</a> › <a href="#zowe_cics_discard_transaction">transaction</a></h3>
 <p>Discard a transaction from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics discard transaction &lt;transactionName&gt; [options]</p>
@@ -549,10 +780,10 @@ MYREGION:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_cics_get"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_get">get</a></h2>
+<a name="zowe_cics_get"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_get">get</a></h2>
 <p>Get resources (for example, programs or transactions) from CICS through IBM
 CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_get_resource"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_get">get</a> → <a href="#zowe_cics_get_resource">resource</a></h3>
+<a class="cmd-anchor" name="zowe_cics_get_resource"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_get">get</a> › <a href="#zowe_cics_get_resource">resource</a></h3>
 <p>Get resources (for example, programs or transactions) from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics get resource &lt;resourceName&gt; [options]</p>
@@ -719,9 +950,9 @@ the region named MYREGION and display various fields as a table:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_cics_install"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_install">install</a></h2>
+<a name="zowe_cics_install"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_install">install</a></h2>
 <p>Install resources (for example, programs) to CICS through IBM CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_install_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_install">install</a> → <a href="#zowe_cics_install_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_cics_install_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_install">install</a> › <a href="#zowe_cics_install_program">program</a></h3>
 <p>Install a program to CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics install program &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -810,7 +1041,7 @@ in the CSD group MYGRP:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_cics_install_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_install">install</a> → <a href="#zowe_cics_install_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_cics_install_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_install">install</a> › <a href="#zowe_cics_install_transaction">transaction</a></h3>
 <p>Install a transaction to CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics install transaction &lt;transactionName&gt; &lt;csdGroup&gt; [options]</p>
@@ -899,9 +1130,9 @@ MYREGION in the CSD group MYGRP:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_cics_refresh"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_refresh">refresh</a></h2>
+<a name="zowe_cics_refresh"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_refresh">refresh</a></h2>
 <p>Refresh a program on CICS through IBM CMCI.</p>
-<a class="cmd-anchor" name="zowe_cics_refresh_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_cics">cics</a> → <a href="#zowe_cics_refresh">refresh</a> → <a href="#zowe_cics_refresh_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_cics_refresh_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_refresh">refresh</a> › <a href="#zowe_cics_refresh_program">program</a></h3>
 <p>Refresh a program on CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics refresh program &lt;programName&gt; [options]</p>
@@ -984,11 +1215,11 @@ MYREGION:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_config"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_config">config</a></h2>
+<hr class="no-print">
+<a name="zowe_config"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a></h2>
 <p>Manage configuration and overrides. To see all set-able options use &quot;list&quot;
 command.</p>
-<a class="cmd-anchor" name="zowe_config_get"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_config">config</a> → <a href="#zowe_config_get">get</a></h3>
+<a class="cmd-anchor" name="zowe_config_get"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_get">get</a></h3>
 <p>Get a value of single setting option.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  config get &lt;configName&gt; [options]</p>
@@ -1008,7 +1239,7 @@ command.</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_config_list"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_config">config</a> → <a href="#zowe_config_list">list</a></h3>
+<a class="cmd-anchor" name="zowe_config_list"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_list">list</a></h3>
 <p>List all configuration setting options.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  config list [options]</p>
@@ -1033,7 +1264,7 @@ command.</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_config_reset"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_config">config</a> → <a href="#zowe_config_reset">reset</a></h3>
+<a class="cmd-anchor" name="zowe_config_reset"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_reset">reset</a></h3>
 <p>Reset a configuration setting to default value.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  config reset &lt;configName&gt; [options]</p>
@@ -1053,7 +1284,7 @@ command.</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_config_set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_config">config</a> → <a href="#zowe_config_set">set</a></h3>
+<a class="cmd-anchor" name="zowe_config_set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_set">set</a></h3>
 <p>Set a configuration setting.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  config set &lt;configName&gt; &lt;configValue&gt; [options]</p>
@@ -1080,12 +1311,12 @@ credential manager to allow for different credential storage methods.</li>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_db2"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a></h2>
+<hr class="no-print">
+<a name="zowe_db2"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a></h2>
 <p>Interact with IBM Db2 for z/OS</p>
-<a name="zowe_db2_call"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_call">call</a></h2>
+<a name="zowe_db2_call"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_call">call</a></h2>
 <p>Call a Db2 stored procedure</p>
-<a class="cmd-anchor" name="zowe_db2_call_procedure"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_call">call</a> → <a href="#zowe_db2_call_procedure">procedure</a></h3>
+<a class="cmd-anchor" name="zowe_db2_call_procedure"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_call">call</a> › <a href="#zowe_db2_call_procedure">procedure</a></h3>
 <p>Call a Db2 stored procedure. Specify the stored procedure name and optionally
 provide values.</p>
 <h4 id="usage">Usage</h4>
@@ -1161,11 +1392,11 @@ indicators:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_db2_execute"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_execute">execute</a></h2>
+<a name="zowe_db2_execute"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_execute">execute</a></h2>
 <p>Execute SQL queries against a Db2 region and retrieve the response. Enclose the
 query in quotes and escape any symbols that have a special meaning to the
 shell.</p>
-<a class="cmd-anchor" name="zowe_db2_execute_sql"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_execute">execute</a> → <a href="#zowe_db2_execute_sql">sql</a></h3>
+<a class="cmd-anchor" name="zowe_db2_execute_sql"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_execute">execute</a> › <a href="#zowe_db2_execute_sql">sql</a></h3>
 <p>Execute one or multiple SQL statements separated by a semicolon from a command
 line or from a file.</p>
 <h4 id="usage">Usage</h4>
@@ -1242,9 +1473,9 @@ line or from a file.</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_db2_export"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_export">export</a></h2>
+<a name="zowe_db2_export"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_export">export</a></h2>
 <p>Export data from a Db2 table</p>
-<a class="cmd-anchor" name="zowe_db2_export_table"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_db2">db2</a> → <a href="#zowe_db2_export">export</a> → <a href="#zowe_db2_export_table">table</a></h3>
+<a class="cmd-anchor" name="zowe_db2_export_table"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_db2">db2</a> › <a href="#zowe_db2_export">export</a> › <a href="#zowe_db2_export_table">table</a></h3>
 <p>Export a Db2 table to the stdout or a file.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  db2 export table &lt;table&gt; [options]</p>
@@ -1314,15 +1545,15 @@ to the file &#39;employees.sql&#39;:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_ims"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a></h2>
+<hr class="no-print">
+<a name="zowe_ims"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a></h2>
 <p>Interact with IBM IMS programs and transactions.</p>
-<a name="zowe_ims_query"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_query">query</a></h2>
+<a name="zowe_ims_query"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_query">query</a></h2>
 <p>Query application programs, regions or transactions across an IMSplex.The query
 returns information about application programs, regions and transactions. This
 command submits a &#39;QUERY PGM&#39;, &#39;DIS ACT&#39; or &#39;QUERY TRAN&#39; IMS command and returns
 the output.</p>
-<a class="cmd-anchor" name="zowe_ims_query_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_query">query</a> → <a href="#zowe_ims_query_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_ims_query_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_query">query</a> › <a href="#zowe_ims_query_program">program</a></h3>
 <p>Query an IMS application program.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims query program [name...] [options]</p>
@@ -1488,7 +1719,7 @@ optional connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_query_region"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_query">query</a> → <a href="#zowe_ims_query_region">region</a></h3>
+<a class="cmd-anchor" name="zowe_ims_query_region"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_query">query</a> › <a href="#zowe_ims_query_region">region</a></h3>
 <p>Query an IMS region.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims query region [options]</p>
@@ -1630,7 +1861,7 @@ parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_query_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_query">query</a> → <a href="#zowe_ims_query_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_ims_query_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_query">query</a> › <a href="#zowe_ims_query_transaction">transaction</a></h3>
 <p>Query an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims query transaction [name...] [options]</p>
@@ -1834,11 +2065,11 @@ specifying optional connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_ims_start"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_start">start</a></h2>
+<a name="zowe_ims_start"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_start">start</a></h2>
 <p>Starts a region, application program, or transaction and makes IMS resources
 available for reference and use. This command submits a &#39;/START REGION&#39;,
 &#39;UPDATE PGM&#39; or &#39;UPDATE TRAN&#39; IMS command and returns the output.</p>
-<a class="cmd-anchor" name="zowe_ims_start_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_start">start</a> → <a href="#zowe_ims_start_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_ims_start_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_start">start</a> › <a href="#zowe_ims_start_program">program</a></h3>
 <p>Start an IMS application program.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims start program [name...] [options]</p>
@@ -1987,7 +2218,7 @@ connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_start_region"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_start">start</a> → <a href="#zowe_ims_start_region">region</a></h3>
+<a class="cmd-anchor" name="zowe_ims_start_region"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_start">start</a> › <a href="#zowe_ims_start_region">region</a></h3>
 <p>Start an IMS region.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims start region [memberName] [options]</p>
@@ -2144,7 +2375,7 @@ optional connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_start_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_start">start</a> → <a href="#zowe_ims_start_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_ims_start_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_start">start</a> › <a href="#zowe_ims_start_transaction">transaction</a></h3>
 <p>Start an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims start transaction [name...] [options]</p>
@@ -2293,11 +2524,11 @@ connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_ims_stop"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_stop">stop</a></h2>
+<a name="zowe_ims_stop"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_stop">stop</a></h2>
 <p>Stops a running region, application program or transaction. This command
 submits a &#39;/STOP REGION&#39;, &#39;UPDATE PGM&#39; or &#39;UPDATE TRAN&#39; IMS command and returns
 the output.&quot;,</p>
-<a class="cmd-anchor" name="zowe_ims_stop_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_stop">stop</a> → <a href="#zowe_ims_stop_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_ims_stop_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_stop">stop</a> › <a href="#zowe_ims_stop_program">program</a></h3>
 <p>Stop an IMS application program.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims stop program [name...] [options]</p>
@@ -2446,7 +2677,7 @@ connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_stop_region"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_stop">stop</a> → <a href="#zowe_ims_stop_region">region</a></h3>
+<a class="cmd-anchor" name="zowe_ims_stop_region"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_stop">stop</a> › <a href="#zowe_ims_stop_region">region</a></h3>
 <p>Stop an IMS region.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims stop region [options]</p>
@@ -2614,7 +2845,7 @@ connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_stop_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_stop">stop</a> → <a href="#zowe_ims_stop_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_ims_stop_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_stop">stop</a> › <a href="#zowe_ims_stop_transaction">transaction</a></h3>
 <p>Stop an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims stop transaction &lt;name...&gt; [options]</p>
@@ -2763,10 +2994,10 @@ parameters:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_ims_update"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_update">update</a></h2>
+<a name="zowe_ims_update"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_update">update</a></h2>
 <p>Updates the setting(s) for application program or transaction. This command
 submits a &#39;UPDATE PGM&#39; or &#39;UPDATE TRAN&#39; IMS command and returns the output.</p>
-<a class="cmd-anchor" name="zowe_ims_update_program"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_update">update</a> → <a href="#zowe_ims_update_program">program</a></h3>
+<a class="cmd-anchor" name="zowe_ims_update_program"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_update">update</a> › <a href="#zowe_ims_update_program">program</a></h3>
 <p>Update an IMS application program.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims update program [name...] [options]</p>
@@ -2982,7 +3213,7 @@ scheduling specifying optional connection parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_ims_update_transaction"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_ims">ims</a> → <a href="#zowe_ims_update">update</a> → <a href="#zowe_ims_update_transaction">transaction</a></h3>
+<a class="cmd-anchor" name="zowe_ims_update_transaction"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_ims">ims</a> › <a href="#zowe_ims_update">update</a> › <a href="#zowe_ims_update_transaction">transaction</a></h3>
 <p>Update an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims update transaction [name...] [options]</p>
@@ -3366,12 +3597,12 @@ optional connection parameters:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_mq"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_mq">mq</a></h2>
+<hr class="no-print">
+<a name="zowe_mq"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_mq">mq</a></h2>
 <p>Interact with IBM MQ for z/OS.</p>
-<a name="zowe_mq_run"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_mq">mq</a> → <a href="#zowe_mq_run">run</a></h2>
+<a name="zowe_mq_run"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_mq">mq</a> › <a href="#zowe_mq_run">run</a></h2>
 <p>MQ Utilities</p>
-<a class="cmd-anchor" name="zowe_mq_run_mqsc"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_mq">mq</a> → <a href="#zowe_mq_run">run</a> → <a href="#zowe_mq_run_mqsc">mqsc</a></h3>
+<a class="cmd-anchor" name="zowe_mq_run_mqsc"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mq">mq</a> › <a href="#zowe_mq_run">run</a> › <a href="#zowe_mq_run_mqsc">mqsc</a></h3>
 <p>MQ Utilities</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  mq run mqsc &lt;qmgr&gt; &lt;cmd&gt; [options]</p>
@@ -3444,10 +3675,10 @@ example queue manager is called MQ99:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_plugins"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a></h2>
+<hr class="no-print">
+<a name="zowe_plugins"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a></h2>
 <p>Install and manage plug-ins</p>
-<a class="cmd-anchor" name="zowe_plugins_install"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a> → <a href="#zowe_plugins_install">install</a></h3>
+<a class="cmd-anchor" name="zowe_plugins_install"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_install">install</a></h3>
 <p>Install plug-ins to an application.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins install [plugin...] [options]</p>
@@ -3549,11 +3780,11 @@ authorization(don&#39;t need to use this flag if you have already logged in befo
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_plugins_list"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a> → <a href="#zowe_plugins_list">list</a></h3>
+<a class="cmd-anchor" name="zowe_plugins_list"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_list">list</a></h3>
 <p>List all plug-ins installed.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins list [options]</p>
-<a class="cmd-anchor" name="zowe_plugins_uninstall"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a> → <a href="#zowe_plugins_uninstall">uninstall</a></h3>
+<a class="cmd-anchor" name="zowe_plugins_uninstall"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_uninstall">uninstall</a></h3>
 <p>Uninstall plug-ins.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins uninstall [plugin...] [options]</p>
@@ -3575,7 +3806,7 @@ authorization(don&#39;t need to use this flag if you have already logged in befo
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_plugins_update"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a> → <a href="#zowe_plugins_update">update</a></h3>
+<a class="cmd-anchor" name="zowe_plugins_update"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_update">update</a></h3>
 <p>Update plug-ins.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins update [plugin...] [options]</p>
@@ -3627,7 +3858,7 @@ authorization(don&#39;t need to use this flag if you have already logged in befo
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_plugins_validate"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_plugins">plugins</a> → <a href="#zowe_plugins_validate">validate</a></h3>
+<a class="cmd-anchor" name="zowe_plugins_validate"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_validate">validate</a></h3>
 <p>Validate a plug-in that has been installed.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins validate [plugin] [options]</p>
@@ -3655,12 +3886,12 @@ Validation issues identified for this plug-in are displayed.</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_profiles"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a></h2>
+<hr class="no-print">
+<a name="zowe_profiles"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a></h2>
 <p>Create and manage configuration profiles</p>
-<a name="zowe_profiles_create"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a></h2>
+<a name="zowe_profiles_create"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a></h2>
 <p>Create new configuration profiles.</p>
-<a class="cmd-anchor" name="zowe_profiles_create_cics-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_cics-profile">cics-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_cics-profile">cics-profile</a></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
 name, and password for the IBM CICS management client interface (CMCI) server of
@@ -3746,7 +3977,7 @@ host zos123 and port 1490:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_db2-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_db2-profile">db2-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_db2-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_db2-profile">db2-profile</a></h3>
 <p>A profile for interaction with Db2 for the z/OS region</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles create db2-profile &lt;profileName&gt; [options]</p>
@@ -3797,7 +4028,7 @@ the name on commands that support the &quot;--db2-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_ims-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_ims-profile">ims-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_ims-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_ims-profile">ims-profile</a></h3>
 <p>An ims profile is used to issue commands in the ims command group that interact
 with IMS regions. The ims profile contains your IMS Operations API web server
 host, port, user name and password, IMS Connect host and port and IMS plex
@@ -3879,7 +4110,7 @@ a port of 1491:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_mq-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_mq-profile">mq-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_mq-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_mq-profile">mq-profile</a></h3>
 <p>An MQREST profile is required to issue commands in the MQ command group that
 interacts with MQSC. The mq profile contains your host, port, user name, and
 password for the IBM MQ System Console interface</p>
@@ -3950,7 +4181,7 @@ host zos123 and port 1234:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_ssh-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_ssh-profile">ssh-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_ssh-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_ssh-profile">ssh-profile</a></h3>
 <p>z/OS SSH Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles create ssh-profile &lt;profileName&gt; [options]</p>
@@ -4034,7 +4265,7 @@ decryption passphrase &#39;privateKeyPassphrase&#39; for privatekey authenticati
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_tso-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_tso-profile">tso-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_tso-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_tso-profile">tso-profile</a></h3>
 <p>z/OS TSO/E User Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles create tso-profile &lt;profileName&gt; [options]</p>
@@ -4122,7 +4353,7 @@ of 8192, a logon procedure of MYPROC, and JES accounting information of &#39;123
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_create_zosmf-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_create">create</a> → <a href="#zowe_profiles_create_zosmf-profile">zosmf-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_create_zosmf-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_zosmf-profile">zosmf-profile</a></h3>
 <p>z/OSMF Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles create zosmf-profile &lt;profileName&gt; [options]</p>
@@ -4203,9 +4434,9 @@ at the host zos124 (default port - 443) and allow self-signed certificates:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_profiles_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a></h2>
+<a name="zowe_profiles_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a></h2>
 <p>Delete existing profiles.</p>
-<a class="cmd-anchor" name="zowe_profiles_delete_cics-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_cics-profile">cics-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_cics-profile">cics-profile</a></h3>
 <p>Delete a cics profile. You must specify a profile name to be deleted. To find
 a list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4238,7 +4469,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_db2-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_db2-profile">db2-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_db2-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_db2-profile">db2-profile</a></h3>
 <p>Delete a db2 profile. You must specify a profile name to be deleted. To find a
 list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4271,7 +4502,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_ims-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_ims-profile">ims-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_ims-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_ims-profile">ims-profile</a></h3>
 <p>Delete a ims profile. You must specify a profile name to be deleted. To find a
 list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4304,7 +4535,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_mq-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_mq-profile">mq-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_mq-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_mq-profile">mq-profile</a></h3>
 <p>Delete a mq profile. You must specify a profile name to be deleted. To find a
 list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4337,7 +4568,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_ssh-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_ssh-profile">ssh-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_ssh-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_ssh-profile">ssh-profile</a></h3>
 <p>Delete a ssh profile. You must specify a profile name to be deleted. To find a
 list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4370,7 +4601,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_tso-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_tso-profile">tso-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_tso-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_tso-profile">tso-profile</a></h3>
 <p>Delete a tso profile. You must specify a profile name to be deleted. To find a
 list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4403,7 +4634,7 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_delete_zosmf-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_delete">delete</a> → <a href="#zowe_profiles_delete_zosmf-profile">zosmf-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_delete_zosmf-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_zosmf-profile">zosmf-profile</a></h3>
 <p>Delete a zosmf profile. You must specify a profile name to be deleted. To find
 a list of available profiles for deletion, issue the profiles list command. By
 default, you will be prompted to confirm the profile removal.</p>
@@ -4436,9 +4667,9 @@ be displayed before deletion occurs.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_profiles_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a></h2>
+<a name="zowe_profiles_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a></h2>
 <p>List profiles of the type {{type}}</p>
-<a class="cmd-anchor" name="zowe_profiles_list_cics-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_cics-profiles">cics-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_cics-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_cics-profiles">cics-profiles</a></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
 name, and password for the IBM CICS management client interface (CMCI) server of
@@ -4467,7 +4698,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_db2-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_db2-profiles">db2-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_db2-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_db2-profiles">db2-profiles</a></h3>
 <p>A profile for interaction with Db2 for the z/OS region</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles list db2-profiles [options]</p>
@@ -4493,7 +4724,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_ims-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_ims-profiles">ims-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_ims-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_ims-profiles">ims-profiles</a></h3>
 <p>An ims profile is used to issue commands in the ims command group that interact
 with IMS regions. The ims profile contains your IMS Operations API web server
 host, port, user name and password, IMS Connect host and port and IMS plex
@@ -4522,7 +4753,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_mq-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_mq-profiles">mq-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_mq-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_mq-profiles">mq-profiles</a></h3>
 <p>An MQREST profile is required to issue commands in the MQ command group that
 interacts with MQSC. The mq profile contains your host, port, user name, and
 password for the IBM MQ System Console interface</p>
@@ -4550,7 +4781,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_ssh-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_ssh-profiles">ssh-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_ssh-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_ssh-profiles">ssh-profiles</a></h3>
 <p>z/OS SSH Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles list ssh-profiles [options]</p>
@@ -4576,7 +4807,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_tso-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_tso-profiles">tso-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_tso-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_tso-profiles">tso-profiles</a></h3>
 <p>z/OS TSO/E User Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles list tso-profiles [options]</p>
@@ -4602,7 +4833,7 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_list_zosmf-profiles"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_list">list</a> → <a href="#zowe_profiles_list_zosmf-profiles">zosmf-profiles</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_list_zosmf-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_zosmf-profiles">zosmf-profiles</a></h3>
 <p>z/OSMF Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles list zosmf-profiles [options]</p>
@@ -4628,9 +4859,9 @@ part of command output.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_profiles_set-default"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a></h2>
+<a name="zowe_profiles_set-default"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a></h2>
 <p>Set which profiles are loaded by default.</p>
-<a class="cmd-anchor" name="zowe_profiles_set-default_cics-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_cics-profile">cics-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_cics-profile">cics-profile</a></h3>
 <p>The cics set default-profiles command allows you to set the default profiles
 for this command group. When a cics command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4658,7 +4889,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_db2-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_db2-profile">db2-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_db2-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_db2-profile">db2-profile</a></h3>
 <p>The db2 set default-profiles command allows you to set the default profiles for
 this command group. When a db2 command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4686,7 +4917,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_ims-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_ims-profile">ims-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_ims-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_ims-profile">ims-profile</a></h3>
 <p>The ims set default-profiles command allows you to set the default profiles for
 this command group. When a ims command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4714,7 +4945,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_mq-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_mq-profile">mq-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_mq-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_mq-profile">mq-profile</a></h3>
 <p>The mq set default-profiles command allows you to set the default profiles for
 this command group. When a mq command is issued and no profile override options
 are specified, the default profiles for the command group are automatically
@@ -4741,7 +4972,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_ssh-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_ssh-profile">ssh-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_ssh-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_ssh-profile">ssh-profile</a></h3>
 <p>The ssh set default-profiles command allows you to set the default profiles for
 this command group. When a ssh command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4769,7 +5000,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_tso-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_tso-profile">tso-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_tso-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_tso-profile">tso-profile</a></h3>
 <p>The tso set default-profiles command allows you to set the default profiles for
 this command group. When a tso command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4797,7 +5028,7 @@ will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_set-default_zosmf-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_set-default">set-default</a> → <a href="#zowe_profiles_set-default_zosmf-profile">zosmf-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_set-default_zosmf-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_zosmf-profile">zosmf-profile</a></h3>
 <p>The zosmf set default-profiles command allows you to set the default profiles
 for this command group. When a zosmf command is issued and no profile override
 options are specified, the default profiles for the command group are
@@ -4825,11 +5056,11 @@ default will be loaded instead.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_profiles_update"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a></h2>
+<a name="zowe_profiles_update"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a></h2>
 <p>Update a {{type}} profile. You can update any property present within the
 profile configuration. The updated profile will be printed so that you can
 review the result of the updates.</p>
-<a class="cmd-anchor" name="zowe_profiles_update_cics-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_cics-profile">cics-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_cics-profile">cics-profile</a></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
 name, and password for the IBM CICS management client interface (CMCI) server of
@@ -4893,7 +5124,7 @@ the name on commands that support the &quot;--cics-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_db2-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_db2-profile">db2-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_db2-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_db2-profile">db2-profile</a></h3>
 <p>A profile for interaction with Db2 for the z/OS region</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles update db2-profile &lt;profileName&gt; [options]</p>
@@ -4939,7 +5170,7 @@ the name on commands that support the &quot;--db2-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_ims-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_ims-profile">ims-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_ims-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_ims-profile">ims-profile</a></h3>
 <p>An ims profile is used to issue commands in the ims command group that interact
 with IMS regions. The ims profile contains your IMS Operations API web server
 host, port, user name and password, IMS Connect host and port and IMS plex
@@ -5002,7 +5233,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_mq-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_mq-profile">mq-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_mq-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_mq-profile">mq-profile</a></h3>
 <p>An MQREST profile is required to issue commands in the MQ command group that
 interacts with MQSC. The mq profile contains your host, port, user name, and
 password for the IBM MQ System Console interface</p>
@@ -5055,7 +5286,7 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_ssh-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_ssh-profile">ssh-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_ssh-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_ssh-profile">ssh-profile</a></h3>
 <p>z/OS SSH Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles update ssh-profile &lt;profileName&gt; [options]</p>
@@ -5107,7 +5338,7 @@ in the server for authentication</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_tso-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_tso-profile">tso-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_tso-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_tso-profile">tso-profile</a></h3>
 <p>z/OS TSO/E User Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles update tso-profile &lt;profileName&gt; [options]</p>
@@ -5169,7 +5400,7 @@ information:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_profiles_update_zosmf-profile"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_profiles">profiles</a> → <a href="#zowe_profiles_update">update</a> → <a href="#zowe_profiles_update_zosmf-profile">zosmf-profile</a></h3>
+<a class="cmd-anchor" name="zowe_profiles_update_zosmf-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_zosmf-profile">zosmf-profile</a></h3>
 <p>z/OSMF Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles update zosmf-profile &lt;profileName&gt; [options]</p>
@@ -5226,14 +5457,14 @@ and password:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_provisioning"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a></h2>
+<hr class="no-print">
+<a name="zowe_provisioning"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a></h2>
 <p>Perform z/OSMF provisioning tasks on Published Templates in the Service Catalog
 and Provisioned Instances in the Service Registry.</p>
-<a name="zowe_provisioning_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_delete">delete</a></h2>
+<a name="zowe_provisioning_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_delete">delete</a></h2>
 <p>Deletes instance previously provisioned with z/OSMF cloud provisioning
 services.</p>
-<a class="cmd-anchor" name="zowe_provisioning_delete_instance"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_delete">delete</a> → <a href="#zowe_provisioning_delete_instance">instance</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_delete_instance"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_delete">delete</a> › <a href="#zowe_provisioning_delete_instance">instance</a></h3>
 <p>Deletes selected deprovisioned instance.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning delete instance &lt;name&gt; [options]</p>
@@ -5300,11 +5531,11 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_provisioning_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a></h2>
+<a name="zowe_provisioning_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a></h2>
 <p>Lists z/OSMF provisioning information such as the provisioned instances from the
 registry, the provisioned instance details, the available provisioning templates
 and provisioning template details.</p>
-<a class="cmd-anchor" name="zowe_provisioning_list_catalog-templates"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a> → <a href="#zowe_provisioning_list_catalog-templates">catalog-templates</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_list_catalog-templates"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a> › <a href="#zowe_provisioning_list_catalog-templates">catalog-templates</a></h3>
 <p>Lists the z/OSMF service catalog published templates.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning list catalog-templates [options]</p>
@@ -5373,7 +5604,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_provisioning_list_instance-info"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a> → <a href="#zowe_provisioning_list_instance-info">instance-info</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_list_instance-info"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a> › <a href="#zowe_provisioning_list_instance-info">instance-info</a></h3>
 <p>List details about an instance provisioned with z/OSMF.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning list instance-info &lt;name&gt; [options]</p>
@@ -5461,7 +5692,7 @@ provisioned instance with the name &quot;instance1&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_provisioning_list_instance-variables"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a> → <a href="#zowe_provisioning_list_instance-variables">instance-variables</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_list_instance-variables"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a> › <a href="#zowe_provisioning_list_instance-variables">instance-variables</a></h3>
 <p>List a set of variables and their values for a given name.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning list instance-variables &lt;name&gt; [options]</p>
@@ -5563,7 +5794,7 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_provisioning_list_registry-instances"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a> → <a href="#zowe_provisioning_list_registry-instances">registry-instances</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_list_registry-instances"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a> › <a href="#zowe_provisioning_list_registry-instances">registry-instances</a></h3>
 <p>List the provisioned instances from the z/OSMF software registry.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning list registry-instances [options]</p>
@@ -5646,7 +5877,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_provisioning_list_template-info"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_list">list</a> → <a href="#zowe_provisioning_list_template-info">template-info</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_list_template-info"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_list">list</a> › <a href="#zowe_provisioning_list_template-info">template-info</a></h3>
 <p>List details about a template published with z/OSMF Cloud Provisioning.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  provisioning list template-info &lt;name&gt; [options]</p>
@@ -5722,9 +5953,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_provisioning_perform"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_perform">perform</a></h2>
+<a name="zowe_provisioning_perform"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_perform">perform</a></h2>
 <p>Perform actions against instances provisioned with z/OSMF.</p>
-<a class="cmd-anchor" name="zowe_provisioning_perform_action"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_perform">perform</a> → <a href="#zowe_provisioning_perform_action">action</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_perform_action"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_perform">perform</a> › <a href="#zowe_provisioning_perform_action">action</a></h3>
 <p>Perform actions on instances previously provisioned with z/OSMF cloud
 provisioning services. To view the list of provisioned instances, use the
 &quot;zowe provisioning list registry-instances&quot; command. Once you have
@@ -5802,9 +6033,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_provisioning_provision"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_provision">provision</a></h2>
+<a name="zowe_provisioning_provision"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_provision">provision</a></h2>
 <p>Using z/OSMF cloud provisioning services provision available templates.</p>
-<a class="cmd-anchor" name="zowe_provisioning_provision_template"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_provisioning">provisioning</a> → <a href="#zowe_provisioning_provision">provision</a> → <a href="#zowe_provisioning_provision_template">template</a></h3>
+<a class="cmd-anchor" name="zowe_provisioning_provision_template"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_provisioning">provisioning</a> › <a href="#zowe_provisioning_provision">provision</a> › <a href="#zowe_provisioning_provision_template">template</a></h3>
 <p>Using z/OSMF cloud provisioning services, provision available templates.
 You can view available templates using the zowe provisioning list
 catalog-templates command.</p>
@@ -5927,19 +6158,19 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-console"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-console">zos-console</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-console"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-console">zos-console</a></h2>
 <p>Interact with z/OSMF console services. Issue z/OS console commands and collect
 responses. z/OS console services establishes extended MCS (EMCS) consoles on
 behalf of the user, which are used to issue the commands and collect responses.</p>
 <p>Important! Before you use commands in the zos-console command group, ensure
 that you understand the implications of issuing z/OS console commands in your
 environment.</p>
-<a name="zowe_zos-console_collect"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-console">zos-console</a> → <a href="#zowe_zos-console_collect">collect</a></h2>
+<a name="zowe_zos-console_collect"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-console">zos-console</a> › <a href="#zowe_zos-console_collect">collect</a></h2>
 <p>z/OSMF console services provides a command response key upon successful issue of
 a console command. You can use this key to collect additional console message
 responses.</p>
-<a class="cmd-anchor" name="zowe_zos-console_collect_sync-responses"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-console">zos-console</a> → <a href="#zowe_zos-console_collect">collect</a> → <a href="#zowe_zos-console_collect_sync-responses">sync-responses</a></h3>
+<a class="cmd-anchor" name="zowe_zos-console_collect_sync-responses"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-console">zos-console</a> › <a href="#zowe_zos-console_collect">collect</a> › <a href="#zowe_zos-console_collect_sync-responses">sync-responses</a></h3>
 <p>The z/OSMF console REST APIs return a &quot;solicited response key&quot; after
 successfully issuing a synchronous console command that produces solicited
 responses. You can use the &quot;solicited response key&quot;on the &quot;sync-responses&quot;
@@ -6036,9 +6267,9 @@ messages:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-console_issue"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-console">zos-console</a> → <a href="#zowe_zos-console_issue">issue</a></h2>
+<a name="zowe_zos-console_issue"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-console">zos-console</a> › <a href="#zowe_zos-console_issue">issue</a></h2>
 <p>Issue z/OS console commands and optionally collect responses.</p>
-<a class="cmd-anchor" name="zowe_zos-console_issue_command"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-console">zos-console</a> → <a href="#zowe_zos-console_issue">issue</a> → <a href="#zowe_zos-console_issue_command">command</a></h3>
+<a class="cmd-anchor" name="zowe_zos-console_issue_command"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-console">zos-console</a> › <a href="#zowe_zos-console_issue">issue</a> › <a href="#zowe_zos-console_issue_command">command</a></h3>
 <p>Issue a z/OS console command and print command responses (known as &quot;solicited
 command responses&quot;).</p>
 <p>In general, when issuing a z/OS console command, z/OS applications route
@@ -6202,12 +6433,12 @@ coordinated universal time and date:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-files"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-files"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a></h2>
 <p>Manage z/OS data sets, create data sets, and more</p>
-<a name="zowe_zos-files_create"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a></h2>
+<a name="zowe_zos-files_create"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a></h2>
 <p>Create data sets</p>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-binary"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-binary">data-set-binary</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-binary"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-binary">data-set-binary</a></h3>
 <p>Create executable data sets</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-binary &lt;dataSetName&gt; [options]</p>
@@ -6358,7 +6589,7 @@ default parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-c"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-c">data-set-c</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-c"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-c">data-set-c</a></h3>
 <p>Create data sets for C code programming</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-c &lt;dataSetName&gt; [options]</p>
@@ -6508,7 +6739,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-classic"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-classic">data-set-classic</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-classic"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-classic">data-set-classic</a></h3>
 <p>Create classic data sets (JCL, HLASM, CBL, etc...)</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-classic &lt;dataSetName&gt; [options]</p>
@@ -6658,7 +6889,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-partitioned"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-partitioned">data-set-partitioned</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-partitioned"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-partitioned">data-set-partitioned</a></h3>
 <p>Create partitioned data sets (PDS)</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-partitioned &lt;dataSetName&gt; [options]</p>
@@ -6808,7 +7039,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-sequential"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-sequential">data-set-sequential</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-sequential"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-sequential">data-set-sequential</a></h3>
 <p>Create physical sequential data sets (PS)</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-sequential &lt;dataSetName&gt; [options]</p>
@@ -6952,7 +7183,7 @@ parameters:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_data-set-vsam"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_data-set-vsam">data-set-vsam</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_data-set-vsam"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-vsam">data-set-vsam</a></h3>
 <p>Create a VSAM cluster</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-vsam &lt;dataSetName&gt; [options]</p>
@@ -7105,7 +7336,7 @@ retained for 100 days:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_uss-directory"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_uss-directory">uss-directory</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_uss-directory"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_uss-directory">uss-directory</a></h3>
 <p>Create a UNIX directory.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create uss-directory &lt;ussPath&gt; [options]</p>
@@ -7186,7 +7417,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_uss-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_uss-file">uss-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_uss-file">uss-file</a></h3>
 <p>Create a UNIX file.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create uss-file &lt;ussPath&gt; [options]</p>
@@ -7266,7 +7497,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_create_zos-file-system"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_create">create</a> → <a href="#zowe_zos-files_create_zos-file-system">zos-file-system</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_create_zos-file-system"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_zos-file-system">zos-file-system</a></h3>
 <p>Create a z/OS file system.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create zos-file-system &lt;fileSystemName&gt; [options]</p>
@@ -7412,9 +7643,9 @@ allocated:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_delete">delete</a></h2>
+<a name="zowe_zos-files_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_delete">delete</a></h2>
 <p>Delete a data set or Unix System Services file</p>
-<a class="cmd-anchor" name="zowe_zos-files_delete_data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_delete">delete</a> → <a href="#zowe_zos-files_delete_data-set">data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_delete_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_delete">delete</a> › <a href="#zowe_zos-files_delete_data-set">data-set</a></h3>
 <p>Delete a data set permanently</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files delete data-set &lt;dataSetName&gt; [options]</p>
@@ -7499,7 +7730,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_delete_data-set-vsam"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_delete">delete</a> → <a href="#zowe_zos-files_delete_data-set-vsam">data-set-vsam</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_delete_data-set-vsam"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_delete">delete</a> › <a href="#zowe_zos-files_delete_data-set-vsam">data-set-vsam</a></h3>
 <p>Delete a VSAM cluster permanently</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files delete data-set-vsam &lt;dataSetName&gt; [options]</p>
@@ -7609,7 +7840,7 @@ overwriting the components with zeros:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_delete_uss-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_delete">delete</a> → <a href="#zowe_zos-files_delete_uss-file">uss-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_delete_uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_delete">delete</a> › <a href="#zowe_zos-files_delete_uss-file">uss-file</a></h3>
 <p>Delete a Unix Systems Services (USS) File or directory permanently</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files delete uss-file &lt;fileName&gt; [options]</p>
@@ -7704,7 +7935,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_delete_zos-file-system"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_delete">delete</a> → <a href="#zowe_zos-files_delete_zos-file-system">zos-file-system</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_delete_zos-file-system"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_delete">delete</a> › <a href="#zowe_zos-files_delete_zos-file-system">zos-file-system</a></h3>
 <p>Delete a z/OS file system permanently.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files delete zos-file-system &lt;fileSystemName&gt; [options]</p>
@@ -7779,9 +8010,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_download"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_download">download</a></h2>
+<a name="zowe_zos-files_download"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a></h2>
 <p>Download content from z/OS data sets and USS files to your PC</p>
-<a class="cmd-anchor" name="zowe_zos-files_download_all-members"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_download">download</a> → <a href="#zowe_zos-files_download_all-members">all-members</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_download_all-members"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a> › <a href="#zowe_zos-files_download_all-members">all-members</a></h3>
 <p>Download all members from a partitioned data set to a local folder</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files download all-members &lt;dataSetName&gt; [options]</p>
@@ -7901,7 +8132,7 @@ mode to the directory &quot;jcl/&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_download_data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_download">download</a> → <a href="#zowe_zos-files_download_data-set">data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_download_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a> › <a href="#zowe_zos-files_download_data-set">data-set</a></h3>
 <p>Download content from a z/OS data set to a local file</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files download data-set &lt;dataSetName&gt; [options]</p>
@@ -7999,7 +8230,7 @@ to the local file &quot;main.obj&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_download_uss-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_download">download</a> → <a href="#zowe_zos-files_download_uss-file">uss-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_download_uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a> › <a href="#zowe_zos-files_download_uss-file">uss-file</a></h3>
 <p>Download content from a USS file to a local file on your PC</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files download uss-file &lt;ussFileName&gt; [options]</p>
@@ -8088,9 +8319,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_invoke"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_invoke">invoke</a></h2>
+<a name="zowe_zos-files_invoke"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a></h2>
 <p>Invoke z/OS utilities such as Access Method Services (AMS)</p>
-<a class="cmd-anchor" name="zowe_zos-files_invoke_ams-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_invoke">invoke</a> → <a href="#zowe_zos-files_invoke_ams-file">ams-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_invoke_ams-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a> › <a href="#zowe_zos-files_invoke_ams-file">ams-file</a></h3>
 <p>Submit control statements for execution by Access Method Services (IDCAMS). You
 can use IDCAMS to create VSAM data sets (CSI, ZFS, etc...), delete data sets,
 and more. You must format the control statements exactly as the IDCAMS utility
@@ -8164,7 +8395,7 @@ statements:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_invoke_ams-statements"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_invoke">invoke</a> → <a href="#zowe_zos-files_invoke_ams-statements">ams-statements</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_invoke_ams-statements"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a> › <a href="#zowe_zos-files_invoke_ams-statements">ams-statements</a></h3>
 <p>Submit control statements for execution by Access Method Services (IDCAMS). You
 can use IDCAMS to create VSAM data sets (CSI, ZFS, etc...), delete data sets,
 and more. You must format the control statements exactly as the IDCAMS utility
@@ -8241,10 +8472,10 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_list">list</a></h2>
+<a name="zowe_zos-files_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_list">list</a></h2>
 <p>List data sets and data set members. Optionally, you can list their details and
 attributes.</p>
-<a class="cmd-anchor" name="zowe_zos-files_list_all-members"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_list">list</a> → <a href="#zowe_zos-files_list_all-members">all-members</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_list_all-members"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_list">list</a> › <a href="#zowe_zos-files_list_all-members">all-members</a></h3>
 <p>List all members of a partitioned data set. To view additional information
 about each member, use the --attributes option under the Options section of
 this help text.</p>
@@ -8341,7 +8572,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_list_data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_list">list</a> → <a href="#zowe_zos-files_list_data-set">data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_list_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_list">list</a> › <a href="#zowe_zos-files_list_data-set">data-set</a></h3>
 <p>List data sets that match a pattern in the data set name</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files list data-set &lt;dataSetName&gt; [options]</p>
@@ -8446,7 +8677,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_list_file-system"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_list">list</a> → <a href="#zowe_zos-files_list_file-system">file-system</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_list_file-system"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_list">list</a> › <a href="#zowe_zos-files_list_file-system">file-system</a></h3>
 <p>List all mounted filesystems, or the specific filesystem mounted at a given
 path, or the filesystem with a given filesystem name.</p>
 <h4 id="usage">Usage</h4>
@@ -8573,7 +8804,7 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_list_uss-files"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_list">list</a> → <a href="#zowe_zos-files_list_uss-files">uss-files</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_list_uss-files"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_list">list</a> › <a href="#zowe_zos-files_list_uss-files">uss-files</a></h3>
 <p>List USS files and directories in a UNIX file path</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files list uss-files &lt;path&gt; [options]</p>
@@ -8697,10 +8928,10 @@ displaying the headers associated with the file detail:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_mount"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_mount">mount</a></h2>
+<a name="zowe_zos-files_mount"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_mount">mount</a></h2>
 <p>Mount z/OS UNIX file systems, such as HFS, ZFS, and more. This connects you to
 USS file systems.</p>
-<a class="cmd-anchor" name="zowe_zos-files_mount_file-system"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_mount">mount</a> → <a href="#zowe_zos-files_mount_file-system">file-system</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_mount_file-system"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_mount">mount</a> › <a href="#zowe_zos-files_mount_file-system">file-system</a></h3>
 <p>Mount a UNIX file system on a specified directory.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files mount file-system &lt;fileSystemName&gt; &lt;mountPoint&gt; [options]</p>
@@ -8798,10 +9029,10 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_unmount"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_unmount">unmount</a></h2>
+<a name="zowe_zos-files_unmount"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_unmount">unmount</a></h2>
 <p>Unmount file systems, such as HFS, ZFS, and more. This disconnects you from USS
 file systems.</p>
-<a class="cmd-anchor" name="zowe_zos-files_unmount_file-system"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_unmount">unmount</a> → <a href="#zowe_zos-files_unmount_file-system">file-system</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_unmount_file-system"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_unmount">unmount</a> › <a href="#zowe_zos-files_unmount_file-system">file-system</a></h3>
 <p>Unmount a UNIX file system.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files unmount file-system &lt;fileSystemName&gt; [options]</p>
@@ -8868,9 +9099,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-files_upload"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a></h2>
+<a name="zowe_zos-files_upload"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a></h2>
 <p>Upload the contents of a file to z/OS data sets</p>
-<a class="cmd-anchor" name="zowe_zos-files_upload_dir-to-pds"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a> → <a href="#zowe_zos-files_upload_dir-to-pds">dir-to-pds</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_upload_dir-to-pds"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_dir-to-pds">dir-to-pds</a></h3>
 <p>Upload files from a local directory to a partitioned data set (PDS)</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files upload dir-to-pds &lt;inputdir&gt; &lt;dataSetName&gt; [options]</p>
@@ -8974,7 +9205,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_upload_dir-to-uss"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a> → <a href="#zowe_zos-files_upload_dir-to-uss">dir-to-uss</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_upload_dir-to-uss"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_dir-to-uss">dir-to-uss</a></h3>
 <p>Upload a local directory to a USS directory.</p>
 <p>An optional .zosattributes file in the source directory can be used to control
 file conversion and tagging.</p>
@@ -9155,7 +9386,7 @@ encodings in the local file my_global_attributes::</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_upload_file-to-data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a> → <a href="#zowe_zos-files_upload_file-to-data-set">file-to-data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_upload_file-to-data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_file-to-data-set">file-to-data-set</a></h3>
 <p>Upload the contents of a file to a z/OS data set</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files upload file-to-data-set &lt;inputfile&gt; &lt;dataSetName&gt; [options]</p>
@@ -9266,7 +9497,7 @@ to be recalled:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_upload_file-to-uss"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a> → <a href="#zowe_zos-files_upload_file-to-uss">file-to-uss</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_upload_file-to-uss"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_file-to-uss">file-to-uss</a></h3>
 <p>Upload content to a USS file from local file</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files upload file-to-uss &lt;inputfile&gt; &lt;USSFileName&gt; [options]</p>
@@ -9349,7 +9580,7 @@ file &quot;file.txt&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_upload_stdin-to-data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-files">zos-files</a> → <a href="#zowe_zos-files_upload">upload</a> → <a href="#zowe_zos-files_upload_stdin-to-data-set">stdin-to-data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-files_upload_stdin-to-data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_stdin-to-data-set">stdin-to-data-set</a></h3>
 <p>Upload the content of a stdin to a z/OS data set</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files upload stdin-to-data-set &lt;dataSetName&gt; [options]</p>
@@ -9455,13 +9686,13 @@ for it to be recalled from a Windows console:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-jobs"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-jobs"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a></h2>
 <p>Manage z/OS jobs.</p>
-<a name="zowe_zos-jobs_cancel"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_cancel">cancel</a></h2>
+<a name="zowe_zos-jobs_cancel"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_cancel">cancel</a></h2>
 <p>Cancel a single job by job ID. This cancels the job if it is running or on
 input.</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_cancel_job"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_cancel">cancel</a> → <a href="#zowe_zos-jobs_cancel_job">job</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_cancel_job"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_cancel">cancel</a> › <a href="#zowe_zos-jobs_cancel_job">job</a></h3>
 <p>Cancel a single job by job ID</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-jobs cancel job &lt;jobid&gt; [options]</p>
@@ -9531,10 +9762,10 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-jobs_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_delete">delete</a></h2>
+<a name="zowe_zos-jobs_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_delete">delete</a></h2>
 <p>Delete a single job by job ID in OUTPUT status. This cancels the job if it is
 running and purges its output from the system</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_delete_job"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_delete">delete</a> → <a href="#zowe_zos-jobs_delete_job">job</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_delete_job"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_delete">delete</a> › <a href="#zowe_zos-jobs_delete_job">job</a></h3>
 <p>Delete a single job by job ID</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-jobs delete job &lt;jobid&gt; [options]</p>
@@ -9604,9 +9835,9 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-jobs_download"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_download">download</a></h2>
+<a name="zowe_zos-jobs_download"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_download">download</a></h2>
 <p>Download the output of a job as separate files.</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_download_output"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_download">download</a> → <a href="#zowe_zos-jobs_download_output">output</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_download_output"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_download">download</a> › <a href="#zowe_zos-jobs_download_output">output</a></h3>
 <p>Download all job output to a local directory. Each spool DD will be downloaded
 to its own file in the directory.</p>
 <h4 id="usage">Usage</h4>
@@ -9695,10 +9926,10 @@ an automatically generated directory.:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-jobs_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_list">list</a></h2>
+<a name="zowe_zos-jobs_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_list">list</a></h2>
 <p>List z/OS jobs and list the spool files (DDs) for a z/OS job on the JES/spool
 queues.</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_list_jobs"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_list">list</a> → <a href="#zowe_zos-jobs_list_jobs">jobs</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_list_jobs"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_list">list</a> › <a href="#zowe_zos-jobs_list_jobs">jobs</a></h3>
 <p>List jobs on JES spool/queues. By default, the command lists jobs owned (owner)
 by the user specified in your z/OSMF profile. The default for prefix is &quot;*&quot;.
 The command does not prevalidate your user ID. The command surfaces errors
@@ -9827,7 +10058,7 @@ displaying only the job ID of each job:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-jobs_list_spool-files-by-jobid"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_list">list</a> → <a href="#zowe_zos-jobs_list_spool-files-by-jobid">spool-files-by-jobid</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_list_spool-files-by-jobid"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_list">list</a> › <a href="#zowe_zos-jobs_list_spool-files-by-jobid">spool-files-by-jobid</a></h3>
 <p>Given a z/OS job JOBID, list the spool files (DDs) for a z/OS job on the
 JES/spool queues. The command does not pre-validate the JOBID. The command
 presents errors verbatim from the z/OSMF Jobs REST endpoints.</p>
@@ -9932,9 +10163,9 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-jobs_submit"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_submit">submit</a></h2>
+<a name="zowe_zos-jobs_submit"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a></h2>
 <p>Submit jobs (JCL) contained in data sets.</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_submit_data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_submit">submit</a> → <a href="#zowe_zos-jobs_submit_data-set">data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_submit_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a> › <a href="#zowe_zos-jobs_submit_data-set">data-set</a></h3>
 <p>Submit a job (JCL) contained in a data set. The data set may be of type
 physical sequential or a PDS member. The command does not pre-validate the
 data set name. The command presents errors verbatim from the z/OSMF Jobs REST
@@ -9958,6 +10189,16 @@ qualified by a member (for example, &quot;DATA.SET(MEMBER)&quot;).</li>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. The option is required
 only when the data set is not catalogued on the system.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li><p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
@@ -10075,7 +10316,7 @@ for the job to complete and print all output from the job:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-jobs_submit_local-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_submit">submit</a> → <a href="#zowe_zos-jobs_submit_local-file">local-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_submit_local-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a> › <a href="#zowe_zos-jobs_submit_local-file">local-file</a></h3>
 <p>Submit a job (JCL) contained in a local file. The command presents errors
 verbatim from the z/OSMF Jobs REST endpoints. For more information about z/OSMF
 Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
@@ -10095,6 +10336,16 @@ Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
 <ul>
 <li>Print all spool output. If you use this option you will wait the job to
 complete.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li><p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
@@ -10200,7 +10451,7 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-jobs_submit_stdin"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_submit">submit</a> → <a href="#zowe_zos-jobs_submit_stdin">stdin</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_submit_stdin"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a> › <a href="#zowe_zos-jobs_submit_stdin">stdin</a></h3>
 <p>Submit a job (JCL) passed to the command via the stdin stream. The command
 presents errors verbatim from the z/OSMF Jobs REST endpoints. For more
 information about z/OSMF Jobs API errors, see the z/OSMF Jobs API REST
@@ -10213,6 +10464,16 @@ documentation.</p>
 <ul>
 <li>Print all spool output. If you use this option you will wait the job to
 complete.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li><p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
@@ -10310,9 +10571,9 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-jobs_view"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_view">view</a></h2>
+<a name="zowe_zos-jobs_view"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_view">view</a></h2>
 <p>View details of z/OS jobs on spool/JES queues.</p>
-<a class="cmd-anchor" name="zowe_zos-jobs_view_job-status-by-jobid"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_view">view</a> → <a href="#zowe_zos-jobs_view_job-status-by-jobid">job-status-by-jobid</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_view_job-status-by-jobid"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_view">view</a> › <a href="#zowe_zos-jobs_view_job-status-by-jobid">job-status-by-jobid</a></h3>
 <p>View status details of a single z/OS job on spool/JES queues. The command does
 not prevalidate the JOBID. The command presents errors verbatim from the z/OSMF
 Jobs REST endpoints (expect for &quot;no jobs found&quot;).</p>
@@ -10424,7 +10685,7 @@ the job with the job ID JOB00123:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-jobs_view_spool-file-by-id"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-jobs">zos-jobs</a> → <a href="#zowe_zos-jobs_view">view</a> → <a href="#zowe_zos-jobs_view_spool-file-by-id">spool-file-by-id</a></h3>
+<a class="cmd-anchor" name="zowe_zos-jobs_view_spool-file-by-id"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_view">view</a> › <a href="#zowe_zos-jobs_view_spool-file-by-id">spool-file-by-id</a></h3>
 <p>View the contents of a spool file from a z/OS job on spool/JES queues. The
 command does not pre-validate the JOBID or spool ID. The command presents
 errors verbatim from the z/OSMF Jobs REST endpoints.</p>
@@ -10502,12 +10763,12 @@ JOB00123:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-tso"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-tso"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a></h2>
 <p>Issue TSO commands and interact with TSO address spaces</p>
-<a name="zowe_zos-tso_issue"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_issue">issue</a></h2>
+<a name="zowe_zos-tso_issue"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_issue">issue</a></h2>
 <p>Issue TSO commands</p>
-<a class="cmd-anchor" name="zowe_zos-tso_issue_command"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_issue">issue</a> → <a href="#zowe_zos-tso_issue_command">command</a></h3>
+<a class="cmd-anchor" name="zowe_zos-tso_issue_command"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_issue">issue</a> › <a href="#zowe_zos-tso_issue_command">command</a></h3>
 <p>Creates a TSO address space, issues a TSO command through the newly created
 address space, waits for the READY prompt to print the response, and terminates
 the TSO address space. All response data are returned to the user up to (but
@@ -10643,10 +10904,10 @@ jobs for your user ID.:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-tso_ping"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_ping">ping</a></h2>
+<a name="zowe_zos-tso_ping"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_ping">ping</a></h2>
 <p>Ping a TSO address space, from which you previously started and received a token
 (a.k.a &#39;servelet-key&#39;).</p>
-<a class="cmd-anchor" name="zowe_zos-tso_ping_address-space"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_ping">ping</a> → <a href="#zowe_zos-tso_ping_address-space">address-space</a></h3>
+<a class="cmd-anchor" name="zowe_zos-tso_ping_address-space"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_ping">ping</a> › <a href="#zowe_zos-tso_ping_address-space">address-space</a></h3>
 <p>Ping a TSO address space, from which you previously started and received a token
 (a.k.a &#39;servlet-key&#39;).</p>
 <h4 id="usage">Usage</h4>
@@ -10715,9 +10976,9 @@ IBMUSER-329-aafkaaoc:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-tso_send"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_send">send</a></h2>
+<a name="zowe_zos-tso_send"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_send">send</a></h2>
 <p>Send data to TSO and collect responses until the prompt is reached</p>
-<a class="cmd-anchor" name="zowe_zos-tso_send_address-space"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_send">send</a> → <a href="#zowe_zos-tso_send_address-space">address-space</a></h3>
+<a class="cmd-anchor" name="zowe_zos-tso_send_address-space"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_send">send</a> › <a href="#zowe_zos-tso_send_address-space">address-space</a></h3>
 <p>Send data to the TSO address space, from which you previously started and
 received a token (a.k.a &#39;servlet-key&#39;).</p>
 <h4 id="usage">Usage</h4>
@@ -10795,9 +11056,9 @@ identified by IBMUSER-329-aafkaaoc&quot;:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-tso_start"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_start">start</a></h2>
+<a name="zowe_zos-tso_start"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_start">start</a></h2>
 <p>Start TSO/E address space</p>
-<a class="cmd-anchor" name="zowe_zos-tso_start_address-space"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_start">start</a> → <a href="#zowe_zos-tso_start_address-space">address-space</a></h3>
+<a class="cmd-anchor" name="zowe_zos-tso_start_address-space"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_start">start</a> › <a href="#zowe_zos-tso_start_address-space">address-space</a></h3>
 <p>Start a TSO address space, from which you will receive a token (a.k.a
 &#39;servlet-key&#39;) for further address space interaction (e.g. termination).</p>
 <h4 id="usage">Usage</h4>
@@ -10933,9 +11194,9 @@ format:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-tso_stop"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_stop">stop</a></h2>
+<a name="zowe_zos-tso_stop"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_stop">stop</a></h2>
 <p>Stop TSO/E address space</p>
-<a class="cmd-anchor" name="zowe_zos-tso_stop_address-space"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-tso">zos-tso</a> → <a href="#zowe_zos-tso_stop">stop</a> → <a href="#zowe_zos-tso_stop_address-space">address-space</a></h3>
+<a class="cmd-anchor" name="zowe_zos-tso_stop_address-space"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-tso">zos-tso</a> › <a href="#zowe_zos-tso_stop">stop</a> › <a href="#zowe_zos-tso_stop_address-space">address-space</a></h3>
 <p>Stop a TSO address space, from which you previously started and received a token
 (a.k.a &#39;servlet-key&#39;).</p>
 <h4 id="usage">Usage</h4>
@@ -11004,13 +11265,13 @@ IBMUSER-329-aafkaaoc:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-uss"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-uss">zos-uss</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-uss"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a></h2>
 <p>Issue z/OS USS commands remotely using an SSH session. Output from the commands
 is displayed on the local terminal.</p>
-<a name="zowe_zos-uss_issue"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-uss">zos-uss</a> → <a href="#zowe_zos-uss_issue">issue</a></h2>
+<a name="zowe_zos-uss_issue"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a> › <a href="#zowe_zos-uss_issue">issue</a></h2>
 <p>Issue a z/OS USS command</p>
-<a class="cmd-anchor" name="zowe_zos-uss_issue_ssh"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-uss">zos-uss</a> → <a href="#zowe_zos-uss_issue">issue</a> → <a href="#zowe_zos-uss_issue_ssh">ssh</a></h3>
+<a class="cmd-anchor" name="zowe_zos-uss_issue_ssh"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a> › <a href="#zowe_zos-uss_issue">issue</a> › <a href="#zowe_zos-uss_issue_ssh">ssh</a></h3>
 <p>Issue a z/OS USS command</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-uss issue ssh &lt;command&gt; [options]</p>
@@ -11087,12 +11348,12 @@ in the server for authentication</li>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zos-workflows"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a></h2>
+<hr class="no-print">
+<a name="zowe_zos-workflows"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a></h2>
 <p>Create and manage z/OSMF workflows on a z/OS system</p>
-<a name="zowe_zos-workflows_archive"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_archive">archive</a></h2>
+<a name="zowe_zos-workflows_archive"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_archive">archive</a></h2>
 <p>Archive workflow instance in z/OSMF</p>
-<a class="cmd-anchor" name="zowe_zos-workflows_archive_active-workflow"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_archive">archive</a> → <a href="#zowe_zos-workflows_archive_active-workflow">active-workflow</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_archive_active-workflow"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_archive">archive</a> › <a href="#zowe_zos-workflows_archive_active-workflow">active-workflow</a></h3>
 <p>Archive an active workflow instance in z/OSMF.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows archive active-workflow [options]</p>
@@ -11210,9 +11471,9 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-workflows_create"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_create">create</a></h2>
+<a name="zowe_zos-workflows_create"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_create">create</a></h2>
 <p>Create a z/OSMF workflow on a z/OS system.</p>
-<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-data-set"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_create">create</a> → <a href="#zowe_zos-workflows_create_workflow-from-data-set">workflow-from-data-set</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_create">create</a> › <a href="#zowe_zos-workflows_create_workflow-from-data-set">workflow-from-data-set</a></h3>
 <p>Create a z/OSMF workflow on a z/OS system using a Data set</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows create workflow-from-data-set &lt;workflowName&gt; [options]</p>
@@ -11399,7 +11660,7 @@ DUMMYVAL. Assign it to the owner:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-local-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_create">create</a> → <a href="#zowe_zos-workflows_create_workflow-from-local-file">workflow-from-local-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-local-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_create">create</a> › <a href="#zowe_zos-workflows_create_workflow-from-local-file">workflow-from-local-file</a></h3>
 <p>Create a z/OSMF workflow on a z/OS system using a Local file</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows create workflow-from-local-file &lt;workflowName&gt; [options]</p>
@@ -11575,7 +11836,7 @@ already exist in z/OSMF:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-uss-file"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_create">create</a> → <a href="#zowe_zos-workflows_create_workflow-from-uss-file">workflow-from-uss-file</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_create_workflow-from-uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_create">create</a> › <a href="#zowe_zos-workflows_create_workflow-from-uss-file">workflow-from-uss-file</a></h3>
 <p>Create a workflow instance in z/OSMF using a USS file</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows create workflow-from-uss-file &lt;workflowName&gt; [options]</p>
@@ -11762,9 +12023,9 @@ DUMMYVAL2, and assign it to the owner:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-workflows_delete"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_delete">delete</a></h2>
+<a name="zowe_zos-workflows_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_delete">delete</a></h2>
 <p>Delete an active workflow or an archived workflow from z/OSMF.</p>
-<a class="cmd-anchor" name="zowe_zos-workflows_delete_active-workflow"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_delete">delete</a> → <a href="#zowe_zos-workflows_delete_active-workflow">active-workflow</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_delete_active-workflow"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_delete">delete</a> › <a href="#zowe_zos-workflows_delete_active-workflow">active-workflow</a></h3>
 <p>Delete an active workflow instance in z/OSMF</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows delete active-workflow [options]</p>
@@ -11849,7 +12110,7 @@ starting with &quot;test&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_delete_archived-workflow"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_delete">delete</a> → <a href="#zowe_zos-workflows_delete_archived-workflow">archived-workflow</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_delete_archived-workflow"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_delete">delete</a> › <a href="#zowe_zos-workflows_delete_archived-workflow">archived-workflow</a></h3>
 <p>Delete an archived workflow from z/OSMF</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows delete archived-workflow [options]</p>
@@ -11934,9 +12195,9 @@ beginnig with &quot;test&quot;:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-workflows_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_list">list</a></h2>
+<a name="zowe_zos-workflows_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_list">list</a></h2>
 <p>List the z/OSMF workflows for a system or a sysplex with filter options.</p>
-<a class="cmd-anchor" name="zowe_zos-workflows_list_active-workflow-details"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_list">list</a> → <a href="#zowe_zos-workflows_list_active-workflow-details">active-workflow-details</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_list_active-workflow-details"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_list">list</a> › <a href="#zowe_zos-workflows_list_active-workflow-details">active-workflow-details</a></h3>
 <p>Get the details of an active z/OSMF workflow</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows list active-workflow-details [options]</p>
@@ -12035,7 +12296,7 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_list_active-workflows"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_list">list</a> → <a href="#zowe_zos-workflows_list_active-workflows">active-workflows</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_list_active-workflows"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_list">list</a> › <a href="#zowe_zos-workflows_list_active-workflows">active-workflows</a></h3>
 <p>List active workflow instance(s) in z/OSMF.
 Multiple filters can be used together.
 Omitting all options will list all workflows on the sysplex</p>
@@ -12179,7 +12440,7 @@ beginnig with &quot;testW&quot; that are in status &quot;complete&quot;:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_list_archived-workflows"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_list">list</a> → <a href="#zowe_zos-workflows_list_archived-workflows">archived-workflows</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_list_archived-workflows"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_list">list</a> › <a href="#zowe_zos-workflows_list_archived-workflows">archived-workflows</a></h3>
 <p>List the archived z/OSMF workflows for a system or sysplex.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows list archived-workflows [options]</p>
@@ -12265,7 +12526,7 @@ in the output.</li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_list_definition-file-details"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_list">list</a> → <a href="#zowe_zos-workflows_list_definition-file-details">definition-file-details</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_list_definition-file-details"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_list">list</a> › <a href="#zowe_zos-workflows_list_definition-file-details">definition-file-details</a></h3>
 <p>Retrieve the contents of a z/OSMF workflow definition from a z/OS system.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows list definition-file-details &lt;definitionFilePath&gt; [options]</p>
@@ -12353,9 +12614,9 @@ z/OS data set &quot;USER.DATA.SET.XML&quot; including its steps and variables:</
 </ul>
 </li>
 </ul>
-<a name="zowe_zos-workflows_start"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_start">start</a></h2>
+<a name="zowe_zos-workflows_start"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_start">start</a></h2>
 <p>Start a z/OSMF workflow on a z/OS system.</p>
-<a class="cmd-anchor" name="zowe_zos-workflows_start_workflow-full"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_start">start</a> → <a href="#zowe_zos-workflows_start_workflow-full">workflow-full</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_start_workflow-full"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_start">start</a> › <a href="#zowe_zos-workflows_start_workflow-full">workflow-full</a></h3>
 <p>Will run workflow from the beginning to the end or to the first manual step.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-workflows start workflow-full [options]</p>
@@ -12466,7 +12727,7 @@ value use the value that is in output file:</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-workflows_start_workflow-step"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zos-workflows">zos-workflows</a> → <a href="#zowe_zos-workflows_start">start</a> → <a href="#zowe_zos-workflows_start_workflow-step">workflow-step</a></h3>
+<a class="cmd-anchor" name="zowe_zos-workflows_start_workflow-step"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-workflows">zos-workflows</a> › <a href="#zowe_zos-workflows_start">start</a> › <a href="#zowe_zos-workflows_start_workflow-step">workflow-step</a></h3>
 <p>Will run given step of workflow instance plus following steps if specified by
 --perform-following-steps option.</p>
 <h4 id="usage">Usage</h4>
@@ -12586,13 +12847,13 @@ with workflow name &quot;testWorkflow&quot;:</p>
 </ul>
 </li>
 </ul>
-<hr>
-<a name="zowe_zosmf"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zosmf">zosmf</a></h2>
+<hr class="no-print">
+<a name="zowe_zosmf"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zosmf">zosmf</a></h2>
 <p>Retrieve and show the properties of a z/OSMF web server</p>
-<a name="zowe_zosmf_check"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zosmf">zosmf</a> → <a href="#zowe_zosmf_check">check</a></h2>
+<a name="zowe_zosmf_check"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zosmf">zosmf</a> › <a href="#zowe_zosmf_check">check</a></h2>
 <p>Confirm that z/OSMF is running on a specified system and gather information
 about the z/OSMF server for diagnostic purposes.</p>
-<a class="cmd-anchor" name="zowe_zosmf_check_status"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zosmf">zosmf</a> → <a href="#zowe_zosmf_check">check</a> → <a href="#zowe_zosmf_check_status">status</a></h3>
+<a class="cmd-anchor" name="zowe_zosmf_check_status"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zosmf">zosmf</a> › <a href="#zowe_zosmf_check">check</a> › <a href="#zowe_zosmf_check_status">status</a></h3>
 <p>Confirm that z/OSMF is running on a system specified in your profile and gather
 information about the z/OSMF server for diagnostic purposes. The command
 outputs properties of the z/OSMF server such as version, hostname, and installed
@@ -12667,9 +12928,9 @@ manually via command line:</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_zosmf_list"></a><h2><a href="#zowe">zowe</a> → <a href="#zowe_zosmf">zosmf</a> → <a href="#zowe_zosmf_list">list</a></h2>
+<a name="zowe_zosmf_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zosmf">zosmf</a> › <a href="#zowe_zosmf_list">list</a></h2>
 <p>Obtain a list of systems that are defined to a z/OSMF instance.</p>
-<a class="cmd-anchor" name="zowe_zosmf_list_systems"></a><h3><a href="#zowe">zowe</a> → <a href="#zowe_zosmf">zosmf</a> → <a href="#zowe_zosmf_list">list</a> → <a href="#zowe_zosmf_list_systems">systems</a></h3>
+<a class="cmd-anchor" name="zowe_zosmf_list_systems"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zosmf">zosmf</a> › <a href="#zowe_zosmf_list">list</a> › <a href="#zowe_zosmf_list_systems">systems</a></h3>
 <p>Obtain a list of systems that are defined to a z/OSMF instance.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zosmf list systems [options]</p>
@@ -12742,5 +13003,6 @@ that you specified in the command line:</p>
 </li>
 </ul>
 </article>
+<div id="btn-print-wrapper"><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></div>
 <script src="../js/bundle-docs.js"></script>
 <script src="../js/docs.js"></script>
