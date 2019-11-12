@@ -1,4 +1,4 @@
-# IBM Db2 Database Plug-in for Zowe CLI 
+# IBM® Db2® Database Plug-in for Zowe CLI 
 
 The IBM® Db2® Database Plug-in for Zowe&trade; CLI lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
