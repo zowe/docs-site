@@ -13,6 +13,16 @@ Welcome to Zowe Active Development documentation.
 
 ## Version highlights
 
+### November 2019
+
+**Features and enhancements: November 2019**
+
+- The Zowe CLI API now supports the capability change the name of sequential and partitioned data sets. [#571](https://github.com/zowe/zowe-cli/issues/571) 
+- The Zowe CLI APi now supports the capability to migrate data sets. [#558](https://github.com/zowe/zowe-cli/issues/558)
+- The Zowe CLI API now supports the capability to copy data sets to another data set and copy members to another member. [#578](https://github.com/zowe/zowe-cli/issues/578) 
+
+### October 2019
+
 **New compatible plug-ins:**
 
 In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are available for Active Development:
@@ -20,7 +30,7 @@ In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are av
 - The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
 - The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
 
-**Features and enhancements:**
+**Features and enhancements: October 2019**
 
 - Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
 - The following new commands were added for interacting with file systems: 
