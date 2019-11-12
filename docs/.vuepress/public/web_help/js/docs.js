@@ -26,6 +26,13 @@ for (const link of links) {
         link.setAttribute("onclick", "window.parent.postMessage(this.href, '*'); return true;");
     }
 }
+// Show Print button if inside iframe
+if (isInIframe) {
+    const printBtn = document.getElementById("btn-print-wrapper");
+    if (printBtn) {
+        printBtn.style.display = "block";
+    }
+}
 /**
  * Show tooltip next to copy button that times out after 1 sec
  * @param btn - Button element the tooltip will show next to

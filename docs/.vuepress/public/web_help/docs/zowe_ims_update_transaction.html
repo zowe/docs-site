@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_ims.html">ims</a> → <a href="zowe_ims_update.html">update</a> → <a href="zowe_ims_update_transaction.html">transaction</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ims.html">ims</a> › <a href="zowe_ims_update.html">update</a> › <a href="zowe_ims_update_transaction.html">transaction</a></h2>
 <p>Update an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims update transaction [name...] [options]</p>
@@ -362,34 +362,35 @@ in the output.</li>
 <li><p>Update a transaction named TRN1 to process exclusively as
 Fast Path:</p>
 <ul>
-<li><code>zowe  ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;">Copy</button></li>
+<li><code>zowe  ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Unlock to allow scheduling all transactions beginning with
 TRN* and associated with class CLASSA:</p>
 <ul>
-<li><code>zowe  ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;">Copy</button></li>
+<li><code>zowe  ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Set response mode on for transaction named TRN2 and
 associated with classes CLASS1 and CLASS2:</p>
 <ul>
-<li><code>zowe  ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;">Copy</button></li>
+<li><code>zowe  ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Update a transaction named TRN3 to process exclusively as
 Fast Path routing to control regions IMS1 and IMS2:</p>
 <ul>
-<li><code>zowe  ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;">Copy</button></li>
+<li><code>zowe  ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Associate PGM1 with transaction named TRN4 specifying
 optional connection parameters:</p>
 <ul>
-<li><code>zowe  ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
+<li><code>zowe  ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
 </article>
+<div id="btn-print-wrapper"><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></div>
 <script src="../js/bundle-docs.js"></script>
 <script src="../js/docs.js"></script>

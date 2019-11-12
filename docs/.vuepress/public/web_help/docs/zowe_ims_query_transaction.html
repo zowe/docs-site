@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_ims.html">ims</a> → <a href="zowe_ims_query.html">query</a> → <a href="zowe_ims_query_transaction.html">transaction</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ims.html">ims</a> › <a href="zowe_ims_query.html">query</a> › <a href="zowe_ims_query_transaction.html">transaction</a></h2>
 <p>Query an IMS transaction.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  ims query transaction [name...] [options]</p>
@@ -176,40 +176,41 @@ in the output.</li>
 <ul>
 <li><p>Query transaction information for transaction named TRN12:</p>
 <ul>
-<li><code>zowe  ims query transaction &quot;TRN12&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRN12&quot;">Copy</button></li>
+<li><code>zowe  ims query transaction &quot;TRN12&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRN12&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Query transaction information for transactions named TRAN1
 and TRAN2:</p>
 <ul>
-<li><code>zowe  ims query transaction &quot;TRAN1 TRAN2&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRAN1 TRAN2&quot;">Copy</button></li>
+<li><code>zowe  ims query transaction &quot;TRAN1 TRAN2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRAN1 TRAN2&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Query transaction information for transactions starting with
 TRAN using the wild card character &#39;*&#39;:</p>
 <ul>
-<li><code>zowe  ims query transaction &quot;TRAN*&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRAN*&quot;">Copy</button></li>
+<li><code>zowe  ims query transaction &quot;TRAN*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction &quot;TRAN*&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Query transaction information for all transactions (default
 is all):</p>
 <ul>
-<li><code>zowe  ims query transaction</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction">Copy</button></li>
+<li><code>zowe  ims query transaction</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction">Copy</button></li>
 </ul>
 </li>
 <li><p>Query transaction information for all transactions
 specifying optional parameters:</p>
 <ul>
-<li><code>zowe  ims query transaction --attributes &quot;AFFIN TIMESTAMP&quot; --status &quot;NOTINIT&quot; --route &quot;IMS1 IMS2&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction --attributes &quot;AFFIN TIMESTAMP&quot; --status &quot;NOTINIT&quot; --route &quot;IMS1 IMS2&quot;">Copy</button></li>
+<li><code>zowe  ims query transaction --attributes &quot;AFFIN TIMESTAMP&quot; --status &quot;NOTINIT&quot; --route &quot;IMS1 IMS2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction --attributes &quot;AFFIN TIMESTAMP&quot; --status &quot;NOTINIT&quot; --route &quot;IMS1 IMS2&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Query transaction information for all transactions
 specifying optional connection parameters:</p>
 <ul>
-<li><code>zowe  ims query transaction --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
+<li><code>zowe  ims query transaction --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims query transaction --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
 </article>
+<div id="btn-print-wrapper"><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></div>
 <script src="../js/bundle-docs.js"></script>
 <script src="../js/docs.js"></script>
