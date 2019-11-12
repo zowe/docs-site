@@ -59,10 +59,10 @@ The configuration parameters belong to one of the following groups:
 
 - [Service identification](rest-service-identification) 
 - [Administrative endpoints](administrative-endpoints)
-- [API info](api-info) (API Documentation)
+- [API info](api-info)
 - [API routing information](api-routing-information)
-- [API Catalog information](api-catalog-information)
-- [API Security](api-security)
+- [API catalog information](api-catalog-information)
+- [API security](api-security)
 - [Eureka discovery service](eureka-discovery-service) 
 
 ### REST service identification
@@ -213,15 +213,16 @@ where:
         that uses lowercase alphanumeric characters and a dot: `.`.
         We recommend that you use your organization as the prefix.
 
-FINDING: apiId is never set in metadata by the PJ enabler
-TODO: Discuss this with PP and others.
-Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
-The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
-My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service. 
+    `FINDING: apiId is never set in metadata by the PJ enabler
+    Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
+    The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
+    My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service.` 
+    
+    `TODO: Discuss this with PP and others.` 
 
 
 * **apiInfo.version** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.version)
-    TODO: Describe version meaning and function
+    api `version` is used to correctly retrieve the Api documentation according to requested version of the API.
     
 * **apiInfo.gatewayUrl** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.gatewayUrl)
 
@@ -322,31 +323,54 @@ The following code block is an example of configuration of a service tile in the
 
 
 ### API Security 
-ZOWE API ML installation of Eureka discovery service requires to configure secure TLS/SSL communication. The configuration is provided in the YAML file under `ssl` section. 
-When an API ML enabler is not used (XML configuration), one must execute the registration call from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc
-In this case, the security configuration must be provided to the REST client tool used to execute the call.
+ZOWE API ML discovery service communicates with its clients in secure https mode provided by TLS (aka SSL).
+Client services need to configure several TLS/SSL parameters in order to be able to communicate with API ML discovery service.
+When an enabler is used to on-board the service, the configuration is provided in `ssl` section/group in the same YAML file used to configure the Eureka paramaters and the service metadata. 
+When an API ML enabler is not used (XML configuration), 
+one must execute the registration call from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc
+In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
+
+For more information about API ML security. please follow this link: [API ML security] (#api-mediation-security.md)
 
 The tls/ssl configuration consists of the following parameters:
 
 * **protocol**
     TLSv1.2
+
+    This is the TLS protocol version currently used by ZOWE API ML Discovery service
     
 * **keyAlias**
+  
+  The `alias` used to address the private key in the keystore 
 
 * **keyPassword**
 
+  The password associated with the private key 
+  
 * **keyStore**
+
+  The keystore file used to store the private key 
 
 * **keyStorePassword**
 
+  The password used to unlock the keystore
+
 * **keyStoreType**
 
+  The type of the keystore: 
+
+
 * **trustStore**
+  
+  A truststore file used to keep other parties public keys and certificates. 
 
 * **trustStorePassword: password**
 
+  The password used to unlock the truststore
+
 * **trustStoreType: PKCS12**
 
+  The truststore type. One of: PKCS12 default
 
 **Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
 
