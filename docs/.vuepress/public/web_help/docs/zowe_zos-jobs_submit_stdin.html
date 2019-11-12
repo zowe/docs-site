@@ -2,34 +2,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>zos-jobs submit data-set</title>
+<title>zos-jobs submit stdin</title>
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_submit.html">submit</a> → <a href="zowe_zos-jobs_submit_data-set.html">data-set</a></h2>
-<p>Submit a job (JCL) contained in a data set. The data set may be of type
-physical sequential or a PDS member. The command does not pre-validate the
-data set name. The command presents errors verbatim from the z/OSMF Jobs REST
-endpoints. For more information about z/OSMF Jobs API errors, see the z/OSMF
-Jobs API REST documentation.</p>
+<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_submit.html">submit</a> → <a href="zowe_zos-jobs_submit_stdin.html">stdin</a></h2>
+<p>Submit a job (JCL) passed to the command via the stdin stream. The command
+presents errors verbatim from the z/OSMF Jobs REST endpoints. For more
+information about z/OSMF Jobs API errors, see the z/OSMF Jobs API REST
+documentation.</p>
 <h4 id="usage">Usage</h4>
-<p>   zowe  zos-jobs submit data-set &lt;dataset&gt; [options]</p>
-<h4 id="positional-arguments">Positional Arguments</h4>
-<ul>
-<li><p><code>dataset</code>         <em>(string)</em></p>
-<ul>
-<li>The z/OS data set containing the JCL to submit. You can specify a physical
-sequential data set (for example, &quot;DATA.SET&quot;) or a partitioned data set
-qualified by a member (for example, &quot;DATA.SET(MEMBER)&quot;).</li>
-</ul>
-</li>
-</ul>
+<p>   zowe  zos-jobs submit stdin [options]</p>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--volume</code>  | <code>--vol</code> <em>(string)</em></p>
+<li><p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>The volume serial (VOLSER) where the data set resides. The option is required
-only when the data set is not catalogued on the system.</li>
+<li>Print all spool output. If you use this option you will wait the job to
+complete.</li>
 </ul>
 </li>
 <li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
@@ -40,12 +29,6 @@ only when the data set is not catalogued on the system.</li>
 <li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
 <ul>
 <li>Wait for the job to enter ACTIVE status before completing the command.</li>
-</ul>
-</li>
-<li><p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
-<ul>
-<li>Print all spool output. If you use this option you will wait the job to
-complete.</li>
 </ul>
 </li>
 <li><p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
@@ -140,20 +123,6 @@ prettified objects.</p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers
 in the output.</li>
-</ul>
-</li>
-</ul>
-<h4 id="examples">Examples</h4>
-<ul>
-<li><p>Submit the JCL in the data set &quot;ibmuser.cntl(deploy)&quot;:</p>
-<ul>
-<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;">Copy</button></li>
-</ul>
-</li>
-<li><p>Submit the JCL in the data set &quot;ibmuser.cntl(deploy)&quot;, wait
-for the job to complete and print all output from the job:</p>
-<ul>
-<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc">Copy</button></li>
 </ul>
 </li>
 </ul>
