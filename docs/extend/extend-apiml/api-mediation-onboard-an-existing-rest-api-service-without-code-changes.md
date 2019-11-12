@@ -341,14 +341,14 @@ After you define and validate the service in YAML format, you are ready to add y
 
 **Follow these steps:**
 
-1. Locate the Zowe user directory. The Zowe user directory is chosen during Zowe configuration.
-   The initial location of the directory is in the `zowe-install.yaml` file in the variable `install:userDir`.
+1. Locate the Zowe instance directory. The Zowe instance directory is chosen during Zowe configuration.
+   The initial location of the directory is in the `zowe-install.yaml` file in the variable `install:instanceDir`.
 
-    **Note:** We use the `${zoweUserDir}` symbol in following instructions.
+    **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Copy your YAML file to the `${zoweUserDir}/api-mediation/api-defs` directory. 
+2. Copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
-    **Note:** The `${zoweUserDir}/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
+    **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
 
 3. Run your application.
 

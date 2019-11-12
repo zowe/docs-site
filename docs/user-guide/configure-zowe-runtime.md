@@ -61,18 +61,12 @@ To configure the Zowe runtime, a number of ZFS folders need to be located for pr
 - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
 
-When you run the configuration script for the first time, the script attempts to locate environment variables. The configuration script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file to avoid having to define them each time a runtime is configured.    
-
-Each time you run the configuration script, it retrieves environment variable settings in the following ways.
-- When the `.zowe-profile` file exists in the home directory, the install script uses the values in this file to set the environment variables.
-- When the `.zowe-profile` file does not exist, the configuration script checks if the `.profile` file exists in the home directory. If it does exist, the install script uses the values in this file to set the environment variables. The install script does not update or execute the `.profile` file.
-
-You can create, edit, or delete the `.zowe_profile` file (as needed) before each install to set the variables to the values that you want. We recommend that you *do not* add commands to the `.zowe_profile` file, with the exception of the `export` command and shell variable assignments.
+When you run the configuration script for the first time, the script attempts to locate environment variables.
 
 **Notes:**
 - If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
 - If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
-- Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set and there is no `.zowe_profile` file with the variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name, or create and update the `.zowe_profile` file in the current user's home directory.  
+- Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name.  
 - Ensure that the value of the `ZOWE_IPADDRESS` variable is set correctly for your system.  This should be the IP address of your z/OS system which is externally accessible from clients who want to use Zowe.  This is particularly important for zD&T and cloud systems, where `ping` or `dig` on z/OS would return a different IP address from the one that external clients would use to access z/OS.   
 
 ### Configuration variables
@@ -81,7 +75,7 @@ The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that c
 
 #### Directory that stores configuration
 
-`install:userDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-user-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-user-dir` directory. 
+`install:instanceDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-instance-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-instance-dir` directory. 
 
 #### Address space name
 
@@ -319,13 +313,13 @@ You can place the PROC in any PROCLIB data set in the PROCLIB concatenation, but
 You can tailor the JCL at this line
 
 ```
-//ZOWESVR   PROC SRVRPATH='{{root_dir}}'
+//ZOWESVR   PROC INSTANCE='{{instance_directory}}'
 ```
 
-to replace the `root_dir` with the location of the Zowe runtime directory that contains the z/OS Services. The install process inserts the expanded `install:rootDir` value from the `scripts/configure/zowe-install.yaml` file into the SRVRPATH for you by default. Otherwise you must specify that path on the START command when you start Zowe in SDSF:
+to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. If this value is not specified in the JCL, in order start the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
 
 ```
-/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+/S ZOWESVR,INSTANCE='$ZOWE_INSTANCE_DIR'
 ```
 
 ### Configuring ZOWESVR to run under the correct user ID
