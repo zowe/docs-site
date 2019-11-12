@@ -40,9 +40,8 @@ Similarly the API ML Catalog will use the parameters from `catalog` group to dis
 
 **Tip:**  For more information about API ML follow the links bellow:
   
-    - Discovery service - visit this link: TODO: Link to Discovery service, process etc.
-    - On-boarding of API services - [Onboarding Overview](api-mediation-onboard-overview.md)
-    - On-boarding enablers - ....
+  - On-boarding of API services - [Onboarding Overview](api-mediation-onboard-overview.md)
+  - On-boarding enablers - ....
     
   
  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly, because 
@@ -202,10 +201,6 @@ apiInfo:
     documentationUrl: http://your.service.documentation.url
 ```
 
-TODO: Check why apiId and version are missing from localhost AP ML installation 
-  - registered services
-  FINDING: apiId is never set in metadata
-
 where:
 * **apiInfo.apiId** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.apiId)
 
@@ -218,6 +213,7 @@ where:
         that uses lowercase alphanumeric characters and a dot: `.`.
         We recommend that you use your organization as the prefix.
 
+FINDING: apiId is never set in metadata by the PJ enabler
 TODO: Discuss this with PP and others.
 Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
 The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
@@ -240,7 +236,7 @@ My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow 
 * **apiInfo.documentationUrl**  (XML Path: /instance/metadata/apiInfo/documentationUrl)
 
     (Optional) specifies the link to the external documentation, if necessary. 
-    The link to the external documentation can be included along with the Swagger documentation. 
+    A link to the external documentation can be included along with the Swagger documentation. 
     
 
 ### API routing information
@@ -271,13 +267,11 @@ routes:
 
 * **routes.gatewayUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.gatewayUrl)
         
-    TODO: ` ??? HOW ???` 
-    The gatewayUrl parameter specifies the portion of the endpoint URL on the gateway, .
+    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part
 
 * **routes.serviceUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.serviceUrl)
         
-    TODO: ` ??? HOW ???` 
-    The serviceUrl parameter points to the target endpoint on the gateway.
+    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part (see `gatewayUrl`).
 
 **Note** The routes configuration used for a direct REST call to register a service, must also contain a prefix before the gatewayUrl and serviceUrl.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler, but must by provided manually when XML configuration is used.
@@ -354,7 +348,7 @@ The tls/ssl configuration consists of the following parameters:
 * **trustStoreType: PKCS12**
 
 
-**Note:** TODO: You need to define both the key store and the trust store even if your server is not using an HTTPS port.
+**Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
 
 ### Eureka discovery service
 
