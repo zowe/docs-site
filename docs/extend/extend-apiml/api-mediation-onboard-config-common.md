@@ -27,12 +27,18 @@ For example if the configuration method requires YAML file, then a parameter wil
 
 Also parameters path and/or names can be different. For example:
 
-    The parameter `serviceIpAddress` in YAML based configuration is named <instance><ipAddr>...</ipAddr></instance>    
-
+The parameter `serviceIpAddress` in YAML based configuration is named `<instance><ipAddr>...</ipAddr></instance>`
 However, the meaning and the constrains for the individual parameters will not change.      
 
+In YAML based configuration the parameters are grouped into logical groups, for example 'apiInfo' or 'routes'. The default group is not named and contains service identification and administrative information.
+in XML based configuration parameters which belong to different `YAML` logical groups are placed together to form a `<metadata>` element.
+The `metadata` is build automatically when YAML configuration is used.
+The `metadata` is stored in the API ML service registry and is later provided to the registry clients. 
+For example API ML Gateway will use the information provided in the `routes` group to route requests to the service instances. 
+Similarly the API ML Catalog will use the parameters from `catalog` group to display service description and documentation links. 
 
-**Tip:**  For more information about API ML:
+
+**Tip:**  For more information about API ML follow the links bellow:
   
     - Discovery service - visit this link: TODO: Link to Discovery service, process etc.
     - On-boarding of API services - [Onboarding Overview](api-mediation-onboard-overview.md)
@@ -50,9 +56,7 @@ However, the meaning and the constrains for the individual parameters will not c
 
 In the following code snippets we identify the parameters by their YAML notation using '.' convention. Additionally we provide in following brackets the corresponding XML path.
 
-**Note:** The configuration can be externalized <font color="red">TODO: Link to the existing documentation about externalizing properties - local and on MF</font>
-
-The configuration parameters fall into one of the following categories:
+The configuration parameters belong to one of the following groups:
 
 - [Service identification](rest-service-identification) 
 - [Administrative endpoints](administrative-endpoints)
@@ -66,35 +70,41 @@ The configuration parameters fall into one of the following categories:
 
 * **serviceId** (XML Path: /instance/metadata/apiInfo/serviceId)
     
-    specifies the service instance identifier that is registered in the API ML installation.
-    The service ID is used in the URL for routing to the API service through the gateway. 
-    The service ID uniquely identifies instances of a microservice in the API ML. 
-    The system administrator at the customer site defines this parameter.
+    The `serviceId` uniquely identifies instances of a microservice in the API ML.
+    The service developer specifies default serviceId during service design time. 
+    If needed the system administrator at the customer site can change the parameter providing new value in externalized service configuration.
+    (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
+    
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-    * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
+    * The API ML Gateway uses the serviceId for routing to the API service instances.
+      Therefore the serviceId must be a part of the service URL path in the API ML gateway address space. 
+    * When two API services use the same service ID, the API Gateway considers the services to be clones. 
+      An incoming API request can be routed to either of them using load balancing method.
     * The same service ID should be set only for multiple API service instances for API scalability.
     * The service ID value must contain only lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
     * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
         
     **Examples:**
-    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+    * If the serviceId is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as: 
             
        ```
-       https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
        ```
 
-    * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+    * If a customer system administrator sets the service ID to vantageprod1, the service URL in the API ML Gateway address psace appears as:
        ```
        http://gateway:port/api/v1/vantageprod1/endpoint1/...
        ```
 * **title** (XML Path: /instance/metadata/apiml.service.title)
     
-  specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+  specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
+  This value is displayed in the API Catalog when a specific API service instance is selected. 
+  This parameter can be externalized and set by the customer system administrator.
 
-  **Tip:** We recommend that you provide a specific default value of the `title`.
+  **Tip:** We recommend that service developer provides a default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
 * **description** (XML Path: /instance/metadata/apiml.service.description)
@@ -105,9 +115,10 @@ The configuration parameters fall into one of the following categories:
     
     "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
     
-     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+     This value is displayed in the API Catalog when a specific API service instance is selected. 
+     This parameter can be externalized and set by the customer system administrator.  
     
-  **Tip:** Describe the service so that the end user knows the function of the service.
+  **Tip:** Describe the service so that the end user understands the function of the service.
 
 ### Administrative endpoints 
 
@@ -115,26 +126,27 @@ The configuration parameters fall into one of the following categories:
    
    ```
 baseUrl: http://localhost:10021/sampleservice
+
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
 where:
  
-* **baseUrl** ( In case of XML configuration baseUrl is decomposed into the following basic URL parts: hostname, ipAddress and port.
+* **baseUrl** ( In case of XML configuration baseUrl is decomposed into the following basic URL parts: hostname (and ipAddress) and port.
         XML Paths: 
         - hostname - /instance/hostname
-        - ipAddr - /instance/ipAddr
-        - port - /instance/port
+        - ipAddr   - /instance/ipAddr
+        - port     - /instance/port
        )
     
-    specifies the URL pointing to your service. 
+    specifies the base URL pointing to your service. 
 
     **Examples:** 
     * `http://host:port/servicename` for HTTP service
     * `https://host:port/servicename` for HTTPS service
         
-    `baseUrl` will be then used as a prefix for the following service end points:
+    `baseUrl` will be then used as a prefix in combination with the following end points relative addresses to construct their absolute URL:
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
@@ -177,50 +189,69 @@ where:
 
 ### API info
 
-Add API info parameters to your service.
+REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
 
-The following snippet presents the API information properties:
+The following snippet presents a single API information properties:
 
 ```
 apiInfo:
     - apiId: org.zowe.sampleservice
+    version; v1
     gatewayUrl: api/v1
     swaggerUrl: http://localhost:10021/sampleservice/api-doc
     documentationUrl: http://your.service.documentation.url
 ```
 
+TODO: Check why apiId and version are missing from localhost AP ML installation 
+  - registered services
+  FINDING: apiId is never set in metadata
+
 where:
-TODO: Check why it is missing from localhost AP ML installation - registered services
-* **apiInfo.apiId** (XML Path: /instance/metadata/apiInfo/apiId)
+* **apiInfo.apiId** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.apiId)
 
     specifies the API identifier that is registered in the API ML installation.
-        The API ID uniquely identifies the API in the API ML. Multiple services can provide the same API. The API ID can be used
+        The API ID uniquely identifies the API in the API ML. 
+        Multiple services can provide the same API. The API ID can be used
         to locate the same APIs that are provided by different services.
         The creator of the API defines this ID.
         The API ID needs to be a string of up to 64 characters
         that uses lowercase alphanumeric characters and a dot: `.`.
         We recommend that you use your organization as the prefix.
 
-* **apiInfo.gatewayUrl** (XML Path: /instance/metadata/apiInfo/gatewayUrl)
+TODO: Discuss this with PP and others.
+Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
+The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
+My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service. 
 
-    specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the _gatewayUrl_ value in the _routes_ sections.
 
-* **apiInfo.swaggerUrl** (XML Path: /instance/metadata/apiInfo/swaggerUrl)
+* **apiInfo.version** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.version)
+    TODO: Describe version meaning and function
+    
+* **apiInfo.gatewayUrl** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.gatewayUrl)
+
+    specifies the base path at the API Gateway where the API is available. 
+    Ensure that this value is the same path as the _gatewayUrl_ value in the _routes_ sections 
+    for the routes, which belong to this API.
+
+* **apiInfo.swaggerUrl** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.swaggerUrl)
 
     (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
-        TODO: Check if this is used
 * **apiInfo.documentationUrl**  (XML Path: /instance/metadata/apiInfo/documentationUrl)
 
-    (Optional) specifies the link to the external documentation, if necessary. The link to the external documentation can be included along with the Swagger documentation. 
+    (Optional) specifies the link to the external documentation, if necessary. 
+    The link to the external documentation can be included along with the Swagger documentation. 
     
 
 ### API routing information
 
-Add API routing information to your service.
+API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
+A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
+in the gateway address space which is used by an API client to a REST service instance deployment URL.
+Currently the routing information consists of two parameters per route. 
+Both gatewayUrl and serviceUrl parameters together specify a rule how the API service endpoints are mapped to the API gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
-
 **Example:**
    
 ```
@@ -228,35 +259,34 @@ routes:
     - gatewayUrl: api
     serviceUrl: /sampleservice
     - gatewayUrl: api/v1
-     serviceUrl: /sampleservice/api/v1
+    serviceUrl: /sampleservice/api/v1
     - gatewayUrl: api/v1/api-doc
     serviceUrl: /sampleservice/api-doc
 ```
    where:
 
-* **routes** (XML Path: /instance/metadata/apiml/rotes)
+* **routes** (XML Path: /instance/metadata/apiml.routes...)
     
-    specifies the container element for the routing rules from the gateway to your service.
+    specifies the container element for the routes.
 
-* **routedServices.gatewayUrl** (XML Path: /instance/metadata/apiml/rotes/gatewayUrl)
+* **routes.gatewayUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.gatewayUrl)
         
-    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-            gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+    TODO: ` ??? HOW ???` 
+    The gatewayUrl parameter specifies the portion of the endpoint URL on the gateway, .
 
-* **routedServices.serviceUrl** (XML Path: /instance/metadata/apiml/rotes/serviceUrl)
+* **routes.serviceUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.serviceUrl)
         
-    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-    gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+    TODO: ` ??? HOW ???` 
+    The serviceUrl parameter points to the target endpoint on the gateway.
 
-**Note** The routes configuration used for a direct REST call to register a service, must contain a prefix before the gatewayUrl and serviceUrl.
+**Note** The routes configuration used for a direct REST call to register a service, must also contain a prefix before the gatewayUrl and serviceUrl.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler, but must by provided manually when XML configuration is used.
 
 ### API Catalog information
 
-Add API Catalog information to your service.
-
-The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. Information discplayed in the catalog is defined by the metadata provided by your service during registration. 
-The catalog can group corelated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
+The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
+Information displayed in the catalog is defined by the metadata provided by your service during registration. 
+The catalog can group correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following code block is an example of configuration of a service tile in the catalog:
 
@@ -274,7 +304,8 @@ The following code block is an example of configuration of a service tile in the
 
 * **catalog.tile.id**
     
-    specifies the unique identifier for the product family of API services. This is a value used by the API ML to group multiple API services together into tiles. 
+    specifies the unique identifier for the product family of API services. 
+    This is a value used by the API ML to group multiple API services together into tiles. 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
@@ -327,9 +358,8 @@ The tls/ssl configuration consists of the following parameters:
 
 ### Eureka discovery service
 
-Add Eureka discovery parameters to your service.
-
-Eureka discovery service parameters are presented in the following snippet: 
+Eureka discovery service parameters group contains a single parameter used to address Eureka discovery service location.
+An example is presented in the following snippet: 
 
 ```
 discoveryServiceUrls:
@@ -340,7 +370,8 @@ discoveryServiceUrls:
 
 * **discoveryServiceUrls** (XML Path: N/A)
     
-    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
+    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
+    It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.  
     
      **Example:**
 
