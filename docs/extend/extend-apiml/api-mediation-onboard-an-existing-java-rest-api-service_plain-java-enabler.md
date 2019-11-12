@@ -13,9 +13,9 @@ ZOWE API ML is a lightweight API management system based on the following Netfli
 
 
   For instructions about how to utilize other API ML enablers types, see the following links: 
-  * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
-  * [api-mediation-onboard-your-service](api-mediation-onboard-your-service.md) TODO: Rename document and link 
-  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+  * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
+  * [Onboard a rest service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
+  * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 ## Onboarding your REST service with API ML
 
@@ -45,9 +45,7 @@ The following steps outline the process of onboarding your REST service with the
     * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
     * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
 
-6. (Optional) [Validating the discovery of your API service by the Discovery Service](#validating-the-discovery-of-your-api-service-by-the-discovery-service)
-
-TODO:     * [Periodic heartbeat (call) to the API ML Discovery Service](#periodic-heartbeat-(call)-to-the-api-ml-discovery-service) 
+6. (Optional) [Validating your API service discoverability](#validating-the-discovery-of-your-api-service-by-the-discovery-service)
 
 ## Prerequisites
 
@@ -193,6 +191,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
          version: 1.0.0
 
  ssl:
+    verifySslCertificatesOfServices: true
     protocol: TLSv1.2
     ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
     keyAlias: localhost
@@ -206,7 +205,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
  ```
 
-**Note:** The configuration can be externalized <font color="red">TODO: Link to the existing documentation about externalizing properties - local and on MF</font>
+**Note:** The service onboarding configuration can be externalized. The externalization is described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
 
 The content and the structure of the configuration file example above is broken into several parts:
 
