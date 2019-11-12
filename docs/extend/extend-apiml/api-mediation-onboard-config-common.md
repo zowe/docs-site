@@ -323,14 +323,19 @@ The following code block is an example of configuration of a service tile in the
 
 
 ### API Security 
-ZOWE API ML discovery service communicates with its clients in secure https mode provided by TLS (aka SSL).
+
+User REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, they are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
+These two roles have different requirements. 
+While ZOWE API ML discovery service communicates with its clients in secure https mode and because of that requires a TLS (aka SSL) configuration setup, when in a service is in server role,
+it is up to the system administrator to decide if the service willcommunicate with its clients securely or not.
+
 Client services need to configure several TLS/SSL parameters in order to be able to communicate with API ML discovery service.
 When an enabler is used to on-board the service, the configuration is provided in `ssl` section/group in the same YAML file used to configure the Eureka paramaters and the service metadata. 
 When an API ML enabler is not used (XML configuration), 
 one must execute the registration call from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc
 In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
 
-For more information about API ML security. please follow this link: [API ML security] (#api-mediation-security.md)
+For more information about API ML security. please follow this link: [API ML security](#api-mediation-security.md)
 
 The tls/ssl configuration consists of the following parameters:
 
