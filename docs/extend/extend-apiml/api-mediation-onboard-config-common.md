@@ -324,7 +324,7 @@ The following code block is an example of configuration of a service tile in the
 
 ### API Security 
 
-User REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, they are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
+REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, they are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
 These two roles have different requirements. 
 While ZOWE API ML discovery service communicates with its clients in secure https mode and because of that requires a TLS (aka SSL) configuration setup, when in a service is in server role,
 it is up to the system administrator to decide if the service willcommunicate with its clients securely or not.
