@@ -40,8 +40,10 @@ Similarly, the API ML Catalog uses the parameters from the `catalog` group to di
 
 **Tip:**  For more information about API ML see:
   
-  - On-boarding of API services - [Onboarding Overview](api-mediation-onboard-overview.md)
-  - On-boarding enablers - <font color="red"> add link </font>
+  - [On-boarding overview of API services](#api-mediation-onboard-overview)
+  - [On-boarding without enabler](#api-mediation-onboard-rest-service-direct-eureka-call)
+  - [On-boarding with plain java enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler)
+  - [TODO: On-boarding a with spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
     
   
  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly, because 
@@ -140,8 +142,7 @@ where:
     - **ipAddr**: /instance/ipAddr
     - **port**: /instance/port
        
-    **Examples:** 
-    * `http://host:port/servicename` for HTTP service
+    **Example in YAML:** 
     * `https://host:port/servicename` for HTTPS service
         
     `baseUrl` will be then used as a prefix in combination with the following end points relative addresses to construct their absolute URL:
@@ -194,12 +195,11 @@ The following snippet presents the information properties of a single API:
 ```
 apiInfo:
     - apiId: org.zowe.sampleservice
-    version; v1 
+    version: v1 
     gatewayUrl: api/v1
     swaggerUrl: http://localhost:10021/sampleservice/api-doc
     documentationUrl: http://your.service.documentation.url
 ```
-<font color="red">In the preceding code block should ';' be replaced with ':' after 'version'? </font>
 
 where:
 * **apiInfo.apiId** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.apiId)
@@ -245,8 +245,7 @@ TODO: Discuss this with PP and others.` </font>
 
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the gateway address space. This <font color=red> what </font> is used by an API client to a REST service instance deployment URL.
-Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
+in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -277,6 +276,8 @@ routes:
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the gatewayUrl and serviceUrl.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when XML configuration is used.
+
+For detailed information about API ML routing, please follow this link: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing)
 
 ### API Catalog information
 
