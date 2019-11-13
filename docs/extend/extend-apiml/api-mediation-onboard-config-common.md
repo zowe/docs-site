@@ -2,7 +2,7 @@
 
 ## Introduction
 This article describes the ZOWE API ML REST services onboarding configuration parameters.
-The parameter descriptions provided in this document are valid for all API ML onboarding methods that use either the API ML onboarding enabler or plain REST calls to the API ML Discovery Service. Configuration formats that are currently supported are _YAML_ for onboarding enablers and _XML_ for making direct REST calls to the API ML discovery service.
+The parameter descriptions provided in this document are valid for all API ML onboarding methods that use either the API ML onboarding enabler, or when making direct REST calls to the API ML Discovery Service. Configuration formats that are currently supported are _YAML_ for onboarding enablers and _XML_ for making direct REST calls to the API ML Discovery Service.
 
 The configuration structure as well as the configuration format are different depending on the selected onboarding method. For example, if the configuration method uses a _YAML_ file, a parameter uses the following format:
   
@@ -31,8 +31,9 @@ The parameter `serviceIpAddress` used in _YAML_ based configuration is reference
 
 The meaning and constraints for the individual parameters, however, do not change.      
 
-In _YAML_ based configuration the parameters are grouped into logical groups. such as `apiInfo` or `routes`. The default group is not named and contains service identification and administrative information.
-_XML_ based configuration parameters which belong to different _YAML_ logical groups are placed together to form a `<metadata>` element.
+In _YAML_ based configuration, the parameters are grouped into logical groups such as `apiInfo` or `routes`. The default group is not named and contains service identification and administrative information. 
+
+_XML_ based configuration parameters which belong to different logical groups are placed together to form a `<metadata>` element.
 The `metadata` is built automatically when _YAML_ configuration is used.
 The `metadata` is stored in the API ML service registry and is subsequently provided to the registry clients. 
 For example, the API ML Gateway uses information provided in the `routes` group to route requests to service instances. 
@@ -46,15 +47,15 @@ Similarly, the API ML Catalog uses the parameters from the `catalog` group to di
   - [TODO: On-boarding a with spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
     
   
- We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly.
+ **Note:** We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly.
 This approach is unnecessarily complex and time-consuming. We recommend that you onboard your service using the API ML enabler libraries.
   
- While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. 
+ While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects which depend on SpringCloud Netflix components. 
  While Eureka's final configuration of a discoverable service is the same regardless of the method that is used, configuration settings for the API ML enablers and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 ## Configuring your REST service for on-boarding on API ML discovery service
 
-In the following code snippets we identify the parameters in their _YAML_ notation using the '.' convention. Additionally, the corresponding _XML_ path is provided in parentheses.
+In the following code snippets we identify the parameters in their _YAML_ notation using the '.' convention. Additionally, the corresponding _XML_ path is provided next to the _YAML_ notation in parentheses.
 
 The configuration parameters belong to one of the following groups:
 
@@ -100,7 +101,12 @@ The configuration parameters belong to one of the following groups:
        ```
 * **title** (XML Path: /instance/metadata/apiml.service.title)
     
-  This parameter specifies the human readable name of the API service instance. (For example, "Endevor Prod" or "Sysview LPAR1"). 
+  This parameter specifies the human readable name of the API service instance. 
+  
+  **Examples:** 
+  
+  `Endevor Prod` or `Sysview LPAR1`
+
   This value is displayed in the API Catalog when a specific API service instance is selected. 
   This parameter can be externalized and set by the customer system administrator.
 
@@ -113,7 +119,7 @@ The configuration parameters belong to one of the following groups:
     
     **Examples:** 
     
-    "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+    `CA Endevor SCM - Production Instance` or `CA SYSVIEW running on LPAR1` 
     
      This value is displayed in the API Catalog when a specific API service instance is selected. 
      This parameter can be externalized and set by the customer system administrator.  
@@ -330,11 +336,12 @@ The following code block is an example of configuration of a service tile in the
 
 
 ### API Security 
+<font color="red">Review this description for accuracy.</font>
 
 REST services onboarded on API ML act both as a client and as a server. When communicating to the API ML Discovery Service, the REST service operates as a client. However, when the API ML Gateway is routing requests to a service, the service operates as a server.
 These two roles have different requirements. 
 
-The ZOWE API ML Discovery Service can communicate with its clients in secure https mode or non-secure http mode. For sucure communication, TLS (aka SSL) configuration setup is required when the service operates as a server. The security requirements during communication between the service and the client is determined by the system administrator.     
+The ZOWE API ML Discovery Service can communicate with its clients in secure _https_ mode or non-secure _http_ mode. For sucure communication, TLS (aka SSL) configuration setup is required when the service operates as a server. The security requirements during communication between the service and the client is determined by the system administrator.     
 
 Configuration is required on several TLS/SSL parameters on the client services  in order to communicate with API ML Discovery Service.
 When an enabler is used to onboard a service, the configuration is provided in `ssl` section/group in the same _YAML_ file that used to configure the Eureka paramaters and the service metadata. 
@@ -342,7 +349,7 @@ When an API ML enabler is not used (_XML_ configuration),
 a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc.
 In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
 
-For more information about API ML security. please follow this link: [API ML security](#api-mediation-security.md)
+For more information see [API ML security](#api-mediation-security.md).
 
 The tls/ssl configuration consists of the following parameters:
 
@@ -383,7 +390,7 @@ The tls/ssl configuration consists of the following parameters:
 
     This paramenter specifies the truststore type. One of: PKCS12 default
 
-**Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
+**Note:** You need to define both the keystore and the truststore even if your server is not using an HTTPS port.
 
 ### Eureka discovery service
 
