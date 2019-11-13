@@ -32,17 +32,14 @@
                 <img id="header-image" alt="" src="./header-image.png" onerror="this.style.opacity='0'">
                 <a href="./index.html"><h2 id="header-text"></h2></a>
 
-                <div id="tree-bar" class="input-group">
-                    <input id="tree-search" class="form-control" type="search" placeholder="Search..." aria-label="Text input with dropdown button">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</button>
-                        <div class="dropdown-menu">
-                            <a id="tree-view-toggle" class="dropdown-item" href="#" onclick="toggleTreeView(); return false;">Switch to List View</a>
-                            <a id="tree-expand-all" class="dropdown-item" href="#" onclick="expandAll(true); return false;">Expand All</a>
-                            <a id="tree-collapse-all" class="dropdown-item" href="#" onclick="expandAll(false); return false;">Collapse All</a>
-                        </div>
-                    </div>
+                <div id="tree-tabs">
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="nav-item"><a id="tree-view-link" class="nav-link active" href="#" onclick="changeView(0); return false;">Tree View</a></li>
+                        <li class="nav-item"><a id="flat-view-link" class="nav-link" href="#" onclick="changeView(1); return false;">Flat View</a></li>
+                    </ul>
                 </div>
+
+                <input id="tree-search" class="form-control" type="search" placeholder="Search">
             </div>
 
             <div id="cmd-tree"></div>
@@ -55,7 +52,7 @@
         </div>
     </div>
     <script>
-    document.title = headerStr + " " + document.title;
+    document.title = `${headerStr} ${document.title}`;
     const splitter = require("split.js")(["#panel-left", "#panel-right"], {
         sizes: [20, 80],
         minSize: 0
