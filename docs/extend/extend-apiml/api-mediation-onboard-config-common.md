@@ -344,7 +344,7 @@ These two roles have different requirements.
 The ZOWE API ML Discovery Service can communicate with its clients in secure _https_ mode or non-secure _http_ mode. For sucure communication, TLS (aka SSL) configuration setup is required when the service operates as a server. The security requirements during communication between the service and the client is determined by the system administrator.     
 
 Configuration is required on several TLS/SSL parameters on the client services  in order to communicate with API ML Discovery Service.
-When an enabler is used to onboard a service, the configuration is provided in `ssl` section/group in the same _YAML_ file that used to configure the Eureka paramaters and the service metadata. 
+When an enabler is used to onboard a service, the configuration is provided in an `ssl` section/group in the same _YAML_ file that used to configure the Eureka paramaters and the service metadata. 
 When an API ML enabler is not used (_XML_ configuration), 
 a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc.
 In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
