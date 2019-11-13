@@ -29,7 +29,7 @@ The following features and enhancements were added.
 
 #### Zowe App Server
 
-- Introduced the "SJ" feature to the JES Explorer application
+- Introduced the "SJ" feature to the JES Explorer application ([#282](https://github.com/zowe/zlux/issues/282))
   
   You can now right-click a job label and "Get JCL" to retrieve the JCL used to submit the job, this JCL can then be edited and resubmitted.
 
