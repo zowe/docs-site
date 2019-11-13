@@ -1,6 +1,6 @@
 # API Mediation Layer onboarding enabler - externalized configuration
 
-ZOWE API ML on-boarding enablers are libraries used to simplify the process of user REST services registration with API ML Discovery services.
+ZOWE API ML onboarding enablers are libraries used to simplify the process of user REST services registration with API ML Discovery services.
 
 API ML onboarding enablers provide functionality for building a service, onboarding configuration, and registering and unregistering with a API ML Discovery service by calling respective end points.
 
@@ -13,8 +13,8 @@ The most universal Java enabler is our Plain Java Enabler (_PJE_) written with o
 The _PJE_ can be used by any REST service implemented in Java, avoiding unnecessary dependencies, versions collisions, and unnecessarily large service executables.
 
 Typically the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
-Additionally, security materials like certificates, private/public keys, and corresponding passwords depend on the concrete deployment environment, and are not intended to be available to everyone.
-Therefore, to provide a higher level of flexibility, the _PJE_ implements routines for building service onboarding configuration by locating and loading two file sources:
+Additionally, security materials such as certificates, private/public keys, and their corresponding passwords depend on the concrete deployment environment, and are not intended to be available to everyone.
+Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading two file sources:
 
 * **internal _service-configuration.yml_** 
 
