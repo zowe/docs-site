@@ -37,8 +37,7 @@ The following features and enhancements were added.
 - 
 
 #### Zowe CLI
-- 
-- 
+- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
 
 ### Bug fixes
 
@@ -53,8 +52,7 @@ The following bugs were fixed.
 - 
 
 #### Zowe CLI
-- 
-- 
+- This version of Zowe CLI contains various bug fixes that address vulnerabilities.
   
 ## Version 1.6.0 (October 2019)
 
