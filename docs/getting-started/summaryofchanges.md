@@ -24,8 +24,12 @@ Zowe Version 1.7.0 and later releases include the following enhancements, releas
 The following features and enhancements were added.
 
 #### API Mediation Layer
-- 
-- 
+
+- Cleanup Gateway dependency logs [#413](https://github.com/zowe/api-layer/pull/413)
+- Cleanup Gateway - our code [#417](https://github.com/zowe/api-layer/pull/417)
+- Cleanup Discovery Service dependency logs [#403](https://github.com/zowe/api-layer/pull/403) 
+- Cleanup Discovery Service - our code [#407](https://github.com/zowe/api-layer/pull/407) 
+- External option to activate DEBUG mode for APIML [#410](https://github.com/zowe/api-layer/pull/410) 
 
 #### Zowe App Server
 
@@ -44,8 +48,8 @@ The following features and enhancements were added.
 The following bugs were fixed.
 
 #### API Mediation Layer
-- 
-- 
+ 
+- Fixed typo in Gateway startup script [#427](https://github.com/zowe/api-layer/pull/427)
 
 #### Zowe App Server
 - 
