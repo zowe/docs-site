@@ -154,7 +154,8 @@ Use the following procedure if you use Maven as your build automation system.
 
 ## Configuring your service
 
-Provide your service configuration in the `service-configuration.yml` file located in your resources directory. 
+Provide default service configuration in the `service-configuration.yml` file located in your resources directory. The service on-boarding configuration can be externalized. 
+The externalization options are described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
 
 The following code snippet shows `service-configuration.yml` content as an example of a service configuration with the serviceId "sampleservice".
 
@@ -205,75 +206,70 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
  ```
 
-**Note:** The service onboarding configuration can be externalized. The externalization is described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
 
-The content and the structure of the configuration file example above is broken into several parts:
+The on-boarding configuration parameters belong to one of the following groups:
 
-- [REST service identification](#rest-service-identification) 
-- [Administrative endpoints](#administrative-endpoints)
-- [Eureka discovery service](#eureka-discovery-service) 
+- [Service identification](rest-service-identification) 
+- [Administrative endpoints](administrative-endpoints)
+- [API info](api-info)
 - [API routing information](api-routing-information)
-- [API info](#api-info) (API Documentation)
-- [API Catalog information](#api-catalog-information)
-- [API Security](#api-security)
+- [API catalog information](api-catalog-information)
+- [API security](api-security)
+- [Eureka discovery service](eureka-discovery-service) 
 
 ### REST service identification
 
-The following snippet is an example of the service identification properties.
-
-**Example:**
-
-```
-serviceId: sampleservice
-title: Hello API ML
-description: Example for exposing a API ML REST API Service
-```
-
-where:
 * **serviceId**
     
-    specifies the service instance identifier that is registered in the API ML installation.
-    The service ID is used in the URL for routing to the API service through the gateway. 
-    The service ID uniquely identifies instances of a microservice in the API ML. 
-    The system administrator at the customer site defines this parameter.
+    The `serviceId` uniquely identifies instances of a microservice in the API ML.
+    The service developer specifies a default serviceId during the design of the service. 
+    If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
+    (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
+    
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-    * When two API services use the same service ID, the API Gateway considers the services to be clones. An incoming API request can be routed to either of them.
-    * The same service ID should be set only for multiple API service instances for API scalability.
-    * The service ID value must contain only lowercase alphanumeric characters.
+    * The API ML Gateway uses the serviceId for routing to the API service instances.
+      As such, the serviceId must be a part of the service URL path in the API ML gateway address space. 
+    * When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
+      An incoming API request can be routed to either of them through load balancing.
+    * The same service ID should only be set for multiple API service instances for API scalability.
+    * The service ID value must only contain lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
     * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
         
     **Examples:**
-    * If the customer system administrator sets the service ID to `sysviewlpr1`, the API URL in the API Gateway appears as the following URL: 
+    * If the serviceId is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as: 
             
        ```
-       https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
+       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
        ```
 
-    * If a customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:
+    * If a customer system administrator sets the service ID to `vantageprod1`, the service URL in the API ML Gateway address space appears as:
        ```
        http://gateway:port/api/v1/vantageprod1/endpoint1/...
        ```
-* **title**
+* **title** 
     
-  specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+  This parameter specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
+  This value is displayed in the API Catalog when a specific API service instance is selected. 
+  This parameter can be externalized and set by the customer system administrator.
 
-  **Tip:** We recommend that you provide a specific default value of the `title`.
+  **Tip:** We recommend that service developer provides a default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
-* **description**
+* **description** 
     
-    specifies a short description of the API service.
+    This parameter specifies a short description of the API service.
     
-    **Example:** 
+    **Examples:** 
     
     "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
     
-     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+     This value is displayed in the API Catalog when a specific API service instance is selected. 
+     This parameter can be externalized and set by the customer system administrator.  
     
-  **Tip:** Describe the service so that the end user knows the function of the service.
+  **Tip:** Describe the service so that the end user understands the function of the service.
 
 ### Administrative endpoints 
 
@@ -281,35 +277,36 @@ where:
    
    ```
 baseUrl: http://localhost:10021/sampleservice
+
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
 where:
+ 
+* **baseUrl** 
 
-* **baseUrl**
-    
-    specifies the URL to your service to the REST resource. It will be the prefix for the following URLs:
+    specifies the base URL pointing to your service.
+      
+    **Example:** 
+    * `https://host:port/servicename` for HTTPS service
         
+    `baseUrl` will be then used as a prefix in combination with the following end points relative addresses to construct their absolute URL:
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
         
-    **Examples:** 
-    * `http://host:port/servicename` for HTTP service
-    * `https://host:port/servicename` for HTTPS service
-
-* **homePageRelativeUrl** 
+* **homePageRelativeUrl**  
     
     specifies the relative path to the home page of your service. The path should start with `/`.
     If your service has no home page, leave this parameter blank.
     
     **Examples:**
-    * `homePageRelativeUrl: ` The service has no home page
-    * `homePageRelativeUrl: /` The service has home page with URL `${baseUrl}/`
+    * `homePageRelativeUrl: ` This service has no home page
+    * `homePageRelativeUrl: /` This service has a home page with URL `${baseUrl}/`
     
     
-* **statusPageRelativeUrl**
+* **statusPageRelativeUrl** 
     
     specifies the relative path to the status page of your service.
     
@@ -322,7 +319,7 @@ where:
      This results in the URL:  
     `${baseUrl}/application/info` 
 
-* **healthCheckRelativeUrl**
+* **healthCheckRelativeUrl** 
     
     specifies the relative path to the health check endpoint of your service. 
     
@@ -330,59 +327,64 @@ where:
     
     **Example:**
 
-    `healthCheckRelativeUrl: /application/health`. 
+    `healthCheckRelativeUrl: /application/health` 
     
      This results in the URL:  
     `${baseUrl}/application/health` 
 
-### API Security 
+### API info
 
-Use the following procedure to configure API security.
-      
-**Follow these steps:**
+REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
 
-1. Set up a key store with the service certificate.
-
-    All API services require a TLS certificate trusted by API ML in order to register with the API ML.
-
-    **Note:** Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
-
-    If the service runs on localhost, the command uses the following format:
-
-    ```
-    <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-    ```
-
-2. Update the configuration of your service `service-configuration.yml` to contain the HTTPS configuration by adding the following code:
-      ```
-    ```
-    **Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
-
-### Eureka discovery service
-
-Add Eureka discovery parameters to your service.
-
-Eureka discovery service parameters are presented in the following snippet: 
+The following snippet presents the information properties of a single API:
 
 ```
-discoveryServiceUrls:
-- https://localhost:10011/eureka
-- http://......
+apiInfo:
+    - apiId: org.zowe.sampleservice
+    version: v1 
+    gatewayUrl: api/v1
+    swaggerUrl: http://localhost:10021/sampleservice/api-doc
+    documentationUrl: http://your.service.documentation.url
 ```
- where:      
 
-* **discoveryServiceUrls**
+where:
+* **apiInfo.apiId** 
+
+    specifies the API identifier that is registered in the API ML installation.
+        The API ID uniquely identifies the API in the API ML. 
+        Multiple services can provide the same API. The API ID can be used
+        to locate the same APIs that are provided by different services.
+        The creator of the API defines this ID.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.` .
+       
+     We recommend that you use your organization as the prefix.
+
+
+* **  apiInfo.version** 
+
+    specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
     
-    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter. 
+* **apiInfo.gatewayUrl** 
+
+    specifies the base path at the API Gateway where the API is available. 
+    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
+
+* **apiInfo.swaggerUrl** 
+
+    (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+        
+* **apiInfo.documentationUrl** 
+
+    (Optional) specifies the link to the external documentation, if necessary. 
+    A link to the external documentation can be included along with the Swagger documentation. 
     
-     **Example:**
-
-    `http://eureka:password@141.202.65.33:10311/eureka/`
-
-
+    
 ### API routing information
 
-Add API routing information to your service.
+The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
+A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
+in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -393,75 +395,39 @@ routes:
     - gatewayUrl: api
     serviceUrl: /sampleservice
     - gatewayUrl: api/v1
-     serviceUrl: /sampleservice/api/v1
+    serviceUrl: /sampleservice/api/v1
     - gatewayUrl: api/v1/api-doc
     serviceUrl: /sampleservice/api-doc
 ```
    where:
 
-* **routedServices**
+* **routes** 
     
-    specifies the routing rules between the gateway service and your service.
+    specifies the container element for the routes.
 
-* **routedServices.gatewayUrl**
+* **routes.gatewayUrl** 
         
-    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-            gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
+    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part
 
-* **routedServices.serviceUrl**
+* **routes.serviceUrl** 
         
-    Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
-    gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part (see `gatewayUrl`).
 
-### API info
+**Note:** The routes configuration contains a prefix before the gatewayUrl and serviceUrl.
+This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
 
-Add API info parameters to your service.
-
-The following snippet presents the API information properties:
-
-```
-apiInfo:
-    - apiId: org.zowe.sampleservice
-    gatewayUrl: api/v1
-    swaggerUrl: http://localhost:10021/sampleservice/api-doc
-    documentationUrl: http://your.service.documentation.url
-```
-
-where:
-
-* **apiInfo.apiId**
-
-    specifies the API identifier that is registered in the API ML installation.
-        The API ID uniquely identifies the API in the API ML. Multiple services can provide the same API. The API ID can be used
-        to locate the same APIs that are provided by different services.
-        The creator of the API defines this ID.
-        The API ID needs to be a string of up to 64 characters
-        that uses lowercase alphanumeric characters and a dot: `.`.
-        We recommend that you use your organization as the prefix.
-
-* **apiInfo.gatewayUrl**
-
-    specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the _gatewayUrl_ value in the _routes_ sections.
-
-* **apiInfo.swaggerUrl**
-
-    (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
-        
-* **apiInfo.documentationUrl** 
-
-    (Optional) specifies the link to the external documentation, if necessary. The link to the external documentation can be included along with the Swagger documentation. 
-    
+For detailed information about API ML routing, please follow this link: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing)
 
 ### API Catalog information
 
-Add API Catalog information to your service.
-
-The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. Information discplayed in the catalog is defined by the metadata provided by your service during registration. 
-The catalog can group corelated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
+The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
+Information displayed in the catalog is defined by the metadata provided by your service during registration. 
+The catalog can group correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following code block is an example of configuration of a service tile in the catalog:
 
 **Example:**
+
  ```
     catalog:
       tile:
@@ -475,7 +441,8 @@ The following code block is an example of configuration of a service tile in the
 
 * **catalog.tile.id**
     
-    specifies the unique identifier for the product family of API services. This is a value used by the API ML to group multiple API services together into tiles. 
+    specifies the unique identifier for the product family of API services. 
+    This is a value used by the API ML to group multiple API services together into tiles. 
     Each unique identifier represents a single API Catalog UI dashboard tile. 
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
@@ -495,6 +462,82 @@ The following code block is an example of configuration of a service tile in the
 
     **Note:** Ensure that you increase the number of the version when you introduce new changes to the product family details of the API services 
     including the title and description.
+
+
+### API Security 
+
+REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, they are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
+These two roles have different requirements. 
+While ZOWE API ML discovery service communicates with its clients in secure https mode and because of that requires a TLS (aka SSL) configuration setup, when in a service is in server role,
+it is up to the system administrator to decide if the service willcommunicate with its clients securely or not.
+
+Client services need to configure several TLS/SSL parameters in order to be able to communicate with API ML discovery service.
+When an enabler is used to on-board the service, the configuration is provided in `ssl` section/group in the same YAML file used to configure the Eureka paramaters and the service metadata. 
+
+For more information about API ML security. please follow this link: [API ML security](#api-mediation-security.md)
+
+The tls/ssl configuration consists of the following parameters:
+
+* **protocol**
+    TLSv1.2
+
+    This is the TLS protocol version currently used by ZOWE API ML Discovery service
+    
+* **keyAlias**
+  
+  The `alias` used to address the private key in the keystore 
+
+* **keyPassword**
+
+  The password associated with the private key 
+  
+* **keyStore**
+
+  The keystore file used to store the private key 
+
+* **keyStorePassword**
+
+  The password used to unlock the keystore
+
+* **keyStoreType**
+
+  The type of the keystore: 
+
+
+* **trustStore**
+  
+  A truststore file used to keep other parties public keys and certificates. 
+
+* **trustStorePassword: password**
+
+  The password used to unlock the truststore
+
+* **trustStoreType: PKCS12**
+
+  The truststore type. One of: PKCS12 default
+
+**Note:** You need to define both the key store and the trust store even if your server is not using an HTTPS port.
+
+### Eureka discovery service
+
+Eureka discovery service parameters group contains a single parameter used to address Eureka discovery service location.
+An example is presented in the following snippet: 
+
+```
+discoveryServiceUrls:
+- https://localhost:10011/eureka
+- http://......
+```
+ where:      
+
+* **discoveryServiceUrls** 
+    
+    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
+    It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.  
+    
+     **Example:**
+
+    `http://eureka:password@141.202.65.33:10311/eureka/`
 
 
 ##  Registering your service with API ML

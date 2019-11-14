@@ -54,7 +54,7 @@ Similarly, the API ML Catalog uses the parameters from the `catalog` group to di
 
 ## Configuring your REST service for on-boarding on API ML discovery service
 
-In the following code snippets we identify the parameters by their _YAML_ notation using '.' convention. Additionally, the corresponding _XML_ path is provided in parentheses.
+In the following sections we identify the parameters by their _YAML_ notation using '.' convention. Additionally, the corresponding _XML_ path is provided in parentheses.
 
 The configuration parameters belong to one of the following groups:
 
@@ -68,11 +68,12 @@ The configuration parameters belong to one of the following groups:
 
 ### REST service identification
 
-* **serviceId** (XML Path: /instance/metadata/apiInfo/serviceId)
+* **serviceId** (XML Path: /instance/app)
     
-    The `serviceId` uniquely identifies instances of a microservice in the API ML.
-    The service developer specifies a default serviceId during the design of the service. 
-    If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
+    Uniquely identifies instances of a microservice in the API ML.
+    The service developer specifies a default value during the design of the service.
+    
+    **Note:** (YAML only): If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
     (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
     
         
@@ -120,7 +121,7 @@ The configuration parameters belong to one of the following groups:
     
   **Tip:** Describe the service so that the end user understands the function of the service.
 
-### Administrative endpoints 
+### Administrative endpoints relative URLs
 
    The following snippet presents the format of the administrative endpoint properties:
    
@@ -141,6 +142,14 @@ where:
     - **hostname**: /instance/hostname
     - **ipAddr**: /instance/ipAddr
     - **port**: /instance/port
+  
+    Additionally XML config contains following properties:
+      - **<securePort enabled="true">{port}</securePort>**
+      - **<vipAddress>{serviceId}</vipAddress>**
+      - **<secureVipAddress>{serviceId}</secureVipAddress>**
+      - **<instanceId>{instanceId}</instanceId>**
+      - **<dataCenterInfo><name>MyOwn</name></dataCenterInfo>**
+
        
     **Example in YAML:** 
     * `https://host:port/servicename` for HTTPS service
@@ -188,8 +197,7 @@ where:
 
 ### API info
 
-REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
-
+REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation.
 The following snippet presents the information properties of a single API:
 
 ```
@@ -214,15 +222,8 @@ where:
        
      We recommend that you use your organization as the prefix.
 
- <font color="red"> FINDING: apiId is never set in metadata by the PJ enabler
-    Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
-    The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
-    My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service.
-    
-TODO: Discuss this with PP and others.` </font>
 
-
-* **apiInfo.version** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.version)
+* **  apiInfo.version** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.version)
 
     specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
     
@@ -235,7 +236,7 @@ TODO: Discuss this with PP and others.` </font>
 
     (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
-* **apiInfo.documentationUrl**  (XML Path: /instance/metadata/apiInfo/documentationUrl)
+* **apiInfo.documentationUrl**  (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.documentationUrl)
 
     (Optional) specifies the link to the external documentation, if necessary. 
     A link to the external documentation can be included along with the Swagger documentation. 
@@ -300,7 +301,7 @@ The following code block is an example of configuration of a service tile in the
 
    where:
 
-* **catalog.tile.id**
+* **catalog.tile.id** (XML Path: /instance/metadata/apiml.catalog.tile.id)
     
     specifies the unique identifier for the product family of API services. 
     This is a value used by the API ML to group multiple API services together into tiles. 
@@ -308,16 +309,16 @@ The following code block is an example of configuration of a service tile in the
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
     
-* **catalog.tile.title**
+* **catalog.tile.title** (XML Path: /instance/metadata/apiml.catalog.tile.title)
     
     specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-* **catalog.tile.description**
+* **catalog.tile.description** (XML Path: /instance/metadata/apiml.catalog.tile.description)
     
     specifies the detailed description of the API services product family. 
     This value is displayed in the API Catalog UI dashboard as the tile description.
     
-* **catalog.tile.version**
+* **catalog.tile.version** (XML Path: /instance/metadata/apiml.catalog.tile.version)
     
     specifies the semantic version of this API Catalog tile. 
 
