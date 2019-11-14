@@ -28,8 +28,20 @@ The following features and enhancements were added.
 - 
 
 #### Zowe App Server
-- 
-- 
+- File Explorer now offers a right click Delete option for files and folders [#43](https://github.com/zowe/zlux-file-explorer/pull/43)
+- Prevented creation/deletion of files and folders queued for deletion. [#48](https://github.com/zowe/zlux-file-explorer/pull/48)
+- Updated back-end API to give more accurate delete responses. [#93](https://github.com/zowe/zss/pull/93)
+- IFrame adapter: added support for plugin definition, logger, and launch metadata. [#174](https://github.com/zowe/zlux-app-manager/pull/174)
+- IFrame app-to-app communication support [#174](https://github.com/zowe/zlux-app-manager/pull/174)
+- Removed unnecessary warning suppression [#23](https://github.com/zowe/zlux-shared/pull/23)
+- Dispatcher always sends message, even when context doesn't exist [#174](https://github.com/zowe/zlux-app-manager/pull/174)
+- Support constructor injectibles via Iframe adapter [#174](https://github.com/zowe/zlux-app-manager/pull/174)
+- Browser tab for the desktop now include opened app name. [#175](https://github.com/zowe/zlux-app-manager/pull/175)
+- File Explorer now offers a right click file and folder Properties menu. [#180](https://github.com/zowe/zlux/issues/180)
+- File Explorer now offers a right click dataset Properties menu. [#49](https://github.com/zowe/zlux-file-explorer/pull/49)
+- Made it possible to specify config properties via command line arguments for the App server. [#81](https://github.com/zowe/zlux-app-server/pull/81)
+- Allow override of configuration attributes using a -D argument syntax. [#154](https://github.com/zowe/zlux-server-framework/pull/154)
+- Allow specifying environment variables that can be interpreted as JSON structures. [#156](https://github.com/zowe/zlux-server-framework/pull/156)
 
 #### Zowe CLI
 - 
