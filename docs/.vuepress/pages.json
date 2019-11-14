@@ -108,6 +108,7 @@
           "extend/extend-desktop/mvd-configdataservice.md",
           "extend/extend-desktop/mvd-uribroker.md",
           "extend/extend-desktop/mvd-apptoappcommunication.md",
+          "extend/extend-desktop/mvd-iframe-comm.md",
           "extend/extend-desktop/mvd-errorreportingui.md",
           "extend/extend-desktop/mvd-logutility.md",
           "extend/extend-desktop/zlux-app-server.md",
