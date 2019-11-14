@@ -16,18 +16,19 @@ After you install Zowe&trade; through either the convenience build by running th
     1. [Configuring ZOWESVR to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
     1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
 1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
-	  - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-	  - [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
+    1. [Creating the Cross Memory Server directory](#creating-the-cross-memory-server-directory)
+	  1. [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
+	  1. [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
 1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
-    - [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
+    1. [Starting the ZOWESVR PROC](#starting-the-zowesvr-proc)
+    1. [Stopping the ZOWESVR PROC](#stopping-the-zowesvr-proc)
 1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
 
 ## Prerequisites
 
 <!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
-- The user ID that is used to perform the configuration part of the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) topic.
+- The user ID that is used to perform the configuration part of the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#zowe-runtime-on-z-os) topic.
 
 - The user ID that is used to perform the configuration part of the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
   ```
@@ -97,18 +98,15 @@ where:
 - `n` - Instance number
 
 - `SS` - A subcomponent. `SS` can be one of the following values:
-   - **AC** - API ML Catalog
-   - **AD** - API ML Discovery Service
    - **AG** - API ML Gateway
-   - **DS** - Node.js instance for the ZSS Server
-   - **DT** - Zowe Desktop Application Server
-   - **EF** - Explorer API Data Sets
+   - **AD** - API ML Discovery Service
+   - **AC** - API ML Catalog
    - **EJ** - Explorer API Jobs
-   - **SZ** - ZSS Server
+   - **EF** - Explorer API Data Sets
    - **UD** - Explorer UI Data Sets
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
-   
+   - **DT** - Zowe Desktop Application Server
 
 The STC name of the main started task is `pfxnSV`. To view all the STCs for your instance of ZOWE in SDSF, you can use the PREFIX `pfxn*`.
 
@@ -117,7 +115,6 @@ The STC name of the main started task is `pfxnSV`. To view all the STCs for your
   ```yaml
   install:
   prefix=ZOWE
-  instance=1
   ```
 
   in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
@@ -274,7 +271,7 @@ apiml_cm.sh --action trust-zosmf has failed.
 WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
 ```
 
-This error does not interfere with installation progress and can be remediated after the installation completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
+This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
 
 #### Unix File Permissions
 
@@ -406,15 +403,17 @@ The angel process server runs under the started task ZWESIS01. The auxiliary add
 
 The ZWESIS01 started task runs the load module ZWESIS01, serves the ZOWESVR started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESAUX started task runs the load module ZWESAUX.
 
-### Manually installing the Zowe Cross Memory Server
-<!-- TODO. Entire sub-section -->
+### Creating the Cross Memory Server directory
 
-A number of files used by the manual installation are included in the USS directory `xmem-server/zss`. Before you start the installation, check and ensure that the `xmem-server/zss` directory is in the Zowe runtime directory. If it does not exist, follow these steps to create it and extract the `xmem-server/zss.pax` file, which places the files into it:
+A number of files used by both manual and scripted installation are included in the USS directory `xmem-server/zss`. If this directory is not in the Zowe runtime directory, follow these steps to create it and extract the `xmem-server/zss.pax` file, which places the files into it:
 
 1. Navigate to the `xmem-server` directory.
 2. To create the `zss` directory, enter the command: `mkdir zss`
 3. To navigate to the `zss` directory, enter the command: `cd zss`
 4. To extract the `zss.pax` file and place required files into the `xmem-server/zss` directory, enter the command: `pax -ppx -rf ../zss.pax`
+
+### Manually installing the Zowe Cross Memory Server
+<!-- TODO. Entire sub-section -->
 
 To manually install the Cross Memory Server, take the following steps:
 
@@ -429,7 +428,7 @@ To manually install the Cross Memory Server, take the following steps:
     ```
     Where `<zwes_loadlib>` is the name of the data set, for example ZWES.SISLOAD. The `<zwes_loadlib>` data set must be a PDSE due to language requirements.
 
-    b. You must specify the `<zwes_loadlib>` data set in the STEPLIB DD statement of the two PROCLIB JCL members which are used for the cross-memory server's started tasks, so that the appropriate version of the software is loaded correctly. Sample JCL for these PROCLIB members is provided in the ZWESIS01 and ZWESAUX files in the `xmem-server/zss/SAMPLIB` directory. Copy these to your system PROCLIB, such as SYS1.PROCLIB, or your preferred PROCLIB in the JES2 Concatenation.
+    b. You must execute the `<zwes_loadlib>` data set by using started tasks that use a STEPLIB DD statement so that the appropriate version of the software is loaded correctly. Sample JCL for the PROCLIB is provided in ZWESIS01 and ZWESAUX files in the `xmem-server/zss/SAMPLIB` directory. Copy these to your system PROCLIB, such as SYS1.PROCLIB, or any other PROCLIB in the JES2 Concatenation PROCLIB Path.
    
     Do not add the `<zwes_loadlib>` data set to the system LNKLST or LPALST concatenations.
     
@@ -437,7 +436,7 @@ To manually install the Cross Memory Server, take the following steps:
 
 1. Add PPT entries to the system PARMLIB:
 
-    a. The Cross Memory Server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
+    a. The Cross Memory Server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, you must add PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB. To add PPT entries, you can issue the following commands:
 
     ```
     PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
@@ -733,9 +732,7 @@ To manually install the Cross Memory Server, take the following steps:
 
 ### Installing the Cross Memory Server using the script
 
-Users with sufficient z/OS authority can install the Cross Memory Server using a script. The script, `xmem-server/zowe-install-apf-server.sh`, reads configuration parameters from the  `xmem-server/zowe-install-apf-server.yaml` file. The script creates the USS directory `xmem-server/zss` in the Zowe runtime directory by expanding the file `xmem-server/zss.pax`. The script creates the APF authorized load library, copies the load modules, creates the PROCLIB, defines the `ZWES.IS` FACILITY class, and grants READ access to the STC user under which the ZOWESVR started task runs. 
-
-The script does not perform the following tasks:
+Users with sufficient z/OS authority can install the Cross Memory Server using a script. The script, `xmem-server/zowe-install-apf-server.sh`, reads configuration parameters from the  `xmem-server/zowe-install-apf-server.yaml` file. The script creates the APF authorized load library, copies the load modules, creates the PROCLIB, defines the `ZWES.IS` FACILITY class, and grants READ access to the STC user under which the ZOWESVR started task runs. It does not perform the following tasks:
 
 - Grant READ access to the STC user under which the ZWESAUX started task runs, which is recommended. You must grant access by following the step "Configure SAF" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
 - Create the required PPT entries. You must create these by following the step "Add PPT entries to the system PARMLIB" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
@@ -754,17 +751,12 @@ The script does not perform the following tasks:
    parmlib=
    # LOADLIB dataset name (${USER}.LOADLIB by default)
    loadlib=
-   # ZSS server name (default name is ZWESIS_STD),
-   # make sure that this equals to zssCrossMemoryServerName in zlux-server in zowe-install.yaml
-   zssCrossMemoryServerName=ZWESIS_STD
 ```
 
 where,
-
 - _install:proclib_ is the data set name that the ZWESIS01 and ZWESAUX JCL members that are used to start the ZWESIS01 and ZWESAUX started tasks will be copied into, for example, USER.PROCLIB.
 - _install:parmlib_ is the data set name that the ZWESIP00 PARMLIB member will be copied into and used by the ZWESIS01 PROCLIB. Choose a value such as IZUSVR.PARMLIB.
 - _install:loadlib_ is the data set name that the ZWESIS01 and ZWESAUX load modules will be copied into. This data set will be created as a PDSE and be APF authorized by the script.  Choose a value such as USER.LOADLIB.
-- _zssCrossMemoryServerName_ is the name of the ZSS Cross Memory Server. The default name is `ZWESIS_STD`. If you want to run only one version of Zowe, you can use the default name. If you want to run different versions of Zowe in parallel, you must specify a unique name for each Zowe instance. If you want to test a new version of Zowe in parallel to an older version, you must change the default name to a unique one when you install the new version.
 
 2. Specify the following user parameters in the `xmem-server/zowe-install-apf-server.yaml` file:
 
