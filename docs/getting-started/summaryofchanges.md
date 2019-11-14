@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;. 
 
-Zowe Version 1.6.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.7.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
 - [Version 1.6.0 (October 2019)](#version-160-october-2019)
 - [Version 1.5.0 (September 2019)](#version-150-september-2019)
 - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
@@ -13,6 +14,49 @@ Zowe Version 1.6.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.7.0 (November 2019)
+
+<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+#### API Mediation Layer
+
+- Cleanup Gateway dependency logs [#413](https://github.com/zowe/api-layer/pull/413)
+- Cleanup Gateway - our code [#417](https://github.com/zowe/api-layer/pull/417)
+- Cleanup Discovery Service dependency logs [#403](https://github.com/zowe/api-layer/pull/403) 
+- Cleanup Discovery Service - our code [#407](https://github.com/zowe/api-layer/pull/407) 
+- External option to activate DEBUG mode for APIML [#410](https://github.com/zowe/api-layer/pull/410) 
+
+#### Zowe App Server
+
+- Introduced the "SJ" feature to the JES Explorer application ([#282](https://github.com/zowe/zlux/issues/282))
+  
+  You can now right-click a job label and "Get JCL" to retrieve the JCL used to submit the job, this JCL can then be edited and resubmitted.
+
+  <img src="../images/releasenotes/v17-sjdemo.gif" alt="SJ Demo" width="550px"/>
+- 
+
+#### Zowe CLI
+- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+ 
+- Fixed typo in Gateway startup script [#427](https://github.com/zowe/api-layer/pull/427)
+
+#### Zowe App Server
+- 
+- 
+
+#### Zowe CLI
+- This version of Zowe CLI contains various bug fixes that address vulnerabilities.
   
 ## Version 1.6.0 (October 2019)
 
