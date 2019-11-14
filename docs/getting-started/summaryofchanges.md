@@ -30,8 +30,6 @@ The following features and enhancements were added.
 - Cleanup Discovery Service dependency logs [#403](https://github.com/zowe/api-layer/pull/403) 
 - Cleanup Discovery Service - our code [#407](https://github.com/zowe/api-layer/pull/407) 
 - External option to activate DEBUG mode for APIML [#410](https://github.com/zowe/api-layer/pull/410) 
-- Speedup UI build [#387](https://github.com/zowe/api-layer/pull/387) 
-- Added step to publish Pull Request artifacts [#400](https://github.com/zowe/api-layer/pull/400)
 
 #### Zowe App Server
 - 
@@ -46,9 +44,7 @@ The following features and enhancements were added.
 The following bugs were fixed.
 
 #### API Mediation Layer
-
-- Fix critical NPM vulnerability and gradle problem [#429](https://github.com/zowe/api-layer/pull/429) 
-- Fix bug in command for UI test coverage [#399](https://github.com/zowe/api-layer/pull/399) 
+ 
 - Fixed typo in Gateway startup script [#427](https://github.com/zowe/api-layer/pull/427)
 
 #### Zowe App Server
