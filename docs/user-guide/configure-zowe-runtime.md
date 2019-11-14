@@ -394,14 +394,21 @@ The Cross Memory Server has two components: a server and its auxiliary address s
 - Manually
 - Using the script
 
-Before you choose a method, read the documentation below. The manual configuration requires familiarity with z/OS. Running the script requires the ID of the user to have certain authorities and priviledges.
+Before you choose a method, read the documentation below. Manual installation requires familiarity with z/OS. Running the script requires the ID of the user to have required authorities and priviledges.
 
-Once the cross memory server is installed and started, the started task ZWESIS01 runs the load library ZWESIS01 and ZWESAUX runs the load library ZWESAUX. The ZWESIS01 started task serves the ZOWESVR started task and provides secure services that require running in an APF-authorized state.
+The angel process server runs under the started task ZWESIS01. The auxiliary address spaces run under the started task ZWESAUX. The ZWESIS01 started task starts and stops the ZWESAUX task as needed. You do not start or stop the ZWESAUX manually.
+
+The ZWESIS01 started task runs the load module ZWESIS01, serves the ZOWESVR started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESAUX started task runs the load module ZWESAUX.
 
 ### Manually installing the Zowe Cross Memory Server
 <!-- TODO. Entire sub-section -->
 
-A number of files used by the manual installation are included in the USS directory `xmem-server/zss`. Before you start the installation, check and ensure that the `xmem-server/zss` directory is in the Zowe runtime directory. If it does not exist, you must create it by expanding the file `xmem-server/zss.pax`.  To do this, first create the folder `zss` beneath `xmem-server` using the command `mkdir zss` and navigate into the `zss` folder using the command `cd zss`. Then, expand the `zss.pax` file using the command `pax -ppx -rf ../zss.pax`.
+A number of files used by the manual installation are included in the USS directory `xmem-server/zss`. Before you start the installation, check and ensure that the `xmem-server/zss` directory is in the Zowe runtime directory. If it does not exist, follow these steps to create it and extract the `xmem-server/zss.pax` file, which places the files into it:
+
+1. Navigate to the `xmem-server` directory.
+2. To create the `zss` directory, enter the command: `mkdir zss`
+3. To navigate to the `zss` directory, enter the command: `cd zss`
+4. To extract the `zss.pax` file and place required files into the `xmem-server/zss` directory, enter the command: `pax -ppx -rf ../zss.pax`
 
 To manually install the Cross Memory Server, take the following steps:
 
