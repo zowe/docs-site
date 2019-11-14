@@ -2,7 +2,7 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;. 
 
-Zowe Version 1.6.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.7.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.7.0 (November 2019)](#version-170-november-2019)
 - [Version 1.6.0 (October 2019)](#version-160-october-2019)
@@ -32,12 +32,16 @@ The following features and enhancements were added.
 - External option to activate DEBUG mode for APIML [#410](https://github.com/zowe/api-layer/pull/410) 
 
 #### Zowe App Server
-- 
+
+- Introduced the "SJ" feature to the JES Explorer application ([#282](https://github.com/zowe/zlux/issues/282))
+  
+  You can now right-click a job label and "Get JCL" to retrieve the JCL used to submit the job, this JCL can then be edited and resubmitted.
+
+  <img src="../images/releasenotes/v17-sjdemo.gif" alt="SJ Demo" width="550px"/>
 - 
 
 #### Zowe CLI
-- 
-- 
+- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
 
 ### Bug fixes
 
@@ -52,8 +56,7 @@ The following bugs were fixed.
 - 
 
 #### Zowe CLI
-- 
-- 
+- This version of Zowe CLI contains various bug fixes that address vulnerabilities.
   
 ## Version 1.6.0 (October 2019)
 
