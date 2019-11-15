@@ -53,7 +53,9 @@ The following features and enhancements were added.
 - Allow override of configuration attributes using a -D argument syntax. [#154](https://github.com/zowe/zlux-server-framework/pull/154)
 - Allow specifying environment variables that can be interpreted as JSON structures. [#156](https://github.com/zowe/zlux-server-framework/pull/156) 
 
-#### Zowe CLI
+#### Zowe Explorer (Extension for VSCode)
+
+- The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
 - The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
 
 ### Bug fixes
