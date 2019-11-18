@@ -5,31 +5,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## API mediation common messages
 
-### ZWEAM102E
+### ZWEAO102E
 
   Gateway not found yet, transform service cannot perform the request
 
   **Reason:**
 
-  The Transform service has been requested to transform a url, but the Gateway instance has not been discovered yet.
+  The Transform service was requested to transform a url, but the Gateway instance was discovered.
 
   **Action:**
 
   Do not begin performing requests until the API Mediation Layer fully initializes after startup. Check that your Discovery service is running and that all services (especially the Gateway) are discovered correctly.
 
-### ZWEAM104W
+### ZWEAO104W
 
   GatewayInstanceInitializer has been stopped due to exception: %s
 
   **Reason:**
 
-  An unexpected exception occurred while retrieving the Gateway service instance from the Discovery service.
+  An unexpected exception occurred while retrieving the Gateway service instance from the Discovery Service.
 
   **Action:**
 
   Check that both the service and the Gateway can register with Discovery. If the services are not registering, investigate the reason why. If no cause can be determined, create an issue.
 
-### ZWEAM401E
+### ZWEAO401E
 
   Unknown error in HTTPS configuration: '%s'
 
@@ -79,6 +79,42 @@ The following error message codes may appear on logs or API responses. Use the f
 
   The jar file is not packaged correctly. Please submit an issue.
 
+### ZWEAM102E
+
+  Internal error: Invalid message key '%s' is provided. Please create an issue with this message.
+
+  **Reason:**
+
+  Message service is requested to create message with an invalid key.
+
+  **Action:**
+
+  Create an issue with this message.
+
+### ZWEAM103E
+
+  Internal error: Invalid message text format. Please create an issue with this message.
+
+  **Reason:**
+
+  Message service is requested to create a message with an invalid text format.
+
+  **Action:**
+
+  Create an issue with this message.
+
+### ZWEAM104E
+
+  The endpoint you are looking for '%s' could not be located
+
+  **Reason:**
+
+  The endpoint you are looking for could not be located.
+
+  **Action:**
+
+  Verify that the URL of the endpoint you are trying to reach is correct.
+
 ### ZWEAM400E
 
   Error initializing SSL Context: '%s'
@@ -90,7 +126,7 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Refer to the specific message to identify the exact problem.
-  possible causes can include:
+  Possible causes include:
   - Incorrect security algorithm
   - The keystore is invalid or corrupted
   - The certificate is invalid or corrupted
@@ -105,7 +141,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Stop the service and set the verifySslCertificatesOfServices parameter to `true`. Then restart the service. Do not use this option in production environment.
+  Stop the service and set the verifySslCertificatesOfServices parameter to `true`. Then restart the service. Do not use this option in a production environment.
 
 ### ZWEAM501W
 
@@ -113,11 +149,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service is connecting to Discovery service using the non-secure HTTP protocol.
+  The service is connecting to the Discovery Service using the non-secure HTTP protocol.
 
   **Action:**
 
-  For production use, start the Discovery service in HTTPS mode and configure the services accordingly.
+  For production use, start the Discovery Service in HTTPS mode and configure the services accordingly.
 
 ### ZWEAM502E
 
@@ -129,7 +165,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the configured key is present, is in the correct format, and is not corrupt.
+  Ensure that the configured key is present, in the correct format, and not corrupt.
 
 ### ZWEAM503E
 
@@ -239,6 +275,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure that the key alias provided for the key exists in the provided keystore.
 
+### ZWEAM511E
+
+  The certificate of the service accessed using URL '%s' is not trusted by the API Gateway: %s
+
+  **Reason:**
+
+  Thr Gateway does not trust the requested service and refuses to communicate with it. The certificate of the service is missing from the truststore of the API Mediation Layer.
+
+  **Action:**
+
+  Contact your administrator to verify API Mediation Layer truststore configuration.
+
 ### ZWEAM600W
 
   Invalid parameter in metadata: '%s'
@@ -251,43 +299,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Remove or fix the referenced metadata parameter.
 
-### MFS0001E
-
-  Internal error: Invalid message key '%s' is provided. Please create an issue with this message.
-
-  **Reason:**
-
-  Message service is requested to create message with an invalid key.
-
-  **Action:**
-
-  Create an issue with this message.
-
-### MFS0002E
-
-  Internal error: Invalid message text format. Please create an issue with this message.
-
-  **Reason:**
-
-  Message service is requested to create a message with an invalid text format.
-
-  **Action:**
-
-  Create an issue with this message.
-
-### MFS0103E
-
-  The endpoint you were looking for '%s' could not be located
-
-  **Reason:**
-
-  The endpoint you were looking for was not found.
-
-  **Action:**
-
-  Verify that the URL of the endpoint you are trying to reach is correct.
-
-### MFS0104E
+### ZWEAM700E
 
   No response received within the allowed time: %s
 
@@ -299,19 +311,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that the URL you are trying to reach is correct and all services are running.
 
-### AML0105E
-
-  The certificate of the service accessed using URL '%s' is not trusted by the API Gateway: %s
-
-  **Reason:**
-
-  Thr Gateway does not trust the requested service and refuses to communicate with it. The service's certificate is missing from API Mediation Layer's truststore.
-
-  **Action:**
-
-  Contact your administrator to verify API Mediation Layer truststore configuration.
-
-### AML0106E
+### ZWEAM701E
 
   The request to the URL '%s' has failed: %s caused by: %s
 
@@ -325,19 +325,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## Security common messages
 
-### ZWEAM103E
+### ZWEAT103E
 
-  Couldn't write response: %s
+  Could not write response: %s
 
   **Reason:**
 
-  Message could not be written to the response
+  A message could not be written to the response
 
   **Action:**
 
   Please submit an issue with this message.
 
-### ZWEAM601E
+### ZWEAT601E
 
   z/OSMF service name not found. Set parameter apiml.security.auth.zosmfServiceId to your service ID.
 
@@ -753,4 +753,155 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Provide a valid authorization token.
+
+## API Catalog messages
+
+### ZWEAC100W
+
+  Could not retrieve all service info from discovery -- %s -- %s -- %s
+
+  **Reason:**
+
+  The response from The Discovery Service about the registered instances returned an error or empty body.
+
+  **Action:**
+
+  Make sure the Discovery service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
+
+### ZWEAC101E
+
+  Could not parse service info from discovery -- %s
+
+  **Reason:**
+
+  The response from the Discovery Service about the registered instances could not be parsed to extract applications.
+
+  **Action:**
+
+  Run debug mode and look at the Discovery Service potential issues while creating a response. If the Discovery Service does not indicate any error, create an issue.
+
+### ZWEAC102E
+
+  Could not retrieve containers. Status: %s
+
+  **Reason:**
+
+  One or more containers could not be retrieved.
+
+  **Action:**
+
+  Check the status of the message for more information and the health of the Discovery Service.
+
+### ZWEAC103E
+
+  API Documentation not retrieved, %s
+
+  **Reason:**
+
+  API documentation was not found.
+
+  **Action:**
+
+  Make sure the service documentation is configured correctly.
+
+### ZWEAC104E
+
+  Could not retrieve container statuses, %s
+
+  **Reason:**
+
+  One or more containers statuses could not be retrieved.
+
+  **Action:**
+
+  Check the status of the message for more information and the health of Discovery Service.
+
+### ZWEAC700E
+
+  Failed to update cache with discovered services: '%s'
+
+  **Reason:**
+
+  Cache could not be updated.
+
+  **Action:**
+
+  Check the status of the Discovery Service.
+
+### ZWEAC701W
+
+  API Catalog Instance not retrieved from Discovery service
+
+  **Reason:**
+
+  An error occurred while fetching containers information.
+
+  **Action:**
+
+  The jar file is not packaged correctly. Please submit an issue.
+
+### ZWEAC702E
+
+  An unexpected exception occurred when trying to retrieve an API Catalog instance from the Discovery Service: %s
+
+  **Reason:**
+
+  An unexpected error occurred during API Catalog initialization. The API Catalog was trying to locate an instance of itself in the Discovery Service.
+
+  **Action:**
+
+  Review the specific message for more information. Verify if the Discovery Service and service registration work as expected.
+
+### ZWEAC703E
+
+  Failed to initialize API Catalog with discovered services
+
+  **Reason:**
+
+  The API Catalog could not initialize running services after several retries.
+
+  **Action:**
+
+  Ensure services are started and discovered properly.
+
+### ZWEAC704E
+
+  ApiDoc retrieval problem for service %s. %s
+
+  **Reason:**
+
+  ApiDoc for service could not be retrieved from cache.
+
+  **Action:**
+
+  Verify that the service provides a valid ApiDoc.
+
+### ZWEAC705W
+
+  The home page url for service %s was not transformed. %s
+
+  **Reason:**
+
+  The home page url for service was not transformed. The original url will be used.
+
+  **Action:**
+
+  Refer to the specific printed message. Possible causes include:
+  - The Gateway was not found. Transform service cannot perform the request. Wait for the Gateway to be discovered.
+  - The URI ... is not valid. Ensure the service is providing a valid url.
+  - Not able to select a route for url ... of the service ... Original url is used. If this is a problem, check the routing metadata of the service.
+  - The path ... of the service URL ... is not valid. Ensure the service is providing the correct path.
+ 
+
+### ZWEAC706E
+
+  Service not located, %s
+
+  **Reason:**
+
+  The service could not be found.
+
+  **Action:**
+
+  Check if the service is up and registered. If it is not registered, review the onboarding guide to ensure that all steps were completed.
 
