@@ -388,11 +388,17 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 ## The Zowe Cross Memory Server
 
-The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. To operate, the Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not require the server.
+The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. The Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not.
 
-The Cross Memory Server has two components: a server and its auxiliary address spaces. Each runs as a started task. To configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
+### Overview
+
+The Cross Memory Server has two components: an angel process server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server uses the angel process server address space and starts, controls, and delegates work to the auxiliary (AUX) address spaces.
+
+An example use case would be a system service that requires supervisor state but cannot run in cross-memory mode. The service can run in an AUX address space and be invoked by the Cross Memory Server, which acts as a proxy for unauthorized users of the service. 
+
+To install and configure the Cross Memory Server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. You can configure the Cross Memory Server one of the following ways:
 - Manually
-- Using the script
+- Using a script
 
 Before you choose a method, read the documentation below. Manual installation requires familiarity with z/OS. Running the script requires the ID of the user to have required authorities and priviledges.
 
@@ -866,10 +872,11 @@ You can obtain the _asid_ from the value of `A=asid` when you issue the followin
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
 
-The Cross Memory server is run as a started task from the JCL in the PROCLIB members ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+The Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESIS01. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
 ```
 /S ZWESIS01,REUSASID=YES
 ```
+The ZWESIS01 task starts and stops the ZWEAUX task as needed. Do not start the ZWEAUX task manually.
 
 To end the Zowe APF Angel process, issue the operator stop command through SDSF:
 
