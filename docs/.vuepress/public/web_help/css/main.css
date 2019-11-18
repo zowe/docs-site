@@ -75,8 +75,14 @@ html, body {
     width: 100%;
 }
 
-#tree-bar {
-    margin: 0 5px 10px 5px;
+#tree-search {
+    border-radius: 20px;
+    margin: 0 5px 7px 5px;
+    width: calc(100% - 10px);
+}
+
+#tree-tabs {
+    margin: 0 5px 5px 5px;
     width: calc(100% - 10px);
 }
 
