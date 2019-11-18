@@ -546,7 +546,6 @@ The following steps outline the process of registering your service with API ML:
 
 - [Add a web application context listener class](#add-a-web-application-context-listener)
 - [Register a web application context listener](#register-a-web-application-context-listener)
-- [Add security settings to sevice configuration](#add-security-settings-to-service-configuration)
 - [Load service configuration](#load-service-configuration)
 - [Initialize Eureka Client](#initialize-eureka-client)
 - [Register with Eureka discovery service](#register-with-eureka-discovery-service)
@@ -607,53 +606,7 @@ The following steps outline the process of registering your service with API ML:
 
     When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
 
-3. Add security settings to your service configuration .yml file. 
-
-    Services are required to provide a certificate that is trusted by API Mediation Layer in order to register with it.
-
-    **Tip:** Before you add security settings to your service configuration, we recommend you first review  [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost). This document provides detailed information about the security set-up.  
-    
-    **Follow these steps:**
-
-    1. To secure your service with a certificate, use one of the following two options:
-
-    * Use a certificate provided in `<api-layer-repository>/keystore/localhost`
-
-    * To customize your certificate, you can generate a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`
-   
-        If you use a certificate provided in `<api-layer-repository>/keystore/localhost`, you can now provide the configuration properties: `alias`, `path`, `password` in your .yml configuration file.
-
-        **Note:** The keystore password is `password`.
-
-        If you are generating a certificate with the provided shell script contained in `<api-layer-repository>/scripts/apiml_cm.sh`, execute the script with the following parameters:
-
-        ```
-        <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
-        ```
-
-        The certificates will be generated in the keystore subfolder of the folder where the script is executed.
-
-        **Note:** The keystore password is `password`.
-   
-    2. Update the configuration of your service `service-configuration.yml` to contain the SSL configuration by adding the following code:
-
-        ```
-        ssl:
-            protocol: TLSv1.2
-            ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-            keyAlias: localhost
-            keyPassword: password
-            keyStore: keystore/localhost.keystore.p12
-            keyStoreType: PKCS12
-            keyStorePassword: password
-            trustStore: keystore/localhost.truststore.p12
-            trustStoreType: PKCS12
-            trustStorePassword: password
-        ```
-
-        **Note:** Ensure that you define both the key store and the trust store even if your server is not using an HTTPS port.
-
-4. Load the service configuration file.
+3. Load the service configuration file.
 
     Load your service configuration from the `service-configuration.yml` file, which is described in the preceding section: [Configuring your service](#configuring-your-service). 
     
@@ -669,14 +622,14 @@ The following steps outline the process of registering your service with API ML:
         ...
     ```
 
-5. Register with Eureka discovery service.
+4. Register with Eureka discovery service.
     ```
     ...
         new ApiMediationClientImpl().register(config);
     }
     ```
 
-6. Unregister your service.
+5. Unregister your service.
 
     Use the `contextDestroyed` method to unregister your service instance from Eureka discovery service in the following format:
 
