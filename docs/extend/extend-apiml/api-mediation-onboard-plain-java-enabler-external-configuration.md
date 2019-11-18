@@ -1,74 +1,80 @@
 # API Mediation Layer onboarding configuration
 
+As a service developer, you can provide basic configuration of a service and externalize the configuration parameters values for subsequent customization by a systems administrator. This article describes the process of configuring a REST service for onboarding with the API Mediaiton Layer by using the API ML Plain Java Enabler.
+
 ## Introduction
 
-API ML Plain Java Enabler (_PJE_ in short) is a library which helps to simplify the process of onboarding a REST service. 
-This article describes how to provide and externalize the ZOWE API ML onboarding configuration of your REST service using API ML Plain Java Enabler (_PJE_ in short). 
+The API ML Plain Java Enabler (_PJE_) is a library which helps to simplify the process of onboarding a REST service. 
+This article describes how to provide and externalize the ZOWE API ML onboarding configuration of your REST service using the (_PJE_). 
 
-It does not however discuss the meaning and the possible values of individual configuration parameters. 
-For more information about the service registration process and configuration parameters refer to the documentation specific for the onboarding approach you´ve chosen for your project:
+**Note:** For more information about the meaning and the possible values of individual configuration parameters and the service registration process and configuration parameters, refer to the specific documentation for the onboarding approach you are using for your project:
 
  * [Direct REST call registration (No enabler)](TODO@PZA: provide the link)
  * [Plain Java Enable](TODO@PZA: provide the link)
  * [Spring Enabler](TODO@PZA: provide the link)
 
+The (_PJE_) is the most universal ZOWE API ML enabler. This enabler uses only Java and does not use advanced IoC/DI technologies.
+The _PJE_ can be used to onboard any REST service implemented in Java, avoiding dependency or versions collisions, unexpected application behaviour, and unnecessarily large service executables.
 
-Our Plain Java Enabler (_PJE_) is the most universal ZOWE API ML enabler. It is written using only Java and without advanced IoC/DI technologies.
-The _PJE_ can be used to onboard any REST service implemented in Java, avoiding dependency or versions collisions, unexpected application behaviour and unnecessarily large service executables.
+Service developers provide onboarding configuration as part of the service source code. While this configuration is valid for the development system environment, it is likely to be different for an automated integration environment. System administrators very likely need to deploy a service on multiple sites that have different system environments and requirements such as security.
 
-The service developers need to provide onboarding configuration as part of the service source code. This configuration is valid for the development system environment, but most probably will be different for an automated integration environment. 
-System administrators (aka deployers) need to deploy a service on multiple sites having different system environments and requirements e.g security.
+_PJE_ supports both the service developer and the system administrator with the functionality of externalizing the service onboarding configuration. 
 
-_PJE_ supports service developer and deployer with functionality for externalizing the service onboarding configuration.
+The _PJE_ provides a mechanism for loading API ML onboarding service configuration from a _YAML_ file.
 
-The _PJE_ provides mechanism for loading API ML onboarding service configuration from a YAML file. It allows to provide one or two files. 
+## Using _YAML_ configuration files to externalize service configuration
 
-The first file is usually internal to the service deployment artifact or at minimum must be accessible on the service classpath. 
-It contains basic API ML configuration based on values known at development time. Typically it is provided by the service developer 
-and is located in the /resources folder of java project source tree. It usually can be found in the deployment artifact under /WEB-ING/classes.
+  
+<font color = "red"> It seems that some of this is redundant with the next section "Configuring REST service for API ML onboarding" </font>
 
-The second configuration file is used to externalize the configuration. It can be placed anywhere, provided that the service has access to that location. 
-It is usualy populated by the system administrator with values dependent on the deployment system environment. 
+Externalization of configuration can be performed by providing one or two configuration files. 
+
+The first configuration file is typically internal to the service deployment artifact. At a minimum this file must be accessible on the service `classpath`. 
+This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-ING/classes`.
+
+The second configuration file is used to externalize the configuration. It can be placed anywhere, so long as that the service has access to that location. This file is usually populated by the system administrator with values dependent on the deployment system environment. 
 
 At service boot time, both configurations are merged, where the externalized configuration (if provided) has higher priority.
 
 The values of the properties contined in both configuration files can be overwritten by Java system properties.
-
-Read bellow to learn how to provide basic configuration and how to externalize the configuration parameters values depending on the API ML onboarding approach used.  
+ 
 
 ## Configuring REST service for API ML onboarding
-  
-Typically the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
-Additionally, security material such as certificates, private/public keys, and their corresponding passwords depends on the concrete deployment environment, and are not intended to be disclosed to everyone.
+
+Typically, the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
+Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the concrete deployment environment, and are not intended to be disclosed to everyone.
 Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading two file sources:
 
 * **internal _service-configuration.yml_** 
 
-   A file which is loaded by the enabler as a Java resource. This file must be stored on the _classpath_ of the user service application. It is usually placed in the `WEB_INF/resources` folder of the `service _JAR_/_WAR_`.
-The configuration contained in this file is provided by the service developer/builder. As such, it will not match every possible production environment and its corresponding requirements.
+   A file which is loaded by the enabler as a Java resource. This file must be stored on the _classpath_ of the user service application. This file is usually placed in the `WEB_INF/resources` folder of the `service _JAR_/_WAR_`. The configuration contained in this file is provided by the service developer/builder. As such, it will not match every possible production environment and its corresponding requirements.
 
 * **external or additional _service-configuration.yml_**
 
-   A file which can be stored anywhere on the local file system. It is provided by the service deployer/system administrator and contains the correct values for the given production environment and corresponding requirements.    
+   A file which can be stored anywhere on the local file system. This file is provided by the service deployer/system administrator and contains the correct values for the given production environment and corresponding requirements.    
  
-Additionally, the values of parameters in both files can be rewritten and patched by Java system properties defined during service installation/configuration, or at start-up time. 
+The values of parameters in both files can be rewritten and patched by Java system properties defined during service installation/configuration, or at start-up time. 
 In the _YAML_ file, we use standard rewriting placeholders for the values of parameters in the following format:
 
 `${apiml.parameter.key}`
  
-The actual values are taken from [key, value] pairs defined as Java System properties. They can be provided directly on a command line or set in the Java Servlet context. 
+The actual values are taken from [key, value] pairs defined as Java System properties. These values can be provided directly on a command line or set in the Java Servlet context. 
 The concrete approach of how to provide the Servlet context to the user service application depends on the application loading mechanism and the concrete Java servlet container environment. 
-For example, if the user service is deployed in a Tomcat servlet container, we can configure the context by placing a _xml_ file 
-named the same as the application deployment directory into the _$CATALINA_BASE/conf/[enginename]/[hostname]/_. Other containers provide different mechanisms for the same purpose.        
+For example, if the user service is deployed in a Tomcat servlet container, we can configure the context by placing an _xml_ file with the same name
+as the application deployment directory into the _$CATALINA_BASE/conf/[enginename]/[hostname]/_. Other containers provide different mechanisms for the same purpose.        
 
 ## _PJE_ helper code
 
-  * Automatic initialization of the onboarding configuration by single method call.  
+<font color = "red"> Provide a description of what _PJE_ helper code is</font>
+
+  * Automatic initialization of the onboarding configuration by a single method call.  
        
         public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
 
-    This method receives `ServletContext` parameter which holds a map of parameters providing all necessary information for building the onboarding configuration.
-    An example of Java Servlet context configuration is shown bellow:
+    This method receives the `ServletContext` parameter which holds a map of parameters providing all necessary information for building the onboarding configuration.
+    The following code block is an example of Java Servlet context configuration.
+
+    **Example:**
   
       <Context>
          
@@ -93,82 +99,110 @@ named the same as the application deployment directory into the _$CATALINA_BASE/
           
       </Context>
    
-    The most important parameters are `apiml.config.location` and `apiml.config.additional-location` which provide basic and external configuration file location respectively.   
-
-    The method will use the provided configuration file names and attempt to load them as YAML files into internal Java configuration object of type _ApiMediationServiceConfig_.
+    Where the two parameters corresponding to the location of the configuration files are:
     
-    The other context parameters prefixed with "apiml." are copied to the application Java System Properties.
+      * `apiml.config.location`
 
-    After successfully loading a configuration file the loading method _loadConfiguration_ (see bellow) will use Java System properties to substitute corresponding configuration properties. 
-  
-  * Loading a single YAML configuration file
-  
-    If higher flexibility is needed and / or the configuration location is provided differently than by servlet context parameters,
-    use the following method to load a single configuration file.  
-  
-        public ApiMediationServiceConfig loadConfiguration(String configurationFileName);  
-  
-    This method receives single _String_ parameter. 
-    The method and can be used for loading internal or external configuration file. It first tries to load the configuration as Java resource.
-    If the file is not found, the method will try to resolve the file name as an absolute and finally as relative path.
-    
-    If the file is found, the method will load its contents and map them to internal data classes. 
-  
-    After loading the configuration file, the method will attempt to substitute/rewrite configuration property values with corresponding Java System properties.   
+         This parameter describes the location of the basic configuration file.
+      * `apiml.config.additional-location`
 
-  * Loading and merging both YAML configuration files
-  
-  Similarly to loading single configuration file we provide method for loading and merging both configuration files. 
+         This parameter describes the location of the external configuration file.
     
-        public ApiMediationServiceConfig loadConfiguration(String internalConfigurationFileName, String externalizedConfigurationFileName)
-        
-    Use this method to load and merge both YAML files. The first method parameter provides the basic configuration file name and the second parameter is for the external configuration file.
-    The external configuration file takes precedence over teh basic one in order to match the target deployment environment.
+    The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
+    
+    The other context parameters with the _apiml_ prefix are copied to the application Java System Properties.
+
+ ## Loading _YAML_ configuration files
+    
+<font color = "red"> Can this sentence be moved after the descriptions of single and multiple config file loading methods? </font> 
+
+After successfully loading a configuration file, the loading method _loadConfiguration_ uses Java System properties to substitute corresponding configuration properties. _loadConfiguration_ is described in detail in this article.
+  
+_YAML_ configuration files can be loaded either as a a single file, or by merging two files. Use the method corresponding to the needs of your service.
+
+
+### Loading a single YAML configuration file
+  
+If higher flexibility is needed and / or the configuration location is provided differently than by servlet context parameters, use the following method to load a single configuration file:  
+
+<font color = "red"> What if higher flexibility is not needed? </font> 
+  
+```
+public ApiMediationServiceConfig loadConfiguration(String configurationFileName);  
+```
+  
+This method receives single _String_ parameter and can be used to load an internal or external configuration file. Initially, this method tries to load the configuration as Java resource.
+If the file is not found, the method will try to resolve the file name as an absolute, and finally as a relative path.
+    
+If the file is found, the method loads its contents and maps them to internal data classes. 
+  
+After loading the configuration file, the method will attempt to substitute/rewrite configuration property values with corresponding Java System properties.   
+
+### Loading and merging both YAML configuration files
+  
+To load and merge two configuration files, use the following method:
+   ```
+   public ApiMediationServiceConfig loadConfiguration(String internalConfigurationFileName, String externalizedConfigurationFileName)
+   ```     
+Where:
+
+*  **String internalConfigurationFileName**
+
+   references the basic configuration file name 
+   
+* **String externalizedConfigurationFileName**
+
+   references the external configuration file.
+
+   **Note:**  The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
     After loading and before merging, each configuration will be separately patched using Java System properties.
           
   
-  Example Loading and merging on-boarding configuration from _YAML_ files
-  
+The following code block presents an example of how to load and merge onboarding configuration from _YAML_ files.
 
-        public class ApiDiscoveryListener implements ServletContextListener {
+**Example:**
+
+<font color = "red">Check the formatting of this code block:</font>
+
+      public class ApiDiscoveryListener implements ServletContextListener {
         
-            /**
-             * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
-             */
-            private ApiMediationClient apiMediationClient;
+      /**
+       * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
+       */
+      private ApiMediationClient apiMediationClient;
         
-            /**
-             *  Creates {@link ApiMediationServiceConfig}
-             *  Creates and initializes {@link ApiMediationClient} instance, which is then used to register this service
-             *  with API ML discovery service. The registration method of ApiMediationClientImpl catches all RuntimeExceptions
-             *  and only can throw {@link ServiceDefinitionException} checked exception.
-             *
-             * @param sce
-             */
-            @Override
-            public void contextInitialized(ServletContextEvent sce) {
+      /**
+         *  Creates {@link ApiMediationServiceConfig}
+         *  Creates and initializes {@link ApiMediationClient} instance, which is then used to register this service
+         *  with API ML discovery service. The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+         *  and only can throw {@link ServiceDefinitionException} checked exception.
+         *
+         * @param sce
+         */
+         @Override
+         public void contextInitialized(ServletContextEvent sce) {
         
-                ServletContext context = sce.getServletContext();
+            ServletContext context = sce.getServletContext();
         
-                /*
-                 * Call loadConfiguration method with both config file names initialized above.
-                 */
-                ApiMediationServiceConfig defaultConfig = new ApiMediationServiceConfigReader().initializeAPIMLConfiguration(context);
+            /*
+            * Call loadConfiguration method with both config file names initialized  above.
+            */
+            ApiMediationServiceConfig defaultConfig = new ApiMediationServiceConfigReader().initializeAPIMLConfiguration(context);
         
-                /*
-                 * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery service.
-                 */
-                apiMediationClient = new ApiMediationClientImpl();
+            /*
+            * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery service.
+            */
+            apiMediationClient = new ApiMediationClientImpl();
         
-                /*
-                 * Call the {@link ApiMediationClient} instance to register your REST service with API ML Discovery service.
-                 */
-                try {
-                    apiMediationClient.register(defaultConfig);
-                } catch (ServiceDefinitionException sde) {
-                    log.error("Service configuration failed. Check log for previous errors: ", sde);
-                }
+            /*
+            * Call the {@link ApiMediationClient} instance to register your REST service with API ML Discovery service.
+            */
+            try {
+               apiMediationClient.register(defaultConfig);
+            } catch (ServiceDefinitionException sde) {
+               log.error("Service configuration failed. Check log for previous errors: ", sde);
             }
+         }
         
             /**
              * If apiMediationClient is not null, attmpts to unregister this service from API ML registry.
