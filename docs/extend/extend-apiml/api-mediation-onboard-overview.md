@@ -14,6 +14,20 @@ The following diagram shows the relations between various types of services, the
 ![REST API Components](../../user-guide/api-mediation/diagrams/rest-api-components.svg)
 
 
+------- CUT HERE --------
+TODO-PZA: find the right place 
+
+ZOWE API ML onboarding enablers are libraries used to simplify the process of user REST services registration with API ML Discovery service.
+
+API ML onboarding enablers provide functionality for loading a service onboarding configuration, and registering and unregistering the service by calling the respective API ML Discovery service end points.
+
+The enablers are distributed as a _JAR_ binary files from the ZOWE artifactory [GIZA](https://gizaartifactory.jfrog.io).
+
+Currently, API ML provides several onboarding enablers written in Java. It is possible, however, to provide enablers for other programming languages if there is sufficient demand.
+------- CUT HERE --------
+
+
+
 ## Sample REST API Service
 
 In microservice architecture, a web server usually provides a single service. A typical example of a single service implementation is a Spring Boot web application. 
