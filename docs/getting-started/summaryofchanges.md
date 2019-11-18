@@ -24,19 +24,39 @@ Zowe Version 1.7.0 and later releases include the following enhancements, releas
 The following features and enhancements were added.
 
 #### API Mediation Layer
-- 
-- 
+
+- Cleanup Gateway dependency logs ([#413](https://github.com/zowe/api-layer/pull/413))
+- Cleanup Gateway - our code ([#417](https://github.com/zowe/api-layer/pull/417))
+- Cleanup Discovery Service dependency logs ([#403](https://github.com/zowe/api-layer/pull/403))
+- Cleanup Discovery Service - our code ([#407](https://github.com/zowe/api-layer/pull/407))
+- External option to activate DEBUG mode for APIML ([#410](https://github.com/zowe/api-layer/pull/410)) 
 
 #### Zowe App Server
 
-- Introduced the "SJ" feature to the JES Explorer application ([#282](https://github.com/zowe/zlux/issues/282))
+- Introduced the "SJ" feature to the JES Explorer application ([#282](https://github.com/zowe/zlux/issues/282))  
   
-  You can now right-click a job label and "Get JCL" to retrieve the JCL used to submit the job, this JCL can then be edited and resubmitted.
+  You can now right-click a job label and click "Get JCL" to retrieve the JCL used to submit the job.  This JCL can then be edited and resubmitted.
 
   <img src="../images/releasenotes/v17-sjdemo.gif" alt="SJ Demo" width="550px"/>
-- 
 
-#### Zowe CLI
+- File Explorer now offers a right click Delete option for files and folders ([#43](https://github.com/zowe/zlux-file-explorer/pull/43))
+- Prevented creation/deletion of files and folders queued for deletion. ([#48](https://github.com/zowe/zlux-file-explorer/pull/48))
+- Updated back-end API to give more accurate delete responses. ([#93](https://github.com/zowe/zss/pull/93))
+- IFrame adapter: added support for plugin definition, logger, and launch metadata. ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
+- IFrame app-to-app communication support ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
+- Removed unnecessary warning suppression ([#23](https://github.com/zowe/zlux-shared/pull/23))
+- Dispatcher always sends message, even when context doesn't exist ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
+- Support constructor injectibles via Iframe adapter ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
+- Browser tab for the desktop now includes opened app name. ([#175](https://github.com/zowe/zlux-app-manager/pull/175))
+- File Explorer now offers a right click file and folder Properties menu. ([#180](https://github.com/zowe/zlux/issues/180))
+- File Explorer now offers a right click dataset Properties menu. ([#49](https://github.com/zowe/zlux-file-explorer/pull/49))
+- Made it possible to specify config properties via command line arguments for the App server. ([#81](https://github.com/zowe/zlux-app-server/pull/81))
+- Allow override of configuration attributes using a -D argument syntax. ([#154](https://github.com/zowe/zlux-server-framework/pull/154))
+- Allow specifying environment variables that can be interpreted as JSON structures. ([#156](https://github.com/zowe/zlux-server-framework/pull/156))
+
+#### Zowe Explorer (Extension for VSCode)
+
+- The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
 - The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
 
 ### Bug fixes
@@ -44,15 +64,15 @@ The following features and enhancements were added.
 The following bugs were fixed.
 
 #### API Mediation Layer
-- 
-- 
+ 
+Fixed a typo in Gateway startup script. ([#427](https://github.com/zowe/api-layer/pull/427))
 
 #### Zowe App Server
-- 
-- 
+
+Fixed notification click, time stamp, inconsistent notification manager pop up clicks, empty notification bubbles, and safari issue. ([#171](https://github.com/zowe/zlux-app-manager/pull/171B))
 
 #### Zowe CLI
-- This version of Zowe CLI contains various bug fixes that address vulnerabilities.
+This version of Zowe CLI contains various bug fixes that address vulnerabilities.
   
 ## Version 1.6.0 (October 2019)
 
