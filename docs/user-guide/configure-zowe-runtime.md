@@ -804,12 +804,12 @@ Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the
 To start the ZOWESVR PROC, run the `zowe-start.sh` script at the Unix Systems Services command prompt:
 
 ```
-cd $ZOWE_ROOT_DIR/scripts
+cd $ZOWE_INSTANCE_DIR/bin
 ./zowe-start.sh
 ```
 where:
 
-_$ZOWE_ROOT_DIR_ is the directory where you installed the Zowe runtime. This script starts the ZOWESVR PROC for you so you do not have to log on to TSO and use SDSF.
+_$ZOWE_INSTANCE_DIR_ is the directory where you set the instance directory to. This script starts the ZOWESVR PROC for you so you do not have to log on to TSO and use SDSF.
 
 If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following operator command in SDSF:
 
@@ -820,7 +820,7 @@ If you prefer to use SDSF to start Zowe, start ZOWESVR by issuing the following 
 By default, Zowe uses the runtime version that you most recently installed. To start a different runtime, specify its server path on the START command:
 
 ```
-/S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+/S ZOWESVR,INSTANCE='$ZOWE_INSTANCE_DIR'
 ```
 
 To test whether the API Mediation Layer is active, open the URL: `https://<hostname>:7554`.
@@ -834,7 +834,7 @@ The port number 7554 is the default API Gateway port and the port number 8554 is
 To stop the ZOWESVR PROC, run the `zowe-stop.sh` script at the Unix Systems Services command prompt:
 
 ```
-cd $ZOWE_ROOT_DIR/scripts
+cd $ZOWE_INSTANCE_DIR/bin
 ./zowe-stop.sh
 ```
 
