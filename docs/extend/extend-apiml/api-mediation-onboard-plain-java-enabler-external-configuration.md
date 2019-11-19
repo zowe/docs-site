@@ -5,18 +5,18 @@ As a service developer, you can provide basic configuration of a service and ext
 ## Introduction
 
 The API ML Plain Java Enabler (_PJE_) is a library which helps to simplify the process of onboarding a REST service. 
-This article describes how to provide and externalize the ZOWE API ML onboarding configuration of your REST service using the (_PJE_). 
+This article describes how to provide and externalize the ZOWE API ML onboarding configuration of your REST service using the _PJE_. 
 
-**Note:** For more information about the meaning and the possible values of individual configuration parameters and the service registration process and configuration parameters, refer to the specific documentation for the onboarding approach you are using for your project:
+**Note:** For more information about individual configuration parameters and  the their possible values and the service registration process, see the specific documentation for the onboarding approach you are using for your project:
 
  * [Direct REST call registration (No enabler)](TODO@PZA: provide the link)
  * [Plain Java Enable](TODO@PZA: provide the link)
  * [Spring Enabler](TODO@PZA: provide the link)
 
-The (_PJE_) is the most universal ZOWE API ML enabler. This enabler uses only Java and does not use advanced IoC/DI technologies.
-The _PJE_ can be used to onboard any REST service implemented in Java, avoiding dependency or versions collisions, unexpected application behaviour, and unnecessarily large service executables.
+The _PJE_ is the most universal ZOWE API ML enabler. This enabler uses only Java and does not use advanced IoC/DI technologies.
+The _PJE_ can be used to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behaviour, and unnecessarily large service executables.
 
-Service developers provide onboarding configuration as part of the service source code. While this configuration is valid for the development system environment, it is likely to be different for an automated integration environment. System administrators very likely need to deploy a service on multiple sites that have different system environments and requirements such as security.
+Service developers provide onboarding configuration as part of the service source code. While this configuration is valid for the development system environment, it is likely to be different for an automated integration environment. Typically, system administrators need to deploy a service on multiple sites that have different system environments and requirements such as security.
 
 _PJE_ supports both the service developer and the system administrator with the functionality of externalizing the service onboarding configuration. 
 
@@ -24,7 +24,7 @@ The _PJE_ provides a mechanism for loading API ML onboarding service configurati
 
 ## Configuring REST service for API ML onboarding
 
-Typically, the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
+In most cases the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
 Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the concrete deployment environment, and are not intended to be disclosed to everyone.
 Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
 
@@ -53,7 +53,10 @@ as the application deployment directory into the _$CATALINA_BASE/conf/[enginenam
 
 ## _Plain Java Enabler service onboarding API
 
-In this section you can find information how to initialize your service onboarding configuration using different methods of the Plain Java Enabler class ApiMediationServiceConfigReader: 
+You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`: 
+
+<font color = "red"> We need to list the different methods to initialize your service. Currently there is only one bullet. WHat are the other initialization methods? </font>
+
 
   * Automatic initialization of the onboarding configuration by a single method call.  
        
@@ -106,7 +109,7 @@ _YAML_ configuration files can be loaded either as a a single file, or by mergin
 
 After successfully loading a configuration file, the loading method _loadConfiguration_ uses Java System properties to substitute corresponding configuration properties. _loadConfiguration_ is described in detail in this article.
 
-### Loading a single YAML configuration file
+### Loading a single _YAML_ configuration file
   
 If you need to build your configuration in different way from multiple sources you can load a single configuration file, 
 then rewrite any parameters as needed using values from another configuration source.   
@@ -124,7 +127,7 @@ If the file is found, the method loads its contents and maps them to internal da
   
 After loading the configuration file, the method will attempt to substitute/rewrite configuration property values with corresponding Java System properties.   
 
-### Loading and merging both YAML configuration files
+### Loading and merging two _YAML_ configuration files
   
 To load and merge two configuration files, use the following method:
    ```
