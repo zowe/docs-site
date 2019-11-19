@@ -9,7 +9,7 @@ ZOWE API ML is a lightweight API management system based on the following Netfli
 * Zuul - reverse proxy / API Gateway
 * Ribbon - load ballancer
 
- We recommend you to onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration settings in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two in combination makes the result state of the discovery registry unpredictable.
+ We recommend that you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration settings in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
   For instructions about how to utilize other API ML enablers types, see the following links: 
@@ -52,7 +52,7 @@ The following steps outline the process of onboarding your REST service with the
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML discovery service over TLS v1.2 secured connection.
 
-Note: It is presumed that your REST service will be deployed on z/OS environment. Nevertheless this is not required.
+Note: It is presumed that your REST service will be deployed on a z/OS environment. However, this is not required.
 
 ## Configuring your project
 
@@ -209,7 +209,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
 
 The on-boarding configuration parameters belong to one of the following groups:
 
-- [Service identification](rest-service-identification) 
+- [REST service identification](rest-service-identification) 
 - [Administrative endpoints](administrative-endpoints)
 - [API info](api-info)
 - [API routing information](api-routing-information)
@@ -224,7 +224,8 @@ The on-boarding configuration parameters belong to one of the following groups:
     The `serviceId` uniquely identifies instances of a microservice in the API ML.
     The service developer specifies a default serviceId during the design of the service. 
     If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
-    (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
+
+    **Note:** For more information, see [externalizing API ML REST service configuration](#api-mediation-onboard-enabler-external-configuration.md). 
     
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
@@ -361,7 +362,7 @@ where:
      We recommend that you use your organization as the prefix.
 
 
-* **  apiInfo.version** 
+* **apiInfo.version** 
 
     specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
     
@@ -466,15 +467,14 @@ The following code block is an example of configuration of a service tile in the
 
 ### API Security 
 
-REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, they are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
+REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, REST services are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
 These two roles have different requirements. 
-While ZOWE API ML discovery service communicates with its clients in secure https mode and because of that requires a TLS (aka SSL) configuration setup, when in a service is in server role,
-it is up to the system administrator to decide if the service willcommunicate with its clients securely or not.
+ZOWE API ML discovery service communicates with its clients in secure https mode. As such, TLS (aka SSL) configuration setup is required when in a service is in server role. In this case, the system administrator decides if the service will communicate with its clients securely or not.
 
-Client services need to configure several TLS/SSL parameters in order to be able to communicate with API ML discovery service.
-When an enabler is used to on-board the service, the configuration is provided in `ssl` section/group in the same YAML file used to configure the Eureka paramaters and the service metadata. 
+Client services need to configure several TLS/SSL parameters in order to be able to communicate with the API ML Discovery service.
+When an enabler is used to onboard the service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka paramaters and the service metadata. 
 
-For more information about API ML security. please follow this link: [API ML security](#api-mediation-security.md)
+For more information about API ML security see the following link: [API ML security](#api-mediation-security.md)
 
 The tls/ssl configuration consists of the following parameters:
 
@@ -642,14 +642,15 @@ The following steps outline the process of registering your service with API ML:
 
 ### Periodic heartbeat (call) to the API ML Discovery Service
 
-Eureka clients must renew their registration lease by sending heartbeats to Eureka discovery service. 
+Eureka clients must renew their registration lease by sending heartbeats to the Eureka discovery service. 
 The lease renewal heartbeat informs the Eureka server that the instance is still alive. 
-If the server hasn't receive a renewal for 90 seconds, it removes the instance from its registry. 
-API ML discoverable services benefit from automatic heartbeats send by the EurekaClient instance, integrated in the API ML enabler.
-The EurekaClient sends a heartbeat every 30 seconds (configurable). 
-It is advisable not to change the renewal interval since the server uses that information to determine if there is a wide spread problem with the client to server communication.
+If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
+API ML discoverable services benefit from automatic heartbeats sent by the EurekaClient instance, integrated in the API ML enabler. <font color = "red"> How do API ML discoverable services benefit? </font>
 
-**Note:** We recommend that the interval for the heartbeat is no longer than 30 seconds.
+**Note:**
+
+The default interval of the EurekaClient heartbeat is one evry 30 seconds.
+This is a configurable setting, however, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with the client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
 
 The heartbeat is issued by EurekaClient using `PUT` HTTP method in the following format:
 
