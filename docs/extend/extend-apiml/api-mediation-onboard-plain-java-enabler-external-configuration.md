@@ -55,10 +55,7 @@ as the application deployment directory into the _$CATALINA_BASE/conf/[enginenam
 
 You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`: 
 
-<font color = "red"> We need to list the different methods to initialize your service. Currently there is only one bullet. WHat are the other initialization methods? </font>
-
-
-  * Automatic initialization of the onboarding configuration by a single method call.  
+### Automatic initialization of the onboarding configuration by a single method call.  
        
         public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
 
