@@ -1,6 +1,6 @@
 # API Mediation Layer onboarding configuration
 
-As a service developer, you can provide basic configuration of a service and externalize the configuration parameters values for subsequent customization by a systems administrator. This article describes the process of configuring a REST service for onboarding with the API Mediaiton Layer by using the API ML Plain Java Enabler..
+As a service developer, you can provide basic configuration of a service and externalize the configuration parameters values for subsequent customization by a systems administrator. This article describes the process of configuring a REST service for onboarding with the API Mediaiton Layer by using the API ML Plain Java Enabler.
 
 ## Introduction
 
