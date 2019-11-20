@@ -192,7 +192,7 @@ where:
      This results in the URL:  
     `${baseUrl}/application/info` 
 
-* **healthCheckRelativeUrl** (XML Path: /instance/healthCheckUrl)
+* **healthCheckRelativeUrl** (_XML_ Path: `/instance/healthCheckUrl`)
     
     specifies the relative path to the health check endpoint of your service. 
     
@@ -286,11 +286,11 @@ routes:
 
 * **routes.gatewayUrl** (_XML_ Path: `/instance/metadata/apiml.routes.${route-prefix}.gatewayUrl`)
         
-    specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
+    specifies the portion of the gateway URL which is replaced by the `serviceUrl` path part.
 
 * **routes.serviceUrl** (_XML_ Path: `/instance/metadata/apiml.routes.${route-prefix}.serviceUrl`)
         
-   specifies the portion of the service instance URL path which replaces the `gatewayUrl`<font color="red"> This definition should be clarified.</font>
+   specifies the portion of the service instance URL path which replaces the `gatewayUrl`.<font color="red"> This definition should be clarified. Perhaps an example that shows the relationship between the gatewayUrl and serviceUrl should be added here.</font>
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when _XML_ configuration is used.
