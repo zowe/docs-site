@@ -4,8 +4,7 @@ Before you use Zowe&trade; CLI plug-ins, complete the following steps:
 
 1. Install [Zowe CLI](cli-installcli.md) on your computer.
 2. Complete the following configurations:
-
-
+   
 | Plug-in | Required Configurations |
 | --- | --- |
 | [IBM CICS Plug-in for Zowe CLI](cli-cicsplugin.md) | <ul><li>Ensure that [IBM CICS Transaction Server v5.2 or later](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) is installed and running in your mainframe environment</li><li>[IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.</li></ul> | 
