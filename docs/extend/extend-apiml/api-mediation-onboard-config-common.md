@@ -44,7 +44,7 @@ Similarly, the API ML Catalog uses the parameters from the `catalog` group to di
   - [On-boarding overview of API services](#api-mediation-onboard-overview)
   - [On-boarding without enabler](#api-mediation-onboard-rest-service-direct-eureka-call)
   - [On-boarding with plain java enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler)
-  - [TODO: On-boarding a with spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
+  - [TODO: On-boarding with a spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
     
   
  **Note:** We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly.
@@ -53,9 +53,9 @@ This approach is unnecessarily complex and time-consuming. We recommend that you
  While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects which depend on SpringCloud Netflix components. 
  While Eureka's final configuration of a discoverable service is the same regardless of the method that is used, configuration settings for the API ML enablers and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
-## Configuring your REST service for on-boarding on API ML discovery service
+## Configuring your REST service for onboarding with the API ML Discovery service
 
-In the following sections we identify the parameters by their _YAML_ notation using '.' convention. Additionally, the corresponding _XML_ path is provided in parentheses.
+In the following sections we identify the parameters by their _YAML_ notation using the dot `.` convention. Additionally, the corresponding _XML_ path is provided in parentheses.
 
 The configuration parameters belong to one of the following groups:
 
@@ -69,13 +69,13 @@ The configuration parameters belong to one of the following groups:
 
 ### REST service identification
 
-* **serviceId** (XML Path: /instance/app)
+* **serviceId** (_XML_ Path: `/instance/app`)
     
-    Uniquely identifies instances of a microservice in the API ML.
-    The service developer specifies a default value during the design of the service.
+    This parameter uniquely identifies instances of a microservice in the API ML. The service developer specifies a default value for the `serviceId` during the design of the service.
     
-    **Note:** (YAML only): If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
-    (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
+    **Note:** The `serviceId` applies to _YAML_ configuration only. If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
+    
+    For more information, see [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md). 
     
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
@@ -99,7 +99,7 @@ The configuration parameters belong to one of the following groups:
        ```
        http://gateway:port/api/v1/vantageprod1/endpoint1/...
        ```
-* **title** (XML Path: /instance/metadata/apiml.service.title)
+* **title** (_XML_ Path: `/instance/metadata/apiml.service.title`)
     
   This parameter specifies the human readable name of the API service instance. 
   
@@ -113,7 +113,7 @@ The configuration parameters belong to one of the following groups:
   **Tip:** We recommend that service developer provides a default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
-* **description** (XML Path: /instance/metadata/apiml.service.description)
+* **description** (_XML_ Path: `/instance/metadata/apiml.service.description`)
     
     This parameter specifies a short description of the API service.
     
@@ -148,12 +148,13 @@ where:
     - **ipAddr**: /instance/ipAddr
     - **port**: /instance/port
   
-    Additionally XML config contains following properties:
-      - **<securePort enabled="true">{port}</securePort>**
-      - **<vipAddress>{serviceId}</vipAddress>**
-      - **<secureVipAddress>{serviceId}</secureVipAddress>**
-      - **<instanceId>{instanceId}</instanceId>**
-      - **<dataCenterInfo><name>MyOwn</name></dataCenterInfo>**
+    Additionally _XML_ configuration contains following properties:
+
+    - **<securePort enabled="true">{port}</securePort>**
+    - **<vipAddress>{serviceId}</vipAddress>**
+    - **<secureVipAddress>{serviceId}</secureVipAddress>**
+    - **<instanceId>{instanceId}</instanceId>**
+    - **<dataCenterInfo><name>MyOwn</name></dataCenterInfo>**
 
        
     **Example in _YAML_:** 
@@ -164,7 +165,7 @@ where:
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
         
-* **homePageRelativeUrl** (XML Path: /instance/metadata/homePageUrl) 
+* **homePageRelativeUrl** (_XML_ Path: `/instance/metadata/homePageUrl`) 
     
     specifies the relative path to the home page of your service. The path should start with `/`.
     If your service has no home page, leave this parameter blank.
@@ -178,7 +179,7 @@ where:
         This service has a home page with URL `${baseUrl}/`
     
     
-* **statusPageRelativeUrl** (XML Path: /instance/statusPageUrl)
+* **statusPageRelativeUrl** (_XML_ Path: `/instance/statusPageUrl`)
     
     specifies the relative path to the status page of your service.
     
@@ -219,7 +220,7 @@ apiInfo:
 ```
 
 where:
-* **apiInfo.apiId** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.apiId)
+* **apiInfo.apiId** (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.apiId`)
 
     specifies the API identifier that is registered in the API ML installation.
         The API ID uniquely identifies the API in the API ML. 
@@ -239,20 +240,20 @@ where:
 TODO: Discuss this with PP and others.` </font>
 
 
-* **  apiInfo.version** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.version)
+* **apiInfo.version** (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.version`)
 
     specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
     
-* **apiInfo.gatewayUrl** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.gatewayUrl)
+* **apiInfo.gatewayUrl** (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.gatewayUrl`)
 
     specifies the base path at the API Gateway where the API is available. 
     Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
-* **apiInfo.swaggerUrl** (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.swaggerUrl)
+* **apiInfo.swaggerUrl** (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.swaggerUrl`)
 
     (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
-* **apiInfo.documentationUrl**  (XML Path: /instance/metadata/apiml.apiInfo.${api-index}.documentationUrl)
+* **apiInfo.documentationUrl**  (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.documentationUrl`)
 
     (Optional) specifies the link to the external documentation, if necessary. 
     A link to the external documentation can be included along with the Swagger documentation. 
@@ -279,17 +280,17 @@ routes:
 ```
    where:
 
-* **routes** (XML Path: /instance/metadata/apiml.routes...)
+* **routes** (_XML_ Path: `/instance/metadata/apiml.routes...`)
     
     specifies the container element for the routes.
 
-* **routes.gatewayUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.gatewayUrl)
+* **routes.gatewayUrl** (_XML_ Path: `/instance/metadata/apiml.routes.${route-prefix}.gatewayUrl`)
         
-    The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
+    specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
 
-* **routes.serviceUrl** (XML Path: /instance/metadata/apiml.routes.${route-prefix}.serviceUrl)
+* **routes.serviceUrl** (_XML_ Path: `/instance/metadata/apiml.routes.${route-prefix}.serviceUrl`)
         
-    The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl`<font color="red"> This definition should be clarified.</font>
+   specifies the portion of the service instance URL path which replaces the `gatewayUrl`<font color="red"> This definition should be clarified.</font>
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when _XML_ configuration is used.
@@ -317,7 +318,7 @@ The following code block is an example of configuration of a service tile in the
 
    where:
 
-* **catalog.tile.id** (XML Path: /instance/metadata/apiml.catalog.tile.id)
+* **catalog.tile.id** (_XML_ Path: `/instance/metadata/apiml.catalog.tile.id`)
     
     specifies the unique identifier for the product family of API services. 
     This is a value used by the API ML to group multiple API services together into tiles. 
@@ -325,16 +326,16 @@ The following code block is an example of configuration of a service tile in the
 
     **Tip:**  Specify a value that does not interfere with API services from other products.
     
-* **catalog.tile.title** (XML Path: /instance/metadata/apiml.catalog.tile.title)
+* **catalog.tile.title** (_XML_ Path: `/instance/metadata/apiml.catalog.tile.title`)
     
     specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-* **catalog.tile.description** (XML Path: /instance/metadata/apiml.catalog.tile.description)
+* **catalog.tile.description** (_XML_ Path: `/instance/metadata/apiml.catalog.tile.description`)
     
     specifies the detailed description of the API services product family. 
     This value is displayed in the API Catalog UI dashboard as the tile description.
     
-* **catalog.tile.version** (XML Path: /instance/metadata/apiml.catalog.tile.version)
+* **catalog.tile.version** (_XML_ Path: `/instance/metadata/apiml.catalog.tile.version`)
     
     specifies the semantic version of this API Catalog tile. 
 
@@ -356,7 +357,7 @@ When an API ML enabler is not used (_XML_ configuration),
 a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc.
 In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
 
-For more information see [API ML security](#api-mediation-security.md).
+For more information, see [API ML security](#api-mediation-security.md).
 
 The tls/ssl configuration consists of the following parameters:
 
@@ -397,7 +398,7 @@ The tls/ssl configuration consists of the following parameters:
 
     This paramenter specifies the truststore type. One of: PKCS12 default
 
-**Note:** You need to define both the keystore and the truststore even if your server is not using an HTTPS port.
+**Note:** Ensure that you define both the keystore and the truststore even if your server is not using an HTTPS port.
 
 ### Eureka discovery service
 
@@ -411,7 +412,7 @@ discoveryServiceUrls:
 ```
  where:      
 
-* **discoveryServiceUrls** (XML Path: N/A)
+* **discoveryServiceUrls** (_XML_ Path: N/A)
     
     specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
     It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.  
