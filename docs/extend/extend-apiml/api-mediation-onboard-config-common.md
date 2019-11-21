@@ -15,11 +15,11 @@ The configuration structure as well as the configuration format are different de
  If _XML_ configuration is used, the same parameter definition has the following format:
 
     <top-category>
-        <embed<<<ed-category-1>
+        <embed-category-1>
             <parameter-name> 
                 parameter-value
             </parameter-name>
-        </embeded-category-1>
+        </embed-category-1>
     </top-category>
 
 
@@ -163,7 +163,16 @@ where:
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
-        
+
+
+*  **serviceIpAddress** (_Optional_) (XML Path: TODO: )
+    The IP address of the service. Can be provided by system administrator in the externalized service configuration. 
+    If not present in the YAML/XML configuration file or not set as service context parameter, will be resolved from the hostname part of the baseUrl property using java.net.InetAddress capabilities.
+
+* **contextPath** (XML Path: TODO: /instance/contextPath)
+
+Can be part of serviceBaseUrl if service web context is not "/" (root context).
+           
 * **homePageRelativeUrl** (XML Path: /instance/metadata/homePageUrl) 
     
     specifies the relative path to the home page of your service. The path should start with `/`.
