@@ -7,6 +7,7 @@ Use commands in the `plugins` command group to install and manage Zowe&trade; CL
 You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
 - IBM® Db2® Plug-in for Zowe CLI
+- z/OS FTP Plug-in for Zowe CLI
 - [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
 
 Use either of the following methods to install plug-ins:
@@ -45,6 +46,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@brightside/cics@lts-incremental` |
     | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2@lts-incremental` |
+    | z/OS FTP Plug-in for Zowe CLI | `@brightside/zftp@lts-incremental` |
     |    |    |
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
@@ -105,6 +107,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     |---------|-----------------|
     | IBM CICS Plug-in for Zowe CLI | `cics.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2.tgz` |
+    | z/OS FTP Plug-in for Zowe CLI | `zftp.tgz` |
 
 You installed Zowe CLI plug-ins. 
 
@@ -127,6 +130,7 @@ zowe plugins validate [plugin]
     |-|-|
     |IBM CICS Plug-in for Zowe CLI|`@brightside/cics`|
     |IBM Db2 Plug-in for Zowe CLI|`@brightside/db2`|
+    |z/OS FTP Plug-in for Zowe CLI|`@brightside/zftp`|
     |||
 
 **Examples: Validate plug-ins**
@@ -203,6 +207,7 @@ The following table describes the uninstallation command synstax for each plug-i
  |---------|-----------------------------|
  | IBM CICS Plug-in for Zowe CLI | `@brightside/cics` |
  | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2` |
+ | z/OS FTP Plug-in for Zowe CLI |`@brightside/zftp` |
  |    |    |
 
 **Example:**
