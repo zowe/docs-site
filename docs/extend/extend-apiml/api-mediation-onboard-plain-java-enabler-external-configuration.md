@@ -9,8 +9,8 @@ This article describes how to provide and externalize the ZOWE API ML onboarding
 
 **Note:** For more information about individual configuration parameters and  the their possible values and the service registration process, see the specific documentation for the onboarding approach you are using for your project:
 
- * [Direct REST call registration (No enabler)](TODO@PZA: provide the link)
- * [Plain Java Enable](TODO@PZA: provide the link)
+ * [Direct REST call registration (No enabler)](#api-mediation-onboard-rest-service-direct-eureka-call.md)
+ * [Plain Java Enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
  * [Spring Enabler](TODO@PZA: provide the link)
 
 The _PJE_ is the most universal ZOWE API ML enabler. This enabler uses only Java and does not use advanced IoC/DI technologies.
