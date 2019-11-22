@@ -241,13 +241,10 @@ where:
        
      We recommend that you use your organization as the prefix.
 
- <font color="red"> FINDING: apiId is never set in metadata by the PJ enabler
-    Note: Currently this parameter is not stored in the `metadata` by the API ML enablers.
-    The MetadataParser is transferring it to an ApiInfo object, but it is never used though.
+ **Note:** Currently _apiId_ is not used in requests routing. The parameter is stored in the `metadata` by the API ML enablers.
+    The EurekaMetadataParser is transferring it to an ApiInfo object, but it is not used.
     My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service.
     
-TODO: Discuss this with PP and others.` </font>
-
 
 * **apiInfo.version** (_XML_ Path: `/instance/metadata/apiml.apiInfo.${api-index}.version`)
 
@@ -299,7 +296,30 @@ routes:
 
 * **routes.serviceUrl** (_XML_ Path: `/instance/metadata/apiml.routes.${route-prefix}.serviceUrl`)
         
-   specifies the portion of the service instance URL path which replaces the `gatewayUrl`.<font color="red"> This definition should be clarified. Perhaps an example that shows the relationship between the gatewayUrl and serviceUrl should be added here.</font>
+   specifies the portion of the service instance URL path which replaces the `gatewayUrl`.
+   
+**Example:**
+  
+  Lets suppose that we have a service with serviceId "helloworldservice" (not included in the routing metadata, because it is a part of the basic configuration),
+  If we define the following metadata routing configuration: 
+  
+        metadata-map:
+            routed-services:
+                uiv1:
+                    gateway-url: "ui/v1"
+                    service-url: "/helloworld"
+                apiv1:
+                    gateway-url: "api/v1"
+                    service-url: "/helloworld/v1"
+                apiv2:
+                    gateway-url: "api/v2"
+                    service-url: "/helloworld/v2"
+
+  , the following routing options will be available at the APIM GW for the "helloworldservice" service:
+  
+      * UI - https://gateway/ui/v1/helloworldservice will be routed to the https://hwServiceHost:port/helloworld/
+      * API major version 1 - https://gateway/api/v1/helloworldservice will be routed to https://hwServiceHost:port/helloworld/v1
+      * API major version 2 - https://gateway/api/v2/helloworldservice will be routed to https://hwServiceHost:port/helloworld/v2
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when _XML_ configuration is used.
@@ -353,18 +373,16 @@ The following code block is an example of configuration of a service tile in the
 
 
 ### API Security 
-<font color="red">Review this description for accuracy.</font>
+REST services onboarded on API ML act both as a client and as a server. These two roles may have different security requirements. 
 
-REST services onboarded on API ML act both as a client and as a server. When communicating to the API ML Discovery Service, the REST service operates as a client. However, when the API ML Gateway is routing requests to a service, the service operates as a server.
-These two roles have different requirements. 
+Secure TLS (aka SSL) configuration setup is required for communication to the ZOWE API ML Discovery Service as a REST client. When the service operates as a REST server it is possible to operate it in secure HTTPS or insecure HTTP mode.
 
-The ZOWE API ML Discovery Service can communicate with its clients in secure _https_ mode or non-secure _http_ mode. For sucure communication, TLS (aka SSL) configuration setup is required when the service operates as a server. The security requirements during communication between the service and the client is determined by the system administrator.     
+The environment specific security requirements for the service are determined and configured by the system administrator.
 
-Configuration is required on several TLS/SSL parameters on the client services  in order to communicate with API ML Discovery Service.
-When an enabler is used to onboard a service, the configuration is provided in an `ssl` section/group in the same _YAML_ file that used to configure the Eureka paramaters and the service metadata. 
-When an API ML enabler is not used (_XML_ configuration), 
-a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc.
-In this case, the security configuration must be provided directly to the REST client tool used to execute the call.
+When an enabler is used to onboard a service, the configuration is provided in an `ssl` section/group in the same _YAML_ file that used to configure the Eureka parameters and the service metadata. 
+
+When an API ML enabler is not used (direct REST call to API ML Discovery Service with a _XML_ configuration), a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc. 
+In this case, the security configuration must be provided directly to the REST client tool used to execute the call. 
 
 For more information, see [API ML security](#api-mediation-security.md).
 
