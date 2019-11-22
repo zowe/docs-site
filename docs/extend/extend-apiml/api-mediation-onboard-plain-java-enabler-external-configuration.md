@@ -39,7 +39,7 @@ Therefore, to provide a higher level of flexibility, the _PJE_ implements routin
    ***** The second configuration file is used to externalize the configuration. A file which can be stored anywhere on the local file system, as long as that the service has access to that location. 
    This file is provided by the service deployer/system administrator and contains the correct values for the given production environment and corresponding requirements.    
 
-At service boot time, both configurations are merged, where the externalized configuration (if provided) has higher priority.
+At service boot time, both configuration files are merged, where the externalized configuration (if provided) has higher priority.
 
 The values of parameters in both files can be rewritten and patched by Java system properties defined during service installation/configuration, or at start-up time. 
 In the _YAML_ file, we use standard rewriting placeholders for the values of parameters in the following format:
@@ -49,56 +49,58 @@ In the _YAML_ file, we use standard rewriting placeholders for the values of par
 The actual values are taken from [key, value] pairs defined as Java System properties. These values can be provided directly on a command line or set in the Java Servlet context. 
 The concrete approach of how to provide the Servlet context to the user service application depends on the application loading mechanism and the concrete Java servlet container environment. 
 For example, if the user service is deployed in a Tomcat servlet container, we can configure the context by placing an _xml_ file with the same name
-as the application deployment directory into the _$CATALINA_BASE/conf/[enginename]/[hostname]/_. Other containers provide different mechanisms for the same purpose.        
+as the application deployment directory into the `_$CATALINA_BASE/conf/[enginename]/[hostname]/_`. Other containers provide different mechanisms for the same purpose.        
 
-## _Plain Java Enabler service onboarding API
+## Plain Java Enabler service onboarding API
 
 You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`: 
 
 ### Automatic initialization of the onboarding configuration by a single method call.  
        
-        public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
+```
+public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
+```
 
-    This method receives the `ServletContext` parameter which holds a map of parameters providing all necessary information for building the onboarding configuration.
-    The following code block is an example of Java Servlet context configuration.
+This method receives the `ServletContext` parameter which holds a map of parameters providing all necessary information for building the onboarding configuration.
+The following code block is an example of Java Servlet context configuration.
 
-    **Example:**
+**Example:**
   
       <Context>
          
-          <Parameter name="apiml.config.location" value="/service-config.yml"/>
-          <!-- Relative path to configuration file:    
-              <Parameter name="apiml.config.additional-location" value="../conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" /> 
-          -->
-          <Parameter name="apiml.config.additional-location" value="/home/pin/bin/apache-tomcat-9.0.14/conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" />
+         <Parameter name="apiml.config.location" value="/service-config.yml"/>
+         <!-- Relative path to configuration file:    
+         <Parameter name="apiml.config.additional-location" value="../conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" /> 
+       -->
+         <Parameter name="apiml.config.additional-location" value="/home/pin/bin/apache-tomcat-9.0.14/conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" />
           
-          <Parameter name="apiml.serviceId" value="discopin" />
-          <Parameter name="apiml.serviceIpAddress" value="127.0.0.2" />
-          <Parameter name="apiml.discoveryService.hostname" value="localhost" />
-          <Parameter name="apiml.discoveryService.port" value="10011" />
+         <Parameter name="apiml.serviceId" value="discopin" />
+         <Parameter name="apiml.serviceIpAddress" value="127.0.0.2" />
+         <Parameter name="apiml.discoveryService.hostname" value="localhost" />
+         <Parameter name="apiml.discoveryService.port" value="10011" />
           
-          <Parameter name="apiml.ssl.enabled" value="true" />
-          <Parameter name="apiml.ssl.verifySslCertificatesOfServices" value="true" />
-          <Parameter name="apiml.ssl.keyPassword" value="password" />
-          <Parameter name="apiml.ssl.keystore.password" value="password" />
-          <Parameter name="apiml.ssl.truststore.password" value="password" />
-          <Parameter name="apiml.ssl.keystore" value="../keystore/localhost/localhost.truststore.p12" />
-          <Parameter name="apiml.ssl.truststore" value="../keystore/localhost/localhost.truststore.p12" />
+         <Parameter name="apiml.ssl.enabled" value="true" />
+         <Parameter name="apiml.ssl.verifySslCertificatesOfServices" value="true" />
+         <Parameter name="apiml.ssl.keyPassword" value="password" />
+         <Parameter name="apiml.ssl.keystore.password" value="password" />
+         <Parameter name="apiml.ssl.truststore.password" value="password" />
+         <Parameter name="apiml.ssl.keystore" value="../keystore/localhost/localhost.truststore.p12" />
+         <Parameter name="apiml.ssl.truststore" value="../keystore/localhost/localhost.truststore.p12" />
           
       </Context>
    
-    Where the two parameters corresponding to the location of the configuration files are:
+   Where the two parameters corresponding to the location of the configuration files are:
     
-      * `apiml.config.location`
+   * `apiml.config.location`
 
-         This parameter describes the location of the basic configuration file.
-      * `apiml.config.additional-location`
+      This parameter describes the location of the basic configuration file.
+   * `apiml.config.additional-location`
 
-         This parameter describes the location of the external configuration file.
+      This parameter describes the location of the external configuration file.
     
-    The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
+   The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
     
-    The other context parameters with the _apiml_ prefix are copied to the application Java System Properties.
+   The other context parameters with the _apiml_ prefix are copied to the application Java System Properties.
 
  ## Loading _YAML_ configuration files
     
