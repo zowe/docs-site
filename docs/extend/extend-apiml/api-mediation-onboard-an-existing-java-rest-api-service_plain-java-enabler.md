@@ -644,8 +644,9 @@ The following steps outline the process of registering your service with API ML:
 
 Eureka clients must renew their registration lease by sending heartbeats to the Eureka discovery service. 
 The lease renewal heartbeat informs the Eureka server that the instance is still alive. 
+API ML discoverable services benefit from automatic heartbeats sent by the EurekaClient instance, 
+integrated in the API ML enabler. The EureakaClient sends a heartbeat request to EurekaServer every 30 sec by default.
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
-API ML discoverable services benefit from automatic heartbeats sent by the EurekaClient instance, integrated in the API ML enabler. <font color = "red"> How do API ML discoverable services benefit? </font>
 
 **Note:**
 
