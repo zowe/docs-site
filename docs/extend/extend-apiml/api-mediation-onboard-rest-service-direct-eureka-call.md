@@ -101,7 +101,7 @@ where:
  * **instanceId** is a unique id for the instance. Define a unique value for the instanceId in the following format: 
  
     ```{hostname}:{serviceId}:{port}```
- * **metadata** is the set of parameters described in the following section [the metadata of service](**INSERT LINK HERE**)
+ * **metadata** is the set of parameters described in the following section [the metadata of service] <font color = "red">**(INSERT LINK HERE**) </font>
 
 ## API Meditation Layer Service on-boarding Metadata
 
