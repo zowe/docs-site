@@ -101,9 +101,9 @@ where:
  * **instanceId** is a unique id for the instance. Define a unique value for the instanceId in the following format: 
  
     ```{hostname}:{serviceId}:{port}```
- * **metadata** is the set of parameters described in the following section [the metadata of service] <font color = "red">**(INSERT LINK HERE**) </font>
+ * **metadata** is the set of parameters described in the following section addressing API ML service metadata.
 
-## API Meditation Layer Service on-boarding Metadata
+## API Meditation Layer Service onboarding Metadata
 
 At registration time, provide metadata in the following format and include the following parameters:
 
@@ -129,9 +129,9 @@ At registration time, provide metadata in the following format and include the f
    </metadata>
 </instance>
 ```
-The following list describes the parameters contained in the metadata:
+The following list describes the parameters contained in the metadata.
 
-### Catalog parameters - **/instance/metadata/apiml.catalog.tile.**
+### Catalog parameters - `/instance/metadata/apiml.catalog.tile.`
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
 Information displayed in the catalog is defined by the metadata provided by your service during registration. 
@@ -164,35 +164,35 @@ The following parameters are used to populate the API Catalog.
     including the title and description.
 
 
-### Service parameters - /instance/metadata/apiml.service...*
-Define service information for API Catalog
+### Service parameters - `/instance/metadata/apiml.service...`
+The following parameters define service information for the API Catalog.
 
    * **apiml.service.title**
 
-  Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
-    This value is displayed in the API Catalog when a specific API service instance is selected. 
-    This parameter can be externalized and set by the customer system administrator.
+        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
+        This value is displayed in the API Catalog when a specific API service instance is selected. 
+        This parameter can be externalized and set by the customer system administrator.
   
-  **Tip:** We recommend that service developer provides a default value of the `title`.
+        **Tip:** We recommend that service developer provides a default value of the `title`.
         Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
         
    * **apiml.service.description**
 
-  Specifies a short description of the API service.
+        Specifies a short description of the API service.
     
-  **Examples:** 
+        **Examples:** 
     
-  "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+        "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
     
-   This value is displayed in the API Catalog when a specific API service instance is selected. 
-   This parameter can be externalized and set by the customer system administrator.  
+        This value is displayed in the API Catalog when a specific API service instance is selected. 
+        This parameter can be externalized and set by the customer system administrator.  
     
-  **Tip:** Describe the service so that the end user understands the function of the service.
+        **Tip:** Describe the service so that the end user understands the function of the service.
     
-### Routing parameters - **/instance/metadata/apiml.routes...**
+### Routing parameters - `/instance/metadata/apiml.routes...`
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
+in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API Gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -208,7 +208,10 @@ routes:
     serviceUrl: /sampleservice/api-doc
 ```
    where:
-    
+
+
+<font color = "red">   It seems the parameter is missing here </font>
+
     specifies the container element for the routes.
 
 * **/instance/metadata/apiml.routes.${route-prefix}.gatewayUrl**
@@ -222,10 +225,10 @@ routes:
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the gatewayUrl and serviceUrl.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when XML configuration is used.
 
-For detailed information about API ML routing, please follow this link: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing)
+For detailed information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 
-### API Info Parameters - apiml.apiInfo.*
+### API Info Parameters - `apiml.apiInfo.`
 REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation.
 
 The following parameters provide the information properties of a single API:
@@ -241,7 +244,7 @@ where:
         The API ID needs to be a string of up to 64 characters
         that uses lowercase alphanumeric characters and a dot: `.` .
        
-     We recommend that you use your organization as the prefix.
+    **Tip:** We recommend that you use your organization as the prefix.
 
 * **/instance/metadata/apiml.apiInfo.${api-index}.version**
 
@@ -265,7 +268,7 @@ where:
 
 ## Sending a heartbeat to API Meditation Layer Discovery Service
 
-After registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
+After registration, it is necessary that a service sends a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
 
 **Note:** We recommend that the interval for the heartbeat is no more than 30 seconds.
 
@@ -274,7 +277,7 @@ Use the HTTP `PUT` method in the following format to tell the Discovery Service 
 ```https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}```
 
 
-## Validate that your service is successfully on-boarded to API Meditation Layer
+## Validate that your service is successfully onboarded with the API Meditation Layer
 
 **Follow these steps:**
 
