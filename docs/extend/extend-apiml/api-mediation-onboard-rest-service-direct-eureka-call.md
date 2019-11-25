@@ -209,11 +209,6 @@ routes:
 ```
    where:
 
-
-<font color = "red">   It seems the parameter is missing here </font>
-
-    specifies the container element for the routes.
-
 * **/instance/metadata/apiml.routes.${route-prefix}.gatewayUrl**
         
     The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part
