@@ -265,6 +265,8 @@ where:
 
 After registration, it is necessary that a service sends a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
 
+If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
+
 **Note:** We recommend that the interval for the heartbeat is no more than 30 seconds.
 
 Use the HTTP `PUT` method in the following format to tell the Discovery Service that your service is available:

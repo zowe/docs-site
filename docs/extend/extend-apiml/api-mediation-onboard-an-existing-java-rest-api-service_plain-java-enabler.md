@@ -624,9 +624,7 @@ The following steps outline the process of registering your service with API ML:
 
 4. Register with Eureka discovery service.
 
-    <font color = "red"> Check this for accuracy:
-
-     Use the `new` method to register your service instance from Eureka discovery service in the following format: </font>
+     Use the following call to register your service instance with Eureka Discovery Service:
 
     ```
     ...
@@ -647,18 +645,14 @@ The following steps outline the process of registering your service with API ML:
 
 ### Periodic heartbeat (call) to the API ML Discovery Service
 
-Eureka clients must renew their registration lease by sending heartbeats to the Eureka discovery service. 
-The lease renewal heartbeat informs the Eureka server that the instance is still alive. 
-API ML discoverable services benefit from automatic heartbeats sent by the EurekaClient instance, 
-integrated in the API ML enabler. 
-<font color = "red"> Describe why API discoverable services benefit from automatic heartbeats. </font>
+REST services must renew their registration lease by sending heartbeats to the Eureka Discovery Service. 
+The heartbeat informs the Eureka Discovery Service that the instance is still alive. 
+REST services that are onboarded using an enabler, incorporate a Eureka client instance, which automatically sends heartbeats to the Eureka Discovery Service.      
 
-The EureakaClient sends a heartbeat request to EurekaServer every 30 sec by default.
+The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka Server every 30 sec by default.
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
 
-**Note:**
-
-The default interval of the EurekaClient heartbeat is one evry 30 seconds.
+**Note:** The default interval of the EurekaClient heartbeat is one evry 30 seconds.
 This is a configurable setting, however, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with the client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
 
 The heartbeat is issued by EurekaClient using `PUT` HTTP method in the following format:
