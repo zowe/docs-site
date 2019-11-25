@@ -623,6 +623,11 @@ The following steps outline the process of registering your service with API ML:
     ```
 
 4. Register with Eureka discovery service.
+
+    <font color = "red"> Check this for accuracy:
+
+     Use the `new` method to register your service instance from Eureka discovery service in the following format: </font>
+
     ```
     ...
         new ApiMediationClientImpl().register(config);
@@ -734,7 +739,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 ## (Optional) Validating the discoverability of your API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
 
-    **Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes.
+**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes.
 
 **Follow these steps:**
 
