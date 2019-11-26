@@ -244,7 +244,7 @@ It is recommended that you document your RESTful application dataservices in Ope
 
 To document a dataservice, take the following steps:
 
-1. Create a `.yaml` or `.json` file that describes the dataservice in valid [Swagger 2.0](https://swagger.io/specification/v2/) format. Zowe validates the file at runtime.
+1. Create a `.yaml` or `.json` file that describes the dataservice in valid [Swagger 2.0](https://swagger.io/specification/v2/) or [OpenAPI 3.0](https://swagger.io/specification/) format. Zowe validates the file at runtime.
 
 2. Name the file with the same name as the dataservice. Optionally, you can include the dataservice version number in the format: `<name>_<number>`. For example, a Swagger file for a dataservice named `user` must be named either `users.yaml` or `users_1.1.0.yaml`.
 
