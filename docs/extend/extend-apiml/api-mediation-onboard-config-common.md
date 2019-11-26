@@ -177,8 +177,8 @@ where:
 
 *  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
 
-    The IP address of the service. Can be provided by system administrator in the externalized service configuration. 
-    If not present in the YAML/XML configuration file or not set as service context parameter, will be resolved from the hostname part of the baseUrl property using java.net.InetAddress capabilities.
+    specifies the IP address of the service. This parameter can be provided by system administrator in the externalized service configuration. 
+    If this parameter is not present in the YAML/XML configuration file or is not set as service context parameter, it will be resolved from the hostname part of the baseUrl property using `java.net.InetAddress` capabilities.
 
 * **contextPath** (_XML_ Path: `/instance/contextPath`) 
 
