@@ -96,8 +96,19 @@ Use the following procedure if you use Gradle as your build automation system.
 
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+    implementation libraries.eureka_client
+    implementation libraries.httpcore
+    implementation libraries.jackson_databind
+    implementation libraries.jackson_dataformat_yaml
+    
+    providedCompile libraries.javax_servlet_api
+    compileOnly libraries.lombok
     ```
-    **Note:** At time of writing this guide, ZoweApimlVersion is '1.1.11'. Adjust the version to the latest available ZoweApimlVersion. 
+    **Notes:** 
+    * You may need to add more dependencies as required by your service implementation.     
+    * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
+    * The current ZoweApimlVersion is '1.1.12'.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -123,14 +134,62 @@ Use the following procedure if you use Maven as your build automation system.
 
     This file specifies the URL of the repository of the Artifactory where you download the enabler-java artifacts.
 
-2. In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
+2. In the same `pom.xml` file, copy the following *xml* tags to add the following dependencies of your project:
     ```xml
-    <dependency>
-        <groupId>com.ca.mfaas.sdk</groupId>
-        <artifactId>mfaas-integration-enabler-java</artifactId>
-        <version>1.1.11</version>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.ca.mfaas.sdk</groupId>
+            <artifactId>mfaas-integration-enabler-java</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ca.mfaas.sdk</groupId>
+            <artifactId>mfaas-common-service-core</artifactId>
+            <version>1.1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.eureka</groupId>
+            <artifactId>eureka-client</artifactId>
+            <version>1.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>   
+    </dependencies>
     ```
+    **Notes:** 
+    * You may need to add more dependencies as required by your service implementation.     
+    * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
+    * The current ZoweApimlVersion is '1.1.12'.
+    
 3. Create a `settings.xml` file and copy the following *xml* code block that defines the credentials for the Artifactory:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
