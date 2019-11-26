@@ -12,35 +12,35 @@ You can uninstall Zowe&trade; if you no longer need to use it. Follow these proc
 1.  Stop the Zowe started task which stops all of its microservices by using the following command:
 
     ```
-    C ZOWESVR
+    C ZWESVSTC
     ```
 
-2.  Delete the `ZOWESVR` member from your system `PROCLIB` data set.
+2.  Delete the `ZWESVSTC` member from your system `PROCLIB` data set.
 
     To do this, you can issue the following TSO DELETE command from the TSO READY prompt or from ISPF option 6:
 
     ```
-    delete 'your.zowe.proclib(zowesvr)'
+    delete 'your.zowe.proclib(zwesvstc)'
     ```
 
     Alternatively, you can issue the TSO DELETE command at any ISPF command line by prefixing the command with TSO:
 
     ```
-    tso delete 'your.zowe.proclib(zowesvr)'
+    tso delete 'your.zowe.proclib(zwesvstc)'
     ```
 
-    To query which PROCLIB data set that ZOWESVR is put in, you can view the SDSF JOB log of ZOWESVR and look for the following message:  
+    To query which PROCLIB data set that ZWESVSTC is put in, you can view the SDSF JOB log of ZWESVSTC and look for the following message:  
 
     ```
-    IEFC001I PROCEDURE ZOWESVR WAS EXPANDED USING SYSTEM LIBRARY your.zowe.proclib
+    IEFC001I PROCEDURE ZWESVSTC WAS EXPANDED USING SYSTEM LIBRARY your.zowe.proclib
     ```
 
-    If no ZOWESVR JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZOWESVR. Then issue the DELETE command as shown above.
+    If no ZWESVSTC JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZWESVSTC. Then issue the DELETE command as shown above.
 
 3.  Remove RACF® \(or equivalent\) definitions using the following command:
 
     ```
-    RDELETE STARTED (ZOWESVR.*)
+    RDELETE STARTED (ZWESVSTC.*)
     SETR RACLIST(STARTED) REFRESH
     REMOVE (userid) GROUP(IZUUSER)
     ```

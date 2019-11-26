@@ -39,10 +39,10 @@ Authentication failed for 1 types:  Types: ["zss"]
 
 **Solution:**
 
-For the Zowe Desktop to work, the node server that runs under the ZOWESVR started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESIS01 started task. If this communication fails, you see the authentication error.
+For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWEXMSTC started task. If this communication fails, you see the authentication error.
 
 To solve the problem, follow these steps: 
-1. Open the log file `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZOWESVR is started and only the last five files are kept.  
+1. Open the log file `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
 2. Look for the message that starts with `ZIS status`.  
 
@@ -58,18 +58,18 @@ To solve the problem, follow these steps:
    ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
    ```
 
-    If communication is not working, check that the ZWESIS01 started task is running. If not, start it. Also, search the log for problems, for example statements saying that the server was unable to find the load module.
+    If communication is not working, check that the ZWEXMSTC started task is running. If not, start it. Also, search the log for problems, for example statements saying that the server was unable to find the load module.
     
-    If the problem is not easily-fixable (such as the ZWESIS01 task not running), then it is likely that the cross memory server setup and configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).  
+    If the problem is not easily-fixable (such as the ZWEXMSTC task not running), then it is likely that the cross memory server setup and configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).  
 
     If there is an authorization problem, the message might include `Permission Denied`. For example:
 
     ```
     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=33, description='Permission denied'
     ```
-    Check that the user ID of the ZOWESVR started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
+    Check that the user ID of the ZWESVSTC started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
 
-    **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZOWESVR (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
+    **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZWESVSTC (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
 
     If the message includes the following text, the configuration of the Application Framework server may be incomplete:
 
@@ -81,7 +81,7 @@ To solve the problem, follow these steps:
 ## Server startup problem ret=1115
 
 **Symptom:**
-When ZOWESVR is restarted, the following message is returned in the output of the ZSS server log file, `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`:
+When ZWESVSTC is restarted, the following message is returned in the output of the ZSS server log file, `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`:
 ```
 server startup problem ret=1115
 ```

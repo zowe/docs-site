@@ -347,7 +347,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /C ZOWESVR
+   /C ZWESVSTC
    ```
 
 2. Install a new Zowe runtime by following steps in [Installing Zowe on z/OS](install-zos.md#obtaining-and-preparing-the-installation-file).
@@ -357,14 +357,14 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+   /S ZWESVSTC,SRVRPATH='$ZOWE_ROOT_DIR'
    ```
 
    Where `'$ZOWE_ROOT_DIR'` is the first Zowe runtime root directory. By default the command starts the most recently installed runtime unless you specify the root directory of the runtime that you want to start.
 
 4. To specify a name for the new ZSS instance, follow these steps:
 
-   1. Copy the PROCLIB member JCL named ZWESIS01 that was installed with the new runtime.
+   1. Copy the PROCLIB member JCL named ZWEXMSTC that was installed with the new runtime.
 
    2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
 
@@ -405,10 +405,10 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 9. To start the new Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /S ZOWESVR
+   /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
    ```
 
-10. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
+10. To verify that the new cross-memory server is being used, check for the following messages in the `ZWESVSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
