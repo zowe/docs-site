@@ -561,54 +561,19 @@ The following steps outline the process of registering your service with API ML:
      - `contextInitialized` method invokes the `apiMediationClient.register(config)` method to register the application with API Mediation Layer when the application starts. 
      - `contextDestroyed` method invokes the `apiMediationClient.unregister()` method when the application shuts down to unregister the application from API Mediation Layer.
 
-    
-    
-    The following code snippet is an example of a context listener class implementation:
-
-    ```
-    package com.ca.mfaas.sampleservice.listener;
-
-    import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
-    import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
-    import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
-    import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
-
-    import javax.servlet.ServletContextEvent;
-    import javax.servlet.ServletContextListener;
-
-
-    public class ApiDiscoveryListener implements ServletContextListener {
-        private ApiMediationClient apiMediationClient;
-
-        @Override
-        public void contextInitialized(ServletContextEvent sce) {
-            apiMediationClient = new ApiMediationClientImpl();
-            String configurationFile = "/service-configuration.yml";
-            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
-            apiMediationClient.register(config);
-        }
-
-        @Override
-        public void contextDestroyed(ServletContextEvent sce) {
-            apiMediationClient.unregister();
-        }
-    }
-    ```
-
 2. Register a web application context listener.
 
     Add the following code block to the deployment descriptor `web.xml` to register a context listener:
     ``` xml
     <listener>
-        <listener-class>com.ca.mfaas.sampleservice.listener.ApiDiscoveryListener</listener-class>
+        <listener-class>com.your.package.ApiDiscoveryListener</listener-class>
     </listener>
     ```
 
-    When the application context is initialized, the web application container invokes the corresponding listener method, which loads your service configuration and registers your service with Eureka discovery.
+3. Load the service configuration.
 
-3. Load the service configuration file.
-
-    Load your service configuration from the `service-configuration.yml` file, which is described in the preceding section: [Configuring your service](#configuring-your-service). 
+    Load your service configuration from a file `service-configuration.yml` file. 
+    The configuration parameters are described in the preceding section: [Configuring your service](#configuring-your-service). 
     
     Use the following code as an example of how to load the service configuration:
 
@@ -618,18 +583,23 @@ The following steps outline the process of registering your service with API ML:
     public void contextInitialized(ServletContextEvent sce) {
         ...
         String configurationFile = "/service-configuration.yml";
-        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(configurationFile);
         ...
     ```
+*  **Note** ApiMediationServiceConfigReader class has also other methods for loading the configuration
+  from two files, java.util.Map instances or directly from a string. Check ApiMediationServiceConfigReader class JavaDoc for details.
 
 4. Register with Eureka discovery service.
 
      Use the following call to register your service instance with Eureka Discovery Service:
 
     ```
-    ...
-        new ApiMediationClientImpl().register(config);
-    }
+      try {
+          apiMediationClient = new ApiMediationClientImpl()
+          apiMediationClient.register(config);
+      } catch (ServiceDefinitionException sde) {
+          log.error("Service configuration failed. Check log for previous errors: ", sde);
+      }
     ```
 
 5. Unregister your service.
@@ -639,9 +609,94 @@ The following steps outline the process of registering your service with API ML:
     ```
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        apiMediationClient.unregister();
+        if (apiMediationClient != null) {
+            apiMediationClient.unregister();
+        }
+
+        apiMediationClient = null;
     }
     ```
+
+
+
+**Full example** The following code snippet is a full example of a context listener class implementation:
+
+    import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
+    import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
+    import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
+    import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+    import com.ca.mfaas.exception.ServiceDefinitionException;
+    import lombok.extern.slf4j.Slf4j;
+    
+    import javax.servlet.ServletContextEvent;
+    import javax.servlet.ServletContextListener;
+
+    /**
+     *  API ML Micro service implementation of ServletContextListener interface.
+     */
+    @Slf4j
+    public class ApiDiscoveryListener implements ServletContextListener {
+    
+        /**
+         * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
+         */
+        private ApiMediationClient apiMediationClient;
+    
+        /**
+         *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
+         *  and registers this micro service with API ML.
+         *
+         *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
+         *  {@link java.util.Map} or a string containing the configuration data.
+         *
+         *  Here we use the most convenient method for our Java Servlet based service,
+         *  i.e expecting all the necessary initialization information to be present
+         *  in the  {@link javax.servlet.ServletContext} init parameters.
+    
+         *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
+         *  which is then used to register this service with API ML Discovery Service.
+         *
+         *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+         *  and only can throw {@link ServiceDefinitionException} checked exception.
+         *
+         * @param sce
+         */
+        @Override
+        public void contextInitialized(ServletContextEvent sce) {
+            try {
+                /*
+                 * Load configuration method with ServletContext
+                 */
+                ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
+                if (config  != null) {
+                    /*
+                     * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
+                     */
+                    apiMediationClient = new ApiMediationClientImpl();
+    
+                    /*
+                     * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
+                     */
+                    apiMediationClient.register(config);
+                }
+            } catch (ServiceDefinitionException sde) {
+                log.error("Service configuration failed. Check log for previous errors: ", sde);
+            }
+        }
+    
+        /**
+         * If apiMediationClient is not null, attmpts to unregister this service from API ML registry.
+         */
+        @Override
+        public void contextDestroyed(ServletContextEvent sce) {
+            if (apiMediationClient != null) {
+                apiMediationClient.unregister();
+            }
+            
+            apiMediationClient = null;
+        }
+    }
+    
 
 ### Periodic heartbeat (call) to the API ML Discovery Service
 
