@@ -2,6 +2,17 @@
 
 As a service developer, you can provide basic configuration of a service and externalize the configuration parameters values for subsequent customization by a systems administrator. This article describes the process of configuring a REST service for onboarding with the API Mediaiton Layer by using the API ML Plain Java Enabler.
 
+* [Introduction](#introduction)
+* [Configuring a REST service for API ML onboarding](#configuring_a_rest_service_for_api_ml_onboarding)
+* [Plain Java Enabler service onboarding](#APIplain_java_enabler_service_onboarding_api)
+    * [Automatic initialization of the onboarding configuration by a single method call](#automatic_initialization_of_the_onboarding_configuration_by_a_single_method_call)
+* [Loading YAML configuration files](#loading_yaml_configuration_files)
+    * [Loading a single YAML configuration file](#loading_a_single_yaml_configuration_file)
+    * [Loading and merging two YAML configuration files](#loading_and_merging_two_yalm_configuration_files)
+
+
+
+
 ## Introduction
 
 The API ML Plain Java Enabler (_PJE_) is a library which helps to simplify the process of onboarding a REST service. 
@@ -22,7 +33,7 @@ _PJE_ supports both the service developer and the system administrator with the 
 
 The _PJE_ provides a mechanism for loading API ML onboarding service configuration from a _YAML_ file.
 
-## Configuring REST service for API ML onboarding
+## Configuring a REST service for API ML onboarding
 
 In most cases the API ML Discovery service, Gateway, and user service endpoint addresses are not known at the time of building the service executables. 
 Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the concrete deployment environment, and are not intended to be disclosed to everyone.
@@ -55,7 +66,9 @@ as the application deployment directory into the `_$CATALINA_BASE/conf/[enginena
 
 You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`: 
 
-### Automatic initialization of the onboarding configuration by a single method call.  
+### Automatic initialization of the onboarding configuration by a single method call  
+
+<font color = "red">The following code block shows ... </font>
        
 ```
 public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
@@ -102,13 +115,13 @@ The following code block is an example of Java Servlet context configuration.
     
    The other context parameters with the _apiml_ prefix are copied to the application Java System Properties.
 
- ## Loading _YAML_ configuration files
+ ## Loading YAML configuration files
     
 _YAML_ configuration files can be loaded either as a a single file, or by merging two files. Use the method corresponding to the needs of your service.
 
 After successfully loading a configuration file, the loading method _loadConfiguration_ uses Java System properties to substitute corresponding configuration properties. _loadConfiguration_ is described in detail in this article.
 
-### Loading a single _YAML_ configuration file
+### Loading a single YAML configuration file
   
 If you need to build your configuration in different way from multiple sources you can load a single configuration file, 
 then rewrite any parameters as needed using values from another configuration source.   
@@ -126,7 +139,7 @@ If the file is found, the method loads its contents and maps them to internal da
   
 After loading the configuration file, the method will attempt to substitute/rewrite configuration property values with corresponding Java System properties.   
 
-### Loading and merging two _YAML_ configuration files
+### Loading and merging two YAML configuration files
   
 To load and merge two configuration files, use the following method:
    ```
@@ -201,3 +214,5 @@ The following code block presents an example of how to load and merge onboarding
              }
          }
      }
+
+<font color = "red"> Do we need a description of any of the functions shown in this code block? </font>
