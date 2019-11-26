@@ -497,9 +497,9 @@ To manually install the Cross Memory Server, take the following steps:
         PERMIT ZWES.IS CLASS(FACILITY) ID(IZUSVR) ACCESS(READ)
         ```
         ```
-        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwesaux_user>) ACCESS(READ)
+        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwexastc_user>) ACCESS(READ)
         ```
-        where `<zwesaux_user>` is the user under which the ZWEXASTC started task runs.
+        where `<zwexastc_user>` is the user under which the ZWEXASTC started task runs.
         ```
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
