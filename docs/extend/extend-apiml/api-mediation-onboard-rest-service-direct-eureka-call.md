@@ -32,10 +32,8 @@ Required parameters should be defined and sent at registration time. For acting 
 **Examples:**
 
 - [python-eureka-client](https://pypi.org/project/py-eureka-client/)
-
 - [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
-
- - [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
+- [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
 
 ### Service registration
 
