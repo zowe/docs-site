@@ -1,8 +1,19 @@
 # API Mediation Layer - REST service onboarding configuration
 
-## Introduction
-This article describes the ZOWE API ML REST services onboarding configuration parameters.
-The parameter descriptions provided in this document are valid for all API ML onboarding methods that use either the API ML onboarding enabler, or when making direct REST calls to the API ML Discovery Service. Configuration formats that are currently supported are _YAML_ for onboarding enablers and _XML_ for making direct REST calls to the API ML Discovery Service.
+This article describes the ZOWE API Mediation Layer REST services onboarding configuration parameters.
+The parameter descriptions provided in this document are valid for all API Mediation Layer (API ML) onboarding methods that use either the API ML onboarding enabler, or when making direct REST calls to the API ML Discovery Service. Configuration formats that are currently supported are _YAML_ for onboarding enablers and _XML_ for making direct REST calls to the API ML Discovery Service.
+
+* [YAML and XML configuration structures](#yaml_and_xml_configuration_structures)
+* [Configuring your REST service to onboard with the API ML Discovery Service](#configuring_your_rest_service_for_onboarding_with_the_api_ml_discovery_service)
+    * [REST service identification](#rest_service_identification)
+    * [Administrative endpoints relative URLs](#administrative_endpoints_relative_URLs)
+    * [API info](#api_info)
+    * [API routing information](#api_routing_information)
+    * [API Catalog information](#api_catalog_information)
+    * [API Security](#api_security)
+    * [Eureka discovery service](#eureka_discovery_service)
+
+## YAML and XML configuration structures
 
 The configuration structure as well as the configuration format are different depending on the selected onboarding method. For example, if the configuration method uses a _YAML_ file, a parameter uses the following format:
   
@@ -38,24 +49,22 @@ The `metadata` is built automatically when _YAML_ configuration is used.
 The `metadata` is stored in the API ML service registry and is subsequently provided to the registry clients. 
 For example, the API ML Gateway uses information provided in the `routes` group to route requests to service instances. 
 Similarly, the API ML Catalog uses the parameters from the `catalog` group to display the service description and documentation links. 
-
-**Tip:**  For more information about API ML see:
   
-  - [On-boarding overview of API services](#api-mediation-onboard-overview)
-  - [On-boarding without enabler](#api-mediation-onboard-rest-service-direct-eureka-call)
-  - [On-boarding with plain java enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler)
-  - [TODO: On-boarding with a spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
-    
-  
- **Note:** We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly.
-This approach is unnecessarily complex and time-consuming. We recommend that you onboard your service using the API ML enabler libraries.
+ **Note:** We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. This approach is unnecessarily complex and time-consuming. We recommend that you onboard your service using the API ML enabler libraries.
   
  While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects which depend on SpringCloud Netflix components. 
  While Eureka's final configuration of a discoverable service is the same regardless of the method that is used, configuration settings for the API ML enablers and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
-## Configuring your REST service for onboarding with the API ML Discovery service
+**Tip:**  For more information about API Mediation Layer see the following links:
+  
+  - [Onboarding overview of API services](#api-mediation-onboard-overview)
+  - [Onboarding without an enabler](#api-mediation-onboard-rest-service-direct-eureka-call)
+  - [Onboarding with the plain java enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler)
+  - [TODO: On-boarding with a spring enabler](#api-mediation-onboard-java-rest-service_with-spring-enabler)
 
-In the following sections we identify the parameters by their _YAML_ notation using the dot `.` convention. Additionally, the corresponding _XML_ path is provided in parentheses.
+## Configuring your REST service to onboard with the API ML Discovery Service
+
+In the following sections parameters are identified by their _YAML_ notation using the dot `.` convention. Additionally, the corresponding _XML_ path is provided in parentheses.
 
 The configuration parameters belong to one of the following groups:
 
@@ -166,13 +175,14 @@ where:
     * **healthCheckRelativeUrl** 
 
 
-*  **serviceIpAddress** (_Optional_) (XML Path: /instance/ipAddr )
+*  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
+
     The IP address of the service. Can be provided by system administrator in the externalized service configuration. 
     If not present in the YAML/XML configuration file or not set as service context parameter, will be resolved from the hostname part of the baseUrl property using java.net.InetAddress capabilities.
 
-* **contextPath** (XML Path: TODO: /instance/contextPath)
+* **contextPath** (_XML_ Path: `/instance/contextPath`) 
 
-Can be part of serviceBaseUrl if service web context is not "/" (root context).
+    The contextPath can be part of serviceBaseUrl if service web context is not "/" (root context).
                   
 * **homePageRelativeUrl** (_XML_ Path: `/instance/metadata/homePageUrl`) 
     
@@ -241,7 +251,10 @@ where:
        
      We recommend that you use your organization as the prefix.
 
- **Note:** Currently _apiId_ is not used in requests routing. The parameter is stored in the `metadata` by the API ML enablers.
+     
+     <font color = "red"> Review the following note </font>
+
+     **Note:** Currently _apiId_ is not used in requests routing. The parameter is stored in the `metadata` by the API ML enablers.
     The EurekaMetadataParser is transferring it to an ApiInfo object, but it is not used.
     My guess is that we use explicitly serviceId as a apiInfo.apiId, hence we allow only one API per service.
     
@@ -269,7 +282,7 @@ where:
 
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
+in the gateway address space. The routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl` parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -300,8 +313,8 @@ routes:
    
 **Example:**
   
-  Lets suppose that we have a service with serviceId "helloworldservice" (not included in the routing metadata, because it is a part of the basic configuration),
-  If we define the following metadata routing configuration: 
+  Suppose there is a service with serviceId "helloworldservice" that is not included in the routing metadata because it is a part of the basic configuration.
+  The following code block defines the metadata routing configuration: 
   
         metadata-map:
             routed-services:
@@ -315,24 +328,30 @@ routes:
                     gateway-url: "api/v2"
                     service-url: "/helloworld/v2"
 
-  , the following routing options will be available at the APIM GW for the "helloworldservice" service:
+  Using this metadate routing configuration, the following routing options would be available at the APIM Gateway for the "helloworldservice" service:
   
-      * UI - https://gateway/ui/v1/helloworldservice will be routed to the https://hwServiceHost:port/helloworld/
-      * API major version 1 - https://gateway/api/v1/helloworldservice will be routed to https://hwServiceHost:port/helloworld/v1
-      * API major version 2 - https://gateway/api/v2/helloworldservice will be routed to https://hwServiceHost:port/helloworld/v2
+* UI 
+
+    `https://gateway/ui/v1/helloworldservice` will be routed to `https://hwServiceHost:port/helloworld/`
+* API major version 1
+
+    `https://gateway/api/v1/helloworldservice` will be routed to `https://hwServiceHost:port/helloworld/v1`
+* API major version 2 
+
+    `https://gateway/api/v2/helloworldservice` will be routed to `https://hwServiceHost:port/helloworld/v2`
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when _XML_ configuration is used.
+This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must be provided manually when _XML_ configuration is used.
 
 For detailed information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 ### API Catalog information
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
-Information displayed in the catalog is defined by the metadata provided by your service during registration. 
+Information displayed in the Catalog is defined by the metadata provided by your service during registration. 
 The catalog can group correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
-The following code block is an example of configuration of a service tile in the catalog:
+The following code block is an example of configuration of a service tile in the Catalog:
 
 **Example:**
 
@@ -381,12 +400,12 @@ The environment specific security requirements for the service are determined an
 
 When an enabler is used to onboard a service, the configuration is provided in an `ssl` section/group in the same _YAML_ file that used to configure the Eureka parameters and the service metadata. 
 
-When an API ML enabler is not used (direct REST call to API ML Discovery Service with a _XML_ configuration), a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc. 
+When an API ML enabler is not used, such as when making a direct REST call to the API ML Discovery Service with a _XML_ configuration, a registration call must be executed from a third party REST Client tool such as PostMan, SOAP UI, Insomnia CURL, etc. 
 In this case, the security configuration must be provided directly to the REST client tool used to execute the call. 
 
-For more information, see [API ML security](#api-mediation-security.md).
+**Tip:** For more information, see [API ML security](#api-mediation-security.md).
 
-The tls/ssl configuration consists of the following parameters:
+The `tls`/`ssl` configuration consists of the following parameters:
 
 * **protocol**
     TLSv1.2
@@ -395,7 +414,7 @@ The tls/ssl configuration consists of the following parameters:
     
 * **keyAlias**
   
-    This paramenter specifies the `alias` used to address the private key in the keystore. 
+    This paramenter specifies the alias used to address the private key in the keystore. 
 
 * **keyPassword**
 
@@ -430,8 +449,9 @@ The tls/ssl configuration consists of the following parameters:
 ### Eureka discovery service
 
 The Eureka discovery service parameters group contains a single parameter used to address Eureka discovery service location.
-An example is presented in the following snippet: 
+An example is presented in the following snippet. 
 
+**Example:**
 ```
 discoveryServiceUrls:
 - https://localhost:10011/eureka
