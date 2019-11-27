@@ -159,70 +159,59 @@ Metadata parameters are broken down into the following categories:
 * [Routing parameters](#routing_parameters)
 * [API Info parameters](#api_info_parameters)
 
-### Catalog parameters - `/instance/metadata/apiml.catalog.tile.`
+### Catalog parameters - `apiml.catalog.tile`
 
-The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
-Information displayed in the Catalog is defined by the metadata provided by your service during registration. 
+The API ML Catalog displays information about  services registered with the API ML Discovery Service. 
+Information displayed in the Catalog is defined in the metadata provided by your service during registration. 
 The Catalog groups correlated services in the same tile when these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following parameters are used to populate the API Catalog:
  
-* **/instance/metadata/apiml.catalog.tile.id**
+* **apiml.catalog.tile.id**
     
-    Specifies the unique identifier for the product family of API services. 
-    This is a value used by the API ML to group multiple API services together into tiles. 
-    Each unique identifier represents a single API Catalog UI dashboard tile. 
+    Specifies the specific identifier for the product family of API services. 
+    This is a value used by the API ML to group multiple API services together into a single tile. 
+    Each identifier represents a single API dashboard tile in the Catalog. 
 
-    **Tip:**  Specify a value that does not interfere with API services from other products.
+    **Important!** Specify a value that does not interfere with API services from other products.
     
-* **/instance/metadata/apiml.catalog.tile.title**
+* **apiml.catalog.tile.title**
     
     Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-* **/instance/metadata/apiml.catalog.tile.description** 
+* **apiml.catalog.tile.description** 
     
     Specifies the detailed description of the API services product family. 
     This value is displayed in the API Catalog UI dashboard as the tile description.
     
-* **/instance/metadata/apiml.catalog.tile.version**
+* **apiml.catalog.tile.version**
     
     Specifies the semantic version of this API Catalog tile. 
 
-    **Note:** Ensure that you increase the number of the version when you introduce changes to the product family details of the API service, 
-    including the title and description.
+    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details. We also recommend that you increase the version number when changes are made to the title and description.
 
 
-### Service parameters - `/instance/metadata/apiml.service...`
+### Service parameters - `apiml.service`
 The following parameters define service information for the API Catalog:
 
 * **apiml.service.title**
 
-    Specifies the human readable name of the API service instance 
-    <font color = "red"> The following examples should be more general (not CA products). </font>
-    
-    **Examples:** "Endevor Prod" or "Sysview LPAR1"
-
+    Specifies the human readable name of the API service instance. 
+   
     This value is displayed in the API Catalog when a specific API service instance is selected. 
-    This parameter can be externalized and set by the customer system administrator.
-  
-    **Tip:** We recommend that service developer provides a default value of the `title`.
-    Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
         
 * **apiml.service.description**
 
     Specifies a short description of the API service.
     
-    **Examples:** 
+    **Example:** 
     
-    "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
+    `Sample service - Production Instance`
     
-    This value is displayed in the API Catalog when a specific API service instance is selected. 
-    This parameter can be externalized and set by the customer system administrator.  
+    This value is displayed in the API Catalog when a specific API service instance is selected.   
     
-    **Tip:** Describe the service so that the end user understands the function of the service.
-    
-### Routing parameters - `/instance/metadata/apiml.routes...`
-The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
+### Routing parameters - `apiml.routes`
+The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding service.
 A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
 in the Gateway address space. 
 
@@ -238,77 +227,69 @@ The following snippet is an example of the API routing information properties.
 **Example:**
   
 ```
-routes:
-    - gatewayUrl: api
-    serviceUrl: /sampleservice
-    - gatewayUrl: api/v1
-    serviceUrl: /sampleservice/api/v1
-    - gatewayUrl: api/v1/api-doc
-    serviceUrl: /sampleservice/api-doc
+<apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
+<apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
 ```
    where:
 
-* **/instance/metadata/apiml.routes.${route-prefix}.gatewayUrl**
+* **apiml.routes.{route-prefix}.gatewayUrl**
         
-    The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part
+    The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
 
-* **/instance/metadata/apiml.routes.${route-prefix}.serviceUrl**
+* **apiml.routes.{route-prefix}.serviceUrl**
         
-    The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the gatewayUrl part (see `gatewayUrl`).
+    The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler. This prefix must by provided manually when _XML_ configuration is used.
+This prefix is used to differentiate the routes.  This prefix must by provided manually when _XML_ configuration is used.
 
-For detailed information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
+For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 
 ### API Info parameters - `apiml.apiInfo.`
-REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation.
+REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation that is displayed in the API Catalog.
 
 The following parameters provide the information properties of a single API:
 
-* **/instance/metadata/apiml.apiInfo.${api-index}.apiId**
+* **apiml.apiInfo.{api-index}.apiId**
 
-    Specifies the API identifier that is registered in the API ML installation.
     The API ID uniquely identifies the API in the API ML. 
     Multiple services can provide the same API. The API ID can be used
     to locate the same APIs that are provided by different services.
     The creator of the API defines this ID.
     The API ID needs to be a string of up to 64 characters
-    that uses lowercase alphanumeric characters and a dot: `.` .
+    that uses lowercase alphanumeric characters and a dot: `.`.
        
     **Tip:** We recommend that you use your organization as the prefix.
 
-* **/instance/metadata/apiml.apiInfo.${api-index}.version**
+* **apiml.apiInfo.{api-index}.version**
 
     Specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
     
-* **/instance/metadata/apiml.apiInfo.${api-index}.gatewayUrl**
+* **apiml.apiInfo.{api-index}.gatewayUrl**
 
     Specifies the base path at the API Gateway where the API is available. 
     Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
-* **/instance/metadata/apiml.apiInfo.${api-index}.swaggerUrl**
+* **apiml.apiInfo.{api-index}.swaggerUrl**
 
     (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
         
-* **/instance/metadata/apiInfo/apiml.apiInfo.${api-index}.documentationUrl**
+* **apiInfo/apiml.apiInfo.{api-index}.documentationUrl**
 
-    (Optional) Specifies the link to the external documentation, if necessary. 
-    A link to the external documentation can be included along with the Swagger documentation. 
+    (Optional) Specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation. 
 
 ## Sending a heartbeat to API Meditation Layer Discovery Service
 
-After registration, it is necessary that a service sends a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
+After registration, it is necessary for a service to send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
 
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
 
 **Note:** We recommend that the interval for the heartbeat is no more than 30 seconds.
 
-Use the HTTP `PUT` method in the following format to tell the Discovery Service that your service is available:
+In your http client such as HTTPie, Postman,or cURL use the HTTP `PUT` method in the following format to tell the Discovery Service that your service is available:
 
 ```https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}```
-
 
 ## Validating successful onboarding with the API Meditation Layer
 Ensure that you successfully onboarded a service with the API Mediation Layer.
