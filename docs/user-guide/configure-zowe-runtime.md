@@ -86,7 +86,7 @@ STC names have certain components and use the following format:
 
 where:
 
-- `pfx` - Prefix that contains up to four characters, for example, `ZOWE`.
+- `pfx` - Prefix that contains up to four characters, for example, `ZWE`.
 
 - `n` - Instance number
 
@@ -110,14 +110,14 @@ The STC name of the main started task is `pfxnSV`. To view all the STCs for your
 
   ```yaml
   install:
-  prefix=ZOWE
+  prefix=ZWE
   instance=1
   ```
 
-  in the `zowe-install.yaml` file defines a prefix of ZOWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
+  in the `zowe-install.yaml` file defines a prefix of ZWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
 
   ```
-  ZOWE1AG
+  ZWE1AG
   ```
 #### Port allocations
 
