@@ -12,17 +12,18 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) lets you interact wi
 
 As a developer, you can use Zowe Explorer to perform the following tasks.
 
-- View and filter mainframe data sets, USS files and jobs.
+- View, rename and filter mainframe data sets, USS files and jobs.
 - Create download, edit, upload, and delete PDS and PDS members.
 - Create Zowe CLI compatible `zosmf` profiles.
 - Switch between Zowe CLI `zosmf` profiles to quickly target different mainframe systems.
-- View and submit jcl.
+- Submit jobs.
 
 ## Software requirements
 
 Before you use the extension, meet the following software requirements on your computer:
 
 - Get access to z/OSMF.
+- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
 - Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
