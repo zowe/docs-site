@@ -1,11 +1,19 @@
-# Onboard a service with the Zowe API Meditation Layer
+# Onboarding a service with the Zowe API Meditation Layer without an onboarding enabler 
 
-As an API developer, you can use this guide to onboard a REST service into the Zowe API Mediation Layer. 
-The API Mediation Layer allows services in the mainframe to be visible in the API Catalog. Through the Catalog, users can see if the services are currently available and accepting requests.  
+This article is one in a series of guides to onboard a REST service with the Zowe API Mediation Layer. Onboarding with API ML makes services accessable through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
 
-The API ML Discovery Service uses [Netflix/Eureka](https://github.com/Netflix/eureka) as a REST services registry. Eureka is a REST (Representational State Transfer) based service that is primarily used to locate services.
+This guide describes how a REST service can be onboarded with the Zowe API ML independent of the language used to write the service. As such, this guide does not describe how to onboard a service with a specific enabler. Similarly, various Eureka client implementations are not used in this onboarding method. 
 
-This article outlines a step-by-step process to make a API service available in the API Mediation Layer. <font color = "red"> Use this procedure to make a direct call to the Eureka Discovery Service. </font>
+**Tip:** If possible, we recommend that you onboard your service using the API ML enabler libraries. The approach described in this article should only be used if other methods to onboard your service are not suitable.
+
+For more information about how to onboard a REST service, see the following links:
+
+- [overview]
+- [python-eureka-client](https://pypi.org/project/py-eureka-client/)
+- [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
+- [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
+
+This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service. 
 
 * [Registering a service with the API Mediation Layer](#registering_a_service_with_the_api_mediation_layer)
     * [Service registration](#service_registration)
@@ -20,30 +28,23 @@ This article outlines a step-by-step process to make a API service available in 
 
 ## Registering a service with the API Mediation Layer
 
-<font color = "red"> Check the following paragraph for accuracy. </font>
+The API ML Discovery Service uses [Netflix/Eureka](https://github.com/Netflix/eureka) as a REST services registry. Eureka is a REST based service that is primarily used to locate services.
 
-Eureka [endpoints](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations) are used to register a service with the API ML Discovery Service. Endpoints are also used to send a periodic heartbeat to the Discovery Service.
+Eureka [endpoints](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations) are used to register a service with the API ML Discovery Service. Endpoints are also used to send a periodic heartbeat to the Discovery Service to indicate that the onboarded service is available. 
 
-The process of onboarding depends on the method that is used to develop the API service. <font color = "red">Pehaps we should list the possible methods that can be used to develop an API service here. </font>
-
-      
-Required parameters should be defined and sent at registration time. For acting as a eureka client, there are eureka-client libraries that depend on the language that is used. 
-
-**Examples:**
-
-- [python-eureka-client](https://pypi.org/project/py-eureka-client/)
-- [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
-- [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
+Required parameters should be defined and sent at registration time. 
 
 ### Service registration
 
-Eureka requires that the parameters in the following `POST` call are defined in the registration configuration. 
+Begin the onboarding process by registering your service with the Eureka Discovery Service.
+
+Use the `POST` http call to Eureka together with the registration configuration in the following format:
 
 ```
 https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
 ```
 
-The following code block shows the format of the parameters in your `POST` call, which are sent to the Eureka registry at the time of registration.:
+The following code block shows the format of the parameters in your `POST` call, which are sent to the Eureka registry at the time of registration.
 
 ```xml
 <?xml version="1.0" ?>
@@ -67,56 +68,64 @@ The following code block shows the format of the parameters in your `POST` call,
 
 where:
 
- * **/instance/app** 
+ * **app** 
     
-    Uniquely identifies <font color = "red"> should this be 'the instance' or 'instances'? </font> instances of a microservice in the API ML.
-
-    The service developer specifies a default value during the design of the service. 
-    If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
-    (See externalizing API ML REST service configuration [api-mediation - onboarding enabler external configuration](#api-mediation-onboard-enabler-external-configuration.md)). 
+    Uniquely identifies one or more instances of a microservice in the API ML. 
     
+    The API ML Gateway uses the `serviceId` for routing to the API service instances.
+    As such, the `serviceId` is part of the service URL path in the API ML Gateway address space.
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-    * The API ML Gateway uses the serviceId for routing to the API service instances.
-      As such, the serviceId must be a part of the service URL path in the API ML gateway address space. 
-    * When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
-      An incoming API request can be routed to either of them through load balancing.
-    * The same service ID should only be set for multiple API service instances for API scalability.
     * The service ID value must only contain lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
-    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
+    * The same service ID should only be set for multiple API service instances to support API scalability. When two API services use the same service ID, the API Gateway considers the services as clones of each other. An incoming API request can be routed to either of them through load balancing.
         
-    **Examples:**
-    * If the serviceId is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as: 
+    **Example:**
+    * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as: 
             
        ```
-       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
+       https://gateway-host:gateway-port/api/v1/sampleservice/...
        ```
 
-    * If a customer system administrator sets the service ID to `vantageprod1`, the service URL in the API ML Gateway address space appears as:
-       ```
-       http://gateway:port/api/v1/vantageprod1/endpoint1/...
-       ```
+ * **ipAddr** 
+ 
+    Specifies the ip address of this specific service instance.
+ 
+ * **port** 
 
- * **ipAddr** is the ip address of this specific service instance
+    Specifies the port of the instance when you use http. If you use http, set `enabled` to `true`.
  
- * **hostname** is the hostname of the instance
+* **securePort**
+
+    Specifies the port of the instance. When you use https, set `enabled` to `true`.
  
- * **port** is the port of the instance when you use http, set `enabled` to `true`
+ * **hostname** 
  
- * **securePort** is the port of the instance when you use https, set `enabled` to `true`
+    Specifies the hostname of the instance.
+
+ * **vipAddress** 
  
- * **vipAddress** is the service id when you use http
+    Specifies the service id when you use http.
+
+     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`
  
- * **secureVipAddress** is the service id when you use https
+ * **secureVipAddress** 
  
- * **instanceId** is a unique id for the instance. Define a unique value for the instanceId in the following format: 
+    Specifies the service id when you use https.
+
+    **Important!** Ensure that the value of `secureVipAddress` is the same as the value of `app`.
+ 
+ * **instanceId** 
+ 
+    Specifies a unique id for the instance. Define a unique value for the instanceId in the following format: 
  
     ```{hostname}:{serviceId}:{port}```
- * **metadata** is the set of parameters described in the following section addressing API ML service metadata.
+ * **metadata** 
 
-### API Meditation Layer Service onboarding metadata
+    Specifies the set of parameters described in the following section addressing API ML service metadata.
+
+### API Mediation Layer Service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this codeblock are described in the following section.
 
@@ -153,8 +162,8 @@ Metadata parameters are broken down into the following categories:
 ### Catalog parameters - `/instance/metadata/apiml.catalog.tile.`
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
-Information displayed in the catalog is defined by the metadata provided by your service during registration. 
-The catalog can group correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
+Information displayed in the Catalog is defined by the metadata provided by your service during registration. 
+The Catalog groups correlated services in the same tile when these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following parameters are used to populate the API Catalog:
  
@@ -179,7 +188,7 @@ The following parameters are used to populate the API Catalog:
     
     Specifies the semantic version of this API Catalog tile. 
 
-    **Note:** Ensure that you increase the number of the version when you introduce new changes to the product family details of the API services 
+    **Note:** Ensure that you increase the number of the version when you introduce changes to the product family details of the API service, 
     including the title and description.
 
 
@@ -188,7 +197,11 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.service.title**
 
-    Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
+    Specifies the human readable name of the API service instance 
+    <font color = "red"> The following examples should be more general (not CA products). </font>
+    
+    **Examples:** "Endevor Prod" or "Sysview LPAR1"
+
     This value is displayed in the API Catalog when a specific API service instance is selected. 
     This parameter can be externalized and set by the customer system administrator.
   
