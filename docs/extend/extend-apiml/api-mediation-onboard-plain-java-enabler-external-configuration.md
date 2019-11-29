@@ -42,7 +42,7 @@ Therefore, to provide a higher level of flexibility, the _PJE_ implements routin
 * **internal _service-configuration.yml_** 
 
   The first configuration file is typically internal to the service deployment artifact. At a minimum this file must be accessible on the service `classpath`. 
-  This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-ING/classes`.   
+  This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`.   
   The configuration contained in this file is provided by the service developer/builder. As such, it will not match every possible production environment and its corresponding requirements.
 
 * **external or additional _service-configuration.yml_**

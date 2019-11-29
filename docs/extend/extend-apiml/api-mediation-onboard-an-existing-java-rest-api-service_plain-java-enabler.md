@@ -58,6 +58,8 @@ Note: It is presumed that your REST service will be deployed on a z/OS environme
 
 You can use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
+There are differences if you use Giza artifactory or a different artifactory. If you decide to build API ML from source, you'll have to publish the enabler artifact to your artifactory using the provided gradle tasks provided in the source code. 
+
 ### Gradle guide
 Use the following procedure if you use Gradle as your build automation system.
 
@@ -65,7 +67,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 1. Create a *gradle.properties* file in the root of your project if one does not already exist.
  
-2. In the *gradle.properties* file, set the URL of the ZOWE (aka Giza) Artifactory containing the plain java enabler artifact. Use the credentials in the following code block to gain access to the Maven repository:
+2. In the *gradle.properties* file, set the URL of the specific Artifactory containing the plain java enabler artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of Zowe Giza artifactory use the credentials in the following code block:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -91,21 +93,14 @@ Use the following procedure if you use Gradle as your build automation system.
         }
     }
     ```
-4.  
-     In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use java enabler from the Giza artifactory it is sufficient to add the following code block to your `build.gradle` script, bacause the published artifact contains also the enabler dependencies from other software packages:
     
         ```gradle
         implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
         implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-        ```
- 
-    **Notes:** 
-    * The published artifact contains also the enabler dependencies from other software packages.
-    If you decide to build of API ML from source, you'll have to publish the artifact to your repository / artifactory using the provided gradle tasks.  
-    In this case the enabler dependencies will be again part of the published artifact and you can simply include them as in the example in point 4. above. 
-    An other option is to provide the dependencies manually in your service build.gradle script as follows:
-    
-        In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
+        ```    
+
+    If you are using artifactory other than Giza, you have to provide the dependencies manually in your service build.gradle script as follows:        
         ```gradle
         implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
         implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
@@ -117,6 +112,7 @@ Use the following procedure if you use Gradle as your build automation system.
         providedCompile libraries.javax_servlet_api
         compileOnly libraries.lombok
         ```
+    **Notes:** 
     * You may need to add more dependencies as required by your service implementation.     
     * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
     * The current ZoweApimlVersion is '1.1.12'.
