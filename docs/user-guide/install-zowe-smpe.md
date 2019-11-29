@@ -713,8 +713,7 @@ IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.
 ```
 Uncomment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
 ### Prepare the Zowe SMP/E installation jobs with Velocity Template Language (VTL) Command-line Interface or Python Script (Optional)
-The Velocity Template Language (VTL) Command-line Interface and Python Script simplifies the Zowe SMP/E installation jobs customization using the YAML file.  To install and use the Velocity Template Language (VTL) Command-line Interface, see [https://github.com/plavjanik/vtl-cli](https://github.com/plavjanik/vtl-cli).
-
+The Velocity Template Language (VTL) Command-line Interface and Python Script simplifies the Zowe SMP/E installation jobs customization using the YAML file.  To install and use the Velocity Template Language (VTL) Command-line Interface, see [https://github.com/zowe/vtl-cli](https://github.com/zowe/vtl-cli).
 
 To prepare the custom Zowe SMP/E installation jobs, edit the YAML file and execute the VTL command or python script. The YAML and the corresponding VTL files are located in the [Zowe SMP/E repository](https://github.com/zowe/zowe-smpe-packaging). Perform the following steps to prepare the customized jobs:
 1.	Download the YAML and VTL files to your system from the Zowe SMP/E repository.
