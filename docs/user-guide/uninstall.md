@@ -12,9 +12,9 @@ You can uninstall Zowe&trade; if you no longer need to use it. Follow these proc
 1.  Stop the Zowe started task which stops all of its microservices by using the following command:
 
     ```
-    C ZWESVSTC
+    C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
     ```
-
+    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
 2.  Delete the `ZWESVSTC` member from your system `PROCLIB` data set.
 
     To do this, you can issue the following TSO DELETE command from the TSO READY prompt or from ISPF option 6:

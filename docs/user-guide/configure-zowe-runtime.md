@@ -834,9 +834,10 @@ cd $ZOWE_INSTANCE_DIR/bin
 
 If you prefer to use SDSF to stop Zowe, stop ZWESVSTC by issuing the following operator command in SDSF:
 
-```
-/C ZWESVSTC
-```
+    ```
+    C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+    ```
+    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
 
 Either method will stop the z/OS Service microservice server, the Zowe Application Server, and the zSS server.
 
@@ -849,10 +850,9 @@ IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
 This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
 
 ```
-/C ZWESVSTC,A=asid
+C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
 ```
-
-You can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
+Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
 
 ```
 /D A,ZWESVSTC
