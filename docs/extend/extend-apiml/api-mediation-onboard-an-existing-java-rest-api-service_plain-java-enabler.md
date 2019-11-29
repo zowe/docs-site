@@ -577,6 +577,8 @@ The tls/ssl configuration consists of the following parameters:
 
 * **ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV**
 
+  To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. They are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
+
 **Notes:** 
     * You need to define both the key store and the trust store even if your server is not using an HTTPS port.
     * Currently 'ciphers' is not used. It is an optional and serves as a place holder only.
@@ -852,14 +854,11 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 
 ## (Optional) Validating the discoverability of your API service by the Discovery Service
-If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.
+Once you are able to build and start your service successfully, it is time to validate that it can register correctly with your configured APIML Discovery Service. 
 
-**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes.
-
-**Follow these steps:**
-
-1. Go to `http://localhost:10011`. 
-2. Enter *eureka* as a username and *password* as a password.
-3. Check if your application appears in the Discovery Service UI.
-
+Validatiing your service registration can be done in the API ML Catalog. Open the Catalog and search fro a tile with your service *catalog.tile.id*. If your service is not visible in the API Catalog, you can check if your service is registered with the Discovery Service.
 If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct. 
+
+Concrete addresses and user credentials for the individual API ML components will depend on your target runtime environment. If you are working with local installation of API ML and default identity provider, use the word *'user'* as both username and  password. In case API ML was installed by system administrators, ask them to provide you with actual addresses of API ML compoennts and the respective user credentials.
+
+**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was succesfully started.
