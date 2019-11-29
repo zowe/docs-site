@@ -101,7 +101,7 @@ The configuration parameters belong to one of the following groups:
     * If the `serviceId` is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as the following address: 
             
        ```
-       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
+       https://gateway-host:gateway-port/api/v1/sysviewlpr1/endpoint1/...
        ```
 
     * If a customer system administrator sets the service ID to `vantageprod1`, the service URL in the API ML Gateway address space appears as the following address:

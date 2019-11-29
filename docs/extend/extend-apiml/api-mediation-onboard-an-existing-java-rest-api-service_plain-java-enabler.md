@@ -91,21 +91,32 @@ Use the following procedure if you use Gradle as your build automation system.
         }
     }
     ```
-
-4. In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
-
-    ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-    implementation libraries.eureka_client
-    implementation libraries.httpcore
-    implementation libraries.jackson_databind
-    implementation libraries.jackson_dataformat_yaml
+4.  
+     In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
     
-    providedCompile libraries.javax_servlet_api
-    compileOnly libraries.lombok
-    ```
+        ```gradle
+        implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+        implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+        ```
+ 
     **Notes:** 
+    * The published artifact contains also the enabler dependencies from other software packages.
+    If you decide to build of API ML from source, you'll have to publish the artifact to your repository / artifactory using the provided gradle tasks.  
+    In this case the enabler dependencies will be again part of the published artifact and you can simply include them as in the example in point 4. above. 
+    An other option is to provide the dependencies manually in your service build.gradle script as follows:
+    
+        In the same `build.gradle` file, add the following code to the dependencies code block. Doing so adds the enabler-java artifact as a dependency of your project:
+        ```gradle
+        implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+        implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+        implementation libraries.eureka_client
+        implementation libraries.httpcore
+        implementation libraries.jackson_databind
+        implementation libraries.jackson_dataformat_yaml
+        
+        providedCompile libraries.javax_servlet_api
+        compileOnly libraries.lombok
+        ```
     * You may need to add more dependencies as required by your service implementation.     
     * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
     * The current ZoweApimlVersion is '1.1.12'.
@@ -856,9 +867,59 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 ## (Optional) Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, it is time to validate that it can register correctly with your configured APIML Discovery Service. 
 
-Validatiing your service registration can be done in the API ML Catalog. Open the Catalog and search fro a tile with your service *catalog.tile.id*. If your service is not visible in the API Catalog, you can check if your service is registered with the Discovery Service.
-If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct. 
+Validatiing your service registration can be done in the API ML Discovery service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct.
 
 Concrete addresses and user credentials for the individual API ML components will depend on your target runtime environment. If you are working with local installation of API ML and default identity provider, use the word *'user'* as both username and  password. In case API ML was installed by system administrators, ask them to provide you with actual addresses of API ML compoennts and the respective user credentials.
 
 **Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was succesfully started.
+
+**Follow these steps:**
+
+ 1. Use the HTTP `GET` method in the following format to query the Discovery Service for your service instance information:
+ 
+    ```
+    http://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
+    ```
+    
+ 2. Check your service metadata. 
+
+    **Response example:**
+  
+    ```xml
+    <application>
+        <name>{serviceId}</name>
+        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
+        <hostName>{hostname}</hostName>
+        <app>{serviceId}</app>
+        <ipAddr>{ipAddress}</ipAddr>
+        <status>UP</status>
+        <port enabled="false">{port}</port>
+        <securePort enabled="true">{port}</securePort>
+        <vipAddress>{serviceId}</vipAddress>
+        <secureVipAddress>{serviceId}</secureVipAddress>
+        <metadata>
+                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
+                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
+                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
+                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
+                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
+                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
+                <apiml.service.title>Sample Service ©</apiml.service.title>
+                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
+                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
+                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
+                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
+                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
+                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
+                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
+                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
+                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
+        </metadata>
+    </application>
+    ```
+    
+  3. Check that your API service is displayed in the API Catalog and all information including API documentation is correct.
+ 
+  4. Check that you can access your API service endpoints through the Gateway.
+ 
+  5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.  
