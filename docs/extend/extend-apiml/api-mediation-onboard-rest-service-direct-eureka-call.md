@@ -16,9 +16,9 @@ For more information about how to onboard a REST service, see the following link
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service. 
 
 * [Registering a service with the API Mediation Layer](#Registering a service with the API Mediation Layer)
-    * [Service registration](#Service registration)
+    * [Service registration](#Service-registration)
     * [API Meditation Layer Service onboarding metadata](#API Mediation Layer Service onboarding metadata)
-        * [Catalog parameters](#Catalog parameters)
+        * [Catalog parameters](#Catalog-parameters)
         * [Service parameters](#Service parameters)
         * [Routing parameters](#Routing parameters)
         * [API Info Parameters](#API Info parameters)
