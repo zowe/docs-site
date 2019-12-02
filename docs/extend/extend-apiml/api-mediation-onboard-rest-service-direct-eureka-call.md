@@ -8,7 +8,7 @@ This guide describes how a REST service can be onboarded with the Zowe API ML in
 
 For more information about how to onboard a REST service, see the following links:
 
-- [overview](api-mediation-onboard-overview.md)
+- [Overview](api-mediation-onboard-overview.md)
 - [python-eureka-client](https://pypi.org/project/py-eureka-client/)
 - [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
 - [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
@@ -160,7 +160,7 @@ Metadata parameters are broken down into the following categories:
 * [API Info parameters](#API-Info-parameters)
 
 #### Catalog parameters 
-`apiml.catalog.tile`
+Catalog parameters are grouped under the prefix:`apiml.catalog.tile`.
 
 The API ML Catalog displays information about services registered with the API ML Discovery Service. 
 Information displayed in the Catalog is defined in the metadata provided by your service during registration. 
@@ -288,9 +288,9 @@ In the following example, `0` represents the `api-index`.
 
 ```
 <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
-      <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
-      <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
-      <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
+<apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
+<apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
+<apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
 ```
 
 ## Sending a heartbeat to API Meditation Layer Discovery Service
