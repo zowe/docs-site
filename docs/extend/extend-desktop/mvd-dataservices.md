@@ -4,7 +4,7 @@ Dataservices are dynamic backend components of Zowe&trade; plug-in applications.
 
 ## Defining dataservices
 
-You define dataservices in the application's `pluginDefinition.json` file. Each application requires a definition file to specify how the server registers and uses the application's backend. You can see an example of a `pluginDefinition.json` file in the top directory of the `sample-app` repository.
+You define dataservices in the application's `pluginDefinition.json` file. Each application requires a definition file to specify how the server registers and uses the application's backend. You can see an example of a `pluginDefinition.json` file in the top directory of the sample app repositories.
 
 In the definition file is a top level attribute called `dataServices`, for example:
 ```
@@ -252,11 +252,9 @@ To document a dataservice, take the following steps:
 
    `/zlux-server-framework/plugins/<servicename>/doc/swagger/<servicename_1.1.0>.yaml`
 
-
-
 At runtime, the Zowe Application Server does the following:
 
-- Dynamically substitutes known values in the files, such as the hostname and whether the endpoint is accessible via HTTP versus HTTPS.
+- Dynamically substitutes known values in the files, such as the hostname and whether the endpoint is accessible using HTTP or HTTPS.
 - Builds documentation for each dataservice and for each application plug-in, in the following locations:
   - Dataservice documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger/servicename` 
   - Application plug-in documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger`
