@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_submit.html">submit</a> → <a href="zowe_zos-jobs_submit_local-file.html">local-file</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_submit.html">submit</a> › <a href="zowe_zos-jobs_submit_local-file.html">local-file</a></h2>
 <p>Submit a job (JCL) contained in a local file. The command presents errors
 verbatim from the z/OSMF Jobs REST endpoints. For more information about z/OSMF
 Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
@@ -26,6 +26,26 @@ Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
 <ul>
 <li>Print all spool output. If you use this option you will wait the job to
 complete.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li><p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li><p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
@@ -127,10 +147,11 @@ in the output.</li>
 <ul>
 <li><p>Submit the JCL in the file &quot;iefbr14.txt&quot;:</p>
 <ul>
-<li><code>zowe  zos-jobs submit local-file &quot;iefbr14.txt&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit local-file &quot;iefbr14.txt&quot;">Copy</button></li>
+<li><code>zowe  zos-jobs submit local-file &quot;iefbr14.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit local-file &quot;iefbr14.txt&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
 </article>
+<div id="btn-print-wrapper"><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></div>
 <script src="../js/bundle-docs.js"></script>
 <script src="../js/docs.js"></script>

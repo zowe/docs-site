@@ -279,21 +279,4 @@ function changeView(newMode) {
     const newNodes = (currentView === 0) ? treeNodes : flattenNodes(treeNodes);
     jquery_1.default("#cmd-tree").jstree(true).settings.core.data = newNodes;
     jquery_1.default("#cmd-tree").jstree(true).refresh(false, true);
-    setTimeout(() => {
-        selectCurrentNode(true);
-        updateSearch();
-    }, 100);
-    const otherViewName = isFlattened ? "Tree View" : "List View";
-    jquery_1.default("#tree-view-toggle").text(`Switch to ${otherViewName}`);
-    jquery_1.default("#tree-expand-all").toggle();
-    jquery_1.default("#tree-collapse-all").toggle();
-}
-function expandAll(expanded) {
-    if (expanded) {
-        jquery_1.default("#cmd-tree").jstree("open_all");
-    }
-    else {
-        jquery_1.default("#cmd-tree").jstree("close_all");
-        jquery_1.default("#cmd-tree").jstree(true).toggle_node(treeNodes[0].id);
-    }
 }
