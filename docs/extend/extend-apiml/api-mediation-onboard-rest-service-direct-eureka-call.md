@@ -94,11 +94,11 @@ where:
  
  * **port** 
 
-    Specifies the port of the instance when you use Http. If you use Http, set `enabled` to `true`.
+    Specifies the port of the instance when you use Http. For Http, set `enabled` to `true`.
  
 * **securePort**
 
-    Specifies the port of the instance. When you use Https, set `enabled` to `true`.
+    Specifies the port of the instance for when you use Https. For Https, set `enabled` to `true`.
  
  * **hostname** 
  
@@ -106,13 +106,13 @@ where:
 
  * **vipAddress** 
  
-    Specifies the service id when you use Http.
+    Specifies the `serviceId` when you use Http.
 
      **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`
  
  * **secureVipAddress** 
  
-    Specifies the service id when you use https.
+    Specifies the `serviceId` when you use https.
 
     **Important!** Ensure that the value of `secureVipAddress` is the same as the value of `app`.
  
@@ -189,8 +189,7 @@ The following parameters are used to populate the API Catalog:
     
     Specifies the semantic version of this API Catalog tile. 
 
-    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details. We also recommend that you increase the version number when changes are made to the title and description.
-
+    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Service parameters 
 `apiml.service`
@@ -206,11 +205,7 @@ The following parameters define service information for the API Catalog:
 * **apiml.service.description**
 
     Specifies a short description of the API service.
-    
-    **Example:** 
-    
-    `Sample service - Production Instance`
-    
+        
     This value is displayed in the API Catalog when a specific API service instance is selected.   
     
 ### Routing parameters
@@ -222,8 +217,8 @@ in the Gateway address space.
 
 Routing information consists of two parameters per route: 
 
-* The gatewayUrl
-* The serviceUrl
+ * gatewayUrl
+ * serviceUrl
 
 These two parameters together specify a rule of how the API service endpoints are mapped to the API Gateway endpoints.  
 
@@ -252,7 +247,7 @@ For more information about API ML routing, see [API Gateway Routing](https://git
 
 
 ### API Info parameters
-`apiml.apiInfo.`
+`apiml.apiInfo`
 
 REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation that is displayed in the API Catalog.
 
