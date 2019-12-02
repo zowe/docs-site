@@ -34,41 +34,41 @@ The _PJE_ provides a mechanism to load API ML onboarding service configuration f
 
 ## Configuring a REST service for API ML onboarding
 
-In most cases the API ML Discovery service, Gateway, and user-service endpoint addresses are not known at the time of building the service executables. 
+In most cases, the API ML Discovery service, Gateway, and service endpoint addresses are not known at the time of building the service executables. 
 Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the specific deployment environment, and are not intended to be publicly available.
 Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
 
 * **internal _service-configuration.yml_** 
 
-  The first configuration file is typically internal to the service deployment artifact. At a minimum this file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, it will not match every possible production environment and its corresponding requirements.
+  The first configuration file is typically internal to the service deployment artifact. At a minimum, this file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, it will not match every possible production environment and its corresponding requirements.
 
 * **external or additional _service-configuration.yml_**
 
    The second configuration file is used to externalize the configuration. This file can be stored anywhere on the local file system, as long as that the service has access to that location. 
    This file is provided by the service deployer/system administrator and contains the correct parameter values for the specific production environment. 
 
-At service startup time, both _YAML_ configuration files are merged, where the externalized configuration (if provided) has higher priority.
+At service start-up time, both _YAML_ configuration files are merged, where the externalized configuration (if provided) has higher priority.
 
 The values of parameters in both files can be rewritten by Java system properties or servlet context parameters that were defined during service installation/configuration, or at start-up time.
 
-
-
-In the _YAML_ file, we use standard rewriting placeholders for the values of parameters in the following format:
+In the _YAML_ file, standard rewriting placeholders for parameter values use the following format:
 
 `${apiml.parameter.key}`
  
 The actual values are taken from [key, value] pairs defined as Java System properties or servlet context parameters. The system properties can be provided directly on a command line. The servlet context parameters can be provided in the service `web.xml` or in an external file.
 
-The specific approach of how to provide the Servlet context to the user service application depends on the application loading mechanism and the specific Java servlet container environment. 
+The specific approach of how to provide the servlet context to the user service application depends on the application loading mechanism and the specific Java servlet container environment. 
 
 **Example:**
 
 If the service is deployed in a Tomcat servlet container, you can configure the context by placing an _xml_ file with the same name
-as the application deployment unit into the `_$CATALINA_BASE/conf/[enginename]/[hostname]/_`. Other containers provide different mechanisms for the same purpose.        
+as the application deployment unit into the `_$CATALINA_BASE/conf/[enginename]/[hostname]/_`. 
+
+Other containers provide different mechanisms for the same purpose.        
 
 ## Plain Java Enabler service onboarding API
 
-You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`: 
+You can initialize your service onboarding configuration using different methods of the Plain Java Enabler class `ApiMediationServiceConfigReader`:
 
 ### Automatic initialization of the onboarding configuration by a single method call  
 
@@ -78,7 +78,7 @@ The following code block shows automatic initialization of the onboarding config
 public ApiMediationServiceConfig initializeAPIMLConfiguration(ServletContext context); 
 ```
 
-This method receives the `ServletContext` parameter which holds a map of parameters providing all necessary information for building the onboarding configuration.
+This method receives the `ServletContext` parameter, which holds a map of parameters that provide all necessary information for building the onboarding configuration.
 The following code block is an example of Java Servlet context configuration.
 
 **Example:**
@@ -121,13 +121,13 @@ The following code block is an example of Java Servlet context configuration.
 
  ## Loading YAML configuration files
     
-_YAML_ configuration files can be loaded either as a a single _YAML_ file, or by merging two _YAML_ files. Use the _loadConfiguration_ method described later in this article corresponding to the needs of your service. 
+_YAML_ configuration files can be loaded either as a single _YAML_ file, or by merging two _YAML_ files. Use the _loadConfiguration_ method described later in this article corresponding to  your service requirements. 
 
 After successfully loading a configuration file, the loading method _loadConfiguration_ uses Java System properties to substitute corresponding configuration properties.  
 
 ### Loading a single YAML configuration file
   
-If you need to build your configuration in different way from multiple sources you can load a single configuration file. You can then 
+If you need to build your configuration from multiple sources, you can load a single configuration file, and then 
 rewrite any parameters as needed using values from another configuration source.   
 
 Use the following method to load a single _YAML_ configuration file:
@@ -139,9 +139,8 @@ public ApiMediationServiceConfig loadConfiguration(String configurationFileName)
 This method receives single _String_ parameter and can be used to load an internal or an external configuration file. 
 
 
-
-**Note:** This method first tries to load the configuration as a Java resource.
-If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method  finally attempts to resolve the file as a relative path. When file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.   
+**Note:** This method first attempts to load the configuration as a Java resource.
+If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method attempts to resolve the file as a relative path. When the file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.   
 
 ### Loading and merging two YAML configuration files
   
