@@ -347,7 +347,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
    ```text
-    C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
 
