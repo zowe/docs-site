@@ -855,7 +855,7 @@ C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
 Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
 
 ```
-/D A,ZWESVSTC
+/D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
 ```
 
 ## Starting and stopping the Zowe Cross Memory Server on z/OS
