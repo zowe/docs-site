@@ -69,7 +69,7 @@ To solve the problem, follow these steps:
     ```
     Check that the user ID of the ZWESVSTC started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
 
-    **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZWESVSTC (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
+    **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZWESVSTC (typically IZUSVR) does not have READ access to the FACILITY class ZWEX.IS.
 
     If the message includes the following text, the configuration of the Application Framework server may be incomplete:
 
