@@ -1,8 +1,8 @@
 # Onboarding a service with the Zowe API Meditation Layer without an onboarding enabler 
 
-This article is one in a series of guides to onboard a REST service with the Zowe API Mediation Layer. Onboarding with API ML makes services accessable through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
+This article is one in a series of guides to onboard a REST service with the Zowe API Mediation Layer. Onboarding with API ML makes services accessible through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
 
-This guide describes how a REST service can be onboarded with the Zowe API ML independent of the language used to write the service. As such, this guide does not describe how to onboard a service with a specific enabler. Similarly, various Eureka client implementations are not used in this onboarding method. 
+This guide describes how a REST service can be onboarded with the Zowe API ML independent of the language used to write the service. As such, this guide does not describe how to onboard service with a specific enabler. Similarly, various Eureka client implementations are not used in this onboarding method. 
 
 **Tip:** If possible, we recommend that you onboard your service using the API ML enabler libraries. The approach described in this article should only be used if other methods to onboard your service are not suitable.
 
@@ -15,20 +15,20 @@ For more information about how to onboard a REST service, see the following link
 
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service. 
 
-* [Registering a service with the API Mediation Layer](#registering_a_service_with_the_api_mediation_layer)
-    * [Service registration](#service_registration)
-    * [API Meditation Layer Service onboarding metadata](#api_meditation_layer_service_onboarding_metadata)
-    * [Catalog parameters](#catalog_parameters)
-    * [Service parameters](#service_parameters)
-    * [Routing parameters](#routing_parameters)
-    * [API Info Parameters](#api_info_parameters)
-* [Sending a heartbeat to API Meditation Layer Discovery Service](#sending_a_heartbeat_to_api_meditation_layer_discovery_service)
-* [Validating successful onboarding with the API Meditation Layer](#validating_successful_onboarding_with_the_api_meditation_layer)
-* [External Resources](#external_resources)
+* [Registering a service with the API Mediation Layer](#Registering a service with the API Mediation Layer)
+    * [Service registration](#Service registration)
+    * [API Meditation Layer Service onboarding metadata](#API Mediation Layer Service onboarding metadata)
+        * [Catalog parameters](#Catalog parameters)
+        * [Service parameters](#Service parameters)
+        * [Routing parameters](#Routing parameters)
+        * [API Info Parameters](#API Info parameters)
+* [Sending a heartbeat to API Meditation Layer Discovery Service](#Sending a heartbeat to API Meditation Layer Discovery Service)
+* [Validating successful onboarding with the API Meditation Layer](#Validating successful onboarding with the API Meditation Layer)
+* [External Resources](#External Resources)
 
 ## Registering a service with the API Mediation Layer
 
-The API ML Discovery Service uses [Netflix/Eureka](https://github.com/Netflix/eureka) as a REST services registry. Eureka is a REST based service that is primarily used to locate services.
+The API ML Discovery Service uses [Netflix/Eureka](https://github.com/Netflix/eureka) as a REST services registry. Eureka is a REST-based service that is primarily used to locate services.
 
 Eureka [endpoints](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations) are used to register a service with the API ML Discovery Service. Endpoints are also used to send a periodic heartbeat to the Discovery Service to indicate that the onboarded service is available. 
 
@@ -90,15 +90,15 @@ where:
 
  * **ipAddr** 
  
-    Specifies the ip address of this specific service instance.
+    Specifies the IP address of this specific service instance.
  
  * **port** 
 
-    Specifies the port of the instance when you use http. If you use http, set `enabled` to `true`.
+    Specifies the port of the instance when you use Http. If you use Http, set `enabled` to `true`.
  
 * **securePort**
 
-    Specifies the port of the instance. When you use https, set `enabled` to `true`.
+    Specifies the port of the instance. When you use Https, set `enabled` to `true`.
  
  * **hostname** 
  
@@ -106,7 +106,7 @@ where:
 
  * **vipAddress** 
  
-    Specifies the service id when you use http.
+    Specifies the service id when you use Http.
 
      **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`
  
@@ -127,7 +127,7 @@ where:
 
 ### API Mediation Layer Service onboarding metadata
 
-At registration time, provide metadata in the following format. Metadata parameters contained in this codeblock are described in the following section.
+At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
 
 ```
 <instance>
@@ -154,15 +154,16 @@ At registration time, provide metadata in the following format. Metadata paramet
 
 Metadata parameters are broken down into the following categories: 
 
-* [Catalog parameters](#catalog_parameters)
-* [Service parameters](#service_parameters)
-* [Routing parameters](#routing_parameters)
-* [API Info parameters](#api_info_parameters)
+* [Catalog parameters](#Catalog parameters)
+* [Service parameters](#Service parameters)
+* [Routing parameters](#Routing parameters)
+* [API Info parameters](#API Info parameters)
 
-### Catalog parameters - `apiml.catalog.tile`
+### Catalog parameters 
+`apiml.catalog.tile`
 
-The API ML Catalog displays information about  services registered with the API ML Discovery Service. 
-Information displayed in the Catalog is defined in the metadata provided by your service during registration. 
+The API ML Catalog displays information about services registered with the API ML Discovery Service. 
+The information displayed in the Catalog is defined in the metadata provided by your service during registration. 
 The Catalog groups correlated services in the same tile when these services are configured with the same `catalog.tile.id` metadata parameter. 
 
 The following parameters are used to populate the API Catalog:
@@ -170,7 +171,7 @@ The following parameters are used to populate the API Catalog:
 * **apiml.catalog.tile.id**
     
     Specifies the specific identifier for the product family of API services. 
-    This is a value used by the API ML to group multiple API services together into a single tile. 
+    This is a value used by the API ML to group multiple API services into a single tile. 
     Each identifier represents a single API dashboard tile in the Catalog. 
 
     **Important!** Specify a value that does not interfere with API services from other products.
@@ -191,12 +192,14 @@ The following parameters are used to populate the API Catalog:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details. We also recommend that you increase the version number when changes are made to the title and description.
 
 
-### Service parameters - `apiml.service`
+### Service parameters 
+`apiml.service`
+
 The following parameters define service information for the API Catalog:
 
 * **apiml.service.title**
 
-    Specifies the human readable name of the API service instance. 
+    Specifies the human-readable name of the API service instance. 
    
     This value is displayed in the API Catalog when a specific API service instance is selected. 
         
@@ -210,7 +213,9 @@ The following parameters define service information for the API Catalog:
     
     This value is displayed in the API Catalog when a specific API service instance is selected.   
     
-### Routing parameters - `apiml.routes`
+### Routing parameters
+`apiml.routes`
+
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding service.
 A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
 in the Gateway address space. 
@@ -241,12 +246,14 @@ The following snippet is an example of the API routing information properties.
     The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.
 
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes.  This prefix must by provided manually when _XML_ configuration is used.
+This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
 
 For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 
-### API Info parameters - `apiml.apiInfo.`
+### API Info parameters
+`apiml.apiInfo.`
+
 REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML. These parameters provide information for API (Swagger) documentation that is displayed in the API Catalog.
 
 The following parameters provide the information properties of a single API:
@@ -264,7 +271,7 @@ The following parameters provide the information properties of a single API:
 
 * **apiml.apiInfo.{api-index}.version**
 
-    Specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
+    Specifies the API `version`. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
     
 * **apiml.apiInfo.{api-index}.gatewayUrl**
 
@@ -281,7 +288,7 @@ The following parameters provide the information properties of a single API:
 
 ## Sending a heartbeat to API Meditation Layer Discovery Service
 
-After registration, it is necessary for a service to send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
+After registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
 
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
 
