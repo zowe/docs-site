@@ -15,16 +15,16 @@ For more information about how to onboard a REST service, see the following link
 
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service. 
 
-* [Registering a service with the API Mediation Layer](#Registering a service with the API Mediation Layer)
+* [Registering a service with the API Mediation Layer](#Registering-a-service-with-the-API-Mediation-Layer)
     * [Service registration](#Service-registration)
-    * [API Meditation Layer Service onboarding metadata](#API Mediation Layer Service onboarding metadata)
+    * [API Meditation Layer Service onboarding metadata](#API-Mediation-Layer-Service-onboarding-metadata)
         * [Catalog parameters](#Catalog-parameters)
-        * [Service parameters](#Service parameters)
-        * [Routing parameters](#Routing parameters)
-        * [API Info Parameters](#API Info parameters)
-* [Sending a heartbeat to API Meditation Layer Discovery Service](#Sending a heartbeat to API Meditation Layer Discovery Service)
-* [Validating successful onboarding with the API Meditation Layer](#Validating successful onboarding with the API Meditation Layer)
-* [External Resources](#External Resources)
+        * [Service parameters](#Service-parameters)
+        * [Routing parameters](#Routing-parameters)
+        * [API Info Parameters](#API-Info-parameters)
+* [Sending a heartbeat to API Meditation Layer Discovery Service](#Sending-a-heartbeat-to-API-Meditation-Layer-Discovery-Service)
+* [Validating successful onboarding with the API Meditation Layer](#Validating-successful-onboarding-with-the-API-Meditation-Layer)
+* [External Resources](#External-Resources)
 
 ## Registering a service with the API Mediation Layer
 
@@ -154,10 +154,10 @@ At registration time, provide metadata in the following format. Metadata paramet
 
 Metadata parameters are broken down into the following categories: 
 
-* [Catalog parameters](#Catalog parameters)
-* [Service parameters](#Service parameters)
-* [Routing parameters](#Routing parameters)
-* [API Info parameters](#API Info parameters)
+* [Catalog parameters](#Catalog-parameters)
+* [Service parameters](#Service-parameters)
+* [Routing parameters](#Routing-parameters)
+* [API Info parameters](#API-Info-parameters)
 
 ### Catalog parameters 
 `apiml.catalog.tile`
