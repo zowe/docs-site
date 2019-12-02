@@ -1,6 +1,6 @@
 # API Mediation Layer onboarding configuration
 
-This article describes the process of configuring a REST service to onboard with the API Mediaiton Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard with the API ML. You can also externalize  configuration parameters for subsequent customization by a systems administrator. 
+This article describes the process of configuring a REST service to onboard with the API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard with the API ML. You can also externalize  configuration parameters for subsequent customization by a systems administrator. 
 
 
 * [Introduction](#introduction)
@@ -35,7 +35,7 @@ The _PJE_ provides a mechanism to load API ML onboarding service configuration f
 ## Configuring a REST service for API ML onboarding
 
 In most cases, the API ML Discovery service, Gateway, and service endpoint addresses are not known at the time of building the service executables. 
-Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the specific deployment environment, and are not intended to be publicly available.
+Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the specific deployment environment, and are not intended to be publicly accessible.
 Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
 
 * **internal _service-configuration.yml_** 
@@ -117,7 +117,7 @@ The following code block is an example of Java Servlet context configuration.
     
    The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
    
-   The other context parameters  with the _apiml_ prefix are used to rewrite values of properties in the configuration files. 
+   The other context parameters with the _apiml_ prefix are used to rewrite values of properties in the configuration files. 
 
  ## Loading YAML configuration files
     
