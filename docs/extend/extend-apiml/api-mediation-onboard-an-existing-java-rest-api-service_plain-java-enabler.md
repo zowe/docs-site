@@ -1,4 +1,4 @@
-# REST APIs service Plain Java Enabler
+# Onboarding a REST API service with the Plain Java Enabler (PJE)
 
 This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
@@ -8,22 +8,21 @@ This article is part of a series of onboarding guides, which outline the process
 
 Zowe API ML is a lightweight API management system based on the following Netflix components:
 
-<font color = "red"> Why is it useful for REST developers to know that the API ML is built on these Netflix components? </font>
-
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
 * Ribbon - load ballancer
 
+The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
+Eureka endpoints are used to register a service with the API ML Discovery Service. 
 
-
-Using the API enabler libraries is the recommended approach to onboard a REST service with the API ML. While it is possible to call the Eureka registration endpoint directly, this approach requires preparing corresponding configuration data. Doing so is unnecessarily complex and time-consuming. 
+The API ML provides onboarding enabler libraries. Using these libraries is the recommended approach to onboard a REST service with the API ML. While it is possible to call the Eureka registration endpoint directly, this approach requires preparing corresponding configuration data. Doing so is unnecessarily complex and time-consuming. 
  
 Additionally, while the _PJE_ library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
-**Tip:** For more information about how to utilize other API ML enabler approaches, see: 
+**Tip:** For more information about how to utilize another API ML enabler, see: 
   * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
-  * [Onboard a rest service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
+  * [Onboard a REST service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
 
 ## Onboarding your REST service with API ML
@@ -52,10 +51,10 @@ The following steps outline the overall process to onboard a REST service with t
     * [Load service configuration](#load-service-configuration)
     * [Initialize Eureka Client](#initialize-eureka-client)
     * [Register with Eureka Discovery Service](#register-with-eureka-discovery-service)
-        * [Explanation of the periodic heartbeat to call the API ML Discovery Service](#explanation-of-the-periodic-heartbeat-to-call-the-api-ml-discovery-service) <font color = "red"> Is there a manual step here? Should this item be at the same level as the preceding items? </font>
+        * [Explanation of the periodic heartbeat to call the API ML Discovery Service](#explanation-of-the-periodic-heartbeat-to-call-the-api-ml-discovery-service) 
 
 5. [Adding API documentation](#adding-api-documentation)
-    * [Add Discovery Client configuration](#add-configuration-for-discovery-client) <font color = "red"> Where is this item in the article? </font>
+    
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
 
@@ -66,7 +65,10 @@ Ensure that the following prerequisites are met before onboarding your REST serv
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. <font color = "red"> Is this relevant information for this onboarding guide?</font>
+**Note:** 
+This documentation is valid for `ZoweApimlVersion 1.1.12` and higher.
+
+**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required make it possible for you to first develop a local machine first before you deploy on z/OS. 
 
 ## Configuring your project
 
@@ -83,7 +85,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
  
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
-    If you are using the Zowe Giza artifactory, use the credentials in the following code block: <font color = "red"> Why are we mentioning Zowe here? Is there a Zowe artifactory? </font>
+    If you are using the Giza artifactory, use the credentials in the following code block: 
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -175,16 +177,13 @@ Use the following procedure if you use _Maven_ as your build automation system.
       </servers>
     </settings>
     ```
-    **Note:** If you want to use _snapshot_ version set the `/servers/server/id` to `libs-snapshot`.
+    **Tip:** If you want to use _snapshot_ version set the `/servers/server/id` to `libs-snapshot`.
 
 3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
 4. In the directory of your project, run the `mvn package` command to build the project.
 
-**Notes:** 
 
-* You may need to add more dependencies as required by your service implementation. <font color = "red"> Can we provide examples here?</font>  
-* The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and higher.
 
 ## Configuring your service
 
@@ -291,26 +290,21 @@ The onboarding configuration parameters are broken down into the following group
 
 * **baseUrl** 
 
-    <font color = "red"> Review the https example. </font>
-
-    This parameter specifies the base URL pointing to your service.
-        
-    `baseUrl` is subsequently used as a prefix in combination with  relative addresses of the administrative end points to construct their absolute URL as in the following URLs:
+    This parameter specifies the base URL for the following administrative endpoints: 
 
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
       
-    For the Https protocol, the URL appears in the following format:
+    Use the following format to include your service name in the URL path: 
 
-     `https://host:port/servicename`
+     `protocol://host:port/servicename`
   
 *  **serviceIpAddress** (Optional) 
 
-    <font color = "red">Why are we mentioning XML configuration here?</font>
 
     This parameter specifies the IP address of the service and can be provided by system administrator in externalized service configuration. 
-    If this parameter is not present in the _YAML/XML_ configuration file or is not set as service context parameter, it will be resolved from the hostname part of the `baseUrl` property using `java.net.InetAddress` capabilities.  
+    If this parameter is not present in the configuration file or is not set as a service context parameter, it will be resolved from the hostname part of the `baseUrl`.  
       
 
 ### Administrative endpoints 
@@ -380,11 +374,9 @@ where:
 
     specifies the API identifier that is registered in the API ML installation.
         The API ID uniquely identifies the API in the API ML. 
-        Multiple services can provide the same API. The `apiId` can be used to locate the same APIs that are provided by different services. <font color = "red"> How do you know this statemetn is accurate? </font> The creator of the API defines this ID.
+         The `apiId` can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
         The `apiId` must be a string of up to 64 characters
         that uses lowercase alphanumeric characters and a dot: `.` .
-       
-     **Tip:** We recommend that you use your organization as the prefix.
 
 * **apiInfo.version** 
 
@@ -408,7 +400,7 @@ where:
 
 The API routing group provides the required routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl` parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API Gateway endpoints.  
+in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl` parameters. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -502,13 +494,13 @@ The tls/ssl configuration consists of the following parameters:
 
   This parameter makes it possible to prevent server certificate validation.
 
-  **Important!** Use this parameter with care. This should not be used in production environments. Using this parameter significantly degrades the overall security of the system.
+  **Important!** Use this parameter with care. This should not be used in production environments. Setting this parameter to `false` significantly degrades the overall security of the system.
   
 * **protocol**
 
-  TLSv1.2
-
-  This parameter specifies the TLS protocol version currently used by ZOWE API ML Discovery service.
+    This parameter specifies the TLS protocol version currently used by ZOWE API ML Discovery service. 
+    
+    **Tip:** We recommend you use TLSv1.2 as your security protocol
 
 * **keyAlias**
   
@@ -544,7 +536,7 @@ The tls/ssl configuration consists of the following parameters:
 
 * **ciphers:** (Optional)
 
-    Ciphers that can be used include:
+    This parameter specifies the recommended ciphers. 
 
     ```
     TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
@@ -622,7 +614,7 @@ The following steps outline the process of registering your service with API ML.
         ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(configurationFile);
         ...
     ```
-    **Note:** The `ApiMediationServiceConfigReader` class also uses  other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
+    **Note:** The `ApiMediationServiceConfigReader` class also provides other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
 
 4. Register with Eureka Discovery Service.
 
@@ -732,24 +724,7 @@ The following code block is a full example of a context listener class implement
     }
     
 
-### Explanation of the periodic heartbeat to call the API ML Discovery Service
 
-REST services must renew their registration lease by sending heartbeats to the Eureka Discovery Service. 
-The heartbeat informs the Eureka Discovery Service that the instance is still alive. 
-REST services that are onboarded using an enabler, incorporate a Eureka client instance, which automatically sends heartbeats to the Eureka Discovery Service.      
-
-The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka server every 30 seconds by default.
-If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
-
-**Note:** The interval of the EurekaClient heartbeat is a configurable setting. However, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
-
-<font color = "red"> Is this a step? Does the person onboarding the service need to issue this PUT method? </font>
-
-The heartbeat is issued by `EurekaClient` using the Http `PUT`  method in the following format:
-
-`https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
-
-After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
 ## Adding API documentation
 
