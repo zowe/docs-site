@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.7.1 and later releases include the following enhancements, release by release.
 
-- [Version 1.7.1 (Nonvember 2019)](#version-1-7-1-november-2019)
+- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
 - [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
 - [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
 - [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
@@ -16,7 +16,7 @@ Zowe Version 1.7.1 and later releases include the following enhancements, releas
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.7.1 (November 2019)
+## Version 1.7.1 (December 2019)
 
 <!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
@@ -86,7 +86,7 @@ The following features and enhancements were added.
 #### Zowe Explorer (Extension for VSCode)
 
 - The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
-- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
+- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).
 
 ### Bug fixes
 
