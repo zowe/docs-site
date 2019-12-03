@@ -81,6 +81,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
    This will expand to a file structure.
 
    ```
+      /bin
       /files
       /install
       /scripts
