@@ -134,19 +134,6 @@ The configuration parameters belong to one of the following groups:
      This parameter can be externalized and set by the customer system administrator.  
     
   **Tip:** Describe the service so that the end user understands the function of the service.
-
-### Administrative endpoints relative URLs
-
-   The following snippet presents the format of the administrative endpoint properties:
-   
-   ```
-baseUrl: http://localhost:10021/sampleservice
-
-homePageRelativeUrl:
-statusPageRelativeUrl: /application/info
-healthCheckRelativeUrl: /application/health
-```
-where:
  
 * **baseUrl** 
 
@@ -165,24 +152,29 @@ where:
     - **<instanceId>{instanceId}</instanceId>**
     - **<dataCenterInfo><name>MyOwn</name></dataCenterInfo>**
 
-       
-    **Example in _YAML_:** 
-    * `https://host:port/servicename` for HTTPS service
-        
-    `baseUrl` is susequently used as a prefix in combination with the following end points relative addresses to construct their absolute URLs:
+    `baseUrl` is subsequently used as a prefix in combination with the administrative end points relative addresses to construct their absolute URLs:
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
-
+       
+    **Example in _YAML_:**
+    * `https://host:port/servicename` for HTTPS service        
 
 *  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
 
     specifies the IP address of the service. This parameter can be provided by system administrator in the externalized service configuration. 
     If this parameter is not present in the YAML/XML configuration file or is not set as service context parameter, it will be resolved from the hostname part of the baseUrl property using `java.net.InetAddress` capabilities.
 
-* **contextPath** (_XML_ Path: `/instance/contextPath`) 
+### Administrative endpoints relative URLs
 
-    The contextPath can be part of serviceBaseUrl if service web context is not "/" (root context).
+   The following snippet presents the format of the administrative endpoint properties:
+   
+   ```
+homePageRelativeUrl:
+statusPageRelativeUrl: /application/info
+healthCheckRelativeUrl: /application/health
+```
+where:
                   
 * **homePageRelativeUrl** (_XML_ Path: `/instance/metadata/homePageUrl`) 
     
@@ -407,6 +399,10 @@ In this case, the security configuration must be provided directly to the REST c
 
 The `tls`/`ssl` configuration consists of the following parameters:
 
+* **verifySslCertificatesOfServices**
+  Allows to prevent server certificate validation.
+  *CAUTION* Use with care! Should not be used in production environments, as this will significantly degrade overal security of the system.
+  
 * **protocol**
     TLSv1.2
 

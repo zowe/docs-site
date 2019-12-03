@@ -232,31 +232,25 @@ The on-boarding configuration parameters belong to one of the following groups:
 * **serviceId**
     
     The `serviceId` uniquely identifies instances of a microservice in the API ML.
-    The service developer specifies a default serviceId during the design of the service. 
-    If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
+    The serviceId is used as part of the service URL path in the API ML gateway address space.
+    The API ML Gateway then uses the serviceId for routing to the API service instances.
+    When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
+    An incoming API request can be routed to either of them through utilized load balancing mechanism.
             
     **Important!**  Ensure that the service ID is set properly with the following considerations:
-    
-    * The API ML Gateway uses the serviceId for routing to the API service instances.
-      As such, the serviceId must be a part of the service URL path in the API ML gateway address space. 
-    * When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
-      An incoming API request can be routed to either of them through load balancing.
+     
     * The same service ID should only be set for multiple API service instances for API scalability.
     * The service ID value must only contain lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
-    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
-        
-    **Examples:**
-    * If the serviceId is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as: 
+    * The service ID is linked to (mainframe) security resources. Changes to the service ID require an update of the related security resources.
+
+    **Example:**
+    * If the serviceId is `sampleservice`, the service URL in the API ML Gateway address space appears as: 
             
        ```
-       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
+       https://gateway-host:gateway-port/api/v1/sampleservice/...
        ```
 
-    * If a customer system administrator sets the service ID to `vantageprod1`, the service URL in the API ML Gateway address space appears as:
-       ```
-       http://gateway:port/api/v1/vantageprod1/endpoint1/...
-       ```
 * **title** 
     
   This parameter specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
@@ -279,31 +273,35 @@ The on-boarding configuration parameters belong to one of the following groups:
     
   **Tip:** Describe the service so that the end user understands the function of the service.
 
+* **baseUrl** 
+
+    specifies the base URL pointing to your service.
+        
+    `baseUrl` will be then used as a prefix in combination with the administrative end points relative addresses to construct their absolute URL:
+    * **homePageRelativeUrl**
+    * **statusPageRelativeUrl**
+    * **healthCheckRelativeUrl** 
+      
+    **Example:** 
+    * `https://host:port/servicename` for HTTPS service
+  
+*  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
+
+    specifies the IP address of the service. This parameter can be provided by system administrator in the externalized service configuration. 
+    If this parameter is not present in the YAML/XML configuration file or is not set as service context parameter, it will be resolved from the hostname part of the baseUrl property using `java.net.InetAddress` capabilities.  
+      
+
 ### Administrative endpoints 
 
    The following snippet presents the format of the administrative endpoint properties:
-   
-   ```
-baseUrl: http://localhost:10021/sampleservice
 
+   ```
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
 where:
- 
-* **baseUrl** 
 
-    specifies the base URL pointing to your service.
-      
-    **Example:** 
-    * `https://host:port/servicename` for HTTPS service
-        
-    `baseUrl` will be then used as a prefix in combination with the following end points relative addresses to construct their absolute URL:
-    * **homePageRelativeUrl**
-    * **statusPageRelativeUrl**
-    * **healthCheckRelativeUrl** 
-        
 * **homePageRelativeUrl**  
     
     specifies the relative path to the home page of your service. The path should start with `/`.
@@ -367,7 +365,7 @@ where:
         that uses lowercase alphanumeric characters and a dot: `.` .
        
      We recommend that you use your organization as the prefix.
-
+s
 
 * **apiInfo.version** 
 
@@ -485,12 +483,10 @@ For more information about API ML security see the following link: [API ML secur
 
 The tls/ssl configuration consists of the following parameters:
 
-
-* **enabled**
-  TODO
   
 * **verifySslCertificatesOfServices**
-  TODO
+  Allows to prevent server certificate validation.
+  *CAUTION* Use with care! Should not be used in production environments, as this will significantly degrade overal security of the system.
   
 * **protocol**
   TLSv1.2
