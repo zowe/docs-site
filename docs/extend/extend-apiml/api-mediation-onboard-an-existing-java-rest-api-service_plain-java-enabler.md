@@ -16,12 +16,8 @@ Using the API enabler libraries is the recommended approach to onboard a REST se
 Additionally, while the plain Java enabler library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
-<<<<<<< HEAD
 **Tip:** For more information about how to utilize other API ML enabler approaches, see: 
   * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
-=======
-  For instructions about how to utilize other API ML enablers types, see the following links: 
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
   * [Onboard a rest service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
 
@@ -60,27 +56,13 @@ The following steps outline the overall process to onboard a REST service with t
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-<<<<<<< HEAD
 **Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. 
-=======
-  **Note:**: It is presumed that your REST service will be deployed on a z/OS environment. However, this is not required.
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ## Configuring your project
 
 Use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
-<<<<<<< HEAD
 **Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, note that if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Do this by using the provided gradle tasks provided in the source code. 
-=======
-ZOWE publishes the API ML artifacts in its own artifactory called GIZA at __https://gizaartifactory.jfrog.io/gizaartifactory/libs-release__.
-
-If you want to use your own API ML binaries built from source code, you'll have to publish the enabler artifact to an other artifactory.
-You can use for this purpose the gradle tasks provided with the source code. Set the address and user credentials for your artifactory 
-in the gradle.properties file in the source tree root.
-
-The following steps assume using Giza artifactory.
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ### Gradle guide
 Use the following procedure to use Gradle as your build automation system.
@@ -89,15 +71,9 @@ Use the following procedure to use Gradle as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
  
-<<<<<<< HEAD
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
 If you are using the Zowe Giza artifactory, use the credentials in the following code block:
-=======
-2. In the *gradle.properties* file, set the URL of the artifactory containing the plain java enabler artifact.
-Provide the corresponding credentials to gain access to the Maven repository. 
-In case of Zowe Giza artifactory use the credentials in the following code block:
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -131,7 +107,6 @@ In case of Zowe Giza artifactory use the credentials in the following code block
     ```    
     **Note:** The published artifact from the Giza artifactory also contains the enabler dependencies from other software packages.
 
-<<<<<<< HEAD
     If you are using artifactory other than Giza,  manually provide the following dependencies in your service `build.gradle` script: 
 
     ```gradle
@@ -147,18 +122,10 @@ In case of Zowe Giza artifactory use the credentials in the following code block
     ```
 
     **Notes:** 
-=======
-  **Notes:** 
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
     * You may need to add more dependencies as required by your service implementation.     
     * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
 
-<<<<<<< HEAD
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively. you can run `gradlew` to use the specific gradle version that is working with your project.
-=======
-5. In your project home directory, run the `gradle clean build` command to build your project. 
-Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
->>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ### Maven guide
 
