@@ -1,19 +1,24 @@
 # REST APIs service Plain Java Enabler
 
-This article is a part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 **Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
 ## Introduction
 
 Zowe API ML is a lightweight API management system based on the following Netflix components:
+
+<font color = "red"> Why is it useful for REST developers to know that the API ML is built on these Netflix components? </font>
+
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
 * Ribbon - load ballancer
 
+
+
 Using the API enabler libraries is the recommended approach to onboard a REST service with the API ML. While it is possible to call the Eureka registration endpoint directly, this approach requires preparing corresponding configuration data. Doing so is unnecessarily complex and time-consuming. 
  
-Additionally, while the plain Java enabler library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
+Additionally, while the _PJE_ library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
 **Tip:** For more information about how to utilize other API ML enabler approaches, see: 
@@ -33,30 +38,35 @@ The following steps outline the overall process to onboard a REST service with t
     * [Maven guide](#maven-guide)
 
 3. [Configuring your service](#configuring-your-service)
-    * [Eureka discovery service](#eureka-discovery-service)
-    * [REST service information](#rest-service-information)
-    * [API information](#api-information)
+    * [REST service identification](#rest-service-identification)
+    * [Administrative endponts](#administrative-endponts)
+    * [API info](#api-info)
+    * [API routing information](#api=routing-information)
     * [API Catalog information](#api-catalog-information)
+    * [API Security](#api-security)
+    * [Eureka Discovery Service](#eureka-discovery-service)
 
-4. [Register your service to API ML](#register-your-service-to-api-ml)
+4. [Registering your service with API ML](#registering-your-service-with-api-ml)
     * [Add a web application context listener class](#add-a-web-application-context-listener-class)
-    * [Registering a context listener](#registering-a-context-listener)
-    * [Reading service configuration](#reading-service-configuration)
-    * [Initializing Eureka Client](#initializing-eureka-client)
-    * [Registering with Eureka discovery service](#registering-with-eureka-discovery)
+    * [Register a web application context listener](#register-a-web-application-context-listener)
+    * [Load service configuration](#load-service-configuration)
+    * [Initialize Eureka Client](#initialize-eureka-client)
+    * [Register with Eureka Discovery Service](#register-with-eureka-discovery-service)
+        * [Explanation of the periodic heartbeat to call the API ML Discovery Service](#explanation-of-the-periodic-heartbeat-to-call-the-api-ml-discovery-service) <font color = "red"> Is there a manual step here? Should this item be at the same level as the preceding items? </font>
 
-5. [Documenting your API](#documenting-your-api)
-    * [(Optional) Add Swagger API documentation to your project](#optional-add-swagger-api-documentation-to-your-project)
-    * [Add Discovery Client configuration](#add-configuration-for-discovery-client)
+5. [Adding API documentation](#adding-api-documentation)
+    * [Add Discovery Client configuration](#add-configuration-for-discovery-client) <font color = "red"> Where is this item in the article? </font>
 
-6. (Optional) [Validating your API service discoverability](#validating-the-discovery-of-your-api-service-by-the-discovery-service)
+6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
 
 ## Prerequisites
+
+Ensure that the following prerequisites are met before onboarding your REST service with the API ML with the _PJE_:
 
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. 
+**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. <font color = "red"> Is this relevant information for this onboarding guide?</font>
 
 ## Configuring your project
 
@@ -64,7 +74,7 @@ Use either _Gradle_ or _Maven_ build automation systems to configure your projec
 
 **Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code. 
 
-### Gradle guide
+### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
 
 **Follow these steps:**
@@ -73,7 +83,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
  
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
-    If you are using the Zowe Giza artifactory, use the credentials in the following code block:
+    If you are using the Zowe Giza artifactory, use the credentials in the following code block: <font color = "red"> Why are we mentioning Zowe here? Is there a Zowe artifactory? </font>
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -127,7 +137,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
-### Maven guide
+### Maven build automation system
 
 Use the following procedure if you use _Maven_ as your build automation system.
 
@@ -147,7 +157,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
     </repositories>
     ```
 
-2. Create a `settings.xml` file and copy the following _XML__ code block that defines the credentials for the Artifactory:
+2. Create a `settings.xml` file and copy the following _XML_ code block that defines the credentials for the Artifactory:
 
     ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -165,15 +175,16 @@ Use the following procedure if you use _Maven_ as your build automation system.
       </servers>
     </settings>
     ```
+    **Note:** If you want to use _snapshot_ version set the `/servers/server/id` to `libs-snapshot`.
+
 3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
 4. In the directory of your project, run the `mvn package` command to build the project.
 
 **Notes:** 
 
-* You may need to add more dependencies as required by your service implementation.     
-* The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
-* If you want to use snapshot version set the __/servers/server/id__ in step 2 to __libs-snapshot__
+* You may need to add more dependencies as required by your service implementation. <font color = "red"> Can we provide examples here?</font>  
+* The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and higher.
 
 ## Configuring your service
 
@@ -241,7 +252,7 @@ The onboarding configuration parameters are broken down into the following group
 - [API routing information](api-routing-information)
 - [API catalog information](api-catalog-information)
 - [API security](api-security)
-- [Eureka discovery service](eureka-discovery-service) 
+- [Eureka Discovery Service](eureka-discovery-service) 
 
 ### REST service identification
 
@@ -543,11 +554,11 @@ The tls/ssl configuration consists of the following parameters:
 **Notes:** 
 
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
-* Currently 'ciphers' is not used. It is optional and serves as a place holder only.
+* Currently `ciphers` is not used. It is optional and serves as a place holder only.
 
-### Eureka discovery service
+### Eureka Discovery Service
 
-Eureka discovery service parameters group contains a single parameter used to address Eureka discovery service location.
+Eureka Discovery Service parameters group contains a single parameter used to address Eureka Discovery Service location.
 An example is presented in the following snippet: 
 
 ```
@@ -569,15 +580,13 @@ discoveryServiceUrls:
 
 ##  Registering your service with API ML
 
-The following steps outline the process of registering your service with API ML:
+The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
 
-- [Add a web application context listener class](#add-a-web-application-context-listener)
-- [Register a web application context listener](#register-a-web-application-context-listener)
-- [Load service configuration](#load-service-configuration)
-- [Initialize Eureka Client](#initialize-eureka-client)
-- [Register with Eureka discovery service](#register-with-eureka-discovery-service)
-- [Unregister your service](#unregister-your-service)
-
+1. Add a web application context listener class
+2. Register a web application context listener
+3. Load service configuration
+4. Register with Eureka discovery service
+5. Unregister your service
 
 **Follow these steps:**
 
@@ -613,7 +622,7 @@ The following steps outline the process of registering your service with API ML:
         ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(configurationFile);
         ...
     ```
-*  **Note:** The `ApiMediationServiceConfigReader` class also uses  other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
+    **Note:** The `ApiMediationServiceConfigReader` class also uses  other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
 
 4. Register with Eureka Discovery Service.
 
@@ -630,7 +639,7 @@ The following steps outline the process of registering your service with API ML:
 
 5. Unregister your service.
 
-    Use the `contextDestroyed` method to unregister your service instance from Eureka discovery service in the following format:
+    Use the `contextDestroyed` method to unregister your service instance from Eureka Discovery Service in the following format:
 
     ```
     @Override
@@ -723,16 +732,18 @@ The following code block is a full example of a context listener class implement
     }
     
 
-### Periodic heartbeat to call the API ML Discovery Service
+### Explanation of the periodic heartbeat to call the API ML Discovery Service
 
 REST services must renew their registration lease by sending heartbeats to the Eureka Discovery Service. 
 The heartbeat informs the Eureka Discovery Service that the instance is still alive. 
 REST services that are onboarded using an enabler, incorporate a Eureka client instance, which automatically sends heartbeats to the Eureka Discovery Service.      
 
-The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka Server every 30 seconds by default.
+The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka server every 30 seconds by default.
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
 
 **Note:** The interval of the EurekaClient heartbeat is a configurable setting. However, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
+
+<font color = "red"> Is this a step? Does the person onboarding the service need to issue this PUT method? </font>
 
 The heartbeat is issued by `EurekaClient` using the Http `PUT`  method in the following format:
 
@@ -740,7 +751,7 @@ The heartbeat is issued by `EurekaClient` using the Http `PUT`  method in the fo
 
 After you add API ML integration endpoints, you are ready to add service configuration for the Discovery client.
 
-## API documentation
+## Adding API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
 
@@ -748,13 +759,13 @@ Use the following procedure to add Swagger API documentation to your project.
 
 1. Add a Springfox Swagger dependency.
 
-    * For Gradle add the following dependency in `build.gradle`:
+    * For _Gradle_ add the following dependency in `build.gradle`:
 
         ```gradle
         compile "io.springfox:springfox-swagger2:2.8.0"
         ```
     
-    * For Maven add the following dependency in `pom.xml`:
+    * For _Maven_ add the following dependency in `pom.xml`:
         ```xml
         <dependency>
             <groupId>io.springfox</groupId>
@@ -812,27 +823,27 @@ Use the following procedure to add Swagger API documentation to your project.
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
 
-  **Note** Version 2.8 of SpringFox which is actual at time of wrting this document does not support OpenAPI 3.0. 
-  See the open feature request at GitHub: https://github.com/springfox/springfox/issues/2022 for details.
-  If you need to provide your service documentation in OpenAPI 3.0 format, please use an other tool.
+    **Note:** The current SpringFox Version 2.8 does not support OpenAPI 3.0. 
+    For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
   
-## (Optional) Validating the discoverability of your API service by the Discovery Service
-Once you are able to build and start your service successfully, it is time to validate that it can register correctly with your configured APIML Discovery Service. 
+## Validating the discoverability of your API service by the Discovery Service
 
-Validatiing your service registration can be done in the API ML Discovery service and the API ML Catalog. 
-If your service appears in the Discovery Service UI but is not visible in the API Catalog, 
-check to ensure that your configuration settings are correct.
+Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service. 
 
-Concrete addresses and user credentials for the individual API ML components will depend on your target runtime environment. 
-If you are working with local installation of API ML and you decide to use our dummy identity provider, use the word *'user'* 
-as both username and  password. In case API ML was installed by system administrators, ask them to provide you 
+Validatiing your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, 
+check to make sure that your configuration settings are correct.
+
+Specific addresses and user credentials for the individual API ML components depend on your target runtime environment. 
+
+**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`' 
+for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you 
 with actual addresses of API ML components and the respective user credentials.
 
 **Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
 
 **Follow these steps:**
 
- 1. Use the HTTP `GET` method in the following format to query the Discovery Service for your service instance information:
+ 1. Use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
  
     ```
     http://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
