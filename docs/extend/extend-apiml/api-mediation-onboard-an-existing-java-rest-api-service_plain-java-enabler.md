@@ -16,10 +16,14 @@ Using the API enabler libraries is the recommended approach to onboard a REST se
 Additionally, while the plain Java enabler library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
+<<<<<<< HEAD
 **Tip:** For more information about how to utilize other API ML enabler approaches, see: 
   * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
+=======
+  For instructions about how to utilize other API ML enablers types, see the following links: 
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
   * [Onboard a rest service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
-  * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
+  * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
 
 ## Onboarding your REST service with API ML
 
@@ -56,13 +60,27 @@ The following steps outline the overall process to onboard a REST service with t
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
+<<<<<<< HEAD
 **Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. 
+=======
+  **Note:**: It is presumed that your REST service will be deployed on a z/OS environment. However, this is not required.
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ## Configuring your project
 
 Use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
+<<<<<<< HEAD
 **Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, note that if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Do this by using the provided gradle tasks provided in the source code. 
+=======
+ZOWE publishes the API ML artifacts in its own artifactory called GIZA at __https://gizaartifactory.jfrog.io/gizaartifactory/libs-release__.
+
+If you want to use your own API ML binaries built from source code, you'll have to publish the enabler artifact to an other artifactory.
+You can use for this purpose the gradle tasks provided with the source code. Set the address and user credentials for your artifactory 
+in the gradle.properties file in the source tree root.
+
+The following steps assume using Giza artifactory.
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ### Gradle guide
 Use the following procedure to use Gradle as your build automation system.
@@ -71,9 +89,15 @@ Use the following procedure to use Gradle as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
  
+<<<<<<< HEAD
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
 If you are using the Zowe Giza artifactory, use the credentials in the following code block:
+=======
+2. In the *gradle.properties* file, set the URL of the artifactory containing the plain java enabler artifact.
+Provide the corresponding credentials to gain access to the Maven repository. 
+In case of Zowe Giza artifactory use the credentials in the following code block:
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -107,6 +131,7 @@ If you are using the Zowe Giza artifactory, use the credentials in the following
     ```    
     **Note:** The published artifact from the Giza artifactory also contains the enabler dependencies from other software packages.
 
+<<<<<<< HEAD
     If you are using artifactory other than Giza,  manually provide the following dependencies in your service `build.gradle` script: 
 
     ```gradle
@@ -122,11 +147,18 @@ If you are using the Zowe Giza artifactory, use the credentials in the following
     ```
 
     **Notes:** 
+=======
+  **Notes:** 
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
     * You may need to add more dependencies as required by your service implementation.     
-    * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
-    * The current ZoweApimlVersion is '1.1.12'.
+    * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
 
+<<<<<<< HEAD
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively. you can run `gradlew` to use the specific gradle version that is working with your project.
+=======
+5. In your project home directory, run the `gradle clean build` command to build your project. 
+Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
+>>>>>>> 82c2cf4df6675445ff17e3566cc42a5c050b4c5a
 
 ### Maven guide
 
@@ -148,125 +180,76 @@ Use the following procedure if you use Maven as your build automation system.
     </repositories>
     ```
 
-    This file specifies the URL of the repository of the Artifactory where you download the enabler-java artifacts.
-
-2. In the same `pom.xml` file, copy the following *xml* tags to add the following dependencies of your project:
+2. Create a `settings.xml` file and copy the following *xml* code block that defines the credentials for the Artifactory:
     ```xml
-    <dependencies>
-        <dependency>
-            <groupId>com.ca.mfaas.sdk</groupId>
-            <artifactId>mfaas-integration-enabler-java</artifactId>
-            <version>1.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ca.mfaas.sdk</groupId>
-            <artifactId>mfaas-common-service-core</artifactId>
-            <version>1.1.11</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.eureka</groupId>
-            <artifactId>eureka-client</artifactId>
-            <version>1.8.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.4.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-        </dependency>   
-    </dependencies>
-    ```
-    **Notes:** 
-    * You may need to add more dependencies as required by your service implementation.     
-    * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
-    * The current ZoweApimlVersion is '1.1.12'.
-    
-3. Create a `settings.xml` file and copy the following *xml* code block that defines the credentials for the Artifactory:
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd">
-    <servers>
-        <server>
-           <id>libs-release</id>
-           <username>apilayer-build</username>
-           <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
-        </server>
-    </servers>
+      <servers>
+          <server>
+             <id>libs-release</id>
+             <username>apilayer-build</username>
+             <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
+          </server>
+      </servers>
     </settings>
     ```
-4. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-5. In the directory of your project, run the `mvn package` command to build the project.
+4. In the directory of your project, run the `mvn package` command to build the project.
+
+  **Notes:** 
+     * You may need to add more dependencies as required by your service implementation.     
+     * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
+     * If you want to use snapshot version set the __/servers/server/id__ in step 2 to __libs-snapshot__
 
 ## Configuring your service
 
-Provide default service configuration in the `service-configuration.yml` file located in your resources directory. The service on-boarding configuration can be externalized. 
-The externalization options are described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
+Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
+The service on-boarding configuration can be externalized as described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
 
-The following code snippet shows `service-configuration.yml` content as an example of a service configuration with the serviceId "sampleservice".
+The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment 
+are written in #{parameterValue} format. In real configuration file provide actual values or externalize the configuration as described in the document linked above. 
 
 **Example:**
 
  ```yaml
  serviceId: sampleservice
  title: Hello API ML 
- description: Sample API ML REST API Service
- baseUrl: https://localhost:10022/sampleservice
- serviceIpAddress: 127.0.0.1
+ description: Sample API ML REST Service
+ baseUrl: https://${samplehost}:${sampleport}/${sampleservice}
+ serviceIpAddress: ${sampleHostIpAddress}
 
  homePageRelativeUrl: /application/home
  statusPageRelativeUrl: /application/info
  healthCheckRelativeUrl: /application/health
  
  discoveryServiceUrls:
-     - https://localhost:10011/eureka
+     - https://${discoveryServiceHost1}:${discoveryServicePort1}/eureka
+     - https://${discoveryServiceHost2}:${discoveryServicePort2}/eureka
  
  routes:
      - gatewayUrl: api/v1
-       serviceUrl: /sampleservice/api/v1    
+       serviceUrl: /sampleservice/api/v1
  
  apiInfo:
      - apiId: org.zowe.sampleservice
        gatewayUrl: api/v1
-       swaggerUrl: http://localhost:10022/sampleservice/api-doc
- 
+       swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
+       doumentationUrl: http://
+       version: v1
  catalog:
      tile:
          id: sampleservice
          title: Hello API ML
-         description: Proof of Concept application to demonstrate exposing a REST API in the ZOWE API ML 
+         description: Sample application to demonstrate exposing a REST API in the ZOWE API ML
          version: 1.0.0
 
  ssl:
+    enabled: true
     verifySslCertificatesOfServices: true
     protocol: TLSv1.2
     ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
@@ -278,9 +261,7 @@ The following code snippet shows `service-configuration.yml` content as an examp
     trustStore: keystore/localhost.truststore.p12
     trustStoreType: PKCS12
     trustStorePassword: password
-
  ```
-
 
 The on-boarding configuration parameters belong to one of the following groups:
 
@@ -297,34 +278,25 @@ The on-boarding configuration parameters belong to one of the following groups:
 * **serviceId**
     
     The `serviceId` uniquely identifies instances of a microservice in the API ML.
-    The service developer specifies a default serviceId during the design of the service. 
-    If needed, the system administrator at the customer site can change the parameter and provide a new value in the externalized service configuration.
-
-    **Note:** For more information, see [externalizing API ML REST service configuration](#api-mediation-onboard-enabler-external-configuration.md). 
-    
-        
+    The serviceId is used as part of the service URL path in the API ML gateway address space.
+    The API ML Gateway then uses the serviceId for routing to the API service instances.
+    When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
+    An incoming API request can be routed to either of them through utilized load balancing mechanism.
+            
     **Important!**  Ensure that the service ID is set properly with the following considerations:
-    
-    * The API ML Gateway uses the serviceId for routing to the API service instances.
-      As such, the serviceId must be a part of the service URL path in the API ML gateway address space. 
-    * When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
-      An incoming API request can be routed to either of them through load balancing.
+     
     * The same service ID should only be set for multiple API service instances for API scalability.
     * The service ID value must only contain lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
-    * The service ID is linked to security resources. Changes to the service ID require an update of security resources.
-        
-    **Examples:**
-    * If the serviceId is `sysviewlpr1`, the service URL in the API ML Gateway address space appears as: 
+    * The service ID is linked to (mainframe) security resources. Changes to the service ID require an update of the related security resources.
+
+    **Example:**
+    * If the serviceId is `sampleservice`, the service URL in the API ML Gateway address space appears as: 
             
        ```
-       https://gateway-host:gateway-port/api/v1/sysviewlpr1/...
+       https://gateway-host:gateway-port/api/v1/sampleservice/...
        ```
 
-    * If a customer system administrator sets the service ID to `vantageprod1`, the service URL in the API ML Gateway address space appears as:
-       ```
-       http://gateway:port/api/v1/vantageprod1/endpoint1/...
-       ```
 * **title** 
     
   This parameter specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
@@ -347,31 +319,35 @@ The on-boarding configuration parameters belong to one of the following groups:
     
   **Tip:** Describe the service so that the end user understands the function of the service.
 
+* **baseUrl** 
+
+    specifies the base URL pointing to your service.
+        
+    `baseUrl` will be then used as a prefix in combination with the administrative end points relative addresses to construct their absolute URL:
+    * **homePageRelativeUrl**
+    * **statusPageRelativeUrl**
+    * **healthCheckRelativeUrl** 
+      
+    **Example:** 
+    * `https://host:port/servicename` for HTTPS service
+  
+*  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
+
+    specifies the IP address of the service. This parameter can be provided by system administrator in the externalized service configuration. 
+    If this parameter is not present in the YAML/XML configuration file or is not set as service context parameter, it will be resolved from the hostname part of the baseUrl property using `java.net.InetAddress` capabilities.  
+      
+
 ### Administrative endpoints 
 
    The following snippet presents the format of the administrative endpoint properties:
-   
-   ```
-baseUrl: http://localhost:10021/sampleservice
 
+   ```
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
 where:
- 
-* **baseUrl** 
 
-    specifies the base URL pointing to your service.
-      
-    **Example:** 
-    * `https://host:port/servicename` for HTTPS service
-        
-    `baseUrl` will be then used as a prefix in combination with the following end points relative addresses to construct their absolute URL:
-    * **homePageRelativeUrl**
-    * **statusPageRelativeUrl**
-    * **healthCheckRelativeUrl** 
-        
 * **homePageRelativeUrl**  
     
     specifies the relative path to the home page of your service. The path should start with `/`.
@@ -435,7 +411,7 @@ where:
         that uses lowercase alphanumeric characters and a dot: `.` .
        
      We recommend that you use your organization as the prefix.
-
+s
 
 * **apiInfo.version** 
 
@@ -553,11 +529,16 @@ For more information about API ML security see the following link: [API ML secur
 
 The tls/ssl configuration consists of the following parameters:
 
+  
+* **verifySslCertificatesOfServices**
+  Allows to prevent server certificate validation.
+  *CAUTION* Use with care! Should not be used in production environments, as this will significantly degrade overal security of the system.
+  
 * **protocol**
-    TLSv1.2
+  TLSv1.2
 
-    This is the TLS protocol version currently used by ZOWE API ML Discovery service
-    
+  This is the TLS protocol version currently used by ZOWE API ML Discovery service
+
 * **keyAlias**
   
   The `alias` used to address the private key in the keystore 
@@ -869,14 +850,23 @@ Use the following procedure to add Swagger API documentation to your project.
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
 
+  **Note** Version 2.8 of SpringFox which is actual at time of wrting this document does not support OpenAPI 3.0. 
+  See the open feature request at GitHub: https://github.com/springfox/springfox/issues/2022 for details.
+  If you need to provide your service documentation in OpenAPI 3.0 format, please use an other tool.
+  
 ## (Optional) Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, it is time to validate that it can register correctly with your configured APIML Discovery Service. 
 
-Validatiing your service registration can be done in the API ML Discovery service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to ensure that your configuration settings are correct.
+Validatiing your service registration can be done in the API ML Discovery service and the API ML Catalog. 
+If your service appears in the Discovery Service UI but is not visible in the API Catalog, 
+check to ensure that your configuration settings are correct.
 
-Concrete addresses and user credentials for the individual API ML components will depend on your target runtime environment. If you are working with local installation of API ML and default identity provider, use the word *'user'* as both username and  password. In case API ML was installed by system administrators, ask them to provide you with actual addresses of API ML compoennts and the respective user credentials.
+Concrete addresses and user credentials for the individual API ML components will depend on your target runtime environment. 
+If you are working with local installation of API ML and you decide to use our dummy identity provider, use the word *'user'* 
+as both username and  password. In case API ML was installed by system administrators, ask them to provide you 
+with actual addresses of API ML components and the respective user credentials.
 
-**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was succesfully started.
+**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
 
 **Follow these steps:**
 
