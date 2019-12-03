@@ -2,7 +2,7 @@
 
 This article is a part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md)
+**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
 ## Introduction
 
@@ -60,12 +60,12 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Configuring your project
 
-Use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
+Use either _Gradle_ or _Maven_ build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
-**Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, note that if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Do this by using the provided gradle tasks provided in the source code. 
+**Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code. 
 
 ### Gradle guide
-Use the following procedure to use Gradle as your build automation system.
+Use the following procedure to use _Gradle_ as your build automation system.
 
 **Follow these steps:**
 
@@ -73,7 +73,7 @@ Use the following procedure to use Gradle as your build automation system.
  
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
-If you are using the Zowe Giza artifactory, use the credentials in the following code block:
+    If you are using the Zowe Giza artifactory, use the credentials in the following code block:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -84,7 +84,7 @@ If you are using the Zowe Giza artifactory, use the credentials in the following
     mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
     ```
 
-3. Add the following Gradle code block to the `repositories` section of your `build.gradle` file:
+3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
 
     ```gradle
     repositories {
@@ -107,7 +107,7 @@ If you are using the Zowe Giza artifactory, use the credentials in the following
     ```    
     **Note:** The published artifact from the Giza artifactory also contains the enabler dependencies from other software packages.
 
-    If you are using artifactory other than Giza,  manually provide the following dependencies in your service `build.gradle` script: 
+    If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
 
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
@@ -125,15 +125,15 @@ If you are using the Zowe Giza artifactory, use the credentials in the following
     * You may need to add more dependencies as required by your service implementation.     
     * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
 
-5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively. you can run `gradlew` to use the specific gradle version that is working with your project.
+5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
 ### Maven guide
 
-Use the following procedure if you use Maven as your build automation system.
+Use the following procedure if you use _Maven_ as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following *xml* tags within the newly created `pom.xml` file:
+1. Add the following _XML_ tags within the newly created `pom.xml` file:
     ```xml
     <repositories>
         <repository>
@@ -147,7 +147,8 @@ Use the following procedure if you use Maven as your build automation system.
     </repositories>
     ```
 
-2. Create a `settings.xml` file and copy the following *xml* code block that defines the credentials for the Artifactory:
+2. Create a `settings.xml` file and copy the following _XML__ code block that defines the credentials for the Artifactory:
+
     ```xml
    <?xml version="1.0" encoding="UTF-8"?>
 
@@ -168,18 +169,20 @@ Use the following procedure if you use Maven as your build automation system.
 
 4. In the directory of your project, run the `mvn package` command to build the project.
 
-  **Notes:** 
-     * You may need to add more dependencies as required by your service implementation.     
-     * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
-     * If you want to use snapshot version set the __/servers/server/id__ in step 2 to __libs-snapshot__
+**Notes:** 
+
+* You may need to add more dependencies as required by your service implementation.     
+* The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
+* If you want to use snapshot version set the __/servers/server/id__ in step 2 to __libs-snapshot__
 
 ## Configuring your service
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
-The service on-boarding configuration can be externalized as described in detail in [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md)   
+
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md).   
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment 
-are written in #{parameterValue} format. In real configuration file provide actual values or externalize the configuration as described in the document linked above. 
+are written in `#{parameterValue}` format. For your service configuration file, provide actual values or [externalize your onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md).
 
 **Example:**
 
@@ -230,7 +233,7 @@ are written in #{parameterValue} format. In real configuration file provide actu
     trustStorePassword: password
  ```
 
-The on-boarding configuration parameters belong to one of the following groups:
+The onboarding configuration parameters are broken down into the following groups:
 
 - [REST service identification](rest-service-identification) 
 - [Administrative endpoints](administrative-endpoints)
@@ -244,21 +247,19 @@ The on-boarding configuration parameters belong to one of the following groups:
 
 * **serviceId**
     
-    The `serviceId` uniquely identifies instances of a microservice in the API ML.
-    The serviceId is used as part of the service URL path in the API ML gateway address space.
-    The API ML Gateway then uses the serviceId for routing to the API service instances.
-    When two API services use the same service ID, the API Gateway considers the services as clones of each other. 
+    The `serviceId` uniquely identifies one or more instance of a microservice in the API ML and is used as part of the service URL path in the API ML gateway address space.
+    Additionally, the API ML Gateway uses the `serviceId` for routing to the API service instances.
+    When two API services use the same `serviceId`, the API Gateway considers the services as clones of each other. 
     An incoming API request can be routed to either of them through utilized load balancing mechanism.
             
-    **Important!**  Ensure that the service ID is set properly with the following considerations:
+    **Important!**  Ensure that the `serviceId` is set properly with the following considerations:
      
-    * The same service ID should only be set for multiple API service instances for API scalability.
-    * The service ID value must only contain lowercase alphanumeric characters.
-    * The service ID cannot contain more than 40 characters.
-    * The service ID is linked to (mainframe) security resources. Changes to the service ID require an update of the related security resources.
+    * The same `servicedId` should only be set for multiple API service instances for API scalability.
+    * The `servicedId` value must only contain lowercase alphanumeric characters.
+    * The `servicedId` cannot contain more than 40 characters.
 
     **Example:**
-    * If the serviceId is `sampleservice`, the service URL in the API ML Gateway address space appears as: 
+    * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as the following path: 
             
        ```
        https://gateway-host:gateway-port/api/v1/sampleservice/...
@@ -266,42 +267,39 @@ The on-boarding configuration parameters belong to one of the following groups:
 
 * **title** 
     
-  This parameter specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). 
-  This value is displayed in the API Catalog when a specific API service instance is selected. 
+  This parameter specifies the human readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected. 
   This parameter can be externalized and set by the customer system administrator.
 
-  **Tip:** We recommend that service developer provides a default value of the `title`.
-        Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+  **Tip:** We recommend that service developer provides a default value of the `title`. Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
     
 * **description** 
     
-    This parameter specifies a short description of the API service.
-    
-    **Examples:** 
-    
-    "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1". 
-    
-     This value is displayed in the API Catalog when a specific API service instance is selected. 
-     This parameter can be externalized and set by the customer system administrator.  
+    This parameter is a short description of the API service. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter can be externalized and set by the customer system administrator.  
     
   **Tip:** Describe the service so that the end user understands the function of the service.
 
 * **baseUrl** 
 
-    specifies the base URL pointing to your service.
+    <font color = "red"> Review the https example. </font>
+
+    This parameter specifies the base URL pointing to your service.
         
-    `baseUrl` will be then used as a prefix in combination with the administrative end points relative addresses to construct their absolute URL:
+    `baseUrl` is subsequently used as a prefix in combination with  relative addresses of the administrative end points to construct their absolute URL as in the following URLs:
+
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl** 
       
-    **Example:** 
-    * `https://host:port/servicename` for HTTPS service
-  
-*  **serviceIpAddress** (_Optional_) (_XML_ Path: `/instance/ipAddr`)
+    For the Https protocol, the URL appears in the following format:
 
-    specifies the IP address of the service. This parameter can be provided by system administrator in the externalized service configuration. 
-    If this parameter is not present in the YAML/XML configuration file or is not set as service context parameter, it will be resolved from the hostname part of the baseUrl property using `java.net.InetAddress` capabilities.  
+     `https://host:port/servicename`
+  
+*  **serviceIpAddress** (Optional) 
+
+    <font color = "red">Why are we mentioning XML configuration here?</font>
+
+    This parameter specifies the IP address of the service and can be provided by system administrator in externalized service configuration. 
+    If this parameter is not present in the _YAML/XML_ configuration file or is not set as service context parameter, it will be resolved from the hostname part of the `baseUrl` property using `java.net.InetAddress` capabilities.  
       
 
 ### Administrative endpoints 
@@ -371,14 +369,11 @@ where:
 
     specifies the API identifier that is registered in the API ML installation.
         The API ID uniquely identifies the API in the API ML. 
-        Multiple services can provide the same API. The API ID can be used
-        to locate the same APIs that are provided by different services.
-        The creator of the API defines this ID.
-        The API ID needs to be a string of up to 64 characters
+        Multiple services can provide the same API. The `apiId` can be used to locate the same APIs that are provided by different services. <font color = "red"> How do you know this statemetn is accurate? </font> The creator of the API defines this ID.
+        The `apiId` must be a string of up to 64 characters
         that uses lowercase alphanumeric characters and a dot: `.` .
        
-     We recommend that you use your organization as the prefix.
-s
+     **Tip:** We recommend that you use your organization as the prefix.
 
 * **apiInfo.version** 
 
@@ -387,23 +382,22 @@ s
 * **apiInfo.gatewayUrl** 
 
     specifies the base path at the API Gateway where the API is available. 
-    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
+    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections that apply to this API.
 
-* **apiInfo.swaggerUrl** 
+* **apiInfo.swaggerUrl** (Optional)
 
-    (Optional) specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+     specifies the Http or Https address where the Swagger JSON document is available. 
         
-* **apiInfo.documentationUrl** 
+* **apiInfo.documentationUrl** (Optional)
 
-    (Optional) specifies the link to the external documentation, if necessary. 
-    A link to the external documentation can be included along with the Swagger documentation. 
+     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation. 
     
     
 ### API routing information
 
-The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
+The API routing group provides the required routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the gateway address space. Currently the routing information consists of two parameters per route: The gatewayUrl and serviceUrl parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API gateway endpoints.  
+in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl` parameters. These two parameters together specify a rule of how the API service endpoints are mapped to the API Gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -426,24 +420,24 @@ routes:
 
 * **routes.gatewayUrl** 
         
-    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part
+    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
 
 * **routes.serviceUrl** 
         
-    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part (see `gatewayUrl`).
+    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part. 
 
-**Note:** The routes configuration contains a prefix before the gatewayUrl and serviceUrl.
+**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
 
-For detailed information about API ML routing, please follow this link: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing)
+**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 ### API Catalog information
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service. 
-Information displayed in the catalog is defined by the metadata provided by your service during registration. 
-The catalog can group correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
+Information displayed in the Catalog is defined by the metadata provided by your service during registration. 
+The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter. 
 
-The following code block is an example of configuration of a service tile in the catalog:
+The following code block is an example of configuration of a service tile in the Catalog:
 
 **Example:**
 
@@ -461,27 +455,24 @@ The following code block is an example of configuration of a service tile in the
 * **catalog.tile.id**
     
     specifies the unique identifier for the product family of API services. 
-    This is a value used by the API ML to group multiple API services together into tiles. 
-    Each unique identifier represents a single API Catalog UI dashboard tile. 
+    This is a value used by the API ML to group multiple API services into a single tile. 
+    Each unique identifier represents a single API dashboard tile in the Catalog. 
 
-    **Tip:**  Specify a value that does not interfere with API services from other products.
+    **Tip:**  Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
     
 * **catalog.tile.title**
     
-    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
+    specifies the title of the product family of the API service. This value is displayed in the API Catalog UI dashboard as the tile title.
     
 * **catalog.tile.description**
     
-    specifies the detailed description of the API services product family. 
-    This value is displayed in the API Catalog UI dashboard as the tile description.
+    is the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
     
 * **catalog.tile.version**
     
     specifies the semantic version of this API Catalog tile. 
 
-    **Note:** Ensure that you increase the number of the version when you introduce new changes to the product family details of the API services 
-    including the title and description.
-
+    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details. 
 
 ### API Security 
 
@@ -492,60 +483,67 @@ ZOWE API ML discovery service communicates with its clients in secure https mode
 Client services need to configure several TLS/SSL parameters in order to be able to communicate with the API ML Discovery service.
 When an enabler is used to onboard the service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka paramaters and the service metadata. 
 
-For more information about API ML security see the following link: [API ML security](#api-mediation-security.md)
+For more information about API ML security see: [API ML security](#api-mediation-security.md)
 
 The tls/ssl configuration consists of the following parameters:
-
   
 * **verifySslCertificatesOfServices**
-  Allows to prevent server certificate validation.
-  *CAUTION* Use with care! Should not be used in production environments, as this will significantly degrade overal security of the system.
+
+  This parameter makes it possible to prevent server certificate validation.
+
+  **Important!** Use this parameter with care. This should not be used in production environments. Using this parameter significantly degrades the overall security of the system.
   
 * **protocol**
+
   TLSv1.2
 
-  This is the TLS protocol version currently used by ZOWE API ML Discovery service
+  This parameter specifies the TLS protocol version currently used by ZOWE API ML Discovery service.
 
 * **keyAlias**
   
-  The `alias` used to address the private key in the keystore 
+  This parameter specifies the `alias` used to address the private key in the keystore. 
 
 * **keyPassword**
 
-  The password associated with the private key 
+  This parameter specifies the password associated with the private key. 
   
 * **keyStore**
 
-  The keystore file used to store the private key 
+  This parameter specifies the keystore file used to store the private key. 
 
 * **keyStorePassword**
 
-  The password used to unlock the keystore
+  This parameter specifies the password used to unlock the keystore.
 
 * **keyStoreType**
 
-  The type of the keystore: 
-
+  This parameter specifies the type of the keystore. 
 
 * **trustStore**
   
-  A truststore file used to keep other parties public keys and certificates. 
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. 
 
 * **trustStorePassword: password**
 
-  The password used to unlock the truststore
+  This parameter specifies the password used to unlock the truststore.
 
 * **trustStoreType: PKCS12**
 
-  The truststore type. One of: PKCS12 default
+  This parameter specifies the truststore type. The default for this parameter is PKCS12.
 
-* **ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV**
+* **ciphers:** (Optional)
 
+    Ciphers that can be used include:
+
+    ```
+    TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+    ```
   To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. They are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
 
 **Notes:** 
-    * You need to define both the key store and the trust store even if your server is not using an HTTPS port.
-    * Currently 'ciphers' is not used. It is an optional and serves as a place holder only.
+
+* Ensure that you define both the key store and the trust store even if your server is not using an Https port.
+* Currently 'ciphers' is not used. It is optional and serves as a place holder only.
 
 ### Eureka discovery service
 
@@ -585,10 +583,10 @@ The following steps outline the process of registering your service with API ML:
 
 1. Add a web application context listener class.
 
-    The web application context listener implements two methods to perform necessary actions at application start-up time and also when the application context is destroyed:
+    The web application context listener implements two methods to perform necessary actions at application start-up time as well as when the application context is destroyed:
 
-     - `contextInitialized` method invokes the `apiMediationClient.register(config)` method to register the application with API Mediation Layer when the application starts. 
-     - `contextDestroyed` method invokes the `apiMediationClient.unregister()` method when the application shuts down to unregister the application from API Mediation Layer.
+     - The `contextInitialized` method invokes the `apiMediationClient.register(config)` method to register the application with API Mediation Layer when the application starts. 
+     - The `contextDestroyed` method invokes the `apiMediationClient.unregister()` method when the application shuts down. This unregisters the application from the API Mediation Layer.
 
 2. Register a web application context listener.
 
@@ -602,9 +600,9 @@ The following steps outline the process of registering your service with API ML:
 3. Load the service configuration.
 
     Load your service configuration from a file `service-configuration.yml` file. 
-    The configuration parameters are described in the preceding section: [Configuring your service](#configuring-your-service). 
+    The configuration parameters are described in the preceding section, [Configuring your service](#configuring-your-service). 
     
-    Use the following code as an example of how to load the service configuration:
+    Use the following code as an example of how to load the service configuration.
 
     **Example:**
      ```
@@ -615,10 +613,9 @@ The following steps outline the process of registering your service with API ML:
         ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(configurationFile);
         ...
     ```
-*  **Note** ApiMediationServiceConfigReader class has also other methods for loading the configuration
-  from two files, java.util.Map instances or directly from a string. Check ApiMediationServiceConfigReader class JavaDoc for details.
+*  **Note:** The `ApiMediationServiceConfigReader` class also uses  other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
 
-4. Register with Eureka discovery service.
+4. Register with Eureka Discovery Service.
 
      Use the following call to register your service instance with Eureka Discovery Service:
 
@@ -645,10 +642,9 @@ The following steps outline the process of registering your service with API ML:
         apiMediationClient = null;
     }
     ```
+The following code block is a full example of a context listener class implementation.
 
-
-
-**Full example** The following code snippet is a full example of a context listener class implementation:
+**Example:** 
 
     import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
     import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
@@ -727,19 +723,18 @@ The following steps outline the process of registering your service with API ML:
     }
     
 
-### Periodic heartbeat (call) to the API ML Discovery Service
+### Periodic heartbeat to call the API ML Discovery Service
 
 REST services must renew their registration lease by sending heartbeats to the Eureka Discovery Service. 
 The heartbeat informs the Eureka Discovery Service that the instance is still alive. 
 REST services that are onboarded using an enabler, incorporate a Eureka client instance, which automatically sends heartbeats to the Eureka Discovery Service.      
 
-The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka Server every 30 sec by default.
+The Eureka client in the onboarded REST service sends a heartbeat request to the Eureka Server every 30 seconds by default.
 If the server does not receive a renewal in 90 seconds, it removes the instance from its registry. 
 
-**Note:** The default interval of the EurekaClient heartbeat is one evry 30 seconds.
-This is a configurable setting, however, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with the client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
+**Note:** The interval of the EurekaClient heartbeat is a configurable setting. However, we do not recommend changing this interval. The server uses that information to determine if there is a widespread problem with client to server communication. If you choose to reconfigure the heartbeat setting, we recommend that the interval for the heartbeat is no longer than 30 seconds.
 
-The heartbeat is issued by EurekaClient using `PUT` HTTP method in the following format:
+The heartbeat is issued by `EurekaClient` using the Http `PUT`  method in the following format:
 
 `https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}`
 
