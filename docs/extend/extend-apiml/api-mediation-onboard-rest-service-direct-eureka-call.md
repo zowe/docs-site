@@ -8,7 +8,7 @@ This guide describes how a REST service can be onboarded with the Zowe API ML in
 
 For more information about how to onboard a REST service, see the following links:
 
-- [Overview](api-mediation-onboard-overview.md)
+- [API ML onboarding overview](api-mediation-onboard-overview.md)
 - [python-eureka-client](https://pypi.org/project/py-eureka-client/)
 - [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
 - [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
@@ -66,11 +66,11 @@ The following code block shows the format of the parameters in your `POST` call,
 </instance>
 ```
 
-Where:
+where:
 
  * **app** 
     
-    Uniquely identifies one or more instances of a microservice in the API ML. 
+    uniquely identifies one or more instances of a microservice in the API ML. 
     
     The API ML Gateway uses the `serviceId` for routing to the API service instances.
     As such, the `serviceId` is part of the service URL path in the API ML Gateway address space.
@@ -90,40 +90,40 @@ Where:
 
  * **ipAddr** 
  
-    Specifies the IP address of this specific service instance.
+    specifies the IP address of this specific service instance.
  
  * **port** 
 
-    Specifies the port of the instance when you use Http. For Http, set `enabled` to `true`.
+    specifies the port of the instance when you use Http. For Http, set `enabled` to `true`.
  
 * **securePort**
 
-    Specifies the port of the instance for when you use Https. For Https, set `enabled` to `true`.
+    specifies the port of the instance for when you use Https. For Https, set `enabled` to `true`.
  
  * **hostname** 
  
-    Specifies the hostname of the instance.
+    specifies the hostname of the instance.
 
  * **vipAddress** 
  
-    Specifies the `serviceId` when you use Http.
+    specifies the `serviceId` when you use Http.
 
      **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`
  
  * **secureVipAddress** 
  
-    Specifies the `serviceId` when you use Https.
+    specifies the `serviceId` when you use Https.
 
     **Important!** Ensure that the value of `secureVipAddress` is the same as the value of `app`.
  
  * **instanceId** 
  
-    Specifies a unique id for the instance. Define a unique value for the `instanceId` in the following format: 
+    specifies a unique id for the instance. Define a unique value for the `instanceId` in the following format: 
  
     ```{hostname}:{serviceId}:{port}```
  * **metadata** 
 
-    Specifies the set of parameters described in the following section addressing API ML service metadata.
+    specifies the set of parameters described in the following section addressing API ML service metadata.
 
 ### API Mediation Layer Service onboarding metadata
 
@@ -160,7 +160,7 @@ Metadata parameters are broken down into the following categories:
 * [API Info parameters](#API-Info-parameters)
 
 #### Catalog parameters 
-Catalog parameters are grouped under the prefix:`apiml.catalog.tile`.
+Catalog parameters are grouped under the prefix: `apiml.catalog.tile`.
 
 The API ML Catalog displays information about services registered with the API ML Discovery Service. 
 Information displayed in the Catalog is defined in the metadata provided by your service during registration. 
@@ -170,7 +170,7 @@ The following parameters are used to populate the API Catalog:
  
 * **apiml.catalog.tile.id**
     
-    Specifies the specific identifier for the product family of API services. 
+    specifies the specific identifier for the product family of API services. 
     This is a value used by the API ML to group multiple API services into a single tile. 
     Each identifier represents a single API dashboard tile in the Catalog. 
 
@@ -178,16 +178,16 @@ The following parameters are used to populate the API Catalog:
     
 * **apiml.catalog.tile.title**
     
-    Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
+    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
 * **apiml.catalog.tile.description** 
     
-    Is the detailed description of the API services product family. 
+    is the detailed description of the API services product family. 
     This value is displayed in the API Catalog UI dashboard as the tile description.
     
 * **apiml.catalog.tile.version**
     
-    Specifies the semantic version of this API Catalog tile. 
+    specifies the semantic version of this API Catalog tile. 
 
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
@@ -198,13 +198,13 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.service.title**
 
-    Specifies the human-readable name of the API service instance. 
+    specifies the human-readable name of the API service instance. 
    
     This value is displayed in the API Catalog when a specific API service instance is selected. 
         
 * **apiml.service.description**
 
-    Specifies a short description of the API service.
+    specifies a short description of the API service.
         
     This value is displayed in the API Catalog when a specific API service instance is selected.   
     
@@ -230,7 +230,7 @@ The following snippet is an example of the API routing information properties.
 <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
 <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
 ```
-   here:
+where:
 
 * **apiml.routes.{route-prefix}.gatewayUrl**
         
