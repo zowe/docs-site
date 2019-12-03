@@ -52,6 +52,7 @@
         "items": [
           "user-guide/zowe-getting-started-tutorial.md",
           "user-guide/mvd-using.md",
+          "user-guide/mvd-editor.md",
           "user-guide/api-mediation-api-catalog.md",
           "user-guide/cli-usingcli.md"
         ]
@@ -109,6 +110,7 @@
           "extend/extend-desktop/mvd-configdataservice.md",
           "extend/extend-desktop/mvd-uribroker.md",
           "extend/extend-desktop/mvd-apptoappcommunication.md",
+          "extend/extend-desktop/mvd-iframecomm.md",
           "extend/extend-desktop/mvd-errorreportingui.md",
           "extend/extend-desktop/mvd-logutility.md",
           "extend/extend-desktop/zlux-app-server.md",
