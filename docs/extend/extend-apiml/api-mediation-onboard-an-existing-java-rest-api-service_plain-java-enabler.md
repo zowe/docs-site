@@ -1,25 +1,29 @@
-# REST APIs service plain Java enabler
+# REST APIs service Plain Java Enabler
 
-This article is a part of a series of onboarding guides, which outline the onboarding process for REST API services to the ZOWE API Mediation Layer (API ML). This guide describes a step-by-step process to onboard a REST API service using our plain Java language enabler, which is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is a part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding of API services to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md)
+**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md)
 
-ZOWE API ML is a lightweight API management system based on the following Netflix components:
+## Introduction
+
+Zowe API ML is a lightweight API management system based on the following Netflix components:
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
 * Ribbon - load ballancer
 
- We recommend that you onboard your service using the API ML enabler libraries.  We do not recommend that you prepare corresponding configuration data and call the dedicated Eureka registration endpoint directly. Doing so is unnecessarily complex and time-consuming. While the plain Java enabler library can be used in REST API projects based on SpringFramework or Spring Boot framework, it is not recommended to use this enabler in projects, which depend on SpringCloud Netflix components. Configuration settings in the Plain Java Enabler and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
+Using the API enabler libraries is the recommended approach to onboard a REST service with the API ML. While it is possible to call the Eureka registration endpoint directly, this approach requires preparing corresponding configuration data. Doing so is unnecessarily complex and time-consuming. 
+ 
+Additionally, while the plain Java enabler library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 
-  For instructions about how to utilize other API ML enablers types, see the following links: 
+**Tip:** For more information about how to utilize other API ML enabler approaches, see: 
   * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
   * [Onboard a rest service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (deprecated)
 
 ## Onboarding your REST service with API ML
 
-The following steps outline the process of onboarding your REST service with the API ML. Each step is described in further detail in this article. 
+The following steps outline the overall process to onboard a REST service with the API ML. Each step is described in further detail in this article. 
 
 1. [Prerequisites](#prerequisites)
 
@@ -50,24 +54,26 @@ The following steps outline the process of onboarding your REST service with the
 ## Prerequisites
 
 * Your REST API service is written in Java.
-* The service is enabled to communicate with API ML discovery service over TLS v1.2 secured connection.
+* The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-Note: It is presumed that your REST service will be deployed on a z/OS environment. However, this is not required.
+**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required. 
 
 ## Configuring your project
 
-You can use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
+Use either Gradle or Maven build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
 
-There are differences if you use Giza artifactory or a different artifactory. If you decide to build API ML from source, you'll have to publish the enabler artifact to your artifactory using the provided gradle tasks provided in the source code. 
+**Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, note that if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Do this by using the provided gradle tasks provided in the source code. 
 
 ### Gradle guide
-Use the following procedure if you use Gradle as your build automation system.
+Use the following procedure to use Gradle as your build automation system.
 
 **Follow these steps:**
 
-1. Create a *gradle.properties* file in the root of your project if one does not already exist.
+1. Create a `gradle.properties` file in the root of your project if one does not already exist.
  
-2. In the *gradle.properties* file, set the URL of the specific Artifactory containing the plain java enabler artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of Zowe Giza artifactory use the credentials in the following code block:
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
+
+If you are using the Zowe Giza artifactory, use the credentials in the following code block:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -93,31 +99,34 @@ Use the following procedure if you use Gradle as your build automation system.
         }
     }
     ```
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use java enabler from the Giza artifactory it is sufficient to add the following code block to your `build.gradle` script, bacause the published artifact contains also the enabler dependencies from other software packages:
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Giza Artifactory, add the following code block to your `build.gradle` script: 
     
-        ```gradle
-        implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-        implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-        ```    
+    ```gradle
+    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+    ```    
+    **Note:** The published artifact from the Giza artifactory also contains the enabler dependencies from other software packages.
 
-    If you are using artifactory other than Giza, you have to provide the dependencies manually in your service build.gradle script as follows:        
-        ```gradle
-        implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-        implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-        implementation libraries.eureka_client
-        implementation libraries.httpcore
-        implementation libraries.jackson_databind
-        implementation libraries.jackson_dataformat_yaml
+    If you are using artifactory other than Giza,  manually provide the following dependencies in your service `build.gradle` script: 
+
+    ```gradle
+    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+    implementation libraries.eureka_client
+    implementation libraries.httpcore
+    implementation libraries.jackson_databind
+    implementation libraries.jackson_dataformat_yaml
         
-        providedCompile libraries.javax_servlet_api
-        compileOnly libraries.lombok
-        ```
+    providedCompile libraries.javax_servlet_api
+    compileOnly libraries.lombok
+    ```
+
     **Notes:** 
     * You may need to add more dependencies as required by your service implementation.     
     * At time of writing this guide, the dependency libraries versions are as sated above. You may need to adjust the versions depending on your service requirements.
     * The current ZoweApimlVersion is '1.1.12'.
 
-5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively you may run `gradlew` to use the specific gradle version that is working with your project.
+5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively. you can run `gradlew` to use the specific gradle version that is working with your project.
 
 ### Maven guide
 
