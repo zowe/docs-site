@@ -1,6 +1,6 @@
 # API Mediation Layer onboarding configuration
 
-This article describes the process of configuring a REST service to onboard with the API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard with the API ML. You can also externalize  configuration parameters for subsequent customization by a systems administrator. 
+This article describes the process of configuring a REST service to onboard with the Zowe API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard with the API ML. You can also externalize configuration parameters for subsequent customization by a systems administrator. 
 
 
 * [Introduction](#introduction)
@@ -15,7 +15,7 @@ This article describes the process of configuring a REST service to onboard with
 ## Introduction
 
 The API ML Plain Java Enabler (_PJE_) is a library which helps to simplify the process of onboarding a REST service with the API ML. 
-This article describes how to provide and externalize the ZOWE API ML onboarding configuration of your REST service using the _PJE_. 
+This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the _PJE_. 
 
 **Note:** For more information about specific configuration parameters and their possible values, and the service registration process, see the specific documentation of the onboarding approach you are using for your project:
 
@@ -23,7 +23,7 @@ This article describes how to provide and externalize the ZOWE API ML onboarding
  * [Plain Java Enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
  
 
-The _PJE_ is the most universal ZOWE API ML enabler. This enabler uses only Java, and does not use advanced IoC/DI technologies.
+The _PJE_ is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
 The _PJE_ enables you to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behavior, and unnecessarily large service executables.
 
 Service developers provide onboarding configuration as part of the service source code. While this configuration is valid for the development system environment, it is likely to be different for an automated integration environment. Typically, system administrators need to deploy a service on multiple sites that have different system environments and requirements such as security.
@@ -34,7 +34,7 @@ The _PJE_ provides a mechanism to load API ML onboarding service configuration f
 
 ## Configuring a REST service for API ML onboarding
 
-In most cases, the API ML Discovery service, Gateway, and service endpoint addresses are not known at the time of building the service executables. 
+In most cases, the API ML Discovery Service, Gateway, and service endpoint addresses are not known at the time of building the service executables. 
 Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the specific deployment environment, and are not intended to be publicly accessible.
 Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
 
@@ -61,8 +61,8 @@ The specific approach of how to provide the servlet context to the user service 
 
 **Example:**
 
-If the service is deployed in a Tomcat servlet container, you can configure the context by placing an _xml_ file with the same name
-as the application deployment unit into the `_$CATALINA_BASE/conf/[enginename]/[hostname]/_`. 
+If the service is deployed in a Tomcat servlet container, you can configure the context by placing an _XML_ file with the same name
+as the application deployment unit into `_$CATALINA_BASE/conf/[enginename]/[hostname]/_`. 
 
 Other containers provide different mechanisms for the same purpose.        
 
@@ -121,14 +121,14 @@ The following code block is an example of Java Servlet context configuration.
 
  ## Loading YAML configuration files
     
-_YAML_ configuration files can be loaded either as a single _YAML_ file, or by merging two _YAML_ files. Use the _loadConfiguration_ method described later in this article corresponding to  your service requirements. 
+_YAML_ configuration files can be loaded either as a single _YAML_ file, or by merging two _YAML_ files. Use the `loadConfiguration` method described later in this article that corresponds to your service requirements. 
 
-After successfully loading a configuration file, the loading method _loadConfiguration_ uses Java System properties to substitute corresponding configuration properties.  
+After successfully loading a configuration file, the loading method `loadConfiguration` uses Java System properties to substitute corresponding configuration properties.  
 
 ### Loading a single YAML configuration file
   
-If you need to build your configuration from multiple sources, you can load a single configuration file, and then 
-rewrite any parameters as needed using values from another configuration source.   
+To build your configuration from multiple sources, load a single configuration file, and then 
+rewrite parameters as needed using values from another configuration source. See: [Loading and merging two YAML configuration files](#Loading-and-merging-two-YAML-configuration-files) described later in this article.   
 
 Use the following method to load a single _YAML_ configuration file:
  
@@ -136,11 +136,10 @@ Use the following method to load a single _YAML_ configuration file:
 public ApiMediationServiceConfig loadConfiguration(String configurationFileName);  
 ```
   
-This method receives single _String_ parameter and can be used to load an internal or an external configuration file. 
+This method receives a single _String_ parameter and can be used to load an internal or an external configuration file. 
 
 
-**Note:** This method first attempts to load the configuration as a Java resource.
-If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method attempts to resolve the file as a relative path. When the file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.   
+**Note:** This method first attempts to load the configuration as a Java resource. If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method attempts to resolve the file as a relative path. When the file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.   
 
 ### Loading and merging two YAML configuration files
   
@@ -148,7 +147,7 @@ To load and merge two configuration files, use the following method:
    ```
    public ApiMediationServiceConfig loadConfiguration(String internalConfigurationFileName, String externalizedConfigurationFileName)
    ```     
-Where:
+where:
 
 *  **String internalConfigurationFileName**
 
