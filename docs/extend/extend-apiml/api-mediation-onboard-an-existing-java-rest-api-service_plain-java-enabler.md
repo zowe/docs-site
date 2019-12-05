@@ -27,7 +27,7 @@ Additionally, while the _PJE_ library can be used in REST API projects based on 
 
 ## Onboarding your REST service with API ML
 
-The following steps outline the overall process to onboard a REST service with the API ML. Each step is described in further detail in this article. 
+The following steps outline the overall process to onboard a REST service with the API ML using the _PJE_. Each step is described in further detail in this article. 
 
 1. [Prerequisites](#prerequisites)
 
@@ -51,7 +51,6 @@ The following steps outline the overall process to onboard a REST service with t
     * [Load service configuration](#load-service-configuration)
     * [Initialize Eureka Client](#initialize-eureka-client)
     * [Register with Eureka Discovery Service](#register-with-eureka-discovery-service)
-        * [Explanation of the periodic heartbeat to call the API ML Discovery Service](#explanation-of-the-periodic-heartbeat-to-call-the-api-ml-discovery-service) 
 
 5. [Adding API documentation](#adding-api-documentation)
     
@@ -60,7 +59,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the following prerequisites are met before onboarding your REST service with the API ML with the _PJE_:
+Ensure that the following prerequisites are met before begining to onboard your REST service API ML onboarding your REST service with the API ML with the _PJE_:
 
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
@@ -85,7 +84,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
  
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
-    If you are using the Giza artifactory, use the credentials in the following code block: 
+    If you are using the Giza Artifactory, use the credentials in the following code block: 
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -117,7 +116,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
     ```    
-    **Note:** The published artifact from the Giza artifactory also contains the enabler dependencies from other software packages.
+    **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages.
 
     If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
 
