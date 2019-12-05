@@ -564,11 +564,7 @@ discoveryServiceUrls:
     specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
     It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.  
     
-     **Example:**
-
-    `http://eureka:password@141.202.65.33:10311/eureka/`
-
-
+ 
 ##  Registering your service with API ML
 
 The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
