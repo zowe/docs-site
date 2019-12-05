@@ -2,18 +2,47 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;. 
 
-Zowe Version 1.7.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.7.1 and later releases include the following enhancements, release by release.
 
-- [Version 1.7.0 (November 2019)](#version-170-november-2019)
-- [Version 1.6.0 (October 2019)](#version-160-october-2019)
-- [Version 1.5.0 (September 2019)](#version-150-september-2019)
-- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-140-august-2019)
-- [Version 1.3.0 (June 2019)](#version-130-june-2019)
-- [Version 1.2.0 (May 2019)](#version-120-may-2019)
-- [Version 1.1.0 (April 2019)](#version-110-april-2019)
-- [Version 1.0.1 (March 2019)](#version-101-march-2019)
-- [Version 1.0.0 (February 2019)](#version-100-february-2019)
+- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
+- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
+- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
+- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smp-e-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
+- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
+- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
+- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
+- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
+- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.7.1 (December 2019)
+
+<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+#### Zowe App Server
+
+- A backup routine for when a non-administrator tries to access the API. Instead of executing privileged commands and failing, it will execute a command to get their profile, and return only the information in their scope. This is a feature that most people won't need, since you'd ideally want to be an administrator if you were using this API, but the functionality is there. ([#114](https://github.com/zowe/zss/pull/114))
+
+- The ability to retrieve profiles only by prefix. This can be done by looking for a profile with a "." at the end. This will act as a wildcard which extracts everything matching that prefix. ([#114](https://github.com/zowe/zss/pull/114))
+
+#### Zowe SMP/E installation
+
+The pre-release of the Zowe SMP/E build is updated to be based on Zowe Version 1.7.1.
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### Zowe App Server
+
+- Fixed a bug where the end of an acid is cut off when getting the access list of a group, resulting in invalid output in the response.([#114](https://github.com/zowe/zss/pull/114))
+
+- Fixed a bug where all of the different administrator suffixes weren't defined, so it was incorrectly returning administrators. ([#114](https://github.com/zowe/zss/pull/114))
 
 ## Version 1.7.0 (November 2019)
 
@@ -57,7 +86,7 @@ The following features and enhancements were added.
 #### Zowe Explorer (Extension for VSCode)
 
 - The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
-- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).  
+- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).
 
 ### Bug fixes
 
