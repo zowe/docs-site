@@ -36,7 +36,7 @@ where:
 
 ## Verifying z/OS Services installation
 <!-- TODO -->
-After the ZOWESVR procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
+After the ZWESVSTC procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```
 https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
