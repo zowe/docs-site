@@ -30,7 +30,7 @@ Service developers provide onboarding configuration as part of the service sourc
 
 _PJE_ supports both the service developer and the system administrator with the functionality of externalizing the service onboarding configuration. 
 
-The _PJE_ provides a mechanism to load API ML onboarding service configuration from a _YAML_ file.
+The _PJE_ provides a mechanism to load API ML onboarding service configuration from one or two _YAML_ files.
 
 ## Configuring a REST service for API ML onboarding
 
@@ -40,7 +40,7 @@ Therefore, to provide a higher level of flexibility, the _PJE_ implements routin
 
 * **internal _service-configuration.yml_** 
 
-  The first configuration file is typically internal to the service deployment artifact. At a minimum, this file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, it will not match every possible production environment and its corresponding requirements.
+  The first configuration file is typically internal to the service deployment artifact. This file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the Java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, it will not match every possible production environment and its corresponding requirements.
 
 * **external or additional _service-configuration.yml_**
 
