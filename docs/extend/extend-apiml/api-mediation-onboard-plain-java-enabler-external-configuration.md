@@ -4,12 +4,12 @@ This article describes the process of configuring a REST service to onboard with
 
 
 * [Introduction](#introduction)
-* [Configuring a REST service for API ML onboarding](#configuring_a_rest_service_for_api_ml_onboarding)
-* [Plain Java Enabler service onboarding](#APIplain_java_enabler_service_onboarding_api)
-    * [Automatic initialization of the onboarding configuration by a single method call](#automatic_initialization_of_the_onboarding_configuration_by_a_single_method_call)
-* [Loading YAML configuration files](#loading_yaml_configuration_files)
-    * [Loading a single YAML configuration file](#loading_a_single_yaml_configuration_file)
-    * [Loading and merging two YAML configuration files](#loading_and_merging_two_yalm_configuration_files)
+* [Configuring a REST service for API ML onboarding](#configuring-a-rest-service-for-api-ml-onboarding)
+* [Plain Java Enabler service onboarding](#plain-java-enabler-service-onboarding-api)
+    * [Automatic initialization of the onboarding configuration by a single method call](#automatic-initialization-of-the-onboarding-configuration-by-a-single-method-call)
+* [Loading YAML configuration files](#loading-yaml-configuration-files)
+    * [Loading a single YAML configuration file](#loading-a-single-yaml-configuration-file)
+    * [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files)
 
 
 ## Introduction
@@ -20,7 +20,7 @@ This article describes how to provide and externalize the Zowe API ML onboarding
 **Note:** For more information about specific configuration parameters and their possible values, and the service registration process, see the specific documentation of the onboarding approach you are using for your project:
 
  * [Direct REST call registration (No enabler)](#api-mediation-onboard-rest-service-direct-eureka-call.md)
- * [Plain Java Enabler](#api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
+ * [Plain Java Enabler](#api-mediation-onboard-an-existing-java-rest-api-service-plain-java-enabler.md)
  
 
 The _PJE_ is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
@@ -55,7 +55,7 @@ In the _YAML_ file, standard rewriting placeholders for parameter values use the
 
 `${apiml.parameter.key}`
  
-The actual values are taken from [key, value] pairs defined as Java System properties or servlet context parameters. The system properties can be provided directly on a command line. The servlet context parameters can be provided in the service `web.xml` or in an external file.
+The actual values are taken from [key, value] pairs defined as Java system properties or servlet context parameters. The system properties can be provided directly on a command line. The servlet context parameters can be provided in the service `web.xml` or in an external file.
 
 The specific approach of how to provide the servlet context to the user service application depends on the application loading mechanism and the specific Java servlet container environment. 
 
@@ -123,7 +123,7 @@ The following code block is an example of Java Servlet context configuration.
     
 _YAML_ configuration files can be loaded either as a single _YAML_ file, or by merging two _YAML_ files. Use the `loadConfiguration` method described later in this article that corresponds to your service requirements. 
 
-After successfully loading a configuration file, the loading method `loadConfiguration` uses Java System properties to substitute corresponding configuration properties.  
+After successfully loading a configuration file, the loading method `loadConfiguration` uses Java system properties to substitute corresponding configuration properties.  
 
 ### Loading a single YAML configuration file
   
@@ -157,8 +157,8 @@ where:
 
    references the external configuration file name.
 
-   **Note:**  The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
-    After loading and before merging, each configuration will be separately patched using Java System properties.
+**Note:**  The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
+After loading and before merging, each configuration will be separately patched using Java System properties.
           
   
 The following code block presents an example of how to load and merge onboarding configuration from _YAML_ files.

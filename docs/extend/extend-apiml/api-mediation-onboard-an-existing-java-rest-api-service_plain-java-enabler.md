@@ -59,15 +59,16 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the following prerequisites are met before begining to onboard your REST service API ML onboarding your REST service with the API ML with the _PJE_:
+Ensure that the following prerequisites are met before you begin to use the _PJE_ to onboard your REST service with the API ML:
 
 * Your REST API service is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-**Note:** 
-This documentation is valid for `ZoweApimlVersion 1.1.12` and higher.
+**Notes:** 
 
-**Note:** Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment is, however, not required make it possible for you to first develop a local machine first before you deploy on z/OS. 
+* This documentation is valid for `ZoweApimlVersion 1.1.12` and higher.
+
+* Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS. 
 
 ## Configuring your project
 
@@ -82,7 +83,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
  
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PLE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
     If you are using the Giza Artifactory, use the credentials in the following code block: 
 
@@ -116,9 +117,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
     ```    
-    **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages.
-
-    If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
+    **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
 
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
@@ -134,7 +133,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     **Notes:** 
     * You may need to add more dependencies as required by your service implementation.     
-    * The information provided in this file is valid for ZoweApimlVersion '1.1.12' and above.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -176,7 +175,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
       </servers>
     </settings>
     ```
-    **Tip:** If you want to use _snapshot_ version set the `/servers/server/id` to `libs-snapshot`.
+    **Tip:** If you want to use _snapshot_ version, set the `/servers/server/id` to `libs-snapshot`.
 
 3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
@@ -244,13 +243,13 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 
 The onboarding configuration parameters are broken down into the following groups:
 
-- [REST service identification](rest-service-identification) 
-- [Administrative endpoints](administrative-endpoints)
-- [API info](api-info)
-- [API routing information](api-routing-information)
-- [API catalog information](api-catalog-information)
-- [API security](api-security)
-- [Eureka Discovery Service](eureka-discovery-service) 
+- [REST service identification](#rest-service-identification) 
+- [Administrative endpoints](#administrative-endpoints)
+- [API info](#api-info)
+- [API routing information](#api-routing-information)
+- [API catalog information](#api-catalog-information)
+- [API security](#api-security)
+- [Eureka Discovery Service](#eureka-discovery-service) 
 
 ### REST service identification
 
@@ -399,7 +398,7 @@ where:
 
 The API routing group provides the required routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
 A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL 
-in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl` parameters. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.  
+in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl`. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.  
 
 The following snippet is an example of the API routing information properties.
 
@@ -452,7 +451,7 @@ The following code block is an example of configuration of a service tile in the
         version: 1.0.0
 ```
 
-   where:
+where:
 
 * **catalog.tile.id**
     
@@ -464,7 +463,7 @@ The following code block is an example of configuration of a service tile in the
     
 * **catalog.tile.title**
     
-    specifies the title of the product family of the API service. This value is displayed in the API Catalog UI dashboard as the tile title.
+    specifies the title of the product family of the API service. This value is displayed in the API Catalog dashboard as the tile title.
     
 * **catalog.tile.description**
     
@@ -478,28 +477,28 @@ The following code block is an example of configuration of a service tile in the
 
 ### API Security 
 
-REST services onboarded on API ML act as both a client and a server. When communicating to API ML Discovery service, REST services are in a client role. On contrary, when the API ML Gateway is routing requests to a service, the service acts as a server.
+REST services onboarded with the API ML act as both a client and a server. When communicating to API ML Discovery service, a REST service acts as a client. When the API ML Gateway is routing requests to a service, the REST service acts as a server.
 These two roles have different requirements. 
-ZOWE API ML discovery service communicates with its clients in secure https mode. As such, TLS (aka SSL) configuration setup is required when in a service is in server role. In this case, the system administrator decides if the service will communicate with its clients securely or not.
+The Zowe API ML Discovery Service communicates with its clients in secure Https mode. As such, TLS/SSL configuration setup is required when a service is acting as a server. In this case, the system administrator decides if the service will communicate with its clients securely or not.
 
-Client services need to configure several TLS/SSL parameters in order to be able to communicate with the API ML Discovery service.
-When an enabler is used to onboard the service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka paramaters and the service metadata. 
+Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
+When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka paramaters and the service metadata. 
 
 For more information about API ML security see: [API ML security](#api-mediation-security.md)
 
-The tls/ssl configuration consists of the following parameters:
+TLS/SSL configuration consists of the following parameters:
   
 * **verifySslCertificatesOfServices**
 
   This parameter makes it possible to prevent server certificate validation.
 
-  **Important!** Use this parameter with care. This should not be used in production environments. Setting this parameter to `false` significantly degrades the overall security of the system.
+  **Important!** Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environemnts significantly degrades the overall security of the system.
   
 * **protocol**
 
-    This parameter specifies the TLS protocol version currently used by ZOWE API ML Discovery service. 
+    This parameter specifies the TLS protocol version currently used by Zowe API ML Discovery Service. 
     
-    **Tip:** We recommend you use TLSv1.2 as your security protocol
+    **Tip:** We recommend you use `TLSv1.2` as your security protocol
 
 * **keyAlias**
   
@@ -540,7 +539,7 @@ The tls/ssl configuration consists of the following parameters:
     ```
     TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
     ```
-  To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. They are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
+  To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. CIphers are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
 
 **Notes:** 
 
@@ -805,7 +804,7 @@ check to make sure that your configuration settings are correct.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment. 
 
-**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`' 
+**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user` 
 for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you 
 with actual addresses of API ML components and the respective user credentials.
 

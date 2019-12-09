@@ -1,6 +1,6 @@
 # Onboarding a service with the Zowe API Meditation Layer without an onboarding enabler 
 
-This article is one in a series of guides to onboard a REST service with the Zowe API Mediation Layer. Onboarding with API ML makes services accessible through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
+This article is part of a series of guides to onboard a REST service with the Zowe API Mediation Layer (API ML). Onboarding with API ML makes services accessible through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
 
 This guide describes how a REST service can be onboarded with the Zowe API ML independent of the language used to write the service. As such, this guide does not describe how to onboard a service with a specific enabler. Similarly, various Eureka client implementations are not used in this onboarding method. 
 
@@ -17,13 +17,13 @@ This article outlines a process to make an API service available in the API Medi
 
 * [Introduction](#introduction)
 * [Registering with the Discovery Service](#Registering-with-the-Discovery-Service)
-    * [API Meditation Layer Service onboarding metadata](#API-Mediation-Layer-Service-onboarding-metadata)
+    * [API Mediation Layer Service onboarding metadata](#API-Mediation-Layer-Service-onboarding-metadata)
         * [Catalog parameters](#Catalog-parameters)
         * [Service parameters](#Service-parameters)
         * [Routing parameters](#Routing-parameters)
         * [API Info Parameters](#API-Info-parameters)
-* [Sending a heartbeat to API Meditation Layer Discovery Service](#Sending-a-heartbeat-to-API-Meditation-Layer-Discovery-Service)
-* [Validating successful onboarding with the API Meditation Layer](#Validating-successful-onboarding-with-the-API-Meditation-Layer)
+* [Sending a heartbeat to API Mediation Layer Discovery Service](#Sending-a-heartbeat-to-API-Mediation-Layer-Discovery-Service)
+* [Validating successful onboarding with the API Mediation Layer](#Validating-successful-onboarding-with-the-API-Mediation-Layer)
 * [External Resources](#External-Resources)
 
 ## Introduction
@@ -32,11 +32,11 @@ The API ML Discovery Service uses [Netflix/Eureka](https://github.com/Netflix/eu
 
 Eureka [endpoints](https://github.com/Netflix/eureka/wiki/Eureka-REST-operations) are used to register a service with the API ML Discovery Service. Endpoints are also used to send a periodic heartbeat to the Discovery Service to indicate that the onboarded service is available. 
 
-Required parameters should be defined and sent at registration time. 
+**Note:** Required parameters should be defined and sent at registration time. 
 
 ## Registering with the Discovery Service
 
-Begin the onboarding process by registering your service with the Discovery Service.
+Begin the onboarding process by registering your service with the API ML Discovery Service.
 
 Use the `POST` Http call to the Eureka server together with the registration configuration in the following format:
 
@@ -77,9 +77,9 @@ where:
         
     **Important!**  Ensure that the service ID is set properly with the following considerations:
     
-    * The service ID value must only contain lowercase alphanumeric characters.
-    * The service ID cannot contain more than 40 characters.
-    * The same service ID should only be set for multiple API service instances to support API scalability. When two API services use the same service ID, the API Gateway considers the services as clones of each other. An incoming API request can be routed to either of them through load balancing.
+    * The service ID value contains only lowercase alphanumeric characters.
+    * The service ID does not contain more than 40 characters.
+    * The same service ID is only set for multiple API service instances to support API scalability. When two API services use the same service ID, the API Gateway considers the services as clones of each other. An incoming API request can be routed to either of them through load balancing.
         
     **Example:**
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as: 
@@ -108,7 +108,7 @@ where:
  
     specifies the `serviceId` when you use Http.
 
-     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`
+     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`.
  
  * **secureVipAddress** 
  
@@ -170,7 +170,7 @@ The following parameters are used to populate the API Catalog:
  
 * **apiml.catalog.tile.id**
     
-    specifies the specific identifier for the product family of API services. 
+    This parameter specifies the specific identifier for the product family of API services. 
     This is a value used by the API ML to group multiple API services into a single tile. 
     Each identifier represents a single API dashboard tile in the Catalog. 
 
@@ -178,16 +178,16 @@ The following parameters are used to populate the API Catalog:
     
 * **apiml.catalog.tile.title**
     
-    specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
+    This parameter specifies the title of the API services product family. This value is displayed in the API Catalog dashboard as the tile title.
     
 * **apiml.catalog.tile.description** 
     
-    is the detailed description of the API services product family. 
+    This parameter is the detailed description of the API services product family. 
     This value is displayed in the API Catalog UI dashboard as the tile description.
     
 * **apiml.catalog.tile.version**
     
-    specifies the semantic version of this API Catalog tile. 
+    This parameter specifies the semantic version of this API Catalog tile. 
 
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
@@ -198,13 +198,13 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.service.title**
 
-    specifies the human-readable name of the API service instance. 
+    This parameter specifies the human-readable name of the API service instance. 
    
     This value is displayed in the API Catalog when a specific API service instance is selected. 
         
 * **apiml.service.description**
 
-    specifies a short description of the API service.
+    This parameter specifies a short description of the API service.
         
     This value is displayed in the API Catalog when a specific API service instance is selected.   
     
@@ -264,24 +264,22 @@ The following parameters provide the information properties of a single API:
        
     **Tip:** We recommend that you use your organization as the prefix.
 
-
-
 * **apiml.apiInfo.{api-index}.version**
 
-    Specifies the API version. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
+    This parameter specifies the API version. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
     
 * **apiml.apiInfo.{api-index}.gatewayUrl**
 
-    Specifies the base path at the API Gateway where the API is available. 
+    This parameter specifies the base path at the API Gateway where the API is available. 
     Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
 * **apiml.apiInfo.{api-index}.swaggerUrl**
 
-    (Optional) Specifies the Http or Https address where the Swagger JSON document is available. 
+    (Optional) This parameter specifies the Http or Https address where the Swagger JSON document is available. 
         
 * **apiml.apiInfo.{api-index}.documentationUrl**
 
-    (Optional) Specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation. 
+    (Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation. 
 
 **Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used.
 In the following example, `0` represents the `api-index`.
