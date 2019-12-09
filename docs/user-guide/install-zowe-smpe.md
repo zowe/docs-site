@@ -712,35 +712,7 @@ IEF257I ZWE3ALOC ALLOCD ALLOCD AZWEZFS - SPACE REQUESTED NOT AVAILABLE
 IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.                    
 ```
 Uncomment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
-### Prepare the Zowe SMP/E installation jobs with Velocity Template Language (VTL) Command-line Interface or Python Script (Optional)
-The Velocity Template Language (VTL) Command-line Interface and Python Script simplifies the Zowe SMP/E installation jobs customization using the YAML file.  To install and use the Velocity Template Language (VTL) Command-line Interface, see [https://github.com/zowe/vtl-cli](https://github.com/zowe/vtl-cli).
-
-To prepare the custom Zowe SMP/E installation jobs, edit the YAML file and execute the VTL command or python script. The YAML and the corresponding VTL files are located in the [Zowe SMP/E repository](https://github.com/zowe/zowe-smpe-packaging). Perform the following steps to prepare the customized jobs:
-1.	Download the YAML and VTL files to your system from the Zowe SMP/E repository.
-2.	Open the YAML file, replace the default variable values with the custom values to meet your site requirements. 
-3.	Generate the custom JCLs with one of the following options:
-    - **VTL Command**
-
-         Generates a single custom JCL in the specified location. 
-
-
-         Execute the following VTL command for each JCL to generate a custom JCL.file using a YAML.file and the corresponding VTL.file with the output encoded in UTF-8:
-           ```
-          java -jar *path/to/*vtl-cli.jar --yaml-context *YAMLfile VTLfile* -o *JCL.file* –oe UTF8 
-           ```
-          Where:
-          * *path/to/*vtl-cli.jar is the path to the vtl-cli.jar jar file that is used to execute the java `-jar vtl-cli.jar` 
-          * *YAMLfile* is the path to the YAML file that includes the JCL variables that you edited to create customized installation jobs.
-          * *VTLfile* is the path to VTL file that includes the conditions to execute the JCLs.
-          * *JCL.file* is the output file for the customized JCL.
-          * UTF8 (optional) is the used encoding of the output file. 
-    - **Python Script**
-
-        Generates multiple custom JCLs in the specified location. 
-
-        If you want to generate the custom JCLs of all the YAML-VTL pairs, use the `JclGenerator.py` script. To use the script, you must have Python installed on your system and the YAML VTL files must be in the ready_templates sub-directory that is on same level as the generator file. After you run the script in Python, the custom JCLs are generated in the separate directory. This generator does not perform any changes to the local system. 
-        
-After you execute the VTL command or Python script the customized JCLs are generated in the specified location.  
+  
 
 ### Create SMP/E environment (Optional)
 
@@ -898,6 +870,83 @@ For more information about REPORT CROSSZONE, see the SMP/E manuals.
 ### Cleaning up obsolete data sets, paths, and DDDEFs
 
 The web download data sets listed in [DASD storage requirements](#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E install.
+
+You can also use the following options to create Zowe SMP/E environment:
+
+* Prepare the Zowe SMP/E installation jobs with Velocity Template Language (VTL) Command-line Interface or Python Script
+
+* Create SMP/E with z/OSMF Workflow
+
+
+### Prepare the Zowe SMP/E installation jobs with Velocity Template Language (VTL) Command-line Interface or Python Script (Optional)
+The Velocity Template Language (VTL) Command-line Interface and Python Script simplifies the Zowe SMP/E installation jobs customization using the YAML file.  To install and use the Velocity Template Language (VTL) Command-line Interface, see [https://github.com/zowe/vtl-cli](https://github.com/zowe/vtl-cli).
+
+To prepare the custom Zowe SMP/E installation jobs, edit the YAML file and execute the VTL command or python script. The YAML and the corresponding VTL files are located in the [Zowe SMP/E repository](https://github.com/zowe/zowe-install-packaging/tree/master/smpe/pax/ZOSMF/vtls). Perform the following steps to prepare the customized jobs:
+1.	Download the YAML and VTL files to your system from the Zowe SMP/E repository.
+2.	Open the YAML file, replace the default variable values with the custom values to meet your site requirements. 
+3.	Generate the custom JCLs with one of the following options:
+    - **VTL Command**
+
+         Generates a single custom JCL in the specified location. 
+
+         Execute the following VTL command for each JCL to generate a custom JCL.file using a YAML.file and the corresponding VTL.file with the output encoded in UTF-8:
+
+        ```
+        java -jar *path/to/*vtl-cli.jar --yaml-context *YAMLfile VTLfile* -o *JCL.file* –oe UTF8 
+
+        ```
+        Where:
+
+        * *path/to/*vtl-cli.jar is the path to the vtl-cli.jar jar file that is used to execute the java `-jar vtl-cli.jar` 
+          
+        * *YAMLfile* is the path to the YAML file that includes the JCL variables that you edited to create customized installation jobs.
+
+        * *VTLfile* is the path to VTL file that includes the conditions to execute the JCLs.
+
+        * *JCL.file* is the output file for the customized JCL.
+
+        * UTF8 (optional) is the used encoding of the output file. 
+    - **Python Script**
+
+        Generates multiple custom JCLs in the specified location. 
+
+        If you want to generate the custom JCLs of all the YAML-VTL pairs, use the `JclGenerator.py` script. To use the script, you must have Python installed on your system and the YAML VTL files must be in the ready_templates sub-directory that is on same level as the generator file. After you run the script in Python, the custom JCLs are generated in the separate directory. This generator does not perform any changes to the local system. 
+        
+After you execute the VTL command or Python script the customized JCLs are generated in the specified location.
+
+### Create SMP/E with z/OSMF Workflow
+
+Register and execute the ZOWE SMP/E workflows to create SMP/E environment for Zowe in the z/OSMF web interface. Pefrom the following steps to register and execute the Zowe worklfow in the z/OSMF web interface:
+1. Log in to the z/OSMF web interface.
+2. Select Workflows from the **navigation** tree. 
+3. Select **Create Workflow** from the Actions menu. 
+4. Enter the complete path to the workflow definion file in the **Workflow Denition filed**.
+
+   The workflow is located in the ZWEWRF01 member of the hlq.ZOWE.AZWE001.F4 data set. 
+
+5. (Optional) Enter the path to the customized variable input file that you prepared in advance. The variable input file is located in ZWE0YML member of the hlq.ZOWE.AZWE001 data set. 
+
+   When you execute  values from the variable input file override the workflow variables default values. The properties file helps automating workflow execution to save time and effort when deploying multiple standardized product instances.
+6. Select the system where you want to execute the workflow.
+7. Select **Next**. 
+8. Specify the unique workfow name. 
+9. Select or enter an **Owner Use ID** and slect **Assign all steps to owner user ID**. 
+10. Select Finish. 
+
+   The workflow is registed in z/OSMF and ready to execute.
+
+11. Select the workflow that you registed from the workflow list. 
+12. Perfrom the following steps to execute each step individually:
+
+    1. Double-clcik the title of the step.
+    2. Select the **Perform** tab. 
+    3. Review the step contents and update the input values as required.
+    4. Select Next. 
+    5. Repeat step c and d to complete all items until the opiton **Finish** is avaialable. 
+    6. Select **Finish**. 
+
+       After you execute each step, the step is marked as **Complete**. The workflow is executed. After you complete executing all the steps individually, Zowe SMP/E is created. 
+
 
 ## Activating Zowe
 
