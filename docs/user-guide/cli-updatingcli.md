@@ -13,7 +13,7 @@ Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recen
 Issue the following command:
 
 ```
-zowe -V 
+zowe -V
 ```
 
 ## (Optional) Identify the currently installed versions of Zowe CLI plug-ins
@@ -40,7 +40,7 @@ You can update Zowe CLI to the latest version from the online registry on Window
 2. Reinstall the plug-ins and update existing plug-ins using the following command:
 
    ```
-   zowe plugins install @zowe/cics @zowe/db2 @zowe/ims @zowe/mq
+   zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli @zowe/zos-ftp-for-zowe-cli @zowe/ims-for-zowe-cli @zowe/mq-for-zowe-cli
    ```
 
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.
@@ -55,6 +55,6 @@ npm install -g @zowe/cli@3.3.1
 
 ## Update Zowe CLI from a local package
 
-To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package) instructions. 
+To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package) instructions.
 
 **Important!** Recreate any user profiles that you created before the update.

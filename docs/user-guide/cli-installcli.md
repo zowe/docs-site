@@ -69,26 +69,24 @@ If you have restricted internet access at your site, use the following method to
 5. Issue the following commands to install each available plug-in:
 
     ```
-    zowe plugins install zowe-cics.tgz
+    zowe plugins install cics-for-zowe-cli.tgz
     ```
 
     ```
-    zowe plugins install zowe-db2.tgz
+    zowe plugins install db2-for-zowe-cli.tgz
     ```
 
     ```
-    zowe plugins install zowe-ftp.tgz
+    zowe plugins install zos-ftp-for-zowe-cli.tgz
     ```
 
     ```
-    zowe plugins install zowe-ims.tgz
+    zowe plugins install ims-for-zowe-cli.tgz
     ```
 
     ```
-    zowe plugins install zowe-mq.tgz
+    zowe plugins install mq-for-zowe-cli.tgz
     ```
-
-
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing). For more information about available plug-ins, how to install multiple plug-ins, or update to a specific version of a plug-in see [Extending Zowe CLI](cli-extending.md).
 
@@ -125,7 +123,7 @@ If your computer is connected to the Internet, you can use the following method 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
-    zowe plugins install @zowe/cics @zowe/db2 @zowe/ims @zowe/mq
+    zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli @zowe/zos-ftp-for-zowe-cli @zowe/ims-for-zowe-cli @zowe/mq-for-zowe-cli
     ```
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing). For more information about available plug-ins, how to install multiple plug-ins, or update to a specific version of a plug-in see [Extending Zowe CLI](cli-extending.md).

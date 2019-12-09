@@ -19,7 +19,7 @@
 
 ## Learning objectives
 
-This tutorial walks you through the Zowe&trade; interfaces, including the Zowe Desktop and Zowe CLI, with several simple tasks to help you get familiar with Zowe. 
+This tutorial walks you through the Zowe&trade; interfaces, including the Zowe Desktop and Zowe CLI, with several simple tasks to help you get familiar with Zowe.
 
 - If you are new to Zowe, start with this tutorial to explore the base Zowe features and functions.
 - If you are already familiar with Zowe interfaces and capabilities, you might want to visit the **Extending** section which guides you to extend Zowe by creating your own APIs or applications.
@@ -46,20 +46,20 @@ Before you begin, it is assumed that you have already successfully installed Zow
 
 For information about how to install Zowe, see [Installing Zowe](installandconfig.md).
 
-**Important!**  
+**Important!**
 
 - In this tutorial, the following parameters are used as an example. Replace them with your own settings when you follow the tutorial in your environment.
 
    - URL to access the Zowe Desktop: `https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
-   - Mainframe credentials: 
+   - Mainframe credentials:
      - Username: `ibmuser`
      - Password: `sys1`
 
-- It is assumed that you perform the tasks in a Windows environment and that you have Visual Studio Code (VS Code) installed. 
+- It is assumed that you perform the tasks in a Windows environment and that you have Visual Studio Code (VS Code) installed.
 
 ## Logging in to the Zowe Desktop
 
-Access and navigate the Zowe Desktop to view the Zowe applications. In this tutorial, you will use the Firefox browser to log in to the Zowe Desktop. 
+Access and navigate the Zowe Desktop to view the Zowe applications. In this tutorial, you will use the Firefox browser to log in to the Zowe Desktop.
 
 The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html` in your own environment, where:
 
@@ -69,14 +69,14 @@ The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org
 **Follow these steps:**
 
 1. In the address field, enter the URL to access the Zowe Desktop. In this tutorial, the following URL is used as an example:
-   
+
    ```https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html```
 
    <img src="../images/common/zowe-desktop-login.png" alt="Zowe Desktop login" width="300">
-   
+
 2. On the login page of the Zowe Desktop, enter your mainframe credentials. In this tutorial, the following ID is used as an example:
    - Username: ibmuser
-   - Password: sys1   
+   - Password: sys1
 
 3. Press Enter.
 
@@ -93,7 +93,7 @@ Use the Job Entry Subsystem (JES) Explorer to query JES jobs with filters and vi
 **Follow these steps:**
 
 1. Click the Start menu in the Zowe Desktop.
-   
+
    <img src="../images/common/2-1.png" width="300" alt="Zowe Desktop start menu">
 
 2. Scroll down to find the JES Explorer icon and click to open it. The JES Explorer is displayed. If prompted to provide credentials for authentication, enter your mainframe credentials.
@@ -109,11 +109,11 @@ Use the Job Entry Subsystem (JES) Explorer to query JES jobs with filters and vi
    <img src="../images/common/scenario1-jes-filter.gif" alt="Query jobs" width="300">
 
 5. From the job filter results, click the job named **SDSF**. The data sets for this job are listed.
-    
+
    ![Job filters in JES](../images/common/scenario1-job-listed.png)
 
 6. Click **JESJCL** to open the JESJCL data set. The contents of this data set are displayed. You can also select other data sets to view their contents.
-   
+
    **Tip:** You can hover over the text in purple color to display a hover help window.
 
    ![Hover help](../images/common/2-3.png)
@@ -154,14 +154,14 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
 
    <img src="../images/common/scenario1-enter-ispf.png" alt="Screen capture that shows how to enter ISPF" width="400">
 
-5. Access SDSF to view output from a job. To do this, 
-      
+5. Access SDSF to view output from a job. To do this,
+
    1. Type `M` at the **Option** prompt and press Enter.
 
       <img src="../images/common/scenario1-enter-m.png" alt="Screen capture that shows how to enter the M command in the panel" width="400">
 
    2. Type `5` and press Enter.
-      
+
       <img src="../images/common/scenario1-enter-5.png" alt="Screen capture that shows how to enter the 5 command in the panel" width="400">
 
 6. To view the jobs in an active status, type `DA` at the command input prompt and press Enter. The jobs that are running are displayed.
@@ -169,15 +169,15 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
    <img src="../images/common/scenario1-enter-da.png" alt="Screen capture that shows how to enter the DA command in the panel" width="400">
 
 7. To query the jobs that start with `SDSF`, type prefix `sdsf; owner *` at the command input prompt and press Enter.
-   
+
    <img src="../images/common/scenario1-enter-prefix.png" alt="Screen capture that shows how to enter the PREFIX SDSF command in the panel" width="400">
-   
+
 8. To view the contents of the job, type `S` next to the job name `SDSF` and press Enter.
 
    <img src="../images/common/scenario1-view-content-tn3270.png" alt="Screen capture that shows how to enter the S command to view contents of a job" width="400">
 
    The contents of the job are displayed.
-   
+
    <img src="../images/common/scenario1-displayed-content-tn3270.png" alt="Screen capture that shows the contents of a job" width="400">
 
 Close the TN3270 window. In the next step, you will use the MVS Explorer to make changes to a data set.
@@ -201,7 +201,7 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 5. Right-click the `USER.Z23B.PARMLIB` data set and select **New Dataset Member**.
 
    <img src="../images/common/scenario1-create-dataset-member.png" alt="Right click" width="300">
-   
+
 6. Enter **ZTRIAL** as the data set member name and click **OK** to create the data set member.
 
    <img src="../images/common/scenario1-enter-dataset-name.png" alt="Enter data set member name" width="400">
@@ -213,7 +213,7 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 8. Click **SAVE** to save your edits.
 
    The following message **Save success for USER.Z23B.PARMLIB(ZTRIAL)** pops up quickly at the bottom of the MVS Explorer window, which indicates that your edits are successfully saved.
-   
+
    ![Saved](../images/common/zowe-mvs-dataset-saved.png)
 
 Leave the MVS Explorer window open; we will look at the contents of the data set in a later step. If asked to leave the page, choose **Stay on Page**. Next, you will use Zowe CLI to view and add another change to the same data set.
@@ -263,12 +263,12 @@ Zowe CLI is a command-line interface that lets you interact with z/OS from vario
    ```
    code USER/Z23B/PARMLIB/ZTRIAL.txt
    ```
-   Alternatively, navigate to the PARMLIB directory and issue `code ZTRIAL.txt`. 
+   Alternatively, navigate to the PARMLIB directory and issue `code ZTRIAL.txt`.
 
    The file opens in a text editor (in this example, VS Code). You will see the changes you made in the previous step by using the MVS Explorer.
 
 6. Add the text `Second change to Zowe zTrial` to the file and then use `Ctrl+S` to save your edits.
-   
+
    ![Edits](../images/common/scenario1-cli-second-change.jpg)
 
 7. Open the Command Prompt again and upload your changes to the mainframe by entering the following command:
@@ -278,7 +278,7 @@ Zowe CLI is a command-line interface that lets you interact with z/OS from vario
    ```
 
    The following message indicates that you successfully uploaded your changes:
-   
+
    ![Screen capture that shows the data set is uploaded successfully](../images/common/scenario1-cli-uploaded.png)
 
 Congratulations! You used Zowe CLI to edit a data set member and upload the changes to mainframe.
@@ -304,7 +304,7 @@ Congratulations! You explored several applications on the Zowe Desktop and learn
 Here are some next steps.
 
 ### Go deeper with Zowe
-In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and TN3270 to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI. 
+In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and TN3270 to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI.
 
 For more information, see the [User Guide](mvd-using.md).
 
@@ -315,7 +315,7 @@ For a complete list of available CLI commands, explore the Zowe CLI [Command Ref
 You can add your own application plug-ins to Zowe. See how easy it is to extend Zowe to create your own APIs and applications by reading the [Extending](../extend/extend-apiml/api-mediation-onboard-overview.md) section.
 
 ### Give feedback
-Did you find this tutorial useful? You can tell us what you think about this tutorial via an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9). 
+Did you find this tutorial useful? You can tell us what you think about this tutorial via an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9).
 
 If you encounter any problems or have an idea for improving this tutorial, you can create a GitHub issue [here](https://github.com/zowe/docs-site/issues).
 
