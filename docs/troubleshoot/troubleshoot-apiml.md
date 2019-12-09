@@ -19,10 +19,10 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
 
-3. Find the line that contains the `spring.profiles.include` parameter and change its value to `debug`:
+3. Find the line that contains the `LOG_LEVEL=` parameter and set the value to `debug`:
 
    ```
-    -Dspring.profiles.include=debug \
+    LOG_LEVEL=debug
    ```
 
 4. Restart Zowe&trade;.
@@ -31,9 +31,9 @@ its performance and create large log files that consume a large volume of disk s
 
 5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
-6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
+6. Disable the debug mode. Find the `LOG_LEVEL` parameter, and change its current value to the default `LOG_LEVEL=` one:
     ```
-    -Dspring.profiles.include= \
+    LOG_LEVEL=
     ```
 7. Restart Zowe.
 
@@ -165,7 +165,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 
 <img src="../images/common/Error.png" alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
-The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZOWESVR joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
 2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
