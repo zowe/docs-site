@@ -14,13 +14,13 @@ The IBM® CICS® Plug-in for Zowe&trade; CLI lets you extend Zowe CLI to interac
 
 As an application developer, you can use IBM CICS Plug-in for Zowe CLI to perform the following tasks:
 
-  - Deploy code changes to CICS applications that were developed with COBOL. 
-  - Deploy changes to CICS regions for testing or delivery. See the [define command](#commands) for an example of how you can define programs to CICS to assist with testing and delivery. 
+  - Deploy code changes to CICS applications that were developed with COBOL.
+  - Deploy changes to CICS regions for testing or delivery. See the [define command](#commands) for an example of how you can define programs to CICS to assist with testing and delivery.
   - Automate CICS interaction steps in your CI/CD pipeline with Jenkins Automation Server or TravisCI.
   - Deploy build artifacts to CICS regions.
-  - Alter, copy, define, delete, discard, and install CICS resources and resource definitions. 
+  - Alter, copy, define, delete, discard, and install CICS resources and resource definitions.
 
-## Commands 
+## Commands
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
@@ -42,7 +42,9 @@ Use one of the following methods to install or update the plug-in:
 
 ## Creating user profiles
 
-You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile: 
+You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary.
+
+Issue the following command:
 
 ```
 zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
