@@ -133,7 +133,10 @@
       },
       {
         "text": "API Mediation Layer",
-        "link": "troubleshoot/troubleshoot-apiml.md"
+        "items": [
+          "troubleshoot/troubleshoot-apiml.md",
+          "troubleshoot/troubleshoot-apiml-error-codes.md"
+        ]
       },
       {
         "text": "Zowe Application Framework",
