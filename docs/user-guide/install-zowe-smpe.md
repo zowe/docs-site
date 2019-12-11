@@ -876,34 +876,37 @@ You can also use the following options to create Zowe SMP/E environment:
 
 ### Create SMP/E Environment with z/OSMF Workflow (optional)
 
-z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe. Register and execute the Zowe SMP/E workflow to create SMP/E environment in the z/OSMF web interface. Peform the following steps to register and execute the Zowe worklfow in the z/OSMF web interface:
+z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe. Register and execute the Zowe SMP/E workflow to create SMP/E environment in the z/OSMF web interface. Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
 1. Log in to the z/OSMF web interface.
 2. Select Workflows from the **navigation** tree. 
-3. Select **Create Workflow** from the Actions menu. 
-4. Enter the complete path to the workflow definion file in the **Workflow Denition filed**.
+3. Select **Create Workflow** from the **Actions** menu. 
+4. Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
 
-   The workflow is located in the ZWEWRF01 member of the hlq.ZOWE.AZWE001.F4 data set. 
+   The workflow is located in the 'ZWEWRF01' member of the 'hlq.ZOWE.AZWE001.F4' data set. 
 
 5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
  
    The variable input file is located in ZWE0YML member of the hlq.ZOWE.AZWE001 data set. 
 
-   When you execute the workflow, the values from the variable input file override the workflow variables default values. 
+   Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values. 
 6. Select the system where you want to execute the workflow.
 7. Select **Next**. 
-8. Specify the unique workfow name. 
+8. Specify the unique workflow name. 
 9. Select or enter an **Owner Use ID** and select **Assign all steps to owner user ID**. 
-10. Select Finish. 
+10. Select **Finish**. 
 
-    The workflow is registed in z/OSMF and ready to execute.
+    The workflow is registered in z/OSMF and ready to execute.
 
-11. Select the workflow that you registed from the workflow list. 
-12. Perfrom the following steps to execute each step individually:
+11. Select the workflow that you registered from the workflow list.
+12. Execute the steps in order. 
 
-    1. Double-clcik the title of the step.
+    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).  
+13. Perform the following steps to execute each step individually:
+
+    1. Double-click the title of the step.
     2. Select the **Perform** tab. 
     3. Review the step contents and update the input values as required.
-    4. Select Next. 
+    4. Select **Next**. 
     5. Repeat step c and d to complete all items until the opiton **Finish** is avaialable. 
     6. Select **Finish**. 
 
