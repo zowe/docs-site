@@ -12,7 +12,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
-    <p>Find out how to install, configure, and use Zowe Application Framework, z/OS Services, API Mediation Layer, and Zowe CLI.</p>
+    <p>Find out how to install and configure Zowe. Learn about how to use Zowe components, including Zowe Application Framework, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
     <h2><a href="./extend/extend-apiml/api-mediation-onboard-overview.html">Extending</a></h2>
@@ -28,7 +28,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="https://zowe.org/">References</a></h2>
-    <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>
+    <p>Get a list of reference materials to help you use Zowe, including Zowe command line reference, TPSR, and BOM.</p>
   </div>
 </div>
 
