@@ -132,7 +132,7 @@
         "link": "troubleshoot/troubleshooting.md"
       },
       {
-        "text": "API Mediation Layer",
+        "text": "Zowe API Mediation Layer",
         "items": [
           "troubleshoot/troubleshoot-apiml.md",
           "troubleshoot/troubleshoot-apiml-error-codes.md"
