@@ -109,7 +109,7 @@ EXTERNAL_CERTIFICATE=/path/to/keystore.p12
 # optional - Alias of the certificate in the keystore
 EXTERNAL_CERTIFICATE_ALIAS=servercert
 # optional - Public certificates of trusted CAs
-EXTERNAL_CERTIFICATE_AUTHORITIES=”/path/to/cacert_1.cer /path/to/cacert_2.cer”
+EXTERNAL_CERTIFICATE_AUTHORITIES="/path/to/cacert_1.cer /path/to/cacert_2.cer"
 # Select a password that is used to secure EXTERNAL_CERTIFICATE keystore and 
 # that will be also used to secure newly generated keystores for API Mediation
 KEYSTORE_PASSWORD=mypass
@@ -124,5 +124,4 @@ WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions i
 
 This error does not interfere with the installation progress and can be remediated after the installation completes.
 For more information, see [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate).
-
 
