@@ -81,6 +81,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
    This will expand to a file structure.
 
    ```
+      /bin
       /files
       /install
       /scripts
@@ -126,7 +127,7 @@ You install and configure the Zowe runtime by executing the `zowe-install.sh` sc
 
 1. Install Zowe runtime directories and files into the `root_dir` directory.  
 2. Install MVS artifacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  
-3. Configure the runtime directory so that an instance of the ZOWESVR STC can be launched which will start the Zowe address spaces. 
+3. Configure the runtime directory so that an instance of the ZWESVSTC STC can be launched which will start the Zowe address spaces. 
 
 It's recommended that you install the Zowe runtime first by running the `zowe-install.sh -I` option that just performs the first installation step to create the runtime directory. Then, configure the runtime directory separately following instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). Alternatively, you can both install and configure the Zowe runtime by running a single command `zowe-install.sh` without the `-I` parameter. In this case, ensure that you review [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory) before you run the command `zowe-install.sh`.
 
