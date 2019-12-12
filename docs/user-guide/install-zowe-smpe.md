@@ -712,6 +712,7 @@ IEF257I ZWE3ALOC ALLOCD ALLOCD AZWEZFS - SPACE REQUESTED NOT AVAILABLE
 IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.                    
 ```
 Uncomment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
+  
 
 ### Create SMP/E environment (Optional)
 
@@ -869,6 +870,48 @@ For more information about REPORT CROSSZONE, see the SMP/E manuals.
 ### Cleaning up obsolete data sets, paths, and DDDEFs
 
 The web download data sets listed in [DASD storage requirements](#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E install.
+
+You can also use the following options to create Zowe SMP/E environment:
+
+
+### Create SMP/E Environment with z/OSMF Workflow (optional)
+
+z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe. Register and execute the Zowe SMP/E workflow to create SMP/E environment in the z/OSMF web interface. Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
+1. Log in to the z/OSMF web interface.
+2. Select Workflows from the **navigation** tree. 
+3. Select **Create Workflow** from the **Actions** menu. 
+4. Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
+
+   The workflow is located in the 'ZWEWRF01' member of the 'hlq.ZOWE.AZWE001.F4' data set. 
+
+5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
+ 
+   The variable input file is located in ZWE0YML member of the hlq.ZOWE.AZWE001 data set. 
+
+   Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values. 
+6. Select the system where you want to execute the workflow.
+7. Select **Next**. 
+8. Specify the unique workflow name. 
+9. Select or enter an **Owner Use ID** and select **Assign all steps to owner user ID**. 
+10. Select **Finish**. 
+
+    The workflow is registered in z/OSMF and ready to execute.
+
+11. Select the workflow that you registered from the workflow list.
+12. Execute the steps in order. 
+
+    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).  
+13. Perform the following steps to execute each step individually:
+
+    1. Double-click the title of the step.
+    2. Select the **Perform** tab. 
+    3. Review the step contents and update the input values as required.
+    4. Select **Next**. 
+    5. Repeat step c and d to complete all items until the opiton **Finish** is avaialable. 
+    6. Select **Finish**. 
+
+       After you execute each step, the step is marked as **Complete**. The workflow is executed. After you complete executing all the steps individually, the Zowe SMP/E is created. 
+
 
 ## Activating Zowe
 
