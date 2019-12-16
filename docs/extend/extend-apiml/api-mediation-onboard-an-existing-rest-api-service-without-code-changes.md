@@ -354,7 +354,9 @@ After you define and validate the service in YAML format, you are ready to add y
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started).
 
-5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway: https://${zoweHostname}:${gatewayHttpsPort}/application/routes
+5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
+
+    `https://${zoweHostname}:${gatewayHttpsPort}/application/routes`
 
     The following line should appear:
 
