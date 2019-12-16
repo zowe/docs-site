@@ -85,7 +85,7 @@ To define your service in YAML format, provide the following definition in a YAM
 services:
     - serviceId: petstore
       catalogUiTileId: static
-      title: Petstore Sample Service  
+      title: Petstore Sample Service
       description: This is a sample server Petstore service
       instanceBaseUrls:
         - http://localhost:8080
@@ -166,9 +166,9 @@ The following list describes the configuration parameters:
 
      **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1".
 
-     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
+     This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
-     **Tip:** Describe the service so that the end user knows the function of the service.        
+     **Tip:** Describe the service so that the end user knows the function of the service.
 
 * **instanceBaseUrls**
 
@@ -187,7 +187,7 @@ The following list describes the configuration parameters:
    ```yaml
    - https://host1:port1/endevor
      https://host2:port2/endevor
-   ```   
+   ```
 
 * **homePageRelativeUrl**
 
@@ -258,7 +258,7 @@ The following list describes the configuration parameters:
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
 
 * **apiInfo.documentationUrl**
 
@@ -346,7 +346,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
     **Note:** We use the `${zoweUserDir}` symbol in following instructions.
 
-2. Copy your YAML file to the `${zoweUserDir}/api-mediation/api-defs` directory. 
+2. Copy your YAML file to the `${zoweUserDir}/api-mediation/api-defs` directory.
 
     **Note:** The `${zoweUserDir}/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
 
@@ -362,7 +362,8 @@ After you define and validate the service in YAML format, you are ready to add y
 
     This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is: `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
+    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
+    `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
 
 
 ## (Optional) Check the log of the API Mediation Layer
