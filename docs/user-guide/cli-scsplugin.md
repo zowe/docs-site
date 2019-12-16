@@ -1,6 +1,6 @@
 # Secure Credential Store Plug-in for Zowe CLI
 
-The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your credentials securely in the credential manager of your operating system. The plug-in invokes a native Node module, named Keytar, that manages user IDs and passwords in a credential manager.
+The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your credentials securely in the credential manager of your operating system. The plug-in invokes a native Node module, [keytar](https://github.com/atom/node-keytar), that manages user IDs and passwords in a credential manager.
 
   - [Use Cases](#use-cases)
   - [Commands](#commands)
@@ -10,7 +10,7 @@ The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your crede
 
 ## Use Cases
 
-Zowe CLI stores credentials in plaintext by default. Use the SCS plug-in to store credentials more securely and prevent your username and password from being compromised as a result of a malware attack or unlawful actions by others.
+Zowe CLI stores credentials (your mainframe username and password) in plaintext by default. You can use the SCS plug-in to store credentials more securely and prevent your username and password from being compromised as a result of a malware attack or unlawful actions by others.
 
 ## Commands
 
@@ -32,25 +32,25 @@ Use one of the following methods to install or update the plug-in:
 
 - [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
-**Note:** Existing user profiles are not updated automatically. See "Securing your Credentials" in the following section for details.
+**Note:** Existing user profiles are *not* automatically updated to securely store credentials. For more information, see [Securing your Credentials](#securing-your-credentials) in the following section.
 
 ## Using
 
-The plug-in introduces a new command group named `zowe scs` that you can use to enable/disable the plug-in and update existing user profiles.
+The plug-in introduces a new command group named `zowe scs` that lets you update existing user profiles and enable/disable the plug-in.
 
 ### Securing your credentials
-User profiles that you create *after* installing the plug-in are stored securely.
 
-If you created user profiles prior to installing the SCS plug-in,
+User profiles that you create *after* installing the plug-in will automatically have securely stored credentials.
 
-
-that converts the profile into securely-stored profiles. Issue the following command:
+To secure credentials in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
 
 ```
 zowe scs update
 ```
 
-**Example: Credentials Secured with SCS plug-in**
+Profiles are updated with secured credentials. See the following examples for more information.
+
+**Example: Secure credentials**
 
 The following is an example of securely stored credentials in a user profile configuration file:
 
@@ -58,12 +58,12 @@ The following is an example of securely stored credentials in a user profile con
 type: zosmf
 host: test
 port: 1234
-user: 'managed by @zowe/secure-credential-store'
-pass: 'managed by @zowe/secure-credential-store'
+user: 'managed by @zowe/secure-credential-store-for-zowe-cli'
+pass: 'managed by @zowe/secure-credential-store-for-zowe-cli'
 rejectUnauthorized: false
 ```
 
-**Example: Credentials secured with default credential manager**
+**Example: Default credential management**
 
 The following is an example of credentials that are stored with the *default* credential manager:
 
@@ -80,10 +80,11 @@ rejectUnauthorized: false
 
 If you do not want to use CA Secure Credential Store Plug-in for Zowe CLI, choose one of the following methods to deactivate the plug-in:
 
-Uninstall the Plug-in
+**Uninstall the Plug-in**
+
 Issue the zowe plugins uninstall [plugin] command to delete the plug-in from your computer.
 When you uninstall the plug-in, existing profiles become invalid and you have to recreate them. For more information, see Create CLI Profiles.
-If you uninstall the plug-in that was installed using the Windows installation wizard, you need to reset the value of the credential-manager property manually.
 
-Reset the Configuration of Credential Manager
+
+**Reset the Configuration of Credential Manager**
 Issue the reset command to reset the value of the credential manager configuration to default and deactivate the plug-in.
