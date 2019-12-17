@@ -251,6 +251,26 @@ You can use an existing certificate with the following procedure.
 
 2. Update the value of `externalCertificateAlias` to the alias of the server certificate in the keystore.
 
+   **Note:** If you don't know the certificate alias, run the following command where `externalCertificate.p12` is a value of  `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file.
+   
+   ```sh
+   keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
+   ```
+   Expected output:
+   ```
+   Keystore type: PKCS12
+   Keystore provider: SUN
+
+   Your keystore contains 1 entry
+
+   Alias name: apiml
+   Creation date: Oct 9, 2019
+   Entry type: PrivateKeyEntry
+   Certificate chain length: 3
+   ...
+   ```
+   In this case, alias can be found in `Alias name: apiml`. Therefore, set `externalCertificateAlias=apiml`.
+
 3. Update the value of `externalCertificateAuthorities` to the path of the public certificate of the certificate authority that has the signed the certificate. You can add additional certificate authorities separated by spaces. This can be used for certificate authorities that have signed the certificates of the services that you want to access via the API Mediation Layer.
 
 4. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `verifyCertificatesOfServices=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate.
