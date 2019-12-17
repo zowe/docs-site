@@ -5,7 +5,7 @@ const CURRENT_ZOWE_VERSION = 'Active Development Version'
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'stable').replace(/\./g, '-')
 // this holds list of all pages
 // IMPORTANT: if you have new pages, please update this constant
-// 
+//
 // Options for page:
 // @canHideFirst(Boolean)   if want to hide the link on navbar earlier than regular links
 // @hideInPdf(Boolean)      if hide this page/section from PDF side menus
@@ -180,7 +180,7 @@ module.exports = {
       }
     },
     nav: [
-      // IMPORTANT: if you have new pages, please update ALL_PAGES constant defined above
+      // IMPORTANT: if you have new pages, please update the file `pages.json`
       ...navbarLinks,
       // MODIFICATION_FROM_THEME versions dropdown placeholder, it will be converted when rendering
       { tags: ['versions'] },
@@ -193,7 +193,7 @@ module.exports = {
         imageHeight: 20
       }
     ],
-    // IMPORTANT: if you have new pages, please update ALL_PAGES constant defined above
+    // IMPORTANT: if you have new pages, please update the file `pages.json`
     sidebar: sidebarLinks
   },
   // pages tree used by generating PDF

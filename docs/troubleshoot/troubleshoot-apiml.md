@@ -19,10 +19,10 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
 
-3. Find the line that contains the `spring.profiles.include` parameter and change its value to `debug`:
+3. Find the line that contains the `LOG_LEVEL=` parameter and set the value to `debug`:
 
    ```
-    -Dspring.profiles.include=debug \
+    LOG_LEVEL=debug
    ```
 
 4. Restart Zowe&trade;.
@@ -31,9 +31,9 @@ its performance and create large log files that consume a large volume of disk s
 
 5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
-6. Disable the debug mode. Modify the line which contains the `spring.profiles.include` parameter back to default:
+6. Disable the debug mode. Find the `LOG_LEVEL` parameter, and change its current value to the default `LOG_LEVEL=` one:
     ```
-    -Dspring.profiles.include= \
+    LOG_LEVEL=
     ```
 7. Restart Zowe.
 
