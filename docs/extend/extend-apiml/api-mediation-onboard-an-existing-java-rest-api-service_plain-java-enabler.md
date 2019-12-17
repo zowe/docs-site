@@ -21,9 +21,10 @@ Additionally, while the _PJE_ library can be used in REST API projects based on 
 
 
 **Tip:** For more information about how to utilize another API ML enabler, see: 
-  * [Onboard a Spring Boot REST API service](#api-mediation-onboard-a-spring-boot-rest-api-service.md) 
-  * [Onboard a REST service directly calling eureka with xml configuration](#api-mediation-onboard-rest-service-direct-eureka-call.md)  
-  * [Onboard an existing REST API service without code changes](#api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
+  * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md) 
+  * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)  
+  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
+  * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
 ## Onboarding your REST service with API ML
 
@@ -66,7 +67,7 @@ Ensure that the following prerequisites are met before you begin to use the _PJE
 
 **Notes:** 
 
-* This documentation is valid for `ZoweApimlVersion 1.1.12` and higher.
+* This documentation is valid for `ZoweApimlVersion 1.2.0` and higher. We recommend that you check the Giza Artifactory for newer versions. 
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS. 
 
@@ -187,10 +188,10 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md).   
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](api-mediation-onboard-enabler-external-configuration.md).   
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment 
-are written in `#{parameterValue}` format. For your service configuration file, provide actual values or [externalize your onboarding configuration](#api-mediation-onboard-enabler-external-configuration.md).
+are written in `#{parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
 **Example:**
 
