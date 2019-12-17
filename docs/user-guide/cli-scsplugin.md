@@ -10,7 +10,7 @@ The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your crede
 
 ## Use Cases
 
-Zowe CLI stores credentials (your mainframe username and password) in plaintext by default. You can use the SCS plug-in to store credentials more securely and prevent your username and password from being compromised as a result of a malware attack or unlawful actions by others.
+Zowe CLI stores credentials (mainframe username and password) in plaintext on your computer by default. You can use the SCS plug-in to store credentials more securely and prevent your credentials from being compromised as a result of a malware attack or unlawful actions by others.
 
 ## Commands
 
@@ -32,7 +32,7 @@ Use one of the following methods to install or update the plug-in:
 
 - [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
-**Note:** Existing user profiles are *not* automatically updated to securely store credentials. For more information, see [Securing your Credentials](#securing-your-credentials) in the following section.
+**Note:** Existing user profiles are *not* automatically updated to securely store credentials. See [Securing your Credentials](#securing-your-credentials) in the following section for more information.
 
 ## Using
 
@@ -40,9 +40,9 @@ The plug-in introduces a new command group named `zowe scs` that lets you update
 
 ### Securing your credentials
 
-User profiles that you create *after* installing the plug-in will automatically have securely stored credentials.
+User profiles that you create *after* installing the plug-in will automatically store your credentials securely.
 
-To secure credentials in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
+To secure credentials securely in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
 
 ```
 zowe scs update
@@ -78,13 +78,14 @@ rejectUnauthorized: false
 
 ### Deactivating the plug-in
 
-If you do not want to use CA Secure Credential Store Plug-in for Zowe CLI, choose one of the following methods to deactivate the plug-in:
+If you do not want to use the SCS Plug-in for Zowe CLI, choose one of the following methods to deactivate the plug-in:
 
 **Uninstall the Plug-in**
 
-Issue the zowe plugins uninstall [plugin] command to delete the plug-in from your computer.
-When you uninstall the plug-in, existing profiles become invalid and you have to recreate them. For more information, see Create CLI Profiles.
+Issue the `zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli` command to delete the plug-in from your computer.
 
+When you uninstall the plug-in, existing profiles become invalid and you must recreate them. For more information, see [Create CLI Profiles](cli-configuringcli.html#creating-zowe-cli-profiles.md).
 
 **Reset the Configuration of Credential Manager**
-Issue the reset command to reset the value of the credential manager configuration to default and deactivate the plug-in.
+
+Issue the `zowe scs reset` command to reset the value of the credential manager configuration to default, which deactivates the plug-in.
