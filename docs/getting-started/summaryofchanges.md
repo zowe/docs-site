@@ -6,10 +6,10 @@ Welcome to Zowe Active Development documentation.
 
 ## What is Active Development?
 
-- Active Development is a forward-version that includes features that are not-yet-included in the Zowe Stable version.
-- You can switch between Stable and Active Development documentation using the **Versions** drop-down in the navigation bar. The Release notes, installation processes, and development tutorials differ between versions.
+- Active Development is a forward-version that includes features not yet included in the Zowe Stable version.
+- You can switch between Stable and Active Development documentation using the **Versions** drop-down in the navigation bar. The Release notes, installation processes, and development tutorials are different in each version.
 - The version is equivalent to the `@latest` version of Zowe CLI.
-- When you migrate from one CLI version to another, you might need to edit user your profiles and reinstall plug-ins due to differences between versions.
+- When migrating from one CLI version to another, you might need to edit user your profiles and reinstall plug-ins due to differences between versions.
 
 ## Version highlights
 
