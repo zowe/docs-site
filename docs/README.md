@@ -12,7 +12,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="./user-guide/installandconfig.html">User Guide</a></h2>
-    <p>Find out how to install, configure, and use Zowe Application Framework, z/OS Services, API Mediation Layer, and Zowe CLI.</p>
+    <p>Find out how to install and configure Zowe. Learn about how to use Zowe components, including Zowe Application Framework, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
     <h2><a href="./extend/extend-apiml/api-mediation-onboard-overview.html">Extending</a></h2>
@@ -27,8 +27,8 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Learn about how you can contribute to this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="https://zowe.org/">Getting Help</a></h2>
-    <p>Visit Zowe.org where you can experience our applications and join Zowe communities.</p>
+    <h2><a href="https://zowe.org/">References</a></h2>
+    <p>Get a list of reference materials to help you use Zowe, including Zowe command line reference, TPSR, and BOM.</p>
   </div>
 </div>
 
@@ -36,18 +36,17 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.7.0.
+You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.8.0.
 
-| Version | Download
-| --- | ---
-| V1.7.0 | [PDF](https://docs.zowe.org/stable/Zowe_Documentation.pdf)
-| V1.6.0 | [PDF](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)
-| V1.5.0 | [PDF](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)
-| V1.4.0 | [PDF](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)
-| V1.3.0 | [PDF](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)
-| V1.2.0 | [PDF](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)
-| V1.1.0 | [PDF](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)
-| V1.0.x | [PDF](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)
+**[V1.8.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** | 
+**[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
+**[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** | 
+**[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** | 
+**[V1.4.0](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)** | 
+**[V1.3.0](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)** | 
+**[V1.2.0](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)** |
+**[V1.1.0](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)** | 
+**[V1.0.x](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)** 
 
 ### Zowe CLI command reference guide
 
