@@ -32,23 +32,23 @@ Use one of the following methods to install or update the plug-in:
 
 - [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
-**Note:** Existing user profiles are *not* automatically updated to securely store credentials. See [Securing your Credentials](#securing-your-credentials) in the following section for more information.
+**Note:** Existing user profiles are *not* automatically updated to securely store credentials.
 
 ## Using
 
-The plug-in introduces a new command group named `zowe scs` that lets you update existing user profiles and enable/disable the plug-in.
+The plug-in introduces a new command group, `zowe scs`, that lets you update existing user profiles and enable/disable the plug-in.
 
 ### Securing your credentials
 
 User profiles that you create *after* installing the plug-in will automatically store your credentials securely.
 
-To secure credentials securely in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
+To secure credentials in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
 
 ```
 zowe scs update
 ```
 
-Profiles are updated with secured credentials. See the following examples for more information.
+Profiles are updated with secured credentials.
 
 **Example: Secure credentials**
 
