@@ -1,6 +1,6 @@
 # Installing Zowe CLI
 
-Install Zowe&trade; CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). 
+Install Zowe&trade; CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md).
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
@@ -53,7 +53,7 @@ If you do not have internet access at your site, use the following method to ins
 4. Issue the following command against the extracted directory to install Zowe CLI on your computer:
 
     ```
-    npm install -g zowe-cli.tgz 
+    npm install -g zowe-cli.tgz
     ```
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
@@ -96,8 +96,10 @@ If your computer is connected to the Internet, you can use the following method 
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
+
     ```
-    zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
+    zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x
     ```
 
     **Note:** The IBM Db2 plug-in requires additional configuration. For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).

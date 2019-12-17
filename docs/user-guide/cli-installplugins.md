@@ -7,11 +7,12 @@ Use commands in the `plugins` command group to install and manage Zowe&trade; CL
 You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
 - IBM® Db2® Plug-in for Zowe CLI
+- Secure Credential Store Plug-in for Zowe CLI
 - [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
 
 Use either of the following methods to install plug-ins:
 
-- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
+- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet.
 
     For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
 
@@ -28,13 +29,13 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
 
 2.  Set the proper target registry by issuing the following command:
-   
+
       ```
       npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
       ```
 
 3.  Issue the following command to install a plug-in:
-   
+
       ```
       zowe plugins install <my-plugin>
       ```
@@ -44,18 +45,20 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | Plug-in | Installation Command Syntax |
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@brightside/cics@lts-incremental` |
-    | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2@lts-incremental` |
-    |    |    |
+    | IBM Db2 Plug-in for Zowe CLI | `@brightside/db2@lts-incremental` |
+    | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x` | | | |
+
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
-   
+
     ```
     zowe plugins install <@brightside/my-plugin1> <@brightside/my-plugin2> <@brightside/my-plugin3> ...
     ```
-    
+
     **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
 
-You installed Zowe CLI plug-ins. 
+You installed Zowe CLI plug-ins.
 
 ## Installing plug-ins from a local package
 
@@ -64,7 +67,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 **Follow these steps:**
 
 1.  Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
-   
+
 2.  Obtain the installation files.
 
     From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
@@ -105,8 +108,12 @@ Install plug-ins from a local package on any computer that has limited or no acc
     |---------|-----------------|
     | IBM CICS Plug-in for Zowe CLI | `cics.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2.tgz` |
+    | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
+    |||
 
-You installed Zowe CLI plug-ins. 
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
+
+You installed Zowe CLI plug-ins.
 
 ## Validating plug-ins
 
@@ -118,7 +125,7 @@ The `validate` command has the following syntax:
 zowe plugins validate [plugin]
 ```
 
-  - **`[plugin]`**  
+  - **`[plugin]`**
     (Optional) Specifies the name of the plug-in that you want to
     validate. If you do not specify a plug-in name, the command
     validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
@@ -127,7 +134,10 @@ zowe plugins validate [plugin]
     |-|-|
     |IBM CICS Plug-in for Zowe CLI|`@brightside/cics`|
     |IBM Db2 Plug-in for Zowe CLI|`@brightside/db2`|
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
     |||
+
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 **Examples: Validate plug-ins**
 
@@ -203,7 +213,10 @@ The following table describes the uninstallation command synstax for each plug-i
  |---------|-----------------------------|
  | IBM CICS Plug-in for Zowe CLI | `@brightside/cics` |
  | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2` |
+ | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
  |    |    |
+
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 **Example:**
 

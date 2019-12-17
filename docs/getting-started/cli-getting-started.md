@@ -18,7 +18,7 @@ Get started with Zowe&trade; CLI quickly and easily.
      - [Example:](#example)
 - [Next Steps](#next-steps)
 
-## Installing 
+## Installing
 
 Before you install Zowe CLI, download and install [Node.js and npm.](https://nodejs.org/en/download/)
 
@@ -32,10 +32,12 @@ npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
 npm install @brightside/core@lts-incremental -g
 ```
 
-### Installing CLI plug-ins 
+### Installing CLI plug-ins
+
+<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 ```
-zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
+zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x
 ```
 
 The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
@@ -64,13 +66,13 @@ See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for 
 
 ## Using profiles
 
-Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command. 
+Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
 
-### Profile types 
+### Profile types
 
 Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
 
-**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults. 
+**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
 
 ### Creating a zosmf profile
 
@@ -101,7 +103,7 @@ You want to delete a list of temporary datasets. Use Zowe CLI to download the li
 
 set -e
 
-# Obtain the list of temporary project data sets 
+# Obtain the list of temporary project data sets
 dslist=$(zowe zos-files list dataset "my.project.ds*")
 
 # Delete each data set in the list
