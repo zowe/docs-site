@@ -365,7 +365,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 4. To specify a name for the new ZSS instance, follow these steps:
 
-   1. Copy the PROCLIB member JCL named ZWEXMSTC that was installed with the new runtime.
+   1. Copy the PROCLIB member JCL named ZWESISTC that was installed with the new runtime.
 
    2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
 
