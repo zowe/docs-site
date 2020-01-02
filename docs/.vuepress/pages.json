@@ -103,7 +103,6 @@
         "text": "Developing for Zowe Application Framework",
         "items": [
           "extend/extend-desktop/mvd-extendingzlux.md",
-          "extend/extend-desktop/mvd-creatingappplugins.md",
           "extend/extend-desktop/mvd-plugindefandstruct.md",
           "extend/extend-desktop/mvd-buildingplugins.md",
           "extend/extend-desktop/mvd-installplugins.md",
