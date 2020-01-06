@@ -16,7 +16,7 @@ Before you can build a plugin you must install all [prerequisites](https://githu
 3. Run the `npm install` command to install any application dependencies. Check for successful return code.
 
 4. Run one of the following commands to build the application code:
-    
+
     - Run the `npm run build` command to generate static content in the `/web` directory. (You can ignore warnings as long as the build is successful.)
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
@@ -26,7 +26,7 @@ Before you can build a plugin you must install all [prerequisites](https://githu
 2. Run the `npm install` command to install any application dependencies. Check for successful return code.
 
 4. Run one of the following commands to build the application code:
-    
+
     - Run the `npm run build` command to generate static content in the `/lib` directory.
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
@@ -34,7 +34,7 @@ Before you can build a plugin you must install all [prerequisites](https://githu
 Unlike Typescript, Javascript is an interpreted language and does not need to be built. In most cases, reloading the page should build new code changes. For Iframes or other JS-based apps, close and open the app.
 
 ## Installing
-Follow the steps described in [Installing plugins](https://docs.zowe.org/stable/extend/extend-desktop/mvd-installplugins.html#installing-plugins) to add your built plugin to the Zowe desktop.
+Follow the steps described in [Installing plugins](mvd-installplugins.md) to add your built plugin to the Zowe desktop.
 
 ## Packaging
 (Developers) For more information on how to package your Zowe app, see [Plugins definition and structure](https://docs.zowe.org/stable/extend/extend-desktop/mvd-plugindefandstruct.html#application-plug-in-filesystem-structure).
