@@ -6,41 +6,10 @@ For simpler Zowe administration and better security, you can install an instance
 
 This configuration is simpler to administer because the framework servers are accessible externally through a single port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
 
-You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `zlux-app-server/deploy/instance/ZLUX/serverConfig` directory.
+You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig` directory.
 
 ### Enabling the Application Server to register with the Mediation Layer
-1. Open the Application Server configuration file:
-   `zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
-   The file might be in the `zlux-app-server/config` directory. If so, navigate to the `zlux-build` folder and run the `ant deploy` command to deploy the file to the correct location.
-
-2. Specify the following values:
-
-   - `mediationLayer`: If this object is not there, create it. It contains all of the key-value pairs.
-   - `server`: Container for most of the key-value pairs.
-   - `hostname` (string): Specify the hostname that the Application Server can use to access the Mediation Layer servers. The Mediation Layer servers must be on a single system.
-   - `port` (number): Specify the Mediation Layer discovery server TCP port.
-   - `gatewayPort` (number): Specify the gateway TCP port (used for single sign-on).
-   - `isHttps` (boolean): Specify `true` to use HTTPS (recommended).
-   - `enabled` (boolean): Specify `true` to enable the Application Server to use the Mediation Layer.
-
-    For example:
-   ```text
-       "mediationLayer": {
-         "server": {
-           "hostname": "localhost",
-           "port": 10011,
-           "gatewayPort": 10012,
-           "isHttps": true
-         },
-         "enabled": true
-       }
-   ```
-
-To verify that the server registered correctly, open the log file in the `zlux/zlux-app-server/log` directory. The following line should be at the bottom (with the current date and time):
-
-`[20xx-xx-xx xx:xx:xx.xxx _zsf.apiml INFO] - Eureka Client Registered`
-
-The registration process might take a few minutes. If the line is not there, make sure that the Mediation Layer values you enabled in the `zluxserver.json` file are correct.
+The Application Server automatically registers with the Mediation Layer on a Zowe install on or after 1.8. You can refer to previous release documentation to manually enable this support otherwise.
 
 ### Accessing the Application Server
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
@@ -54,7 +23,7 @@ Follow these optional steps to configure the default connection to open for the 
 
 ### Setting up the TN3270 mainframe terminal application plug-in
 
-`_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+The port & security, and other parameters of the TN3270 plug-in is controlled by a configuration file present on first run, and located in an instance at `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. The format of this file is:
 ```    
       "host": <hostname>
       "port": <port>
@@ -62,25 +31,30 @@ Follow these optional steps to configure the default connection to open for the 
       type: <"telnet" or "tls">
     }
 ```    
+
+This file is stored within the Configuration Dataservice structure, so that it can be customized for individual users, for example, such as by placing a custom version within `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json` in order to customize `fred`'s configuration. 
+
 ### Setting up the VT Terminal application plug-in
 
-`_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
-``` 
-    "host":<hostname>
-    "port":<port>
-    "security": {
+The port & security, and other parameters of the VT plug-in is controlled by a configuration file present on first run, and located in an instance at `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json`. The format of this file is:
+```    
+      "host": <hostname>
+      "port": <port>
+      "security": {
       type: <"telnet" or "ssh">
     }
 ```    
 
+This file is stored within the Configuration Dataservice structure, so that it can be customized for individual users, for example, such as by placing a custom version within `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json` in order to customize `fred`'s configuration. 
+
 ## Configuration file
 The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
 
-For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
+For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `lib/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
 
-An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-server` repository, in the `config` directory. 
+For an instance, the configuration file is located at and can be edited at `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`. The defaults from which that file gets generated are located at `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
 
-**Note:** All examples are based on the *zlux-app-server* repository.
+**Note:** All examples are based on the *zlux-app-server* repository defaults.
 
 ## Network configuration
 
@@ -122,8 +96,8 @@ In the example configuration, both HTTP and HTTPS are specified:
     "https": {
       "port": 8544,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
-      "keys": ["../deploy/product/ZLUX/serverConfig/server.key"],
-      "certificates": ["../deploy/product/ZLUX/serverConfig/server.cert"]
+      "keys": ["../defaults/serverConfig/server.key"],
+      "certificates": ["../defaults/serverConfig/server.cert"]
     },
     "http": {
       "port": 8543
@@ -144,14 +118,14 @@ These directories dictate where the [Configuration Dataservice](../extend/extend
 
 ### Deploy example
 ```
-// All paths relative to zlux-app-server/js or zlux-app-server/bin
-// In real installations, these values will be configured during the installation process.
-  "rootDir":"../deploy",
-  "productDir":"../deploy/product",
+// All paths relative to zlux-app-server/bin
+// In real installations, these values will be configured during the install.
+  "productDir":"../defaults",
   "siteDir":"../deploy/site",
   "instanceDir":"../deploy/instance",
   "groupsDir":"../deploy/instance/groups",
-  "usersDir":"../deploy/instance/users"
+  "usersDir":"../deploy/instance/users",
+  "pluginsDir":"../defaults/plugins",
 
 ```
 
@@ -163,14 +137,14 @@ In the configuration file, you can specify a directory that contains JSON files,
 
 To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**.
 
-**Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-app-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
+**Note:** In this example, the directory for these JSON files is the Application Server defaults. However, in an instance of Zowe it is best to provide a folder unique to that instance - usually `$INSTANCE_DIR/workspace/app-server/plugins`
 
 ### Plug-ins directory example
 ```
-// All paths relative to zlux-app-server/js or zlux-app-server/bin
+// All paths relative to zlux-app-server/bin
 // In real installations, these values will be configured during the install process.
 //...
-  "pluginsDir":"../deploy/instance/ZLUX/plugins",
+  "pluginsDir":"../defaults/plugins",
 ```
 
 ## Logging configuration
@@ -179,9 +153,9 @@ For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutil
 
 ## ZSS configuration
 
-Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *agent.http.port*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
 
-The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
+The *agent.http.port* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
 
 ### Connecting the Zowe Application Server to ZSS
 
@@ -322,10 +296,10 @@ Copy the CA certificate to the ZSS server. Then in the Zowe App Server configura
 ```
 cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfig/[ca_cert]'
 ```
-2. In the `zlux-app-server/deploy/instance/ZLUX/serverConfig` directory, open the `zluxserver.json` file.
+2. In the `[INSTANCE_DIR]/workspace/app-server/serverConfig` directory, open the `server.json` file.
 3. In the **node.https.certificateAuthorities** object, add the CA certificate file path, for example:
 ```
-"certificateAuthorities": ["../deploy/instance/ZLUX/serverConfig/[ca_cert]"]
+"certificateAuthorities": ["[INSTANCE_DIR]/workspace/app-server/serverConfig/[ca_cert]"]
 ```
 4. In the **agent.http** object add the key-value pair `"attls": true`, for example:
 ```
@@ -384,31 +358,28 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is IZUSVR.
 
-7. In the new ZSS `zluxserver.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
+7. In the new ZSS `server.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
 
    ```
-   "rootDir":"../deploy",
-   "productDir":"../deploy/product",
+   "productDir":"../defaults",
    "siteDir":"../deploy/site",
    "instanceDir":"../deploy/instance",
    "groupsDir":"../deploy/instance/groups",
    "usersDir":"../deploy/instance/users",
-   "pluginsDir":"../deploy/instance/ZLUX/plugins",
+   "pluginsDir":"../defaults/plugins",
    "privilegedServerName":"ZWESIS_MYSRV",
    "dataserviceAuthentication": { ... }
    ```
 
-   **Note:** The default location of `zluxserver.json` is `$ZOWE_ROOT_DIR/zlux-app-server/deploy/instance/ZLUX/serverConfig/zluxserver.json`
+   **Note:** The instance location of `server.json` is `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`, and the defaults are stored in `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
 
-8. Run the `zlux-build/deploy.sh` command redeploy and make the `zluxserver.json` change take effect.
-
-9. To start the new Zowe runtime, in SDSF enter the following command:
+8. To start the new Zowe runtime, in SDSF enter the following command:
 
    ```text
    /S ZOWESVR
    ```
 
-10. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
+9. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
@@ -451,7 +422,7 @@ For more information RACF security administration, see the IBM Knowledge Center 
 
 By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
-1. Open the Zowe Application Server configuration JSON file. In the default server instance, the configuration file is `/zlux-app-server/config/zluxserver.json`.
+1. Open the Zowe Application Server configuration JSON file. In the a server instance, the configuration file is `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`.
 2. In the `dataserviceAuthentication` object, add `"rbac": true`.
 
 ### Creating authorization profiles
@@ -502,7 +473,7 @@ For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC
 
 ## Enabling tracing
 
-To obtain more information about how a server is working, you can enable tracing within the `zluxserver.json` file. 
+To obtain more information about how a server is working, you can enable tracing within the `server.json` file. 
 
 For example:
  
@@ -521,7 +492,7 @@ All settings are optional.
 
 ### Zowe Application Server tracing
 
-To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `zluxserver.json` file. 
+To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `server.json` file. 
 
 The log prefix for the Zowe Application Server is **_zsf**, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the **_zsf** prefix.)
 
@@ -572,7 +543,7 @@ FINE, FINER, and FINEST are log levels for debugging, with increasing verbosity.
 
 ### Enabling tracing for ZSS 
 
-To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `zluxserver.json` file.
+To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `server.json` file.
 
 A higher value specifies greater verbosity.
 
@@ -605,15 +576,15 @@ Logs HTTP behavior for when an HTTP conversation ends.
 **_zss.httpAuthTrace:** 
 Logs behavior for session security.
 
-When you are finished specifying the settings, save the `zluxserver.json` file.
+When you are finished specifying the settings, save the `server.json` file.
 
 
 ## Zowe Application Framework logging
 
 The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
 
-- Zowe Application Server: `zlux-app-server/log/nodeServer-yyyy-mm-dd-hh-mm.log`
-- ZSS: `zlux-app-server/log/zssServer-yyyy-mm-dd-hh-mm.log`
+- Zowe Application Server: `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-mm.log`
+- ZSS: `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-mm.log`
  
 The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
 
@@ -663,6 +634,6 @@ The API returns the following information in a JSON response:
 | /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode. |
 | /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode.            |
 
-Swagger API documentation is provided in the `/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/. 
+Swagger API documentation is provided in the `$ROOT_DIR/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/. 
 
-Note: The "agent" end points interact with the agent specified in the `zluxserver.json` file. By default this is ZSS.
+Note: The "agent" end points interact with the agent specified in the `server.json` file. By default this is ZSS.
