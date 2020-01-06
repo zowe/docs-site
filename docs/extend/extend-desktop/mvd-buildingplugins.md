@@ -18,7 +18,7 @@ Before you can build a plugin app you must install all [prerequisites](https://g
 3. Run the `npm install` command to install any application dependencies. Check for successful return code.
 
 4. Run one of the following commands to build the application code:
-    
+
     - Run the `npm run build` command to generate static content in the `/web` directory. (You can ignore warnings as long as the build is successful.)
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
@@ -28,7 +28,7 @@ Before you can build a plugin app you must install all [prerequisites](https://g
 2. Run the `npm install` command to install any application dependencies. Check for successful return code.
 
 4. Run one of the following commands to build the application code:
-    
+
     - Run the `npm run build` command to generate static content in the `/lib` directory.
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
