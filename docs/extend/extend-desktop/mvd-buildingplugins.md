@@ -36,7 +36,7 @@ Before you can build a plugin app you must install all [prerequisites](https://g
 Unlike Typescript, Javascript is an interpreted language and does not need to be built. In most cases, reloading the page should build new code changes. For Iframes or other JS-based apps, close and open the app.
 
 ## Installing
-Follow the steps described in [Installing plugins](https://docs.zowe.org/stable/extend/extend-desktop/mvd-installplugins.html#installing-plugins) to add your built plugin to the Zowe desktop.
+Follow the steps described in [Installing plugins](mvd-installplugins.md) to add your built plugin to the Zowe desktop.
 
 ## Packaging
-For more information on how to package your Zowe app, developers can see [Plugins definition and structure](https://docs.zowe.org/stable/extend/extend-desktop/mvd-plugindefandstruct.html#application-plug-in-filesystem-structure).
+For more information on how to package your Zowe app, developers can see [Plugins definition and structure](mvd-plugindefandstruct.md).
