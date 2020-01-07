@@ -15,10 +15,11 @@ Welcome to Zowe Active Development documentation.
 
 **New compatible plug-ins:**
 
-In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are available for Active Development:
+In addition to the CICS and Db2 plug-ins, the following plug-ins are available for Active Development:
 
-- The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
-- The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
+- The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md)
+- The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md)
+- The [Secure Credential Store Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md)
 
 **Features and enhancements:**
 
