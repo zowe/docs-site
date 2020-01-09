@@ -119,6 +119,18 @@ Review the `zowe-install.yaml` file which contains the `install:rootDir` and `in
 
 `install:datasetPrefix` is a PDS prefix used to create two data sets: `SZWESAMP` which is a fixed block 80 samplib used to store JCL, and `SZWEAUTH` which is a load library.  The default value in `zowe-install.yaml` is `datasetPrefix={userid}.ZWE` where `{userid}` is subsituted by the install script with the current TSO user ID. For example, if user `JANEDOE` runs the install script from their TSO OMVS or SSH session, the partitioned data sets `JANEDOE.ZWE.SZWEAUTH` and `JANEDOE.ZWE.SZWESAMP` will be created.  The value of `datasetPrefix` can be changed to match your site's conventions. For example, `datasetPrefix=OPENSRC.ZOWE` will create the partitioned data sets `OPENSRC.ZOWE.SZWESAMP` and `OPENSRC.ZOWE.SZWEAUTH`.
 
+The `SZWESAMP` data set contains the following members
+
+Member name | Purpose  
+---|---
+ZWESECUR | JCL to configure z/OS user IDs and permissions required to run Zowe
+ZWESVSTC | JCL to start Zowe 
+ZWEXMSTC | JCL to start the Zowe cross memory server
+ZWESIP00 | Parmlib member for the cross memory server
+ZWEXASTC | Started task JCL for the cross memory Auxillary server
+ZWEXMPRG | Console commands to APF authorize the cross memory server load library
+ZWEXMSCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
+
 You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. 
 
 ### Step 3: Install and configure the Zowe runtime
