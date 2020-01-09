@@ -2,21 +2,22 @@
 
 <font color ="red"> **Note**: This is a draft documentation that needs to be migrated to <https:/github.com/zowe/docs-site> after the functionality is completed. </font>
 
-As an API developer, you can use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer. 
+As system programmer, you can configure Zowe use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 
 ## Overview
 
-API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token. The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
+API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
+The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
 
-
-If the API client provides a valid Zowe JWT token, the API Gateway generates a valid PassTicket. The Gateway then uses the PassTicket to access the API service.
-The user ID and password are provided in the Authorization header of the HTTP requests using the
+If the API client provides a valid Zowe JWT token, the API Gateway generates a valid PassTicket for API services that support PassTickets.
+The API Gateway then uses the PassTicket to access the API service.
+The API Gateway provides user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 
-
 - [Enabling PassTicket creation for API Services that Accept PassTickets](#enabling-passticket-creation-for-api-services-that-accept-passtickets)
-  - [How to Enable PassTicket Support](#how-to-enable-passticket-support)
-    - [Enable the Zowe started task user ID to generate PassTickets for the API service](#enable-the-zowe-started-task-user-id-to-generate-passtickets-for-the-api-service)
+  - [Overview](#overview)
+  - [Enabling PassTicket Support](#enabling-passticket-support)
+    - [Allow the Zowe API Gateway to generate PassTickets for the API service](#allow-the-zowe-api-gateway-to-generate-passtickets-for-the-api-service)
       - [ACF2](#acf2)
       - [RACF](#racf)
       - [TopSecret](#topsecret)
@@ -24,7 +25,6 @@ The user ID and password are provided in the Authorization header of the HTTP re
     - [API Services that Register Dynamically into API ML but do not Provide Metadata](#api-services-that-register-dynamically-into-api-ml-but-do-not-provide-metadata)
     - [API Services that are Defined using Static YAML Definition](#api-services-that-are-defined-using-static-yaml-definition)
   - [What Developers Need to with API Services that Register Dynamically into API ML](#what-developers-need-to-with-api-services-that-register-dynamically-into-api-ml)
-
 
 ## Enabling PassTicket Support
 
@@ -35,24 +35,25 @@ The following steps outline the procedure for enabling PassTicket Support:
 3. Enable the Zowe started task user ID to generate PassTickets for the API service.
 4. Enable PassTicket support in the API Gateway for your API service.
 
-
 **Note:**
 PassTickets must be enabled for every user who requires access to the API service.
 
-### Generate PassTickets for the API service by enabling the Zowe started task user ID 
+### Allow the Zowe API Gateway to generate PassTickets for the API service
 
-Use the following variables to generate PassTickets for the API service to enable the Zowe started task user ID: 
+Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
-<font color ="red"> Can we add an example of how to use these variables from the command prompt? </font>
+Use the following variables to generate PassTickets for the API service to enable the Zowe started task user ID:
 
-- `<applid>` is the APPLID value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`)
+- `<applid>` is the APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
 
-- `<zowesrv>`is Zowe started task user ID permission
+- `<zowesrv>` is Zowe started task user ID used during the Zowe installation
 
+Replace these variables by the actual values in the examples below.
 
 #### ACF2
 
-Grant the Zowe started task user ID permission to generate PassTickets for users of that API service. <font color ="red"> The following code is an example of ... </font>
+Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
+The following code is an example of security commands that need to be issued.
 
 **Example:**
 
@@ -66,10 +67,10 @@ END
 
 #### RACF
 
-To enable PassTicket creation for API service users, define the profile `IRRPTAUTH.<applid>.*` in the `PTKTDATA` class and set the universal access authority to `NONE`.  
+To enable PassTicket creation for API service users, define the profile `IRRPTAUTH.<applid>.*` in the `PTKTDATA` class and set the universal access authority to `NONE`.
 
-Grant the Zowe started task user ID permission to generate PassTickets for users of that API service. <font color ="red"> Do we need to describe WHERE in the code you grant the Zowe started task user ID permission to generate PassTickets? </font>
- 
+Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
+
 **Example:**
 
 ```txt
@@ -82,8 +83,6 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 
-<font color ="red"> Do we need to describe WHERE in the code you grant the Zowe started task user ID permission? </font>
-
 **Example:**
 
 ```txt
@@ -95,11 +94,12 @@ TSS REFRESH
 
 API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
 
-As the API user, you are not require to do anything in this case. All required information is provided by the API service automatically.
+As the system programming, you are not required to do anything in this case. All required information is provided by the API service automatically.
 
 ### API Services that Register Dynamically into API ML but do not Provide Metadata
 
-Some services that can use PassTickets may be missing the corresponding metadata. For such service you can provide this metadata externally in the same files that contain the static YAML definitons.
+Some services can use PassTickets but the API ML does not that the service can accept PassTickets.
+For such service you can provide this metadata externally in the same file that contain the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).
 
 Add following section to the YAML file with a static definition:
 
@@ -111,11 +111,10 @@ additionalServiceMetadata:
             applid: <applid>
 ```
 
-
 where:
 
- * `<serviceId>` 
- 
+ * `<serviceId>`
+
     is the service ID of the service to which you want to add metadata.
 
 ### API Services that are Defined using Static YAML Definition
@@ -137,8 +136,6 @@ Add the following metadata to the same level as the `serviceId`:
 
 As the developer of this type of application, you need to provide additional metadata to tell the API Gateway that it needs to use PassTickets. Additional metadata tells the API Gateway how to generate them.
 
-<font color ="red"> Do we need to describe WHERE in the code a dev needs to provide this metadata?</font>
-
 ```yaml
 authentication:
     scheme: httpBasicPassTicket
@@ -147,20 +144,10 @@ authentication:
 
 where:
 
-* `httpBasicPassTicket` 
+* `httpBasicPassTicket`
 
   is the value that means that HTTP Basic authentication scheme is used with PassTickets.
 
-* `<applid>` 
+* `<applid>`
 
   is the `APPLID` value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`).
-
-Additionally, there are other values of `authentication.scheme` that are also supported:
-
-* `bypass` (default)
-
-   API Gateway does not modify authentication headers for the API service. <font color ="red"> Is this the definition of `bypass`? If so, this need clarification. </font>
-
-* `zoweJwt` 
-
-  The Zowe JWT token is expected. The API Gateway does not modify but can process it. <font color ="red"> Is this the definition of `zoweJwt`? If so, this need clarification. </font>
