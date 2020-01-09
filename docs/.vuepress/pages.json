@@ -67,7 +67,7 @@
           "user-guide/cli-db2plugin.md",
           "user-guide/cli-imsplugin.md",
           "user-guide/cli-mqplugin.md",
-          "user-gude/cli-scsplugin.md",
+          "user-guide/cli-scsplugin.md",
           "user-guide/cli-vscodeplugin.md"
         ]
       }
