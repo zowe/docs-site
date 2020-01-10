@@ -86,4 +86,4 @@ When you uninstall the plug-in, existing profiles become invalid and you must re
 
 **Reset the Configuration of Credential Manager**
 
-Issue the `zowe config reset credential-manager` command to reset the value of the credential manager configuration to default, which deactivates the plug-in.
+Issue the `zowe config reset CredentialManager` command to reset the value of the credential manager configuration to default, which deactivates the plug-in.
