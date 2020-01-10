@@ -46,9 +46,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@brightside/cics@lts-incremental` |
     | IBM Db2 Plug-in for Zowe CLI | `@brightside/db2@lts-incremental` |
-    | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x` | | | |
-
-<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
+    | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts` |
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
 
@@ -109,7 +107,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM CICS Plug-in for Zowe CLI | `cics.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2.tgz` |
     | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
-    |||
+
 
 <!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
@@ -135,9 +133,6 @@ zowe plugins validate [plugin]
     |IBM CICS Plug-in for Zowe CLI|`@brightside/cics`|
     |IBM Db2 Plug-in for Zowe CLI|`@brightside/db2`|
     | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-    |||
-
-<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 **Examples: Validate plug-ins**
 
@@ -214,9 +209,7 @@ The following table describes the uninstallation command synstax for each plug-i
  | IBM CICS Plug-in for Zowe CLI | `@brightside/cics` |
  | IBM Db2 Plug-in for Zowe CLI| `@brightside/db2` |
  | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
- |    |    |
 
-<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 **Example:**
 

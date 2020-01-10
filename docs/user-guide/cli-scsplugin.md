@@ -1,4 +1,4 @@
-# Secure Credential Store Plug-in for Zowe CLI
+# Secure Credential Store Plug-in for Zowe&trade; CLI
 
 The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your credentials securely in the credential manager of your operating system. The plug-in invokes a native Node module, [keytar](https://github.com/atom/node-keytar), that manages user IDs and passwords in a credential manager.
 
@@ -44,9 +44,7 @@ User profiles that you create *after* installing the plug-in will automatically 
 
 To secure credentials in existing user profiles (profiles that you created prior to installing the SCS plug-in), issue the following command:
 
-```
-zowe scs update
-```
+    zowe scs update
 
 Profiles are updated with secured credentials.
 
@@ -59,7 +57,7 @@ type: zosmf
 host: test
 port: 1234
 user: 'managed by @zowe/secure-credential-store-for-zowe-cli'
-pass: 'managed by @zowe/secure-credential-store-for-zowe-cli'
+password: 'managed by @zowe/secure-credential-store-for-zowe-cli'
 rejectUnauthorized: false
 ```
 
@@ -72,7 +70,7 @@ type: zosmf
 host: test
 port: 1234
 user: USERNAME
-pass: PASSWORD
+password: PASSWORD
 rejectUnauthorized: false
 ```
 
@@ -88,4 +86,4 @@ When you uninstall the plug-in, existing profiles become invalid and you must re
 
 **Reset the Configuration of Credential Manager**
 
-Issue the `zowe scs reset` command to reset the value of the credential manager configuration to default, which deactivates the plug-in.
+Issue the `zowe config reset CredentialManager` command to reset the value of the credential manager configuration to default, which deactivates the plug-in.

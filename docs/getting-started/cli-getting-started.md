@@ -37,7 +37,7 @@ npm install @brightside/core@lts-incremental -g
 <!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 ```
-zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x
+zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
 The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).

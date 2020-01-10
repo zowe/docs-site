@@ -84,6 +84,8 @@ If your computer is connected to the Internet, you can use the following method 
 
 2.  Issue the following command to set the registry to the Zowe CLI scoped package. In addition to setting the scoped registry, your default registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
+<!-- in zowe-v1-lts the registry will become Public NPM and the scope becomes @zowe for core and plugins -->
+
     ```
     npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
     ```
@@ -99,7 +101,7 @@ If your computer is connected to the Internet, you can use the following method 
 <!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
     ```
-    zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@lts-zowe-2.x
+    zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
     ```
 
     **Note:** The IBM Db2 plug-in requires additional configuration. For more information about how to install multiple plug-ins, update to a specific version of a plug-in, and install from specific registries, see [Installing plug-ins](cli-installplugins.md).

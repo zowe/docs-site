@@ -40,9 +40,8 @@ You can update Zowe CLI to the latest version from the online registry on Window
 2. Reinstall the plug-ins and update existing plug-ins using the following command:
 
    ```
-   zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@lts-zowe-v2.x
+   zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
    ```
-<!-- Note that SCS plug-in will be added to @zowe v1lts and not lts-incremental. -->
 
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.
 
