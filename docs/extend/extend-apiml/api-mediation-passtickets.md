@@ -21,10 +21,10 @@ The API Gateway provides the user ID and password in the Authorization header of
       - [ACF2](#acf2)
       - [RACF](#racf)
       - [TopSecret](#topsecret)
-    - [API Services that Register Dynamically into API ML](#api-services-that-register-dynamically-into-api-ml)
+    - [API Services that Register Dynamically into API ML that Provide Authentication Information](#api-services-that-register-dynamically-into-api-ml-that-provide-authentication-information)
     - [API Services that Register Dynamically into API ML but do not Provide Metadata](#api-services-that-register-dynamically-into-api-ml-but-do-not-provide-metadata)
-    - [API Services that are Defined using Static YAML Definition](#api-services-that-are-defined-using-static-yaml-definition)
-  - [What Developers Need to with API Services that Register Dynamically into API ML](#what-developers-need-to-with-api-services-that-register-dynamically-into-api-ml)
+    - [API Services that are Defined using a Static YAML Definition](#api-services-that-are-defined-using-a-static-yaml-definition)
+    - [What Developers Need to with API Services that Register Dynamically into API ML](#what-developers-need-to-with-api-services-that-register-dynamically-into-api-ml)
 
 ## Enabling PassTicket Support
 
@@ -48,7 +48,7 @@ Use the following variables to generate PassTickets for the API service to enabl
 
 - `<zowesrv>` is Zowe started task user ID used during the Zowe installation
 
-Replace these variables by the actual values shown in the following examples.
+Replace these variables by the actual values in the following examples.
 
 #### ACF2
 
@@ -90,7 +90,7 @@ TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
 
-### API Services that Register Dynamically into API ML that Provide Authentical information
+### API Services that Register Dynamically into API ML that Provide Authentication Information
 
 API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
 
@@ -132,9 +132,10 @@ Add the following metadata to the same level as the `serviceId`:
 
 **Note:** The fields in this example are explained later in this article.
 
-### API Services that Register Dynamically with API ML
+### What Developers Need to with API Services that Register Dynamically into API ML
 
-As a developer of an API service that registers dynamically with the API ML, you need to provide additional metadata to tell the API Gateway to use PassTickets. Additional metadata tells the API Gateway how to generate them. The following code shows an example of the YAML configuration that contains this metadata.
+As a developer of an API service that registers dynamically with the API ML, you need to provide additional metadata to tell the API Gateway to use PassTickets.
+Additional metadata tells the API Gateway how to generate them. The following code shows an example of the YAML configuration that contains this metadata.
 
 **Example:**
 
