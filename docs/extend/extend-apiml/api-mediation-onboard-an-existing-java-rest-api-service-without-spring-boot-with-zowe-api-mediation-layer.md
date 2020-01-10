@@ -41,7 +41,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
     ```ini
     # Repository URL for getting the enabler-java artifact
-    artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
     
     # Artifactory credentials for builds:
     mavenUser=apilayer-build
@@ -87,7 +87,7 @@ Use the following procedure if you use Maven as your build automation system.
         <repository>
             <id>libs-release</id>
             <name>libs-release</name>
-            <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+            <url>https://zowe.jfrog.io/zowe/libs-release</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
