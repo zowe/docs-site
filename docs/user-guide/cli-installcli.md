@@ -60,11 +60,9 @@ If you have restricted internet access at your site, use the following method to
 
 4. Issue the following command against the extracted directory to install Zowe CLI on your computer:
 
-    ```
-    npm install -g zowe-cli.tgz
-    ```
+   npm install -g zowe-cli.tgz
 
-    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 5. Issue the following commands to install each available plug-in:
 

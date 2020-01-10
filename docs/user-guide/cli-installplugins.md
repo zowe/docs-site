@@ -50,7 +50,6 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
     | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
     | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-    |    |    |
 
 4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
