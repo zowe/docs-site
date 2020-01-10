@@ -45,12 +45,12 @@ Issue the following command:
 
     ```
     zowe profiles create zftp <profile name> -H <host> -u <user> -p <password> -P <port>
-    zowe profiles create zftp <profile name> -H <host> -u <user> -p <password> -P <port> --secure-ftp true
+    zowe profiles create zftp <profile name> -H <host> -u <user> -p <password> -P <port>
     ```
 
     The result of the command displays as a success or failure message. You can use your profile when you issue commands in the `zftp` command group.
 
-**Note:** The option `--secure-ftp true` is strongly recommended if FTPS (FTP over SSL) is enabled in z/OS FTP service. FTPS is not equivalent to SFTP (FTP over SSH).
+**Note:** There is an option named `--secure-ftp` that is set to `true` by default. This is strongly recommended if FTPS (FTP over SSL) is enabled in z/OS FTP service. FTPS is not equivalent to SFTP (FTP over SSH).
 
 **Note:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
 
