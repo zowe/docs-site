@@ -9,22 +9,23 @@ As system programmer, you can configure Zowe to use PassTickets for API services
 API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
 The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
 
-If the API client provides a valid Zowe JWT token, the API Gateway generates a valid PassTicket for API services that support PassTickets.
-The API Gateway then uses the PassTicket to access the API service.
+When an API client provides a valid Zowe JWT token <font color ="red">to the ... API ML </font>, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
+The API Gateway then uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 
 - [Enabling PassTicket creation for API Services that Accept PassTickets](#enabling-passticket-creation-for-api-services-that-accept-passtickets)
   - [Overview](#overview)
   - [Enabling PassTicket Support](#enabling-passticket-support)
-    - [Allow the Zowe API Gateway to generate PassTickets for the API service](#allow-the-zowe-api-gateway-to-generate-passtickets-for-the-api-service)
+    - [Security services that allow the Zowe API Gateway to generate PassTickets for an API service](#security-services-that-allow-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
       - [ACF2](#acf2)
       - [RACF](#racf)
       - [TopSecret](#topsecret)
-    - [API Services that Register Dynamically into API ML that Provide Authentication Information](#api-services-that-register-dynamically-into-api-ml-that-provide-authentication-information)
-    - [API Services that Register Dynamically into API ML but do not Provide Metadata](#api-services-that-register-dynamically-into-api-ml-but-do-not-provide-metadata)
-    - [API Services that are Defined using a Static YAML Definition](#api-services-that-are-defined-using-a-static-yaml-definition)
-    - [What Developers Need to with API Services that Register Dynamically into API ML](#what-developers-need-to-with-api-services-that-register-dynamically-into-api-ml)
+  - [API services that support PassTickets](#api-services-that-support-passtickets)
+    - [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
+    - [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
+    - [API services that are defined using a static YAML definition](#api-services-that-are-defined-using-a-static-yaml-definition)
+    - [Adding YAML configuration to API services that register dynamically with API ML](#adding-yaml-configuration-to-api-services-that-register-dynamically-with-api-ml)
 
 ## Enabling PassTicket Support
 
@@ -38,7 +39,7 @@ The following steps outline the procedure for enabling PassTicket Support:
 **Note:**
 PassTickets must be enabled for every user who requires access to the API service.
 
-### Allow the Zowe API Gateway to generate PassTickets for the API service
+### Security services that allow the Zowe API Gateway to generate PassTickets for an API service
 
 Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
@@ -90,16 +91,33 @@ TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
 
-### API Services that Register Dynamically into API ML that Provide Authentication Information
+## API services that support PassTickets
+
+The following types of API services support of PassTickets:
+
+- [Enabling PassTicket creation for API Services that Accept PassTickets](#enabling-passticket-creation-for-api-services-that-accept-passtickets)
+  - [Overview](#overview)
+  - [Enabling PassTicket Support](#enabling-passticket-support)
+    - [Security services that allow the Zowe API Gateway to generate PassTickets for an API service](#security-services-that-allow-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
+      - [ACF2](#acf2)
+      - [RACF](#racf)
+      - [TopSecret](#topsecret)
+  - [API services that support PassTickets](#api-services-that-support-passtickets)
+    - [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
+    - [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
+    - [API services that are defined using a static YAML definition](#api-services-that-are-defined-using-a-static-yaml-definition)
+    - [Adding YAML configuration to API services that register dynamically with API ML](#adding-yaml-configuration-to-api-services-that-register-dynamically-with-api-ml)
+
+### API Services that register dynamically with API ML that provide authentication information
 
 API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
 
 As the system programming, you are not required to do anything in this case. All required information is provided by the API service automatically.
 
-### API Services that Register Dynamically into API ML but do not Provide Metadata
+### API Services that register dynamically with API ML but do not provide metadata
 
-Some services can use PassTickets but the API ML does not that the service can accept PassTickets.
-For such service you can provide this metadata externally in the same file that contain the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).
+Some services can use PassTickets but the API ML does not recognize that the service can accept PassTickets.
+For such this type of service, you can provide additional service metadata externally in the same file that contains the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).
 
 Add the following section to the YAML file with a static definition:
 
@@ -117,7 +135,7 @@ where:
 
     is the service ID of the service to which you want to add metadata.
 
-### API Services that are Defined using a Static YAML Definition
+### API services that are defined using a static YAML definition
 
 Add the following metadata to the same level as the `serviceId`:
 
@@ -132,7 +150,7 @@ Add the following metadata to the same level as the `serviceId`:
 
 **Note:** The fields in this example are explained later in this article.
 
-### What Developers Need to with API Services that Register Dynamically into API ML
+### Adding YAML configuration to API services that register dynamically with API ML
 
 As a developer of an API service that registers dynamically with the API ML, you need to provide additional metadata to tell the API Gateway to use PassTickets.
 Additional metadata tells the API Gateway how to generate them. The following code shows an example of the YAML configuration that contains this metadata.
