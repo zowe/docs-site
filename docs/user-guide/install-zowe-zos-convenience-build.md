@@ -117,7 +117,27 @@ Review the `zowe-install.yaml` file which contains the `install:rootDir` and `in
 
 `install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.  The directory will be created during the install so it should be empty before the install script `zowe-install.sh` is executed.
 
-`install:datasetPrefix` is a PDS prefix used to create two data sets: `SZWESAMP` which is a fixed block 80 samplib used to store JCL, and `SZWEAUTH` which is a load library.  The default value in `zowe-install.yaml` is `datasetPrefix={userid}.ZWE` where `{userid}` is subsituted by the install script with the current TSO user ID. For example, if user `JANEDOE` runs the install script from their TSO OMVS or SSH session, the partitioned data sets `JANEDOE.ZWE.SZWEAUTH` and `JANEDOE.ZWE.SZWESAMP` will be created.  The value of `datasetPrefix` can be changed to match your site's conventions. For example, `datasetPrefix=OPENSRC.ZOWE` will create the partitioned data sets `OPENSRC.ZOWE.SZWESAMP` and `OPENSRC.ZOWE.SZWEAUTH`.
+`install:datasetPrefix` is a PDS prefix used to create two data sets: `SZWESAMP` and `SZWEAUTH`.  The default value in `zowe-install.yaml` is `datasetPrefix={userid}.ZWE` where `{userid}` is subsituted by the install script with the current TSO user ID. For example, if user `JANEDOE` runs the install script from their TSO OMVS or SSH session, the partitioned data sets `JANEDOE.ZWE.SZWEAUTH` and `JANEDOE.ZWE.SZWESAMP` will be created.  The value of `datasetPrefix` can be changed to match your site's conventions. For example, `datasetPrefix=OPENSRC.ZOWE` will create the partitioned data sets `OPENSRC.ZOWE.SZWESAMP` and `OPENSRC.ZOWE.SZWEAUTH`.
+
+The `SZWESAMP` data set is fixed block 90 samplib containing the following members
+
+Member name | Purpose  
+---|---
+ZWESECUR | JCL to configure z/OS user IDs and permissions required to run Zowe
+ZWESVSTC | JCL to start Zowe 
+ZWEXMSTC | JCL to start the Zowe cross memory server
+ZWESIP00 | Parmlib member for the cross memory server
+ZWEXASTC | Started task JCL for the cross memory Auxillary server
+ZWEXMPRG | Console commands to APF authorize the cross memory server load library
+ZWEXMSCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
+
+The `SZWEAUTH` data set is a load library containing the following members
+
+Member name | Purpose
+---|---
+ZWESIS01 | Load module for the Cross memory server
+ZWESAUX  | Load module for the Cross memory server's auxillary address space
+
 
 You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. 
 
@@ -169,6 +189,12 @@ In this documentation, the steps of creating the runtime directory and configuri
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you configure the Zowe runtime directory.
 
-3. Configure the Zowe runtime directory.
+3. Configure the Zowe runtime.
 
-   For the convenience build, the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the `zowe-install.yaml`. Follow the instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md) to complete this step.
+   The Zowe runtime is made up of two portions.  A USS directory that and an associated PROCLIB ZWESVSTC.  The runtime directory will have been created during install at the location `install:rootDir` parameter from the `zowe-install.yaml`.  The PROCLIB ZWESVSTC will have been placed in a PDS member `SZWESAMP` as specified in `install:datasetPrefix` from `zowe-install.yaml`.
+   
+    Follow the instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md) to configure the USS runtime directory and to enable the JCL member ZWESVSTC to run as a started task.
+
+
+
+
