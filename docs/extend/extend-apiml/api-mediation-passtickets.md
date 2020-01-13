@@ -1,26 +1,24 @@
-# Enabling PassTicket creation for API Services that Accept PassTickets
+# Enabling PassTicket creation for API Services that Accept PassTickets <!-- omit in toc -->
 
 <font color ="red"> **Note**: This is a draft documentation that needs to be migrated to <https:/github.com/zowe/docs-site> after the functionality is completed. </font>
 
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 
-# Overview
+ # Overview <!-- omit in toc -->
 
 API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
 The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
 
-When an API client provides a valid Zowe JWT token <font color ="red">to the ... API ML </font>, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
+When an API client provides a valid Zowe JWT token to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 
-- [Enabling PassTicket creation for API Services that Accept PassTickets](#enabling-passticket-creation-for-api-services-that-accept-passtickets)
-- [Overview](#overview)
 - [Outine for enabling PassTicket support](#outine-for-enabling-passticket-support)
-  - [Security services that allow the Zowe API Gateway to generate PassTickets for an API service](#security-services-that-allow-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-    - [ACF2](#acf2)
-    - [RACF](#racf)
-    - [TopSecret](#topsecret)
+- [Security services that allow the Zowe API Gateway to generate PassTickets for an API service](#security-services-that-allow-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
+  - [ACF2](#acf2)
+  - [RACF](#racf)
+  - [TopSecret](#topsecret)
 - [API services that support PassTickets](#api-services-that-support-passtickets)
   - [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
   - [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
@@ -39,7 +37,7 @@ The following steps outline the procedure for enabling PassTicket Support:
 **Note:**
 PassTickets must be enabled for every user who requires access to the API service.
 
-## Security services that allow the Zowe API Gateway to generate PassTickets for an API service
+# Security services that allow the Zowe API Gateway to generate PassTickets for an API service
 
 Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
@@ -51,7 +49,7 @@ Use the following variables to generate PassTickets for the API service to enabl
 
 Replace the variables in the following examples with actual values.
 
-### ACF2
+## ACF2
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 The following code is an example of security commands that need to be issued.
@@ -66,7 +64,7 @@ F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
 
-### RACF
+## RACF
 
 To enable PassTicket creation for API service users, define the profile `IRRPTAUTH.<applid>.*` in the `PTKTDATA` class and set the universal access authority to `NONE`.
 
@@ -80,7 +78,7 @@ PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 
-### TopSecret
+## TopSecret
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 
@@ -95,18 +93,9 @@ TSS REFRESH
 
 The following types of API services support of PassTickets:
 
-- [Enabling PassTicket creation for API Services that Accept PassTickets](#enabling-passticket-creation-for-api-services-that-accept-passtickets)
-- [Overview](#overview)
-- [Outine for enabling PassTicket support](#outine-for-enabling-passticket-support)
-  - [Security services that allow the Zowe API Gateway to generate PassTickets for an API service](#security-services-that-allow-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-    - [ACF2](#acf2)
-    - [RACF](#racf)
-    - [TopSecret](#topsecret)
-- [API services that support PassTickets](#api-services-that-support-passtickets)
   - [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
   - [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
   - [API services that are defined using a static YAML definition](#api-services-that-are-defined-using-a-static-yaml-definition)
-- [Adding YAML configuration to API services that register dynamically with API ML](#adding-yaml-configuration-to-api-services-that-register-dynamically-with-api-ml)
 
 ## API Services that register dynamically with API ML that provide authentication information
 
