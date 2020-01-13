@@ -11,7 +11,7 @@ After you install Zowe&trade; through either the convenience build by running th
       - [PROCLIB member name](#proclib-member-name)
       - [Certificates](#certificates)
       - [Unix File Permissions](#unix-file-permissions)
-1. [Configuring the ZWESVSTC started task](#configuring-the-zowesvr-started-task)
+1. [Configuring the ZWESVSTC started task](#configuring-the-zwesvstc-started-task)
     1. [Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime](#creating-the-zowesvr-proclib-member-to-launch-the-zowe-runtime)
     1. [Configuring ZWESVSTC to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
     1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
@@ -183,50 +183,6 @@ The `zowe-install.yaml` file also contains the telnet and SSH port with defaults
       telnetPort=23
 ```
 
-#### PROCLIB member name
-
-When the Zowe runtime is launched, it is run under a z/OS started task (STC). The PROCLIB can be automatically created if desired, for example if the install is being run as part of a pipeline. Alternatively，you can disable auto-creation by commenting out the `zowe-server-proclib:` block.
-
-The `scripts/configure/zowe-install.yaml` file contains the dataset name and member name of the ZWESVSTC JCL to be used to run Zowe.  
-
-**Example:**
-
-```
-  # started task JCL member for Zowe job
-  zowe-server-proclib:
-  # dsName=SYS1.PROCLIB   
-    dsName=auto
-    memberName=ZWESVSTC
-```
-
-**Follow these steps:**
-
-1. Specify the dataset name of the PROCLIB member you want to use with the `dsName` tag.  For example,
-
-   ```
-    dsName=user.proclib
-   ```
-
-   The following guidelines apply.
-
-   - Do not enclose the dataset name in quotes.
-   - The dataset name is not case-sensitive, but the `dsName` tag is case-sensitive and must be written exactly as shown.
-   - The dataset name must be an existing z/OS dataset in the PROCLIB concatenation. The user who installs Zowe must have update access to this dataset.  
-   - If you omit the `dsName` tag or specify `dsName=auto`, the install script scans the available PROCLIB datasets and places the JCL member in the first dataset where the installing user has write access.  
-
-2. Specify the member name of the PROCLIB member you want to use with the `memberName` tag.  For example,
-
-   ```
-    memberName=ZOWEABC
-   ```
-
-   The following guidelines apply.
-
-   - Do not enclose the member name in quotes.  
-   - The member name is not case-sensitive, but the `memberName` tag is case-sensitive and must be written exactly as shown.
-   - The member name must be a valid PDS member name in z/OS.  If the member already exists, it will be overwritten.  
-   - If you omit the `memberName` tag or specify `memberName=`, the install script uses ZWESVSTC.
-
 #### Certificates
 
 You can use existing certificate signed by an external certificate authority (CA) for HTTPS ports in API Mediation Layer and Zowe Application Framework, or else you can let the Zowe configuration script generate a certificated self-signed by the local API Mediation CA.  
@@ -307,31 +263,24 @@ Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the
 
 **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZWESVSTC`.
 
-At the end of the configuration, a Unix file `ZWESVSTC.jcl` is created under the `scripts` runtime directory. The contents of this file need to placed in a JCL member of the PROCLIB concatenation for the Zowe runtime in order for it to be executed as a started task. By default the configuration script does this automatically.  If the user specifies `dsName=auto`, or omits the `dsName` tag, or sets it to null by coding `dsName=`,  the install script proceeds as follows and stops after the first successful write to the destination PROCLIB.
+When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named ZWESVSTC.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task the member should be copied to a PDS that is in the proclib concatenation path.  
 
-1. Try JES2 PROCLIB concatenation.
-2. Try  master JES2 JCL.
-3. Try `SYS1.PROCLIB`.
+A convenience script `zowe-install-proc.sh` is provided in the `scripts/utils` folder to assist with the copying of the member.  The script has two arguments
 
-If this succeeds, you will see a message like the following one:
+**First Parameter**=Source PDS Prefix
 
-```
-PROC ZWESVSTC placed in USER.PROCLIB
-```
+Dataset prefix of the source PDS where .SZWESAMPE(ZWESVSTC) was installed into.  
 
-Otherwise you will see messages beginning with the following information:  
+For an installation from a convenience build this will be the value of `install:datasetPrefix` in `zowe-install.yaml` file. 
 
-```
-Failed to put ZWESVSTC.JCL in a PROCLIB dataset.
-```
+For an SMP/E installation thils will be the value of 
+`$datasetPrefixIn` in the member AZWE001.F1(ZWE3ALOC)
 
-In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZWESVSTC.jcl` file to the preferred PROCLIB:  
+**Second Parameter**=Target PROCLIB PDS
 
-```
-oget '$INSTALL_DIR/files/templates/ZWESVSTC.jcl' 'MY.USER.PROCLI(ZWESVSTC)'
-```
+Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the script scans the JES PROCLIB concatenation path and uses the first dataset where the user has write access
 
-You can place the PROC in any PROCLIB data set in the PROCLIB concatenation, but some data sets such as `SYS1.PROCLIB` might be restricted, depending on the permission of the user.  
+***Example*** Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
 
 You can tailor the JCL at this line
 
@@ -339,7 +288,7 @@ You can tailor the JCL at this line
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
 ```
 
-to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. If this value is not specified in the JCL, in order start the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
+to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. If this value is not specified in the JCL, in order  tostart the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
 
 ```
 /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
@@ -459,6 +408,8 @@ To manually install the Cross Memory Server, take the following steps:
     ```
     PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP
     ```
+    The PDS member `SZWESAMP(ZWESISCH)` contains the PPT lines for reference
+    
     b. Then issue the following command to make the SCHEDxx changes effective:
 
     ```
@@ -484,6 +435,10 @@ To manually install the Cross Memory Server, take the following steps:
     SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,SMS
     ```
     where the value of DSNAME is the name of the data set that contains the ZWESIS01 and ZWESAUX load modules.
+
+    If you wish to authorize the loadlib permanently then add the following statement to `SYS1.PARMLIB(PROGxx)` or equivalent
+
+    The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement for reference.
 
 1. Add a PARMLIB member:
 
