@@ -156,7 +156,7 @@ where:
 
 * `httpBasicPassTicket`
 
-  is the value that means that HTTP Basic authentication scheme is used with PassTickets.
+  is the value that indicates that the HTTP Basic authentication scheme is used with PassTickets.
 
 * `<applid>`
 
