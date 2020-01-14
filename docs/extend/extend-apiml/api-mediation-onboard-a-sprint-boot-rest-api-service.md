@@ -39,15 +39,9 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
     * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
 
-      **Note:** Ensure that zou are using valid Zowe Artifactory credentials.  
-
         ```
       maven {
-          url 'https://gizaartifactory.jfrog.io/gizaartifactory/libs-release'
-          credentials {
-              username 'apilayer-build'
-              password 'lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI='
-          }            
+          url 'https://zowe.jfrog.io/zowe/libs-release'
       }
         ```
       **Note:** You can define the `gradle.properties` file where you can set your username, password, and the
@@ -57,11 +51,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
       **Example:**
       ```
          # Artifactory repositories for builds
-         artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-
-         # Artifactory credentials for builds (not publishing):
-         mavenUser=apilayer-build
-         mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+         artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
       ```
 
     * In a Maven build system, follow these steps:
@@ -70,8 +60,8 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 
         ```
         <repository>
-               <id>Gizaartificatory</id>
-               <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+               <id>Zowe</id>
+               <url>https://zowe.jfrog.io/zowe/libs-release</url>
         </repository>
         ```
 
@@ -87,9 +77,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
                           https://maven.apache.org/xsd/settings-1.0.0.xsd">
         <servers>
            <server>
-               <id>Gizaartificatory</id>
-               <username>{artifactoryUser}</username>
-               <password>{artifactoryPassword}</password>
+               <id>Zowe</id>
            </server>
         </servers>
         </settings>
