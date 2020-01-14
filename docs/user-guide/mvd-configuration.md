@@ -74,11 +74,11 @@ Follow these optional steps to configure the default connection to open for the 
 ```    
 
 ## Configuration file
-The Zowe Application Server and ZSS rely on many parameters to run, which includes setting up networking, deployment directories, plug-in locations, and more. 
+The Zowe App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more. 
 
-For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters, which are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository, the `js/zluxServer.js` file. This file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed. 
+For convenience, the App server and ZSS read from a JSON file with a common structure. ZSS reads this directly as a startup argument, while the App Server as defined in the [zlux-server-framework](https://github.com/zowe/zlux-server-framework) repository accepts several parameters which are intended to be read from a JSON file through an implementer of the server, such the default provided in the [zlux-app-server](https://github.com/zowe/zlux-app-server) repository, namely the [lib/zluxServer.js](https://github.com/zowe/zlux-app-server/blob/master/lib/zluxServer.js) file. This file accepts a JSON file that specifies most if not all parameters needed, but some other parameters can be provided via flags if desired. 
 
-An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-server` repository, in the `config` directory. 
+An example JSON file can be found within the [zlux-app-server](https://github.com/zowe/zlux-app-server), at [defaults/server.json](https://github.com/zowe/zlux-app-server/blob/master/defaults/serverConfig/server.json). 
 
 **Note:** All examples are based on the *zlux-app-server* repository.
 
@@ -86,7 +86,7 @@ An example of a JSON file (`zluxserver.json`) can be found in the `zlux-app-serv
 
 **Note:** The following attributes are to be defined in the server's JSON configuration file.
 
-The Zowe Application Server can be accessed over HTTP, HTTPS, or both, provided it has been configured for either (or both). 
+The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either. 
 
 ### HTTP
 
@@ -120,40 +120,53 @@ In the example configuration, both HTTP and HTTPS are specified:
 ```
   "node": {
     "https": {
+      "ipAddresses": ["0.0.0.0"],
       "port": 8544,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
-      "keys": ["../deploy/product/ZLUX/serverConfig/server.key"],
-      "certificates": ["../deploy/product/ZLUX/serverConfig/server.cert"]
+      "keys": ["../defaults/serverConfig/server.key"],
+      "certificates": ["../defaults/serverConfig/server.cert"]
     },
     "http": {
+      "ipAddresses": ["0.0.0.0"],
       "port": 8543
     }
   }
 ```
-## Deploy configuration
 
-When the Zowe Application Server is running, it accesses the server's settings and reads or modifies the contents of its resource storage. All of this data is stored within the `Deploy` folder hierarchy, which is spread out into a several scopes:
+## Configuration Directories
+When running, the App Server will access the server's settings and read or modify the contents of its resource storage. All of this data is stored within a heirarchy of folders which correspond to scopes:
 
-- `Product`: The contents of this folder are not meant to be modified, but used as defaults for a product.
-- `Site`: The contents of this folder are intended to be shared across multiple Zowe Application Server instances, perhaps on a network drive.
-- `Instance`: This folder represents the broadest scope of data within the given Zowe Application Server instance.
-- `Group`: Multiple users can be associated into one group, so that settings are shared among them.
-- `User`: When authenticated, users have their own settings and storage for the application plug-ins that they use.
+- Product: The contents of this folder are not meant to be modified, but used as defaults for a product.
+- Site: The contents of this folder are intended to be shared across multiple App Server instances, perhaps on a network drive.
+- Instance: This folder represents the broadest scope of data within the given App Server instance.
+- Group: Multiple users can be associated into one group, so that settings are shared among them.
+- User: When authenticated, users have their own settings and storage for the Apps that they use.
 
-These directories dictate where the [Configuration Dataservice](../extend/extend-desktop/mvd-configdataservice.md) stores content.
+These directories dictate where the [Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) will store content.
 
-### Deploy example
+### Directories example
 ```
-// All paths relative to zlux-app-server/js or zlux-app-server/bin
-// In real installations, these values will be configured during the installation process.
-  "rootDir":"../deploy",
-  "productDir":"../deploy/product",
-  "siteDir":"../deploy/site",
-  "instanceDir":"../deploy/instance",
-  "groupsDir":"../deploy/instance/groups",
-  "usersDir":"../deploy/instance/users"
+// All paths relative to zlux-app-server/lib
+// In real installations, these values will be configured during the install.
+  "productDir":"../defaults",
+  "siteDir":"/home/myuser/.zowe/workspace/app-server/site",
+  "instanceDir":"/home/myuser/.zowe/workspace/app-server",
+  "groupsDir":"/home/myuser/.zowe/workspace/app-server/groups",
+  "usersDir":"/home/myuser/.zowe/workspace/app-server/users",
 
 ```
+### Old defaults
+Prior to Zowe release 1.8.0, the location of the configuration directories were initialized to be within the `zlux-app-server` folder unless otherwise customized. 1.8.0 has backwards compatibility for the existence of these directories, but they can and should be migrated to take advantage of future enhancements.
+
+| Folder | New Location | Old Location | Note
+|--------|--------------|--------------|-----
+| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <ROOT_DIR>/components/app-server/share
+| siteDir | <INSTANCE_DIR>/workspace/app-server/site | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
+| instanceDir | <INSTANCE_DIR>/workspace/app-server | zlux-app-server/deploy/instance |
+| groupsDir | <INSTANCE_DIR>/workspace/app-server/groups | zlux-app-server/deploy/instance/groups |
+| usersDir | <INSTANCE_DIR>/workspace/app-server/users | zlux-app-server/deploy/instance/users |
+| pluginsDir | <INSTANCE_DIR>/workspace/app-server/plugins | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
+
 
 ## Application plug-in configuration
 
@@ -163,14 +176,14 @@ In the configuration file, you can specify a directory that contains JSON files,
 
 To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**.
 
-**Note:** In this example, the directory for these JSON files is `/plugins`. Yet, to separate configuration files from runtime files, the `zlux-app-server` repository copies the contents of this folder into `/deploy/instance/ZLUX/plugins`. So, the example configuration file uses the latter directory.
+**NOTE:** In this example, the directory for these JSON files is [/defaults/plugins](https://github.com/zowe/zlux-app-server/tree/master/defaults/plugins). Yet, in order to separate configuration files from runtime files, the App Server will initialize by copying the contents of this folder into the defined instance directory, of which the default is ~/.zowe/workspace/app-server. So, the example configuration file uses the latter directory.
 
 ### Plug-ins directory example
 ```
-// All paths relative to zlux-app-server/js or zlux-app-server/bin
+// All paths relative to zlux-app-server/lib
 // In real installations, these values will be configured during the install process.
 //...
-  "pluginsDir":"../deploy/instance/ZLUX/plugins",
+  "pluginsDir":"../defaults/plugins",
 ```
 
 ## Logging configuration
@@ -179,13 +192,24 @@ For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutil
 
 ## ZSS configuration
 
-Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*rootDir*, *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *zssPort*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
+When running ZSS, it will require a JSON configuration file similar or the same as the one used for the App Server. The attributes that are needed for ZSS, at minimum, are: *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *agent*. All of these attributes have the same meaning as described above for the App server, but if the App server and ZSS are not run from the same location, then these directories may be different if desired.
 
-The *zssPort* attribute is specific to ZSS. This is the TCP port on which ZSS listens in order to be contacted by the Zowe Application Server. Define this port in the configuration file as a value between 1024-65535.
+Attributes that control ZSS are in the agent object. For example, *agent.http.port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to. Only the first value of the array is used. It can either be a hostname or an ipv4 address.
 
-### Connecting the Zowe Application Server to ZSS
+Example of the agent body:
+```
+  "agent": {
+    "host": "localhost",
+    "http": {
+      "ipAddresses": ["127.0.0.1"],
+      "port": 8542
+    }
+  }
+```
 
-When you run the Zowe Application Server, specify the following flags to declare which ZSS instance the Zowe Application Framework will proxy ZSS requests to:
+### Connecting App Server to ZSS
+
+When running the App Server, simply specify a few flags to declare which ZSS instance the App Server will proxy ZSS requests to:
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>" 
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
@@ -347,8 +371,9 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /C ZOWESVR
-   ```
+    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+    ```
+    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
 
 2. Install a new Zowe runtime by following steps in [Installing Zowe on z/OS](install-zos.md#obtaining-and-preparing-the-installation-file).
 
@@ -357,14 +382,14 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
+   /S ZWESVSTC,SRVRPATH='$ZOWE_ROOT_DIR'
    ```
 
    Where `'$ZOWE_ROOT_DIR'` is the first Zowe runtime root directory. By default the command starts the most recently installed runtime unless you specify the root directory of the runtime that you want to start.
 
 4. To specify a name for the new ZSS instance, follow these steps:
 
-   1. Copy the PROCLIB member JCL named ZWESIS01 that was installed with the new runtime.
+   1. Copy the PROCLIB member JCL named ZWESISTC that was installed with the new runtime.
 
    2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
 
@@ -405,10 +430,10 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 9. To start the new Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /S ZOWESVR
+   /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
    ```
 
-10. To verify that the new cross-memory server is being used, check for the following messages in the `ZOWESVR` server job log:
+10. To verify that the new cross-memory server is being used, check for the following messages in the `ZWESVSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 

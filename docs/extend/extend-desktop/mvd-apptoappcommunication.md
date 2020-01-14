@@ -185,7 +185,7 @@ Where this one can again, have subclauses.
 
 ### Recognizer example
 
-Recognizers can be simple or complex. The following is an example to illustrate the mechanism:
+Recognizers can be as simple or complex as you write them to be, but here is an example to illustrate the mechanism:
 ```
 {
   "recognizers":[
@@ -194,7 +194,7 @@ Recognizers can be simple or complex. The following is an example to illustrate 
       "clause": {
         "op": "AND",
         "args": [
-         {"prop":["sourcePluginID","com.rs.mvd.tn3270"]},{"prop":["screenID","ISRUDSM"]} 
+         {"prop":["sourcePluginID","org.zowe.terminal.tn3270"]},{"prop":["screenID","ISRUDSM"]} 
         ]
       }
     }
