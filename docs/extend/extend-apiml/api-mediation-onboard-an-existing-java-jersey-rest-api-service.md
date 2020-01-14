@@ -45,13 +45,9 @@ Use the following procedure if you use Gradle as your build automation system.
 
     ```groovy
     ext.mavenRepository = {
-    maven {
+      maven {
         url artifactoryMavenSnapshotRepo
-        credentials {
-            username mavenUser
-            password mavenPassword
-            }
-       }
+      }
     }
 
     repositories mavenRepositories
