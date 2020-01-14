@@ -16,3 +16,13 @@ docs-site
 .DS_Store
 .vscode/last.sql
 .history/
+
+*.iml
+*.ipr
+*.iws
+.idea
+.vscode
+.project
+.settings
+.classpath
+.history

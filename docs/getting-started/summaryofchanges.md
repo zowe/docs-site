@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;. 
 
-Zowe Version 1.7.1 and later releases include the following enhancements, release by release.
+Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.8.0 (December 2019)](#version-1-8-0-december-2019)
 - [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
 - [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
 - [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
@@ -15,6 +16,51 @@ Zowe Version 1.7.1 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.8.0 (December 2019)
+
+<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+#### API Mediation Layer
+- The API Catalog backend has been modified to support the OpenAPI 3.0 version. The API Catalog now supports the display of API documentation in the OpenAPI 3.0 format.
+
+- A new Eureka metadata definition has been developed to enable service registration that does not require using existing pre-prepared enablers. Both new and old metadata versions are supported by the Discovery Service. Corresponding documentation to onboard a service with the Zowe API ML without an onboarding enabler has also been refactored. 
+
+- The plain Java enabler has been redesigned for simple and straight-forward API service configuration. Configuration parameters have been refactored to remove duplicates and unused parameters, and improve consistency with other parameters. Documentation to Onboard a REST API service with the Plain Java Enabler (PJE) has also been refactored.
+
+
+#### Zowe App Server
+- 
+- 
+
+#### Zowe CLI
+- 
+- 
+
+#### Zowe SMP/E installation
+- 
+- 
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+- 
+- 
+
+#### Zowe App Server
+- 
+- 
+
+#### Zowe CLI
+- 
+- 
+
 
 ## Version 1.7.1 (December 2019)
 
