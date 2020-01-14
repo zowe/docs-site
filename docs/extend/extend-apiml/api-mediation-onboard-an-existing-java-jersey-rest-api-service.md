@@ -36,11 +36,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
     ```
     # Repository URL for getting the enabler-jersey artifact (`integration-enabler-java`)
-    artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-
-    # Artifactory credentials for builds:
-    mavenUser=apilayer-build
-    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
     ```
 
     This file specifies the URL for the repository of the Artifactory. The enabler-jersey artifact is downloaded from this repository.
@@ -51,10 +47,6 @@ Use the following procedure if you use Gradle as your build automation system.
     ext.mavenRepository = {
     maven {
         url artifactoryMavenSnapshotRepo
-        credentials {
-            username mavenUser
-            password mavenPassword
-            }
        }
     }
 
@@ -86,7 +78,7 @@ Use the following procedure if you use Maven as your build automation system.
         <repository>
           <id>libs-release</id>
           <name>libs-release</name>
-          <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+          <url>https://zowe.jfrog.io/zowe/libs-release</url>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
@@ -115,8 +107,6 @@ Use the following procedure if you use Maven as your build automation system.
     <servers>
        <server>
            <id>libs-release</id>
-           <username>apilayer-build</username>
-           <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
        </server>
     </servers>
     </settings>
