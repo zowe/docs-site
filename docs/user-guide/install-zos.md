@@ -11,7 +11,6 @@ To install Zowe&trade; on z/OS,  there are two parts. The first part is the Zowe
 
 Ensure that you meet the following software requirements before you install Zowe on z/OS. The necessary prerequisites that are described in [System requirements](systemrequirements.md).
 
-<!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
 
 ## Methods of installing Zowe on z/OS
 
@@ -19,7 +18,7 @@ The Zowe z/OS binaries are distributed in the following formats. They contain th
 
 - **Convenience build**
 
-  The Zowe z/OS binaries are packaged as a PAX file. You install this build by running shell script within a Unix System Services (USS) shell.
+  The Zowe z/OS binaries are packaged as a PAX file. You install this build by running shell script within a Unix System Services (USS) shell.  Convenience builds are full product installs.
 
 - **SMP/E build**
 
