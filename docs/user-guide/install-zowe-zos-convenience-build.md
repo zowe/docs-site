@@ -5,7 +5,7 @@ You install the Zowe&trade; convenience build by running shell script within a U
 1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
 2. [Installing the Zowe runtime](#installing-the-zowe-runtime)
 	- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
-	- [Step 2: Review the `zowe-install.yaml` file](#step-2-review-the-zowe-installyaml-file)
+    - [Step 2: Locate a dataset HLQ to install a SAMPLIB and LOADLIB PDS]()
 	- [Step 3: Execute the `zowe-install.sh` script](#step-3-execute-the-zowe-installsh-script)
 
 ## Obtaining and preparing the convenience build
@@ -93,13 +93,12 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
 ## Installing the Zowe runtime
 
-To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Services, you install the Zowe runtime on z/OS.
+The first install step is to create a USS folder containing the Zowe runtime artefacts.  This is known as the `<RUNTIME_DIR`.
 
 **Follow these steps:**
 
 - [Step 1: Locate the install directory](#step-1:-locate-the-install-directory)
-- [Step 2: Review the `zowe-install.yaml` file](#step-2:-review-the-`zowe-install.yaml`-file)
-- [Step 3: Execute the `zowe-install.sh` script](#step-3:-install-and-configure-the-zowe-runtime)
+- [Step 3: Execute the `zowe-install.sh` script](#step-3:-install-the-zowe-runtime)
 
 ### Step 1: Locate the install directory
 
@@ -108,16 +107,17 @@ Navigate to the directory where the installation archive is extracted. Locate th
 ```
   /install
     /zowe-install.sh
-    /zowe-install.yaml
 ```
 
-### Step 2: Review the `zowe-install.yaml` file
+### Step 2: Choose a runtime USS folder
 
-Review the `zowe-install.yaml` file which contains the `install:rootDir` and `install:datasetPrefix` properties that are used by the installation.
+For Zowe to execute it must be installed into a runtime directory or `<RUNTIME_DIR>`.  This directory will be created during the install process and the user performing the installed must have write permission for the install to succeed.  If you are installing an upgrade of Zowe the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for version 1.8 or higher.  
 
-`install:rootDir` is the directory that Zowe installs to create a Zowe runtime. The default directory is `~/zowe/v.r.m` where *v* is the Zowe version number, *r* is the release number and *m* is the modification number, for example, 1.0.0 or 1.2.11. The user's home directory is the default value. This ensures that the user who performs the installation has permission to create the directories that are required for the installation. If the Zowe runtime will be maintained by multiple users, it is recommended to use another directory based on your site's conventions.  The directory will be created during the install so it should be empty before the install script `zowe-install.sh` is executed.
+For an enterprise install of Zowe a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For a user testing Zowe for themselves it could be `~/zowe/v1`.  
 
-`install:datasetPrefix` is a PDS prefix used to create two data sets: `SZWESAMP` and `SZWEAUTH`.  The default value in `zowe-install.yaml` is `datasetPrefix={userid}.ZWE` where `{userid}` is subsituted by the install script with the current TSO user ID. For example, if user `JANEDOE` runs the install script from their TSO OMVS or SSH session, the partitioned data sets `JANEDOE.ZWE.SZWEAUTH` and `JANEDOE.ZWE.SZWESAMP` will be created.  The value of `datasetPrefix` can be changed to match your site's conventions. For example, `datasetPrefix=OPENSRC.ZOWE` will create the partitioned data sets `OPENSRC.ZOWE.SZWESAMP` and `OPENSRC.ZOWE.SZWEAUTH`.
+### Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB
+
+During the install two PDS members are created.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules.  The installer needs to know the `<DATA_SET_PREFIX>` into which to create the two PDS members.  
 
 The `SZWESAMP` data set is fixed block 90 samplib containing the following members
 
@@ -138,12 +138,16 @@ Member name | Purpose
 ZWESIS01 | Load module for the Cross memory server
 ZWESAUX  | Load module for the Cross memory server's auxillary address space
 
+If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer the PDS members `OPENSRC.ZWE.SZWESAMP` and `OPENSEC.ZWE.SZWEAUTH` will be created.  
 
-You can run the installation process multiple times with different values in the `zowe-install.yaml` file to create separate installations of the Zowe runtime. 
+### Step 3: Install the Zowe runtime
 
-### Step 3: Install and configure the Zowe runtime
+You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
-You install and configure the Zowe runtime by executing the `zowe-install.sh` script. The `zowe-install.sh` mode performs three steps.
+
+
+
+. The `zowe-install.sh` mode performs three steps.
 
 1. Install Zowe runtime directories and files into the `root_dir` directory.  
 2. Install MVS artifacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  

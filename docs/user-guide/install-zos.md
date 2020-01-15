@@ -11,7 +11,6 @@ To install Zowe&trade; on z/OS,  there are two parts. The first part is the Zowe
 
 Ensure that you meet the following software requirements before you install Zowe on z/OS. The necessary prerequisites that are described in [System requirements](systemrequirements.md).
 
-
 ## Methods of installing Zowe on z/OS
 
 The Zowe z/OS binaries are distributed in the following formats. They contain the same contents but you install them by using different methods. You can choose which method to use depending on your needs.
@@ -38,8 +37,18 @@ The high-level process of installing Zowe on z/OS is as follows:
 1. Obtain and install the Zowe build.
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E Alpha](install-zowe-smpe.md).
-2. Configure the Zowe runtime. See [Configuring the Zowe runtime](configure-zowe-runtime.md).
-3. Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
+   
+   After successful installation of either a convenience build or an SMP/E there will be a zFS folder containing the unconfigured Zowe runtime, a PDS SAMPLIB member containing example JCL, as well as a PDS load library containing load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of whether you have installed a convenience or SMP/E build.  
+
+2. Configure the z/OS system in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe]. If Zowe has already been launched on the z/OS system then and you are applying a newer Zowe build this step may be skipped unless told otherwise in the release documentation.
+
+3. Create and customize an instance directory that contains configuration information about which components of Zowe should be executed, see [Zowe instance directory].  A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
+
+4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store].  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
+
+<JRW TO DO Need a diagram here>
+
+5. Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
 
 ## Looking for troubleshooting help?
 
