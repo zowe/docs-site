@@ -14,7 +14,7 @@ Zowe CLI stores credentials (mainframe username and password) in plaintext on yo
 
 ## Commands
 
-For detailed command, actions, and option documentation for this plug-in, see our Web Help (available online or as PDF or ZIP):
+For detailed command, actions, and option documentation for this plug-in, see our Web Help (available in three formats: interactive online, PDF, or ZIP):
 
 - <a href="../web_help/index.html" target="_blank">Browse Online</a>
 - <a href="../zowe_web_help.zip">Download (ZIP)</a>
@@ -80,7 +80,7 @@ If you do not want to use the SCS Plug-in for Zowe CLI, choose one of the follow
 
 **Uninstall the Plug-in**
 
-Issue the `zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli` command to delete the plug-in from your computer.
+Issue the `zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli@lts-incremental` command to delete the plug-in from your computer.
 
 When you uninstall the plug-in, existing profiles become invalid and you must recreate them. For more information, see [Create CLI Profiles](cli-configuringcli.html#creating-zowe-cli-profiles.md).
 
