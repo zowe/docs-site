@@ -24,7 +24,7 @@
 * [Zowe Desktop Workflows Plugin-in](#zowe-desktop-workflows-plugin-in-dependency-attributions)
 * [Zowe Visual Studio Code Extension](#zowe-visual-studio-code-extension-dependency-attributions)
 
-### Imperative CLI Framework for Zowe Dependency Attributions 
+### Imperative CLI Framework for Zowe Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Imperative CLI Framework for Zowe | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -311,7 +311,7 @@
 | Imperative CLI Framework for Zowe | css |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [css](https://www.npmjs.com/package/css) |
 | Imperative CLI Framework for Zowe | cssom |  v0.3.8 | [MIT](http://opensource.org/licenses/mit-license) | [cssom](https://www.npmjs.com/package/cssom) |
 | Imperative CLI Framework for Zowe | cssstyle |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssstyle](https://www.github.com/jsakas/CSSStyleDeclaration) |
-| Imperative CLI Framework for Zowe | cycle |  v1.0.3 | UNKNOWN | [cycle](https://www.github.com/douglascrockford/JSON-js) |
+| Imperative CLI Framework for Zowe | cycle |  v1.0.3 | Public Domain | [cycle](https://www.github.com/douglascrockford/JSON-js) |
 | Imperative CLI Framework for Zowe | cyclist |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cyclist](https://www.github.com/mafintosh/cyclist) |
 | Imperative CLI Framework for Zowe | d |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [d](http://www.medikoo.com/) |
 | Imperative CLI Framework for Zowe | dash-ast |  v1.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [dash-ast](https://www.github.com/goto-bus-stop/dash-ast) |
@@ -472,7 +472,7 @@
 | Imperative CLI Framework for Zowe | fs-vacuum |  v1.2.10 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-vacuum](https://www.github.com/npm/fs-vacuum) |
 | Imperative CLI Framework for Zowe | fs-write-stream-atomic |  v1.0.10 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs-write-stream-atomic](https://www.github.com/npm/fs-write-stream-atomic) |
 | Imperative CLI Framework for Zowe | fs.realpath |  v1.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fs.realpath](http://blog.izs.me/) |
-| Imperative CLI Framework for Zowe | fsevents |  v1.2.9 | unknown | fsevents |
+| Imperative CLI Framework for Zowe | fsevents |  v1.2.9 | [MIT](https://opensource.org/licenses/mit-license) | fsevents |
 | Imperative CLI Framework for Zowe | fstream |  v1.0.12 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [fstream](http://blog.izs.me/) |
 | Imperative CLI Framework for Zowe | function-arguments |  v1.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [function-arguments](http://www.tunnckocore.tk) |
 | Imperative CLI Framework for Zowe | function-bind |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [function-bind](https://www.github.com/Raynos/function-bind) |
@@ -1157,7 +1157,7 @@
 | Imperative CLI Framework for Zowe | sver-compat |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [sver-compat](https://www.github.com/phated/sver-compat#readme) |
 | Imperative CLI Framework for Zowe | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
 | Imperative CLI Framework for Zowe | syntax-error |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [syntax-error](https://www.github.com/substack/node-syntax-error) |
-| Imperative CLI Framework for Zowe | taffydb |  v2.6.2 | UNKNOWN | [taffydb](http://taffydb.com/) |
+| Imperative CLI Framework for Zowe | taffydb |  v2.6.2 | [MIT](https://opensource.org/licenses/mit-license) | [taffydb](http://taffydb.com/) |
 | Imperative CLI Framework for Zowe | tapable |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [tapable](https://www.github.com/webpack/tapable) |
 | Imperative CLI Framework for Zowe | tar |  v2.2.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
 | Imperative CLI Framework for Zowe | tar |  v4.4.13 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [tar](http://blog.izs.me/) |
@@ -1305,7 +1305,7 @@
 | Imperative CLI Framework for Zowe | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Imperative CLI Framework for Zowe | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### Zowe API Mediation Layer Dependency Attributions 
+### Zowe API Mediation Layer Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe API Mediation Layer | HdrHistogram |  v2.1.10 | Public Domain, per Creative Commons CC0, [Simplified BSD](http://opensource.org/licenses/bsd-license) | HdrHistogram |
@@ -2480,7 +2480,7 @@
 | Zowe API Mediation Layer | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe API Mediation Layer | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Application Framework Dependency Attributions 
+### Zowe Application Framework Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Application Framework | accept-language-parser |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [accept-language-parser](https://www.github.com/opentable/accept-language-parser) |
@@ -5396,7 +5396,7 @@
 | Zowe Application Framework | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
 | Zowe Application Framework | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
 
-### Zowe CLI Dependency Attributions 
+### Zowe CLI Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -6513,7 +6513,7 @@
 | Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### IBM® CICS® Plug-in for Zowe CLI Dependency Attributions 
+### IBM® CICS® Plug-in for Zowe CLI Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | IBM® CICS® Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -6767,7 +6767,7 @@
 | IBM® CICS® Plug-in for Zowe CLI | globals |  v11.12.0 | [MIT](http://opensource.org/licenses/mit-license) | [globals](https://sindresorhus.com) |
 | IBM® CICS® Plug-in for Zowe CLI | gonzales-pe |  v4.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [gonzales-pe](https://www.github.com/tonyganch/gonzales-pe) |
 | IBM® CICS® Plug-in for Zowe CLI | graceful-fs |  v4.2.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [graceful-fs](https://www.npmjs.com/package/graceful-fs) |
-| IBM® CICS® Plug-in for Zowe CLI | graphviz |  v0.0.9 | GPL-3.0 | [graphviz](http://algorithmique.net/) |
+| IBM® CICS® Plug-in for Zowe CLI | graphviz |  v0.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [graphviz](http://algorithmique.net/) |
 | IBM® CICS® Plug-in for Zowe CLI | growly |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [growly](http://ibrahimalrajhi.com/) |
 | IBM® CICS® Plug-in for Zowe CLI | handlebars |  v4.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [handlebars](http://www.handlebarsjs.com/) |
 | IBM® CICS® Plug-in for Zowe CLI | har-schema |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [har-schema](https://www.github.com/ahmadnassri/har-schema) |
@@ -7212,7 +7212,7 @@
 | IBM® CICS® Plug-in for Zowe CLI | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | IBM® CICS® Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### IBM® Db2® Plug-in for Zowe CLI Dependency Attributions 
+### IBM® Db2® Plug-in for Zowe CLI Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | IBM® Db2® Plug-in for Zowe CLI | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -7908,7 +7908,7 @@
 | IBM® Db2® Plug-in for Zowe CLI | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | IBM® Db2® Plug-in for Zowe CLI | yn |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [yn](https://sindresorhus.com) |
 
-### Zowe Desktop Data Sets UI Plugin Dependency Attributions 
+### Zowe Desktop Data Sets UI Plugin Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Data Sets UI Plugin | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -8953,7 +8953,7 @@
 | Zowe Desktop Data Sets UI Plugin | yargs-parser |  v13.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop Data Sets UI Plugin | yargs-parser |  v4.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Desktop Eclipse Orion-based React Editor Dependency Attributions 
+### Zowe Desktop Eclipse Orion-based React Editor Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Eclipse Orion-based React Editor | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
@@ -9809,7 +9809,7 @@
 | Zowe Desktop Eclipse Orion-based React Editor | yargs |  v6.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs](http://yargs.js.org/) |
 | Zowe Desktop Eclipse Orion-based React Editor | yargs-parser |  v4.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Desktop JES UI Plugin Dependency Attributions 
+### Zowe Desktop JES UI Plugin Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop JES UI Plugin | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -10821,7 +10821,7 @@
 | Zowe Desktop JES UI Plugin | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop JES UI Plugin | yargs-unparser |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs-unparser](https://www.github.com/yargs/yargs-unparser) |
 
-### Zowe Desktop Web Plug-in Server Dependency Attributions 
+### Zowe Desktop Web Plug-in Server Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Web Plug-in Server | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -11156,7 +11156,7 @@
 | Zowe Desktop Web Plug-in Server | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop Web Plug-in Server | yargs-unparser |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [yargs-unparser](https://www.github.com/yargs/yargs-unparser) |
 
-### Zowe Desktop z/OS Unix Files UI Plugin Dependency Attributions 
+### Zowe Desktop z/OS Unix Files UI Plugin Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop z/OS Unix Files UI Plugin | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -12452,7 +12452,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | yargs-parser |  v4.2.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop z/OS Unix Files UI Plugin | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Explorer Common REST Server Dependency Attributions 
+### Zowe Explorer Common REST Server Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Common REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
@@ -12566,7 +12566,7 @@
 | Zowe Explorer Common REST Server | xml-path |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xml-path |
 | Zowe Explorer Common REST Server | xmlunit-core |  v2.6.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xmlunit-core |
 
-### Zowe Explorer Data Sets REST Server Dependency Attributions 
+### Zowe Explorer Data Sets REST Server Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Data Sets REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
@@ -12643,7 +12643,7 @@
 | Zowe Explorer Data Sets REST Server | tomcat-embed-websocket |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
 | Zowe Explorer Data Sets REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
 
-### Zowe Explorer Jobs REST Server Dependency Attributions 
+### Zowe Explorer Jobs REST Server Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Explorer Jobs REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
@@ -12719,12 +12719,12 @@
 | Zowe Explorer Jobs REST Server | tomcat-embed-websocket |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
 | Zowe Explorer Jobs REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
 
-### Zowe Application Framework Authentication Handlers Dependency Attributions 
+### Zowe Application Framework Authentication Handlers Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Application Framework Authentication Handlers | bluebird |  v3.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [bluebird](https://www.github.com/petkaantonov/bluebird) |
 
-### Zowe Desktop TN3270 Emulator Plug-in Dependency Attributions 
+### Zowe Desktop TN3270 Emulator Plug-in Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop TN3270 Emulator Plug-in | @angular/animations |  v6.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@angular/animations](https://www.npmjs.com/package/@angular/animations) |
@@ -13265,7 +13265,7 @@
 | Zowe Desktop TN3270 Emulator Plug-in | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop TN3270 Emulator Plug-in | zone.js |  v0.8.29 | [MIT](http://opensource.org/licenses/mit-license) | [zone.js](https://www.npmjs.com/package/zone.js) |
 
-### Zowe Desktop Sample Angular Application Dependency Attributions 
+### Zowe Desktop Sample Angular Application Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Sample Angular Application | @types/body-parser |  v1.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/body-parser](https://www.npmjs.com/package/@types/body-parser) |
@@ -13279,7 +13279,7 @@
 | Zowe Desktop Sample Angular Application | @types/serve-static |  v1.13.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/serve-static](https://www.npmjs.com/package/@types/serve-static) |
 | Zowe Desktop Sample Angular Application | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) || Zowe Desktop Sample Angular Application | org.zowe.zlux.sample.angular.webclient |  v1.1.0 | unknown | org.zowe.zlux.sample.angular.webclient |
 
-### Zowe Desktop Sample React Application Dependency Attributions 
+### Zowe Desktop Sample React Application Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Sample React Application | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |
@@ -14503,7 +14503,7 @@
 | Zowe Desktop Sample React Application | yargs-parser |  v8.1.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop Sample React Application | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Desktop VT Emulator Plugin-in Dependency Attributions 
+### Zowe Desktop VT Emulator Plugin-in Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop VT Emulator Plugin-in | @angular/animations |  v6.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@angular/animations](https://www.npmjs.com/package/@angular/animations) |
@@ -15044,12 +15044,12 @@
 | Zowe Desktop VT Emulator Plugin-in | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop VT Emulator Plugin-in | zone.js |  v0.8.29 | [MIT](http://opensource.org/licenses/mit-license) | [zone.js](https://www.npmjs.com/package/zone.js) |
 
-### Zowe Desktop Editor Plugin-in Dependency Attributions 
+### Zowe Desktop Editor Plugin-in Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Desktop Editor Plugin-in | org.zowe.editor.webclient |  v2.1.0 | EPL-2.0 | org.zowe.editor.webclient |
 
-### Zowe Visual Studio Code Extension Dependency Attributions 
+### Zowe Visual Studio Code Extension Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
 | Zowe Visual Studio Code Extension | @babel/code-frame |  v7.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/code-frame](https://babeljs.io/) |

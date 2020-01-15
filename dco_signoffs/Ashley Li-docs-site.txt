@@ -189,3 +189,5 @@ Also add source file for one graphic
 77e4a121babfc1852c10f8f58c553f9eac76874c More documentation changes and cleanups
 e3c9b1590fad81a77f46716a5323af56025c92f8 Push latest user guide to docs site
 6878e95785268613f73beae432062951b879fc65 Edit the TOC
+87667db773bd040971e4a28af01d160f07be9d86  Revert "Merge branch 'docs-staging' of https://github.com/zowe/docs-site into docs-staging"  This reverts commit e3db772, reversing changes made to 8fa53c5.
+
