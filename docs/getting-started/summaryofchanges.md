@@ -38,7 +38,7 @@ The following features and enhancements were added.
 -
 
 #### Zowe CLI
-- The [Secure Credential Store (SCS) Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md) is now available. The plug-in lets you store mainframe credentials securely in the credential manager of your operating system.
+- The [Secure Credential Store (SCS) Plug-in for Zowe CLI](../user-guide/cli-scsplugin.md) is now available. The plug-in lets you store mainframe credentials securely in the credential manager of your operating system.
 -
 
 #### Zowe SMP/E installation
