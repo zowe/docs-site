@@ -12,6 +12,10 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 
 For details, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
 
+**Known issue:** There is a known issue with node.js v8.16.1 and Zowe desktop encoding. See [https://github.com/ibmruntimes/node/issues/142](https://github.com/ibmruntimes/node/issues/142) for details.
+
+**Workaround:** Use node.js v8.16.2 which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `pax.Z` file under **IBM SDK for Node.js - z/OS, V8 - (v8.16.2 - November 2019 Build)**. Note that node.js v12 is not yet supported on Zowe.
+
 ## Hardware and software requirements
 
 To install Node.js for Zowe, the following requirements muts be met.
@@ -21,10 +25,10 @@ To install Node.js for Zowe, the following requirements muts be met.
 IBM zEnterprise® 196 (z196) or newer
 
 **Software:**
-- Node.js version 6 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_6.0.0/com.ibm.nodejs.zos.v6.doc/plan.htm) for all prerequisites): 
+- Node.js Version 6 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_6.0.0/com.ibm.nodejs.zos.v6.doc/plan.htm) for all prerequisites):
     - z/OS V2R2 with PTF UI46658 or z/OS V2R3
 
-- Node.js v8 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/smpe.htm) for all prerequisites):
+- Node.js Version 8 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/smpe.htm) for all prerequisites):
    - z/OS 2.2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
    - z/OS 2.3: PTFs UI61308, UI61376 and UI61747 (APARs PH07107, PH08353 and PH09543)
 
