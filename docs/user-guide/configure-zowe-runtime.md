@@ -130,6 +130,8 @@ To determine which ports are not available, follow these steps:
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
 
+- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.  
+
 ## Zowe keystore directory
 
 <<JRW EDITED UP TO HERE>>
