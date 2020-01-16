@@ -16,3 +16,5 @@ docs-site
 .DS_Store
 .vscode/last.sql
 .history/
+
+.idea
