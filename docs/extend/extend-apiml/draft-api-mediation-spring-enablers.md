@@ -7,7 +7,7 @@ Before version 1.12, the API ML provided an integration enabler based on Spring 
 TOC
 
 **Tip:** For more information about how to utilize another API ML enabler, see: 
-  * [Onboard a REST API service with the Plaing Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
+  * [Onboard a REST API service with the Plaing Java Enabler (PJE)](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
   * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
   * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
@@ -159,7 +159,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your Spring Boot based service
 
-Configure your Spring Boot based service by following the steps described in [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the onboarding guide using the Plain Java Enabler (PJE).  
+Configure your Spring Boot based service by following the steps described in [Configuring your service](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the onboarding guide using the Plain Java Enabler (PJE).  
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
