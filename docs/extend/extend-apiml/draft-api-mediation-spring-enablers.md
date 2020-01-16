@@ -7,7 +7,7 @@ Before version 1.12, the API ML provided an integration enabler based on Spring 
 TOC
 
 **Tip:** For more information about how to utilize another API ML enabler, see: 
-  * [Onboard a REST API service with the Plaing Java Enabler (PJE)](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
+  * [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
   * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
   * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
@@ -29,7 +29,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 2. [Configuring your Spring Boot based service](#configuring-your-spring-boot-based-service)
 
-    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the article **Onboarding a REST API service with the Plain Java Enabler (PJE)**.   
+    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
 
 3. [Registering your service with API ML](#registering-your-service-with-api-ml)
