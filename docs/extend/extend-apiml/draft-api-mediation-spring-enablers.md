@@ -27,8 +27,9 @@ The following steps outline the overall process to onboard a REST service with t
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-2. [Configuring your Spring Boot based service]
-Note: For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the article **Onboarding a REST API service with the Plain Java Enabler (PJE)**.   
+2. [Configuring your Spring Boot based service](#configuring-your-spring-boot-based-service)
+
+    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the article **Onboarding a REST API service with the Plain Java Enabler (PJE)**.   
 
 
 3. [Registering your service with API ML](#registering-your-service-with-api-ml)
