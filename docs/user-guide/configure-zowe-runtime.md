@@ -1,6 +1,13 @@
 # Configuring the Zowe runtime
 
-After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh -I` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory. You must configure the Zowe runtime before it can be started.
+After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
+
+Before lauching Zowe there are two additional USS folders that need to be created.  
+
+1. [Zowe instance directory](#zowe-instance-directory)
+2. [Zowe keystore directory](#zowe-keystore-directory)
+
+<<OLD table of contents>>
 
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
@@ -23,74 +30,43 @@ After you install Zowe&trade; through either the convenience build by running th
     - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
 1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
 
-## Prerequisites
+## Zowe instance directory
 
-<!--- - The user ID that is used to perform the installation must have authority to set the ``'-a'`` extattr flag. This requires a minimum of read access to the BPX.FILEATTR.APF resource profile in the RACF CLASS if you use RACF. It is not essential for this access to be enabled before you run the `zowe-install.sh` script that installs Zowe runtime on z/OS. However, this access must be enabled before you run the `zowe-runtime-authorize.sh` script. --->
+The Zowe instance directory contains contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is executing configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.  
 
-- The user ID that is used to perform the configuration part of the installation must have authority to read the z/OSMF keyring. For how to check the name of the keyring and grant read access to the keyring, see the [Trust z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) topic.
+To create an instance directory navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute
 
-- The user ID that is used to perform the configuration part of the installation must have READ permission for the BPX.JOBNAME FACILITY class. To display who is authorized to the FACILITY class, issue the following command:
-  ```
-  RLIST FACILITY BPX.JOBNAME AUTHUSER
-  ```
+  ```sh
+   <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
+   ```
 
-  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
-  ```
-  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
-  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
-  SETROPTS RACLIST(FACILITY) REFRESH
-  ```
+Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
-  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
- https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
+The Zowe instance directory conains a file `/bin/instance.env` which holds configuration data.  This data is read each time Zowe is started.  
 
+### instance.env
 
-## Configuring the Zowe runtime directory
+To operate Zowe a number of ZFS folders need to be located for prerequisites on the platform. Default values are selected when `zowe-configure-instance.sh` is executed that may need modifying.  
 
-You configure the Zowe runtime directory by running the script `scripts/configure/zowe-configure.sh`.
-
-Before you run the script `scripts/configure/zowe-configure.sh`, check the values of [environment variables](#environment-variables) and [configuration variables](#configuration-variables) in the `scripts/configure/zowe-install.yaml` file, as these are used to configure Zowe during execution of the script `zowe-configure.sh`.
-
-For the convenience build, the location of the Zowe runtime directory will be the value of the `install:rootDir` parameter from the file `scripts/configure/zowe-install.yaml`.  
-
-### Environment variables
-
-To configure the Zowe runtime, a number of ZFS folders need to be located for prerequisites on the platform that Zowe needs to operate. These can be set as environment variables before the script is run.  If the environment variables are not set, the configuration script will attempt to locate default values.
+- `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed.  
 
 - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
+- `ZOWE_NODE_HOME`:  The path to the node runtime.  Defaults to value of `NODE_HOME`
 
-When you run the configuration script for the first time, the script attempts to locate environment variables.
+- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
+- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 
-**Notes:**
-- If you wish to set the environment variables for all users, add the lines to assign the variables and their values to the file `/etc/profile`.
-- If the environment variables for `ZOWE_ZOSMF_PATH`, `ZOWE_JAVA_HOME` are not set and the install script cannot determine a default location, the install script will prompt for their location. The install script will not continue unless valid locations are provided.  
-- Ensure that the value of the `ZOWE_EXPLORER_HOST` variable is accessible from a machine external to the z/OS environment thus users can log in to Zowe from their desktops. When there is no environment variable set, the install script will default to the value of `hostname -c`. In this case, ensure that the value of `hostname -c` is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself. If not accessible, then set an environment variable with `ZOWE_EXPLORER_HOST` set to the correct host name.  
-- Ensure that the value of the `ZOWE_IPADDRESS` variable is set correctly for your system.  This should be the IP address of your z/OS system which is externally accessible from clients who want to use Zowe.  This is particularly important for zD&T and cloud systems, where `ping` or `dig` on z/OS would return a different IP address from the one that external clients would use to access z/OS.   
+- `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
+- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible from clients who want to use Zowe.  This is important to verify for zD&T and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
 
-### Configuration variables
+- `ZOWE_SERVER_PROCLIB_MEMBER`:  This is the name of the PROCLIB member JCL that will be used to create the Zowe started task.  The default is `ZWESVSTC` and is provided in the `SZWESAMP` PDS that is created when Zowe is installed.  More information on how to configure the Zowe started task PROCIB can be found in [Creating the ZWESVSTC PROBLIC member](###-creating-the-zwesvstc-proclib-member-to-launch-the-zowe-runtime).
 
-The file `scripts/configure/zowe-install.yaml` contains `key:value` pairs that configure the Zowe runtime.  
+Inddiviaual address spaces for different Zowe instances can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address spaces names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
 
-#### Directory that stores configuration
+- `ZOWE_PREFIX`: This defines a prefix for Zowe address space STC names.  Defaults to `ZWE`.   
+- `ZOWE_INSTANCE`: This is appended to the `ZOWE_PREFIX` to build up the address space name.  Defaults to `1`
 
-`install:instanceDir` is the directory that Zowe uses to store configuration. The default directory is `~/zowe-instance-dir` where *~* is the home directory of the user who performs the installation. If you use the default directory, ensure that the account that runs Zowe (default of IZUSVR) has write permission to both the home directory and the `zowe-instance-dir` directory. 
-
-#### Address space name
-
-`install:prefix` defines a prefix for Zowe address space STC name associated with USS processes. With this, the individual address spaces can be distinguished from each other in RMF records or SDSF views.  
-
-STC names have certain components and use the following format:
-
-```pfxnSS```
-
-where:
-
-- `pfx` - Prefix that contains up to four characters, for example, `ZWE`.
-
-- `n` - Instance number
-
-- `SS` - A subcomponent. `SS` can be one of the following values:
+- A subcomponent will be one of the following values:
    - **AC** - API ML Catalog
    - **AD** - API ML Discovery Service
    - **AG** - API ML Gateway
@@ -103,58 +79,34 @@ where:
    - **UJ** - Explorer UI Jobs
    - **UU** - Explorer UI USS
    
-
-The STC name of the main started task is `pfxnSV`. To view all the STCs for your instance of ZOWE in SDSF, you can use the PREFIX `pfxn*`.
+The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 **Example:**
 
   ```yaml
-  install:
-  prefix=ZWE
-  instance=1
+  ZOWE_PREFIX=ZWE
+  ZOWE_INSTANCE=X
   ```
-
-  in the `zowe-install.yaml` file defines a prefix of ZWE for the STC, so the first instance of Zowe API ML Gateway identifier will be as follows:
+  the first instance of Zowe API ML Gateway identifier will be as follows:
 
   ```
-  ZWE1AG
+  ZWEXAG
   ```
-#### Port allocations
+When Zowe starts a number of its micro services need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging onto the Zowe desktop.  All of the other ports are not typically used by clients and used for intra service communication by Zowe.  
 
-The port values are defined in the `scripts/configure/zowe-install.yaml` file.  
+- `CATALOG_PORT`: The port the API catalog service will use
+- `DISCOVERY_PORT`: The port the discovery service will use
+- `GATEWAY_PORT`: The port the API gateway service will use.  This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log onto the API catalog web page through a browser.
+- `APIML_ENABLE_SSO`: true or false value for whether single sign-on should be enabled.  Defaults to false.
 
-- Zowe API Mediation Layer has three HTTPS ports, one for each micro-service; API Gateway, API Discovery and API Catalog.  
-- z/OS Services has HTTPS ports for each of its micro-services; jobs and the data sets.
-- z/OS desktop apps has three ports for each of its explorer apps; USS Explorer, MVS Explorer, JES Explorer
-- The Zowe App Server has two ports: the HTTPS port used by the Zowe Application Server, and an HTTP port that is used by the ZSS Server.
+- `JOBS_API_PORT`: The port the jobs API service will use
+- `FILES_API_PORT`: The port the files API service will use
+- `JES_EXPLORER_UI_PORT`: The port the jes-explorer UI service will use
+- `MVS_EXPLORER_UI_PORT`: The port the mvs-explorer UI service will use
+- `USS_EXPLORER_UI_PORT`: The port the uss-explorer UI service will use
 
-**Example:**
-
-  ```
-    api-mediation:
-      catalogPort=7552
-      discoveryPort=7553
-      gatewayPort=7554
-      externalCertificate=
-      externalCertificateAlias=
-      externalCertificateAuthorities=
-      verifyCertificatesOfServices=true
-      enableSso=false
-      zosmfKeyring=IZUKeyring.IZUDFLT
-
-    zos-services:
-      jobsAPIPort=8545
-      mvsAPIPort=8547
-
-    zowe-desktop-apps:
-      jobsExplorerPort=8546
-      mvsExplorerPort=8548
-      ussExplorerPort=8550
-
-    zlux-server:
-     httpsPort=8544
-     zssPort=8542
-  ```
+- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wishing to log onto the Zowe desktop.  
+- `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
 
 **Notes:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
 
@@ -172,16 +124,15 @@ To determine which ports are not available, follow these steps:
    TSO NETSTAT PORTLIST
    ```
 
-The `zowe-install.yaml` file also contains the telnet and SSH port with defaults of 23 and 22.  If your z/OS LPAR is using different ports, edit the values. This allows the TN3270 terminal desktop application to connect as well as the VT terminal desktop application.
+`ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
+`ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *TN 3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
+`ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`
 
-**Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.
+**Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
 
-```
-  # Ports for the TN3270 and the VT terminal to connect to
-  terminals:
-      sshPort=22
-      telnetPort=23
-```
+## Zowe keystore directory
+
+<<JRW EDITED UP TO HERE>>
 
 #### Certificates
 

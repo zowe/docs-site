@@ -40,11 +40,11 @@ The high-level process of installing Zowe on z/OS is as follows:
    
    After successful installation of either a convenience build or an SMP/E there will be a zFS folder containing the unconfigured Zowe runtime, a PDS SAMPLIB member containing example JCL, as well as a PDS load library containing load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of whether you have installed a convenience or SMP/E build.  
 
-2. Configure the z/OS system in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe]. If Zowe has already been launched on the z/OS system then and you are applying a newer Zowe build this step may be skipped unless told otherwise in the release documentation.
+2. Configure the z/OS system in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe](configure-zos-system.md). If Zowe has already been launched on the z/OS system then and you are applying a newer Zowe build this step may be skipped unless told otherwise in the release documentation.
 
-3. Create and customize an instance directory that contains configuration information about which components of Zowe should be executed, see [Zowe instance directory].  A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
+3. Create and customize an instance directory that contains configuration information about which components of Zowe should be executed, see [Zowe instance directory](configure-instance-directory.md).  A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
-4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store].  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
+4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store](configure-certificates.md).  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
 
 <JRW TO DO Need a diagram here>
 

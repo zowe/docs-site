@@ -144,16 +144,11 @@ If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer the PDS 
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
+ ```
+    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
+ ```
 
 
-
-. The `zowe-install.sh` mode performs three steps.
-
-1. Install Zowe runtime directories and files into the `root_dir` directory.  
-2. Install MVS artifacts into a PDS load library `SZWEAUTH` and a PDS sample library `SZWESAMP` as specified in the `datasetPrefix` value.  
-3. Configure the runtime directory so that an instance of the ZWESVSTC STC can be launched which will start the Zowe address spaces. 
-
-It's recommended that you install the Zowe runtime first by running the `zowe-install.sh -I` option that just performs the first installation step to create the runtime directory. Then, configure the runtime directory separately following instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). Alternatively, you can both install and configure the Zowe runtime by running a single command `zowe-install.sh` without the `-I` parameter. In this case, ensure that you review [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory) before you run the command `zowe-install.sh`.
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
@@ -166,38 +161,9 @@ In this documentation, the steps of creating the runtime directory and configuri
     ```
     zowe-install.sh -I
     ```
-
-    **Note:** If you leave off the `-I` parameter, the `zowe-install.sh` script will create and also configure the Zowe runtime directory using the `rootDir:` value. If you choose to do this, make sure that you have reviewed [Configuring the Zowe runtime directory](configure-zowe-runtime.md#configuring-the-zowe-runtime-directory). If you run `zowe-install.sh` without the `-I` parameter the file `zowe-install.yaml` containing parameter values used to drive the configuration will be in the same `/install` directory as location of `zowe-install.sh`.  If you use the `-I` option and configure post install which is the recommended approach the `zowe-install.yaml` file will be in the `scripts/config` directory of the `rootDir:`.
-
-    During execution of `zowe-install.sh`, you might receive the following error that the file cannot be executed:
-
-    ```
-    zowe-install.sh: cannot execute
-    ```
-
-    The error occurs when the install script does not have execute permission. To add execute permission, issue the following command:
-
-    ```
-    chmod u+x zowe-install.sh
-    ```
-
-    Each time the install script runs, it creates a log file that contains more information. This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`. This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
-
-2. (Optional) Check prerequisites.
-
-    Before you continue with the configuration of the Zowe runtime, you can check the install condition of the required prerequisites for Zowe. To do this, issue the following command with the current directory being the `/install` directory.
-
-    ```
-    zowe-check-prereqs.sh
-    ```
-
-    The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you configure the Zowe runtime directory.
-
-3. Configure the Zowe runtime.
-
-   The Zowe runtime is made up of two portions.  A USS directory that and an associated PROCLIB ZWESVSTC.  The runtime directory will have been created during install at the location `install:rootDir` parameter from the `zowe-install.yaml`.  The PROCLIB ZWESVSTC will have been placed in a PDS member `SZWESAMP` as specified in `install:datasetPrefix` from `zowe-install.yaml`.
+   Each time the install script runs, it creates a log file that contains more information. This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`. This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install.  
    
-    Follow the instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md) to configure the USS runtime directory and to enable the JCL member ZWESVSTC to run as a started task.
+Follow the instructions in [Configuring the Zowe runtime directory](configure-zowe-runtime.md) to configure the USS runtime directory and to enable the JCL member ZWESVSTC to run as a started task.
 
 
 
