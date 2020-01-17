@@ -8,7 +8,7 @@ Read the following topics to get started with extending the Zowe Application Fra
 
 Read the following topics to learn how Zowe Application Framework works:
 
-- [Creating application plug-ins](mvd-creatingappplugins.md)
+- [Creating application plug-ins](mvd-buildingplugins.md)
 - [Plug-ins definition and structure](mvd-plugindefandstruct.md)
 - [Dataservices](mvd-dataservices.md)
 - [Zowe Desktop and window management](mvd-desktopandwindowmgt.md)
