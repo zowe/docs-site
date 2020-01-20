@@ -2,11 +2,6 @@
 
 After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
 
-Before lauching Zowe there are two additional USS folders that need to be created.  
-
-1. [Zowe instance directory](#zowe-instance-directory)
-2. [Zowe keystore directory](#zowe-keystore-directory)
-
 <<OLD table of contents>>
 
 1. [Prerequisites](#prerequisites)
@@ -30,277 +25,31 @@ Before lauching Zowe there are two additional USS folders that need to be create
     - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
 1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
 
+
+Before lauching Zowe there are two additional USS folders that need to be created.  
+
 ## Zowe instance directory
 
-The Zowe instance directory contains contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is executing configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.  
+The Zowe instance directory contains contains configuration data required to launch a Zowe runtime and is where log files are stored.   
 
-To create an instance directory navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute
+More than one instance directory can be used for the same Zowe runtime, allowing different configurations to have different port ranges, to have different version pre-requisites (node, Java) and to bring up different subsystems.
 
-  ```sh
-   <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
-   ```
-
-Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
-
-The Zowe instance directory conains a file `/bin/instance.env` which holds configuration data.  This data is read each time Zowe is started.  
-
-### instance.env
-
-To operate Zowe a number of ZFS folders need to be located for prerequisites on the platform. Default values are selected when `zowe-configure-instance.sh` is executed that may need modifying.  
-
-- `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed.  
-
-- `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `ZOWE_NODE_HOME`:  The path to the node runtime.  Defaults to value of `NODE_HOME`
-
-- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
-- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
-
-- `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
-- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible from clients who want to use Zowe.  This is important to verify for zD&T and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
-
-- `ZOWE_SERVER_PROCLIB_MEMBER`:  This is the name of the PROCLIB member JCL that will be used to create the Zowe started task.  The default is `ZWESVSTC` and is provided in the `SZWESAMP` PDS that is created when Zowe is installed.  More information on how to configure the Zowe started task PROCIB can be found in [Creating the ZWESVSTC PROBLIC member](###-creating-the-zwesvstc-proclib-member-to-launch-the-zowe-runtime).
-
-Inddiviaual address spaces for different Zowe instances can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address spaces names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
-
-- `ZOWE_PREFIX`: This defines a prefix for Zowe address space STC names.  Defaults to `ZWE`.   
-- `ZOWE_INSTANCE`: This is appended to the `ZOWE_PREFIX` to build up the address space name.  Defaults to `1`
-
-- A subcomponent will be one of the following values:
-   - **AC** - API ML Catalog
-   - **AD** - API ML Discovery Service
-   - **AG** - API ML Gateway
-   - **DS** - Node.js instance for the ZSS Server
-   - **DT** - Zowe Desktop Application Server
-   - **EF** - Explorer API Data Sets
-   - **EJ** - Explorer API Jobs
-   - **SZ** - ZSS Server
-   - **UD** - Explorer UI Data Sets
-   - **UJ** - Explorer UI Jobs
-   - **UU** - Explorer UI USS
-   
-The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
-
-**Example:**
-
-  ```yaml
-  ZOWE_PREFIX=ZWE
-  ZOWE_INSTANCE=X
-  ```
-  the first instance of Zowe API ML Gateway identifier will be as follows:
-
-  ```
-  ZWEXAG
-  ```
-When Zowe starts a number of its micro services need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging onto the Zowe desktop.  All of the other ports are not typically used by clients and used for intra service communication by Zowe.  
-
-- `CATALOG_PORT`: The port the API catalog service will use
-- `DISCOVERY_PORT`: The port the discovery service will use
-- `GATEWAY_PORT`: The port the API gateway service will use.  This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log onto the API catalog web page through a browser.
-- `APIML_ENABLE_SSO`: true or false value for whether single sign-on should be enabled.  Defaults to false.
-
-- `JOBS_API_PORT`: The port the jobs API service will use
-- `FILES_API_PORT`: The port the files API service will use
-- `JES_EXPLORER_UI_PORT`: The port the jes-explorer UI service will use
-- `MVS_EXPLORER_UI_PORT`: The port the mvs-explorer UI service will use
-- `USS_EXPLORER_UI_PORT`: The port the uss-explorer UI service will use
-
-- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wishing to log onto the Zowe desktop.  
-- `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
-
-**Notes:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
-
-To determine which ports are not available, follow these steps:
-
-1. Display a list of ports that are in use with the following command:
-
-   ```
-   TSO NETSTAT
-   ```
-
-2. Display a list of reserved ports with the following command:
-
-   ```
-   TSO NETSTAT PORTLIST
-   ```
-
-`ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
-`ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *TN 3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
-`ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`
-
-**Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
-
-- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.  
+More information on Zowe instance directories is in [Zowe instance directory](configure-instance-directory.md)
 
 ## Zowe keystore directory
 
-<<JRW EDITED UP TO HERE>>
+The Zowe keystore directory contains the key used by the Zowe desktop and the Zowe API mediation layer to secure its TLS communication with clients (such as web browsers or REST AI clients). The keystore directory also has a trust store where public keys of any servers that Zowe communicates to (such as z/OSMF) are held.
 
-#### Certificates
+A keystore directory needs to be created for a Zowe instance to be launched successfully, and a keystore directory can be shared between Zowe instances and between Zowe runtimes.  
 
-You can use existing certificate signed by an external certificate authority (CA) for HTTPS ports in API Mediation Layer and Zowe Application Framework, or else you can let the Zowe configuration script generate a certificated self-signed by the local API Mediation CA.  
+More information on Zowe keystore directories is in [Configuring Zowe certificate store](configure-certificates.md).
 
-If you let the Zowe configuration generate a self-signed certificate, then it needs to be imported into your browser to avoid challenges about untrusted network traffic. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).
-
-You can use an existing server certificate that is signed by an external CA such as a CA managed by the IT department of your company. The benefit of such certificate is that it will be trusted by browsers in your company.
-
-You can even use a public certificate authority such as Symantec, Comodo, or GoDaddy. Such certificate are trusted by all browsers and most REST API clients. This is, however, a manual process of requesting a certificate. As such, we recommend to start with the local API Mediation Layer CA for an initial evaluation.
-
-You can use an existing certificate with the following procedure.
-
-**Follow these steps:**
-
-1. Update the value of `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system. Currently only the PKCS12 keystore with the password set to `password` are supported.
-
-2. Update the value of `externalCertificateAlias` to the alias of the server certificate in the keystore.
-
-   **Note:** If you don't know the certificate alias, run the following command where `externalCertificate.p12` is a value of  `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file.
-   
-   ```sh
-   keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
-   ```
-   Expected output:
-   ```
-   Keystore type: PKCS12
-   Keystore provider: SUN
-
-   Your keystore contains 1 entry
-
-   Alias name: apiml
-   Creation date: Oct 9, 2019
-   Entry type: PrivateKeyEntry
-   Certificate chain length: 3
-   ...
-   ```
-   In this case, alias can be found in `Alias name: apiml`. Therefore, set `externalCertificateAlias=apiml`.
-
-3. Update the value of `externalCertificateAuthorities` to the path of the public certificate of the certificate authority that has the signed the certificate. You can add additional certificate authorities separated by spaces. This can be used for certificate authorities that have signed the certificates of the services that you want to access via the API Mediation Layer.
-
-4. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `verifyCertificatesOfServices=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate.
-
-**Important!** Switching off certificate evaluation is a non-secure setup.
-
-**Example:**
-
-```yaml
-  api-mediation:
-      externalCertificate=/path/to/keystore.p12
-      externalCertificateAlias=servercert
-      externalCertificateAuthorities=/path/to/cacert.cer
-      verifyCertificatesOfServices=true
-```
-
-You may also receive the following message:
-
-```
-apiml_cm.sh --action trust-zosmf has failed.
-WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
-```
-
-This error does not interfere with installation progress and can be remediated after the installation completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
-
-#### Unix File Permissions
-
-The next configuration step is to set the file and directory permissions correctly to allow the Zowe runtime servers to start and operate successfully.
-
-The configuration script will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.
-- If the script is successful, the result is reported.  
-- If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  
-- If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
 
 ## Configuring the ZWESVSTC started task
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB is used to start all of these microservices.  The configuration step of the Zowe runtime will create the PROCLIB member and by default attempt to add it to the first available PROCLIB in the JES2 concatenation path.  
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  The steps to configure the z/OS runtime in order to launch the started task are described in [Configuring the Zowe started task](#configuring-zowe-server).
 
-### Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime
 
-**Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZWESVSTC`.
-
-When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named ZWESVSTC.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task the member should be copied to a PDS that is in the proclib concatenation path.  
-
-A convenience script `zowe-install-proc.sh` is provided in the `scripts/utils` folder to assist with the copying of the member.  The script has two arguments
-
-**First Parameter**=Source PDS Prefix
-
-Dataset prefix of the source PDS where .SZWESAMPE(ZWESVSTC) was installed into.  
-
-For an installation from a convenience build this will be the value of `install:datasetPrefix` in `zowe-install.yaml` file. 
-
-For an SMP/E installation thils will be the value of 
-`$datasetPrefixIn` in the member AZWE001.F1(ZWE3ALOC)
-
-**Second Parameter**=Target PROCLIB PDS
-
-Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the script scans the JES PROCLIB concatenation path and uses the first dataset where the user has write access
-
-***Example*** Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
-
-You can tailor the JCL at this line
-
-```
-//ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
-```
-
-to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. If this value is not specified in the JCL, in order  tostart the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
-
-```
-/S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
-```
-
-### Configuring ZWESVSTC to run under the correct user ID
-
-The ZWESVSTC must be configured as a started task (STC) under the IZUSVR user ID.  This only needs to be done once per z/OS system and would be typically done the first time you configure a Zowe runtime.  If the Zowe runtime is uninstalled or a new Zowe is installed and configured, you do not need to re-run the step to associate the ZWESVSTC STC with the Zowe user ID of IZUSVR.  
-
-To configure ZWESVSTC to run as a STC under the user ID of IZUSVR, you can run the convenience script `scripts/configure/zowe-config-stc.sh` in the runtime folder.  
-
-Alternatively, if you do not wish to run this script, you can manually configure ZWESVSTC to run under the IZUSVR user ID by taking the following steps.
-
-**Note:** You must replace `ZWESVSTC` in the commands below with the name of your PROCLIB member that you specified as `memberName=ZWESVSTC` in the `scripts/configure/zowe-install.yaml` file.
-
-- If you use RACF, issue the following commands:
-
-  ```
-  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-  SETROPTS REFRESH RACLIST(STARTED)
-  ```
-
-- If you use CA ACF2, issue the following commands:
-
-  ```
-  SET CONTROL(GSO)
-  INSERT STC.ZWESVSTC LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZWESVSTC)
-  F ACF2,REFRESH(STC)
-  ```
-
-- If you use CA Top Secret, issue the following commands:
-
-  ```
-  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(IZUSVR)
-  ```
-
-### Granting users permission to access Zowe
-
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER group for standard users or IZUADMIN for administrators,
-
-- If you use RACF, issue the following command:
-
-  ```
-  CONNECT (userid) GROUP(IZUADMIN)
-  ```
-
-- If you use CA ACF2, issue the following commands:
-
-  ```
-  ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
-  F ACF2,REBUILD(TGR)
-  ```
-
-- If you use CA Top Secret, issue the following commands:
-
-  ```
-  TSS ADD(userid)  PROFILE(IZUADMIN)
-  TSS ADD(userid)  GROUP(IZUADMGP)
-  ```
 
 ## The Zowe Cross Memory Server
 

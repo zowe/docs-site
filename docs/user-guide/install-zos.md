@@ -38,13 +38,15 @@ The high-level process of installing Zowe on z/OS is as follows:
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E Alpha](install-zowe-smpe.md).
    
-   After successful installation of either a convenience build or an SMP/E there will be a zFS folder containing the unconfigured Zowe runtime, a PDS SAMPLIB member containing example JCL, as well as a PDS load library containing load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of whether you have installed a convenience or SMP/E build.  
+   After successful installation of either a convenience build or an SMP/E there will be a zFS folder containing the unconfigured Zowe runtime `<RUNTIME_DIR>`, a PDS SAMPLIB member `SZWESAMPE `containing example JCL, as well as a PDS load library `SZWEAUTH` containing load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of whether you have installed a convenience or SMP/E build.  
 
-2. Configure the z/OS system in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe](configure-zos-system.md). If Zowe has already been launched on the z/OS system then and you are applying a newer Zowe build this step may be skipped unless told otherwise in the release documentation.
+2. Configure the z/OS security manager in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe](configure-zos-system.md).  A SAMPLIB JCL member `ZWESECUR` is provided with Zowe to assist with configuration which can either be submitted as-is or else customized depending on site preferences.  If Zowe has already been launched on the z/OS system from a previous release of 1.8 or later then and you are applying a newer Zowe build the security configuration step may be skipped unless told otherwise in the release documentation.  
 
 3. Create and customize an instance directory that contains configuration information about which components of Zowe should be executed, see [Zowe instance directory](configure-instance-directory.md).  A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
 4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store](configure-certificates.md).  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
+
+5. Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` together installed by Zowe.  The load library for the cross memory server is included in the PDS load library installed in a sample `SZWEAUTH`.  For the `ZWESVSTC` started task to be launched it must be configured, see [Configuring the Zowe started task](#configuring-zowe-server). For the cross memory server `ZWESISTC` to be launched it must be configured, see [Configuring the Cross memory server](#configuring-cross-memory-server)
 
 <JRW TO DO Need a diagram here>
 
