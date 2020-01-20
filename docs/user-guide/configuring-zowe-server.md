@@ -2,13 +2,7 @@
 
 When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named `ZWESVSTC`.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task the member should be copied to a PDS that is in the proclib concatenation path.  
 
-## Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime
-
-**Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZWESVSTC`.
-
-
-
-A convenience script `zowe-install-proc.sh` is provided in the `scripts/utils` folder to assist with the copying of the member.  The script has two arguments
+If a site has their own technique for PROCLIB creation they may follow this and copy the `ZWESVSTC` as-is.  For cusstomers who wish to create a pipeline or otherwise automate the PROCLIB copying a convenience script `zowe-install-proc.sh` is provided in the `<ROOT_DIR>/scripts/utils` folder. The script has two arguments
 
 **First Parameter**=Source PDS Prefix
 
@@ -25,17 +19,31 @@ Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the s
 
 ***Example*** Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
 
-You can tailor the JCL at this line
+There are two ways in which the started task can be executed.  
+
+### Starting Zowe from a USS shell
+
+From a USS shell issue the command `<zowe-instance-dir>/zowe-start.sh` to launch the started task `ZWESVSTC`.  This will the configuration values from the `zowe-instance.env` file in the zowe instance directory.  
+
+### Starting Zowe with a /S TSO command
+
+If you issue the SDSF command `/S ZWESVSETC` will fail because the script needs to know the instance directory containing the configuration details.  
+
+If you have a default instance directory you wish you always start Zowe with you can tailor the JCL member `ZWESVSTC` at this line
 
 ```
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
 ```
 
-to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. If this value is not specified in the JCL, in order  tostart the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
+to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. 
+
+If the JCL value `instance-directory` is not specified in the JCL, in order to start the Zowe server from SDSF you will need to and the INSTANCE parameter on the START command when you start Zowe in SDSF:
 
 ```
-/S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
+/S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR',JOBNAME='ZWEXSV'
 ```
+
+The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.  
 
 ### Configuring ZWESVSTC to run under the correct user ID
 
