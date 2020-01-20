@@ -47,8 +47,7 @@ More information on Zowe keystore directories is in [Configuring Zowe certificat
 
 ## Configuring the ZWESVSTC started task
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  The steps to configure the z/OS runtime in order to launch the started task are described in [Configuring the Zowe started task](#configuring-zowe-server).
-
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  The steps to configure the z/OS runtime in order to launch the started task are described in [Configuring the Zowe started task](#configuring-zowe-server.md).
 
 
 ## The Zowe Cross Memory Server
