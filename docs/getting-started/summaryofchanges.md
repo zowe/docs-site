@@ -38,14 +38,12 @@ The following features and enhancements were added.
 -
 
 #### Zowe CLI
-- The Zowe CLI API now supports the capability change the name of sequential and partitioned data sets. [#571](https://github.com/zowe/zowe-cli/issues/571)
-- The Zowe CLI APi now supports the capability to migrate data sets. [#558](https://github.com/zowe/zowe-cli/issues/558)
-- The Zowe CLI API now supports the capability to copy data sets to another data set and copy members to another member. [#578](https://github.com/zowe/zowe-cli/issues/578)
 
-
-- - Rename  Issue 571     hmigrate  585          copy  Issue 578 (REST API only for datasets)
--  Etag functionality for APIs - (HTTP header used when transfering data to ensure that you got the lastest data/files/binarydata )    Issue #598
-
+- The Zowe CLI REST API now supports the following capabilities for managing data sets:
+  - Rename sequential and partitioned data sets. [#571](https://github.com/zowe/zowe-cli/issues/571)
+  - Migrate data sets. [#558](https://github.com/zowe/zowe-cli/issues/558)
+  - Copy data sets to another data set and copy members to another member. [#578](https://github.com/zowe/zowe-cli/issues/578)
+- The Zowe CLI REST API now supports HTTP ETags in response data. The ETag mechanism allows client applications to cache data more efficiently. ETAgs can also prevent simultaneous, conflicting updates to a resource. [#598](https://github.com/zowe/zowe-cli/issues/598)
 
 #### Zowe SMP/E installation
 
@@ -66,9 +64,8 @@ The following bugs were fixed.
 -
 
 #### Zowe CLI
-- Vulnerability fixes for imperative (update dependencies) #333 imperativ
-- submitting a job from stdin fix #601
-
+- Fixed an issue where `zowe zos-jobs submit stdin` command returned an error when handling data from standard in. [#601](https://github.com/zowe/zowe-cli/issues/601)
+- Updated dependencies to address potential vulnerabilities. The most notable chance is the upgrade from Yargs v8.0.2 to v15.0.2. [#333](https://github.com/zowe/imperative/issues/333)
 
 ## Version 1.7.1 (December 2019)
 
