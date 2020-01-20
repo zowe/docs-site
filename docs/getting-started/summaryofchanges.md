@@ -65,7 +65,7 @@ The following bugs were fixed.
 
 #### Zowe CLI
 - Fixed an issue where `zowe zos-jobs submit stdin` command returned an error when handling data from standard in. [#601](https://github.com/zowe/zowe-cli/issues/601)
-- Updated dependencies to address potential vulnerabilities. The most notable chance is the upgrade from Yargs v8.0.2 to v15.0.2. [#333](https://github.com/zowe/imperative/issues/333)
+- Updated dependencies to address potential vulnerabilities. Most notably, Yargs is upgraded from v8.0.2 to v15.0.2. [#333](https://github.com/zowe/imperative/issues/333)
 
 ## Version 1.7.1 (December 2019)
 
