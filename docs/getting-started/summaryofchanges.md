@@ -17,10 +17,12 @@ Welcome to Zowe Active Development documentation.
 
 The following plug-ins are compatible *only* with Zowe CLI Active Development version:
 
-- The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
-- The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
+- [IBM® z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
+- [IBM® IMS™ Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
+- [IBM® MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
+- [Secure Credential Store for Zowe CLI](../user-guide/cli-mqplugin.md).
 
-<!-- Add SCS and FTP plugins to list of @latest-only plugins  -->
+<!-- TODO Add SCS and FTP plugin link paths to list   -->
 
 **Note:** This is not a comprehensive list of plug-ins. For a complete list of plug-ins compatible with the Active Development version, see [Extending Zowe CLI - Active Development](https://docs.zowe.org/active-development/user-guide/cli-extending.html). For a complete list of plug-ins compatible with the `@lts-incremental` version, see [Extending Zowe CLI - Stable](https://docs.zowe.org/stable/user-guide/cli-extending.html).
 
