@@ -1,36 +1,133 @@
-# Zowe Documentation
+# Zowe documentation
 
-## Development
+Welcome to the repo for the Zowe documentation! This repo is the source for [https://docs.zowe.org](https://docs.zowe.org). 
 
-### Prepare Development Environment
+Zowe documentation is completely open source and we appreciate contributions from the community.
 
-You will need node.js >= 8 and npm installed on your local computer.
+## Table of contents
 
-To prepare your local development environment, run this command:
+- [Providing feedback](#providing-feedback)
+- [Contributing to the docs](#contributing-to-the-docs)
+- [Understanding the doc branches](#understanding-the-doc-branches)
+- [Understanding doc site organization and files](#understanding-doc-site-organization-and-files)
+- [Adding DCO signoff to commits](#adding-dco-signoff-to-commits)
+    - [Tools for automatic DCO signoff](#tools-for-automatic-dco-signoff)
+    - [What to do if I missed DCO signoff in previous commits?](#what-to-do-if-i-missed-dco-signoff-in-previous-commits)
+- [Building the docs](#building-the-docs)
+    - [Previewing or testing the doc site locally](#previewing-or-testing-the-doc-site-locally)
+        - [Errors when running the site locally?](#errors-when-running-the-site-locally)
+    - [Building the docs for production](#building-the-docs-for-production)
+    - [Testing broken links](#testing-broken-links)
+    - [Understanding the link check warning / error message](#understanding-the-link-check-warning--error-message)
+    - [Previewing the docs in PDF format](#previewing-the-docs-in-pdf-format)
+- [Archiving the docs and creating a new version](#archiving-the-docs-and-creating-a-new-version)
 
-```
-npm install
-```
 
-You can test out the documentation while you working on the changes. Run
+## Providing feedback
 
-```
-npm run docs:dev
-```
+Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback: 
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Propose content changes" at the footer to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team. 
+- You can take an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9) and tell us how you think about the docs. 
+- You can also rate the experience and leave comments when an NPS survey pops up on the doc site. 
+- If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community. 
 
-Then you can access the documentation with URL `http://localhost:8080/stable/`. Every time if you modify and save a documentation file, the local development build will be triggered automatically, then you can refresh your browser to see the changes.
+Only file issues about the Zowe docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Zowe, open an issue in the [corresponding code repository](https://github.com/zowe/community#zowe-sub-projects) or ask in the [community Slack channels](https://github.com/zowe/community#slack).
 
-### Build Documentation For Production
+## Contributing to the docs
 
-You can build documentation with this command:
+You can click the **Fork** button in the upper-right area of the screen to create a copy of this repository in your GitHub account. You can make doc changes in your fork, and when the changes are ready, go to your fork and create a new pull request to send the changes to us. 
+
+After that, a Zowe documentation reviewer will review your PR and provide feedback. The doc reviewer might ask for a technical review from a Zowe tech reviewer depending on the specific changes in the PR. 
+
+For more information about contributing to the Zowe documentation, see:
+- [Zowe documentation style guide](https://docs.zowe.org/stable/contribute/contributing.html#documentation-style-guide)
+
+## Understanding the doc branches
+
+Before you get started with the authoring work, it's necessary that you understand the different branches to work on.
+* **[`master`](https://github.com/zowe/docs-site/tree/master/docs)** -  protected branch
+
+  Docs for [https://docs.zowe.org/stable](https://docs.zowe.org/stable). This branch contains the most recent stable release content.
+* **[`docs-staging`](https://github.com/zowe/docs-site/tree/docs-staging/docs)** - protected branch
+
+  Docs for the upcoming `vNext` release. When Zowe has a release, its `docs-staging` branch will be merged into `master` and the content will be visible on [https://docs.zowe.org/stable](https://docs.zowe.org/stable).
+* **[`active-development`](https://github.com/zowe/docs-site/tree/active-development/docs)** - protected branch
+
+  Docs for a forward-version that includes features not yet included in the Zowe Stable version. Its content is published on [https://docs.zowe.org/active-development](https://docs.zowe.org/active-development) for early validation purpose.
+* **`v<v.r>.x`** - protected branches 
+
+  Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v1.0.x`, `v1.1.x`, `v1.6.x`.
+* Branches that start with `release-` contain archived patch release documentation for historical tracking.
+* You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintainance. Usually when your branch is merged, you can safely delete it.
+
+## Understanding doc site organization and files
+
+The `docs/.vuepress` folder defines the site organziation, style and table of contents. The following files are important.
+
+- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigtation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file. 
+
+- **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry. 
+
+- **config.js**: Defines the doc site configuration, such as the version number, the theme, and the Edit in GitHub links. 
+
+- **/public**: Contains public assets and files for download. 
+
+The `docs/README.md` contains content for the homepage of the doc site. 
+
+## Adding DCO signoff to commits
+
+Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged. 
+
+To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`. 
+
+### Tools for automatic DCO signoff
+
+- You can enable the DCO signoff tool https://github.com/coderanger/dco on PC to include DCO signoff automatically if you don't want to copy/paste your signature in every commit manually. This works when committing via command-line or Github Desktop.
+- If you make commits directly in the GitHub UI, you still must paste your signature into the commit. 
+
+### What to do if I missed DCO signoff in previous commits?
+
+If you missed DCO sign-off statements in a series of commits, you can retroactively signoff commits by following these steps: 
+
+1. Check and review all the commits that reports missing DCO signoff. If you have already opened a PR, you can find this information by clicking the **Details** link in the DCO chech entry. 
+1. Create a new text (.txt) file (suggested name is `past_commits_<your name>.txt`) within the `doc_signoffs` folder. 
+1. Add the following contents to the file. Take a look at [this folder](https://github.com/zowe/docs-site/tree/master/dco_signoffs) for examples.
+     
+    ```
+    I, <author_name> hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: <emails>
+    <COMMIT HASH> <COMMIT MSG>
+    ```  
+1. Commit this file to the doc site. Remember to include the signoff line in the commit message as well. 
+
+## Building the docs
+
+### Previewing or testing the doc site locally
+
+If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`. 
+
+Then, follow these steps:
+1. cd into the `docs-site` folder. 
+1. Run `npm run docs:dev`.  
+1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time if you modify and save a documentation change, the preview build will be triggered automatically, then you can refresh your browser to see the changes.
+
+#### Errors when running the site locally? 
+
+- Stop (CMD + Z) and rerun start script npm run docs:dev
+- If still errors, look for '<' in problem file not wrapped in code syntax.
+   - Issues with files can be found at the top of red error text.
+- Look for images that are being called but do not exist in the file system.
+- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`.
+
+
+### Building the docs for production
+
+You can build the docs with this command:
 
 ```
 npm run docs:build
 ```
 
-_Please note: if you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`._
-
-All build results will be put under `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/stable/` folder.
+All build results will be put under the `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/stable/` folder.
 
 You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser. The below shows how to start the web server with Docker:
 
@@ -40,7 +137,7 @@ docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/htm
 
 Now you are able to visit `http://localhost:8080/stable/` to check the content.
 
-### Test Your Modifications
+### Testing broken links
 
 You will need `Docker` to run broken links test. Check https://www.docker.com/get-started to install Docker.
 
@@ -52,52 +149,27 @@ npm run test:links:stable
 
 Check `Warning of broken links and other issues (source target lines code fragments):` sections for warnings, and Check `Errors of broken links and other issues (source target lines code fragments):` sections for errors.
 
-Errors must be fixed before merge to master branch, otherwise the pull request will be blocked.
+Errors must be fixed before merge to the `master` branch, otherwise the pull request will be blocked.
 
 _Please note, if we have multiple documentation versions in place, you may see broken links warnings on links to other versions._
 
-### Understand The Link Check Warning / Error Message
+### Understanding the link check warning / error message
 
 If you don't see a section of `Error(s) of broken links and other issues` in the job console log, that means you are all good to go! However, there may be a `Warning(s) of broken links and other issues` which includes warnings but it won't fail the build pipeline. The `(source target lines code fragments)` indicates the fields of each warning / error message.
 
-A typical link check *warning* message may looks like this:
+A typical link check *warning* message may look like this:
 
 ```
 =================================================================================
 Warning(s) of broken links and other issues (source target lines code fragments):
-- http://zowe-docs-test-links/v0-9-x/user-guide/mvd-using.html http://zowe-docs-test-links/v0-9-x/user-guide/mvd-using.html "16, 20, 24, 25" "200 OK" "#api-mediation-layer-architecture"
-- http://zowe-docs-test-links/v0-9-x/getting-started/summaryofchanges.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "24" "200 OK" "#accessing-an-api-mediation-layer"
-- http://zowe-docs-test-links/v0-9-x/user-guide/systemrequirements.html http://zowe-docs-test-links/v0-9-x/user-guide/systemrequirements.html "24" "200 OK" "#zosmf-configuration"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html "24, 33" "200 OK" "#testing-zowe-cli-connection-to-zosmf"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"
-- http://zowe-docs-test-links/v0-9-x/getting-started/overview.html http://zowe-docs-test-links/v0-9-x/user-guide/mvd-using.html "16, 20, 24" "200 OK" "#using-zowe-framework-application-plug-ins"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html "29, 46, 74" "200 OK" "#testing-zowe-cli-connection-to-zosmf,#Creating-a-profile-to-access-an-API-Mediation-Layer"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "24, 28, 47" "200 OK" "#displaying-zowe-cli-help,#Understanding-command-option-order-of-precedence"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html "24" "200 OK" "#add-context-listener"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/zlux-app-server.html http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/zlux-app-server.html "24" "200 OK" "#7-connect-in-a-browser,#3-set-the-server-configuration,#5-deploy-server-configuration-files,#1-acquire-the-source-code,#2-acquire-external-components,#0-optional-install-git-for-zos,#6-run-the-server,#4-build-application-plug-ins"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-cli/cli-devTutorials.html http://zowe-docs-test-links/v0-9-x/extend/extend-cli/cli-devTutorials.html "16, 20, 24" "200 OK" "#why-create-a-zowe-cli-plug-in"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-cli/cli-implement-profiles.html http://zowe-docs-test-links/v0-9-x/extend/extend-cli/cli-devTutorials.html "16, 20, 24, 88" "200 OK" "#Imperative-CLI-Framework-documentation"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-security.html http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-security.html "24" "200 OK" "#add-a-service-with-an-existing-certificate-to-apiml-on-zos,#generating-keystore-and-truststore-for-a-new-service-on-zos,#certificates-for-zos-installation-from-the-zowe-pax-file,#zowe-runtime-on-zos,#authentication-1,#trust-zosmf-certificate"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.html http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.html "24" "200 OK" "#validate-discovery-of-the-api-service-by-the-discovery-service"
-- http://zowe-docs-test-links/v0-9-x/user-guide/install-zos.html http://zowe-docs-test-links/v0-9-x/extend/extend-apiml/api-mediation-security.html "86" "200 OK" "#trust-zosmf-certificate"
-- http://zowe-docs-test-links/v0-9-x/user-guide/install-zos.html http://zowe-docs-test-links/v0-9-x/user-guide/install-zos.html "24, 74" "200 OK" "#starting-and-stopping-the-zowe-runtime-on-zos,#how-the-install-script-zowe-installsh-works,#installing-the-zowe-runtime-on-zos"
-- http://zowe-docs-test-links/v0-9-x/user-guide/installroadmap.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html "24" "200 OK" "#testing-zowe-cli-connection-to-zosmf"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/zlux-workshop-user-browser.html http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/zlux-workshop-user-browser.html "24, 300, 409" "200 OK" "#defining-your-first-plugin,#constructing-an-app-skeleton,#adding-your-dataservice-to-the-app,#adding-your-app-to-the-desktop,#calling-back-to-the-starter-app,#packaging-your-web-app"
-- http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/mvd-apptoappcommunication.html http://zowe-docs-test-links/v0-9-x/extend/extend-desktop/mvd-apptoappcommunication.html "24" "200 OK" "#why-application-to-application-communication"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-cicsplugin.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-cicsplugin.html "24, 31" "200 OK" "#setting-up-profiles,#get-cics-resources"
-- http://zowe-docs-test-links/v0-9-x/user-guide/cli-db2plugin.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-db2plugin.html "24, 46" "200 OK" "#executing-an-sql-statememnt,#setting-up-profiles,#license"
-- http://zowe-docs-test-links/stable/user-guide/cli-cicsplugin.html http://zowe-docs-test-links/stable/user-guide/cli-installcli.html "24, 27" "200 OK" "#installing-zowe-cli-from-local-package"
-- http://zowe-docs-test-links/stable/user-guide/cli-usingcli.html http://zowe-docs-test-links/stable/user-guide/cli-installcli.html "29, 50" "200 OK" "#creating-a-zowe-cli-profile,#testing-zowe-cli-connection-to-zosmf"
+- - http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"
 - http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html "24" "200 OK" "#add-context-listener"
 - http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-security.html http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-security.html "24" "200 OK" "#add-a-service-with-an-existing-certificate-to-api-ml-on-zos,#zowe-runtime-on-zos,#certificates-for-zos-installation-from-the-zowe-pax-file,#trust-a-zosmf-certificate,#generate-a-keystore-and-truststore-for-a-new-service-on-zos"
 - http://zowe-docs-test-links/stable/user-guide/systemrequirements.html http://zowe-docs-test-links/stable/user-guide/systemrequirements.html "24" "200 OK" "#zosmf-configuration"
-- http://zowe-docs-test-links/stable/user-guide/install-zos.html http://zowe-docs-test-links/stable/user-guide/install-zos.html "24, 75, 110, 175" "200 OK" "#installing-the-zowe-cross-memory-server-on-zos,#verifying-z-os-services-installationn,#installing-the-zowe-runtime-on-zos,#starting-and-stopping-the-zowe-cross-memory-server-on-zos,#how-the-install-script-zowe-installsh-works,#starting-and-stopping-the-zowe-runtime-on-zos"
-- http://zowe-docs-test-links/stable/user-guide/install-zos.html http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-security.html "88" "200 OK" "#trust-zosmf-certificate"
-- http://zowe-docs-test-links/stable/extend/extend-desktop/zlux-app-server.html http://zowe-docs-test-links/stable/extend/extend-desktop/zlux-app-server.html "24, 46" "200 OK" "#2-acquire-external-components,#0-optional-install-git-for-zos,#6-run-the-server,#4-build-application-plug-ins,#5-deploy-server-configuration-files,#1-acquire-the-source-code,#7-connect-in-a-browser,#3-set-the-server-configuration"
-Total 29 warning(s).
+Total 5 warning(s).
 ```
 
-A typical link check *error* message may looks like this:
+A typical link check *error* message may look like this:
 
 ```
 ===============================================================================
@@ -109,7 +181,7 @@ Total 2 error(s).
 
 The above warning / error message includes several informations:
 
-- There are 29 warnings found in the docs build result.
+- There are 5 warnings found in the docs build result.
 - There are 2 errors found in the docs build result.
 - Each line starts with `-` is one particular warning / error.
 - Each warning / error line includes 5 fields:
@@ -118,7 +190,7 @@ The above warning / error message includes several informations:
   * lines, separated by comma (,)
   * code
   * fragments, separated by comma (,)
-- For line `- http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"`, it means:
+- For a line like `- http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"`, it means:
   * **source**: in page `/v0-9-x/user-guide/cli-installcli.html`,
   * **targe**: has a link to `/v0-9-x/user-guide/cli-usingcli.html`, which is itself,
   * **lines**: at line `26, 29, 34`, which is 3 lines,
@@ -131,6 +203,16 @@ The above warning / error message includes several informations:
   * **code**: received error code `404 Not Found`,
   * **fragments**: without fragments defined.
 
-### Build PDF
+### Previewing the docs in PDF format
 
-Check [Build PDF](docs/.pdf/README.md) for details explanations.
+You can build the doc site into a PDF document to preview locally. Launch the build script with command `npm run docs:pdf`. The build result will be put into the `.deploy/.pdf/out` folder if there are no errors.
+
+To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js ALL_PAGES` property.
+
+Check [Build PDF](docs/.pdf/README.md) for detailed explanations.
+
+For published docs, PDFs of different versions are available for download on the doc site homepage. 
+
+## Archiving the docs and creating a new version
+
+Check [Build and Archive Legacy Documentation](https://github.com/zowe/docs-site/wiki/How-to#build-and-archive-legacy-documentation) for detailed explanations.
