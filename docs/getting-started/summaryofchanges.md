@@ -15,13 +15,18 @@ Welcome to Zowe Active Development documentation.
 
 **New compatible plug-ins:**
 
-In addition to the CICS and Db2 Zowe CLI plug-ins, the following plug-ins are available for Active Development:
+The following plug-ins are compatible *only* with Zowe CLI Active Development version:
 
 - The [IBM IMS Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
 - The [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
 
+<!-- Add SCS and FTP plugins to list of @latest-only plugins  -->
+
+**Note:** This is not a comprehensive list of plug-ins. For a complete list of plug-ins compatible with the Active Development version, see [Extending Zowe CLI - Active Development](https://docs.zowe.org/active-development/user-guide/cli-extending.html). For a complete list of plug-ins compatible with the `@lts-incremental` version, see [Extending Zowe CLI - Stable](https://docs.zowe.org/stable/user-guide/cli-extending.html).
+
 **Features and enhancements:**
 
+- The `zowe files copy` command was added for copying the contents of a data set or member to another data set or member. [#580](https://github.com/zowe/zowe-cli/pull/580)
 - Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
 - The following new commands were added for interacting with file systems:
     - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
