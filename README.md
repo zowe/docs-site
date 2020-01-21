@@ -1,43 +1,34 @@
-# Zowe documentation
+# Zowe™ documentation <!-- omit in toc -->
 
-Welcome to the repo for the Zowe documentation! This repo is the source for [https://docs.zowe.org](https://docs.zowe.org). 
+Welcome to the Zowe documentation repository! This repo is the source for [https://docs.zowe.org](https://docs.zowe.org), also known as "Zowe Docs"!
 
-Zowe documentation is completely open source and we appreciate contributions from the community.
+Zowe documentation is completely open-source and we appreciate contributions from the community.
 
-## Table of contents
-
+- [Table of contents](#table-of-contents)
 - [Providing feedback](#providing-feedback)
 - [Contributing to the docs](#contributing-to-the-docs)
 - [Understanding the doc branches](#understanding-the-doc-branches)
 - [Understanding doc site organization and files](#understanding-doc-site-organization-and-files)
 - [Adding DCO signoff to commits](#adding-dco-signoff-to-commits)
-    - [Tools for automatic DCO signoff](#tools-for-automatic-dco-signoff)
-    - [What to do if I missed DCO signoff in previous commits?](#what-to-do-if-i-missed-dco-signoff-in-previous-commits)
 - [Building the docs](#building-the-docs)
-    - [Previewing or testing the doc site locally](#previewing-or-testing-the-doc-site-locally)
-        - [Errors when running the site locally?](#errors-when-running-the-site-locally)
-    - [Building the docs for production](#building-the-docs-for-production)
-    - [Testing broken links](#testing-broken-links)
-    - [Understanding the link check warning / error message](#understanding-the-link-check-warning--error-message)
-    - [Previewing the docs in PDF format](#previewing-the-docs-in-pdf-format)
 - [Archiving the docs and creating a new version](#archiving-the-docs-and-creating-a-new-version)
-
 
 ## Providing feedback
 
-Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback: 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Propose content changes" at the footer to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team. 
-- You can take an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9) and tell us how you think about the docs. 
-- You can also rate the experience and leave comments when an NPS survey pops up on the doc site. 
-- If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community. 
+Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback:
+
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Propose content changes" at the footer to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team.
+- You can take an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9) and tell us how you think about the docs.
+- You can also rate the experience and leave comments when an NPS survey pops up on the doc site.
+- If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community.
 
 Only file issues about the Zowe docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Zowe, open an issue in the [corresponding code repository](https://github.com/zowe/community#zowe-sub-projects) or ask in the [community Slack channels](https://github.com/zowe/community#slack).
 
 ## Contributing to the docs
 
-You can click the **Fork** button in the upper-right area of the screen to create a copy of this repository in your GitHub account. You can make doc changes in your fork, and when the changes are ready, go to your fork and create a new pull request to send the changes to us. 
+You can click the **Fork** button in the upper-right area of the screen to create a copy of this repository in your GitHub account. You can make doc changes in your fork, and when the changes are ready, go to your fork and create a new pull request to send the changes to us.
 
-After that, a Zowe documentation reviewer will review your PR and provide feedback. The doc reviewer might ask for a technical review from a Zowe tech reviewer depending on the specific changes in the PR. 
+After that, a Zowe documentation reviewer will review your PR and provide feedback. The doc reviewer might ask for a technical review from a Zowe tech reviewer depending on the specific changes in the PR.
 
 For more information about contributing to the Zowe documentation, see:
 - [Zowe documentation style guide](https://docs.zowe.org/stable/contribute/contributing.html#documentation-style-guide)
@@ -54,63 +45,70 @@ Before you get started with the authoring work, it's necessary that you understa
 * **[`active-development`](https://github.com/zowe/docs-site/tree/active-development/docs)** - protected branch
 
   Docs for a forward-version that includes features not yet included in the Zowe Stable version. Its content is published on [https://docs.zowe.org/active-development](https://docs.zowe.org/active-development) for early validation purpose.
-* **`v<v.r>.x`** - protected branches 
+* **`v<v.r>.x`** - protected branches
 
   Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v1.0.x`, `v1.1.x`, `v1.6.x`.
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
+*
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintainance. Usually when your branch is merged, you can safely delete it.
 
 ## Understanding doc site organization and files
 
 The `docs/.vuepress` folder defines the site organziation, style and table of contents. The following files are important.
 
-- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigtation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file. 
+- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigtation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
 
-- **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry. 
+- **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry.
 
-- **config.js**: Defines the doc site configuration, such as the version number, the theme, and the Edit in GitHub links. 
+- **config.js**: Defines the doc site configuration, such as the version number, the theme, and the Edit in GitHub links.
 
-- **/public**: Contains public assets and files for download. 
+- **/public**: Contains public assets and files for download.
 
-The `docs/README.md` contains content for the homepage of the doc site. 
+The `docs/README.md` contains content for the homepage of the doc site.
 
 ## Adding DCO signoff to commits
 
-Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged. 
+Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged.
 
-To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`. 
+To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`.
 
 ### Tools for automatic DCO signoff
 
-- You can enable the DCO signoff tool https://github.com/coderanger/dco on PC to include DCO signoff automatically if you don't want to copy/paste your signature in every commit manually. This works when committing via command-line or Github Desktop.
-- If you make commits directly in the GitHub UI, you still must paste your signature into the commit. 
+If you don't want to manually copy/paste your signature in every commit, use one or both of the following tools:
+
+- To enable auto-signoff for local commits, download and enable the [DCO signoff tool](https://github.com/coderanger/dco) on your PC. This method works when committing via command-line or Github Desktop.
+
+    **Tip:** To enable the tool, issue the `dco enable` on each new repository that you clone.
+
+- **(Google Chrome)** To enable auto-signoff for commits made through the GitHub Web UI, install [DCO GitHub UI](https://chrome.google.com/webstore/detail/dco-github-ui/onhgmjhnaeipfgacbglaphlmllkpoijo?hl=en) in your browser.
 
 ### What to do if I missed DCO signoff in previous commits?
 
-If you missed DCO sign-off statements in a series of commits, you can retroactively signoff commits by following these steps: 
+If you missed DCO sign-off statements in a series of commits, you can retroactively sign commits by following these steps:
 
-1. Check and review all the commits that reports missing DCO signoff. If you have already opened a PR, you can find this information by clicking the **Details** link in the DCO chech entry. 
-1. Create a new text (.txt) file (suggested name is `past_commits_<your name>.txt`) within the `doc_signoffs` folder. 
-1. Add the following contents to the file. Take a look at [this folder](https://github.com/zowe/docs-site/tree/master/dco_signoffs) for examples.
-     
+1. Check and review all commits that report missing DCO signoff. If you already opened a PR, you can find this information by clicking the **Details** link in the DCO check entry.
+2. Create a new text (.txt) file (suggested name is `past_commits_<your name>.txt`) within the `doc_signoffs` folder.
+3. Add the following contents to the file. Take a look at [this folder](https://github.com/zowe/docs-site/tree/master/dco_signoffs) for examples.
+
     ```
     I, <author_name> hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: <emails>
     <COMMIT HASH> <COMMIT MSG>
-    ```  
-1. Commit this file to the doc site. Remember to include the signoff line in the commit message as well. 
+    ```
+
+4. Commit this file to the doc site. Remember to include the signoff line in the commit message as well.
 
 ## Building the docs
 
 ### Previewing or testing the doc site locally
 
-If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`. 
+If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`.
 
 Then, follow these steps:
-1. cd into the `docs-site` folder. 
-1. Run `npm run docs:dev`.  
+1. cd into the `docs-site` folder.
+1. Run `npm run docs:dev`.
 1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time if you modify and save a documentation change, the preview build will be triggered automatically, then you can refresh your browser to see the changes.
 
-#### Errors when running the site locally? 
+#### Errors when running the site locally?
 
 - Stop (CMD + Z) and rerun start script npm run docs:dev
 - If still errors, look for '<' in problem file not wrapped in code syntax.
@@ -211,7 +209,7 @@ To update what should be included in PDF document, go ahead edit `docs/.vuepress
 
 Check [Build PDF](docs/.pdf/README.md) for detailed explanations.
 
-For published docs, PDFs of different versions are available for download on the doc site homepage. 
+For published docs, PDFs of different versions are available for download on the doc site homepage.
 
 ## Archiving the docs and creating a new version
 
