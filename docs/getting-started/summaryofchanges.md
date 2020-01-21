@@ -45,9 +45,15 @@ The following features and enhancements were added.
   - Copy data sets to another data set and copy members to another member. [#578](https://github.com/zowe/zowe-cli/issues/578)
 - The Zowe CLI REST API now supports HTTP ETags in response data. The ETag mechanism allows client applications to cache data more efficiently. ETAgs can also prevent simultaneous, conflicting updates to a resource. [#598](https://github.com/zowe/zowe-cli/issues/598)
 
+#### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) .
+
 #### Zowe SMP/E installation
 
-<>
+-
 -
 -
 
