@@ -2,12 +2,6 @@
 
 You install the Zowe&trade; convenience build by running shell script within a Unix System Services (USS) shell.
 
-1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
-2. [Installing the Zowe runtime](#installing-the-zowe-runtime)
-	- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
-    - [Step 2: Locate a dataset HLQ to install a SAMPLIB and LOADLIB PDS]()
-	- [Step 3: Execute the `zowe-install.sh` script](#step-3-execute-the-zowe-installsh-script)
-
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
@@ -93,12 +87,9 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
 ## Installing the Zowe runtime
 
-The first install step is to create a USS folder containing the Zowe runtime artefacts.  This is known as the `<RUNTIME_DIR`.
+The first install step is to create a USS folder containing the Zowe runtime artefacts.  This is known as the `<RUNTIME_DIR>`.
 
 **Follow these steps:**
-
-- [Step 1: Locate the install directory](#step-1:-locate-the-install-directory)
-- [Step 3: Execute the `zowe-install.sh` script](#step-3:-install-the-zowe-runtime)
 
 ### Step 1: Locate the install directory
 
@@ -111,15 +102,15 @@ Navigate to the directory where the installation archive is extracted. Locate th
 
 ### Step 2: Choose a runtime USS folder
 
-For Zowe to execute it must be installed into a runtime directory or `<RUNTIME_DIR>`.  This directory will be created during the install process and the user performing the installed must have write permission for the install to succeed.  If you are installing an upgrade of Zowe the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for version 1.8 or higher.  
+For Zowe to execute it must be installed into a runtime directory or `<RUNTIME_DIR>`.  This directory will be created during the install process and the user performing the installation must have write permission for the installation to succeed.  If you are installing an upgrade of Zowe, the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for version 1.8 or later.  
 
-For an enterprise install of Zowe a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For a user testing Zowe for themselves it could be `~/zowe/v1`.  
+For an enterprise install of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For a user testing Zowe for themselves it could be `~/zowe/v1`.  
 
 ### Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB
 
-During the install two PDS members are created.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules.  The installer needs to know the `<DATA_SET_PREFIX>` into which to create the two PDS members.  
+During the installation, two PDS members are created.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules.  The installer needs to know the `<DATA_SET_PREFIX>` into which to create the two PDS members.  
 
-The `SZWESAMP` data set is fixed block 90 samplib containing the following members
+The `SZWESAMP` data set is fixed block 90 samplib containing the following members:
 
 Member name | Purpose  
 ---|---
@@ -131,24 +122,22 @@ ZWEXASTC | Started task JCL for the cross memory Auxillary server
 ZWEXMPRG | Console commands to APF authorize the cross memory server load library
 ZWEXMSCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
 
-The `SZWEAUTH` data set is a load library containing the following members
+The `SZWEAUTH` data set is a load library containing the following members:
 
 Member name | Purpose
 ---|---
 ZWESIS01 | Load module for the Cross memory server
 ZWESAUX  | Load module for the Cross memory server's auxillary address space
 
-If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer the PDS members `OPENSRC.ZWE.SZWESAMP` and `OPENSEC.ZWE.SZWEAUTH` will be created.  
+If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer, the PDS members `OPENSRC.ZWE.SZWESAMP` and `OPENSEC.ZWE.SZWEAUTH` will be created.  
 
-### Step 3: Install the Zowe runtime
+### Step 4: Install the Zowe runtime
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
  ```
     zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
  ```
-
-
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 

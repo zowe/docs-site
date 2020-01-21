@@ -1,60 +1,8 @@
-# Configuring the Zowe runtime
-
-After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
-
-<<OLD table of contents>>
-
-1. [Prerequisites](#prerequisites)
-1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
-   1. [Environment variables](#environment-variables)
-   1. [Configuration variables](#configuration-variables)
-      - [Address space name](#address-space-name)
-      - [Port allocations](#port-allocations)
-      - [PROCLIB member name](#proclib-member-name)
-      - [Certificates](#certificates)
-      - [Unix File Permissions](#unix-file-permissions)
-1. [Configuring the ZWESVSTC started task](#configuring-the-zwesvstc-started-task)
-    1. [Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime](#creating-the-zowesvr-proclib-member-to-launch-the-zowe-runtime)
-    1. [Configuring ZWESVSTC to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
-    1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
-1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
-	  - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-	  - [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
-1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
-    - [Starting the ZWESVSTC PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
-1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
-
-
-Before lauching Zowe there are two additional USS folders that need to be created.  
-
-## Zowe instance directory
-
-The Zowe instance directory contains contains configuration data required to launch a Zowe runtime and is where log files are stored.   
-
-More than one instance directory can be used for the same Zowe runtime, allowing different configurations to have different port ranges, to have different version pre-requisites (node, Java) and to bring up different subsystems.
-
-More information on Zowe instance directories is in [Zowe instance directory](configure-instance-directory.md)
-
-## Zowe keystore directory
-
-The Zowe keystore directory contains the key used by the Zowe desktop and the Zowe API mediation layer to secure its TLS communication with clients (such as web browsers or REST AI clients). The keystore directory also has a trust store where public keys of any servers that Zowe communicates to (such as z/OSMF) are held.
-
-A keystore directory needs to be created for a Zowe instance to be launched successfully, and a keystore directory can be shared between Zowe instances and between Zowe runtimes.  
-
-More information on Zowe keystore directories is in [Configuring Zowe certificate store](configure-certificates.md).
-
-
-## Configuring the ZWESVSTC started task
-
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  The steps to configure the z/OS runtime in order to launch the started task are described in [Configuring the Zowe started task](configure-zowe-server.md).
-
-
-## The Zowe Cross Memory Server
+# Configuring the Zowe Cross Memory Server
 
 The Zowe Cross Memory Server provides privileged cross-memory services to Zowe. The Zowe Desktop requires that the server be installed, configured, and started. The Zowe API Mediation Layer does not.
 
-### Overview
+## Overview
 
 The Cross Memory Server has two components: an angel process server and its auxiliary address spaces. Each runs as a started task. The Cross Memory Server uses the angel process server address space and starts, controls, and delegates work to the auxiliary (AUX) address spaces.
 
@@ -70,7 +18,7 @@ The angel process server runs under the started task ZWESTSTC. The auxiliary add
 
 The ZWESISTC started task runs the load module ZWESIS01, serves the ZWESVSTC started task, and provides secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. The ZWESASTC started task runs the load module ZWESAUX.
 
-### Manually installing the Zowe Cross Memory Server
+## Manually installing the Zowe Cross Memory Server
 <!-- TODO. Entire sub-section -->
 
 A number of files used by the manual installation are included in the USS directory `xmem-server/zss`. Before you start the installation, check and ensure that the `xmem-server/zss` directory is in the Zowe runtime directory. If it does not exist, follow these steps to create it and extract the `xmem-server/zss.pax` file, which places the files into it:
@@ -401,7 +349,7 @@ To manually install the Cross Memory Server, take the following steps:
            ```
       </details>
 
-### Installing the Cross Memory Server using the script
+## Installing the Cross Memory Server using the script
 
 Users with sufficient z/OS authority can install the Cross Memory Server using a script. The script, `xmem-server/zowe-install-apf-server.sh`, reads configuration parameters from the  `xmem-server/zowe-install-apf-server.yaml` file. The script creates the USS directory `xmem-server/zss` in the Zowe runtime directory by expanding the file `xmem-server/zss.pax`. The script creates the APF authorized load library, copies the load modules, creates the PROCLIB, defines the `ZWES.IS` FACILITY class, and grants READ access to the STC user under which the ZWESVSTC started task runs. 
 
@@ -411,7 +359,7 @@ The script does not perform the following tasks:
 - Create the required PPT entries. You must create these by following the step "Add PPT entries to the system PARMLIB" in the [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
 - Configure anything for ICSF cryptographic services. If you have this environment, follow the step "Configure an ICSF cryptographic services environment" in [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server) documentation above.
 
-#### Installing using the script
+### Installing using the script
 
 1. Specify the following data set parameters in the `xmem-server/zowe-install-apf-server.yaml` file:
 
