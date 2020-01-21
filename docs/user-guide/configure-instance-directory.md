@@ -27,7 +27,7 @@ To operate Zowe a number of ZFS folders need to be located for prerequisites on 
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
 - `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible from clients who want to use Zowe.  This is important to verify for zD&T and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
 
-- `ZOWE_SERVER_PROCLIB_MEMBER`:  This is the name of the PROCLIB member JCL that will be used to create the Zowe started task.  The default is `ZWESVSTC` and is provided in the `SZWESAMP` PDS that is created when Zowe is installed.  More information on how to configure the Zowe started task PROCIB can be found in [Creating the ZWESVSTC PROBLIC member](###-creating-the-zwesvstc-proclib-member-to-launch-the-zowe-runtime).
+### Address space names
 
 Inddiviaual address spaces for different Zowe instances can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address spaces names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
 
@@ -60,6 +60,9 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
   ```
   ZWEXAG
   ```
+
+### Ports
+
 When Zowe starts a number of its micro services need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging onto the Zowe desktop.  All of the other ports are not typically used by clients and used for intra service communication by Zowe.  
 
 - `CATALOG_PORT`: The port the API catalog service will use
@@ -99,3 +102,9 @@ To determine which ports are not available, follow these steps:
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
 
 - `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.  
+
+### Component Groups
+
+- `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
+  - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `ZOWE_JAVA_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `ZOWE_HOME_HOME` value.  

@@ -6,9 +6,9 @@ If a site has their own technique for PROCLIB creation they may follow this and 
 
 **First Parameter**=Source PDS Prefix
 
-Dataset prefix of the source PDS where .SZWESAMPE(ZWESVSTC) was installed into.  
+Dataset prefix of the source PDS where .SZWESAMP(ZWESVSTC) was installed into.  
 
-For an installation from a convenience build this will be the value of `install:datasetPrefix` in `zowe-install.yaml` file. 
+For an installation from a convenience build this will be the value of the `-h` argument when `zowe-install.sh` was executed.   
 
 For an SMP/E installation thils will be the value of 
 `$datasetPrefixIn` in the member AZWE001.F1(ZWE3ALOC)

@@ -46,11 +46,11 @@ The high-level process of installing Zowe on z/OS is as follows:
 
 4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store](configure-certificates.md).  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
 
-. Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` together installed by Zowe.  The load library for the cross memory server is included in the PDS load library installed in a sample `SZWEAUTH`.  For the `ZWESVSTC` started task to be launched it must be configured, see [Configuring the Zowe started task](configure-zowe-server.md). For the cross memory server `ZWESISTC` to be launched it must be configured, see [Configuring the Cross memory server](configuring-cross-memory-server.md)
+Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
 
-<JRW TO DO Need a diagram here>
+5. The `ZWESISTC` cross memory server must be configured and the load libraries must be installed, see [Configuring the Cross memory server](configure-cross-memory-server.md).  The cross memory server is only required if you are launching the Zowe desktop.  It is not required to be installed, configured and launched if you just wish to use the Zowe API Mediation Layer.
 
-5. Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
+6. For the `ZWESVSTC` started task to be launched it must be configured, see [Configuring the Zowe started task](configure-zowe-server.md). 
 
 ## Looking for troubleshooting help?
 
