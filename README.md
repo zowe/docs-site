@@ -4,7 +4,6 @@ Welcome to the Zowe documentation repository! This repo is the source for [https
 
 Zowe documentation is completely open-source and we appreciate contributions from the community.
 
-- [Table of contents](#table-of-contents)
 - [Providing feedback](#providing-feedback)
 - [Contributing to the docs](#contributing-to-the-docs)
 - [Understanding the doc branches](#understanding-the-doc-branches)
