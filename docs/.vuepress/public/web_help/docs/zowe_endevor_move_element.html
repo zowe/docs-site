@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor move element</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_move.html">move</a> › <a href="zowe_endevor_move_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The move element command moves Elements between inventory locations along a
+map.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  endevor move element &lt;element&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>element</code>         <em>(string)</em></p>
+<ul>
+<li>Name of the CA Endevor SCM element.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-location-definition-options">endevor-location definition options</h4>
+<ul>
+<li><p><code>--environment</code>  | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM environment where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--system</code>  | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM system where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--subsystem</code>  | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM subsystem where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--type</code>  | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the CA Endevor SCM element&#39;s type.</li>
+</ul>
+</li>
+<li><p><code>--stage-number</code>  | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li><p>The CA Endevor SCM stage number where your project resides.</p>
+<p>Allowed values: 1, 2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--ccid</code>  | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The CCID you want to use when performing an Element action.</li>
+</ul>
+</li>
+<li><p><code>--comment</code>  | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The comment you want to have when performing an Element action</li>
+</ul>
+</li>
+<li><p><code>--maxrc</code>  <em>(number)</em></p>
+<ul>
+<li>The return code of a failed action</li>
+</ul>
+</li>
+<li><p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--proc-group</code>  | <code>--pg</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM processor group you would like to use.</li>
+</ul>
+</li>
+<li><p><code>--sync</code>  | <code>-s</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to synchronize source and current level of the Elements
+while performing this action.</li>
+</ul>
+</li>
+<li><p><code>--with-history</code>  | <code>--wh</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to preserve the change history of the Elements while
+performing this action.</li>
+</ul>
+</li>
+<li><p><code>--bypass-element-delete</code>  | <code>--bed</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to retain the Elements in the source Stage after
+successfully completing this action.</li>
+</ul>
+</li>
+<li><p><code>--retain-signout</code>  | <code>--rs</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to retain the source location signouts for all Elements at
+the target location while performing this action.</li>
+</ul>
+</li>
+<li><p><code>--signout-to</code>  | <code>--st</code> <em>(string)</em></p>
+<ul>
+<li>Specify if you want to sign all Elements out to the specified user ID at the
+target Stage while performing this action.</li>
+</ul>
+</li>
+<li><p><code>--jump</code>  | <code>-j</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to move Elements across Environments even if those Elements
+exist at an intermediate Stage that is not on the map, while performing this
+action.</li>
+</ul>
+</li>
+<li><p><code>--where-ccid-all</code>  | <code>--wca</code> <em>(string)</em></p>
+<ul>
+<li>Instructs CA Endevor SCM to search both the Master Control File and the SOURCE
+DELTA levels for a specified CCIDs.
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
+characters in quotes.</li>
+</ul>
+</li>
+<li><p><code>--where-ccid-current</code>  | <code>--wcc</code> <em>(string)</em></p>
+<ul>
+<li>Instructs CA Endevor SCM to search through the CCID fields in the Master Control
+File to find a specified CCIDs.
+Accept up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
+characters in quotes.</li>
+</ul>
+</li>
+<li><p><code>--where-ccid-retrieve</code>  | <code>--wcr</code> <em>(string)</em></p>
+<ul>
+<li>Instructs CA Endevor SCM to use the CCID in the Master Control File RETRIEVE
+CCID field.
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
+characters in quotes.</li>
+</ul>
+</li>
+<li><p><code>--where-proc-group</code>  | <code>--wpg</code> <em>(string)</em></p>
+<ul>
+<li>Lets you select Elements according to a specified Processor group. You can use
+a wildcard when specifying the Processor group name.
+Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
+</ul>
+</li>
+</ul>
+<h4 id="output-customization-options">output customization options</h4>
+<ul>
+<li><p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li><p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving output messages from CA Endevor SCM locally.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-session-definition-options">endevor session definition options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li><p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li><p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user&#39;s password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of
+supplied CAs</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--endevor-profile</code>  | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--endevor-location-profile</code>  | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Move element from specified inventory location with endevor
+profile set up:</p>
+<ul>
+<li><code>zowe  endevor move element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor move element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

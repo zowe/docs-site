@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ops enable rule</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ops.html">ops</a> › <a href="zowe_ops_enable.html">enable</a> › <a href="zowe_ops_enable_rule.html">rule</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Enable the specified rule.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  ops enable rule &lt;ruleset&gt; &lt;rule&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>ruleset</code>         <em>(string)</em></p>
+<ul>
+<li>The rule set containing the rule.</li>
+</ul>
+</li>
+<li><p><code>rule</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the rule.</li>
+</ul>
+</li>
+</ul>
+<h4 id="ops-web-services-connection-options">OPS WEB SERVICES CONNECTION OPTIONS</h4>
+<ul>
+<li><p><code>--user</code>  <em>(string)</em></p>
+<ul>
+<li>Your z/OS user name used to authenticate to OPS Web Services</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password used to authenticate to OPS Web Services</li>
+</ul>
+</li>
+<li><p><code>--host</code>  <em>(string)</em></p>
+<ul>
+<li>The hostname of the server where OPS Web Services is running.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-p</code> <em>(number)</em></p>
+<ul>
+<li>The port number for OPS Web Services.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>If set to true, the server certificate is verified against the list of supplied
+CAs. If set to false, certificate verification is not performed.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li><p>The protocol used for connecting to OPS Web Services</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li><p><code>--subsystem</code>  | <code>--subs</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the subsystem id of the CA OPS/MVS instance to which commands will be
+directed.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--ops-profile</code>  | <code>--ops-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ops) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Enable MYRULE on ruleset OPSRULES on subsystem OPSS.:</p>
+<ul>
+<li><code>zowe  ops enable rule OPSRULES MYRULE --subsystem OPSS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ops enable rule OPSRULES MYRULE --subsystem OPSS">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor git build-area-list</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_git.html">git</a> › <a href="zowe_endevor_git_build-area-list.html">build-area-list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List build area in Endevor.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  endevor git build-area-list [buildAreaId] [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>buildAreaId</code>         <em>(string)</em></p>
+<ul>
+<li>Id of the Endevor build area. Name-masking is not allowed. When ommited,
+Endevor queries all the build areas.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--work-dir</code>  | <code>--wd</code> <em>(string)</em></p>
+<ul>
+<li><p>The local working directory of your Git-Endevor mapping that you are building.</p>
+<p>Default value: ./</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="response-format-options">Response Format Options</h4>
+<ul>
+<li><p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property
+names to include in the output response. You can filter JSON objects properties
+OR table columns/fields. In addition, you can use this option in conjunction
+with &#39;--response-format-type&#39; to reduce the output of a command to a single
+field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li><p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li><p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is
+an array of homogeneous JSON objects. Each property of the object will become a
+column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type
+(JSON objects/arrays) are stringified and a new line is added after each entry
+in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object).
+Can be used in place of &quot;table&quot; to change from tabular output to a list of
+prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li><p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers
+in the output.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Query detailed informaton of all the build areas for the
+current working directory:</p>
+<ul>
+<li><code>zowe  endevor git build-area-list</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor git build-area-list">Copy</button></li>
+</ul>
+</li>
+<li><p>Query detailed information of build area with id &quot;1&quot;:</p>
+<ul>
+<li><code>zowe  endevor git build-area-list &quot;1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor git build-area-list &quot;1&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

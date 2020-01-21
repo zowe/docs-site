@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor add element</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_add.html">add</a> › <a href="zowe_endevor_add_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The add element command lets you add an Element to an Environment entry Stage in
+CA Endevor SCM.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  endevor add element &lt;element&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>element</code>         <em>(string)</em></p>
+<ul>
+<li>Name of the CA Endevor SCM element.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-location-definition-options">endevor-location definition options</h4>
+<ul>
+<li><p><code>--environment</code>  | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM environment where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--system</code>  | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM system where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--subsystem</code>  | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The CA Endevor SCM subsystem where your project resides.</li>
+</ul>
+</li>
+<li><p><code>--type</code>  | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the CA Endevor SCM element&#39;s type.</li>
+</ul>
+</li>
+<li><p><code>--ccid</code>  | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The CCID you want to use when performing an Element action.</li>
+</ul>
+</li>
+<li><p><code>--comment</code>  | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The comment you want to have when performing an Element action</li>
+</ul>
+</li>
+<li><p><code>--maxrc</code>  <em>(number)</em></p>
+<ul>
+<li>The return code of a failed action</li>
+</ul>
+</li>
+<li><p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4 id="input-sources-options">input sources options</h4>
+<ul>
+<li><p><code>--from-file</code>  | <code>--ff</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source file.</li>
+</ul>
+</li>
+<li><p><code>--from-dataset</code>  | <code>--fd</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source data set name.</li>
+</ul>
+</li>
+<li><p><code>--from-member</code>  | <code>--fm</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source member name in the data set.</li>
+</ul>
+</li>
+<li><p><code>--from-path</code>  | <code>--fp</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide the path of source USS file. It must be used with
+from-uss-file.</li>
+</ul>
+</li>
+<li><p><code>--from-uss-file</code>  | <code>--fuf</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source USS file name. It must be used with from-path</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--override-signout</code>  | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to override the Signout of an Endevor element while
+performing this action.</li>
+</ul>
+</li>
+<li><p><code>--new-version</code>  | <code>--nv</code> <em>(number)</em></p>
+<ul>
+<li>Assign a different version number to the Element.</li>
+</ul>
+</li>
+</ul>
+<h4 id="output-customization-options">output customization options</h4>
+<ul>
+<li><p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li><p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving output messages from CA Endevor SCM locally.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-session-definition-options">endevor session definition options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li><p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li><p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user&#39;s password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of
+supplied CAs</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--endevor-profile</code>  | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--endevor-location-profile</code>  | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Add element from local file with endevor profile set up:</p>
+<ul>
+<li><code>zowe  endevor add element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor add element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

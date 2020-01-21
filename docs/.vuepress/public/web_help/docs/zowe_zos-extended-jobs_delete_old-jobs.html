@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-extended-jobs delete old-jobs</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-extended-jobs.html">zos-extended-jobs</a> › <a href="zowe_zos-extended-jobs_delete.html">delete</a> › <a href="zowe_zos-extended-jobs_delete_old-jobs.html">old-jobs</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Delete (purge) jobs in OUTPUT status. Defaults to deleting all jobs owned by
+your user ID that are in output status.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-extended-jobs delete old-jobs [options]</p>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--prefix</code>  | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Only delete jobs with job names that match this prefix. Defaults to deleting
+all jobs owned by your user ID that are in output status.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Delete all of your jobs in output status with a job name
+starting with &quot;ibmuser&quot;.:</p>
+<ul>
+<li><code>zowe  zos-extended-jobs delete old-jobs -p &quot;ibmuser*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-jobs delete old-jobs -p &quot;ibmuser*&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

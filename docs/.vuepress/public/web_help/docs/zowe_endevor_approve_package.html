@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor approve package</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_approve.html">approve</a> › <a href="zowe_endevor_approve_package.html">package</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The approve package command approves Package in CA Endevor SCM for execution.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  endevor approve package [package] [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>package</code>         <em>(string)</em></p>
+<ul>
+<li>Name of the CA Endevor SCM package.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--notes</code>  | <code>-n</code> <em>(string)</em></p>
+<ul>
+<li>Notes for approve/deny package.</li>
+</ul>
+</li>
+<li><p><code>--notes-from-file</code>  | <code>--nff</code> <em>(string)</em></p>
+<ul>
+<li>Local file of notes for approve/deny package.</li>
+</ul>
+</li>
+</ul>
+<h4 id="output-customization-options">output customization options</h4>
+<ul>
+<li><p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li><p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving output messages from CA Endevor SCM locally.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-location-definition-options">endevor-location definition options</h4>
+<ul>
+<li><p><code>--maxrc</code>  <em>(number)</em></p>
+<ul>
+<li>The return code of a failed action</li>
+</ul>
+</li>
+<li><p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4 id="endevor-session-definition-options">endevor session definition options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li><p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li><p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user&#39;s password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of
+supplied CAs</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--endevor-profile</code>  | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--endevor-location-profile</code>  | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Approve package with endevor profile set up, specifying
+approval notes:</p>
+<ul>
+<li><code>zowe  endevor approve package packageName -n &quot;notes&quot; -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor approve package packageName -n &quot;notes&quot; -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

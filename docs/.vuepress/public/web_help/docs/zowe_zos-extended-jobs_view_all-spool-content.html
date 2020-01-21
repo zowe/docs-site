@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-extended-jobs view all-spool-content</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-extended-jobs.html">zos-extended-jobs</a> › <a href="zowe_zos-extended-jobs_view.html">view</a> › <a href="zowe_zos-extended-jobs_view_all-spool-content.html">all-spool-content</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>View the contents of each spool file from a z/OS job on spool/JES queues. The
+command does not pre-validate the JOBID or spool ID. The command presents
+errors verbatim from the z/OSMF Jobs REST endpoints.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-extended-jobs view all-spool-content &lt;jobid&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>jobid</code>         <em>(string)</em></p>
+<ul>
+<li>The z/OS JOBID of the job containing the spool files you want to view. No
+pre-validation of the JOBID is performed.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>View all spool files for the job with job ID JOB00234:</p>
+<ul>
+<li><code>zowe  zos-extended-jobs view all-spool-content JOB00234</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-jobs view all-spool-content JOB00234">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
