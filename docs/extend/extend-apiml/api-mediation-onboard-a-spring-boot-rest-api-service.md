@@ -83,33 +83,33 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
     ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
+        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
     ```
      * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
 
     ```
         <dependency>
-              <groupId>com.ca.mfaas.sdk</groupId>
+              <groupId>org.zowe.apiml.sdk</groupId>
               <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
               <version>1.1.0</version>
         </dependency>
     ```
      * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
+        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
         ```
 
      * If you use the Spring Boot release 2.0.x in a Maven build system, add the following code to the `pom.xml` file:  
         ```
         <dependency>
-               <groupId>com.ca.mfaas.sdk</groupId>
+               <groupId>org.zowe.apiml.sdk</groupId>
                <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
                <version>1.1.0</version>
         </dependency>
         ```
 3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
 
-    *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
+    *  `@ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})`
 
         Makes an API documentation endpoint visible within the Spring context.
     *  `@EnableApiDiscovery`
@@ -121,13 +121,13 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
     **Example:**   
 
     ```
-     package com.ca.mfaas.DiscoverableClientSampleApplication;
+     package org.zowe.apiml.DiscoverableClientSampleApplication;
      ..
-     import com.ca.mfaas.enable.EnableApiDiscovery;
+     import org.zowe.apiml.enable.EnableApiDiscovery;
      import org.springframework.context.annotation.ComponentScan;
      ..
      @EnableApiDiscovery
-     @ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})
+     @ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})
      ...
      public class DiscoverableClientSampleApplication {...
      ```  

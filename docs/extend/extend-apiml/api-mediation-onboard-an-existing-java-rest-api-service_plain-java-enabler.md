@@ -115,14 +115,14 @@ Use the following procedure to use _Gradle_ as your build automation system.
 4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Giza Artifactory, add the following code block to your `build.gradle` script:
 
     ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+    implementation "org.zowe.apiml.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
     **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script:
 
     ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+    implementation "org.zowe.apiml.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     implementation libraries.eureka_client
     implementation libraries.httpcore
     implementation libraries.jackson_databind
@@ -642,11 +642,11 @@ The following code block is a full example of a context listener class implement
 
 **Example:**
 
-    import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
-    import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
-    import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
-    import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
-    import com.ca.mfaas.exception.ServiceDefinitionException;
+    import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+    import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+    import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+    import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
+    import org.zowe.apiml.exception.ServiceDefinitionException;
     import lombok.extern.slf4j.Slf4j;
 
     import javax.servlet.ServletContextEvent;
@@ -749,7 +749,7 @@ Use the following procedure to add Swagger API documentation to your project.
    **Example:**
 
     ```java
-    package com.ca.mfaas.sampleservice.configuration;
+    package org.zowe.apiml.sampleservice.configuration;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
