@@ -2,8 +2,7 @@
 
 After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
 
-<<OLD table of contents>>
-
+<!-->
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
    1. [Environment variables](#environment-variables)
@@ -24,7 +23,7 @@ After you install Zowe&trade; through either the convenience build by running th
     - [Starting the ZWESVSTC PROC](#starting-the-zowesvr-proc)
     - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
 1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
-
+-->
 
 Before lauching Zowe there are two additional USS folders that need to be created.  
 
