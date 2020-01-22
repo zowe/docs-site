@@ -23,21 +23,36 @@
     "text": "User Guide",
     "baseuri": "/user-guide/",
     "items": [{
-        "text": "Installing Zowe",
+      "text": "Planning and preparing the installation",
+      "items": [
+        "user-guide/installandconfig.md",
+        "user-guide/systemrequirements.md",
+        "user-guide/install-nodejs-zos.md",
+        "user-guide/systemrequirements-zosmf.md",
+        "user-guide/systemrequirements-zosmf-lite.md"
+      ]
+      },
+      {
+        "text": "Installing Zowe z/OS components",
         "items": [
-          "user-guide/installandconfig.md",
-          "user-guide/systemrequirements.md",
-          "user-guide/install-nodejs-zos.md",
-          "user-guide/systemrequirements-zosmf.md",
-          "user-guide/systemrequirements-zosmf-lite.md",
           "user-guide/install-zos.md",
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
+          "user-guide/configure-zos-system.md",
+          "user-guide/configure-instance-directory.md",
+          "user-guide/configure-certificates.md",
           "user-guide/configure-zowe-runtime.md",
+          "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
+          "user-guide/zowe-zos-uninstall.md"
+        ]
+      },
+      {
+        "text": "Installing Zowe CLI",
+        "items": [
           "user-guide/cli-installcli.md",
           "user-guide/cli-updatingcli.md",
-          "user-guide/uninstall.md"
+          "user-guide/cli-uninstall.md"
         ]
       },
       {

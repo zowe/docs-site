@@ -1,56 +1,71 @@
-# Installing Zowe on z/OS
+# Installation overview
 
-To install Zowe&trade; on z/OS,  there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
+To install Zowe&trade; on z/OS, there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
 
-- [Before you begin](#before-you-begin)
-- [Methods of installing Zowe on z/OS](#methods-of-installing-zowe-on-zos)
-- [High-level installation process](#high-level-installation-process)
-- [Looking for troubleshooting help?](#looking-for-troubleshooting-help)
+Review the installation diagram to see the general installation sequence and the most important tasks that are to be performed during installation and configuration.
 
-## Before you begin
+<img src="../images/common/zowe-zos-install-diagram.png" alt="Zowe z/OS components installation diagram" width="700">
 
-Ensure that you meet the following software requirements before you install Zowe on z/OS. The necessary prerequisites that are described in [System requirements](systemrequirements.md).
+## Stage 1: Plan and prepare
 
-## Methods of installing Zowe on z/OS
+Before you start the installation, review the information on hardware and software requirements and other considerations. See [Planning the installation](installandconfig.md) for details.
 
-The Zowe z/OS binaries are distributed in the following formats. They contain the same contents but you install them by using different methods. You can choose which method to use depending on your needs.
+## Stage 2: Install the Zowe runtime
 
-- **Convenience build**
+1. Ensure that the software requirements are met. The necessary prerequisites are described in [System requirements](systemrequirements.md).
 
-  The Zowe z/OS binaries are packaged as a PAX file. You install this build by running shell script within a Unix System Services (USS) shell.  Convenience builds are full product installs.
+1. Choose the method of installing Zowe on z/OS. 
 
-- **SMP/E build**
+   The Zowe z/OS binaries are distributed in the following formats. They contain the same contents but you install them by using different methods. You can choose which method to use depending on your needs.
 
-  The Zowe z/OS binaries are packaged as the following files that you can download. You install this build through SMP/E.
+   - **Convenience build**
 
-  - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
-  - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to RECEIVE the file.
+     The Zowe z/OS binaries are packaged as a PAX file. You install this build by running shell script within a Unix System Services (USS) shell.  Convenience builds are full product installs.
 
-  **Note:** The SMP/E build is currently in alpha, which means that it is available for early testing. You can provide any feedback about your experience with Zowe SMP/E as issues in the [zowe-install-packaging GitHub repo](https://github.com/zowe/zowe-install-packaging/issues/new).
+   - **SMP/E build**
 
-While the procedure to obtain and install the convenience build or SMP/E build are different, the procedure to configure a Zowe runtime are the same irrespective of how the build is obtained and installed.
+     The Zowe z/OS binaries are packaged as the following files that you can download. You install this build through SMP/E.  
+     - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
+     - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to RECEIVE the file.
 
-## High-level installation process
+   **Note:** The SMP/E build is currently in alpha, which means that it is available for early testing. You can provide any feedback about your experience with Zowe SMP/E as issues in the [zowe-install-packaging GitHub repo](https://github.com/zowe/zowe-install-packaging/issues/new).
 
-The high-level process of installing Zowe on z/OS is as follows:
+   While the procedure to obtain and install the convenience build or SMP/E build are different, the procedure to configure a Zowe runtime are the same irrespective of how the build is obtained and installed.
 
 1. Obtain and install the Zowe build.
+
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E Alpha](install-zowe-smpe.md).
    
-   After successful installation of either a convenience build or an SMP/E there will be a zFS folder containing the unconfigured Zowe runtime `<RUNTIME_DIR>`, a PDS SAMPLIB member `SZWESAMPE `containing example JCL, as well as a PDS load library `SZWEAUTH` containing load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of whether you have installed a convenience or SMP/E build.  
+After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime `<RUNTIME_DIR>`, a PDS SAMPLIB member `SZWESAMPE `that contains example JCL, and a PDS load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
 
-2. Configure the z/OS security manager in preparation for launching the Zowe started tasks, see [Configuring a z/OS system for Zowe](configure-zos-system.md).  A SAMPLIB JCL member `ZWESECUR` is provided with Zowe to assist with configuration which can either be submitted as-is or else customized depending on site preferences.  If Zowe has already been launched on the z/OS system from a previous release of 1.8 or later then and you are applying a newer Zowe build the security configuration step may be skipped unless told otherwise in the release documentation.  
+## Stage 3: Configure the Zowe runtime
 
-3. Create and customize an instance directory that contains configuration information about which components of Zowe should be executed, see [Zowe instance directory](configure-instance-directory.md).  A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
+1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring a z/OS system for Zowe](configure-zos-system.md).
+   
+   A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences. 
+   
+   If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation. 
 
-4. Configure the Zowe certificates keystore and truststore directory, see [Configuring Zowe certificate store](configure-certificates.md).  The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases unless specified otherwise in the release documentation.  
+2. Create and customize an instance directory that contains configuration data about which components of Zowe should be executed. For instructions, see [Configuring the Zowe instance directory](configure-instance-directory.md).
+
+   A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
+
+3. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md).  
+
+   The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases, unless specified otherwise in the release documentation.
 
 Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
 
-5. The `ZWESISTC` cross memory server must be configured and the load libraries must be installed, see [Configuring the Cross memory server](configure-cross-memory-server.md).  The cross memory server is only required if you are launching the Zowe desktop.  It is not required to be installed, configured and launched if you just wish to use the Zowe API Mediation Layer.
+4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-cross-memory-server.md).
 
-6. For the `ZWESVSTC` started task to be launched it must be configured, see [Configuring the Zowe started task](configure-zowe-server.md). 
+   The cross memory server is only required if you are launching the Zowe desktop.  It is not required to be installed, configured and launched if you just want to use the Zowe API Mediation Layer.
+
+5. Configure the `ZWESVSTC` started task before it can be launched. For instructions, see [Configuring the Zowe started task](configure-zowe-server.md). 
+
+## Stage 4: Verify the installation
+
+Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
 
 ## Looking for troubleshooting help?
 
