@@ -14,27 +14,27 @@ If Zowe has already been launched on the z/OS system from a previous release of 
 
 Zowe has a cross memory server that runs as an APF authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS`.  This authorization step is used to guard against access by non priviledged clients.  
 
-To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user IDs `ZWESVUSR` and `ZWESIUSR`.  These are the user IDs that the Zowe started task `ZWESVSTC` and the auxililary address space task `ZWESASTC` run under.  The commands to do 
+To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user IDs `ZWESVUSR` and `ZWESIUSR`.  These are the user IDs that the Zowe started task `ZWESVSTC` and the auxililary address space task `ZWESASTC` run under. 
     
-    The following commands can be issued to do this, which are also included in the `ZWESECUR` JCL member
+The following commands can be issued to do this, which are also included in the `ZWESECUR` JCL member
     
-    Issue the following commands. (The commands assume that you will run the ZWESVSTC STC under the ZWESVUSR user):
+Issue the following commands. (The commands assume that you will run the ZWESVSTC STC under the ZWESVUSR user):
 
-    - If you use RACF, issue the following commands:
+- If you use RACF, issue the following commands:
 
-        - To see the current class settings, use:
+    - To see the current class settings, use:
         ```
         SETROPTS LIST
         ```  
-        - To activate the FACILITY class, use:
+    - To activate the FACILITY class, use:
         ```
         SETROPTS CLASSACT(FACILITY)
         ```
-        - To RACLIST the FACILITY class, use:
+    - To RACLIST the FACILITY class, use:
         ```
         SETROPTS RACLIST(FACILITY)
         ```
-        - To define the `ZWES.IS` profile in the FACILITY class and grant IZUSVR READ access, issue the following commands:
+    - To define the `ZWES.IS` profile in the FACILITY class and grant IZUSVR READ access, issue the following commands:
         ```
         RDEFINE FACILITY ZWES.IS UACC(NONE)
         ```
@@ -49,7 +49,7 @@ To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ acces
         ```
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
-        - To check whether the permission has been successfully granted, issue the following command:
+    - To check whether the permission has been successfully granted, issue the following command:
         ```
         RLIST FACILITY ZWES.IS AUTHUSER
         ```
@@ -80,17 +80,18 @@ To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ acces
     - cross memory server clients other than ZSS might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
 
-### Configure an ICSF cryptographic services environment
+## Configure an ICSF cryptographic services environment
 
-    To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
+To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
 
-    Define or check the following configurations depending on whether ICSF is already installed:
-    - The ICSF or CSF job that runs on your z/OS system.
-    - The configuration of ICSF options in `SYS1.PARMLIB(CSFPRM00)`, `SYS1.SAMPLIB`, `SYS1.PROCLIB`.
-    - Create CKDS, PKDS, TKDS VSAM data sets.
-    - Define and activate the CSFSERV class:
+Define or check the following configurations depending on whether ICSF is already installed:
+    
+- The ICSF or CSF job that runs on your z/OS system.
+- The configuration of ICSF options in `SYS1.PARMLIB(CSFPRM00)`, `SYS1.SAMPLIB`, `SYS1.PROCLIB`.
+- Create CKDS, PKDS, TKDS VSAM data sets.
+- Define and activate the CSFSERV class:
 
-        - If you use RACF, issue the following commands:
+    - If you use RACF, issue the following commands:
         ```
         RDEFINE CSFSERV profile-name UACC(NONE)
         ```
@@ -107,7 +108,7 @@ To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ acces
         ```
         SETROPTS RACLIST(CSFSERV) REFRESH
         ```
-        - If you use CA ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
+    - If you use CA ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
         ```
         SET CONTROL(GSO)
         ```
@@ -131,9 +132,9 @@ To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ acces
         ```
         F ACF2,REBUILD(CSF)
         ```
-        - If you use CA Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
+    - If you use CA Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
         ```
-        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)                              
+        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
         ```
         ```                  
         TSS ADD(owner-acid) CSFSERV(profile-prefix.)
@@ -144,133 +145,123 @@ To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ acces
         ```
         TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
         ```
-        (repeat for user-acids IKED, NSSD, and Policy Agent)
+    (repeat for user-acids IKED, NSSD, and Policy Agent)
     
-    **Notes**
-    - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
-    - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
-    - CCA and/or PKCS #11 coprocessor for random number generation.
-    - Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
+**Notes**
+- Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
+- Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
+- CCA and/or PKCS #11 coprocessor for random number generation.
+- Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
 
 
-### Configure security environment switching:
+## Configure security environment switching:
     
-    Typically, the user `ZWESVUSR` that the `ZWESVSTC` started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than its user ID.  This capability provides the functionality that allows users to log onto the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server.  This technique is known as impersonation.  
+Typically, the user `ZWESVUSR` that the `ZWESVSTC` started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than its user ID.  This capability provides the functionality that allows users to log onto the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server.  This technique is known as impersonation.  
 
-    To enable impersonation, you must grant the user ID `ZWESVUSR` associated with the `ZWESVSTC` started task UPDATE access to the `BPX.SERVER` and `BPX.DAEMON` FACILITY classes.
+To enable impersonation, you must grant the user ID `ZWESVUSR` associated with the `ZWESVSTC` started task UPDATE access to the `BPX.SERVER` and `BPX.DAEMON` FACILITY classes.
 
-    You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user `ZWESVUSR` who runs the `ZWESVSTC` started task has UPDATE access to both facilities.
+You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user `ZWESVUSR` who runs the `ZWESVSTC` started task has UPDATE access to both facilities.
 
-    - If you use RACF, issue the following commands:
-      ```
-      RLIST FACILITY BPX.SERVER AUTHUSER
-      ```
-      ```
-      RLIST FACILITY BPX.DAEMON AUTHUSER
-      ```
-    - If you use CA Top Secret, issue the following commands:
-      ```
-      TSS WHOHAS IBMFAC(BPX.SERVER)
-      ```
-      ```
-      TSS WHOHAS IBMFAC(BPX.DAEMON)
-      ```
-    - If you use CA ACF2, issue the following commands:
-      ```
-      SET RESOURCE(FAC)
-      ```
-      ```
-      LIST BPX
-      ```
+- If you use RACF, issue the following commands:
+    ```
+    RLIST FACILITY BPX.SERVER AUTHUSER
+    ```
+    ```
+    RLIST FACILITY BPX.DAEMON AUTHUSER
+    ```
+- If you use CA Top Secret, issue the following commands:
+    ```
+    TSS WHOHAS IBMFAC(BPX.SERVER)
+    ```
+    ```
+    TSS WHOHAS IBMFAC(BPX.DAEMON)
+    ```
+- If you use CA ACF2, issue the following commands:
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    LIST BPX
+    ```
 
-    If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE access to both facilities, follow the instructions below.
+If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE access to both facilities, follow the instructions below.
 
-   - If you use RACF, complete the following steps:
-      <details>
-      <summary>Click to Expand</summary>
+- If you use RACF, complete the following steps:
+      
+1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+    ```
+    SETROPTS CLASSACT(FACILITY)
+    ```
+    ```             
+    SETROPTS RACLIST(FACILITY)                
+    ```
+1. Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
+    ```
+    RDEFINE FACILITY BPX.SERVER UACC(NONE)
+    ```
+    ```
+    RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+    ```             
+1. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the ZWESVSTC started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+    ```
+    PERMIT BPX.SERVER CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+    ```
+    ```
+    PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+    ```
+     where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
 
-      1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
-         ```
-         SETROPTS CLASSACT(FACILITY)
-         ```
-         ```             
-         SETROPTS RACLIST(FACILITY)                
-         ```
-      1. Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
-         ```
-         RDEFINE FACILITY BPX.SERVER UACC(NONE)
-         ```
-         ```
-         RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-         ```             
-      1. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the ZWESVSTC started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
-         ```
-         PERMIT BPX.SERVER CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
-         ```
-         ```
-         PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
-         /* Activate these changes */
-         ```
-         where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
-         ```
-         SETROPTS RACLIST(FACILITY) REFRESH      
-         ```
-      1. Issue the following commands to check whether permission has been successfully granted:
-         ```
-         RLIST FACILITY BPX.SERVER AUTHUSER
-         ```
-         ```
-         RLIST FACILITY BPX.DAEMON AUTHUSER
-         ```
-      </details>
+/* Activate these changes */
 
-    - If you use CA Top Secret, complete the following steps:  
-      <details>
-      <summary>Click to Expand</summary>
-
-      1. Define the BPX Resource and access for <zwesvstc_user>.
-           ```
-           TSS ADD(`owner-acid`) IBMFAC(BPX.)
-           ```
-           ```
-           TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
-           ```
-           ```
-           TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
-           ```
-           where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
-      1. Issue the following commands and review the output to check whether permission has been successfully granted:
-           ```
-           TSS WHOHAS IBMFAC(BPX.SERVER)
-           ```
-           ```
-           TSS WHOHAS IBMFAC(BPX.DAEMON)
-           ```
-      </details>
-
-    - If you use CA ACF2, complete the following steps:
-      <details>
-      <summary>Click to Expand</summary>
-
-      1. Define the BPX Resource and access for <zwesvstc_user>.
-           ```
-           SET RESOURCE(FAC)
-           ```
-           ```
-           RECKEY BPX ADD(SERVER ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
-           ```
-           ```
-           RECKEY BPX ADD(DAEMON ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
-           ```
-           where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
-           ```
-           F ACF2,REBUILD(FAC)
-           ```
-      1. Issue the following commands and review the output to check whether permission has been successfully granted:
-           ```
-           SET RESOURCE(FAC)
-           ```
-           ```
-           LIST BPX
-           ```
-      </details>
+    ```
+    SETROPTS RACLIST(FACILITY) REFRESH      
+    ```
+1. Issue the following commands to check whether permission has been successfully granted:
+    ```
+    RLIST FACILITY BPX.SERVER AUTHUSER
+    ```
+    ```
+    RLIST FACILITY BPX.DAEMON AUTHUSER
+    ```
+- If you use CA Top Secret, complete the following steps:  
+      
+1. Define the BPX Resource and access for <zwesvstc_user>.
+    ```
+    TSS ADD(`owner-acid`) IBMFAC(BPX.)
+    ```
+    ```
+    TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+    ```
+    ```
+    TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+    ```
+    where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+1. Issue the following commands and review the output to check whether permission has been successfully granted:
+    ```
+    TSS WHOHAS IBMFAC(BPX.SERVER)
+    ```
+    ```
+    TSS WHOHAS IBMFAC(BPX.DAEMON)
+    ```
+- If you use CA ACF2, complete the following steps:
+1. Define the BPX Resource and access for <zwesvstc_user>.
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    RECKEY BPX ADD(SERVER ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+    ```
+    ```
+    RECKEY BPX ADD(DAEMON ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+    ```
+    where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+    ```
+    F ACF2,REBUILD(FAC)
+     ```
+1. Issue the following commands and review the output to check whether permission has been successfully granted:
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    LIST BPX
+    ```
