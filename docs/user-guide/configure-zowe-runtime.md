@@ -4,6 +4,30 @@ After you install Zowe&trade; through either the convenience build by running th
 
 Before lauching Zowe there are two additional USS folders that need to be created.  
 
+<<OLD table of contents>>
+<!-->
+1. [Prerequisites](#prerequisites)
+1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
+   1. [Environment variables](#environment-variables)
+   1. [Configuration variables](#configuration-variables)
+      - [Address space name](#address-space-name)
+      - [Port allocations](#port-allocations)
+      - [PROCLIB member name](#proclib-member-name)
+      - [Certificates](#certificates)
+      - [Unix File Permissions](#unix-file-permissions)
+1. [Configuring the ZWESVSTC started task](#configuring-the-zwesvstc-started-task)
+    1. [Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime](#creating-the-zowesvr-proclib-member-to-launch-the-zowe-runtime)
+    1. [Configuring ZWESVSTC to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
+    1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
+1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
+	  - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
+	  - [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
+1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
+    - [Starting the ZWESVSTC PROC](#starting-the-zowesvr-proc)
+    - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
+1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos) 
+-->
+
 ## Zowe instance directory
 
 The Zowe instance directory contains contains configuration data required to launch a Zowe runtime and is where log files are stored.   
