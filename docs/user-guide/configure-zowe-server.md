@@ -1,17 +1,17 @@
-## Configuring the Zowe server started task.
+## Configuring and launching the Zowe started task
 
-When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named `ZWESVSTC`.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task the member should be copied to a PDS that is in the proclib concatenation path.  
+When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named `ZWESVSTC`.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task, the member should be copied to a PDS that is in the proclib concatenation path.  
 
-If a site has their own technique for PROCLIB creation they may follow this and copy the `ZWESVSTC` as-is.  For cusstomers who wish to create a pipeline or otherwise automate the PROCLIB copying a convenience script `zowe-install-proc.sh` is provided in the `<ROOT_DIR>/scripts/utils` folder. The script has two arguments
+If a site has their own technique for PROCLIB creation they may follow this and copy the `ZWESVSTC` as-is.  For cusstomers who wish to create a pipeline or otherwise automate the PROCLIB copying a convenience script `zowe-install-proc.sh` is provided in the `<ROOT_DIR>/scripts/utils` folder. The script has two arguments:
 
 **First Parameter**=Source PDS Prefix
 
-Dataset prefix of the source PDS where .SZWESAMP(ZWESVSTC) was installed into.  
+Dataset prefix of the source PDS where `.SZWESAMP(ZWESVSTC)` was installed into.  
 
-For an installation from a convenience build this will be the value of the `-h` argument when `zowe-install.sh` was executed.   
+For an installation from a convenience build, this will be the value of the `-h` argument when `zowe-install.sh` was executed.
 
-For an SMP/E installation thils will be the value of 
-`$datasetPrefixIn` in the member AZWE001.F1(ZWE3ALOC)
+For an SMP/E installation, this will be the value of 
+`$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
 **Second Parameter**=Target PROCLIB PDS
 
@@ -21,15 +21,15 @@ Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the s
 
 There are two ways in which the started task can be executed.  
 
-### Starting Zowe from a USS shell
+## Starting Zowe from a USS shell
 
-From a USS shell issue the command `<zowe-instance-dir>/zowe-start.sh` to launch the started task `ZWESVSTC`.  This will the configuration values from the `zowe-instance.env` file in the zowe instance directory.  
+From a USS shell, issue the command `<zowe-instance-dir>/zowe-start.sh` to launch the started task `ZWESVSTC`.  This will read the configuration values from the `zowe-instance.env` file in the zowe instance directory.  
 
-### Starting Zowe with a /S TSO command
+## Starting Zowe with a `/S` TSO command
 
 If you issue the SDSF command `/S ZWESVSETC` will fail because the script needs to know the instance directory containing the configuration details.  
 
-If you have a default instance directory you wish you always start Zowe with you can tailor the JCL member `ZWESVSTC` at this line
+If you have a default instance directory you wish you always start Zowe with, you can tailor the JCL member `ZWESVSTC` at this line
 
 ```
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
@@ -45,7 +45,7 @@ If the JCL value `instance-directory` is not specified in the JCL, in order to s
 
 The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.  
 
-### Configuring ZWESVSTC to run under the correct user ID
+## Configuring ZWESVSTC to run under the correct user ID
 
 The ZWESVSTC must be configured as a started task (STC) under the IZUSVR user ID.  This only needs to be done once per z/OS system and would be typically done the first time you configure a Zowe runtime.  If the Zowe runtime is uninstalled or a new Zowe is installed and configured, you do not need to re-run the step to associate the ZWESVSTC STC with the Zowe user ID of IZUSVR.  
 
@@ -76,9 +76,9 @@ Alternatively, if you do not wish to run this script, you can manually configure
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(IZUSVR)
   ```
 
-### Granting users permission to access Zowe
+## Granting users permission to access Zowe
 
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER group for standard users or IZUADMIN for administrators,
+TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER group for standard users or IZUADMIN for administrators.
 
 - If you use RACF, issue the following command:
 

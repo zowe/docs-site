@@ -2,12 +2,6 @@
 
 You install the Zowe&trade; convenience build by running shell script within a Unix System Services (USS) shell.
 
-1. [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
-2. [Installing the Zowe runtime](#installing-the-zowe-runtime)
-	- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
-    - [Step 2: Locate a dataset HLQ to install a SAMPLIB and LOADLIB PDS]()
-	- [Step 3: Execute the `zowe-install.sh` script](#step-3-execute-the-zowe-installsh-script)
-
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
@@ -90,15 +84,9 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
-
 ## Installing the Zowe runtime
 
 The first install step is to create a USS folder containing the Zowe runtime artefacts.  This is known as the `<RUNTIME_DIR`.
-
-**Follow these steps:**
-
-- [Step 1: Locate the install directory](#step-1:-locate-the-install-directory)
-- [Step 3: Execute the `zowe-install.sh` script](#step-3:-install-the-zowe-runtime)
 
 ### Step 1: Locate the install directory
 
@@ -140,14 +128,13 @@ ZWESAUX  | Load module for the Cross memory server's auxillary address space
 
 If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer the PDS members `OPENSRC.ZWE.SZWESAMP` and `OPENSEC.ZWE.SZWEAUTH` will be created.  
 
-### Step 3: Install the Zowe runtime
+### Step 4: Install the Zowe runtime
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
  ```
     zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
  ```
-
 
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.

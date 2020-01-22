@@ -2,6 +2,9 @@
 
 After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
 
+Before lauching Zowe there are two additional USS folders that need to be created.  
+
+<<OLD table of contents>>
 <!-->
 1. [Prerequisites](#prerequisites)
 1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
@@ -22,10 +25,8 @@ After you install Zowe&trade; through either the convenience build by running th
 1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
     - [Starting the ZWESVSTC PROC](#starting-the-zowesvr-proc)
     - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
-1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos)
+1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos) 
 -->
-
-Before lauching Zowe there are two additional USS folders that need to be created.  
 
 ## Zowe instance directory
 
@@ -47,11 +48,11 @@ More information on Zowe keystore directories is in [Configuring Zowe certificat
 
 Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  The steps to configure the z/OS runtime in order to launch the started task are described in [Configuring the Zowe started task](configure-zowe-server.md).
 
-## Configuring the Zowe Cross Memory Server
+## Configuring the Zowe cross memory server
 
-The Zowe Cross Memory Server provides privileged cross-memory services to the Zowe Desktop and runs as an APF authorized program.  The same cross memory server can be used by multiple Zowe desktops.  The steps to configure and launch the cross memory server are described in [Configure Cross Memory Server](configure-cross-memory-server.md)
+The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF authorized program.  The same cross memory server can be used by multiple Zowe desktops.  The steps to configure and launch the cross memory server are described in [Configure the cross memory server](configure-cross-memory-server.md)
 
-**Note** The cross memory server is not used by the API Mediation Layer. If you are only launching the API Mediation Layer and you are not launching the Zowe desktop, you do not need to configure and launch the cross memory server.  Controlling which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Configure Instance Directory](configure-instance-directory.md#component-groups).  
+**Note:** The cross memory server is not used by the API Mediation Layer. If you are only launching the API Mediation Layer and you are not launching the Zowe desktop, you do not need to configure and launch the cross memory server.  Controlling which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Configure Instance Directory](configure-instance-directory.md#component-groups).  
 
 ## Starting and stopping the Zowe runtime on z/OS
 
