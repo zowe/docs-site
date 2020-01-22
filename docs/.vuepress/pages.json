@@ -57,7 +57,7 @@
       },
       {
         "text": "Configuring Zowe",
-        "items": [
+        "items": [ 
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
         ]

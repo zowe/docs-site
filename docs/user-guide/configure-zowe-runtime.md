@@ -56,7 +56,9 @@ The Zowe cross memory server provides privileged cross-memory services to the Zo
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. When you run the ZWESVSTC PROC, all of these components start. Stopping ZWESVSTC PROC stops all of the components that run as independent Unix processes.
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. These are lauunched as address spaces when the `ZWESVSTC` PROC is launched as a started task.  
+
+, all of these components start. Stopping ZWESVSTC PROC stops all of the components that run as independent Unix processes.
 
 ### Starting the ZWESVSTC PROC
 
