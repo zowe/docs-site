@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.8.0 (December 2019)](#version-1-8-0-december-2019)
+- [Version 1.8.0 (January 2020)](#version-1-8-0-january-2020)
 - [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
 - [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
 - [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
@@ -17,13 +17,23 @@ Zowe Version 1.8.0 and later releases include the following enhancements, releas
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.8.0 (December 2019)
+## Version 1.8.0 (January 2020)
 
 <!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 ### New features and enhancements
 
 The following features and enhancements were added.
+
+#### Installation of Zowe z/OS components
+
+- The installation now just needs two parameters configured: the USS location of the runtime folder and a data set prefix where a SAMPLIB and LOADLIB will be created.  
+- The way to configure Zowe is changed. Previously, you configure Zowe at the installation time with the `zowe-install.yaml` file. Now, you configure Zowe at launch time. The `zowe-install.yaml` is no longer used. The Zowe cross memory server installation script is removed.
+- Added a new sample JCL member ZWESECUR that contains all security configuration for z/OS.  This includes new Zowe userIDs of ZWESVUSR, ZWESIUSR and ZWEADMIN. 
+- You can now run multiple Zowe instances with different configurations from the same Zowe runtime.  This introduces the concept of an instance directory that contains all of the configuration parameters for Zowe (ports, location of Java and Node preqs, IP addresses, and so on), as well as where logs are collected and any static extensions to the desktop or APIML are recorded.  
+- The Zowe certificate and the truststore for servers that z/OS communicates with are now managed in a new keystore directory that can be shared between Zowe instances. 
+
+For more information, see [Installation overview](../user-guide/install-zos.md).
 
 #### API Mediation Layer
 - The API Catalog backend has been modified to support the OpenAPI 3.0 version. The API Catalog now supports the display of API documentation in the OpenAPI 3.0 format.
@@ -41,9 +51,6 @@ The following features and enhancements were added.
 - 
 - 
 
-#### Zowe SMP/E installation
-- 
-- 
 
 ### Bug fixes
 
