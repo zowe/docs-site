@@ -2,11 +2,11 @@
 
 The Zowe instance directory contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is executing, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.  
 
-To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute
+To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute the following commands:
 
-  ```sh
-   <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
-   ```
+```sh
+<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
+```
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 

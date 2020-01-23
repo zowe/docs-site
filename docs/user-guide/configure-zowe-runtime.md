@@ -55,8 +55,9 @@ The Zowe cross memory server provides privileged cross-memory services to the Zo
 **Note:** The cross memory server is not used by the API Mediation Layer. If you are only launching the API Mediation Layer and you are not launching the Zowe desktop, you do not need to configure and launch the cross memory server.  Controlling which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Configure Instance Directory](configure-instance-directory.md#component-groups).  
 
 ## Starting and stopping the Zowe runtime on z/OS
+<!--@joe, where should this be linked? This seems to be duplicate with the launch info in configure-zowe-server.md-->
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. These are lauunched as address spaces when the `ZWESVSTC` PROC is launched as a started task.  
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. These are lausnched as address spaces when the `ZWESVSTC` PROC is launched as a started task.  
 
 , all of these components start. Stopping ZWESVSTC PROC stops all of the components that run as independent Unix processes.
 
