@@ -22,8 +22,6 @@ The following plug-ins are compatible *only* with Zowe CLI Active Development ve
 - [IBM® MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
 - [Secure Credential Store for Zowe CLI](../user-guide/cli-mqplugin.md).
 
-<!-- TODO Add SCS and FTP plugin link paths to list   -->
-
 **Note:** This is not a comprehensive list of plug-ins. For a complete list of plug-ins compatible with the Active Development version, see [Extending Zowe CLI - Active Development](https://docs.zowe.org/active-development/user-guide/cli-extending.html). For a complete list of plug-ins compatible with the `@lts-incremental` version, see [Extending Zowe CLI - Stable](https://docs.zowe.org/stable/user-guide/cli-extending.html).
 
 **Features and enhancements:**
@@ -37,6 +35,13 @@ The following plug-ins are compatible *only* with Zowe CLI Active Development ve
 - The following new commands were added for creating USS files and directories
     - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
     - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
+
+The following new functionality was added to IBM® CICS® Plug-in for Zowe&trade; CLI:
+
+  - Define, enable, install, discard, disable, and delete URIMaps. [#53](https://github.com/zowe/zowe-cli-cics-plugin/issues/53) [#49](https://github.com/zowe/zowe-cli-cics-plugin/issues/49) [#48](https://github.com/zowe/zowe-cli-cics-plugin/issues/48) [#51](https://github.com/zowe/zowe-cli-cics-plugin/issues/51) [#50](https://github.com/zowe/zowe-cli-cics-plugin/issues/50) [#52](https://github.com/zowe/zowe-cli-cics-plugin/issues/52)
+  - Define and delete web services. []()
+  - Add and removing CSD Groups to/from CSD Lists []().
+  - The plug-in now uses HTTPS to connect to CMCI by default. The option `--protocol http` was added to let you override the default. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
 
 ## Installing or Updating
 
@@ -71,6 +76,8 @@ After migrating, always verify that your scripts and profiles are still function
 ## Breaking changes
 
 If your commands or scripts return warnings/errors after updating, account for the following breaking changes that occured during major version bumps:
+
+- The CICS Plug-in for Zowe CLI now uses HTTPS to connect to CMCI by default. Previously, HTTP was used by default. The option `--protocol http` was added to override the default. [More information.](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
 
 - The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
 
