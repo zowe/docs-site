@@ -1,20 +1,6 @@
 # Verifying Zowe installation on z/OS
 
-Once Zowe&trade; is running and the startup sequence is complete, you can check the configuration files and jobs for Zowe on your z/OS system to ensure that the installation process is successful. To do this, follow these steps.
-
-1. Navigate to the runtime `$ZOWE_ROOT_DIR/scripts` directory, where *$ZOWE_ROOT_DIR* is the location of the Zowe runtime directory.  
-
-2. Run the `zowe-verify.sh` script by issuing the following command:
-
-    ```
-    zowe-verify.sh
-    ```
-
-The script writes its messages to your terminal window.  The results are marked `OK`, `Info`, `Warning` or `Error`.  Correct any reported errors and restart the Zowe server.  The `zowe-verify.sh` script does not change any settings, so you can run it as often as required.
-
-**Next steps**
-
-Follow the instructions in the following sections to verify that the components are installed correctly and are functional.
+Once Zowe&trade; is running follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
 - [Verifying z/OS Services installation](#verifying-z-os-services-installation)
@@ -35,7 +21,7 @@ where:
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 ## Verifying z/OS Services installation
-<!-- TODO -->
+
 After the ZWESVSTC procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
 
 ```

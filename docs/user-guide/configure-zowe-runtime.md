@@ -1,32 +1,8 @@
-# Configuring the Zowe runtime
+# TO BE DELETED Configuring the Zowe runtime
 
 After you install Zowe&trade; through either the convenience build by running the `zowe-install.sh` command or through the SMP/E build by running the RECEIVE and APPLY jobs, you will have a Zowe runtime directory or <ROOT_DIR> in USS as well as a PDS SAMPLIB and a PDS load library in MVS.
 
-Before lauching Zowe there are two additional USS folders that need to be created.  
-
-<<OLD table of contents>>
-<!-->
-1. [Prerequisites](#prerequisites)
-1. [Configuring the Zowe runtime directory](#configuring-the-zowe-runtime-directory)
-   1. [Environment variables](#environment-variables)
-   1. [Configuration variables](#configuration-variables)
-      - [Address space name](#address-space-name)
-      - [Port allocations](#port-allocations)
-      - [PROCLIB member name](#proclib-member-name)
-      - [Certificates](#certificates)
-      - [Unix File Permissions](#unix-file-permissions)
-1. [Configuring the ZWESVSTC started task](#configuring-the-zwesvstc-started-task)
-    1. [Creating the ZWESVSTC PROCLIB member to launch the Zowe runtime](#creating-the-zowesvr-proclib-member-to-launch-the-zowe-runtime)
-    1. [Configuring ZWESVSTC to run under the correct user ID](#configuring-zowesvr-to-run-under-the-correct-user-id)
-    1. [Granting users permission to access Zowe](#granting-users-permission-to-access-zowe)
-1. [The Zowe Cross Memory Server](#the-zowe-cross-memory-server)
-	  - [Manually installing the Zowe Cross Memory Server](#manually-installing-the-zowe-cross-memory-server)
-	  - [Installing the Cross Memory Server using the script](#installing-the-cross-memory-server-using-the-script)
-1. [Starting and stopping the Zowe runtime on z/OS](#starting-and-stopping-the-zowe-runtime-on-zos)
-    - [Starting the ZWESVSTC PROC](#starting-the-zowesvr-proc)
-    - [Stopping the ZWESVSTC PROC](#stopping-the-zowesvr-proc)
-1. [Starting and stopping the Zowe Cross Memory Server on z/OS](#starting-and-stopping-the-zowe-cross-memory-server-on-zos) 
--->
+Before lauching Zowe there are two additional USS folders that need to be created: a [zowe instance directory](#zowe-instance-directory) and a [keystore directory](#zowe-keystore-directory). 
 
 ## Zowe instance directory
 
@@ -50,19 +26,19 @@ Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the
 
 ## Configuring the Zowe cross memory server
 
-The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF authorized program.  The same cross memory server can be used by multiple Zowe desktops.  The steps to configure and launch the cross memory server are described in [Configure the cross memory server](configure-cross-memory-server.md)
+The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF authorized program.  The same cross memory server can be used by multiple Zowe desktops.  The steps to configure and launch the cross memory server are described in [Configure the cross memory server](configure-xmem-server.md)
 
 **Note:** The cross memory server is not used by the API Mediation Layer. If you are only launching the API Mediation Layer and you are not launching the Zowe desktop, you do not need to configure and launch the cross memory server.  Controlling which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Configure Instance Directory](configure-instance-directory.md#component-groups).  
 
 ## Starting and stopping the Zowe runtime on z/OS
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. These are lauunched as address spaces when the `ZWESVSTC` PROC is launched as a started task.  
+Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. These are launched as address spaces when the `ZWESVSTC` PROC is launched as a started task.  The name of the address spaces is described in [Configure instance directory](configure-instance-directory#address-space-names)
 
-, all of these components start. Stopping ZWESVSTC PROC stops all of the components that run as independent Unix processes.
+Stopping ZWESVSTC PROC stops all of the address spaces. 
 
 ### Starting the ZWESVSTC PROC
 
-To start the ZWESVSTC PROC, run the `zowe-start.sh` script at the Unix Systems Services command prompt:
+To start the ZWESVSTC PROC, run the `zowe-start.sh` script located within an instance directory at the Unix Systems Services command prompt:
 
 ```
 cd $ZOWE_INSTANCE_DIR/bin
@@ -84,53 +60,3 @@ To test whether the Zowe desktop is active, open the URL: `https://<hostname>:85
 
 The port number 7554 is the default API Gateway port and the port number 8554 is the default Zowe desktop port. You can overwrite theses port in the `zowe-install.yaml` file before the `zowe-configure.sh` script is run. See the section [Port Allocations](#port-allocations).
 
-### Stopping the ZWESVSTC PROC
-
-To stop the ZWESVSTC PROC, run the `zowe-stop.sh` script at the Unix Systems Services command prompt:
-
-```
-cd $ZOWE_INSTANCE_DIR/bin
-./zowe-stop.sh
-```
-
-If you prefer to use SDSF to stop Zowe, stop ZWESVSTC by issuing the following operator command in SDSF:
-
-    ```
-    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-    ```
-    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
-
-Either method will stop the z/OS Service microservice server, the Zowe Application Server, and the zSS server.
-
-When you stop the ZWESVSTC, you might get the following error message:
-
-```
-IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
-```
-
-This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
-
-```
-/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
-```
-Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
-
-```
-/D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-```
-
-## Starting and stopping the Zowe Cross Memory Server on z/OS
-
-The Cross Memory server is run as a started task from the JCL in the PROCLIB member ZWESISTC. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
-```
-/S ZWESISTC,REUSASID=YES
-```
-The ZWESISTC task starts and stops the ZWESSTC task as needed. Do not start the ZWESASTC task manually.
-
-To end the Zowe APF Angel process, issue the operator stop command through SDSF:
-
-```
-/P ZWESISTC
-```
-
-**Note:** The starting and stopping of the ZWESVSTC for the main Zowe servers is independent of the ZWESISTC angel process. If you are running more than one ZWESVSTC instance on the same LPAR, then these will be sharing the same ZWESISTC cross memory server. Stopping ZWESISTC will affect the behavior of all Zowe servers on the same LPAR which use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it will abandon its current load module instance in LPA and will load the updated version.

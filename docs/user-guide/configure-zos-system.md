@@ -2,13 +2,74 @@
 
 Configure the z/OS security manager to prepare for launching the Zowe started tasks.
 
-A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences. 
-   
-If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
+A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  The JCL allows you to vary which security manager you are using by setting the PRODUCT variable to be one of RACF, ACF2, or TSS.  
+
+```
+//         SET PRODUCT=RACF          * RACF, ACF2, or TSS
+```
+If `ZWESECUR` encounters an error or a step that has already been performed it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
+
+It is expected that system programmers at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commmands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
+
+If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
 
 ## User IDs and groups for the Zowe started tasks
 
+Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`.  
+Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started task `ZWESISTC`.
+Zowe requires a group `ZWEADMIN` which both `ZWESVUSR` and `ZWESIUSR` should belong to.
 
+During the install of Zowe unix file ownership and groups are modified.  For this to occur successfully the user performing the install must either be part of the `ZWEADMIN` group, or have sufficient authority to issue `chgrp` commands to assign `ZWEADMIN` as the group of folders it creates, or sufficient authority to issue `chown` commands to assign `ZWESVUSR` as the owner of folders it creates.
+
+## Configure ZWESVSTC to run under ZWESVUSR user ID
+
+When the Zowe started task `ZWESVSTC` is started it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming stadards.
+
+
+- If you use RACF, issue the following commands:
+
+  ```
+  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+  SETROPTS REFRESH RACLIST(STARTED)
+  ```
+
+- If you use CA ACF2, issue the following commands:
+
+  ```
+  SET CONTROL(GSO)
+  INSERT STC.ZWESVSTC LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZWESVSTC)
+  F ACF2,REFRESH(STC)
+  ```
+
+- If you use CA Top Secret, issue the following commands:
+
+  ```
+  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(IZUSVR)
+  ```
+
+## Granting users permission to access Zowe
+
+TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER or IZUADMIN group
+
+- If you use RACF, issue the following command:
+
+  ```
+  CONNECT (userid) GROUP(IZUADMIN)
+  ```
+
+- If you use CA ACF2, issue the following commands:
+
+  ```
+  ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
+  F ACF2,REBUILD(TGR)
+  ```
+
+- If you use CA Top Secret, issue the following commands:
+
+  ```
+  TSS ADD(userid)  PROFILE(IZUADMIN)
+  TSS ADD(userid)  GROUP(IZUADMGP)
+  ```
 
 ## Configure Cross Memory server for SAF
 

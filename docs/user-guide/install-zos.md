@@ -57,7 +57,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
 
-4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-cross-memory-server.md).
+4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-xmem-server.md).
 
    The cross memory server is only required if you are launching the Zowe desktop.  It is not required to be installed, configured and launched if you just want to use the Zowe API Mediation Layer.
 

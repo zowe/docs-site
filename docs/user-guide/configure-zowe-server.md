@@ -1,4 +1,4 @@
-## Configuring and launching the Zowe started task
+## Configure and launch Zowe started task
 
 When the Zowe runtime is launched, it is run under a z/OS started task (STC) with the PROCLIB member named `ZWESVSTC`.  A sample PROCLIB is created during install into the PDS SZWESAMP.  To launch Zowe as a started task, the member should be copied to a PDS that is in the proclib concatenation path.  
 
@@ -20,6 +20,10 @@ Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the s
 ***Example*** Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
 
 There are two ways in which the started task can be executed.  
+
+## Configuring ZWESVSTC to run under the correct user ID
+
+The `ZWESVSTC` must be configured as a started task (STC) under the ZWESVUSR user ID with the administrator user ID of ZWEADMIN.  The commands to create the user ID and group is supplied in the PDS member `ZWESECUR`, see [Configuring a z/OS system for Zowe](configure-zos-system.md).  To associate the `ZWESVSTC` started task with the user ID and group see [Configuring a z/OS system for Zowe](configure-zos-system.md).  This step will be done once per z/OS environment by a system programmer who has sufficient security priviledges. 
 
 ## Starting Zowe from a USS shell
 
@@ -45,57 +49,36 @@ If the JCL value `instance-directory` is not specified in the JCL, in order to s
 
 The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.  
 
-## Configuring ZWESVSTC to run under the correct user ID
+### Stopping the ZWESVSTC PROC
 
-The ZWESVSTC must be configured as a started task (STC) under the IZUSVR user ID.  This only needs to be done once per z/OS system and would be typically done the first time you configure a Zowe runtime.  If the Zowe runtime is uninstalled or a new Zowe is installed and configured, you do not need to re-run the step to associate the ZWESVSTC STC with the Zowe user ID of IZUSVR.  
+To stop the Zowe server, the ZWESVSTC PROC needs to be ended. Run the `zowe-stop.sh` script at the Unix Systems Services command prompt that is in the zowe instance directory used to start the Zowe started task:
 
-To configure ZWESVSTC to run as a STC under the user ID of IZUSVR, you can run the convenience script `scripts/configure/zowe-config-stc.sh` in the runtime folder.  
+```
+cd $ZOWE_INSTANCE_DIR/bin
+./zowe-stop.sh
+```
 
-Alternatively, if you do not wish to run this script, you can manually configure ZWESVSTC to run under the IZUSVR user ID by taking the following steps.
+If you prefer to use SDSF to stop Zowe, issue the following operator command in SDSF:
 
-**Note:** You must replace `ZWESVSTC` in the commands below with the name of your PROCLIB member that you specified as `memberName=ZWESVSTC` in the `scripts/configure/zowe-install.yaml` file.
+    ```
+    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+    ```
+    Where `ZOWE_PREFIX` is the value `ZWE` and `ZOWE_INSETANCE` is the value `1`.  These values are specified in the file `instance.env` in the instance directory used to launch the Zowe you are ending, see [Configuring Zowe instance directory](configure-instance-directory.md#address-space-names)
 
-- If you use RACF, issue the following commands:
+When you stop the ZWESVSTC, you might get the following error message:
 
-  ```
-  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-  SETROPTS REFRESH RACLIST(STARTED)
-  ```
+```
+IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
+```
 
-- If you use CA ACF2, issue the following commands:
+This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
 
-  ```
-  SET CONTROL(GSO)
-  INSERT STC.ZWESVSTC LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZWESVSTC)
-  F ACF2,REFRESH(STC)
-  ```
+```
+/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
+```
+You can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
 
-- If you use CA Top Secret, issue the following commands:
+```
+/D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+```
 
-  ```
-  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(IZUSVR)
-  ```
-
-## Granting users permission to access Zowe
-
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER group for standard users or IZUADMIN for administrators.
-
-- If you use RACF, issue the following command:
-
-  ```
-  CONNECT (userid) GROUP(IZUADMIN)
-  ```
-
-- If you use CA ACF2, issue the following commands:
-
-  ```
-  ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
-  F ACF2,REBUILD(TGR)
-  ```
-
-- If you use CA Top Secret, issue the following commands:
-
-  ```
-  TSS ADD(userid)  PROFILE(IZUADMIN)
-  TSS ADD(userid)  GROUP(IZUADMGP)
-  ```

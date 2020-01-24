@@ -1,4 +1,4 @@
-# Configuring Zowe instance directory
+# Creating and configuring a Zowe instance directory
 
 The Zowe instance directory contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is executing, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.  
 
@@ -18,16 +18,26 @@ To operate Zowe a number of ZFS folders need to be located for prerequisites on 
 
 - `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed.  
 
-- `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `ZOWE_NODE_HOME`:  The path to the node runtime.  Defaults to value of `NODE_HOME`
+### Component groups
 
-- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
-- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
+- `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
+  - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
+
+### Component pre-requisites
+
+- `JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
+- `NODE_HOME`:  The path to the node runtime.  Only needs to be specified if not already set as a shell variable.  Defaults to value of `NODE_HOME`
 
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
 - `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible from clients who want to use Zowe.  This is important to verify for zD&T and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
 
-- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.  
+- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
+- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
+
+### Keystore directory
+
+- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.   For more information on how to create a keystore directory see [Configuring Zowe certificates](configure-certificates.md)
 
 ### Address space names
 
@@ -103,9 +113,4 @@ To determine which ports are not available, follow these steps:
 - `ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
-
-### Component groups
-
-- `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `ZOWE_JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `ZOWE_HOME_HOME` value.  
+ 

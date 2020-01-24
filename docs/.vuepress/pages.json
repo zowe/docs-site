@@ -41,7 +41,7 @@
           "user-guide/configure-zos-system.md",
           "user-guide/configure-instance-directory.md",
           "user-guide/configure-certificates.md",
-          "user-guide/configure-zowe-runtime.md",
+          "user-guide/configure-xmem-server.md",
           "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
           "user-guide/zowe-zos-uninstall.md"
@@ -56,7 +56,7 @@
         ]
       },
       {
-        "text": "Configuring Zowe",
+        "text": "Advanced Zowe Configuration",
         "items": [ 
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
