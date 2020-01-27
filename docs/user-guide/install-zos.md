@@ -1,4 +1,4 @@
-# Installation overview
+# Installation roadmap
 
 To install Zowe&trade; on z/OS, there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
 
@@ -41,7 +41,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 ## Stage 3: Configure the Zowe runtime
 
-1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring a z/OS system for Zowe](configure-zos-system.md).
+1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
    
    A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences. 
    
@@ -51,17 +51,17 @@ After successful installation of either a convenience build or an SMP/E build, t
 
    A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
-3. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md).  
+3. Configure the Zowe certificates keystore and trust store directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md).  
 
    The Zowe certificate directory can be shared between different Zowe instances, including between different Zowe releases, unless specified otherwise in the release documentation.
 
 Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
 
-4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-cross-memory-server.md).
+4. (Only required for the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-cross-memory-server.md).
 
-   The cross memory server is only required if you are launching the Zowe desktop.  It is not required to be installed, configured and launched if you just want to use the Zowe API Mediation Layer.
+   The cross memory server is only required if you want to use the Zowe desktop.  If you want to use Zowe API Mediation Layer only, you can skip this step.
 
-5. Configure the `ZWESVSTC` started task before it can be launched. For instructions, see [Configuring the Zowe started task](configure-zowe-server.md). 
+5. Configure the `ZWESVSTC` started task. For instructions, see [Configuring the Zowe started task](configure-zowe-server.md). 
 
 ## Stage 4: Verify the installation
 
