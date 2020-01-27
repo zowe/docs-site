@@ -1,4 +1,4 @@
-# Configuring the Zowe started task
+# Configuring the ZWESVSTC started task
 
 Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  This topic describes how to configure the z/OS runtime in order to launch the Zowe started task.
 
@@ -26,15 +26,25 @@ The script `zowe-install-proc.sh` has two arguments:
    
    Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
 
-## Step 2: Launch the Zowe started task
+## Step 2: Launch the ZWESVSTC started task
 
 You can launch the Zowe started task in two ways.  
 
-### Starting Zowe from a USS shell
+### Option 1: Starting Zowe from a USS shell
 
-From a USS shell, issue the command `<zowe-instance-dir>/zowe-start.sh` to launch the started task `ZWESVSTC`.  This will read the configuration values from the `zowe-instance.env` file in the zowe instance directory.  
+To launch the `ZWESVSTC` started task, run the `zowe-start.sh` script from a USS shell.  This reads the configuration values from the `zowe-instance.env` file in the Zowe instance directory.
 
-### Starting Zowe with a `/S` TSO command
+```
+cd <ZOWE_INSTANCE_DIR>/bin
+./zowe-start.sh
+```
+where,
+
+_<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to. This script starts `ZWESVSTC` for you so you do not have to log on to TSO and use SDSF.
+
+### Option 2: Starting Zowe with a `/S` TSO command
+
+You can use SDSF to start Zowe. 
 
 If you issue the SDSF command `/S ZWESVSETC`, it will fail because the script needs to know the instance directory containing the configuration details.  
 
@@ -52,7 +62,7 @@ If the JCL value `instance-directory` is not specified in the JCL, in order to s
 /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR',JOBNAME='ZWEXSV'
 ```
 
-The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.  
+The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.
 
 ## Step 3: Configure ZWESVSTC to run under the correct user ID
 
@@ -109,3 +119,41 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
   TSS ADD(userid)  PROFILE(IZUADMIN)
   TSS ADD(userid)  GROUP(IZUADMGP)
   ```
+
+## Stopping the ZWESVSTC started task
+
+Stopping `ZWESVSTC` stops all of the components that run as independent Unix processes.
+
+To stop `ZWESVSTC`, run the `zowe-stop.sh` script at the Unix Systems Services command prompt:
+
+```
+cd $ZOWE_INSTANCE_DIR/bin
+./zowe-stop.sh
+```
+
+where _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to.
+ 
+If you prefer to use SDSF to stop Zowe, stop ZWESVSTC by issuing the following operator command in SDSF:
+
+```
+/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+```
+
+Where _ZOWE_PREFIX_ and _ZOWE_INSTANCE_ are specified in your configuration (and default to `ZWE` and 1).
+
+When you stop ZWESVSTC, you might get the following error message:
+
+```
+IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
+```
+
+This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
+
+```
+/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
+```
+Where _ZOWE_PREFIX_ and _ZOWE_INSTANCE_ are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
+
+```
+/D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
+```

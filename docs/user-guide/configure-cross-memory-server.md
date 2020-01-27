@@ -1,6 +1,6 @@
 # Configuring the Zowe cross memory server
 
-The Zowe cross memory server is used by the Zowe desktop to run APF authorized code.  You must install, configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
+The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
 
 To install and configure the cross memory server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarty with z/OS.  
 
@@ -10,9 +10,9 @@ The angel process server runs under the started task `ZWESISTC`.
 
 The `ZWESISTC` started task runs the load module `ZWESIS01`, serves the Zowe desktop that is running under the `ZWESVSTC` started task, and provides it with secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. 
 
-Under some situations, the cross memory server will start, control, and stop an auxiliary address space. This runs as a `ZWESASTC` started task that runs the load module `ZWESAUX`. Under normal Zowe operation, you will not see any auxiliary address spaces started. However, vendor products that runs on top of Zowe may exploit its service so it should be configured to be launchable.
+Under some situations, the cross memory server will start, control, and stop an auxiliary address space. This runs as a `ZWESASTC` started task that runs the load module `ZWESAUX`. Under normal Zowe operation, you will not see any auxiliary address spaces started. However, vendor products that runs on top of Zowe may exploit its service so it should be configured to be launchable. For more information, see [Zowe Auxiliary Address space](configure-auxiliary-address-space.md).
 
-To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem-server.sh`. <!--@joe, is the script name zowe-install-xmem.sh? instead of zowe-install-xmem-server.sh?-->  
+To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem.sh`.
 
 ## Step 1: Cross memory load library and PROCLIB
 
@@ -95,7 +95,7 @@ Then issue the following command to make the SCHEDxx changes effective:
 /SET SCH=xx
 ```
 
-## Step 3: Add the load libraries to the APF authorization list:
+## Step 3: Add the load libraries to the APF authorization list
 
 Because the cross memory server provides priviledges services, its load libraries require APF-authorization. To check whether a load library is APF-authorized, you can issue the following TSO command:
 
@@ -137,4 +137,22 @@ For commands required to configure ICSF cryptographic services environment for s
 When responding to API requests, the Zowe desktop node API server running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation.
 
 For commands required to configure impersonation, see [Configuring the z/OS system for Zowe](configure-zos-system.md#configure-security-environment-switching).
+
+## Starting and stopping the Zowe cross memory server on z/OS
+
+The cross memory server is run as a started task from the JCL in the PROCLIB member ZWESISTC. It supports reusable address spaces and can be started through SDSF with the operator start command with the `REUSASID=YES` keyword:
+```
+/S ZWESISTC,REUSASID=YES
+```
+The ZWESISTC task starts and stops the ZWESASTC task as needed. **Do not start the ZWESASTC task manually.**
+
+To end the Zowe APF Angel process, issue the operator stop command through SDSF:
+
+```
+/P ZWESISTC
+```
+
+**Note:** 
+
+The starting and stopping of the ZWESVSTC for the main Zowe servers is independent of the ZWESISTC angel process. If you are running more than one ZWESVSTC instance on the same LPAR, then these share the same ZWESISTC cross memory server. Stopping ZWESISTC affects the behavior of all Zowe servers on the same LPAR which use the same cross-memory server name, for example `ZWESIS_STD`. The Zowe cross memory server is designed to be a long-lived address space. There is no requirement to recycle on a regular basis. When the cross-memory server is started with a new version of the ZWESIS01 load module, it abandons its current load module instance in LPA and loads the updated version.
 

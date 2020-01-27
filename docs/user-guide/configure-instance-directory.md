@@ -104,7 +104,7 @@ To determine which ports are not available, follow these steps:
 - `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *TN 3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
 - `ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
 
-### Components
+### Component groups
 
 - `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
   - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `ZOWE_JAVA_HOME` value.  

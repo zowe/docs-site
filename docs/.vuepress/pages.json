@@ -45,6 +45,7 @@
           "user-guide/configure-cross-memory-server.md",
           "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
+          "user-guide/configure-auxiliary-address-space.md",
           "user-guide/zowe-zos-uninstall.md"
         ]
       },
