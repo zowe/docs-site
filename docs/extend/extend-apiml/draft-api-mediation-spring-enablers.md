@@ -29,13 +29,50 @@ The following steps outline the overall process to onboard a REST service with t
 
 2. [Configuring your Spring Boot based service](#configuring-your-spring-boot-based-service)
 
-    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
+Spring Boot expects to find the default configuration of the application in file named `application.yml` placed on the classpath.
+    
+    Note:TheSpring Boot `application.yml` file has different structure than the service-config.yml used for Plain Java Enabler configuration.    
 
+The Spring Boot `application.yml` integrates the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. Additionally it typically contains 
+Spring Boot specific properties e.g. properties used to start a web application container including TLS security; different spring configuration profiles definitions or 
+application management properties. Execution environment related properties should be provided by additional configuration mechanisms, which differ for development deployments on a local machine, 
+or on mainframe system. 
+
+To provide environment specific configuration properties for local machine execution environment, place them in additional 
+YAML file resembling the structure of the default `application.yml`. At service startup time Spring will rewrite 
+the configuration properties of the default config file with the values of the same properties from the additional configuration file.
+For local machine runtime environment, provide on command line following parameter:
+  
+    -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
+
+At runtime Spring will merge the two configuration files, where the properties in the external one have higher priority.
+To select active profile among all profiles defined by the above merged configuration, provide profile name as a command line parameter:
+    
+    -Dspring.profiles.active=PROFILE-NAME
+
+To provide environment specific configuration properties on mainframe execution environment, you must define them through Java System Properties provided on command line 
+as part of `JAVA_OPTIONS` argument. 
+
+The default configuration should contain only properties which are not dependent 
+on deployment environment or otherwise contain security sensitive data.  
+
+
+    TODO-Clarify: 
+    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
 3. [Registering your service with API ML](#registering-your-service-with-api-ml)
 
+  To register your REST service with API ML using our Spring Boot Enabler, you need to only annotate your application main class with
+  
+    `@EnableApiDiscovery` 
+    
+    Registration proces will be started right after Spring finishes its Context Factory initialization.
+    
+    When your application would be stopped, the Spring Enabler will receive event that Spring Context is going to be destroyed and will handle the event 
+    by gracefyully unregistering your application from API ML discovery service.     
 
 4. [Adding API documentation](#adding-api-documentation)
+    
     
 
 5. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
