@@ -1,4 +1,4 @@
-# Planning and preparing the installation
+# Introduction
 
 The installation of Zowe&trade; consists of two independent processes: installing the Zowe runtime on z/OS and installing Zowe CLI on a desktop computer.  
 
@@ -9,6 +9,8 @@ Zowe CLI can connect to z/OS servers and allows tasks to be performed through a 
 - A desktop computer that accesses the Zowe z/OS runtime through a web browser or REST API client does not need to have Zowe CLI installed.
 - The z/OS servers that Zowe CLI connects to does not require the Zowe z/OS components to be installed on those servers. 
 - A desktop computer that uses Zowe CLI does not require the Zowe z/OS runtime to be installed on the z/OS server.
+
+Before you start the installation, review the information on system requirements and other considerations.
 
 ## Planning the installation of Zowe z/OS components
 
@@ -26,5 +28,5 @@ The following information is required during the installation process of the Zow
    - `ZWESVSVR` brings up the Zowe runtime containing the Zowe desktop, the API mediation layer and a number of Zowe applications.
    - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF authorized code. More details on the cross memory server are described in [Zowe Cross Memory Server](configure-zowe-runtime.html#the-zowe-cross-memory-server). 
    
-     In order for the two started tasks to run correctly, security manager configuration needs to be performed.  This is documented in <JRW TO DO> and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
+     In order for the two started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 

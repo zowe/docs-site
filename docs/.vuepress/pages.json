@@ -22,7 +22,8 @@
   {
     "text": "User Guide",
     "baseuri": "/user-guide/",
-    "items": [{
+    "items": [
+      {
       "text": "Planning and preparing the installation",
       "items": [
         "user-guide/installandconfig.md",
@@ -44,6 +45,7 @@
           "user-guide/configure-xmem-server.md",
           "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
+          "user-guide/configure-auxiliary-address-space.md",
           "user-guide/zowe-zos-uninstall.md"
         ]
       },
