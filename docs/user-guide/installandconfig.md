@@ -1,4 +1,4 @@
-# Planning the installation
+# Planning and preparing the installation
 
 The installation of Zowe&trade; consists of two independent processes: installing the Zowe runtime on z/OS and installing Zowe CLI on a desktop computer.  
 

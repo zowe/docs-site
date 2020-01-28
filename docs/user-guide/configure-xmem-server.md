@@ -14,7 +14,7 @@ Under some situations the cross memory server will start, control, and stop an a
 
 ## Installing the Zowe cross memory server
 
-To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem-server.sh`.  
+To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem.sh`.  
 
 ### Cross memory PROCLIB and load libary
 
@@ -38,6 +38,8 @@ To install the cross memory server, take the following steps either manually or 
 2. Add a `ZWESIP00` PARMLIB member for the `ZWESISTC` started task:
 
     When started, the ZWESISTC started task must find a valid ZWESIPxx PARMLIB member. The `SZWESAMP` PDS contains the member `ZWESIP00` containing default configuration values. You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESISTC started task JCL.
+
+### Cross memory PROCLIB and load libary
     
 A convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
 
