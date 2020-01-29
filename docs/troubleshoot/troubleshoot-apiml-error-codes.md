@@ -552,7 +552,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
 ### ZWEAG701W
 
-  Service '%s' does not allow encoded characters in the URL.
+  Service '%s' does not allow encoded characters by request: '%s'.
 
   **Reason:**
 
