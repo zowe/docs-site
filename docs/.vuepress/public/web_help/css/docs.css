@@ -27,15 +27,10 @@
 #btn-print {
     background: none;
     border: none;
-    font-size: large;
-    padding: 0;
-}
-
-#btn-print-wrapper {
     display: none;
-    left: calc(797px + (100% - 767px) / 2);
-    position: absolute;
-    top: 60px;
+    float: right;
+    font-size: large;
+    padding: 5px 5px 0;
 }
 
 .btn-copy {
