@@ -199,11 +199,11 @@ Additionally, this `application.yml` typically contains Spring Boot specific pro
 
 ## Registering your service with API ML
 
-To register your REST service with API ML using our Spring Boot Enabler, you need to only annotate your application main class with `@EnableApiDiscovery ` 
+To register your REST service with API ML using a Spring Boot Enabler, you only need to annotate your application `main` class with `@EnableApiDiscovery ` 
     
 The Registration process starts immediately after Spring finishes its Context Factory initialization.
     
-When your application would be stopped, the Spring Enabler will receive event that Spring Context is going to be destroyed and will handle the event by gracefyully unregistering your application from API ML discovery service.     
+When your application stops, the Spring Enabler receives an event that the Spring Context is to be destroyed. The Spring Enabler handles this event by gracefully unregistering your application from API ML Discovery service.     
     
 ## Adding documentation   
 
