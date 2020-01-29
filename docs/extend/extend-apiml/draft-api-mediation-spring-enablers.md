@@ -1,8 +1,8 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. As a API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
+This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
 
-Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12, the enabler was replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
+**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
 TOC
 
@@ -12,75 +12,34 @@ TOC
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
   * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
-## Onboarding your REST service with API ML using Spring Boot
+## Overview of onboarding a REST service using Spring Boot
 
-You can onboard your REST API service based on Sping Boot framework. Depending on your Spring Boot version, use the enabler that corresponds to your Spring Boot dependency:
-- onboarding-enabler-spring-v1
-- onboarding-enabler-spring-v2
+The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article. 
 
-**Note:** The process of onboarding is the same for both Spring Boot enabler versions.
+1. [Select a Spring Boot Enabler](#select-an-spring-boot-enabler)
 
-The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler.   Each step is described in further detail in this article. 
-
-1. [Configuring your project](#configuring-your-project)
+2. [Configuring your project](#configuring-your-project)
 
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-2. [Configuring your Spring Boot based service](#configuring-your-spring-boot-based-service)
+3. [Configuring your Spring Boot based service with API ML](#configuring-your-spring-boot-based-service-with-api-ml)
 
-Spring Boot expects to find the default configuration of the application in file named `application.yml` placed on the classpath.
-    
-    Note:TheSpring Boot `application.yml` file has different structure than the service-config.yml used for Plain Java Enabler configuration.    
+4. [Registering your service with API ML](#registering-your-service-with-api-ml)
 
-The Spring Boot `application.yml` integrates the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. Additionally it typically contains 
-Spring Boot specific properties e.g. properties used to start a web application container including TLS security; different spring configuration profiles definitions or 
-application management properties. Execution environment related properties should be provided by additional configuration mechanisms, which differ for development deployments on a local machine, 
-or on mainframe system. 
+5. [Adding API documentation](#adding-api-documentation)
 
-To provide environment specific configuration properties for local machine execution environment, place them in additional 
-YAML file resembling the structure of the default `application.yml`. At service startup time Spring will rewrite 
-the configuration properties of the default config file with the values of the same properties from the additional configuration file.
-For local machine runtime environment, provide on command line following parameter:
-  
-    -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
-
-At runtime Spring will merge the two configuration files, where the properties in the external one have higher priority.
-To select active profile among all profiles defined by the above merged configuration, provide profile name as a command line parameter:
-    
-    -Dspring.profiles.active=PROFILE-NAME
-
-To provide environment specific configuration properties on mainframe execution environment, you must define them through Java System Properties provided on command line 
-as part of `JAVA_OPTIONS` argument. 
-
-The default configuration should contain only properties which are not dependent 
-on deployment environment or otherwise contain security sensitive data.  
+6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
 
 
-    TODO-Clarify: 
-    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
-3. [Registering your service with API ML](#registering-your-service-with-api-ml)
+## Select a  Spring Boot Enabler
 
-  To register your REST service with API ML using our Spring Boot Enabler, you need to only annotate your application main class with
-  
-    `@EnableApiDiscovery` 
-    
-    Registration proces will be started right after Spring finishes its Context Factory initialization.
-    
-    When your application would be stopped, the Spring Enabler will receive event that Spring Context is going to be destroyed and will handle the event 
-    by gracefyully unregistering your application from API ML discovery service.     
+Depending on your Spring Boot version, use the enabler that corresponds to your Spring Boot dependency:
+- onboarding-enabler-spring-v1
+- onboarding-enabler-spring-v2
 
-4. [Adding API documentation](#adding-api-documentation)
-    
-    
-
-5. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
-
-
-**Notes:** 
-
-* This documentation is valid for `ZoweApimlVersion <font color = "red"> ????? </font> and higher. We recommend that you check the Giza Artifactory for newer versions. 
+**Note:** The process of onboarding an API service is the same for both Spring Boot enabler versions.
 
 ## Configuring your project
 
@@ -193,6 +152,76 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 4. In the directory of your project, run the `mvn package` command to build the project.
 
+## Configuring your Spring Boot based service with API ML
+
+To configure a Spring Boot based service, it is useful to first understand how Spring Boot based configuration compares to configuration using the Plain Java Enabler.
+
+Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. This `application.yml` integrates the Plain Java Enabler  API ML service configuration under the `apiml.service` prefix. 
+
+Additionally, this `application.yml` typically contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions, or application management properties. Execution environment related properties should be provided by additional configuration mechanisms, which differ for development deployments on a local machine, or on a mainframe system. 
+
+**Follow these steps:**
+
+1. (Optional) Provide environment specific configuration properties for a local machine execution environment by placing these configuration properties in an additional YAML file resembling the structure of the default `application.yml`.
+
+    **Example:**
+    <font color = "red"> Add an example here. </font>
+
+    At service startup time, Spring rewrites the configuration properties of the default config file with the values of the same properties from the additional configuration file.
+
+2. For a local machine runtime environment, provide the following parameter on your command line:
+  
+    ```
+    -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
+    ```
+    At runtime, Spring will merge the two configuration files, whereby the properties in the external file have higher priority.
+
+3. Select an active profile among all profiles defined by the above merged configuration by providing the profile name as a command line parameter:
+    
+    ```
+    -Dspring.profiles.active=PROFILE-NAME
+    ```
+4. Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
+
+    <font color = "red"> Let's add an example here. </font>
+
+    **Important!** Ensure that the default configuration contains only properties which are not dependent on the deployment environment. Do not include security sensitive data in the default configuration.    
+
+
+    TODO-Clarify:
+
+    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
+
+
+
+
+
+
+## Registering your service with API ML
+
+To register your REST service with API ML using our Spring Boot Enabler, you need to only annotate your application main class with `@EnableApiDiscovery ` 
+    
+The Registration process starts immediately after Spring finishes its Context Factory initialization.
+    
+When your application would be stopped, the Spring Enabler will receive event that Spring Context is going to be destroyed and will handle the event by gracefyully unregistering your application from API ML discovery service.     
+    
+## Adding documentation   
+
+
+
+
+## Validating your API service discoverability
+
+
+
+
+
+
+
+
+
+
+<font color = "red"> REVIEW THE FOLLOWING SECTIONS TO DETERMINE RELEVANCE TO THIS ATICLE </font>
 
 
 ## Configuring your Spring Boot based service
