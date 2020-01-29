@@ -112,7 +112,7 @@ If the plug-in did not load successfully, you will find the following message:
 ```
 If the identifier is not in the logs, make sure the plug-in's locator file is in the `/zlux-app-server/deploy/instance/ZLUX/plugins/` directory. The plug-in locator is a `.json` file, usually with same name as the identifier, for example `org.zowe.sampleapp.json`. Open the file and make sure that the path defined with the `pluginLocation` attribute is correct. If the path is relative, make sure it is relative to the `zlux-app-server/bin` directory. 
 
-For more information on loading plug-ins to the Desktop, see [Adding Your App to the Desktop](../../extend/extend-desktop/zlux-workshop-user-browser.html#adding-your-app-to-the-desktop).
+For more information on loading plug-ins to the Desktop, see [Adding Your App to the Desktop](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md).
 
 
 ## Error: You must specify MVD_DESKTOP_DIR in your environment
