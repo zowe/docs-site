@@ -437,8 +437,78 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
-## Applying role-based access control to dataservices
+## Controlling access to applications
 
+You can control which applications are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an application that is under development only visible to the team working on it.
+
+You control access by editing JSON files that list the apps. One file lists the apps all users can see, and you can create a file for each user. When a user logs into the desktop, Zowe determines the apps that user can see by concatenating their list with the all users list.
+
+### Controlling application access for all users
+
+1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
+    ```
+    $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json
+    ```
+
+2. To enable RBAC, in the `dataserviceAuthentication` object add the object: `"rbac": true`
+
+3. Navigate to the following location:
+   ```
+   $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   ```
+4. Copy the `allowedPlugins.json` file and paste it in the following location:  
+   ```
+   .zowe/workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.bootstrap
+   ```
+5. Open the copied `allowedPlugins.json` file and perform either of the following steps:
+    - To an application unavailable, delete it from the list of objects.
+    - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required. 
+
+6. [Restart the app server](configure-zowe-runtime.md#starting-and-stopping-the-zowe-runtime-on-z-os).
+
+### Controlling application access for individual users
+
+1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
+    ```
+    $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json
+    ```
+2. To enable RBAC, in the `dataserviceAuthentication` object add the object: `"rbac": true`
+
+3. In the user's ID directory path, in the `\pluginStorage` directory, create `\org.zowe.zlux.bootstrap\plugins` directories. For example:
+    ```
+    .zowe\workspace\app-server\users\TS6320\ZLUX\pluginStorage\org.zowe.zlux.bootstrap\plugins
+    ```
+
+4. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
+   ```
+   $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   ```
+6. Open the `allowedPlugins.json` file and specify applications that user can access. For example:
+    ```json
+    {
+      "allowedPlugins": [
+        {
+          "identifier": "org.zowe.appA",
+          "versions": [
+            "*"
+          ]
+        },
+        {
+          "identifier": "org.zowe.appB",
+          "versions": [
+            "*"
+          ]
+        },
+    }
+    ```
+
+    **Notes:**
+    - Identifier and version attributes are required.
+    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
+
+6. [Restart the app server](configure-zowe-runtime.md#starting-and-stopping-the-zowe-runtime-on-z-os). 
+
+## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
 You can apply access control to Zowe endpoints and to your application endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. Any dataservice added as part of an application plugin is a service dataservice. 

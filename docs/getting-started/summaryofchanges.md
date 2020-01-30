@@ -37,6 +37,7 @@ The following features and enhancements were added.
 - Extensible resource access framework [#2](https://github.com/zowe/zlux/issues/2)
 - ZOWESVR does not issue a useful UP message [#355](https://github.com/zowe/zlux/issues/355)
 - Update server log levels [#240](https://github.com/zowe/zlux/issues/240)
+- Access control for app visibility [216](https://github.com/zowe/zlux/issues/216)
 - The following features and enhancements were made in the default apps:
     - UI changes for write support for datasets in editor [#340](https://github.com/zowe/zlux/issues/340)
     - Support deletion of QSAM in REST API [#339](https://github.com/zowe/zlux/issues/339)
