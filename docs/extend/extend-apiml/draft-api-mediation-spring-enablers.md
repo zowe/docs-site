@@ -6,13 +6,16 @@ This guide is part of a series of guides to onboard a REST API service with the 
 
 TOC
 
-**Tip:** For more information about how to utilize another API ML enabler, see: 
+**Tip:** For more information about how to utilize another API ML enabler, see:
+    
+<font color="red">TODO: Or actually with an other enabler or without enabler at all</font>
+             
   * [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
   * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
   * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
-## Overview of onboarding a REST service using Spring Boot
+## Outline of onboarding a REST service using Spring Boot
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article. 
 
@@ -35,7 +38,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Select a  Spring Boot Enabler
 
-Depending on your Spring Boot version, use the enabler that corresponds to your Spring Boot dependency:
+Add to your project build configuration a dependency on Spring Enabler version corresponding to the Spring Boot version, that you use for the whole project:
 - onboarding-enabler-spring-v1
 - onboarding-enabler-spring-v2
 
@@ -43,9 +46,10 @@ Depending on your Spring Boot version, use the enabler that corresponds to your 
 
 ## Configuring your project
 
-Use either _Gradle_ or _Maven_ build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system. 
+Use either _Gradle_ or _Maven_ build automation systems to manage your project builds. 
 
-**Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code. 
+**Note:** You can download the selected enabler artifact from the Giza Artifactory or  if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory.
+ Publish the enabler artifact by using the _Gradle_ tasks provided in the source code. 
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -54,7 +58,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
  
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact. Provide the corresponding credentials to gain access to the Maven repository. 
 
     If you are using the Giza Artifactory, use the credentials in the following code block: 
 
@@ -82,14 +86,17 @@ Use the following procedure to use _Gradle_ as your build automation system.
         }
     }
     ```
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Giza Artifactory, add the following code block to your `build.gradle` script: 
-    
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Giza Artifactory, add the following code block to your `build.gradle` script: 
+
+<font color="red">TODO#FindOut what name will be SE published under</font>
+
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
     ```    
     **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
 
+<font color="red">TODO#Check what other dependencies are required for SE</font>
     ```gradle
     implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
     implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
@@ -105,6 +112,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     **Notes:** 
     * You may need to add more dependencies as required by your service implementation.     
     * The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
+<font color="red">TODO#Check the version of  SE above</font>
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -114,7 +122,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following _XML_ tags within the newly created `pom.xml` file:
+1. Add the following _XML_ tags to your project `pom.xml` file:
     ```xml
     <repositories>
         <repository>
@@ -148,11 +156,11 @@ Use the following procedure if you use _Maven_ as your build automation system.
     ```
     **Tip:** If you want to use _snapshot_ version, set the `/servers/server/id` to `libs-snapshot`.
 
-3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory. If the file already exists, include the contents of the project related `settings.xml` into the original `settings.xml` file.
 
-4. In the directory of your project, run the `mvn package` command to build the project.
+4. In the directory of your project, run the `mvn clean package` command to build the project.
 
-## Configuring your Spring Boot based service with API ML
+## Configuring your Spring Boot based service to onboard with API ML
 
 To configure a Spring Boot based service, it is useful to first understand how Spring Boot based configuration compares to configuration using the Plain Java Enabler.
 
