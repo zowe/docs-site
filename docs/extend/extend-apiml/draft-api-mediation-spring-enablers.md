@@ -192,24 +192,46 @@ If you reused your existing API ML onboarding configuration, you need to:
     ```
 
 ```
-# In the following sample API ML onboarding configuration, 
-#
-# properties prefixed with ### (3 hashtags) indicate that their value must be provided by a System property defined in the MF execution environment. 
-# The -Dsystem-property-key must be the same as the flattened path of the YAML property which is commented out with ###. 
+# In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) 
+# indicate that their value must be provided as -Dsystem.property.key=PROPERTY_VALUE defined in the MF execution environment. 
+# The -Dsystem.property.key must be the same as the flattened path of the YAML property which is commented out with ###.
 # These properties must not be defined (uncommented) in your default service YAML configuration file.
 #
-# Example: For property apiml.service.hostname in the following YAML sample configuration, 
-# provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on the java execution command line 
-# when application service is run on MF.
+# Example: For property:
+#     apiml:
+#         service:
+#             ### hostname: 
 #
-# For development purposes you can replace any property by providing the same configuration structure in an external YAML configuration file. 
-# When running your application, provide the name of the external / additional configuration file on the command line by using:
+# , provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on the java execution command line when application service is run on MF. 
+# At the same time, leave the property commented out.
+#
+# For development purposes you can replace or add any property by providing the same configuration structure in an external 
+# YAML configuration file. When running your application, provide the name of the external / additional configuration file 
+# on the command line by using:
 # `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
-#
-# NOTE: System properties provided with -D on the command line will not replace properties defined 
-# in any of the two YAML configuration files.
 # 
+#
+# A property notation -Dproperty.key=PROPERTY_VALUE can be used in two different ways:
+#    - to provide run-time value for any `YAML` property if ${property.key} is used as its value (after ':') in the YAML configuration file.
+#    Example:
+#    ```  
+#        some_property_path:    
+#            property:
+#                key: ${property.key}
+#    ```
+#
+#    - to add a property to configuration (if it doesn't already exist).
+#    Example:        
+#
+#    ```
+#        property:
+#            key: PROPERT_VALUE
+#    ```
+# NOTE: System properties provided with -D on the command line will not replace properties defined 
+# in any of the YAML configuration files.
+#
 # TODO: Remove the obvious comments and place them as information above the sample config.
+#############################################################################################################################
 
 spring:
     application:
@@ -240,7 +262,7 @@ apiml:
                 
         routes:
             -   gateway-url: "ui/v1"
-                service-url: ${apiml.service.contextPath}          # Defined by the apiml.service.contextPath property above
+                service-url: ${apiml.service.contextPath}         
             -   gateway-url: "api/v1"
                 service-url: ${apiml.service.contextPath}/api/v1
             -   gateway-url: "ws/v1"
@@ -253,7 +275,7 @@ apiml:
                 documentationUrl: https://www.zowe.org
         catalog:
             tile:
-                id: cademoapps                                    # Provide any suitable name for your API Doc to display in the Catalog 
+                id: cademoapps                                    # Provide ID for your service Catalog tile
                 title: Sample API Mediation Layer Applications
                 description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
                 version: 1.0.1
