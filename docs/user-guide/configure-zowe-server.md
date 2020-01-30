@@ -19,13 +19,18 @@ The script `zowe-install-proc.sh` has two arguments:
    For an SMP/E installation, this will be the value of `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
 - **Second Parameter**=Target PROCLIB PDS
+   
+   Target PROCLIB PDS where ZWESVSTC will be placed. If parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first dataset where the user has write access
+   
+   **Example**
 
-## Configuring ZWESVSTC to run under the correct user ID
+   Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
 
-The `ZWESVSTC` must be configured as a started task (STC) under the ZWESVUSR user ID with the administrator user ID of ZWEADMIN.  The commands to create the user ID and group is supplied in the PDS member `ZWESECUR`, see [Configuring a z/OS system for Zowe](configure-zos-system.md).  To associate the `ZWESVSTC` started task with the user ID and group see [Configuring a z/OS system for Zowe](configure-zos-system.md).  This step will be done once per z/OS environment by a system programmer who has sufficient security priviledges. 
+## Step 2: Configure ZWESVSTC to run under the correct user ID
 
+The `ZWESVSTC` must be configured as a started task (STC) under the ZWESVUSR user ID with the administrator user ID of ZWEADMIN.  The commands to create the user ID and group is supplied in the PDS member `ZWESECUR`, see [Configuring the z/OS system for Zowe](configure-zos-system.md).  To associate the `ZWESVSTC` started task with the user ID and group see [Configuring a z/OS system for Zowe](configure-zos-system.md).  This step will be done once per z/OS environment by a system programmer who has sufficient security priviledges. 
 
-## Step 2: Launch the ZWESVSTC started task
+## Step 3: Launch the ZWESVSTC started task
 
 You can launch the Zowe started task in two ways.  
 
@@ -45,7 +50,7 @@ _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to. 
 
 You can use SDSF to start Zowe. 
 
-If you issue the SDSF command `/S ZWESVSETC`, it will fail because the script needs to know the instance directory containing the configuration details.  
+If you issue the SDSF command `/S ZWESVSTC`, it will fail because the script needs to know the instance directory containing the configuration details.  
 
 If you have a default instance directory you wish you always start Zowe with, you can tailor the JCL member `ZWESVSTC` at this line
 
@@ -63,7 +68,7 @@ If the JCL value `instance-directory` is not specified in the JCL, in order to s
 
 The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.
 
-### Stopping the ZWESVSTC PROC
+## Stopping the ZWESVSTC PROC
 
 To stop the Zowe server, the ZWESVSTC PROC needs to be ended. Run the `zowe-stop.sh` script at the Unix Systems Services command prompt that is in the zowe instance directory used to start the Zowe started task:
 
@@ -71,45 +76,7 @@ To stop the Zowe server, the ZWESVSTC PROC needs to be ended. Run the `zowe-stop
 cd $ZOWE_INSTANCE_DIR/bin
 ./zowe-stop.sh
 ```
-
-When you stop the ZWESVSTC, you might get the following error message:
-
-```
-IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
-```
-
-This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
-
-```
-/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
-```
-You can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
-
-  ```
-  TSS ADD(userid)  PROFILE(IZUADMIN)
-  TSS ADD(userid)  GROUP(IZUADMGP)
-  ```
-
-## Stopping the ZWESVSTC started task
-
-Stopping `ZWESVSTC` stops all of the components that run as independent Unix processes.
-
-To stop `ZWESVSTC`, run the `zowe-stop.sh` script at the Unix Systems Services command prompt:
-
-```
-cd $ZOWE_INSTANCE_DIR/bin
-./zowe-stop.sh
-```
-
 where _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to.
- 
-If you prefer to use SDSF to stop Zowe, stop ZWESVSTC by issuing the following operator command in SDSF:
-
-```
-/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-```
-
-Where _ZOWE_PREFIX_ and _ZOWE_INSTANCE_ are specified in your configuration (and default to `ZWE` and 1).
 
 When you stop ZWESVSTC, you might get the following error message:
 
