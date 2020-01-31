@@ -13,7 +13,7 @@ You can install the following Zowe plug-ins:
 
 Use either of the following methods to install plug-ins:
 
-- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet. 
+- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet.
 
     For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
 
@@ -30,13 +30,13 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
 
 2.  Set the target registry to the public NPM registry by issuing the following command:
-   
+
       ```
       npm config set @zowe:registry
       ```
 
 3.  Issue the following command to install a plug-in:
-   
+
       ```
       zowe plugins install <my-plugin>
       ```
@@ -49,15 +49,15 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
     | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
     | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
-    |    |    |
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
 
-4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
+4. (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
     zowe plugins install <@zowe/my-plugin1> <@zowe/my-plugin2> <@zowe/my-plugin3> ...
     ```
     **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
 
-You installed Zowe CLI plug-ins. 
+You installed Zowe CLI plug-ins.
 
 ## Installing plug-ins from a local package
 
@@ -66,7 +66,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 **Follow these steps:**
 
 1.  Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
-   
+
 2.  Obtain the installation files.
 
     From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
@@ -81,11 +81,11 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     **Example:**
 
+
     ```
     unzip zowe-cli-package-1.0.1.zip
     ```
-    unzip zowe-cli-package-1.0.1.zip
-    ```
+
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
 
@@ -93,7 +93,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
 
-4.  Open a command-line window and change to the local directory where you extracted the zip file.
+5.  Open a command-line window and change to the local directory where you extracted the zip file.
 
     **Example:**
 
@@ -101,7 +101,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     cd C:\Users\userID\my_downloads\<file_name>.zip
     ```
 
-5.  Issue the following command to install the plug-in:
+6.  Issue the following command to install the plug-in:
 
     ```
     zowe plugins install <my-plugin>
@@ -115,8 +115,9 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
     | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
+    | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
 
-You installed Zowe CLI plug-ins. 
+You installed Zowe CLI plug-ins.
 
 ## Validating plug-ins
 
@@ -128,7 +129,7 @@ The `validate` command has the following syntax:
 zowe plugins validate [plugin]
 ```
 
-  - **`[plugin]`**  
+  - **`[plugin]`**
     (Optional) Specifies the name of the plug-in that you want to
     validate. If you do not specify a plug-in name, the command
     validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
@@ -139,7 +140,7 @@ zowe plugins validate [plugin]
     |IBM Db2 Plug-in for Zowe CLI|`@zowe/db2-for-zowe-cli`|
     |IBM IMS Plug-in for Zowe CLI|`@zowe/ims-for-zowe-cli`|
     |IBM MQ Plug-in for Zowe CLI|`@zowe/mq-for-zowe-cli`|
-    |||
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
 
 **Examples: Validate plug-ins**
 
@@ -180,7 +181,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
 ```
-zowe plugins update @zowe/my-plugin@lts-incremental
+zowe plugins update @zowe/my-plugin
 ```
 
 The following example illustrates the syntax to use to update a plug-in to a specific version:
@@ -216,7 +217,7 @@ The following table describes the uninstallation command synstax for each plug-i
  | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
  | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
  | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
- |    |    |
+ | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli` |
 
 **Example:**
 

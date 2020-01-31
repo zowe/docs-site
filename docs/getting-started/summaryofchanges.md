@@ -15,7 +15,7 @@ Welcome to Zowe Active Development documentation.
 
 **New compatible plug-ins:**
 
-The following plug-ins are compatible *only* with Zowe CLI Active Development version:
+The following plug-ins are compatible and available *only* with Zowe CLI Active Development version:
 
 - [IBM® z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
 - [IBM® IMS™ Plug-in for Zowe CLI](../user-guide/cli-imsplugin.md).
@@ -32,7 +32,7 @@ The following plug-ins are compatible *only* with Zowe CLI Active Development ve
     - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
     - `zowe zos-files mount fs` [#431](https://github.com/zowe/zowe-cli/issues/431)
     - `zowe zos-files unmount fs` [#432](https://github.com/zowe/zowe-cli/issues/432)
-- The following new commands were added for creating USS files and directories
+- The following new commands were added for creating USS files and directories:
     - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
     - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
 
