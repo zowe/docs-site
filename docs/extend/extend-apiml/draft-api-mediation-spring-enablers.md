@@ -213,19 +213,20 @@ Java system properties to provide additional configuration properties and values
     ```
 
 ```
-# In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) 
-# indicate that their value must be provided as -Dsystem.property.key=PROPERTY_VALUE defined in the MF execution environment. 
+# In the following sample API ML onboarding configuration, properties commented with ### (3 hashtags) 
+# indicate that their value must be provided externally to the deploymet package. On a MF environment this can be done 
+# using the -Dsystem.property.key=PROPERTY_VALUE notation to provde the property value on the JAVA command line.
 # The -Dsystem.property.key must be the same as the flattened path of the YAML property which is commented out with ###.
 # These properties must not be defined (uncommented) in your default service YAML configuration file.
 #
-# Example: For property:
+# Example:
 #     apiml:
 #         service:
 #             ### hostname: 
 #
-# Provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on
+# For MF deploymnet provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on
 # the java execution command line when the application service is run on the MF. 
-# Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
+# Since this value is provided on the java execution command line, leave the property commented out in the `application.yml`.
 #
 # For development purposes you can replace or add any property by providing the same configuration structure in an external 
 # YAML configuration file. When running your application, provide the name of the external/additional configuration file 
@@ -265,18 +266,18 @@ spring:
         name: ${apiml.service.id}           # Same name as for `apiml.service.serviceId`
 
 apiml:
-    enabled: true                           # Decision if the service should automatically register with API ML discovery service
-    enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL 
+    enabled: true                           
+    enableUrlEncodedCharacters: true        
     service:                                # The root of API ML onboarding configuration
     
-        serviceId: ${apiml.service.id}      # The symbolic name of the service. Must be the same as `spring.application.name`
+        serviceId: ${apiml.service.id}      
         title: ${service.title}             
-        description: ${service.description} # API service description
+        description: ${service.description} 
 
         scheme: https               
-        ### hostname:                                # Hostname must be defined by -Dapiml.service.hostname on MF 
-        ### port:                                    # Port must be defined by -Dapiml.service.port on MF: 
-        serviceIpAddress: ${apiml.service.ipAddress} # serviceIpAddress must be provided by -Dapiml.service.ipAddress on MF
+        ### hostname:                                # Hostname must be defined by -Dapiml.service.hostname on MF or external application.yml property for development
+        ### port:                                    # Port must be defined by -Dapiml.service.port on MF or external application.yml property for development
+        serviceIpAddress: ${apiml.service.ipAddress} # serviceIpAddress must be provided by -Dapiml.service.ipAddress on MF or external application.yml property for development
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.id}            # By default the contextPath is set to be the same as apiml.service.serviceId
@@ -285,7 +286,7 @@ apiml:
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        ### discoveryServiceUrls: ${apiml.service.discoveryServiceUrls} # discoveryServiceUrls must be defined by -Dapiml.service.discoveryServiceUrls on MF:  
+        ### discoveryServiceUrls:                   # discoveryServiceUrls must be defined by -Dapiml.service.discoveryServiceUrls on MF or external application.yml property for development  
                 
         routes:
             -   gateway-url: "ui/v1"
@@ -302,38 +303,37 @@ apiml:
                 documentationUrl: https://www.zowe.org
         catalog:
             tile:
-                id: cademoapps                                    # Provide ID for your service Catalog tile
+                id: cademoapps                                    
                 title: Sample API Mediation Layer Applications
                 description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
                 version: 1.0.1
         ssl:
             enabled: ${server.ssl.enabled}
-            verifySslCertificatesOfServices: true
+            verifySslCertificatesOfServices: ${apiml.security.verifySslCertificatesOfServices} #true
             ciphers: ${server.ssl.ciphers}
             protocol: ${server.ssl.protocol}
             enabled-protocols: ${server.ssl.protocol}
             keyStoreType: ${server.ssl.keyStoreType}
             trustStoreType: ${server.ssl.trustStoreType}
 
-            ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
-            keyAlias: ${server.ssl.keyAlias} #localhost-blah
-            keyPassword: ${server.ssl.keyPassword} #password-blah
-            keyStore: ${server.ssl.keyStore} #keystore/localhost/localhost.keystore.p12-blah
-            keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
-            trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
-            trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
+            keyAlias: ${server.ssl.keyAlias}
+            keyPassword: ${server.ssl.keyPassword}
+            keyStore: ${server.ssl.keyStore}
+            keyStorePassword: ${server.ssl.keyStorePassword}
+            trustStore: ${server.ssl.trustStore}
+            trustStorePassword: ${server.ssl.trustStorePassword}
 
 server:
-    scheme: ${apiml.service.scheme}
-    hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
-    port: ${apiml.service.port} #10012         # Default port name for discoverable-client service
-    address: ${apiml.service.ipAddress} #127.0.0.1
+    scheme: ${apiml.service.scheme}                 # Java application server address scheme - http or https
+    hostname: ${apiml.service.hostname}             # Java application server hostname 
+    port: ${apiml.service.port} #10012              # Java application server port 
+    address: ${apiml.service.ipAddress}             # address must be provided by -Dapiml.service.ipAddress on MF or external application.yml property for development
   
     servlet:
-        contextPath: /${apiml.service.id}
+        contextPath: /${apiml.service.contextPath}  # Must be the same as the apiml.service.contextPath
 
     ssl:
-        enabled: true
+        ### enabled:                                # `enabled` must be defined by -Dserver.ssl.enabled on MF or external application.yml property for development
         protocol: TLSv1.2
         enabled-protocols: TLSv1.2
         ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
