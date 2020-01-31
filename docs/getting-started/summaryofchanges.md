@@ -27,6 +27,7 @@ The following plug-ins are compatible and available *only* with Zowe CLI Active 
 **CLI Features and enhancements:**
 
 - The `zowe files copy` command was added for copying the contents of a data set or member to another data set or member. [#580](https://github.com/zowe/zowe-cli/pull/580)
+
 - Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
 - The following new commands were added for interacting with file systems:
     - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)

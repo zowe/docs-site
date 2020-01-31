@@ -9,6 +9,7 @@ In addition to the contributed Zowe plug-ins, there are [Third-party Zowe Confor
 - [Install plug-ins](cli-installplugins.md)
 - [IBM® CICS Plug-in for Zowe CLI](cli-cicsplugin.md)
 - [IBM® Db2® Database Plug-in for Zowe CLI](cli-db2plugin.md)
+- [IBM® z/OS FTP Plug-in for Zowe CLI](cli-zftpplugin.md)
 - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
 - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
 - [Secure Credential Store Plug-in for Zowe CLI](cli-scsplugin.md)

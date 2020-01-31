@@ -40,7 +40,7 @@ You can update Zowe CLI to the latest version from the online registry on Window
 2. Reinstall the plug-ins and update existing plug-ins using the following command:
 
    ```
-   zowe plugins install @zowe/cics @zowe/db2 @zowe/ims @zowe/mq @zowe/secure-credential-store-for-zowe-cli
+   zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli @zowe/zos-ftp-for-zowe-cli @zowe/ims-for-zowe-cli @zowe/mq-for-zowe-cli @zowe/secure-credential-store-for-zowe-cli
    ```
 
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.

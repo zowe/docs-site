@@ -7,6 +7,7 @@ Use commands in the `plugins` command group to install and manage Zowe&trade; CL
 You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
 - IBM® Db2® Plug-in for Zowe CLI
+- IBM® z/OS FTP Plug-in for Zowe CLI
 - IBM® IMS™ Plug-in for Zowe CLI
 - IBM® MQ Plug-in for Zowe CLI
 - [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
@@ -47,6 +48,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
+    | IBM z/OS FTP Plug-in for Zowe CLI| `@zowe/zos-ftp-for-zowe-cli`|
     | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
     | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
     | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
@@ -113,6 +115,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     |---------|-----------------|
     | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe-cli.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
+    | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
     | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
     | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
@@ -138,6 +141,7 @@ zowe plugins validate [plugin]
     |-|-|
     |IBM CICS Plug-in for Zowe CLI|`@zowe/cics-for-zowe-cli`|
     |IBM Db2 Plug-in for Zowe CLI|`@zowe/db2-for-zowe-cli`|
+    |IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli`|
     |IBM IMS Plug-in for Zowe CLI|`@zowe/ims-for-zowe-cli`|
     |IBM MQ Plug-in for Zowe CLI|`@zowe/mq-for-zowe-cli`|
     | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
@@ -215,9 +219,11 @@ The following table describes the uninstallation command synstax for each plug-i
  |---------|-----------------------------|
  | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
  | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
- | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
+ | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli` |
  | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
+ | IBM z/OS FTP Plug-in for Zowe CLI| `@zowe/zos-ftp-for-zowe-cli` |
  | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli` |
+
 
 **Example:**
 
