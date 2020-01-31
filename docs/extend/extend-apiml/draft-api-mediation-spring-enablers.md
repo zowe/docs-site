@@ -344,23 +344,25 @@ server:
 3. For a local machine runtime environment, provide the following parameter on your command line:
   
     ```
-    -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
+    -Dspring.config.additional-location=PATH-TO_EXTERNAL-YAML-CONFIG-FILE
     ```
-    At runtime, Spring will merge the two configuration files, whereby the properties in the external file have higher priority.
+    
+   At runtime, Spring will merge the two `YAML` configuration files, whereby the properties in the external file have higher priority.
 
-   For Mainframe Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
+   For Mainframe execution environment provide environment specific configuration properties by defining these configuration properties through Java System Properties provided on service application execution command line. 
 
     <font color = "red"> Let's add an example here. </font>
 
     **Important!** Ensure that the default configuration contains only properties which are not dependent on the deployment environment. Do not include security sensitive data in the default configuration.    
 
 
-    TODO-Clarify:
-
     **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
 
 ## Registering your service with API ML
+
+Onboarding a REST services with API ML means to register the service with API ML Discovery service. The registration is 
+triggered automatically after the service application is fully run by Spring issuing `ContextRefreshed` event.  
 
 To register your REST service with API ML using a Spring Boot Enabler, you only need to annotate your application `main` class with `@EnableApiDiscovery ` 
     
@@ -370,26 +372,16 @@ When your application stops, the Spring Enabler receives an event that the Sprin
     
 
 ## Unregister your service with API ML
- <font color = "red"> NOTE: SHould this process for unregistering a service with API ML be included in this document? </font>
 
-
-    Use the `contextDestroyed` method to unregister your service instance from Eureka Discovery Service in the following format:
-
-    ```
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        if (apiMediationClient != null) {
-            apiMediationClient.unregister();
-        }
-
-        apiMediationClient = null;
-    }
-    ```
+Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process 
+by Spring issuing `ContextClosed` event. The Spring onboarding enabler is listening to this event and is issuing 
+`unregister` REST call to API ML Discovery service.  
 
 ## Adding API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
 
+To enable Swagger API documentation for your API  
 **Follow these steps:**
 
 1. Add a Springfox Swagger dependency.
@@ -405,7 +397,7 @@ Use the following procedure to add Swagger API documentation to your project.
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.8.0</version>
+            <version>2.9.2</version>
         </dependency>
         ```
 
