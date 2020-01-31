@@ -1,14 +1,14 @@
 # Configuring the Zowe cross memory server
 
-The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation.
-The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
-APF authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install,
-configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
 
-To install and configure the cross memory server, you must create or edit APF authorized load libraries, program
-properties table (PPT) entries, and a parmlib. This requires familiarty with z/OS.
+The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
+APF authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
+
+To install and configure the cross memory server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarty with z/OS.
 
 The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation. 
+
+The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation.
 
 The angel process server runs under the started task ZWESISTC. 
 
