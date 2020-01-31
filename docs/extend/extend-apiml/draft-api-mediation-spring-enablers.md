@@ -165,29 +165,14 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
-<<<<<<< HEAD
 Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration. 
-=======
-Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. 
-Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container 
-including TLS security, different spring configuration profiles definitions and other properties. 
-This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. 
-It is needed to synchronize the configuration of `
-Follow the steps bellow to provide configuration for your API ML enabled service.
-apiml.service` with the spring `server` configuration.
->>>>>>> fb765a9351b890a67934d3b78a16c3cfdd8fb774
 
 Configuration properties belong to two categories:
 
-<<<<<<< HEAD
 - Service related properties which include end-points, relative paths or API documentation definitions.
 - Environment related properties which include host names, ports, context etc. 
 
 Execution environment related properties should be provided by additional configuration mechanisms. Note that execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. 
-=======
-Service related properties can be configured in the `application.yml` configuration file which resides inside the application package. 
-These properties don't have to be changed in most cases. 
->>>>>>> fb765a9351b890a67934d3b78a16c3cfdd8fb774
 
 Execution environment related properties are provided by different configuration mechanisms, which may be specific 
 for the target execution environment. In development environment it can be implemented by standard Spring mechanism 
@@ -229,14 +214,17 @@ On MF system currently we use Java system properties to provide additional confi
 # Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
 #
 # For development purposes you can replace or add any property by providing the same configuration structure in an external 
-# YAML configuration file. When running your application, provide the name of the external / additional configuration file 
+# YAML configuration file. When running your application, provide the name of the external/additional configuration file 
 # on the command line by using:
 # `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
 # 
 #
-# A property notation -Dproperty.key=PROPERTY_VALUE can be used
+# A property notation in the format -Dproperty.key=PROPERTY_VALUE can be used
 # in two different ways:
-#    - to provide run-time value for any `YAML` property if ${property.key} is used as its value (after ':') in the YAML configuration file.
+#
+#    - To provide a run-time value for any `YAML` property if
+#    ${property.key} is used as its value (after ':') in the YAML configuration
+#    file.
 #    Example:
 #    ```  
 #        some_property_path:    
@@ -244,7 +232,8 @@ On MF system currently we use Java system properties to provide additional confi
 #                key: ${property.key}
 #    ```
 #
-#    - to add a property to configuration (if it doesn't already exist).
+#    - To add a property to configuration 
+#    (if the property does not already exist).
 #    Example:        
 #
 #    ```
