@@ -341,27 +341,14 @@ server:
         trustStoreType: PKCS12
 ```
 
-
-1000. (Optional) Provide environment specific configuration properties for a local machine execution environment by placing these configuration properties in an additional YAML file resembling the structure of the default `application.yml`.
-
-    **Example:**
-    <font color = "red"> Add an example here. </font>
-
-    At service startup time, Spring rewrites the configuration properties of the default config file with the values of the same properties from the additional configuration file.
-
-2. For a local machine runtime environment, provide the following parameter on your command line:
+3. For a local machine runtime environment, provide the following parameter on your command line:
   
     ```
     -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
     ```
     At runtime, Spring will merge the two configuration files, whereby the properties in the external file have higher priority.
 
-3. Select an active profile among all profiles defined by the above merged configuration by providing the profile name as a command line parameter:
-    
-    ```
-    -Dspring.profiles.active=PROFILE-NAME
-    ```
-4. Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
+   For Mainframe Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
 
     <font color = "red"> Let's add an example here. </font>
 
@@ -373,10 +360,6 @@ server:
     **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
 
-
-
-
-
 ## Registering your service with API ML
 
 To register your REST service with API ML using a Spring Boot Enabler, you only need to annotate your application `main` class with `@EnableApiDiscovery ` 
@@ -385,39 +368,6 @@ The Registration process starts immediately after Spring finishes its Context Fa
     
 When your application stops, the Spring Enabler receives an event that the Spring Context is to be destroyed. The Spring Enabler handles this event by gracefully unregistering your application from API ML Discovery service.     
     
-## Adding documentation   
-
-
-
-
-## Validating your API service discoverability
-
-
-
-
-
-
-
-
-
-
-<font color = "red"> REVIEW THE FOLLOWING SECTIONS TO DETERMINE RELEVANCE TO THIS ATICLE </font>
-
-
-## Configuring your Spring Boot based service
-
-Configure your Spring Boot based service by following the steps described in [Configuring your service](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the onboarding guide using the Plain Java Enabler (PJE).  
-
-Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
-
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](api-mediation-onboard-enabler-external-configuration.md).   
-    
- 
-##  Registering your service with API ML
-
-The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
-
-<font color = "red"> Provide simple example with the @EnableApiDiscovery annotation on main app class.</font>
 
 ## Unregister your service with API ML
  <font color = "red"> NOTE: SHould this process for unregistering a service with API ML be included in this document? </font>
@@ -577,8 +527,4 @@ with actual addresses of API ML components and the respective user credentials.
  
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.  
 
-
-
-
-built on was  the new Java enabler is not compatible with pervious Spring Enablers (version 1.12).<font color = "red"> ??? </font>
 
