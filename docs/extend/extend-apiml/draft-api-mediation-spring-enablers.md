@@ -1,12 +1,9 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
-As an API developer, you can onboard your REST API service built with the Spring Boot framework with the 
-Zowe API Mediation Layer.
+This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. 
+As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
 
-**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components.
-From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) 
-that is not backwards compatiable with the previous enabler versions.
+**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
 TOC
 
@@ -21,8 +18,7 @@ TOC
 
 ## Outline of onboarding a REST service using Spring Boot
 
-The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler.
-Each step is described in further detail in this article. 
+The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article. 
 
 1. [Select a Spring Boot Enabler](#select-an-spring-boot-enabler)
 
@@ -167,31 +163,21 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
-To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based 
-configuration relates to configuration using the Plain Java Enabler.
+To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
-Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on 
-the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to 
-start a web application container including TLS security, different spring configuration profiles definitions and other 
-properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under 
-the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration 
-of `apiml.service` with the spring `server` configuration. 
+Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration. 
 
 Configuration properties belong to two categories:
 
 - Service related properties which include end-points, relative paths or API documentation definitions.
 - Environment related properties which include host names, ports, context etc. 
 
-Service related properties can be configured in the `application.yml` configuration file which resides inside the 
-application package. In most cases these properties don't have to be changed, because their values don't depend on 
-the target execution environment.
- 
-Execution environment related properties on the other hand depend on the target execution environment. Their values  
-can be provided by different configuration mechanisms, specific for the target execution environment. 
-In development environment it can be implemented by Spring e.g providing additional `YAML` file with 
-`-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. On MF system currently we use 
-Java system properties to provide additional configuration properties and values for existing configuration properties. 
+Execution environment related properties should be provided by additional configuration mechanisms. Note that execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. 
 
+Execution environment related properties are provided by different configuration mechanisms, which may be specific 
+for the target execution environment. In development environment it can be implemented by standard Spring mechanism 
+e.g providing additional `YAML` file with `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. 
+On MF system currently we use Java system properties to provide additional configuration properties and values for existing configuration properties. 
 
 1. Provide a configuration section for onboarding with API ML in the `application.yml` file.
 
@@ -211,73 +197,71 @@ Java system properties to provide additional configuration properties and values
 
     enableUrlEncodedCharacters: true
     ```
+## Sample API ML Onboarding Configuration
+
+In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the MF execution environment. 
+The `-Dsystem.property.key` must be the same as the flattened path of the YAML property which is commented out with ###.
+These properties must not be defined (uncommented) in your default service YAML configuration file.
+
+**Example:** 
+```
+     apiml:
+         service:
+            ### hostname: 
+```
+In this example from the YAML configuration file, provide `-Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE` on
+the java execution command line when the application service is run on the MF. 
+Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
+
+For development purposes you can replace or add any property by providing the same configuration structure in an external 
+YAML configuration file. When running your application, provide the name of the external/additional 
+configuration file on the command line by using:
+
+ `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
+
+A property notation in the format `-Dproperty.key=PROPERTY_VALUE` can be used
+in two different ways:
+
+ - To provide a run-time value for any `YAML` property if
+`${property.key}` is used as its value (after `:`) in the YAML configuration file.
+
+    **Example:**
+    ```  
+    some_property_path:    
+        property:
+            key: ${property.key}
+    ```
+- To add a property to configuration     (if the property does not already exist).
+
+    **Example:**       
 
 ```
-# In the following sample API ML onboarding configuration, properties commented with ### (3 hashtags) 
-# indicate that their value must be provided externally to the deploymet package. On a MF environment this can be done 
-# using the -Dsystem.property.key=PROPERTY_VALUE notation to provde the property value on the JAVA command line.
-# The -Dsystem.property.key must be the same as the flattened path of the YAML property which is commented out with ###.
-# These properties must not be defined (uncommented) in your default service YAML configuration file.
-#
-# Example:
-#     apiml:
-#         service:
-#             ### hostname: 
-#
-# For MF deploymnet provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on
-# the java execution command line when the application service is run on the MF. 
-# Since this value is provided on the java execution command line, leave the property commented out in the `application.yml`.
-#
-# For development purposes you can replace or add any property by providing the same configuration structure in an external 
-# YAML configuration file. When running your application, provide the name of the external/additional configuration file 
-# on the command line by using:
-# `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
-# 
-#
-# A property notation in the format -Dproperty.key=PROPERTY_VALUE can be used
-# in two different ways:
-#
-#    - To provide a run-time value for any `YAML` property if
-#    ${property.key} is used as its value (after ':') in the YAML configuration
-#    file.
-#    Example:
-#    ```  
-#        some_property_path:    
-#            property:
-#                key: ${property.key}
-#    ```
-#
-#    - To add a property to configuration 
-#    (if the property does not already exist).
-#    Example:        
-#
-#    ```
-#        property:
-#            key: PROPERT_VALUE
-#    ```
-# NOTE: System properties provided with -D on the command line will not replace properties defined 
-# in any of the YAML configuration files.
-#
-# TODO: Remove the obvious comments and place them as information above the sample config.
-#############################################################################################################################
+    property:
+        key: PROPERTY_VALUE
+```
+    
+**Note**: System properties provided with `-D` on the command line will not replace properties defined 
+in any of the YAML configuration files.
 
+### API ML Onboarding Configuration Sample
+```
 spring:
     application:
         name: ${apiml.service.id}           # Same name as for `apiml.service.serviceId`
 
 apiml:
-    enabled: true                           
-    enableUrlEncodedCharacters: true        
+    enabled: true                           # Decision if the service should automatically register with API ML discovery service
+    enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL 
     service:                                # The root of API ML onboarding configuration
     
-        serviceId: ${apiml.service.id}      
+        serviceId: ${apiml.service.id}      # The symbolic name of the service. Must be the same as `spring.application.name`
         title: ${service.title}             
-        description: ${service.description} 
+        description: ${service.description} # API service description
 
         scheme: https               
-        ### hostname:                                # Hostname must be defined by -Dapiml.service.hostname on MF or external application.yml property for development
-        ### port:                                    # Port must be defined by -Dapiml.service.port on MF or external application.yml property for development
-        serviceIpAddress: ${apiml.service.ipAddress} # serviceIpAddress must be provided by -Dapiml.service.ipAddress on MF or external application.yml property for development
+        ### hostname:                                # Hostname must be defined by -Dapiml.service.hostname on MF 
+        ### port:                                    # Port must be defined by -Dapiml.service.port on MF: 
+        serviceIpAddress: ${apiml.service.ipAddress} # serviceIpAddress must be provided by -Dapiml.service.ipAddress on MF
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.id}            # By default the contextPath is set to be the same as apiml.service.serviceId
@@ -286,7 +270,7 @@ apiml:
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        ### discoveryServiceUrls:                   # discoveryServiceUrls must be defined by -Dapiml.service.discoveryServiceUrls on MF or external application.yml property for development  
+        ### discoveryServiceUrls: ${apiml.service.discoveryServiceUrls} # discoveryServiceUrls must be defined by -Dapiml.service.discoveryServiceUrls on MF:  
                 
         routes:
             -   gateway-url: "ui/v1"
@@ -303,37 +287,38 @@ apiml:
                 documentationUrl: https://www.zowe.org
         catalog:
             tile:
-                id: cademoapps                                    
+                id: cademoapps                                    # Provide ID for your service Catalog tile
                 title: Sample API Mediation Layer Applications
                 description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
                 version: 1.0.1
         ssl:
             enabled: ${server.ssl.enabled}
-            verifySslCertificatesOfServices: ${apiml.security.verifySslCertificatesOfServices} #true
+            verifySslCertificatesOfServices: true
             ciphers: ${server.ssl.ciphers}
             protocol: ${server.ssl.protocol}
             enabled-protocols: ${server.ssl.protocol}
             keyStoreType: ${server.ssl.keyStoreType}
             trustStoreType: ${server.ssl.trustStoreType}
 
-            keyAlias: ${server.ssl.keyAlias}
-            keyPassword: ${server.ssl.keyPassword}
-            keyStore: ${server.ssl.keyStore}
-            keyStorePassword: ${server.ssl.keyStorePassword}
-            trustStore: ${server.ssl.trustStore}
-            trustStorePassword: ${server.ssl.trustStorePassword}
+            ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
+            keyAlias: ${server.ssl.keyAlias} #localhost-blah
+            keyPassword: ${server.ssl.keyPassword} #password-blah
+            keyStore: ${server.ssl.keyStore} #keystore/localhost/localhost.keystore.p12-blah
+            keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
+            trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
+            trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
 
 server:
-    scheme: ${apiml.service.scheme}                 # Java application server address scheme - http or https
-    hostname: ${apiml.service.hostname}             # Java application server hostname 
-    port: ${apiml.service.port} #10012              # Java application server port 
-    address: ${apiml.service.ipAddress}             # address must be provided by -Dapiml.service.ipAddress on MF or external application.yml property for development
+    scheme: ${apiml.service.scheme}
+    hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
+    port: ${apiml.service.port} #10012         # Default port name for discoverable-client service
+    address: ${apiml.service.ipAddress} #127.0.0.1
   
     servlet:
-        contextPath: /${apiml.service.contextPath}  # Must be the same as the apiml.service.contextPath
+        contextPath: /${apiml.service.id}
 
     ssl:
-        ### enabled:                                # `enabled` must be defined by -Dserver.ssl.enabled on MF or external application.yml property for development
+        enabled: true
         protocol: TLSv1.2
         enabled-protocols: TLSv1.2
         ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
@@ -341,14 +326,27 @@ server:
         trustStoreType: PKCS12
 ```
 
-3. For a local machine runtime environment, provide the following parameter on your command line:
+
+1000. (Optional) Provide environment specific configuration properties for a local machine execution environment by placing these configuration properties in an additional YAML file resembling the structure of the default `application.yml`.
+
+    **Example:**
+    <font color = "red"> Add an example here. </font>
+
+    At service startup time, Spring rewrites the configuration properties of the default config file with the values of the same properties from the additional configuration file.
+
+2. For a local machine runtime environment, provide the following parameter on your command line:
   
     ```
     -Dspring.config.additional-location=PATH-TO-EXTERNAL-YAML-CONFIG-FILE
     ```
     At runtime, Spring will merge the two configuration files, whereby the properties in the external file have higher priority.
 
-   For Mainframe Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
+3. Select an active profile among all profiles defined by the above merged configuration by providing the profile name as a command line parameter:
+    
+    ```
+    -Dspring.profiles.active=PROFILE-NAME
+    ```
+4. Provide environment specific configuration properties on a mainframe execution environment by defining these configuration properties through Java System Properties provided on your command line. These properties are part of the `JAVA_OPTIONS` argument. 
 
     <font color = "red"> Let's add an example here. </font>
 
@@ -360,6 +358,10 @@ server:
     **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
 
 
+
+
+
+
 ## Registering your service with API ML
 
 To register your REST service with API ML using a Spring Boot Enabler, you only need to annotate your application `main` class with `@EnableApiDiscovery ` 
@@ -368,6 +370,39 @@ The Registration process starts immediately after Spring finishes its Context Fa
     
 When your application stops, the Spring Enabler receives an event that the Spring Context is to be destroyed. The Spring Enabler handles this event by gracefully unregistering your application from API ML Discovery service.     
     
+## Adding documentation   
+
+
+
+
+## Validating your API service discoverability
+
+
+
+
+
+
+
+
+
+
+<font color = "red"> REVIEW THE FOLLOWING SECTIONS TO DETERMINE RELEVANCE TO THIS ATICLE </font>
+
+
+## Configuring your Spring Boot based service
+
+Configure your Spring Boot based service by following the steps described in [Configuring your service](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the onboarding guide using the Plain Java Enabler (PJE).  
+
+Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
+
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](api-mediation-onboard-enabler-external-configuration.md).   
+    
+ 
+##  Registering your service with API ML
+
+The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
+
+<font color = "red"> Provide simple example with the @EnableApiDiscovery annotation on main app class.</font>
 
 ## Unregister your service with API ML
  <font color = "red"> NOTE: SHould this process for unregistering a service with API ML be included in this document? </font>
@@ -527,4 +562,8 @@ with actual addresses of API ML components and the respective user credentials.
  
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.  
 
+
+
+
+built on was  the new Java enabler is not compatible with pervious Spring Enablers (version 1.12).<font color = "red"> ??? </font>
 
