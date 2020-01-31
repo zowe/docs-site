@@ -95,28 +95,28 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 <font color="red">TODO#FindOut what name will be SE published under</font>
 
-    ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-    ```    
-    **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
+```gradle
+implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+```    
+**Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script: 
 
 <font color="red">TODO#Check what other dependencies are required for SE</font>
-    ```gradle
-    implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
-    implementation libraries.eureka_client
-    implementation libraries.httpcore
-    implementation libraries.jackson_databind
-    implementation libraries.jackson_dataformat_yaml
+```gradle
+implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+implementation libraries.eureka_client
+implementation libraries.httpcore
+implementation libraries.jackson_databind
+implementation libraries.jackson_dataformat_yaml
         
-    providedCompile libraries.javax_servlet_api
-    compileOnly libraries.lombok
-    ```
+providedCompile libraries.javax_servlet_api
+compileOnly libraries.lombok
+```
 
-    **Notes:** 
-    * You may need to add more dependencies as required by your service implementation.     
-    * The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
+**Notes:** 
+* You may need to add more dependencies as required by your service implementation.     
+* The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
 <font color="red">TODO#Check the version of  SE above</font>
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
@@ -174,12 +174,13 @@ Spring Boot expects to find the default configuration of an application in an `a
 the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to 
 start a web application container including TLS security, different spring configuration profiles definitions and other 
 properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under 
-the `apiml.service` prefix. It is needed to synchronize the configuration of `apiml.service` with the spring `server` 
-configuration. 
+the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration 
+of `apiml.service` with the spring `server` configuration. 
 
-The configuration properties belong to two categories:
-    - Service related properties as end-points relative paths or API documentation definietions
-    - Environment related proeprties as host names, ports, contxt etc. 
+Configuration properties belong to two categories:
+
+- Service related properties which include end-points, relative paths or API documentation definitions.
+- Environment related properties which include host names, ports, context etc. 
 
 Service related properties can be configured in the `application.yml` configuration file which resides inside the 
 application package. In most cases these properties don't have to be changed, because their values don't depend on 
@@ -191,24 +192,24 @@ In development environment it can be implemented by Spring e.g providing additio
 `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. On MF system currently we use 
 Java system properties to provide additional configuration properties and values for existing configuration properties. 
 
-**withthese steps:**
-Follow the steps bellow to provide configuration for your API ML enabled service.
 
-1. Provide configuration section for the onboarding in the `application.yml` file.
-    
-    If you already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file (defaults to `service-configuration.yml`) into the `application.yml` file under the `apiml.service` prefix.
-    
-    If you haven't onboarded yet your REST service with API ML, use as a starting point the example confguration provided bellow. 
+1. Provide a configuration section for onboarding with API ML in the `application.yml` file.
+
+    If you have already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file (defaults to `service-configuration.yml`) into the `application.yml` file under the `apiml.service` prefix.
+
+    If you have not yet onboarded your REST service with API ML, use `the example configuration` <font color = "red">Add link here</font> provided to get started. 
 
 2. Modify the API ML related properties of the `application.yml` file.
 
-If you reused your existing API ML onboarding configuration, you need to:
-  - remove certain properties under the `apiml.service` section, which must be externalized. These properties for removal are described in the example bellow.
-  - provide following additional properties under `apiml` section.
-    ```
-      enabled: true # If true, will automatically register the service with API ML discovery service
+    If you reused your existing API ML onboarding configuration, perform the following steps:
 
-      enableUrlEncodedCharacters: true
+    a) Remove certain properties under the `apiml.service` section, which must be externalized. These properties for removal are described in the example bellow.
+  
+    b) Provide the following additional properties under the `apiml` section.
+    ```
+    enabled: true # If true, the service will automatically register with API ML discovery service.  
+
+    enableUrlEncodedCharacters: true
     ```
 
 ```
@@ -222,17 +223,22 @@ If you reused your existing API ML onboarding configuration, you need to:
 #         service:
 #             ### hostname: 
 #
-# , provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on the java execution command line when application service is run on MF. 
-# At the same time, leave the property commented out.
+# Provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on
+# the java execution command line when the application service is run on the MF. 
+# Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
 #
 # For development purposes you can replace or add any property by providing the same configuration structure in an external 
-# YAML configuration file. When running your application, provide the name of the external / additional configuration file 
+# YAML configuration file. When running your application, provide the name of the external/additional configuration file 
 # on the command line by using:
 # `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
 # 
 #
-# A property notation -Dproperty.key=PROPERTY_VALUE can be used in two different ways:
-#    - to provide run-time value for any `YAML` property if ${property.key} is used as its value (after ':') in the YAML configuration file.
+# A property notation in the format -Dproperty.key=PROPERTY_VALUE can be used
+# in two different ways:
+#
+#    - To provide a run-time value for any `YAML` property if
+#    ${property.key} is used as its value (after ':') in the YAML configuration
+#    file.
 #    Example:
 #    ```  
 #        some_property_path:    
@@ -240,7 +246,8 @@ If you reused your existing API ML onboarding configuration, you need to:
 #                key: ${property.key}
 #    ```
 #
-#    - to add a property to configuration (if it doesn't already exist).
+#    - To add a property to configuration 
+#    (if the property does not already exist).
 #    Example:        
 #
 #    ```
