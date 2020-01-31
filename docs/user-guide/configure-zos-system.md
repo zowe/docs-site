@@ -2,12 +2,12 @@
 
 Configure the z/OS security manager to prepare for launching the Zowe started tasks.
 
-A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  The JCL allows you to vary which security manager you are using by setting the PRODUCT variable to be one of RACF, ACF2, or TSS.  
+A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  The JCL allows you to vary which security manager you use by setting the _PRODUCT_ variable to be one of `RACF`, `ACF2`, or `TSS`.  
 
 ```
 //         SET PRODUCT=RACF          * RACF, ACF2, or TSS
 ```
-If `ZWESECUR` encounters an error or a step that has already been performed it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
+If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
 It is expected that system programmers at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commmands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
 
@@ -21,17 +21,16 @@ Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started ta
 
 Zowe requires a group `ZWEADMIN` which both `ZWESVUSR` and `ZWESIUSR` should belong to.
 
-During the install of Zowe unix file ownership and groups are modified.  For this to occur successfully the user performing the install must either be part of the `ZWEADMIN` group, or have sufficient authority to issue `chgrp` commands to assign `ZWEADMIN` as the group of folders it creates, or sufficient authority to issue `chown` commands to assign `ZWESVUSR` as the owner of folders it creates.
+During the installation of Zowe, unix file ownership and groups are modified.  For this to occur successfully, the user who installs Zowe must either be part of the `ZWEADMIN` group, or have sufficient authority to issue `chgrp` commands to assign `ZWEADMIN` as the group of folders it creates, or sufficient authority to issue `chown` commands to assign `ZWESVUSR` as the owner of folders it creates.
 
 ## Configure ZWESVSTC to run under ZWESVUSR user ID
 
-When the Zowe started task `ZWESVSTC` is started it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming stadards.
+When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming stadards.
 
-
+<!--Since in this release 1.8.0 we are creating/using a new set of group/user (ZWEADMIN/ZWESVUSR) for Zowe, so security commands should be changed-->
 - If you use RACF, issue the following commands:
-
   ```
-  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(IZUSVR) GROUP(IZUADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
   SETROPTS REFRESH RACLIST(STARTED)
   ```
 
@@ -39,14 +38,14 @@ When the Zowe started task `ZWESVSTC` is started it must be associated with the 
 
   ```
   SET CONTROL(GSO)
-  INSERT STC.ZWESVSTC LOGONID(IZUSVR) GROUP(IZUADMIN) STCID(ZWESVSTC)
+  INSERT STC.ZWESVSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESVSTC)
   F ACF2,REFRESH(STC)
   ```
 
 - If you use CA Top Secret, issue the following commands:
 
   ```
-  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(IZUSVR)
+  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
   ```
 
 ## Granting users permission to access Zowe
@@ -56,25 +55,23 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 - If you use RACF, issue the following command:
 
   ```
-  CONNECT (userid) GROUP(IZUADMIN)
+  CONNECT (userid) GROUP(ZWEADMIN)
   ```
 
 - If you use CA ACF2, issue the following commands:
 
   ```
-  ACFNRULE TYPE(TGR) KEY(IZUADMIN) ADD(UID(<uid string of user>) ALLOW)
+  ACFNRULE TYPE(TGR) KEY(ZWEADMIN) ADD(UID(<uid string of user>) ALLOW)
   F ACF2,REBUILD(TGR)
   ```
 
 - If you use CA Top Secret, issue the following commands:
 
   ```
-  TSS ADD(userid)  PROFILE(IZUADMIN)
-  TSS ADD(userid)  GROUP(IZUADMGP)
+  TSS ADD(userid)  PROFILE(ZWEADMIN)
+  TSS ADD(userid)  GROUP(IZUADMGP) 
   ```
-Configure the z/OS security manager to prepare for launching the Zowe started tasks. A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences. 
-   
-If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
+  <!--I am not sure about this one: TSS ADD(userid)  GROUP(IZUADMGP) , should it be changed to TSS ADD(userid)  GROUP(ZWEADMIN) -->
 
 ## Configure the cross memory server for SAF
 
@@ -117,7 +114,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
         ```
         RLIST FACILITY ZWES.IS AUTHUSER
         ```
-        This shows the user IDs who have access to the ZWES.IS class, which should include IZUSVR with READ access.
+        This shows the user IDs who have access to the `ZWES.IS` class, which should include IZUSVR with READ access.
 
 - If you use CA ACF2, issue the following commands:
 
@@ -140,6 +137,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
 **Notes:**
+
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the user will be denied.
 - Cross memory server clients other than ZSS might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
@@ -208,9 +206,10 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
         ```
-    (repeat for user-acids IKED, NSSD, and Policy Agent)
+        (repeat for user-acids IKED, NSSD, and Policy Agent)
     
 **Notes:**
+
 - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
 - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
 - CCA and/or PKCS #11 coprocessor for random number generation.
@@ -252,79 +251,79 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
 - If you use RACF, complete the following steps:
       
    1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
-     ```
-     SETROPTS CLASSACT(FACILITY)
-     ```
-     ```             
-     SETROPTS RACLIST(FACILITY)                
-     ```
+      ```
+      SETROPTS CLASSACT(FACILITY)
+      ```
+      ```             
+      SETROPTS RACLIST(FACILITY)                
+      ```
    2. Define the BPX facilities. This may have already been done on behalf of another server such as the FTPD daemon.  
-     ```
-     RDEFINE FACILITY BPX.SERVER UACC(NONE)
-     ```
-     ```
-     RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-     ```             
+      ```
+      RDEFINE FACILITY BPX.SERVER UACC(NONE)
+      ```
+      ```
+      RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+      ```             
    3. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the ZWESVSTC started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
-     ```
-     PERMIT BPX.SERVER CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
-     ```
-     ```
-     PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
-     ```
-     where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
+      ```
+      PERMIT BPX.SERVER CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+      ```
+      ```
+      PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+      ```
+      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
 
-     /* Activate these changes */
+      /* Activate these changes */
 
-     ```
-     SETROPTS RACLIST(FACILITY) REFRESH      
-     ```
+      ```
+      SETROPTS RACLIST(FACILITY) REFRESH      
+      ```
    4. Issue the following commands to check whether permission has been successfully granted:
-     ```
-     RLIST FACILITY BPX.SERVER AUTHUSER
-     ```
-     ```
-     RLIST FACILITY BPX.DAEMON AUTHUSER
-     ```
+      ```
+      RLIST FACILITY BPX.SERVER AUTHUSER
+      ```
+      ```
+      RLIST FACILITY BPX.DAEMON AUTHUSER
+      ```
 - If you use CA Top Secret, complete the following steps:  
       
    1. Define the BPX Resource and access for <zwesvstc_user>.
-     ```
-     TSS ADD(`owner-acid`) IBMFAC(BPX.)
-     ```
-     ```
-     TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
-     ```
-     ```
-     TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
-     ```
-     where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      ```
+      TSS ADD(`owner-acid`) IBMFAC(BPX.)
+      ```
+      ```
+      TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+      ```
+      ```
+      TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+      ```
+      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
    2. Issue the following commands and review the output to check whether permission has been successfully granted:
-     ```
-     TSS WHOHAS IBMFAC(BPX.SERVER)
-     ```
-     ```
-     TSS WHOHAS IBMFAC(BPX.DAEMON)
-     ```
+      ```
+      TSS WHOHAS IBMFAC(BPX.SERVER)
+      ```
+      ```
+      TSS WHOHAS IBMFAC(BPX.DAEMON)
+      ```
 - If you use CA ACF2, complete the following steps:
    1. Define the BPX Resource and access for <zwesvstc_user>.
-     ```
-     SET RESOURCE(FAC)
-     ```
-     ```
-     RECKEY BPX ADD(SERVER ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
-     ```
-     ```
-     RECKEY BPX ADD(DAEMON ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
-     ```
-     where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
-     ```
-     F ACF2,REBUILD(FAC)
-     ```
+      ```
+      SET RESOURCE(FAC)
+      ```
+      ```
+      RECKEY BPX ADD(SERVER ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+      ```
+      ```
+      RECKEY BPX ADD(DAEMON ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+      ```
+      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      ```
+      F ACF2,REBUILD(FAC)
+      ```
    2. Issue the following commands and review the output to check whether permission has been successfully granted:
-     ```
-     SET RESOURCE(FAC)
-     ```
-     ```
-     LIST BPX
-     ```
+      ```
+      SET RESOURCE(FAC)
+      ```
+      ```
+      LIST BPX
+      ```

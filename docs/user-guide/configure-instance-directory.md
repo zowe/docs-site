@@ -22,14 +22,15 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
   - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
   - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
 
-### Component pre-requisites
+### Component prerequisites
 
 - `JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `NODE_HOME`:  The path to the node runtime.  Only needs to be specified if not already set as a shell variable.  Defaults to value of `NODE_HOME`
-
-- `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed.  
+- `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed. 
+<!-- The following variables should be removed:
 - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `ZOWE_NODE_HOME`:  The path to the node runtime.  Defaults to value of `NODE_HOME`
+-->
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
@@ -113,9 +114,3 @@ To determine which ports are not available, follow these steps:
 - `ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
 - `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *TN 3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
 - `ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
- 
-### Component groups
-
-- `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `ZOWE_JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `ZOWE_HOME_HOME` value.  
