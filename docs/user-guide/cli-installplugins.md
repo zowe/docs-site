@@ -51,9 +51,9 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | IBM z/OS FTP Plug-in for Zowe CLI| `@zowe/zos-ftp-for-zowe-cli`|
     | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli`|
     | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
-    |    |    |
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
 
-4.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
+4. (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
     ```
     zowe plugins install <@zowe/my-plugin1> <@zowe/my-plugin2> <@zowe/my-plugin3> ...
     ```
@@ -83,11 +83,11 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     **Example:**
 
+
     ```
     unzip zowe-cli-package-1.0.1.zip
     ```
-    unzip zowe-cli-package-1.0.1.zip
-    ```
+
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
 
@@ -95,7 +95,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the file. Optionally, extract the contents of the .zip file to your preferred location.
 
-4.  Open a command-line window and change to the local directory where you extracted the zip file.
+5.  Open a command-line window and change to the local directory where you extracted the zip file.
 
     **Example:**
 
@@ -103,7 +103,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     cd C:\Users\userID\my_downloads\<file_name>.zip
     ```
 
-5.  Issue the following command to install the plug-in:
+6.  Issue the following command to install the plug-in:
 
     ```
     zowe plugins install <my-plugin>
@@ -118,6 +118,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz`|
     | IBM MQ Plug-in for Zowe CLI |`mq-for-zowe-cli.tgz`|
+    | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
 
 You installed Zowe CLI plug-ins.
 
@@ -143,7 +144,7 @@ zowe plugins validate [plugin]
     |IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli`|
     |IBM IMS Plug-in for Zowe CLI|`@zowe/ims-for-zowe-cli`|
     |IBM MQ Plug-in for Zowe CLI|`@zowe/mq-for-zowe-cli`|
-    |||
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
 
 **Examples: Validate plug-ins**
 
@@ -184,7 +185,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
 ```
-zowe plugins update @zowe/my-plugin@lts-incremental
+zowe plugins update @zowe/my-plugin
 ```
 
 The following example illustrates the syntax to use to update a plug-in to a specific version:
@@ -220,6 +221,8 @@ The following table describes the uninstallation command synstax for each plug-i
  | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
  | IBM IMS Plug-in for Zowe CLI| `@zowe/ims-for-zowe-cli` |
  | IBM MQ Plug-in for Zowe CLI| `@zowe/mq-for-zowe-cli` |
+ | IBM z/OS FTP Plug-in for Zowe CLI| `@zowe/zos-ftp-for-zowe-cli` |
+ | Secure Credential Store Plug-in for Zowe CLI  | `@zowe/secure-credential-store-for-zowe-cli` |
 
 
 **Example:**

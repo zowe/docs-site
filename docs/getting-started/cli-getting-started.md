@@ -36,7 +36,7 @@ npm install @zowe/cli -g
 The following command installs the IBM CICS, IBM Db2, IBM FTP, IBM IMS, and IBM MQ plug-ins:
 
 ```
-zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli @zowe/zos-ftp-for-zowe-cli @zowe/ims-for-zowe-cli @zowe/mq-for-zowe-cli
+zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli @zowe/zos-ftp-for-zowe-cli @zowe/mq-for-zowe-cli @zowe/ims-for-zowe-cli @zowe/secure-credential-store-for-zowe-cli
 ```
 
 The IBM Db2 plug-in requires [additional configuration to use](../user-guide/cli-db2plugin.md#installing).

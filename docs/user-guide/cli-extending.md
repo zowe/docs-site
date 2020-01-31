@@ -12,4 +12,5 @@ In addition to the contributed Zowe plug-ins, there are [Third-party Zowe Confor
 - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-zftpplugin.md)
 - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
 - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
+- [Secure Credential Store Plug-in for Zowe CLI](cli-scsplugin.md)
 - [Visual Studio Code (VSCode) Extension for Zowe](cli-vscodeplugin.md)

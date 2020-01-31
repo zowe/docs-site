@@ -15,7 +15,6 @@ Welcome to Zowe Active Development documentation.
 
 **New compatible plug-ins:**
 
-
 The following plug-ins are compatible and available *only* with Zowe CLI Active Development version:
 
 - [IBM® z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-mqplugin.md).
