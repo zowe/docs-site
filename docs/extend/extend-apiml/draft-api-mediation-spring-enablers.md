@@ -1,6 +1,7 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
+This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. 
+As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
 
 **Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
@@ -162,23 +163,37 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
-To configure a Spring Boot based service, it is useful to first understand how Spring Boot based configuration relates to configuration using the Plain Java Enabler.
+To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
-Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. It is needed to synchronize the configuration of `apiml.service` with the spring `server` configuration. 
+Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. 
+Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container 
+including TLS security, different spring configuration profiles definitions and other properties. 
+This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. 
+It is needed to synchronize the configuration of `
+Follow the steps bellow to provide configuration for your API ML enabled service.
+apiml.service` with the spring `server` configuration.
 
 The configuration properties belong to two categories:
     - Service related properties as end-points relative paths or API documentation definietions
     - Environment related proeprties as host names, ports, contxt etc. 
 
-Execution environment related properties should be provided by additional configuration mechanisms, which differ for development deployments on a local machine, or on a mainframe system. 
+Service related properties can be configured in the `application.yml` configuration file which resides inside the application package. 
+These properties don't have to be changed in most cases. 
 
-**Follow these steps:**
+Execution environment related properties are provided by different configuration mechanisms, which may be specific 
+for the target execution environment. In development environment it can be implemented by standard Spring mechanism 
+e.g providing additional `YAML` file with `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. 
+On MF system currently we use Java system properties to provide additional configuration properties and values for existing configuration properties. 
+
+
+**withthese steps:**
+Follow the steps bellow to provide configuration for your API ML enabled service.
 
 1. Provide configuration section for the onboarding in the `application.yml` file.
-
-If you already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file (defaults to `service-configuration.yml`) into the `application.yml` file under the `apiml.service` prefix.
-
-If you haven't onboarded yet your REST service with API ML, use as a starting point the example confguration provided bellow. 
+    
+    If you already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file (defaults to `service-configuration.yml`) into the `application.yml` file under the `apiml.service` prefix.
+    
+    If you haven't onboarded yet your REST service with API ML, use as a starting point the example confguration provided bellow. 
 
 2. Modify the API ML related properties of the `application.yml` file.
 
