@@ -42,4 +42,4 @@ The extension is now installed and available for use.
 
 You can also watch the following video to learn how to get started with Zowe Explorer.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe Explorer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe VSCode Extension" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/la1_Ss27fn8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
