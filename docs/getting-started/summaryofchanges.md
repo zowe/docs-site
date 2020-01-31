@@ -47,6 +47,7 @@ For more information, see [Installation overview](../user-guide/install-zos.md).
 - Extensible resource access framework [#2](https://github.com/zowe/zlux/issues/2)
 - ZOWESVR does not issue a useful UP message [#355](https://github.com/zowe/zlux/issues/355)
 - Update server log levels [#240](https://github.com/zowe/zlux/issues/240)
+- Access control for app visibility [216](https://github.com/zowe/zlux/issues/216)
 - The following features and enhancements were made in the default apps:
     - UI changes for write support for datasets in editor [#340](https://github.com/zowe/zlux/issues/340)
     - Support deletion of QSAM in REST API [#339](https://github.com/zowe/zlux/issues/339)
@@ -74,6 +75,14 @@ For more information, see [Installation overview](../user-guide/install-zos.md).
 Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) .
+
+Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
+
+#### Zowe SMP/E installation
+
+-
+-
+-
 
 ### Bug fixes
 
