@@ -1,6 +1,6 @@
 # Configure and launch the cross memory server
 
-The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation, or <<JRW ADD SMP/E value>>.
+The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation.
 
 The cross memory server is used by the Zowe desktop to run APF authorized code.  If you do not use the Zowe desktop, you do not need to install, configure and launch the cross memory server.
 
