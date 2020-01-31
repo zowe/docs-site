@@ -550,9 +550,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check that the service was successfully registered to the Discovery Service and wait for Spring Cloud to refresh the routes definitions
   
-### ZWEAG701W
+### ZWEAG701D
 
-  Service '%s' does not allow encoded characters by request: '%s'.
+  Service '%s' does not allow encoded characters used in request path: '%s'.
 
   **Reason:**
 
