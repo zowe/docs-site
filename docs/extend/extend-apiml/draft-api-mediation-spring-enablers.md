@@ -5,12 +5,9 @@ As an API developer, you can onboard your REST API service built with the Spring
 
 **Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
-TOC
 
-**Tip:** For more information about how to utilize another API ML enabler, see:
+**Tip:** For more information about how to utilize another onboarding method, see:
     
-<font color="red">TODO: Or actually with an other enabler or without enabler at all</font>
-           
   * [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md) 
   * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)  
   * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
@@ -34,7 +31,6 @@ The following steps outline the overall process to onboard a REST service with t
 5. [Adding API documentation](#adding-api-documentation)
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
-
 
 
 ## Select a  Spring Boot Enabler
@@ -197,7 +193,7 @@ On MF system currently we use Java system properties to provide additional confi
 
     enableUrlEncodedCharacters: true
     ```
-## Sample API ML Onboarding Configuration
+### Sample API ML Onboarding Configuration
 
 In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the MF execution environment. 
 The `-Dsystem.property.key` must be the same as the flattened path of the YAML property which is commented out with ###.
@@ -327,14 +323,7 @@ server:
 ```
 
 
-1000. (Optional) Provide environment specific configuration properties for a local machine execution environment by placing these configuration properties in an additional YAML file resembling the structure of the default `application.yml`.
-
-    **Example:**
-    <font color = "red"> Add an example here. </font>
-
-    At service startup time, Spring rewrites the configuration properties of the default config file with the values of the same properties from the additional configuration file.
-
-2. For a local machine runtime environment, provide the following parameter on your command line:
+3. For a local machine runtime environment, provide the following parameter on your command line:
   
     ```
     -Dspring.config.additional-location=PATH-TO_EXTERNAL-YAML-CONFIG-FILE
@@ -342,66 +331,29 @@ server:
     
    At runtime, Spring will merge the two `YAML` configuration files, whereby the properties in the external file have higher priority.
 
-   For Mainframe execution environment provide environment specific configuration properties by defining these configuration properties through Java System Properties provided on service application execution command line. 
+   For Mainframe execution environment provide environment specific configuration properties. Define these 
+   configuration properties and provide them using Java System Properties on the application execution command line.
 
-    <font color = "red"> Let's add an example here. </font>
+    **Important!** Ensure that the default configuration contains only properties which are not dependent on the deployment environment.
+    Do not include security sensitive data in the default configuration.
 
-    **Important!** Ensure that the default configuration contains only properties which are not dependent on the deployment environment. Do not include security sensitive data in the default configuration.    
-
-
-    **Note:** For the procedure to configure your Spring Boot based service, see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.   
-
+    **Note:** For details about the configuration properties, 
+    see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) 
+    in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_. 
 
 ## Registering your service with API ML
 
 Onboarding a REST services with API ML means to register the service with API ML Discovery service. The registration is 
-triggered automatically after the service application is fully run by Spring issuing `ContextRefreshed` event.  
+triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
 
-To register your REST service with API ML using a Spring Boot Enabler, you only need to annotate your application `main` class with `@EnableApiDiscovery ` 
-    
-The Registration process starts immediately after Spring finishes its Context Factory initialization.
-    
-When your application stops, the Spring Enabler receives an event that the Spring Context is to be destroyed. The Spring Enabler handles this event by gracefully unregistering your application from API ML Discovery service.     
-    
-## Adding documentation   
-
-
-
-
-## Validating your API service discoverability
-
-
-
-
-
-
-
-
-
-
-<font color = "red"> REVIEW THE FOLLOWING SECTIONS TO DETERMINE RELEVANCE TO THIS ATICLE </font>
-
-
-## Configuring your Spring Boot based service
-
-Configure your Spring Boot based service by following the steps described in [Configuring your service](./api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md#configuring-your-service) in the onboarding guide using the Plain Java Enabler (PJE).  
-
-Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
-
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](api-mediation-onboard-enabler-external-configuration.md).   
-    
- 
-##  Registering your service with API ML
-
-The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
-
-<font color = "red"> Provide simple example with the @EnableApiDiscovery annotation on main app class.</font>
-
+To register your REST service with API ML using a Spring Boot Enabler, annotate your application `main` 
+class with `@EnableApiDiscovery`. 
+            
 ## Unregister your service with API ML
 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process 
-by Spring issuing `ContextClosed` event. The Spring onboarding enabler is listening to this event and is issuing 
-`unregister` REST call to API ML Discovery service.  
+in which Spring fires a `ContextClosed` event. The Spring onboarding enabler is listening to this event and is issuing 
+`unregister` REST call to API ML Discovery service.
 
 ## Adding API documentation
 
@@ -476,14 +428,16 @@ To enable Swagger API documentation for your API
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
 
-    **Note:** The current SpringFox Version 2.8 does not support OpenAPI 3.0. 
+    **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0. 
     For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
   
 ## Validating the discoverability of your API service by the Discovery Service
 
-Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service. 
+Once you are able to build and start your service successfully, you can use the option of validating that your service 
+is registered correctly with the API ML Discovery Service. 
 
-Validatiing your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, 
+Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog. 
+If your service appears in the Discovery Service UI but is not visible in the API Catalog, 
 check to make sure that your configuration settings are correct.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment. 
@@ -492,7 +446,8 @@ Specific addresses and user credentials for the individual API ML components dep
 for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you 
 with actual addresses of API ML components and the respective user credentials.
 
-**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
+**Tip:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your 
+service was successfully started.
 
 **Follow these steps:**
 
@@ -545,8 +500,4 @@ with actual addresses of API ML components and the respective user credentials.
  
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.  
 
-
-
-
-built on was  the new Java enabler is not compatible with pervious Spring Enablers (version 1.12).<font color = "red"> ??? </font>
 
