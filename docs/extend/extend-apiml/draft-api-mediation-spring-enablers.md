@@ -1,6 +1,7 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
+This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer. 
+As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer. 
 
 **Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
@@ -162,18 +163,36 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
-To configure a Spring Boot based service, it is useful to first understand how Spring Boot based configuration relates to configuration using the Plain Java Enabler.
+To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
+<<<<<<< HEAD
 Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration. 
+=======
+Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. 
+Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container 
+including TLS security, different spring configuration profiles definitions and other properties. 
+This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. 
+It is needed to synchronize the configuration of `
+Follow the steps bellow to provide configuration for your API ML enabled service.
+apiml.service` with the spring `server` configuration.
+>>>>>>> fb765a9351b890a67934d3b78a16c3cfdd8fb774
 
 Configuration properties belong to two categories:
 
+<<<<<<< HEAD
 - Service related properties which include end-points, relative paths or API documentation definitions.
 - Environment related properties which include host names, ports, context etc. 
 
 Execution environment related properties should be provided by additional configuration mechanisms. Note that execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. 
+=======
+Service related properties can be configured in the `application.yml` configuration file which resides inside the application package. 
+These properties don't have to be changed in most cases. 
+>>>>>>> fb765a9351b890a67934d3b78a16c3cfdd8fb774
 
-**Follow these steps:**
+Execution environment related properties are provided by different configuration mechanisms, which may be specific 
+for the target execution environment. In development environment it can be implemented by standard Spring mechanism 
+e.g providing additional `YAML` file with `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. 
+On MF system currently we use Java system properties to provide additional configuration properties and values for existing configuration properties. 
 
 1. Provide a configuration section for onboarding with API ML in the `application.yml` file.
 
@@ -195,22 +214,48 @@ Execution environment related properties should be provided by additional config
     ```
 
 ```
-# In the following sample API ML onboarding configuration,  properties prefixed with ### (3 hashtags) indicate that their value must be provided by a System property defined in the MF execution environment. 
-# The `-Dsystem-property-key` must be the same as the flattened path of the YAML property which is commented out with ###. 
+# In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) 
+# indicate that their value must be provided as -Dsystem.property.key=PROPERTY_VALUE defined in the MF execution environment. 
+# The -Dsystem.property.key must be the same as the flattened path of the YAML property which is commented out with ###.
 # These properties must not be defined (uncommented) in your default service YAML configuration file.
 #
-# Example: For property `apiml.service.hostname` in the following YAML sample configuration, 
-# provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on the java execution command line 
-# when the application service is run on the MF.
+# Example: For property:
+#     apiml:
+#         service:
+#             ### hostname: 
 #
-# For development purposes you can replace any property by providing the same configuration structure in an external YAML configuration file. 
-# When running your application, provide the name of the external / additional configuration file on the command line by using:
-# -Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE
+# Provide -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE on
+# the java execution command line when the application service is run on the MF. 
+# Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
 #
-# NOTE: System properties provided with -D on the command line will not replace properties defined 
-# in any of the two YAML configuration files.
+# For development purposes you can replace or add any property by providing the same configuration structure in an external 
+# YAML configuration file. When running your application, provide the name of the external / additional configuration file 
+# on the command line by using:
+# `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
 # 
+#
+# A property notation -Dproperty.key=PROPERTY_VALUE can be used
+# in two different ways:
+#    - to provide run-time value for any `YAML` property if ${property.key} is used as its value (after ':') in the YAML configuration file.
+#    Example:
+#    ```  
+#        some_property_path:    
+#            property:
+#                key: ${property.key}
+#    ```
+#
+#    - to add a property to configuration (if it doesn't already exist).
+#    Example:        
+#
+#    ```
+#        property:
+#            key: PROPERT_VALUE
+#    ```
+# NOTE: System properties provided with -D on the command line will not replace properties defined 
+# in any of the YAML configuration files.
+#
 # TODO: Remove the obvious comments and place them as information above the sample config.
+#############################################################################################################################
 
 spring:
     application:
@@ -241,7 +286,7 @@ apiml:
                 
         routes:
             -   gateway-url: "ui/v1"
-                service-url: ${apiml.service.contextPath}          # Defined by the apiml.service.contextPath property above
+                service-url: ${apiml.service.contextPath}         
             -   gateway-url: "api/v1"
                 service-url: ${apiml.service.contextPath}/api/v1
             -   gateway-url: "ws/v1"
@@ -254,7 +299,7 @@ apiml:
                 documentationUrl: https://www.zowe.org
         catalog:
             tile:
-                id: cademoapps                                    # Provide any suitable name for your API Doc to display in the Catalog 
+                id: cademoapps                                    # Provide ID for your service Catalog tile
                 title: Sample API Mediation Layer Applications
                 description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
                 version: 1.0.1
