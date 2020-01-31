@@ -26,7 +26,7 @@ Before you start the installation, review the information on hardware and softwa
 
      The Zowe z/OS binaries are packaged as the following files that you can download. You install this build through SMP/E.  
      - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
-     - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to RECEIVE the file.
+     - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to extract and expand the compressed SMP/E input data sets.
 
    **Note:** The SMP/E build is currently in alpha, which means that it is available for early testing. You can provide any feedback about your experience with Zowe SMP/E as issues in the [zowe-install-packaging GitHub repo](https://github.com/zowe/zowe-install-packaging/issues/new).
 
