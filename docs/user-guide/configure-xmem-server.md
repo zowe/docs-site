@@ -14,13 +14,17 @@ The `ZWESISTC` started task runs the load module `ZWESIS01`, serves the Zowe des
 
 Under some situations in support of a Zowe extension the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`.  Under normal Zowe operation you will not see any auxiliary address spaces started, however if you have installed a vendor products running on top of Zowe this may exploit the auxiliary service so it should be configured to be launchable.  
 
-To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem.sh`.  
+To install the cross memory server, take the following steps either [manually](#manual-copying-of-cross-memory-data-set-members) using `cp` commands or use the supplied [convenience script](#-copying-of-cross-memory-data-set-members) `zowe-install-xmem.sh` for an automated install process.
 
 ## Step 1: Cross memory PROCLIB and load libary
 
+### Manual copying of cross memory data set members
+
 1. Copy the load modules and add JCL to a PROCLIB:
 
-    a. **Load modules** The cross memory server has two load modules, `ZWESIS01` and `ZWESAUX`, provided in the PDS `SZWEAUTH` created during the installation of Zowe.  To copy the files to a user-defined data set, you can issue the following commands:
+   For the cross memory server to be started its load modules need to be moved to an APF authorized PDSE, and its JCL PROCLIB members moved to a PDS in the JES concatenation path.  
+
+    a. **Load modules** The cross memory server has two load modules, `ZWESIS01` and `ZWESAUX`, provided in the PDS `SZWEAUTH` created during the installation of Zowe.  To manually copy the files to a user-defined data set, you can issue the following commands:
     ```
     cp -X ZWESIS01 "//'<zwes_loadlib>(ZWESIS01)'"
     ```
@@ -31,7 +35,7 @@ To install the cross memory server, take the following steps either manually or 
 
     b. **Prob libraries** The cross memory server PROCLIB JCL is `ZWESISTC` and the auxiliary address space PROCLIB JCL is `ZWESASTC`.  
     
-    You must specify the `<zwes_loadlib>` data set where `ZWESIS01` and `ZWESAUX` were copied to, in the STEPLIB DD statement of the two PROCLIB JCLs, so that the appropriate version of the software is loaded correctly. 
+    You must specify the `<zwes_loadlib>` data set where `ZWESIS01` and `ZWESAUX` were copied to, in the STEPLIB DD statement of the two PROCLIB JCL members `ZWESISTC` and `ZWESASTC` respectively, so that the appropriate version of the software is loaded correctly. 
     
     Do not add the `<zwes_loadlib>` data set to the system LNKLST or LPALST concatenations.
 
@@ -39,7 +43,9 @@ To install the cross memory server, take the following steps either manually or 
 
     When started, the ZWESISTC started task must find a valid ZWESIPxx PARMLIB member. The `SZWESAMP` PDS contains the member `ZWESIP00` containing default configuration values. You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESISTC started task JCL.
 
-A convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
+### Automatic copying of cross memory data set members
+
+Instead of the manual steps [described above](#manual-copying-of-cross-memory-data-set-members) a convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
 
 The script `zowe-install-xmem.sh` takes four arguments:
 
