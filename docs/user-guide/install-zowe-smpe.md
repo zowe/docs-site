@@ -745,7 +745,7 @@ z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe
 
 5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
  
-   The variable input file is located in ZWE0YML member of the `hlq.ZOWE.AZWE001` data set. 
+   The variable input file is located in ZWEYML01 member of the `hlq.ZOWE.AZWE001` data set. 
 
    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
 
@@ -928,7 +928,7 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 ## Zowe customization
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
-- For information about how to customize Zowe, see [Configuring Zowe](mvd-configuration.md).
+- For information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration.md).
 - For information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 
