@@ -428,7 +428,7 @@ You can control which applications are accessible (visible) to all Zowe desktop 
 
 You control access by editing JSON files that list the apps. One file lists the apps all users can see, and you can create a file for each user. When a user logs into the desktop, Zowe determines the apps that user can see by concatenating their list with the all users list.
 
-You can also control access to the JSON files. The files are accessible directly on the file system, and since they are configuration dataservices, they are also accessible programmatically. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting access on the Zowe admin security group on z/OS. You control who can read and edit the JSON files programmatically by [controlling who can access the dataservice URLs](mvd-configuration.md#Controlling-access-to-dataservices) that serve the JSON files.
+You can also control access to the JSON files. The files are accessible directly on the file system, and since they are within the configuration dataservice directories, they are also accessible via REST API. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting the directories and their contents to have file permissions on z/OS that only allow the Zowe admin group read & write access. You control who can read and edit the JSON files through the REST API by controlling who can [access the configuration dataservice objects](mvd-configuration.md#creating-authorization-profiles) URLs that serve the JSON files.
 
 ### Controlling application access for all users
 
