@@ -44,23 +44,18 @@ For more information, see [Installation roadmap](../user-guide/install-zos.md).
 
 
 #### Zowe App Server
-- Extensible resource access framework [#2](https://github.com/zowe/zlux/issues/2)
-- ZOWESVR does not issue a useful UP message [#355](https://github.com/zowe/zlux/issues/355)
-- Update server log levels [#240](https://github.com/zowe/zlux/issues/240)
+- The app server now issues a message indicating it is ready, how many plugins loaded, and where it can be accessed from [#355](https://github.com/zowe/zlux/issues/355)
+- Restructured the App server directories to separate writable configuration items from read-only install content [#911](https://github.com/zowe/zowe-install-packaging/pull/911) [#627](https://github.com/zowe/zowe-install-packaging/issues/627) [#87](https://github.com/zowe/zlux-app-server/pull/87) [#43](https://github.com/zowe/zlux-build/pull/43)
+- Move install-app script to instance directory bin folder for ease of use [#966](https://github.com/zowe/zowe-install-packaging/pull/966)
 - Access control for app visibility [216](https://github.com/zowe/zlux/issues/216)
 - The following features and enhancements were made in the default apps:
     - UI changes for write support for datasets in editor [#340](https://github.com/zowe/zlux/issues/340)
-    - Support deletion of QSAM in REST API [#339](https://github.com/zowe/zlux/issues/339)
-    - Delete file UI changes [#338](https://github.com/zowe/zlux/issues/338)
-    - Add deletion option into right click menu for members [#337](https://github.com/zowe/zlux/issues/337)
-    - When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
-    - Disable text area for unsupported datasets [#342](https://github.com/zowe/zlux/issues/342)
-    - Output files: Implement a concatenated view option [#260](https://github.com/zowe/zlux/issues/260)
-    - Update page title when viewing output files in full screen [#356](https://github.com/zowe/zlux/issues/356)
-    - Add open in full screen button to content menu [#261](https://github.com/zowe/zlux/issues/261)
-    - Job status field missing white space between id and status [#265](https://github.com/zowe/zlux/issues/265)
-    - Delete datasets in editor [#229](https://github.com/zowe/zlux/issues/229)
-    - Jobs in output state that don't have a return code appear with active colour in tree [#266](https://github.com/zowe/zlux/issues/266)
+    - Support for QSAM and VSAM deletion in the ZSS dataset REST API [#339](https://github.com/zowe/zlux/issues/339)
+    - Editor: Dataset deletion capability[#229][#337]
+    - Editor: File deletion UI changes [#338](https://github.com/zowe/zlux/issues/338)
+    - Editor fix: When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
+    - Editor fix: Disable text area for datasets in the absence of write ability [#342](https://github.com/zowe/zlux/issues/342)
+    - Editor fix: When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
 
 #### Zowe CLI
 
@@ -84,13 +79,8 @@ Check the new "Getting Started with Zowe Explorer" video to learn how to install
 The following bugs were fixed.
 
 #### Zowe App Server
-- After saving a new file in Zowe Editor, a new save again shows the Save As dialog [#235](https://github.com/zowe/zlux/issues/235)
-- When an output file fails to open the progress bar continues to indicate something is loading [#343](https://github.com/zowe/zlux/issues/343)
-- No jobs found message in tree on first page load [#264](https://github.com/zowe/zlux/issues/264)
-- Issue with node.js V8.16.1 [#284](https://github.com/zowe/zlux/issues/284)
-- MXM status - Permission denied (name='MXMSRV_STD .... [#68](https://github.com/zowe/zlux/issues/68)
-- Extra environment variables (_TAG_REDIR_XXX) required to run Zowe with node.js v12 Beta [#333](https://github.com/zowe/zlux/issues/333)
-- Unable to run install-app.sh [#373](https://github.com/zowe/zlux/issues/373)
+- Use of environment variables (_TAG_REDIR_XXX) required to run Zowe with node v12 [#333](https://github.com/zowe/zlux/issues/333)
+- Install-app.sh sh would not work without first server run, improper permissions [#373](https://github.com/zowe/zlux/issues/373)
 
 #### Zowe CLI
 - Fixed an issue where `zowe zos-jobs submit stdin` command returned an error when handling data from standard in. [#601](https://github.com/zowe/zowe-cli/issues/601)
