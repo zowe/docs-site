@@ -26,7 +26,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
-4. [Registering your service with API ML](#registering-your-service-with-api-ml)
+4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
 
 5. [Adding API documentation](#adding-api-documentation)
 
@@ -346,14 +346,14 @@ server:
     see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service) 
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_. 
 
-## Registering your service with API ML
+## Registering and unregistering your service with API ML
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
 
 To register your REST service with API ML using a Spring Boot Enabler, annotate your application `main` 
 class with `@EnableApiDiscovery`. 
             
-## Unregister your service with API ML
+### Unregistering your service with API ML
 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
 
