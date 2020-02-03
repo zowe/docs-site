@@ -491,7 +491,7 @@ You control access by editing JSON files that list the apps. One file lists the 
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
 
-6. Restart the Zowe app server.
+6. Restart the app server. 
 
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.

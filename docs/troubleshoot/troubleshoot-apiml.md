@@ -125,7 +125,7 @@ This activates the application/loggers endpoints in each API ML internal service
     **Example:**
 
     ```
-    http POST https://hostname:port/application/loggers/com.ca.mfaas.enable.model configuredLevel=WARN
+    http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
 
 

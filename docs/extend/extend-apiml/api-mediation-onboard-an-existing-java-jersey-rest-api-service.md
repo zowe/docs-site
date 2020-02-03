@@ -58,7 +58,7 @@ Use the following procedure if you use Gradle as your build automation system.
 4. In the same _build.gradle_ file, add the following code to the dependencies code block to add the enabler-jersey artifact as a dependency of your project:
 
     ```groovy
-      compile(group: 'com.ca.mfaas.sdk', name:   'mfaas-integration-enabler-java', version: '1.1.0')
+      compile(group: 'org.zowe.apiml.sdk', name:   'mfaas-integration-enabler-java', version: '1.1.0')
     ```
 
 5. In your project directory, run the `gradle build` command to build your project.
@@ -91,7 +91,7 @@ Use the following procedure if you use Maven as your build automation system.
 2. In the same file, copy the following _xml_ tags to add the enabler-jersey artifact as a dependency of your project:
    ```xml
     <dependency>
-        <groupId>com.ca.mfaas.sdk</groupId>
+        <groupId>org.zowe.apiml.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>1.1.0</version>
     </dependency>
@@ -484,7 +484,7 @@ the properties defined inside the .*yml* file.
 **Follow these steps:**
 
 1. Define parameters that you want to externalize in a _.yml_ file.
-Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `com.ca.mfaas.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the `yml` file follows the correct structure. The following example shows the structure of the 'yml' file:
+Ensure that this file is placed in the _WEB-INF_ folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `org.zowe.apiml.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the `yml` file follows the correct structure. The following example shows the structure of the 'yml' file:
 
     **Example:**
 
@@ -541,12 +541,12 @@ the defined code.
 
     **Example:**
      ```java
-                package com.ca.hwsjersey.listener;
+                package org.zowe.apiml.hwsjersey.listener;
 
-                import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
-                import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
-                import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
-                import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+                import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+                import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+                import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+                import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
 
                 import javax.servlet.ServletContextEvent;
                 import javax.servlet.ServletContextListener;

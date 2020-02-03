@@ -66,7 +66,7 @@ Use the following procedure if you use Gradle as your build automation system.
 
 4.  In the same `build.gradle` file, add the following code to the dependencies code block to add the enabler-java artifact as a dependency of your project:
     ```gradle
-    compile(group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.2')
+    compile(group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-java', version: '1.1.2')
     ```
 
 5.  In your project directory, run the `gradle build` command to build your project.
@@ -96,7 +96,7 @@ Use the following procedure if you use Maven as your build automation system.
 2.  In the same `pom.xml` file, copy the following *xml* tags to add the enabler-java artifact as a dependency of your project:
     ```xml
     <dependency>
-        <groupId>com.ca.mfaas.sdk</groupId>
+        <groupId>org.zowe.apiml.sdk</groupId>
         <artifactId>mfaas-integration-enabler-java</artifactId>
         <version>1.1.2</version>
     </dependency>
@@ -146,7 +146,7 @@ Use the following procedure if your application does not have Swagger API docume
 2.  Add a Spring configuration class to your project:
 
     ```java
-    package com.ca.mfaas.hellospring.configuration;
+    package org.zowe.apiml.hellospring.configuration;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -208,9 +208,9 @@ The following java code is an example of these endpoints added to the Spring Con
 **Example:**
 
 ```java
-package com.ca.mfaas.hellospring.controller;
+package org.zowe.apiml.hellospring.controller;
 
-import com.ca.mfaas.eurekaservice.model.*;
+import org.zowe.apiml.eurekaservice.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -431,12 +431,12 @@ to register and unregister your application.
 ### Add a context listener class
 Add the following code block to add a context listener class:
 ```java
-package com.ca.mfaas.hellospring.listener;
+package org.zowe.apiml.hellospring.listener;
 
-import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
-import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
-import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
-import com.ca.mfaas.eurekaservice.client.util.ApiMediationServiceConfigReader;
+import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -465,7 +465,7 @@ Register a context listener to start Discovery client. Add the following code bl
 deployment descriptor `web.xml` to register a context listener:
 ``` xml
 <listener>
-    <listener-class>com.ca.mfaas.hellospring.listener.ApiDiscoveryListener</listener-class>
+    <listener-class>org.zowe.apiml.hellospring.listener.ApiDiscoveryListener</listener-class>
 </listener>
 ```
 
