@@ -17,14 +17,14 @@ As an API developer, you can onboard your REST API service built with the Spring
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article. 
 
-1. [Select a Spring Boot Enabler](#select-an-spring-boot-enabler)
+1. [Selecting a Spring Boot Enabler](#selecting-an-spring-boot-enabler)
 
 2. [Configuring your project](#configuring-your-project)
 
     * [Gradle guide](#gradle-guide)
     * [Maven guide](#maven-guide)
 
-3. [Configuring your Spring Boot based service with API ML](#configuring-your-spring-boot-based-service-with-api-ml)
+3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
 
@@ -33,7 +33,7 @@ The following steps outline the overall process to onboard a REST service with t
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service) 
 
 
-## Select a  Spring Boot Enabler
+## Selecting a Spring Boot Enabler
 
 Add to your project build configuration a dependency on Spring Enabler version corresponding to the Spring Boot version, that you use for the whole project:
 - onboarding-enabler-spring-v1
@@ -165,27 +165,28 @@ Spring Boot expects to find the default configuration of an application in an `a
 
 Configuration properties belong to two categories:
 
-- Service related properties which include end-points, relative paths or API documentation definitions.
+- Service related properties which include end-points, relative paths, or API documentation definitions.
 - Environment related properties which include host names, ports, context etc. 
 
-Execution environment related properties should be provided by additional configuration mechanisms. Note that execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. 
+Execution environment related properties should be provided by additional configuration mechanisms. 
+
+**Note:** Execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
 
 Execution environment related properties are provided by different configuration mechanisms, which may be specific 
-for the target execution environment. In development environment it can be implemented by standard Spring mechanism 
-e.g providing additional `YAML` file with `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. 
-On MF system currently we use Java system properties to provide additional configuration properties and values for existing configuration properties. 
+for the target execution environment. In a development environment, it can be implemented by providing an additional `YAML` file with the `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property. 
+On the mainframe system, provide additional configuration properties and values for existing configuration properties through Java system properties. 
+
+**Follow these steps:**
 
 1. Provide a configuration section for onboarding with API ML in the `application.yml` file.
 
-    If you have already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file (defaults to `service-configuration.yml`) into the `application.yml` file under the `apiml.service` prefix.
+    - If you have already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file. The default of the API ML onboarding configuration file is the `service-configuration.yml` in the `application.yml` file under the `apiml.service` prefix.
 
-    If you have not yet onboarded your REST service with API ML, use `the example configuration` <font color = "red">Add link here</font> provided to get started. 
+    - If you have not yet onboarded your REST service with API ML, use `the example configuration` <font color = "red">Add link here</font> provided to get started. 
 
-2. Modify the API ML related properties of the `application.yml` file.
+2. If you are reusing your existing API ML onboarding configuration, modify the API ML related properties of the `application.yml` file.
 
-    If you reused your existing API ML onboarding configuration, perform the following steps:
-
-    a) Remove certain properties under the `apiml.service` section, which must be externalized. These properties for removal are described in the example bellow.
+    a) Remove certain properties under the `apiml.service` section, which must be externalized. These properties for removal are described in the following sample of API ML onboarding configuration.
   
     b) Provide the following additional properties under the `apiml` section.
     ```
@@ -193,10 +194,13 @@ On MF system currently we use Java system properties to provide additional confi
 
     enableUrlEncodedCharacters: true
     ```
+    These additional properties are contained in the following sample.
+
+
 ### Sample API ML Onboarding Configuration
 
-In the following sample API ML onboarding configuration, properties prefixed with ### (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the MF execution environment. 
-The `-Dsystem.property.key` must be the same as the flattened path of the YAML property which is commented out with ###.
+In the following sample API ML onboarding configuration, properties prefixed with `###` (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the MF execution environment. 
+The `-Dsystem.property.key` must be the same as the flattened path of the YAML property which is commented out with `###`.
 These properties must not be defined (uncommented) in your default service YAML configuration file.
 
 **Example:** 
@@ -206,19 +210,19 @@ These properties must not be defined (uncommented) in your default service YAML 
             ### hostname: 
 ```
 In this example from the YAML configuration file, provide `-Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE` on
-the java execution command line when the application service is run on the MF. 
+the java execution command line when the application service is run on the mainframe. 
 Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
 
 For development purposes you can replace or add any property by providing the same configuration structure in an external 
 YAML configuration file. When running your application, provide the name of the external/additional 
-configuration file on the command line by using:
+configuration file on the command line in the following format: 
 
  `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
 
 A property notation in the format `-Dproperty.key=PROPERTY_VALUE` can be used
 in two different ways:
 
- - To provide a run-time value for any `YAML` property if
+ - To provide a runtime value for any `YAML` property if
 `${property.key}` is used as its value (after `:`) in the YAML configuration file.
 
     **Example:**
@@ -227,7 +231,7 @@ in two different ways:
         property:
             key: ${property.key}
     ```
-- To add a property to configuration     (if the property does not already exist).
+- To add a property to configuration if the property does not already exist.
 
     **Example:**       
 
@@ -323,7 +327,9 @@ server:
 ```
 
 
-3. For a local machine runtime environment, provide the following parameter on your command line:
+3. Provide the suitable parameter corresponding to your runtime environment:
+
+- For a local machine runtime environment, provide the following parameter on your command line:
   
     ```
     -Dspring.config.additional-location=PATH-TO_EXTERNAL-YAML-CONFIG-FILE
@@ -331,8 +337,7 @@ server:
     
    At runtime, Spring will merge the two `YAML` configuration files, whereby the properties in the external file have higher priority.
 
-   For Mainframe execution environment provide environment specific configuration properties. Define these 
-   configuration properties and provide them using Java System Properties on the application execution command line.
+- For a mainframe execution environment, provide environment specific configuration properties. Define these configuration properties and provide them using Java System Properties on the application execution command line.
 
     **Important!** Ensure that the default configuration contains only properties which are not dependent on the deployment environment.
     Do not include security sensitive data in the default configuration.
@@ -343,23 +348,19 @@ server:
 
 ## Registering your service with API ML
 
-Onboarding a REST services with API ML means to register the service with API ML Discovery service. The registration is 
-triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
+Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
 
 To register your REST service with API ML using a Spring Boot Enabler, annotate your application `main` 
 class with `@EnableApiDiscovery`. 
             
 ## Unregister your service with API ML
 
-Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process 
-in which Spring fires a `ContextClosed` event. The Spring onboarding enabler is listening to this event and is issuing 
-`unregister` REST call to API ML Discovery service.
+Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
 
 ## Adding API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
-
-To enable Swagger API documentation for your API  
+ 
 **Follow these steps:**
 
 1. Add a Springfox Swagger dependency.
