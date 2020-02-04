@@ -17,12 +17,12 @@ As an API developer, you can onboard your REST API service built with the Spring
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article.
 
-1. [Selecting a Spring Boot Enabler](#selecting-an-spring-boot-enabler)
+1. [Selecting a Spring Boot Enabler](#selecting-a-spring-boot-enabler)
 
 2. [Configuring your project](#configuring-your-project)
 
-    * [Gradle guide](#gradle-guide)
-    * [Maven guide](#maven-guide)
+    * [Gradle build automation system](#gradle-build-automation-system)
+    * [Maven build automation system](#maven-build-automation-system)
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
