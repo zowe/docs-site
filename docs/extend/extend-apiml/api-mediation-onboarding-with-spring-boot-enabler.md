@@ -3,7 +3,7 @@
 This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
 As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
-**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
+**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with a new implimentation based on the Plain Java Enabler (PJE) that is not backwards compatiable with the previous enabler versions.
 
 
 **Tip:** For more information about how to utilize another onboarding method, see:
@@ -35,7 +35,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Selecting a Spring Boot Enabler
 
-Add to your project build configuration a dependency on Spring Enabler version corresponding to the Spring Boot version, that you use for the whole project:
+ Add a dependency on the Spring Enabler version to your project build configuration that corresponds to the Spring Boot version that you use for the whole project:
 - onboarding-enabler-spring-v1
 - onboarding-enabler-spring-v2
 
@@ -45,8 +45,7 @@ Add to your project build configuration a dependency on Spring Enabler version c
 
 Use either _Gradle_ or _Maven_ build automation systems to manage your project builds.
 
-**Note:** You can download the selected enabler artifact from the Giza Artifactory or  if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory.
- Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can download the selected enabler artifact from the Giza Artifactory. Alternatively, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -107,7 +106,7 @@ compileOnly libraries.lombok
 ```
 
 **Notes:**
-* You may need to add more dependencies as required by your service implementation.
+* You may need to add additional dependencies as required by your service implementation.
 * The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
 <font color="red">TODO#Check the version of  SE above</font>
 
@@ -161,20 +160,28 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
-Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration.
+Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions, and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration.
 
 Configuration properties belong to two categories:
 
 - Service related properties which include end-points, relative paths, or API documentation definitions.
 - Environment related properties which include host names, ports, context etc.
 
-Execution environment related properties should be provided by additional configuration mechanisms.
+Execution environment related properties should be provided by additional configuration mechanisms that are specific to the target execution environment. Execution environment related properties for development deployments on a local machine differ with those properties on a mainframe system. 
 
-**Note:** Execution environment related properties differ for development deployments on a local machine with those properties on a mainframe system. Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
+- In a development environment, execution environment related properties can be implemented by providing an additional `YAML` file with the system property in the following format:
+    ```
+    -Dspring.config.additional-location=PATH_TO_YAML_FILE
+    ```
 
-Execution environment related properties are provided by different configuration mechanisms, which may be specific
-for the target execution environment. In a development environment, it can be implemented by providing an additional `YAML` file with the `-Dspring.config.additional-location=PATH_TO_YAML_FILE` system property.
-On the mainframe system, provide additional configuration properties and values for existing configuration properties through Java system properties.
+- On the mainframe system, provide additional configuration properties and values for existing configuration properties through Java system properties.
+
+    Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
+
+<font color = "red"> It would be good to describe the additonal configuration mechanism (i.e an external yaml file, etc)</font>
+
+
+
 
 **Follow these steps:**
 
@@ -350,8 +357,7 @@ server:
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
 
-To register your REST service with API ML using a Spring Boot Enabler, annotate your application `main`
-class with `@EnableApiDiscovery`.
+To register your REST service with API ML using a Spring Boot enabler, annotate your application `main` class with `@EnableApiDiscovery`.
 
 ### Unregistering your service with API ML
 
@@ -434,8 +440,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 ## Validating the discoverability of your API service by the Discovery Service
 
-Once you are able to build and start your service successfully, you can use the option of validating that your service
-is registered correctly with the API ML Discovery Service.
+Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog.
 If your service appears in the Discovery Service UI but is not visible in the API Catalog,
