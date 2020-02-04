@@ -460,7 +460,7 @@ service was successfully started.
  1. Use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
 
     ```
-    http://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
+    https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
     ```
 
  2. Check your service metadata.
