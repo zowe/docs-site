@@ -87,15 +87,15 @@ Use the following procedure to use _Gradle_ as your build automation system.
 <font color="red">TODO#FindOut what name will be SE published under</font>
 
 ```gradle
-implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+implementation "org.zowe.apiml.sdk:mfaas-onboarding-enabler-java:$zoweApimlVersion"
+implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
 ```
 **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script:
 
 <font color="red">TODO#Check what other dependencies are required for SE</font>
 ```gradle
-implementation "com.ca.mfaas.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-implementation "com.ca.mfaas.sdk:common-service-core:$zoweApimlVersion"
+implementation "org.zowe.apiml.sdk:mfaas-onboarding-enabler-java:$zoweApimlVersion"
+implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
 implementation libraries.eureka_client
 implementation libraries.httpcore
 implementation libraries.jackson_databind
@@ -369,7 +369,7 @@ Use the following procedure to add Swagger API documentation to your project.
 
 **Follow these steps:**
 
-1. Add a Springfox Swagger dependency.
+1. Add a SpringFox Swagger dependency.
 
     * For _Gradle_ add the following dependency in `build.gradle`:
 
@@ -391,7 +391,7 @@ Use the following procedure to add Swagger API documentation to your project.
    **Example:**
 
     ```java
-    package com.ca.mfaas.sampleservice.configuration;
+    package org.zowe.apiml.sampleservice.configuration;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
