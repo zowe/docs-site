@@ -1,28 +1,30 @@
 # Configuring the Zowe cross memory server
 
-
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
 
 To install and configure the cross memory server, you must create or edit APF authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarty with z/OS.
 
-The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation. 
+ The cross memory server runtime artefacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build is dependent on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location will be the value of 
+`$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
-The cross memory server artefacts are installed in the `SZWESAMP` PDS SAMPLIB and the load modules are installed in the `SZWEAUTH` PDS load library.  The location of these is dependent on the value of the `zowe-install.sh -h` argument for a convenience build installation.
-
-The angel process server runs under the started task ZWESISTC. 
+The cross memory server is a long running angel process server that runs under the started task `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
 
 The `ZWESISTC` started task runs the load module `ZWESIS01`, serves the Zowe desktop that is running under the `ZWESVSTC` started task, and provides it with secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization. 
 
-Under some situations the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`.  Under normal Zowe operation you will not see any auxiliary address spaces started, however vendor products running on top of Zowe may exploit its service so it should be configured to be launchable.  
+Under some situations in support of a Zowe extension, the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`.  Under normal Zowe operation, you will not see any auxiliary address spaces started. However, if you have installed a vendor products running on top of Zowe, this may exploit the auxiliary service so it should be configured to be launchable.  
 
-To install the cross memory server, take the following steps either manually or use the supplied convenience script `zowe-install-xmem.sh`.  
+To install the cross memory server, take the following steps either [manually](#copy-cross-memory-data-set-members-manually) using `cp` commands or use the supplied [convenience script](#copy-cross-memory-data-set-members-automatically) `zowe-install-xmem.sh` for an automated install process.
 
-## Step 1: Cross memory PROCLIB and load libary
+## Step 1: Copy the cross memory PROCLIB and load libary
+
+### Copy cross memory data set members manually
 
 1. Copy the load modules and add JCL to a PROCLIB:
 
-    a. **Load modules** The cross memory server has two load modules, `ZWESIS01` and `ZWESAUX`, provided in the PDS `SZWEAUTH` created during the installation of Zowe.  To copy the files to a user-defined data set, you can issue the following commands:
+   For the cross memory server to be started, its load modules need to be moved to an APF authorized PDSE, and its JCL PROCLIB members moved to a PDS in the JES concatenation path.  
+
+    a. **Load modules** The cross memory server has two load modules, `ZWESIS01` and `ZWESAUX`, provided in the PDS `SZWEAUTH` created during the installation of Zowe.  To manually copy the files to a user-defined data set, you can issue the following commands:
     ```
     cp -X ZWESIS01 "//'<zwes_loadlib>(ZWESIS01)'"
     ```
@@ -33,7 +35,7 @@ To install the cross memory server, take the following steps either manually or 
 
     b. **Prob libraries** The cross memory server PROCLIB JCL is `ZWESISTC` and the auxiliary address space PROCLIB JCL is `ZWESASTC`.  
     
-    You must specify the `<zwes_loadlib>` data set where `ZWESIS01` and `ZWESAUX` were copied to, in the STEPLIB DD statement of the two PROCLIB JCLs, so that the appropriate version of the software is loaded correctly. 
+    You must specify the `<zwes_loadlib>` data set where `ZWESIS01` and `ZWESAUX` were copied to, in the STEPLIB DD statement of the two PROCLIB JCL members `ZWESISTC` and `ZWESASTC` respectively, so that the appropriate version of the software is loaded correctly. 
     
     Do not add the `<zwes_loadlib>` data set to the system LNKLST or LPALST concatenations.
 
@@ -41,7 +43,9 @@ To install the cross memory server, take the following steps either manually or 
 
     When started, the ZWESISTC started task must find a valid ZWESIPxx PARMLIB member. The `SZWESAMP` PDS contains the member `ZWESIP00` containing default configuration values. You can copy this member to your system PARMLIB data set, or allocate the default PDS data set ZWES.SISAMP that is specified in the ZWESISTC started task JCL.
 
-A convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
+### Copy cross memory data set members automatically
+
+Instead of the manual steps [described above](#copy-cross-memory-data-set-members-manually), a convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
 
 The script `zowe-install-xmem.sh` takes four arguments:
 
@@ -49,10 +53,9 @@ The script `zowe-install-xmem.sh` takes four arguments:
 
    Dataset prefix of the source PDS where .SZWESAMPE(ZWESVSTC) was installed into.  
 
-   For an installation from a convenience build this will be the value of `install:datasetPrefix` in `zowe-install.yaml` file. 
+   For an installation from a convenience build, this will be the value of `zowe-install.sh -h` when the build was installed. See [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
 
-   For an SMP/E installation thils will be the value of 
-`$datasetPrefixIn` in the member AZWE001.F1(ZWE3ALOC)
+   For an SMP/E installation thils will be the value of `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
 -  **Second Parameter**=Target DSN Load Library 
 
@@ -132,7 +135,7 @@ For commands required to configure ICSF cryptographic services environment for s
 
 ## Step 6: Configure security environment switching
 
-When responding to API requests, the Zowe desktop node API server running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation.
+When responding to API requests, the Zowe desktop node API server running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation.  
 
 For commands requireid to configure impersonation, see [Configuring the z/OS system for Zowe](configure-zos-system.md#configure-security-environment-switching).
 

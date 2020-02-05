@@ -103,23 +103,26 @@ For Zowe to execute, it must be installed into a runtime directory or `<RUNTIME_
 
 If you are installing an upgrade of Zowe, the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for Version 1.8 or later.  
 
-For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For a user who test Zowe for themselves, it could be `~/zowe/v1`.  
+For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For users who test Zowe for themselves, it could be `~/zowe/v1`.  
 
 ### Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB
 
-During the installation, two PDS members are created.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules.  The installer needs to know the `<DATA_SET_PREFIX>` into which to create the two PDS members.  
+During installation, two PDS data sets are created: the `SZWESAMP` data set and the `SZWEAUTH` data set.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules. 
 
-The `SZWESAMP` data set is fixed block 90 samplib containing the following members
+You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  
+
+The `SZWESAMP` data set is fixed block 90 samplib containing the following members.
 
 Member name | Purpose  
 ---|---
-ZWESECUR | JCL to configure z/OS user IDs and permissions required to run Zowe
+ZWESECUR | JCL member to configure z/OS user IDs and permissions required to run Zowe
+ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.  
 ZWESVSTC | JCL to start Zowe 
 ZWEXMSTC | JCL to start the Zowe cross memory server
 ZWESIP00 | Parmlib member for the cross memory server
-ZWEXASTC | Started task JCL for the cross memory Auxillary server
-ZWEXMPRG | Console commands to APF authorize the cross memory server load library
-ZWEXMSCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
+ZWESASTC | Started task JCL for the cross memory Auxillary server
+ZWESIPRG | Console commands to APF authorize the cross memory server load library
+ZWESISCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
 
 The `SZWEAUTH` data set is a load library containing the following members.
 
@@ -128,7 +131,6 @@ Member name | Purpose
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxillary address space
 
-If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified to the installer, the PDS members `OPENSRC.ZWE.SZWESAMP` and `OPENSEC.ZWE.SZWEAUTH` will be created.  
 
 ### Step 4: Install the Zowe runtime
 
@@ -138,25 +140,11 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
     zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
  ```
 
-
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-<!--**Follow these steps to install Zowe artifacts**
+## Next steps
 
-1. Create the USS runtime directory, and the PDS SAMPLIB and LOADLIB.
-
-    With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
-
-    ```
-    zowe-install.sh -I
-    ```
-   Each time the install script runs, it creates a log file that contains more information. This file is stored in the `/log` directory and is created with a date and time stamp name, for example `/log/2019-02-05-18-08-35.log`. This file is copied across into the runtime folder into which Zowe is installed, and contains useful information to help diagnose problems that may occur during an install. 
-## No longer valid in 1.8 
-   --> 
-
-## Next step
-   
-Follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) to configure the USS runtime directory and to enable the JCL member ZWESVSTC to run as a started task.
+Follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md), [create a keystore directory](configure-certificates.md), and [create an instance directory](configure-instance-directory.md).
 
 
 

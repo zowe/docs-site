@@ -28,7 +28,10 @@ After the ZWESVSTC procedure is started, you can verify the installation of z/OS
 https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
 ```
 
-where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatewayPort` in `zowe-install.yaml`.
+where, _gatewayPort_ is the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
+
+
+`api:mediation:gatewayPort` in `zowe-install.yaml`.
 
 ## Verifying API Mediation installation
 
