@@ -169,7 +169,7 @@ Configuration properties belong to two categories:
 
 Execution environment related properties should be provided by additional configuration mechanisms that are specific to the target execution environment. Execution environment related properties for development deployments on a local machine differ with those properties on a mainframe system. 
 
-- In a development environment, execution environment related properties can be implemented by providing an additional `YAML` file with the system property in the following format:
+- In a development environment, provide execution environment related properties in an additional `YAML` file with the system property in the following format:
     ```
     -Dspring.config.additional-location=PATH_TO_YAML_FILE
     ```
@@ -177,11 +177,6 @@ Execution environment related properties should be provided by additional config
 - On the mainframe system, provide additional configuration properties and values for existing configuration properties through Java system properties.
 
     Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
-
-<font color = "red"> It would be good to describe the additonal configuration mechanism (i.e an external yaml file, etc)</font>
-
-
-
 
 **Follow these steps:**
 
@@ -206,7 +201,7 @@ Execution environment related properties should be provided by additional config
 
 ### Sample API ML Onboarding Configuration
 
-In the following sample API ML onboarding configuration, properties prefixed with `###` (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the MF execution environment.
+In the following sample API ML onboarding configuration, properties prefixed with `###` (3 hashtags) indicate that their value must be provided as `-Dsystem.property.key=PROPERTY_VALUE` defined in the mainframe execution environment.
 The `-Dsystem.property.key` must be the same as the flattened path of the YAML property which is commented out with `###`.
 These properties must not be defined (uncommented) in your default service YAML configuration file.
 
@@ -216,15 +211,18 @@ These properties must not be defined (uncommented) in your default service YAML 
          service:
             ### hostname:
 ```
-In this example from the YAML configuration file, provide `-Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE` on
-the java execution command line when the application service is run on the mainframe.
+In this example from the YAML configuration file, when the application service is run on the mainframe, provide your mainframe hostname value on the java execution command line in the following format:
+```
+-Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE
+```
 Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
 
-For development purposes you can replace or add any property by providing the same configuration structure in an external
+For development purposes, you can replace or add any property by providing the same configuration structure in an external
 YAML configuration file. When running your application, provide the name of the external/additional
 configuration file on the command line in the following format:
-
- `-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE`
+```
+-Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE
+```
 
 A property notation in the format `-Dproperty.key=PROPERTY_VALUE` can be used
 in two different ways:
@@ -247,7 +245,7 @@ in two different ways:
         key: PROPERTY_VALUE
 ```
 
-**Note**: System properties provided with `-D` on the command line will not replace properties defined
+**Note**: System properties provided with `-D` notation on the command line will not replace properties defined
 in any of the YAML configuration files.
 
 ### API ML Onboarding Configuration Sample
