@@ -451,7 +451,7 @@ You can also control access to the JSON files. The files are accessible directly
     - To an application unavailable, delete it from the list of objects.
     - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required. 
 
-6. Restart the app server.
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
 ### Controlling application access for individual users
 
@@ -493,7 +493,7 @@ You can also control access to the JSON files. The files are accessible directly
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
 
-6. Restart the app server. 
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc). 
 
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
