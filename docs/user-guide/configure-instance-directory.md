@@ -25,12 +25,8 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 ### Component prerequisites
 
 - `JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `NODE_HOME`:  The path to the node runtime.  Only needs to be specified if not already set as a shell variable.  Defaults to value of `NODE_HOME`
+- `NODE_HOME`:  The path to the node runtime.  Only needs to be specified if not already set as a shell variable.  
 - `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed. 
-<!-- The following variables should be removed:
-- `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `ZOWE_NODE_HOME`:  The path to the node runtime.  Defaults to value of `NODE_HOME`
--->
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
@@ -44,7 +40,7 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 
 ### Address space names
 
-Individual address spaces for different Zowe instances can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address spaces names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
+Individual address spaces for different Zowe instances and their subcomponents can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address spaces names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
 
 - `ZOWE_PREFIX`: This defines a prefix for Zowe address space STC names.  Defaults to `ZWE`.   
 - `ZOWE_INSTANCE`: This is appended to the `ZOWE_PREFIX` to build up the address space name.  Defaults to `1`
@@ -75,6 +71,10 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
   ```
   ZWEXAG
   ```
+
+  **Note** If the address space names are not being assigned correctly for each subcomponents check that the step [Configure Address Space Job Naming](configure-zos-system.md#configure-address-space-job-naming) has been performed correctly for the z/OS user ID `ZWESVUSR`.
+
+
 
 ### Ports
 

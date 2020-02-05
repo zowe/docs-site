@@ -13,6 +13,8 @@ It is expected that system programmers at a site will want to review, edit where
 
 If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
 
+If you wish to undo all of the z/OS security configuration steps peformed by the JCL member `ZWESECUR` a reverse member `ZWENOSEC` is provided with Zowe that contains the inverse steps that `ZWESECUR` performs.  This is useful if you are configuring z/OS systems as part of a build pipeline that you wish to undo and redo configuration and installation of Zowe using automation, or if you have configured a z/OS system for Zowe that you no longer wish to use and would prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  If you do run `ZWENOSEC` on a z/OS system then you will no longer be able to install and run Zowe until you have re-run `ZWESECUR` to re-initialize the z/OS security configuration for the z/OS environment.
+
 ## User IDs and groups for the Zowe started tasks
 
 Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`. 
@@ -21,7 +23,34 @@ Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started ta
 
 Zowe requires a group `ZWEADMIN` which both `ZWESVUSR` and `ZWESIUSR` should belong to.
 
-During the installation of Zowe, unix file ownership and groups are modified.  For this to occur successfully, the user who installs Zowe must either be part of the `ZWEADMIN` group, or have sufficient authority to issue `chgrp` commands to assign `ZWEADMIN` as the group of folders it creates, or sufficient authority to issue `chown` commands to assign `ZWESVUSR` as the owner of folders it creates.
+The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
+
+
+- To create the `ZWEADMIN` group, issue the following command:
+  ```
+  ADDGROUP ZWEADMIN. OMVS(AUTOGID) -
+  DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
+  ```
+
+- To create the `ZWESVUSR` userID for the main Zowe started task, issue the following command:
+  ```
+  ADDUSER  ZWESVUSR. -
+    NOPASSWORD -
+    DFLTGRP(ZWEADMIN) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE SERVER') -
+    DATA('ZOWE MAIN SERVER')
+  ```
+
+- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
+  ```
+  ADDUSER ZWESIUSR. -
+    NOPASSWORD -
+    DFLTGRP(ZWEADMIN) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE XMEM SERVER') -
+    DATA('ZOWE XMEM CROSS MEMORY SERVER')
+  ```
 
 ## Configure ZWESVSTC to run under ZWESVUSR user ID
 
@@ -327,3 +356,22 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
       ```
       LIST BPX
       ```
+
+## Configure address space job naming
+
+- The user ID `ZWESVUSR` that is associated with the Zowe started task `ZWESVSTC` must have `READ` permission for the `BPX.JOBNAME FACILITY` class. This is to allow setting of the names for the different USS address spaces for the Zowe runtime components, see [Address Space Names](configure-instance-directory.md#address-space-names)
+
+To display who is authorized to the FACILITY class, issue the following command:
+  ```
+  RLIST FACILITY BPX.JOBNAME AUTHUSER
+  ```
+
+  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+  ```
+  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
+  SETROPTS RACLIST(FACILITY) REFRESH
+  ```
+
+  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
+ https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
