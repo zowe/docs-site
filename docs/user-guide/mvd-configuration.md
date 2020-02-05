@@ -491,7 +491,7 @@ You can also control access to the JSON files. The files are accessible directly
 
     **Notes:**
     - Identifier and version attributes are required.
-    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
+    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user. 
 
 6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc). 
 
