@@ -530,9 +530,9 @@ If you receive this message, import the certificate of your service or the CA th
 
 #### Trust a z/OSMF certificate
 
-The Zowe installation script tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically.  This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
+The Zowe script `zowe-setup-certificates.env` that creates the `keystore-directory` delegates to the script `apiml_cm.sh` that tries to import z/OSMF public certificates to the truststore of API Mediation Layer automatically. See [Configuring certificates](../../user-guide/configure-certificates).  This requires the user ID that is doing the installation to be able to read the z/OSMF keyring.
 
-If it is not possible, you will see following error message:
+If it is not possible, you will see the following error message:
 
 `WARNING: z/OSMF is not trusted by the API Mediation Layer.`
 
