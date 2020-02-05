@@ -26,7 +26,7 @@ The following information is required during the installation process of the Zow
 
 - Zowe has two started tasks. 
    - `ZWESVSVR` brings up the Zowe runtime containing the Zowe desktop, the API mediation layer and a number of Zowe applications.
-   - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF authorized code. More details on the cross memory server are described in [Zowe Cross Memory Server](configure-zowe-runtime.html#the-zowe-cross-memory-server). 
+   - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md). 
    
      In order for the two started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 

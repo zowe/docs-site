@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.8.0 (January 2020)](#version-1-8-0-january-2020)
+- [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
 - [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
 - [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
 - [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
@@ -27,13 +27,17 @@ The following features and enhancements were added.
 
 #### Installation of Zowe z/OS components
 
-- The installation now just needs two parameters configured: the USS location of the runtime folder and a data set prefix where a SAMPLIB and LOADLIB will be created.  
-- The way to configure Zowe is changed. Previously, you configure Zowe at the installation time with the `zowe-install.yaml` file. Now, you configure Zowe at launch time. The `zowe-install.yaml` is no longer used. The Zowe cross memory server installation script is removed.
-- Added a new sample JCL member ZWESECUR that contains all security configuration for z/OS.  This includes new Zowe userIDs of ZWESVUSR, ZWESIUSR and ZWEADMIN. 
-- You can now run multiple Zowe instances with different configurations from the same Zowe runtime.  This introduces the concept of an instance directory that contains all of the configuration parameters for Zowe (ports, location of Java and Node preqs, IP addresses, and so on), as well as where logs are collected and any static extensions to the desktop or APIML are recorded.  
-- The Zowe certificate and the truststore for servers that z/OS communicates with are now managed in a new keystore directory that can be shared between Zowe instances. 
+- The installation now just needs two parameters configured: the USS location of the runtime directory and a data set prefix where a SAMPLIB and LOADLIB will be created.  The runtime directory permissions are set to 755 and when Zowe is run no data is written to the runtime directory.  
+- The way to configure Zowe is changed. Previously, you configure Zowe at the installation time with the `zowe-install.yaml` file.  This file has been removed and is no longer used.  
+- A new directory `zowe-instance-dir` has been introduced that contains configuration information used to launch Zowe.  This allows different more than one Zowe instance to be started from the same Zowe runtime directory.  A new file `zowe-instance.env` within each `zowe-instance-dir` controls which ports are allocated to the Zowe servers as well as location of any dependencies such as Java, z/OSMF or node.  No configuration data is specified at install time, this is only read, validated, and used at launch time.  The `zowe-instance.env` contains a parameter value `LAUNCH_COMPONENT_GROUPS` which allows control over which Zowe subsystems are launched, for example you can run the Zowe desktop and not the API mediation layer, or vice-versa you can run just the API mediation layer and not the Zowe desktop.   The zowe-instance-dir is also where log files are collected.  Static extensions to the API Mediation Layer are recorded in the zowe-instance directory as well as any plugin extensions to the Zowe desktop.  This allows the runtime directory to be fully replaced during PTF upgrades or moving to later Zowe releases while preserving configuration data and extension definitions that are held in the instance directory.
+- A new directory `keystore-directory` has been introduced outside of the Zowe runtime directory which is where the Zowe certificate is held, as well as the trust store for public certificates from z/OS services that Zowe communicates to (such as z/OSMF).  A keystore-directory can be shared between multiple Zowe instances and across multiple Zowe runtimes.
+- All configuration of z/OS security that was done by Unix shell scripts during install and configure has been removed.  A JCL member `ZWESECUR` is provided that contains all of the JCL needed to configure permissions, user IDs and groups, and other steps to prepare and configure a z/OS environment to successfully run Zowe.  Code is included for RACF, TopSecret and ACF/2.  
+- The Zowe cross memory server installation script `zowe-install-apf-server.sh` is removed.  The steps this used to perform to configure z/OS security are included in the `ZWESECUR` JCL member.
+- Zowe used to run its two started tasks under the user ID of `IZUSVR` and admin of `IZUADMIN`.  These belong to z/OSMF and are no longer used, instead Zowe includes two new userIDs of ZWESVUSR (for the main Zowe started task), `ZWESIUSR` (for the cross memory server), and ZWEADMIN as a group.  These userIDs are defaults and different ones can be used dependening on site preferences.  
+- The main Zowe started task is no longer called `ZOWESVR` and is now called `ZWESVSTC`.  The cross memory started task is no longer called `ZWESIS01` and is now called `ZWESISTC`.  
+- The script `zowe-verify.sh` is no longer included with Zowe as verification is done at launch time and dependent on the launch configuration parameters, so cannot be done with a generic script function that `zowe-verify.sh` used to provide.
 
-For more information, see [Installation overview](../user-guide/install-zos.md).
+For more information, see [Installation roadmap](../user-guide/install-zos.md).
 
 #### API Mediation Layer
 - The API Catalog backend has been modified to support the OpenAPI 3.0 version. The API Catalog now supports the display of API documentation in the OpenAPI 3.0 format.
@@ -44,23 +48,18 @@ For more information, see [Installation overview](../user-guide/install-zos.md).
 
 
 #### Zowe App Server
-- Extensible resource access framework [#2](https://github.com/zowe/zlux/issues/2)
-- ZOWESVR does not issue a useful UP message [#355](https://github.com/zowe/zlux/issues/355)
-- Update server log levels [#240](https://github.com/zowe/zlux/issues/240)
+- The app server now issues a message indicating it is ready, how many plugins loaded, and where it can be accessed from [#355](https://github.com/zowe/zlux/issues/355)
+- Restructured the App server directories to separate writable configuration items from read-only install content [#911](https://github.com/zowe/zowe-install-packaging/pull/911) [#627](https://github.com/zowe/zowe-install-packaging/issues/627) [#87](https://github.com/zowe/zlux-app-server/pull/87) [#43](https://github.com/zowe/zlux-build/pull/43)
+- Move install-app script to instance directory bin folder for ease of use [#966](https://github.com/zowe/zowe-install-packaging/pull/966)
 - Access control for app visibility [216](https://github.com/zowe/zlux/issues/216)
 - The following features and enhancements were made in the default apps:
     - UI changes for write support for datasets in editor [#340](https://github.com/zowe/zlux/issues/340)
-    - Support deletion of QSAM in REST API [#339](https://github.com/zowe/zlux/issues/339)
-    - Delete file UI changes [#338](https://github.com/zowe/zlux/issues/338)
-    - Add deletion option into right click menu for members [#337](https://github.com/zowe/zlux/issues/337)
-    - When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
-    - Disable text area for unsupported datasets [#342](https://github.com/zowe/zlux/issues/342)
-    - Output files: Implement a concatenated view option [#260](https://github.com/zowe/zlux/issues/260)
-    - Update page title when viewing output files in full screen [#356](https://github.com/zowe/zlux/issues/356)
-    - Add open in full screen button to content menu [#261](https://github.com/zowe/zlux/issues/261)
-    - Job status field missing white space between id and status [#265](https://github.com/zowe/zlux/issues/265)
-    - Delete datasets in editor [#229](https://github.com/zowe/zlux/issues/229)
-    - Jobs in output state that don't have a return code appear with active colour in tree [#266](https://github.com/zowe/zlux/issues/266)
+    - Support for QSAM and VSAM deletion in the ZSS dataset REST API [#339](https://github.com/zowe/zlux/issues/339)
+    - Editor: Dataset deletion capability[#229][#337]
+    - Editor: File deletion UI changes [#338](https://github.com/zowe/zlux/issues/338)
+    - Editor fix: When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
+    - Editor fix: Disable text area for datasets in the absence of write ability [#342](https://github.com/zowe/zlux/issues/342)
+    - Editor fix: When saving a new file use the opened directory in the dialog [#233](https://github.com/zowe/zlux/issues/233)
 
 #### Zowe CLI
 
@@ -78,28 +77,14 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
 
-#### Zowe SMP/E installation
-
--
--
--
 
 ### Bug fixes
 
 The following bugs were fixed.
 
-#### API Mediation Layer
--
--
-
 #### Zowe App Server
-- After saving a new file in Zowe Editor, a new save again shows the Save As dialog [#235](https://github.com/zowe/zlux/issues/235)
-- When an output file fails to open the progress bar continues to indicate something is loading [#343](https://github.com/zowe/zlux/issues/343)
-- No jobs found message in tree on first page load [#264](https://github.com/zowe/zlux/issues/264)
-- Issue with node.js V8.16.1 [#284](https://github.com/zowe/zlux/issues/284)
-- MXM status - Permission denied (name='MXMSRV_STD .... [#68](https://github.com/zowe/zlux/issues/68)
-- Extra environment variables (_TAG_REDIR_XXX) required to run Zowe with node.js v12 Beta [#333](https://github.com/zowe/zlux/issues/333)
-- Unable to run install-app.sh [#373](https://github.com/zowe/zlux/issues/373)
+- Use of environment variables (_TAG_REDIR_XXX) required to run Zowe with node v12 [#333](https://github.com/zowe/zlux/issues/333)
+- Install-app.sh sh would not work without first server run, improper permissions [#373](https://github.com/zowe/zlux/issues/373)
 
 #### Zowe CLI
 - Fixed an issue where `zowe zos-jobs submit stdin` command returned an error when handling data from standard in. [#601](https://github.com/zowe/zowe-cli/issues/601)

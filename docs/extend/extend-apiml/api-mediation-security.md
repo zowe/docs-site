@@ -652,8 +652,8 @@ in following shell scripts:
 ## Security Service Client Library
 
 The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation, and consists of the following components:
-  - `com.ca.apiml.security.common` - Components that are necessary to build Spring security
-  - `com.ca.apiml.security.client` - Components that enables the security client and Gateway lookup
+  - `org.zowe.apiml.security.common` - Components that are necessary to build Spring security
+  - `org.zowe.apiml.security.client` - Components that enables the security client and Gateway lookup
 
 #### @EnableApimlAuth annotation
 Use `@EnableApimlAuth` annotation to enable the security client and integration of the `security-service-client-spring` library. The annotation handles necessary component scans, creates the `GatewaySecurityService`, and starts the Gateway lookup logic.
@@ -662,20 +662,20 @@ Use `@EnableApimlAuth` annotation to enable the security client and integration 
 Security client uses the `GatewayClient` Spring component to represent a Gateway instance. Lookup logic scans the embedded Discovery client and sets a Gateway instance to ‘Gateway Client’ after the Spring context starts. The scanning process happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
 
 #### Useful classes
-The core class of the library is `com.ca.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
+The core class of the library is `org.zowe.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
 
   - `login` - Allows to login to the API Gateway with a username and password and retrieve the valid JWT token
   - `query` - Allows to verify the JWT token validity and return the JWT token data
   
  The following providers process authentication requests:
   
-   - `com.ca.apiml.security.client.login.GatewayLoginProvider` - Verifies the mainframe credentials 
-   - `com.ca.apiml.security.client.token.GatewayTokenProvider` - Authenticates the JWT token
+   - `org.zowe.apiml.security.client.login.GatewayLoginProvider` - Verifies the mainframe credentials 
+   - `org.zowe.apiml.security.client.token.GatewayTokenProvider` - Authenticates the JWT token
 
 The library contains the following Spring security filters and handlers:
 
-- `com.ca.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `com.ca.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The JWT token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
+- `org.zowe.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
+- `org.zowe.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The JWT token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
 - `SuccessfulLoginHandler` - Handles the successful login
 - `UnauthorizedHandler` - Handles unauthorized access
 - `BasicAuthUnauthorizedHandler` - Handles unauthorized access in the case of basic authentication

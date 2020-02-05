@@ -549,6 +549,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Check that the service was successfully registered to the Discovery Service and wait for Spring Cloud to refresh the routes definitions
+  
+### ZWEAG701D
+
+  Service '%s' does not allow encoded characters used in request path: '%s'.
+
+  **Reason:**
+
+  The request that was issued to the Gateway contains an encoded character in the URL path. The service that the request was addressing does not allow this pattern.
+
+  **Action:**
+
+  Contact the system administrator and ask to enable encoded characters in the service
 
 ### ZWEAG704E
 
