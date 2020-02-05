@@ -280,7 +280,9 @@ The following parameters define service authentication method:
      * **zosmf**
      
         This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-        Use this scheme only for z/OSMF services.
+        This scheme should be used only for z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that are using the same LTPA key.
+        
+        For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
 * **apiml.authentication.applid**
 

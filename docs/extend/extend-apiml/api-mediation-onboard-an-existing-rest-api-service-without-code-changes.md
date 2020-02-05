@@ -47,7 +47,7 @@ Onboard an API service through the API Gateway without making code changes.
 
     In the sample service, the _service ID_ is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL and is composed of the API type and the major version.
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version.
 
     **Example:**
 
@@ -92,6 +92,9 @@ services:
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
+      authentication:
+              scheme: httpBasicPassTicket
+              applid: ZOWEAPPL
       apiInfo:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
@@ -103,6 +106,12 @@ catalogUiTiles:
     static:
         title: Static API services
         description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
+
+additionalServiceMetadata:
+    - serviceId: petstore
+      mode: UPDATE # How to update UPDATE=only missing, FORCE_UPDATE=update all set values
+      authentication:
+        scheme: bypass
 ```
 
 In this example, a suitable name for the file is `petstore.yml`.
@@ -229,45 +238,83 @@ The following list describes the configuration parameters:
 
         Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
         gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the gateway.
+    
+* **authentication**
+
+    (Optional) Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+        
+    * **authentication.scheme**
+    
+        (Optional) This parameter specifies a service authentication scheme. 
+        The following schemes are supported by the API Gateway:
+        
+        * **bypass**
+        
+            This value specifies the token is passed unchanged to service.
+              
+            **Note:** This is the default scheme when no authentication parameters are specified. 
+            
+         * **zoweJwt**   
+         
+            This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+         
+         * **httpBasicPassTicket**
+         
+            This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+            It is necessary to provide a service APPLID in `apiml.authentication.applid` parameter.
+            
+            For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+         
+         * **zosmf**
+         
+            This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+            This scheme should be used only for z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that are using the same LTPA key.
+            
+            For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+    
+    * **authentication.applid**
+    
+        (Optional) This parameter specifies a service APPLID.
+        This parameter is valid only for `httpBasicPassTicket` authentication scheme.        
 
 * **apiInfo**
 
     This section defines APIs that are provided by the service. Currently, only one API is supported.
 
-* **apiInfo.apiId**
-
-    Specifies the API identifier that is registered in the API Mediation Layer installation.
-    The API ID uniquely identifies the API in the API Mediation Layer.
-    The same API can be provided by multiple services. The API ID can be used
-    to locate the same APIs that are provided by different services.
-    The creator of the API defines this ID.
-    The API ID needs to be a string of up to 64 characters
-    that uses lowercase alphanumeric characters and a dot: `.`.
-    We recommend that you use your organization as the prefix.
-
-    **Examples:**
-
-     - `org.zowe.file`
-     - `com.ca.sysview`
-     - `com.ibm.zosmf`
-
-* **apiInfo.gatewayUrl**
-
-    The base path at the API gateway where the API is available. Ensure that this path is
-    the same as the _gatewayUrl_ value in the _routes_ sections.
-
-* **apiInfo.swaggerUrl**
-
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
-
-* **apiInfo.documentationUrl**
-
-    (Optional) Specifies a URL to a website where external documentation is provided.
-    This can be used when _swaggerUrl_ is not provided.
-
-* **apiInfo.version**
-
-    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+    * **apiInfo.apiId**
+    
+        Specifies the API identifier that is registered in the API Mediation Layer installation.
+        The API ID uniquely identifies the API in the API Mediation Layer.
+        The same API can be provided by multiple services. The API ID can be used
+        to locate the same APIs that are provided by different services.
+        The creator of the API defines this ID.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.`.
+        We recommend that you use your organization as the prefix.
+    
+        **Examples:**
+    
+         - `org.zowe.file`
+         - `com.ca.sysview`
+         - `com.ibm.zosmf`
+    
+    * **apiInfo.gatewayUrl**
+    
+        The base path at the API gateway where the API is available. Ensure that this path is
+        the same as the _gatewayUrl_ value in the _routes_ sections.
+    
+    * **apiInfo.swaggerUrl**
+    
+        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
+    
+    * **apiInfo.documentationUrl**
+    
+        (Optional) Specifies a URL to a website where external documentation is provided.
+        This can be used when _swaggerUrl_ is not provided.
+    
+    * **apiInfo.version**
+    
+        (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
 * **catalogUiTileId**
 
@@ -292,15 +339,38 @@ The following list describes the configuration parameters:
            description: This is the second tile with ID tile2
    ```
 
-* **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.{tileId}.title**
+    
+       Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+    
+    * **catalogUiTile.{tileId}.description**
+    
+       Specifies the detailed description of the API Catalog UI dashboard tile.
+       This value is displayed in the API catalog UI dashboard as the tile description.
 
-   Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+* **additionalServiceMetadata**
 
-* **catalogUiTile.{tileId}.description**
-
-   Specifies the detailed description of the API Catalog UI dashboard tile.
-   This value is displayed in the API catalog UI dashboard as the tile description.
-
+    This section contains a list of changes that allows adding or modifying metadata parameters for the corresponding service. 
+    
+    * **additionalServiceMetadata.serviceId**
+    
+        Specifies the service identifier for which metadata is updated.
+        
+    * **additionalServiceMetadata.mode**
+    
+        Specifies how the metadata are updated. The following modes are available:
+        
+        **UPDATE**
+        
+        Only missing parameters are added. Already existing parameters are ignored.
+        
+        **FORCE_UPDATE**
+        
+        All changes are applied. Existing parameters are overwritten.     
+        
+    * **additionalServiceMetadata.{updatedParameter}**
+    
+        Specify any metadata parameters that are updated.      
 
 ## 5. Add and validate the definition in the API Mediation Layer running on your machine
 
