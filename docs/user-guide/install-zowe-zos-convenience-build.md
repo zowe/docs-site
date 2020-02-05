@@ -142,9 +142,9 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-## Next step
+## Next steps
 
-After the z/OS system has been configured rollow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describe how [configure the z/OS environment](configure-zos-system.md), to [create a keystore directory](configure-certificates.md), and to [create an instance directory](#configure-instance-directory.md).
+Follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md), [create a keystore directory](configure-certificates.md), and [create an instance directory](configure-instance-directory.md).
 
 
 

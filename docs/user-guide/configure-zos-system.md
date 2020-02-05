@@ -13,7 +13,11 @@ It is expected that system programmers at a site will want to review, edit where
 
 If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
 
-If you wish to undo all of the z/OS security configuration steps peformed by the JCL member `ZWESECUR` a reverse member `ZWENOSEC` is provided with Zowe that contains the inverse steps that `ZWESECUR` performs.  This is useful if you are configuring z/OS systems as part of a build pipeline that you wish to undo and redo configuration and installation of Zowe using automation, or if you have configured a z/OS system for Zowe that you no longer wish to use and would prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  If you do run `ZWENOSEC` on a z/OS system then you will no longer be able to install and run Zowe until you have re-run `ZWESECUR` to re-initialize the z/OS security configuration for the z/OS environment.
+If you want to undo all of the z/OS security configuration steps peformed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
+- You are configuring z/OS systems as part of a build pipeline that you wish to undo and redo configuration and installation of Zowe using automation.
+- You have configured a z/OS system for Zowe that you no longer want to use and you prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  
+
+If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to install and run Zowe until you re-run `ZWESECUR` to re-initialize the z/OS security configuration for the z/OS environment.
 
 ## User IDs and groups for the Zowe started tasks
 
@@ -32,7 +36,7 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
   DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
   ```
 
-- To create the `ZWESVUSR` userID for the main Zowe started task, issue the following command:
+- To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
   ```
   ADDUSER  ZWESVUSR. -
     NOPASSWORD -
@@ -77,7 +81,7 @@ When the Zowe started task `ZWESVSTC` is started, it must be associated with the
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
   ```
 
-## Granting users permission to access Zowe
+## Grant users permission to access Zowe
 
 TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER or IZUADMIN group
 
@@ -359,19 +363,18 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
 
 ## Configure address space job naming
 
-- The user ID `ZWESVUSR` that is associated with the Zowe started task `ZWESVSTC` must have `READ` permission for the `BPX.JOBNAME FACILITY` class. This is to allow setting of the names for the different USS address spaces for the Zowe runtime components, see [Address Space Names](configure-instance-directory.md#address-space-names)
+The user ID `ZWESVUSR` that is associated with the Zowe started task `ZWESVSTC` must have `READ` permission for the `BPX.JOBNAME FACILITY` class. This is to allow setting of the names for the different USS address spaces for the Zowe runtime components. See [Address space names](configure-instance-directory.md#address-space-names).
 
 To display who is authorized to the FACILITY class, issue the following command:
-  ```
-  RLIST FACILITY BPX.JOBNAME AUTHUSER
-  ```
+```
+RLIST FACILITY BPX.JOBNAME AUTHUSER
+```
 
-  Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
-  ```
-  SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
-  PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
-  SETROPTS RACLIST(FACILITY) REFRESH
-  ```
+Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+```
+SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+PERMIT BPX.JOBNAME CLASS(FACILITY) ID(&useridToAuthorizeHere) ACCESS(READ)
+SETROPTS RACLIST(FACILITY) REFRESH
+```
 
-  For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](
- https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm).
+For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
