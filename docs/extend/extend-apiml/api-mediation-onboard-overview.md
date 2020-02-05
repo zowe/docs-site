@@ -9,6 +9,22 @@ A REST API service can provide one or more REST APIs and usually provides the la
 **Note:** Definitions used in this procedure follow the [OpenAPI specification](https://swagger.io/specification/). 
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)).
 
+## REST API Onboarding Enabler Guides
+Use the following REST API onboarding enabler guides when you use API ML/enabler version 1.2.1 and higher:
+- [Onboarding a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
+- [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md)
+
+Use the following REST API onboarding enabler guides when you use API ML/enabler versions prior to 1.2.1:
+
+- [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
+- [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
+- [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+
+**Tip:** We recommend you use API ML/enabler version 1.2.1 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enabler versions before 1.2.1. 
+
+To onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service, you can follow the steps in the onboarding guide for [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).  
+
+## Service Relationship Diagram
 The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API gateway:
 
 ![REST API Components](../../user-guide/api-mediation/diagrams/rest-api-components.svg)
