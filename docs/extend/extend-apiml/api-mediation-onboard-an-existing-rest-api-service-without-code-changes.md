@@ -250,7 +250,7 @@ The following list describes the configuration parameters:
         
         * **bypass**
         
-            This value specifies the token is passed unchanged to service.
+            This value specifies that the token is passed unchanged to the service.
               
             **Note:** This is the default scheme when no authentication parameters are specified. 
             
@@ -261,21 +261,21 @@ The following list describes the configuration parameters:
          * **httpBasicPassTicket**
          
             This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-            It is necessary to provide a service APPLID in `apiml.authentication.applid` parameter.
+            It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
             
             For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
          
          * **zosmf**
          
             This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-            This scheme should be used only for z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that are using the same LTPA key.
+            This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
             
             For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
     
     * **authentication.applid**
     
         This parameter specifies a service APPLID.
-        This parameter is valid only for `httpBasicPassTicket` authentication scheme.        
+        This parameter is only valid for the `httpBasicPassTicket` authentication scheme.        
 
 * **apiInfo**
 
@@ -300,7 +300,7 @@ The following list describes the configuration parameters:
     
     * **apiInfo.gatewayUrl**
     
-        The base path at the API gateway where the API is available. Ensure that this path is
+        The base path at the API Gateway where the API is available. Ensure that this path is
         the same as the _gatewayUrl_ value in the _routes_ sections.
     
     * **apiInfo.swaggerUrl**
@@ -341,12 +341,12 @@ The following list describes the configuration parameters:
 
     * **catalogUiTile.{tileId}.title**
     
-       Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+       Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
     * **catalogUiTile.{tileId}.description**
     
        Specifies the detailed description of the API Catalog UI dashboard tile.
-       This value is displayed in the API catalog UI dashboard as the tile description.
+       This value is displayed in the API Catalog UI dashboard as the tile description.
 
 * **additionalServiceMetadata**
 
@@ -370,7 +370,7 @@ The following list describes the configuration parameters:
         
     * **additionalServiceMetadata.{updatedParameter}**
     
-        Specify any metadata parameters that are updated.      
+        Specifies any metadata parameters that are updated.      
 
 ## 5. Add and validate the definition in the API Mediation Layer running on your machine
 
