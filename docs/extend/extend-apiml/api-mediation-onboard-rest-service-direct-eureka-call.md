@@ -129,14 +129,14 @@ where:
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
 
-```
+```xml
 <instance>
   <metadata>
       <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
       <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
       <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
       <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-      <apiml.service.title>Sample Service ©</apiml.service.title>
+      <apiml.service.title>Sample Service</apiml.service.title>
       <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
       <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
       <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
@@ -380,7 +380,7 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
                 <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
                 <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
                 <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service ©</apiml.service.title>
+                <apiml.service.title>Sample Service</apiml.service.title>
                 <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
                 <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
                 <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>

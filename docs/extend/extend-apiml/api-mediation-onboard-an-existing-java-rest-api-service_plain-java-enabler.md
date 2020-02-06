@@ -1,6 +1,6 @@
 # Onboarding a REST API service with the Plain Java Enabler (PJE)
 
-This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Enabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 **Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
@@ -10,7 +10,7 @@ Zowe API ML is a lightweight API management system based on the following Netfli
 
 * Eureka - a discovery service used for services registration and discovery
 * Zuul - reverse proxy / API Gateway
-* Ribbon - load ballancer
+* Ribbon - load balancer
 
 The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
@@ -34,27 +34,22 @@ The following steps outline the overall process to onboard a REST service with t
 
 2. [Configuring your project](#configuring-your-project)
 
-    * [Gradle guide](#gradle-guide)
-    * [Maven guide](#maven-guide)
+    * [Gradle build automation system](#gradle-build-automation-system)
+    * [Maven build automation system](#maven-build-automation-system)
 
 3. [Configuring your service](#configuring-your-service)
     * [REST service identification](#rest-service-identification)
-    * [Administrative endponts](#administrative-endponts)
-    * [API info](#api-info)
-    * [API routing information](#api=routing-information)
+    * [Administrative endpoints](#administrative-endpoints)
+    * [API routing information](#api-routing-information)
     * [API Catalog information](#api-catalog-information)
+    * [Authentication parameters](#authentication-parameters)
+    * [API info](#api-info)
     * [API Security](#api-security)
     * [Eureka Discovery Service](#eureka-discovery-service)
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
-    * [Add a web application context listener class](#add-a-web-application-context-listener-class)
-    * [Register a web application context listener](#register-a-web-application-context-listener)
-    * [Load service configuration](#load-service-configuration)
-    * [Initialize Eureka Client](#initialize-eureka-client)
-    * [Register with Eureka Discovery Service](#register-with-eureka-discovery-service)
 
 5. [Adding API documentation](#adding-api-documentation)
-
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
@@ -182,8 +177,6 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 4. In the directory of your project, run the `mvn package` command to build the project.
 
-
-
 ## Configuring your service
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
@@ -196,10 +189,10 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 **Example:**
 
  ```yaml
- serviceId: sampleservice
- title: Hello API ML
- description: Sample API ML REST Service
- baseUrl: https://${samplehost}:${sampleport}/${sampleservice}
+ serviceId: sampleclient
+ title: Sample Service
+ description: Sample API service showing how to onboard the service
+ baseUrl: https://${samplehost}:${sampleport}/sampleclient
  serviceIpAddress: ${sampleHostIpAddress}
 
  homePageRelativeUrl: /application/home
@@ -214,17 +207,22 @@ are written in `#{parameterValue}` format. For your service configuration file, 
      - gatewayUrl: api/v1
        serviceUrl: /sampleservice/api/v1
 
+authentication:
+    scheme: httpBasicPassTicket
+    applid: ZOWEAPPL
+
  apiInfo:
-     - apiId: org.zowe.sampleservice
+     - apiId: org.zowe.sampleclient
        gatewayUrl: api/v1
-       swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
-       doumentationUrl: http://
+       swaggerUrl: https://hostname/sampleclient/api-doc
+       doumentationUrl: https://www.zowe.org
        version: v1
+
  catalog:
      tile:
-         id: sampleservice
-         title: Hello API ML
-         description: Sample application to demonstrate exposing a REST API in the ZOWE API ML
+         id: samples
+         title: Sample API Mediation Layer Applications
+         description: Sample API Mediation Layer Applications
          version: 1.0.0
 
  ssl:
@@ -244,13 +242,14 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 
 The onboarding configuration parameters are broken down into the following groups:
 
-- [REST service identification](#rest-service-identification)
-- [Administrative endpoints](#administrative-endpoints)
-- [API info](#api-info)
-- [API routing information](#api-routing-information)
-- [API catalog information](#api-catalog-information)
-- [API security](#api-security)
-- [Eureka Discovery Service](#eureka-discovery-service)
+* [REST service identification](#rest-service-identification)
+* [Administrative endpoints](#administrative-endpoints)
+* [API routing information](#api-routing-information)
+* [API catalog information](#api-catalog-information)
+* [Authentication parameters](#authentication-parameters)
+* [API info](#api-info)
+* [API security](#api-security)
+* [Eureka Discovery Service](#eureka-discovery-service)
 
 ### REST service identification
 
@@ -310,11 +309,12 @@ The onboarding configuration parameters are broken down into the following group
 
    The following snippet presents the format of the administrative endpoint properties:
 
-   ```
+```yaml
 homePageRelativeUrl:
 statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
+
 where:
 
 * **homePageRelativeUrl**
@@ -353,11 +353,143 @@ where:
      This results in the URL:
     `${baseUrl}/application/health`
 
+### API routing information
+
+The API routing group provides the required routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
+A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL
+in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl`. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.
+
+The following snippet is an example of the API routing information properties.
+
+**Example:**
+
+```yaml
+routes:
+    - gatewayUrl: api
+      serviceUrl: /sampleservice
+    - gatewayUrl: api/v1
+      serviceUrl: /sampleservice/api/v1
+    - gatewayUrl: api/v1/api-doc
+      serviceUrl: /sampleservice/api-doc
+```
+   where:
+
+* **routes**
+
+    specifies the container element for the routes.
+
+* **routes.gatewayUrl**
+
+    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
+
+* **routes.serviceUrl**
+
+    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
+
+**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
+This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
+
+**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
+
+### API Catalog information
+
+The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service.
+Information displayed in the Catalog is defined by the metadata provided by your service during registration.
+The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter.
+
+The following code block is an example of configuration of a service tile in the Catalog:
+
+**Example:**
+
+```yaml
+    catalog:
+      tile:
+        id: apimediationlayer
+        title:  API Mediation Layer API
+        description: The API Mediation Layer for z/OS internal API services.
+        version: 1.0.0
+```
+
+where:
+
+* **catalog.tile.id**
+
+    specifies the unique identifier for the product family of API services.
+    This is a value used by the API ML to group multiple API services into a single tile.
+    Each unique identifier represents a single API dashboard tile in the Catalog.
+
+    **Tip:**  Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
+
+* **catalog.tile.title**
+
+    specifies the title of the product family of the API service. This value is displayed in the API Catalog dashboard as the tile title.
+
+* **catalog.tile.description**
+
+    is the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
+
+* **catalog.tile.version**
+
+    specifies the semantic version of this API Catalog tile.
+
+    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
+
+### Authentication parameters
+These parameters are not required. When not specified, the default values are used.
+
+Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+
+The following parameters define service authentication method:
+
+**Example:**
+
+```yaml
+authentication:
+    scheme: httpBasicPassTicket
+    applid: ZOWEAPPL
+```
+
+* **authentication.scheme**
+
+    This parameter specifies a service authentication scheme. 
+    The following schemes are supported by the API Gateway:
+    
+    * **bypass**
+    
+        This value specifies the token is passed unchanged to service.
+          
+        **Note:** This is the default scheme when no authentication parameters are specified. 
+        
+     * **zoweJwt**   
+     
+        This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+     
+     * **httpBasicPassTicket**
+     
+        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+        It is necessary to provide a service APPLID in `authentication.applid` parameter.
+        
+        For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+     
+     * **zosmf**
+     
+        This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+        This scheme should be used only for z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that are using the same LTPA key.
+        
+        For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+
+* **authentication.applid**
+
+    This parameter specifies a service APPLID.
+    This parameter is valid only for `httpBasicPassTicket` authentication scheme.
+    
 ### API info
 
 REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
 
 The following snippet presents the information properties of a single API:
+
+**Example:**
 
 ```
 apiInfo:
@@ -392,89 +524,7 @@ where:
 
 * **apiInfo.documentationUrl** (Optional)
 
-     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
-
-
-### API routing information
-
-The API routing group provides the required routing information used by the API ML Gateway when routing incoming requests to the corresponding REST API service.
-A single route can be used to direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL
-in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl`. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.
-
-The following snippet is an example of the API routing information properties.
-
-**Example:**
-
-```
-routes:
-    - gatewayUrl: api
-    serviceUrl: /sampleservice
-    - gatewayUrl: api/v1
-    serviceUrl: /sampleservice/api/v1
-    - gatewayUrl: api/v1/api-doc
-    serviceUrl: /sampleservice/api-doc
-```
-   where:
-
-* **routes**
-
-    specifies the container element for the routes.
-
-* **routes.gatewayUrl**
-
-    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
-
-* **routes.serviceUrl**
-
-    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
-
-**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
-
-**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
-
-### API Catalog information
-
-The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service.
-Information displayed in the Catalog is defined by the metadata provided by your service during registration.
-The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter.
-
-The following code block is an example of configuration of a service tile in the Catalog:
-
-**Example:**
-
- ```
-    catalog:
-      tile:
-        id: apimediationlayer
-        title:  API Mediation Layer API
-        description: The API Mediation Layer for z/OS internal API services.
-        version: 1.0.0
-```
-
-where:
-
-* **catalog.tile.id**
-
-    specifies the unique identifier for the product family of API services.
-    This is a value used by the API ML to group multiple API services into a single tile.
-    Each unique identifier represents a single API dashboard tile in the Catalog.
-
-    **Tip:**  Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
-
-* **catalog.tile.title**
-
-    specifies the title of the product family of the API service. This value is displayed in the API Catalog dashboard as the tile title.
-
-* **catalog.tile.description**
-
-    is the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
-
-* **catalog.tile.version**
-
-    specifies the semantic version of this API Catalog tile.
-
-    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
+     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.    
 
 ### API Security
 
@@ -483,9 +533,9 @@ These two roles have different requirements.
 The Zowe API ML Discovery Service communicates with its clients in secure Https mode. As such, TLS/SSL configuration setup is required when a service is acting as a server. In this case, the system administrator decides if the service will communicate with its clients securely or not.
 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
-When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka paramaters and the service metadata.
+When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security see: [API ML security](#api-mediation-security.md)
+For more information about API ML security see: [API ML security](api-mediation-security.md)
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -493,7 +543,7 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter makes it possible to prevent server certificate validation.
 
-  **Important!** Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environemnts significantly degrades the overall security of the system.
+  **Important!** Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
 
 * **protocol**
 
@@ -540,7 +590,8 @@ TLS/SSL configuration consists of the following parameters:
     ```
     TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
     ```
-  To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. CIphers are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
+  
+    To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. Ciphers are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
 
 **Notes:**
 
@@ -552,12 +603,15 @@ TLS/SSL configuration consists of the following parameters:
 Eureka Discovery Service parameters group contains a single parameter used to address Eureka Discovery Service location.
 An example is presented in the following snippet:
 
-```
+**Example:**
+
+```yaml
 discoveryServiceUrls:
 - https://localhost:10011/eureka
 - http://......
 ```
- where:
+
+where:
 
 * **discoveryServiceUrls**
 
@@ -587,7 +641,8 @@ The following steps outline the process of registering your service with API ML.
 2. Register a web application context listener.
 
     Add the following code block to the deployment descriptor `web.xml` to register a context listener:
-    ``` xml
+    
+    ```xml
     <listener>
         <listener-class>com.your.package.ApiDiscoveryListener</listener-class>
     </listener>
@@ -601,7 +656,8 @@ The following steps outline the process of registering your service with API ML.
     Use the following code as an example of how to load the service configuration.
 
     **Example:**
-     ```
+    
+    ```java
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ...
@@ -609,26 +665,31 @@ The following steps outline the process of registering your service with API ML.
         ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(configurationFile);
         ...
     ```
+   
     **Note:** The `ApiMediationServiceConfigReader` class also provides other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
 
 4. Register with Eureka Discovery Service.
 
      Use the following call to register your service instance with Eureka Discovery Service:
 
-    ```
+     **Example:**   
+
+      ```java
       try {
           apiMediationClient = new ApiMediationClientImpl()
           apiMediationClient.register(config);
       } catch (ServiceDefinitionException sde) {
           log.error("Service configuration failed. Check log for previous errors: ", sde);
       }
-    ```
+      ```
 
 5. Unregister your service.
 
     Use the `contextDestroyed` method to unregister your service instance from Eureka Discovery Service in the following format:
+    
+    **Example:**
 
-    ```
+    ```java
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         if (apiMediationClient != null) {
@@ -638,10 +699,12 @@ The following steps outline the process of registering your service with API ML.
         apiMediationClient = null;
     }
     ```
+   
 The following code block is a full example of a context listener class implementation.
 
 **Example:**
 
+```java
     import com.ca.mfaas.eurekaservice.client.ApiMediationClient;
     import com.ca.mfaas.eurekaservice.client.config.ApiMediationServiceConfig;
     import com.ca.mfaas.eurekaservice.client.impl.ApiMediationClientImpl;
@@ -717,9 +780,7 @@ The following code block is a full example of a context listener class implement
             apiMediationClient = null;
         }
     }
-
-
-
+```
 
 ## Adding API documentation
 
@@ -731,11 +792,12 @@ Use the following procedure to add Swagger API documentation to your project.
 
     * For _Gradle_ add the following dependency in `build.gradle`:
 
-        ```gradle
+        ```groovy
         compile "io.springfox:springfox-swagger2:2.8.0"
         ```
 
     * For _Maven_ add the following dependency in `pom.xml`:
+    
         ```xml
         <dependency>
             <groupId>io.springfox</groupId>
@@ -789,6 +851,7 @@ Use the following procedure to add Swagger API documentation to your project.
         }
     }
     ```
+   
 3. Customize this configuration according to your specifications. For more information about customization properties,
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
@@ -800,7 +863,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validatiing your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog,
+Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog,
 check to make sure that your configuration settings are correct.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
