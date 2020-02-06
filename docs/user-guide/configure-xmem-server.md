@@ -1,4 +1,4 @@
-# Install and configure the Zowe cross memory server (ZWESISTC)
+# Installing and configuring the Zowe cross memory server (ZWESISTC)
 
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.

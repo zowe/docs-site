@@ -144,11 +144,11 @@ In this documentation, the steps of creating the runtime directory and configuri
 
 ## Next steps
 
-For a z/OS system where you are installing Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) as well as [create a keystore directory](configure-certificates.md).  
+For a z/OS system where you install Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) and [create a keystore directory](configure-certificates.md).  
 
-If you have previously installed Zowe 1.8 or higher you will have created an instance directory which will need updating, and if you have not installed Zowe 1.8 or higher before you will need to create an instance directory to be able to launch Zowe, see [creating and configuring the Zowe instance directory](configure-instance-directory.md).
+If you have previously installed Zowe 1.8 or later, then you already have an instance directory that needs to be updated. If you have not installed Zowe 1.8 or later before, you will need to create an instance directory to be able to launch Zowe. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
-Zowe has two started tasks that need to be installed and configured ready to be started.  These are the Zowe server, see [Install the Zowe started task (ZWESVSTC)](configure-zowe-server.md) and the Zowe cross memory server, see [Install and configure the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
+Zowe has two started tasks that need to be installed and configured ready to be started.  These are the Zowe server, see [Installing the Zowe started task (ZWESVSTC)](configure-zowe-server.md) and the Zowe cross memory server, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
 
 
 
