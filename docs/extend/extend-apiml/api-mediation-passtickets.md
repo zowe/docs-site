@@ -1,7 +1,5 @@
 # Enabling PassTicket creation for API Services that Accept PassTickets <!-- omit in toc -->
 
-<font color ="red"> **Note**: This is a draft documentation that needs to be migrated to <https:/github.com/zowe/docs-site> after the functionality is completed. </font>
-
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 
 ## Overview <!-- omit in toc -->
@@ -102,7 +100,7 @@ The following types of API services support PassTickets:
 
 API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
 
-As the system programmer, you are not required to do anything in this case. All required information is provided by the API service automatically.
+As a system programmer, you are not required to do anything in this case. All required information is provided by the API service automatically.
 
 ### API Services that register dynamically with API ML but do not provide metadata
 
