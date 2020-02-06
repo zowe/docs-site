@@ -31,8 +31,6 @@ https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
 where, _gatewayPort_ is the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
 
 
-`api:mediation:gatewayPort` in `zowe-install.yaml`.
-
 ## Verifying API Mediation installation
 
 Use your preferred REST API client to review the value of the status variable of the API Catalog service that is routed through the API Gateway using the following URL:

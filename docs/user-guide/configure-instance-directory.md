@@ -1,6 +1,12 @@
 # Creating and configuring the Zowe instance directory
 
-The Zowe instance directory contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.  
+The Zowe instance directory contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory. 
+
+## Prerequisites
+
+Before creating an instance directory, ensure that you have created a keystore directory that contains the Zowe certificate. For information about how to create a keystore directory, see [Creating Zowe certificates](configure-certificates.md).  Also ensure that you have already configured the z/OS environment. For information about how to configure the z/OS environment, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+
+## Creating an instance directory
 
 To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute the following commands:
 
@@ -11,6 +17,10 @@ To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_R
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
 The Zowe instance directory conains a file `/bin/instance.env` that stores configuration data. The data is read each time Zowe is started.  
+
+The purpose of the instance directory is to hold information in USS that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the USS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
+
+If you have an instance directory created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
 
 ## Reviewing the `instance.env` file
 
@@ -35,8 +45,7 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 
 ### Keystore configuration
 
-- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be create the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.   For more information on how to create a keystore directory see [Configuring Zowe certificates](configure-certificates.md)
-- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a trust store used to hold the public keys of any z/OS services that Zowe communites to, such as z/OSMF.  The keystore directory must be created the first time Zowe is installed into a z/OS system and it can be shared between different Zowe runtimes.  
+- `KEYSTORE_DIRECTORY`: This is a path to a USS folder containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a truststore used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be created the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.   For more information about how to create a keystore directory, see [Configuring Zowe certificates](configure-certificates.md).
 
 ### Address space names
 
