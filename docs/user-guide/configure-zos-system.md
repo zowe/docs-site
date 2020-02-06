@@ -1,6 +1,8 @@
 # Configuring the z/OS system for Zowe
 
-Configure the z/OS security manager to prepare for launching the Zowe started tasks.
+Configure the z/OS security manager to prepare for launching the Zowe started tasks.  
+
+If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
 
 A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  The JCL allows you to vary which security manager you use by setting the _PRODUCT_ variable to be one of `RACF`, `ACF2`, or `TSS`.  
 
@@ -10,8 +12,6 @@ A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. Yo
 If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
 It is expected that system programmers at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commmands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
-
-If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
 
 If you want to undo all of the z/OS security configuration steps peformed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
 - You are configuring z/OS systems as part of a build pipeline that you wish to undo and redo configuration and installation of Zowe using automation.

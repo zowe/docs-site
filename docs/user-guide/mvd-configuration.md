@@ -17,44 +17,17 @@ For earlier releases, you must register the Application Server with the Mediatio
 ### Accessing the Application Server
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-When accessed through the Mediation Layer, this is the Zowe Desktop URL:
+The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `zowe-instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+
+When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
 `https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+The port number for the API Mediation Layer is the value of the `GATEWAY_PORT` variable in the `zowe-instance.env` file in the instance directory.
+
 
 ## Setting up terminal application plug-ins
 
 Follow these optional steps to configure the default connection to open for the terminal application plug-ins.
-
-### Setting up the TN3270 mainframe terminal application plug-in
-
-The port, security, and other parameters of the TN3270 plug-in are controlled by a configuration file that is present on the initial run. The configuration is located in an instance at `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`.
-
-The file has the following format:
-
-```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "tls">
-    }
-```
-
-**Note:** The file is stored within the Configuration Dataservice structure so that it can be customized for individual users. For example, to customize configuration for a user named "Fred", place a custom file in the path `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`.
-
-### Setting up the VT Terminal application plug-in
-
-The port, security, and other parameters of the VT plug-in are controlled by a configuration file that is present on the initial run. The configuration is located in an instance at  `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json`.
-
-The file has the following format:
-
-```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "ssh">
-    }
-```
-
-**Note:** The file is stored within the Configuration Dataservice structure so that it can be customized for individual users. For example, to customize configuration for a user named "Fred", place a custom file in the path `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json`.
 
 ## Configuration file
 
