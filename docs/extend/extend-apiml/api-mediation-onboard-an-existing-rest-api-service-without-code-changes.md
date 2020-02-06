@@ -241,11 +241,11 @@ The following list describes the configuration parameters:
     
 * **authentication**
 
-    (Optional) Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+    Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
         
     * **authentication.scheme**
     
-        (Optional) This parameter specifies a service authentication scheme. 
+        This parameter specifies a service authentication scheme. 
         The following schemes are supported by the API Gateway:
         
         * **bypass**
@@ -274,7 +274,7 @@ The following list describes the configuration parameters:
     
     * **authentication.applid**
     
-        (Optional) This parameter specifies a service APPLID.
+        This parameter specifies a service APPLID.
         This parameter is valid only for `httpBasicPassTicket` authentication scheme.        
 
 * **apiInfo**

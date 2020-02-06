@@ -249,7 +249,7 @@ This prefix is used to differentiate the routes. This prefix must be provided ma
 For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 #### Authentication parameters
-Authentication parameters are grouped under the prefix: `apiml.authentication`. These parameters are optional. When not specified, the default values are used.
+Authentication parameters are grouped under the prefix: `apiml.authentication`. When not specified, the default values are used.
 
 Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
 
