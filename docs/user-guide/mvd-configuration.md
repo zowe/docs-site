@@ -401,6 +401,8 @@ You can control which applications are accessible (visible) to all Zowe desktop 
 
 You control access by editing JSON files that list the apps. One file lists the apps all users can see, and you can create a file for each user. When a user logs into the desktop, Zowe determines the apps that user can see by concatenating their list with the all users list.
 
+You can also control access to the JSON files. The files are accessible directly on the file system, and since they are within the configuration dataservice directories, they are also accessible via REST API. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting the directories and their contents to have file permissions on z/OS that only allow the Zowe admin group read & write access. You control who can read and edit the JSON files through the REST API by controlling who can [access the configuration dataservice objects](mvd-configuration.md#creating-authorization-profiles) URLs that serve the JSON files.
+
 ### Controlling application access for all users
 
 1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
@@ -422,7 +424,7 @@ You control access by editing JSON files that list the apps. One file lists the 
     - To an application unavailable, delete it from the list of objects.
     - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required. 
 
-6. Restart the app server.
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
 ### Controlling application access for individual users
 
@@ -462,9 +464,10 @@ You control access by editing JSON files that list the apps. One file lists the 
 
     **Notes:**
     - Identifier and version attributes are required.
-    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
+    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user. 
 
-6. Restart the app server. 
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc). 
+
 
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
