@@ -79,7 +79,7 @@ Executing the command `zowe-install-xmem.sh MYUSERID.ZWE SYS1.IBM.ZIS.SZISLOAD S
   
 The user ID `ZWESIUSR` that is assigned to the cross memory server started tasks must have a valid OMVS segment and read access to the data sets where the load library and PROCLIB are held. The cross memory server loads the modules to LPA for its PC-cp services.
 
-## Step 2: Add PPT entries to the system PARMLIB:
+## Step 2: Add PPT entries to the system PARMLIB
 
 The cross memory server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
 
@@ -139,9 +139,9 @@ When responding to API requests, the Zowe desktop node API server running under 
 
 For commands requireid to configure impersonation, see [Configuring the z/OS system for Zowe](configure-zos-system.md#configure-security-environment-switching).
 
-## Starting and stopping the Cross Memory Server on z/OS
+## Starting and stopping the cross memory server on z/OS
 
-The Cross Memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
 ```
 /S ZWESISTC,REUSASID=YES
 ```

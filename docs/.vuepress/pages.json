@@ -58,7 +58,7 @@
         ]
       },
       {
-        "text": "Advanced Zowe Configuration",
+        "text": "Advanced Zowe configuration",
         "items": [ 
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
@@ -188,6 +188,8 @@
   {
     "text": "Contributing",
     "baseuri": "/contribute/",
+    "hideInPdf": true,
+    "canHideFirst": true,
     "items": [{
         "text": "Code guidelines",
         "items": [
