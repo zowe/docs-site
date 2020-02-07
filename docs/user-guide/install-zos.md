@@ -2,9 +2,28 @@
 
 To install Zowe&trade; on z/OS, there are two parts. The first part is the Zowe runtime that consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. The second part is the Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
 
-Review the installation diagram to see the general installation sequence and the most important tasks that are to be performed during installation and configuration.
+Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration. You can click each step on the diagram for detailed instructions.
 
-<img src="../images/common/zowe-zos-install-diagram.png" alt="Zowe z/OS components installation diagram" width="700">
+<figure>
+  <img usemap="#home_map1" border="0" id="install-flow" src="../images/common/zowe-zos-install-diagram.png" width="750" alt="Click each step to get more details on the flow." />
+  <figcaption></figcaption>
+</figure>
+<map name="home_map1" id="home_map1">
+  <area href="installandconfig.html#planning-the-installation-of-zowe-z-os-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="231, 40, 387, 80" />
+  <area href="systemrequirements.html" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="230, 158, 388, 201" />
+  <area href="https://www.zowe.org/#download" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="143, 342, 324, 385" />
+  <area href="install-zowe-smpe.html" alt="Install the Zowe SMP/E build" title="Install the Zowe SMP/E build" shape="rect" coords="141, 407, 322, 451" />
+
+  <area href="https://www.zowe.org/#download" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="334, 343, 515, 386" />
+  <area href="install-zowe-zos-convenience-build.html#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="336, 407, 514, 450" />
+  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime" title="Install the Zowe runtime" shape="rect" coords="335, 469, 515, 513" />
+  <area href="configure-zos-system.html" alt="Configure the z/OS system for Zowe" title="Configure the z/OS system for Zowe" shape="rect" coords="163, 565, 507, 610" />
+  <area href="configure-certificates.html" alt="Configure Zowe certificates" title="Create the Zowe certificates keystore directory" shape="rect" coords="164, 638, 507, 683" />
+  <area href="configure-instance-directory.html" alt="Create and configure the Zowe instance directory" title="Create and configure the Zowe instance directory" shape="rect" coords="163, 711, 508, 758" />
+  <area href="configure-xmem-server.html" alt="Configure the Zowe cross memory server" title="Install and configure the Zowe cross memory server (ZWESISTC)" shape="rect" coords="162, 783, 507, 832" />
+  <area href="configure-zowe-server.html" alt="Configure the Zowe started task" title="Install the Zowe started task (ZWESVSTC)" shape="rect" coords="163, 860, 507, 905" />
+  <area href="verify-zowe-runtime-install.html" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="163, 948, 508, 993" />
+</map>
 
 ## Stage 1: Plan and prepare
 
@@ -56,23 +75,23 @@ After successful installation of either a convenience build or an SMP/E build, t
    A keystore directory needs to be created for a Zowe instance to be launched successfully, and a keystore directory can be shared between Zowe instances and between Zowe runtimes, including between different Zowe releases, unless specified otherwise in the release documentation.  
 
 
-3. Create and customize an instance directory that contains configuration data required to launch a Zowe runtime and is where log files are stored. For instructions, see [Configuring the Zowe instance directory](configure-instance-directory.md).
+3. Create and customize an instance directory that contains configuration data required to launch a Zowe runtime and is where log files are stored. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
    A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
-Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
+   Next, you will install and configure the Zowe started tasks. Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF authorized code.  The JCL for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`. 
 
-4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Configuring the Cross memory server](configure-xmem-server.md).
+4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
 
    The cross memory server is only required if you want to use the Zowe desktop. The cross memory server is not used by API Mediation Layer. If you want to use Zowe API Mediation Layer only, you can skip this step. 
    
-   Which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Configuring the Zowe instance directory](configure-instance-directory.md#component-groups). 
+   Which components of Zowe are started is determined by the `LAUNCH_COMPONENT_GROUPS` value in the `instance.env` file in the Zowe instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups). 
 
-5. Configure the `ZWESVSTC` started task. For instructions, see [Configuring the ZWESVSTC started task](configure-zowe-server.md). 
+5. Configure the `ZWESVSTC` started task. For instructions, see [Installing the Zowe started task (ZWESVSTC)](configure-zowe-server.md). 
 
 ## Stage 4: Verify the installation
 
-Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe runtime installation](verify-zowe-runtime-install.md).
+Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe installation on z/OS](verify-zowe-runtime-install.md).
 
 ## Looking for troubleshooting help?
 
