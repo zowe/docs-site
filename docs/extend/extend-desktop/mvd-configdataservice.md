@@ -227,9 +227,9 @@ A shortcut for the preceding method, and the preferred method when you are retri
 
 Some dataservices within plug-ins can take configuration that affects their behavior. This configuration is stored within the Configuration Dataservice structure, but it is not accessible through the REST API.
 
-Within the `deploy` directory of a Zowe installation, each plug-in might optionally have an `_internal` directory. An example of such a path is:
+Within the instance configuration directory of a zLUX installation, each plugin may optionally have an `_internal` directory. An example of such a path would be:
 
-`deploy/instance/ZLUX/pluginStorage/<pluginName>/_internal`
+`~/.zowe/workspace/app-server/ZLUX/pluginStorage/<pluginName>/_internal`
 
 Within each `_internal` directory, the following directories might exist:
 

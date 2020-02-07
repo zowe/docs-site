@@ -71,33 +71,33 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
 
     ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
+        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
     ```
      * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
 
     ```
         <dependency>
-              <groupId>com.ca.mfaas.sdk</groupId>
+              <groupId>org.zowe.apiml.sdk</groupId>
               <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
               <version>1.1.0</version>
         </dependency>
     ```
      * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
-        compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
+        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
         ```
 
      * If you use the Spring Boot release 2.0.x in a Maven build system, add the following code to the `pom.xml` file:  
         ```
         <dependency>
-               <groupId>com.ca.mfaas.sdk</groupId>
+               <groupId>org.zowe.apiml.sdk</groupId>
                <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
                <version>1.1.0</version>
         </dependency>
         ```
 3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
 
-    *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
+    *  `@ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})`
 
         Makes an API documentation endpoint visible within the Spring context.
     *  `@EnableApiDiscovery`
@@ -109,13 +109,13 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
     **Example:**   
 
     ```
-     package com.ca.mfaas.DiscoverableClientSampleApplication;
+     package org.zowe.apiml.DiscoverableClientSampleApplication;
      ..
-     import com.ca.mfaas.enable.EnableApiDiscovery;
+     import org.zowe.apiml.enable.EnableApiDiscovery;
      import org.springframework.context.annotation.ComponentScan;
      ..
      @EnableApiDiscovery
-     @ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})
+     @ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})
      ...
      public class DiscoverableClientSampleApplication {...
      ```  
@@ -381,7 +381,7 @@ As an API service developer, you set multiple configuration settings in your app
         **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
       * **mfaas.discovery.info.swaggerLocation**
 
-        Specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x Specification document. This value is optional and commented out by default.
+        Specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x or 3.x Specification document. This value is optional and commented out by default.
 
         **Note:** Specifying a `swaggerLocation` value disables the automated JSON API documentation generation with the SpringFox library. By disabling auto-generation, you need to keep the contents of the manual swagger definition consistent with your endpoints. We recommend to use auto-generation to prevent incorrect endpoint definitions in the static swagger documentation.  
 

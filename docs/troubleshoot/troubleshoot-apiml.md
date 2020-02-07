@@ -125,7 +125,7 @@ This activates the application/loggers endpoints in each API ML internal service
     **Example:**
 
     ```
-    http POST https://hostname:port/application/loggers/com.ca.mfaas.enable.model configuredLevel=WARN
+    http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
 
 
@@ -165,7 +165,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 
 <img src="../images/common/Error.png" alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
-The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZOWESVR joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
 2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 

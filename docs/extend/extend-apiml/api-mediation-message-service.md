@@ -43,8 +43,8 @@ messages:
 
 Use the following classes when you create a message:
 
-- `com.ca.mfaas.message.core.MessageService` - lets you create a message from a file.
-- `com.ca.mfaas.message.yaml.YamlMessageService` - implements `com.ca.mfaas.message.core.MessageService` so that `com.ca.mfaas.message.yaml.YamlMessageService` can read message information from a `yaml` file, and create a message with message parameters.
+- `org.zowe.apiml.message.core.MessageService` - lets you create a message from a file.
+- `org.zowe.apiml.message.yaml.YamlMessageService` - implements `org.zowe.apiml.message.core.MessageService` so that `org.zowe.apiml.message.yaml.YamlMessageService` can read message information from a `yaml` file, and create a message with message parameters.
 
 Use the following process to create a message.
 
@@ -108,7 +108,7 @@ The following example is the result of using the `mapToApiMessage` method.
 
 ### API ML Logger 
 
-The `com.ca.mfaas.message.log.ApimLogger` component controls messages through the Message Service component. 
+The `org.zowe.apiml.message.log.ApimLogger` component controls messages through the Message Service component. 
 
 The following example uses the `log` message definition in a `yaml` file.
 
@@ -136,11 +136,11 @@ Use the `ApimlLogger` to log messages which are defined in the yaml file.
 **Example:**
 
 ```java
-package com.ca.mfaas.client.configuration;
+package org.zowe.apiml.client.configuration;
 
-import com.ca.mfaas.message.core.MessageService;
-import com.ca.mfaas.message.core.MessageType;
-import com.ca.mfaas.message.log.ApimlLogger;
+import org.zowe.apiml.message.core.MessageService;
+import org.zowe.apiml.message.core.MessageType;
+import org.zowe.apiml.message.log.ApimlLogger;
 
 public class SampleClass {
 

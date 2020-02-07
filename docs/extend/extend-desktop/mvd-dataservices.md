@@ -1,10 +1,10 @@
 # Dataservices
 
-Dataservices are dynamic backend components of Zowe&trade; plug-in applications. You can add them to your applications to make the application do more than receive static content from the proxy server. Each dataservice defines a URL space that the server can use to run extensible code from the application. Dataservices are mainly intended to create REST APIs and WebSocket channels.
+Dataservices are dynamic backend components of Zowe&trade; plug-in applications. You can optionally add them to your applications to make the application do more than receive static content from the proxy server. Each dataservice defines a URL space that the server can use to run extensible code from the application. Dataservices are mainly intended to create REST APIs and WebSocket channels.
 
 ## Defining dataservices
 
-You define dataservices in the application's `pluginDefinition.json` file. Each application requires a definition file to specify how the server registers and uses the application's backend. You can see an example of a `pluginDefinition.json` file in the top directory of the sample app repositories.
+You define dataservices in the application's `pluginDefinition.json` file. Each application requires a definition file to specify how the server registers and uses the application's backend. You can see an example of a `pluginDefinition.json` file in the top directory of the [sample-angular-app](https://github.com/zowe/sample-angular-app).
 
 In the definition file is a top level attribute called `dataServices`, for example:
 ```
