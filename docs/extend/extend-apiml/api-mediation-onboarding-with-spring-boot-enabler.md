@@ -86,32 +86,23 @@ Use the following procedure to use _Gradle_ as your build automation system.
    
 4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Giza Artifactory, add the following code block to your `build.gradle` script:
 
-<font color="red">TODO#FindOut what name will be SE published under</font>
+    Use the corresponding artifact according to the Spring version you are using.
 
-```groovy
-implementation "org.zowe.apiml.sdk:mfaas-onboarding-enabler-java:$zoweApimlVersion"
-implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
-```
+    - For Spring version 2, use the following artifact:
 
-**Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script:
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE:$zoweApimlVersion"
+        ```
 
-<font color="red">TODO#Check what other dependencies are required for SE</font>
-```groovy
-implementation "org.zowe.apiml.sdk:mfaas-onboarding-enabler-java:$zoweApimlVersion"
-implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
-implementation libraries.eureka_client
-implementation libraries.httpcore
-implementation libraries.jackson_databind
-implementation libraries.jackson_dataformat_yaml
+    - For Spring version 1, use the following artifact:
 
-providedCompile libraries.javax_servlet_api
-compileOnly libraries.lombok
-```
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
+        ```
 
-**Notes:**
-* You may need to add additional dependencies as required by your service implementation.
-* The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
-<font color="red">TODO#Check the version of  SE above</font>
+    **Notes:**
+    * You may need to add additional dependencies as required by your service implementation.
+    * The information provided in this file is valid for `ZoweApimlVersion 3.0` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -183,8 +174,6 @@ Execution environment related properties should be provided by additional config
 
     Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
 
-<font color = "red"> It would be good to describe the additonal configuration mechanism (i.e an external yaml file, etc)</font>
-
 
 **Follow these steps:**
 
@@ -192,7 +181,7 @@ Execution environment related properties should be provided by additional config
 
     * If you have already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file. The default of the API ML onboarding configuration file is the `service-configuration.yml` in the `application.yml` file under the `apiml.service` prefix.
 
-    * If you have not yet onboarded your REST service with API ML, use `the example configuration` <font color = "red">Add link here</font> provided to get started.
+    * If you have not yet onboarded your REST service with API ML, use the [Sample API Onbarding Configuration](#sample-api-ml-onboarding-configuration) provided to get started.
 
 2. If you are reusing your existing API ML onboarding configuration, modify the API ML related properties of the `application.yml` file.
 
