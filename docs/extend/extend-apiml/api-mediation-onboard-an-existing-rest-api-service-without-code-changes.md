@@ -6,18 +6,18 @@ As a user of Zowe API Mediation Layer, onboard a REST API service with the Zowe 
 
 <!-- TOC depthfrom:2 depthto:2 orderedlist:true -->
 
-- [1. Identify the API that you want to expose](#1.-identify-the-api-that-you-want-to-expose)
-- [2. Route your API](#2.-route-your-api)
-- [3. Define your service and API in YAML format](#3.-define-your-service-and-api-in-yaml-format)
-- [4. Customize configuration parameters](#4.-customize-configuration-parameters)
-- [5. Add and validate the definition in the API Mediation Layer running on your machine](#5.-add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-- [6. Add a definition in the API Mediation Layer in the Zowe runtime](#6.-add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-- [7. (Optional) Check the log of the API Mediation Layer](#7.-optional-check-the-log-of-the-api-mediation-layer)
-- [8. (Optional) Reload the services definition after the update when the API Mediation Layer is already started](#8.-optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+* [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+* [Route your API](#route-your-api)
+* [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+* [Customize configuration parameters](#customize-configuration-parameters)
+* [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+* [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+* [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+* [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 <!-- /TOC -->
 
-## 1. Identify the API that you want to expose
+## Identify the API that you want to expose
 
 Onboard an API service through the API Gateway without making code changes.
 
@@ -53,7 +53,7 @@ Onboard an API service through the API Gateway without making code changes.
 
     In the sample service, we provide a REST API. The first segment is `/api`. To indicate that this is version 2, the second segment is `/v2`.
 
-### 2. Route your API
+## Route your API
 
 After you identify the APIs you want to expose, define the _routing_ of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
 
@@ -73,7 +73,7 @@ The API Gateway routes REST API requests from the gateway URL `https://gateway:p
 
 **Note:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
-## 3. Define your service and API in YAML format
+## Define your service and API in YAML format
 
 Define your service and API in YAML format in the same way as presented in the following sample `petstore` service example.
 
@@ -132,7 +132,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/)
 
-## 4. Customize configuration parameters
+## Customize configuration parameters
 
 The following list describes the configuration parameters:
 
@@ -372,7 +372,7 @@ The following list describes the configuration parameters:
     
         Specifies any metadata parameters that are updated.      
 
-## 5. Add and validate the definition in the API Mediation Layer running on your machine
+## Add and validate the definition in the API Mediation Layer running on your machine
 
 After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
@@ -405,7 +405,7 @@ The following procedure describes how to add your service to the API Mediation L
     `https://localhost:10010/api/v2/petstore/pets/1`
 
 
-## 6. Add a definition in the API Mediation Layer in the Zowe runtime
+## Add a definition in the API Mediation Layer in the Zowe runtime
 
 After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation.
 
@@ -438,7 +438,7 @@ After you define and validate the service in YAML format, you are ready to add y
     `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
 
 
-## 7. (Optional) Check the log of the API Mediation Layer
+## (Optional) Check the log of the API Mediation Layer
 
 The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
@@ -448,7 +448,7 @@ Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-
 Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
 ```
 
-## 8. (Optional) Reload the services definition after the update when the API Mediation Layer is already started
+## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
 The following procedure enables you to refresh the API definitions after you change the definitions when the API Mediation Layer is already running.
 
