@@ -4,7 +4,7 @@ The Zowe instance directory contains configuration data required to launch a Zow
 
 ## Prerequisites
 
-Before creating an instance directory, ensure that you have created a keystore directory that contains the Zowe certificate. For information about how to create a keystore directory, see [Creating Zowe certificates](configure-certificates.md).  Also ensure that you have already configured the z/OS environment. For information about how to configure the z/OS environment, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+Before creating an instance directory, ensure that you have created a keystore directory that contains the Zowe certificate. For more information about how to create a keystore directory, see [Creating Zowe certificates](configure-certificates.md).  Also, ensure that you have already configured the z/OS environment. For information about how to configure the z/OS environment, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
 
 ## Creating an instance directory
 
@@ -16,11 +16,11 @@ To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_R
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
-The Zowe instance directory conains a file `/bin/instance.env` that stores configuration data. The data is read each time Zowe is started.  
+The Zowe instance directory contains a file `/bin/instance.env` that stores configuration data. The data is read each time Zowe is started.  
 
 The purpose of the instance directory is to hold information in USS that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the USS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
-If you have an instance directory created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
+If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
 
 ## Reviewing the `instance.env` file
 
@@ -28,13 +28,13 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 
 ### Component groups
 
-`LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
+`LAUNCH_COMPONENT_GROUPS` : This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
+  - `GATEWAY` will start the API mediation layer, which includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop, which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version that is specified by the `HOME_HOME` value.  
 
 ### Component prerequisites
 
-- `JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
+- `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `NODE_HOME`:  The path to the node runtime.  Only needs to be specified if not already set as a shell variable.  
 - `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed. 
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
@@ -49,7 +49,7 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 
 ### Address space names
 
-Individual address spaces for different Zowe instances and their subcomponents can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address space names are eight characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
+Individual address spaces for different Zowe instances and their subcomponents can be distinguished from each other in RMF records or SDSF views by specifying how they are named.  Address space names are 8 characters long and made up of a prefix `ZOWE_PREFIX`, instance `ZOWE_INSTANCE` followed by an identifier for each subcomponent.  
 
 - `ZOWE_PREFIX`: This defines a prefix for Zowe address space STC names.  Defaults to `ZWE`.   
 - `ZOWE_INSTANCE`: This is appended to the `ZOWE_PREFIX` to build up the address space name.  Defaults to `1`
@@ -85,17 +85,17 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 ### Ports
 
-When Zowe starts, a number of its micro services need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging into the Zowe desktop.  All of the other ports are not typically used by clients and used for intra service communication by Zowe.  
+When Zowe starts, a number of its micro services need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging in to the Zowe desktop.  All of the other ports are not typically used by clients and used for intra service communication by Zowe.  
 
 - `CATALOG_PORT`: The port the API catalog service will use.
 - `DISCOVERY_PORT`: The port the discovery service will use.
-- `GATEWAY_PORT`: The port the API gateway service will use.  This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log onto the API catalog web page through a browser.
+- `GATEWAY_PORT`: The port the API gateway service will use.  This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log on to the API catalog web page through a browser.
 - `JOBS_API_PORT`: The port the jobs API service will use.
 - `FILES_API_PORT`: The port the files API service will use.
 - `JES_EXPLORER_UI_PORT`: The port the jes-explorer UI service will use.
 - `MVS_EXPLORER_UI_PORT`: The port the mvs-explorer UI service will use.
 - `USS_EXPLORER_UI_PORT`: The port the uss-explorer UI service will use.
-- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wishing to log onto the Zowe desktop.  
+- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
 - `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
 
 **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
