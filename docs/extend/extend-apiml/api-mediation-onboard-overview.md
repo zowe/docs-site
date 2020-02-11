@@ -10,19 +10,19 @@ A REST API service can provide one or more REST APIs and usually provides the la
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)).
 
 ## REST API Onboarding Enabler Guides
-Use the following REST API onboarding enabler guides when you use API ML/enabler version 1.3 and higher:
+Use the following REST API onboarding enabler guides when you use enabler version 1.3 and higher:
 - [Onboarding a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
 - [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md)
 
-Use the following REST API onboarding enabler guides when you use API ML/enabler versions 1.2 and lower:
+Use the following REST API onboarding enabler guides when you use enabler versions 1.2 and lower:
 
 - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
 - [Java REST API service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
-**Tip:** We recommend you use the API ML/enabler version 1.3 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
+**Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 
-To onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service, you can follow the steps in the onboarding guide for [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).  
+To onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service, you can follow the steps in the onboarding guide for [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (static onboarding).  
 
 ## Service Relationship Diagram
 The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API Gateway:
