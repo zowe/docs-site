@@ -3,8 +3,7 @@
 This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
 As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
-**Note:** Before version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the enabler has been replaced with a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions.
-
+**Note:** Before API ML version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions.
 
 **Tip:** For more information about how to utilize another onboarding method, see:
 
@@ -44,9 +43,9 @@ Add a dependency on the Spring Enabler version to your project build configurati
 
 ## Configuring your project
 
-Use either _Gradle_ or _Maven_ build automation systems to manage your project builds.
+Use either _Gradle_ or _Maven_ as your build automation system to manage your project builds.
 
-**Note:** You can download the selected enabler artifact from the Giza Artifactory. Alternatively, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can download the selected enabler artifact from the Giza Artifactory. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -61,7 +60,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     ```
     # Repository URL for getting the enabler-java artifact
-    artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/
 
     # Artifactory credentials for builds:
     mavenUser=apilayer-build
@@ -119,7 +118,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
         <repository>
             <id>libs-release</id>
             <name>libs-release</name>
-            <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+            <url>https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -160,7 +159,7 @@ Spring Boot expects to find the default configuration of an application in an `a
 
 Configuration properties belong to two categories:
 
-  * Service related properties which include end-points, relative paths, or API documentation definitions.
+  * Service related properties which include endpoints, relative paths, or API documentation definitions.
   * Environment related properties which include host names, ports, context etc.
 
 Execution environment related properties should be provided by additional configuration mechanisms that are specific to the target execution environment. Execution environment related properties for development deployments on a local machine differ with those properties on a mainframe system. 
@@ -181,13 +180,13 @@ Execution environment related properties should be provided by additional config
 
     * If you have already onboarded your service with API ML, copy and paste the contents of your existing API ML onboarding configuration file. The default of the API ML onboarding configuration file is the `service-configuration.yml` in the `application.yml` file under the `apiml.service` prefix.
 
-    * If you have not yet onboarded your REST service with API ML, use the [Sample API Onbarding Configuration](#sample-api-ml-onboarding-configuration) provided to get started.
+    * If you have not yet onboarded your REST service with API ML, use the [Sample API Onboarding Configuration](#sample-api-ml-onboarding-configuration) to get started.
 
 2. If you are reusing your existing API ML onboarding configuration, modify the API ML related properties of the `application.yml` file.
 
-    a) Remove certain properties under the `apiml.service` section, which must be externalized. These properties for removal are described in the following sample of API ML onboarding configuration.
+    a) Remove certain properties under the `apiml.service` section, which must be externalized. Properties for removal are described in the following sample of API ML onboarding configuration.
 
-    b) Provide the following additional properties under the `apiml` section.
+    b) Provide the following additional properties under the `apiml` section:
     
     ```
     enabled: true # If true, the service will automatically register with API ML discovery service.
@@ -212,11 +211,11 @@ These properties must not be defined (uncommented) in your default service YAML 
             ### hostname:
 ```
 
-In this example from the YAML configuration file, when the application service is run on the mainframe, provide your mainframe hostname value on the java execution command line in the following format:
+In this example from the YAML configuration file, when the application service is run on the mainframe, provide your mainframe hostname value on the Java execution command line in the following format:
 ```
 -Dapiml.service.hostname=YOUR-MAINFRAME-HOSTNAME-VALUE
 ```
-Since this value is provided in the java execution command line, leave the property commented out in the `application.yml`.
+Since this value is provided in the Java execution command line, leave the property commented out in the `application.yml`.
 
 For development purposes, you can replace or add any property by providing the same configuration structure in an external
 YAML configuration file. When running your application, provide the name of the external/additional
@@ -225,8 +224,7 @@ configuration file on the command line in the following format:
 -Dspring.config.additional-location=PATH_TO_YOUR_EXTERNAL_CONFIG_FILE
 ```
 
-A property notation in the format `-Dproperty.key=PROPERTY_VALUE` can be used
-in two different ways:
+A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can be used for two purposes:
 
   * To provide a runtime value for any `YAML` property if
     `${property.key}` is used as its value (after `:`) in the YAML configuration file.
@@ -350,7 +348,7 @@ server:
     -Dspring.config.additional-location=PATH-TO_EXTERNAL-YAML-CONFIG-FILE
     ```
 
-   At runtime, Spring will merge the two `YAML` configuration files, whereby the properties in the external file have higher priority.
+    At runtime, Spring will merge the two `YAML` configuration files, whereby the properties in the external file have higher priority.
 
   * For a mainframe execution environment, provide environment specific configuration properties. Define these configuration properties and provide them using Java System Properties on the application execution command line.
 
@@ -379,13 +377,13 @@ Use the following procedure to add Swagger API documentation to your project.
 
 1. Add a SpringFox Swagger dependency.
 
-    * For _Gradle_ add the following dependency in `build.gradle`:
+    * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
         compile "io.springfox:springfox-swagger2:2.8.0"
         ```
 
-    * For _Maven_ add the following dependency in `pom.xml`:
+    * For _Maven_, add the following dependency in `pom.xml`:
     
         ```xml
         <dependency>
