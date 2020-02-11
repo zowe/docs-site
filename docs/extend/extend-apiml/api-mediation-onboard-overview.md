@@ -18,7 +18,7 @@ Use the following REST API onboarding enabler guides when you use API ML/enabler
 
 - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
-- [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+- [Java REST API service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
 **Tip:** We recommend you use the API ML/enabler version 1.3 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 
