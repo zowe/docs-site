@@ -3,10 +3,10 @@
 Zowe&trade; API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
 
 **Notes:** 
-- The following guide is for a API ML/enabler version prior to version 1.2.1. To onboard a Spring Boot based REST API service for API ML/enabler version 1.2.1 and higher, see [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md) 
+- The following guide is for a API ML/enabler version 1.2 and lower. To onboard a Spring Boot based REST API service for API ML/enabler version 1.3 and higher, see [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md) 
 - Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
-As an API developer, use this guide to onboard your REST API service into the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
+As an API developer, use this guide to onboard your REST API service with the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
 1. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
 2. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
@@ -68,14 +68,14 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 
         c) Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-2. Add a JAR package to the list of dependencies in Gradle or Maven build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
+2. Add a JAR package to the list of dependencies in _Gradle_ or _Maven_ build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
 
-     * If you use Spring Boot release 1.5.x in a Gradle build system, add the following code to the build.gradle file into the `dependencies` block:
+     * If you use Spring Boot release 1.5.x in a _Gradle_ build system, add the following code to the `build.gradle` file into the `dependencies` block:
 
     ```
         compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
     ```
-     * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
+     * If you use Spring Boot release 1.5.x in a _Maven_ build system, add the following code to the `pom.xml` file:
 
     ```
         <dependency>
@@ -84,12 +84,12 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
               <version>1.1.0</version>
         </dependency>
     ```
-     * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
+     * If you use the Spring Boot release 2.0.x in a _Gradle_ build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
         compile group: 'com.ca.mfaas.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
         ```
 
-     * If you use the Spring Boot release 2.0.x in a Maven build system, add the following code to the `pom.xml` file:  
+     * If you use the Spring Boot release 2.0.x in a _Maven_ build system, add the following code to the `pom.xml` file:  
         ```
         <dependency>
                <groupId>com.ca.mfaas.sdk</groupId>
@@ -101,12 +101,12 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 
     *  `@ComponentScan({"com.ca.mfaas.enable", "com.ca.mfaas.product"})`
 
-        Makes an API documentation endpoint visible within the Spring context.
+        This annotation makes an API documentation endpoint visible within the Spring context.
     *  `@EnableApiDiscovery`
 
-        Exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to make your micro service discoverable in the Zowe ecosystem.
+        This annotation exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to make your micro service discoverable in the Zowe ecosystem.
 
-        **Note:** The @EnableApiDiscovery annotation uses the Spring Fox library. If your service uses the library already, some fine tuning may be necessary.
+        **Note:** The `@EnableApiDiscovery` annotation uses the Spring Fox library. If your service uses the library already, some fine tuning may be necessary.
 
     **Example:**   
 
@@ -125,11 +125,11 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 
 ## Add API ML onboarding configuration
 
-As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: ${environment.*}.
+As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: `${environment.*}`.
 
-**Important!** Spring Boot configuration can be externalized in multiple ways. For more information see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
+**Important!** Spring Boot configuration can be externalized in multiple ways. For more information see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an `application.yml` file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
 
-**Tip:** For information about how to set your configuration when running a Spring Boot application under an external servlet container (TomCat), see the following short stackoverflow article: [External configuration for spring-boot application](https://stackoverflow.com/questions/29106579/external-configuration-for-spring-boot-application).
+**Tip:** For information about how to set your configuration when running a Spring Boot application under an external servlet container (_TomCat_), see the following short _stackoverflow_ article: [External configuration for spring-boot application](https://stackoverflow.com/questions/29106579/external-configuration-for-spring-boot-application).
 
 **Follow these steps:**
 
@@ -270,7 +270,7 @@ As an API service developer, you set multiple configuration settings in your app
     
     **Important:** Add this configuration also to the `application.yml` used for testing. Failure to add this configuration to the `application.yml` will cause your tests to fail.
     
-2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
+2. Change the MFaaS parameters to correspond to your API service specifications. Most of these internal parameters contain "your service" text.
 
     **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
 
@@ -280,7 +280,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     * **mfaas.discovery.serviceId**
 
-         Specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
+         This parameter specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
 
         **Important!**  Ensure that the service ID is set properly with the following considerations:
 
@@ -297,14 +297,14 @@ As an API service developer, you set multiple configuration settings in your app
             ```
             https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
             ```
-         * If the customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:             
+         * If the customer system administrator sets the service ID to `vantageprod1`, the API URL in the API Gateway appears as the following URL:             
             ```
             http://gateway:port/api/v1/vantageprod1/endpoint1/...
             ```
 
     * **mfaas.discovery.locations**
 
-        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
+        This parameter specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
 
         **Example:**
          ```
@@ -312,31 +312,31 @@ As an API service developer, you set multiple configuration settings in your app
          ```
     * **mfaas.discovery.enabled**
 
-        Specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to `true` if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
+        This parameter specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to `true` if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
     * **mfaas.discovery.fetchRegistry**
 
-        Specifies whether the API service is to receive regular update notifications from the discovery service. Under most circumstances, you can accept the default value of `false` for the parameter.
+        This parameter specifies whether the API service is to receive regular update notifications from the discovery service. Under most circumstances, you can accept the default value of `false` for the parameter.
 
     * **mfaas.discovery.region**
 
-        Specifies the geographical region. This parameter is required by the Discovery client. Under most circumstances you can accept the value `default` for the parameter.          
+        This parameter specifies the geographical region. This parameter is required by the Discovery client. Under most circumstances you can accept the value `default` for the parameter.          
 
     b. **Service and Server Parameters**
     * **mfaas.service.hostname**
 
-        Specifies the hostname of the system where the API service instance runs. This parameter is externalized and is set by the customer system administrator. The administrator ensures the hostname can be resolved by DSN to the IP address that is accessible by applications running on their z/OS systems.   
+        This parameter specifies the hostname of the system where the API service instance runs. This parameter is externalized and is set by the customer system administrator. The administrator ensures the hostname can be resolved by DSN to the IP address that is accessible by applications running on their z/OS systems.   
     * **mfaas.service.ipAddress**
 
-        Specifies the local IP address of the system where the API service instance runs. This IP address may or may not be a public IP address. This parameter is externalized and set by the customer system administrator.
+        This parameter specifies the local IP address of the system where the API service instance runs. This IP address may or may not be a public IP address. This parameter is externalized and set by the customer system administrator.
     * **mfaas.server.scheme**
 
-       Specifies whether the API service is using the HTTPS protocol. This value can be set to `https` or `http` depending on whether your service is using SSL.
+       This parameter specifies whether the API service is using the HTTPS protocol. This value can be set to `https` or `http` depending on whether your service is using SSL.
     * **mfaas.server.port**
 
-       Specifies the port that is used by the API service instance. This parameter is externalized and set by the customer system administrator.
+       This parameter specifies the port that is used by the API service instance. This parameter is externalized and set by the customer system administrator.
     * **mfaas.server.contextPath**
 
-       Specifies the prefix that is used within your API service URL path.
+       This parameter specifies the prefix that is used within your API service URL path.
 
        **Examples:**
        * If your API service does not use an extra prefix in the URL (for example, `http://host:port/endpoint1/`), set this value to `/`.
@@ -350,25 +350,26 @@ As an API service developer, you set multiple configuration settings in your app
     c. **API Catalog Parameters**
 
       These parameters are used to populate the API Catalog. The API Catalog contains information about every registered API service. The Catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a tile in the API Catalog UI dashboard.
+
       * **mfaas.catalog-ui-tile.id**
 
-        Specifies the unique identifier for the API services product family. This is the grouping value used by the API ML to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
+        This parameter specifies the unique identifier for the API services product family. This is the grouping value used by the API ML to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
 
       * **mfaas.catalog-ui-tile.title**
 
-        Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title
+        This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title
 
       * **mfaas.catalog-ui-tile.description**
 
-        Specifies the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description
+        This parameter specifies the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description
 
       * **mfaas.catalog-ui-tile.version**
 
-        Specifies the semantic version of this API Catalog tile. Increase the version when you introduce new changes to the API services product family details (title and description).
+        This parameter specifies the semantic version of this API Catalog tile. Increase the version when you introduce new changes to the API services product family details (title and description).
 
       * **mfaas.discovery.info.serviceTitle**
 
-        Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+        This parameter specifies the human readable name of the API service instance (for example, "`Endevor Prod`" or "`Sysview LPAR1`"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
          ![Service Status](../../images/api-mediation/Service-Status.png)
 
@@ -377,13 +378,13 @@ As an API service developer, you set multiple configuration settings in your app
 
           Specifies a short description of the API service.
 
-          **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1".
+          **Example:** "`CA Endevor SCM - Production Instance`" or "`CA SYSVIEW running on LPAR1`".
           This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
         **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
       * **mfaas.discovery.info.swaggerLocation**
 
-        Specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x Specification document. This value is optional and commented out by default.
+        This parameter specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x Specification document. This value is optional and commented out by default.
 
         **Note:** Specifying a `swaggerLocation` value disables the automated JSON API documentation generation with the SpringFox library. By disabling auto-generation, you need to keep the contents of the manual swagger definition consistent with your endpoints. We recommend to use auto-generation to prevent incorrect endpoint definitions in the static swagger documentation.  
 
@@ -391,10 +392,10 @@ As an API service developer, you set multiple configuration settings in your app
 
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
-      **Note:** If your REST API does not conform to Zowe API Mediation layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
+      **Note:** If your REST API does not conform to Zowe API Mediation Layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to `gatewayUrl` format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
       * `eureka.instance.metadata-map.routed-services.<prefix>`
 
-        Specifies a name for routing rules group. This parameter is only for logical grouping of further parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
+        This parameter specifies a name for the routing rules group. This parameter is only for logical grouping of additional parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
         **Examples:**
         ```
@@ -409,26 +410,29 @@ As an API service developer, you set multiple configuration settings in your app
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
       * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
       
-          Specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
+          This parameter specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
-          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. We recommend that you use your organization as the prefix.
+          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`.
+          
+           We recommend that you use your organization as the prefix.
       * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
       
-          The base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
+          This parameter specifies the base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
           
       * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
       
-          (Optional) Link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
+          (Optional) This parameter specifies a link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
       * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
       
-          (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.             
+          (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
+
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
 
     e. **Swagger Api-Doc Parameters**
 
-      Configures API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
+      This parameter configures API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
 
       ```
     api-info:
@@ -445,6 +449,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     ![API information detail](../../images/api-mediation/Service-detail.png)
 
+    where:
 
    * **v1**
 
@@ -475,7 +480,7 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
 
-    When a service is running on localhost, the command can have the following format:
+    When a service is running on `localhost`, the command can have the following format:
        
     ```
     <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
@@ -504,7 +509,7 @@ To register with the API Mediation Layer, a service is required to have a certif
             securePortEnabled: true         
      ```
 
-**Note:** You need to define both keystore and truststore even if your server is not using HTTPS port.
+**Note:** You need to define both keystore and truststore even if your server is not using an HTTPS port.
 
 ## Externalize API ML configuration parameters
 
@@ -519,7 +524,7 @@ The following list summarizes the API ML parameters that are set by the customer
    * `mfaas.service.ipAddress: ${environment.ipAddress}`
    * `mfaas.server.port: ${environment.port}`
 
-**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
+**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YAML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
 
 Java System properties are defined using `-D` options for Java. Java System properties can override any configuration. Those properties that are likely to change are defined as `${environment.variableName}:`     
 
