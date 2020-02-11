@@ -3,7 +3,7 @@
 This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
 As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
-**Note:** Before API ML version 1.12, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.12 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions.
+**Note:** Before API ML version 1.2, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.3 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions. API ML core services (Discovery Service, Gateway, and API Catalog) support both the old and new enabler versions. 
 
 **Tip:** For more information about how to utilize another onboarding method, see:
 
