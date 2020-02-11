@@ -2,7 +2,7 @@
 
 ## Overview of APIs
 
-Before identifying the API you want to expose in the API Mediation Layer, it is useful to consider the structure of APIs. An application programming interface (API) is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows a client to talk to the API. Representational State Transfer (REST) determines the look of an API and is a set of rules that developers follow when creating an API. One of these rules states that a user should be able to get a piece of data (resource) through URL endpoints using HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe&trade; is in the JSON format.
+Before identifying the API you want to expose in the API Mediation Layer, it is useful to consider the structure of APIs. An application programming interface (API) is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows a client to talk to the API. Representational State Transfer (REST) determines the look of an API and is a set of rules that developers follow when creating an API. One of these rules states that a user should be able to get a piece of data (resource) through URL endpoints using HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe&trade; is in JSON format.
 
 A REST API service can provide one or more REST APIs and usually provides the latest version of each API. A REST service is hosted on a web server which can host one or more services, often referred to as _applications_. A web server that hosts multiple services  or applications is referred to as a _web application server_. Examples of _web application servers_ are [Apache Tomcat](http://tomcat.apache.org/) or [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/). 
 
@@ -10,22 +10,22 @@ A REST API service can provide one or more REST APIs and usually provides the la
 Each API has its own title, description, and version (versioned using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)).
 
 ## REST API Onboarding Enabler Guides
-Use the following REST API onboarding enabler guides when you use API ML/enabler version 1.2.1 and higher:
+Use the following REST API onboarding enabler guides when you use API ML/enabler version 1.3 and higher:
 - [Onboarding a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
 - [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md)
 
-Use the following REST API onboarding enabler guides when you use API ML/enabler versions prior to 1.2.1:
+Use the following REST API onboarding enabler guides when you use API ML/enabler versions 1.2 and lower:
 
 - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
 - [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
-**Tip:** We recommend you use API ML/enabler version 1.2.1 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enabler versions before 1.2.1. 
+**Tip:** We recommend you use the API ML/enabler version 1.3 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 
 To onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service, you can follow the steps in the onboarding guide for [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).  
 
 ## Service Relationship Diagram
-The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API gateway:
+The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API Gateway:
 
 ![REST API Components](../../user-guide/api-mediation/diagrams/rest-api-components.svg)
 
@@ -48,7 +48,7 @@ This sample API has only one single endpoint:
 
 - `/pets/{id}` - *Find pet by ID*. 
 
-This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer then it returns an error. These are conditions set in the sample service.
+This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer, an error is returned. These are conditions set in the sample service.
 
 **Tip:** Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
 
@@ -80,7 +80,7 @@ This endpoint in the sample service returns information about a pet when the `{i
 
 **Note:** The onboarding guides demonstrate how to add the Sample REST API Service to the API Mediation Layer to make the service available through the `petstore` service ID.
 
-The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API gateway:
+The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API Gateway:
 
 ![Sample REST API Components](../../user-guide/api-mediation/diagrams/rest-api-components-sample.svg)
 
@@ -90,7 +90,7 @@ This sample service provides a Swagger document in JSON format at the following 
  http://localhost:8080/v2/swagger.json
  ```
 
-The Swagger document is used by the API Catalog to display the API documentation.
+The Swagger document is used by the API Catalog to display API documentation.
 
 ## API Service Types
 
@@ -99,9 +99,10 @@ The process of onboarding depends on the method that is used to develop the API 
 While any REST API service can be added to the API Mediation Layer, this documentation focuses on following types of REST APIs:
 
 - Services that can be updated to support the API Mediation Layer natively by updating the service code:
-    - [Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
+
+    - [Java REST APIs with Spring Boot](api-mediation-onboarding-with-spring-boot-enabler.md)
     - [Java Jersey REST APIs](api-mediation-onboard-an-existing-java-jersey-rest-api-service.md)
-    - [Java REST APIs without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+    - [Java REST APIs without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
   
 - [REST APIs without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
 
