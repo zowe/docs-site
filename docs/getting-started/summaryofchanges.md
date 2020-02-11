@@ -35,7 +35,7 @@ The following features and enhancements were added.
 - The Zowe cross memory server installation script `zowe-install-apf-server.sh` is removed.  In this release, the steps for configuring z/OS security are included in the `ZWESECUR` JCL member.
 - Previously, Zowe runs its two started tasks under the user ID of `IZUSVR` and admin of `IZUADMIN`.  These belong to z/OSMF and are no longer used in this release. Instead, Zowe includes two new user IDs of `ZWESVUSR` (for the main Zowe started task), `ZWESIUSR` (for the cross memory server), and `ZWEADMIN` as a group.  These user IDs are defaults and different ones can be used depending on site preferences.  
 - Previously, the main Zowe started task is called `ZOWESVR`. Now it is called `ZWESVSTC`.  
-- previously, the cross memory started task is called `ZWESIS01`. Now it is called `ZWESISTC`.  
+- Previously, the cross memory started task is called `ZWESIS01`. Now it is called `ZWESISTC`.  
 - The script `zowe-verify.sh` is no longer included with Zowe. Now the verification is done at launch time and dependent on the launch configuration parameters. It is no longer done with a generic script function that `zowe-verify.sh` used to provide.
 
 For more information about how to install Zowe z/OS components, see [Installation roadmap](../user-guide/install-zos.md).
