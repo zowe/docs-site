@@ -1,14 +1,10 @@
 # REST APIs without code changes required
 
-As a user of Zowe&trade; API Mediation Layer, onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. The following procedure is an overview of steps to onboard an API service through the API Gateway in the API Mediation Layer.
+As a user of Zowe&trade; API Mediation Layer, onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. The following procedure is outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer.
 
-**Note:** The following guide is to onboard a REST API service using the API ML/enabler version prior to version 1.2.1. To onboard a REST API service using API ML/enabler version 1.2.1 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
+**Note:** The following guide is to onboard a REST API service using the API ML/enabler version 1.2 and lower. To onboard a REST API service using API ML/enabler version 1.3 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
 
-**Follow these steps:**
-
-<!-- TOC depthFrom:2 depthTo:2 orderedList:true -->
-
-1. [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+1. [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
 2. [Route your API](#route-your-api)
 3. [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
 4. [Configuration parameters](#configuration-parameters)
@@ -17,13 +13,11 @@ As a user of Zowe&trade; API Mediation Layer, onboard a REST API service with th
 7. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
 8. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
-<!-- /TOC -->
-
-## Identify the API that you want to expose
-
-Onboard an API service through the API Gateway without making code changes.
-
 **Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see [Onboarding Overview](api-mediation-onboard-overview.md).
+
+## Identify the APIs that you want to expose
+
+The first step in API service onboarding is to identify the APIs that you want to expose.
 
 **Follow these steps:**
 
@@ -43,11 +37,11 @@ Onboard an API service through the API Gateway without making code changes.
 
     In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version     2 of the Pet Store API.
 
-3. Choose the _service ID_ of your service. The _service ID_ identifies the service in the API Gateway. The service ID is an alphanumeric string in lowercase ASCII.
+3. Choose the `service ID` of your service. The `service ID` identifies the service in the API Gateway. The `service ID` is an alphanumeric string in lowercase ASCII.
 
     **Example:**
 
-    In the sample service, the _service ID_ is `petstore`.
+    In the sample service, the `service ID` is `petstore`.
 
 4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL and is composed of the API type and the major version.
 
@@ -57,7 +51,7 @@ Onboard an API service through the API Gateway without making code changes.
 
 ### Route your API
 
-After you identify the APIs you want to expose, define the _routing_ of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
+After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
 
 **Note:** The API Gateway differentiates major versions of an API.
 
@@ -123,7 +117,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 
-* For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/)
+* For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
 
 ## Configuration parameters
 
@@ -131,7 +125,7 @@ The following list describes the configuration parameters:
 
 * **serviceId**
 
-    Specifies the service instance identifier that is registered in the API Mediation Layer installation.
+    This parameter specifies the service instance identifier that is registered in the API Mediation Layer installation.
     The service ID is used in the URL for routing to the API service through the gateway.
     The service ID uniquely identifies the service in the API Mediation Layer.
     The system administrator at the customer site defines this parameter.
@@ -157,14 +151,14 @@ The following list describes the configuration parameters:
 
  * **title**
 
-     Specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+     This parameter specifies the human readable name of the API service instance (for example, "`Endevor Prod`" or "`Sysview LPAR1`"). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
      **Tip:** We recommend that you provide a specific default value of the `title`.
      Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
 
  * **description**
 
-     Specifies a short description of the API service.
+     This parameter specifies a short description of the API service.
 
      **Example:** "CA Endevor SCM - Production Instance" or "CA SYSVIEW running on LPAR1".
 
@@ -174,7 +168,7 @@ The following list describes the configuration parameters:
 
 * **instanceBaseUrls**
 
-    Specifies a list of base URLs to your service to the REST resource. It will be the prefix for the following URLs:
+    This parameter specifies a list of base URLs to your service to the REST resource. It will be the prefix for the following URLs:
 
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
@@ -193,7 +187,7 @@ The following list describes the configuration parameters:
 
 * **homePageRelativeUrl**
 
-    Specifies the relative path to the homepage of your service. The path should start with `/`.
+    This parameter specifies the relative path to the homepage of your service. The path should start with `/`.
     If your service has no homepage, omit this parameter.
 
     **Examples:**
@@ -203,7 +197,7 @@ The following list describes the configuration parameters:
 
 * **statusPageRelativeUrl**
 
-    Specifies the relative path to the status page of your service.
+    This parameter specifies the relative path to the status page of your service.
     Start this path with `/`. If you service has not a status page, omit this parameter.
 
     **Example:**
@@ -211,7 +205,7 @@ The following list describes the configuration parameters:
 
 * **healthCheckRelativeUrl**
 
-    Specifies the relative path to the health check endpoint of your service.
+    This parameter specifies the relative path to the health check endpoint of your service.
     Start this URL with `/`. If your service does not have a health check endpoint, omit this parameter.
 
     **Example:**
@@ -220,7 +214,7 @@ The following list describes the configuration parameters:
 
 * **routes**
 
-    The routing rules between the gateway service and your service.
+    The following parameters specify the routing rules between the gateway service and your service.
 
     * **routes.gatewayUrl**
 
@@ -238,13 +232,14 @@ The following list describes the configuration parameters:
 
 * **apiInfo.apiId**
 
-    Specifies the API identifier that is registered in the API Mediation Layer installation.
+    This parameter specifies the API identifier that is registered in the API Mediation Layer installation.
     The API ID uniquely identifies the API in the API Mediation Layer.
-    The same API can be provided by multiple services. The API ID can be used
-    to locate the same APIs that are provided by different services.
+    The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services.
+    
     The creator of the API defines this ID.
     The API ID needs to be a string of up to 64 characters
     that uses lowercase alphanumeric characters and a dot: `.`.
+    
     We recommend that you use your organization as the prefix.
 
     **Examples:**
@@ -255,25 +250,25 @@ The following list describes the configuration parameters:
 
 * **apiInfo.gatewayUrl**
 
-    The base path at the API gateway where the API is available. Ensure that this path is
+    This parameter specifies the base path at the API gateway where the API is available. Ensure that this path is
     the same as the _gatewayUrl_ value in the _routes_ sections.
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
+    (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available.
 
 * **apiInfo.documentationUrl**
 
-    (Optional) Specifies a URL to a website where external documentation is provided.
+    (Optional) This parameter specifies a URL to a website where external documentation is provided.
     This can be used when _swaggerUrl_ is not provided.
 
 * **apiInfo.version**
 
-    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+    (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
 * **catalogUiTileId**
 
-   Specifies the unique identifier for the API services group.
+   This parameter specifies the unique identifier for the API services group.
    This is the grouping value used by the API Mediation Layer to group multiple API services
    together into "tiles".
    Each unique identifier represents a single API Catalog UI dashboard tile.
@@ -312,17 +307,17 @@ The following procedure describes how to add your service to the API Mediation L
 
 **Follow these steps:**
 
-1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.
+1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation Layer.
 
 2.  Start the API Mediation Layer services.
 
-    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
+    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md).
 
 3.  Run your Java application.
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  Go to the following URL to reach the API Gateway (port 10010) and see the paths that are routed by the API Gateway:
+4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway:
 
     `https://localhost:10010/application/routes`
 
@@ -400,7 +395,5 @@ The following procedure enables you to refresh the API definitions after you cha
 
 2. Check if your updated definition is effective.
 
-    **Notes:**
-
-    * It can take up to 30 seconds for the API Gateway to pick up the new routing.
+    **Note:** It can take up to 30 seconds for the API Gateway to pick up the new routing.
 
