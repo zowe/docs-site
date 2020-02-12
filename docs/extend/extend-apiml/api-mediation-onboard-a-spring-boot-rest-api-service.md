@@ -1,9 +1,9 @@
-# Java  REST APIs with Spring Boot
+# Onboard a Java REST APIs with Spring Boot
 
 Zowe&trade; API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
 
 **Notes:** 
-- The following guide is for a API ML/enabler version 1.2 and lower. To onboard a Spring Boot based REST API service for API ML/enabler version 1.3 and higher, see [Onboarding a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md) 
+- The following guide is for enabler versions 1.2 and lower. To onboard a Spring Boot based REST API service for enabler versions 1.3 and higher, see [Onboard a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md) 
 - Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
 As an API developer, use this guide to onboard your REST API service with the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.

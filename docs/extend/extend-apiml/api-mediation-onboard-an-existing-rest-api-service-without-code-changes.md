@@ -1,4 +1,4 @@
-# REST APIs without code changes required
+# Onboard a REST API without code changes required
 
 As a user of Zowe&trade; API Mediation Layer, onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. 
 
@@ -149,7 +149,7 @@ The following list describes the configuration parameters:
     * If customer system administrator sets the service ID to `vantageprod1`,
     the API URL in the API Gateway appears as the following URL:
 
-        http://gateway:port/api/v1/vantageprod1/...
+        `http://gateway:port/api/v1/vantageprod1/...`
 
  * **title**
 
@@ -182,10 +182,9 @@ The following list describes the configuration parameters:
 
     You can provide one URL if your service has one instance. If your service provides multiple instances for the high-availability then you can provide URLs to these instances.
 
-   ```yaml
-   - https://host1:port1/endevor
-     https://host2:port2/endevor
-   ```
+    * `- https://host1:port1/endevor`
+    * `- https://host2:port2/endevor`
+     
 
 * **homePageRelativeUrl**
 
