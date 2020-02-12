@@ -18,15 +18,15 @@ The following information is required during the installation process of the Zow
 
 - The zFS directory where you will install the Zowe runtime files and folders.
 
-- An HLQ that the install can create a load library and samplib containing load modules and JCL samples required to run Zowe.
+- A HLQ that the installation can create a load library and samplib containing load modules and JCL samples required to run Zowe.
 
 - Multiple instances of Zowe can be started from the same Zowe z/OS runtime.  Each launch of Zowe has its own zFS directory that is known as an instance directory.  
 
-- Zowe uses a zFS directory to contain its northbound certificate keys as well as a trust store for its southbound keys.  Northbound keys are one presented to clients of the Zowe desktop or Zowe API Gateway, and southbound keys are for servers that the Zowe API gateway connects to.  The certificate directory is not part of the Zowe runtime so that it can be shared between multiple Zowe runtimes and have its permissions secured independently. 
+- Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys.  Northbound keys are one presented to clients of the Zowe desktop or Zowe API Gateway, and southbound keys are for servers that the Zowe API gateway connects to.  The certificate directory is not part of the Zowe runtime so that it can be shared between multiple Zowe runtimes and have its permissions secured independently. 
 
 - Zowe has two started tasks. 
    - `ZWESVSVR` brings up the Zowe runtime containing the Zowe desktop, the API mediation layer and a number of Zowe applications.
-   - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md). 
+   - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF-authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md). 
    
      In order for the two started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 

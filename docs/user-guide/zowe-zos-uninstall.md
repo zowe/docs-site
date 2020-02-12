@@ -11,7 +11,7 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1), see [Zowe instance directory](configure-instance-directory.md#address-space-names)
 
-    Aftter Zowe has been stopped its subcomponents will end which include the API Mediation Layer and the Zowe desktpop.  
+    Aftter Zowe has been stopped its subcomponents will end which include the API Mediation Layer and the Zowe desktop.  
 
 2.  Delete the `ZWESVSTC` member from your system `PROCLIB` data set.
 
@@ -33,11 +33,11 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
     IEFC001I PROCEDURE ZWESVSTC WAS EXPANDED USING SYSTEM LIBRARY your.zowe.proclib
     ```
 
-    If no ZWESVSTC JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZWESVSTC. Then issue the DELETE command as shown above.
+    If no ZWESVSTC JOB log is available, issue the `/$D PROCLIB` command at the SDSF COMMAND INPUT line and BROWSE each of the `DSNAME=some.jes.proclib` output lines in turn with ISPF option 1, until you find the first data set that contains member ZWESVSTC. Then, issue the DELETE command as shown above.
 
     After you have removed `ZWESVSTC` from the `PROCLIB` data set it will no longer be possible to start Zowe instances.  
 
-3.  Remove the USS folders containing the Zowe artefacts
+3.  Remove the USS folders containing the Zowe artifacts
 
     Remove the USS folders containing the Zowe runtime,  the Zowe keystore-directory,  and the Zowe instance directories.
 
