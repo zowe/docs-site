@@ -22,27 +22,44 @@
   {
     "text": "User Guide",
     "baseuri": "/user-guide/",
-    "items": [{
-        "text": "Installing Zowe",
+    "items": [
+      {
+      "text": "Planning and preparing the installation",
+      "items": [
+        "user-guide/installandconfig.md",
+        "user-guide/systemrequirements.md",
+        "user-guide/install-nodejs-zos.md",
+        "user-guide/systemrequirements-zosmf.md",
+        "user-guide/systemrequirements-zosmf-lite.md"
+      ]
+      },
+      {
+        "text": "Installing Zowe z/OS components",
         "items": [
-          "user-guide/installandconfig.md",
-          "user-guide/systemrequirements.md",
-          "user-guide/install-nodejs-zos.md",
-          "user-guide/systemrequirements-zosmf.md",
-          "user-guide/systemrequirements-zosmf-lite.md",
           "user-guide/install-zos.md",
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
-          "user-guide/configure-zowe-runtime.md",
+          "user-guide/configure-zos-system.md",
+          "user-guide/configure-certificates.md",
+          "user-guide/configure-instance-directory.md",
+          "user-guide/configure-xmem-server.md",
+          "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
-          "user-guide/cli-installcli.md",
-          "user-guide/cli-updatingcli.md",
-          "user-guide/uninstall.md"
+          "user-guide/configure-auxiliary-address-space.md",
+          "user-guide/zowe-zos-uninstall.md"
         ]
       },
       {
-        "text": "Configuring Zowe",
+        "text": "Installing Zowe CLI",
         "items": [
+          "user-guide/cli-installcli.md",
+          "user-guide/cli-updatingcli.md",
+          "user-guide/cli-uninstall.md"
+        ]
+      },
+      {
+        "text": "Advanced Zowe configuration",
+        "items": [ 
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
         ]
@@ -77,11 +94,14 @@
         "text": "Developing for API Mediation Layer",
         "items": [
           "extend/extend-apiml/api-mediation-onboard-overview.md",
+          "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md",
+          "extend/extend-apiml/api-mediation-onboard-rest-service-direct-eureka-call.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md",
-          "extend/extend-apiml/api-mediation-message-service.md"
+          "extend/extend-apiml/api-mediation-message-service.md",
+          "extend/extend-apiml/api-mediation-onboard-plain-java-enabler-external-configuration.md"
         ]
       },
       {
@@ -99,9 +119,12 @@
         "text": "Developing for Zowe Application Framework",
         "items": [
           "extend/extend-desktop/mvd-extendingzlux.md",
-          "extend/extend-desktop/mvd-creatingappplugins.md",
           "extend/extend-desktop/mvd-plugindefandstruct.md",
+          "extend/extend-desktop/mvd-buildingplugins.md",
+          "extend/extend-desktop/mvd-installplugins.md",
+          "extend/extend-desktop/mvd-embeddingplugins.md",
           "extend/extend-desktop/mvd-dataservices.md",
+          "extend/extend-desktop/mvd-authentication-api.md",
           "extend/extend-desktop/mvd-internationalization.md",
           "extend/extend-desktop/mvd-desktopandwindowmgt.md",
           "extend/extend-desktop/mvd-configdataservice.md",
@@ -109,9 +132,7 @@
           "extend/extend-desktop/mvd-apptoappcommunication.md",
           "extend/extend-desktop/mvd-iframecomm.md",
           "extend/extend-desktop/mvd-errorreportingui.md",
-          "extend/extend-desktop/mvd-logutility.md",
-          "extend/extend-desktop/zlux-app-server.md",
-          "extend/extend-desktop/zlux-workshop-user-browser.md"
+          "extend/extend-desktop/mvd-logutility.md"
         ]
       },
       {
@@ -128,8 +149,11 @@
         "link": "troubleshoot/troubleshooting.md"
       },
       {
-        "text": "API Mediation Layer",
-        "link": "troubleshoot/troubleshoot-apiml.md"
+        "text": "Zowe API Mediation Layer",
+        "items": [
+          "troubleshoot/troubleshoot-apiml.md",
+          "troubleshoot/troubleshoot-apiml-error-codes.md"
+        ]
       },
       {
         "text": "Zowe Application Framework",
@@ -145,7 +169,7 @@
         "link": "troubleshoot/troubleshoot-zos-services.md"
       },
       {
-        "text": "Troubleshooting Zowe CLI",
+        "text": "Zowe CLI",
         "items": [
           "troubleshoot/cli/troubleshoot-cli.md",
           "troubleshoot/cli/mustgather-cli.md",
@@ -155,7 +179,7 @@
         ]
       },
       {
-        "text": "Troubleshooting Zowe using Diagnostics Data Script",
+        "text": "Using Diagnostics Data Script",
         "link": "troubleshoot/troubleshoot-diagnostics.md"
       }
     ]
@@ -163,6 +187,8 @@
   {
     "text": "Contributing",
     "baseuri": "/contribute/",
+    "hideInPdf": true,
+    "canHideFirst": true,
     "items": [{
         "text": "Code guidelines",
         "items": [

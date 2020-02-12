@@ -55,6 +55,6 @@ npm install -g @brightside/core@3.3.1
 
 ## Update Zowe CLI from a local package
 
-To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install CA Brightside from a Local Package instructions. For more information, see [Uninstalling Zowe CLI from the desktop](uninstall.md#uninstalling-zowe-cli-from-the-desktop) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
+To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install CA Brightside from a Local Package instructions. For more information, see [Uninstalling Zowe CLI from the desktop](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
 
 **Important!** Recreate any user profiles that you created before the update.
