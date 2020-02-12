@@ -1,8 +1,10 @@
 # Onboard a REST API without code changes required
 
-As a user of Zowe&trade; API Mediation Layer, onboard a REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. 
+As a user of Zowe&trade; API Mediation Layer, onboard an existing REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. This is process is also described as static onboarding. 
 
-**Note:** The following guide is to onboard a REST API service using enabler versions 1.2 and lower. To onboard a REST API service using enabler versions 1.3 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
+**Notes:** 
+* When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediaiton Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md).
+* The following guide describes how to statically onboard a REST API service using enabler versions 1.2 and lower. To onboard a REST API service using enabler versions 1.3 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
@@ -15,7 +17,7 @@ The following procedure outlines the steps to onboard an API service through the
 7. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
 8. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
-**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see [Onboarding Overview](api-mediation-onboard-overview.md).
+**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md).
 
 ## Identify the APIs that you want to expose
 

@@ -1,6 +1,6 @@
 # Onboard a Java REST API service without Spring Boot
 
-As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot with the Zowe&trade; API Mediation Layer. This article outlines a step-by-step process to onboard a Java REST API application with the API Mediation Layer. More detail about each of these steps is described later in this article.
+As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot to the Zowe&trade; API Mediation Layer (API ML). This article provides a step-by-step process to onboard a Java REST API application to the API ML. 
 
 **Note:** The following guide is to onboard a REST API service using enabler versions 1.2 and earlier. To onboard a REST API service using enabler versions 1.3 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
 
@@ -29,9 +29,9 @@ The following procedure outlines the general steps to onboard a Java REST API se
 
 ## Get enablers from the Artifactory
 
-The first step to onboard a Java REST API into the Zowe ecosystem is to get enabler annotations from the Artifactory. Enablers prepare your service for discovery in the API Mediation Layer and for the retrieval of Swagger documentation.
+The first step to onboard a Java REST API to the Zowe ecosystem is to get enabler annotations from the Artifactory. Enablers prepare your service for discovery in the API Mediation Layer and for the retrieval of Swagger documentation.
 
-You can use either _Gradle_ or Maven build automation systems. 
+You can use either _Gradle_ or _Maven_ build automation systems. 
 
 ### Gradle guide
 Use the following procedure if you use _Gradle_ as your build automation system.
@@ -124,8 +124,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 5.  In the directory of your project, run the `mvn package` command to build the project.
 
 ## (Optional) Add Swagger API documentation to your project
-If your application already has Swagger API documentation enabled, skip this step. 
-Use the following procedure if your application does not have Swagger API documentation.
+If your application already has Swagger API documentation enabled, skip this step. Use the following procedure if your application does not have Swagger API documentation.
 
 **Follow these steps:**
 
@@ -206,7 +205,7 @@ To integrate your service with the API Mediation Layer, add the following endpoi
 
     The endpoint to get information about the service.
 
-The following java code is an example of these endpoints added to the Spring Controller:
+The following Java code is an example of these endpoints added to the Spring Controller:
 
 **Example:**
 
@@ -435,9 +434,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
         including the title and description.
 
 ## Add a context listener
-The context listener invokes the `apiMediationClient.register(config)` method to register the application with 
-the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method 
-before the application shuts down to unregister the application in API Mediation Layer.
+The context listener invokes the `apiMediationClient.register(config)` method to register the application with the API Mediation Layer when the application starts. The context listener also invokes the `apiMediationClient.unregister()` method before the application shuts down to unregister the application in API Mediation Layer.
 
 **Note:** If you do not use a Java Servlet API based framework, you can still call the same methods for `apiMediationClient` 
 to register and unregister your application.
@@ -530,9 +527,7 @@ After you add all configurations and controllers, you are ready to run your serv
     * Discovery Service
     * API Catalog Service
 
-    **Tip:** For more information about how to run the API Mediation Layer locally, 
-
-    see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
+    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md).
 
 
 2.  Run your Java application. 
@@ -544,7 +539,7 @@ After you add all configurations and controllers, you are ready to run your serv
     https://localhost:10010/ui/v1/apicatalog/
     ``` 
 
-You successfully onboarded your Java application with the API Mediation Layer if your service is running and you can access the API documentation. 
+You successfully onboarded your Java application to the API Mediation Layer if your service is running and you can access the API documentation. 
 
 ## (Optional) Validate discovery of the API service by the Discovery Service
 If your service is not visible in the API Catalog, you can check if your service is discovered by the Discovery Service.

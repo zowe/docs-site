@@ -11,7 +11,7 @@ Each API has its own title, description, and version (using [Semantic Versioning
 
 ## REST API Onboarding Enabler Guides
 
-Services that can be updated to support the API Mediation Layer natively by updating the service code. Use the following REST API onboarding enabler guides to onboard your REST service to the Zowe API Mediation Layer when you use enabler versions 1.3 and higher:
+Services can be updated to support the API Mediation Layer natively by updating the service code. Use the following REST API onboarding enabler guides to onboard your REST service to the Zowe API Mediation Layer when you use enabler versions 1.3 and higher:
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md)
 
@@ -20,14 +20,14 @@ Use the following REST API onboarding enabler guides to onboard your REST servic
 - [Onboard a Java REST APIs with Spring Boot](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 - [Onboard a Java REST API service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
-**Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service with the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
+**Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service to the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 
 To onboard a REST API service to the Zowe&trade; API Mediation Layer without changing the code of the API service (non-natively), follow the steps in the onboarding guide to [Onboard a REST API without code changes required](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md) (static onboarding).  
 
-**Tip:** When developing a new service, we recommend that you update the code to support the API Mediation Layer natively. Use the previously listed onboarding guides for services that can be updated to support the API Mediation Layer natively. The benefit of supporting the API Mediation Layer natively is that it requires less configuration for the system administrator. Such service can be moved to different systems, can be listened to on a different port, or additional instances can be started without the need to change  configuration of the API Mediation Layer.
+**Tip:** When developing a new service, we recommend that you update the code to support the API Mediation Layer natively. The benefit of supporting the API Mediation Layer natively is that it requires less configuration for the system administrator. Additionally, natively onboarded services can be moved to different systems, can be listened to on a different port, and additional instances can be started without the need to change API Mediation Layer configuration.
 
 ## Service Relationship Diagram
-The following diagram shows the relations between various types of services, their APIs, REST API endpoints, and the API Gateway:
+The following diagram shows the relationships between various types of services, their APIs, REST API endpoints, and the API Gateway:
 
 ![REST API Components](../../user-guide/api-mediation/diagrams/rest-api-components.svg)
 

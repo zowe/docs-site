@@ -1,12 +1,12 @@
 # Onboard a Java REST APIs with Spring Boot
 
-Zowe&trade; API Mediation Layer (API ML) provides a single point of access for mainframe service REST APIs. For a high-level overview of this component, see [API Mediation Layer](../../getting-started/overview.html#api-mediation-layer).
+As an API developer, use this guide to onboard your REST API service to the Zowe&trade; API Mediation Layer (API ML). This article outlines a step-by-step process to make your API service available in the Zowe&trade; API ML.
 
 **Notes:** 
-- The following guide is for enabler versions 1.2 and lower. To onboard a Spring Boot based REST API service for enabler versions 1.3 and higher, see [Onboard a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md) 
+- The following guide is for enabler versions 1.2 and lower. To onboard a Spring Boot based REST API service for enabler versions 1.3 and higher, see [Onboard a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md). 
 - Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
 
-As an API developer, use this guide to onboard your REST API service with the Zowe API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
+The following procedure outlines the general steps to onboard a REST service using Spring Boot to the Zowe&trade; API ML. Each of these steps is described in more detail in this article.
 
 1. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
 2. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
@@ -15,12 +15,11 @@ As an API developer, use this guide to onboard your REST API service with the Zo
 5. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
 
 ## Add Zowe API enablers to your service
-In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifactory repository definition to the list of repositories, then add the Spring enabler to the list of your dependencies, and finally add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
+The general steps to onboard a REST API to the Zowe ecosystem begins with adding the Zowe Artifactory repository definition to the list of repositories. Then add the Spring enabler to the list of your dependencies. Finally, add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
 
 **Follow these steps:**
-
-1. Add the Zowe Artifactory repository definition to the list of repositories in Gradle or Maven build systems. Use the code block that corresponds to your build system.
-    * In a Gradle build system, add the following code to the `build.gradle` file into the `repositories` block.
+1. Add the Zowe Artifactory repository definition to the list of repositories in _Gradle_ or _Maven_ build systems. Use the code block that corresponds to your build system.
+    * In a _Gradle_ build system, add the following code to the `build.gradle` file into the `repositories` block.
 
         ```
       maven {
@@ -37,7 +36,7 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
          artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
       ```
 
-    * In a Maven build system, follow these steps:
+    * In a _Maven_ build system, follow these steps:
 
         a) Add the following code to the `pom.xml` file:
 
@@ -393,7 +392,8 @@ As an API service developer, you set multiple configuration settings in your app
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
       **Note:** If your REST API does not conform to Zowe API Mediation Layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to `gatewayUrl` format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
-      * `eureka.instance.metadata-map.routed-services.<prefix>`
+
+      * **`eureka.instance.metadata-map.routed-services.<prefix>`**
 
         This parameter specifies a name for the routing rules group. This parameter is only for logical grouping of additional parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
@@ -402,27 +402,27 @@ As an API service developer, you set multiple configuration settings in your app
         api_v1
         api_v2
         ```
-      * `eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`
+      * **`eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`**
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * `metadata-map.routed-services.<prefix>.serviceUrl`
+      * **`metadata-map.routed-services.<prefix>.serviceUrl`**
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
-      * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
+      * **`eureka.instance.metadata-map.apiml.apiInfo.apiId`**
       
           This parameter specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
           The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`.
           
            We recommend that you use your organization as the prefix.
-      * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
+      * **`eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`**
       
           This parameter specifies the base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
           
-      * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
+      * **`eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`**
       
           (Optional) This parameter specifies a link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
-      * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
+      * **`eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`**
       
           (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
 
@@ -432,7 +432,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     e. **Swagger Api-Doc Parameters**
 
-      This parameter configures API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
+      Parameter in this section configure API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
 
       ```
     api-info:
