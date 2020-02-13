@@ -339,7 +339,7 @@ The following procedure describes how to add your service to the API Mediation L
     `https://localhost:10010/api/v2/petstore/pets/1`
 
 
-## 6. Add a definition in the API Mediation Layer in the Zowe runtime running on z/OS
+## 6. Add a definition in the API Mediation Layer in the Zowe runtime
 
 After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation on z/OS.  
 
