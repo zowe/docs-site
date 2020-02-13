@@ -19,7 +19,9 @@ As a user of Zowe API Mediation Layer, onboard a REST API service with the Zowe 
 
 ## 1. Identify the API that you want to expose
 
-Onboard an API service through the API Gateway without making code changes.
+Onboard an API service through the API Gateway without making code changes.  
+
+The data that teaches the API Mediation Layer about the existing service is captured in an api definition yaml file with a `.yml` suffix.
 
 **Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see [Onboarding Overview](api-mediation-onboard-overview.md).
 
@@ -116,6 +118,8 @@ In this example, a suitable name for the file is `petstore.yml`.
 * Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
 * A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+
+* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
 
 **Tips:**
 
@@ -306,11 +310,11 @@ The following list describes the configuration parameters:
 
 After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
-The following procedure describes how to add your service to the API Mediation Layer on your local machine.
+The following procedure describes how to add your service to the API Mediation Layer on your local machine.  
 
 **Follow these steps:**
 
-1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.
+1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation layer.  
 
 2.  Start the API Mediation Layer services.
 
@@ -335,24 +339,29 @@ The following procedure describes how to add your service to the API Mediation L
     `https://localhost:10010/api/v2/petstore/pets/1`
 
 
-## 6. Add a definition in the API Mediation Layer in the Zowe runtime
+## 6. Add a definition in the API Mediation Layer in the Zowe runtime running on z/OS
 
-After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation.
+After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation on z/OS.  
 
 **Follow these steps:**
 
-1. Locate the Zowe instance directory. The Zowe instance directory is chosen during Zowe configuration.
-   The initial location of the directory is in the `zowe-install.yaml` file in the variable `install:instanceDir`.
+1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=` which will be a fully qualified path to the instance directory.  For more information see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md##extensions).
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
+2. Add the fully qualified USS path to your YAML file to instance.env
+
+    Append the fully qualified USS path to the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
+
+    or: 
+    
+    Copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
     **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
 
-3. Run your application.
+3. Ensure that your application that provides the endpoints described in the YAML file is running 
 
-4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started).
+4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
 5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
 

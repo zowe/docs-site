@@ -31,6 +31,10 @@ To operate Zowe, a number of ZFS folders need to be located for prerequisites on
 `LAUNCH_COMPONENT_GROUPS` : This is a comma separated list of which z/OS microservice groups are started when Zowe launches. 
   - `GATEWAY` will start the API mediation layer which includes the API catalog, the API gateway and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
   - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the TN3270 emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
+  - Vendor products may extend Zowe with their own component group that they wish to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this specify the fully qualified directory provided by the vendor containing that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that will be called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that will perform any configuration steps such as adding iFrame plugins to the Zowe desktop, as well as `validate.sh` script **(optional)** that can used to perform any pre-launch validation such as checking system pre-reqs.   More documentation on how a vendor can extend Zowe with a sub address space is covered in 
+
+  
+  and a `configure.sh` script **(optional)** 
 
 ### Component prerequisites
 
@@ -121,3 +125,7 @@ To determine which ports are not available, follow these steps:
 - `ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
 - `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *TN 3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
 - `ZOWE_ZLUX_SECURITY_TYPE`: The *TN 3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
+
+### Extensions
+
+- ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES:  Full USS path to directory containing static API Mediation Layer .yml definition files.  For more detail see [Onboard a REST API without code changes required](../extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md#6.-add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semi-colon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers.  

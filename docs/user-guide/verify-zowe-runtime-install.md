@@ -1,6 +1,6 @@
 # Verifying Zowe installation on z/OS
 
-Once Zowe&trade; is running follow the instructions in the following sections to verify that the components are installed correctly and are functional.
+Once Zowe&trade; started task `ZWESVSTC` is running follow the instructions below to verify that the components are functional.  **Note** The variable variable `LAUNCH_COMPONENT_GROUPS` in the `instance.env` file can be used to launch Zowe controls whether the the API Mediation Layer and z/OS Services are started with the value `GATEWAY` and whether the Zowe Application Framework (aka Zowe desktop) is started with the value `DESKTOP`, [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups)
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
 - [Verifying z/OS Services installation](#verifying-z-os-services-installation)
@@ -10,25 +10,16 @@ Once Zowe&trade; is running follow the instructions in the following sections to
 
 If the Zowe Application Framework is installed correctly, you can open the Zowe Desktop from a supported browser.
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort`
 
 where:
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
-- _httpPort_ is the port number that is assigned to _node.http.port_ in `zluxserver.json`.
-- _httpsPort_ is the port number that is assigned to _node.https.port_ in `zluxserver.json`.
+- _httpsPort_ is the port number value `ZOWE_ZLUX_SERVER_HTTPS_PORT` in `instance.env`, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports)
 
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to _node.https.port_ is 12345, you specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html` so if the redirect fails try the full URL.  
 
-## Verifying z/OS Services installation
-
-After the ZWESVSTC procedure is started, you can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
-
-```
-https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
-```
-
-where, _gatewayPort_ is the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
+If the desktop appears but you are unable to log on, check the [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-known-issues.md#cannot-log-in-to-the-zowe-desktop)
 
 
 ## Verifying API Mediation installation
@@ -36,18 +27,32 @@ where, _gatewayPort_ is the port number that is assigned to `ZOWE_ZLUX_SERVER_HT
 Use your preferred REST API client to review the value of the status variable of the API Catalog service that is routed through the API Gateway using the following URL:
 
 ```
-https://hostName:basePort/api/v1/apicatalog/application/health
+https://myhost:httpsPort/api/v1/apicatalog/application/health
 ```
 
-The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
+where 
+
+- _myHost_ is the host on which you installed the Zowe Application Server.
+- _httpsPort_ is the port number value `GATEWAY_PORT` in `instance.env`, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports)
 
 **Example:**
 
 The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
 
 ```
-$ curl -v -k --silent https://hostName:basePort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
+$ curl -v -k --silent https://myhost:httpsPort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
 UP
 ```
 
 The response `UP` confirms that API Mediation Layer is installed and is running properly.
+
+## Verifying z/OS Services installation
+
+You can verify the installation of z/OS Services from an internet browser by entering the following case-sensitive URL:
+
+```
+https://hostName:gatewayPort/api/v1/jobs?prefix=*
+```
+
+where, gatewayPort is the port number that is assigned to `GATEWAY_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
+

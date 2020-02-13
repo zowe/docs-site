@@ -51,7 +51,7 @@ The script `zowe-install-xmem.sh` takes four arguments:
 
 - **First Parameter**=Source PDS Prefix
 
-   Dataset prefix of the source PDS where .SZWESAMPE(ZWESVSTC) was installed into.  
+   Dataset prefix of the source PDS where .SZWESAMPE(ZWESISTCZ) was installed into.  
 
    For an installation from a convenience build, this will be the value of `zowe-install.sh -h` when the build was installed. See [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
 
