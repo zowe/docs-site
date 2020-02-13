@@ -351,13 +351,15 @@ After you define and validate the service in YAML format, you are ready to add y
 
 2. Add the fully qualified USS path to your YAML file to instance.env
 
-    Append the fully qualified USS path to the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
+    If you wish to hold your YAML file outside of the instance directory, append the fully qualified USS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
 
     or: 
     
-    Copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
+    if you wish to place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
     **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
+
+    **Note** The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
 
 3. Ensure that your application that provides the endpoints described in the YAML file is running 
 
