@@ -13,7 +13,7 @@ Each API has its own title, description, and version (using [Semantic Versioning
 
 Services can be updated to support the API Mediation Layer natively by updating the service code. Use the following REST API onboarding enabler guides to onboard your REST service to the Zowe API Mediation Layer when you use enabler versions 1.3 and higher:
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
-- [Onboard a Spring Boot based REST API Service](api-mediation-onboarding-with-spring-boot-enabler.md)
+- [Onboard a Spring Boot based REST API Service](api-mediation-onboard-a-spring-boot-rest-api-service.md)
 
 Use the following REST API onboarding enabler guides to onboard your REST service to the API Mediation Layer when you use enabler versions 1.2 and lower:
 
