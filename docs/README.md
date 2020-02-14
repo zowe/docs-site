@@ -27,7 +27,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Learn about how you can contribute to this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="https://zowe.org/">References</a></h2>
+    <h2><a href="./appendix/tpsr.html">References</a></h2>
     <p>Get a list of reference materials to help you use Zowe, including Zowe command line reference, TPSR, and BOM.</p>
   </div>
 </div>
@@ -38,7 +38,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.8.0.
 
-**[V1.8.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** | 
+**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** | 
 **[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
 **[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** | 
 **[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** | 
@@ -50,7 +50,7 @@ You can download the Version 1.x Zowe documentation on this website in PDF forma
 
 ### Zowe CLI command reference guide
 
-Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.  a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:
+Detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@lts-incremental` version of the CLI.  A PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:
 
 <p class="action">
 <a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse Online</span></a>
