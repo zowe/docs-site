@@ -7,7 +7,7 @@
 - [Prerequisites and assumptions](#prerequisites-and-assumptions)
 - [Logging in to the Zowe Desktop](#logging-in-to-the-zowe-desktop)
 - [Querying JES jobs and viewing related status in JES Explorer](#querying-jes-jobs-and-viewing-related-status-in-jes-explorer)
-- [Using the 3270 Terminal in the Zowe Desktop to view the job](#using-tn3270-in-zowe-desktop-to-view-the-job)
+- [Using the 3270 Terminal in the Zowe Desktop to view the job](#using-the-3270-terminal-in-the-zowe-desktop-to-view-the-job)
 - [Editing a data set in MVS Explorer](#editing-a-data-set-in-mvs-explorer)
 - [Using the Zowe CLI to edit a data set](#using-the-zowe-cli-to-edit-a-data-set)
 - [Viewing the data set changes in MVS Explorer](#viewing-the-data-set-changes-in-mvs-explorer)
