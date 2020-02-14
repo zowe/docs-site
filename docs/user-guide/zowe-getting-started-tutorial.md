@@ -184,7 +184,7 @@ Close the TN3270 window. In the next step, you will use the MVS Explorer to make
 
 ## Editing a data set in MVS Explorer
 
-Use the MVS Explorer to create and edit a data set member and save the changes. The MVS Explorer view lets you to browse the MVS file system by creating filters against data set names.
+Use the MVS Explorer to create and edit a data set member and save the changes. The MVS Explorer view lets you browse the MVS file system by creating filters against data set names.
 
 **Follow these steps:**
 
@@ -192,7 +192,7 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 
 2. Scroll down to find the MVS Explorer icon and pin this application to the desktop for later use.
 
-3. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
+3. Click the **MVS Explorer** icon on the taskbar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
 
    <img src="../images/common/zowe-mvs-filter.png" alt="The filter in MVS Explorer" width="400">
 

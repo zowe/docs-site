@@ -18,7 +18,7 @@ For details, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no char
 
 ## Hardware and software requirements
 
-To install Node.js for Zowe, the following requirements muts be met.
+To install Node.js for Zowe, the following requirements must be met.
 
 **Hardware:**
 
@@ -30,7 +30,7 @@ IBM zEnterprise® 196 (z196) or newer
 
 - Node.js Version 8 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/smpe.htm) for all prerequisites):
    - z/OS 2.2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
-   - z/OS 2.3: PTFs UI61308, UI61376 and UI61747 (APARs PH07107, PH08353 and PH09543)
+   - z/OS 2.3: PTFs UI61308, UI61376, and UI61747 (APARs PH07107, PH08353, and PH09543)
 
 - z/OS UNIX System Services enabled
 - Integrated Cryptographic Service Facility (ICSF) configured and started.
@@ -56,4 +56,4 @@ Follow these steps to installing the PAX evaluation version of Node.js - z/OS to
     If Node.js is installed correctly, the version of Node.js is displayed.
 1. After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
-To troubleshoot or install the SMP/E version of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/welcome.html). Remember that the software packages Perl, Ptyhon, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.
+To troubleshoot or install the SMP/E version of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSTRRS_8.0.0/com.ibm.nodejs.zos.v8.doc/welcome.html). Remember that the software packages Perl, Python, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.

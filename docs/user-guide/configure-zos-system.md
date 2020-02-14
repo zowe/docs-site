@@ -11,13 +11,13 @@ A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. Yo
 ```
 If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
-It is expected that system programmers at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commmands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
+It is expected that system programmers at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
 
-If you want to undo all of the z/OS security configuration steps peformed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
-- You are configuring z/OS systems as part of a build pipeline that you wish to undo and redo configuration and installation of Zowe using automation.
+If you want to undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
+- You are configuring z/OS systems as part of a build pipeline that you want to undo and redo configuration and installation of Zowe using automation.
 - You have configured a z/OS system for Zowe that you no longer want to use and you prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  
 
-If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to install and run Zowe until you re-run `ZWESECUR` to re-initialize the z/OS security configuration for the z/OS environment.
+If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to install and run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration for the z/OS environment.
 
 ## User IDs and groups for the Zowe started tasks
 
@@ -25,7 +25,7 @@ Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task
 
 Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started task `ZWESISTC`.
 
-Zowe requires a group `ZWEADMIN` which both `ZWESVUSR` and `ZWESIUSR` should belong to.
+Zowe requires a group `ZWEADMIN` that both `ZWESVUSR` and `ZWESIUSR` should belong to.
 
 The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
@@ -58,7 +58,7 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 ## Configure ZWESVSTC to run under ZWESVUSR user ID
 
-When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming stadards.
+When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
 
 <!--Since in this release 1.8.0 we are creating/using a new set of group/user (ZWEADMIN/ZWESVUSR) for Zowe, so security commands should be changed-->
 - If you use RACF, issue the following commands:
@@ -83,7 +83,7 @@ When the Zowe started task `ZWESVSTC` is started, it must be associated with the
 
 ## Grant users permission to access Zowe
 
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the the IZUUSER or IZUADMIN group
+TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe.  They should be added to the IZUUSER or IZUADMIN group
 
 - If you use RACF, issue the following command:
 
@@ -108,9 +108,9 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 ## Configure the cross memory server for SAF
 
-Zowe has a cross memory server that runs as an APF authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS`.  This authorization step is used to guard against access by non-priviledged clients.  
+Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS`.  This authorization step is used to guard against access by non-priviledged clients.  
 
-To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user IDs `ZWESVUSR` and `ZWESIUSR`.  These are the user IDs that the Zowe started task `ZWESVSTC` and the auxililary address space task `ZWESASTC` run under. 
+To activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user IDs `ZWESVUSR` and `ZWESIUSR`.  These are the user IDs that the Zowe started task `ZWESVSTC` and the auxiliary address space task `ZWESASTC` run under. 
     
 To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the `ZWESVSTC` under the `ZWESVUSR` user.
 
@@ -161,7 +161,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     F ACF2,REBUILD(FAC)
     ```
 
-- If you use CA Top Secret, issue the following commands, where `owner-acid` may be IZUSVR or a different ACID:
+- If you use CA Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
 
     ```
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)
@@ -251,11 +251,11 @@ Define or check the following configurations depending on whether ICSF is alread
 
 ## Configure security environment switching
     
-Typically, the user `ZWESVUSR` that the `ZWESVSTC` started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than its user ID.  This capability provides the functionality that allows users to log onto the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server. This technique is known as **impersonation**.  
+Typically, the user `ZWESVUSR` that the `ZWESVSTC` started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than its user ID.  This capability provides the functionality that allows users to log on to the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server. This technique is known as **impersonation**.  
 
 To enable impersonation, you must grant the user ID `ZWESVUSR` associated with the `ZWESVSTC` started task UPDATE access to the `BPX.SERVER` and `BPX.DAEMON` FACILITY classes.
 
-You can issue the following commands first to check if you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user `ZWESVUSR` who runs the `ZWESVSTC` started task has UPDATE access to both facilities.
+You can issue the following commands first to check whether you already have the BPX facilities defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two BPX facilities exist and the user `ZWESVUSR` who runs the `ZWESVSTC` started task has UPDATE access to both facilities.
 
 - If you use RACF, issue the following commands:
     ```

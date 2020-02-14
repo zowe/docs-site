@@ -4,18 +4,45 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
-- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
-- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
-- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
-- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
-- [Zowe SMP/E Alpha (August 2019)](#zowe-smp-e-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
-- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
-- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
-- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
-- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
-- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+- [Version 1.9.0 LTS (February) 2020)](#version-190-lts-february-2020)
+- [Version 1.8.0 (January 2020)](#version-180-january-2020)
+- [Version 1.7.1 (December 2019)](#version-171-december-2019)
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
+- [Version 1.6.0 (October 2019)](#version-160-october-2019)
+- [Version 1.5.0 (September 2019)](#version-150-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-140-august-2019)
+- [Version 1.3.0 (June 2019)](#version-130-june-2019)
+- [Version 1.2.0 (May 2019)](#version-120-may-2019)
+- [Version 1.1.0 (April 2019)](#version-110-april-2019)
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.9.0 LTS (February 2020)
+
+Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.  <!-- Is there any further detail we should mention about what LTS means, link to some other announcement about LTS release, etc..? -->
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added:
+
+#### Installation of Zowe z/OS components
+
+#### API Mediation Layer
+
+#### Zowe App Server
+
+#### Zowe CLI
+
+- Zowe CLI was confirmed to be installable and runnable on Unix System Services (USS) on z/OS. For more information, see [Installing Node.js on the Mainframe (both Linux and z/OS) to run Zowe CLI](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41)
+
+#### Zowe Explorer
+
+### Bug fixes
+
+
 
 ## Version 1.8.0 (January 2020)
 
@@ -27,15 +54,27 @@ The following features and enhancements were added.
 
 #### Installation of Zowe z/OS components
 
-- The installation now just needs two parameters configured: the USS location of the runtime directory and a data set prefix where a SAMPLIB and LOADLIB will be created.  The runtime directory permissions are set to 755 and when Zowe is run, no data is written to the runtime directory.  
-- The way to configure Zowe is changed. Previously, you configure Zowe at the installation time with the `zowe-install.yaml` file.  This file has been removed and is no longer used in this release.  
+<<<<<<< HEAD
+- The installation now just needs two parameters configured: the USS location of the runtime directory and a data set prefix where a SAMPLIB and LOADLIB will be created.  The runtime directory permissions are set to 755 and when Zowe is run, no data is written to the runtime directory.
+- The way to configure Zowe is changed. Previously, you configure Zowe at the installation time with the `zowe-install.yaml` file.  This file has been removed and is no longer used in this release.
 - A new directory `zowe-instance-dir` has been introduced that contains configuration data used to launch Zowe.  This allows more than one Zowe instance to be started from the same Zowe runtime directory.  A new file `zowe-instance.env` within each `zowe-instance-dir` directory controls which ports are allocated to the Zowe servers as well as location of any dependencies such as Java, z/OSMF or node.  No configuration data is specified at install time.  The data is only read, validated, and used at launch time.  The `zowe-instance.env` file contains a parameter value `LAUNCH_COMPONENT_GROUPS` that allows you to control which Zowe subsystems to launch, for example you can run the Zowe desktop and not the API Mediation Layer, or vice-versa you can run just the API Mediation Layer and not the Zowe desktop.   The `zowe-instance-dir` directory is also where log files are collected.  Static extensions to the API Mediation Layer are recorded in the Zowe instance directory as well as any plug-in extensions to the Zowe desktop.  This allows the runtime directory to be fully replaced during PTF upgrades or moving to later Zowe releases while preserving configuration data and extension definitions that are held in the instance directory.
+=======
+- The installation now just needs two parameters configured: the USS location of the runtime directory and a data set prefix where a SAMPLIB and LOADLIB will be created.  The runtime directory permissions are set to 755 and when Zowe is run, no data is written to the runtime directory.  
+- The way to configure Zowe is changed. Previously, you configured Zowe at installation time with the `zowe-install.yaml` file.  This file has been removed and is no longer used in this release.  
+- A new directory `zowe-instance-dir` has been introduced that contains configuration data used to launch Zowe.  This allows more than one Zowe instance to be started from the same Zowe runtime directory.  A new file `zowe-instance.env` within each `zowe-instance-dir` directory controls which ports are allocated to the Zowe servers as well as location of any dependencies such as Java, z/OSMF or node.  No configuration data is specified at install time.  The data is only read, validated and used at launch time.  The `zowe-instance.env` file contains a parameter value `LAUNCH_COMPONENT_GROUPS` that allows you to control which Zowe subsystems to launch, for example you can run the Zowe desktop and not the API Mediation Layer, or vice-versa; you can run just the API Mediation Layer and not the Zowe desktop.   The `zowe-instance-dir` directory is also where log files are collected.  Static extensions to the API Mediation Layer are recorded in the Zowe instance directory as well as any plug-in extensions to the Zowe desktop.  This allows the runtime directory to be fully replaced during PTF upgrades or moving to later Zowe releases while preserving configuration data and extension definitions that are held in the instance directory.
+>>>>>>> 5f4f769b3638932c9cc2a733b2262d989b6ab176
 - A new directory `keystore-directory` has been introduced outside of the Zowe runtime directory which is where the Zowe certificate is held, as well as the truststore for public certificates from z/OS services that Zowe communicates to (such as z/OSMF).  A keystore directory can be shared between multiple Zowe instances and across multiple Zowe runtimes.
-- All configuration of z/OS security that was done by Unix shell scripts during installation and configuration has been removed.  A JCL member `ZWESECUR` is provided that contains all of the JCL needed to configure permissions, user IDs and groups, and other steps to prepare and configure a z/OS environment to successfully run Zowe.  Code is included for RACF, Top Secret, and ACF/2.  
+- All configuration of z/OS security that was done by Unix shell scripts during installation and configuration has been removed.  A JCL member `ZWESECUR` is provided that contains all of the JCL needed to configure permissions, user IDs and groups, and other steps to prepare and configure a z/OS environment to successfully run Zowe.  Code is included for RACF, Top Secret, and ACF/2.
 - The Zowe cross memory server installation script `zowe-install-apf-server.sh` is removed.  In this release, the steps for configuring z/OS security are included in the `ZWESECUR` JCL member.
-- Previously, Zowe runs its two started tasks under the user ID of `IZUSVR` and admin of `IZUADMIN`.  These belong to z/OSMF and are no longer used in this releas. Instead, Zowe includes two new user IDs of `ZWESVUSR` (for the main Zowe started task), `ZWESIUSR` (for the cross memory server), and `ZWEADMIN` as a group.  These user IDs are defaults and different ones can be used dependening on site preferences.  
+<<<<<<< HEAD
+- Previously, Zowe runs its two started tasks under the user ID of `IZUSVR` and admin of `IZUADMIN`.  These belong to z/OSMF and are no longer used in this releas. Instead, Zowe includes two new user IDs of `ZWESVUSR` (for the main Zowe started task), `ZWESIUSR` (for the cross memory server), and `ZWEADMIN` as a group.  These user IDs are defaults and different ones can be used dependening on site preferences.
+- Previously, the main Zowe started task is called `ZOWESVR`. Now it is called `ZWESVSTC`.
+- previously, the cross memory started task is called `ZWESIS01`. Now it is called `ZWESISTC`.
+=======
+- Previously, Zowe runs its two started tasks under the user ID of `IZUSVR` and admin of `IZUADMIN`.  These belong to z/OSMF and are no longer used in this release. Instead, Zowe includes two new user IDs of `ZWESVUSR` (for the main Zowe started task), `ZWESIUSR` (for the cross memory server), and `ZWEADMIN` as a group.  These user IDs are defaults and different ones can be used depending on site preferences.  
 - Previously, the main Zowe started task is called `ZOWESVR`. Now it is called `ZWESVSTC`.  
-- previously, the cross memory started task is called `ZWESIS01`. Now it is called `ZWESISTC`.  
+- Previously, the cross memory started task is called `ZWESIS01`. Now it is called `ZWESISTC`.  
+>>>>>>> 5f4f769b3638932c9cc2a733b2262d989b6ab176
 - The script `zowe-verify.sh` is no longer included with Zowe. Now the verification is done at launch time and dependent on the launch configuration parameters. It is no longer done with a generic script function that `zowe-verify.sh` used to provide.
 
 For more information about how to install Zowe z/OS components, see [Installation roadmap](../user-guide/install-zos.md).
