@@ -38,11 +38,9 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.9.0.
 
-<<<<<<< HEAD
-**[V1.8.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
-=======
-**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** | 
->>>>>>> 5f4f769b3638932c9cc2a733b2262d989b6ab176
+<!--  TODO add 1.9 here  -->
+
+**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** |
 **[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
 **[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** |
 **[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** |
