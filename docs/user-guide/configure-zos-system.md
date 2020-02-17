@@ -110,7 +110,7 @@ TSO user IDs using Zowe must have permission to access the z/OSMF services that 
 
 Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
 
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user IDs `ZWESVUSR`.  This is the user IDs that the Zowe started task `ZWESVSTC` runs under. 
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the Zowe started task `ZWESVSTC` runs under. 
     
 To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the `ZWESVSTC` under the `ZWESVUSR` user.
 
