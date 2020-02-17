@@ -573,7 +573,8 @@ discoveryServiceUrls:
     It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.
 
 ### Custom Metadata
-//TODO
+
+Additional metadata can be added to the instance information that is registered in discovery service through the `customMetadata` section. This information is propagated from the discovery service to it's clients (onboarded services). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure Api Mediation layer's functionality. Such metadata are generally prefixed with `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under it.
 
 ##  Registering your service with API ML
 
