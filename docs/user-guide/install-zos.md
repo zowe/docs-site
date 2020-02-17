@@ -80,6 +80,12 @@ After successful installation of either a convenience build or an SMP/E build, t
    A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
    Next, you will install and configure the Zowe started tasks. Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF-authorized code.  The JCLs for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`. 
+   
+   **Note** 
+   API Mediation Layer will by default reject encoded slashes in the URL path of the request. If you want to configure API Mediation Layer to allow this pattern, you can use the following configuration:
+   1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+   2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=false` parameter and set the value to `true`:
+   3. Restart Zowe&trade;. Requests with encoded characters will now be passed to onboarded services. 
 
 4. (Only required for launching the Zowe desktop) Configure the `ZWESISTC` cross memory server and install the load libraries. For instructions, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
 
