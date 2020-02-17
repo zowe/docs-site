@@ -23,9 +23,9 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - Node.js versions between v6.14.4 and v8.x *on the z/OS host* where you install the Zowe Application Server. To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
 - IBM SDK for Java Technology Edition V8 or later
-- 833 MB of HFS file space
+- 833 MB of zFS file space
 
-- Supported browsers:
+- (client) Supported browsers:
     -   Google Chrome V66 or later
     -   Mozilla Firefox V60 or later
     -   Safari V12.0 or later
