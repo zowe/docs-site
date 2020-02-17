@@ -43,15 +43,6 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 - `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
 - `APIML_ENABLE_SSO`: Define whether single sign-on should be enabled. Use a value of `true` or `false`. Defaults to `false`.
 
-**Note** API Mediation Layer will by default reject encoded slashes in the URL path of the request. If you want to configure API Mediation Layer to allow this pattern, you can use the following configuration: 
-
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-
-2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=false` parameter and set the value to `true`:
-
-3. Restart Zowe&trade;. Requests with encoded characters will now be passed to onboarded services. 
- 
-
 ### Keystore configuration
 
 - `KEYSTORE_DIRECTORY`: This is a path to a zFS directory containing the certificate that Zowe uses to identify itself and encrypt https:// traffic to its clients accessing REST APIs or web pages.  This also contains a truststore used to hold the public keys of any z/OS services that Zowe is communicating to, such as z/OSMF.  The keystore directory must be created the first time Zowe is installed onto a z/OS system and it can be shared between different Zowe runtimes.   For more information about how to create a keystore directory, see [Configuring Zowe certificates](configure-certificates.md).
