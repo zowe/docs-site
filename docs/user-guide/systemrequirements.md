@@ -6,7 +6,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
 
-## Common z/OS system requirements
+## Common z/OS system requirements (host)
 
 - z/OS Version 2.2 or later.
 - IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
@@ -18,7 +18,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
   :::
 
-### Zowe Application Framework requirements
+### Zowe Application Framework requirements (host)
 
 - Node.js versions between v6.14.4 and v8.x *on the z/OS host* where you install the Zowe Application Server. To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
@@ -33,7 +33,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 
    Each release of the Zowe Application Framework is tested to work on the current releases of Chrome, Firefox, Safari, and Edge, as well as the oldest release within a 1 year time span, unless the current release is also older than 1 year. For Firefox, the oldest supported release will also be from the Extended Support Release (ESR) version of Firefox, to ensure compatibility in those enterprise environments. This scheme for browser support is to ensure that Zowe works on the vast majority of browsers that people are currently using, while still allowing for use of new features and security that browsers constantly add.
 
-## Zowe CLI requirements
+## Zowe CLI requirements (client)
 
 Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems.
 
