@@ -242,6 +242,13 @@ are written in `#{parameterValue}` format. For your service configuration file, 
     trustStorePassword: password
  ```
 
+Optional metadata section
+```yaml
+customMetadata:
+    yourqualifier:
+        key1: value1
+        key2: value2
+```
 The onboarding configuration parameters are broken down into the following groups:
 
 - [REST service identification](#rest-service-identification)
@@ -251,6 +258,7 @@ The onboarding configuration parameters are broken down into the following group
 - [API catalog information](#api-catalog-information)
 - [API security](#api-security)
 - [Eureka Discovery Service](#eureka-discovery-service)
+- [Custom Metadata](#custom-metadata)
 
 ### REST service identification
 
@@ -564,6 +572,8 @@ discoveryServiceUrls:
     specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
     It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.
 
+### Custom Metadata
+//TODO
 
 ##  Registering your service with API ML
 
