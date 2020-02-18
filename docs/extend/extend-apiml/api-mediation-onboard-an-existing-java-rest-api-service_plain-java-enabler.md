@@ -245,6 +245,7 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 Optional metadata section
 ```yaml
 customMetadata:
+    enableUrlEncodedCharacters: false
     yourqualifier:
         key1: value1
         key2: value2
@@ -569,13 +570,19 @@ discoveryServiceUrls:
 
 * **discoveryServiceUrls**
 
-    specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
+    Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
     It is possible to provide multiple values in order to utilize fail over and/or load balancing mechanisms.
 
 ### Custom Metadata
 
 Additional metadata can be added to the instance information that is registered in discovery service through the `customMetadata` section. This information is propagated from the discovery service to it's clients (onboarded services). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure Api Mediation layer's functionality. Such metadata are generally prefixed with `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under it.
 
+* **enableUrlEncodedCharacters**
+
+    When set to true, the Gateway will allow encoded characters to be part of URL requests redirected through the Gateway. The default and recommended behaviour for this parameter is to be false. Do not set this to true, unless you specifically expect certain encoded characters in your application's requests. 
+    
+    **Important!**  When the encoded character expected is an encoded slash or backslash("%2f", "5C"), make sure the gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md)
+    
 ##  Registering your service with API ML
 
 The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.

@@ -257,6 +257,7 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
     homePageRelativeUrl:
     statusPageRelativeUrl: /application/info
     healthCheckRelativeUrl: /application/health
+    enableUrlEncodedCharacters: false
     discoveryServiceUrls:
         - http://eureka:password@localhost:10011/eureka
     routes:
@@ -386,6 +387,12 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
             Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
     
+    * **enableUrlEncodedCharacters**
+    
+        When set to true, the Gateway will allow encoded characters to be part of URL requests redirected through the Gateway. The default and recommended behaviour for this parameter is to be false. Do not set this to true, unless you specifically expect certain encoded characters in your application's requests. 
+        
+        **Important!**  When the encoded character expected is an encoded slash or backslash("%2f", "5C"), make sure the gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md)
+
     * **apiInfo.apiId**
 
         This parameter specifies the API identifier that is registered in the API Mediation Layer installation.
