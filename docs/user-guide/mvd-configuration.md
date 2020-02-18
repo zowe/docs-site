@@ -556,6 +556,69 @@ SAF profiles cannot contain more than 246 characters. If the path section of an 
 
 For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](../extend/extend-desktop/mvd-dataservices.md#limiting-the-length-of-dataservice-paths-for-rbac)
 
+## Multi-factor authentication configuration
+
+[Multi-Factor Authentication](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_server.htm) is an optional feature for Zowe.
+
+As of Zowe version 1.8.0, the Zowe App Framework, Desktop, and all Apps present in the SMP/e or Convenience Builds support [Out-of-band MFA](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_oobconcepts.htm) via the entry of a MFA assigned token or passcode into "password" field of the Desktop login screen, app-server /auth REST API endpoint, and zss /login REST API endpoint. 
+
+All these forms of authentication for the Zowe App Framework are backed by calls to SAF VERIFY via ZSS, so the framework may work with any MFA products that support pass-through of the MFA credentials as the passphrase used in SAF VERIFY.
+
+For a list of compatible MFA products, see [Known compatible MFA products](systemrequirements.md#known-compatible-mfa-products)
+
+### Session Duration and Expiration
+
+Once authentication is successful, a Zowe Desktop session is created via authentication plugins. 
+
+The duration of the session is determined by the plugin used. Some plugins are capable of renewing the session prior to expiration, while others may have a fixed session length.
+
+Zowe is bundled with a few of these plugins:
+
+* **apiml-auth**: Calls the Zowe API Mediation Layer from the app-server for authentication. By default, the Mediation Layer calls z/OSMF to answer the authentication request. The session created mirrors the z/OSMF session.
+
+* **zosmf-auth**: Calls z/OSMF auth from the app-server to answer the authentication request. The created z/OSMF session is valid for about 8 hours.
+
+* **zss-auth**: Calls Zowe ZSS from the app-server to answer the authentication request. The created ZSS session is valid for 1 hour, but is renewable on request prior to expiration. In the Desktop, the session is automatically renewed if the user is detected as active. If the user is detected as idle, the session will expire.
+
+### Session Expiration with MFA
+
+When a session does expire, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based. 
+
+In the Desktop, Apps that you had open prior to expiration will remain open so that your work can resume after entering new credentials.
+
+### Configuration
+
+When using the default configuration from a Zowe SMP/e or Convenience build, no changes are needed within Zowe to get started with MFA. 
+
+To configure Zowe for MFA otherwise, take the following steps:
+
+1. Choose an App Server security plugin that is compatible with MFA. 
+    - [apiml-auth, zss-auth, and zosmf-auth](#session-duration-and-expiration) will all work.
+2. Locate the App Server's configuration file in `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`
+3. Edit the configuration file to modify the section `dataserviceAuthentication`. 
+
+4. Set `defaultAuthentication` to the same category as the plugin of choice: 
+    * **apiml-auth**: "apiml"
+    * **zosmf-auth**: "zosmf"
+    * **zss-auth**: "zss"
+5. Define the plugins to use in the configuration file by adding a section for the chosen category within `dataserviceAuthentication.implementationDefaults` as an object with the attribute `plugins`, which is an array of plugin ID strings, where the plugins each have the following IDs:
+    * **apiml-auth**: "org.zowe.zlux.auth.apiml"
+    * **zosmf-auth**: "org.zowe.zlux.auth.zosmf"
+    * **zss-auth**: "org.zowe.zlux.auth.zss"
+
+The following is an example configuration for zss-auth, as seen in a default installation of Zowe:
+```json
+"dataserviceAuthentication": {
+  "defaultAuthentication": "zss",
+  "implementationDefaults": {
+    "zss": {
+      "plugins": [
+        "org.zowe.zlux.auth.zss"
+      ]
+    }
+  }
+}
+```
 
 ## Enabling tracing
 

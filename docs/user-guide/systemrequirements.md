@@ -5,6 +5,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Common sytem requirements](#common-system-requirements)
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
+- [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop) 
 
 ## Common z/OS system requirements
 
@@ -49,3 +50,15 @@ Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, includi
 ### Free disk space
 
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
+
+## Multi-Factor Authentication for Zowe Desktop
+
+Multi-factor authentication is an optional prerequisite for Zowe. 
+
+For more detailed information, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration)
+
+### Known compatible MFA products
+
+* [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos)
+
+If you do not see your product listed here, please contact the Zowe community so that it can be validated and included.
