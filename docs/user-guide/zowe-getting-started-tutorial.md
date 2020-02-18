@@ -7,7 +7,7 @@
 - [Prerequisites and assumptions](#prerequisites-and-assumptions)
 - [Logging in to the Zowe Desktop](#logging-in-to-the-zowe-desktop)
 - [Querying JES jobs and viewing related status in JES Explorer](#querying-jes-jobs-and-viewing-related-status-in-jes-explorer)
-- [Using TN3270 in Zowe Desktop to view the job](#using-tn3270-in-zowe-desktop-to-view-the-job)
+- [Using the 3270 Terminal in the Zowe Desktop to view the job](#using-the-3270-terminal-in-the-zowe-desktop-to-view-the-job)
 - [Editing a data set in MVS Explorer](#editing-a-data-set-in-mvs-explorer)
 - [Using the Zowe CLI to edit a data set](#using-the-zowe-cli-to-edit-a-data-set)
 - [Viewing the data set changes in MVS Explorer](#viewing-the-data-set-changes-in-mvs-explorer)
@@ -30,7 +30,7 @@ This tutorial walks you through the Zowe&trade; interfaces, including the Zowe D
 By the end of the session, you'll know how to:
 - Log in to the Zowe Desktop
 - Query jobs with filters and view the related status by using the JES Explorer
-- View jobs by using TN3270 in the Zowe Desktop
+- View jobs by using the 3270 Terminal in the Zowe Desktop
 - View and edit data sets by using the MVS Explorer
 - Edit a data set and upload it to the mainframe by using Zowe Command-Line Interface (CLI)
 
@@ -122,21 +122,21 @@ You used the JES Explorer to query the JES jobs with filters and viewed the rela
 
 Close the JES Explorer window. Next, you'll use the TN3270 application plug-in in the Zowe Desktop to view the same job that you viewed in this task.
 
-## Using TN3270 in Zowe Desktop to view the job
+## Using the 3270 Terminal in the Zowe Desktop to view the job
 
-Use the TN3270 application plug-in to view the same job that you filtered out in the previous task.
+Use the 3270 Terminal application plug-in to view the same job that you filtered out in the previous task.
 
-Zowe not only provides new modern applications to interact with z/OS®, but also integrates the traditional TN3270 tool that you are familiar with. This TN3270 application plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs.
+Zowe not only provides new, modern applications to interact with z/OS®, but it also integrates the traditional 3270 terminal interface that you may also be familiar with. The 3270 Terminal application plug-in provides a basic, emulated 3270 terminal connection to the mainframe via the Zowe Application Server.
 
 **Follow these steps:**
 
-1. From the taskbar at the bottom of the Zowe Desktop, click the TN3270 icon to open the TN3270 application plug-in.
+1. From the taskbar at the bottom of the Zowe Desktop, click the 3270 Terminal icon to open the 3270 Terminal application plug-in.
 
-   <img src="../images/common/3-1.png" alt="TN3270 application plug-in" width="400">
+   <img src="../images/common/3-1.png" alt="3270 Terminal application plug-in" width="400">
 
-   The TN3270 panel is displayed, which offers selections to access various mainframe services.
+   The 3270 Terminal panel is displayed, which offers selections to access various mainframe services.
 
-   <img src="../images/common/zowe-tn3270-welcome.png" alt="TN3270 terminal" width="400">
+   <img src="../images/common/zowe-tn3270-welcome.png" alt="3270 Terminal" width="400">
 
 2. Enter the following command and press Enter to log on to TSO:
 
@@ -180,11 +180,11 @@ Zowe not only provides new modern applications to interact with z/OS®, but also
    
    <img src="../images/common/scenario1-displayed-content-tn3270.png" alt="Screen capture that shows the contents of a job" width="400">
 
-Close the TN3270 window. In the next step, you will use the MVS Explorer to make changes to a data set.
+Close the 3270 Terminal window. In the next step, you will use the MVS Explorer to make changes to a data set.
 
 ## Editing a data set in MVS Explorer
 
-Use the MVS Explorer to create and edit a data set member and save the changes. The MVS Explorer view lets you to browse the MVS file system by creating filters against data set names.
+Use the MVS Explorer to create and edit a data set member and save the changes. The MVS Explorer view lets you browse the MVS file system by creating filters against data set names.
 
 **Follow these steps:**
 
@@ -192,7 +192,7 @@ Use the MVS Explorer to create and edit a data set member and save the changes. 
 
 2. Scroll down to find the MVS Explorer icon and pin this application to the desktop for later use.
 
-3. Click the **MVS Explorer** icon on the task bar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
+3. Click the **MVS Explorer** icon on the taskbar. The MVS Explorer opens. The **Filter** field is pre-filled with the user name. In this tutorial, the filter string is `IBMUSER`. All the data sets matching this filter are displayed. You can expand a data set name and see the members in it.
 
    <img src="../images/common/zowe-mvs-filter.png" alt="The filter in MVS Explorer" width="400">
 
@@ -304,7 +304,7 @@ Congratulations! You explored several applications on the Zowe Desktop and learn
 Here are some next steps.
 
 ### Go deeper with Zowe
-In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and TN3270 to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI. 
+In roughly 20 minutes, you used the MVS™ Explorer and Zowe CLI to edit the same data set member, and used the JES Explorer and the 3270 Terminal to query the same JES job with filters, all without leaving Zowe. Now that you're familiar with Zowe components, you can continue to learn more about the project. Zowe also offers many more plug-ins for both Zowe Desktop and Zowe CLI. 
 
 For more information, see the [User Guide](mvd-using.md).
 

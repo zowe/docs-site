@@ -40,8 +40,8 @@
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
           "user-guide/configure-zos-system.md",
-          "user-guide/configure-instance-directory.md",
           "user-guide/configure-certificates.md",
+          "user-guide/configure-instance-directory.md",
           "user-guide/configure-xmem-server.md",
           "user-guide/configure-zowe-server.md",
           "user-guide/verify-zowe-runtime-install.md",
@@ -58,7 +58,7 @@
         ]
       },
       {
-        "text": "Advanced Zowe Configuration",
+        "text": "Advanced Zowe configuration",
         "items": [ 
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
@@ -99,7 +99,6 @@
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
-          "extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-onboard-plain-java-enabler-external-configuration.md"
@@ -188,6 +187,8 @@
   {
     "text": "Contributing",
     "baseuri": "/contribute/",
+    "hideInPdf": true,
+    "canHideFirst": true,
     "items": [{
         "text": "Code guidelines",
         "items": [

@@ -17,44 +17,17 @@ For earlier releases, you must register the Application Server with the Mediatio
 ### Accessing the Application Server
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-When accessed through the Mediation Layer, this is the Zowe Desktop URL:
+The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `zowe-instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+
+When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
 `https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+The port number for the API Mediation Layer is the value of the `GATEWAY_PORT` variable in the `zowe-instance.env` file in the instance directory.
+
 
 ## Setting up terminal application plug-ins
 
 Follow these optional steps to configure the default connection to open for the terminal application plug-ins.
-
-### Setting up the TN3270 mainframe terminal application plug-in
-
-The port, security, and other parameters of the TN3270 plug-in are controlled by a configuration file that is present on the initial run. The configuration is located in an instance at `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`.
-
-The file has the following format:
-
-```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "tls">
-    }
-```
-
-**Note:** The file is stored within the Configuration Dataservice structure so that it can be customized for individual users. For example, to customize configuration for a user named "Fred", place a custom file in the path `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`.
-
-### Setting up the VT Terminal application plug-in
-
-The port, security, and other parameters of the VT plug-in are controlled by a configuration file that is present on the initial run. The configuration is located in an instance at  `$INSTANCE_DIR/workspace/app-server/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json`.
-
-The file has the following format:
-
-```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "ssh">
-    }
-```
-
-**Note:** The file is stored within the Configuration Dataservice structure so that it can be customized for individual users. For example, to customize configuration for a user named "Fred", place a custom file in the path `$INSTANCE_DIR/worksapce/app-server/users/fred/ZLUX/pluginStorage/org.zowe.terminal.vt/sessions/_defaultVT.json`.
 
 ## Configuration file
 
@@ -428,6 +401,8 @@ You can control which applications are accessible (visible) to all Zowe desktop 
 
 You control access by editing JSON files that list the apps. One file lists the apps all users can see, and you can create a file for each user. When a user logs into the desktop, Zowe determines the apps that user can see by concatenating their list with the all users list.
 
+You can also control access to the JSON files. The files are accessible directly on the file system, and since they are within the configuration dataservice directories, they are also accessible via REST API. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting the directories and their contents to have file permissions on z/OS that only allow the Zowe admin group read & write access. You control who can read and edit the JSON files through the REST API by controlling who can [access the configuration dataservice objects](mvd-configuration.md#creating-authorization-profiles) URLs that serve the JSON files.
+
 ### Controlling application access for all users
 
 1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
@@ -449,7 +424,7 @@ You control access by editing JSON files that list the apps. One file lists the 
     - To an application unavailable, delete it from the list of objects.
     - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required. 
 
-6. Restart the app server.
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
 ### Controlling application access for individual users
 
@@ -489,9 +464,10 @@ You control access by editing JSON files that list the apps. One file lists the 
 
     **Notes:**
     - Identifier and version attributes are required.
-    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
+    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user. 
 
-6. Restart the app server. 
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc). 
+
 
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.

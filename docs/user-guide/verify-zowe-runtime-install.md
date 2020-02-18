@@ -1,6 +1,6 @@
 # Verifying Zowe installation on z/OS
 
-Once Zowe&trade; is running follow the instructions in the following sections to verify that the components are installed correctly and are functional.
+After Zowe&trade; is running, follow the instructions in the following sections to verify that the components are installed correctly and are functional.
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
 - [Verifying z/OS Services installation](#verifying-z-os-services-installation)
@@ -28,7 +28,8 @@ After the ZWESVSTC procedure is started, you can verify the installation of z/OS
 https://hostName:<_gatewayPort_>/api/v1/jobs?prefix=*
 ```
 
-where, _gatewayPort_ is the port number that is assigned to `api:mediation:gatewayPort` in `zowe-install.yaml`.
+where, _gatewayPort_ is the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
+
 
 ## Verifying API Mediation installation
 
@@ -38,7 +39,7 @@ Use your preferred REST API client to review the value of the status variable of
 https://hostName:basePort/api/v1/apicatalog/application/health
 ```
 
-The `hostName` is set during install, and `basePort` is set as the `gatewayPort` parameter.
+The `hostName` is set during installation, and `basePort` is set as the `gatewayPort` parameter.
 
 **Example:**
 
