@@ -136,118 +136,100 @@ As an API service developer, you set multiple configuration settings in your app
 
     ```
       ##############################################################################################
-      # MFAAS configuration section
+      # APIML configuration section
       ##############################################################################################
-      mfaas:
-          discovery:
-              serviceId: ${environment.serviceId}
-              locations: ${environment.discoveryLocations}
-              enabled: ${environment.discoveryEnabled:true}
-              endpoints:
-                  statusPage: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/application/info
-                  healthPage: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/application/health
-                  homePage: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/
-              info:
-                  serviceTitle:  ${environment.serviceTitle}
-                  description:  ${environment.serviceDescription}
-                  # swaggerLocation: resource_location_of_your_static_swagger_doc.json
-              fetchRegistry: false
-              region: default
+      apiml:
+          enabled: ${eureka.client.enabled}
+          enableUrlEncodedCharacters: true
           service:
+              serviceId: ${environment.serviceId}
               hostname: ${environment.hostname}
               ipAddress: ${environment.ipAddress}
-          catalog-ui-tile:
-              id: yourProductFamilyId
-              title: Your API service product family title in the API catalog dashboard tile
-              description: Your API service product family description in the API catalog dashboard tile
-              version:  1.0.0
-          server:
-              scheme: http
               port: ${environment.port}
-              contextPath: /yourServiceUrlPrefix
-          security:
-              sslEnabled: true
-              protocol: TLSv1.2
-              ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-              keyAlias: localhost
-              keyPassword: password
-              keyStore: keystore/ssl_local/localhost.keystore.p12
-              keyStoreType: PKCS12
-              keyStorePassword: password
-              trustStore: keystore/ssl_local/localhost.truststore.p12
-              trustStoreType: PKCS12
-              trustStorePassword: password
-
-      eureka:
-          instance:
-              appname: ${mfaas.discovery.serviceId}
-              hostname: ${mfaas.service.hostname}
-              statusPageUrlPath: ${mfaas.discovery.endpoints.statusPage}
-              healthCheckUrl: ${mfaas.discovery.endpoints.healthPage}
-              homePageUrl: ${mfaas.discovery.endpoints.homePage}
-              metadata-map:
-                  routed-services:
-                      api_v1:
-                          gateway-url: "api/v1"
-                          service-url: ${mfaas.server.contextPath}
-                  apiml:
-                      apiInfo:
-                          - apiId: ${mfaas.discovery.serviceId}
-                            gatewayUrl: api/v1
-                            swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
-                            documentationUrl: https://www.zowe.org
-                  mfaas:
-                      api-info:
-                          apiVersionProperties:
-                              v1:
-                                  title: Your API title for swagger JSON which is displayed in API Catalog / service / API Information
-                                  description: Your API description for swagger JSON
-                                  version: 1.0.0
-                                  basePackage: your.service.base.package.for.swagger.annotated.controllers
-                                  # apiPattern: /v1/.*  # alternative to basePackage for exposing endpoints which match the regex pattern to swagger JSON
-                      discovery:
-                          catalogUiTile:
-                              id: ${mfaas.catalog-ui-tile.id}
-                              title:  ${mfaas.catalog-ui-tile.title}
-                              description: ${mfaas.catalog-ui-tile.description}
-                              version: ${mfaas.catalog-ui-tile.version}
-                          enableApiDoc: ${mfaas.discovery.info.enableApiDoc:true}
-                          service:
-                              title: ${mfaas.discovery.info.serviceTitle}
-                              description: ${mfaas.discovery.info.description}
-          client:
-              enabled: ${mfaas.discovery.enabled}
-              healthcheck:
-                  enabled: true
-              serviceUrl:
-                  defaultZone: ${mfaas.discovery.locations}
-              fetchRegistry:  ${mfaas.discovery.fetchRegistry}
-              region: ${mfaas.discovery.region}
+              title: Your Service Title
+              description: Your Service Description
+      
+              scheme: https
+              serviceIpAddress: ${apiml.service.ipAddress}
+      
+              baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
+              contextPath: /${apiml.service.serviceId}
+      
+              homePageRelativeUrl: ${apiml.service.contextPath}
+              statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
+              healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
+      
+              # Will be defined by -D on MF: discoveryServiceUrls: ${apiml.service.discoveryServiceUrls} # https://localhost:10011/eureka/
+      
+              routes:
+                  -   gateway-url: "ui/v1"
+                      service-url: ${apiml.service.contextPath}
+                  -   gateway-url: "api/v1"
+                      service-url: ${apiml.service.contextPath}/api/v1
+                  -   gateway-url: "ws/v1"
+                      service-url: ${apiml.service.contextPath}/ws
+              apiInfo:
+                  -   apiId: ${apiml.service.serviceId}
+                      version: 1.0.0
+                      gatewayUrl: api/v1
+                      swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/v2/api-docs
+                      documentationUrl: https://www.zowe.org
+              catalog:
+                  tile:
+                      id: yourProductFamilyId
+                      title: Your API service product family title in the API catalog dashboard tile
+                      description: Your API service product family description in the API catalog dashboard tile
+                      version: 1.0.1
+              authentication:
+                  scheme: httpBasicPassTicket  # This service expects credentials in HTTP basic scheme with a PassTicket
+                  applid: TSTAPPL  # APPLID to generate PassTickets for this service
+              ssl:
+                  enabled: ${server.ssl.enabled}
+                  verifySslCertificatesOfServices: true
+                  ciphers: ${server.ssl.ciphers}
+                  protocol: ${server.ssl.protocol}
+                  enabled-protocols: ${server.ssl.protocol}
+                  keyStoreType: ${server.ssl.keyStoreType}
+                  trustStoreType: ${server.ssl.trustStoreType}
+      
+                  ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
+                  keyAlias: ${server.ssl.keyAlias} #localhost-blah
+                  keyPassword: ${server.ssl.keyPassword} #password-blah
+                  keyStore: ${server.ssl.keyStore} #keystore/localhost/localhost.keystore.p12-blah
+                  keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
+                  trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
+                  trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
+      
+       eureka:
+           client:
+               enabled: true
+               serviceUrl:
+                   defaultZone: ${apiml.service.discoveryServiceUrls}
+           
 
       ##############################################################################################
       # Application configuration section
       ##############################################################################################
       server:
-          # address: ${mfaas.service.ipAddress}
-          port: ${mfaas.server.port}
-          servlet:
-              contextPath: ${mfaas.server.contextPath}
-          ssl:
-              enabled: ${mfaas.security.sslEnabled}
-              protocol: ${mfaas.security.protocol}
-              ciphers: ${mfaas.security.ciphers}
-              keyStore: ${mfaas.security.keyStore}
-              keyAlias: ${mfaas.security.keyAlias}
-              keyPassword: ${mfaas.security.keyPassword}
-              keyStorePassword: ${mfaas.security.keyStorePassword}
-              keyStoreType: ${mfaas.security.keyStoreType}
-              trustStore: ${mfaas.security.trustStore}
-              trustStoreType: ${mfaas.security.trustStoreType}
-              trustStorePassword: ${mfaas.security.trustStorePassword}
+                scheme: ${apiml.service.scheme}
+                hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
+                port: ${apiml.service.port}
+                address: ${apiml.service.ipAddress} #127.0.0.1
+            
+                servlet:
+                    contextPath: /${apiml.service.serviceId}
+            
+                ssl:
+                    enabled: true
+                    protocol: TLSv1.2
+                    enabled-protocols: TLSv1.2
+                    ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+                    keyStoreType: PKCS12
+                    trustStoreType: PKCS12
 
       spring:
           application:
-              name: ${mfaas.discovery.serviceId}      
+              name: ${{apiml.service.serviceId}      
     ```
     In order to run your application locally, you need to define variables used under the `environment` group. 
     
@@ -271,13 +253,13 @@ As an API service developer, you set multiple configuration settings in your app
     
 2. Change the MFaaS parameters to correspond to your API service specifications. Most of these internal parameters contain "your service" text.
 
-    **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
+    **Note:**  `${apiml.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
 
     **Tip:** When existing parameters set by the system administrator are already present in your configuration file (for example, `hostname, address, contextPath,` and `port`), we recommend that you replace them with the corresponding MFaaS properties.
 
     a. **Discovery Parameters**
 
-    * **mfaas.discovery.serviceId**
+    * **apiml.service.serviceId**
 
          This parameter specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
 
@@ -301,7 +283,7 @@ As an API service developer, you set multiple configuration settings in your app
             http://gateway:port/api/v1/vantageprod1/endpoint1/...
             ```
 
-    * **mfaas.discovery.locations**
+    * **apiml.service.discoveryServiceUrls**
 
         This parameter specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
 
@@ -309,71 +291,64 @@ As an API service developer, you set multiple configuration settings in your app
          ```
          http://eureka:password@141.202.65.33:10311/eureka/
          ```
-    * **mfaas.discovery.enabled**
+    * **apiml.enabled**
 
         This parameter specifies whether the API service instance is to be discovered in the API ML. The system administrator at the customer site defines this parameter. Set this parameter to `true` if the API ML is installed and configured. Otherwise, you can set this parameter to `false` to exclude an API service instances from the API ML.    
-    * **mfaas.discovery.fetchRegistry**
-
-        This parameter specifies whether the API service is to receive regular update notifications from the discovery service. Under most circumstances, you can accept the default value of `false` for the parameter.
-
-    * **mfaas.discovery.region**
-
-        This parameter specifies the geographical region. This parameter is required by the Discovery client. Under most circumstances you can accept the value `default` for the parameter.          
 
     b. **Service and Server Parameters**
-    * **mfaas.service.hostname**
+    * **apiml.service.hostname**
 
         This parameter specifies the hostname of the system where the API service instance runs. This parameter is externalized and is set by the customer system administrator. The administrator ensures the hostname can be resolved by DSN to the IP address that is accessible by applications running on their z/OS systems.   
-    * **mfaas.service.ipAddress**
+    * **apiml.service.ipAddress**
 
         This parameter specifies the local IP address of the system where the API service instance runs. This IP address may or may not be a public IP address. This parameter is externalized and set by the customer system administrator.
-    * **mfaas.server.scheme**
+    * **apiml.service.scheme**
 
        This parameter specifies whether the API service is using the HTTPS protocol. This value can be set to `https` or `http` depending on whether your service is using SSL.
-    * **mfaas.server.port**
+    * **apiml.service.port**
 
        This parameter specifies the port that is used by the API service instance. This parameter is externalized and set by the customer system administrator.
-    * **mfaas.server.contextPath**
+    * **apiml.service.contextPath**
 
        This parameter specifies the prefix that is used within your API service URL path.
 
        **Examples:**
-       * If your API service does not use an extra prefix in the URL (for example, `http://host:port/endpoint1/`), set this value to `/`.
+       * If your API service does not use an extra prefix in the URL (for example, `https://host:port/endpoint1/`), set this value to `/`.
        * If your API service uses an extra URL prefix set the parameter to that prefix value.
-         For the URL: `http://host:port/filemaster/endpoint1/`, set this parameter to `/filemaster`.  
+         For the URL: `https://host:port/filemaster/endpoint1/`, set this parameter to `/filemaster`.  
        * In both examples, the API service URL appears as the following URL when routed through the Gateway:
             ```
-            http://gateway:port/serviceId/endpoint1/
+            https://gateway:port/serviceId/endpoint1/
             ```
 
     c. **API Catalog Parameters**
 
       These parameters are used to populate the API Catalog. The API Catalog contains information about every registered API service. The Catalog also groups related APIs. Each API group has its own name and description. Catalog groups are constructed in real-time based on information that is provided by the API services. Each group is displayed as a tile in the API Catalog UI dashboard.
 
-      * **mfaas.catalog-ui-tile.id**
+      * **apiml.catalog.tile.id**
 
         This parameter specifies the unique identifier for the API services product family. This is the grouping value used by the API ML to group multiple API services together into "tiles". Each unique identifier represents a single API Catalog UI dashboard tile. Specify a value that does not interfere with API services from other products.
 
-      * **mfaas.catalog-ui-tile.title**
+      * **apiml.catalog.tile.title**
 
         This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title
 
-      * **mfaas.catalog-ui-tile.description**
+      * **apiml.catalog.tile.description**
 
         This parameter specifies the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description
 
-      * **mfaas.catalog-ui-tile.version**
+      * **apiml.catalog.tile.version**
 
         This parameter specifies the semantic version of this API Catalog tile. Increase the version when you introduce new changes to the API services product family details (title and description).
 
-      * **mfaas.discovery.info.serviceTitle**
+      * **apiml.service.title**
 
         This parameter specifies the human readable name of the API service instance (for example, "`Endevor Prod`" or "`Sysview LPAR1`"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
          ![Service Status](../../images/api-mediation/Service-Status.png)
 
          **Tip:** We recommend that you provide a good default value or give good naming examples to the customers.
-      * **mfaas.discovery.info.description**
+      * **apiml.service.description**
 
           Specifies a short description of the API service.
 
@@ -381,11 +356,6 @@ As an API service developer, you set multiple configuration settings in your app
           This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
         **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
-      * **mfaas.discovery.info.swaggerLocation**
-
-        This parameter specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x Specification document. This value is optional and commented out by default.
-
-        **Note:** Specifying a `swaggerLocation` value disables the automated JSON API documentation generation with the SpringFox library. By disabling auto-generation, you need to keep the contents of the manual swagger definition consistent with your endpoints. We recommend to use auto-generation to prevent incorrect endpoint definitions in the static swagger documentation.  
 
     d. **Metadata Parameters**
 
@@ -393,7 +363,7 @@ As an API service developer, you set multiple configuration settings in your app
 
       **Note:** If your REST API does not conform to Zowe API Mediation Layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to `gatewayUrl` format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
 
-      * **`eureka.instance.metadata-map.routed-services.<prefix>`**
+      * **`eureka.instance.metadata-map.apiml.routes.<prefix>`**
 
         This parameter specifies a name for the routing rules group. This parameter is only for logical grouping of additional parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
@@ -402,10 +372,10 @@ As an API service developer, you set multiple configuration settings in your app
         api_v1
         api_v2
         ```
-      * **`eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`**
+      * **`eureka.instance.metadata-map.apiml.routes.<prefix>.gatewayUrl`**
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * **`metadata-map.routed-services.<prefix>.serviceUrl`**
+      * **`metadata-map.routes.<prefix>.serviceUrl`**
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
       * **`eureka.instance.metadata-map.apiml.apiInfo.apiId`**
@@ -426,51 +396,13 @@ As an API service developer, you set multiple configuration settings in your app
       
           (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
 
+      * **`eureka.instance.metadata-map.apiml.apiInfo.version`**
+      
+           Specifies the actual version of the API in semantic format.
+           
         **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
 
-        **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
-
-    e. **Swagger Api-Doc Parameters**
-
-      Parameter in this section configure API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
-
-      ```
-    api-info:
-       apiVersionProperties:
-          v1:
-              title: Your API title for swagger JSON which is displayed in API Catalog / service / API Information
-              description: Your API description for swagger JSON
-              version: 1.0.0
-              basePackage: your.service.base.package.for.swagger.annotated.controllers
-              # apiPattern: /v1/.*  # alternative to basePackage for exposing endpoints which match the regex pattern to swagger JSON
-      ```   
-
-    The following parameters describe the function of the specific version of an API. This information is included in the swagger JSON and displayed in the API Catalog:
-
-    ![API information detail](../../images/api-mediation/Service-detail.png)
-
-    where:
-
-   * **v1**
-
-     Specifies the major version of your service API: `v1, v2,` etc.
-   * **title**
-
-        Specifies the title of your service API.
-   * **description**             
-
-        Specifies the high-level function description of your service API.
-   * **version**
-
-        Specifies the actual version of the API in semantic format.
-   * **basePackage**
-
-        Specifies the package where the API is located. This option only exposes endpoints that are defined in a specified java package. The parameters `basePackage` and `apiPattern` are mutually exclusive. Specify only one of them and remove or comment out the second one.
-   * **apiPattern**
-
-        This option exposes any endpoints that match a specified regular expression. The parameters `basePackage` and `apiPattern` are mutually exclusive. Specify just one of them and remove or comment out the second one.
-
-        **Tip:** You have three options to make your endpoints discoverable and exposed: `basePackage`, `apiPattern`, or none (if you do not specify a parameter). If `basePackage` or `apiPattern` are not defined, all endpoints in the Spring Boot app are exposed.
+        **Note:** The endpoint `/api-doc` returns the API service Swagger JSON.
 
 ## Setup keystore with the service certificate
 
@@ -515,14 +447,14 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 The following list summarizes the API ML parameters that are set by the customer system administrator:
 
-   * `mfaas.discovery.enabled: ${environment.discoveryEnabled:true}`
-   * `mfaas.discovery.locations: ${environment.discoveryLocations}`
-   * `mfaas.discovery.serviceID: ${environment.serviceId}`
-   * `mfaas.discovery.info.serviceTitle: ${environment.serviceTitle}`
-   * `mfaas.discovery.info.description: ${environment.serviceDescription}`
-   * `mfaas.service.hostname: ${environment.hostname}`
-   * `mfaas.service.ipAddress: ${environment.ipAddress}`
-   * `mfaas.server.port: ${environment.port}`
+   * `apiml.service.enabled: ${environment.discoveryEnabled:true}`
+   * `apiml.service.discoveryServiceUrls: ${environment.discoveryLocations}`
+   * `apiml.service.serviceID: ${environment.serviceId}`
+   * `apiml.service.title: ${environment.serviceTitle}`
+   * `apiml.service.description: ${environment.serviceDescription}`
+   * `apiml.service.hostname: ${environment.hostname}`
+   * `apiml.service.ipAddress: ${environment.ipAddress}`
+   * `apiml.service.port: ${environment.port}`
 
 **Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YAML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
 
