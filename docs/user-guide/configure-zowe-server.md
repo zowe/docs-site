@@ -20,7 +20,7 @@ The script `zowe-install-proc.sh` has two arguments:
 
 - **Second Parameter**=Target PROCLIB PDS
    
-   Target PROCLIB PDS where ZWESVSTC will be placed. If parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first dataset where the user has write access
+   Target PROCLIB PDS where ZWESVSTC will be placed. If parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
    
    **Example**
 
@@ -28,7 +28,7 @@ The script `zowe-install-proc.sh` has two arguments:
 
 ## Step 2: Configure ZWESVSTC to run under the correct user ID
 
-The `ZWESVSTC` must be configured as a started task (STC) under the ZWESVUSR user ID with the administrator user ID of ZWEADMIN.  The commands to create the user ID and group is supplied in the PDS member `ZWESECUR`, see [Configuring the z/OS system for Zowe](configure-zos-system.md).  To associate the `ZWESVSTC` started task with the user ID and group see [Configuring a z/OS system for Zowe](configure-zos-system.md).  This step will be done once per z/OS environment by a system programmer who has sufficient security priviledges. 
+The `ZWESVSTC` must be configured as a started task (STC) under the ZWESVUSR user ID with the administrator user ID of ZWEADMIN.  The commands to create the user ID and group is supplied in the PDS member `ZWESECUR`, see [Configuring the z/OS system for Zowe](configure-zos-system.md).  To associate the `ZWESVSTC` started task with the user ID and group see [Configuring a z/OS system for Zowe](configure-zos-system.md).  This step will be done once per z/OS environment by a system programmer who has sufficient security privileges. 
 
 ## Step 3: Launch the ZWESVSTC started task
 
@@ -52,7 +52,7 @@ You can use SDSF to start Zowe.
 
 If you issue the SDSF command `/S ZWESVSTC`, it will fail because the script needs to know the instance directory containing the configuration details.  
 
-If you have a default instance directory you wish you always start Zowe with, you can tailor the JCL member `ZWESVSTC` at this line
+If you have a default instance directory you want you always start Zowe with, you can tailor the JCL member `ZWESVSTC` at this line
 
 ```
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'

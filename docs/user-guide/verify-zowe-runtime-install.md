@@ -1,10 +1,12 @@
 # Verifying Zowe installation on z/OS
 
-Once Zowe&trade; started task `ZWESVSTC` is running follow the instructions below to verify that the components are functional.  **Note** The variable variable `LAUNCH_COMPONENT_GROUPS` in the `instance.env` file can be used to launch Zowe controls whether the the API Mediation Layer and z/OS Services are started with the value `GATEWAY` and whether the Zowe Application Framework (aka Zowe desktop) is started with the value `DESKTOP`, [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups)
+After the Zowe&trade; started task `ZWESVSTC` is running, follow the instructions in the following sections to verify that the components are functional.  
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
 - [Verifying z/OS Services installation](#verifying-z-os-services-installation)
 - [Verifying API Mediation installation](#verifying-api-mediation-installation)
+
+**Note** Not all components may have been started. The variable variable `LAUNCH_COMPONENT_GROUPS` in the `instance.env` file controls whether the the API Mediation Layer and z/OS Services is started with the value `GATEWAY`, and whether the Zowe Application Framework (aka Zowe desktop) is started with the value `DESKTOP`, [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups).  
 
 ## Verifying Zowe Application Framework installation
 
