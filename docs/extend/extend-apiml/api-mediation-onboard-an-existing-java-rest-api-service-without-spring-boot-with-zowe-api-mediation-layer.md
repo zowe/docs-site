@@ -388,10 +388,10 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
             gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
     
     * **enableUrlEncodedCharacters**
-    
-        When set to true, the Gateway will allow encoded characters to be part of URL requests redirected through the Gateway. The default and recommended behaviour for this parameter is to be false. Do not set this to true, unless you specifically expect certain encoded characters in your application's requests. 
-        
-        **Important!**  When the encoded character expected is an encoded slash or backslash("%2f", "5C"), make sure the gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md)
+      
+        When this parameter is set to true, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+        **Important!**  When the encoded character expected is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
 
     * **apiInfo.apiId**
 

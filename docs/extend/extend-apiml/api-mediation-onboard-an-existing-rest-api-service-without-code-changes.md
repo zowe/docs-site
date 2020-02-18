@@ -277,7 +277,7 @@ The following list describes the configuration parameters:
 
 * **customMetadata**
 
-    (Optional) Additional metadata can be added to the instance information that is registered in discovery service through the `customMetadata` section. This information is propagated from the discovery service to it's clients (onboarded services). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure Api Mediation layer's functionality. Such metadata are generally prefixed with `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under it.
+    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service in the `customMetadata` section. This information is propagated from the Discovery Service to the onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. We recommend you define your own qualifier, and group all metadata you wish to publish under this qualifier.
 
 * **catalogUiTileId**
 
