@@ -74,7 +74,7 @@ If your computer is connected to the Internet, you can use the following method 
 
 1.  Ensure that the following required software is installed on your computer:
 
-    - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+    - [**Node.js V8.0 or higher LTS versions**](https://nodejs.org/en/download/releases/)
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
