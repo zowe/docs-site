@@ -4,7 +4,7 @@ As an application developer, use the API Catalog to view what services are runni
  API Mediation Layer. Through the API Catalog, you can also view the associated API documentation
   corresponding to a service, descriptive information about the service, and the current state
    of the service. The tiles in the API Catalog can be customized by changing values in
-   the mfaas.catalog-ui-tile section defined in the application.yml of a service. A microservice that
+   the `apiml.catalog.tile` section defined in the application.yml of a service. A microservice that
    is onboarded with the API Mediation Layer and configured appropriately, registers automatically with the API Catalog
    and a tile for that service is added to the Catalog.
 

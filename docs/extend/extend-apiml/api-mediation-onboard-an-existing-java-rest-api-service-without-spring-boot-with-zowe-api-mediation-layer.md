@@ -251,27 +251,41 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
 
     ```yaml
     serviceId: hellospring
-    title: HelloWorld Spring REST API
-    description: POC for exposing a Spring REST API
-    baseUrl: http://localhost:10020/hellospring
+    title: Hello Spring REST API
+    description: Example for exposing a Spring REST API
+    
+    baseUrl: http://localhost:10021/hellospring
+    serviceIpAddress: 127.0.0.1
+    
     homePageRelativeUrl:
     statusPageRelativeUrl: /application/info
     healthCheckRelativeUrl: /application/health
+    
     discoveryServiceUrls:
-        - http://eureka:password@localhost:10011/eureka
+        - https://localhost:10011/eureka
+    
     routes:
+        - gatewayUrl: api
+          serviceUrl: /hellospring
         - gatewayUrl: api/v1
-          serviceUrl: /hellospring/api/v1    
+          serviceUrl: /hellospring/api/v1
+        - gatewayUrl: api/v1/api-doc
+          serviceUrl: /hellospring/api-doc
+    
+    authentication:
+        scheme: bypass
+    
     apiInfo:
-        - apiId: ${mfaas.discovery.serviceId}
+        - apiId: org.zowe.hellospring
           gatewayUrl: api/v1
-          swaggerUrl: ${mfaas.server.scheme}://${mfaas.service.hostname}:${mfaas.server.port}${mfaas.server.contextPath}/api-doc
-          documentationUrl: https://docs.zowe.org
-    catalogUiTile:
-        id: helloworld-spring
-        title: HelloWorld Spring REST API
-        description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
-        version: 1.0.0
+          swaggerUrl: http://localhost:10021/hellospring/api-doc
+    
+    catalog:
+        tile:
+            id: cademoapps
+            title: Sample API Mediation Layer Applications
+            description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
+            version: 1.0.0
     ```
 3.  Customize your configuration parameters to correspond with your API service specifications.
 
