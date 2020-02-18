@@ -349,9 +349,9 @@ After you define and validate the service in YAML format, you are ready to add y
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Add the fully qualified USS path to your YAML file to instance.env
+2. Add the fully qualified zFS path to your YAML file to instance.env
 
-    If you wish to hold your YAML file outside of the instance directory, append the fully qualified USS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
+    If you wish to hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
 
     or: 
     
