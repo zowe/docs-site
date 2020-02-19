@@ -411,7 +411,7 @@ As an API service developer, you set multiple configuration settings in your app
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
-      * **`enableUrlEncodedCharacters`**
+      * **`eureka.instance.metadata-map.apiml.enableUrlEncodedCharacters`**
       
           When this parameter is set to true, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
