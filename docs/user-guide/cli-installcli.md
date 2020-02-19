@@ -25,7 +25,7 @@ If you do not have internet access at your site, use the following method to ins
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    - A version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/)
+    - A version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
@@ -78,10 +78,9 @@ If your computer is connected to the Internet, you can use the following method 
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    - **Node Package Manager V5.0 or later**
+    - A version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-        npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
+        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 2.  Issue the following command to set the registry to the Zowe CLI scoped package. In addition to setting the scoped registry, your default registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
     ```
