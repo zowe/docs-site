@@ -45,7 +45,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     In the sample service, the `service ID` is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL and is composed of the API type and the major version.
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version.
 
     **Example:**
 
@@ -341,23 +341,23 @@ After you define and validate the service in YAML format, you are ready to add y
 
 **Follow these steps:**
 
-1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=` which will be a fully qualified path to the instance directory.  For more information see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md##extensions).
+1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=` which will be a fully qualified path to the instance directory.  For more information, see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md#extensions).
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Add the fully qualified zFS path to your YAML file to instance.env
+2. Add the fully qualified zFS path of your YAML file to `instance.env`.
 
-    If you wish to hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env`.  This variable contains a semi colon separated list of static API extension YAML files, see 
+    If you want to hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env` file.  This variable contains a semicolon separated list of static API extension YAML files.
 
-    or: 
+    Or: 
     
-    if you wish to place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
+    If you want to place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
     **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
 
-    **Note** The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
+    **Note:** The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
 
-3. Ensure that your application that provides the endpoints described in the YAML file is running 
+3. Check and ensure that your application that provides the endpoints described in the YAML file is running. 
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
