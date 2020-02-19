@@ -317,7 +317,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Request failed because of internal error.
+  Request failed because of an internal error.
 
   **Action:**
 
@@ -335,7 +335,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Obtain new token by performing an authentication request.
+  Obtain a new token by performing an authentication request.
 
 ### ZWEAT103E
 
@@ -528,13 +528,13 @@ The following error message codes may appear on logs or API responses. Use the f
   **Reason:**
 
   There are three possible causes of this error:
-  - The specified static API definition folder is empty
-  - The definition does not denote a directory
+  - The specified static API definition folder is empty.
+  - The definition does not denote a directory.
   - An I/O error occurred while attempting to read the static API definition directory.
 
   **Action:**
 
-  Review the static API definition directory definition and its contents on the storage. The static definition directories are specified as a parameter to launch a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
+  Review the static API definition directory definition and its contents on the storage. The static definition directories are specified as a parameter to launch a Discovery Service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
 
 ### ZWEAD704E
 
@@ -640,7 +640,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token is not valid
+  The JWT token is not valid.
 
   **Action:**
 
@@ -652,7 +652,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token has expired
+  The JWT token has expired.
 
   **Action:**
 
@@ -826,7 +826,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Make sure the Discovery service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
+  Make sure the Discovery Service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
 
 ### ZWEAC101E
 
