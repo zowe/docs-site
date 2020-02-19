@@ -245,8 +245,6 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 Optional metadata section
 ```yaml
 customMetadata:
-    apiml:
-        enableUrlEncodedCharacters: false
     yourqualifier:
         key1: value1
         key2: value2
@@ -576,11 +574,13 @@ discoveryServiceUrls:
 
 ### Custom Metadata
 
-Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+   (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+
+#### Api Mediation Layer specific metadata
 
 * **`customMetadata.apiml.enableUrlEncodedCharacters`**
       
-    When this parameter is set to true, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+    When this parameter is set to true, encoded characters in request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
     **Important!**  When the encoded character expected is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
     

@@ -407,13 +407,13 @@ As an API service developer, you set multiple configuration settings in your app
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
       
-      * **`metadata-map.routed-services.<prefix>.serviceUrl`**
+      * **`eureka.instance.metadata-map.routed-services.<prefix>.serviceUrl`**
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
 
       * **`eureka.instance.metadata-map.apiml.enableUrlEncodedCharacters`**
       
-          When this parameter is set to true, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          When this parameter is set to true, encoded characters in request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
           **Important!**  When the encoded character expected is an encoded slash or backslash (i.e. `%2F`, `%5C`), make sure the gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
 
