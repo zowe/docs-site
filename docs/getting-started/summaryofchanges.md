@@ -36,9 +36,38 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
+- **Breaking Change** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
+
+- **Breaking Change** The `--pass` option is changed to `--password`  for all commands and profiles. The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe zosmf create profile` command and use the new option name `--password`.
+
+- **Breaking Change** You can enter a value of `PROMPT*` for any CLI option to enable interactive prompting. If you created scripts where any option was defined with the exact value `PROMPT*`, the script will not execute properly in this version.
+
+- The following new plug-ins are added in v1.9.x LTS:  TODO ADD LINKS
+  - IBM® z/OS FTP Plug-in for Zowe CLI
+  - IBM® IMS™ Plug-in for Zowe CLI
+  - IBM® MQ Plug-in for Zowe CLI
+  - Secure Credential Store for Zowe CLI
+
 - Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
 
     **Note:** The IBM Db2 and Secure Credential Store plug-ins for Zowe CLI will *not* run on z/OS due to native code requirements.
+
+- The `zowe files copy` command was added for copying the contents of a data set or member to another data set or member. [#580](https://github.com/zowe/zowe-cli/pull/580)
+- Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+- The following new commands were added for interacting with file systems:
+    - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
+    - `zowe zos-files mount fs` [#431](https://github.com/zowe/zowe-cli/issues/431)
+    - `zowe zos-files unmount fs` [#432](https://github.com/zowe/zowe-cli/issues/432)
+- The following new commands were added for creating USS files and directories:
+    - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
+    - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
+
+Commands were added to the IBM® CICS® Plug-in that let you perform the following tasks:
+  - **BREAKING CHANGE** The plug-in now uses HTTPS by default when connecting to CMCI. The option `--protocol http` was added to let you override the default as needed. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
+  -  Define, enable, install, discard, disable, and delete CICS URIMaps. [#53](https://github.com/zowe/zowe-cli-cics-plugin/issues/53) [#49](https://github.com/zowe/zowe-cli-cics-plugin/issues/49) [#48](https://github.com/zowe/zowe-cli-cics-plugin/issues/48) [#51](https://github.com/zowe/zowe-cli-cics-plugin/issues/51) [#50](https://github.com/zowe/zowe-cli-cics-plugin/issues/50) [#52](https://github.com/zowe/zowe-cli-cics-plugin/issues/52)
+  - Define and delete CICS web services. [#58](https://github.com/zowe/zowe-cli-cics-plugin/issues/58) [#59](https://github.com/zowe/zowe-cli-cics-plugin/issues/59)
+  - Add and removing CSD Groups to/from CSD Lists [#60](https://github.com/zowe/zowe-cli-cics-plugin/issues/60).
+
 
 #### Zowe Explorer
 
