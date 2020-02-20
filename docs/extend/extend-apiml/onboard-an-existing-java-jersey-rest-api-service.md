@@ -1,138 +1,133 @@
-# Onboard a Java REST APIs with Spring Boot
 
-As an API developer, use this guide to onboard your REST API service to the Zowe&trade; API Mediation Layer (API ML). This article outlines a step-by-step process to make your API service available in the Zowe&trade; API ML.
+# Java Jersey REST APIs
 
-**Notes:** 
-- The following guide is for enabler versions 1.2 and lower. To onboard a Spring Boot based REST API service for enabler versions 1.3 and higher, see [Onboard a Spring Boot based REST API Service](api-mediation-onboard-a-spring-boot-rest-api-service.md). 
-- Spring is a Java-based framework that lets you build web and enterprise applications. For more information, see the [Spring website](https://spring.io/).
+As an API developer, use this guide to onboard your Java Jersey REST API service with the Zowe&trade; API Mediation Layer. This article outlines a step-by-step process to make your API service available in the API Mediation Layer.
 
-The following procedure outlines the general steps to onboard a REST service using Spring Boot to the Zowe&trade; API ML. Each of these steps is described in more detail in this article.
+**Note:** The following guide is to onboard a REST API service using the API ML/enabler version 1.2 and earlier. To onboard a REST API service using API ML/enabler version 1.3 and higher, see the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
 
-1. [Add Zowe API enablers to your service](#add-zowe-api-enablers-to-your-service)
-2. [Add API ML onboarding configuration](#add-api-ml-onboarding-configuration)
-3. [Externalize API ML configuration parameters](#externalize-api-ml-configuration-parameters)
-4. [Test your service](#test-your-service)
-5. [Review the configuration examples of the discoverable client](#review-the-configuration-examples-of-the-discoverable-client)
-
-## Add Zowe API enablers to your service
-The general steps to onboard a REST API to the Zowe ecosystem begins with adding the Zowe Artifactory repository definition to the list of repositories. Then add the Spring enabler to the list of your dependencies. Finally, add enabler annotations to your service code. Enablers prepare your service for discovery and swagger documentation retrieval.
+The following procedure is an overview of steps to onboard a Java Jersey REST API application with the API Mediation Layer.
 
 **Follow these steps:**
-1. Add the Zowe Artifactory repository definition to the list of repositories in _Gradle_ or _Maven_ build systems. Use the code block that corresponds to your build system.
-    * In a _Gradle_ build system, add the following code to the `build.gradle` file into the `repositories` block.
 
-        ```
+1. [Get enablers from the Artifactory](#get-enablers-from-the-artifactory)
+
+2. [Add API ML Onboarding Configuration](#add-api-ml-onboarding-configuration)
+
+3. [Externalize Parameters](#externalize-parameters)
+
+4. [Download Apache Tomcat and enable SSL](#download-apache-tomcat-and-enable-ssl)
+
+5. [Run your Service](#run-your-service)
+
+## Get enablers from the Artifactory
+
+The first step to onboard a Java Jersey REST API into the Zowe ecosystem is to get enabler annotations from the Artifactory. Enablers prepare your service for discovery and for the retrieval of Swagger documentation.
+
+You can use either _Gradle_ or _Maven_ build automation systems.
+
+### Gradle guide
+Use the following procedure if you use _Gradle_ as your build automation system.
+
+**Tip:** To migrate from _Maven_ to _Gradle_, go to your project directory and run `gradle init`. This converts the _Maven_ build to a _Gradle_ build by generating a `setting.gradle` file and a `build.gradle` file.
+
+**Follow these steps:**
+
+1.  Create a `gradle.properties` file in the root of your project.
+
+2.  In the `gradle.properties` file, set the following URL of the repository and customize the values of your credentials to access the repository.
+
+    ```
+    # Repository URL for getting the enabler-jersey artifact (`integration-enabler-java`)
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
+    ```
+
+    This file specifies the URL for the repository of the Artifactory. The enabler-jersey artifact is downloaded from this repository.
+
+3. Add the following _Gradle_ code block to the `build.gradle` file:
+
+    ```groovy
+    ext.mavenRepository = {
       maven {
-          url 'https://zowe.jfrog.io/zowe/libs-release'
+        url artifactoryMavenSnapshotRepo
       }
-        ```
-      **Note:** You can define the `gradle.properties` file where you can set your username, password, and the
-      read-only repo URL for access to the Zowe Artifactory. By defining the `gradle.properties`, you do not need to hardcode the username,
-      password, and read-only repo URL in your `gradle.build` file.
+    }
 
-      **Example:**
-      ```
-         # Artifactory repositories for builds
-         artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
-      ```
+    repositories mavenRepositories
 
-    * In a _Maven_ build system, follow these steps:
+    ```
+    The `ext` object declares the `mavenRepository` property. This property is used as the project repository.
 
-        a) Add the following code to the `pom.xml` file:
+4. In the same `build.gradle` file, add the following code to the dependencies code block. This snippet adds the enabler-jersey artifact as a dependency of your project:
 
-        ```
+    ```groovy
+      compile(group: 'org.zowe.apiml.sdk', name:   'mfaas-integration-enabler-java', version: '1.1.0')
+    ```
+
+5. In your project directory, run the `gradle build` command to build your project.
+
+### Maven guide
+
+Use the following procedure if you use _Maven_ as your build automation system.
+
+**Tip:** To migrate from _Gradle_ to _Maven_, go to your project directory and run `gradle install`. This command automatically generates a `pom-default.xml` inside the `build/poms` subfolder where all of the dependencies are contained.
+
+**Follow these steps:**
+
+1. Add the following _xml_ tags within the newly created `pom.xml` file:
+
+   ```xml
+     <repositories>
         <repository>
-               <id>Zowe</id>
-               <url>https://zowe.jfrog.io/zowe/libs-release</url>
+          <id>libs-release</id>
+          <name>libs-release</name>
+          <url>https://zowe.jfrog.io/zowe/libs-release</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
         </repository>
-        ```
+      </repositories>
+   ```
 
-        b) Create a `settings.xml` file and copy the following XML code block which defines the
-        login credentials for the Zowe  Artifactory. Use valid credentials.  
+    This file specifies the URL for the repository of the Artifactory where you download the enabler-jersey artifact.
 
-        ```
-        <?xml version="1.0" encoding="UTF-8"?>
+2. In the same file, copy the following _xml_ tags to add the enabler-jersey artifact as a dependency of your project:
+   ```xml
+    <dependency>
+        <groupId>org.zowe.apiml.sdk</groupId>
+        <artifactId>mfaas-integration-enabler-java</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+   ```
+3. Create a `settings.xml` file and copy the following _xml_ code block which defines the credentials for the Artifactory:
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
 
-        <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
-        <servers>
-           <server>
-               <id>Zowe</id>
-           </server>
-        </servers>
-        </settings>
-        ```  
-
-        c) Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
-
-2. Add a JAR package to the list of dependencies in _Gradle_ or _Maven_ build systems. Zowe API Mediation Layer supports Spring Boot versions 1.5.9 and 2.0.4.
-
-     * If you use Spring Boot release 1.5.x in a _Gradle_ build system, add the following code to the `build.gradle` file into the `dependencies` block:
-
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+       <server>
+           <id>libs-release</id>
+       </server>
+    </servers>
+    </settings>
     ```
-        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE', version: '1.1.0'
-    ```
-     * If you use Spring Boot release 1.5.x in a _Maven_ build system, add the following code to the `pom.xml` file:
+4. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
 
-    ```
-        <dependency>
-              <groupId>org.zowe.apiml.sdk</groupId>
-              <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
-              <version>1.1.0</version>
-        </dependency>
-    ```
-     * If you use the Spring Boot release 2.0.x in a _Gradle_ build system, add the following code to the `build.gradle` file into the `dependencies` block:   
-        ```
-        compile group: 'org.zowe.apiml.sdk', name: 'mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE', version: '1.1.0'
-        ```
+5. In the directory of your project, run the `mvn package` command to build the project.
 
-     * If you use the Spring Boot release 2.0.x in a _Maven_ build system, add the following code to the `pom.xml` file:  
-        ```
-        <dependency>
-               <groupId>org.zowe.apiml.sdk</groupId>
-               <artifactId>mfaas-integration-enabler-spring-v2-springboot-2.0.4.RELEASE</artifactId>
-               <version>1.1.0</version>
-        </dependency>
-        ```
-3. Add the following annotations to the main class of your Spring Boot, or add these annotations to an extra Spring configuration class:
+## Add API ML Onboarding Configuration
+<!-- TODO -->
+As an API service developer, you set multiple configuration settings in your `application.yml` that correspond to the API ML. These settings enable an API to be discoverable and included in the API Catalog. Some of the settings in the `application.yml` are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: `${environment.*}`.
 
-    *  `@ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})`
-
-        This annotation makes an API documentation endpoint visible within the Spring context.
-    *  `@EnableApiDiscovery`
-
-        This annotation exposes your Swagger (OpenAPI) documentation in the Zowe ecosystem to make your micro service discoverable in the Zowe ecosystem.
-
-        **Note:** The `@EnableApiDiscovery` annotation uses the Spring Fox library. If your service uses the library already, some fine tuning may be necessary.
-
-    **Example:**   
-
-    ```
-     package org.zowe.apiml.DiscoverableClientSampleApplication;
-     ..
-     import org.zowe.apiml.enable.EnableApiDiscovery;
-     import org.springframework.context.annotation.ComponentScan;
-     ..
-     @EnableApiDiscovery
-     @ComponentScan({"org.zowe.apiml.enable", "org.zowe.apiml.product"})
-     ...
-     public class DiscoverableClientSampleApplication {...
-     ```  
-  You are now ready to build your service to include the code pieces that make it discoverable in the API Mediation Layer and to add Swagger documentation.
-
-## Add API ML onboarding configuration
-
-As an API service developer, you set multiple configuration settings in your application.yml that correspond to the API ML. These settings enable an API to be discoverable and included in the API catalog. Some of the settings in the application.yml are internal and are set by the API service developer. Some settings are externalized and set by the customer system administrator. Those external settings are service parameters and are in the format: `${environment.*}`.
-
-**Important!** Spring Boot configuration can be externalized in multiple ways. For more information see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an `application.yml` file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
+**Important!** Spring Boot configuration can be externalized in multiple ways. For more information see: [Externalized configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html). This Zowe onboarding documentation applies to API services that use an application.yml file for configuration. If your service uses a different configuration option, transform the provided configuration sample to the format that your API service uses.
 
 **Tip:** For information about how to set your configuration when running a Spring Boot application under an external servlet container (_TomCat_), see the following short _stackoverflow_ article: [External configuration for spring-boot application](https://stackoverflow.com/questions/29106579/external-configuration-for-spring-boot-application).
 
 **Follow these steps:**
 
-1. Add the following #MFAAS configuration section in your `application.yml`:
+1. Add the following `#MFAAS configuration section` in your `application.yml`:
 
     ```
       ##############################################################################################
@@ -165,18 +160,6 @@ As an API service developer, you set multiple configuration settings in your app
               scheme: http
               port: ${environment.port}
               contextPath: /yourServiceUrlPrefix
-          security:
-              sslEnabled: true
-              protocol: TLSv1.2
-              ciphers: TLS_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-              keyAlias: localhost
-              keyPassword: password
-              keyStore: keystore/ssl_local/localhost.keystore.p12
-              keyStoreType: PKCS12
-              keyStorePassword: password
-              trustStore: keystore/ssl_local/localhost.truststore.p12
-              trustStoreType: PKCS12
-              trustStorePassword: password
 
       eureka:
           instance:
@@ -232,30 +215,17 @@ As an API service developer, you set multiple configuration settings in your app
           port: ${mfaas.server.port}
           servlet:
               contextPath: ${mfaas.server.contextPath}
-          ssl:
-              enabled: ${mfaas.security.sslEnabled}
-              protocol: ${mfaas.security.protocol}
-              ciphers: ${mfaas.security.ciphers}
-              keyStore: ${mfaas.security.keyStore}
-              keyAlias: ${mfaas.security.keyAlias}
-              keyPassword: ${mfaas.security.keyPassword}
-              keyStorePassword: ${mfaas.security.keyStorePassword}
-              keyStoreType: ${mfaas.security.keyStoreType}
-              trustStore: ${mfaas.security.trustStore}
-              trustStoreType: ${mfaas.security.trustStoreType}
-              trustStorePassword: ${mfaas.security.trustStorePassword}
 
       spring:
           application:
               name: ${mfaas.discovery.serviceId}      
     ```
-    In order to run your application locally, you need to define variables used under the `environment` group. 
-    
+    In order to run your application locally, you need to define variables used under the `environment` group.
+
     ```yaml
     ##############################################################################################
    # Local configuration section
     ##############################################################################################
- 
     environment:
         serviceId: Your service id
         serviceTitle: Your service title
@@ -266,10 +236,10 @@ As an API service developer, you set multiple configuration settings in your app
         discoveryLocations: https://localhost:10011/eureka/
         ipAddress: 127.0.0.1
     ```
-    
+
     **Important:** Add this configuration also to the `application.yml` used for testing. Failure to add this configuration to the `application.yml` will cause your tests to fail.
-    
-2. Change the MFaaS parameters to correspond to your API service specifications. Most of these internal parameters contain "your service" text.
+
+2. Change the MFaaS parameters to correspond with your API service specifications. Most of these internal parameters contain "your service" text.
 
     **Note:**  `${mfaas.*}` variables are used throughout the `application.yml` sample to reduce the number of required changes.
 
@@ -279,7 +249,7 @@ As an API service developer, you set multiple configuration settings in your app
 
     * **mfaas.discovery.serviceId**
 
-         This parameter specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
+         This parameter specifies the service instance identifier to register in the API ML installation. The service ID is used in the URL for routing to the API service through the Gateway. The service ID uniquely identifies instances of a microservice in the API ML. The system administrator at the customer site defines this parameter.  
 
         **Important!**  Ensure that the service ID is set properly with the following considerations:
 
@@ -296,14 +266,14 @@ As an API service developer, you set multiple configuration settings in your app
             ```
             https://gateway:port/api/v1/sysviewlpr1/endpoint1/...
             ```
-         * If the customer system administrator sets the service ID to `vantageprod1`, the API URL in the API Gateway appears as the following URL:             
+         * If the customer system administrator sets the service ID to vantageprod1, the API URL in the API Gateway appears as the following URL:             
             ```
             http://gateway:port/api/v1/vantageprod1/endpoint1/...
             ```
 
     * **mfaas.discovery.locations**
 
-        This parameter specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
+        Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
 
         **Example:**
          ```
@@ -323,16 +293,20 @@ As an API service developer, you set multiple configuration settings in your app
     b. **Service and Server Parameters**
     * **mfaas.service.hostname**
 
-        This parameter specifies the hostname of the system where the API service instance runs. This parameter is externalized and is set by the customer system administrator. The administrator ensures the hostname can be resolved by DSN to the IP address that is accessible by applications running on their z/OS systems.   
+        This parameter specifies the hostname of the system where the API service instance runs. This parameter is externalized and is set by the customer system administrator. The administrator ensures the hostname can be resolved by DSN to the IP address that is accessible by applications running on their z/OS systems. 
+
     * **mfaas.service.ipAddress**
 
         This parameter specifies the local IP address of the system where the API service instance runs. This IP address may or may not be a public IP address. This parameter is externalized and set by the customer system administrator.
+
     * **mfaas.server.scheme**
 
        This parameter specifies whether the API service is using the HTTPS protocol. This value can be set to `https` or `http` depending on whether your service is using SSL.
+
     * **mfaas.server.port**
 
        This parameter specifies the port that is used by the API service instance. This parameter is externalized and set by the customer system administrator.
+
     * **mfaas.server.contextPath**
 
        This parameter specifies the prefix that is used within your API service URL path.
@@ -368,71 +342,77 @@ As an API service developer, you set multiple configuration settings in your app
 
       * **mfaas.discovery.info.serviceTitle**
 
-        This parameter specifies the human readable name of the API service instance (for example, "`Endevor Prod`" or "`Sysview LPAR1`"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
+        This parameter specifies the human readable name of the API service instance (for example, "Endevor Prod" or "Sysview LPAR1"). This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
          ![Service Status](../../images/api-mediation/Service-Status.png)
 
          **Tip:** We recommend that you provide a good default value or give good naming examples to the customers.
+
       * **mfaas.discovery.info.description**
 
-          Specifies a short description of the API service.
+          This parameter is a short description of the API service.
 
           **Example:** "`CA Endevor SCM - Production Instance`" or "`CA SYSVIEW running on LPAR1`".
           This value is displayed in the API Catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.  
 
         **Tip:** We recommend that you provide a good default value or give good naming examples to the customers. Describe the service so that the end user knows the function of the service.
+
       * **mfaas.discovery.info.swaggerLocation**
 
         This parameter specifies the location of a static swagger document. The JSON document contained in this file is displayed instead of the automatically generated API documentation. The JSON file must contain a valid OpenAPI 2.x Specification document. This value is optional and commented out by default.
 
-        **Note:** Specifying a `swaggerLocation` value disables the automated JSON API documentation generation with the SpringFox library. By disabling auto-generation, you need to keep the contents of the manual swagger definition consistent with your endpoints. We recommend to use auto-generation to prevent incorrect endpoint definitions in the static swagger documentation.  
+        **Note:** Specifying a `swaggerLocation` value disables the automated JSON API documentation generation with the _SpringFox_ library. By disabling auto-generation, you need to keep the contents of the manual swagger definition consistent with your endpoints. We recommend to use auto-generation to prevent incorrect endpoint definitions in the static swagger documentation.  
 
     d. **Metadata Parameters**
 
       The routing rules can be modified with parameters in the metadata configuration code block.  
 
-      **Note:** If your REST API does not conform to Zowe API Mediation Layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to `gatewayUrl` format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
+      **Note:** If your REST API does not conform to Zowe API Mediation layer REST API Building codes, configure routing to transform your actual endpoints (serviceUrl) to gatewayUrl format. For more information see: [REST API Building Codes](https://docops.ca.com/display/IWM/Guidelines+for+Building+a+New+API)
 
-      * **`eureka.instance.metadata-map.routed-services.<prefix>`**
+      * `eureka.instance.metadata-map.routed-services.<prefix>`
 
-        This parameter specifies a name for the routing rules group. This parameter is only for logical grouping of additional parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
+        This parameter specifies a name for routing rules group. This parameter is only for logical grouping of further parameters. You can specify an arbitrary value but it is a good development practice to mention the group purpose in the name.
 
         **Examples:**
         ```
         api_v1
         api_v2
         ```
-      * **`eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`**
+      * `eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * **`metadata-map.routed-services.<prefix>.serviceUrl`**
+
+      * `metadata-map.routed-services.<prefix>.serviceUrl`
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
-      * **`eureka.instance.metadata-map.apiml.apiInfo.apiId`**
-      
+
+      * `eureka.instance.metadata-map.apiml.apiInfo.apiId`
+          
           This parameter specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
           The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services. The creator of the API defines this ID.
-          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`.
+          The API ID needs to be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. 
           
-           We recommend that you use your organization as the prefix.
-      * **`eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`**
-      
-          This parameter specifies the base path at the API gateway where the API is available. Ensure that it is the same path as the _gatewayUrl_ value in the _routes_ sections.
-          
-      * **`eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`**
-      
+          We recommend that you use your organization as the prefix.
+
+      * `eureka.instance.metadata-map.apiml.apiInfo.gatewayUrl`
+
+          The base path at the API gateway where the API is available. Ensure that it is the same path as the `gatewayUrl` value in the `routes` sections.
+
+      * `eureka.instance.metadata-map.apiml.apiInfo.documentationUrl`
+
           (Optional) This parameter specifies a link to external documentation, if needed. The link to the external documentation can be included along with the Swagger documentation.
-      * **`eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`**
-      
+
+      * `eureka.instance.metadata-map.apiml.apiInfo.swaggerUrl`
+
           (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available. 
 
-        **Important!** Ensure that each of the values for gatewayUrl parameter are unique in the configuration. Duplicate gatewayUrl values may cause requests to be routed to the wrong service URL.
+        **Important!** Ensure that each of the values for the `gatewayUrl` parameter are unique in the configuration. Duplicate `gatewayUrl` values may cause requests to be routed to the wrong service URL.
 
         **Note:** The endpoint `/api-doc` returns the API service Swagger JSON. This endpoint is introduced by the `@EnableMfaasInfo` annotation and is utilized by the API Catalog.
 
     e. **Swagger Api-Doc Parameters**
 
-      Parameter in this section configure API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
+      This parameter configures API Version Header Information, specifically the [InfoObject](https://swagger.io/specification/#infoObject) section, and adjusts Swagger documentation that your API service returns. Use the following format:
 
       ```
     api-info:
@@ -478,18 +458,18 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 **Follow these steps:**
 
-1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost)
+1. Follow instructions at [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/tree/master/keystore#generating-certificate-for-a-new-service-on-localhost).
 
     When a service is running on `localhost`, the command can have the following format:
-       
+
     ```
     <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
     ```
-        
+
     Alternatively, for the purpose of local development, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 
 2. Update the configuration of your service `application.yml` to contain the HTTPS configuration by adding the following code:
-       
+
     ```
     server:
         ssl:
@@ -511,74 +491,199 @@ To register with the API Mediation Layer, a service is required to have a certif
 
 **Note:** You need to define both keystore and truststore even if your server is not using an HTTPS port.
 
-## Externalize API ML configuration parameters
 
-The following list summarizes the API ML parameters that are set by the customer system administrator:
 
-   * `mfaas.discovery.enabled: ${environment.discoveryEnabled:true}`
-   * `mfaas.discovery.locations: ${environment.discoveryLocations}`
-   * `mfaas.discovery.serviceID: ${environment.serviceId}`
-   * `mfaas.discovery.info.serviceTitle: ${environment.serviceTitle}`
-   * `mfaas.discovery.info.description: ${environment.serviceDescription}`
-   * `mfaas.service.hostname: ${environment.hostname}`
-   * `mfaas.service.ipAddress: ${environment.ipAddress}`
-   * `mfaas.server.port: ${environment.port}`
+## Externalize parameters
 
-**Tip:** Spring Boot applications are configured in the `application.yml` and `bootstrap.yml` files that are located in the USS file system. However, system administrators prefer to provide configuration through the mainframe sequential data set (or PDS member). To override Java values, use Spring Boot with an external YAML file, environment variables, and Java System properties. For Zowe API Mediation Layer applications, we recommend that you use Java System properties.        
-
-Java System properties are defined using `-D` options for Java. Java System properties can override any configuration. Those properties that are likely to change are defined as `${environment.variableName}:`     
-
-```
-IJO="$IJO -Denvironment.discoveryEnabled=.."
-IJO="$IJO -Denvironment.discoveryLocations=.."
-
-IJO="$IJO -Denvironment.serviceId=.."
-IJO="$IJO -Denvironment.serviceTitle=.."
-IJO="$IJO -Denvironment.serviceDescription=.."
-IJO="$IJO -Denvironment.hostname=.."
-IJO="$IJO -Denvironment.ipAddress=.."
-IJO="$IJO -Denvironment.port=.."
-```     
-The `discoveryLocations` (public URL of the discovery service) value is found in the API Meditation Layer configuration, in the `*.PARMLIB(MASxPRM)` member and assigned to the MFS_EUREKA variable.
-
-**Example:**
-```
-MFS_EUREKA="http://eureka:password@141.202.65.33:10011/eureka/")
-```      
-
-## Test your service
-
-To test that your API instance is working and is discoverable, use the following validation tests:
-
-### Validate that your API instance is still working
+In order to externalize parameters, you have to create a `ServletContextListener`. To  create your own
+`ServletContextListener`, register a `ServletContextListener` and enable it to read all
+the properties defined in the YAML file.
 
 **Follow these steps:**
 
- 1. Disable discovery by setting `discoveryEnabled=false` in your API service instance configuration.
- 2. Run your tests to check that they are working as before.
-
-### Validate that your API instance is discoverable
-
-**Follow these steps:**
- 1. Point your configuration of API instance to use the following Discovery Service:
-    ```
-    http://eureka:password@localhost:10011/eureka
-    ```
- 2. Start up the API service instance.
- 3. Check that your API service instance and each of its endpoints are displayed in the API Catalog
-    ```
-    https://localhost:10010/ui/v1/caapicatalog/
-    ```
-
- 4. Check that you can access your API service endpoints through the Gateway.
+1. Define parameters that you want to externalize in a YAML file.
+Ensure that this file is placed in the `WEB-INF` folder located in the module of your service. Check the `ApiMediationServiceConfig.java` class inside `com.ca.mfaas.eurekaservice.client.config` package in the `integration-enabler-java` to see the mapped parameters and make sure that the YAML file follows the correct structure. The following example shows the structure of the YAML file:
 
     **Example:**
+
+      ```yaml
+         serviceId:
+         eureka:
+             hostname:
+             ipAddress:
+             port:
+         title:
+         description:
+         defaultZone:
+         baseUrl:
+         homePageRelativeUrl:
+         statusPageRelativeUrl:
+         healthCheckRelativeUrl:
+         discoveryServiceUrls:
+
+         ssl:
+             verifySslCertificatesOfServices: true
+             protocol: TLSv1.2
+             keyAlias: localhost
+             keyPassword: password
+             keyStore: ../keystore/localhost/localhost.keystore.p12
+             keyStorePassword: password
+             keyStoreType: PKCS12
+             trustStore: ../keystore/localhost/localhost.truststore.p12
+             trustStorePassword: password
+             trustStoreType: PKCS12
+         routes:
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
+             - gatewayUrl:
+               serviceUrl:
+         apiInfo:
+             - apiId:
+               gatewayUrl:
+               swaggerUrl:
+               documentationUrl:
+         catalogUiTile:
+             id:
+             title:
+             description:
+             version:
+
+      ```
+
+2. Before the web application (_Tomcat_) is started, create a `ServletContextListener` to run the defined code.
+
+    **Example:**
+     ```java
+                package org.zowe.apiml.hwsjersey.listener;
+
+                import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+                import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+                import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+                import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
+
+                import javax.servlet.ServletContextEvent;
+                import javax.servlet.ServletContextListener;
+
+
+                public class ApiDiscoveryListener implements ServletContextListener {
+                    private ApiMediationClient apiMediationClient;
+
+                    @Override
+                    public void contextInitialized(ServletContextEvent sce) {
+                        apiMediationClient = new ApiMediationClientImpl();
+                        String configurationFile = "/service-configuration.yml";
+                        ApiMediationServiceConfig config = new ApiMediationServiceConfigReader(configurationFile).readConfiguration();
+                        apiMediationClient.register(config);
+                    }
+
+                    @Override
+                    public void contextDestroyed(ServletContextEvent sce) {
+                        apiMediationClient.unregister();
+                    }
+                }
+
     ```
-    https://localhost:10010/api/v1/
+
+3. Register the listener. Use one of the following two options:
+
+    * Add the ```@WebListener``` annotation to the servlet.
+    * Reference the listener by adding the following code block to the
+    deployment descriptor `web.xml`.
+
+      **Example:**
+
+      ``` xml
+      <listener>
+        <listener-class>your.class.package.path</listener-class>
+      </listener>
+      ```
+
+## Download Apache Tomcat and enable SSL
+
+To run Helloworld Jersey, requires the installation of _Apache Tomcat_. As the service uses HTTPS, configure _Tomcat_ to use the SSL/TLS protocol.
+
+**Follow these steps:**
+
+1.  Download _Apache Tomcat 8.0.39_ and install it.
+
+2.  Build Helloworld Jersey through _IntelliJ_ or by running `gradlew helloworld-jersey:build` in the terminal.
+
+3.  Enable HTTPS for _Apache Tomcat_ with the following steps:
+
+    a) Go to the `apache-tomcat-8.0.39-windows-x64\conf` directory.
+
+    **Note:** The full path depends on where you decided to install _Tomcat_.
+
+    b) Open the `server.xml` file with a text editor as Administrator and add the following xml block:
+
+    ```xml
+            <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+                            maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+                            clientAuth="false" sslProtocol="TLS"
+                            keystoreFile="{your-project-directory}\api-layer\keystore\localhost\localhost.keystore.p12"
+                            keystorePass="password"
+    ```
+    
+    Ensure to comment the HTTP connector which uses the same port.
+    c) Navigate to the `WEB-INF/` located in `helloworld-jersey` module and add the following xml block to the `web.xml` file. This should be added right below the `<servlet-mapping>` tag:
+
+       ```xml
+        <security-constraint>
+                <web-resource-collection>
+                    <web-resource-name>Protected resource</web-resource-name>
+                    <url-pattern>/*</url-pattern>
+                    <http-method>GET</http-method>
+                    <http-method>POST</http-method>
+                </web-resource-collection>
+                <user-data-constraint>
+                    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+                </user-data-constraint>
+        </security-constraint>
+       ```
+
+## Run your service
+
+After you externalize the parameters to make them readable through _Tomcat_ and enable SSL, you are ready to run your service in the API ML Ecosystem.
+
+**Note:** The following procedure uses `localhost` testing.
+
+**Follow these steps:**
+
+1. Run the following services to onboard your application:
+
+    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine.](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md)
+    * Gateway Service  
+    * Discovery Service
+    * API Catalog Service
+
+2. Run `gradlew tomcatRun` with these additional parameters: 
+
+    ```
+    -Djavax.net.ssl.trustStore="<your-project-directory>\api-layer\keystore\localhost\localhost.truststore.p12" -Djavax.net.ssl.trustStorePassword="password"
     ```
 
- 5. Check that you can still access your API service endpoints directly outside of the Gateway.
+    To provide additional information about SSL configuration status while deploying, use the following parameter:
+    
+    `-Djavax.net.debug=SSL`
 
-## Review the configuration examples of the discoverable client   
+   **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-Refer to the [Discoverable Client API Sample Service](https://github.com/zowe/api-layer) in the API ML git repository.   
+3.  Navigate to the following URL:
+
+    ```
+    https://localhost:10011
+    ```
+
+    Enter `eureka` as a username and `password` as a password and check if the service is registered to the Discovery Service.
+
+    Go to the following URL to reach the API Catalog through the Gateway (`port 10010`) and check if the API documentation of the service is retrieved:
+
+    ```
+    https://localhost:10010/ui/v1/apicatalog/#/dashboard
+    ```
+
+  You successfully onboarded your Java Jersey application if your service is running and you can access the API documentation.
