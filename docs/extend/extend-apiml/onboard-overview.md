@@ -1,5 +1,11 @@
 # Onboarding Overview
 
+## What can you expect from this guide
+
+This guide will show how to onboard [sample service](#sample-service) into Zowe. There are various ways how to achieve this, depending on the language your service might be written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
+- have the [sample service](#sample-service) onboarded in Zowe
+- be able to select and apply appropriate method for your service
+
 ## Overview of APIs
 
 Before identifying the API you want to expose in the Zowe&trade; API Mediation Layer, it is useful to consider the structure of APIs. An application programming interface (API) is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows a client to talk to the API. Representational State Transfer (REST) determines the look of an API and is a set of rules that developers follow when creating an API. One of these rules states that a user should be able to get a piece of data (resource) through URL endpoints using HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe&trade; is in JSON format.
