@@ -94,7 +94,7 @@
         "text": "Developing for API Mediation Layer",
         "items": [
           "extend/extend-apiml/onboard-overview.md",
-          "extend/extend-apiml/onboard-an-existing-java-rest-api-service_plain-java-enabler.md",
+          "extend/extend-apiml/onboard-plain-java-enabler.md",
           "extend/extend-apiml/onboard-rest-service-direct-eureka-call.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md",
