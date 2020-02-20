@@ -1,12 +1,12 @@
 # Verifying Zowe installation on z/OS
 
-After the Zowe&trade; started task `ZWESVSTC` is running, follow the instructions in the following sections to verify that the components are functional.  
+After the Zowe&trade; started task `ZWESVSTC` is running, follow the instructions in the following sections to verify that the components are functional. 
 
-- [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)       
-- [Verifying z/OS Services installation](#verifying-z-os-services-installation)
+- [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)
 - [Verifying API Mediation installation](#verifying-api-mediation-installation)
+- [Verifying z/OS Services installation](#verifying-z-os-services-installation)
 
-**Note** Not all components may have been started. The variable variable `LAUNCH_COMPONENT_GROUPS` in the `instance.env` file controls whether the the API Mediation Layer and z/OS Services is started with the value `GATEWAY`, and whether the Zowe Application Framework (aka Zowe desktop) is started with the value `DESKTOP`, [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups).  
+**Note:** Not all components may have been started. Which components have been started depends on your setting of the variable `LAUNCH_COMPONENT_GROUPS` in the `instance.env` file. If you defined the value `GATEWAY`, the API Mediation Layer and z/OS Services are started. If you defined the value `DESKTOP`, the Zowe Application Framework (also known as Zowe desktop) is started. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups).  
 
 ## Verifying Zowe Application Framework installation
 
@@ -14,14 +14,14 @@ If the Zowe Application Framework is installed correctly, you can open the Zowe 
 
 From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort`
 
-where:
+where,
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
-- _httpsPort_ is the port number value `ZOWE_ZLUX_SERVER_HTTPS_PORT` in `instance.env`, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports)
+- _httpsPort_ is the port number value `ZOWE_ZLUX_SERVER_HTTPS_PORT` in `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports).
 
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html` so if the redirect fails try the full URL.  
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
 
-If the desktop appears but you are unable to log on, check the [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-known-issues.md#cannot-log-in-to-the-zowe-desktop)
+If the desktop appears but you are unable to log on, check [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-known-issues.md#cannot-log-in-to-the-zowe-desktop) for troubleshooting tips.
 
 
 ## Verifying API Mediation installation
@@ -32,10 +32,10 @@ Use your preferred REST API client to review the value of the status variable of
 https://myhost:httpsPort/api/v1/apicatalog/application/health
 ```
 
-where 
+where, 
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
-- _httpsPort_ is the port number value `GATEWAY_PORT` in `instance.env`, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports)
+- _httpsPort_ is the port number value `GATEWAY_PORT` in `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports).
 
 **Example:**
 
@@ -56,5 +56,7 @@ You can verify the installation of z/OS Services from an internet browser by ent
 https://hostName:gatewayPort/api/v1/jobs?prefix=*
 ```
 
-where, gatewayPort is the port number that is assigned to `GATEWAY_PORT` in the instance.env file used to launch Zowe, see [Configure instance directory](configure-instance-directory.md#ports).
+where, 
+
+`gatewayPort` is the port number that is assigned to `GATEWAY_PORT` in the `instance.env` file used to launch Zowe. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports).
 
