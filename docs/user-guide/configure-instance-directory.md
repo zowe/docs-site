@@ -33,9 +33,6 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
   - `DESKTOP` will start the Zowe desktop which is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
   - Vendor products may extend Zowe with their own component group that they wish to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this specify the fully qualified directory provided by the vendor containing that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that will be called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that will perform any configuration steps such as adding iFrame plugins to the Zowe desktop, as well as `validate.sh` script **(optional)** that can used to perform any pre-launch validation such as checking system pre-reqs.   More documentation on how a vendor can extend Zowe with a sub address space is covered in 
 
-  
-  and a `configure.sh` script **(optional)** 
-
 ### Component prerequisites
 
 - `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
