@@ -15,16 +15,14 @@ Zowe API ML is a lightweight API management system based on the following Netfli
 The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
 
-The API ML provides onboarding enabler libraries. Using these libraries is the recommended approach to onboard a REST service with the API ML. While it is possible to call the Eureka registration endpoint directly, this approach requires preparing corresponding configuration data. Doing so is unnecessarily complex and time-consuming.
+The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
 
-Additionally, while the _PJE_ library can be used in REST API projects based on SpringFramework or the Spring Boot framework, it is not recommended to use this enabler in projects that depend on SpringCloud Netflix components. Configuration settings in the _PJE_ and SpringCloud Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
+The _PJE_ library is focused on the needs of the Java developers who are using neither the [Spring Framework](https://spring.io/) nor the [Spring Boot](https://spring.io/projects/spring-boot). If the frameworks are used in the project to onboard take a look at the enablers for these frameworks.  
 
+Additionally, don't use this enabler in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the _PJE_ and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
-**Tip:** For more information about how to utilize another API ML enabler, see:
-  * [Onboard a Spring Boot REST API service](docs/extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](docs/extend/extend-apiml/onboard-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](docs/extend/extend-apiml/onboard-static-definition.md)
-  * [Java REST APIs service without Spring Boot](docs/extend/extend-apiml/onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+**Tip:** For more information about how to utilize another API ML enablers, see the documentation in
+the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)
 
 ## Onboarding your REST service with API ML
 
@@ -60,22 +58,22 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the following prerequisites are met before you begin to use the _PJE_ to onboard your REST service with the API ML:
+Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
 
-* Your REST API service is written in Java.
+* The REST API service to onboard is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
 **Notes:**
 
-* This documentation is valid for `ZoweApimlVersion 1.2.0` and higher. We recommend that you check the Giza Artifactory for newer versions.
+* This documentation is valid for versions of the Api ML starting with the `ZoweApimlVersion 1.3.0`. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
 ## Configuring your project
 
-Use either _Gradle_ or _Maven_ build automation systems to configure your project. Use the appropriate configuration procedure corresponding to your build automation system.
+Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure corresponding to your build automation system.
 
-**Note:** You can use either the Giza Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code.
+**Note:** You can use either the Zowe Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -84,17 +82,13 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of the usage of the Zowe repository remove the credentials. 
 
-    If you are using the Giza Artifactory, use the credentials in the following code block:
+    If you are using the Zowe Artifactory, use the credentials in the following code block:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
-    artifactoryMavenRepo=https://gizaartifactory.jfrog.io/gizaartifactory/libs-release
-
-    # Artifactory credentials for builds:
-    mavenUser=apilayer-build
-    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
     ```
 
 3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
@@ -105,24 +99,18 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
         maven {
             url artifactoryMavenRepo
-            credentials {
-                username mavenUser
-                password mavenPassword
-            }
         }
     }
     ```
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Giza Artifactory, add the following code block to your `build.gradle` script:
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Zowe Artifactory, add the following code block to your `build.gradle` script. Replace the $zoweApimlVersion with the proper version of the enabler. E.g. 1.3.0:
 
     ```gradle
-    implementation "org.zowe.apiml.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
+    implementation "org.zowe.apiml.sdk:onboarding-enabler-java:$zoweApimlVersion"
     implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
-    **Note:** The published artifact from the Giza Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Giza, manually provide the following dependencies in your service `build.gradle` script:
+    **Note:** The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
 
     ```gradle
-    implementation "org.zowe.apiml.sdk:mfaas-integration-enabler-java:$zoweApimlVersion"
-    implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     implementation libraries.eureka_client
     implementation libraries.httpcore
     implementation libraries.jackson_databind
@@ -134,7 +122,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     **Notes:**
     * You may need to add more dependencies as required by your service implementation.
-    * The information provided in this file is valid for `ZoweApimlVersion 1.1.12` and above.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -150,38 +138,32 @@ Use the following procedure if you use _Maven_ as your build automation system.
         <repository>
             <id>libs-release</id>
             <name>libs-release</name>
-            <url>https://gizaartifactory.jfrog.io/gizaartifactory/libs-release</url>
+            <url>https://zowe.jfrog.io/zowe/libs-release/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
     ```
-
-2. Create a `settings.xml` file and copy the following _XML_ code block that defines the credentials for the Artifactory:
-
-    ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-
-    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
-      <servers>
-          <server>
-             <id>libs-release</id>
-             <username>apilayer-build</username>
-             <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
-          </server>
-      </servers>
-    </settings>
+   
     ```
-    **Tip:** If you want to use _snapshot_ version, set the `/servers/server/id` to `libs-snapshot`.
+    **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory.
+2. Add the proper dependencies 
+   ```maven
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>onboarding-enabler-java</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>common-service-core</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+    ```
 
-4. In the directory of your project, run the `mvn package` command to build the project.
-
+3. In the directory of your project, run the `mvn clean package` command to build the project.
 
 
 ## Configuring your service
@@ -190,8 +172,8 @@ Provide default service configuration in the `service-configuration.yml` file lo
 
 **Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](docs/extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md).
 
-The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment
-are written in `#{parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
+The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
+are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
 **Example:**
 
@@ -216,10 +198,10 @@ are written in `#{parameterValue}` format. For your service configuration file, 
 
  apiInfo:
      - apiId: org.zowe.sampleservice
+       version: v1
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
        doumentationUrl: http://
-       version: v1
  catalog:
      tile:
          id: sampleservice
@@ -319,8 +301,9 @@ where:
 
 * **homePageRelativeUrl**
 
-    specifies the relative path to the home page of your service. The path should start with `/`.
-    If your service has no home page, leave this parameter blank.
+    specifies the relative path to the home page of your service. 
+    
+    Start this path with `/`. If your service has no home page, leave this parameter blank.
 
     **Examples:**
     * `homePageRelativeUrl: ` This service has no home page
@@ -344,7 +327,7 @@ where:
 
     specifies the relative path to the health check endpoint of your service.
 
-    Start this URL with `/`.
+    Start this path with `/`.
 
     **Example:**
 
@@ -436,7 +419,10 @@ This prefix is used to differentiate the routes. It is automatically calculated 
 ### API Catalog information
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service.
-Information displayed in the Catalog is defined by the metadata provided by your service during registration.
+Information displayed in the Catalog is defined by the metadata provided by your service during registration. The Tile will look similar to the one shown on following image.
+ 
+ ![Tile](../../images/api-mediation/API-Catalog-Tile.png "Tile of a sample service in API Catalog") 
+
 The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter.
 
 The following code block is an example of configuration of a service tile in the Catalog:
@@ -567,7 +553,7 @@ discoveryServiceUrls:
 
 ##  Registering your service with API ML
 
-The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
+The following steps outline the process of registering your service with API ML. Each step is described in detail in this article. The process describes the integration with the usage of the Java application server. The guideline is tested with Tomcat application server. The specifics for other application servers may differ.  
 
 1. Add a web application context listener class
 2. Register a web application context listener
@@ -577,7 +563,7 @@ The following steps outline the process of registering your service with API ML.
 
 **Follow these steps:**
 
-1. Add a web application context listener class.
+1. Implement and add a web application context listener class (implements javax.servlet.ServletContextListener).
 
     The web application context listener implements two methods to perform necessary actions at application start-up time as well as when the application context is destroyed:
 
@@ -706,7 +692,7 @@ The following code block is a full example of a context listener class implement
         }
 
         /**
-         * If apiMediationClient is not null, attmpts to unregister this service from API ML registry.
+         * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
          */
         @Override
         public void contextDestroyed(ServletContextEvent sce) {
@@ -718,90 +704,11 @@ The following code block is a full example of a context listener class implement
         }
     }
 
-
-
-
-## Adding API documentation
-
-Use the following procedure to add Swagger API documentation to your project.
-
-**Follow these steps:**
-
-1. Add a Springfox Swagger dependency.
-
-    * For _Gradle_ add the following dependency in `build.gradle`:
-
-        ```gradle
-        compile "io.springfox:springfox-swagger2:2.8.0"
-        ```
-
-    * For _Maven_ add the following dependency in `pom.xml`:
-        ```xml
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.8.0</version>
-        </dependency>
-        ```
-
-2. Add a Spring configuration class to your project.
-
-   **Example:**
-
-    ```java
-    package org.zowe.apiml.sampleservice.configuration;
-
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.context.annotation.Configuration;
-    import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-    import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-    import springfox.documentation.builders.PathSelectors;
-    import springfox.documentation.builders.RequestHandlerSelectors;
-    import springfox.documentation.service.ApiInfo;
-    import springfox.documentation.service.Contact;
-    import springfox.documentation.spi.DocumentationType;
-    import springfox.documentation.spring.web.plugins.Docket;
-    import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-    import java.util.ArrayList;
-
-    @Configuration
-    @EnableSwagger2
-    @EnableWebMvc
-    public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
-        @Bean
-        public Docket api() {
-            return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(new ApiInfo(
-                    "Spring REST API",
-                    "Example of REST API",
-                    "1.0.0",
-                    null,
-                    null,
-                    null,
-                    null,
-                    new ArrayList<>()
-                ));
-        }
-    }
-    ```
-3. Customize this configuration according to your specifications. For more information about customization properties,
-see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
-
-
-    **Note:** The current SpringFox Version 2.8 does not support OpenAPI 3.0.
-    For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
-
 ## Validating the discoverability of your API service by the Discovery Service
 
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validatiing your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog,
-check to make sure that your configuration settings are correct.
+Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to make sure that your configuration settings are correct.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
