@@ -166,7 +166,7 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 
 * [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) 
 
-* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](docs/extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md)
+* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](docs/extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 </details>

@@ -22,8 +22,8 @@ Additionally, while the _PJE_ library can be used in REST API projects based on 
 
 **Tip:** For more information about how to utilize another API ML enabler, see:
   * [Onboard a Spring Boot REST API service](docs/extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](docs/extend/extend-apiml/onboard-rest-service-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](docs/extend/extend-apiml/onboard-an-existing-rest-api-service-without-code-changes.md)
+  * [Onboard a REST service directly calling eureka with xml configuration](docs/extend/extend-apiml/onboard-direct-eureka-call.md)
+  * [Onboard an existing REST API service without code changes](docs/extend/extend-apiml/onboard-static-definition.md)
   * [Java REST APIs service without Spring Boot](docs/extend/extend-apiml/onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
 ## Onboarding your REST service with API ML
