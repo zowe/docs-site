@@ -2,9 +2,9 @@
 
 ## What can you expect from this guide
 
-This guide will show how to onboard [sample service](#sample-service) into Zowe. There are various ways how to achieve this, depending on the language your service might be written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
+This guide shows how to onboard [sample service](#sample-service) into Zowe. There are various ways how to achieve this, depending on the language your service is written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
 - have the [sample service](#sample-service) onboarded in Zowe
-- be able to select and apply appropriate method for your service
+- be able to select and apply appropriate onboarding method for your service
 
 ## Overview of APIs
 
