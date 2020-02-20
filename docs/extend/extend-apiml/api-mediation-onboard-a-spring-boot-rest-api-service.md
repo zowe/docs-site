@@ -415,7 +415,7 @@ As an API service developer, you set multiple configuration settings in your app
       
           When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
-          **Important!**  When the expected encoded character is an encoded slash or backslash (i.e. `%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
+          **Important!**  When the expected encoded character is an encoded slash or backslash (i.e. `%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
       * **`eureka.instance.metadata-map.apiml.apiInfo.apiId`**
       
