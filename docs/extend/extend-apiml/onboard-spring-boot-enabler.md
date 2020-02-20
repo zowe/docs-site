@@ -44,7 +44,7 @@ Add a dependency on the Spring Enabler version to your project build configurati
 
 Use either _Gradle_ or _Maven_ as your build automation system to manage your project builds.
 
-**Note:** You can download the selected enabler artifact from the Giza Artifactory. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can download the selected enabler artifact from the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -53,36 +53,26 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
-
-    If you are using the Giza Artifactory, use the credentials in the following code block:
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
 
     ```
     # Repository URL for getting the enabler-java artifact
-    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/
-
-    # Artifactory credentials for builds:
-    mavenUser=apilayer-build
-    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
     ```
 
 3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
 
-    ```groovy
+    ```gradle
     repositories {
         ...
 
         maven {
             url artifactoryMavenRepo
-            credentials {
-                username mavenUser
-                password mavenPassword
-            }
         }
     }
     ```
    
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Giza Artifactory, add the following code block to your `build.gradle` script:
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Zowe Artifactory, add the following code block to your `build.gradle` script:
 
     Use the corresponding artifact according to the Spring version you are using.
 
@@ -100,7 +90,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     **Notes:**
     * You may need to add additional dependencies as required by your service implementation.
-    * The information provided in this file is valid for `ZoweApimlVersion 3.0` and above.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -110,45 +100,46 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following _XML_ tags to your project `pom.xml` file:
-
+1. Add the following _XML_ tags within the newly created `pom.xml` file:
     ```xml
     <repositories>
         <repository>
             <id>libs-release</id>
             <name>libs-release</name>
-            <url>https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/</url>
+            <url>https://zowe.jfrog.io/zowe/libs-release/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
     ```
-
-2. Create a `settings.xml` file and copy the following _XML_ code block that defines the credentials for the Artifactory:
-
-    ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-
-    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
-      <servers>
-          <server>
-             <id>libs-release</id>
-             <username>apilayer-build</username>
-             <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
-          </server>
-      </servers>
-    </settings>
-    ```
    
-    **Tip:** If you want to use _snapshot_ version, set the `/servers/server/id` to `libs-snapshot`.
+    ```
+    **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory. If the file already exists, include the contents of the project related `settings.xml` into the original `settings.xml` file.
+2. Add the proper dependencies 
+  
+   2.1 For spring version 2, use the following artifact 
 
-4. In the directory of your project, run the `mvn clean package` command to build the project.
+   ```maven
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+    ```
+
+   2.2 For spring version 1, use the following artifact 
+
+   ```maven
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+    ```
+
+3. In the directory of your project, run the `mvn clean package` command to build the project.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
@@ -379,7 +370,7 @@ Use the following procedure to add Swagger API documentation to your project.
     * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
-        compile "io.springfox:springfox-swagger2:2.8.0"
+        compile "io.springfox:springfox-swagger2:2.9.2"
         ```
 
     * For _Maven_, add the following dependency in `pom.xml`:
