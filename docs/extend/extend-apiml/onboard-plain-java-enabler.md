@@ -2,7 +2,7 @@
 
 This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](api-mediation-onboard-overview.md).
+**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md).
 
 ## Introduction
 
@@ -21,10 +21,10 @@ Additionally, while the _PJE_ library can be used in REST API projects based on 
 
 
 **Tip:** For more information about how to utilize another API ML enabler, see:
-  * [Onboard a Spring Boot REST API service](api-mediation-onboard-a-spring-boot-rest-api-service.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
-  * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+  * [Onboard a Spring Boot REST API service](docs/extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md)
+  * [Onboard a REST service directly calling eureka with xml configuration](docs/extend/extend-apiml/onboard-rest-service-direct-eureka-call.md)
+  * [Onboard an existing REST API service without code changes](docs/extend/extend-apiml/onboard-an-existing-rest-api-service-without-code-changes.md)
+  * [Java REST APIs service without Spring Boot](docs/extend/extend-apiml/onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
 
 ## Onboarding your REST service with API ML
 
@@ -188,7 +188,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](api-mediation-onboard-plain-java-enabler-external-configuration.md).
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](docs/extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md).
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment
 are written in `#{parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.

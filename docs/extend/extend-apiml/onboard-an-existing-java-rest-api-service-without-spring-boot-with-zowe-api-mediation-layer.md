@@ -2,7 +2,7 @@
 
 As an API developer, use this guide to onboard a Java REST API service that is built without Spring Boot to the Zowe&trade; API Mediation Layer (API ML). This article provides a step-by-step process to onboard a Java REST API application to the API ML. 
 
-**Note:** The following guide is to onboard a REST API service using enabler versions 1.2 and earlier. To onboard a REST API service using enabler versions 1.3 and higher, see the [Onboarding Overview](api-mediation-onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
+**Note:** The following guide is to onboard a REST API service using enabler versions 1.2 and earlier. To onboard a REST API service using enabler versions 1.3 and higher, see the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) for a complete list of Zowe&trade; API Mediation Layer onboarding methods.
 
 The following procedure outlines the general steps to onboard a Java REST API service without Spring Boot with the Zowe&trade; API Mediation Layer. Each step is described in more detail in this article.
 
