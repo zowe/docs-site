@@ -272,6 +272,8 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
         title: HelloWorld Spring REST API
         description: Proof of Concept application to demonstrate exposing a REST API in the MFaaS ecosystem
         version: 1.0.0
+    apiml:
+        enableUrlEncodedCharacters: false
     ```
 3.  Customize your configuration parameters to correspond with your API service specifications.
 
@@ -386,6 +388,12 @@ After you add API Mediation Layer integration endpoints, you are ready to add se
             Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API
             gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
     
+    * **apiml.enableUrlEncodedCharacters**
+      
+        When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+        **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
+
     * **apiInfo.apiId**
 
         This parameter specifies the API identifier that is registered in the API Mediation Layer installation.

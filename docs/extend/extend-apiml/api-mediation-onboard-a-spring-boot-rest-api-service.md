@@ -191,6 +191,7 @@ As an API service developer, you set multiple configuration settings in your app
                           gateway-url: "api/v1"
                           service-url: ${mfaas.server.contextPath}
                   apiml:
+                      enableUrlEncodedCharacters: false
                       apiInfo:
                           - apiId: ${mfaas.discovery.serviceId}
                             gatewayUrl: api/v1
@@ -405,9 +406,17 @@ As an API service developer, you set multiple configuration settings in your app
       * **`eureka.instance.metadata-map.routed-services.<prefix>.gatewayUrl`**
 
            Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The gateway-url parameter sets the target endpoint on the gateway.
-      * **`metadata-map.routed-services.<prefix>.serviceUrl`**
+      
+      * **`eureka.instance.metadata-map.routed-services.<prefix>.serviceUrl`**
 
           Both gateway-url and service-url parameters specify how the API service endpoints are mapped to the API gateway endpoints. The service-url parameter points to the target endpoint on the gateway.
+
+      * **`eureka.instance.metadata-map.apiml.enableUrlEncodedCharacters`**
+      
+          When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+          **Important!**  When the expected encoded character is an encoded slash or backslash (i.e. `%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
+
       * **`eureka.instance.metadata-map.apiml.apiInfo.apiId`**
       
           This parameter specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.

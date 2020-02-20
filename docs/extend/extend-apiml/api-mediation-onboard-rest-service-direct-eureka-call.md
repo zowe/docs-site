@@ -138,6 +138,7 @@ At registration time, provide metadata in the following format. Metadata paramet
       <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
       <apiml.service.title>Sample Service ©</apiml.service.title>
       <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
+      <apiml.enableUrlEncodedCharacters>false</apiml.enableUrlEncodedCharacters>
       <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
       <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
       <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
@@ -207,6 +208,12 @@ The following parameters define service information for the API Catalog:
     This parameter specifies a short description of the API service.
         
     This value is displayed in the API Catalog when a specific API service instance is selected.   
+    
+* **apiml.enableUrlEncodedCharacters**
+
+    When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Configure the Zowe runtime](install-zos.md).
     
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
