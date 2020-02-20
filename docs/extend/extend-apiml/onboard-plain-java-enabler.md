@@ -82,9 +82,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of the usage of the Zowe repository remove the credentials. 
-
-    If you are using the Zowe Artifactory, use the credentials in the following code block:
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
 
     ```ini
     # Repository URL for getting the enabler-java artifact
