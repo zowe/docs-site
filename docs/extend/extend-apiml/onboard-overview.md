@@ -10,29 +10,24 @@ This guide shows how to onboard [sample service](#Sample-REST-API-Service) into 
 
 - Running instance of Zowe
  
-  Zowe instance with Api Mediation Layer running is manadtory prerequisite for service to onboard into. You should be able to login to Api Catalog to verify service's onboarding is successful.
+  Zowe instance with API Mediation Layer running is mandatory prerequisite for service to onboard into. You should be able to login to API Catalog to verify service's onboarding is successful.
   
   For [static onboarding](#//TODO), access to Zowe runtime is required, so the static service definition can be created.
   
 - Certificate that is trusted by Zowe
 
-  Zowe uses secured communication over TLSv1.2 so protocol version and use of certificate is needed. The certificate needs to be trusted by Zowe so the service can register in Discovery service. More information about [Api Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)      
+  Zowe uses secured communication over TLSv1.2 so protocol version and use of certificate is required. The certificate needs to be trusted by Zowe so the service can register in Discovery service. More information about [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)      
 
 - Rest API enabled service that you want to onboard
 
   This can be arbitrary Rest API enabled service or you can use the [sample service](#Sample-REST-API-Service).
   
-  Service should document the Rest API it's providing by valid Swagger Json. This documentation is displayed in Api Catalog. OpenApi 2.0/3.0 standards are supported.
+  Service should document it's Rest API by providing valid Swagger Json. This documentation is displayed in API Catalog. OpenApi 2.0/3.0 standards are supported.
 
 - Access to Zowe artifactory
 
     ```
-    Repository URL for getting the enabler-java artifact
-    https://zowe.jfrog.io/zowe/libs-release
-    
-    Artifactory credentials for builds:
-    User name: apilayer-build
-    Password: lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    Repository URL: https://zowe.jfrog.io/zowe/libs-release
     ```
 
 - Gradle or Maven build system
