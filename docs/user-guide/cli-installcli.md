@@ -1,6 +1,6 @@
 # Installing Zowe CLI
 
-Install Zowe&trade; CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md). 
+Install Zowe&trade; CLI on your computer. You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md) or read about overall CLI functionality in the [Zowe overview](../getting-started/overview.md).
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md)
 
@@ -21,13 +21,13 @@ If you do not have internet access at your site, use the following method to ins
 
 1. Ensure that the following prerequisite software is installed on your computer:
 
-    -  [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+    - [**Node.js V8.0 or higher LTS versions**](https://nodejs.org/en/download/)
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    - **Node Package Manager V5.0 or later**
+    - A version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-        npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
+        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 
 2. Obtain the installation files. From the Zowe [Download](https://zowe.org/#download) website, click **Zowe Command Line Interface** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
@@ -53,7 +53,7 @@ If you do not have internet access at your site, use the following method to ins
 4. Issue the following command against the extracted directory to install Zowe CLI on your computer:
 
     ```
-    npm install -g zowe-cli.tgz 
+    npm install -g zowe-cli.tgz
     ```
 
     **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
@@ -74,14 +74,13 @@ If your computer is connected to the Internet, you can use the following method 
 
 1.  Ensure that the following required software is installed on your computer:
 
-    - [**Node.js V8.0 or later**](https://nodejs.org/en/download/)
+    - [**Node.js V8.0 or higher LTS versions**](https://nodejs.org/en/download/releases/)
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    - **Node Package Manager V5.0 or later**
+    - A version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-        npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
-
+        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify that npm is installed.
 2.  Issue the following command to set the registry to the Zowe CLI scoped package. In addition to setting the scoped registry, your default registry must be set to an npm registry that includes all of the dependencies for Zowe CLI, such as the global npm registry:
 
     ```
