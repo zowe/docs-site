@@ -73,12 +73,10 @@ Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-
 
 Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure corresponding to your build automation system.
 
-**Note:** You can use either the Zowe Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code.
+**Note:** You can use either the Zowe Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
-
-//TODO: What is expected from the service is that it will have THe health, Info, Home and Swagger endpoints.
 
 **Follow these steps:**
 
