@@ -4,18 +4,19 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
-- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
-- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
-- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
-- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
-- [Zowe SMP/E Alpha (August 2019)](#zowe-smp-e-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
-- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
-- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
-- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
-- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
-- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+- [Version 1.8.1 (February 2019)](#version-181-february-2019)
+- [Version 1.8.0 (January 2020)](#version-180-january-2020)
+- [Version 1.7.1 (December 2019)](#version-171-december-2019)
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
+- [Version 1.6.0 (October 2019)](#version-160-october-2019)
+- [Version 1.5.0 (September 2019)](#version-150-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-140-august-2019)
+- [Version 1.3.0 (June 2019)](#version-130-june-2019)
+- [Version 1.2.0 (May 2019)](#version-120-may-2019)
+- [Version 1.1.0 (April 2019)](#version-110-april-2019)
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
 
 ## Version 1.8.1 (February 2019)
 
@@ -27,7 +28,7 @@ A bug was fixed where Zowe CLI installation could fail and users could recieve t
 981 verbose stack Error: EPERM: operation not permitted
 ```
 
-To install the latest v1.8.x features, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
 
 ## Version 1.8.0 (January 2020)
 
