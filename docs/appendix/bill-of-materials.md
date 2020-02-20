@@ -79,5 +79,5 @@ The following materials are distributed with Zowe&trade; binaries:
 | zos-ftp-for-zowe-cli.tgz | IBM® z/OS FTP Plug-in for Zowe CLI | [zowe-cli-ftp-plugin](https://github.com/zowe/zowe-cli-ftp-plugin) | [zowe-cli-ftp-plugin pipeline](https://github.com/zowe/zowe-cli-ftp-plugin/Jenkinsfile)  |
 | ims-for-zowe-cli.tgz | IBM® IMS™ Plug-in for Zowe CLI | [zowe-cli-ims-plugin](https://github.com/zowe/zowe-cli-ims-plugin) | [zowe-cli-ims-plugin pipeline](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/Jenkinsfile) |
 | mq-for-zowe-cli.tgz | IBM® MQ Plug-in for Zowe CLI | [zowe-cli-mq-plugin](https://github.com/zowe/zowe-cli-mq-plugin) | [zowe-cli-mq-plugin pipeline](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/Jenkinsfile) |
-| secure-credential-store-for-zowe-cli.tgz | Secure Credential Store for Zowe CLI | [zowe-cli-scs-plugin](https://github.com/zowe/zowe-cli-scs-plugin) | zowe-cli-scs-plugin] |
+| secure-credential-store-for-zowe-cli.tgz | Secure Credential Store for Zowe CLI | [zowe-cli-scs-plugin](https://github.com/zowe/zowe-cli-scs-plugin) | [zowe-cli-scs-plugin pipeline](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/Jenkinsfile) |
 
