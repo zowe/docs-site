@@ -65,7 +65,7 @@ Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-
 
 **Notes:**
 
-* This documentation is valid for versions of the Api ML starting with the `ZoweApimlVersion 1.3.0`. We recommend that you check the [Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
+* This documentation is valid for versions of the Api ML starting with the `ZoweApimlVersion 1.3.0`. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
@@ -73,7 +73,7 @@ Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-
 
 Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure corresponding to your build automation system.
 
-**Note:** You can use either the Zowe [Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/)  or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code.
+**Note:** You can use either the Zowe Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the provided _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -86,7 +86,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of the usage of the Zowe repository remove the credentials. 
 
-    If you are using the Zowe [Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/), use the credentials in the following code block:
+    If you are using the Zowe Artifactory, use the credentials in the following code block:
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -174,8 +174,8 @@ Provide default service configuration in the `service-configuration.yml` file lo
 
 **Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](docs/extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md).
 
-The following code snippet shows an example of `service-configuration.yml`. Some parameters values which are specific for your service deployment
-are written in `#{parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
+The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
+are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
 **Example:**
 
@@ -555,7 +555,7 @@ discoveryServiceUrls:
 
 ##  Registering your service with API ML
 
-The following steps outline the process of registering your service with API ML. Each step is described in detail in this article.
+The following steps outline the process of registering your service with API ML. Each step is described in detail in this article. The process describes the integration with the usage of the Java application server. The guideline is tested with Tomcat application server. The specifics for other application servers may differ.  
 
 1. Add a web application context listener class
 2. Register a web application context listener
