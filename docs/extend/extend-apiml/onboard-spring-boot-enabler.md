@@ -7,10 +7,9 @@ As an API developer, you can onboard your REST API service built with the Spring
 
 **Tip:** For more information about how to utilize another onboarding method, see:
 
-  * [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
-  * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+  * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
+  * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
+  * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
 
 ## Outline of onboarding a REST service using Spring Boot
 
@@ -356,7 +355,7 @@ server:
     Do not include security sensitive data in the default configuration.
 
     **Note:** For details about the configuration properties,
-    see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service)
+    see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
 ## Registering and unregistering your service with API ML
