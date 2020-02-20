@@ -24,7 +24,7 @@ Before you install Zowe CLI, download and install [Node.js and npm.](https://nod
 
 **Note:** Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-### Installing Zowe CLI core
+### Installing Zowe CLI core from public npm
 
 ```
 npm install @zowe/cli@zowe-v1-lts -g
@@ -33,7 +33,7 @@ npm install @zowe/cli@zowe-v1-lts -g
 ### Installing CLI plug-ins
 
 ```
-zowe plugins install @zowe/cics-for-zowe-cli @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
+zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
 The command installs most open-sourcep plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
