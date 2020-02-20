@@ -9,13 +9,13 @@ So the aim of Onboarding is to allow your product to seemlessly join with the Zo
 Use the [Onboarding Scenarios](extend-api/existingApp.md) to plan how to integrate products with Zowe and use the [Developing..](extend-api/libertyAPI.md) sections for more comprehensive description and explanation. 
 The four main areas to consider when integrating with Zowe...
 :::tip Creating API's 
-Providing API's is the corner stone to the Zowe environment and this is about building Rest API's that surface functionality for use by other systems.  If an application has existing REST APIs then these can exposed to Zowe by adding the server to be on the southbound edge of the API Gateway,  described more in [Developing for Zowe API Mediation Layer](extend-apiml/api-mediation-onboard-overview.md).  If you wish to introduce a new server to Zowe this can be done with any REST API or else using one of the two architectures included with Zowe itself;  Spring boot with embedded Tomcat or node The choice is yours and there are a number of examples around this site for you to choose. 
+Providing API's is the corner stone to the Zowe environment and this is about building Rest API's that surface functionality for use by other systems.  If an application has existing REST APIs then these can exposed to Zowe by adding the server to be on the southbound edge of the API Gateway,  described more in [Developing for Zowe API Mediation Layer](docs/extend/extend-apiml/onboard-overview.md).  If you wish to introduce a new server to Zowe this can be done with any REST API or else using one of the two architectures included with Zowe itself;  Spring boot with embedded Tomcat or node The choice is yours and there are a number of examples around this site for you to choose. 
 
 :::tip Exposing API's via the API Gateway 
 The Gateway is where everything is brought together and becomes centrally accessible.
 In the same way as your choice of implementation is flexible different options exist for the integration with the gateway. You can choose to build your API integrating details and information about the Gateway into it, or do it the other way around. Using a simple script you can register your product with the gateway.
 
-Comprehensive details and explanation of how to do this are found in the [Developing for Zowe API Mediation Layer](extend-apiml/api-mediation-onboard-overview.md) <== needs sorting out
+Comprehensive details and explanation of how to do this are found in the [Developing for Zowe API Mediation Layer](docs/extend/extend-apiml/onboard-overview.md) <== needs sorting out
 :::
 
 :::tip Command Line Interface 
