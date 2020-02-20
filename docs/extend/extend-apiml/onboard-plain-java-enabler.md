@@ -710,7 +710,7 @@ The following code block is a full example of a context listener class implement
 
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to make sure that your configuration settings are correct.
+Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to make sure that your configuration settings are correct.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
