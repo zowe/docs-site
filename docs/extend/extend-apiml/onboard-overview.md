@@ -2,10 +2,43 @@
 
 ## What can you expect from this guide
 
-This guide shows how to onboard [sample service](#sample-service) into Zowe. There are various ways how to achieve this, depending on the language your service is written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
-- have the [sample service](#sample-service) onboarded in Zowe
+This guide shows how to onboard [sample service](#Sample-REST-API-Service) into Zowe. There are various ways how to achieve this, depending on the language your service is written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
+- have the [sample service](#Sample-REST-API-Service) onboarded in Zowe
 - be able to select and apply appropriate onboarding method for your service
 
+## Prerequisites
+
+- Running instance of Zowe
+ 
+  Zowe instance with Api Mediation Layer running is manadtory prerequisite for service to onboard into. You should be able to login to Api Catalog to verify service's onboarding is successful.
+  
+  For [static onboarding](#//TODO), access to Zowe runtime is required, so the static service definition can be created.
+  
+- Certificate that is trusted by Zowe
+
+  Zowe uses secured communication over TLSv1.2 so protocol version and use of certificate is needed. The certificate needs to be trusted by Zowe so the service can register in Discovery service. More information about [Api Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)      
+
+- Rest API enabled service that you want to onboard
+
+  This can be arbitrary Rest API enabled service or you can use the [sample service](#Sample-REST-API-Service).
+  
+  Service should document the Rest API it's providing by valid Swagger Json. This documentation is displayed in Api Catalog. OpenApi 2.0/3.0 standards are supported.
+
+- Access to Zowe artifactory
+
+    ```
+    Repository URL for getting the enabler-java artifact
+    https://zowe.jfrog.io/zowe/libs-release
+    
+    Artifactory credentials for builds:
+    User name: apilayer-build
+    Password: lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    ```
+
+- Gradle or Maven build system
+
+    The guide is describing how to achieve it's objective using these tools.
+  
 ## Overview of APIs
 
 Before identifying the API you want to expose in the Zowe&trade; API Mediation Layer, it is useful to consider the structure of APIs. An application programming interface (API) is a set of rules that allow programs to talk to each other. A developer creates an API on a server and allows a client to talk to the API. Representational State Transfer (REST) determines the look of an API and is a set of rules that developers follow when creating an API. One of these rules states that a user should be able to get a piece of data (resource) through URL endpoints using HTTP. These resources are usually represented in the form of JSON or XML documents. The preferred documentation type in Zowe&trade; is in JSON format.
