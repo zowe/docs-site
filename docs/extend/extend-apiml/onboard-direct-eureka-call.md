@@ -129,14 +129,14 @@ where:
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
 
-```
+```xml
 <instance>
   <metadata>
       <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
       <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
       <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
       <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-      <apiml.service.title>Sample Service ©</apiml.service.title>
+      <apiml.service.title>Sample Service</apiml.service.title>
       <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
       <apiml.enableUrlEncodedCharacters>false</apiml.enableUrlEncodedCharacters>
       <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
@@ -145,6 +145,8 @@ At registration time, provide metadata in the following format. Metadata paramet
       <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
       <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
       <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
+      <apiml.authentication.scheme>httpBasicPassTicket</apiml.authentication.scheme>
+      <apiml.authentication.applid>ZOWEAPPL</apiml.authentication.applid>
       <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
       <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
       <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
@@ -158,6 +160,7 @@ Metadata parameters are broken down into the following categories:
 * [Catalog parameters](#Catalog-parameters)
 * [Service parameters](#Service-parameters)
 * [Routing parameters](#Routing-parameters)
+* [Authentication parameters](#Authentication-parameters)
 * [API Info parameters](#API-Info-parameters)
 
 #### Catalog parameters 
@@ -252,6 +255,46 @@ This prefix is used to differentiate the routes. This prefix must be provided ma
 
 For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
+#### Authentication parameters
+Authentication parameters are grouped under the prefix: `apiml.authentication`. When not specified, the default values are used.
+
+Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+
+The following parameters define the service authentication method:
+
+* **apiml.authentication.scheme**
+
+    This parameter specifies a service authentication scheme. 
+    The following schemes are supported by the API Gateway:
+    
+    * **bypass**
+    
+        This value specifies that the token is passed unchanged to the service.
+          
+        **Note:** This is the default scheme when no authentication parameters are specified. 
+        
+     * **zoweJwt**   
+     
+        This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+     
+     * **httpBasicPassTicket**
+     
+        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+        It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
+        
+        For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+     
+     * **zosmf**
+     
+        This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+        This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
+        
+        For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+
+* **apiml.authentication.applid**
+
+    This parameter specifies a service APPLID.
+    This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
 
 #### API Info parameters
 API Info parameters are grouped under the prefix: `apiml.apiInfo`.
@@ -298,7 +341,7 @@ In the following example, `0` represents the `api-index`.
 <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
 ```
 
-## Sending a heartbeat to API Meditation Layer Discovery Service
+## Sending a heartbeat to API Mediation Layer Discovery Service
 
 After registration, a service must send a heartbeat periodically to the Discovery Service to indicate that the service is available. When the Discovery Service does not receive a heartbeat, the service instance is deleted from the Discovery Service.
 
@@ -310,7 +353,7 @@ If the server does not receive a renewal in 90 seconds, it removes the instance 
 
 ```https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}```
 
-## Validating successful onboarding with the API Meditation Layer
+## Validating successful onboarding with the API Mediation Layer
 Ensure that you successfully onboarded a service with the API Mediation Layer.
 
 **Follow these steps:**
@@ -344,7 +387,7 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
                 <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
                 <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
                 <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service ©</apiml.service.title>
+                <apiml.service.title>Sample Service</apiml.service.title>
                 <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
                 <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
                 <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
