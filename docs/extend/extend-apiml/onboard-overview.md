@@ -60,6 +60,73 @@ For legacy enabler documentation (version 1.2 and lower) please refer to the pre
 
 **Tip:** When developing a new service, we recommend that you update the code to support the API Mediation Layer natively. The benefit of supporting the API Mediation Layer natively is that it requires less configuration for the system administrator. Additionally, natively onboarded services can be moved to different systems, can be listened to on a different port, and additional instances can be started without the need to change API Mediation Layer configuration.
 
+## Validating the discoverability of onboarded service
+
+Once you are able to build and start your service successfully, you can validate that your service is registered correctly.
+
+Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog first wait 2 minutes, then check to make sure that your configuration settings are correct.
+
+Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
+
+**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
+for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
+with actual addresses of API ML components and the respective user credentials.
+
+**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
+
+### Verify service discovery through Api Catalog:
+
+  1. Check that your API service is displayed in the API Catalog UI and all information including API documentation is correct.
+
+  2. Check that you can access your API service endpoints through the Gateway.
+
+### Verify service discovery through Discovery Service:
+
+ 1. Issue HTTP GET request to the Discovery Service endpoint `/eureka/apps` for your service instance information:
+
+    ```
+    https://{zowe-hostname}:{discovery-service-port}/eureka/apps/{serviceId}
+    ```
+
+**Tip:** This endpoint is protected by client certificate verification. A valid trusted certificate must be provided with this request.
+
+ 2. Check your service metadata.
+
+    **Response example:**
+
+    ```xml
+    <application>
+        <name>{serviceId}</name>
+        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
+        <hostName>{hostname}</hostName>
+        <app>{serviceId}</app>
+        <ipAddr>{ipAddress}</ipAddr>
+        <status>UP</status>
+        <port enabled="false">{port}</port>
+        <securePort enabled="true">{port}</securePort>
+        <vipAddress>{serviceId}</vipAddress>
+        <secureVipAddress>{serviceId}</secureVipAddress>
+        <metadata>
+                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
+                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
+                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
+                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
+                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
+                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
+                <apiml.service.title>Sample Service ©</apiml.service.title>
+                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
+                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
+                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
+                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
+                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
+                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
+                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
+                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
+                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
+        </metadata>
+    </application>
+    ```
+
 ## Sample REST API Service
 
 To demonstrate the concepts that apply to REST API services, we use an  [example of a Spring Boot REST API service](https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot). This example is used in the REST API onboarding guide [REST APIs without code changes required](onboard-static-definition.md) (static onboarding).  
