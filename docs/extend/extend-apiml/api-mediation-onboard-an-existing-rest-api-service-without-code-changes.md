@@ -96,7 +96,17 @@ services:
           swaggerUrl: http://localhost:8080/v2/swagger.json
           documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
-
+```
+Optional metadata block (for service `petstore`):
+```yaml
+      customMetadata:
+          apiml:
+            enableUrlEncodedCharacters: false
+          yourqualifier:
+              key1: value1
+              key2: value2
+```
+```yaml
 catalogUiTiles:
     static:
         title: Static API services
@@ -267,6 +277,16 @@ The following list describes the configuration parameters:
 
     (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
+* **customMetadata**
+
+    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service in the `customMetadata` section. This information is propagated from the Discovery Service to the onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. We recommend you define your own qualifier, and group all metadata you wish to publish under this qualifier.
+
+* **customMetadata.apiml.enableUrlEncodedCharacters**
+      
+    When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+        
 * **catalogUiTileId**
 
    This parameter specifies the unique identifier for the API services group.
