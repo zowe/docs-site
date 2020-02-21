@@ -311,7 +311,17 @@ apiml:
             keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
             trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
             trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
+ ```
 
+Optional metadata section
+```yaml
+        customMetadata:
+            yourqualifier:
+                key1: value1
+                key2: value2
+```
+
+```yaml
 server:
     scheme: ${apiml.service.scheme}
     hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
@@ -349,6 +359,18 @@ server:
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
+### Custom Metadata
+
+   (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+
+#### Api Mediation Layer specific metadata
+
+* **`customMetadata.apiml.enableUrlEncodedCharacters`**
+      
+    When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+    
 ## Registering and unregistering your service with API ML
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
