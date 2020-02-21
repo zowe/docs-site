@@ -76,13 +76,13 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     Use the corresponding artifact according to the Spring version you are using.
 
-    - For Spring version 2, use the following artifact:
+    - For Spring boot version 2.1.1, use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE:$zoweApimlVersion"
         ```
 
-    - For Spring version 1, use the following artifact:
+    - For Spring boot version 1.5.9, use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
@@ -119,7 +119,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 2. Add the proper dependencies 
   
-   2.1 For spring version 2, use the following artifact 
+   2.1 For spring version 2.1.1, use the following artifact 
 
    ```maven
    <dependency>
@@ -129,7 +129,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
    </dependency>
     ```
 
-   2.2 For spring version 1, use the following artifact 
+   2.2 For spring version 1.5.9, use the following artifact 
 
    ```maven
    <dependency>
