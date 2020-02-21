@@ -25,4 +25,4 @@ For each area of the codebase, there are established and favored programming lan
 
 This "Code Guidelines" section provides high-level best practices. Each component may have more specific contribution guidelines. Look for a CONTRIBUTING.md file in the component's GitHub repository for specific details.
 
-To learn more about how to develop Zowe applications and plug-ins or extending Zowe with APIs, see [Extending](docs/extend/extend-apiml/onboard-overview.md).
+To learn more about how to develop Zowe applications and plug-ins or extending Zowe with APIs, see [Extending](../../extend/extend-apiml/onboard-overview.md).

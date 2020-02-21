@@ -8,7 +8,7 @@ This guide describes how a REST service can be onboarded with the Zowe API ML in
 
 For more information about how to onboard a REST service, see the following links:
 
-- [API ML onboarding overview](docs/extend/extend-apiml/onboard-overview.md)
+- [API ML onboarding overview](onboard-overview.md)
 - [python-eureka-client](https://pypi.org/project/py-eureka-client/)
 - [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
 - [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
