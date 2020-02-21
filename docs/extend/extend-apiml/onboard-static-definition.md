@@ -2,20 +2,20 @@
 
 As a user of Zowe&trade; API Mediation Layer, onboard an existing REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. This is process is also described as static onboarding. 
 
-**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediaiton Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md).
+**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediaiton Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
-1. [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
-2. [Route your API](#route-your-api)
-3. [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
-4. [Configuration parameters](#configuration-parameters)
-5. [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-6. [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-7. [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-8. [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+* [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+* [Route your API](#route-your-api)
+* [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+* [Customize configuration parameters](#customize-configuration-parameters)
+* [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+* [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+* [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+* [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
-**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](api-mediation-onboard-overview.md).
+**Tip:** For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
 
 ## Identify the APIs that you want to expose
 
@@ -51,7 +51,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     In the sample service, we provide a REST API. The first segment is `/api`. To indicate that this is version 2, the second segment is `/v2`.
 
-### 2. Route your API
+## Route your API
 
 After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
 
@@ -71,7 +71,7 @@ The API Gateway routes REST API requests from the gateway URL `https://gateway:p
 
 **Note:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
-## 3. Define your service and API in YAML format
+## Define your service and API in YAML format
 
 Define your service and API in YAML format in the same way as presented in the following sample `petstore` service example.
 
@@ -90,6 +90,9 @@ services:
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
+      authentication:
+              scheme: httpBasicPassTicket
+              applid: ZOWEAPPL
       apiInfo:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
@@ -100,8 +103,6 @@ services:
 Optional metadata block (for service `petstore`):
 ```yaml
       customMetadata:
-          apiml:
-            enableUrlEncodedCharacters: false
           yourqualifier:
               key1: value1
               key2: value2
@@ -111,6 +112,12 @@ catalogUiTiles:
     static:
         title: Static API services
         description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
+
+additionalServiceMetadata:
+    - serviceId: petstore
+      mode: UPDATE # How to update UPDATE=only missing, FORCE_UPDATE=update all set values
+      authentication:
+        scheme: bypass
 ```
 
 In this example, a suitable name for the file is `petstore.yml`.
@@ -133,7 +140,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
 
-## 4. Customize configuration parameters
+## Customize configuration parameters
 
 The following list describes the configuration parameters:
 
@@ -238,6 +245,44 @@ The following list describes the configuration parameters:
 
         Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
         gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the gateway.
+    
+* **authentication**
+
+    Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+        
+    * **authentication.scheme**
+    
+        This parameter specifies a service authentication scheme. 
+        The following schemes are supported by the API Gateway:
+        
+        * **bypass**
+        
+            This value specifies that the token is passed unchanged to the service.
+              
+            **Note:** This is the default scheme when no authentication parameters are specified. 
+            
+         * **zoweJwt**   
+         
+            This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+         
+         * **httpBasicPassTicket**
+         
+            This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+            It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
+            
+            For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+         
+         * **zosmf**
+         
+            This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+            This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
+            
+            For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+    
+    * **authentication.applid**
+    
+        This parameter specifies a service APPLID.
+        This parameter is only valid for the `httpBasicPassTicket` authentication scheme.        
 
 * **apiInfo**
 
@@ -245,7 +290,7 @@ The following list describes the configuration parameters:
 
 * **apiInfo.apiId**
 
-    This parameter specifies the API identifier that is registered in the API Mediation Layer installation.
+    Specifies the API identifier that is registered in the API Mediation Layer installation.
     The API ID uniquely identifies the API in the API Mediation Layer.
     The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services.
     
@@ -263,21 +308,21 @@ The following list describes the configuration parameters:
 
 * **apiInfo.gatewayUrl**
 
-    This parameter specifies the base path at the API gateway where the API is available. Ensure that this path is
+    Specifies the base path at the API Gateway where the API is available. Ensure that this path is
     the same as the _gatewayUrl_ value in the _routes_ sections.
 
 * **apiInfo.swaggerUrl**
 
-    (Optional) This parameter specifies the HTTP or HTTPS address where the Swagger JSON document is available.
+    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
 
 * **apiInfo.documentationUrl**
 
-    (Optional) This parameter specifies a URL to a website where external documentation is provided.
+    (Optional) Specifies a URL to a website where external documentation is provided.
     This can be used when _swaggerUrl_ is not provided.
 
 * **apiInfo.version**
 
-    (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
 * **customMetadata**
 
@@ -312,17 +357,40 @@ The following list describes the configuration parameters:
            description: This is the second tile with ID tile2
    ```
 
-* **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.{tileId}.title**
+    
+       Specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
+    
+    * **catalogUiTile.{tileId}.description**
+    
+       Specifies the detailed description of the API Catalog UI dashboard tile.
+       This value is displayed in the API Catalog UI dashboard as the tile description.
 
-   Specifies the title of the API services product family. This value is displayed in the API catalog UI dashboard as the tile title.
+* **additionalServiceMetadata**
 
-* **catalogUiTile.{tileId}.description**
+    This section contains a list of changes that allows adding or modifying metadata parameters for the corresponding service. 
+    
+    * **additionalServiceMetadata.serviceId**
+    
+        Specifies the service identifier for which metadata is updated.
+        
+    * **additionalServiceMetadata.mode**
+    
+        Specifies how the metadata are updated. The following modes are available:
+        
+        **UPDATE**
+        
+        Only missing parameters are added. Already existing parameters are ignored.
+        
+        **FORCE_UPDATE**
+        
+        All changes are applied. Existing parameters are overwritten.     
+        
+    * **additionalServiceMetadata.{updatedParameter}**
+    
+        Specifies any metadata parameters that are updated.      
 
-   Specifies the detailed description of the API Catalog UI dashboard tile.
-   This value is displayed in the API catalog UI dashboard as the tile description.
-
-
-## 5. Add and validate the definition in the API Mediation Layer running on your machine
+## Add and validate the definition in the API Mediation Layer running on your machine
 
 After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
@@ -355,7 +423,7 @@ The following procedure describes how to add your service to the API Mediation L
     `https://localhost:10010/api/v2/petstore/pets/1`
 
 
-## 6. Add a definition in the API Mediation Layer in the Zowe runtime
+## Add a definition in the API Mediation Layer in the Zowe runtime
 
 After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation on z/OS.  
 
@@ -395,7 +463,7 @@ After you define and validate the service in YAML format, you are ready to add y
     `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
 
 
-## 7. (Optional) Check the log of the API Mediation Layer
+## (Optional) Check the log of the API Mediation Layer
 
 The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
@@ -405,7 +473,7 @@ Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-
 Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
 ```
 
-## 8. (Optional) Reload the services definition after the update when the API Mediation Layer is already started
+## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
 The following procedure enables you to refresh the API definitions after you change the definitions when the API Mediation Layer is already running.
 
