@@ -54,7 +54,7 @@ Use the following options If your service is not created in Java, you do not wan
 
 For legacy enabler documentation (version 1.2 and lower) please refer to the previous version of the documentation: 
 
-- [Zowe Docs version 1.8.x](#https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
+- [Zowe Docs version 1.8.x](https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
 
 **Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service to the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 

@@ -2,7 +2,7 @@
 
 This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md).
+**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
 ## Introduction
 
@@ -168,7 +168,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](docs/extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md).
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
 are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
