@@ -30,7 +30,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 
 `LAUNCH_COMPONENT_GROUPS` : This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
   - `GATEWAY` will start the API mediation layer, which includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop, which is the browser GUI for hosting Zowe applications such as the 3270 Terminal and the File Explorer apps.  The Zowe desktop is a Node.js application and uses the version that is specified by the `HOME_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop, which is the browser GUI for hosting Zowe applications such as the 3270 Terminal and the File Explorer apps.  The Zowe desktop is a Node.js application and uses the version that is specified by the `NODE_HOME` value.  
 
 ### Component prerequisites
 
@@ -71,7 +71,7 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 **Example:**
 
-  ```yaml
+  ```
   ZOWE_PREFIX=ZWE
   ZOWE_INSTANCE=X
   ```
