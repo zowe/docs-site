@@ -15,14 +15,14 @@ Zowe API ML is a lightweight API management system based on the following Netfli
 The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
 
-The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
+The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
 
 The _PJE_ library is focused on the needs of the Java developers who are using neither the [Spring Framework](https://spring.io/) nor the [Spring Boot](https://spring.io/projects/spring-boot). If the frameworks are used in the project to onboard take a look at the enablers for these frameworks.  
 
 Additionally, don't use this enabler in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the _PJE_ and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 **Tip:** For more information about how to utilize another API ML enablers, see the documentation in
-the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)
+the [Onboarding Overview](onboard-overview.md)
 
 ## Onboarding your REST service with API ML
 
@@ -58,7 +58,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
+Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
 
 * The REST API service to onboard is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
