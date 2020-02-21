@@ -23,7 +23,7 @@ This tutorial walks you through the Zowe&trade; interfaces, including the Zowe D
 
 - If you are new to Zowe, start with this tutorial to explore the base Zowe features and functions.
 - If you are already familiar with Zowe interfaces and capabilities, you might want to visit the **Extending** section which guides you to extend Zowe by creating your own APIs or applications.
-   - [Developing for API Mediation Layer](docs/extend/extend-apiml/onboard-overview.md)
+   - [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview.md)
    - [Developing for Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md)
    - [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md)
 
@@ -312,7 +312,7 @@ For a complete list of available CLI commands, explore the Zowe CLI [Command Ref
 
 ### Try the Extending Zowe scenarios
 
-You can add your own application plug-ins to Zowe. See how easy it is to extend Zowe to create your own APIs and applications by reading the [Extending](docs/extend/extend-apiml/onboard-overview.md) section.
+You can add your own application plug-ins to Zowe. See how easy it is to extend Zowe to create your own APIs and applications by reading the [Extending](../extend/extend-apiml/onboard-overview.md) section.
 
 ### Give feedback
 Did you find this tutorial useful? You can tell us what you think about this tutorial via an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9). 

@@ -2,7 +2,7 @@
 
 This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Eabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md).
+**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
 ## Introduction
 
@@ -15,14 +15,14 @@ Zowe API ML is a lightweight API management system based on the following Netfli
 The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
 
-The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
+The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
 
 The _PJE_ library is focused on the needs of the Java developers who are using neither the [Spring Framework](https://spring.io/) nor the [Spring Boot](https://spring.io/projects/spring-boot). If the frameworks are used in the project to onboard take a look at the enablers for these frameworks.  
 
 Additionally, don't use this enabler in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the _PJE_ and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 **Tip:** For more information about how to utilize another API ML enablers, see the documentation in
-the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md)
+the [Onboarding Overview](onboard-overview.md)
 
 ## Onboarding your REST service with API ML
 
@@ -58,7 +58,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the prerequisites from the [Onboarding Overview](docs/extend/extend-apiml/onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
+Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
 
 * The REST API service to onboard is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
@@ -82,9 +82,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository. In case of the usage of the Zowe repository remove the credentials. 
-
-    If you are using the Zowe Artifactory, use the credentials in the following code block:
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -170,7 +168,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](docs/extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md).
+**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
 are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.

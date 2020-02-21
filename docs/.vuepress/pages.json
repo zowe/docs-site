@@ -94,13 +94,12 @@
         "text": "Developing for API Mediation Layer",
         "items": [
           "extend/extend-apiml/onboard-overview.md",
-          "extend/extend-apiml/onboard-plain-java-enabler.md",
-          "extend/extend-apiml/onboard-rest-service-direct-eureka-call.md",
           "extend/extend-apiml/api-mediation-security.md",
-          "extend/extend-apiml/onboard-a-spring-boot-rest-api-service.md",
-          "extend/extend-apiml/onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
-          "extend/extend-apiml/onboard-an-existing-rest-api-service-without-code-changes.md",
           "extend/extend-apiml/api-mediation-message-service.md",
+          "extend/extend-apiml/onboard-plain-java-enabler.md",
+          "extend/extend-apiml/onboard-direct-eureka-call.md",
+          "extend/extend-apiml/onboard-spring-boot-enabler.md",
+          "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md"
         ]
       },

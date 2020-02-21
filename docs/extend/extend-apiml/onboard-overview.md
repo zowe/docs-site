@@ -40,21 +40,21 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 ### Recommended for services using Java
 
-- [Onboard a REST API service with the Plain Java Enabler (PJE)](docs/extend/extend-apiml/onboard-plain-java-enabler.md)
-- [Onboard a Spring Boot based REST API Service](docs/extend/extend-apiml/onboard-spring-boot-enabler.md)
+- [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
+- [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
 
 ### Other options
 
 Use the following options If your service is not created in Java, you do not want to change your codebase or use the libraries above. 
 
-- [Onboard a REST API using static definition without code changes](docs/extend/extend-apiml/onboard-static-definition.md)
-- [Onboard a REST API directly calling Zowe Discovery Service](docs/extend/extend-apiml/onboard-direct-eureka-call.md)
+- [Onboard a REST API using static definition without code changes](onboard-static-definition.md)
+- [Onboard a REST API directly calling Zowe Discovery Service](onboard-direct-eureka-call.md)
 
 ### Legacy enablers
 
 For legacy enabler documentation (version 1.2 and lower) please refer to the previous version of the documentation: 
 
-- [Zowe Docs version 1.8.x](#https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
+- [Zowe Docs version 1.8.x](https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
 
 **Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service to the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
 
@@ -62,7 +62,7 @@ For legacy enabler documentation (version 1.2 and lower) please refer to the pre
 
 ## Sample REST API Service
 
-To demonstrate the concepts that apply to REST API services, we use an  [example of a Spring Boot REST API service](https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot). This example is used in the REST API onboarding guide [REST APIs without code changes required](docs/extend/extend-apiml/onboard-static-definition.md) (static onboarding).  
+To demonstrate the concepts that apply to REST API services, we use an  [example of a Spring Boot REST API service](https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot). This example is used in the REST API onboarding guide [REST APIs without code changes required](onboard-static-definition.md) (static onboarding).  
 
 You can build this service using instructions in the source code of the [Spring Boot REST API service example](https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md).
 
