@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_db2.html">db2</a> → <a href="zowe_db2_export.html">export</a> → <a href="zowe_db2_export_table.html">table</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_db2.html">db2</a> › <a href="zowe_db2_export.html">export</a> › <a href="zowe_db2_export_table.html">table</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Export a Db2 table to the stdout or a file.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  db2 export table &lt;table&gt; [options]</p>
@@ -28,7 +28,7 @@
 </ul>
 <h4 id="db2-connection-options">DB2 Connection Options</h4>
 <ul>
-<li><p><code>--hostname</code>  | <code>-H</code> <em>(string)</em></p>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The Db2 server host name</li>
 </ul>
@@ -38,7 +38,7 @@
 <li>The Db2 server port number</li>
 </ul>
 </li>
-<li><p><code>--username</code>  | <code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>The Db2 user ID (may be the same as the TSO login)</li>
 </ul>
@@ -72,7 +72,7 @@
 <li><p>Export employees data from the table SAMPLE.EMP and save it
 to the file &#39;employees.sql&#39;:</p>
 <ul>
-<li><code>zowe  db2 export table SAMPLE.EMP --outfile employees.sql</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 export table SAMPLE.EMP --outfile employees.sql">Copy</button></li>
+<li><code>zowe  db2 export table SAMPLE.EMP --outfile employees.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 export table SAMPLE.EMP --outfile employees.sql">Copy</button></li>
 </ul>
 </li>
 </ul>

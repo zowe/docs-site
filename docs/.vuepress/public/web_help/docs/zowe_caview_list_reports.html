@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>caview list reports</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_reports.html">reports</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List reports in a repository.
+Use the returned &#39;ReportHandle&#39; to reference a report in other commands.
+For example, use the &#39;ReportHandle&#39; in the &#39;download report&#39; command to download
+that report.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  caview list reports &lt;repositoryId&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>repositoryId</code>         <em>(number)</em></p>
+<ul>
+<li>Repository identifier.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--filter-name</code>  | <code>-n</code> <em>(string)</em></p>
+<ul>
+<li><p>Filter (include) based on report name. Use the asterisk (*) as a wildcard to
+represent any number of characters.</p>
+<p>Default value: *</p>
+</li>
+</ul>
+</li>
+<li><p><code>--limit</code>  | <code>-l</code> <em>(number)</em></p>
+<ul>
+<li><p>Limit (maximum number) of retrieved records.</p>
+<p>Default value: 1000</p>
+</li>
+</ul>
+</li>
+<li><p><code>--latest-versions</code>  | <code>--latest-version</code> | <code>--lv</code> <em>(number)</em></p>
+<ul>
+<li>Number of latest versions (of reports) to include. If not specified, all
+versions of reports are included.</li>
+</ul>
+</li>
+<li><p><code>--archival-since</code>  | <code>--since</code> | <code>--archival-from</code> | <code>--from</code> <em>(string)</em></p>
+<ul>
+<li>Date of earliest archived reports to include based on archival date. Use
+&#39;YYYY-MM-DD&#39; or any ISO 8601 supported format.</li>
+</ul>
+</li>
+<li><p><code>--archival-until</code>  | <code>--until</code> | <code>--archival-to</code> | <code>--to</code> <em>(string)</em></p>
+<ul>
+<li>Date of latest archived reports to include based on archival date. Use
+&#39;YYYY-MM-DD&#39; or any ISO 8601 supported format.</li>
+</ul>
+</li>
+<li><p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Include header with field names in the output when you specify &#39;tabular&#39; or
+&#39;csv&#39; for the output format.
+This option is ignored when you specify any other output format.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
+<ul>
+<li><p>Output format. This option is ignored if &#39;--response-format-json&#39; is
+specified.</p>
+<p>Default value: tabular</p>
+<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+</li>
+</ul>
+</li>
+<li><p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
+<ul>
+<li><p>Field to include in the output. Multiple fields can be specified.
+Fields appear in the order you specify.</p>
+<p>Allowed values:
+ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle,TotalPages,OriginalType,Destination,JobName,Origin,Generation,SequenceNumber,SysoutClass,Status,JobID,Forms,XCode,UserID,ReadDate,PrintDate,OnDisk,OnTape,OnOptical,IndexOnDisk,Location,TapeSequence,TapePosition,TapeCount,ExtendedRetentionOptionID,RemainingDays,RemainingGenerations,RemainingCopy,RemainingDiskDays,RemainingDiskGeneration,RemainingDiskCopy,RemainingDisk2days</p>
+<p>Default value:
+ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--caview-profile</code>  | <code>--caview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (caview) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

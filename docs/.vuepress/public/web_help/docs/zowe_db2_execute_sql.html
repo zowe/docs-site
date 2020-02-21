@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_db2.html">db2</a> → <a href="zowe_db2_execute.html">execute</a> → <a href="zowe_db2_execute_sql.html">sql</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_db2.html">db2</a> › <a href="zowe_db2_execute.html">execute</a> › <a href="zowe_db2_execute_sql.html">sql</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Execute one or multiple SQL statements separated by a semicolon from a command
 line or from a file.</p>
 <h4 id="usage">Usage</h4>
@@ -26,7 +26,7 @@ line or from a file.</p>
 </ul>
 <h4 id="db2-connection-options">DB2 Connection Options</h4>
 <ul>
-<li><p><code>--hostname</code>  | <code>-H</code> <em>(string)</em></p>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The Db2 server host name</li>
 </ul>
@@ -36,7 +36,7 @@ line or from a file.</p>
 <li>The Db2 server port number</li>
 </ul>
 </li>
-<li><p><code>--username</code>  | <code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>The Db2 user ID (may be the same as the TSO login)</li>
 </ul>
@@ -69,17 +69,17 @@ line or from a file.</p>
 <ul>
 <li><p>Execute a dummy SQL query:</p>
 <ul>
-<li><code>zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
+<li><code>zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Retrieve the employees table and total number of rows:</p>
 <ul>
-<li><code>zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
+<li><code>zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Execute a file with SQL statements:</p>
 <ul>
-<li><code>zowe  db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --file backup_sample_database.sql">Copy</button></li>
+<li><code>zowe  db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --file backup_sample_database.sql">Copy</button></li>
 </ul>
 </li>
 </ul>
