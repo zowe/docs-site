@@ -36,7 +36,9 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
-- Zowe CLI was confirmed to be installable and runnable on Unix System Services (USS) on z/OS. For more information, see [Installing Node.js on the Mainframe (both Linux and z/OS) to run Zowe CLI](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41)
+- Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
+
+    **Note:** The IBM Db2 and Secure Credential Store plug-ins for Zowe CLI will *not* run on z/OS due to native code requirements.
 
 #### Zowe Explorer
 
