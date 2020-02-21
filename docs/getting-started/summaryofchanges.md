@@ -36,17 +36,17 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
+- The following new plug-ins are added in this version:
+  - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
+  - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
+  - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
+  - [Secure Credential Store for Zowe CLI](cli-scsplugin.md)
+
 - **Breaking Change** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
 
 - **Breaking Change** The `--pass` option is changed to `--password`  for all commands and profiles. The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe zosmf create profile` command and use the new option name `--password`.
 
-- **Breaking Change** You can enter a value of `PROMPT*` for any CLI option to enable interactive prompting. If you created scripts where any option was defined with the exact value `PROMPT*`, the script will not execute properly in this version.
-
-- The following new plug-ins are added in v1.9.x LTS:  TODO ADD LINKS
-  - IBM® z/OS FTP Plug-in for Zowe CLI
-  - IBM® IMS™ Plug-in for Zowe CLI
-  - IBM® MQ Plug-in for Zowe CLI
-  - Secure Credential Store for Zowe CLI
+- **Breaking Change** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information about this feature, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-for-sensitive-options).
 
 - Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
 
@@ -63,7 +63,8 @@ The following features and enhancements were added:
     - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
 
 Commands were added to the IBM® CICS® Plug-in that let you perform the following tasks:
-  - **BREAKING CHANGE** The plug-in now uses HTTPS by default when connecting to CMCI. The option `--protocol http` was added to let you override the default as needed. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
+
+  - **Breaking change** The plug-in now uses HTTPS by default when connecting to CMCI. The option `--protocol http` was added to let you override the default as needed. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
   -  Define, enable, install, discard, disable, and delete CICS URIMaps. [#53](https://github.com/zowe/zowe-cli-cics-plugin/issues/53) [#49](https://github.com/zowe/zowe-cli-cics-plugin/issues/49) [#48](https://github.com/zowe/zowe-cli-cics-plugin/issues/48) [#51](https://github.com/zowe/zowe-cli-cics-plugin/issues/51) [#50](https://github.com/zowe/zowe-cli-cics-plugin/issues/50) [#52](https://github.com/zowe/zowe-cli-cics-plugin/issues/52)
   - Define and delete CICS web services. [#58](https://github.com/zowe/zowe-cli-cics-plugin/issues/58) [#59](https://github.com/zowe/zowe-cli-cics-plugin/issues/59)
   - Add and removing CSD Groups to/from CSD Lists [#60](https://github.com/zowe/zowe-cli-cics-plugin/issues/60).

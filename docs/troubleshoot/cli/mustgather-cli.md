@@ -9,10 +9,10 @@ Follow these instructions to gather specific pieces of information to help troub
 Issue the following command:
 
 ```
-zowe -V 
-``` 
+zowe -V
+```
 
-Zowe CLI versions may vary depending upon if the `@latest` or `@lts-incremental` version is installed.   
+Zowe CLI versions may vary depending upon if the `@latest` or `@zowe-v1-lts` version is installed.
 
 For the `@latest` (forward-development) version:
 
@@ -20,13 +20,13 @@ For the `@latest` (forward-development) version:
 npm list -g @zowe/cli
 ```
 
-For the `@lts-incremental` version:
+For the `@zowe-v1-lts` version:
 
 ```
-npm list -g @brightside/core
+npm list -g @zowe/cli
 ```
 
-More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md). 
+More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md).
 
 ## Identify the currently installed versions of plug-ins
 
@@ -36,11 +36,11 @@ Issue the following command:
 zowe plugins list
 ```
 
-The output describes version and the registry information. Note that the offical downloads are located at https://api.bintray.com/npm
+The output describes version and the registry information.
 
 ## Environment variables
 
-The following settings are configurable via environment variables: 
+The following settings are configurable via environment variables:
 
 ### Log levels
 
@@ -55,9 +55,9 @@ Environment variables are available to specify logging level and the CLI home di
 
 ### Home directory
 
-You can set the location on your computer for the Zowe CLI home directory, which contains log files, profiles, and plug-ins for the product. 
+You can set the location on your computer for the Zowe CLI home directory, which contains log files, profiles, and plug-ins for the product.
 
-**Tip!** The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in multiple folders, then switch between them using the environment variable. 
+**Tip!** The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in multiple folders, then switch between them using the environment variable.
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
@@ -73,20 +73,20 @@ The values for these variables can be **echo**ed.
 
 There are two sets of logs to be aware of:
 
-- Imperative CLI Framework log, which generally contains installation and configuration information. 
-    
-- Zowe CLI log, which contains information about interaction between CLI and the server endpoints. 
-    
+- Imperative CLI Framework log, which generally contains installation and configuration information.
+
+- Zowe CLI log, which contains information about interaction between CLI and the server endpoints.
+
 Analyze these logs for any information relevant to your issue.
 
 ### Profile configuration
 
-The `profiles` folder stores connnection information. 
+The `profiles` folder stores connnection information.
 
 **Important\!** The profile directory might contain "sensitive" information, such as your mainframe password. You should obfuscate any sensitive references before providing configuration files.
 
 ## Node.js and npm
-Zowe CLI should be compatible with Node.js v8 and greater. 
+Zowe CLI should be compatible with Node.js v8 and greater.
 
 To gather Node.js and npm versions, use the following:
 
@@ -95,7 +95,7 @@ node --version
 npm --version
 ```
 
-### npm configuration 
+### npm configuration
 If you are having trouble installing Zowe CLI from an npm registry, gather your npm configuration to help identify issues with registry settings, global install paths, proxy settings, etc...
 
 ```
@@ -115,7 +115,7 @@ By default, npm keeps only 10 log files, but sometimes more are needed. Increase
 npm config set logs-max 50
 ```
 
-This command increases the log count to 50, so that more log files will be stored on the system. Now you can run tests multiple times and not lose the log files. The logs can be passed to Support for analysis. 
+This command increases the log count to 50, so that more log files will be stored on the system. Now you can run tests multiple times and not lose the log files. The logs can be passed to Support for analysis.
 
 As the log files are created only when an npm conmmand fails, but you are interested to see what is executed, you can increase the log level of npm. Issue the following command:
 
@@ -123,7 +123,7 @@ As the log files are created only when an npm conmmand fails, but you are intere
 npm config set loglevel verbose
 ```
 
-- With this change, you can see all actions taken by npm on the stdout. If the command is successful, it still does not generate a log file. 
+- With this change, you can see all actions taken by npm on the stdout. If the command is successful, it still does not generate a log file.
 
 - The available log levels are:
 "silent", "error", "warn", "notice", "http", "timing", "info", "verbose", "silly", and "notice". "Notice" is the default.

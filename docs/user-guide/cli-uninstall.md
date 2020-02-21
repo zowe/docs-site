@@ -1,4 +1,4 @@
-# Uninstalling Zowe CLI 
+# Uninstalling Zowe CLI
 
 You can uninstall Zowe&trade; CLI from the desktop if you no longer need to use it.
 
@@ -8,7 +8,7 @@ The following steps describe how to list the profiles that you created, delete t
 
 **Follow these steps:**
 
-1.  Open a command line window. 
+1.  Open a command line window.
 
     **Note:** If you do not want to delete the Zowe CLI profiles from your computer, go to Step 5.
 
@@ -27,16 +27,16 @@ The following steps describe how to list the profiles that you created, delete t
     $
     ```
 
-3.  Delete all of the profiles that are listed for the command group by issuing the following command: 
+3.  Delete all of the profiles that are listed for the command group by issuing the following command:
 
     **Tip:** For this command, use the results of the `list`
-    command.    
+    command.
 
     **Note:** When you issue the `delete` command, it deletes the
     specified profile and its credentials from the credential vault in your computer's operating system.
 
     ```
-    zowe profiles delete <profileType> <profileName> --force  
+    zowe profiles delete <profileType> <profileName> --force
     ```
       **Example:**
 
@@ -51,11 +51,11 @@ The following steps describe how to list the profiles that you created, delete t
     - If you installed Zowe CLI from the package, issue the following command
 
         ```
-        npm uninstall --global @brightside/core
+        npm uninstall --global @zowe/cli
         ```
 
     - If you installed Zowe CLI from the online registry, issue the following command:
-    
+
         ```
         npm uninstall --global brightside
         ```
@@ -65,9 +65,3 @@ The following steps describe how to list the profiles that you created, delete t
 6. Delete the `C:\Users\<user_name>\.brightside` directory on your computer. The directory contains the Zowe CLI log files and other miscellaneous files that were generated when you used the product.
 
     **Tip:** Deleting the directory does not harm your computer.
-
-7.  If you installed Zowe CLI from the online registry, issue the following command to clear your scoped npm registry:
-
-    ```
-    npm config set @brightside:registry
-    ```
