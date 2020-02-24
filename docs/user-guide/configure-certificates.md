@@ -102,11 +102,13 @@ KEYSTORE_PASSWORD=mypass
 You may encounter the following message:
 
 ```
-apiml_cm.sh --action trust-zosmf has failed.
-WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
+apiml_cm.sh --action trust-zosmf has failed. See $LOG_FILE for more details
+ERROR: z/OSMF is not trusted by the API Mediation Layer. Make sure ZOWE_ZOSMF_HOST and ZOWE_ZOSMF_PORT variables are defining the desired z/OSMF instance.
+ZOWE_ZOSMF_HOST=${ZOWE_ZOSMF_HOST}   ZOWE_ZOSMF_PORT=${ZOWE_ZOSMF_PORT}
+You can also specify z/OSMF certificate explicitly in the ZOSMF_CERTIFICATE environmental variable in the zowe-setup-certificates.env file.
 ```
 
-This error does not interfere with the installation progress and can be remediated after the installation completes. For more information, see [Trust a z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate).
+This error has to be resolved before you can proceed with the next installation step.
 
 **Notes:** 
 
