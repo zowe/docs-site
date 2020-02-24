@@ -1,11 +1,11 @@
-# IBM® Db2® Database Plug-in for Zowe CLI 
+# IBM® Db2® Database Plug-in for Zowe CLI
 
 The IBM® Db2® Database Plug-in for Zowe&trade; CLI lets you interact with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools. The plug-in also lets you interact with Db2 to advance continuous integration and to validate product quality and stability.
 
 Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
 
 [[toc]]
-  
+
 ## Use cases
 
 As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
@@ -15,7 +15,7 @@ As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database t
   - Export tables to a local file on your computer in SQL format.
   - Call a stored procedure and pass parameters.
 
-## Commands 
+## Commands
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
@@ -41,7 +41,7 @@ If you installed Zowe CLI from **online registry**, complete the following steps
 1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @brightside/db2@lts-incremental
+    zowe plugins install @brightside/db2@zowe-v1-lts
     ```
 
 2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
@@ -60,9 +60,9 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
-3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.  
+3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
 
-You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI. 
+You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI.
 
 #### Installing the plug-in
 
@@ -100,9 +100,9 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 
 ## Addressing the license requirement
 
-The following steps are required for both the registry and offline package installation methods: 
+The following steps are required for both the registry and offline package installation methods:
 
-1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS. 
+1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS.
 
     **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
@@ -116,7 +116,7 @@ The following steps are required for both the registry and offline package insta
         ```
         <zowe_home>/plugins/installed/lib/node_modules/@brightside/db2/node_modules/ibm_db/installer/clidriver/license
         ```
-    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems. 
+    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
     After the license is copied, you can use the Db2 plugin functionality.
 
@@ -137,7 +137,7 @@ Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following 
 To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
 
 ```
-zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>  
+zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
