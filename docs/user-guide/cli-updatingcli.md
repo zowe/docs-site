@@ -10,11 +10,11 @@ Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recen
 
 ## Migrating to Long-term Support (LTS) version
 
-If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), you can update to the Long-term Support Release (LTSR) to leverage new functionality and plug-ins.
+If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), you can update to `@zowe-v1-lts` (LTS version) to leverage new functionality and plug-ins.
 
 **Follow these steps:**
 
-1. **(Optional)** To preserve your existing user profiles (for example for zosmf, cics, db2, etc..), copy the contents of `C:\Users\<username>\.zowe\profiles` to another directory on your computer.
+1. **(Optional)** Copy the contents of `C:\Users\<username>\.zowe\profiles` to another directory on your computer to preserve your existing user profiles (zosmf, cics, db2, etc..).
 
 2. Uninstall plug-ins, if any. For more information, see [Uninstall plug-ins](cli-uninstall.md).
 

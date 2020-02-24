@@ -36,13 +36,14 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
+For information about updating to the Long-term Support version of Zowe CLI, see [Updating Zowe CLI](../user-guide/cli-updatingcli.md).
+
 - The following new CLI plug-ins are added in this version:
 
   - [IBM® FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
   - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
   - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
   - [Secure Credential Store for Zowe CLI](cli-scsplugin.md)
-
 
 - **Breaking Change** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
 
