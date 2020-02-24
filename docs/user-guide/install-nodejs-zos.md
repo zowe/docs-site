@@ -12,7 +12,7 @@ For details, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no char
 
 **Known issue:** There is a known issue with node v8.16.1 and Zowe desktop encoding. See [https://github.com/ibmruntimes/node/issues/142](https://github.com/ibmruntimes/node/issues/142) for details.
 
-**Workaround:** Use node v8.16.0 which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `ibm-trial-node-v8.16.0-os390-s390x.pax.Z` file.
+**Workaround:** Use node.js v8.16.2 which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `pax.Z` file under **IBM SDK for Node.js - z/OS, V8 - (v8.16.2 - November 2019 Build)**. Note that node v12 is not yet supported on Zowe.
 
 ## Hardware and software requirements
 
