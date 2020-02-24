@@ -36,11 +36,13 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
-- The following new plug-ins are added in this version:
-  - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
+- The following new CLI plug-ins are added in this version:
+
+  - [IBM® FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
   - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
   - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
   - [Secure Credential Store for Zowe CLI](cli-scsplugin.md)
+
 
 - **Breaking Change** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
 
@@ -69,8 +71,11 @@ Commands were added to the IBM® CICS® Plug-in that let you perform the followi
   - Define and delete CICS web services. [#58](https://github.com/zowe/zowe-cli-cics-plugin/issues/58) [#59](https://github.com/zowe/zowe-cli-cics-plugin/issues/59)
   - Add and removing CSD Groups to/from CSD Lists [#60](https://github.com/zowe/zowe-cli-cics-plugin/issues/60).
 
-
 #### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
 ### Bug fixes
 
@@ -133,7 +138,7 @@ For more information about how to install Zowe z/OS components, see [Installatio
 
 Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
-You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) .
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
 Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
 
