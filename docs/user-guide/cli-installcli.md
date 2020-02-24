@@ -41,19 +41,9 @@ If you do not have internet access at your site, use the following method to ins
     -  *r* indicates the release number
     -  *m* indicates the modification number
 
-3. Open a command-line window, such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package (.zip file). Issue the following command, or use your preferred method to unzip the files:
+3. Unzip the contents of the `zowe-cli-package-v.r.m.zip` file to your preferred location on your computer.
 
-    ```
-    unzip zowe-cli-package-v.r.m.zip
-    ```
-    **Example:**
-    ```
-    unzip zowe-cli-package-1.9.0.zip
-    ```
-
-    By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the .zip file. You can extract the contents of the zip file to your preferred location.
-
-4. Issue the following command against the extracted directory to install Zowe CLI on your computer:
+4. Open a command-line window. Issue the following command against the extracted directory to install Zowe CLI on your computer:
 
     ```
     npm install -g zowe-cli.tgz
