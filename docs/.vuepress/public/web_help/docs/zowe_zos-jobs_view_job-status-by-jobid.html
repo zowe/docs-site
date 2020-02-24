@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_view.html">view</a> → <a href="zowe_zos-jobs_view_job-status-by-jobid.html">job-status-by-jobid</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_view.html">view</a> › <a href="zowe_zos-jobs_view_job-status-by-jobid.html">job-status-by-jobid</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>View status details of a single z/OS job on spool/JES queues. The command does
 not prevalidate the JOBID. The command presents errors verbatim from the z/OSMF
 Jobs REST endpoints (expect for &quot;no jobs found&quot;).</p>
@@ -108,13 +108,13 @@ in the output.</li>
 <li><p>View status and other details of the job with the job ID
 JOB00123:</p>
 <ul>
-<li><code>zowe  zos-jobs view job-status-by-jobid j123</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs view job-status-by-jobid j123">Copy</button></li>
+<li><code>zowe  zos-jobs view job-status-by-jobid j123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs view job-status-by-jobid j123">Copy</button></li>
 </ul>
 </li>
 <li><p>Print only the status (for example, &quot;OUTPUT&quot; or &quot;ACTIVE&quot;) of
 the job with the job ID JOB00123:</p>
 <ul>
-<li><code>zowe  zos-jobs view job-status-by-jobid j123 --rff status --rft string</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs view job-status-by-jobid j123 --rff status --rft string">Copy</button></li>
+<li><code>zowe  zos-jobs view job-status-by-jobid j123 --rff status --rft string</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs view job-status-by-jobid j123 --rff status --rft string">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_cics.html">cics</a> → <a href="zowe_cics_get.html">get</a> → <a href="zowe_cics_get_resource.html">resource</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_get.html">get</a> › <a href="zowe_cics_get_resource.html">resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Get resources (for example, programs or transactions) from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics get resource &lt;resourceName&gt; [options]</p>
@@ -75,8 +75,8 @@
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li><p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: http
-Allowed values: http, https</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -128,48 +128,54 @@ in the output.</li>
 <ul>
 <li><p>Get program resources from the region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSProgram --region-name MYREGION</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION">Copy</button></li>
+<li><code>zowe  cics get resource CICSProgram --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 <li><p>Get local transaction resources from the region named
 MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSLocalTransaction --region-name MYREGION</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalTransaction --region-name MYREGION">Copy</button></li>
+<li><code>zowe  cics get resource CICSLocalTransaction --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalTransaction --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 <li><p>Get local file resources from the region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSLocalFile --region-name MYREGION</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalFile --region-name MYREGION">Copy</button></li>
+<li><code>zowe  cics get resource CICSLocalFile --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalFile --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 <li><p>Get program definition resources from the CSD group named
 GRP1 and the region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSDefinitionProgram --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSDefinitionProgram --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;">Copy</button></li>
+<li><code>zowe  cics get resource CICSDefinitionProgram --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSDefinitionProgram --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Get transaction definition resources from the CSD group
 named GRP1 and the region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSDefinitionTransaction --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSDefinitionTransaction --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;">Copy</button></li>
+<li><code>zowe  cics get resource CICSDefinitionTransaction --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSDefinitionTransaction --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;">Copy</button></li>
+</ul>
+</li>
+<li><p>Get URIMap definition resources from the CSD group named
+GRP1 and the region named MYREGION:</p>
+<ul>
+<li><code>zowe  cics get resource CICSDefinitionURIMap --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSDefinitionURIMap --region-name MYREGION --parameter &quot;CSDGROUP(GRP1)&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Get program resources that start with the name PRG from the
 region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=PRG*&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=PRG*&quot;">Copy</button></li>
+<li><code>zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=PRG*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=PRG*&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Get a local transaction resource named TRAN from the region
 named MYREGION:</p>
 <ul>
-<li><code>zowe  cics get resource CICSLocalTransaction --region-name MYREGION --criteria &quot;TRANID=TRAN&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalTransaction --region-name MYREGION --criteria &quot;TRANID=TRAN&quot;">Copy</button></li>
+<li><code>zowe  cics get resource CICSLocalTransaction --region-name MYREGION --criteria &quot;TRANID=TRAN&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSLocalTransaction --region-name MYREGION --criteria &quot;TRANID=TRAN&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Get program resources that start with the name MYPRG from
 the region named MYREGION and display various fields as a table:</p>
 <ul>
-<li><code>zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=MYPRG*&quot; --rft table --rfh --rff program length status</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=MYPRG*&quot; --rft table --rfh --rff program length status">Copy</button></li>
+<li><code>zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=MYPRG*&quot; --rft table --rfh --rff program length status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics get resource CICSProgram --region-name MYREGION --criteria &quot;PROGRAM=MYPRG*&quot; --rft table --rfh --rff program length status">Copy</button></li>
 </ul>
 </li>
 </ul>

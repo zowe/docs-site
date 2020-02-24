@@ -30,7 +30,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 
 `LAUNCH_COMPONENT_GROUPS`: This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
   - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `HOME_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `NODE_HOME` value.  
   - Vendor products may extend Zowe with their own component group that they want to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this, specify the fully qualified directory provided by the vendor that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that is called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that performs any configuration steps such as adding iFrame plug-ins to the Zowe desktop, and a `validate.sh` script **(optional)** that can be used to perform any pre-launch validation such as checking system prerequisites. For more information about how a vendor can extend Zowe with a sub address space, see the [Extending](../extend/extend-apiml/api-mediation-onboard-overview.md) section.
 
 ### Component prerequisites
@@ -72,7 +72,7 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 **Example:**
 
-  ```yaml
+  ```
   ZOWE_PREFIX=ZWE
   ZOWE_INSTANCE=X
   ```
@@ -99,7 +99,7 @@ When Zowe starts, a number of its microservices need to be given port numbers th
 - `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
 - `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
 
-**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
+**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
 
 To determine which ports are not available, follow these steps:
 
