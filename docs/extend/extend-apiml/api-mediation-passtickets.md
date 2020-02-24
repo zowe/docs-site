@@ -105,7 +105,7 @@ As a system programmer, you are not required to do anything in this case. All re
 ### API Services that register dynamically with API ML but do not provide metadata
 
 Some services can use PassTickets but the API ML does not recognize that the service can accept PassTickets.
-For such services, you can provide additional service metadata externally in the same file that contains the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md).
+For such services, you can provide additional service metadata externally in the same file that contains the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./onboard-static-definition.md).
 
 Add the following section to the YAML file with a static definition:
 
