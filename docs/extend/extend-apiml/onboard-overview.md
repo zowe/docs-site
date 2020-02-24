@@ -1,28 +1,29 @@
 # Onboarding Overview
 
-## What can you expect from this guide
+As a developer, learn how to onboard the [sample service](#Sample-REST-API-Service) into Zowe. Depending on the programming language or framework, use the following detailed guides for onboarding. By the end of the guide you should be able to:
 
-This guide shows how to onboard [sample service](#Sample-REST-API-Service) into Zowe. There are various ways how to achieve this, depending on the language your service is written in, or the choice of framework. The intent of this guide is to demonstrate various approaches you can take and explain the process in detail. At the end of the guide, you will:
-- have the [sample service](#Sample-REST-API-Service) onboarded in Zowe
-- be able to select and apply appropriate onboarding method for your service
+- have the [sample service](#Sample-REST-API-Service) onboarded in Zowe.
+- select and apply appropriate onboarding method for your service.
 
 ## Prerequisites
 
+Meet the following prerequisites before you onboard your service:
+
 - Running instance of Zowe
  
-  Zowe instance with API Mediation Layer running is mandatory prerequisite for service to onboard into. You should be able to login to API Catalog to verify service's onboarding is successful.
+  Log in to API Catalog to verify if the service is onboarded successfully.
   
-  For [static onboarding](#//TODO), access to Zowe runtime is required, so the static service definition can be created.
+  **Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required, so the static service definition can be created.
   
 - Certificate that is trusted by Zowe
 
-  Zowe uses secured communication over TLSv1.2 so protocol version and use of certificate is required. The certificate needs to be trusted by Zowe so the service can register in Discovery service. More information about [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)      
+  Zowe uses secured communication over TLSv1.2, thus the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer).
 
-- Rest API enabled service that you want to onboard
+- Rest API-enabled service that you want to onboard
 
-  This can be arbitrary Rest API enabled service or you can use the [sample service](#Sample-REST-API-Service).
+  Any Rest API-enabled service or the [sample service](#Sample-REST-API-Service).
   
-  Service should document it's Rest API by providing valid Swagger Json. This documentation is displayed in API Catalog. OpenApi 2.0/3.0 standards are supported.
+  Your service should be documented in a valid `OpenApi 2.0/3.0` Swagger JSON format, and will be displayed in API Catalog.
 
 - Access to Zowe artifactory
 
@@ -31,8 +32,6 @@ This guide shows how to onboard [sample service](#Sample-REST-API-Service) into 
     ```
 
 - Gradle or Maven build system
-
-    The guide is describing how to achieve it's objective using these tools.
   
 ## Service Onboarding Guides
 
@@ -45,50 +44,48 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 ### Other options
 
-Use the following options If your service is not created in Java, you do not want to change your codebase or use the libraries above. 
+Use the following options if your service is not created in Java, or you do not want to change your codebase or use the libraries above:
 
 - [Onboard a REST API using static definition without code changes](onboard-static-definition.md)
 - [Onboard a REST API directly calling Zowe Discovery Service](onboard-direct-eureka-call.md)
 
 ### Legacy enablers
 
-For legacy enabler documentation (version 1.2 and lower) please refer to the previous version of the documentation: 
+For legacy enabler documentation (version 1.2 and lower), refer to the previous version of the documentation:
 
 - [Zowe Docs version 1.8.x](https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
 
-**Tip:** We recommend you use the enabler version 1.3 and higher to onboard your REST API service to the Zowe&trade; API Medaition Layer. Future fixes will not be published for enablers using version 1.2 and lower. 
+**Note**: Enablers up to the version 1.2 are no longer supported.
 
-**Tip:** When developing a new service, we recommend that you update the code to support the API Mediation Layer natively. The benefit of supporting the API Mediation Layer natively is that it requires less configuration for the system administrator. Additionally, natively onboarded services can be moved to different systems, can be listened to on a different port, and additional instances can be started without the need to change API Mediation Layer configuration.
+**Tip**: Use the enabler version 1.3 or higher to onboard your REST API service to the Zowe&trade; API Medaition Layer.
 
-## Validating the discoverability of onboarded service
+## Validate successful onboarding 
 
-Once you are able to build and start your service successfully, you can validate that your service is registered correctly.
+Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, wait for 2 minutes, then ensure that your configuration settings are correct.
 
-Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog first wait 2 minutes, then check to make sure that your configuration settings are correct.
+**Notes**:
 
-Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
+ - Specific addresses and user credentials for individual API ML components depend on your target runtime environment.
 
-**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
-for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
-with actual addresses of API ML components and the respective user credentials.
+ - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
 
-**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
+- API Catalog may take a few minutes to display your registered service.
 
 ### Verify service discovery through Api Catalog:
 
-  1. Check that your API service is displayed in the API Catalog UI and all information including API documentation is correct.
+  1. Ensure that your API service is displayed in the API Catalog UI, and that all information including API documentation is correct.
 
-  2. Check that you can access your API service endpoints through the Gateway.
+  2. Ensure that you can access your API service endpoints through the Gateway.
 
 ### Verify service discovery through Discovery Service:
 
- 1. Issue HTTP GET request to the Discovery Service endpoint `/eureka/apps` for your service instance information:
+ 1. Issue HTTP GET request to the Discovery Service endpoint `/eureka/apps` to get service instance information:
 
     ```
     https://{zowe-hostname}:{discovery-service-port}/eureka/apps/{serviceId}
     ```
 
-**Tip:** This endpoint is protected by client certificate verification. A valid trusted certificate must be provided with this request.
+**Note**: The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP GET request.
 
  2. Check your service metadata.
 
@@ -186,7 +183,3 @@ This sample service provides a Swagger document in JSON format at the following 
  ```
 
 The Swagger document is used by the API Catalog to display API documentation.
-
-
-
-
