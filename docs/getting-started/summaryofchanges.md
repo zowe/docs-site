@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.9.0 (February 2020)](#version-1-9-0-february-2020)
 - [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
 - [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
 - [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
@@ -16,6 +17,30 @@ Zowe Version 1.8.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.9.0 (February 2020)
+
+### New Features and enhancements
+
+The following features and enhancements were added.
+
+- Zowelog has been implemented to present consistent and accurate logging information. [#112](https://github.com/zowe/zowe-common-c/pull/112)
+    - Logging formatting controls [#113](https://github.com/zowe/zowe-common-c/pull/113)
+    - Logging formatting controls [#146](https://github.com/zowe/zss/pull/146)
+- When the address bar for files is selected, users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
+- A new endpoint for removing dataservices has been added [#62](https://github.com/zowe/zss/pull/62/files)
+- Functionality for removing data sets has been added [#65](https://github.com/zowe/zowe-common-c/pull/65)
+    - Deletion of data sets and their members is now supported [#88](https://github.com/zowe/zss/pull/88/commits)
+    - Deletion of data sets and their members is now supported [#85](https://github.com/zowe/zowe-common-c/pull/85/commits)
+- Enforce list check in R_admin [#117](https://github.com/zowe/zowe-common-c/pull/117)
+- Helper functions have been added to test caller's environment [#115](https://github.com/zowe/zowe-common-c/pull/115). The following functions have been added:
+    - A function to test whether the caller is running in SRB
+    - A function to test whether the caller is in cross-memory mode
+    - A function to test whether the caller is holding a CPU, CMS, CML or local lock
+- Unify the use of the security management class <!--unsure about description for this...--> [#152](https://github.com/zowe/zss/pull/152)
+- The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path”. [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
+- Expose wrappers for CPOOL [#116](https://github.com/zowe/zowe-common-c/pull/116) <!--Was really confused by this one. Not sure what the actual enhancements are...>
+- The logout endpoint has been re-added for zss [#100](https://github.com/zowe/zlux-app-server/pull/100)
 
 ## Version 1.8.0 (January 2020)
 
