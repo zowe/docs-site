@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-workflows.html">zos-workflows</a> → <a href="zowe_zos-workflows_start.html">start</a> → <a href="zowe_zos-workflows_start_workflow-step.html">workflow-step</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-workflows.html">zos-workflows</a> › <a href="zowe_zos-workflows_start.html">start</a> › <a href="zowe_zos-workflows_start_workflow-step.html">workflow-step</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Will run given step of workflow instance plus following steps if specified by
 --perform-following-steps option.</p>
 <h4 id="usage">Usage</h4>
@@ -40,8 +40,8 @@ existingValue: Use the existing variables values instead of the output file
 values.
 leaveConflict: Automation is stopped. The user must resolve the conflict
 manually.</p>
-<p>Default value: outputFileValue
-Allowed values: outputFileValue, existingValue, leaveConflict</p>
+<p>Default value: outputFileValue</p>
+<p>Allowed values: outputFileValue, existingValue, leaveConflict</p>
 </li>
 </ul>
 </li>
@@ -103,26 +103,26 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p>To start step &quot;Step1&quot; only in a workflow instance in z/OSMF
 with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;:</p>
 <ul>
-<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;">Copy</button></li>
+<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>To start a workflow instance in z/OSMF from step &quot;Step1&quot;
 with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;:</p>
 <ul>
-<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --perform-following-steps</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --perform-following-steps">Copy</button></li>
+<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --perform-following-steps</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --perform-following-steps">Copy</button></li>
 </ul>
 </li>
 <li><p>To start step &quot;Step1&quot; only in a workflow instance in z/OSMF
 with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;and if there is a
 conflict in variable&#39;s value use the value that is in output file:</p>
 <ul>
-<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;">Copy</button></li>
+<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>To start step &quot;Step1&quot; only in a workflow instance in z/OSMF
 with workflow name &quot;testWorkflow&quot;:</p>
 <ul>
-<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-name &quot;testWorkflow&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-name &quot;testWorkflow&quot;">Copy</button></li>
+<li><code>zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-name &quot;testWorkflow&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-step &quot;Step1&quot; --workflow-name &quot;testWorkflow&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

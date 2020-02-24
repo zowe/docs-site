@@ -11,6 +11,7 @@
 
 .markdown-body {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
     max-width: 980px;
     min-width: 200px;
@@ -23,8 +24,35 @@
     }
 }
 
+#btn-print {
+    background: none;
+    border: none;
+    display: none;
+    float: right;
+    font-size: large;
+    padding: 5px 5px 0;
+}
+
 .btn-copy {
     font-size: small;
+}
+
+.print-only {
+    display: none;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+
+    .print-only {
+        display: block;
+    }
 }
 
 [aria-label] {
