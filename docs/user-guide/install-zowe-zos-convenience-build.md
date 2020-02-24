@@ -1,10 +1,10 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe&trade; convenience build by running shell script within a Unix System Services (USS) shell.
+You install the Zowe&trade; convenience build by running shell script within a UNIX System Services (USS) shell.
 
 ## Obtaining and preparing the convenience build
 
-The Zowe installation file for Zowe z/OS components are distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
 
 - `v` indicates the version
 - `r` indicates the release number
@@ -44,9 +44,9 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
      bin
      ```
 
-    c. Navigate to the target directory that you wish to transfer the Zowe PAX file into on z/OS.
+    c. Navigate to the target directory that you want to transfer the Zowe PAX file into on z/OS.
 
-    **Note:** After you connect to z/OS and enter your password, you enter into the Unix file system. The following commands are useful:
+    **Note:** After you connect to z/OS and enter your password, you enter the UNIX file system. The following commands are useful:
 
     - To see what directory you are in, type `pwd`.
     - To switch directory, type `cd`.
@@ -86,7 +86,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
 ## Installing the Zowe runtime
 
-The first installation step is to create a USS folder that contains the Zowe runtime artefacts.  This is known as the `<RUNTIME_DIR>`.
+The first installation step is to create a USS folder that contains the Zowe runtime artifacts.  This is known as the `<RUNTIME_DIR>`.
 
 ### Step 1: Locate the install directory
 
@@ -122,14 +122,14 @@ ZWEXMSTC | JCL to start the Zowe cross memory server
 ZWESIP00 | Parmlib member for the cross memory server
 ZWESASTC | Started task JCL for the cross memory Auxillary server
 ZWESIPRG | Console commands to APF authorize the cross memory server load library
-ZWESISCH | PPT entries required by Cross memory server and its Auxillary address spaces to run in Key(4)
+ZWESISCH | PPT entries required by Cross memory server and its Auxiliary address spaces to run in Key(4)
 
 The `SZWEAUTH` data set is a load library containing the following members.
 
 Member name | Purpose
 ---|---
 ZWESIS01 | Load module for the cross memory server
-ZWESAUX  | Load module for the cross memory server's auxillary address space
+ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
 
 ### Step 4: Install the Zowe runtime

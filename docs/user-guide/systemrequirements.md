@@ -7,7 +7,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Zowe CLI requirements](#zowe-cli-requirements)
 - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop) 
 
-## Common z/OS system requirements
+## Common z/OS system requirements (host)
 
 - z/OS Version 2.2 or later.
 - IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
@@ -24,9 +24,9 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - Node.js versions between v6.14.4 and v8.x *on the z/OS host* where you install the Zowe Application Server. To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
 - IBM SDK for Java Technology Edition V8 or later
-- 833 MB of HFS file space
+- 833 MB of zFS file space
 
-- Supported browsers:
+- (client) Supported browsers:
     -   Google Chrome V66 or later
     -   Mozilla Firefox V60 or later
     -   Safari V12.0 or later
@@ -40,7 +40,7 @@ If you do not see your product listed here, please contact the Zowe community so
 
 To enable multi-factor authentication, you must install [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos). For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-## Zowe CLI requirements
+## Zowe CLI requirements (client)
 
 Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems.
 

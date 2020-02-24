@@ -5,13 +5,25 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## API mediation common messages
 
+### ZWEAM000I
+
+  %s has been started in %s seconds
+
+  **Reason:**
+
+  The service has been started
+
+  **Action:**
+
+  No action is needed
+
 ### ZWEAO102E
 
   Gateway not found yet, transform service cannot perform the request
 
   **Reason:**
 
-  The Transform service was requested to transform a url, but the Gateway instance was discovered.
+  The Transform service was requested to transform a url, but the Gateway instance was not discovered.
 
   **Action:**
 
@@ -42,18 +54,6 @@ The following error message codes may appear on logs or API responses. Use the f
   Start the service again in debug mode to get a more descriptive message. This error indicates it is not a configuration issue.
 
 ## Common service core messages
-
-### ZWEAM000I
-
-  %s has been started in %s seconds
-
-  **Reason:**
-
-  The service has been started
-
-  **Action:**
-
-  No action is needed
 
 ### ZWEAM100E
 
@@ -281,7 +281,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Thr Gateway does not trust the requested service and refuses to communicate with it. The certificate of the service is missing from the truststore of the API Mediation Layer.
+  The Gateway does not trust the requested service and refuses to communicate with it. The certificate of the service is missing from the truststore of the API Mediation Layer.
 
   **Action:**
 
@@ -317,13 +317,25 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Request failed because of internal error.
+  Request failed because of an internal error.
 
   **Action:**
 
   Refer to specific exception details for troubleshooting. Create an issue with this message.
 
 ## Security common messages
+
+### ZWEAT100E
+
+  Token is expired for URL '%s'
+
+  **Reason:**
+
+  The validity of the token is expired.
+
+  **Action:**
+
+  Obtain a new token by performing an authentication request.
 
 ### ZWEAT103E
 
@@ -374,18 +386,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Use the correct HTTP request method that is supported for the URL.
-
-### ZWEAS102E
-
-  Token is expired for URL '%s'
-
-  **Reason:**
-
-  The validity of the token is expired.
-
-  **Action:**
-
-  Obtain new token by performing an authentication request.
 
 ### ZWEAS103E
 
@@ -528,13 +528,25 @@ The following error message codes may appear on logs or API responses. Use the f
   **Reason:**
 
   There are three possible causes of this error:
-  - The specified static API definition folder is empty
-  - The definition does not denote a directory
+  - The specified static API definition folder is empty.
+  - The definition does not denote a directory.
   - An I/O error occurred while attempting to read the static API definition directory.
 
   **Action:**
 
-  Review the static API definition directory definition and its contents on the storage. The static definition directories are specified as a parameter to launch a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
+  Review the static API definition directory definition and its contents on the storage. The static definition directories are specified as a parameter to launch a Discovery Service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
+
+### ZWEAD704E
+
+  Gateway Service is not available so it cannot be notified about changes in Discovery Service
+
+  **Reason:**
+
+  Gateway Service is probably misconfigured or failed to start from another reason.
+
+  **Action:**
+
+  Review the log of Gateway Service and its configuration.
 
 ## Gateway service messages
 
@@ -549,7 +561,7 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Check that the service was successfully registered to the Discovery Service and wait for Spring Cloud to refresh the routes definitions
-  
+
 ### ZWEAG701D
 
   Service '%s' does not allow encoded characters used in request path: '%s'.
@@ -561,6 +573,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Contact the system administrator and ask to enable encoded characters in the service
+
+### ZWEAG702D
+
+  Gateway does not to allow encoded slashes in request: '%s'.
+
+  **Reason:**
+
+  The request that was issued to the Gateway contains an encoded slash in the URL path. Gateway configuration does not allow this encoding in the URL.
+
+  **Action:**
+
+  Contact the system administrator and ask to enable encoded slashes in the Gateway.
 
 ### ZWEAG704E
 
@@ -616,7 +640,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token is not valid
+  The JWT token is not valid.
 
   **Action:**
 
@@ -628,7 +652,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token has expired
+  The JWT token has expired.
 
   **Action:**
 
@@ -766,6 +790,30 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide a valid authorization token.
 
+### ZWEAG140E
+
+  The 'applicationName' parameter name is missing.
+
+  **Reason:**
+
+  The application name is not provided.
+
+  **Action:**
+
+  Provide the 'applicationName' parameter.
+
+### ZWEAG141E
+
+  The generation of the PassTicket failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred in the SAF Auth Service. Review the reason in the error message.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+
 ## API Catalog messages
 
 ### ZWEAC100W
@@ -778,7 +826,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Make sure the Discovery service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
+  Make sure the Discovery Service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
 
 ### ZWEAC101E
 
@@ -878,11 +926,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC704E
 
-  ApiDoc retrieval problem for service %s. %s
+  ApiDoc retrieval problem for '%s' service. %s
 
   **Reason:**
 
-  ApiDoc for service could not be retrieved from cache.
+  ApiDoc for service could not be retrieved.
 
   **Action:**
 

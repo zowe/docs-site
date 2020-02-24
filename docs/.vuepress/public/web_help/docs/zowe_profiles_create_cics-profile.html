@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_profiles.html">profiles</a> → <a href="zowe_profiles_create.html">create</a> → <a href="zowe_profiles_create_cics-profile.html">cics-profile</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_cics-profile.html">cics-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
 name, and password for the IBM CICS management client interface (CMCI) server of
@@ -77,8 +77,8 @@ the name on commands that support the &quot;--cics-profile&quot; option.</li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li><p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: http
-Allowed values: http, https</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -88,7 +88,7 @@ Allowed values: http, https</p>
 <li><p>Create a cics profile named &#39;cics123&#39; to connect to CICS at
 host zos123 and port 1490:</p>
 <ul>
-<li><code>zowe  profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe  profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create cics-profile cics123 --host zos123 --port 1490 --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 </ul>

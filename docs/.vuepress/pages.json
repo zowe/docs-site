@@ -99,7 +99,6 @@
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
-          "extend/extend-apiml/api-mediation-onboard-an-existing-java-jersey-rest-api-service.md",
           "extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-onboard-plain-java-enabler-external-configuration.md"
