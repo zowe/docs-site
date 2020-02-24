@@ -2,8 +2,9 @@
 
 Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using online registry method or the local package method. However, you can only update Zowe CLI using the method that you used to install Zowe CLI.
 
-- [(Optional) Identify the currently installed version of Zowe CLI](#optional-identify-the-currently-installed-version-of-zowe-cli)
-- [(Optional) Identify the currently installed versions of Zowe CLI plug-ins](#optional-identify-the-currently-installed-versions-of-zowe-cli-plug-ins)
+- [Migrating to Long-term Support (LTS) version](#migrating-to-long-term-support-lts-version)
+- [Identify the currently installed version of Zowe CLI](#identify-the-currently-installed-version-of-zowe-cli)
+- [Identify the currently installed versions of Zowe CLI plug-ins](#identify-the-currently-installed-versions-of-zowe-cli-plug-ins)
 - [Update Zowe CLI from the online registry](#update-zowe-cli-from-the-online-registry)
 - [Update or revert Zowe CLI to a specific version](#update-or-revert-zowe-cli-to-a-specific-version)
 - [Update Zowe CLI from a local package](#update-zowe-cli-from-a-local-package)
@@ -14,25 +15,25 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
 
 **Follow these steps:**
 
-1. **(Optional)** Copy the contents of `C:\Users\<username>\.zowe\profiles` to another directory on your computer to preserve your existing user profiles (zosmf, cics, db2, etc..).
+1. **(Optional)** Copy the contents of `~/.zowe/profiles` or `%homepath%\.zowe\profiles` to another directory on your computer to preserve your existing user profiles (zosmf, cics, db2, etc..).
 
-2. Uninstall plug-ins, if any. For more information, see [Uninstall plug-ins](cli-uninstall.md).
+2. Delete the `~/.zowe/plugins` or `%homepath%\.zowe\plugins` directory to uninstall all plug-ins.
 
-3. Issue the following command to update Zowe CLI to the most recent `@zowe-v1-lts` version:
+3. Uninstall the pre-LTS version of core CLI. Issue the following command:
 
-   ```
-   npm install -g @zowe/cli@zowe-v1-lts
-   ```
+    ```
+    zowe uninstall -g @brightside/core
+    ```
 
-4. Issue the following command to reinstall plug-ins:
+    **Note:** You might recieve an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event    that you recieve the error, open an issue in the   Zowe CLI GitHub repository.
 
-   ```
-   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-   ```
+4. Install the most recent `@zowe-v1-lts` version of Zowe CLI and optional plug-ins. For more information, see [Installing CLI](./cli-installcli.md).
 
-5. **(Optional)** Reestablish your user profiles. Move the profile configuration files that you saved in Step 1 into the C:\Users\\<username\>\\.zowe\profiles folder on your computer.
+5. **(Optional)** Reestablish your user profiles. Move the profile configuration files that you saved in Step 1 into the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
 
-You updated to the Zowe CLI LTS version! Ensure that you review the [Release Notes](../getting-started/summaryofchanges.md), which describes **Breaking Changes** in this version. We recommend that you issue familiar commands and run scripts to ensure that your profiles/scripts are compatible. You might need to take corrective action to address the breaking changes.
+You updated to the Zowe CLI LTS version!
+
+Ensure that you review the [Release Notes](../getting-started/summaryofchanges.md), which describes **Notable Changes** in this version. We recommend that you issue familiar commands and run scripts to ensure that your profiles/scripts are compatible. You might need to take corrective action to address the breaking changes.
 
 ## Identify the currently installed version of Zowe CLI
 
