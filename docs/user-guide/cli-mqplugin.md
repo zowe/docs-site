@@ -39,7 +39,7 @@ You can create an `mq` user profile to avoid typing your connection details on e
 1.  Create an `mq` profile:
 
     ```
-    zowe profiles create mq-profile <profileName> --host <hostname> --port <portnumber> --user <username> --password <password> --rejectUnauthorized false
+    zowe profiles create mq-profile <profileName> --host <hostname> --port <portnumber> --user <username> --password <password>
     ```
 
     The result of the command displays as a success or failure message. You can use your profile when you issue commands in the mq command group.

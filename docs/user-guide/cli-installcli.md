@@ -25,7 +25,7 @@ If you do not have internet access at your site, use the following method to ins
 
         **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-    - Install a version of **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+    - Verify that you have **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 

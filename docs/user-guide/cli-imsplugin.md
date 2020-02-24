@@ -47,7 +47,7 @@ zowe profiles create ims-profile <profileName> --host <hostname> --port <portnum
 The following example creates an ims profile named 'ims123' to connect to IMS APIs at host zos123 and port 1490. The name of the IMS plex in this example is 'PLEX1' and the IMS region we want to communicate with has a host of zos124 and a port of 1491:
 
 ```
-zowe profiles create ims-profile ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --ich zos124 --icp 1491
+zowe profiles create ims-profile ims123 --host zos123 --port 1490 --user ibmuser --password myp4ss --plex PLEX1 --ich zos124 --icp 1491
 ```
 
 **Note:** For more information, issue the command `zowe profiles create ims-profile --help`.
