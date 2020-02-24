@@ -213,6 +213,6 @@ The following table describes the uninstallation command synstax for each plug-i
 The following example illustrates the command to uninstall the CICS plug-in:
 
 ```
-zowe plugins uninstall @brightside/cics
+zowe plugins uninstall @zowe/cics
 ```
 

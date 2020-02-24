@@ -54,7 +54,7 @@ zowe plugins list
 
 You can update Zowe CLI to the latest version from the online registry on Windows, Mac, and Linux computers.
 
-**Note:** The following steps assume that you set the `npm` registries for the `@brightside` scopes as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
+**Note:** The following steps assume that you previously installed the CLI as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
 
 **Follow these steps:**
 
@@ -82,6 +82,6 @@ npm install -g @zowe/cli@6.1.2
 
 ## Update Zowe CLI from a local package
 
-To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install CA Brightside from a Local Package instructions. For more information, see [Uninstalling Zowe CLI from the desktop](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
+To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install from a Local package instructions. For more information, see [Uninstalling Zowe CLI from the desktop](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
 
 **Important!** Recreate any user profiles that you created before the update.
