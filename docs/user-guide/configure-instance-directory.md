@@ -99,7 +99,7 @@ When Zowe starts, a number of its microservices need to be given port numbers th
 - `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
 - `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
 
-**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
+**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
 
 To determine which ports are not available, follow these steps:
 
