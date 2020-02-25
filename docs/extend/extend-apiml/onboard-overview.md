@@ -1,6 +1,6 @@
 # Onboarding Overview
 
-As an API developer, you can onboard a REST API service to the Zowe&trade; API Mediation Layer (API ML). Onboarding your REST service to the Zowe&trade; API Mediation Layer provides your  service with consistent access to mainframe APIs at a predefined address, dynamic discoverability to determine the location and staus of your API service, high-availability, redundancy and scalability without needing to change configuration, user-friendly presentation of services, and encrypted communication.
+As an API developer, you can onboard a REST API service to the Zowe&trade; API Mediation Layer (API ML). Onboarding your REST service to the Zowe&trade; API Mediation Layer will make your service discoverable by the API ML Discovery Service, enable routing through the API Gateway, and make service information and API documentation available through the API Catalog.
 
 The specific method you use to onboard a REST API to the API ML depends on the programming language or framework used to build your REST service.
 

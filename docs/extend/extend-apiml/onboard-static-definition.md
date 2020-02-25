@@ -1,6 +1,6 @@
 # Onboard a REST API without code changes required
 
-As a user of Zowe&trade;, onboard an existing REST API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This for of onboarding is also refered to as, "static onboarding".
+As a user of Zowe&trade;, onboard an existing REST API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
 **Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
 
