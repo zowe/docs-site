@@ -258,7 +258,7 @@ For more information about API ML routing, see [API Gateway Routing](https://git
 #### Authentication parameters
 Authentication parameters are grouped under the prefix: `apiml.authentication`. When not specified, the default values are used.
 
-Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+This parameter enables a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
 
 The following parameters define the service authentication method:
 
@@ -282,14 +282,14 @@ The following parameters define the service authentication method:
         This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
         It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
         
-        For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+        **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md).
      
      * **zosmf**
      
         This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
         This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
         
-        For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+        **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 
 * **apiml.authentication.applid**
 
