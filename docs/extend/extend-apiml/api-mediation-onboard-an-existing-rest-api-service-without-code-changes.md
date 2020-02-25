@@ -45,7 +45,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     In the sample service, the `service ID` is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is refered to as the gateway URL and is composed of the API type and the major version.
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version.
 
     **Example:**
 
@@ -96,7 +96,17 @@ services:
           swaggerUrl: http://localhost:8080/v2/swagger.json
           documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
-
+```
+Optional metadata block (for service `petstore`):
+```yaml
+      customMetadata:
+          apiml:
+            enableUrlEncodedCharacters: false
+          yourqualifier:
+              key1: value1
+              key2: value2
+```
+```yaml
 catalogUiTiles:
     static:
         title: Static API services
@@ -114,6 +124,8 @@ In this example, a suitable name for the file is `petstore.yml`.
 * Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
 * A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+
+* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
 
 **Tips:**
 
@@ -267,6 +279,16 @@ The following list describes the configuration parameters:
 
     (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
+* **customMetadata**
+
+    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service in the `customMetadata` section. This information is propagated from the Discovery Service to the onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. We recommend you define your own qualifier, and group all metadata you wish to publish under this qualifier.
+
+* **customMetadata.apiml.enableUrlEncodedCharacters**
+      
+    When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+        
 * **catalogUiTileId**
 
    This parameter specifies the unique identifier for the API services group.
@@ -304,7 +326,7 @@ The following list describes the configuration parameters:
 
 After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
 
-The following procedure describes how to add your service to the API Mediation Layer on your local machine.
+The following procedure describes how to add your service to the API Mediation Layer on your local machine.  
 
 **Follow these steps:**
 
@@ -335,22 +357,29 @@ The following procedure describes how to add your service to the API Mediation L
 
 ## 6. Add a definition in the API Mediation Layer in the Zowe runtime
 
-After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation.
+After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation on z/OS.  
 
 **Follow these steps:**
 
-1. Locate the Zowe instance directory. The Zowe instance directory is chosen during Zowe configuration.
-   The initial location of the directory is in the `zowe-install.yaml` file in the variable `install:instanceDir`.
+1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=` which will be a fully qualified path to the instance directory.  For more information, see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md#extensions).
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
+2. Add the fully qualified zFS path of your YAML file to `instance.env`.
+
+    If you want to hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env` file.  This variable contains a semicolon separated list of static API extension YAML files.
+
+    Or: 
+    
+    If you want to place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
     **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
 
-3. Run your application.
+    **Note:** The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
 
-4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started).
+3. Check and ensure that your application that provides the endpoints described in the YAML file is running. 
+
+4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
 5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
 

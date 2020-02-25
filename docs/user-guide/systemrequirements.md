@@ -5,6 +5,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Common sytem requirements](#common-system-requirements)
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
+- [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop) 
 
 ## Common z/OS system requirements (host)
 
@@ -33,6 +34,12 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 
    Each release of the Zowe Application Framework is tested to work on the current releases of Chrome, Firefox, Safari, and Edge, as well as the oldest release within a 1 year time span, unless the current release is also older than 1 year. For Firefox, the oldest supported release will also be from the Extended Support Release (ESR) version of Firefox, to ensure compatibility in those enterprise environments. This scheme for browser support is to ensure that Zowe works on the vast majority of browsers that people are currently using, while still allowing for use of new features and security that browsers constantly add.
 
+If you do not see your product listed here, please contact the Zowe community so that it can be validated and included.
+
+### Multi-Factor Authentication for Zowe Desktop
+
+To enable multi-factor authentication, you must install [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos). For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
+
 ## Zowe CLI requirements (client)
 
 Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems.
@@ -49,3 +56,4 @@ Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, includi
 ### Free disk space
 
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on the operating system where you install Zowe CLI.
+

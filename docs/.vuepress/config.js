@@ -1,12 +1,12 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.8.0'
+const CURRENT_ZOWE_VERSION = '1.9.0 LTS'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
 // so we convert it to dash
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'stable').replace(/\./g, '-')
 // this holds list of all pages
 // IMPORTANT: if you have new pages, please update this constant
-// 
+//
 // Options for page:
 // @canHideFirst(Boolean)   if want to hide the link on navbar earlier than regular links
 // @hideInPdf(Boolean)      if hide this page/section from PDF side menus
@@ -131,7 +131,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.8.x',
+  description: 'Version 1.9.x LTS',
   extraWatchFiles: [
     '.vuepress/theme/'
   ],

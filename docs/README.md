@@ -36,17 +36,18 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x Zowe documentation on this website in PDF format from the links below. The latest version on this website is 1.8.0.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.9.0.
 
-**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** | 
+**[V1.9.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** |
 **[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
-**[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** | 
-**[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** | 
-**[V1.4.0](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)** | 
-**[V1.3.0](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)** | 
+**[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** |
+**[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** |
+**[V1.4.0](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)** |
+**[V1.3.0](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)** |
 **[V1.2.0](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)** |
-**[V1.1.0](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)** | 
-**[V1.0.x](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)** 
+**[V1.1.0](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)** |
+**[V1.0.x](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)**
 
 ### Zowe CLI command reference guide
 
@@ -66,7 +67,7 @@ A Zowe overview deck in PDF format is available for download. The information in
 
 ## Feedback
 
-Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up. 
+Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
 
 [Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
 

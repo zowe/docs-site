@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_submit.html">submit</a> → <a href="zowe_zos-jobs_submit_data-set.html">data-set</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_submit.html">submit</a> › <a href="zowe_zos-jobs_submit_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Submit a job (JCL) contained in a data set. The data set may be of type
 physical sequential or a PDS member. The command does not pre-validate the
 data set name. The command presents errors verbatim from the z/OSMF Jobs REST
@@ -147,13 +147,13 @@ in the output.</li>
 <ul>
 <li><p>Submit the JCL in the data set &quot;ibmuser.cntl(deploy)&quot;:</p>
 <ul>
-<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;">Copy</button></li>
+<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Submit the JCL in the data set &quot;ibmuser.cntl(deploy)&quot;, wait
 for the job to complete and print all output from the job:</p>
 <ul>
-<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc">Copy</button></li>
+<li><code>zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs submit data-set &quot;ibmuser.cntl(deploy)&quot; --vasc">Copy</button></li>
 </ul>
 </li>
 </ul>
