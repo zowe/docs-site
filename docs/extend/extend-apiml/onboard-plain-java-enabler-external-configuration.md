@@ -1,7 +1,6 @@
 # API Mediation Layer onboarding configuration
 
-This article describes the process of configuring a REST service to onboard with the Zowe API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard with the API ML. You can also externalize configuration parameters for subsequent customization by a systems administrator. 
-
+This article describes the process of configuring a REST service to onboard with the Zowe API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard to the API ML. You can also externalize configuration parameters for subsequent customization by a systems administrator.
 
 * [Introduction](#introduction)
 * [Configuring a REST service for API ML onboarding](#configuring-a-rest-service-for-api-ml-onboarding)
@@ -11,11 +10,10 @@ This article describes the process of configuring a REST service to onboard with
     * [Loading a single YAML configuration file](#loading-a-single-yaml-configuration-file)
     * [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files)
 
-
 ## Introduction
 
-The API ML Plain Java Enabler (_PJE_) is a library which helps to simplify the process of onboarding a REST service with the API ML. 
-This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the _PJE_. 
+The API ML Plain Java Enabler (PJE) is a library which helps to simplify the process of onboarding a REST service with the API ML. 
+This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the PJE. 
 
 **Note:** For more information about specific configuration parameters and their possible values, and the service registration process, see the specific documentation of the onboarding approach you are using for your project:
 
@@ -23,20 +21,20 @@ This article describes how to provide and externalize the Zowe API ML onboarding
  * [Plain Java Enabler](onboard-plain-java-enabler.md)
  
 
-The _PJE_ is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
-The _PJE_ enables you to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behavior, and unnecessarily large service executables.
+The PJE is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
+The PJE enables you to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behavior, and unnecessarily large service executables.
 
 Service developers provide onboarding configuration as part of the service source code. While this configuration is valid for the development system environment, it is likely to be different for an automated integration environment. Typically, system administrators need to deploy a service on multiple sites that have different system environments and requirements such as security.
 
-_PJE_ supports both the service developer and the system administrator with the functionality of externalizing the service onboarding configuration. 
+The PJE supports both the service developer and the system administrator with the functionality of externalizing the service onboarding configuration. 
 
-The _PJE_ provides a mechanism to load API ML onboarding service configuration from one or two _YAML_ files.
+The PJE provides a mechanism to load API ML onboarding service configuration from one or two _YAML_ files.
 
 ## Configuring a REST service for API ML onboarding
 
 In most cases, the API ML Discovery Service, Gateway, and service endpoint addresses are not known at the time of building the service executables. 
 Similarly, security material such as certificates, private/public keys, and their corresponding passwords depend on the specific deployment environment, and are not intended to be publicly accessible.
-Therefore, to provide a higher level of flexibility, the _PJE_ implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
+Therefore, to provide a higher level of flexibility, the PJE implements routines to build service onboarding configuration by locating and loading one or two _YAML_ file sources:
 
 * **internal _service-configuration.yml_** 
 

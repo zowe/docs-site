@@ -1,6 +1,6 @@
 # Onboarding a REST API service with the Plain Java Enabler (PJE)
 
-This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Enabler (_PJE_). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Enabler (PJE). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 **Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
@@ -15,18 +15,18 @@ Zowe API ML is a lightweight API management system based on the following Netfli
 The API ML Discovery Service component uses Netflix/Eureka as a REST services registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
 
-The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available via artifactory (General information is in [Onboarding Overview](onboard-overview.md)). Using these libraries is the recommended approach to onboard a REST service with the API ML. 
+The API ML provides onboarding enabler libraries. The libraries are JAR artifacts available through an artifactory. Using these libraries is the recommended approach to onboard a REST service with the API ML. 
 
-The _PJE_ library is focused on the needs of the Java developers who are using neither the [Spring Framework](https://spring.io/) nor the [Spring Boot](https://spring.io/projects/spring-boot). If the frameworks are used in the project to onboard take a look at the enablers for these frameworks.  
+The PJE library serves the needs of Java developers who are not using either [Spring Boot](https://spring.io/projects/spring-boot) or the [Spring Framework](https://spring.io/). If Spring Boot or the Spring framework are used in the project you would like to onboard, see the [Onboarding Overview](onboard-overview.md) for the corresponding enablers.  
 
-Additionally, don't use this enabler in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the _PJE_ and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
+Additionally, this enabler is not intended for use in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the PJE and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 **Tip:** For more information about how to utilize another API ML enablers, see the documentation in
-the [Onboarding Overview](onboard-overview.md)
+the [Onboarding Overview](onboard-overview.md).
 
 ## Onboarding your REST service with API ML
 
-The following steps outline the overall process to onboard a REST service with the API ML using the _PJE_. Each step is described in further detail in this article.
+The following steps outline the overall process to onboard a REST service with the API ML using the PJE. Each step is described in further detail in this article.
 
 1. [Prerequisites](#prerequisites)
 
@@ -53,22 +53,22 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met. Additionaly for the _PJE_ following prerequisites needs to be met met before you begin to use it to onboard your REST service with the API ML:
+Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met.
 
 * The REST API service to onboard is written in Java.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
 **Notes:**
 
-* This documentation is valid for versions of the Api ML starting with the `ZoweApimlVersion 1.3.0`. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
+* This documentation is valid for API ML version `ZoweApimlVersion 1.3.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
 ## Configuring your project
 
-Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure corresponding to your build automation system.
+Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure that corresponds to your build automation system.
 
-**Note:** You can use either the Zowe Artifactory or an Artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can use either the Zowe Artifactory or an artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -77,7 +77,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _PJE_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
+2. In the `gradle.properties` file, set the URL of the specific artifactory containing the PJE artifact. Provide the corresponding credentials to gain access to the Maven repository.
 
     ```ini
     # Repository URL for getting the enabler-java artifact
@@ -95,13 +95,13 @@ Use the following procedure to use _Gradle_ as your build automation system.
         }
     }
     ```
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Zowe Artifactory, add the following code block to your `build.gradle` script. Replace the $zoweApimlVersion with the proper version of the enabler. E.g. 1.3.0:
+4. In the same `build.gradle` file, add the necessary dependencies for your service. If you use the Java enabler from the Zowe Artifactory, add the following code block to your `build.gradle` script. Replace the `$zoweApimlVersion` with the proper version of the enabler, for example: `1.3.0`:
 
     ```gradle
     implementation "org.zowe.apiml.sdk:onboarding-enabler-java:$zoweApimlVersion"
     implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
-    **Note:** The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an Artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
+    **Note:** The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
 
     ```gradle
     implementation libraries.eureka_client
@@ -142,7 +142,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
     ```
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-2. Add the proper dependencies 
+2. Add the proper dependencies:
    ```maven
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
@@ -161,7 +161,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your service
 
-Provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
+To configure your service, provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
 
 **Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
 
@@ -244,7 +244,7 @@ The onboarding configuration parameters are broken down into the following group
 
 * **serviceId**
 
-    The `serviceId` uniquely identifies one or more instance of a microservice in the API ML and is used as part of the service URL path in the API ML gateway address space.
+    The `serviceId` uniquely identifies one or more instance of a microservice in the API ML and is used as part of the service URL path in the API ML Gateway address space.
     Additionally, the API ML Gateway uses the `serviceId` for routing to the API service instances.
     When two API services use the same `serviceId`, the API Gateway considers the services as clones of each other.
     An incoming API request can be routed to either of them through utilized load balancing mechanism.
@@ -635,7 +635,7 @@ TLS/SSL configuration consists of the following parameters:
 
 ### Eureka Discovery Service
 
-Eureka Discovery Service parameters group contains a single parameter used to address Eureka Discovery Service location.
+The Eureka Discovery Service parameters group contains a single parameter used to address Eureka Discovery Service location.
 An example is presented in the following snippet:
 
 **Example:**
@@ -659,7 +659,7 @@ where:
 
 #### Api Mediation Layer specific metadata
 
-* **`customMetadata.apiml.enableUrlEncodedCharacters`**
+* **customMetadata.apiml.enableUrlEncodedCharacters**
       
     When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
@@ -667,7 +667,7 @@ where:
     
 ##  Registering your service with API ML
 
-The following steps outline the process of registering your service with API ML. Each step is described in detail in this article. The process describes the integration with the usage of the Java application server. The guideline is tested with Tomcat application server. The specifics for other application servers may differ.  
+The following steps outline the process of registering your service with API ML. Each step is described in detail in this article. The process describes the integration with the usage of the Java application server. The guideline is tested with the Tomcat application server. The specific steps that apply for other application servers may differ.  
 
 1. Add a web application context listener class
 2. Register a web application context listener
@@ -677,7 +677,9 @@ The following steps outline the process of registering your service with API ML.
 
 **Follow these steps:**
 
-1. Implement and add a web application context listener class (implements javax.servlet.ServletContextListener).
+1. Implement and add a web application context listener class 
+
+    ```implements javax.servlet.ServletContextListener```
 
     The web application context listener implements two methods to perform necessary actions at application start-up time as well as when the application context is destroyed:
 
