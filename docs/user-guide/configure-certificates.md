@@ -24,7 +24,7 @@ The script reads the default variable values that are provided in the `bin/zowe-
 bin/zowe-setup-certificates.sh
 ```
 
-The keystore and certificates are generated in the default `/global/Zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
+The keystore and certificates are generated in the default `/global/zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
 
 ## Generate certificate with the custom values
 

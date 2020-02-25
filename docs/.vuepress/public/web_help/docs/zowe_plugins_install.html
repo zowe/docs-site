@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_plugins.html">plugins</a> → <a href="zowe_plugins_install.html">install</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_plugins.html">plugins</a> › <a href="zowe_plugins_install.html">install</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Install plug-ins to an application.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  plugins install [plugin...] [options]</p>
@@ -73,38 +73,38 @@ specific registry, you don&#39;t have to use it again, it uses credentials from
 <li><p>Install plug-ins saved in
 ~/.zowe/plugins/plugins.json:</p>
 <ul>
-<li><code>zowe  plugins install</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install">Copy</button></li>
+<li><code>zowe  plugins install</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install">Copy</button></li>
 </ul>
 </li>
 <li><p>Install plug-ins saved in a properly formatted config file:</p>
 <ul>
-<li><code>zowe  plugins install --file /some/file/path/file_name.json</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install --file /some/file/path/file_name.json">Copy</button></li>
+<li><code>zowe  plugins install --file /some/file/path/file_name.json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install --file /some/file/path/file_name.json">Copy</button></li>
 </ul>
 </li>
 <li><p>Install a remote plug-in:</p>
 <ul>
-<li><code>zowe  plugins install my-plugin</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin">Copy</button></li>
+<li><code>zowe  plugins install my-plugin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin">Copy</button></li>
 </ul>
 </li>
 <li><p>Install a remote plug-in using semver:</p>
 <ul>
-<li><code>zowe  plugins install my-plugin@&quot;^1.2.3&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin@&quot;^1.2.3&quot;">Copy</button></li>
+<li><code>zowe  plugins install my-plugin@&quot;^1.2.3&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin@&quot;^1.2.3&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>Install a remote plug-in from the specified registry:</p>
 <ul>
-<li><code>zowe  plugins install my-plugin --registry https://registry.npmjs.org/</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin --registry https://registry.npmjs.org/">Copy</button></li>
+<li><code>zowe  plugins install my-plugin --registry https://registry.npmjs.org/</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin --registry https://registry.npmjs.org/">Copy</button></li>
 </ul>
 </li>
 <li><p>Install a local folder, local TAR file, and a git URL:</p>
 <ul>
-<li><code>zowe  plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0">Copy</button></li>
+<li><code>zowe  plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0">Copy</button></li>
 </ul>
 </li>
 <li><p>Install a remote plug-in from the registry which requires
 authorization(don&#39;t need to use this flag if you have already logged in before):</p>
 <ul>
-<li><code>zowe  plugins install my-plugin --registry https://registry.npmjs.org/ --login</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin --registry https://registry.npmjs.org/ --login">Copy</button></li>
+<li><code>zowe  plugins install my-plugin --registry https://registry.npmjs.org/ --login</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins install my-plugin --registry https://registry.npmjs.org/ --login">Copy</button></li>
 </ul>
 </li>
 </ul>
