@@ -74,7 +74,7 @@ You can update Zowe CLI to the latest version from the online registry on Window
 
 ## Update or revert Zowe CLI to a specific version
 
-Optionally, you can update Zowe CLI (or revert) to a known version. The following example illustrates the syntax to update Zowe CLI to version 3.3.1:
+Optionally, you can update Zowe CLI (or revert) to a known version. The following example illustrates the syntax to update Zowe CLI to version 6.1.2:
 
 ```
 npm install -g @zowe/cli@6.1.2

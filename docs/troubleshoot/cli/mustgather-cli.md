@@ -12,18 +12,18 @@ Issue the following command:
 zowe -V
 ```
 
-Zowe CLI versions may vary depending upon if the `@latest` or `@zowe-v1-lts` version is installed.
+The exact Zowe CLI version may vary depending upon if the `@latest` or `@zowe-v1-lts`, or `@lts-incremental` version is installed.
 
-For the `@latest` (forward-development) version:
-
-```
-npm list -g @zowe/cli
-```
-
-For the `@zowe-v1-lts` version:
+For the `@zowe-v1-lts` and the `@latest` (forward-development) version tags:
 
 ```
 npm list -g @zowe/cli
+```
+
+For the `@lts-incremental` version tag:
+
+```
+npm list -g @brightside/core
 ```
 
 More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md).

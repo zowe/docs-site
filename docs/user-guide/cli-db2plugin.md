@@ -38,10 +38,10 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 If you installed Zowe CLI from **online registry**, complete the following steps:
 
-1. Open a command line window and issue the following command:
+1. Open a commandline window and issue the following command:
 
     ```
-    zowe plugins install @zowe/db2@zowe-v1-lts
+    zowe plugins install @zowe/db2-for-zowe-cli@zowe-v1-lts
     ```
 
 2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
