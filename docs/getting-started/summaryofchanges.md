@@ -4,19 +4,19 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.9.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.9.0 LTS (February) 2020)](#version-1-9-0-lts-february-2020)
-- [Version 1.8.0 (January 2020)](#version-1-8-0-january-2020)
-- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
-- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
-- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
-- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
+- [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
+- [Version 1.8.0 (January 2020)](#version-180-january-2020)
+- [Version 1.7.1 (December 2019)](#version-171-december-2019)
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
+- [Version 1.6.0 (October 2019)](#version-160-october-2019)
+- [Version 1.5.0 (September 2019)](#version-150-september-2019)
 - [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
-- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
-- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
-- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
-- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
-- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+- [Version 1.4.0 (August 2019)](#version-140-august-2019)
+- [Version 1.3.0 (June 2019)](#version-130-june-2019)
+- [Version 1.2.0 (May 2019)](#version-120-may-2019)
+- [Version 1.1.0 (April 2019)](#version-110-april-2019)
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
 
 ## Version 1.9.0 LTS (February 2020)
 
@@ -34,11 +34,55 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
+To leverage the new features and plug-ins available in this version, you must follow the steps in [Migrating to the LTS version](../user-guide/cli-updatingcli.md#migrating-to-long-term-support-lts-version).
+
+The following new CLI plug-ins are added:
+
+  - [IBM® z/OS FTP Plug-in for Zowe CLI](./../user-guide/cli-ftpplugin.md)
+  - [IBM® IMS™ Plug-in for Zowe CLI](./../user-guide/cli-imsplugin.md)
+  - [IBM® MQ Plug-in for Zowe CLI](./../user-guide/cli-mqplugin.md)
+  - [Secure Credential Store for Zowe CLI](./../user-guide/cli-scsplugin.md)
+
+The following new features and enhancements are added in this version:
+
+- **Notable Change:** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json (`--rfj`) output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
+
+- **Notable Change:** The `--pass` option is changed to `--password`  for all commands and profiles (zosmf, cics, etc...). The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe profiles update` command and use the new option name `--password`.
+
+- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-for-sensitive-options).
+
 - Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
 
-    **Note:** The IBM Db2 and Secure Credential Store plug-ins for Zowe CLI will *not* run on z/OS due to native code requirements.
+    (The IBM Db2 and Secure Credential Store plug-ins for Zowe CLI will *not* run on z/OS due to native code requirements.)
+
+- The `zowe files copy` command was added for copying the contents of a data set or member to another data set or member. [#580](https://github.com/zowe/zowe-cli/pull/580)
+
+- Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+
+- The following new commands were added for interacting with file systems:
+    - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
+    - `zowe zos-files mount fs` [#431](https://github.com/zowe/zowe-cli/issues/431)
+    - `zowe zos-files unmount fs` [#432](https://github.com/zowe/zowe-cli/issues/432)
+
+- The following new commands were added for creating USS files and directories:
+    - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
+    - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
+
+The IBM® CICS® Plug-in is updated with the following functionality:
+
+  - **Notable Change:** The plug-in now uses HTTPS by default when connecting to CMCI. The option `--protocol http` was added to let you override the default as needed. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
+
+  -  Define, enable, install, discard, disable, and delete CICS URIMaps. [#53](https://github.com/zowe/zowe-cli-cics-plugin/issues/53) [#49](https://github.com/zowe/zowe-cli-cics-plugin/issues/49) [#48](https://github.com/zowe/zowe-cli-cics-plugin/issues/48) [#51](https://github.com/zowe/zowe-cli-cics-plugin/issues/51) [#50](https://github.com/zowe/zowe-cli-cics-plugin/issues/50) [#52](https://github.com/zowe/zowe-cli-cics-plugin/issues/52)
+
+  - Define and delete CICS web services. [#58](https://github.com/zowe/zowe-cli-cics-plugin/issues/58) [#59](https://github.com/zowe/zowe-cli-cics-plugin/issues/59)
+
+  - Add and remove CSD Groups to/from CSD Lists [#60](https://github.com/zowe/zowe-cli-cics-plugin/issues/60).
 
 #### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
 ### Bug fixes
 
@@ -100,7 +144,7 @@ For more information about how to install Zowe z/OS components, see [Installatio
 
 Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
-You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) .
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
 Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
 
