@@ -1,8 +1,8 @@
 # Onboard a REST API without code changes required
 
-As a user of Zowe&trade; API Mediation Layer, onboard an existing REST API service with the Zowe&trade; API Mediation Layer without changing the code of the API service. This is process is also described as static onboarding. 
+As a user of Zowe&trade;, onboard an existing REST API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This for of onboarding is also refered to as, "static onboarding".
 
-**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediaiton Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
+**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
@@ -27,11 +27,11 @@ The first step in API service onboarding is to identify the APIs that you want t
     * Hostname
     * Port
     * (Optional) base path where the service is available.
-    This URL is called base URL of the service.
+    This URL is called the base URL of the service.
 
     **Example:**
 
-    In the sample service described earlier, the URL of the service is: `http://localhost:8080`.
+    In the sample service described in the [Onboarding Overview](onboard-overview.md), the URL of the service is: `http://localhost:8080`.
 
 2. Identify all APIs that this service provides that you want to expose through the API Gateway.
 
@@ -53,7 +53,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
 ## Route your API
 
-After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
+After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
 
 **Note:** The API Gateway differentiates major versions of an API.
 
@@ -69,7 +69,7 @@ The base URL of the version 2 of the `petstore` API is:
 
 The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL.
 
-**Note:** This method enables you to access the service through a stable URL and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+**Note:** This method enables you to access the service through a stable URL, and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 ## Define your service and API in YAML format
 
@@ -147,13 +147,13 @@ The following list describes the configuration parameters:
 * **serviceId**
 
     This parameter specifies the service instance identifier that is registered in the API Mediation Layer installation.
-    The service ID is used in the URL for routing to the API service through the gateway.
+    The service ID is used in the URL for routing to the API service through the Gateway.
     The service ID uniquely identifies the service in the API Mediation Layer.
     The system administrator at the customer site defines this parameter.
 
     **Important!**  Ensure that the service ID is set properly with the following considerations:
 
-    * When two API services use the same service ID, the API gateway considers the services to be clones (two instances for the same service). An incoming API request can be routed to either of them.
+    * When two API services use the same service ID, the API Gateway considers the services to be clones (two instances for the same service). An incoming API request can be routed to either of them.
     * The same service ID should be set only for multiple API service instances for API scalability.
     * The service ID value must contain only lowercase alphanumeric characters.
     * The service ID cannot contain more than 40 characters.
@@ -244,7 +244,7 @@ The following list describes the configuration parameters:
     * **routes.serviceUrl**
 
         Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the gateway.
+        gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the Gateway.
     
 * **authentication**
 
@@ -270,14 +270,14 @@ The following list describes the configuration parameters:
             This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
             It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
             
-            For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+            For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md).
          
          * **zosmf**
          
             This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
             This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
             
-            For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+            For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
     
     * **authentication.applid**
     
@@ -288,41 +288,41 @@ The following list describes the configuration parameters:
 
     This section defines APIs that are provided by the service. Currently, only one API is supported.
 
-* **apiInfo.apiId**
+    * **apiInfo.apiId**
 
-    Specifies the API identifier that is registered in the API Mediation Layer installation.
-    The API ID uniquely identifies the API in the API Mediation Layer.
-    The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services.
+        Specifies the API identifier that is registered in the API Mediation Layer installation.
+        The API ID uniquely identifies the API in the API Mediation Layer.
+        The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services.
     
-    The creator of the API defines this ID.
-    The API ID needs to be a string of up to 64 characters
-    that uses lowercase alphanumeric characters and a dot: `.`.
+        The creator of the API defines this ID.
+        The API ID needs to be a string of up to 64 characters
+        that uses lowercase alphanumeric characters and a dot: `.`.
     
-    We recommend that you use your organization as the prefix.
+        **Tip:** We recommend that you use your organization as the prefix.
 
-    **Examples:**
+        **Examples:**
 
-     - `org.zowe.file`
-     - `com.ca.sysview`
-     - `com.ibm.zosmf`
+        - `org.zowe.file`
+        - `com.ca.sysview`
+        - `com.ibm.zosmf`
 
-* **apiInfo.gatewayUrl**
+    * **apiInfo.gatewayUrl**
 
-    Specifies the base path at the API Gateway where the API is available. Ensure that this path is
+        Specifies the base path at the API Gateway where the API is available. Ensure that this path is
     the same as the _gatewayUrl_ value in the _routes_ sections.
 
-* **apiInfo.swaggerUrl**
+    * **apiInfo.swaggerUrl**
 
-    (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
+        (Optional) Specifies the HTTP or HTTPS address where the Swagger JSON document is available.
 
-* **apiInfo.documentationUrl**
+    * **apiInfo.documentationUrl**
 
-    (Optional) Specifies a URL to a website where external documentation is provided.
-    This can be used when _swaggerUrl_ is not provided.
+        (Optional) Specifies a URL to a website where external documentation is provided.
+        This can be used when _swaggerUrl_ is not provided.
 
-* **apiInfo.version**
+    * **apiInfo.version**
 
-    (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+        (Optional) Specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
 * **customMetadata**
 
@@ -435,17 +435,15 @@ After you define and validate the service in YAML format, you are ready to add y
 
 2. Add the fully qualified zFS path of your YAML file to `instance.env`.
 
-    If you want to hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env` file.  This variable contains a semicolon separated list of static API extension YAML files.
-
-    Or: 
+    - To hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env` file.  This variable contains a semicolon separated list of static API extension YAML files.
     
-    If you want to place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
+    - To place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
-    **Note:** The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts, so if you have not started Zowe yet this directory might be missing.
+    **Notes:** 
+    - The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts. If you have not started Zowe yet this directory might be missing.
+    - The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
 
-    **Note:** The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.  
-
-3. Check and ensure that your application that provides the endpoints described in the YAML file is running. 
+3. Ensure that your application that provides the endpoints described in the YAML file is running.
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
@@ -459,7 +457,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
     This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
 
-    You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
+You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
     `https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1`
 
 
