@@ -19,7 +19,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   :::
 
-## Zowe Application Framework requirements
+### Zowe Application Framework requirements (host)
 
 - Node.js versions between v6.14.4 and v8.x *on the z/OS host* where you install the Zowe Application Server. To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
