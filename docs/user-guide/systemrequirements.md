@@ -5,7 +5,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Common sytem requirements](#common-system-requirements)
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
-- [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop) 
+- [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
 
 ## Common z/OS system requirements (host)
 
@@ -52,7 +52,7 @@ Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, includi
 
     **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
-- **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](swreqplugin.md).
+- **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md).
 
 ### Free disk space
 

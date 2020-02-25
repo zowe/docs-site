@@ -29,7 +29,7 @@ If you do not have internet access at your site, use the following method to ins
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
-    - **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](swreqplugin.md).
+    - **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](cli-swreqplugins.md).
 
 2. To obtain the installation files, navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **Zowe CLI** button.
 
