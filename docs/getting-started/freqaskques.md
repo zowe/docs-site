@@ -132,7 +132,7 @@ The best way to get started is to join a [Zowe Slack channel](https://slack.open
 
 For more information about emailing lists, community calendar, meeting minutes, and more, see the [Zowe Community](https://github.com/zowe/community/blob/master/README.md) GitHub repo.
 
-For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/api-mediation-onboard-overview.md) on Zowe Docs.
+For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/onboard-overview.md) on Zowe Docs.
 
 </details>
 

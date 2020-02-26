@@ -7,10 +7,9 @@ As an API developer, you can onboard your REST API service built with the Spring
 
 **Tip:** For more information about how to utilize another onboarding method, see:
 
-  * [Onboard a REST API service with the Plain Java Enabler (PJE)](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](api-mediation-onboard-rest-service-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md)
-  * [Java REST APIs service without Spring Boot](api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md)
+  * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
+  * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
+  * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
 
 ## Outline of onboarding a REST service using Spring Boot
 
@@ -45,7 +44,7 @@ Add a dependency on the Spring Enabler version to your project build configurati
 
 Use either _Gradle_ or _Maven_ as your build automation system to manage your project builds.
 
-**Note:** You can download the selected enabler artifact from the Giza Artifactory. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can download the selected enabler artifact from the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -54,46 +53,36 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact. Provide the corresponding credentials to gain access to the Maven repository.
-
-    If you are using the Giza Artifactory, use the credentials in the following code block:
+2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
 
     ```
     # Repository URL for getting the enabler-java artifact
-    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/
-
-    # Artifactory credentials for builds:
-    mavenUser=apilayer-build
-    mavenPassword=lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
     ```
 
 3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
 
-    ```groovy
+    ```gradle
     repositories {
         ...
 
         maven {
             url artifactoryMavenRepo
-            credentials {
-                username mavenUser
-                password mavenPassword
-            }
         }
     }
     ```
    
-4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Giza Artifactory, add the following code block to your `build.gradle` script:
+4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Zowe Artifactory, add the following code block to your `build.gradle` script:
 
     Use the corresponding artifact according to the Spring version you are using.
 
-    - For Spring version 2, use the following artifact:
+    - For Spring boot version 2.1.1, use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE:$zoweApimlVersion"
         ```
 
-    - For Spring version 1, use the following artifact:
+    - For Spring boot version 1.5.9, use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
@@ -101,7 +90,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     **Notes:**
     * You may need to add additional dependencies as required by your service implementation.
-    * The information provided in this file is valid for `ZoweApimlVersion 3.0` and above.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -111,45 +100,46 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 **Follow these steps:**
 
-1. Add the following _XML_ tags to your project `pom.xml` file:
-
+1. Add the following _XML_ tags within the newly created `pom.xml` file:
     ```xml
     <repositories>
         <repository>
             <id>libs-release</id>
             <name>libs-release</name>
-            <url>https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/apiml/sdk/onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE/</url>
+            <url>https://zowe.jfrog.io/zowe/libs-release/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
     ```
-
-2. Create a `settings.xml` file and copy the following _XML_ code block that defines the credentials for the Artifactory:
-
-    ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-
-    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
-      <servers>
-          <server>
-             <id>libs-release</id>
-             <username>apilayer-build</username>
-             <password>lHj7sjJmAxL5k7obuf80Of+tCLQYZPMVpDob5oJG1NI=</password>
-          </server>
-      </servers>
-    </settings>
-    ```
    
-    **Tip:** If you want to use _snapshot_ version, set the `/servers/server/id` to `libs-snapshot`.
+    ```
+    **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-3. Copy the `settings.xml` file inside the `${user.home}/.m2/` directory. If the file already exists, include the contents of the project related `settings.xml` into the original `settings.xml` file.
+2. Add the proper dependencies 
+  
+   2.1 For spring version 2.1.1, use the following artifact 
 
-4. In the directory of your project, run the `mvn clean package` command to build the project.
+   ```maven
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+    ```
+
+   2.2 For spring version 1.5.9, use the following artifact 
+
+   ```maven
+   <dependency>
+       <groupId>org.zowe.apiml.sdk</groupId>
+       <artifactId>onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+       <version>$zoweApimlVersion</version>
+   </dependency>
+    ```
+
+3. In the directory of your project, run the `mvn clean package` command to build the project.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
@@ -321,7 +311,17 @@ apiml:
             keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
             trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
             trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
+ ```
 
+Optional metadata section
+```yaml
+        customMetadata:
+            yourqualifier:
+                key1: value1
+                key2: value2
+```
+
+```yaml
 server:
     scheme: ${apiml.service.scheme}
     hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
@@ -356,9 +356,21 @@ server:
     Do not include security sensitive data in the default configuration.
 
     **Note:** For details about the configuration properties,
-    see [Configuring your service](api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler#configuring-your-service)
+    see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
+### Custom Metadata
+
+   (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+
+#### Api Mediation Layer specific metadata
+
+* **`customMetadata.apiml.enableUrlEncodedCharacters`**
+      
+    When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
+          
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+    
 ## Registering and unregistering your service with API ML
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
@@ -380,7 +392,7 @@ Use the following procedure to add Swagger API documentation to your project.
     * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
-        compile "io.springfox:springfox-swagger2:2.8.0"
+        compile "io.springfox:springfox-swagger2:2.9.2"
         ```
 
     * For _Maven_, add the following dependency in `pom.xml`:
