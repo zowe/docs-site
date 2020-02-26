@@ -49,7 +49,9 @@ If you do not have internet access at your site, use the following method to ins
     npm install -g zowe-cli.tgz
     ```
 
-    **Note:** On Linux, you might need to prepend `sudo` to your `npm` commands so that you can issue the install and uninstall commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+    **Notes:**
+    - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+    - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 5. **(Optional)** Issue the following commands to install each available plug-in:
 
@@ -101,11 +103,15 @@ If your computer is connected to the Internet, you can use the following method 
 
 2. To obtain the installation files, navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **Zowe CLI** button.
 
-3.  Issue the following command to install Zowe CLI from the public npm registry:
+3. Issue the following command to install Zowe CLI from the public npm registry:
 
     ```
     npm install -g @zowe/cli@zowe-v1-lts
     ```
+
+    **Notes:**
+    - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+    - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
 

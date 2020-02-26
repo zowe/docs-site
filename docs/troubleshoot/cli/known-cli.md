@@ -2,13 +2,25 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; CLI.
 
+## EACCESS error returned when issing `npm install`
+
+**Valid on Windows or Linux**
+
+**Symptom:**
+
+An EACCESS error is returned when you issue the `npm install -g` command to install a package from Zowe.org or npm.
+
+**Solution:**
+
+To resolve the issue, follow the steps described in [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentatin.
+
 ## *Command not found* message displays when issuing `npm install` commands
 
 **Valid on all supported platforms**
 
 **Symptom:**
 
-When you issue NPM commands to install the CLI, the message *command not found* displays. The message indicates that Node.js and NPM are not installed on your computer, or that PATH does not contain the correct path to the NodeJS folder. 
+When you issue NPM commands to install the CLI, the message *command not found* displays. The message indicates that Node.js and NPM are not installed on your computer, or that PATH does not contain the correct path to the NodeJS folder.
 
 **Solution:**
 
@@ -47,7 +59,7 @@ report success using the following workarounds:
 
 **Symptom:**
 
-The installation fails on Linux or macOS. 
+The installation fails on Linux or macOS.
 
 **Solution:**
 
@@ -90,7 +102,7 @@ There might be a program that is named *node* on your path. The Node.js installe
 **Symptom:**
 
 You receive error messages when you attempt to install the product on an
-Oracle Linux 6 operating system. 
+Oracle Linux 6 operating system.
 
 **Solution:**
 
