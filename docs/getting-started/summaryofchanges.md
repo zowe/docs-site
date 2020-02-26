@@ -24,23 +24,37 @@ Zowe Version 1.8.0 and later releases include the following enhancements, releas
 
 The following features and enhancements were added.
 
-- Zowelog has been implemented to present consistent and accurate logging information. [#112](https://github.com/zowe/zowe-common-c/pull/112)
-    - Logging formatting controls [#113](https://github.com/zowe/zowe-common-c/pull/113)
-    - Logging formatting controls [#146](https://github.com/zowe/zss/pull/146)
-- When the address bar for files is selected, users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
 - A new endpoint for removing dataservices has been added [#62](https://github.com/zowe/zss/pull/62/files)
 - Functionality for removing data sets has been added [#65](https://github.com/zowe/zowe-common-c/pull/65)
-    - Deletion of data sets and their members is now supported [#88](https://github.com/zowe/zss/pull/88/commits)
-    - Deletion of data sets and their members is now supported [#85](https://github.com/zowe/zowe-common-c/pull/85/commits)
-- Enforce list check in R_admin [#117](https://github.com/zowe/zowe-common-c/pull/117)
-- Helper functions have been added to test caller's environment [#115](https://github.com/zowe/zowe-common-c/pull/115). The following functions have been added:
+- Deletion of data sets and their members is now supported [#88](https://github.com/zowe/zss/pull/88/commits)
+- Deletion of data sets and their members is now supported [#85](https://github.com/zowe/zowe-common-c/pull/85/commits)
+- The following helper functions have been added to test caller's environment [#115](https://github.com/zowe/zowe-common-c/pull/115):
     - A function to test whether the caller is running in SRB
     - A function to test whether the caller is in cross-memory mode
     - A function to test whether the caller is holding a CPU, CMS, CML or local lock
-- Unify the use of the security management class <!--unsure about description for this...--> [#152](https://github.com/zowe/zss/pull/152)
-- The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path”. [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
-- Expose wrappers for CPOOL [#116](https://github.com/zowe/zowe-common-c/pull/116) <!--Was really confused by this one. Not sure what the actual enhancements are...>
 - The logout endpoint has been re-added for zss [#100](https://github.com/zowe/zlux-app-server/pull/100)
+- Added support of SRB and locked callers to the Cross-Memory sever's PC space switch routine [#153](https://github.com/zowe/zss/pull/153)
+- This pull request add the following features [#120](https://github.com/zowe/zowe-common-c/pull/120):
+Ability to use the lock-free queue intrusively which allows a more flexible storage management on the user's side
+Functions to copy to/from foreign address space using destination/source keys and ALETs
+- Reformatted the save as modal in zowe editor [#129](https://github.com/zowe/zlux-editor/pull/129)
+- Added snackbar notification for directory error [#131](https://github.com/zowe/zlux-editor/pull/131)
+- Removed language server tab in editor [#134](https://github.com/zowe/zlux-editor/pull/134)
+- Explicitly call zss for logout to make sure cookies are known to be invalid [#28](https://github.com/zowe/zss-auth/pull/28)
+- The following changes have been made to Zlux server framework logging [#174](https://github.com/zowe/zlux-server-framework/pull/174):
+    - Added English resource files for messages
+    - Added code to all error, warning, debug and informational logged outputs
+    - Replaced most console.log calls with logger calls
+- Support for HTTP-Strict-Transport-Security. Custom headers for static content are now available [#173](https://github.com/zowe/zlux-server-framework/pull/173)
+
+
+### Bug Fixes
+
+The following bugs were fixed.
+
+- URL encoding with % sign were always returning with authorizatioz:false with RACF [#27](https://github.com/zowe/zss-auth/pull/27)
+- Users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
+- The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path” [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
 
 ## Version 1.8.0 (January 2020)
 
