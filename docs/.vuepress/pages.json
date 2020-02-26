@@ -59,7 +59,7 @@
       },
       {
         "text": "Advanced Zowe configuration",
-        "items": [ 
+        "items": [
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
         ]
@@ -82,6 +82,10 @@
           "user-guide/cli-installplugins.md",
           "user-guide/cli-cicsplugin.md",
           "user-guide/cli-db2plugin.md",
+          "user-guide/cli-ftpplugin.md",
+          "user-guide/cli-imsplugin.md",
+          "user-guide/cli-mqplugin.md",
+          "user-guide/cli-scsplugin.md",
           "user-guide/cli-vscodeplugin.md"
         ]
       }

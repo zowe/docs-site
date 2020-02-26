@@ -122,7 +122,7 @@ Style:
 
 - If wrap using angle brackets <> within code examples, italic font is not supported.
 
-    Example:   
+    Example:
     - put &lt;pax-file-name&gt;.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
@@ -132,7 +132,7 @@ Style:
 
 Style: Put messages in quotation marks.
 
-Example: "The file does not exist."   
+Example: "The file does not exist."
 
 #### Code and code examples
 
@@ -168,7 +168,7 @@ Example:
 
 Style: Monospace
 
-Example: In the Search field, enter `Brightside`.
+Example: In the Search field, enter `Zowe`.
 
 #### Citations that are not links
 
@@ -365,18 +365,18 @@ Do  | Don't
 ---|---
 API Mediation Layer|
 application  | app
-Capitalize "Server" when it's part of the product name |  
-data set| dataset  
+Capitalize "Server" when it's part of the product name |
+data set| dataset
 Java  |  java
-IBM z/OS Managemnt Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)  
-ID| id  
-PAX| pax  
+IBM z/OS Managemnt Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)
+ID| id
+PAX| pax
 personal computer <br> PC <br> server| machine
-later  | higher <br> Do not use to describe versions of software or fix packs.  
+later  | higher <br> Do not use to describe versions of software or fix packs.
 macOS| MacOS
 Node.js  | node.js <br> Nodejs
 plug-in| plugin
 REXX  | Rexx
-UNIX System Services <br> z/OS UNIX System Services  | USS  
+UNIX System Services <br> z/OS UNIX System Services  | USS
 zLUX  | ZLUX <br> zLux
 Zowe CLI|

@@ -12,7 +12,6 @@ A SAMPLIB JCL member `ZWESECUR` is provided to assist with the security configur
 If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
 It is expected that security administrator at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
-
 [EDIT] Note that there is an extra step for Top Secret (TSS) external security product that has to be performed manually. The step is not a part of the ZWESECUR job. The step is decribed in this section, link [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-(for-TSS-only))[EDIT end]  
 
 If you want to undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
