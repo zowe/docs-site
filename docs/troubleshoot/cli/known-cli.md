@@ -2,17 +2,17 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; CLI.
 
-## EACCESS error returned when issing `npm install`
+## EACCESS error when issing `npm install` command
 
-**Valid on Windows or Linux**
+**Valid on Windows, Mac, or Linux**
 
 **Symptom:**
 
-An EACCESS error is returned when you issue the `npm install -g` command to install a package from Zowe.org or npm.
+An `EACCESS` error is returned when you issue the `npm install -g` command to install a package from Zowe.org or npm.
 
 **Solution:**
 
-To resolve the issue, follow the steps described in [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentatin.
+To resolve the issue, follow the steps described in [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
 
 ## *Command not found* message displays when issuing `npm install` commands
 
