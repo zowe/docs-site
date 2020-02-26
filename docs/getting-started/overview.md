@@ -164,9 +164,9 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
-* [Onboarding Overview](../extend/extend-apiml/api-mediation-onboard-overview.md)
+* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md) 
 
-* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md)
+* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 </details>
