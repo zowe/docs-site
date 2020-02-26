@@ -32,6 +32,8 @@ The following features and enhancements were added:
 
 #### Zowe App Server
 
+- Added support for Node.js - z/OS V12. See [Installing Node.js on z/OS](./user-guide/install-nodejs-zos.md) for details.
+
 #### Zowe CLI
 
 To leverage the new features and plug-ins available in this version, you must follow the steps in [Migrating to the LTS version](../user-guide/cli-updatingcli.md#migrating-to-long-term-support-lts-version).
