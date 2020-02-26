@@ -46,7 +46,7 @@ Services can be updated to support the API Mediation Layer natively by updating 
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
 
-### Guides for services not built with Java
+### Guides for Static Onboarding and Direct Call Onboarding
 
 Use one of the following guides if your service is not built with Java, or you do not want to change your codebase or use the previously mentioned libraries:
 
