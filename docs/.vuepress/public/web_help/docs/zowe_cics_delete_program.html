@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_cics.html">cics</a> → <a href="zowe_cics_delete.html">delete</a> → <a href="zowe_cics_delete_program.html">program</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_delete.html">delete</a> › <a href="zowe_cics_delete_program.html">program</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete a program from CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics delete program &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -72,8 +72,8 @@ The maximum length of the group name is eight characters.</li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li><p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: http
-Allowed values: http, https</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -91,7 +91,7 @@ Allowed values: http, https</p>
 <li><p>Delete a program named PGM123 from the region named
 MYREGION:</p>
 <ul>
-<li><code>zowe  cics delete program PGM123 --region-name MYREGION</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics delete program PGM123 --region-name MYREGION">Copy</button></li>
+<li><code>zowe  cics delete program PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics delete program PGM123 --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>

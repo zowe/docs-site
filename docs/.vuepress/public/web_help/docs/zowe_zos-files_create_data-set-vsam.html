@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-files.html">zos-files</a> → <a href="zowe_zos-files_create.html">create</a> → <a href="zowe_zos-files_create_data-set-vsam.html">data-set-vsam</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_data-set-vsam.html">data-set-vsam</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create a VSAM cluster</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-vsam &lt;dataSetName&gt; [options]</p>
@@ -28,8 +28,8 @@
 <li><p><code>--data-set-organization</code>  | <code>--dso</code> <em>(string)</em></p>
 <ul>
 <li><p>The data set organization.</p>
-<p>Default value: INDEXED
-Allowed values: INDEXED, IXD, LINEAR, LIN, NONINDEXED, NIXD, NUMBERED, NUMD, ZFS</p>
+<p>Default value: INDEXED</p>
+<p>Allowed values: INDEXED, IXD, LINEAR, LIN, NONINDEXED, NIXD, NUMBERED, NUMD, ZFS</p>
 </li>
 </ul>
 </li>
@@ -142,20 +142,20 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot; using
 default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
+<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a 5 MB LINEAR VSAM data set named
 &quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the
 data set when it is created:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes">Copy</button></li>
+<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is
 retained for 100 days:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100">Copy</button></li>
+<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-files.html">zos-files</a> → <a href="zowe_zos-files_create.html">create</a> → <a href="zowe_zos-files_create_data-set-partitioned.html">data-set-partitioned</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_data-set-partitioned.html">data-set-partitioned</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create partitioned data sets (PDS)</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-files create data-set-partitioned &lt;dataSetName&gt; [options]</p>
@@ -54,6 +54,13 @@
 <li>The SMS management class to use for the allocation</li>
 </ul>
 </li>
+<li><p><code>--primary-space</code>  | <code>--ps</code> <em>(number)</em></p>
+<ul>
+<li><p>The primary space allocation (for example, 5)</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
 <li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
@@ -70,9 +77,7 @@
 </li>
 <li><p><code>--secondary-space</code>  | <code>--ss</code> <em>(number)</em></p>
 <ul>
-<li><p>The secondary space allocation (for example, 1)</p>
-<p>Default value: 1</p>
-</li>
+<li>The secondary space allocation (for example, 1)</li>
 </ul>
 </li>
 <li><p><code>--show-attributes</code>  | <code>--pa</code> <em>(boolean)</em></p>
@@ -82,11 +87,9 @@
 </li>
 <li><p><code>--size</code>  | <code>--sz</code> <em>(string)</em></p>
 <ul>
-<li><p>The size of the data set (specified as nCYL or nTRK - where n is the number of
+<li>The size of the data set (specified as nCYL or nTRK - where n is the number of
 cylinders or tracks). Sets the primary allocation (the secondary allocation
-becomes ~10% of the primary).</p>
-<p>Default value: 1CYL</p>
-</li>
+becomes ~10% of the primary).</li>
 </ul>
 </li>
 <li><p><code>--storage-class</code>  | <code>--sc</code> <em>(string)</em></p>
@@ -152,7 +155,7 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li><p>Create an empty PDS with default parameters:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
+<li><code>zowe  zos-files create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
 </ul>
 </li>
 </ul>
