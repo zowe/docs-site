@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Check out the following FAQs to learn more about the purpose and function of Zowe&trade;. 
+Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 
 - [Zowe FAQ](#zowe-faq)
 - [Zowe CLI FAQ](#zowe-cli-faq)
@@ -23,7 +23,7 @@ Zowe is an open source project within the [Open Mainframe Project](https://www.o
 
 <summary> Click to show answer </summary>
 
-Zowe technology can be used by a variety of mainframe IT and non-IT professionals. The target audience is primarily application developers and system programmers, but the Zowe Application Framework is the basis for developing web browser interactions with z/OS that can be used by anyone. 
+Zowe technology can be used by a variety of mainframe IT and non-IT professionals. The target audience is primarily application developers and system programmers, but the Zowe Application Framework is the basis for developing web browser interactions with z/OS that can be used by anyone.
 
 </details>
 
@@ -43,7 +43,7 @@ Zowe consists of several components. The primary languages are Java and JavaScri
 
 <summary> Click to show answer </summary>
 
-Zowe source code is licensed under EPL2.0. For license text click [here](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt) and for additional information click [here](https://www.eclipse.org/legal/epl-2.0/faq.php). 
+Zowe source code is licensed under EPL2.0. For license text click [here](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt) and for additional information click [here](https://www.eclipse.org/legal/epl-2.0/faq.php).
 
 In the simplest terms (taken from the FAQs above) - "...if you have modified EPL-2.0 licensed source code and you distribute that code or binaries built from that code outside your company, you must make the source code available under the EPL-2.0."
 
@@ -68,9 +68,9 @@ The Open Mainframe Project wants to encourage adoption and innovation, and also 
 
 The Zowe Desktop (web user interface) can be used in many ways, such as to provide custom graphical dashboards that monitor data for z/OS products and applications.
 
-Zowe CLI can also be used in many ways, such as for simple job submission, data set manipulation, or for writing complex scripts for use in mainframe-based DevOps pipelines. 
+Zowe CLI can also be used in many ways, such as for simple job submission, data set manipulation, or for writing complex scripts for use in mainframe-based DevOps pipelines.
 
-The increased capabilities of RESTful APIs on z/OS allows APIs to be used in programmable ways to interact with z/OS services. 
+The increased capabilities of RESTful APIs on z/OS allows APIs to be used in programmable ways to interact with z/OS services.
 
 </details>
 
@@ -81,7 +81,7 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 
 <summary> Click to show answer </summary>
 
-Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org). The convenience build can be easily installed and the Zowe capabilities seen in action. 
+Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org). The convenience build can be easily installed and the Zowe capabilities seen in action.
 
 To install the complete Zowe solution, see [Installing Zowe](../user-guide/installandconfig.md).
 
@@ -128,9 +128,9 @@ The source code for Zowe is maintained on an Open Mainframe Project GitHub serve
 
 <summary> Click to show answer </summary>
 
-The best way to get started is to join a [Zowe Slack channel](https://slack.openmainframeproject.org/) and/or email distribution list and begin learning about the current capabilities, then contribute to future development. 
+The best way to get started is to join a [Zowe Slack channel](https://slack.openmainframeproject.org/) and/or email distribution list and begin learning about the current capabilities, then contribute to future development.
 
-For more information about emailing lists, community calendar, meeting minutes, and more, see the [Zowe Community](https://github.com/zowe/community/blob/master/README.md) GitHub repo.  
+For more information about emailing lists, community calendar, meeting minutes, and more, see the [Zowe Community](https://github.com/zowe/community/blob/master/README.md) GitHub repo.
 
 For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/onboard-overview.md) on Zowe Docs.
 
@@ -182,7 +182,7 @@ For developers new to the mainframe, command-line interfaces might be more famil
 
 <summary> Click to show answer </summary>
 
-Zowe CLI is very flexible; developers can integrate with modern tools that work best for them. It can work in conjunction with popular build and testing tools such as Gulp, Gradle, Mocha, and Junit. Zowe CLI runs on a variety of operating systems, including Windows, macOS, and Linux. Zowe CLI scripts can be abstracted into automation tools such as Jenkins and TravisCI. 
+Zowe CLI is very flexible; developers can integrate with modern tools that work best for them. It can work in conjunction with popular build and testing tools such as Gulp, Gradle, Mocha, and Junit. Zowe CLI runs on a variety of operating systems, including Windows, macOS, and Linux. Zowe CLI scripts can be abstracted into automation tools such as Jenkins and TravisCI.
 
 </details>
 

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_config.html">config</a> → <a href="zowe_config_set.html">set</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_set.html">set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Set a configuration setting.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  config set &lt;configName&gt; &lt;configValue&gt; [options]</p>
@@ -14,7 +14,9 @@
 <ul>
 <li><p><code>configName</code>         <em>(string)</em></p>
 <ul>
-<li>Setting name</li>
+<li>Setting name. Possible values:
+CredentialManager - The package name of a plugin that will override the default
+credential manager to allow for different credential storage methods.</li>
 </ul>
 </li>
 <li><p><code>configValue</code>         <em>(string)</em></p>
@@ -27,7 +29,7 @@
 <ul>
 <li><p>Set the default credential manager to my-credential-manager:</p>
 <ul>
-<li><code>zowe  config set credential-manager my-credential-manager</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  config set credential-manager my-credential-manager">Copy</button></li>
+<li><code>zowe  config set CredentialManager my-credential-manager</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  config set CredentialManager my-credential-manager">Copy</button></li>
 </ul>
 </li>
 </ul>

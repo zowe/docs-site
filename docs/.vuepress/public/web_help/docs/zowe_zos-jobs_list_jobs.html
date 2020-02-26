@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-jobs.html">zos-jobs</a> → <a href="zowe_zos-jobs_list.html">list</a> → <a href="zowe_zos-jobs_list_jobs.html">jobs</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_list.html">list</a> › <a href="zowe_zos-jobs_list_jobs.html">jobs</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List jobs on JES spool/queues. By default, the command lists jobs owned (owner)
 by the user specified in your z/OSMF profile. The default for prefix is &quot;*&quot;.
 The command does not prevalidate your user ID. The command surfaces errors
@@ -119,19 +119,19 @@ in the output.</li>
 <li><p>List all jobs with default settings. The command returns
 jobs owned by your user ID with any job name:</p>
 <ul>
-<li><code>zowe  zos-jobs list jobs</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs">Copy</button></li>
+<li><code>zowe  zos-jobs list jobs</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs">Copy</button></li>
 </ul>
 </li>
 <li><p>List all jobs owned by user IDs starting with &#39;ibmu&#39; and job
 names starting with &#39;myjo&#39;:</p>
 <ul>
-<li><code>zowe  zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;">Copy</button></li>
+<li><code>zowe  zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;">Copy</button></li>
 </ul>
 </li>
 <li><p>List all jobs with default owner and prefix settings,
 displaying only the job ID of each job:</p>
 <ul>
-<li><code>zowe  zos-jobs list jobs --rff jobid --rft table</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs --rff jobid --rft table">Copy</button></li>
+<li><code>zowe  zos-jobs list jobs --rff jobid --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs list jobs --rff jobid --rft table">Copy</button></li>
 </ul>
 </li>
 </ul>

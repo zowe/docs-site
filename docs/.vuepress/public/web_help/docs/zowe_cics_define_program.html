@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_cics.html">cics</a> → <a href="zowe_cics_define.html">define</a> → <a href="zowe_cics_define_program.html">program</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_program.html">program</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Define a new program to CICS.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  cics define program &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
@@ -72,8 +72,8 @@ define. The maximum length of the group name is eight characters.</li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li><p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: http
-Allowed values: http, https</p>
+<p>Default value: https</p>
+<p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -91,7 +91,7 @@ Allowed values: http, https</p>
 <li><p>Define a program named PGM123 to the region name MYREGION in
 the CSD group MYGRP:</p>
 <ul>
-<li><code>zowe  cics define program PGM123 MYGRP --region-name MYREGION</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  cics define program PGM123 MYGRP --region-name MYREGION">Copy</button></li>
+<li><code>zowe  cics define program PGM123 MYGRP --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define program PGM123 MYGRP --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>
