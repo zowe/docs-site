@@ -189,7 +189,7 @@ Conditional installation requisites identify products that are not required for 
 
 Operational requisites are products that are required and must be present on the system, or, products that are not required but should be present on the system for Zowe to operate all or part of its functions.
 
-Mandatory operational requisites identify products that are required for this product to operate its basic functions. The following tables lists the target system mandatory operational requisites for Zowe.
+Mandatory operational requisites identify products that are required for this product to operate its basic functions. The following table lists the target system mandatory operational requisites for Zowe.
 
 Program Number |Product Name and Minimum VRM/Service Level
 ---|---
@@ -258,7 +258,7 @@ Web Download | 26111 Tracks | These are temporary data sets, which can be remove
 
   6. All target libraries that are listed and contain load modules have the following attributes:
 
-     * These data sets can not be in the LPA, with some exceptions. If the value in the "Member Type" column specifies "LPA", it is advised to place the data set in the LPA.
+     * These data sets cannot be in the LPA, with some exceptions. If the value in the "Member Type" column specifies "LPA", it is advised to place the data set in the LPA.
      * These data sets can be in the LNKLST.
      * These data sets are not required to be APF-authorized, with some exceptions. If the value in the "Member Type" column specifies "APF", the data set must be APF-authorized.
 
@@ -269,7 +269,7 @@ Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
 SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
 
-In the table above, (20,200) specifies a primary allocaton of 20 tracks, and a secondary allocation of 200 tracks.  
+In the table above, (20,200) specifies a primary allocation of 20 tracks, and a secondary allocation of 200 tracks.  
 
 **Storage requirements for SMP/E data sets**
 
@@ -316,13 +316,13 @@ hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
 hlq.ZOWE.AZWE001.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
 z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
 
-**Note:** These are temporary data sets, which can be removed after the SMP/E install.
+**Note:** These are temporary data sets, which can be removed after the SMP/E installation.
 
 ### FMIDs deleted
 
 Installing Zowe might result in the deletion of other FMIDs. 
 
-To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs at this time, install Zowe into separate SMP/E target and distribution zones.
+To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs now, install Zowe into separate SMP/E target and distribution zones.
 
 **Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
 
@@ -377,7 +377,7 @@ Follow these high-level steps to download and install Zowe Open Source Project (
 
 To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/#download) website. Click the **Zowe SMP/E Alpha** button to save the files to a folder on your desktop.
 
-You will receive 2 files on your desktop.
+You will receive two files on your desktop.
 
   - **AZWE001.pax.Z (binary)**
 
@@ -847,7 +847,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
-   The latest HOLDDATA is available through several different portals, including [http://service.software.ibm.com/holdata/390holddata.html](http://service.software.ibm.com/holdata/390holddata.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine if any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
+   The latest HOLDDATA is available through several different portals, including [http://service.software.ibm.com/holdata/390holddata.html](http://service.software.ibm.com/holdata/390holddata.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
    You should install the FMIDs regardless of the status of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
 
@@ -917,7 +917,7 @@ For more information about REPORT CROSSZONE, see the SMP/E manuals.
 
 ### Cleaning up obsolete data sets, paths, and DDDEFs
 
-The web download data sets listed in [DASD storage requirements](#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E install.
+The web download data sets listed in [DASD storage requirements](#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E installation.
 
 ## Activating Zowe
 
@@ -928,8 +928,8 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 ## Zowe customization
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
-- For information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration.md).
-- For information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
+- For more information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration.md).
+- For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 
 <!-- The following are commented out for the use of a program directory in bookmaster format

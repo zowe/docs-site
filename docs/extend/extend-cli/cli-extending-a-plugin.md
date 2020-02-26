@@ -1,4 +1,4 @@
-# Extending a plug-in 
+# Extending a plug-in
 Before you begin, be sure to complete the [Installing the sample plug-in](cli-installing-sample-plugin.md) tutorial.
 
 ## Overview
@@ -7,7 +7,7 @@ This tutorial demonstrates how to extend the plug-in that is bundled with this s
 2. Creating a new command definition
 3. Creating a new handler
 
-We'll do this by using `@brightside/imperative` infrastructure to surface REST API data on our Zowe&trade; CLI plug-in.
+We'll do this by using `@zowe/imperative` infrastructure to surface REST API data on our Zowe&trade; CLI plug-in.
 
 Specifically, we're going to show data from [this URI](https://jsonplaceholder.typicode.com/todos) by [Typicode](https://jsonplaceholder.typicode.com/).
 Typicode serves sample REST JSON data for testing purposes.
@@ -41,7 +41,7 @@ Adjacent to the existing file named `zowe-cli-sample-plugin/src/api/Files.ts`, c
 
 ```typescript
 import { ITodo } from "./doc/ITodo";
-import { RestClient, AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
+import { RestClient, AbstractSession, ImperativeExpect, Logger } from "@zowe/imperative";
 
 export class Typicode {
 
@@ -63,7 +63,7 @@ export class Typicode {
 ```
 
 The `Typicode` class provides two programmatic APIs, `getTodos` and `getTodo`, to get an array of `ITodo` objects or a specific
-`ITodo` respectively. The Node.js APIs use `@brightside/imperative` infrastructure to provide logging, parameter validation,
+`ITodo` respectively. The Node.js APIs use `@zowe/imperative` infrastructure to provide logging, parameter validation,
 and to call a REST API. See the [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) for more information.
 
 ### Exporting interface and programmatic API for other Node.js applications
@@ -76,8 +76,8 @@ export * from "./api/Typicode";
 
 A sample invocation of your API might look similar to the following, if it were used by a separate, standalone Node.js application:
 ```typescript
-import { Typicode } from "@brightside/zowe-cli-sample-plugin";
-import { Session, Imperative } from "@brightside/imperative";
+import { Typicode } from "@zowe/zowe-cli-sample-plugin";
+import { Session, Imperative } from "@zowe/imperative";
 import { inspect } from "util";
 
 const session = new Session({ hostname: "jsonplaceholder.typicode.com"});
@@ -91,11 +91,11 @@ const session = new Session({ hostname: "jsonplaceholder.typicode.com"});
 Issue `npm run build` to verify a clean compilation and confirm that no lint errors are present. At this point in this tutorial, you have a programmatic API
 that will be used by your handler or another Node.js application. Next you'll define the command syntax for the command that will use your programmatic Node.js APIs.
 
-### Defining command syntax 
+### Defining command syntax
 Within Zowe CLI, the full command that we want to create is `zowe zowe-cli-sample list typicode-todos`. Navigate to `zowe-cli-sample-plugin/src/cli/list` and create a folder
 `typicode-todos`. Within this folder, create `TypicodeTodos.definition.ts`. Its content should be as follows:
 ```typescript
-import { ICommandDefinition } from "@brightside/imperative";
+import { ICommandDefinition } from "@zowe/imperative";
 export const TypicodeTodosDefinition: ICommandDefinition = {
     name: "typicode-todos",
     aliases: ["td"],
@@ -117,7 +117,7 @@ This describes the syntax of your command.
 ### Defining command handler
 Also within the `typicode-todos` folder, create `TypicodeTodos.handler.ts`. Add the following code to the new file:
 ```typescript
-import { ICommandHandler, IHandlerParameters, TextUtils, Session } from "@brightside/imperative";
+import { ICommandHandler, IHandlerParameters, TextUtils, Session } from "@zowe/imperative";
 import { Typicode } from "../../../api/Typicode";
 export default class TypicodeTodosHandler implements ICommandHandler {
 
@@ -138,7 +138,7 @@ export default class TypicodeTodosHandler implements ICommandHandler {
 }
 ```
 The `if` statement checks if a user provides an `--id` flag. If yes, we call `getTodo`. Otherwise, we call `getTodos`. If the
-Typicode API throws an error, the `@brightside/imperative` infrastructure will automatically surface this.
+Typicode API throws an error, the `@zowe/imperative` infrastructure will automatically surface this.
 
 ### Defining command to list group
 Within the file `zowe-cli-sample-plugin/src/cli/list/List.definition.ts`, add the following code below other `import` statements near the top of the file:
@@ -164,7 +164,7 @@ is presented to the end user. You can also see how to use your optional `--id` f
 
 ## Summary
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
-For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests. 
+For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests.
 
 ## Next steps
 Try the [Developing a new plug-in](cli-developing-a-plugin.md) tutorial next to create a new plug-in for Zowe CLI.

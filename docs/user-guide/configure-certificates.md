@@ -1,18 +1,18 @@
 # Configuring Zowe certificates 
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the trust store used to hold public keys of any servers that Zowe trusts.  When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
+A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts.  When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
 
-If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may re-use the existing keystore directory with newer version of Zowe.
+If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
 
 You can use the existing certificate signed by an external certificate authority (CA) for HTTPS ports in the API Mediation Layer and the Zowe Application Framework, or else you can let the Zowe configuration script to generate a self-signed certificate by the local API Mediation CA.
 
 If you let the Zowe configuration to generate a self-signed certificate, the certificates should be imported into your browser to avoid untrusted network traffic challenges. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).  If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted and, depending on the browser you are using, have to add an exception to proceed to the web page.  Some browser versions may not accept the Zowe certificate because it is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser makes it a trusted source and the challenges will no longer occur.  
 
-If you have an an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' trust store.  This will avoid the need to manually import the local CA into each client machine's browsers.  
+If you have an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' truststore.  This will avoid the need to manually import the local CA into each client machine's browsers.  
  
-If you wish to avoid the need to have each browser trust the CA that has signed the Zowe certificate, you can use a public certificate authority such as Symantec, Comodo, or GoDaddy to create a certificate. These certificates are trusted by all browsers and most REST API clients. However, this option involves a manual process of requesting a certificate and may incur a cost payable to the publicly trusted CA.
+If you want to avoid the need to have each browser trust the CA that has signed the Zowe certificate, you can use a public certificate authority such as Symantec, Comodo, or GoDaddy to create a certificate. These certificates are trusted by all browsers and most REST API clients. However, this option involves a manual process of requesting a certificate and may incur a cost payable to the publicly trusted CA.
 
-We recommend that you start with the local API Mediation Layer CA for an initial evaluation.
+It's recommended that you start with the local API Mediation Layer CA for an initial evaluation.
 
 You can use the `bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `bin/zowe-setup-certificates.env`.
 
@@ -24,7 +24,7 @@ The script reads the default variable values that are provided in the `bin/zowe-
 bin/zowe-setup-certificates.sh
 ```
 
-The keystore and certificates are generated in the default `/global/Zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
+The keystore and certificates are generated in the default `/global/zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
 
 ## Generate certificate with the custom values
 
@@ -102,13 +102,14 @@ KEYSTORE_PASSWORD=mypass
 You may encounter the following message:
 
 ```
-apiml_cm.sh --action trust-zosmf has failed.
-WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
+apiml_cm.sh --action trust-zosmf has failed. See $LOG_FILE for more details
+ERROR: z/OSMF is not trusted by the API Mediation Layer. Make sure ZOWE_ZOSMF_HOST and ZOWE_ZOSMF_PORT variables define the desired z/OSMF instance.
+ZOWE_ZOSMF_HOST=${ZOWE_ZOSMF_HOST}   ZOWE_ZOSMF_PORT=${ZOWE_ZOSMF_PORT}
+You can also specify z/OSMF certificate explicitly in the ZOSMF_CERTIFICATE environmental variable in the zowe-setup-certificates.env file.
 ```
 
-This error does not interfere with the installation progress and can be remediated after the installation completes. For more information, see [Trust a z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate).
+This error has to be resolved before you can proceed with the next installation step.
 
 **Notes:** 
 
-- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and re-used within a z/OS installation for different servers other than that it was originally created for.   
-- In order to import the public key of the z/OSMF certificate into the Zowe certificate trust store, the user ID that is used to run the `zowe-setup-certificates.sh` script must have authority to read the z/OSMF keyring. See [Trust a z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate). 
+- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
