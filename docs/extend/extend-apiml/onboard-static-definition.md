@@ -84,7 +84,7 @@ Define your service and API in YAML format as presented in the following sample 
 **Example:**
 
 To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service.
-This configuration is the minimal configuration necessary for the Gateway to properly route the requests to the application. The application will, however, not be visible in the Catalog using this configuration.
+This configuration is the minimal configuration necessary for the Gateway to properly route the requests to the application and to show the Service in the Catalog UI.
 
 **Note:**
 
@@ -105,6 +105,11 @@ services:
       apiInfo:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
+
+catalogUiTiles:
+    static:
+        title: Static API services
+        description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
 ```
 
 In this example, a suitable name for the file is `petstore.yml`.
@@ -456,7 +461,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway. If the authentication is required and the default configuration provider is used the username is user and password user:
+4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway. If the authentication is required and the default configuration provider on local instance is used the username is user and password user:
 
     `https://localhost:10010/application/routes`
 
