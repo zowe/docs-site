@@ -47,11 +47,11 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     In the sample service, the `service ID` is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. The usually used types are: api, ui and ws but you can use any valid URL element you want. 
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. The usually used types are: `api`, `ui` and `ws` but you can use any valid URL element you want.
 
     **Example:**
 
-    In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the Gateway. If your service does not have a version use `v1` on the Gateway.
+    In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
 
 ## Route your API
 
@@ -86,9 +86,7 @@ Define your service and API in YAML format as presented in the following sample 
 To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service.
 This configuration is the minimal configuration necessary for the Gateway to properly route the requests to the application and to show the Service in the Catalog UI.
 
-**Note:**
-
-For more details about configuration, see [Customize configuration parameters](onboard-static-definition.md#customize-configuration-parameters).
+**Note:** For more details about configuration, see [Customize configuration parameters](onboard-static-definition.md#customize-configuration-parameters).
 
 ```yaml
 services:
@@ -313,9 +311,7 @@ additionalServiceMetadata:
         
         * **bypass**
         
-            This value specifies that the token is passed unchanged to the service.
-              
-            **Note:** This is the default scheme when no authentication parameters are specified. 
+            This value specifies that the token is passed unchanged to the service. This is the default scheme when no authentication parameters are specified. 
             
          * **zoweJwt**   
          
