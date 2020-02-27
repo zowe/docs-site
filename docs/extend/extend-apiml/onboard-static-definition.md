@@ -2,7 +2,7 @@
 
 As a user of Zowe&trade;, onboard an existing REST API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
-**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
+**Note:** When developing a new service, it is not recommended to onboard a REST service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a REST service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md#Service Onboarding Guides).
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
@@ -31,29 +31,31 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     **Example:**
 
-    In the sample service described in the [Onboarding Overview](onboard-overview.md), the URL of the service is: `http://localhost:8080`.
+    In the sample service described in the [Onboarding Overview](onboard-overview.md#Sample REST API Service), the URL of the service is: `http://localhost:8080`.
 
-2. Identify all APIs that this service provides that you want to expose through the API Gateway.
+2. Identify API that the service provides that you want to expose through the API Gateway.
 
     **Example:**
 
-    In the sample service, this REST API is the one available at the path `/v2` relative to base URL of the service. This API is version     2 of the Pet Store API.
+    The API provided by the sample service is a second version of the Pet Store API. All the endpoints to be onboarded are available 
+    through `http://localhost:8080/v2/` URL. This REST API is therefore available at the path `/v2` relative to base URL of the service. 
+    There is no version 1 in this case.
 
-3. Choose the `service ID` of your service. The `service ID` identifies the service in the API Gateway. The `service ID` is an alphanumeric string in lowercase ASCII.
+3. Choose the `service ID` of your service. The `service ID` identifies the service uniquely in the API Gateway. The `service ID` is an alphanumeric string in lowercase ASCII.
 
     **Example:**
 
     In the sample service, the `service ID` is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version.
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. The usually used types are: api, ui and ws but you can use any valid URL element you want. 
 
     **Example:**
 
-    In the sample service, we provide a REST API. The first segment is `/api`. To indicate that this is version 2, the second segment is `/v2`.
+    In the sample service, we provide a REST API. The first segment is `/api` as the service provides only REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the gateway. If your service doesn't have version use v1 on the Gateway.
 
 ## Route your API
 
-After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example.
+After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. The configuration parameters are explained in [Customize configuration parameters](#Customize configuration parameters)
 
 **Note:** The API Gateway differentiates major versions of an API.
 
@@ -67,7 +69,7 @@ The base URL of the version 2 of the `petstore` API is:
 
 `http://localhost:8080/v2`
 
-The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL.
+The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. For example the request to the URL: `https://gateway:port/api/v2/petstore/pets/1` will be routed to `http://localhost:8080/v2/pets/1`
 
 **Note:** This method enables you to access the service through a stable URL, and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
@@ -77,7 +79,52 @@ Define your service and API in YAML format in the same way as presented in the f
 
 **Example:**
 
-To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service:
+To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service.
+This configuration is minimal configuration necessary for the gateway to properly route the requests to the application. The application won't be visible in the Catalog using this configuration. More detailed configuration is in [Customize configuration parameters](onboard-static-definition.md#Customize configuration parameters):
+
+```yaml
+services:
+    - serviceId: petstore
+      catalogUiTileId: static
+      instanceBaseUrls:
+        - http://localhost:8080
+      routes:
+        - gatewayUrl: api/v2
+          serviceRelativeUrl: /v2
+      authentication:
+              scheme: httpBasicPassTicket
+              applid: ZOWEAPPL
+      apiInfo:
+        - apiId: io.swagger.petstore
+          gatewayUrl: api/v2
+```
+
+In this example, a suitable name for the file is `petstore.yml`.
+
+**Notes:**
+
+* The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
+
+* The file can contain one or more services defined under the `services:` node.
+
+* Each service has a service ID. In this example, the service ID is `petstore`. The service id is used as a part of the 
+  request URL towards the Gateway. It is removed by the gateway when forwarding the request to the service.
+
+* The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
+
+* One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/serviceId/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+
+* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
+
+**Tips:**
+
+* There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
+
+* For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
+
+## Customize configuration parameters
+
+This part contains more complex example of the configuration and explanation of all the possible parameters:
 
 ```yaml
 services:
@@ -87,6 +134,9 @@ services:
       description: This is a sample server Petstore service
       instanceBaseUrls:
         - http://localhost:8080
+      homePageRelativeUrl: /home # Normally used for informational purposes for other services to use it as a landing page
+      statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
+      healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
       routes:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
@@ -99,15 +149,11 @@ services:
           swaggerUrl: http://localhost:8080/v2/swagger.json
           documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
-```
-Optional metadata block (for service `petstore`):
-```yaml
       customMetadata:
           yourqualifier:
               key1: value1
               key2: value2
-```
-```yaml
+
 catalogUiTiles:
     static:
         title: Static API services
@@ -119,30 +165,6 @@ additionalServiceMetadata:
       authentication:
         scheme: bypass
 ```
-
-In this example, a suitable name for the file is `petstore.yml`.
-
-**Notes:**
-
-* The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
-
-* The file can contain one or more services defined under the `services:` node.
-
-* Each service has a service ID. In this example, the service ID is `petstore`. The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
-
-* A service can provide multiple APIs that are routed by the API Gateway. In this case, requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
-
-* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
-
-**Tips:**
-
-* There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
-
-* For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
-
-## Customize configuration parameters
-
-The following list describes the configuration parameters:
 
 * **serviceId**
 
@@ -189,7 +211,7 @@ The following list describes the configuration parameters:
 
 * **instanceBaseUrls**
 
-    This parameter specifies a list of base URLs to your service to the REST resource. It will be the prefix for the following URLs:
+    This parameter specifies a list of base URLs to your service's REST resource. It will be the prefix for the following URLs:
 
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
@@ -208,7 +230,7 @@ The following list describes the configuration parameters:
 * **homePageRelativeUrl**
 
     This parameter specifies the relative path to the homepage of your service. The path should start with `/`.
-    If your service has no homepage, omit this parameter.
+    If your service has no homepage, omit this parameter. The path is relative to the instanceBaseUrls.
 
     **Examples:**
     * `homePageRelativeUrl: /` The service has homepage with URL `${baseUrl}/`
@@ -218,7 +240,8 @@ The following list describes the configuration parameters:
 * **statusPageRelativeUrl**
 
     This parameter specifies the relative path to the status page of your service.
-    Start this path with `/`. If you service has not a status page, omit this parameter.
+    Start this path with `/`. If you service doesn't have a status page, omit this parameter. 
+    The path is relative to the instanceBaseUrls.
 
     **Example:**
     * `statusPageRelativeUrl: /application/info` the result URL will be `${baseUrl}/application/info`
@@ -226,7 +249,8 @@ The following list describes the configuration parameters:
 * **healthCheckRelativeUrl**
 
     This parameter specifies the relative path to the health check endpoint of your service.
-    Start this URL with `/`. If your service does not have a health check endpoint, omit this parameter.
+    Start this URL with `/`. If your service does not have a health check endpoint, omit this parameter. 
+    The path is relative to the instanceBaseUrls.
 
     **Example:**
     * `healthCheckRelativeUrl: /application/health`. This results in the URL:
@@ -234,17 +258,20 @@ The following list describes the configuration parameters:
 
 * **routes**
 
-    The following parameters specify the routing rules between the gateway service and your service.
+    The following parameters specify the routing rules between the gateway service and your service. Both specifies how the 
+    API endpoints are mapped to the API gateway endpoints.
 
     * **routes.gatewayUrl**
 
-        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _gatewayUrl_ parameter sets the target endpoint on the gateway.
+        The _gatewayUrl_ parameter sets the target endpoint on the gateway. This is the portion of the final URL that
+        is gateway specific. In the case of the petstore the full gateway URL would be 
+        `https://gatewayUrl:1345/api/v2/petstore/pets/1` while the Url that will be called on the service will be 
+        `http://localhost:8080/v2/pets/1`
 
-    * **routes.serviceUrl**
+    * **routes.serviceRelativeUrl**
 
-        Both _gatewayUrl_ and _serviceUrl_ parameters specify how the API service endpoints are mapped to the API
-        gateway endpoints. The _serviceUrl_ parameter points to the target endpoint on the Gateway.
+        The _serviceRelativeUrl_ parameter points to the target endpoint on the service. This is the base path on the 
+        service called via the gateway.
     
 * **authentication**
 
@@ -281,12 +308,12 @@ The following list describes the configuration parameters:
     
     * **authentication.applid**
     
-        This parameter specifies a service APPLID.
+        This parameter specifies a service APPLID. // TODO: Is this obvious to the user?
         This parameter is only valid for the `httpBasicPassTicket` authentication scheme.        
 
 * **apiInfo**
 
-    This section defines APIs that are provided by the service. Currently, only one API is supported.
+    This section defines APIs that are provided by the service. Currently, only one API is supported. 
 
     * **apiInfo.apiId**
 
@@ -408,7 +435,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway:
+4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway. If the authentication is required and the default configuration provider is used the username is user and password user:
 
     `https://localhost:10010/application/routes`
 
@@ -463,6 +490,8 @@ You successfully defined your Java application if your service is running and yo
 
 ## (Optional) Check the log of the API Mediation Layer
 
+Based on the configuration of the API Mediation Layer the log can contain following messages:
+
 The API Mediation Layer prints the following messages to its log when the API definitions are processed:
 
 ```
@@ -470,6 +499,8 @@ Scanning directory with static services definition: config/local/api-defs
 Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
 Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
 ```
+
+   **Note:** If you don't see these messages in the log. Make sure that the [API ML debug mode](https://docs.zowe.org/stable/troubleshoot/troubleshoot-apiml.html#enable-api-ml-debug-mode) is active. 
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 
@@ -483,10 +514,10 @@ The following procedure enables you to refresh the API definitions after you cha
 
     The Discovery Service requires authentication by a client certificate. If the API Mediation Layer is running on your local machine, the certificate is stored at `keystore/localhost/localhost.pem`.
 
-    This example uses the [HTTPie command-line HTTP client](https://httpie.org):
+    This example uses the [HTTPie command-line HTTP client](https://httpie.org) and is run with Python 3 installed:
 
     ```
-    http --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
+    httpie --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
     ```
 
 2. Check if your updated definition is effective.
