@@ -5,7 +5,8 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 Zowe Version 1.9.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
-- [Version 1.8.0 (January 2020)](#version-180-january-2020)
+- [Version 1.8.1 (February 2020)](#version-181-february-2020)
+- [Version 1.8.0 (February 2020)](#version-180-february-2020)
 - [Version 1.7.1 (December 2019)](#version-171-december-2019)
 - [Version 1.7.0 (November 2019)](#version-170-november-2019)
 - [Version 1.6.0 (October 2019)](#version-160-october-2019)
@@ -132,7 +133,19 @@ The following bugs were fixed:
 - Users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
 - The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path” [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
 
-## Version 1.8.0 (January 2020)
+## Version 1.8.1 (February 2020)
+
+### Bug fixes for Zowe CLI
+
+A bug was fixed where Zowe CLI installation could fail and users could recieve the following error message when installing Zowe CLI v1.8.0:
+
+```
+981 verbose stack Error: EPERM: operation not permitted
+```
+
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+
+## Version 1.8.0 (February 2020)
 
 <!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
