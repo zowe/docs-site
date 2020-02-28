@@ -30,6 +30,19 @@ The following features and enhancements were added:
 
 #### API Mediation Layer
 
+The following new features and enhancements have been made to the Zowe API Mediation Layer in this version:
+
+- Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well. 
+- Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.  
+- Passticket support has been added to API ML Core Services and onboarding enablers. This makes it easier to authenticate existing mainframe applications with the API Mediation Layer.
+- New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginifantly less disk space.
+
+The following bug fixes have been introduced:
+
+- A fix of a critial authentication issue with some versions of z/OSMF has been applied. 
+- A fix has been applied to support multipart requests.
+- A fix has been applied to the z/OSMF authorization header.
+
 #### Zowe App Server
 
 - Added support for Node.js - z/OS V12. See [Installing Node.js on z/OS](../user-guide/install-nodejs-zos.md) for details.
