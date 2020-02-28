@@ -4,8 +4,12 @@
     "link": "active-development/"
 },
 {
-  "text": "Stable",
+  "text": "v1.9.x LTS",
   "link": "stable/"
+},
+{
+  "text": "v1.8.x",
+  "link": "v1-8-x/"
 },
 {
   "text": "v1.7.x",

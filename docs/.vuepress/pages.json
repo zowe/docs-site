@@ -59,7 +59,7 @@
       },
       {
         "text": "Advanced Zowe configuration",
-        "items": [ 
+        "items": [
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md"
         ]
@@ -82,6 +82,10 @@
           "user-guide/cli-installplugins.md",
           "user-guide/cli-cicsplugin.md",
           "user-guide/cli-db2plugin.md",
+          "user-guide/cli-ftpplugin.md",
+          "user-guide/cli-imsplugin.md",
+          "user-guide/cli-mqplugin.md",
+          "user-guide/cli-scsplugin.md",
           "user-guide/cli-vscodeplugin.md"
         ]
       }
@@ -93,15 +97,15 @@
     "items": [{
         "text": "Developing for API Mediation Layer",
         "items": [
-          "extend/extend-apiml/api-mediation-onboard-overview.md",
-          "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service_plain-java-enabler.md",
-          "extend/extend-apiml/api-mediation-onboard-rest-service-direct-eureka-call.md",
-          "extend/extend-apiml/api-mediation-security.md",
-          "extend/extend-apiml/api-mediation-onboard-a-spring-boot-rest-api-service.md",
-          "extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.md",
-          "extend/extend-apiml/api-mediation-onboard-an-existing-rest-api-service-without-code-changes.md",
+          "extend/extend-apiml/onboard-overview.md",
+          "extend/extend-apiml/onboard-plain-java-enabler.md",
+          "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md",
+          "extend/extend-apiml/onboard-direct-eureka-call.md",
+          "extend/extend-apiml/onboard-spring-boot-enabler.md",
+          "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/api-mediation-message-service.md",
-          "extend/extend-apiml/api-mediation-onboard-plain-java-enabler-external-configuration.md"
+          "extend/extend-apiml/api-mediation-security.md",
+          "extend/extend-apiml/api-mediation-passtickets.md"
         ]
       },
       {

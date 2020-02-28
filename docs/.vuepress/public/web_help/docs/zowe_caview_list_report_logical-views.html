@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>caview list report logical-views</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_report.html">report</a> › <a href="zowe_caview_list_report_logical-views.html">logical-views</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List logical views available for a specific report.
+Use the returned &#39;ReportHandle&#39; to reference a logical view in other commands.
+For example, use &#39;ReportHandle&#39; in the &#39;download report&#39; command to download the
+logical view of that report.
+Use the returned &#39;IndexNameHandle&#39; in the &#39;list report index-values&#39; command to
+retrieve the list of associated index values (if defined) for that index.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  caview list report logical-views &lt;repositoryId&gt; &lt;reportHandle&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>repositoryId</code>         <em>(number)</em></p>
+<ul>
+<li>Repository identifier.</li>
+</ul>
+</li>
+<li><p><code>reportHandle</code>         <em>(string)</em></p>
+<ul>
+<li>Report handle.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
+<ul>
+<li><p>Output format. This option is ignored if &#39;--response-format-json&#39; is
+specified.</p>
+<p>Default value: tabular</p>
+<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+</li>
+</ul>
+</li>
+<li><p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Include header with field names in the output when you specify &#39;tabular&#39; or
+&#39;csv&#39; for the output format.
+This option is ignored when you specify any other output format.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
+<ul>
+<li><p>Field to include in the output. Multiple fields can be specified.
+Fields appear in the order you specify.</p>
+<p>Allowed values:
+Description,Index,SubIndexNames,ReportHandle,IndexNameHandle,Number,ViewId,Default</p>
+<p>Default value: Description,Index,SubIndexNames,ReportHandle,IndexNameHandle</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--caview-profile</code>  | <code>--caview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (caview) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
