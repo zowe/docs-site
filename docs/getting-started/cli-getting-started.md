@@ -38,6 +38,8 @@ npm install @zowe/cli@zowe-v1-lts -g
 zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
+**Note:** On Linux, install [libsecret](https://github.com/GNOME/libsecret) before you use the Secure Credential Store.
+
 ### Installing CLI plug-ins
 
 ```

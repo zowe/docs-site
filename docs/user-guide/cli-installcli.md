@@ -31,16 +31,15 @@ If you do not have internet access at your site, use the following method to ins
 
     - **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](cli-swreqplugins.md).
 
-2. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **Zowe CLI** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+2. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
 
     A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
-3. **(Optional)** Click the **CLI Plug-ins** button to download the optional plug-ins.
+3. **(Optional)** Click the **CLI Plugins** button to download the optional plugins.
 
-   A file named `zowe-cli-plugin-package-v.r.m.zip` is downloaded to your computer
+   A file named `zowe-cli-plugins-v.r.m.zip` is downloaded to your computer.
 
-
-4. Unzip the contents of `zowe-cli-package-v.r.m.zip` (and optionally `zowe-cli-plugin-package-v.r.m.zip`) to a preferred location on your computer.
+4. Unzip the contents of `zowe-cli-package-v.r.m.zip` (and optionally `zowe-cli-plugins-v.r.m.zip`) to a preferred location on your computer.
 
 5. Open a command-line window. Issue the following commands in sequence against the extracted directory to install core Zowe CLI on your computer:
 
@@ -59,7 +58,7 @@ If you do not have internet access at your site, use the following method to ins
 6. **(Optional)** Issue the following commands to install each available plug-in:
 
     ```
-    zowe plugins install cics-for-zowe-cli.tgz
+    zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz
     ```
 
     ```
@@ -111,12 +110,11 @@ If your computer is connected to the Internet, you can use the following method 
     zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
     ```
 
-
     **Notes:**
     - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
     - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-4. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
+4. **(Optional)** To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
     zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
