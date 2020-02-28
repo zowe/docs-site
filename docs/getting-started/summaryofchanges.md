@@ -107,6 +107,8 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
+Watch a video on how to [work with data sets using Zowe Explorer](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html).
+
 ### Bug fixes
 
 The following bugs were fixed:
