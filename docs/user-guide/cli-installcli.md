@@ -55,28 +55,11 @@ If you do not have internet access at your site, use the following method to ins
     - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
     - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-6. **(Optional)** Issue the following commands to install each available plug-in:
+6. **(Optional)** Issue the following command to install each available plug-in:
 
     ```
-    zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz
+    zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
     ```
-
-    ```
-    zowe plugins install db2-for-zowe-cli.tgz
-    ```
-
-    ```
-    zowe plugins install zos-ftp-for-zowe-cli.tgz
-    ```
-
-    ```
-    zowe plugins install ims-for-zowe-cli.tgz
-    ```
-
-    ```
-    zowe plugins install mq-for-zowe-cli.tgz
-    ```
-
 
     **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing).
 
