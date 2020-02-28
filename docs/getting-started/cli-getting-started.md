@@ -26,14 +26,22 @@ Before you install Zowe CLI, download and install [Node.js and npm.](https://nod
 
 ### Installing Zowe CLI core from public npm
 
+Issue the following commands in sequence to install the core CLI.
+
+The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+
 ```
 npm install @zowe/cli@zowe-v1-lts -g
+```
+
+```
+zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
 ### Installing CLI plug-ins
 
 ```
-zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
+zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
 ```
 
 The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
