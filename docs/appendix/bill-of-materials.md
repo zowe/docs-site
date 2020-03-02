@@ -70,7 +70,7 @@ The following materials are distributed with Zowe&trade; binaries:
 | scripts/utils/validate-keystore-directory.sh | Validate Keystore Directory | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/utils/validate-node.sh | Validate Node Version and PATH | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/utils/validate-port-available.sh | Validate a port is available | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
-| scripts/utils/validate-static-definition-directory.sh | Validate APIML Static Definition Dir | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) | 
+| scripts/utils/validate-static-definition-directory.sh | Validate APIML Static Definition Dir | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/utils/validate-zosmf-host-and-port.sh | Validate z/OSMF Configuration | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/utils/validate-zowe-prefix.sh | Validate configured Zowe prefix | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/utils/zosmfHttpRequest.js | Node.js script to validate z/OSMF info | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
@@ -85,20 +85,24 @@ The following materials are distributed with Zowe&trade; binaries:
 | scripts/zowe-install-zlux.sh | Script which extracts and install Zowe Desktop | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 
 
-
-
-
 ## Zowe CLI Package
 
 | File Path | Description | Source Location | Build Script(s) |
 | --------- | ----------- | --------------- | --------------- |
-| zowe-cli-package-1.9.0.zip | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |
+| zowe-cli-package-1.9.0.zip | Zowe CLI Package containing the core Zowe CLI and SCS plugin | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |
 | licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | N/A | [Zowe License Scan Pipeline](https://github.com/zowe/zowe-dependency-scan-pipeline/blob/master/Jenkinsfile.license-scan) |
 | zowe-cli.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
+| secure-credential-store-for-zowe-cli.tgz | Secure Credential Store for Zowe CLI | [zowe-cli-scs-plugin](https://github.com/zowe/zowe-cli-scs-plugin) | [zowe-cli-scs-plugin pipeline](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/Jenkinsfile) |
+
+
+## Zowe CLI Plugins
+
+| File Path | Description | Source Location | Build Script(s) |
+| --------- | ----------- | --------------- | --------------- |
+| zowe-cli-plugins-1.9.0.zip | Zowe CLI Package containing Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |
+| licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | N/A | [Zowe License Scan Pipeline](https://github.com/zowe/zowe-dependency-scan-pipeline/blob/master/Jenkinsfile.license-scan) |
 | cics-for-zowe-cli.tgz |  IBM® CICS® Plug-in for Zowe CLI | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) |
 | db2-for-zowe-cli.tgz | IBM® Db2® for z/OS® Plug-in for Zowe CLI | [zowe-cli-db2-plugin](https://github.com/zowe/zowe-cli-db2-plugin) | [zowe-cli-db2-plugin pipeline](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/Jenkinsfile) |
 | zos-ftp-for-zowe-cli.tgz | IBM® z/OS FTP Plug-in for Zowe CLI | [zowe-cli-ftp-plugin](https://github.com/zowe/zowe-cli-ftp-plugin) | [zowe-cli-ftp-plugin pipeline](https://github.com/zowe/zowe-cli-ftp-plugin/Jenkinsfile)  |
 | ims-for-zowe-cli.tgz | IBM® IMS™ Plug-in for Zowe CLI | [zowe-cli-ims-plugin](https://github.com/zowe/zowe-cli-ims-plugin) | [zowe-cli-ims-plugin pipeline](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/Jenkinsfile) |
 | mq-for-zowe-cli.tgz | IBM® MQ Plug-in for Zowe CLI | [zowe-cli-mq-plugin](https://github.com/zowe/zowe-cli-mq-plugin) | [zowe-cli-mq-plugin pipeline](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/Jenkinsfile) |
-| secure-credential-store-for-zowe-cli.tgz | Secure Credential Store for Zowe CLI | [zowe-cli-scs-plugin](https://github.com/zowe/zowe-cli-scs-plugin) | [zowe-cli-scs-plugin pipeline](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/Jenkinsfile) |
-
