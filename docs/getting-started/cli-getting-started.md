@@ -18,27 +18,35 @@ Get started with Zowe&trade; CLI quickly and easily.
      - [Example:](#example)
 - [Next Steps](#next-steps)
 
-## Installing 
+## Installing
 
 Before you install Zowe CLI, download and install [Node.js and npm.](https://nodejs.org/en/download/)
 
-### Installing Zowe CLI core
+**Note:** Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+
+### Installing Zowe CLI core from public npm
+
+Issue the following commands in sequence to install the core CLI.
+
+The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
 
 ```
-npm config set @brightside:registry https://api.bintray.com/npm/ca/brightside
+npm install @zowe/cli@zowe-v1-lts -g
 ```
 
 ```
-npm install @brightside/core@lts-incremental -g
+zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
-### Installing CLI plug-ins 
+**Note:** On Linux, install [libsecret](https://github.com/GNOME/libsecret) before you use the Secure Credential Store.
+
+### Installing CLI plug-ins
 
 ```
-zowe plugins install @brightside/cics@lts-incremental @brightside/db2@lts-incremental
+zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
 ```
 
-The command installs the IBM CICS plug-in, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
 
 For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
 
@@ -64,13 +72,13 @@ See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for 
 
 ## Using profiles
 
-Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command. 
+Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
 
-### Profile types 
+### Profile types
 
 Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
 
-**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults. 
+**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
 
 ### Creating a zosmf profile
 
@@ -101,7 +109,7 @@ You want to delete a list of temporary datasets. Use Zowe CLI to download the li
 
 set -e
 
-# Obtain the list of temporary project data sets 
+# Obtain the list of temporary project data sets
 dslist=$(zowe zos-files list dataset "my.project.ds*")
 
 # Delete each data set in the list

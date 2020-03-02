@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.8.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.9.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
 - [Version 1.8.1 (February 2020)](#version-181-february-2020)
 - [Version 1.8.0 (February 2020)](#version-180-february-2020)
 - [Version 1.7.1 (December 2019)](#version-171-december-2019)
@@ -17,6 +18,120 @@ Zowe Version 1.8.0 and later releases include the following enhancements, releas
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.9.0 LTS (February 2020)
+
+Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.  <!-- Is there any further detail we should mention about what LTS means, link to some other announcement about LTS release, etc..? -->
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added:
+
+#### API Mediation Layer
+
+The following new features and enhancements have been made to the Zowe API Mediation Layer in this version:
+
+- Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well. 
+- Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.  
+- Passticket support has been added to API ML Core Services and onboarding enablers. This makes it easier to authenticate existing mainframe applications with the API Mediation Layer.
+- New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginifantly less disk space.
+
+The following bug fixes have been introduced:
+
+- A fix of a critial authentication issue with some versions of z/OSMF has been applied. 
+- A fix has been applied to support multipart requests.
+- A fix has been applied to the z/OSMF authorization header.
+
+#### Zowe App Server
+
+- A new endpoint for removing dataservices has been added [#62](https://github.com/zowe/zss/pull/62/files)
+- Functionality for removing data sets has been added [#65](https://github.com/zowe/zowe-common-c/pull/65)
+- Deletion of data sets and their members is now supported [#88](https://github.com/zowe/zss/pull/88/commits)
+- Deletion of data sets and their members is now supported [#85](https://github.com/zowe/zowe-common-c/pull/85/commits)
+- The following helper functions have been added to test caller's environment [#115](https://github.com/zowe/zowe-common-c/pull/115):
+    - A function to test whether the caller is running in SRB
+    - A function to test whether the caller is in cross-memory mode
+    - A function to test whether the caller is holding a CPU, CMS, CML or local lock
+- The logout endpoint has been re-added for zss [#100](https://github.com/zowe/zlux-app-server/pull/100)
+- Added support of SRB and locked callers to the Cross-Memory sever's PC space switch routine [#153](https://github.com/zowe/zss/pull/153)
+- This pull request add the following features [#120](https://github.com/zowe/zowe-common-c/pull/120):
+Ability to use the lock-free queue intrusively which allows a more flexible storage management on the user's side
+Functions to copy to/from foreign address space using destination/source keys and ALETs
+- Reformatted the save as modal in zowe editor [#129](https://github.com/zowe/zlux-editor/pull/129)
+- Added snackbar notification for directory error [#131](https://github.com/zowe/zlux-editor/pull/131)
+- Removed language server tab in editor [#134](https://github.com/zowe/zlux-editor/pull/134)
+- Explicitly call zss for logout to make sure cookies are known to be invalid [#28](https://github.com/zowe/zss-auth/pull/28)
+- The following changes have been made to Zlux server framework logging [#174](https://github.com/zowe/zlux-server-framework/pull/174):
+    - Added English resource files for messages
+    - Added code to all error, warning, debug and informational logged outputs
+    - Replaced most console.log calls with logger calls
+- Support for HTTP-Strict-Transport-Security. Custom headers for static content are now available [#173](https://github.com/zowe/zlux-server-framework/pull/173)
+
+#### Zowe CLI
+
+To leverage the new features and plug-ins available in this version, you must follow the steps in [Migrating to the LTS version](../user-guide/cli-updatingcli.md#migrating-to-long-term-support-lts-version).
+
+The following new CLI plug-ins are added:
+
+  - [IBM® z/OS FTP Plug-in for Zowe CLI](./../user-guide/cli-ftpplugin.md)
+  - [IBM® IMS™ Plug-in for Zowe CLI](./../user-guide/cli-imsplugin.md)
+  - [IBM® MQ Plug-in for Zowe CLI](./../user-guide/cli-mqplugin.md)
+  - [Secure Credential Store for Zowe CLI](./../user-guide/cli-scsplugin.md)
+
+The following new features and enhancements are added in this version:
+
+- **Notable Change:** The `zowe zos-files download ds` and `zowe zos-files download uf` commands no longer put the full content in the response format json (`--rfj`) output. [More information.](https://github.com/zowe/zowe-cli/pull/331)
+
+- **Notable Change:** The `--pass` option is changed to `--password`  for all commands and profiles (zosmf, cics, etc...). The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe profiles update` command and use the new option name `--password`.
+
+- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-for-sensitive-options).
+
+- Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
+
+    (The IBM Db2 and Secure Credential Store plug-ins for Zowe CLI will *not* run on z/OS due to native code requirements.)
+
+- The `zowe files copy` command was added for copying the contents of a data set or member to another data set or member. [#580](https://github.com/zowe/zowe-cli/pull/580)
+
+- Zowe CLI now exploits Node.js stream APIs for download and upload of spool files, data sets, and USS files. [(#331)](https://github.com/zowe/zowe-cli/pull/331)
+
+- The following new commands were added for interacting with file systems:
+    - `zowe zos-files list fs` [#429](https://github.com/zowe/zowe-cli/issues/429)
+    - `zowe zos-files mount fs` [#431](https://github.com/zowe/zowe-cli/issues/431)
+    - `zowe zos-files unmount fs` [#432](https://github.com/zowe/zowe-cli/issues/432)
+
+- The following new commands were added for creating USS files and directories:
+    - `zowe zos-files create file` [#368](https://github.com/zowe/zowe-cli/issues/368)
+    - `zowe zos-files create dir` [#368](https://github.com/zowe/zowe-cli/issues/368)
+
+The IBM® CICS® Plug-in is updated with the following functionality:
+
+  - **Notable Change:** The plug-in now uses HTTPS by default when connecting to CMCI. The option `--protocol http` was added to let you override the default as needed. [#77](https://github.com/zowe/zowe-cli-cics-plugin/issues/77)
+
+  -  Define, enable, install, discard, disable, and delete CICS URIMaps. [#53](https://github.com/zowe/zowe-cli-cics-plugin/issues/53) [#49](https://github.com/zowe/zowe-cli-cics-plugin/issues/49) [#48](https://github.com/zowe/zowe-cli-cics-plugin/issues/48) [#51](https://github.com/zowe/zowe-cli-cics-plugin/issues/51) [#50](https://github.com/zowe/zowe-cli-cics-plugin/issues/50) [#52](https://github.com/zowe/zowe-cli-cics-plugin/issues/52)
+
+  - Define and delete CICS web services. [#58](https://github.com/zowe/zowe-cli-cics-plugin/issues/58) [#59](https://github.com/zowe/zowe-cli-cics-plugin/issues/59)
+
+  - Add and remove CSD Groups to/from CSD Lists [#60](https://github.com/zowe/zowe-cli-cics-plugin/issues/60).
+
+#### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
+
+Watch a video on how to [work with data sets using Zowe Explorer](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html).
+
+### Bug fixes
+
+The following bugs were fixed:
+
+#### Zowe App Server
+
+- URL encoding with % sign were always returning with authorizatioz:false with RACF [#27](https://github.com/zowe/zss-auth/pull/27)
+- Users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
+- The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path” [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
 
 ## Version 1.8.1 (February 2020)
 
@@ -87,7 +202,7 @@ For more information about how to install Zowe z/OS components, see [Installatio
 
 Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
-You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) .
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
 Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
 

@@ -41,4 +41,4 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 ## Onboarding APIs
 The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
 
-* [Onboarding Overview](../../extend/extend-apiml/api-mediation-onboard-overview.md)
+* [Onboarding Overview](../../extend/extend-apiml/onboard-overview.md)

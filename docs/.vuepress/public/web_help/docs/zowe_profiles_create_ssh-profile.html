@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> → <a href="zowe_profiles.html">profiles</a> → <a href="zowe_profiles_create.html">create</a> → <a href="zowe_profiles_create_ssh-profile.html">ssh-profile</a></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_ssh-profile.html">ssh-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>z/OS SSH Profile</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  profiles create ssh-profile &lt;profileName&gt; [options]</p>
@@ -73,20 +73,20 @@ in the server for authentication</li>
 <li><p>Create a ssh profile called &#39;ssh111&#39; to connect to z/OS SSH
 server at host &#39;zos123&#39; and default port 22:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a ssh profile called &#39;ssh222&#39; to connect to z/OS SSH
 server at host &#39;zos123&#39; and port 13022:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a ssh profile called &#39;ssh333&#39; to connect to z/OS SSH
-server at host &#39;zos123&#39; using a privatekey &#39;/path/to/privatkey&#39; and its
+server at host &#39;zos123&#39; using a privatekey &#39;/path/to/privatekey&#39; and its
 decryption passphrase &#39;privateKeyPassphrase&#39; for privatekey authentication:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --priavetKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --priavetKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
+<li><code>zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
 </ul>
 </li>
 </ul>
