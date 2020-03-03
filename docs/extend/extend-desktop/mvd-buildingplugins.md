@@ -32,6 +32,12 @@ Before you can build a plugin app you must install all [prerequisites](https://g
     - Run the `npm run build` command to generate static content in the `/lib` directory.
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
+## Tagging plugin files on z/OS
+When Zowe App Framework is installed on z/OS you must tag the plugin text and binary files. Tagging files helps programs on z/OS understand how to interpret those files, most importantly to know whether a file is encoded using EBCDIC (Extended Binary Coded Decimal Interchange Code). File tagging can be checked and set using the [`chtag` command](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.bpxa500/chtag.htm) but when tagging in bulk, there are programs that can help:
+
+- Autotag: This free, open-source application is not part of Zowe. You can download the binary from here for example https://anaconda.org/izoda/autotag. Source: https://github.com/RocketSoftware/autotag
+- The Zowe tagging script: This script tags by file extension. It might not work for all cases, but can be altered to suit your needs. Source: https://github.com/zowe/zowe-install-packaging/blob/master/scripts/tag-files.sh
+
 ## Building Javascript content (*.js files)
 Unlike Typescript, Javascript is an interpreted language and does not need to be built. In most cases, reloading the page should build new code changes. For Iframes or other JS-based apps, close and open the app.
 
