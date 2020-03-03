@@ -54,6 +54,8 @@ Functions to copy to/from foreign address space using destination/source keys an
     - Added code to all error, warning, debug and informational logged outputs
     - Replaced most console.log calls with logger calls
 - Support for HTTP-Strict-Transport-Security. Custom headers for static content are now available [#173](https://github.com/zowe/zlux-server-framework/pull/173)
+- Functionality for controlling application access for individual users has been added [#216](https://github.com/zowe/zlux/issues/216)
+- Out-of-band multi-factor authentication is now supported [#225](https://github.com/zowe/zlux/issues/225) 
 
 #### Zowe CLI
 
