@@ -45,4 +45,4 @@ Unlike Typescript, Javascript is an interpreted language and does not need to be
 Follow the steps described in [Installing plugins](mvd-installplugins.md) to add your built plugin to the Zowe desktop.
 
 ## Packaging
-For more information on how to package your Zowe app, developers can see [Plugins definition and structure](mn3wtonvd-plugindefandstruct.md).
+For more information on how to package your Zowe app, developers can see [Plugins definition and structure](mvd-plugindefandstruct.md).
