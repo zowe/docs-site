@@ -236,14 +236,14 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Navigate to `$ZOWE_RUNTIME/components/api-mediation` and run the following command:
+2. Navigate to `$ZOWE_RUNTIME` and run the following command:
     ```
-    scripts/apiml_cm.sh --action trust-zosmf 
+    bin/apiml_cm.sh --action trust-zosmf 
     ```
 
     2a. (Optional) If you do not use the default z/OSMF userid (IZUSVR) and keyring (IZUKeyring.IZUDFLT), issue the following command: 
 
-       scripts/apiml_cm.sh --action trust-zosmf--zosmf-userid **ZOSMF_USER** --zosmf-keyring **ZOSMF_KEYRING**
+       bin/apiml_cm.sh --action trust-zosmf--zosmf-userid **ZOSMF_USER** --zosmf-keyring **ZOSMF_KEYRING**
     
     where;
     - `--zosmf-keyring` and `--zosmf-userid` - options that override the default userid and keyring accordingly.

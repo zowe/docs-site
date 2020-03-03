@@ -5,7 +5,8 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 Zowe Version 1.9.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
-- [Version 1.8.0 (January 2020)](#version-180-january-2020)
+- [Version 1.8.1 (February 2020)](#version-181-february-2020)
+- [Version 1.8.0 (February 2020)](#version-180-february-2020)
 - [Version 1.7.1 (December 2019)](#version-171-december-2019)
 - [Version 1.7.0 (November 2019)](#version-170-november-2019)
 - [Version 1.6.0 (October 2019)](#version-160-october-2019)
@@ -29,6 +30,19 @@ Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.  
 The following features and enhancements were added:
 
 #### API Mediation Layer
+
+The following new features and enhancements have been made to the Zowe API Mediation Layer in this version:
+
+- Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well. 
+- Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.  
+- Passticket support has been added to API ML Core Services and onboarding enablers. This makes it easier to authenticate existing mainframe applications with the API Mediation Layer.
+- New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginifantly less disk space.
+
+The following bug fixes have been introduced:
+
+- A fix of a critial authentication issue with some versions of z/OSMF has been applied. 
+- A fix has been applied to support multipart requests.
+- A fix has been applied to the z/OSMF authorization header.
 
 #### Zowe App Server
 
@@ -109,6 +123,8 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
+Watch a video on how to [work with data sets using Zowe Explorer](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html).
+
 ### Bug fixes
 
 The following bugs were fixed:
@@ -119,7 +135,19 @@ The following bugs were fixed:
 - Users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
 - The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path” [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
 
-## Version 1.8.0 (January 2020)
+## Version 1.8.1 (February 2020)
+
+### Bug fixes for Zowe CLI
+
+A bug was fixed where Zowe CLI installation could fail and users could recieve the following error message when installing Zowe CLI v1.8.0:
+
+```
+981 verbose stack Error: EPERM: operation not permitted
+```
+
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+
+## Version 1.8.0 (February 2020)
 
 <!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
