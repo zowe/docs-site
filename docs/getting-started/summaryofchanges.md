@@ -46,6 +46,7 @@ The following bug fixes have been introduced:
 
 #### Zowe App Server
 
+- Added support for Node.js - z/OS V12. See [Installing Node.js on z/OS](../user-guide/install-nodejs-zos.md) for details.
 - A new endpoint for removing dataservices has been added [#62](https://github.com/zowe/zss/pull/62/files)
 - Functionality for removing data sets has been added [#65](https://github.com/zowe/zowe-common-c/pull/65)
 - Deletion of data sets and their members is now supported [#88](https://github.com/zowe/zss/pull/88/commits)
