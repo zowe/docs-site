@@ -32,9 +32,7 @@ IBM zEnterprise® 196 (z196) or newer
    - z/OS V2R2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
    - z/OS V2R3: PTFs UI61308, UI61376, and UI61747 (APARs PH07107, PH08353, and PH09543)
 
-- Node.js Version 12 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_12.0.0/com.ibm.nodejs.zos.v12.doc/smpe.htm) for all prerequisites):
-   - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415
-   - z/OS V2R3: PTFs UI61308, UI61375, UI61747
+- Node.js Version 12 (see [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSTRRS_12.0.0/com.ibm.nodejs.zos.v12.doc/smpe.htm) for all prerequisites)
 
 - z/OS UNIX System Services enabled
 - Integrated Cryptographic Service Facility (ICSF) configured and started.
