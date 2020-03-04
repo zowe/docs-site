@@ -21,7 +21,11 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 
 ### Zowe Application Framework requirements (host)
 
-- Node.js versions between v6.14.4 and v8.x *on the z/OS host* where you install the Zowe Application Server. To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
+- Node.js
+  - On z/OS: Node.js v6.x starting with v6.14.4, v8.x (except v8.16.1), and v12.x. Note when using v12.x, it is highly recommended that plugins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os)
+  - Off z/OS: The Application Framework supports Node.js v6.14 through v12.x.
+  
+   To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
 - IBM SDK for Java Technology Edition V8 or later
 - 833 MB of zFS file space
