@@ -534,7 +534,7 @@ service was successfully started.
 
 When an Enabler connects to the Discovery service and fails, an error message prints to the log of the Enabler. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
 
-These messages continue to be printed, while the Enabler retries to connect to the Discovery, potentially forever. Your logging framework may be equipped to filter such messages. For instance we use Logback's [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter) in our implementation.
+These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. Filtering of messages depends on your logging framework. One example is Logback's [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter) framework, which is used in our implementation.
 
 To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
 
