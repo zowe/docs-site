@@ -6,6 +6,14 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
     - Zowe server started task
     - Zowe Cross Memory started task (STC)
         - Zowe CLI or REXX (TSO output command, STATUS, capture all)
+    
+    **Note:** You will need to install the TSO exit IKJEFF53 to permit the TSO OUTPUT command to collect the Zowe started task output.  If this exit is not enabled, you will see an error message when you run `zowe-support.sh`:
+    
+     ```
+    IKJ56328I JOB jobname REJECTED - JOBNAME MUST BE YOUR USERID OR MUST START WITH YOUR USERID
+    ```
+    For how to correct this error, see the [TSO/E installation exit IKJEFF53](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.e0ze100/ikjeff53.htm) topic in IBM Knowledge Center.  
+
 - Zowe Install log
 - Scripts that are called from `run-zowe.sh`
  - Versions:
