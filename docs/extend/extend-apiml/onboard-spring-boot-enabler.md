@@ -30,6 +30,8 @@ The following steps outline the overall process to onboard a REST service with t
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
+7. [Notes](#notes)
+    * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Selecting a Spring Boot Enabler
 
@@ -525,3 +527,11 @@ service was successfully started.
   4. Check that you can access your API service endpoints through the Gateway.
 
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+
+## Notes
+
+#### Log messages during registration problems
+
+When Enabler connects to Discovery service and fails for a reason like Discovery location not correct, Discovery service down, TLS certificate invalid and such, you can see error messages printed in the Enabler's log. We do not suppress these messages as they are important for resolving problems during the Enabler registration. You can suppress these messages in your logging framework of choice by setting the log levels to `OFF` on the following loggers:
+
+    com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
