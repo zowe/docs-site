@@ -532,6 +532,6 @@ service was successfully started.
 
 #### Log messages during registration problems
 
-When an Enabler connects to the Discovery service, an error message may print to the log of the Enabler. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of discovery is not correct, the Discovery Service is down, or the TLS certificate is invalid. To suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
+When an Enabler connects to the Discovery service and fails, an error message print to the log of the Enabler. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of discovery is not correct, the Discovery Service is down, or the TLS certificate is invalid. To suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
 
     com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
