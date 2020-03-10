@@ -900,6 +900,10 @@ with actual addresses of API ML components and the respective user credentials.
 
 #### Log messages during registration problems
 
-When the Enabler connects to the Discovery Service and fails, an error message prints to the log of the Enabler. Possible reasons include the location of discovery location is not correct, the Discovery service down, or the TLS certificate is invalid. The default setting is that these messages are not suppressed as they are useful to resolve problems during the Enabler registration. To suppress these messages in your logging framework of choice, set the log levels to `OFF` on the following loggers:
+When an Enabler connects to the Discovery service and fails, an error message prints to the log of the Enabler. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
+
+These messages continue to be printed, while the Enabler retries to connect to the Discovery, potentially forever. Your logging framework may be equipped to filter such messages. For instance we use Logback's [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter) in our implementation.
+
+To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
 
     com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
