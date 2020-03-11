@@ -30,7 +30,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
-7. (Optional) [Customize message settings](#customize-message-settings)
+7. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Selecting a Spring Boot Enabler
@@ -528,7 +528,7 @@ service was successfully started.
 
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
-## Customize message settings
+## Troubleshooting
 
 #### Log messages during registration problems
 
