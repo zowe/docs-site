@@ -907,7 +907,7 @@ To fully suppress these messages in your logging framework, set the log levels t
 
     com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
 
-Some logging framework provide other tools to suppress repeated messages. Consult the documentation of the logging framework you use to find out what tools are available. The following example demonstrates how the Logback framework can be used to suppress repeated messages.
+Some logging frameworks provide other tools to suppress repeated messages. Consult the documentation of the logging framework you use to find out what tools are available. The following example demonstrates how the Logback framework can be used to suppress repeated messages.
 
 **Example:** 
 
@@ -919,4 +919,4 @@ Added the following code to your configuration file if you use XML configuration
         <AllowedRepetitions>0</AllowedRepetitions>
     </turboFilter>
 
-Note: For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
+**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
