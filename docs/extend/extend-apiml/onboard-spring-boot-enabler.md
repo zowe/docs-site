@@ -533,20 +533,24 @@ service was successfully started.
 #### Log messages during registration problems
 
 When an Enabler connects to the Discovery service and fails, an error message prints to the Enabler log. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
-
 These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. 
+
 To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
 
-    com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
+  ```
+  com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
+  ```
+  
+Some logging frameworks provide other tools to suppress repeated messages. Consult the documentation of the logging framework you use to find out what tools are available. The following example demonstrates how the Logback framework can be used to suppress repeated messages.
 
-The various logging framework provides other tools to suppress repeated messages. As such consult the documentation of the logging framework you use.
+**Example:** 
 
-**Example for Logback framework** 
+The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
 
-The Logback framework provides [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). The lines below needs to be added to your configuration file in the case of XML configuration.  
+Added the following code to your configuration file if you use XML configuration: 
 
     <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
         <AllowedRepetitions>0</AllowedRepetitions>
     </turboFilter>
-
-The full configuration used in the Core Services is here: [https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml)
+    
+**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
