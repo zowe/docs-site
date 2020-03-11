@@ -547,7 +547,7 @@ Some logging frameworks provide other tools to suppress repeated messages. Consu
 
 The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
 
-Added the following code to your configuration file if you use XML configuration: 
+Add the following code to your configuration file if you use XML configuration: 
 
     <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
         <AllowedRepetitions>0</AllowedRepetitions>
