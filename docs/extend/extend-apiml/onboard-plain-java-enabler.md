@@ -51,7 +51,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
-7. (Optional) [Customizing message settings](#customizing-message-settings)
+7. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
@@ -896,7 +896,7 @@ with actual addresses of API ML components and the respective user credentials.
 
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
-## Customizing message settings
+## Troubleshooting
 
 #### Log messages during registration problems
 
