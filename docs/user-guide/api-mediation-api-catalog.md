@@ -1,4 +1,4 @@
-# API Catalog
+# Using API Catalog
 
 As an application developer, use the API Catalog to view what services are running in the
  API Mediation Layer. Through the API Catalog, you can also view the associated API documentation
@@ -34,23 +34,23 @@ Services that belong to the same product family are displayed on the same tile.
     * At least one instance of a service must be started and registered with the discovery service for it to be visible
      in the API Catalog. If the service that you are onboarding is running, and
      the corresponding API documentation is displayed, this API documentation is cached and remains visible
-     even when the service and all service instances stop.  
+     even when the service and all service instances stop.
     * Descriptive information about the service and a link to the home page of the service is displayed.
 
-    **Example:** 
-           
-    <img src="../images/api-mediation/newswagger.png" alt="controller detail" width="500px"/> 
+    **Example:**
+
+    <img src="../images/api-mediation/newswagger.png" alt="controller detail" width="500px"/>
 
 3. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
  the endpoint description, and the full structure of the endpoint.
 
     **Example:**
 
-    <img src="../images/api-mediation/expanded.png" alt="endpoint detail" width="500px"/> 
+    <img src="../images/api-mediation/expanded.png" alt="endpoint detail" width="500px"/>
 
     **Notes:**
 
-    * If a lock icon is visible on the right side of the endpoint panel, the endpoint requires authentication.  
+    * If a lock icon is visible on the right side of the endpoint panel, the endpoint requires authentication.
 
     * The structure of the endpoint is displayed relative to the base URL.
 
