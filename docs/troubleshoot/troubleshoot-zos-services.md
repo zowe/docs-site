@@ -4,6 +4,22 @@ The following topics contain information that can help you troubleshoot problems
 
 ## z/OS Services are unavailable
 
+**Symptom:**
+
+When you open connected to a Zowe Data set or z/OS Files API, you get a Response code 500 - 'Internal Server Error', with a message "Unable to generate unique CeaTso APPTAG" 
+
+**Solution:**
+
+Check z/OSMF settings of REST API of file. The RESTAPI_FILE need be defined in IZUPRMxx by below statement:
+
+	RESTAPI_FILE ACCT(IZUACCT) REGION(32768) PROC(IZUFPROC)  
+
+The default IZUFPROC can be found in SYS1.PPROCLIB. And the proper authorization is needed to get IZUFPROC work successfully.
+
+**Symptom:**
+
+Troubleshooting other issues
+
 **Solution:**
 
 If the z/OS Services are unavailable, take the following corrective actions. 
