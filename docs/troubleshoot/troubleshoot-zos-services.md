@@ -6,7 +6,7 @@ The following topics contain information that can help you troubleshoot problems
 
 **Symptom:**
 
-When you open connected to a Zowe Data set or z/OS Files API, you get a Response code 500 - 'Internal Server Error', with a message "Unable to generate unique CeaTso APPTAG" 
+When you request a Zowe Data set or z/OS Files API, and receive a response code 500 - 'Internal Server Error', with a message "Unable to generate unique CeaTso APPTAG" 
 
 **Solution:**
 
