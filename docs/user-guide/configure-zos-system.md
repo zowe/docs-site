@@ -34,13 +34,13 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 - To create the `ZWEADMIN` group, issue the following command:
   ```
-  ADDGROUP ZWEADMIN. OMVS(AUTOGID) -
+  ADDGROUP ZWEADMIN OMVS(AUTOGID) -
   DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
   ```
 
 - To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
   ```
-  ADDUSER  ZWESVUSR. -
+    ADDUSER  ZWESVUSR -
     NOPASSWORD -
     DFLTGRP(ZWEADMIN) -
     OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
@@ -50,7 +50,7 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 - To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
   ```
-  ADDUSER ZWESIUSR. -
+    ADDUSER ZWESIUSR -
     NOPASSWORD -
     DFLTGRP(ZWEADMIN) -
     OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
