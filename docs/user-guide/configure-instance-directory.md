@@ -16,7 +16,7 @@ To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_R
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
-The Zowe instance directory contains a file `/bin/instance.env` that stores configuration data. The data is read each time Zowe is started.  
+The Zowe instance directory contains a file `instance.env` that stores configuration data. The data is read each time Zowe is started.  
 
 The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 

@@ -2,9 +2,21 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; z/OS Services.
 
-## z/OS Services are unavailable
+## Unable to generate unique CeaTso APPTAG
+
+**Symptom:**
+
+When you request a Zowe data set or z/OS Files API, you receive a response code 500 - 'Internal Server Error', with a message "Unable to generate unique CeaTso APPTAG". 
 
 **Solution:**
+
+Check z/OSMF settings of REST API of file. You must define `RESTAPI_FILE` in IZUPRMxx by the following statement:
+
+```RESTAPI_FILE ACCT(IZUACCT) REGION(32768) PROC(IZUFPROC)```  
+
+The default IZUFPROC can be found in SYS1.PPROCLIB. And the proper authorization is needed to get IZUFPROC work successfully.
+
+## z/OS Services are unavailable
 
 If the z/OS Services are unavailable, take the following corrective actions. 
 
@@ -17,7 +29,7 @@ If the z/OS Services are unavailable, take the following corrective actions.
     To test z/OSMF REST APIs you can run curl scripts from your workstation. 
 
     ```
-    curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restjobs/jobs?prefix=*&owner=*
+    curl --user <username>:<password> -k -X GET --header 'Accept: application/json' --header 'X-CSRF-ZOSMF-HEADER: true' "https://<z/os host name>:<securezosmfport>/zosmf/restjobs/jobs?prefix=*&owner=*"
     ```
 
     where the *securezosmfport* is 443 by default. You can verify the port number by checking the *izu.https.port* variable assignment in the z/OSMF `bootstrap.properties` file.
