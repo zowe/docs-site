@@ -1,3 +1,4 @@
+# Using Zowe CLI
 
 ## Displaying Zowe CLI help
 
