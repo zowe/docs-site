@@ -1,3 +1,4 @@
+# Using Zowe CLI
 
 ## Displaying Zowe CLI help
 
@@ -22,7 +23,7 @@ zowe --help
 
 ### Group, action, and object help
 
-You can append `--help` to learn about a specific command group, action, or object. 
+You can append `--help` to learn about a specific command group, action, or object.
 
 For example, issue the following command to learn more about the `create` action in the `zos-files` group:
 
@@ -47,6 +48,47 @@ Command reference is available for download in three formats: a static copy of t
 - <a href="../web_help/index.html" target="_blank">Browse Online</a>
 - <a href="../zowe_web_help.zip">Download (ZIP)</a>
 - <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
+
+## Using the prompt for sensitive options
+
+Zowe CLI lets you enable a command-line "prompt" feature, which masks values on the screen as you type. You might choose to enable the prompt for sensitive credentials such as mainframe username or password.
+
+You can enable the prompt on-demand, or choose to always prompt for a particular option.
+
+### Enable prompt
+
+Enable on-demand prompting for arguments and options.
+
+**Follow these steps:**
+
+1. Begin typing a Zowe CLI command.
+
+2. For the option(s) that you want to mask, insert the value `"PROMPT*"`. For example, prompt for your password:
+
+    ```
+    zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --password "PROMPT*"
+    ```
+
+   The CLI prompts you to enter a value for the `--password` field.
+
+3. Enter a value to complete the command.
+
+    **Tip:** Enter the value carefully. The backspace key does not work in prompt mode.
+
+### Always prompt
+
+You can configure your environment so that the CLI *always* prompts for a particular option, such as `--password`.
+
+To enable the feature, set an environment variable named `ZOWE_OPT_PASSWORD` with the value
+`"PROMPT*"`. With the environment variable set, the CLI automatically enables the prompt when you omit a required `--password` value.
+
+**Tip** The procedure for setting environment variables is dependent on your operating systems. Refer to documentation for your OS to learn about setting environment variables.
+
+### Change the keyword for prompt
+
+The default keyword that enables prompting in Zowe CLI is `"PROMPT*"`. You might want to change the keyword if there is a chance that `"PROMPT*"` could exist as a valid value for the field. For example, if you mask the `data-set` argument and are working with real mainframe data sets that begin with the characters `"PROMPT*"`.
+
+To configure the keyword, choose a new value. Then define the value to to the environment variable on your computer named `ZOWE_PROMPT_PHRASE`.
 
 ## Zowe CLI command groups
 Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group

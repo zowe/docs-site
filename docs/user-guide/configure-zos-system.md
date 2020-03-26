@@ -11,7 +11,9 @@ A SAMPLIB JCL member `ZWESECUR` is provided to assist with the security configur
 ```
 If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
-It is expected that security administrator at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
+It is expected that the security administrator at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
+
+**Note:** You are required to manually perform an additional step for the Top Secret (TSS) external security product.  This step is not a part of the ZWESECUR job. For more information, see [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-(for-TSS-only)).  
 
 If you want to undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
 - You are configuring z/OS systems as part of a build pipeline that you want to undo and redo configuration and installation of Zowe using automation.
@@ -32,13 +34,13 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 - To create the `ZWEADMIN` group, issue the following command:
   ```
-  ADDGROUP ZWEADMIN. OMVS(AUTOGID) -
+  ADDGROUP ZWEADMIN OMVS(AUTOGID) -
   DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
   ```
 
 - To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
   ```
-  ADDUSER  ZWESVUSR. -
+    ADDUSER  ZWESVUSR -
     NOPASSWORD -
     DFLTGRP(ZWEADMIN) -
     OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
@@ -48,7 +50,7 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 - To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
   ```
-  ADDUSER ZWESIUSR. -
+    ADDUSER ZWESIUSR -
     NOPASSWORD -
     DFLTGRP(ZWEADMIN) -
     OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
@@ -373,3 +375,29 @@ SETROPTS RACLIST(FACILITY) REFRESH
 ```
 
 For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
+
+##Configure multi-user address space (for TSS only)
+
+The `ZWESVSTC` started task is multiuser address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task.
+The all acids signing on to the started task will need to be authorized to the FACILITY.
+
+The following is an example of how to create a new TSS FACILITY.
+
+**Example:**
+In the TSSPARMS, add the following lines to create the new FACILITY:
+```
+FACILITY(USER11=NAME=ZOWE)
+FACILITY(ZOWE=MODE=FAIL)
+FACILITY(ZOWE=RES) 
+```
+For more infomation about how to administer Facility Matrix Table, see [How to Perform Facility Matrix Table Administration](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/using/protecting-facilities/how-to-perform-facility-matrix-table-administration.html).
+
+To assign the FACILITY to the started task issue the following command:                                                  
+```
+TSS ADD(ZWESVUSR) MASTFAC(ZOWE)
+```
+
+To authorize a user to signon to the FACILITY, issues the following command:
+```
+TSS ADD(user_acid) FAC(ZOWE)
+```

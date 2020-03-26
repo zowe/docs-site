@@ -24,7 +24,7 @@ The script reads the default variable values that are provided in the `bin/zowe-
 bin/zowe-setup-certificates.sh
 ```
 
-The keystore and certificates are generated in the default `/global/Zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
+The keystore and certificates are generated in the default `/global/zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
 
 ## Generate certificate with the custom values
 
@@ -102,13 +102,14 @@ KEYSTORE_PASSWORD=mypass
 You may encounter the following message:
 
 ```
-apiml_cm.sh --action trust-zosmf has failed.
-WARNING: z/OSMF is not trusted by the API Mediation Layer. Follow instructions in Zowe documentation about manual steps to trust z/OSMF
+apiml_cm.sh --action trust-zosmf has failed. See $LOG_FILE for more details
+ERROR: z/OSMF is not trusted by the API Mediation Layer. Make sure ZOWE_ZOSMF_HOST and ZOWE_ZOSMF_PORT variables define the desired z/OSMF instance.
+ZOWE_ZOSMF_HOST=${ZOWE_ZOSMF_HOST}   ZOWE_ZOSMF_PORT=${ZOWE_ZOSMF_PORT}
+You can also specify z/OSMF certificate explicitly in the ZOSMF_CERTIFICATE environmental variable in the zowe-setup-certificates.env file.
 ```
 
-This error does not interfere with the installation progress and can be remediated after the installation completes. For more information, see [Trust a z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate).
+This error has to be resolved before you can proceed with the next installation step.
 
 **Notes:** 
 
-- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.   
-- In order to import the public key of the z/OSMF certificate into the Zowe certificate truststore, the user ID that is used to run the `zowe-setup-certificates.sh` script must have authority to read the z/OSMF keyring. See [Trust a z/OSMF certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate). 
+- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  

@@ -10,12 +10,12 @@
 *
 */
 const isInIframe = window.location !== window.parent.location;
-const links = document.getElementsByTagName("a");
+const links = Array.from(document.getElementsByTagName("a"));
 // Process all <a> tags on page
-for (const link of links) {
+links.forEach((link) => {
     const url = link.getAttribute("href");
     if (!url) {
-        continue; // Ignore links with no href
+        // Ignore links with no href
     }
     else if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
         // If link is absolute, assume it points to external site and open it in new tab
@@ -24,6 +24,13 @@ for (const link of links) {
     else if (isInIframe) {
         // If link is relative and page is inside an iframe, then send signal to command tree when link is clicked to make it update selected node
         link.setAttribute("onclick", "window.parent.postMessage(this.href, '*'); return true;");
+    }
+});
+// Show Print button if inside iframe
+if (isInIframe) {
+    const printBtn = document.getElementById("btn-print");
+    if (printBtn) {
+        printBtn.style.display = "block";
     }
 }
 /**
@@ -47,7 +54,7 @@ clipboard.on("error", (e) => setTooltip(e.trigger, "Failed!"));
 if (isInIframe && (window.location.href.indexOf("/all.html") !== -1)) {
     let currentCmdName;
     window.onscroll = (_) => {
-        const anchors = document.getElementsByClassName("cmd-anchor");
+        const anchors = Array.from(document.getElementsByClassName("cmd-anchor"));
         for (const anchor of anchors) {
             const headerBounds = anchor.nextElementSibling.getBoundingClientRect();
             if (0 < headerBounds.bottom) {

@@ -2,7 +2,7 @@
 
 ## Problem
 
-Zowe&trade; CLI is experiencing a problem. You need to collect information that will help you resolve the issue. 
+Zowe&trade; CLI is experiencing a problem. You need to collect information that will help you resolve the issue.
 
 ### Environment
 
@@ -13,7 +13,7 @@ These instructions apply to Zowe CLI installed on Windows, Mac OS X, and Linux s
 1. Is there already a GitHub issue (open or closed) that covers the problem? Check [CLI Issues](https://github.com/zowe/zowe-cli/issues).
 2. Review the current list of [Known issues](known-cli.md) in documentation. Also try searching using the Zowe Docs search bar.
 
-## Resolving the problem 
+## Resolving the problem
 
 Collect the following information to help diagnose the issue:
 
@@ -26,7 +26,7 @@ For instructions on how to collect the information, see [Gathering information f
 
 The following information is also useful to collect:
 
-- If you are experiencing HTTP errors, see [z/OSMF troubleshooting](zosmf-cli.md) for information to collect. 
+- If you are experiencing HTTP errors, see [z/OSMF troubleshooting](zosmf-cli.md) for information to collect.
 - Is the CLI part of another Node application, such as VSCode, or is it a general installation?
 - Which operating system version are you running on?
 - What shell/terminal are you using (bash, cmd, powershell, etc...)?

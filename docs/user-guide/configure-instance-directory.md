@@ -16,7 +16,7 @@ To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_R
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
-The Zowe instance directory contains a file `/bin/instance.env` that stores configuration data. The data is read each time Zowe is started.  
+The Zowe instance directory contains a file `instance.env` that stores configuration data. The data is read each time Zowe is started.  
 
 The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
@@ -28,9 +28,10 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 
 ### Component groups
 
-`LAUNCH_COMPONENT_GROUPS` : This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer, which includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop, which is the browser GUI for hosting Zowe applications such as the 3270 Terminal and the File Explorer apps.  The Zowe desktop is a Node.js application and uses the version that is specified by the `HOME_HOME` value.  
+`LAUNCH_COMPONENT_GROUPS`: This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
+  - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
+  - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `NODE_HOME` value.  
+  - Vendor products may extend Zowe with their own component group that they want to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this, specify the fully qualified directory provided by the vendor that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that is called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that performs any configuration steps such as adding iFrame plug-ins to the Zowe desktop, and a `validate.sh` script **(optional)** that can be used to perform any pre-launch validation such as checking system prerequisites. For more information about how a vendor can extend Zowe with a sub address space, see the [Extending](../extend/extend-apiml/onboard-overview.md) section.
 
 ### Component prerequisites
 
@@ -98,7 +99,7 @@ When Zowe starts, a number of its microservices need to be given port numbers th
 - `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
 - `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
 
-**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports, ensure that the ports are not in use for the Zowe runtime servers.
+**Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
 
 To determine which ports are not available, follow these steps:
 
@@ -118,6 +119,10 @@ To determine which ports are not available, follow these steps:
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
 
-- `ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal session to z/OS UNIX System Services (USS) inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
-- `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *3270 Terminal* which opens a 3270 terminal emulator inside the Zowe desktop web page.  This port is the number used by the TN3270E server and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the TN3270E server port used on a z/OS system.
-- `ZOWE_ZLUX_SECURITY_TYPE`: The *3270 Terminal* application needs to know whether the TN3270E server is using `tls` for security. The default value is blank for `telnet`, meaning that the connection between the Zowe Application Server and the TN3270E server is not encrypted. Configuring TLS is recommended, particularly if the Zowe Application Server connects to the TN3270E server via any physical network.
+- `ZOWE_ZLUX_SSH_PORT`: The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
+- `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
+- `ZOWE_ZLUX_SECURITY_TYPE`: The *3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
+
+### Extensions
+
+- `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information,  see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers.  

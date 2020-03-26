@@ -9,6 +9,14 @@ details[open]
     summary:before
       content "📖"
 
+details.zowe-faq:not([open])
+    summary:after
+      content "Click to open answer"
+
+details.zowe-faq[open]
+    summary:after
+      content "Click to hide answer"
+
 summary
   cursor pointer
   background-color #fcfcfc
