@@ -592,9 +592,7 @@ For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC
 
 [Multi-factor authentication](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_server.htm) is an optional feature for Zowe.
 
-As of Zowe version 1.8.0, the Zowe App Framework, Desktop, and all apps present in the SMP/E or convenience builds support [out-of-band MFA](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_oobconcepts.htm) by entering an MFA assigned token or passcode into password field of the Desktop login screen, by accessing the app-server `/auth` REST API endpoint, or by accessing the zss `/login` REST API endpoint. 
-
-All of these methods of authentication are backed by calls to SAF VERIFY through ZSS. This means that the App-Framework can work with any MFA product that supports pass-through of the MFA credentials as the passphrase used in SAF VERIFY.
+As of Zowe version 1.8.0, the Zowe App Framework, Desktop, and all apps present in the SMP/E or convenience builds support [out-of-band MFA](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_oobconcepts.htm) by entering an MFA assigned token or passcode into password field of the Desktop login screen, or by accessing the app-server `/auth` REST API endpoint.
 
 For a list of compatible MFA products, see [Known compatible MFA products](systemrequirements.md#known-compatible-mfa-products)
 
