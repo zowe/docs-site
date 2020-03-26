@@ -173,66 +173,98 @@ When running the App Server, simply specify a few flags to declare which ZSS ins
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
 ### Configuring ZSS for HTTPS
-To secure ZSS, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) on communication with ZSS.
+To secure ZSS communication, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) communication with ZSS.
 
-Before you begin, you must have a basic knowledge of RACF and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+Before you begin, you must have a basic knowledge of your security product, e.g. RACF, and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
 
-To configure ZSS for HTTPS, you create a certificate authority (CA) certificate and a personal certificate, and add the personal certificate to a key ring. Then you define an AT-TLS rule. Then you copy the certificate to the Zowe App Server and specify values in the Zowe App Server configuration file.
+You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent. 
 
-By default, the Zowe App Server is the only client that communicates with the ZSS server. In these steps, you configure HTTPS between them by creating a CA certificate and using it to sign a personal certificate. If you want to configure other clients to communicate with ZSS, best practice is to sign their certificates using a recognized certificate authority, such as Symantec. For more information, see documentation for that client.
+To configure HTTPS communication between ZSS and the Zowe App Server, you need a key ring which contains the ZSS server certificate and its Certificate Authority (CA) certificate. You can use an internal CA to create the ZSS server certificate, or you can buy the ZSS server certificate from a well-known commercial Certificate Authority. Next you define an AT-TLS rule which points to the key ring used by the ZSS server. Then you copy the CA certificate to the Zowe App Server key store and update the Zowe App Server configuration file.
 
-**Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization.
+**Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
 
-#### Creating certificates and a key ring
-Use the IBM Resource Access Control Facility (RACF) to create a CA certificate and a personal certificate, and sign the personal certificate with the CA certificate. Then create a key ring with the personal certificate attached.
+#### Creating certificates and key ring for the ZSS server using RACF
+In this step you will create a root CA certificate and a ZSS server certificate signed by the CA certificate. Next you create a key ring owned by the ZSS server with the certificates attached.
 
-1. Enter the following command to generate a RACF (CA) certificate:
+Key variables:
+
+| Variable  | Value   |
+| --------- | ------ |
+| `[ca_common_name]` |   |
+| `[ca_label]`   |   |
+| `[server_userid]`	   |   |
+| `[server_common_name]`	  |   |
+| `[server_label]`	  |   |
+| `[ring_name]`	  |   |
+| `[output_dataset_name]`	  |   |
+
+**Note**:
+-	`[server_userid]` must be the ZSS server user ID.
+- `[server_common_name]` must be the ZSS server host name.
+
+1. Enter the following RACF command to generate a CA certificate:
   ```
-  RACDCERT CERTAUTH GENCERT +
-    SUBJECTSDN(CN('[common_name]') +
-    OU('[organizational_unit]') +
-    O('[organization_name]') +
-    L('[locality]') SP('[state_or_province]') C('[country]')) +
-    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) +
-    WITHLABEL('[ca_label]') +
-    NOTAFTER(DATE([xxxx/xx/xx])) +
+  RACDCERT CERTAUTH GENCERT + 
+    SUBJECTSDN(CN('[ca_common_name]') + 
+    OU('[organizational_unit]') + 
+    O('[organization_name]') + 
+    L('[locality]') SP('[state_or_province]') C('[country]')) + 
+    KEYUSAGE(CERTSIGN) + 
+    WITHLABEL('[ca_label]') + 
+    NOTAFTER(DATE([yyyy/mm/dd])) + 
     SIZE(2048)
   ```
-  **Note:** `[common_name]` must be the ZSS server host name.
-
-2. Enter the follow command to generate a RACF personal certificate signed by the CA certificate:
+2. Enter the follow RACF command to generate a server certificate signed by the CA certificate:
   ```
-  RACDCERT ID('[cert_owner]') GENCERT +
-    SUBJECTSDN(CN('[common_name]') +
-    OU('[organizational_unit]') +
-    O('[organization_name]') +
-    L('[locality]') SP('[state_or_province]') C('[country]')) +
-    KEYUSAGE(HANDSHAKE DATAENCRYPT DOCSIGN CERTSIGN) +
-    WITHLABEL('[personal_label]') +
-    NOTAFTER(DATE([xxxx/xx/xx])) +
+  RACDCERT ID('[server_userid]') GENCERT + 
+    SUBJECTSDN(CN('[common_name]') + 
+    OU('[organizational_unit]') + 
+    O('[organization_name]') + 
+    L('[locality]') SP('[state_or_province]') C('[country]')) + 
+    KEYUSAGE(HANDSHAKE) + 
+    WITHLABEL('[server_label]') + 
+    NOTAFTER(DATE([yyyy/mm/dd])) + 
     SIZE(2048) +
     SIGNWITH(CERTAUTH LABEL('[ca_label]'))
   ```
 
-3. Enter the following command to create a RACF key ring and connect the personal certificate to the key ring:
+3. Enter the following RACF commands to create a key ring and connect the certificates to the key ring:
   ```
-  RACDCERT ID([cert_owner]) ADDRING([ring_name])
-  RACDCERT CONNECT(ID([cert_owner]) LABEL('[cert_label]') RING([ring_name]))
+  RACDCERT ID([server_userid]) ADDRING([ring_name]) 
+  RACDCERT ID([server_userid]) CONNECT(ID([server_userid]) +
+    LABEL('[server_label]') RING([ring_name]) DEFAULT) 
+  RACDCERT ID([server_userid]) CONNECT(CERTAUTH +
+    LABEL('[ca_label]') RING([ring_name])) 
   ```
 
-4. Enter the following command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
+4. Enter the following RACF command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
   ```
   SETROPTS RACLIST(DIGTRING,DIGTCERT) REFRESH
   ```
 
-5. Enter the following command to verify your changes:
+5. Enter the following RACF commands to verify your changes:
   ```
-  RACDCERT LISTRING([ring_name]) ID([cert_owner])
+  RACDCERT ID([server_userid]) LISTRING([ring_name])
+  RACDCERT ID([server_userid]) LISTCHAIN(LABEL(‘[server_label])’)
   ```
 
-6. Enter the following command to export the RACF CA certificate to a dataset:
+6. Enter the following RACF commands to allow the ZSS server to use the certificates. Only issue the RDEFINE commands if the profiles do not yet exist.
   ```
-  RACDCERT EXPORT(LABEL('[ca_label]')) CERTAUTH DSN('[output_dataset_name]') FORMAT(CERTB64)
+  RDEFINE FACILITY IRR.DIGTCERT.LIST UACC(NONE)
+  RDEFINE FACILITY IRR.DIGTCERT.LISTRING UACC(NONE)
+  PERMIT IRR.DIGTCERT.LIST CLASS(FACILITY) ACCESS(READ) +
+    ID([server_userid])
+  PERMIT IRR.DIGTCERT.LISTRING CLASS(FACILITY) ACCESS(READ) +
+    ID([server_userid])
+  SETROPTS RACLIST(FACILITY) REFRESH
+  ```
+
+**Note**: These sample commands use the FACILTY class to manage certificate related authorizations. You can also use the RDATALIB class, which offers granular control over the authorizations.
+
+7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe App Server:
+  ```
+  RACDCERT CERTAUTH EXPORT(LABEL('[ca_label]')) +
+    DSN('[output_dataset_name]') FORMAT(CERTB64)
   ```
 
 #### Defining the AT-TLS rule
