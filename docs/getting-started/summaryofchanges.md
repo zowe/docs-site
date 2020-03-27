@@ -39,11 +39,11 @@ The following features and enhancements were added:
 
 The Secure Credential Store plug-in is now packaged with tools that build dependencies locally. This fixes an issue where the installation could fail at sites with firewall restrictions. [#9](https://github.com/zowe/zowe-cli-scs-plugin/issues/9)
 
-**Tip:** Zowe CLI release notes are now aggregated in changelogs. Reference the the appropriate version in each changelog to learn about features, enhancements, and fixes.
+**Tip:** Zowe CLI release notes are now aggregated in changelogs. Reference the appropriate version in each changelog to learn about features, enhancements, and fixes.
 
 **Core CLI Changelogs:**
 
--  [Zowe CLI - v6.10.0](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
+- [Zowe CLI - v6.10.1](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
 - [Secure Credential Store Plug-in - v4.0.3 ](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md)
 
 **Plug-in Changelogs:**
