@@ -34,13 +34,20 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
-Zowe CLI release notes are now available in Changelogs in each component GitHub repository. Reference the applicable version number in Changelogs to learn about features, enhancements, and fixes:
 
-**Core package Changelogs:**
+**CLI Highlights:**
+
+The Secure Credential Store plug-in is now packaged with tools that build dependencies locally. This fixes an issue where the installation could fail at sites with firewall restrictions. [#9](https://github.com/zowe/zowe-cli-scs-plugin/issues/9)
+
+**Tip:** Zowe CLI release notes are now aggregated in changelogs. Reference the the appropriate version in each changelog to learn about features, enhancements, and fixes.
+
+**Core CLI Changelogs:**
+
 -  [Zowe CLI - v6.10.0](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
 - [Secure Credential Store Plug-in - v4.0.3 ](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md)
 
-**CLI plug-in Changelogs:**
+**Plug-in Changelogs:**
+
 - [IBM CICS Plug-in - v4.0.2](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md)
 - [IBM DB2 Plug-in - v4.0.5](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md)
 - [IBM FTP Plug-in: - v1.0.1](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md)
