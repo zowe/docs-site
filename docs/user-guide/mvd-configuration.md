@@ -29,6 +29,27 @@ The port number for the API Mediation Layer is the value of the `GATEWAY_PORT` v
 
 Follow these optional steps to configure the default connection to open for the terminal application plug-ins.
 
+### Setting up the TN3270 mainframe terminal application plug-in
+
+`_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+```
+      "host": <hostname>
+      "port": <port>
+      "security": {
+      type: <"telnet" or "tls">
+    }
+```
+### Setting up the VT Terminal application plug-in
+
+`_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+```
+    "host":<hostname>
+    "port":<port>
+    "security": {
+      type: <"telnet" or "ssh">
+    }
+```
+
 ## Configuration file
 
 The Zowe App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more.
@@ -177,7 +198,7 @@ To secure ZSS communication, you can use Application Transparent Transport Layer
 
 Before you begin, you must have a basic knowledge of your security product, e.g. RACF, and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
 
-You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent. 
+You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
 
 To configure HTTPS communication between ZSS and the Zowe App Server, you need a key ring which contains the ZSS server certificate and its Certificate Authority (CA) certificate. You can use an internal CA to create the ZSS server certificate, or you can buy the ZSS server certificate from a well-known commercial Certificate Authority. Next you define an AT-TLS rule which points to the key ring used by the ZSS server. Then you copy the CA certificate to the Zowe App Server key store and update the Zowe App Server configuration file.
 
@@ -204,37 +225,37 @@ Key variables:
 
 1. Enter the following RACF command to generate a CA certificate:
   ```
-  RACDCERT CERTAUTH GENCERT + 
-    SUBJECTSDN(CN('[ca_common_name]') + 
-    OU('[organizational_unit]') + 
-    O('[organization_name]') + 
-    L('[locality]') SP('[state_or_province]') C('[country]')) + 
-    KEYUSAGE(CERTSIGN) + 
-    WITHLABEL('[ca_label]') + 
-    NOTAFTER(DATE([yyyy/mm/dd])) + 
+  RACDCERT CERTAUTH GENCERT +
+    SUBJECTSDN(CN('[ca_common_name]') +
+    OU('[organizational_unit]') +
+    O('[organization_name]') +
+    L('[locality]') SP('[state_or_province]') C('[country]')) +
+    KEYUSAGE(CERTSIGN) +
+    WITHLABEL('[ca_label]') +
+    NOTAFTER(DATE([yyyy/mm/dd])) +
     SIZE(2048)
   ```
 2. Enter the follow RACF command to generate a server certificate signed by the CA certificate:
   ```
-  RACDCERT ID('[server_userid]') GENCERT + 
-    SUBJECTSDN(CN('[common_name]') + 
-    OU('[organizational_unit]') + 
-    O('[organization_name]') + 
-    L('[locality]') SP('[state_or_province]') C('[country]')) + 
-    KEYUSAGE(HANDSHAKE) + 
-    WITHLABEL('[server_label]') + 
-    NOTAFTER(DATE([yyyy/mm/dd])) + 
+  RACDCERT ID('[server_userid]') GENCERT +
+    SUBJECTSDN(CN('[common_name]') +
+    OU('[organizational_unit]') +
+    O('[organization_name]') +
+    L('[locality]') SP('[state_or_province]') C('[country]')) +
+    KEYUSAGE(HANDSHAKE) +
+    WITHLABEL('[server_label]') +
+    NOTAFTER(DATE([yyyy/mm/dd])) +
     SIZE(2048) +
     SIGNWITH(CERTAUTH LABEL('[ca_label]'))
   ```
 
 3. Enter the following RACF commands to create a key ring and connect the certificates to the key ring:
   ```
-  RACDCERT ID([server_userid]) ADDRING([ring_name]) 
+  RACDCERT ID([server_userid]) ADDRING([ring_name])
   RACDCERT ID([server_userid]) CONNECT(ID([server_userid]) +
-    LABEL('[server_label]') RING([ring_name]) DEFAULT) 
+    LABEL('[server_label]') RING([ring_name]) DEFAULT)
   RACDCERT ID([server_userid]) CONNECT(CERTAUTH +
-    LABEL('[ca_label]') RING([ring_name])) 
+    LABEL('[ca_label]') RING([ring_name]))
   ```
 
 4. Enter the following RACF command to refresh the DIGTRING and DIGTCERT classes to activate your changes:
@@ -448,13 +469,13 @@ You can also control access to the JSON files. The files are accessible directly
    ```
    $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-4. Copy the `allowedPlugins.json` file and paste it in the following location:  
+4. Copy the `allowedPlugins.json` file and paste it in the following location:
    ```
    .zowe/workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.bootstrap
    ```
 5. Open the copied `allowedPlugins.json` file and perform either of the following steps:
     - To an application unavailable, delete it from the list of objects.
-    - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required. 
+    - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required.
 
 6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
@@ -496,9 +517,9 @@ You can also control access to the JSON files. The files are accessible directly
 
     **Notes:**
     - Identifier and version attributes are required.
-    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user. 
+    - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
 
-6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc). 
+6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
 
 ## Controlling access to dataservices
@@ -598,7 +619,7 @@ For a list of compatible MFA products, see [Known compatible MFA products](syste
 
 ### Session duration and expiration
 
-After successful authentication, a Zowe Desktop session is created by authentication plugins. 
+After successful authentication, a Zowe Desktop session is created by authentication plugins.
 
 The duration of the session is determined by the plugin used. Some plugins are capable of renewing the session prior to expiration, while others may have a fixed session length.
 
@@ -610,7 +631,7 @@ Zowe is bundled with a few of these plugins:
 
 * **zss-auth**: Calls Zowe ZSS from the app-server to answer the authentication request. The created ZSS session is valid for 1 hour, but is renewable on request prior to expiration. In the Desktop, the session is automatically renewed if the user is detected as active. If the user is detected as idle, the session will expire.
 
-When a session expires, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based. 
+When a session expires, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based.
 
 In the Desktop, Apps that you opened prior to expiration will remain open so that your work can resume after entering new credentials.
 
@@ -622,9 +643,9 @@ To configure Zowe for MFA with a configuration other than the default, take the 
 
 1. Choose an App Server security plugin that is compatible with MFA. The [apiml-auth, zss-auth, and zosmf-auth](#session-duration-and-expiration) plugins are all compatible.
 2. Locate the App Server's configuration file in `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`
-3. Edit the configuration file to modify the section `dataserviceAuthentication`. 
+3. Edit the configuration file to modify the section `dataserviceAuthentication`.
 
-4. Set `defaultAuthentication` to the same category as the plugin of choice, for example: 
+4. Set `defaultAuthentication` to the same category as the plugin of choice, for example:
     * **apiml-auth**: "apiml"
     * **zosmf-auth**: "zosmf"
     * **zss-auth**: "zss"
