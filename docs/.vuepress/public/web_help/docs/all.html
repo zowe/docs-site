@@ -1041,8 +1041,10 @@ length of the pipeline name is eight characters</li>
 </li>
 <li><p><code>--validation</code>  <em>(boolean)</em></p>
 <ul>
-<li>Specifies whether full validation of SOAP messages against the corresponding
-schema in the web service description should be performed at run time.</li>
+<li><p>Specifies whether full validation of SOAP messages against the corresponding
+schema in the web service description should be performed at run time.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--wsdlfile</code>  | <code>--wsdl</code> <em>(string)</em></p>
@@ -4920,7 +4922,9 @@ number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.</li>
 </li>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -5427,7 +5431,9 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <ul>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -9384,15 +9390,19 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li><p><code>--erase</code>  | <code>-e</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to overwrite the data component for the cluster with binary
+<li><p>Specify this option to overwrite the data component for the cluster with binary
 zeros. This option is ignored if the NOERASE attribute was specified when the
-cluster was defined or altered.</li>
+cluster was defined or altered.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to delete the VSAM cluster regardless of its retention
-period or date.</li>
+<li><p>Specify this option to delete the VSAM cluster regardless of its retention
+period or date.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -16136,8 +16146,10 @@ to exist</li>
 </li>
 <li><p><code>--keep-files</code>  | <code>--kf</code> <em>(boolean)</em></p>
 <ul>
-<li>Avoid deletion the uploaded files in /tmp or another specified directory after
-successful execution.</li>
+<li><p>Avoid deletion the uploaded files in /tmp or another specified directory after
+successful execution.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -17166,7 +17178,9 @@ manually.</p>
 </li>
 <li><p><code>--perform-following-steps</code>  | <code>--pfs</code> <em>(boolean)</em></p>
 <ul>
-<li>Identifies whether to perform also following steps in the workflow instance.</li>
+<li><p>Identifies whether to perform also following steps in the workflow instance.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
