@@ -32,6 +32,20 @@ The following features and enhancements were added:
 
 #### Zowe App Server
 
+- Fast EBCDIC to UTF8 character translation is now supported by using the TROO instruction with a "EBCDIC 1047 to ISO/IEC 8859-1" translation table. [#127](https://github.com/zowe/zowe-common-c/pull/127)
+- The code now prints fewer warnings when attls is not set up. [#162](https://github.com/zowe/zss/pull/162)
+- [#388]https://github.com/zowe/zlux/issues/388 
+- Explorer-jes FVT tests have been configured to allow ES6 syntax. [#372](https://github.com/zowe/zlux/issues/372)
+- The zosmf-auth plugin is no longer enabled by default. [#1190](https://github.com/zowe/zowe-install-packaging/pull/1190)
+- [#31](https://github.com/zowe/sample-angular-app/pull/31) <!-- Ask Sean about this-->
+- The webpack has been updated so that vulnerabilities no longer use outdated versions. [#28](https://github.com/zowe/sample-react-app/pull/28)
+- [#34](https://github.com/zowe/sample-angular-app/pull/34) <!-- Ask Sean about this-->
+- [#33](https://github.com/zowe/sample-angular-app/pull/33) <!-- Ask Leonty/Sean about this-->
+- [#28](https://github.com/zowe/tn3270-ng2/pull/28) <!-- Ask Sean>
+- Support for SSO tokens from browser cookies or Authenitcation: bearer, has been implemented. Session cookies are created when an SSO token is verified [#131](https://github.com/zowe/zowe-common-c/pull/131)
+- ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
+- 
+
 #### Zowe CLI
 
 ### Bug fixes
