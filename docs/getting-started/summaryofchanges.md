@@ -38,9 +38,9 @@ The following features and enhancements were added:
 - Performance improvements in character conversion, JSON and collections code. [#162](https://github.com/zowe/zss/pull/162)
 - ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
 - Config variable names have been updated to stay consistent with IBM terminology. [#165](https://github.com/zowe/zss/pull/165)
-- The sample-react-app README has been updated to state prerequisites. [#405](https://github.com/zowe/zlux/issues/405)
-- The jes-explorer has been updated to support Single Sign On functionality offered by the api-layer. [#344](https://github.com/zowe/zlux/issues/344)
-- The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#394](https://github.com/zowe/zlux/issues/394) 
+- The sample-react-app README has been updated to state prerequisites. [#20](https://github.com/zowe/sample-react-app/pull/20)
+- The jes-explorer has been updated to support Single Sign On functionality offered by the api-layer. [#160](https://github.com/zowe/explorer-jes/pull/160)
+- The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#190](https://github.com/zowe/zlux-app-manager/pull/190) 
 - An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
 - Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
 
@@ -52,8 +52,8 @@ The following bugs were fixed:
 
 #### Zowe App Server
 - Bugfix: sample-angular-app could not be run from a folder outside of $ROOT_DIR. [#34](https://github.com/zowe/sample-angular-app/pull/34)
-- Bugfix: Do not issue error when defaulting log language to english. [#400](https://github.com/zowe/zlux/issues/400)
-- Bugfix: Substitute zosmf-auth for apiml-auth to remove warning. [#398](https://github.com/zowe/zlux/issues/398)
+- Bugfix: Do not issue error when defaulting log language to english. [#182](https://github.com/zowe/zlux-server-framework/pull/182)
+- Bugfix: Substitute zosmf-auth for apiml-auth to remove warning. [#1232](https://github.com/zowe/zowe-install-packaging/pull/1232)
 - Bugfix: Menu locations were wrong when multiple apps opened because the numbers used partially came from the previous instance. [#36](https://github.com/zowe/sample-angular-app/pull/36)
 
 ## Version 1.9.0 LTS (February 2020)
