@@ -33,18 +33,16 @@ The following features and enhancements were added:
 #### Zowe App Server
 
 - Fast EBCDIC to UTF8 character translation is now supported by using the TROO instruction with a "EBCDIC 1047 to ISO/IEC 8859-1" translation table. [#127](https://github.com/zowe/zowe-common-c/pull/127)
-- The code now prints fewer warnings when attls is not set up. [#162](https://github.com/zowe/zss/pull/162)
-- [#388]https://github.com/zowe/zlux/issues/388 
-- Explorer-jes FVT tests have been configured to allow ES6 syntax. [#372](https://github.com/zowe/zlux/issues/372)
-- The zosmf-auth plugin is no longer enabled by default. [#1190](https://github.com/zowe/zowe-install-packaging/pull/1190)
-- [#31](https://github.com/zowe/sample-angular-app/pull/31) <!-- Ask Sean about this-->
-- The webpack has been updated so that vulnerabilities no longer use outdated versions. [#28](https://github.com/zowe/sample-react-app/pull/28)
-- [#34](https://github.com/zowe/sample-angular-app/pull/34) <!-- Ask Sean about this-->
-- [#33](https://github.com/zowe/sample-angular-app/pull/33) <!-- Ask Leonty/Sean about this-->
-- [#28](https://github.com/zowe/tn3270-ng2/pull/28) <!-- Ask Sean>
-- Support for SSO tokens from browser cookies or Authenitcation: bearer, has been implemented. Session cookies are created when an SSO token is verified [#131](https://github.com/zowe/zowe-common-c/pull/131)
+- The code now prints fewer warnings when attls is not set up. [#130](https://github.com/zowe/zowe-common-c/pull/130)
+- Support for APIML JWT tokens sent via browser cookies or Authentication: Bearer has been implemented. Once the token is validated, a cookie with the same name is sent back and creates a ZSS sesstion token for compatibility with ZSS auth. [#132](https://github.com/zowe/zowe-common-c/pull/132)
+- Performance improvements in character conversion, JSON and collections code. [#162](https://github.com/zowe/zss/pull/162)
 - ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
-- 
+- Config variable names have been updated to stay consistent with IBM terminology. [#165](https://github.com/zowe/zss/pull/165)
+- The sample-react-app README has been updated to state prerequisites. [#405](https://github.com/zowe/zlux/issues/405)
+- The jes-explorer has been updated to support Single Sign On functionality offered by the api-layer. [#344](https://github.com/zowe/zlux/issues/344)
+- The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#394](https://github.com/zowe/zlux/issues/394) 
+- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
+- Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
 
 #### Zowe CLI
 
@@ -52,7 +50,11 @@ The following features and enhancements were added:
 
 The following bugs were fixed:
 
-
+#### Zowe App Server
+- Bugfix: sample-angular-app could not be run from a folder outside of $ROOT_DIR. [#34](https://github.com/zowe/sample-angular-app/pull/34)
+- Bugfix: Do not issue error when defaulting log language to english. [#400](https://github.com/zowe/zlux/issues/400)
+- Bugfix: Substitute zosmf-auth for apiml-auth to remove warning. [#398](https://github.com/zowe/zlux/issues/398)
+- Bugfix: Menu locations were wrong when multiple apps opened because the numbers used partially came from the previous instance. [#36](https://github.com/zowe/sample-angular-app/pull/36)
 
 ## Version 1.9.0 LTS (February 2020)
 
