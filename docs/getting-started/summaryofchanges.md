@@ -4,21 +4,21 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.10.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.10.0 LTS (April 2020)](#version-1100-lts-april-2020)
-- [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
-- [Version 1.8.1 (February 2020)](#version-181-february-2020)
-- [Version 1.8.0 (February 2020)](#version-180-february-2020)
-- [Version 1.7.1 (December 2019)](#version-171-december-2019)
-- [Version 1.7.0 (November 2019)](#version-170-november-2019)
-- [Version 1.6.0 (October 2019)](#version-160-october-2019)
-- [Version 1.5.0 (September 2019)](#version-150-september-2019)
-- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-140-august-2019)
-- [Version 1.3.0 (June 2019)](#version-130-june-2019)
-- [Version 1.2.0 (May 2019)](#version-120-may-2019)
-- [Version 1.1.0 (April 2019)](#version-110-april-2019)
-- [Version 1.0.1 (March 2019)](#version-101-march-2019)
-- [Version 1.0.0 (February 2019)](#version-100-february-2019)
+- [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
+- [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
+- [Version 1.8.1 (February 2020)](#version-1-8-1-february-2020)
+- [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
+- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
+- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
+- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
+- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smp-e-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
+- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
+- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
+- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
+- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
+- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
 ## Version 1.10.0 LTS (April 2020)
 
@@ -29,6 +29,10 @@ Zowe Version 1.10.0 and later releases include the following enhancements, relea
 The following features and enhancements were added:
 
 #### API Mediation Layer
+
+The following new feature was added to the Zowe API Mediation Layer in this version:
+
+- Zowe API ML can now use z/OSMF to provide JSON Web Tokens (JWT). [#433](https://github.com/zowe/api-layer/issues/433)
 
 #### Zowe App Server
 
@@ -45,6 +49,26 @@ The following features and enhancements were added:
 - Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
 
 #### Zowe CLI
+
+
+**CLI Highlights:**
+
+The Secure Credential Store plug-in is now packaged with tools that build dependencies locally. This fixes an issue where the installation could fail at sites with firewall restrictions. [#9](https://github.com/zowe/zowe-cli-scs-plugin/issues/9)
+
+**Tip:** Zowe CLI release notes are now aggregated in changelogs. Reference the appropriate version in each changelog to learn about features, enhancements, and fixes.
+
+**Core CLI Changelogs:**
+
+- [Zowe CLI - v6.10.1](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
+- [Secure Credential Store Plug-in - v4.0.3 ](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md)
+
+**Plug-in Changelogs:**
+
+- [IBM CICS Plug-in - v4.0.2](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md)
+- [IBM DB2 Plug-in - v4.0.5](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md)
+- [IBM FTP Plug-in: - v1.0.1](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md)
+- [IBM IMS Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/CHANGELOG.md)
+- [IBM MQ Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/CHANGELOG.md)
 
 ### Bug fixes
 
@@ -70,14 +94,14 @@ The following features and enhancements were added:
 
 The following new features and enhancements have been made to the Zowe API Mediation Layer in this version:
 
-- Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well. 
-- Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.  
+- Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well.
+- Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.
 - Passticket support has been added to API ML Core Services and onboarding enablers. This makes it easier to authenticate existing mainframe applications with the API Mediation Layer.
 - New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginifantly less disk space.
 
 The following bug fixes have been introduced:
 
-- A fix of a critial authentication issue with some versions of z/OSMF has been applied. 
+- A fix of a critial authentication issue with some versions of z/OSMF has been applied.
 - A fix has been applied to support multipart requests.
 - A fix has been applied to the z/OSMF authorization header.
 
@@ -107,7 +131,7 @@ Functions to copy to/from foreign address space using destination/source keys an
     - Replaced most console.log calls with logger calls
 - Support for HTTP-Strict-Transport-Security. Custom headers for static content are now available [#173](https://github.com/zowe/zlux-server-framework/pull/173)
 - Functionality for controlling application access for individual users has been added [#216](https://github.com/zowe/zlux/issues/216)
-- Out-of-band multi-factor authentication is now supported [#225](https://github.com/zowe/zlux/issues/225) 
+- Out-of-band multi-factor authentication is now supported [#225](https://github.com/zowe/zlux/issues/225)
 
 #### Zowe CLI
 
