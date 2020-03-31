@@ -30,6 +30,10 @@ The following features and enhancements were added:
 
 #### API Mediation Layer
 
+The following new feature was added to the Zowe API Mediation Layer in this version:
+
+- Zowe API ML can now use z/OSMF to provide JSON Web Tokens (JWT). [#433](https://github.com/zowe/api-layer/issues/433)
+
 #### Zowe App Server
 
 #### Zowe CLI
