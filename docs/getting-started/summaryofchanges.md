@@ -36,17 +36,28 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 
 #### Zowe App Server
 
+- The sample-react-app README has been updated to state prerequisites. [#20](https://github.com/zowe/sample-react-app/pull/20)
+- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
+- Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
+- Simple conda build scripts have been added. [#46](https://github.com/zowe/zlux-build/pull/46)
+- Window now focuses on app when it is called. [#50](https://github.com/zowe/zlux-platform/pull/50)
+- CA is no longer a default setting, as it is not required in the case of self-signing. [#98](https://github.com/zowe/zlux-app-server/pull/98)
+- In this version, by default, no plugins can be put into an iframe that is on a site outside the domain. [#104](https://github.com/zowe/zlux-app-server/pull/104)
 - Fast EBCDIC to UTF8 character translation is now supported by using the TROO instruction with a "EBCDIC 1047 to ISO/IEC 8859-1" translation table. [#127](https://github.com/zowe/zowe-common-c/pull/127)
 - The code now prints fewer warnings when attls is not set up. [#130](https://github.com/zowe/zowe-common-c/pull/130)
 - Support for APIML JWT tokens sent via browser cookies or Authentication: Bearer has been implemented. Once the token is validated, a cookie with the same name is sent back and creates a ZSS sesstion token for compatibility with ZSS auth. [#132](https://github.com/zowe/zowe-common-c/pull/132)
+- The jes-explorer has been updated to support Single Sign On functionality offered by the api-layer. [#160](https://github.com/zowe/explorer-jes/pull/160)
 - Performance improvements in character conversion, JSON and collections code. [#162](https://github.com/zowe/zss/pull/162)
 - ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
 - Config variable names have been updated to stay consistent with IBM terminology. [#165](https://github.com/zowe/zss/pull/165)
-- The sample-react-app README has been updated to state prerequisites. [#20](https://github.com/zowe/sample-react-app/pull/20)
-- The jes-explorer has been updated to support Single Sign On functionality offered by the api-layer. [#160](https://github.com/zowe/explorer-jes/pull/160)
+- Desktop keybindings have been added. [#176](https://github.com/zowe/zlux-app-manager/pull/176)
+- A server side storage API for cluster support with set, get, and delete functionality has been added. [#178](https://github.com/zowe/zlux-server-framework/pull/178)
+- Server will now scan for and add new apps to the desktop as they become available. [#179](https://github.com/zowe/zlux-server-framework/pull/179)
+- Global headers are now able to exist and override plugins. [#180](https://github.com/zowe/zlux-server-framework/pull/180)
+- Auth login and refresh now tells the client what the default category is. [#183](https://github.com/zowe/zlux-server-framework/pull/183)
+- Window actions and viewprt events have been asigned to the zlux iframe area.[#184](https://github.com/zowe/zlux-app-manager/pull/184)
 - The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#190](https://github.com/zowe/zlux-app-manager/pull/190) 
-- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
-- Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
+- Logo has been updated. [#204](https://github.com/zowe/zlux-app-manager/pull/204)   
 
 #### Zowe CLI
 
@@ -75,10 +86,18 @@ The Secure Credential Store plug-in is now packaged with tools that build depend
 The following bugs were fixed:
 
 #### Zowe App Server
+
+- Bugfix: Sublogger message fix. [#24](https://github.com/zowe/zlux-shared/pull/24) 
 - Bugfix: sample-angular-app could not be run from a folder outside of $ROOT_DIR. [#34](https://github.com/zowe/sample-angular-app/pull/34)
-- Bugfix: Do not issue error when defaulting log language to english. [#182](https://github.com/zowe/zlux-server-framework/pull/182)
-- Bugfix: Substitute zosmf-auth for apiml-auth to remove warning. [#1232](https://github.com/zowe/zowe-install-packaging/pull/1232)
 - Bugfix: Menu locations were wrong when multiple apps opened because the numbers used partially came from the previous instance. [#36](https://github.com/zowe/sample-angular-app/pull/36)
+- Bugfix: Fix for unconditional tls override [#103](https://github.com/zowe/zlux-app-server/pull/103)
+- Bugfix: Do not issue error when defaulting log language to english. [#182](https://github.com/zowe/zlux-server-framework/pull/182)
+- Bugfix: Fixes unformatted messages when a language is not specified. [#186](https://github.com/zowe/zlux-server-framework/pull/186)
+- Bugfix: uri broker fix for apiml use. [#187](https://github.com/zowe/zlux-app-manager/pull/187)
+- Bugfix: Fixes for logging and plugin managers. [#189](https://github.com/zowe/zlux-app-manager/pull/189)
+- Bugfix: Context menu children going off screen. [#200](https://github.com/zowe/zlux-app-manager/pull/200)
+- Bugfix: Substitute zosmf-auth for apiml-auth to remove warning. [#1232](https://github.com/zowe/zowe-install-packaging/pull/1232)
+
 
 ## Version 1.9.0 LTS (February 2020)
 
