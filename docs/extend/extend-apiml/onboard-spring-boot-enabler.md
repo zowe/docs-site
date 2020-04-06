@@ -115,11 +115,11 @@ Use the following procedure if you use _Maven_ as your build automation system.
     ```
    
     ```
-    **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
+ **Tip:** If you want to use the snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-2. Add the proper dependencies 
+2. Add the proper dependencies. 
   
-   2.1 For spring version 2.1.1, use the following artifact 
+   2.1 For spring version 2.1.1, use the following artifact: 
 
    ```maven
    <dependency>
@@ -129,7 +129,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
    </dependency>
     ```
 
-   2.2 For spring version 1.5.9, use the following artifact 
+   2.2 For spring version 1.5.9, use the following artifact: 
 
    ```maven
    <dependency>
@@ -143,7 +143,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
-To configure a Spring Boot based service, it is useful to first understand how API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
+To configure a Spring Boot based service, it is useful to first understand how the API ML enabled service Spring Boot based configuration relates to configuration using the Plain Java Enabler.
 
 Spring Boot expects to find the default configuration of an application in an `application.yml` file that is placed on the classpath. Typically `application.yml` contains Spring Boot specific properties such as properties that are used to start a web application container including TLS security, different spring configuration profiles definitions, and other properties. This `application.yml` must contain the Plain Java Enabler API ML service configuration under the `apiml.service` prefix. The API ML configuration under this prefix is necessary to synchronize the configuration of `apiml.service` with the spring `server` configuration.
 
@@ -152,7 +152,7 @@ Configuration properties belong to two categories:
   * Service related properties which include endpoints, relative paths, or API documentation definitions.
   * Environment related properties which include host names, ports, context etc.
 
-Execution environment related properties should be provided by additional configuration mechanisms that are specific to the target execution environment. Execution environment related properties for development deployments on a local machine differ with those properties on a mainframe system. 
+Provide Execution environment related properties through additional configuration mechanisms that are specific to the target execution environment. Execution environment related properties for development deployments on a local machine differ from those properties on a mainframe system. 
 
   * In a development environment, provide execution environment related properties in an additional `YAML` file with the system property in the following format:
     ```
@@ -340,7 +340,8 @@ server:
         trustStoreType: PKCS12
 ```
 
-    **Note:** If there is something missing in your configuration, setting logging level to debug could provide more information.
+**Tip:** To check that your configuration is complete, set the logging level to `debug`.
+
     ```yaml
     logging:
     level:
@@ -369,7 +370,7 @@ server:
 
 ### Custom Metadata
 
-   (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+(Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
 
 #### Api Mediation Layer specific metadata
 
@@ -462,9 +463,8 @@ Use the following procedure to add Swagger API documentation to your project.
 3. Customize this configuration according to your specifications. For more information about customization properties,
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
-
-    **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
-    For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
+ **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
+ For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
 
 ## Validating the discoverability of your API service by the Discovery Service
 
