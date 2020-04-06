@@ -340,6 +340,14 @@ server:
         trustStoreType: PKCS12
 ```
 
+    **Note:** If there is something missing in your configuration, setting logging level to debug could provide more information.
+    ```yaml
+    logging:
+    level:
+        ROOT: INFO
+        org.zowe.apiml: DEBUG
+    ```
+
 3. Provide the suitable parameter corresponding to your runtime environment:
 
   * For a local machine runtime environment, provide the following parameter on your command line:
