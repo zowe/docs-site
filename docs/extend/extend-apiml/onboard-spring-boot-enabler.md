@@ -341,7 +341,9 @@ server:
         keyStoreType: PKCS12
         trustStoreType: PKCS12
 ```
-If there is something missing in your configuration, setting logging level to debug could provide more information:  
+
+**Tip:** To determine if your configuration is complete, set the logging level to `debug`.
+
 ```yaml
 logging:
    level:
