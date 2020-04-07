@@ -59,8 +59,7 @@ Individual address spaces for different Zowe instances and their subcomponents c
    - **AC** - API ML Catalog
    - **AD** - API ML Discovery Service
    - **AG** - API ML Gateway
-   - **DS** - Node.js instance for the ZSS Server
-   - **DT** - Zowe Desktop Application Server
+   - **DS** - App Server
    - **EF** - Explorer API Data Sets
    - **EJ** - Explorer API Jobs
    - **SZ** - ZSS Server
