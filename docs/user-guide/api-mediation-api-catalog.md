@@ -65,3 +65,41 @@ Services that belong to the same product family are displayed on the same tile.
         `https://hostName:basePort/api/v1/{yourServiceId}/{endpointName}`
 
         Both links target the same endpoint location.
+
+## Swagger "Try out" functionality in the API Catalog
+
+Api Catalog allows to users to be able to call service apis via "Try out" functionality. To get a better understanding of "Try out", let's explore the Swagger Petstore example.
+
+ **Example:**
+
+<img src="../images/api-mediation/discoverable_clien_pet_swagger.png" alt="endpoint detail" width="700px"/>
+
+
+
+### Make a request:
+
+Now let's make a request:
+
+1. Expand the **POST Pet** endpoint.
+
+2. Click Try it out.
+
+     **Example:**
+
+    <img src="../images/api-mediation/discoverable_clien_pet_swagger_expanded.png" alt="endpoint detail" width="700px"/>
+
+    After you click Try it out, the example value in the Request Body field becomes editable.
+
+3. In the Example Value field, change the first `id` value to a random value. Change the second `name` value to something you'd recognize (your pet's name).
+
+4. Click **Execute**
+
+     **Example:**
+
+    <img src="../images/api-mediation/discoverable_clien_pet_swagger_execute.png" alt="endpoint detail" width="700px"/>
+
+    API Catalog Swagger UI submits the request and shows the `curl` that was submitted. The Responses section shows the `response`. 
+
+    **Example:**
+
+    <img src="../images/api-mediation/discoverable_clien_pet_swagger_response.png" alt="endpoint detail" width="700px"/>
