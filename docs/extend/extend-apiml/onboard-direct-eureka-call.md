@@ -11,7 +11,7 @@ For more information about how to onboard a REST service, see the following link
 - [API ML onboarding overview](onboard-overview.md)
 - [python-eureka-client](https://pypi.org/project/py-eureka-client/)
 - [eureka-js-client](https://www.npmjs.com/package/eureka-js-client)
-- [Rest API developed based on Java](https://www.zowe.org/docs-site/latest/extend/extend-apiml/api-mediation-onboard-overview.html#sample-rest-api-service)
+- [Rest API developed based on Java](onboard-overview.md#sample-rest-api-service)
 
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service. 
 
