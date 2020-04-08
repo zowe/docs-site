@@ -24,7 +24,7 @@ The script `zowe-install-proc.sh` has two arguments:
    
    **Example**
 
-   Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
+   Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZWESVSTC)`
 
 ## Step 2: Configure ZWESVSTC to run under the correct user ID
 
