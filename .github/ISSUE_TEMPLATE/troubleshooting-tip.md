@@ -15,7 +15,7 @@ assignees: nannanli
 
 ### 2. Choose a title
 
-<!--Name it after the problem you're trying to solve, using the terms users are likely to type into the search . For example, `Cannot log in to the Zowe Desktop`, `npm install -gCommand Fails Due to an EPERM Error`.-->
+<!--Name it after the problem you're trying to solve, using the terms users are likely to type into the search . For example, `Cannot log in to the Zowe Desktop`, `npm install -g command fails due to an EPERM error`.-->
 
 ### 3. Symptom
 
