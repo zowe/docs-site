@@ -30,6 +30,8 @@ The following steps outline the overall process to onboard a REST service with t
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
+7. (Optional) [Troubleshooting](#troubleshooting)
+    * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Selecting a Spring Boot Enabler
 
@@ -162,7 +164,6 @@ Execution environment related properties should be provided by additional config
   * On the mainframe system, provide additional configuration properties and values for existing configuration properties through Java system properties.
 
     Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
-
 
 **Follow these steps:**
 
@@ -338,6 +339,15 @@ server:
         ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
         keyStoreType: PKCS12
         trustStoreType: PKCS12
+```
+
+**Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
+
+```yaml
+logging:
+   level:
+     ROOT: INFO
+     org.zowe.apiml: DEBUG
 ```
 
 3. Provide the suitable parameter corresponding to your runtime environment:
@@ -525,3 +535,30 @@ service was successfully started.
   4. Check that you can access your API service endpoints through the Gateway.
 
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+
+## Troubleshooting
+
+#### Log messages during registration problems
+
+When an Enabler connects to the Discovery service and fails, an error message prints to the Enabler log. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
+These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. 
+
+To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
+
+  ```
+  com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
+  ```
+  
+Some logging frameworks provide other tools to suppress repeated messages. Consult the documentation of the logging framework you use to find out what tools are available. The following example demonstrates how the Logback framework can be used to suppress repeated messages.
+
+**Example:** 
+
+The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
+
+Add the following code to your configuration file if you use XML configuration: 
+
+    <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+        <AllowedRepetitions>0</AllowedRepetitions>
+    </turboFilter>
+    
+**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
