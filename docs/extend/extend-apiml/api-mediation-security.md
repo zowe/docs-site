@@ -223,7 +223,13 @@ In the API ML, authorization is performed by the z/OS security manager ([CA ACF2
 
 ### JWT Token
 
-The JWT Secret that signs the JWT Token is an asymmetric private key that is generated during installation. You can find the JWT Secret, alias `jwtsecret`, in the  PKCS12 keystore /keystore/localhost/localhost.keystore.p12. The public key necessary to read the JWT Secret is called from the keystore. For easy access, you can find the public key in the `localhost.keystore.jwtsecret.pem` directory. The JWT token is signed with the RS256 signature algorithm.
+The JWT secret that signs the JWT Token is an asymmetric private key that is generated during Zowe keystore configuration. The JWT token is signed with the RS256 signature algorithm.
+
+You can find the JWT secret, alias `jwtsecret`, in the PKCS12 keystore that is stored `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
+
+For easy access, you can find the public key in the `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.jwtsecret.pem` file.
+
+You can also use `/api/v1/gateway/auth/keys/public/all` endpoint to obtain all public keys than can be used to verify JWT tokens signature in a standard [JWK format](https://openid.net/specs/).
 
 ### z/OSMF JSON Web Tokens Support
 
