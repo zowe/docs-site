@@ -133,3 +133,24 @@ Add the Zowe Desktop directory path to the MVD_DESKTOP_DIR environment variable.
   ```
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
+
+## Error: Problem making eureka request { Error: connect ECONNREFUSED }
+
+**Symptom:** 
+
+The Zowe started task `ZWESVSTC` log contains error messages reporting problems connecting 
+
+```
+Problem making eureka request { Error: connect ECONNREFUSED 10.1.1.2:7553
+at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1195:14)
+errno: 'ECONNREFUSED',
+code: 'ECONNREFUSED',
+syscall: 'connect',
+address: '10.1.1.2',
+port: 7553 }
+```
+
+**Solution:**   
+These messages are timing related where different eureaka servers are coming up and trying to connect to each other and warning that the endpoint they are trying to handshake with isn't available.  When all of the eurka services have started these errors will stop being logged.  
+
+You may ignore these messages.
