@@ -1,18 +1,18 @@
 # Troubleshooting z/OS Startup
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior starting Zowe's `ZWESVSTC` started task
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior starting Zowe's `ZWESVSTC` started task.
 
 ## Unable to create BPXAS instances
 
 **Symptom:**
 
-When you start `ZWESVSTC` started task, either by running the `zowe-start.sh` script or by launching the started task directly, you encouter the error in the log
+When you start `ZWESVSTC` started task, either by running the `zowe-start.sh` script or by launching the started task directly, you encounter the following error in the log:
 
 ```
 <ROOT_DIR>/bin/internal/run-zowe.sh 1: FSUM7726 cannot fork: reason code  = 094500f7: EDC5112I Resource temporarily unavailable.
 ```
 
-You will also encounter the following messages in the SYSLOG
+You will also encounter the following messages in the SYSLOG:
 
 ```
 0290  S ZWESVSTC                                                               
@@ -31,10 +31,10 @@ You will also encounter the following messages in the SYSLOG
 
 **Solution:**
 
-The problem is because the maximum number of `BPXAS` instances have been reached.  
+This problem occurs when the maximum number of `BPXAS` instances have been reached.  
 
-This may be because when the Zowe instance directory was created it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created using the script `<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>, see [Creating an instance directory](../user-guide/configure-instance-directory.html#creating-an-instance-directory). The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
+This may be because when the Zowe instance directory was created, it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created by using the script `<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>`. See [Creating an instance directory](../user-guide/configure-instance-directory.html#creating-an-instance-directory). The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read-only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
 
-This problem will only occur with early Zowe drivers and has been resolved with 1.10 where the `zowe-configure-instance.sh` script will error if it detects the `-c` argument for the install directory location is an existeing Zowe runtime directory.  
+This problem will only occur with Zowe drivers prior to v1.10 and has been resolved in v1.10 where the `zowe-configure-instance.sh` script will report error if it detects the `-c` argument because the installation directory location is an existing Zowe runtime directory.  
 
 

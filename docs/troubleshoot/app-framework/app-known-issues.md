@@ -151,6 +151,6 @@ port: 7553 }
 ```
 
 **Solution:**   
-These messages are timing related where different eureaka servers are coming up and trying to connect to each other and warning that the endpoint they are trying to handshake with isn't available.  When all of the eurka services have started these errors will stop being logged.  
+These messages are timing related where different Eureka servers are coming up and trying to connect to each other and warning that the endpoint they are trying to make handshake with is not available.  When all of the Eurka services have started, these errors will stop being logged.  
 
-You may ignore these messages.
+You can ignore these messages.
