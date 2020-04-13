@@ -51,11 +51,11 @@ The IFrame sample application plug-in for developers demonstrates how to embed p
 ### z/OS Subsystems
 The z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
-### TN3270
-This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
+### 3270 Terminal
+The 3270 Terminal plug-in provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plug-in and the Zowe Application Server connect to any standard TN3270E server.
 
 ### VT Terminal 
-The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
+The VT Terminal plug-in provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plug-in and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using standard network protocols.
 
 ### API Catalog
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).

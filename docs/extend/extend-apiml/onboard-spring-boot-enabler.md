@@ -165,7 +165,6 @@ Execution environment related properties should be provided by additional config
 
     Execution environments for local development deployments and mainframe deployment are described in detail later in this article.
 
-
 **Follow these steps:**
 
 1. Provide a configuration section for onboarding with API ML in the `application.yml` file.
@@ -342,6 +341,15 @@ server:
         trustStoreType: PKCS12
 ```
 If there is something missing in your configuration, setting logging level to debug could provide more information:  
+```yaml
+logging:
+   level:
+     ROOT: INFO
+     org.zowe.apiml: DEBUG
+```
+
+**Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
+
 ```yaml
 logging:
    level:

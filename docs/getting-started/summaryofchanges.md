@@ -37,7 +37,7 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 #### Zowe App Server
 
 - The sample-react-app README has been updated to state prerequisites. [#20](https://github.com/zowe/sample-react-app/pull/20)
-- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
+- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31)
 - Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
 - Simple conda build scripts have been added. [#46](https://github.com/zowe/zlux-build/pull/46)
 - Window now focuses on app when it is called. [#50](https://github.com/zowe/zlux-platform/pull/50)
@@ -56,13 +56,10 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 - Global headers are now able to exist and override plugins. [#180](https://github.com/zowe/zlux-server-framework/pull/180)
 - Auth login and refresh now tells the client what the default category is. [#183](https://github.com/zowe/zlux-server-framework/pull/183)
 - Window actions and viewprt events have been asigned to the zlux iframe area.[#184](https://github.com/zowe/zlux-app-manager/pull/184)
-- The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#190](https://github.com/zowe/zlux-app-manager/pull/190) 
-- Logo has been updated. [#204](https://github.com/zowe/zlux-app-manager/pull/204)   
+- The Desktop now sets the HTML attribute “lang” to the user’s language for better screen reading support. [#190](https://github.com/zowe/zlux-app-manager/pull/190)
+- Logo has been updated. [#204](https://github.com/zowe/zlux-app-manager/pull/204)
 
 #### Zowe CLI
-
-
-**CLI Highlights:**
 
 The Secure Credential Store plug-in is now packaged with tools that build dependencies locally. This fixes an issue where the installation could fail at sites with firewall restrictions. [#9](https://github.com/zowe/zowe-cli-scs-plugin/issues/9)
 
@@ -73,7 +70,7 @@ The Secure Credential Store plug-in is now packaged with tools that build depend
 - [Zowe CLI - v6.10.1](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
 - [Secure Credential Store Plug-in - v4.0.3 ](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md)
 
-**Plug-in Changelogs:**
+**CLI Plug-in Changelogs:**
 
 - [IBM CICS Plug-in - v4.0.2](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md)
 - [IBM DB2 Plug-in - v4.0.5](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md)
@@ -81,13 +78,24 @@ The Secure Credential Store plug-in is now packaged with tools that build depend
 - [IBM IMS Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/CHANGELOG.md)
 - [IBM MQ Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/CHANGELOG.md)
 
+#### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
+
 ### Bug fixes
 
 The following bugs were fixed:
 
+#### Zowe z/OS Installation
+
+- Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory location to be an existing Zowe runtime.  This caused a deadloop and running out of `BPXAS` instances. See [Unable to create BPXAS instances](../troubleshoot/troubleshoot-zos.md#unable-to-create-bpxas-instances). [#1123](https://github.com/zowe/zowe-install-packaging/issues/1123)
+- Bugfix: Creation of instance dir has incorrect path validation. [#1127](https://github.com/zowe/zowe-install-packaging/issues/1172)
+
 #### Zowe App Server
 
-- Bugfix: Sublogger message fix. [#24](https://github.com/zowe/zlux-shared/pull/24) 
+- Bugfix: Sublogger message fix. [#24](https://github.com/zowe/zlux-shared/pull/24)
 - Bugfix: sample-angular-app could not be run from a folder outside of $ROOT_DIR. [#34](https://github.com/zowe/sample-angular-app/pull/34)
 - Bugfix: Menu locations were wrong when multiple apps opened because the numbers used partially came from the previous instance. [#36](https://github.com/zowe/sample-angular-app/pull/36)
 - Bugfix: Fix for unconditional tls override [#103](https://github.com/zowe/zlux-app-server/pull/103)

@@ -109,9 +109,14 @@ For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zow
 
 During installation, two PDS data sets are created: the `SZWESAMP` data set and the `SZWEAUTH` data set.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules. 
 
-You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  
+You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  The storage requirements are included here.
 
-The `SZWESAMP` data set is fixed block 90 samplib containing the following members.
+Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
+---|---|---|---|---|---|---|---|---
+SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
+SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+
+The `SZWESAMP` data set contains the following members.
 
 Member name | Purpose  
 ---|---
