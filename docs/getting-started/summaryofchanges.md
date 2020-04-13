@@ -99,6 +99,11 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 The following bugs were fixed:
 
+#### Zowe z/OS Installation
+
+- Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory location to be an existing Zowe runtime.  This caused a deadloop and running out of `BPXAS` instances. See [Unable to create BPXAS instances](../troubleshoot/troubleshoot-zos.md#unable-to-create-bpxas-instances). [#1123](https://github.com/zowe/zowe-install-packaging/issues/1123)
+- Bugfix: Creation of instance dir has incorrect path validation. [#1127](https://github.com/zowe/zowe-install-packaging/issues/1172)
+
 #### Zowe App Server
 
 - Bugfix: subloggers would not inherit message translation maps from parent loggers. [#24](https://github.com/zowe/zlux-shared/pull/24) 
