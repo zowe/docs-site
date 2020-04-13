@@ -40,7 +40,6 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 - Performance improvements in character conversion, JSON and collections code. [#162](https://github.com/zowe/zss/pull/162)
 - The code now prints fewer warnings when attls is not set up. [#130](https://github.com/zowe/zowe-common-c/pull/130)
 - ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
-- Support for APIML JWT tokens sent via browser cookies or Authentication: Bearer has been implemented. Once the token is validated, a cookie with the same name is sent back and creates a ZSS sesstion token for compatibility with ZSS auth. [#132](https://github.com/zowe/zowe-common-c/pull/132)
 - Config variable names have been updated to stay consistent with IBM terminology. [#165](https://github.com/zowe/zss/pull/165)
 
 #### Zowe App Server
