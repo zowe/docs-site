@@ -29,14 +29,13 @@ If you do not have internet access at your site, use the following method to ins
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
-2. Address the software requirements for Secure Credential Storage and CLI plug-ins.
+2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
-   - On graphical Linux, install `gnome-keyring` and `libsecret` on your computer.
+   - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
 
-   - There are additional requirements for headless Linux systems. See the [SCS plug-in Readme](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html) for details.
+   - **(Headless Linux)** Follow the procudure documemted in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md).
 
-
-3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
     A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
@@ -60,7 +59,9 @@ If you do not have internet access at your site, use the following method to ins
     - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
     - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-7. **(Optional)** Issue the following command to install each available plug-in:
+7. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
+
+8. **(Optional)** Issue the following command to install each available plug-in:
 
     ```
     zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
@@ -76,7 +77,7 @@ If your computer is connected to the Internet, you can use the following method 
 
 **Follow these steps:**
 
-1. Address the following software requirements:
+1. Address the following software requirements for the core CLI:
 
     - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
 
@@ -86,7 +87,11 @@ If your computer is connected to the Internet, you can use the following method 
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
-    - **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](cli-swreqplugins.md).
+2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
+
+   - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
+
+   - **(Headless Linux)** Follow the procudure documemted in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md).
 
 3. Issue the following commands in sequence to install the core from the public npm registry. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
 
@@ -102,13 +107,13 @@ If your computer is connected to the Internet, you can use the following method 
     - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
     - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-4. **(Optional)** To install all available plug-ins to Zowe CLI, issue the following command:
+4. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
+
+5. **(Optional)** To install all available plug-ins to Zowe CLI, issue the following command:
 
     ```
     zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
     ```
-
-    **Note:** The IBM Db2 plug-in requires additional configuration.
 
 After you install and configure Zowe CLI, issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
 
