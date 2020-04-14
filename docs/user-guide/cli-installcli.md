@@ -29,11 +29,12 @@ If you do not have internet access at your site, use the following method to ins
 
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
-2. Address the requirements for Secure Credential Storage and CLI plug-ins.
+2. Address the software requirements for Secure Credential Storage and CLI plug-ins.
 
    - On graphical Linux, install `gnome-keyring` and `libsecret` on your computer.
 
    - There are additional requirements for headless Linux systems. See the [SCS plug-in Readme](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html) for details.
+
 
 3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
 
@@ -65,7 +66,7 @@ If you do not have internet access at your site, use the following method to ins
     zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
     ```
 
-    **Note:** The IBM Db2 plug-in requires [additional configuration](cli-db2plugin.md#installing).
+    **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
 Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
 
