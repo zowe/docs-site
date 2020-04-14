@@ -30,7 +30,9 @@ If you do not have internet access at your site, use the following method to ins
         **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
 2. Address the requirements for Secure Credential Storage and CLI plug-ins.
+
    - On graphical Linux, install `gnome-keyring` and `libsecret` on your computer.
+
    - There are additional requirements for headless Linux systems. See the [SCS plug-in Readme](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html) for details.
 
 3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
