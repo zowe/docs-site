@@ -4,9 +4,7 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
 
  - Started task output
     - Zowe server started task
-    - Zowe Cross Memory started task (STC)
-        - Zowe CLI or REXX (TSO output command, STATUS, capture all)
-    
+    <!-- - Zowe Cross Memory started task (STC) - Not currently collected -->
     **Note:** You will need to install the TSO exit IKJEFF53 to permit the TSO OUTPUT command to collect the Zowe started task output.  If this exit is not enabled, you will see an error message when you run `zowe-support.sh`:
     
      ```
@@ -15,8 +13,7 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
     For how to correct this error, see the [TSO/E installation exit IKJEFF53](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.e0ze100/ikjeff53.htm) topic in IBM Knowledge Center.  
     The above is the authoritative description, and will be the first to reflect changes.  To assist you, a summary of the situation and actions you could take to allow TSO OUTPUT to work in your installation are provided in [Circumventing the IKJ56328I TSO OUTPUT error](#circumventing-the-ikj56328i-tso-output-error).
     
-- Zowe Install log
-- Scripts that are called from `run-zowe.sh`
+ - Zowe Install log
  - Versions:
     - manifest.json
     - z/OS version
@@ -25,14 +22,14 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
  - Additional logs
     - Zowe app server 
     - zLUX app server
- - Process list with CPU info with the following data points: 
+<!--> - Process list with CPU info with the following data points: 
    - Running command and all arguments of the command
    - Real time that has elapsed since the process started
    - Job name
    - Process ID as a decimal number
    - Parent process ID as a decimal number
    - Processor time that the process used
-   - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible)
+   - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible) Not working -->
 
 ## Circumventing the IKJ56328I TSO OUTPUT error
 
@@ -90,10 +87,9 @@ Contact Zowe Open Community to address and troubleshoot a Zowe issue.
 
 2. Get instructions from the Community on whether you need to run the  script that collects diagnostics data. If you do not need to run the script, the Community will proceed with troubleshooting.
 
-3. If the Community instructs you to run the `zowe-support.sh` script, issue the following commands:
+3. If the Community instructs you to run the `zowe-support.sh` script, execute the script in:
    ```
-   cd $ZOWE_ROOT_DIR/scripts
-   ./zowe-support.sh
+   <Instance Directory>/bin/zowe-support.sh
    ```
 4. Send the .pax.Z output file to Community members for further troubleshooting.
 
