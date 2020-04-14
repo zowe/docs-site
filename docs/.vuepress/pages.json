@@ -148,9 +148,14 @@
   {
     "text": "Troubleshooting",
     "baseuri": "/troubleshoot/",
-    "items": [{
+    "items": [
+      {
         "text": "Overview",
         "link": "troubleshoot/troubleshooting.md"
+      },
+      {
+        "text": "z/OS component installation",
+        "link": "troubleshoot/troubleshoot-zos.md"
       },
       {
         "text": "Zowe API Mediation Layer",
@@ -183,7 +188,7 @@
         ]
       },
       {
-        "text": "Using Diagnostics Data Script",
+        "text": "Using diagnostics data script",
         "link": "troubleshoot/troubleshoot-diagnostics.md"
       }
     ]
