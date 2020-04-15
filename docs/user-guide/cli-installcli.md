@@ -33,7 +33,7 @@ If you do not have internet access at your site, use the following method to ins
 
    - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
 
-   - **(Headless Linux)** Follow the procudure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md).
+   - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
 3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
@@ -91,9 +91,9 @@ If your computer is connected to the Internet, you can use the following method 
 
    - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
 
-   - **(Headless Linux)** Follow the procudure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md).
+   - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
-3. Issue the following commands in sequence to install the core from the public npm registry. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+3. Issue the following commands in sequence to install the core from the public npm registry. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
     ```
     npm install -g @zowe/cli@zowe-v1-lts

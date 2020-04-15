@@ -23,7 +23,7 @@ Get started with Zowe&trade; CLI quickly and easily.
 ### Software Requirements
 Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md).
+**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
 
 
@@ -31,7 +31,7 @@ Before you install Zowe CLI, download and install Node.js and npm. Use an LTS ve
 
 Issue the following commands in sequence to install the core CLI.
 
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
 
 
