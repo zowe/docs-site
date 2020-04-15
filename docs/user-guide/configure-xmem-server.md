@@ -47,9 +47,9 @@ To install the cross memory server, take the following steps either [manually](#
 
 Instead of the manual steps [described above](#copy-cross-memory-data-set-members-manually), a convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
 
-The script `zowe-install-xmem.sh` takes four arguments:
+The script `zowe-install-xmem.sh -d <dataSetPrefix> -b <loadlib> -a <parmlib> [-r <proclib>]` has the following parameters:
 
-- **First Parameter**=Source PDS Prefix
+- **`-d <dataSetPrefix>`** - Source PDS Prefix
 
    Data set prefix of the source PDS where .SZWESAMP(ZWESVSTC) was installed into.  
 
@@ -57,21 +57,21 @@ The script `zowe-install-xmem.sh` takes four arguments:
 
    For an SMP/E installation, this will be the value of `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
--  **Second Parameter**=Target DSN Load Library 
+-  **`-b <loadlib>`** - Target DSN Load Library 
 
    This is the data set name of the PDSE where members `ZWESIS01` and `ZWESAUX` will be copied into.  This must be an APF-authorized PDS.  
 
-- **Third Parameter**=Target DSN for PARMLIB
+- **`-a <parmlib>`** - Target DSN for PARMLIB
 
    This is the data set name of where the PARMLIB `ZWESIP00` will be placed.
 
-- **Fourth Parameter**=Target DSN for PROCLIB
+- **`-r <proclib>`** - Target DSN for PROCLIB (optional)
 
    Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
 
 **Example:**
 
-Executing the command `zowe-install-xmem.sh MYUSERID.ZWE SYS1.IBM.ZIS.SZISLOAD SYS1.IBM.PARMLIB USER.PROCLIB` with four parameters specified copies:
+Executing the command `zowe-install-xmem.sh -d MYUSERID.ZWE -b SYS1.IBM.ZIS.SZISLOAD -a SYS1.IBM.PARMLIB -r USER.PROCLIB` copies:
 
  - the load modules `MYUSERID.ZWE.SZWEAUTH(ZWESIS01)` and `MYUSERID.ZWE.SZWEAUTH(ZWESAUX)` to the load library `SYS.IBM.ZIS.SZISLOAD`
 - the PARMLIB member `MYUSERID.ZWE.SZWESAMP(ZWESIP00)` to `SYS1.IBM.PARMLIB(ZWESIP00)`
