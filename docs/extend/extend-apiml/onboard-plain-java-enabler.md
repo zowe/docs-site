@@ -421,6 +421,31 @@ routes:
 
     The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
 
+**Example:** 
+```
+https://gateway:10010/api 
+```
+will be routed to: 
+```
+https://service:10015/sampleservice
+```
+API major version 1:
+```
+https://gateway:10010/api/v1
+```
+will be routed to: 
+```
+https://service:10015/sampleservice/api/v1
+```
+APIs docs major version 1:
+```
+https://gateway:10010/api/v1/api-doc
+```
+will be routed to:
+```
+https://service:10015/sampleservice/api-doc
+```
+
 **Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
 
