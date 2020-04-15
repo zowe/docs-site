@@ -22,7 +22,7 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
  - Additional logs
     - Zowe app server 
     - zLUX app server
-<!--> - Process list with CPU info with the following data points: 
+<!-- - Process list with CPU info with the following data points: 
    - Running command and all arguments of the command
    - Real time that has elapsed since the process started
    - Job name
