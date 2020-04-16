@@ -423,7 +423,7 @@ routes:
 
 **Example:** 
 ```
-https://gateway:10010/api 
+https://gateway:10010/api/sampleservice 
 ```
 will be routed to: 
 ```
@@ -431,7 +431,7 @@ https://service:10015/sampleservice
 ```
 API major version 1:
 ```
-https://gateway:10010/api/v1
+https://gateway:10010/api/v1/sampleservice
 ```
 will be routed to: 
 ```
@@ -439,7 +439,7 @@ https://service:10015/sampleservice/api/v1
 ```
 APIs docs major version 1:
 ```
-https://gateway:10010/api/v1/api-doc
+https://gateway:10010/api/v1/api-doc/sampleservice
 ```
 will be routed to:
 ```
@@ -448,8 +448,6 @@ https://service:10015/sampleservice/api-doc
 
 **Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
-
-**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 ### API Catalog information
 

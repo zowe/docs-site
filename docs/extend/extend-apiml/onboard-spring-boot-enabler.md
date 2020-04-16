@@ -422,8 +422,6 @@ In addition to the basic Zuul routing, the Zowe API Gateway adds support for ver
 
 The /api/ prefix is used for REST APIs. There is also /ui/ prefix for web UIs and /ws/ for WebSockets.
 
-Additional routing can be implemented using a Zuul Pre-filter.
-
 ## Adding API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
