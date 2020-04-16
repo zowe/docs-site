@@ -340,13 +340,6 @@ server:
         keyStoreType: PKCS12
         trustStoreType: PKCS12
 ```
-If there is something missing in your configuration, setting logging level to debug could provide more information:  
-```yaml
-logging:
-   level:
-     ROOT: INFO
-     org.zowe.apiml: DEBUG
-```
 
 **Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -399,7 +392,7 @@ To register your REST service with API ML using a Spring Boot enabler, annotate 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
 
 ### Basic routing
-Basic routing is based on the service ID and API version that are used to identify the service. The specific instance is selected by the API gateway. The response needs to be the same for all instances. This is the type of routing that is expected by Eureka and Zuul.
+Basic routing is based on the service ID and API version that are used to identify the service. The specific instance is selected by the API Gateway. The response needs to be the same for all instances. This is the type of routing that is expected by Eureka and Zuul.
 
 Gateway URL format:
 ```
@@ -407,20 +400,20 @@ https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
 ```
 **Example:**
 
-Original URL of resource exposed by service
+The original URL of a resource exposed by a service
 ```
 http://service:10015/enablerv1sampleapp/api/v1/samples
 ```
-API Gateway URL of resource
+API Gateway URL of the resource
 ```
 https://gateway:10010/api/v1/enablerv1sampleapp/samples
 ```
 
-The URL identifies the resource. It does not identify uniquely the instance of the same service in the case when there multiple instances that are providing the same service (i.e. service is running in HA mode). Services of the same product that are providing different resources (e.g. SYSVIEW on one system and SYSVIEW in a different sysplex) cannot have the same service ID (the same URI cannot have two different meanings). 
+**Note:** The URL identifies the resource. It does not uniquely identify the instance of the same service when multiple instances are provided by the same service (i.e. service is running in HA mode). Services of the same product that provide different resources (e.g. SYSVIEW on one system and SYSVIEW in a different sysplex) cannot have the same service ID. 
 
-In addition to the basic Zuul routing, the Zowe API Gateway adds support for versioning where a major version can be specified. The gateway routes request only to an instance that provide the specified major version of the API. 
+In addition to the basic Zuul routing, the Zowe API Gateway adds support of versioning where a major version can be specified. The Gateway routes request only to an instance that provides the specified major version of the API. 
 
-The /api/ prefix is used for REST APIs. There is also /ui/ prefix for web UIs and /ws/ for WebSockets.
+The /api/ prefix is used for REST APIs. The /ui/ prefix is used for web UIs, and /ws/ prefix for WebSockets.
 
 ## Adding API documentation
 
