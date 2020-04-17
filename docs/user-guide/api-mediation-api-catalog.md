@@ -66,7 +66,20 @@ Services that belong to the same product family are displayed on the same tile.
 
 ## Swagger "Try it out" functionality in the API Catalog
 
-The API Catalog enables users to call service APIs through the **Try it out** functionality. To demonstrate **Try it out**, we use the example of the Swagger Petstore.
+The API Catalog enables users to call service APIs through the **Try it out** functionality. There are 2 different endpoint types:
+
+- Public endpoints - This endpoints are accessible without entering user credentials.
+- Protected endpoints - This endpoints are only accessible by entering user credentials. This endpoints are marked with 'lock' icon
+
+SCREENSHOT_CATALOG_WITH_RED_CIRCLE_LOCK
+
+Note: 
+
+Before making requests for protected endpoints, you authorize your session by clicking the 'lock' button and completing the information required in the Authorization modal pictured below:
+
+SCREENSHOT
+
+To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
 **Example:**
 
@@ -101,11 +114,4 @@ This section outlines the process for making a request.
    **Example:**
 
     <img src="../images/api-mediation/discoverable_clien_pet_swagger_response.png" alt="endpoint detail" width="700px"/>
-
-## Authorize your requests
-
-Before making any requests, you would normally authorize your session by clicking the Authorize button and completing the information required in the Authorization modal pictured below:
-
-
-The API Catalog example has an 'Basic authentication' security model. 
 
