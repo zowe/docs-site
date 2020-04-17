@@ -66,18 +66,21 @@ Services that belong to the same product family are displayed on the same tile.
 
 ## Swagger "Try it out" functionality in the API Catalog
 
-The API Catalog enables users to call service APIs through the **Try it out** functionality. There are 2 different endpoint types:
+The API Catalog enables users to call service APIs through the **Try it out** functionality. There are 2 types of endpoints:
 
-- Public endpoints - This endpoints are accessible without entering user credentials.
-- Protected endpoints - This endpoints are only accessible by entering user credentials. This endpoints are marked with 'lock' icon
+- **Public endpoints**
+
+  Endpoints that are accessible without entering user credentials.
+  
+- **Protected endpoints** 
+
+  Endpoints that are only accessible by entering user credentials. These endpoints are marked with a lock icon.
 
     **Example:**
 
     <img src="../images/api-mediation/catalog_proctected_endpoints_swagger_lock.png" alt="endpoint detail" width="1000px"/>
 
-    **Note:**
-
-    Before making requests for protected endpoints, you authorize your session by clicking the **lock** button and completing the information required in the Authorization modal pictured below:
+    **Note:** Before making requests to protected endpoints, authorize your session by clicking the lock icon and complete the required information in the Authorization modal shown below:
 
     **Example:**
 
