@@ -71,13 +71,17 @@ The API Catalog enables users to call service APIs through the **Try it out** fu
 - Public endpoints - This endpoints are accessible without entering user credentials.
 - Protected endpoints - This endpoints are only accessible by entering user credentials. This endpoints are marked with 'lock' icon
 
-SCREENSHOT_CATALOG_WITH_RED_CIRCLE_LOCK
+    **Example:**
 
-Note: 
+    <img src="../images/api-mediation/catalog_proctected_endpoints_swagger_lock.png" alt="endpoint detail" width="1000px"/>
 
-Before making requests for protected endpoints, you authorize your session by clicking the 'lock' button and completing the information required in the Authorization modal pictured below:
+    **Note:**
 
-SCREENSHOT
+    Before making requests for protected endpoints, you authorize your session by clicking the **lock** button and completing the information required in the Authorization modal pictured below:
+
+    **Example:**
+
+    <img src="../images/api-mediation/catalog_proctected_endpoints_swagger_auth.png" alt="endpoint detail" width="300px"/>
 
 To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
