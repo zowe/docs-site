@@ -1,6 +1,6 @@
 # Capturing diagnostics to assist problem determination 
 
-To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script `zowe-support.sh` captures diagnostics data that is required for successful problem determination. By running the shell script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `<INSTANCE_DIRECTORY>/bin` directory.  To determine the `<INSTANCE_DIRECTORY>` for a Zowe started task open the `JESJCL` step in the `ZWESVSTC` task and navigate to the line including `//STARTING EXEC ZWESVSTC,INSTANCE=`.  The `<INSTANCE_DIRECTORY>/bin/zowe-support.sh` script captures the following data:
+To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script `zowe-support.sh` captures diagnostics data that is required for successful problem determination. By running the shell script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `<INSTANCE_DIRECTORY>/bin` directory.  To determine the `<INSTANCE_DIRECTORY>` for a Zowe started task, open the `JESJCL` step in the `ZWESVSTC` task and navigate to the line including `//STARTING EXEC ZWESVSTC,INSTANCE=`.  The `<INSTANCE_DIRECTORY>/bin/zowe-support.sh` script captures the following data:
 
  - Started task output
     - Zowe server started task
@@ -9,11 +9,11 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script
     
     **Note:** You will need to install the TSO exit IKJEFF53 to permit the TSO OUTPUT command to collect the Zowe started task output.  If this exit is not enabled, you will see an error message when you run `zowe-support.sh`:
     
-     ```
+    ```
     IKJ56328I JOB jobname REJECTED - JOBNAME MUST BE YOUR USERID OR MUST START WITH YOUR USERID
     ```
     For how to correct this error, see the [TSO/E installation exit IKJEFF53](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.e0ze100/ikjeff53.htm) topic in IBM Knowledge Center.  
-    The above is the authoritative description, and will be the first to reflect changes.  To assist you, a summary of the situation and actions you could take to allow TSO OUTPUT to work in your installation are provided in [Circumventing the IKJ56328I TSO OUTPUT error](#circumventing-the-ikj56328i-tso-output-error).
+    The above is the authoritative description, and will be the first to reflect changes.  To assist you, a summary of the situation and actions you could take to allow TSO OUTPUT to work in your installation are provided in [IKJ56328I JOB job name REJECTED](#ikj56328i-job-job-name-rejected).
     
 - Zowe Install log
 - Scripts that are called from `run-zowe.sh`
@@ -36,17 +36,15 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script
 
 ## Running the diagnostic support script
 
-**Follow these steps:**
-
-1. Run the `zowe-support.sh` script, issue the following commands:
-   ```
-   cd <INSTANCE_DIRECTRY>/bin
-   ./zowe-support.sh
-   ```.
+To run the `zowe-support.sh` script, issue the following commands:
+```
+cd <INSTANCE_DIRECTORY>/bin
+./zowe-support.sh
+```
 
 ## Problems that may occur running the diagnostic script
 
-## IKJ56328I JOB job name REJECTED
+### IKJ56328I JOB job name REJECTED
 
 **Audience:** Zowe users or the personnel who collects support logs.  These individuals should also inform their z/OS system programmer.  
 
