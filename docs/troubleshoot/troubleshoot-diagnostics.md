@@ -1,6 +1,6 @@
-# Troubleshooting Zowe through Zowe Open Community
+# Capturing diagnostics to assist problem determination 
 
-To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a shell script that captures diagnostics data that is required for successful troubleshooting. By running the shell script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `ZOWEDIR/scripts` folder with the rest of Zowe scripts. The script captures the following data:
+To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script `zowe-support.sh` captures diagnostics data that is required for successful problem determination. By running the shell script on your z/OS environment, you receive a set of output files, which contain all relevant diagnostics data necessary to start a troubleshooting process. You can find the `zowe-support.sh` script in the `<INSTANCE_DIRECTORY>/bin` directory.  To determine the `<INSTANCE_DIRECTORY>` for a Zowe started task, open the `JESJCL` step in the `ZWESVSTC` task and navigate to the line including `//STARTING EXEC ZWESVSTC,INSTANCE=`.  The `<INSTANCE_DIRECTORY>/bin/zowe-support.sh` script captures the following data:
 
  - Started task output
     - Zowe server started task
@@ -9,11 +9,11 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
     
     **Note:** You will need to install the TSO exit IKJEFF53 to permit the TSO OUTPUT command to collect the Zowe started task output.  If this exit is not enabled, you will see an error message when you run `zowe-support.sh`:
     
-     ```
+    ```
     IKJ56328I JOB jobname REJECTED - JOBNAME MUST BE YOUR USERID OR MUST START WITH YOUR USERID
     ```
     For how to correct this error, see the [TSO/E installation exit IKJEFF53](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.e0ze100/ikjeff53.htm) topic in IBM Knowledge Center.  
-    The above is the authoritative description, and will be the first to reflect changes.  To assist you, a summary of the situation and actions you could take to allow TSO OUTPUT to work in your installation are provided in [Circumventing the IKJ56328I TSO OUTPUT error](#circumventing-the-ikj56328i-tso-output-error).
+    The above is the authoritative description, and will be the first to reflect changes.  To assist you, a summary of the situation and actions you could take to allow TSO OUTPUT to work in your installation are provided in [IKJ56328I JOB job name REJECTED](#ikj56328i-job-job-name-rejected).
     
 - Zowe Install log
 - Scripts that are called from `run-zowe.sh`
@@ -34,7 +34,17 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, we introduce a
    - Processor time that the process used
    - Process user ID (in a form of user name if possible, or as a decimal user ID if not possible)
 
-## Circumventing the IKJ56328I TSO OUTPUT error
+## Running the diagnostic support script
+
+To run the `zowe-support.sh` script, issue the following commands:
+```
+cd <INSTANCE_DIRECTORY>/bin
+./zowe-support.sh
+```
+
+## Problems that may occur running the diagnostic script
+
+### IKJ56328I JOB job name REJECTED
 
 **Audience:** Zowe users or the personnel who collects support logs.  These individuals should also inform their z/OS system programmer.  
 
@@ -78,23 +88,4 @@ F LLA,REFRESH
 ``` 
 Now your TSO OUTPUT command will work as described in SYS1.SAMPLIB(IKJEFF53). 
 
-Note that this change will affect all users of the TSO OUTPUT command on LPARS sharing the SYS1.LINKLIB dataset.  It is not limited to Zowe users.  Consult your system programmer to ensure that this change does not impact your site rules about the OUTPUT command, because the specified jobs will be PURGED from the JES output queue if this exit is implemented as described above.  
-
-## Contact Zowe Open Community to Troubleshoot Zowe
-
-Contact Zowe Open Community to address and troubleshoot a Zowe issue.
-
-**Follow these steps:**
-
-1. Contact Open Zowe Community in [Slack](https://app.slack.com/client/T1BAJVCTY/C1BAK03LN) to address your issues.
-
-2. Get instructions from the Community on whether you need to run the  script that collects diagnostics data. If you do not need to run the script, the Community will proceed with troubleshooting.
-
-3. If the Community instructs you to run the `zowe-support.sh` script, issue the following commands:
-   ```
-   cd $ZOWE_ROOT_DIR/scripts
-   ./zowe-support.sh
-   ```
-4. Send the .pax.Z output file to Community members for further troubleshooting.
-
-Community members will help you troubleshoot an issue.
+Note that this change will affect all users of the TSO OUTPUT command on LPARS sharing the SYS1.LINKLIB dataset.  It is not limited to Zowe users.  Consult your system programmer to ensure that this change does not impact your site rules about the OUTPUT command, because the specified jobs will be PURGED from the JES output queue if this exit is implemented as described above. 
