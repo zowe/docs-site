@@ -4,7 +4,7 @@ As an application developer, use the API Catalog to view what services are runni
  API Mediation Layer. Through the API Catalog, you can also view the associated API documentation
   corresponding to a service, descriptive information about the service, and the current state
    of the service. The tiles in the API Catalog can be customized by changing values in
-   the `mfaas.catalog-ui-tile` section defined in the application.yml of a service. A microservice that
+   the `apiml.catalog.tile` section defined in the application.yml of a service. A microservice that
    is onboarded to the API Mediation Layer and configured appropriately, registers automatically with the API Catalog
    and a tile for that service is added to the Catalog.
 
@@ -66,7 +66,27 @@ Services that belong to the same product family are displayed on the same tile.
 
 ## Swagger "Try it out" functionality in the API Catalog
 
-The API Catalog enables users to call service APIs through the **Try it out** functionality. To demonstrate **Try it out**, we use the example of the Swagger Petstore.
+The API Catalog enables users to call service APIs through the **Try it out** functionality. There are 2 types of endpoints:
+
+- **Public endpoints**
+
+  Endpoints that are accessible without entering user credentials.
+  
+- **Protected endpoints** 
+
+  Endpoints that are only accessible by entering user credentials. These endpoints are marked with a lock icon.
+
+    **Example:**
+
+    <img src="../images/api-mediation/catalog_proctected_endpoints_swagger_lock.png" alt="endpoint detail" width="1000px"/>
+
+    **Note:** Before making requests to protected endpoints, authorize your session by clicking the lock icon and complete the required information in the Authorization modal shown below:
+
+    **Example:**
+
+    <img src="../images/api-mediation/catalog_proctected_endpoints_swagger_auth.png" alt="endpoint detail" width="300px"/>
+
+To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
 **Example:**
 
@@ -101,3 +121,4 @@ This section outlines the process for making a request.
    **Example:**
 
     <img src="../images/api-mediation/discoverable_clien_pet_swagger_response.png" alt="endpoint detail" width="700px"/>
+
