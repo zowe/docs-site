@@ -401,11 +401,11 @@ The following snippet is an example of the API routing information properties.
 ```yaml
 routes:
     - gatewayUrl: api
-      serviceUrl: /sampleservice
+      serviceUrl: /sampleservice-api
     - gatewayUrl: api/v1
-      serviceUrl: /sampleservice/api/v1
+      serviceUrl: /sampleservice-api/ver1
     - gatewayUrl: api/v1/api-doc
-      serviceUrl: /sampleservice/api-doc
+      serviceUrl: /sampleservice-api/api-doc
 ```
    where:
 
@@ -427,7 +427,7 @@ https://gateway:10010/api/sampleservice
 ```
 will be routed to: 
 ```
-https://service:10015/sampleservice
+https://service:10015/sampleservice-api
 ```
 API major version 1:
 ```
@@ -435,7 +435,7 @@ https://gateway:10010/api/v1/sampleservice
 ```
 will be routed to: 
 ```
-https://service:10015/sampleservice/api/v1
+https://service:10015/sampleservice-api/ver1
 ```
 APIs docs major version 1:
 ```
@@ -443,11 +443,8 @@ https://gateway:10010/api/v1/api-doc/sampleservice
 ```
 will be routed to:
 ```
-https://service:10015/sampleservice/api-doc
+https://service:10015/sampleservice-api/api-doc
 ```
-
-**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
 
 ### API Catalog information
 
