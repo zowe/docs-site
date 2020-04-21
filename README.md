@@ -41,7 +41,8 @@ Before you get started with the authoring work, it's necessary that you understa
 * **[`docs-staging`](https://github.com/zowe/docs-site/tree/docs-staging/docs)** - protected branch
 
   Docs for the upcoming `vNext` release. When Zowe has a release, its `docs-staging` branch will be merged into `master` and the content will be visible on [https://docs.zowe.org/stable](https://docs.zowe.org/stable).
-* **[`active-development`](https://github.com/zowe/docs-site/tree/active-development/docs)** - protected branch
+
+* (REMOVED TEMPORATRILY UNTIL NEW COMPONENT FEATURES ARE AVAILABLE) **[`active-development`](https://github.com/zowe/docs-site/tree/active-development/docs)** - protected branch
 
   Docs for a forward-version that includes features not yet included in the Zowe Stable version. Its content is published on [https://docs.zowe.org/active-development](https://docs.zowe.org/active-development) for early validation purpose.
 * **`v<v.r>.x`** - protected branches
