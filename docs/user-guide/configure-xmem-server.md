@@ -47,7 +47,7 @@ To install the cross memory server, take the following steps either [manually](#
 
 Instead of the manual steps [described above](#copy-cross-memory-data-set-members-manually), a convenience script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh` is shipped with Zowe to help with copying the cross memory and auxiliary address space PROCLIB members, the PARMLIB member, and the load libraries. 
 
-The script `zowe-install-xmem.sh -d <dataSetPrefix> -b <loadlib> -a <parmlib> [-r <proclib>]` has the following parameters:
+The script `zowe-install-xmem.sh -d <dataSetPrefix> -b <loadlib> -a <parmlib> [-r <proclib> -l <log_directory>]` has the following parameters:
 
 - **`-d <dataSetPrefix>`** - Source PDS Prefix
 
@@ -68,6 +68,10 @@ The script `zowe-install-xmem.sh -d <dataSetPrefix> -b <loadlib> -a <parmlib> [-
 - **`-r <proclib>`** - Target DSN for PROCLIB (optional)
 
    Target PROCLIB PDS where ZWESVSTC will be placed.  If parameter is omitted the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
+
+- **`-l <log_directory>`** - Log directory (optional)
+
+   Overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
 
 **Example:**
 
