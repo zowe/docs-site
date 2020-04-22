@@ -32,10 +32,10 @@
       - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
         - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
       - [Disable certificate validation](#disable-certificate-validation)
-  - [Security Service Client Library](#security-service-client-library)
-      - [@EnableApimlAuth annotation](#enableapimlauth-annotation)
-      - [Gateway lookup logic](#gateway-lookup-logic)
-      - [Useful classes](#useful-classes)
+  - [ZAAS Client](#zaas-client)
+    - [Pre-requisites](#pre-requisites)
+    - [Provided API](#provided-api)
+    - [Getting Started(Step by Step Instruction)](#getting-startedstep-by-step-instruction)
 
 ## How API ML transport security works
 
@@ -548,38 +548,162 @@ The response has the HTTP status code [502 Bad Gateway](https://developer.mozill
 
 If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
 
-## Security Service Client Library
+## ZAAS Client
 
-The `security-service-client-spring` library enables authentication and endpoint protection. The library relies on API ML Gateway to provide authentication and token validation, and consists of the following components:
-  - `org.zowe.apiml.security.common` - Components that are necessary to build Spring security
-  - `org.zowe.apiml.security.client` - Components that enables the security client and Gateway lookup
+The ZAAS client is a plain java library providing the authentication via simple unified interface without the need
+to understand in depth the REST API calls below. The Client also focuses on limited footprint and as such depends 
+only on Apache HTTP Client, Lombok and their dependencies. The client contains methods for retrieval of JWT token, 
+PassTicket and verification of the information about the JWT token. 
 
-#### @EnableApimlAuth annotation
-Use `@EnableApimlAuth` annotation to enable the security client and integration of the `security-service-client-spring` library. The annotation handles necessary component scans, creates the `GatewaySecurityService`, and starts the Gateway lookup logic.
+### Pre-requisites
 
-#### Gateway lookup logic
-Security client uses the `GatewayClient` Spring component to represent a Gateway instance. Lookup logic scans the embedded Discovery client and sets a Gateway instance to ‘Gateway Client’ after the Spring context starts. The scanning process happens asynchronously from the context start-up. The security client provides the authentication service once the Gateway is found. Lookup status can be retrieved by calling `GatewayClient.isInitialized()` method or listen for `GatewayLookupCompleteEvent` event, which gets published after the Gateway instance is found.
+- Java SDK version 1.8.
+- The Gateway Service of API ML up and running as a service.
+- A property file which defines the keystore or truststore certificates.
 
-#### Useful classes
-The core class of the library is `org.zowe.apiml.security.client.service.GatewaySecurityService`, which provides a facility to perform login and to validate the jwt token. The `GatewaySecurityService` has the following methods:
+### Provided API
 
-  - `login` - Allows to login to the API Gateway with a username and password and retrieve the valid JWT token
-  - `query` - Allows to verify the JWT token validity and return the JWT token data
+The library provides `ZaasClient` interface with following public methods.:
 
- The following providers process authentication requests:
+    ```java
+    public interface ZaasClient {
+        String login(String userId, String password) throws ZaasClientException;
+        String login(String authorizationHeader) throws ZaasClientException;
+        ZaasToken query(String token) throws ZaasClientException;
+        String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
+    }
+    ```
 
-   - `org.zowe.apiml.security.client.login.GatewayLoginProvider` - Verifies the mainframe credentials
-   - `org.zowe.apiml.security.client.token.GatewayTokenProvider` - Authenticates the JWT token
+which enables your application to add following functions:
 
-The library contains the following Spring security filters and handlers:
+- **Obtain JWT token (login)**
 
-- `org.zowe.apiml.security.common.content.BasicContentFilter` - Authenticates the credentials from the basic authorization header. The filter in the `SecurityConfiguration` class is used to secure content with basic authentication. The credentials are extracted from the request header and are passed to the `GatewayLoginProvider`, which calls the `/login` endpoint.
-- `org.zowe.apiml.security.common.content.CookieContentFilter` - Authenticates the JWT token that is stored in the cookie. This filter in a `SecurityConfiguration` is used to secure content with the JWT token stored in the cookie. The JWT token is extracted from the cookie and passed to the `GatewayTokenProvider`, which calls the `/query` endpoint.
-- `SuccessfulLoginHandler` - Handles the successful login
-- `UnauthorizedHandler` - Handles unauthorized access
-- `BasicAuthUnauthorizedHandler` - Handles unauthorized access in the case of basic authentication
-- `FailedAuthenticationHandler` - Handles authentication failure
-- `ResourceAccessExceptionHandler` - Handles exceptions related to accessing other services/resources, such as GatewayNotFoundException or ServiceNotAccessibleException
-- `AuthExceptionHandler` - Handles exceptions thrown during authentication process
+  To integrate login, call one of the following methods for login in the `ZaasClient` interface. Credentials can be provided either in the request body, or as Basic Auth.
 
-For more information, see [Api Catalog security configuration](https://github.com/zowe/api-layer/blob/master/api-catalog-services/src/main/java/com/ca/mfaas/apicatalog/security/SecurityConfiguration.java) (Reference usage of the library), [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture) and [Security with Spring Tutorial](https://www.baeldung.com/security-spring).
+  - If user provides credentials in the request body, then you can call the following method from your API:
+
+    ```java
+    String login(String userId, String password) throws ZaasClientException;
+    ```
+
+  - If the user is providing credentials as Basic Auth, then use the following method:
+
+      ```java
+      String login(String authorizationHeader) throws ZaasClientException;
+      ```
+
+  These methods will return the JWT token as a String. This token can be further used to authenticate the user in subsequent APIs.
+
+  This method will automatically use the truststore file to add a security layer, which you have configured in the `ConfigProperties` class.
+
+- **Validate and get details from token (query)**
+
+    The `query` method is used to provide you the details embedded in the token which includes creation time of the token, expiration time
+    of the token, and the user to whom the token has been issued.
+
+    To use this method, call the method from your API.
+
+    ```java
+    ZaasToken query(String token) throws ZaasClientException;
+    ```
+
+    In return you will receive the `ZaasToken` Object in JSON format.
+
+    This method will automatically use the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
+
+- **Obtain a PassTicket (passTicket)**
+
+    The `passTicket` method has an added layer of protection. To use this method, call the method of the interface and provide
+    a valid APPLID of the application and JWT token as an input.
+
+    The APPLID is the name of the application (up to 8 characters) that is used by security products to differentiate certain security operations (like PassTickets) between applications.
+
+    This method has an added layer of security so that you do not have to provide an input to the method as you have already initialized the
+    `ConfigProperties` class. As such, this method automatically fetches the truststore and keystore files as an input.
+
+    In return, this method provides a valid pass ticket as a String to the authorized user.
+
+    For additional information about PassTickets in API ML see [Enabling PassTicket creation for API Services that Accept PassTickets](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-passtickets.html).
+
+### Getting Started(Step by Step Instruction)
+
+To use this library use the procedure described in this article.
+
+**Follow these steps:**
+
+1. Add `zaas-client` as a dependency in your project. 
+
+    Gradle:
+    
+        dependencies {
+            compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
+        }
+
+    Pom:
+    
+        <dependency>
+                    <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
+                    <artifactId>{{version}}</artifactId>
+        </dependency>
+
+2. In your application, create your java class which will be used to create an instance of `ZaasClient` and further to use its method to
+   login, query and to issue passTicket.
+
+3. To use `zaas-client`, provide a property file for configuration. Kindly check `org.zowe.apiml.zaasclient.config.ConfigProperites` to make sure what properties we have to provide in the property file. 
+   
+   Configuration Properties:
+   
+    ```java
+   public class ConfigProperties {
+       private String apimlHost;
+       private String apimlPort;
+       private String apimlBaseUrl;
+       private String keyStoreType;
+       private String keyStorePath;
+       private String keyStorePassword;
+       private String trustStoreType;
+       private String trustStorePath;
+       private String trustStorePassword;
+   }
+    ```
+   
+4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object like the following:
+
+    ```java
+    ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+    ```
+   
+6. Now use any of the method from `ZaasClient` in your class. Like for login use the following code snippet:
+
+    ```java
+       String zaasClientToken = zaasClient.login("user", "user");
+    ```
+
+7. Following is an example of a `SampleZaasClientImplementation`:
+
+    ```java
+    public class SampleZaasClientImplementation {
+    
+        /**
+         * This method is used to fetch token from zaasClient
+         * @param username
+         * @param password
+         * @return
+         */
+        public String login(String username, String password) {
+            try {
+                ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+                String zaasClientToken = zaasClient.login(username, password);
+                //Use this token  in subsequent calls
+                return zaasClientToken;
+            } catch (ZaasClientException | ZaasConfigurationException exception) {
+                exception.printStackTrace();
+            } 
+        }
+   
+        private ConfigProperties getConfigProperties() {
+            // Load the values for configuration properties
+        }
+    }
+    ```
+  
