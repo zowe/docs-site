@@ -88,6 +88,4 @@ F LLA,REFRESH
 ``` 
 Now your TSO OUTPUT command will work as described in SYS1.SAMPLIB(IKJEFF53). 
 
-Note that this change will affect all users of the TSO OUTPUT command on LPARS sharing the SYS1.LINKLIB dataset.  It is not limited to Zowe users.  Consult your system programmer to ensure that this change does not impact your site rules about the OUTPUT command, because the specified jobs will be PURGED from the JES output queue if this exit is implemented as described above.  
-
-
+Note that this change will affect all users of the TSO OUTPUT command on LPARS sharing the SYS1.LINKLIB dataset.  It is not limited to Zowe users.  Consult your system programmer to ensure that this change does not impact your site rules about the OUTPUT command, because the specified jobs will be PURGED from the JES output queue if this exit is implemented as described above. 
