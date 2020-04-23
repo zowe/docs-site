@@ -65,3 +65,19 @@ SyntaxError: Invalid or unexpected token
 **Solution:**
 
 This problem occurs when you use Node.js v8.16.1 which is not supported on Zowe. There is a known issue with node.js v8.16.1 and Zowe desktop encoding. Use a supported version of Node.js instead. For more information, see [Supported Node.js versions](../user-guide/install-nodejs-zos.md#supported-nodejs-versions).
+
+## Cannot start Zowe and UNIX commands not found with FSUM7351
+
+**Symptom:**
+
+When you start the ZWESVSTC started task, you might encounter the following error message: 
+
+```
+dirname: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
+pwd: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
+.: <instance-dir>/bin/internal/run-zowe.sh 3: /bin/internal/read-instance.sh: not found
+```
+
+**Solution:**
+
+Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing, make sure that it is appended to PATH in your profile, for example, in `/etc/profile/`.
