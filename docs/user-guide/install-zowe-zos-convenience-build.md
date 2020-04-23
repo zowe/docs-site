@@ -136,13 +136,16 @@ Member name | Purpose
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
+#### Step 3a: Choose a log directory (optional) 
+
+By default during install and configure various logs will be created in `/global/zowe/logs`, if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the installing user, or you wish to override and provide your own directory as the place that logs go you can specify this with the `-l` parameter.
 
 ### Step 4: Install the Zowe runtime
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
  ```
-    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
+    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX> [-l <LOG_DIR>]
  ```
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
