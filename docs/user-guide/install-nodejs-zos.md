@@ -44,35 +44,8 @@ To install Node.js for Zowe, the following requirements must be met.
 IBM zEnterprise® 196 (z196) or newer
 
 **Software:**
-- z/OS UNIX System Services enabled
-- Integrated Cryptographic Service Facility (ICSF) configured and started on systems where Node.js is run. 
 
-### Configuring ICSF
-
-This section summarizes the high-level steps that you can follow to configure and start ICSF. For more information, refer to [ICSF System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/in2.htm) and [ICSF Administrator's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb300/abstract.htm).
-
-1. Add `CSF.SCSFMOD0` to the LNKLST concatenation.
-2. APF authorize `CSF.SCSFMOD0`.
-3. Modify `IKJTSOxx` to add `CSFDAUTH` and `CSFDPKDS` in the `AUTHPGM` parameter list and in the `AUTHTSF` parameter list.
-4. Create the following ICSF Key Data Sets:
-    - Cryptographic Key Data Set (CKDS) 
-      
-      Sample JCL: `SYS1.SAMPLIB(CSFCKDS)`
-
-    - Public Key Data Set (PKDS)
-    
-      Sample JCL: `SYS1.SAMPLIB(CSFPKDS)`
-
-    - (Optional) If you want to have PKCS#11 support through ICSF, you should create Token Key Data Set (TKDS) 
-    
-      Sample JCL: `SYS1.SAMPLIB(CSFTKDS)`
-
-5. Copy ICSF Installation Options sample (`SYS1.SAMPLIB(CSFPRM00)`) to the system PARMLIB data set, and change the name of the data set on the CKDSN and PKDSN statements to the name of data sets you created previously.
-6. Create ICSF startup procedure. Copy `SYS1.SAMPLIB(CSF)` to the system PROCLIB and change the data set name in the `CSFPARM DD` statement to the name of the installation options data set you provided previously.
-7. (Optional) Define a RACF Started Procedure profile for CSF procedure in `CLASS(STARTED)`.
-8. Start ICSF (`S CSF`).
-
-**Note:** You might need IPL before starting ICSF.
+z/OS UNIX System Services enabled
 
 ## Installing the PAX edition of Node.js - z/OS
 
