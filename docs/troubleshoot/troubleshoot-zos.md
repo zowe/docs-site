@@ -37,4 +37,20 @@ This may be because when the Zowe instance directory was created, it was generat
 
 This problem will only occur with Zowe drivers prior to v1.10 and has been resolved in v1.10 where the `zowe-configure-instance.sh` script will report error if it detects the `-c` argument because the installation directory location is an existing Zowe runtime directory.  
 
+## Cannot start Zowe and UNIX commands not found with FSUM7351
+
+**Symptom:**
+
+When you start the ZWESVSTC started task, you might encounter the following error message: 
+
+```
+dirname: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
+pwd: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
+.: <instance-dir>/bin/internal/run-zowe.sh 3: /bin/internal/read-instance.sh: not found
+```
+
+**Solution:**
+
+Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing, make sure that it is appended to PATH in your profile, for example, in `/etc/profile/`.
+
 
