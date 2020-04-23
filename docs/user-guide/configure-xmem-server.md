@@ -126,14 +126,8 @@ The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement for referenc
 The cross memory server performs a sequence of SAF checks to protect its services from unauthorized callers. To do this, it uses the FACILITY class and a `ZWES.IS` entry. Valid callers must have READ access to the `ZWES.IS` profile. Those callers include the STC user `ZWESVUSR` under which the ZWESVSTC started task runs. It is recommended that you also grant READ access to the STC user under which the ZWESASTC started task runs which is `ZWESIUSR`.
 
 The commands required to configure SAF for the cross memory server are included in a JCL member `ZWESECUR` that is delivered with Zowe, see [Configuring z/OS system](configure-zos-system.md#configure-cross-memory-server-for-saf)
- 
-## Step 5: Configure an IVSF cryptographic services environment
-    
-To generate symmetric keys, the user `ZWESVUSR` who runs `ZWESVSTC` requires READ access to CSFRNGL in the CSFSERV class.
 
-For commands required to configure ICSF cryptographic services environment for symmetric key generation, see [Configuring z/OS system](configure-zos-system.md#configure-an-ICSF-cryptographic-services-environment).
-
-## Step 6: Configure security environment switching
+## Step 5: Configure security environment switching
 
 When responding to API requests, the Zowe desktop node API server running under USS must be able to change the security environment of its process to associate itself with the security context of the logged in user. This is called impersonation.  
 
