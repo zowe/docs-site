@@ -14,17 +14,17 @@ If you want to avoid the need to have each browser trust the CA that has signed 
 
 It's recommended that you start with the local API Mediation Layer CA for an initial evaluation.
 
-You can use the `bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `bin/zowe-setup-certificates.env`.
+You can use the `<ROOT_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<ROOT_DIR>/bin/zowe-setup-certificates.env`. 
 
 ## Generate certificate with the default values
 
-The script reads the default variable values that are provided in the `bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location. To set up certificates with the default environment variables, ensure that you run the following script in the Zowe installation directory:
+The script reads the default variable values that are provided in the `<ROOT_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
 
 ```shell script
-bin/zowe-setup-certificates.sh
+<ROOT_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-The keystore and certificates are generated in the default `/global/zowe/keystore` directory.  This can be overridden with the `-p` argument to the script.  
+generates the keystore in `u/zowe/mykeystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
 
 ## Generate certificate with the custom values
 
@@ -40,15 +40,15 @@ Follow the procedure to customize the values for variables in the `zowe-setup-ce
     
 3. Execute the following command with the customized environment file:
    ```shell script
-    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env
+    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
-   where `<your_directory>` specifies the location of your customized environment file. 
+   where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
    
 The keystore and certificates are generated based on the customized values in the 
 `bin/zowe-setup-certificates.env` file.
 
 The `zowe-setup-certificates.sh` command also generates `zowe-certificates.env` file in the 
-`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step. 
+`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configururing the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
    
 The following example shows how you can configure `zowe-setup-certificates.env` file to use the existing certificates:
 
