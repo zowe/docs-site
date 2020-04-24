@@ -24,6 +24,19 @@ where:
 
 To log out, click the the avatar in the lower right corner and click **Sign Out**.
 
+### Changing user password
+ 
+1. Click the personalization panel icon. 
+2. Click the Change Password icon. 
+3. Fill out the Old Password and New Password fields.
+4. Upon successful password change, you will be taken to the desktop.
+
+### Updating an expired password
+
+1. Upon logging in with an expired password, a screen will be displayed prompting you to change your password.
+2. Enter and confirm your new password in the corresponding fields. 
+3. Upon successful password change, you will be taken to the desktop.     
+
 ### Pinning applications to the task bar
 
 1. Click the Start menu.
