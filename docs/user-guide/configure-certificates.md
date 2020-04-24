@@ -40,9 +40,9 @@ Follow the procedure to customize the values for variables in the `zowe-setup-ce
     
 3. Execute the following command with the customized environment file:
    ```shell script
-    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env
+    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
-   where `<your_directory>` specifies the location of your customized environment file. 
+   where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
    
 The keystore and certificates are generated based on the customized values in the 
 `bin/zowe-setup-certificates.env` file.

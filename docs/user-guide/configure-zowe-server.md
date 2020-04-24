@@ -8,7 +8,7 @@ When the Zowe runtime is launched, it is run under a z/OS started task (STC) wit
 
 If your site has your own technique for PROCLIB creation, you may follow this and copy the `ZWESVSTC` as-is.  If you want to create a pipeline or automate the PROCLIB copying, you can use a convenience script `zowe-install-proc.sh` that is provided in the `<ROOT_DIR>/scripts/utils` folder. 
 
-The script `zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib>]` has the following parameters:
+The script `zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib> -l <log_directory]` has the following parameters:
 
 - **`-d <dataSetPrefix>`** - Source PDS Prefix
 
@@ -21,6 +21,10 @@ The script `zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib>]` has the foll
 - **`-r <proclib>`** - Target PROCLIB PDS (optional)
    
    Target PROCLIB PDS where ZWESVSTC will be placed. If parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
+
+- **`-l <log_directory>`** - Log directory (optional)
+
+   Overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
    
    **Example**
 
