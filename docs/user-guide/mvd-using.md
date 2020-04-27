@@ -27,6 +27,9 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 ### Changing user password
  
 1. Click the personalization panel icon. 
+
+<img src="../images/mvd/settings.png">
+  
 2. Click the Change Password icon. 
 3. Fill out the Old Password and New Password fields.
 4. Upon successful password change, you will be taken to the desktop.
