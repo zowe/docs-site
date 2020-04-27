@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.10.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.11.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.11.0 LTS (April 2020)](#version-1-11-0-lts-april-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
 - [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
 - [Version 1.8.1 (February 2020)](#version-1-8-1-february-2020)
@@ -19,6 +20,48 @@ Zowe Version 1.10.0 and later releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.11.0 LTS (April 2020)
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added:
+
+#### API Mediation Layer
+
+- <!--placeholder-->
+
+#### Zowe App Server
+
+- <!--placeholder-->
+
+#### Zowe CLI
+
+Reference the appropriate version in each changelog to learn about features, enhancements, and fixes.
+
+**Core CLI Changelogs:**
+
+- <!--placeholder-->
+
+**CLI Plug-in Changelogs:**
+
+- <!--placeholder-->
+
+#### Zowe Explorer
+
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
+
+### Bug fixes
+
+The following bugs were fixed:
+
+#### Zowe App Server
+
+- <!--placeholder-->
 
 ## Version 1.10.0 LTS (April 2020)
 
