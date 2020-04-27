@@ -39,15 +39,21 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
-Reference the appropriate version in each changelog to learn about features, enhancements, and fixes.
+Reference the appropriate version in each of the following changelogs to learn about features, enhancements, and fixes:
 
 **Core CLI Changelogs:**
 
-- <!--placeholder-->
+- [Zowe CLI - v6.11.0](https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md)
+- [Imperative CLI Framework - v4.6.0](https://github.com/zowe/imperative/blob/master/CHANGELOG.md)
+- [Secure Credential Store Plug-in - v4.0.4 ](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md)
 
 **CLI Plug-in Changelogs:**
 
-- <!--placeholder-->
+- [IBM CICS Plug-in - v4.0.2](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md)
+- [IBM DB2 Plug-in - v4.0.6](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md)
+- [IBM FTP Plug-in: - v1.0.2](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md)
+- [IBM IMS Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/CHANGELOG.md)
+- [IBM MQ Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/CHANGELOG.md)
 
 #### Zowe Explorer
 
@@ -88,7 +94,7 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 #### Zowe App Server
 
 - The sample-react-app README has been updated to state prerequisites. [#20](https://github.com/zowe/sample-react-app/pull/20)
-- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31) 
+- An example of how to use the Zowe Desktop's built-in context menu has been added. [#31](https://github.com/zowe/sample-angular-app/pull/31)
 - Sample angular app has been updated for angular 6 best practices use of HttpClient, RxJS [#33](https://github.com/zowe/sample-angular-app/pull/33)
 - Simple conda build scripts have been added. [#46](https://github.com/zowe/zlux-build/pull/46)
 - App server logs now have IDs prefixed, for easy lookup in future documentation. [#49](https://github.com/zowe/zlux-platform/pull/49)
@@ -103,12 +109,12 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 - App server /auth API now returns which handler is the default. [#183](https://github.com/zowe/zlux-server-framework/pull/183)
 - Events and actions for viewports and windows are now accessible to iframe’s via the standardized window.ZoweZLUX.iframe object. [#184](https://github.com/zowe/zlux-app-manager/pull/184)
 - Focus on app2app, as well as some package updates. [#188](https://github.com/zowe/zlux-app-manager/pull/188)
-- 3 features: 
-   1. Desktop can now filter the list of apps by search query. 
-   2. Desktop cleanup has reduced the bootstrapping server requests by half. 
+- 3 features:
+   1. Desktop can now filter the list of apps by search query.
+   2. Desktop cleanup has reduced the bootstrapping server requests by half.
    3. Desktop now can load new apps added to the server without a page reload. [#189](https://github.com/zowe/zlux-app-manager/pull/189)
-- Desktop’s DOM now has lang attribute as soon as the language preference is known. [#190](https://github.com/zowe/zlux-app-manager/pull/190) 
-- Desktop login screen updated with new Zowe logo. [#204](https://github.com/zowe/zlux-app-manager/pull/204)  
+- Desktop’s DOM now has lang attribute as soon as the language preference is known. [#190](https://github.com/zowe/zlux-app-manager/pull/190)
+- Desktop login screen updated with new Zowe logo. [#204](https://github.com/zowe/zlux-app-manager/pull/204)
 - JES, MVS Explorers now have support for APIML’s Single Sign On feature [#344](https://github.com/zowe/zlux/issues/344)
 
 
@@ -147,7 +153,7 @@ Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory 
 
 #### Zowe App Server
 
-- Bugfix: subloggers would not inherit message translation maps from parent loggers. [#24](https://github.com/zowe/zlux-shared/pull/24) 
+- Bugfix: subloggers would not inherit message translation maps from parent loggers. [#24](https://github.com/zowe/zlux-shared/pull/24)
 - Bugfix: sample-angular-app could not be run from a folder outside of $ROOT_DIR. [#34](https://github.com/zowe/sample-angular-app/pull/34)
 - Bugfix: Menu locations were wrong when multiple apps opened because the numbers used partially came from the previous instance. [#36](https://github.com/zowe/sample-angular-app/pull/36)
 - Bugfix: Apps that were the target of app2app communication were not put into focus. [#50](https://github.com/zowe/zlux-platform/pull/50)
