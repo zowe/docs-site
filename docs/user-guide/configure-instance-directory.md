@@ -1,6 +1,11 @@
 # Creating and configuring the Zowe instance directory
 
-The Zowe instance directory contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory. 
+The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory. 
+
+The instance directory ``<INSTANCE_DIRECTORY>/bin` contains a number of key scripts
+ - `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
+  - `zowe-stop.sh` is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
+  - `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md)
 
 ## Prerequisites
 
@@ -21,6 +26,12 @@ The Zowe instance directory contains a file `instance.env` that stores configura
 The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
 If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
+
+In order to allow the `ZWESVSTC` started task to have permission to acces the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
+
+```sh
+<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
+```
 
 ## Reviewing the `instance.env` file
 
@@ -59,8 +70,7 @@ Individual address spaces for different Zowe instances and their subcomponents c
    - **AC** - API ML Catalog
    - **AD** - API ML Discovery Service
    - **AG** - API ML Gateway
-   - **DS** - Node.js instance for the ZSS Server
-   - **DT** - Zowe Desktop Application Server
+   - **DS** - App Server
    - **EF** - Explorer API Data Sets
    - **EJ** - Explorer API Jobs
    - **SZ** - ZSS Server
@@ -125,4 +135,4 @@ To determine which ports are not available, follow these steps:
 
 ### Extensions
 
-- `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information,  see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers.  
+- `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information,  see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 

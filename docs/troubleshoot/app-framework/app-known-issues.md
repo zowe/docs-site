@@ -14,7 +14,7 @@ When you open apps in the desktop they display a page with the message "The plug
 
 NodeJS v8.16.1 performs auto-encoding in a way that breaks Zowe apps. See [https://github.com/ibmruntimes/node/issues/142](https://github.com/ibmruntimes/node/issues/142) for details.
 
-Use node v8.16.0 which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `ibm-trial-node-v8.16.0-os390-s390x.pax.Z` file.
+Use a different version of NodeJS 8, such as v8.17.0, or try NodeJS version 12 which are both available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `ibm-trial-node-v8.17.0-os390-s390x.pax.Z` file.
 
 ## NODEJSAPP disables immediately
 
@@ -42,7 +42,7 @@ Authentication failed for 1 types:  Types: ["zss"]
 For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.
 
 To solve the problem, follow these steps: 
-1. Open the log file `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
 2. Look for the message that starts with `ZIS status`.  
 
@@ -81,7 +81,7 @@ To solve the problem, follow these steps:
 ## Server startup problem ret=1115
 
 **Symptom:**
-When ZWESVSTC is restarted, the following message is returned in the output of the ZSS server log file, `/zlux-app-server/log/zssServer-yyyy-mm-dd-hh-ss.log`:
+When ZWESVSTC is restarted, the following message is returned in the output of the ZSS server log file, `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`:
 ```
 server startup problem ret=1115
 ```
@@ -133,3 +133,24 @@ Add the Zowe Desktop directory path to the MVD_DESKTOP_DIR environment variable.
   ```
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
+
+## Error: Problem making eureka request { Error: connect ECONNREFUSED }
+
+**Symptom:** 
+
+The Zowe started task `ZWESVSTC` log contains error messages reporting problems connecting 
+
+```
+Problem making eureka request { Error: connect ECONNREFUSED 10.1.1.2:7553
+at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1195:14)
+errno: 'ECONNREFUSED',
+code: 'ECONNREFUSED',
+syscall: 'connect',
+address: '10.1.1.2',
+port: 7553 }
+```
+
+**Solution:**   
+These messages are timing related where different Eureka servers are coming up and trying to connect to each other and warning that the endpoint they are trying to make handshake with is not available.  When all of the Eurka services have started, these errors will stop being logged.  
+
+You can ignore these messages.
