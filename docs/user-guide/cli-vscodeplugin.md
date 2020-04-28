@@ -14,11 +14,11 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) lets you interact wi
 
 As a developer, you can use Zowe Explorer to perform the following tasks.
 
-- View, rename, copy and filter mainframe data sets, USS files and jobs.
+- View, rename, copy, and filter mainframe data sets, USS files, and jobs.
 - Create download, edit, upload, and delete PDS and PDS members.
 - Create, edit, and delete Zowe CLI compatible `zosmf` profiles.
 - Switch between Zowe CLI `zosmf` profiles to quickly target different mainframe systems.
-- Use Secure Credentials Store plug-in to securely store your credentials.
+- Use the Secure Credential Store plug-in to store your credentials securely in the settings.
 - Submit jobs.
 
 ## Software requirements
