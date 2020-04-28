@@ -1,10 +1,5 @@
 [{
-
-    "text": "Active Development",
-    "link": "active-development/"
-},
-{
-  "text": "v1.9.x LTS",
+  "text": "Stable",
   "link": "stable/"
 },
 {
