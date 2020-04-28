@@ -10,4 +10,4 @@ As vendors, you are invited to submit conformance testing results for review and
 
 ## How to participate
 
-To participate in the Zowe Conformance Program, follow the process on the [Zowe Conformance Program website](https://www.openmainframeproject.org/projects/zowe/conformance). You can also find a list of products that have earned Zowe Conformant status.
+To participate in the Zowe Conformance Program, follow the process on the [Zowe Conformance Program website](https://www.openmainframeproject.org/projects/zowe/conformance). You can also find a list of products that have earned Zowe Conformant status.  For the criteria for an offering achieving Zowe conformance see [Zowe Conformance Criteria](https://github.com/openmainframeproject/foundation/tree/master/zowe_conformance).

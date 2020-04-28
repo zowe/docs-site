@@ -94,7 +94,23 @@
   {
     "text": "Extending",
     "baseuri": "/extend/",
-    "items": [{
+    "items": [
+      {
+        "text": "Overview",
+        "link": "extend/extend-zowe/extend-zowe-overview.md"
+      },
+      {
+        "text": "Developing for Zowe CLI",
+        "items": [
+          "extend/extend-cli/cli-devTutorials.md",
+          "extend/extend-cli/cli-setting-up.md",
+          "extend/extend-cli/cli-installing-sample-plugin.md",
+          "extend/extend-cli/cli-extending-a-plugin.md",
+          "extend/extend-cli/cli-developing-a-plugin.md",
+          "extend/extend-cli/cli-implement-profiles.md"
+        ]
+      },
+      {
         "text": "Developing for API Mediation Layer",
         "items": [
           "extend/extend-apiml/onboard-overview.md",
@@ -106,17 +122,6 @@
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-passtickets.md"
-        ]
-      },
-      {
-        "text": "Developing for Zowe CLI",
-        "items": [
-          "extend/extend-cli/cli-devTutorials.md",
-          "extend/extend-cli/cli-setting-up.md",
-          "extend/extend-cli/cli-installing-sample-plugin.md",
-          "extend/extend-cli/cli-extending-a-plugin.md",
-          "extend/extend-cli/cli-developing-a-plugin.md",
-          "extend/extend-cli/cli-implement-profiles.md"
         ]
       },
       {
@@ -138,6 +143,10 @@
           "extend/extend-desktop/mvd-errorreportingui.md",
           "extend/extend-desktop/mvd-logutility.md"
         ]
+      },
+      {
+        "text": "Lifecycling z/OS extensions",
+        "link": "extend/extend-zowe-zos/lifecycling-with-zwesvstc.md"
       },
       {
         "text": "Zowe Conformance Program",

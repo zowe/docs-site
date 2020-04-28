@@ -1,20 +1,20 @@
 # Extending Zowe
 
-Zowe was designed and architected to be an extensible tools platform and provides a number of ways that it can be extended and Third Party Independent Software Vendors (ISVs), System Integrators (SIs), as well as others who wish to augment Zowe by creating plugins.  Plugins can be distibuted to customers who have Zowe already installed, and introduce new functionality to an existing Zowe distribution. 
+Zowe was designed and architected to be an extensible tools platform and provides a number of ways that it can be extended by Third Party Independent Software Vendors (ISVs), System Integrators (SIs), as well as others who wish to creating plugins.  These plugins can be distibuted to customers who have Zowe already installed thereby introducing new functionality to an existing Zowe distribution. 
 
-One of the goals of Zowe is to give users a consistent user experience, common functionality and interopability when using Zowe that includes plugins built outside of the Zowe community.  The Zowe conformance program exists to help with this, by providing a set of criteria that, when followed, also provides plugin proiders confidence that their software will remain functional through Zowe releases, see [How to Participate in the Zowe Conformance Program](https://openmainframeproject.org/projects/zowe/conformance) as well as the [Zowe Conformance Criteria](https://github.com/openmainframeproject/foundation/tree/master/zowe_conformance).
+One of the goals of Zowe is to give users a consistent user experience, common functionality, and interopability when using Zowe that includes the base set of Zowe core function as well as plugins built outside the Zowe community.  The Zowe conformance program exists to help with this, by providing a set of criteria that, when followed, also provides plugin proiders confidence that their software will remain functional through Zowe releases, see [Zowe conformance](../zowe-conformance-program.md)
 
 Zowe plugins can be built in three main ways:
 
 - Extending the Zowe Command Line Interface.
 - Adding an API service to the API Mediation Layer. 
-- Adding a plugin to the Zowe desktop.
+- Adding a plugin to the Zowe Desktop.
 
 ## Extending the Zowe Command Line Interface
 
-Command Line Interface extensions are able to provide new commands through their own plugin, see [Developing a new plug-in](../extend-cli/cli-developing-a-plugin.md).  There is a sample extension plug-in provided together with a tutorial, see [Installing the sample plug-in](../extend-cli/cli-installing-sample-plugin.md)
+Command Line Interface extensions are able to provide new commands through their own plugin, see [Developing a new plug-in](../extend-cli/cli-developing-a-plugin.md).  There is a sample extension plug-in provided together with a tutorial, see [Installing the sample plug-in](../extend-cli/cli-installing-sample-plugin.md).  
 
-https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html
+The command line interface is built using node.js and is typically run on a machine other than z/OS, such as a PC where it can be driven through a Terminal or command prompt, or on an automation machine such as a devops pipeline orchestrator. The API Mediation Layer and Zowe Desktop run on z/OS.  Support for running these off platform may come in a future release of Zowe.  To understand the architecture of Zowe, see [Zowe Architecture](../../getting-started/zowe-architecture.md). 
 
 ## Adding an API service to the API Mediation Layer
 
