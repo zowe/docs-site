@@ -109,9 +109,14 @@ For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zow
 
 During installation, two PDS data sets are created: the `SZWESAMP` data set and the `SZWEAUTH` data set.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules. 
 
-You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  
+You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  The storage requirements are included here.
 
-The `SZWESAMP` data set is fixed block 90 samplib containing the following members.
+Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
+---|---|---|---|---|---|---|---|---
+SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
+SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+
+The `SZWESAMP` data set contains the following members.
 
 Member name | Purpose  
 ---|---
@@ -131,13 +136,16 @@ Member name | Purpose
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
+#### Step 3a: Choose a log directory (optional) 
+
+By default during install and configure various logs will be created in `/global/zowe/logs`, if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the installing user, or you wish to override and provide your own directory as the place that logs go you can specify this with the `-l` parameter.
 
 ### Step 4: Install the Zowe runtime
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
  ```
-    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX>
+    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX> [-l <LOG_DIR>]
  ```
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.

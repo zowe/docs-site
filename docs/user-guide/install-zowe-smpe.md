@@ -1,4 +1,4 @@
-# Installing Zowe SMP/E Alpha
+# Installing Zowe SMP/E
 
 **Contents**
 
@@ -283,7 +283,7 @@ The following figures describe the target and distribution libraries and file sy
 
 **Storage requirements for Zowe target libraries**
 
-**Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
+**Note:** These target libraries are not required for the initial FMID install of Zowe SMP/E but will be required for subsequent SYSMODS so are included here for future reference.
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
@@ -375,9 +375,9 @@ Follow these high-level steps to download and install Zowe Open Source Project (
 
 ### Download the Zowe SMP/E package
 
-To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/#download) website. Click the **Zowe SMP/E Alpha** button to save the files to a folder on your desktop.
+To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/#download) website. Click the **Zowe SMP/E FMID AZWE001** button to save the file to a folder on your desktop.
 
-You will receive two files on your desktop.
+You will receive one ZIP package on your desktop. You can extract the following files from the package.
 
   - **AZWE001.pax.Z (binary)**
 

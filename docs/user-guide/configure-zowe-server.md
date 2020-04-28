@@ -8,9 +8,9 @@ When the Zowe runtime is launched, it is run under a z/OS started task (STC) wit
 
 If your site has your own technique for PROCLIB creation, you may follow this and copy the `ZWESVSTC` as-is.  If you want to create a pipeline or automate the PROCLIB copying, you can use a convenience script `zowe-install-proc.sh` that is provided in the `<ROOT_DIR>/scripts/utils` folder. 
 
-The script `zowe-install-proc.sh` has two arguments:
+The script `zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib> -l <log_directory]` has the following parameters:
 
-- **First Parameter**=Source PDS Prefix
+- **`-d <dataSetPrefix>`** - Source PDS Prefix
 
    Dataset prefix of the source PDS where `.SZWESAMP(ZWESVSTC)` was installed into.  
 
@@ -18,13 +18,17 @@ The script `zowe-install-proc.sh` has two arguments:
 
    For an SMP/E installation, this will be the value of `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
-- **Second Parameter**=Target PROCLIB PDS
+- **`-r <proclib>`** - Target PROCLIB PDS (optional)
    
    Target PROCLIB PDS where ZWESVSTC will be placed. If parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
+
+- **`-l <log_directory>`** - Log directory (optional)
+
+   Overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
    
    **Example**
 
-   Executing the command `zowe-install-proc.sh MYUSERID.ZWE USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZSWESAMP)`
+   Executing the command `zowe-install-proc.sh -d MYUSERID.ZWE -r USER.PROCLIB` copies the PDS member `MYUSERID.ZWE.SZWESAMP(ZWESVSTC)` to `USER.PROCLIB(ZWESVSTC)`
 
 ## Step 2: Configure ZWESVSTC to run under the correct user ID
 

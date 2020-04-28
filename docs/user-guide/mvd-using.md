@@ -24,6 +24,22 @@ where:
 
 To log out, click the the avatar in the lower right corner and click **Sign Out**.
 
+### Changing user password
+ 
+1. Click the personalization panel icon. 
+
+<img src="../images/mvd/settings.png">
+  
+2. Click the Change Password icon. 
+3. Fill out the Old Password and New Password fields.
+4. Upon successful password change, you will be taken to the desktop.
+
+### Updating an expired password
+
+1. Upon logging in with an expired password, a screen will be displayed prompting you to change your password.
+2. Enter and confirm your new password in the corresponding fields. 
+3. Upon successful password change, you will be taken to the desktop.     
+
 ### Pinning applications to the task bar
 
 1. Click the Start menu.
@@ -51,11 +67,11 @@ The IFrame sample application plug-in for developers demonstrates how to embed p
 ### z/OS Subsystems
 The z/OS Subsystems plug-in helps you find information about the important services on the mainframe, such as CICS, Db2, and IMS.
 
-### TN3270
-This TN3270 plug-in provides a 3270 connection to the mainframe on which the Zowe Application Server runs. 
+### 3270 Terminal
+The 3270 Terminal plug-in provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plug-in and the Zowe Application Server connect to any standard TN3270E server.
 
 ### VT Terminal 
-The VT Terminal plug-in provides a connection to UNIX System Services and UNIX.
+The VT Terminal plug-in provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plug-in and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using standard network protocols.
 
 ### API Catalog
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
