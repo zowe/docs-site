@@ -51,7 +51,7 @@ You can also watch the following videos to learn how to get started with Zowe Ex
 
 ## Working with user profiles
 
-You can start using features of the extension only when you have a profile. You can set up a `zosmf` profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously. Create a new profile.
+You must have a profile before you can use the extension. You can set up a `zosmf` profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
 
 **Follow these steps:**
 
