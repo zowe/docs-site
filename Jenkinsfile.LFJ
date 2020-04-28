@@ -151,7 +151,7 @@ docker.image('jackjiaibm/zowe-jenkins-base:snapshot').inside('-u root -v /var/ru
       return allowPublishing && RUN_PUBLISH
     },
     stage         : {
-      githubDeploy.command('git status')
+      echo githubDeploy.command('git status')
       githubDeploy.commit("deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}")
       githubDeploy.push()
     }
