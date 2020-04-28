@@ -1,11 +1,10 @@
 [{
-
-    "text": "Active Development",
-    "link": "active-development/"
+  "text": "v1.11.x LTS",
+  "link": "stable/"
 },
 {
   "text": "v1.10.x LTS",
-  "link": "stable/"
+  "link": "v1-10-x/"
 },
 {
   "text": "v1.9.x LTS",
