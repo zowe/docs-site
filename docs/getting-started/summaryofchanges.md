@@ -31,6 +31,9 @@ The following features and enhancements were added:
 
 #### API Mediation Layer
 
+The following new feature was added to the Zowe API Mediation Layer in this version:
+
+- The 'Try it out' functionality has been added to test for public and private endpoints. 
 - <!--placeholder-->
 
 #### Zowe App Server
