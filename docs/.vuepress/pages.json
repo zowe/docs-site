@@ -97,7 +97,7 @@
     "items": [
       {
         "text": "Overview",
-        "link": "extend/extend-zowe/extend-zowe-overview.md"
+        "link": "extend/extend-zowe-overview.md"
       },
       {
         "text": "Developing for Zowe CLI",
@@ -146,7 +146,7 @@
       },
       {
         "text": "Lifecycling z/OS extensions",
-        "link": "extend/extend-zowe-zos/lifecycling-with-zwesvstc.md"
+        "link": "extend/lifecycling-with-zwesvstc.md"
       },
       {
         "text": "Zowe Conformance Program",
