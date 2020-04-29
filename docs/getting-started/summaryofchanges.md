@@ -35,7 +35,20 @@ The following features and enhancements were added:
 
 #### Zowe App Server
 
-- <!--placeholder-->
+- The Explorer-JES app has been updated to support single sign on from the Zowe API Mediation Layer [#344](https://github.com/zowe/zlux/issues/344)
+- The Explorer-MVS app has been updated to support single sign on from the Zowe API Mediation Layer [#345](https://github.com/zowe/zlux/issues/345)
+- The Explorer-USS app has been updated to support single sign on from the Zowe API Mediation Layer [#346](https://github.com/zowe/zlux/issues/346)
+
+#### Zowe Jobs APIs
+
+- Version 2 APIs to support single sign on from the Zowe API Mediation Layer [#21](https://github.com/zowe/jobs/issues/21)
+- Embeded SpringBoot version updated [#89](https://github.com/zowe/jobs/pull/89)
+
+#### Zowe Data-sets and Unix Files APIs
+
+- Version 2 APIs to support single sign on from the Zowe API Mediation Layer [#18](https://github.com/zowe/data-sets/issues/18)
+- Embeded SpringBoot version updated [#151](https://github.com/zowe/data-sets/pull/151)
+- Add incomplete connect timeout parameter to prevent Slowloris DOS attacks [#158](https://github.com/zowe/data-sets/pull/158)
 
 #### Zowe CLI
 
