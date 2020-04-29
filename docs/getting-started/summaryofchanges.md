@@ -31,7 +31,9 @@ The following features and enhancements were added:
 
 #### API Mediation Layer
 
-- <!--placeholder-->
+The following new feature was added to the Zowe API Mediation Layer in this version:
+
+- The 'Try it out' functionality has been added to test for public and private endpoints.
 
 #### Zowe App Server
 
@@ -39,7 +41,7 @@ The following features and enhancements were added:
 
 #### Zowe CLI
 
-Reference the appropriate version in each of the following changelogs to learn about features, enhancements, and fixes:
+Reference the appropriate version in each of the following changelogs to learn about CLI features, enhancements, and fixes:
 
 **Core CLI Changelogs:**
 
@@ -51,9 +53,9 @@ Reference the appropriate version in each of the following changelogs to learn a
 
 - [IBM CICS Plug-in - v4.0.2](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md)
 - [IBM DB2 Plug-in - v4.0.6](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md)
-- [IBM FTP Plug-in: - v1.0.2](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md)
-- [IBM IMS Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/CHANGELOG.md)
-- [IBM MQ Plug-in: - v2.0.1](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/CHANGELOG.md)
+- [IBM FTP Plug-in - v1.0.2](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md)
+- [IBM IMS Plug-in - v2.0.1](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/CHANGELOG.md)
+- [IBM MQ Plug-in - v2.0.1](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/CHANGELOG.md)
 
 #### Zowe Explorer
 
