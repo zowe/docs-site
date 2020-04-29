@@ -38,9 +38,9 @@ To help Zowe&trade; Open Community effectively troubleshoot Zowe, a shell script
 
 To run the `zowe-support.sh` script, issue the following commands:
 ```
-cd <INSTANCE_DIRECTORY>/bin
-./zowe-support.sh
+<INSTANCE_DIRECTORY>/bin/zowe-support.sh [-l <install_logs_directory>]
 ```
+where the `-l` optional parameter points to the custom directory supplied during the installation scripts if applicable
 
 ## Problems that may occur running the diagnostic script
 
