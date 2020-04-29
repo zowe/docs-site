@@ -28,7 +28,7 @@ To register a z/OS server with the API Mediation layer, there are two techniques
 
 The API Gateway can be called by the server that wants to register their REST APIs through a set of API calls to the API Gateway itself.  To do this, the z/OS server needs to know where the API Gateway is and make the API calls to register or unregister itself.  This knowledge can either be within the z/OS server itself, or more typically is done by introducing a micro service whose task is to register to the API Mediation Layer on behalf of an existing z/OS Service and act as a registration broker.  The coding pattern for the micro service is to create a Java Spring Boot server. For more information, see [Onboarding a Spring Boot based REST API Service](extend-apiml/onboard-spring-boot-enabler.md).  This is a bottom up registration, where the z/OS service beneath the API Mediation Layer is calling up into it to say it is ready to receive API requests as well as information for how it should be rendered on the API catalog.  
 
-The Zowe z/OS started task `ZWESVSTC` that launches the Zowe address spaces allows for extra USS micro services to be lifecycled with it, so that they are started together with Zowe and ended when Zowe started task is stopped. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md).  This can be used, for example, to start and stop a dynamic APIML Spring Boot micro service that provides its own APIs or acts as a broker to register APIs on behalf of an existing z/OS server.   
+The Zowe z/OS started task `ZWESVSTC` that launches the Zowe address spaces allows for extra USS 'microservices' to be lifecycled with it, so that they are started together with Zowe and ended when Zowe started task is stopped. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md).  This can be used, for example, to start and stop a dynamic APIML Spring Boot micro service that provides its own APIs or acts as a broker to register APIs on behalf of an existing z/OS server.   
 
 ### Static API registration
 
@@ -49,6 +49,8 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 - React App
 
    See [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
+
+## Lifecycling extensions as Zowe address spaces
 
 Zowe is run under the started task `ZWESVSTC` that brings up its address spaces.  It is possible to introduce a new micro service to be started and stopped with the Zowe stated task. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md).
 
