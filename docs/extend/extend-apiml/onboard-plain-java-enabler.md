@@ -619,6 +619,9 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
+//TODO describe KEYRING options here
+//create a subdoc about keyring setup and production usecase example
+
   This parameter specifies the keystore file used to store the private key.
 
 * **keyStorePassword**

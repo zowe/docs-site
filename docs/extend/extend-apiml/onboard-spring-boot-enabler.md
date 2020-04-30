@@ -313,7 +313,7 @@ apiml:
             trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
             trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
  ```
-
+//TODO remove this segmentation of yaml and instead use comment
 Optional metadata section
 ```yaml
         customMetadata:
