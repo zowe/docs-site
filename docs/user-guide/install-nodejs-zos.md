@@ -14,7 +14,7 @@ The following Node.js versions are supported to run Zowe. See the [Hardware and 
 
 The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler. 
 
-Integrated Cryptographic Service Facility (ICSF) is required for Node.js to operate successfully on z/OS.  If you have not configured your z/OS environment for ICSF see [z/OS Cryptographic Services ICSF Administrators Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.csfb300/toc.htm).  To see whether ICSF has been started check whether the started task `ICSF` is active.
+Integrated Cryptographic Service Facility (ICSF) is required for Node.js to operate successfully on z/OS.  If you have not configured your z/OS environment for ICSF see [z/OS Cryptographic Services ICSF Administrators Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.csfb300/toc.htm).  To see whether ICSF has been started check whether the started task `ICSF` or `CSF` is active.
 
  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 

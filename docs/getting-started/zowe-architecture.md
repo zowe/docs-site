@@ -9,11 +9,11 @@ The following diagram depicts the high level Zowe architecture.
 The digram shows the default port numbers that are used by Zowe.  These are dependent on each instance of Zowe and are held in the Zowe instance directory configuration file `instance.env`
 , see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).  
 
-A number of servers that run under Unix System Services (USS) on z/OS.  These run under the Zowe start task `ZWESVSTC` that has its own user ID `ZWESVUSR` and include a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Severe error messages are written to `STDERR` and for problem determination help for diagnosing issue see, [Troubleshooting](../troubleshoot/troubleshooting.md).
+A number of servers that run under Unix System Services (USS) on z/OS.  These run under the Zowe started task `ZWESVSTC` that has its own user ID `ZWESVUSR` and include a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Severe error messages are written to `STDERR` and for problem determination help for diagnosing issues see, [Troubleshooting](../troubleshoot/troubleshooting.md).
 
 ## ZLUX
 
-The ZLUX Node.js server is also known as the Zowe Application Framework and is provides the Zowe desktop which a user accesses through their web browser via port 8544.  The Zowe desktop includes a number of applications that run inside the ZLUX Zowe Application Framework including a 3270 emulator and a File Editor. 
+The ZLUX Node.js server is also known as the Zowe Application Framework and provides the Zowe desktop which a user accesses through their web browser via port 8544.  The Zowe desktop includes a number of applications that run inside the ZLUX Zowe Application Framework including a 3270 emulator and a File Editor. 
 
 <img src="../images/mvd/zowe-desktop.png" alt="Zowe Desktop Diagram" width="600px"/> 
 
@@ -21,23 +21,23 @@ The ZLUX server logs are written to `<INSTANCE_DIR>/logs/appServer-yyyy-mm-dd-hh
 
 ## zssServer
 
-The Zowe desktop delegates a number of its services to the zssServer which it accesses through the http port 8542.  The zzssServer is written in metalC and has native calls to z/OS to provide its services.  The zssserver logs are written to `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`. 
+The Zowe desktop delegates a number of its services to the zssServer which it accesses through the http port 8542.  The zssServer is written in metalC and has native calls to z/OS to provide its services.  The zssserver logs are written to `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`. 
 
 ## API Gateway
 
-The API Gateway is proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request.  It is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.  The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`, that after authentication allows you to navigate to the API Catalog. 
+The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request.  It is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.  The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`, that after authentication allows you to navigate to the API Catalog. 
 
 <img src="../images/api-mediation/api-mediationlayer.png" alt="Zowe API Mediation Layer" width="600px"/> 
 
 ## API Catalog
 
-The API Catalog provides a list of the API services that have registered themselves as catalog tiles.  These allows you to view the available APIs from Zowe's southbound servers as well as test REST API calls.  
+The API Catalog provides a list of the API services that have registered themselves as catalog tiles.  These allow you to view the available APIs from Zowe's southbound servers as well as test REST API calls.  
 
 <img src="../images/api-mediation/api-catalog.png" alt="Zowe API Catalog" width="600px"/> 
 
 ## API Discovery
 
-The API Discovery server act as the registration service broker between the API Gateway and its southbound servers.  It can be accessed through the URL `https://<ZOWE_HOST_IP>:7552`.  The API discovery homepage lets you view the list of registered API services.  
+The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers.  It can be accessed through the URL `https://<ZOWE_HOST_IP>:7552`.  The API discovery homepage lets you view the list of registered API services.  
 
 <img src="../images/api-mediation/api-discovery.png" alt="Zowe API Discovery" width="600px"/> 
 
