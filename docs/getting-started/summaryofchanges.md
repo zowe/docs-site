@@ -35,6 +35,8 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 
 - The 'Try it out' functionality has been added to test for public and private endpoints.
 
+ [**API ML Changelog**](https://github.com/zowe/api-layer/blob/master/CHANGELOG.md)
+
 #### Zowe App Server
 
 - <!--placeholder-->
