@@ -16,6 +16,10 @@
       {
         "text": "Zowe FAQs",
         "link": "getting-started/freqaskques.md"
+      },
+      {
+        "text": "Related resources",
+        "link": "getting-started/zowe-resources.md"
       }
     ]
   },
