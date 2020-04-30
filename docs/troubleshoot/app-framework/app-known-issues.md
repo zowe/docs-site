@@ -39,9 +39,13 @@ Authentication failed for 1 types:  Types: ["zss"]
 
 **Solution:**
 
-For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.
+For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.  
 
-To solve the problem, follow these steps: 
+There are two known problems that cause thie error to occur.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows a path from the Zowe desktop ZLUX server to the zssServer (across the default port 8542) which then connects to the `ZWESIS01` started task using cross memory.  One of those two connections (ZLUX to zssServer, or zssServer to X-MEM) is likely failing.
+
+### zssServer unable to communicate with X-MEM
+
+Follow these steps: 
 1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
 2. Look for the message that starts with `ZIS status`.  
@@ -51,6 +55,7 @@ To solve the problem, follow these steps:
    ```
    ZIS status - Ok (name='ZWESIS_STD      ', cmsRC=0, description='Ok'
    ```
+   If you see that communication is working then the problem is likely that the ZLUX server is unable to communicate to the zssServer, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver)
 
    If communication is not working the message includes `Failure`. For example:
 
@@ -77,6 +82,18 @@ To solve the problem, follow these steps:
     ZIS status - Failure read failed ret code 1121 reason 0x76650446
     ```
     If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration.html#configuring-zss-for-https)
+
+
+### ZLUX unable to communicate with zssServer
+
+On the [Zowe architecture diagram](../../getting-started/zowe-architecture.md) there is a communication between ZLUX which is a Node.js runtime servering the Zowe desktop web pages to the user's browser, and the zssServer running on port 8542.  If this communication is failing then the user will be unable to log onto the desktop.
+
+Follow these steps: 
+1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+
+2. Look for the message that starts with `...`.  
+
+<<JRW - AWAITING LOG FILE FROM BOB>>
 
 ## Server startup problem ret=1115
 
