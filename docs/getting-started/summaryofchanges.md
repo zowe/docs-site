@@ -33,7 +33,7 @@ The following features and enhancements were added:
 
 The following new feature was added to the Zowe API Mediation Layer in this version:
 
-- The 'Try it out' functionality has been added to test for public and private endpoints.
+- The 'Try it out' functionality has been added to test for public and private endpoints.[#258](https://github.com/zowe/api-layer/issues/258)
 
   [**API ML Changelog**](https://github.com/zowe/api-layer/blob/master/CHANGELOG.md)
 
