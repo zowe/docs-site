@@ -14,10 +14,10 @@ The following Node.js versions are supported to run Zowe. See the [Hardware and 
 
 The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
-- Node.js Version 6
+- v6.x starting with v6.14.4
     - z/OS V2R2 with PTF UI46658 or z/OS V2R3
 
-- Node.js Version 8
+- v8.x (except v8.16.1)
    - z/OS V2R2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
    - z/OS V2R3: PTFs UI61308, UI61376, and UI61747 (APARs PH07107, PH08353, and PH09543)
 
@@ -25,7 +25,7 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
 
    **Workaround:** Use node.js v8.16.2 or later, which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `pax.Z` file.
 
-- Node.js Version 12
+- v12.x
 
 ## How to obtain IBM SDK for Node.js - z/OS
 
