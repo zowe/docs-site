@@ -93,9 +93,28 @@ On the [Zowe architecture diagram](../../getting-started/zowe-architecture.md) t
 Follow these steps: 
 1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
-2. Look for the message that starts with `...`.  
+2. Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
 
-<<JRW - AWAITING LOG FILE FROM BOB>>
+```
+yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR INFO (_zsf.apiml,apiml.
+yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR INFO (_zsf.auth,webauth
+yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR WARN (_zsf.proxy,proxy.
+  at GetAddrInfoReqWrap.onlookup Ýas oncomplete¨ (dns.js:64:26) {    
+  errno: 'ENOTFOUND',                                                  
+  code: 'ENOTFOUND',                                                    
+  syscall: 'getaddrinfo',                                              
+  hostname: 'localhost'                                                
+}      
+``` 
+3. Map localhost to port 127.0.0.1
+
+Create an entry in the file `etc/.hosts` that contains the line
+
+```
+localhost        127.0.0.1
+```
+
+4. Restart the `ZWESVSTC` address space.
 
 ## Server startup problem ret=1115
 
