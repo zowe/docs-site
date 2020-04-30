@@ -108,7 +108,7 @@ yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR WARN (_zsf.proxy,proxy.
 ``` 
 3. Map localhost to port 127.0.0.1
 
-Create an entry in the file `etc/.hosts` that contains the line
+Create an entry in the file `/etc/hosts` that contains the line
 
 ```
 localhost        127.0.0.1
