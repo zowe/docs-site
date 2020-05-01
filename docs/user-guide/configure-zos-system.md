@@ -166,7 +166,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)
     ```
     ```
-    TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
+    TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
 **Notes:**
 
