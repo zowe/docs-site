@@ -28,7 +28,7 @@ A minor release indicates that functionality has been added but the code is back
 ### Major release
 A major release indicates that changes have been made to the public API and the code is no longer backwards compatible.  This is sometimes refered to as a "breaking" change.  Currently Zowe is at version 1.  This is associated with the Zowe conformance program, see [Zowe conformance program](../extend/zowe-conformance-program.md), such that offerings that extend Zowe and achieve the Zowe conformance badge will remain compatible with Zowe throughout its version 1 lifetime.  
 
-## manifeset.json
+## manifest.json
 To see the release number of Zowe look at the `manifest.json` file.  This is included in the top level directory of where a Zowe convenience build is expanded to, see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md), the top level directory of a Zowe runtime `<ROOT_DIR>`, and for a Zowe instance directory `<INSTANCE_DIR>/workspace`, see [Creating and configuring the Zowe instance directory](../user-guilde-configure-instance-directory.md).
 
 To see the version of a Zowe release use the Unix grep command in a directory containing a `manifest.json` file. 
