@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.11.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.11.0 LTS (April 2020)](#version-1-11-0-lts-april-2020)
+- [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
 - [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
 - [Version 1.8.1 (February 2020)](#version-1-8-1-february-2020)
@@ -21,7 +21,7 @@ Zowe Version 1.11.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.11.0 LTS (April 2020)
+## Version 1.11.0 LTS (May 2020)
 
 ### New features and enhancements
 
@@ -39,7 +39,20 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 
 #### Zowe App Server
 
-- <!--placeholder-->
+- Updated the JES Explorer, MVS Explorer, and USS Explorer apps to support single sign-on from the Zowe API Mediation Layer.  [#344](https://github.com/zowe/zlux/issues/344) [#345](https://github.com/zowe/zlux/issues/345) [#346](https://github.com/zowe/zlux/issues/346)
+
+#### Zowe APIs
+
+**Zowe Jobs APIs**
+
+- Version 2 APIs now support single sign-on from the Zowe API Mediation Layer [#21](https://github.com/zowe/jobs/issues/21)
+- Updated embeded Spring Boot version [#89](https://github.com/zowe/jobs/pull/89)
+
+**Zowe Data Set and Unix Files APIs**
+
+- Version 2 APIs now support single sign-on from the Zowe API Mediation Layer [#18](https://github.com/zowe/data-sets/issues/18)
+- Updated embeded Spring Boot version [#151](https://github.com/zowe/data-sets/pull/151)
+- Added incomplete connect timeout parameter to prevent Slowloris DOS attacks [#158](https://github.com/zowe/data-sets/pull/158)
 
 #### Zowe CLI
 

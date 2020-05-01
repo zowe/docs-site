@@ -15,7 +15,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Find out how to install and configure Zowe. Learn about how to use Zowe components, including Zowe Application Framework, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
-    <h2><a href="./extend/extend-apiml/onboard-overview.html">Extending</a></h2>
+    <h2><a href="./extend/extend-zowe-overview.html">Extending</a></h2>
     <p>Learn about onboarding your products. Developers can follow tutorials that teach how to build and extend Zowe components.</p>
   </div>
   <div class="feature">
