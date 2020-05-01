@@ -78,14 +78,6 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
-### Bug fixes
-
-The following bugs were fixed:
-
-#### Zowe App Server
-
-- <!--placeholder-->
-
 ## Version 1.10.0 LTS (April 2020)
 
 ### New features and enhancements
