@@ -18,9 +18,9 @@ The ZLUX Node.js server is also known as the Zowe Application Framework. It prov
 
 The ZLUX server logs are written to `<INSTANCE_DIR>/logs/appServer-yyyy-mm-dd-hh-mm.log`.  The Zowe Application Framework provides REST APIs for its services that are included on the API catalog tile `Zowe Application Framework` that can be viewed at `https://<ZOWE_HOST_IP>:7554/ui/v1/apicatalog/#/tile/ZLUX/zlux`.
 
-## zssServer
+## ZSS Server
 
-The Zowe desktop delegates a number of its services to the zssServer which it accesses through the http port 8542.  The zssServer is written in metalC and has native calls to z/OS to provide its services.  The zssserver logs are written to `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`. 
+The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 8542.  The ZSS server is written in metalC and has native calls to z/OS to provide its services.  The ZSS server logs are written to `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`. 
 
 ## API Gateway
 
