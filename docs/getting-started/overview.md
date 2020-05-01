@@ -171,7 +171,7 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 
 </details>
 
-For a description of the architecture of Zowe see, [Zowe architecture](#zowe-architecture.md).
+To learn more about the architecture of Zowe, see [Zowe architecture](#zowe-architecture.md).
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
