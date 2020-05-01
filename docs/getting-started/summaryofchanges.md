@@ -34,10 +34,6 @@ The following features and enhancements were added:
 - <!--placeholder-->
 
 #### ZSS
-- Use ASCII mapping for character conversion and fix integer overflow in json [#133](https://github.com/zowe/zowe-common-c/pull/133)
-  - All fast path conversions are done to ASCII only, the rest of the characters will require the slow path.
-    - z/OS DFSMS/MVS Using Magnetic Tapes, Appendix D has been used as a reference for the EBCDIC-ASCII translation table 
-  - Unsigned integer overflow is fixed in the json code. This overflow was causing ZSS crashes when non-UTF8 characters were encountered.
 - A new query parameter (?addQualifiers) which can be appended to /datasetMetadata/ allows for searching that more closely represents the search behavior of 3.4 [#108](https://github.com/zowe/zowe-common-c/pull/108)
 - Added support for changing log levels via REST API [#173](https://github.com/zowe/zss/pull/173)
 
@@ -45,7 +41,6 @@ The following features and enhancements were added:
 
 - Updated the JES Explorer, MVS Explorer, and USS Explorer apps to support single sign-on from the Zowe API Mediation Layer.  [#344](https://github.com/zowe/zlux/issues/344) [#345](https://github.com/zowe/zlux/issues/345) [#346](https://github.com/zowe/zlux/issues/346)
 - Modals in the Editor now have an "X" icon to close the modal. [#130](https://github.com/zowe/zlux-editor/pull/130)
-- Bookmarking support for settings has been added to vt-ng2 [#28](https://github.com/zowe/tn3270-ng2/pull/28)
 - An event emitter for session changes, login, logout, and sessionExpire for Angular, React, and iFrame applications has been added [#210](https://github.com/zowe/zlux-app-manager/pull/210)
 - Session events have been added to mvdhosting [#53](https://github.com/zowe/zlux-platform/pull/53)
 - Updates made to generate_zlux_certificates.sh because apiml_cm.sh has been moved into the zowe-install-packaging repo [#110](https://github.com/zowe/zlux-app-server/pull/110)
@@ -57,6 +52,7 @@ The following features and enhancements were added:
   3. Auth plugins can now be of more than one type, to satisfy environments that have plugins that need access to APIs of similar but different types
 - New shortcuts have been added to navigate the start menu with a keyboard [#213](https://github.com/zowe/zlux-app-manager/pull/213)
 - Sessions are now maintained based on most recent activity across tabs [#219](https://github.com/zowe/zlux-app-manager/pull/219)
+- Support for password changing, including expired password changing, has been implemented [#193](https://github.com/zowe/zlux-app-manager/pull/193)
 
 
 #### Zowe APIs
