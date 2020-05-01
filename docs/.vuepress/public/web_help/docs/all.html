@@ -9,8 +9,8 @@
 <h2><a href="#zowe" name="zowe">zowe</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Welcome to Zowe CLI!</p>
 <p>Zowe CLI is a command line interface (CLI) that provides a simple and streamlined way to interact with IBM z/OS.</p>
-<p>For additional Zowe CLI documentation, visit <a href="https://zowe.github.io/docs-site">https://zowe.github.io/docs-site</a></p>
-<p>For Zowe CLI support, visit <a href="https://zowe.org">https://zowe.org</a></p>
+<p>For additional Zowe CLI documentation, visit <a href="https://docs.zowe.org">https://docs.zowe.org</a></p>
+<p>For Zowe CLI support, visit <a href="https://www.zowe.org">https://www.zowe.org</a></p>
 
 
 <h4 id="global-options">Global Options</h4>
@@ -1044,8 +1044,10 @@ length of the pipeline name is eight characters</li>
 </li>
 <li><p><code>--validation</code>  <em>(boolean)</em></p>
 <ul>
-<li>Specifies whether full validation of SOAP messages against the corresponding
-schema in the web service description should be performed at run time.</li>
+<li><p>Specifies whether full validation of SOAP messages against the corresponding
+schema in the web service description should be performed at run time.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--wsdlfile</code>  | <code>--wsdl</code> <em>(string)</em></p>
@@ -4923,7 +4925,9 @@ number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.</li>
 </li>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -5430,7 +5434,9 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <ul>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -9387,15 +9393,19 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li><p><code>--erase</code>  | <code>-e</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to overwrite the data component for the cluster with binary
+<li><p>Specify this option to overwrite the data component for the cluster with binary
 zeros. This option is ignored if the NOERASE attribute was specified when the
-cluster was defined or altered.</li>
+cluster was defined or altered.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to delete the VSAM cluster regardless of its retention
-period or date.</li>
+<li><p>Specify this option to delete the VSAM cluster regardless of its retention
+period or date.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -9703,6 +9713,14 @@ concurrent requests.</p>
 </li>
 </ul>
 </li>
+<li><p><code>--preserve-original-letter-case</code>  | <code>--po</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Specifies if the automatically generated directories and files use the original
+letter case</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
 <li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option
@@ -9805,6 +9823,14 @@ default file extension.</li>
 <ul>
 <li>The path to the local file where you want to download the content. When you
 omit the option, the command generates a file name automatically for you.</li>
+</ul>
+</li>
+<li><p><code>--preserve-original-letter-case</code>  | <code>--po</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Specifies if the automatically generated directories and files use the original
+letter case</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
@@ -13415,7 +13441,7 @@ you are connecting securely</li>
 <li><p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt
 with the DCB parameters:</p>
 <ul>
-<li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb RECFM=FB,LRECL=326,BLKSIZE=23472</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb RECFM=FB,LRECL=326,BLKSIZE=23472">Copy</button></li>
+<li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -16292,8 +16318,10 @@ to exist</li>
 </li>
 <li><p><code>--keep-files</code>  | <code>--kf</code> <em>(boolean)</em></p>
 <ul>
-<li>Avoid deletion the uploaded files in /tmp or another specified directory after
-successful execution.</li>
+<li><p>Avoid deletion the uploaded files in /tmp or another specified directory after
+successful execution.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -17322,7 +17350,9 @@ manually.</p>
 </li>
 <li><p><code>--perform-following-steps</code>  | <code>--pfs</code> <em>(boolean)</em></p>
 <ul>
-<li>Identifies whether to perform also following steps in the workflow instance.</li>
+<li><p>Identifies whether to perform also following steps in the workflow instance.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
