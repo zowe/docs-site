@@ -3,7 +3,11 @@
     "baseuri": "/getting-started/",
     "items": [{
         "text": "Zowe overview",
-        "items": ["getting-started/overview.md", "getting-started/zowe-architecture.md"]
+        "link": "getting-started/overview.md"
+      },
+      {
+        "text": "Zowe architecture",
+        "link": "getting-started/zowe-architecture.md"
       },
       {
         "text": "Release notes",
@@ -16,6 +20,10 @@
       {
         "text": "Zowe FAQs",
         "link": "getting-started/freqaskques.md"
+      },
+      {
+        "text": "Related resources",
+        "link": "getting-started/zowe-resources.md"
       }
     ]
   },
@@ -178,7 +186,6 @@
         "items": [
           "troubleshoot/app-framework/app-troubleshoot.md",
           "troubleshoot/app-framework/app-mustgather.md",
-          "troubleshoot/app-framework/app-known-issues.md",
           "troubleshoot/app-framework/app-issue.md"
         ]
       },

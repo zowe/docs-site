@@ -418,7 +418,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
     /S ZWESIS02
    ```
 
-6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is IZUSVR.
+6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is ZWESVUSR.
 
 7. In the new ZSS `server.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
 
