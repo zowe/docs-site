@@ -44,9 +44,10 @@ For the Zowe Desktop to work, the node server that runs under the ZWESVSTC start
 
 There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows a path from the Zowe Desktop ZLUX server to the zssServer (across the default port 8542) which then connects to the `ZWESIS01` started task using cross memory communication.  One of those two connections (ZLUX to zssServer, or zssServer to X-MEM) likely failed.
 
-### zssServer unable to communicate with X-MEM
+- [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem)
+- [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver)
 
-**Solution:**
+### ZSS server unable to communicate with X-MEM
 
 1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
@@ -88,11 +89,6 @@ There are two known problems that might cause this error.  The [Zowe architectur
 
 
 ### ZLUX unable to communicate with zssServer
-
-**Symptom:**
-ZLUX cannot communicate with zssServer. You are unable to log in to the Zowe Desktop.
-
-**Solution:**
 
 On the [Zowe architecture diagram](../../getting-started/zowe-architecture.md), there is a communication between ZLUX which is a Node.js runtime serving the Zowe desktop web pages to the user's browser, and the zssServer running on port 8542.  If this communication is failing, then you will be unable to log in to the desktop.
 
