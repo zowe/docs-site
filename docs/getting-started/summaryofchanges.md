@@ -33,9 +33,31 @@ The following features and enhancements were added:
 
 - <!--placeholder-->
 
+#### ZSS
+- Use ASCII mapping for character conversion and fix integer overflow in json [#133](https://github.com/zowe/zowe-common-c/pull/133)
+  - All fast path conversions are done to ASCII only, the rest of the characters will require the slow path.
+    - z/OS DFSMS/MVS Using Magnetic Tapes, Appendix D has been used as a reference for the EBCDIC-ASCII translation table 
+  - Unsigned integer overflow is fixed in the json code. This overflow was causing ZSS crashes when non-UTF8 characters were encountered.
+- A new query parameter (?addQualifiers) which can be appended to /datasetMetadata/ allows for searching that more closely represents the search behavior of 3.4 [#108](https://github.com/zowe/zowe-common-c/pull/108)
+- Added support for changing log levels via REST API [#173](https://github.com/zowe/zss/pull/173)
+
 #### Zowe App Server
 
 - Updated the JES Explorer, MVS Explorer, and USS Explorer apps to support single sign-on from the Zowe API Mediation Layer.  [#344](https://github.com/zowe/zlux/issues/344) [#345](https://github.com/zowe/zlux/issues/345) [#346](https://github.com/zowe/zlux/issues/346)
+- Modals in the Editor now have an "X" icon to close the modal. [#130](https://github.com/zowe/zlux-editor/pull/130)
+- Bookmarking support for settings has been added to vt-ng2 [#28](https://github.com/zowe/tn3270-ng2/pull/28)
+- An event emitter for session changes, login, logout, and sessionExpire for Angular, React, and iFrame applications has been added [#210](https://github.com/zowe/zlux-app-manager/pull/210)
+- Session events have been added to mvdhosting [#53](https://github.com/zowe/zlux-platform/pull/53)
+- Updates made to generate_zlux_certificates.sh because apiml_cm.sh has been moved into the zowe-install-packaging repo [#110](https://github.com/zowe/zlux-app-server/pull/110)
+- Zowe Web browser plugin, which can be used to view webpages that are not Zowe apps, has been added. [#194](https://github.com/zowe/zlux-app-manager/pull/194)
+- Translations have been added for labels and buttons for password reset forms [#215](https://github.com/zowe/zlux-app-manager/pull/215), [#218](https://github.com/zowe/zlux-app-manager/pull/218)
+- Browser-based apiml token, auth simplication [#196](https://github.com/zowe/zlux-server-framework/pull/196):
+  1. API mediation layer token is now held in the browser upon login via the Desktop. This also allows for the Desktop to do single-sign-on login with the token if it is already present in the browser.
+  2. Auth plugins no longer need to be specified explicitly within the server configuration file, the capability remains for backwards compatibility. The server will now auto-detect the auth plugins that are available
+  3. Auth plugins can now be of more than one type, to satisfy environments that have plugins that need access to APIs of similar but different types
+- New shortcuts have been added to navigate the start menu with a keyboard [#213](https://github.com/zowe/zlux-app-manager/pull/213)
+- Sessions are now maintained based on most recent activity across tabs [#219](https://github.com/zowe/zlux-app-manager/pull/219)
+
 
 #### Zowe APIs
 
@@ -72,9 +94,18 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 The following bugs were fixed:
 
-#### Zowe App Server
+#### ZSS
+- Bugfix: Fixed a below the line leak i the QSAM code [#138](https://github.com/zowe/zowe-common-c/pull/138)
 
-- <!--placeholder-->
+
+#### Zowe App Server
+- Bugfix: Material dialogs no longer overlap over the login screen [#145](https://github.com/zowe/zlux-editor/pull/145)
+- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208) 
+- Bugfix: Bugfix for websockets to prevent server throwing exception on malformed message [#189](https://github.com/zowe/zlux-server-framework/pull/189)
+- Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined [#187](https://github.com/zowe/zlux-server-framework/pull/187)
+- Bugfix: Added missing pluginID argument for setStorageAll method. [#191](https://github.com/zowe/zlux-server-framework/pull/191)
+- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111) 
+
 
 ## Version 1.10.0 LTS (April 2020)
 
