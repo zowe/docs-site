@@ -1,6 +1,6 @@
 # Troubleshooting 
 
-To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and supportinformation in this section.
+To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and support information in this section.
 
 **Topics**
 - [Troubleshooting Zowe z/OS startup](troubleshoot-zos.md)  
