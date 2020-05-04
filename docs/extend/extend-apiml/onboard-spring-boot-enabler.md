@@ -391,6 +391,30 @@ To register your REST service with API ML using a Spring Boot enabler, annotate 
 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
 
+### Basic routing
+Basic routing is based on the service ID and API version that are used to identify the service. The specific instance is selected by the API Gateway. The response needs to be the same for all instances. This is the type of routing that is expected by Eureka and Zuul.
+
+Gateway URL format:
+```
+https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
+```
+**Example:**
+
+The original URL of a resource exposed by a service
+```
+http://service:10015/enablerv1sampleapp/api/v1/samples
+```
+API Gateway URL of the resource
+```
+https://gateway:10010/api/v1/enablerv1sampleapp/samples
+```
+
+**Note:** The URL identifies the resource. It does not uniquely identify the instance of the same service when multiple instances are provided by the same service (i.e. service is running in HA mode). Services of the same product that provide different resources (e.g. SYSVIEW on one system and SYSVIEW in a different sysplex) cannot have the same service ID. 
+
+In addition to the basic Zuul routing, the Zowe API Gateway adds support of versioning where a major version can be specified. The Gateway routes request only to an instance that provides the specified major version of the API. 
+
+The /api/ prefix is used for REST APIs. The /ui/ prefix is used for web UIs, and /ws/ prefix for WebSockets.
+
 ## Adding API documentation
 
 Use the following procedure to add Swagger API documentation to your project.
