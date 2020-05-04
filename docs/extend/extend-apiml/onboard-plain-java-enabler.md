@@ -661,7 +661,7 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
-
+For more information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md)
 The following example is showing part of configuration needed for using keyring in your application: 
 ```
 ssl:
