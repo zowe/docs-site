@@ -43,6 +43,7 @@ The following steps outline the overall process to onboard a REST service with t
     * [API Catalog information](#api-catalog-information)
     * [Authentication parameters](#authentication-parameters)
     * [API Security](#api-security)
+    * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Eureka Discovery Service](#eureka-discovery-service)
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
@@ -238,8 +239,9 @@ The onboarding configuration parameters are broken down into the following group
 - [API info](#api-info)
 - [API routing information](#api-routing-information)
 - [API catalog information](#api-catalog-information)
-* [Authentication parameters](#authentication-parameters)
+- [Authentication parameters](#authentication-parameters)
 - [API security](#api-security)
+- [SAF Keyring configuration](#saf-keyring-configuration)
 - [Eureka Discovery Service](#eureka-discovery-service)
 - [Custom Metadata](#custom-metadata)
 
@@ -656,7 +658,7 @@ TLS/SSL configuration consists of the following parameters:
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
 * Currently `ciphers` is not used. It is optional and serves as a place holder only.
 
-#### SAF Keyring configuration
+### SAF Keyring configuration
 
 If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
 
