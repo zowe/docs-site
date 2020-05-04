@@ -29,7 +29,7 @@ If present, the `validate.sh` script performs tasks such as:
 
 During execution of the `validate.sh` script, if an error is detected, then a component should echo a message that contains information to assist a user diagnosing the problem.
 
-There is no provision for a script that detects an error during validation to stop their component that is being launched.  This is expected to be included in a future release of Zowe.  
+If `VALIDATE_ONLY=true` is added to the instance.env then launching Zowe will exit after the validation stage. This lets a Zowe administrator run a check of whether all the Zowe install's component validation checks pass without having to actually start any of them.
 
 ### Configure
 
