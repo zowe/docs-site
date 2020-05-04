@@ -619,10 +619,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-//TODO describe KEYRING options here
-//create a subdoc about keyring setup and production usecase example
-
-  This parameter specifies the keystore file used to store the private key.
+  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location.
 
 * **keyStorePassword**
 
@@ -634,7 +631,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates.
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location.
 
 * **trustStorePassword: password**
 
@@ -658,6 +655,23 @@ TLS/SSL configuration consists of the following parameters:
 
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
 * Currently `ciphers` is not used. It is optional and serves as a place holder only.
+
+#### SAF Keyring configuration
+
+If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
+
+The following example is showing part of configuration needed for using keyring in your application: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////myracfid/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////myracfid/my_key_ring
+    trustStoreType: PKCS12
+    trustStorePassword: password
+```
 
 ### Eureka Discovery Service
 
