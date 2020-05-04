@@ -669,7 +669,7 @@ ssl:
     keyStorePassword: password
     keyStoreType: JCERACFKS
     trustStore: safkeyring:////myracfid/my_key_ring
-    trustStoreType: PKCS12
+    trustStoreType: JCERACFKS
     trustStorePassword: password
 ```
 
