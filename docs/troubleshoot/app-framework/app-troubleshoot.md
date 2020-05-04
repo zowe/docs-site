@@ -224,13 +224,13 @@ to the end of the `node:https` block, so lines 1 through 19 of `server.json` bec
       ],
       "port": 8544,
       "keys": [
-        "/u/winchj/zowe-keys/localhost/localhost.keystore.key"
+        "<KEYSTORE-DIRECTORY>/localhost/localhost.keystore.key"
       ],
       "certificates": [
-        "/u/winchj/zowe-keys/localhost/localhost.keystore.cer-ebcdic"
+        "<KEYSTORE-DIRECTORY>/localhost/localhost.keystore.cer-ebcdic"
       ],
       "certificateAuthorities": [
-        "/u/winchj/zowe-keys/local_ca/localca.cer-ebcdic"
+        "<KEYSTORE-DIRECTORY>/local_ca/localca.cer-ebcdic"
       ],
       "cluster": {
         "storageTimeout": 30000
