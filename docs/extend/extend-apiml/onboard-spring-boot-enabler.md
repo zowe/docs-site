@@ -366,6 +366,23 @@ logging:
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
+### SAF Keyring configuration
+
+If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
+
+The following example is showing part of configuration needed for using keyring in your application: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////myracfid/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////myracfid/my_key_ring
+    trustStoreType: JCERACFKS
+    trustStorePassword: password
+```
+
 ### Custom Metadata
 
    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
