@@ -224,13 +224,13 @@ to the end of the `node:https` block, so lines 1 through 19 of `server.json` bec
       ],
       "port": 8544,
       "keys": [
-        "<KEYSTORE-DIRECTORY>/localhost/localhost.keystore.key"
+        "<KEYSTORE_DIRECTORY>/localhost/localhost.keystore.key"
       ],
       "certificates": [
-        "<KEYSTORE-DIRECTORY>/localhost/localhost.keystore.cer-ebcdic"
+        "<KEYSTORE_DIRECTORY>/localhost/localhost.keystore.cer-ebcdic"
       ],
       "certificateAuthorities": [
-        "<KEYSTORE-DIRECTORY>/local_ca/localca.cer-ebcdic"
+        "<KEYSTORE_DIRECTORY>/local_ca/localca.cer-ebcdic"
       ],
       "cluster": {
         "storageTimeout": 30000
