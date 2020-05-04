@@ -7,15 +7,18 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) lets you interact wi
 - [Use Cases](#use-cases)
 - [Software requirements](#software-requirements)
 - [Installing](#installing)
+- [Working with user profile](#working-with-user-profiles)
+- [Enabling Secure Credential Store](#enabling-secure-credential-store)
 
 ## Use-Cases
 
 As a developer, you can use Zowe Explorer to perform the following tasks.
 
-- View, rename, copy and filter mainframe data sets, USS files and jobs.
+- View, rename, copy, and filter mainframe data sets, USS files, and jobs.
 - Create download, edit, upload, and delete PDS and PDS members.
-- Create Zowe CLI compatible `zosmf` profiles.
+- Create, edit, and delete Zowe CLI compatible `zosmf` profiles.
 - Switch between Zowe CLI `zosmf` profiles to quickly target different mainframe systems.
+- Use the Secure Credential Store plug-in to store your credentials securely in the settings.
 - Submit jobs.
 
 ## Software requirements
@@ -45,3 +48,26 @@ You can also watch the following videos to learn how to get started with Zowe Ex
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="How to Work with Data Sets" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+
+## Working with user profiles
+
+You must have a profile before you can use the extension. You can set up a `zosmf` profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
+
+**Follow these steps:**
+
+1. Navigate to the explorer tree.
+2. Click the **+** button next to the **DATA SETS**, **USS** or **JOBS** bar.
+
+   **Note:** If you already have a profile, select it from the drop-down menu.
+
+3. Select the **Create a New Connection to z/OS** option.
+
+   **Note:** When you create a new profile, user name and password fields are optional. However, the system will prompt you to specify your credentials when you use the new profile for the first time.
+
+4. Follow the instructions, and enter all required information to complete the profile creation.
+
+The extension also enables you to hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose the corresponding option from the options list.
+
+## Enabling Secure Credential Store
+
+You can now use Secure Credential Store plug-in for Zowe CLI in the Zowe Explorer extension. Secure Credentials Store plug-in lets you store your credentials securely. For more information, see [Secure Credential Store Plug-in for Zowe Explorer](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).

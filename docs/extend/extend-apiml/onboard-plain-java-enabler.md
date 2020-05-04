@@ -401,11 +401,11 @@ The following snippet is an example of the API routing information properties.
 ```yaml
 routes:
     - gatewayUrl: api
-      serviceUrl: /sampleservice
+      serviceUrl: /sampleservice-api
     - gatewayUrl: api/v1
-      serviceUrl: /sampleservice/api/v1
+      serviceUrl: /sampleservice-api/ver1
     - gatewayUrl: api/v1/api-doc
-      serviceUrl: /sampleservice/api-doc
+      serviceUrl: /sampleservice-api/api-doc
 ```
    where:
 
@@ -421,10 +421,30 @@ routes:
 
     The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
 
-**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
-
-**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
+**Example:** 
+```
+https://gateway:10010/api/sampleservice 
+```
+will be routed to: 
+```
+https://service:10015/sampleservice-api
+```
+API major version 1:
+```
+https://gateway:10010/api/v1/sampleservice
+```
+will be routed to: 
+```
+https://service:10015/sampleservice-api/ver1
+```
+APIs docs major version 1:
+```
+https://gateway:10010/api/v1/api-doc/sampleservice
+```
+will be routed to:
+```
+https://service:10015/sampleservice-api/api-doc
+```
 
 ### API Catalog information
 
