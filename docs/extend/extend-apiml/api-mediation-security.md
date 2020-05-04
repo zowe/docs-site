@@ -15,6 +15,7 @@
     - [JWT Token](#jwt-token)
     - [z/OSMF JSON Web Tokens Support](#zosmf-json-web-tokens-support)
     - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
+    - [API ML SAF Keyring](#api-ml-saf-keyring)
     - [Discovery Service authentication](#discovery-service-authentication)
     - [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
   - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
