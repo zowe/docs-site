@@ -24,8 +24,16 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
+    * [Sample API ML Onboarding Configuration](#Sample-API-ML-Onboarding-Configuration)
+    * [SAF Keyring configuration](#SAF-Keyring-configuration)
+    * [Custom Metadata](#Custom-Metadata)
+    * [Api Mediation Layer specific metadata](#Api-Mediation-Layer-specific-metadata)
+    
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-
+    
+    * [Unregistering your service with API ML](#Unregistering-your-service-with-API-ML)
+    * [Basic routing](#Basic-routing)
+    
 5. [Adding API documentation](#adding-api-documentation)
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
@@ -368,19 +376,18 @@ logging:
 
 ### SAF Keyring configuration
 
-If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
-For more information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md).
-
-The following example is showing part of configuration needed for using keyring in your application: 
+The following example shows enabler configuration with keyrings: 
 ```
 ssl:
     keyAlias: localhost
     keyPassword: password
-    keyStore: safkeyring:////myracfid/my_key_ring
+    keyStore: safkeyring:////my_racf_id/my_key_ring
     keyStorePassword: password
     keyStoreType: JCERACFKS
-    trustStore: safkeyring:////myracfid/my_key_ring
+    trustStore: safkeyring:////my_racf_id/my_key_ring
     trustStoreType: JCERACFKS
     trustStorePassword: password
 ```

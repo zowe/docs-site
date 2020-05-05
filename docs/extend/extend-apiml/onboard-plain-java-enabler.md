@@ -621,7 +621,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location.
+  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **keyStorePassword**
 
@@ -633,7 +633,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location.
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **trustStorePassword: password**
 
@@ -660,19 +660,18 @@ TLS/SSL configuration consists of the following parameters:
 
 ### SAF Keyring configuration
 
-If you choose an option to use keyring, there are few things to consider. At first, make sure that all certificates are added to keyring. Also you need to grant your user the ability to read the contents of a keyring.
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
-For more information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md).
-
-The following example is showing part of configuration needed for using keyring in your application: 
+The following example shows enabler configuration with keyrings: 
 ```
 ssl:
     keyAlias: localhost
     keyPassword: password
-    keyStore: safkeyring:////myracfid/my_key_ring
+    keyStore: safkeyring:////my_racf_id/my_key_ring
     keyStorePassword: password
     keyStoreType: JCERACFKS
-    trustStore: safkeyring:////myracfid/my_key_ring
+    trustStore: safkeyring:////my_racf_id/my_key_ring
     trustStoreType: JCERACFKS
     trustStorePassword: password
 ```
