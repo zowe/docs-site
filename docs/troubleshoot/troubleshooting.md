@@ -34,7 +34,7 @@ Subsequent minor and patch releases to V1 are delivered as SMP/E PTF SYSMODs.  B
 
 While Major releases are required for a "breaking" change, they also may be used to indicate to the community a significant content update over and above what would be included in a minor release.
 
-## Determining the Zowe release number
+## manifest.json
 
 To see the release number of Zowe look at the `manifest.json` file.  This is included in the top level directory of where a Zowe convenience build is expanded to, see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md), the top level directory of a Zowe runtime `<ROOT_DIR>`, and for a Zowe instance directory `<INSTANCE_DIR>/workspace`, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).
 )
