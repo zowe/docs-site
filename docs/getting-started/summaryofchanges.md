@@ -98,7 +98,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 ### Zowe installer
 
-- A `-l` parameter that controls where the setup scripts write trace logs is added to `zowe-install.sh`, `zowe-configure-instance.sh`, `zowe-create-keystore.sh`, `zowe-install-xmem.sh` and `zowe-install-proc.sh`.  The problem determination gathering script `zowe-support.sh` has a `-l` parameter to specify the locaiton of where the scripts have been collected.  
+- A `-l` parameter that controls where the setup scripts write trace logs is added to [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically) and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc)
 - Port validation improved to assist determining whether Zowe's ports are available
 
 
