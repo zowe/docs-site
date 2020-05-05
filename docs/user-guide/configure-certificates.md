@@ -113,3 +113,46 @@ This error has to be resolved before you can proceed with the next installation 
 **Notes:** 
 
 - On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
+
+## Configure Zowe Certificates with z/OSMF Workflows
+
+z/OSMF Workflow lets you create a keystore directory that is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.
+
+Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
+
+ 1.	Log in to the z/OSMF web interface.
+ 2.	Select **Workflows** from the navigation tree.
+ 3.	Select Create Workflow from the **Actions** menu.
+ 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
+    The path to the workflow definition file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.xml file. 
+5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
+    The path to the variable input file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.properties file. 
+
+    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
+6. Select the system where you want to execute the workflow.
+7. Select Next.
+8. Specify the unique workflow name.
+9. Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
+10.Select **Finish**.
+   The workflow is registered in z/OSMF and ready to execute.
+11. Select the workflow that you registered from the workflow list.
+12. Execute the following steps in order:
+    -	**Define Variables**
+        
+        Define the custom values for variables that meets your z/OS security and verification configuration requirements.
+    - 	**New Custom zowe-setup-certificates.env**
+        
+        Execute the step to create a new zowe-setup-certificates.env in the user specified location and substitutes values.
+	-  **Execute zowe-setup-certificates**
+        
+        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file
+
+13. Perform the following steps to execute each step individually:
+    1.  Double-click the title of the step.
+    2.	Select the **Perform** tab.
+    3.  Review the step contents and update the input values as required.
+    4.	Select **Next**.
+    5.	Repeat the previous two steps to complete all items until the option Finish is available.
+    6.	Select **Finish**.
+
+After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
