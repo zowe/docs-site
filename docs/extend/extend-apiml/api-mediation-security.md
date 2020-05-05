@@ -227,19 +227,19 @@ The JWT Secret that signs the JWT Token is an asymmetric private key that is gen
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML will use this JWT token and will not generate its own Zowe JWT token. All the authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` will function in the same way as without z/OSMF JWT.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
 The `zowe-setup-certificates.sh` stores the z/OSMF JWT public key to the `localhost.keystore.jwtsecret.pem` that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
-A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
-by other technologies used in Zowe (Node.js).
+A _keystore_ is a repository of security certificates consisting of either authorization certificates, or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
+by other technologies such as Node.js used in Zowe.
 
 ### API ML SAF Keyring
 
-As an alternative to keystore and truststore, API ML can read certificates from SAF keyring. The user running the API ML has to have rights to access the keyring. From java perspective, the keyring behaves as another type of keystore: `JCERACFKS`. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the contents of keystore and truststore combined.
+As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the combined contents of the keystore and the truststore.
 
-**Note:** When using JCEFACFKS as keystore type, you have to define the class to handle the RACF keyring using the -D options to specify the java.protocol.handler.pkgs property:
+**Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
 
     -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
     
@@ -251,9 +251,9 @@ As an alternative to keystore and truststore, API ML can read certificates from 
 
 **The API ML keystore or API ML SAF Keyring**
 
-- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
-- Server certificate of the Discovery Service (with PK). This can be signed by the local CA
-- Server certificate of the Catalog (with PK). This can be signed by the local CA
+- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA.
+- Server certificate of the Discovery Service (with PK). This can be signed by the local CA.
+- Server certificate of the Catalog (with PK). This can be signed by the local CA.
 - Private asymmetric key for the JWT token, alias `jwtsecret`. The  public key is exported to the `localhost.keystore.jwtsecret.cer` directory.
 - Used by API ML services
 
@@ -267,9 +267,9 @@ As an alternative to keystore and truststore, API ML can read certificates from 
 **Zowe core services**
 
 - Services can use the same keystore and truststore or the same keyring as APIML for simpler installation and management
-- In case of keystore and truststore, services have to have rights to access and read them on the filesystem.
-- In case of keyring, the service's user has to have rights to read the keyring from the security system.
-- Alternatively, services can have individual stores for higher security
+- When using a keystore and truststore, services have to have rights to access and read them on the filesystem.
+- When using a keyring, the user of the service must have authorization to read the keyring from the security system.
+- Alternatively, services can have individual stores for higher security.
 
 
 **API service keystore or SAF keyring** (for each service)
@@ -346,7 +346,7 @@ The https://github.com/zowe/api-layer repository already contains pre-generated 
 
 The certificates are described in more detail in the [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
-**Note:** Only keystore and truststore is supported when running locally.
+**Note:** When running on localhost, only the combination of using a keystore and truststore is supported.
 
 
 #### Certificate management script
@@ -360,11 +360,11 @@ It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Window
 
 #### Generate certificates for localhost
 
-Clone the `zowe-install-packaging` repository to your local machine.
+**Follow these steps:**
 
-Place the `bin/apiml_cm.sh` script intoto `scripts` directory in your API Mediation Layer repository folder
-
-Use the following script in the root of the `api-layer` repository to generate certificates for localhost:
+1. Clone the `zowe-install-packaging` repository to your local machine.
+2. Place the `bin/apiml_cm.sh` script intoto `scripts` directory in your API Mediation Layer repository folder
+3. Use the following script in the root of the `api-layer` repository to generate certificates for localhost:
 
 `scripts/apiml_cm.sh --action setup`
 
@@ -378,7 +378,7 @@ To generate a certificate for a new service on localhost, see [Generating certif
 
 #### Add a service with an existing certificate to API ML on localhost
 
-The instructions are described at [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
+For more informationabout adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
 
 
 #### Service registration to Discovery Service on localhost
