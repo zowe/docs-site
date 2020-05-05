@@ -150,6 +150,66 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
+## Install Zowe Runtime with the z/OSMF Workflow
+
+z/OSMF workflow simplifies the procedure to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
+
+Perform the following steps to register and execute the Zowe runtime installation workflow in the z/OSMF web interface:
+
+ 1.	Log in to the z/OSMF web interface.
+ 2.	Select **Workflows** from the navigation tree.
+ 3.	Select **Create Workflow** from the **Actions** menu.
+ 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.   
+    The path to the workflow definition file is <extracted_pax_folder>/files/workflows/ ZWEWRF04.xml file. 
+ 5.	(Optional) Enter the path to the customized variable input file that you prepared in advance.
+ 
+    The path to the variable input file is located is <extracted_pax_folder>/files/workflows/ ZWEWRF04.xml.xml file.
+   
+    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
+
+7.	Select the system where you want to execute the workflow.
+8.	Select **Next**.
+9.	Specify the unique workflow name.
+10.	Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
+11.	Select **Finish**.
+
+    The workflow is registered in z/OSMF and ready to execute.
+
+11. Select the workflow that you registered from the workflow list.
+12. Execute the steps in order. The following steps are displayed that are ready to execute manually:
+
+    - **Define Variables**
+
+       Define the values for variables for the convenience build runtime installation.
+    - **Allocate ZFS data set**
+ 
+       Execute the step to allocate the zFS data set for the Zowe USS.
+
+     - **Zowe make dir**
+
+         Execute the step create a directory for the Zowe USS file system.
+
+      -  **Mount ZFS**
+         
+         Execute the step to mount the zFS data set to the created directory
+      - **Set Mountpoint Owner**
+
+        Execute the step to sets the user who executes the step as the owner of the mountpoint.
+      - **Run install script**
+        
+        Execute the step executes the Zowe convenience build install script.
+14.	Perform the following steps to execute each step individually:
+    1.	Double-click the title of the step.
+    2.	Select the **Perform** tab.
+    3.	Review the step contents and update the input values as required.
+    4.	Select **Next**.
+    5.	Repeat the previous two steps to complete all items until the option Finish is available.
+    6.	Select **Finish**.
+
+    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
+
+After you execute each step, the step is marked as Complete. The workflow is executed.
+
 ## Next steps
 
 For a z/OS system where you install Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) and [create a keystore directory](configure-certificates.md).  
