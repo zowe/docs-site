@@ -121,7 +121,6 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 - **Discovery Service**
     - Provides an HTTPS port
     - Has a keystore or SAF keyring with a server certificate
-        - The certificate needs to be trusted by API Clients
     - Has a truststore or SAF keyring that contains certificates needed to trust API services
 
 - **API Service**
