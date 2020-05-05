@@ -4,13 +4,13 @@ You install the Zowe&trade; convenience build by running shell script within a U
 
 ## Obtaining and preparing the convenience build
 
-The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-v.r.m.pax`, where
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-V.v.p.pax`, where
 
-- `v` indicates the version
-- `r` indicates the release number
-- `m` indicates the modification number
+- `V` indicates the Major Version
+- `v` indicates the Minor Version
+- `p` indicates the Patch number
 
-The numbers are incremented each time a release is created so the higher the numbers, the later the release.
+The numbers are incremented each time a release is created so the higher the numbers, the later the release.  For more information on the Zowe release number see [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases)
 
 To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you download the PAX file, follow the instructions to verify the PAX file and prepare it to install the Zowe runtime.
 
@@ -18,7 +18,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
 1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project. 
    
-   Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=v.r.m` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
+   Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
 2. Transfer the PAX file to z/OS.
 
@@ -56,20 +56,20 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
     d. When you are in the directory you want to transfer the Zowe PAX file into, issue the following command:
 
      ```
-     put <zowe-v.r.m>.pax
+     put <zowe-V.v.p>.pax
      ```
 
-    Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
+    Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.
 
     **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.  
 
 3. When the PAX file is transferred, expand the PAX file by issuing the following command in an SSH session:
 
    ```
-   pax -ppx -rf <zowe-v.r.m>.pax
+   pax -ppx -rf <zowe-V.v.p>.pax
    ```  
 
-   Where _zowe-v.r.m_ is a variable that indicates the name of the PAX file you downloaded.
+   Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.
 
 
    This will expand to a file structure.
@@ -82,7 +82,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
       ...
    ```
 
-    **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-v.r.m>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
+    **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-V.v.p>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
 ## Installing the Zowe runtime
 

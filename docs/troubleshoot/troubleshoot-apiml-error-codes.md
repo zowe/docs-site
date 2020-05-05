@@ -3,7 +3,7 @@
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-## API mediation common messages
+## API mediation utility messages
 
 ### ZWEAM000I
 
@@ -16,6 +16,8 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   No action is needed
+
+## API mediation common messages
 
 ### ZWEAO102E
 
@@ -471,7 +473,177 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide a valid authorization token.
 
+## ZAAS client messages
+
+### ZWEAS100E
+
+  Token is expired for URL
+
+  **Reason:**
+
+  The application using the token kept it for longer than the expiration time
+
+  **Action:**
+
+  When this error occurs it is necessary to get a new JWT token. 
+
+### ZWEAS120E
+
+  Invalid username or password
+
+  **Reason:**
+
+  Provided credentials weren't recognized
+
+  **Action:**
+
+  Try with different credentials
+
+### ZWEAS121E
+
+  Empty or null username or password values provided
+
+  **Reason:**
+
+  One of the credentials was null or empty
+
+  **Action:**
+
+  Try with full set of credentials
+
+### ZWEAS122E
+
+  Empty or null authorization header provided
+
+  **Reason:**
+
+  The authorization header was empty or null
+
+  **Action:**
+
+  Try again with valid authorization header
+
+### ZWEAS170E
+
+  An exception occurred while trying to get the token
+
+  **Reason:**
+
+  General exception. There are more information in the message
+
+  **Action:**
+
+  Log the message from the exception and then handle the exception based on the information provided there. 
+
+### ZWEAS400E
+
+  Unable to generate PassTicket. Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider
+
+  **Reason:**
+
+  Unable to generate PassTicket.
+
+  **Action:**
+
+  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider
+
+### ZWEAS401E
+
+  Token is not provided
+
+  **Reason:**
+
+  There was no JWT token provided for the generation of the PassTicket
+
+  **Action:**
+
+  Ensure that you are passing JWT token for PassTicker generation
+
+### ZWEAS404E
+
+  Gateway service is unavailable
+
+  **Reason:**
+
+  Gateway service doesn't respond.
+
+  **Action:**
+
+  Ensure that the Gateway service is up and that the path to the gateway service is properly set.
+
+### ZWEAS417E
+
+  The application name wasn't found
+
+  **Reason:**
+
+  The application id provided for the generation of the PassTicket wasn't recognized by security provider
+
+  **Action:**
+
+  Ensure that the security provider recognized the application id.
+
+### ZWEAS500E
+
+  There was no path to the trust store.
+
+  **Reason:**
+
+  The Zaas Client configuration didn't contain the path to the trust store
+
+  **Action:**
+
+  Ensure that the configuration contains the trustStorePath and that it points to valid trust store.
+
+### ZWEAS501E
+
+  There was no path to the key store.
+
+  **Reason:**
+
+  The Zaas Client configuration didn't contain the path to the key store
+
+  **Action:**
+
+  Ensure that the configuration contains the keyStorePath and that it points to valid key store.
+
+### ZWEAS502E
+
+  The configuration provided for SSL is invalid.
+
+  **Reason:**
+
+  The type of the keystore, truststore or the included keys/certs aren't considered valid
+
+  **Action:**
+
+  Ensure that the combination of the configuration is cryptographically valid.
+
+### ZWEAS503E
+
+  The SSL configuration contained invalid path.
+
+  **Reason:**
+
+  There was an invalid path to either trust store or keystore
+
+  **Action:**
+
+  Ensure that both provided paths are resolved to valid trust store and valid key store
+
 ## Discovery service messages
+
+### ZWEAD400E
+
+  Cannot notify Gateway on '%s' about new instance '%s'
+
+  **Reason:**
+
+  The Discovery Service tried to notify the Gateway about instance update, but the REST call failed. The purpose of this call is to update the Gateway caches. The Gateway might be down or a network problem occured.
+
+  **Action:**
+
+  Ensure there are no network issues and the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
 
 ### ZWEAD700W
 
@@ -499,7 +671,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD702W
 
-  Unable to process static API definition data: '%s'
+  Unable to process static API definition data: '%s' - '%s'
 
   **Reason:**
 
@@ -520,6 +692,7 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URL %s is malformed. The instance of %s will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
   - The hostname of URL %s is unknown. The instance of %s will not be created: The specified hostname of the URL is invalid. Make sure to specify valid hostname.
   - Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
+  - Additional service metadata of %s in processing file %s could not be created: %s
 
 ### ZWEAD703E
 
@@ -562,7 +735,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check that the service was successfully registered to the Discovery Service and wait for Spring Cloud to refresh the routes definitions
 
-### ZWEAG701D
+### ZWEAG701E
 
   Service '%s' does not allow encoded characters used in request path: '%s'.
 
@@ -574,7 +747,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Contact the system administrator and ask to enable encoded characters in the service
 
-### ZWEAG702D
+### ZWEAG702E
 
   Gateway does not to allow encoded slashes in request: '%s'.
 
@@ -609,6 +782,42 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Check that the key alias is specified and correct. Verify that the keys are present in the keystore.
+
+### ZWEAG706E
+
+  RequestContext not prepared for load balancing.
+
+  **Reason:**
+
+  Custom Ribbon load balancing is not in place before calling Ribbon.
+
+  **Action:**
+
+  Contact Broadcom support.
+
+### ZWEAG707E
+
+  The request to the URL '%s' has been aborted without retrying on another instance. Caused by: %s
+
+  **Reason:**
+
+  Request to server instance has failed and will not be retried on another instance.
+
+  **Action:**
+
+  Refer to Caused by details for troubleshooting.
+
+### ZWEAG708E
+
+  The request to the URL '%s' has failed after retrying on all known service instances. Caused by: %s
+
+  **Reason:**
+
+  Request to server instance could not be executed on any known service instance.
+
+  **Action:**
+
+  Verify status of the requested instance.
 
 ### ZWEAG100E
 

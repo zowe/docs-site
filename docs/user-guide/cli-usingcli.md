@@ -1,5 +1,9 @@
 # Using Zowe CLI
 
+The Zowe command line interface (CLI) can be used interactively from a command window on any computer on which it is installed.
+
+**Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
+
 ## Displaying Zowe CLI help
 
 Zowe&trade; CLI has a command-line help system that helps you to learn about the commands, actions, and options available in the product.
