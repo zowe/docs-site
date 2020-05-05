@@ -205,35 +205,3 @@ You may change the default of '5000' ms by setting 'node.cluster.storageTimeout'
 ```
 
 The timeout value was increased to be `30000` in 1.11.0 release.  To check which release of Zowe you are running, see [Determining the Zowe release number](../troubleshooting.md#determining-the-zowe-release-number).
-
-If your Zowe release is earlier than 1.11 and you are unable to upgrade to 1.11, then a hot-fix can be done by updating the file `<INSTANCE_DIR>/workspace/app-server/serverConfig/server.json` to add the lines
-
-```
- "cluster": {
-    "storageTimeout": 30000
-  }
-```
-to the end of the `node:https` block, so lines 1 through 19 of `server.json` become:
-
-```
-{
-  "node": {
-    "https": {
-      "ipAddresses": [
-        "0.0.0.0"
-      ],
-      "port": 8544,
-      "keys": [
-        "<KEYSTORE_DIRECTORY>/localhost/localhost.keystore.key"
-      ],
-      "certificates": [
-        "<KEYSTORE_DIRECTORY>/localhost/localhost.keystore.cer-ebcdic"
-      ],
-      "certificateAuthorities": [
-        "<KEYSTORE_DIRECTORY>/local_ca/localca.cer-ebcdic"
-      ],
-      "cluster": {
-        "storageTimeout": 30000
-      }
-```
-
