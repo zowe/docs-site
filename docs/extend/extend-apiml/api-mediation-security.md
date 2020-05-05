@@ -237,8 +237,12 @@ by other technologies used in Zowe (Node.js).
 
 ### API ML SAF Keyring
 
-As an alternative to keystore and truststore, API ML can read certificates from SAF keyring. The user running the API ML has to have rights to access the keyring. From java perspective, the keyring behaves as another type of keystore (JCERACFKS). The path to the keyring is specified as _safkeyring:////user_id/key_ring_id_. The content of SAF keyring is equivalent to the contents of keystore and truststore combined.
+As an alternative to keystore and truststore, API ML can read certificates from SAF keyring. The user running the API ML has to have rights to access the keyring. From java perspective, the keyring behaves as another type of keystore: `JCERACFKS`. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the contents of keystore and truststore combined.
 
+**Note:** When using JCEFACFKS as keystore type, you have to define the class to handle the RACF keyring using the -D options to specify the java.protocol.handler.pkgs property:
+
+    -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
+    
 **The API ML local certificate authority (CA)**
 
 - The API ML local CA contains a local CA certificate and a private key that needs to be securely stored
