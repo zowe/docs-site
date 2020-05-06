@@ -124,7 +124,7 @@ Perform the following steps to register and execute the Zowe workflow in the z/O
  2.	Select **Workflows** from the navigation tree.
  3.	Select Create Workflow from the **Actions** menu.
  4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
-    The path to the workflow definition file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.xml file. 
+    The path to the workflow definition file is *[extracted_pax_folder]/files/workflows/ZWEWRF05.xml file*. 
 5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
     The path to the variable input file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.properties file. 
 
@@ -145,7 +145,7 @@ Perform the following steps to register and execute the Zowe workflow in the z/O
         Execute the step to create a new zowe-setup-certificates.env in the user specified location and substitutes values.
 	-  **Execute zowe-setup-certificates**
         
-        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file
+        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file.
 
 13. Perform the following steps to execute each step individually:
     1.  Double-click the title of the step.
