@@ -19,9 +19,9 @@ Meet the following prerequisites before you onboard your service:
   
   **Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required to create the static service definition.
   
-- A certificate that is trusted by Zowe
+- A certificate that is trusted by Zowe and certificate(s) to trust Zowe services
 
-  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer).
+  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) and [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 - A REST API-enabled service that you want to onboard
 
