@@ -245,9 +245,9 @@ As an alternative to using a keystore and truststore, API ML can read certificat
     
 **The API ML local certificate authority (CA)**
 
-- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored
-- Used to sign certificates of services
-- The API ML local CA certificate is trusted by API services and clients
+- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored.
+- The API ML local certificate authority is used to sign certificates of services.
+- The API ML local CA certificate is trusted by API services and clients.
 
 **The API ML keystore or API ML SAF Keyring**
 
@@ -266,7 +266,7 @@ As an alternative to using a keystore and truststore, API ML can read certificat
 
 **Zowe core services**
 
-- Services can use the same keystore and truststore or the same keyring as APIML for simpler installation and management
+- Services can use the same keystore and truststore or the same keyring as APIML for simpler installation and management.
 - When using a keystore and truststore, services have to have rights to access and read them on the filesystem.
 - When using a keyring, the user of the service must have authorization to read the keyring from the security system.
 - Alternatively, services can have individual stores for higher security.
@@ -378,7 +378,7 @@ To generate a certificate for a new service on localhost, see [Generating certif
 
 #### Add a service with an existing certificate to API ML on localhost
 
-For more informationabout adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
+For more information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
 
 
 #### Service registration to Discovery Service on localhost
