@@ -2,6 +2,12 @@
 
 You install the Zowe&trade; convenience build by running shell script within a UNIX System Services (USS) shell.
 
+
+You can install the Zowe runtime by using one of the following methods: 
+
+- Use the <a href="Installing the Zowe runtime">zowe-install shell script</a>
+- Use the <a href="Install Zowe Runtime with z/OSMF Workflow">z/OSMF workflow</a>
+
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-V.v.p.pax`, where
@@ -150,7 +156,7 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-## Install Zowe Runtime with the z/OSMF Workflow
+## Install Zowe Runtime with z/OSMF Workflow
 
 z/OSMF workflow simplifies the procedure to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
 
@@ -208,7 +214,7 @@ Perform the following steps to register and execute the Zowe runtime installatio
 
     For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
 
-After you execute each step, the step is marked as Complete. The workflow is executed.
+After you execute each step, the step is marked as Complete. The workflow is executed. 
 
 ## Next steps
 
