@@ -15,6 +15,7 @@
     - [JWT Token](#jwt-token)
     - [z/OSMF JSON Web Tokens Support](#zosmf-json-web-tokens-support)
     - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
+    - [API ML SAF Keyring](#api-ml-saf-keyring)
     - [Discovery Service authentication](#discovery-service-authentication)
     - [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
   - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
@@ -102,36 +103,34 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 - **API Client**
     - The API Client is not a server
     - Requires trust of the API Gateway
-    - Has a truststore that contains certificates required to trust the Gateway
+    - Has a truststore or SAF keyring that contains certificates required to trust the Gateway
 
 - **Gateway Service**
     - Provides an HTTPS port
-    - Has a keystore with a server certificate
+    - Has a keystore or SAF keyring with a server certificate
         - The certificate needs to be trusted by API Clients
         - This certificate should be trusted by web browsers because the API Gateway can be used to display web UIs
-    - Has a truststore that contains certificates needed to trust API Services
+    - Has a truststore or SAF keyring that contains certificates needed to trust API Services
 
 - **API Catalog**
     - Provides an HTTPS port
-    - Has a keystore with a server certificate
+    - Has a keystore or SAF keyring with a server certificate
         - The certificate needs to be trusted by the API Gateway
         - This certificate does not need to be trusted by anyone else
 
 - **Discovery Service**
     - Provides an HTTPS port
-    - Has a keystore with a server certificate
-        - The certificate needs to be trusted by API Clients
-    - Has a truststore that contains certificates needed to trust API services
+    - Has a keystore or SAF keyring with a server certificate
+    - Has a truststore or SAF keyring that contains certificates needed to trust API services
 
 - **API Service**
     - Provides an HTTPS port
-    - Has a keystore with a server and client certificate
+    - Has a keystore or SAF keyring with a server and client certificate
         - The server certificate needs to be trusted by the Gateway
         - The client certificate needs to be trusted by the Discovery Service
         - The client and server certificates can be the same
         - These certificates do not need to be trusted by anyone else
-    - Has a truststore that contains one or more certificates that are required to trust the Gateway and Discovery Service
-
+    - Has a truststore or SAF keyring that contains one or more certificates that are required to trust the Gateway and Discovery Service
 
 ### Authentication for API ML services
 
@@ -228,45 +227,56 @@ The JWT Secret that signs the JWT Token is an asymmetric private key that is gen
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML will use this JWT token and will not generate its own Zowe JWT token. All the authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` will function in the same way as without z/OSMF JWT.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
 The `zowe-setup-certificates.sh` stores the z/OSMF JWT public key to the `localhost.keystore.jwtsecret.pem` that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
-A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
-by other technologies used in Zowe (Node.js).
+A _keystore_ is a repository of security certificates consisting of either authorization certificates, or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
+by other technologies such as Node.js used in Zowe.
 
+### API ML SAF Keyring
+
+As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the combined contents of the keystore and the truststore.
+
+**Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
+
+    -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
+    
 **The API ML local certificate authority (CA)**
 
-- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored
-- Used to sign certificates of services
-- The API ML local CA certificate is trusted by API services and clients
+- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored.
+- The API ML local certificate authority is used to sign certificates of services.
+- The API ML local CA certificate is trusted by API services and clients.
 
-**The API ML keystore**
+**The API ML keystore or API ML SAF Keyring**
 
-- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA
-- Server certificate of the Discovery Service (with PK). This can be signed by the local CA
-- Server certificate of the Catalog (with PK). This can be signed by the local CA
+- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA.
+- Server certificate of the Discovery Service (with PK). This can be signed by the local CA.
+- Server certificate of the Catalog (with PK). This can be signed by the local CA.
 - Private asymmetric key for the JWT token, alias `jwtsecret`. The  public key is exported to the `localhost.keystore.jwtsecret.cer` directory.
-- The API ML keystore is used by API ML services
+- Used by API ML services
 
-**The API ML truststore**
+**The API ML truststore or API ML SAF Keyring**
 
-- The API ML truststore contains a local CA public certificate
-- Contains an external CA public certificate (optional)
+- Local CA public certificate
+- External CA public certificate (optional)
 - Can contain self-signed certificates of API Services that are not signed by the local or external CA
 - Used by API ML services
 
 **Zowe core services**
 
-- Services can use the same keystore and truststore as APIML for simpler installation and management
-- Alternatively, services can have individual stores for higher security
+- Services can use the same keystore and truststore or the same keyring as APIML for simpler installation and management.
+- When using a keystore and truststore, services have to have rights to access and read them on the filesystem.
+- When using a keyring, the user of the service must have authorization to read the keyring from the security system.
+- Alternatively, services can have individual stores for higher security.
 
-**API service keystore** (for each service)
+
+**API service keystore or SAF keyring** (for each service)
 
 - Contains a server and client certificate signed by the local CA
 
-**API service truststore** (for each service)
+**API service truststore or SAF keyring** (for each service)
 
 - (Optional) Contains a local CA and external CA certificates
 
@@ -283,12 +293,12 @@ There are several authentication mechanisms, depending on the desired endpoint, 
 | UI (eureka homepage)                 | basic auth(MF), token              | see note about mainframe authentication  |
 | application/**                       | basic auth(MF), token              |  see note about mainframe authentication  |
 | application/health, application/info | none                          |     |
-| eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. The certificate is stored in the `keystore/localhost/localhost.keystore.p12` keystore. |
+| eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. API ML's certificate can be used. It is stored in the `keystore/localhost/localhost.keystore.p12` keystore or in the SAF keyring. It is exported to .pem format for convenience. Any other certificate which is valid and trusted by Discovery service can be used. |
 | discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication |
 
 **Note:** Some endpoints are protected by mainframe authentication. The authentication function is provided by the API Gateway. This functionality is not available until the Gateway registers itself to the Discovery Service.
 
-Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by trusting the local CA certificate stored in `keystore/local_ca/localca.cer`.
+Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by validating the client certificate against certificates stored in the truststore or SAF keyring.
 
   Some utilities including HTTPie require the certificate to be in PEM format. The exported certificate in .pem format is located here: `keystore/localhost/localhost.pem`.
 
@@ -336,21 +346,27 @@ The https://github.com/zowe/api-layer repository already contains pre-generated 
 
 The certificates are described in more detail in the [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
+**Note:** When running on localhost, only the combination of using a keystore and truststore is supported.
+
 
 #### Certificate management script
 
 Zowe API Mediation Layer provides a script that can be used on Windows, Mac, Linux, and z/OS
 to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
-This script is stored in [scripts/apiml_cm.sh](https://github.com/zowe/zowe-install-packaging/blob/master/bin/apiml_cm.sh).
+This script is stored in `zowe/zowe-install-packaging` repository [bin/apiml_cm.sh](https://github.com/zowe/zowe-install-packaging/blob/master/bin/apiml_cm.sh).
 It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, install Bash by going to the following link: [cmder](http://cmder.net/).
 
 
 #### Generate certificates for localhost
 
-Use the following script in the root of the `zowe-install-packaging` repository to generate certificates for localhost:
+**Follow these steps:**
 
-`bin/apiml_cm.sh --action setup`
+1. Clone the `zowe-install-packaging` repository to your local machine.
+2. Place the `bin/apiml_cm.sh` script intoto `scripts` directory in your API Mediation Layer repository folder
+3. Use the following script in the root of the `api-layer` repository to generate certificates for localhost:
+
+`scripts/apiml_cm.sh --action setup`
 
 This script creates the certificates and keystore for the API Mediation Layer in your current workspace.
 
@@ -362,7 +378,7 @@ To generate a certificate for a new service on localhost, see [Generating certif
 
 #### Add a service with an existing certificate to API ML on localhost
 
-The instructions are described at [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
+For more information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
 
 
 #### Service registration to Discovery Service on localhost
