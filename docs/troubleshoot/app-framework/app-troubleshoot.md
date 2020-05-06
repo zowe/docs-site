@@ -194,7 +194,7 @@ You can ignore these messages. These messages are timing-related where different
 
 ## Error: Zowe Desktop address space fails to start { ZWED0115E }
 
-After launching the started task `ZWESVSTC` there are no Zowe desktop `ZWE1DS` address sspace(s).
+After launching the started task `ZWESVSTC` there are no Zowe desktop `ZWE1DS` address space(s).
 
 **Symptom:**
 Check the log for the message 
@@ -204,4 +204,8 @@ yyyy-mm-dd hh:mm:sss.ms <ZWED:66005> OMVSKERN CRITICAL (_zsf.cluster,native arra
 You may change the default of '5000' ms by setting 'node.cluster.storageTimeout' within the config. Timeout call null/clusterManager/getStorageAll 
 ```
 
-The timeout value was increased to be `30000` in 1.11.0 release.  To check which release of Zowe you are running, see [Determining the Zowe release number](../troubleshooting.md#determining-the-zowe-release-number).
+The timeout value was increased to be `30000` in 1.11.0 release.  To check which release of Zowe you are running, see [Determining the Zowe release number](../troubleshooting.md#determining-the-zowe-release-number). To further increase this, or update the value on a previous release you can add an entry to your $INSTANCE_DIR/instance.env:
+```
+ZWED_node_cluster_storageTimeout=30000
+```
+where the timeout value is in milliseconds.
