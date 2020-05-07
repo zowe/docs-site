@@ -240,7 +240,7 @@ The `zowe-setup-certificates.sh` stores the z/OSMF JWT public key to the `localh
 ### API ML truststore and keystore
 
 A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
-used by other technologies in Zowe (Node.js).
+by other technologies in Zowe (Node.js).
 
 **The API ML local certificate authority (CA)**
 
