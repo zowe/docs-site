@@ -173,7 +173,7 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
-## Error: Problem making eureka request { Error: connect ECONNREFUSED }
+## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
 
 **Symptom:** 
 
@@ -191,5 +191,56 @@ port: 7553 }
 
 **Solution:**   
 You can ignore these messages. These messages are timing-related where different Eureka servers come up, try to connect to each other, and warn that the endpoint they are trying to perform a handshake with is not available.  When all of the Eurka services have started, these errors will stop being logged.  
+
+## Warning: ZWED0159W - Plugin (org.zowe.zlux.proxy.zosmf) loading failed.
+
+**Symptom:**
+
+The Zowe started task `ZWESVSTC` log contains messages
+
+```
+yyyy-mm-dd hh:mm:ss:ms ZWED:16843061 ZWESVUSR WARN (_zsf.install,index.js:255) 
+ZWED0159W - Plugin (org.zowe.zlux.proxy.zosmf) loading failed. 
+Message: "ZWED0047E - Proxy (org.zowe.zlux.proxy.zosmf:data) setup failed.
+Host & Port for proxy destination are required but were missing.
+```
+
+**Solution:**   
+You can ignore these messages. 
+
+## Warning: ZWED0050W - Could not read swagger doc folder (..)
+ 
+**Symptom:**
+
+The Zowe started task `ZWESVSTC` log contains messages ending
+
+```
+ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-workflow/doc/swagger
+ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
+ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
+ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
+ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
+```
+
+**Solution:**   
+You can ignore these messages. 
+
+## Warning: ZWED0047W - Swagger file for server (...) not found
+
+**Symptom:**
+
+The Zowe started task `ZWESVSTC` log contains messages ending
+
+```
+ZWED0047W - Swagger file for service (org.zowe.zosmf.workflows:zosmf) not found
+ZWED0047W - Swagger file for service (org.zowe.zlux.ng2desktop:browser-preferences) not found
+ZWED0047W - Swagger file for service (org.zowe.zlux.bootstrap:adminnotificationdata) not found
+ZWED0047W - Swagger file for service (org.zowe.terminal.proxy:tn3270data) not found
+ZWED0047W - Swagger file for service (org.zowe.terminal.tn3270:statediscovery) not found
+```
+
+**Solution:**   
+You can ignore these messages. 
+
 
 
