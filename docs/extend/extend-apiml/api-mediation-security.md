@@ -274,7 +274,7 @@ used by other technologies in Zowe (Node.js).
 
 **API service truststore** (for each service)
 
-- (Optional) The API service truststor contains a local CA and external CA certificates.
+- (Optional) The API service truststore contains a local CA and external CA certificates.
 
 **Client certificates**
 
