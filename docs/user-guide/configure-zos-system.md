@@ -166,87 +166,12 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)
     ```
     ```
-    TSS PERMIT(IZUSVR) IBMFAC(ZWES.IS) ACCESS(READ)
+    TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
 **Notes:**
 
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
-
-## Configure an ICSF cryptographic services environment
-
-To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
-
-Define or check the following configurations depending on whether ICSF is already installed:
-    
-- The ICSF or CSF job that runs on your z/OS system.
-- The configuration of ICSF options in `SYS1.PARMLIB(CSFPRM00)`, `SYS1.SAMPLIB`, `SYS1.PROCLIB`.
-- Create CKDS, PKDS, TKDS VSAM data sets.
-- Define and activate the CSFSERV class:
-
-    - If you use RACF, issue the following commands:
-        ```
-        RDEFINE CSFSERV profile-name UACC(NONE)
-        ```
-        ```
-        PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-        ```
-        ```
-        PERMIT profile-name CLASS(CSFSERV) ID(userid-list)   ... [for 
-        userids IKED, NSSD, and Policy Agent]
-        ```
-        ```
-        SETROPTS CLASSACT(CSFSERV)
-        ```
-        ```
-        SETROPTS RACLIST(CSFSERV) REFRESH
-        ```
-    - If you use CA ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
-        ```
-        SET CONTROL(GSO)
-        ```
-        ```
-        INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
-        ```
-        ```
-        F ACF2,REFRESH(CLASMAP)
-        ```
-        ```
-        SET RESOURCE(CSF)
-        ```
-        ```
-        RECKEY profile-prefix ADD(profile-suffix uid(UID string for tcpip-stackname) SERVICE(READ) ALLOW)   
-        ```
-        ```
-        RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)
-        ```
-        (repeat for userids IKED, NSSD, and Policy Agent)
-        
-        ```
-        F ACF2,REBUILD(CSF)
-        ```
-    - If you use CA Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
-        ```
-        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
-        ```
-        ```                  
-        TSS ADD(owner-acid) CSFSERV(profile-prefix.)
-        ```
-        ```
-        TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        ```
-        ```
-        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        ```
-        (repeat for user-acids IKED, NSSD, and Policy Agent)
-    
-**Notes:**
-
-- Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
-- Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
-- CCA and/or PKCS #11 coprocessor for random number generation.
-- Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
-
 
 ## Configure security environment switching
     

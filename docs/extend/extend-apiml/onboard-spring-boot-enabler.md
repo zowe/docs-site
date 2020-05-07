@@ -24,8 +24,16 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
+    * [Sample API ML Onboarding Configuration](#Sample-API-ML-Onboarding-Configuration)
+    * [SAF Keyring configuration](#SAF-Keyring-configuration)
+    * [Custom Metadata](#Custom-Metadata)
+    * [Api Mediation Layer specific metadata](#Api-Mediation-Layer-specific-metadata)
+    
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-
+    
+    * [Unregistering your service with API ML](#Unregistering-your-service-with-API-ML)
+    * [Basic routing](#Basic-routing)
+    
 5. [Adding API documentation](#adding-api-documentation)
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
@@ -312,17 +320,13 @@ apiml:
             keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
             trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
             trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
- ```
-
-Optional metadata section
-```yaml
+        
+        # Optional metadata section
         customMetadata:
             yourqualifier:
                 key1: value1
                 key2: value2
-```
 
-```yaml
 server:
     scheme: ${apiml.service.scheme}
     hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
@@ -339,7 +343,8 @@ server:
         ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
         keyStoreType: PKCS12
         trustStoreType: PKCS12
-```
+ ```
+
 
 **Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -369,6 +374,24 @@ logging:
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
+### SAF Keyring configuration
+
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring).Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+
+The following example shows enabler configuration with keyrings: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////my_racf_id/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////my_racf_id/my_key_ring
+    trustStoreType: JCERACFKS
+    trustStorePassword: password
+```
+
 ### Custom Metadata
 
    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
@@ -390,6 +413,30 @@ To register your REST service with API ML using a Spring Boot enabler, annotate 
 ### Unregistering your service with API ML
 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
+
+### Basic routing
+Basic routing is based on the service ID and API version that are used to identify the service. The specific instance is selected by the API Gateway. The response needs to be the same for all instances. This is the type of routing that is expected by Eureka and Zuul.
+
+Gateway URL format:
+```
+https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
+```
+**Example:**
+
+The original URL of a resource exposed by a service
+```
+http://service:10015/enablerv1sampleapp/api/v1/samples
+```
+API Gateway URL of the resource
+```
+https://gateway:10010/api/v1/enablerv1sampleapp/samples
+```
+
+**Note:** The URL identifies the resource. It does not uniquely identify the instance of the same service when multiple instances are provided by the same service (i.e. service is running in HA mode). Services of the same product that provide different resources (e.g. SYSVIEW on one system and SYSVIEW in a different sysplex) cannot have the same service ID. 
+
+In addition to the basic Zuul routing, the Zowe API Gateway adds support of versioning where a major version can be specified. The Gateway routes request only to an instance that provides the specified major version of the API. 
+
+The /api/ prefix is used for REST APIs. The /ui/ prefix is used for web UIs, and /ws/ prefix for WebSockets.
 
 ## Adding API documentation
 

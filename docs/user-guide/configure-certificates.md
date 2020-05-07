@@ -1,6 +1,6 @@
 # Configuring Zowe certificates 
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts.  When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
+A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
 
 If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
 
@@ -40,9 +40,9 @@ Follow the procedure to customize the values for variables in the `zowe-setup-ce
     
 3. Execute the following command with the customized environment file:
    ```shell script
-    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env
+    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
-   where `<your_directory>` specifies the location of your customized environment file. 
+   where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
    
 The keystore and certificates are generated based on the customized values in the 
 `bin/zowe-setup-certificates.env` file.
