@@ -528,7 +528,7 @@ bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format>
 
 #### Procedure if the service is not trusted
 
-You may access a service that is not trusted. This may occur when issuing a REST API request to it:
+When you try to access a service with the request similar to:
 
 **Example:**
 
