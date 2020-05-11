@@ -1,12 +1,11 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe&trade; convenience build by running shell script within a UNIX System Services (USS) shell.
+You install the Zowe&trade; convenience build by running shell script within a UNIX System Services (USS) shell, or alternatively by using the z/OSMF workflow. 
 
-
-You can install the Zowe runtime by using one of the following methods: 
-
-- Use the <a href="Installing the Zowe runtime">zowe-install shell script</a>
-- Use the <a href="Install Zowe Runtime with z/OSMF Workflow">z/OSMF workflow</a>
+- [Obtaining and preparing the convenience build](#obtaining-and-preparing-the-convenience-build)
+- Method 1: [Installing the Zowe runtime by running shell script](#installing-the-zowe-runtime-by-running-shell-script)
+- Method 2: [Installing the Zowe runtime with z/OSMF workflow](#installing-the-zowe-runtime-with-zosmf-workflow)
+- [Next steps](#next-steps)
 
 ## Obtaining and preparing the convenience build
 
@@ -90,7 +89,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-V.v.p>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
-## Installing the Zowe runtime
+## Installing the Zowe runtime by running shell script
 
 The first installation step is to create a USS folder that contains the Zowe runtime artifacts.  This is known as the `<RUNTIME_DIR>`.
 
@@ -156,7 +155,7 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-## Install Zowe Runtime with z/OSMF Workflow
+## Installing the Zowe runtime with z/OSMF workflow
 
 z/OSMF workflow simplifies the procedure to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
 
