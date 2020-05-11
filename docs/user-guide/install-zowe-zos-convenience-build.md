@@ -95,7 +95,7 @@ After you have the `zowe-V.v.p.PAX` file on z/OS USS
 
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-V.v.p>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
-## Installing the Zowe runtime
+## Installing the Zowe runtime by running shell script
 
 The first installation step is to create a USS folder that contains the Zowe runtime artifacts.  This is known as the `<RUNTIME_DIR>`.
 
