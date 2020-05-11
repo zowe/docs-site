@@ -29,7 +29,7 @@ If present, the `validate.sh` script performs tasks such as:
 
 During execution of the `validate.sh` script, if an error is detected, then a component should echo a message that contains information to assist a user diagnosing the problem.
 
-If `VALIDATE_ONLY=true` is added to the instance.env then launching Zowe will exit after the validation stage. This lets a Zowe administrator run a check of whether all the Zowe install's component validation checks pass without having to actually start any of them.
+If you are a Zowe administrator, you might want to check whether all the component validation checks of the Zowe installation pass without starting any of the components. To do this, you can add `VALIDATE_ONLY=true` to the `instance.env` file. Then, Zowe will not be launched after the validation stage.
 
 ### Configure
 
