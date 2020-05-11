@@ -96,21 +96,22 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
-### Zowe installer
+#### Zowe installer
 
-- A `-l` parameter that controls where the setup scripts write trace logs is added to [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically) and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc)
-- Port validation improved to assist determining whether Zowe's ports are available
+- Added a `-l` parameter to the [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values) file, the [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically) file, and the [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) file. This parameter controls where the setup scripts write trace logs. 
+- Improved port validation to assist determining whether Zowe's ports are available.
 
+#### Zowe troubleshooting
 
-### Zowe Documentation
+- Improved the troubleshooting script `zowe-support.sh` to assist with offline problem determination. See [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
 
-- A documentation chapger [Zowe lifecyce](../extend/lifecycling-with-zwesvstc.md#zowe-lifecycle) was added that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
-- The [Zowe architecture](../getting-started/zowe-architecture.md) chapter was updated to include a more current architecture topology diagram, as well as more detail on the individual Zowe services, where they log their data, and how to perform high level problem determination.
-- A number of new problem determination scenarios, and their resolution, found working with Zowe customers were added to [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md), as well as information on how to determine which release of Zowe is installed, see [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).
+#### Zowe documentation
 
-## Zowe Troubleshooting
-
-- Improrvements to the troubleshooting script `zowe-support.sh` to assist with off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md)
+- Added a topic [Zowe lifecycle](../extend/lifecycling-with-zwesvstc.md#zowe-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
+- Improved the [Zowe architecture](../getting-started/zowe-architecture.md) information to include a more current architecture topology diagram and more details on the individual Zowe services, where they log their data, and how to perform high-level problem determination.
+- Added new problem determination scenarios and resolution. See [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md)
+- Added information on how to determine which release of Zowe is installed. See [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).
+- Added a [Zowe resources](zowe-resources.md) topic, which provides a list of resources that supplement the documentation on this site.
 
 ### Bug fixes
 
