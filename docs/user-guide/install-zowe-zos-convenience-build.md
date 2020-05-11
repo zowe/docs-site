@@ -1,13 +1,6 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe&trade; convenience build by running shell script within a UNIX System Services (USS) shell.
-
-
-You can install the Zowe runtime by using one of the following methods: 
-
-- Use the <a href="Installing the Zowe runtime">zowe-install shell script</a>
-- Use the <a href="Install Zowe Runtime with z/OSMF Workflow">z/OSMF workflow</a>
-
+You install the Zowe&trade; convenience build by obtaining a .pax file for a build and using this to create the Zowe runtime environment.  
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-V.v.p.pax`, where
@@ -18,11 +11,23 @@ The Zowe installation file for Zowe z/OS components is distributed as a PAX file
 
 The numbers are incremented each time a release is created so the higher the numbers, the later the release.  For more information on the Zowe release number see [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases)
 
-To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you download the PAX file, follow the instructions to verify the PAX file and prepare it to install the Zowe runtime.
+To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. 
+
+This chapter describes a set of steps that can be done in sequence to complete the install.
+
+ - [Installing the Zowe runtime](#installing-the-zowe-runtime)
+   - [Step 1: Locate the install directory](step-1:-locate-the-install-directory)
+   - [Step 2: Choose a runtime USS folder](#step-2:-choose-a-runtime-uss-folder)
+   - [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3:-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
+   - [Step 4 (a): Install the Zowe runtime using shell script](#step-4-(a):-installithe-zowe-runtime-using-shell-script)
+     - **or**
+   - [Step 4 (b) Install Zowe Runtime using z/OSMF Workflow](#step-4-(b)-install-zowe-runtime-using-z/osmf-workflow)
+
+After you have the `zowe-V.v.p.PAX` file on z/OS USS 
 
 **Follow these steps:**
 
-1. Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project. 
+1. **(optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and wish to ensure that is an original Zowe release driver. 
    
    Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
@@ -146,7 +151,7 @@ ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
 By default during install and configure various logs will be created in `/global/zowe/logs`, if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the installing user, or you wish to override and provide your own directory as the place that logs go you can specify this with the `-l` parameter.
 
-### Step 4: Install the Zowe runtime
+### Step 4 (a): Install the Zowe runtime using shell script
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
@@ -156,53 +161,46 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-## Install Zowe Runtime with z/OSMF Workflow
+### Step 4 (b) Install Zowe Runtime using z/OSMF Workflow
 
-z/OSMF workflow simplifies the procedure to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
+A z/OSMF workflow provides the ability to encapsulate a task as a set of dependent steps. These can be divided across different areas of an organization and can form the basis for the automated auditable processes. 
+
+z/OSMF workflows consist of a workflow definition that users then operate and manage as workflow tasks. z/OSMF Workflow tasks can help to guide the activities of system programmers, security administrators, and others who are responsible for managing the configuration of the system.  For more information on z/OSMF workflows see, [z/OS 2.2 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), [z/OS 2.3 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), and [z/OS 2.4 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html).
+
+Zowe provides a z/OSMF workflow definition that can be used to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
 
 Perform the following steps to register and execute the Zowe runtime installation workflow in the z/OSMF web interface:
 
  1.	Log in to the z/OSMF web interface.
  2.	Select **Workflows** from the navigation tree.
  3.	Select **Create Workflow** from the **Actions** menu.
- 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.   
-    The path to the workflow definition file is <extracted_pax_folder>/files/workflows/ ZWEWRF04.xml file. 
- 5.	(Optional) Enter the path to the customized variable input file that you prepared in advance.
- 
-    The path to the variable input file is located is <extracted_pax_folder>/files/workflows/ ZWEWRF04.xml.xml file.
-   
-    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
-
+ 4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.   
+    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ ZWEWRF04.xml file.` 
+ 5. **(Optional)** Enter the path to the customized variable input file that you prepared in advance.
+    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ ZWEWRF04.xml.xml file.`
+    - Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
 7.	Select the system where you want to execute the workflow.
 8.	Select **Next**.
 9.	Specify the unique workflow name.
-10.	Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
-11.	Select **Finish**.
+10.Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
+
+11. Select **Finish**.
 
     The workflow is registered in z/OSMF and ready to execute.
 
 11. Select the workflow that you registered from the workflow list.
 12. Execute the steps in order. The following steps are displayed that are ready to execute manually:
-
     - **Define Variables**
-
-       Define the values for variables for the convenience build runtime installation.
+       - Define the values for variables for the convenience build runtime installation.
     - **Allocate ZFS data set**
- 
-       Execute the step to allocate the zFS data set for the Zowe USS.
-
-     - **Zowe make dir**
-
-         Execute the step create a directory for the Zowe USS file system.
-
-      -  **Mount ZFS**
-         
-         Execute the step to mount the zFS data set to the created directory
-      - **Set Mountpoint Owner**
-
-        Execute the step to sets the user who executes the step as the owner of the mountpoint.
+       - Execute the step to allocate the zFS data set for the Zowe USS.
+    - **Zowe make dir**
+       - Execute the step create a directory for the Zowe USS file system.
+    - **Mount ZFS**
+       - Execute the step to mount the zFS data set to the created directory
+    - **Set Mountpoint Owner**
+       - Execute the step to sets the user who executes the step as the owner of the mountpoint.
       - **Run install script**
-        
         Execute the step executes the Zowe convenience build install script.
 14.	Perform the following steps to execute each step individually:
     1.	Double-click the title of the step.
@@ -212,7 +210,7 @@ Perform the following steps to register and execute the Zowe runtime installatio
     5.	Repeat the previous two steps to complete all items until the option Finish is available.
     6.	Select **Finish**.
 
-    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
+For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
 
 After you execute each step, the step is marked as Complete. The workflow is executed. 
 
