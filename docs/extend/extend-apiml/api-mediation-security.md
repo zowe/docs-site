@@ -248,7 +248,9 @@ As an alternative to using a keystore and truststore, API ML can read certificat
 **Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
 
     -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
-    
+
+The elements in the following list, which apply to the API ML SAF Keyring, have these corresponding characteristics:
+
 **The API ML local certificate authority (CA)**
 
 - The API ML local CA contains a local CA certificate and a private key that needs to be securely stored.
