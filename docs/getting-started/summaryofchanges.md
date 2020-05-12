@@ -96,6 +96,24 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
+#### Zowe installer
+
+- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs. 
+- Improved port validation to assist determining whether Zowe's ports are available.
+
+#### Zowe troubleshooting
+
+- Improved the troubleshooting script `zowe-support.sh` to assist with offline problem determination. See [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
+
+#### Zowe documentation
+
+- Added a topic [Zowe lifecycle](../extend/lifecycling-with-zwesvstc.md#zowe-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
+- Improved the [Zowe architecture](../getting-started/zowe-architecture.md) information to include a more current architecture topology diagram and more details on the individual Zowe services, where they log their data, and how to perform high-level problem determination.
+- Added new problem determination scenarios and resolution. See [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md)
+- Added information on how to determine which release of Zowe is installed. See [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).
+- Added a [Zowe resources](zowe-resources.md) topic, which provides a list of resources that supplement the documentation on this site.
+
+
 ### Bug fixes
 
 The following bugs were fixed:
