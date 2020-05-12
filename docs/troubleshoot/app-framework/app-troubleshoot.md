@@ -216,7 +216,6 @@ You can ignore these messages. These messages are timing-related where different
 The Zowe started task `ZWESVSTC` log contains messages
 
 ```
-yyyy-mm-dd hh:mm:ss:ms ZWED:16843061 ZWESVUSR WARN (_zsf.install,index.js:255) 
 ZWED0159W - Plugin (org.zowe.zlux.proxy.zosmf) loading failed. 
 Message: "ZWED0047E - Proxy (org.zowe.zlux.proxy.zosmf:data) setup failed.
 Host & Port for proxy destination are required but were missing.
