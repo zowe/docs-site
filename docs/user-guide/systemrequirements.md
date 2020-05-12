@@ -67,9 +67,9 @@ A user should now be able to use "gskkyman" to create a token.
 
 Ensure USER.TOKEN_NAME profile exists in CRYPTOZ:
 
-1. Define profile: "RDEFINE CRYPTOZ SO.TOKEN_NAME"
+1. Define profile: "RDEFINE CRYPTOZ USER.TOKEN_NAME"
 
-2. Add user with READ access: "PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
+2. Add user with READ access: "PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
 
 3. Ensure profile was created: "RLIST CRYPTOZ *"
 
@@ -100,7 +100,6 @@ Configure zowe-setup-certifcates.env using the following parameters. Both are re
     "host": "localhost",
     "http": {
       "ipAddresses": ["0.0.0.0"],
-      //to be a replacement for zssPort
       "port": 0000
     },
     "jwt": {
