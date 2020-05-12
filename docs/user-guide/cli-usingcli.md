@@ -26,7 +26,7 @@ zowe --help
 Alternatively, issue the following command to display a full list of all available commands:
 
 ```
-zowe --help --ac
+zowe --ac
 ```
 
 **Tip:** All Zowe CLI commands begin with `zowe.`
