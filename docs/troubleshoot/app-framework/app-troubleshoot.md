@@ -223,7 +223,7 @@ Host & Port for proxy destination are required but were missing.
 ```
 
 **Solution:**   
-You can ignore these messages. 
+You can ignore these messages which should not occur in 1.11 or later releases.  To check which release of Zowe you are running, see [Determining the Zowe release number](../../troubleshoot/troubleshooting.md#determining-the-zowe-release-number).
 
 ## Warning: ZWED0050W - Could not read swagger doc folder (..)
  
