@@ -10,7 +10,7 @@ The Zowe installation file for Zowe z/OS components is distributed as a PAX file
 - `v` indicates the Minor Version
 - `p` indicates the Patch number
 
-The numbers are incremented each time a release is created so the higher the numbers, the later the release.  For more information on the Zowe release number see [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases)
+The numbers are incremented each time a release is created so the higher the numbers, the later the release.  For more information on the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
 
 To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. After you download the PAX file, follow the instructions to verify the PAX file and prepare it to install the Zowe runtime.
 
