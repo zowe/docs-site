@@ -2,17 +2,25 @@
 
 Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
 
-- [Common sytem requirements](#common-system-requirements)
-- [Zowe Application Framework requirements](#zowe-application-framework-requirements)
-- [Zowe CLI requirements](#zowe-cli-requirements)
-- [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
+- [z/OS System Requirements](#z/os-system-requirements-(host))
+  - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
+  - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
+- [Zowe CLI requirements](#zowe-cli-requirements-(client))
 
-## Common z/OS system requirements (host)
+The Zowe CLI operates independently of the Zowe z/OS component and is installed on a client PC running Windows, Linux, or Mac operating systems.  It access z/OS endpoints such as z/OSMF, or through plugins can access FTP, CICS, DB2 and other z/OS services.  The z/OS environment that the CLI is communicating with does not need to have the Zowe z/OS component installed.
+
+The Zowe z/OS component is installed on a z/OS environment and provides a number of services that are accessed through a web browser such as an API catalog and a web desktop.  The client PC accessing the Zowe z/OS component does not need to have the Zowe CLI installed.  
+
+For more detail on the relationship between the the CLI and the z/OS components see, [Zowe overview](../getting-started/overview.md).  
+
+If the z/OS environment that the Zowe CLI is communicating with there are some advantages provided by the API Mediation Layer of Zowe, such as single-sign-on and the CLI only needing to trust a single certificate for all of its endpoints.
+
+## z/OS system requirements (host)
 
 - z/OS Version 2.2 or later.
 - IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
 
-  z/OSMF is an optional prerequisite for Zowe.  It is recomended that z/OSMF is present to fully exploit Zowe's capabilities.
+  z/OSMF is an optional prerequisite for Zowe.  It is recommended that z/OSMF is present to fully exploit Zowe's capabilities.
 
   ::: tip
    - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in start up time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md)
@@ -20,6 +28,8 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   :::
 
 ### Zowe Application Framework requirements (host)
+
+The Zowe Application Framework server provides the Zowe Desktop that provides an extensible GUI with a number of applications providing access to z/OS, such as the File Editor, TN3270 emulator, JES Explorer and more, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux)
 
 - Node.js
   - On z/OS: Node.js v6.x starting with v6.14.4, v8.x (except v8.16.1), and v12.x. Note when using v12.x, it is highly recommended that plugins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os)
@@ -115,7 +125,7 @@ Configure zowe-setup-certifcates.env using the following parameters. Both are re
 
 ## Zowe CLI requirements (client)
 
-Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. Zowe CLI was also tested and confirmed to run on Unix System Services (USS) on z/OS.
+Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, including Windows, Linux, and Mac operating systems. 
 
 - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
 
@@ -126,6 +136,14 @@ Zowe CLI is supported on platforms where Node.js 8.0 or 10 is available, includi
     **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
 
 - **(Optional)** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md).
+
+- **z/OS** The Zowe CLI can be installed on a z/OS environment and run under Unix System Services (USS).  However the IBM DB2 and the Secure Credentials Store plug-ins will *not* run on z/OS due to native code requirements.  As such the Zowe CLI on z/OS is not supported and is currently experimental. 
+
+## Zowe CLI requirements (host)
+
+- When the Zowe CLI is running on a client PC there is no dependency on the Zowe z/OS component being installed on the environment the CLI connects to.  The CLI uses profiles to talk to URL endpoints which encapsulate the connection details for the server that the CLI commands communicates with. The Zowe Core CLI can communicate to z/OSMF to perform tasks such as retrieving data sets, executing TSO commands, submitting jobs, working with USS and more, see [Using Zowe CLI](../user-guide/cli-usingcli.md#displaying-zowe-cli-help).  
+
+- Extension plugins for the CLI are able to talk to the specific endpoints they have been defined, for example the IBM CICS plugin talks to CICS regions, the IMS DB2 plugin talks to DB2 databases.  
 
 ### Free disk space
 
