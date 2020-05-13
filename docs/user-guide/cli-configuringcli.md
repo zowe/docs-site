@@ -1,12 +1,13 @@
 # Configuring Zowe CLI
-This section explains how to define and verify your connection to the mainframe in Zowe&trade; CLI and how to configure settings such as log levels and home directory location.
+This section explains how to define and verify your connection to the mainframe in Zowe&trade; CLI, and how to configure log levels and your home directory location.
 
 **Tip:** Configuration for the CLI is stored on your computer in a directory such as `C:\Users\user01\.zowe`. The directory includes log files, profile information, and installed CLI plug-ins. Refer to the logs in the `imperative` and `zowe` folders when you troubleshoot.
 
-- [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
-- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf)
-- [Setting CLI log levels](#setting-zowe-cli-log-levels)
-- [Setting the CLI home directory](#setting-the-zowe-cli-home-directory)
+  - [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
+  - [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-zosmf)
+  - [Certificate security](#certificate-security)
+  - [Setting Zowe CLI log levels](#setting-zowe-cli-log-levels)
+  - [Setting the Zowe CLI home directory](#setting-the-zowe-cli-home-directory)
 
 ## Defining Zowe CLI connection details
 
@@ -43,7 +44,7 @@ There are two main types of profiles:
 
 #### Displaying profiles help
 
-To learn about the options available for creating `zosmf` profiles, issue the following command:
+Use the CLI help to learn about the  options for creating profiles. For example, for a `zosmf` profile, issue the following command:
 
 ```
 zowe profiles create zosmf-profile --help
@@ -51,7 +52,7 @@ zowe profiles create zosmf-profile --help
 
 #### Creating and using a service profile
 
-Create a profile that targets a specific mainframe service, then use the profile to issue a command. For example, issue the following command (substituting your connection details) to create a profile named `myprofile123`:
+Create a profile that targets a specific mainframe service, then use the profile to issue a command. For example, issue the following command (substituting your connection details) to create a `zosmf` service profile named `myprofile123`:
 
 ```
 zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
@@ -65,19 +66,44 @@ zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 
 #### Creating and using a base profile
 
-Create an optional base profile, which can store values and provide them to multiple service profiles. The base profile can also contain tokens to connect to services securely.
+Create a base profile, which can store option values and provide them to multiple service profiles. The base profile can also contain tokens to connect to services securely through API ML.
 
-For example, create a base profile with your username and password. After the base profile is created, you can omit the `--username` and `--password` options when creating a service profile such as `zosmf`. The service profile will use values provided by the base profile.
+For example, create a base profile that contains your username and password. After the base profile is created, you can omit the `--username` and `--password` options when creating a service profile such as `zosmf`. The service profile will use values provided by th
 
-#### Integrating with API Mediation Layer
+<!-- insert example syntax for creating a base profile here -->
 
-The API Mediation Layer provides a single point of access to a defined set of microservices. The API Mediation Layer provides cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
+#### Integrating with Zowe API Mediation Layer (API ML)
 
-When Zowe CLI executes commands that connect to a service through the API Mediation Layer, the layer routes the command execution requests to an appropriate instance of the API. The routing path is based on the system load and available instances of the API.
+Zowe API ML provides a single point of access to a defined set of mainframe services. The layer provides API management features such as high-availability, dynamic API discovery, consistent security, and an SSO experience.
 
-Use the `--base-path` option on commands to let all of your Zowe CLI core command groups (excludes plug-in groups) access REST APIs through an API Mediation Layer. To access API Mediation Layers, you specify the base path, or URL, to the API gateway as you execute your commands. Optionally, you can define the base path URL as an environment variable or in a profile that you create.
+You can access API ML directly through Zowe CLI, which enables SSO/MFA and lets you access to multiple registered services through a base CLI profile. When you issue commands using the base profile, the layer routes the requests to an appropriate instance of the API based on the system load and available API instances.
 
-**Examples:**
+To integrate with the layer, request a Java Web Token (JWT) using the following command:
+
+```
+zowe auth login apiml
+```
+
+The CLI will prompt you to enter connection details. After you enter username and password (password can be a PIN concatenated with a second factor for MFA), a base profile is created that contains your JWT, username, and password.
+
+You can use the base profile to issue a command. For example:
+
+```
+zowe zos-files list data-set "ibmuser.*" --base-profile myprofile123
+```
+
+The request will be routed through API ML to access the appropriate instance of z/OSMF.
+
+**Notes:**
+- When your JWT token expires, you must request another token with the `zowe auth login apiml` command.
+- If you omit connection details from a service profile, such as `zosmf` profile, the CLI uses the information from your base profile.
+- You can still specify all connection details on a service profile to connect directly to the service (not through API ML).
+
+#### Target a specific LPAR
+
+If you have multiple instances of API ML at your site and want to target a specific LPAR, or if you want to connect to a specific instance of a service that is registered to API ML, use the `--base-path` option.
+<!-- (describe the base path here, which is still available for the purpose of choosing a specific LPAR for either a service or APIML)
+Previous content: Use the `--base-path` option on commands to let all of your Zowe CLI core command groups (excludes plug-in groups) access REST APIs through an API Mediation Layer. To access API Mediation Layers, you specify the base path, or URL, to the API gateway as you execute your commands. Optionally, you can define the base path URL as an environment variable or in a profile that you create.
 
 The following example illustrates the base path for a REST request that is not connecting through an API Mediation Layer to one system where an instance of z/OSMF is running:
 
@@ -91,23 +117,7 @@ The following example illustrates the base path (named `api/v1/zosmf1)` for a RE
 https://myapilayerhost:port/api/v1/zosmf1/zosmf/restjobs/jobs
 ```
 
-The following example illustrates the command to verify that you can connect to z/OSMF through an API Mediation Layer that contains the base path `my/api/layer`:
-
-```
-zowe zosmf check status -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
-```
-
-**More Information:**
-- [API Mediation Layer](../getting-started/overview.md)
-- [Creating a profile to access API Mediation Layer](#creating-a-profile-that-accesses-api-mediation-layer)
--
-You can create profiles that access either an exposed API or API Mediation Layer (API ML) in the following ways:
-
-* When you create a profile, specify the host and port of the API that you want to access. When you only provide the host and port configuration, Zowe CLI connects to the exposed endpoints of a specific API.
-
-* When you create a profile, specify the host, port, and the base path of API ML instance that you want to access. Using the base path to API ML, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
-
-For more information, see [Accessing an API Mediation Layer](#integrating-with-api-mediation-layer).
+When you create a profile, specify the host, port, and the base path of API ML instance that you want to access. Using the base path to API ML, Zowe CLI routes your requests to an appropriate instance of the API based on the system load and the available instances of the API.
 
 **Example:**
 
@@ -116,10 +126,10 @@ The following example illustrates the command to create a profile that connects 
 ```
 zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <mypass> --base-path <my/api/layer>
 ```
-
-After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
+ -->
 
 ### Defining Environment Variables
+
 You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value.
 
   - **Assigning an environment variable for a value that is commonly used.**
