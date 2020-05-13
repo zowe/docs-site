@@ -21,7 +21,7 @@ A minor release indicates that new functionality is added but the code is compat
 ### Major release
 A major release is required if changes are made to the public API and the code is no longer compatible with an earlier version.  
 
-When Zowe is version one, it is associated with the Zowe v1 [conformance program]((../extend/zowe-conformance-program.md)). Offerings that extend Zowe and achieve the Zowe v1 conformance badge will remain compatible with Zowe throughout its version 1 lifetime. A major release increment because of incompatibility is sometimes referred to as a "breaking" change.
+When Zowe is version one, it is associated with the Zowe v1 [conformance program](../extend/zowe-conformance-program.md). Offerings that extend Zowe and achieve the Zowe v1 conformance badge will remain compatible with Zowe throughout its version 1 lifetime. A major release increment because of incompatibility is sometimes referred to as a "breaking" change.
 
 The first SMP/E build for Zowe v1 has a Functional Module ID (FMID) of AZWE001, which was created with content from the 1.9.0 release. Each major release will be its own SMP/E FMID where the last digit is updated, for example AZWE00V where V represents the major version.
 
