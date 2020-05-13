@@ -168,7 +168,11 @@
     "items": [
       {
         "text": "Overview",
-        "link": "troubleshoot/troubleshooting.md"
+        "items": [
+          "troubleshoot/troubleshooting.md",
+          "troubleshoot/troubleshoot-zowe-release.md",
+          "troubleshoot/troubleshoot-diagnostics.md"
+        ]
       },
       {
         "text": "z/OS component installation",
@@ -202,10 +206,6 @@
           "troubleshoot/cli/known-cli.md",
           "troubleshoot/cli/cli-issue.md"
         ]
-      },
-      {
-        "text": "Using diagnostics data script",
-        "link": "troubleshoot/troubleshoot-diagnostics.md"
       }
     ]
   },
