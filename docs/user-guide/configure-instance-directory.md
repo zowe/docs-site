@@ -5,7 +5,7 @@ The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration dat
 The instance directory ``<INSTANCE_DIRECTORY>/bin` contains a number of key scripts
  - `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
   - `zowe-stop.sh` is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
-  - `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md)
+  - `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
 
 ## Prerequisites
 
