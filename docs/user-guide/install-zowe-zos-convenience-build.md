@@ -1,33 +1,33 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe&trade; convenience build by obtaining a .pax file for a build and using this to create the Zowe runtime environment.  
+You install the Zowe&trade; convenience build by obtaining a PAX file for a build and using this to create the Zowe runtime environment.  
+
+After you [obtain the PAX file]((#obtaining-and-preparing-the-convenience-build)), you can take the following steps to complete the installation.
+
+- [Step 1: Locate the install directory](step-1:-locate-the-install-directory)
+- [Step 2: Choose a runtime USS folder](#step-2:-choose-a-runtime-uss-folder)
+- [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3:-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
+- [Step 4 (Method 1): Install the Zowe runtime using shell script](#step-4-method-1-install-the-zowe-runtime-using-shell-script)
+- [Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow](#step-4-method-2-install-the-zowe-runtime-using-zosmf-workflow)
+
+
 ## Obtaining and preparing the convenience build
 
-The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-V.v.p.pax`, where
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. 
+
+For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 
 - `V` indicates the Major Version
 - `v` indicates the Minor Version
-- `p` indicates the Patch number
+- `p` indicates the Patch Version
 
-The numbers are incremented each time a release is created so the higher the numbers, the later the release.  For more information on the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
+The numbers are incremented each time a release is created, so the higher the numbers, the later the release.  For more information about the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
 
 To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. 
 
-This chapter describes a set of steps that can be done in sequence to complete the install.
+After you have the `zowe-V.v.p.PAX` file, follow these steps. 
 
- - [Installing the Zowe runtime](#installing-the-zowe-runtime)
-   - [Step 1: Locate the install directory](step-1:-locate-the-install-directory)
-   - [Step 2: Choose a runtime USS folder](#step-2:-choose-a-runtime-uss-folder)
-   - [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3:-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
-   - [Step 4 (a): Install the Zowe runtime using shell script](#step-4-(a):-installithe-zowe-runtime-using-shell-script)
-     - **or**
-   - [Step 4 (b) Install Zowe Runtime using z/OSMF Workflow](#step-4-(b)-install-zowe-runtime-using-z/osmf-workflow)
-
-After you have the `zowe-V.v.p.PAX` file on z/OS USS 
-
-**Follow these steps:**
-
-1. **(optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and wish to ensure that is an original Zowe release driver. 
+1. **(Optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and want to ensure that it is an original Zowe release driver. 
    
    Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
@@ -95,7 +95,7 @@ After you have the `zowe-V.v.p.PAX` file on z/OS USS
 
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-V.v.p>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
-## Installing the Zowe runtime by running shell script
+## Installing the Zowe runtime
 
 The first installation step is to create a USS folder that contains the Zowe runtime artifacts.  This is known as the `<RUNTIME_DIR>`.
 
@@ -136,7 +136,7 @@ ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and 
 ZWESVSTC | JCL to start Zowe 
 ZWEXMSTC | JCL to start the Zowe cross memory server
 ZWESIP00 | Parmlib member for the cross memory server
-ZWESASTC | Started task JCL for the cross memory Auxillary server
+ZWESASTC | Started task JCL for the cross memory Auxiliary server
 ZWESIPRG | Console commands to APF authorize the cross memory server load library
 ZWESISCH | PPT entries required by Cross memory server and its Auxiliary address spaces to run in Key(4)
 
@@ -149,9 +149,11 @@ ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
 #### Step 3a: Choose a log directory (optional) 
 
-By default during install and configure various logs will be created in `/global/zowe/logs`, if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the installing user, or you wish to override and provide your own directory as the place that logs go you can specify this with the `-l` parameter.
+By default, during installation and configuration, various logs will be created in `/global/zowe/logs` if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the user who installs Zowe, or you want to override and provide your own directory that contains logs, you can specify this with the `-l` parameter.
 
-### Step 4 (a): Install the Zowe runtime using shell script
+Next, you can install the Zowe runtime via different methods. 
+
+### Step 4 (Method 1): Install the Zowe runtime using shell script
 
 You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
 
@@ -161,11 +163,11 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-### Step 4 (b) Install Zowe Runtime using z/OSMF Workflow
+### Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow
 
 A z/OSMF workflow provides the ability to encapsulate a task as a set of dependent steps. These can be divided across different areas of an organization and can form the basis for the automated auditable processes. 
 
-z/OSMF workflows consist of a workflow definition that users then operate and manage as workflow tasks. z/OSMF Workflow tasks can help to guide the activities of system programmers, security administrators, and others who are responsible for managing the configuration of the system.  For more information on z/OSMF workflows see, [z/OS 2.2 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), [z/OS 2.3 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), and [z/OS 2.4 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html).
+z/OSMF workflows consist of a workflow definition that users then operate and manage as workflow tasks. z/OSMF Workflow tasks can help to guide the activities of system programmers, security administrators, and others who are responsible for managing the configuration of the system.  For more information on z/OSMF workflows, see [z/OS 2.2 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), [z/OS 2.3 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), and [z/OS 2.4 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html).
 
 Zowe provides a z/OSMF workflow definition that can be used to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
 
@@ -175,9 +177,9 @@ Perform the following steps to register and execute the Zowe runtime installatio
  2.	Select **Workflows** from the navigation tree.
  3.	Select **Create Workflow** from the **Actions** menu.
  4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.   
-    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ ZWEWRF04.xml file.` 
+    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.` 
  5. **(Optional)** Enter the path to the customized variable input file that you prepared in advance.
-    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ ZWEWRF04.xml.xml file.`
+    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
     - Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
 7.	Select the system where you want to execute the workflow.
 8.	Select **Next**.
