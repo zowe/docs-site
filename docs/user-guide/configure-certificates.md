@@ -1,4 +1,56 @@
 # Configuring Zowe certificates 
+Select one of two options:
+- [Configuring Zowe certificates in a key ring](#configuring-zowe-certificates-in-a-key-ring)
+- [Configuring Zowe certificates in UNIX files](#configuring-zowe-certificates-in-unix-files)
+
+## Configuring Zowe certificates in a key ring
+Select one of two options how to configure certificates in a keyring:
+- Customize and submit the ZWEKRING jcl and finalize the configuration by executing the zowe-setup-certificate.sh. 
+Notes:
+  - allows to easily review all the security commands that generate certificates and manage the key ring 
+  - the JCL has to be customized before it is submitted. 
+- Configure certificates in a key ring using only the zowe-setup-certificate.sh. 
+Notes:
+  - it is an identical flow as configuration of certificates in UNIX files except that two new env variables have to be set in the zowe-setup-certificates.env 
+  - caller of the script has to have appropriate permissions to the IRR.DIGTCERT.* resources 
+  - this script is common for 
+  - maintenance for ACF2 (<ptf number and link>) and Top Secret (<ptf number and link>) has to be applied in order to make this work for ACF2 and Top Secret.
+
+Proceed with one of the options:
+- [ZWEKRING jcl and zowe-setup-certificate.sh](#zwekring-jcl-and-zowe-setup-certificatesh)
+- [zowe-setup-certificate.sh script only](#zowe-setup-certificatesh-script-only)
+
+### ZWEKRING jcl and zowe-setup-certificate.sh
+**TODO**
+
+### zowe-setup-certificate.sh script only
+
+When following the **Configuring Zowe certificates in UNIX files** section, set the extra parameters in the
+zowe-setup-certificates.env:
+ - `ZOWE_KEYRING=` - set this variable to the key ring name
+ - `GENERATE_CERTS_FOR_KEYRING=true` - set this variable to true
+ 
+The zowe-setup-certificates.sh script generates the certificates and populates the key ring with the certificates.
+
+##### Permissions that are required to successfully configure the keyring using the script
+
+[//]: # "TODO ??? Maybe we don't have to list all the required permissions. Instead of it just state that the script has to be executed by 
+         security admin or someone who has sufficient privileges to do all of this. I don't know..." 
+Relevant security resources:
+- IRR.DIGCERT.ADDRING
+- **TODO**...list all the resources here 
+
+If an ACID that invokes the zowe-setup-certificates.sh script is the same as the `ZOWE_USER_ID` variable in the zowe-setup-certificates.env file then you need 
+READ access to all the resources above. 
+
+If an ACID that invokes the zowe-setup-certificates.sh script is NOT the same as the `ZOWE_USER_ID` variable in the zowe-setup-certificates.env file then you need 
+UPDATE access to all the resources above.
+
+The zowe-setup-certificates.sh script can try to set up trust with z/OSMF. It downloads the certificate(s) and tries to add them to the keyring. Based on
+who the owner of the certificate or certificates is (userid, SITE or CERTAUTH ACID) an extra permission may be needed as described 
+in the [official documentation here](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.icha400/le-connect.htm#le-connect) (table 1, table 2 or possibly table 3)  
+   
+## Configuring Zowe certificates in UNIX files
 
 A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
 
@@ -16,7 +68,7 @@ It's recommended that you start with the local API Mediation Layer CA for an ini
 
 You can use the `<ROOT_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<ROOT_DIR>/bin/zowe-setup-certificates.env`. 
 
-## Generate certificate with the default values
+### Generate certificate with the default values
 
 The script reads the default variable values that are provided in the `<ROOT_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
 
@@ -26,7 +78,7 @@ The script reads the default variable values that are provided in the `<ROOT_DIR
 
 generates the keystore in `u/zowe/mykeystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
 
-## Generate certificate with the custom values
+### Generate certificate with the custom values
 
 We recommend that you review all the parameters in the `zowe-setup-certificates.env` file and customize the values for variables to meet your requirements. For example, set your preferred location to generate certificates and keystores. 
 
