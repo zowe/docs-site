@@ -18,6 +18,10 @@
     - [API ML SAF Keyring](#api-ml-saf-keyring)
     - [Discovery Service authentication](#discovery-service-authentication)
     - [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
+  - [Participating in Zowe API ML Single-Sign-On](#participating-in-zowe-api-ml-single-sign-on)
+    - [Zowe API ML client](#zowe-api-ml-client)
+    - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
+    - [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
   - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
     - [Running on localhost](#running-on-localhost)
       - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -31,12 +35,7 @@
       - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
       - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-zos)
       - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
-        - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
-      - [Disable certificate validation](#disable-certificate-validation)
-  - [ZAAS Client](#zaas-client)
-    - [Pre-requisites](#pre-requisites)
-    - [Provided API](#provided-api)
-    - [Getting Started(Step by Step Instruction)](#getting-startedstep-by-step-instruction)
+      - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
 
 ## How API ML transport security works
 
@@ -343,6 +342,53 @@ The following list shows the default ciphers. API ML services use the following 
 
 Only IANA ciphers names are supported. For more information, see [Cipher Suites](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_suites) or [List of Ciphers](https://testssl.net/openssl-iana.mapping.html).
 
+## Participating in Zowe API ML Single-Sign-On
+
+As Zowe extender, you can extend Zowe and participate in Zowe Single-Sign-On provided by Zowe API ML.
+
+The Zowe Single-Sign-On is based on a single authentication/identity token that identifies the z/OS user. This token needs to be trusted by extensions in order to be used. Only Zowe API ML and the ZAAS compoment (described above), can issue the authentication token based on valid z/OS credentials.
+
+In the current release of Zowe, only a single z/OS security domain can be used. The current Zowe release also allows for a single technology scope, whereby only a single-sign-on to Zowe Desktop is possible. As such, a second sign-on is necessary to different types of clients, such as Zowe CLI, or web applications outside of Zowe Desktop.
+
+This following section outlines the high-level steps necessary to achieve the sign-on.
+
+There are two main types of components that are used in Zowe SSO via API ML:
+
+* Zowe API ML client
+
+   - This type of compoment is user-facing and can obtain credentials from the user through a user interface (web, CLI, desktop)
+   - The Zowe API ML client calls API services through the API ML
+   - An example of such clients are Zowe CLI or Zowe Desktop. Clients can be web or mobile applications
+
+* An API service accessed through Zowe API ML
+
+   - A service that is registered to API ML and is accessed through the API Gateway
+
+In following sections, you will learn what is necessary to participate SSO for both types.
+
+### Zowe API ML client
+
+* Zowe API ML client needs to obtain an authentication token via the `/login` endpoint of ZAAS described above. This endpoint requires valid credentials.
+* The client should not rely on the token format but use the ZAAS `/query` endpoint to validate the token and get information about it. This is useful when the API client has the token but does not store the associated data such as user ID.
+* The API client needs to provide the authentication token to the API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken` or in `Authorization: Bearer` HTTP header as described in the [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
+
+**Note:** Plans for Zowe CLI to be an API ML client in the future, are desribed at [Zowe CLI: Token Authentication, MFA, and SSO](https://medium.com/zowe/zowe-cli-token-authentication-mfa-and-sso-b88bca3efa35).
+
+### API service accessed via Zowe API ML
+
+This section describes the requirements of a service to adopt the Zowe authentication token. Zowe will be able to support services that accept PassTickets in the future.
+
+* The API service must accept the authentication token to the API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken` or in the `Authorization: Bearer` HTTP header as described in the [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
+* The API service must validate the token and extract information about the user ID by calling `/query` endpoint of the ZAAS described above. The alternative is validate the signature of the JWT token. The format of the signature and location of the public key is described above. The alternative should be used only when the calling of `/query` endpoint is not feasible.
+* The API service needs to trust the Zowe API gateway that hosts the ZAAS, it needs to have the certificate of the CA that signed the Zowe API Gateway in its truststore.
+
+### Existing services that cannot be modified
+
+If you have a service that cannot be changed to adopt Zowe authentication token, they can still participate in Zowe Single-Sign-On via API ML.
+
+They need to accept PassTicket in the HTTP Authorization header.
+See [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md) for more details.
+
 ## Certificate management in Zowe API Mediation Layer
 
 ### Running on localhost
@@ -573,7 +619,7 @@ If you receive this message, import the certificate of your service or the CA th
 ## ZAAS Client
 
 The ZAAS client is a plain java library that provides authentication through a simple unified interface without the need
-for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods for retrieval of the JWT token, the PassTicket, and verification of JWT token information. 
+for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods for retrieval of the JWT token, the PassTicket, and verification of JWT token information.
 
 ### Pre-requisites
 
@@ -601,7 +647,7 @@ This java code enables your application to add the following functions:
 
 #### Obtain a JWT token (login)
 
-To integrate login, call one of the following methods for login in the `ZaasClient` interface: 
+To integrate login, call one of the following methods for login in the `ZaasClient` interface:
 
   - If the user provides credentials in the request body, call the following method from your API:
 
@@ -622,7 +668,7 @@ To integrate login, call one of the following methods for login in the `ZaasClie
 
 #### Validate and get details from the token (query)
 
-Use the `query` method to get the details embedded in the token. These details include creation time of the token, expiration time of the token, and the user who the token is issued to. 
+Use the `query` method to get the details embedded in the token. These details include creation time of the token, expiration time of the token, and the user who the token is issued to.
 
 To use this method, call the method from your API.
 
@@ -653,16 +699,16 @@ To use this library, use the procedure described in this section.
 
 **Follow these steps:**
 
-1. Add `zaas-client` as a dependency in your project. 
+1. Add `zaas-client` as a dependency in your project.
 
     Gradle:
-    
+
         dependencies {
             compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
         }
 
     Pom:
-    
+
         <dependency>
                     <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
                     <artifactId>{{version}}</artifactId>
@@ -672,10 +718,10 @@ To use this library, use the procedure described in this section.
 
 3. To use `zaas-client`, provide a property file for configuration.
 
-   **Tip:** Check `org.zowe.apiml.zaasclient.config.ConfigProperites` to see which properties are required in the property file. 
-   
+   **Tip:** Check `org.zowe.apiml.zaasclient.config.ConfigProperites` to see which properties are required in the property file.
+
    **Configuration Properties:**
-   
+
     ```java
     public class ConfigProperties {
         private String apimlHost;
@@ -689,7 +735,7 @@ To use this library, use the procedure described in this section.
         private String trustStorePassword;
     }
     ```
-   
+
 4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object.
 
    **Example:**
@@ -697,10 +743,10 @@ To use this library, use the procedure described in this section.
     ```java
     ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
     ```
-You can now use any method from `ZaasClient` in your class. 
-   
-**Example:** 
- 
+You can now use any method from `ZaasClient` in your class.
+
+**Example:**
+
 For login, use the following code snippet:
 
 ```java
@@ -709,7 +755,7 @@ For login, use the following code snippet:
 
 The following codeblock is an example of a `SampleZaasClientImplementation`.
 
-**Example:** 
+**Example:**
 
 ```java
 public class SampleZaasClientImplementation {
@@ -728,7 +774,7 @@ public class SampleZaasClientImplementation {
             return zaasClientToken;
         } catch (ZaasClientException | ZaasConfigurationException exception) {
             exception.printStackTrace();
-        } 
+        }
     }
 
     private ConfigProperties getConfigProperties() {
@@ -736,4 +782,4 @@ public class SampleZaasClientImplementation {
      }
 }
 ```
-  
+
