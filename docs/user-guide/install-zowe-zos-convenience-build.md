@@ -1,6 +1,7 @@
 # Installing Zowe runtime from a convenience build
 
 You install the Zowe&trade; convenience build by obtaining a .pax file for a build and using this to create the Zowe runtime environment.  
+
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. For each release, there is a PAX file named `zowe-V.v.p.pax`, where
@@ -15,13 +16,11 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Compon
 
 This chapter describes a set of steps that can be done in sequence to complete the install.
 
- - [Installing the Zowe runtime](#installing-the-zowe-runtime)
-   - [Step 1: Locate the install directory](step-1:-locate-the-install-directory)
-   - [Step 2: Choose a runtime USS folder](#step-2:-choose-a-runtime-uss-folder)
-   - [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3:-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
-   - [Step 4 (a): Install the Zowe runtime using shell script](#step-4-(a):-installithe-zowe-runtime-using-shell-script)
-     - **or**
-   - [Step 4 (b) Install Zowe Runtime using z/OSMF Workflow](#step-4-(b)-install-zowe-runtime-using-z/osmf-workflow)
+- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
+- [Step 2: Choose a runtime USS folder](#step-2-choose-a-runtime-uss-folder)
+- [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
+- [Step 4 (a): Install the Zowe runtime using shell script](#step-4-a-install-the-zowe-runtime-using-shell-script) **or**
+- [Step 4 (b) Install Zowe Runtime using z/OSMF Workflow](#step-4-b-install-zowe-runtime-using-zosmf-workflow)
 
 After you have the `zowe-V.v.p.PAX` file on z/OS USS 
 
