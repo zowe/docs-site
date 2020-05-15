@@ -100,4 +100,37 @@ Info: Reference runtime hash file is available in
 ... /hash/RefRuntimeHash.txt
 zowe-verify-authenticity.sh ended
 ```
+This is for the POC version of fingerprint.  The new version that will be delivered will have these attributes:
+
+- Self-contained – all parts are present in runtime directory, including RefRuntimeHash-v.r.m.txt
+
+- How to run it:
+
+```
+cd /usr/lpp/zowe/bin 
+zowe-verify-authenticity.sh
+```
+
+- New parameter format
+`
+zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]`
+
+- Anti-falsing to ensure integrity
+
+- Download these files to downloads/hash
+
+```
+zowe-verify-authenticity.sh 
+HashFiles.class
+RefRuntimeHash-v.r.m.txt
+```
+
+- Run the script
+
+```
+cd downloads/hash
+zowe-verify-authenticity.sh -r /tmp/usr/lpp/zowe -h . –f .
+```
+
+- Automatically called by zowe-support.sh
 
