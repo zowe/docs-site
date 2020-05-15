@@ -16,7 +16,7 @@ Before you start the installation, review the information on system requirements
 
 The following information is required during the installation process of the Zowe z/OS components.
 
-- The zFS directory where you will install the Zowe runtime files and folders.
+- The zFS directory where you will install the Zowe runtime files and folders.  For more detail on setting up and configuring the Unix Systems Services (USS) environment see, [Zowe and Unix System Services](./configure-uss.md)
 
 - A HLQ that the installation can create a load library and samplib containing load modules and JCL samples required to run Zowe.
 
