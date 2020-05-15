@@ -5,7 +5,10 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [z/OS system requirements](#zos-system-requirements-host)
   - [Zowe Application Framework requirements](#zowe-application-framework-requirements-host)
   - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
-  - [Using web tokens for SSO on for ZLUX and ZSS](#using-web-tokens-for-sso-on-for-zlux-and-zss)
+    - [Using web tokens for SSO on for ZLUX and ZSS](#using-web-tokens-for-sso-on-for-zlux-and-zss)
+    - [Creating a PKCS#11 Token](creating-a-pkcs-11-token)
+    - [Accessing token](#accessing-token)
+    - [Enabling SSO](#enabling-sso)
 - [Zowe CLI requirements](#zowe-cli-requirements)
     - [Client-side requirements](#client-side-requirements)
     - [Host-side requirements](#host-side-requirements)
@@ -58,7 +61,7 @@ If you do not see your product listed here, please contact the Zowe community so
 
 To enable multi-factor authentication, you must install [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos). For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-### Using web tokens for SSO on for ZLUX and ZSS
+#### Using web tokens for SSO on for ZLUX and ZSS
 Users must create a PKCS#11 token before continuing. This can be done through the USS utility, "gskkyman".
 
 #### Creating a PKCS#11 Token
