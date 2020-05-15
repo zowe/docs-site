@@ -22,6 +22,13 @@
     - [Zowe API ML client](#zowe-api-ml-client)
     - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
     - [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
+  - [ZAAS Client](#zaas-client)
+    - [Pre-requisites](#pre-requisites)
+    - [API Documentation](#api-documentation)
+      - [Obtain a JWT token (`login`)](#obtain-a-jwt-token-login)
+      - [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token-query)
+      - [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket-passticket)
+    - [Getting Started (Step by Step Instructions)](#getting-started-step-by-step-instructions)
   - [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
     - [Running on localhost](#running-on-localhost)
       - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -382,12 +389,188 @@ This section describes the requirements of a service to adopt the Zowe authentic
 * The API service must validate the token and extract information about the user ID by calling `/query` endpoint of the ZAAS described above. The alternative is validate the signature of the JWT token. The format of the signature and location of the public key is described above. The alternative should be used only when the calling of `/query` endpoint is not feasible.
 * The API service needs to trust the Zowe API gateway that hosts the ZAAS, it needs to have the certificate of the CA that signed the Zowe API Gateway in its truststore.
 
+The REST API of the ZAAS can be easily called from a Java application using [ZAAS Client](#zaas-client) described below.
+
 ### Existing services that cannot be modified
 
 If you have a service that cannot be changed to adopt Zowe authentication token, they can still participate in Zowe Single-Sign-On via API ML.
 
 They need to accept PassTicket in the HTTP Authorization header.
 See [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md) for more details.
+
+
+## ZAAS Client
+
+The ZAAS client is a plain Java library that provides authentication through a simple unified interface without the need
+for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods for retrieval of the JWT token, the PassTicket, and verification of JWT token information.
+
+### Pre-requisites
+
+- Java SDK version 1.8.
+- An active instance of the API ML Gateway Service.
+- A property file which defines the keystore or truststore certificates.
+
+### API Documentation
+
+The plain java library provides the `ZaasClient` interface with following public methods:
+
+```java
+public interface ZaasClient {
+    String login(String userId, String password) throws ZaasClientException;
+    String login(String authorizationHeader) throws ZaasClientException;
+    ZaasToken query(String token) throws ZaasClientException;
+    String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
+}
+```
+
+This Java code enables your application to add the following functions:
+
+- **Obtain a JWT token (`login`)**
+- **Validate and get details from the token (`query`)**
+- **Obtain a PassTicket (`passTicket`)**
+
+#### Obtain a JWT token (`login`)
+
+To integrate login, call one of the following methods for login in the `ZaasClient` interface:
+
+- If the user provides credentials in the request body, call the following method from your API:
+
+  ```java
+  String login(String userId, String password) throws ZaasClientException;
+  ```
+
+- If the user provides credentials as Basic Auth, use the following method:
+
+    ```java
+    String login(String authorizationHeader) throws ZaasClientException;
+    ```
+
+These methods return the JWT token as a String. This token can then be used to authenticate the user in subsequent APIs.
+
+**Note:**
+Both methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
+
+#### Validate and get details from the token (`query`)
+
+Use the `query` method to get the details embedded in the token. These details include creation time of the token, expiration time of the token, and the user who the token is issued to.
+
+To use this method, call the method from your API.
+
+```java
+ZaasToken query(String token) throws ZaasClientException;
+```
+
+In return, you receive the `ZaasToken` Object in JSON format.
+
+This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
+
+#### Obtain a PassTicket (`passTicket`)
+
+The `passTicket` method has an added layer of protection. To use this method, call the method of the interface and provide
+a valid APPLID of the application and JWT token as an input.
+
+The APPLID is the name of the application (up to 8 characters) that is used by security products to differentiate certain security operations (like PassTickets) between applications.
+
+This method has an added layer of security, whereby you do not have to provide an input to the method since you already initialized the `ConfigProperties` class. As such, this method automatically fetches the truststore and keystore files as an input.
+
+In return, this method provides a valid pass ticket as a String to the authorized user.
+
+**Tip:** For additional information about PassTickets in API ML see [Enabling PassTicket creation for API Services that Accept PassTickets](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-passtickets.html).
+
+### Getting Started (Step by Step Instructions)
+
+To use this library, use the procedure described in this section.
+
+**Follow these steps:**
+
+1. Add `zaas-client` as a dependency in your project.
+
+    Gradle:
+
+      ```groovy
+      dependencies {
+          compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
+      }
+      ```
+
+    Maven:
+
+      ```xml
+      <dependency>
+                  <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
+                  <artifactId>{{version}}</artifactId>
+      </dependency>
+      ```
+
+2. In your application, create your java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue passTicket.
+
+3. To use `zaas-client`, provide a property file for configuration.
+
+   **Tip:** Check `org.zowe.apiml.zaasclient.config.ConfigProperites` to see which properties are required in the property file.
+
+   **Configuration Properties:**
+
+    ```java
+    public class ConfigProperties {
+        private String apimlHost;
+        private String apimlPort;
+        private String apimlBaseUrl;
+        private String keyStoreType;
+        private String keyStorePath;
+        private String keyStorePassword;
+        private String trustStoreType;
+        private String trustStorePath;
+        private String trustStorePassword;
+    }
+    ```
+
+4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object.
+
+   **Example:**
+
+    ```java
+    ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+    ```
+
+You can now use any method from `ZaasClient` in your class.
+
+**Example:**
+
+For login, use the following code snippet:
+
+```java
+   String zaasClientToken = zaasClient.login("user", "user");
+ ```
+
+The following codeblock is an example of a `SampleZaasClientImplementation`.
+
+**Example:**
+
+```java
+public class SampleZaasClientImplementation {
+
+    /**
+     * This method is used to fetch token from zaasClient
+     * @param username
+     * @param password
+     * @return
+     */
+    public String login(String username, String password) {
+        try {
+            ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+            String zaasClientToken = zaasClient.login(username, password);
+            //Use this token  in subsequent calls
+            return zaasClientToken;
+        } catch (ZaasClientException | ZaasConfigurationException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private ConfigProperties getConfigProperties() {
+        // Load the values for configuration properties
+     }
+}
+```
 
 ## Certificate management in Zowe API Mediation Layer
 
@@ -615,171 +798,3 @@ You will receive a similar response:
 The response has the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and the message number `AML0105` and content that explains details about the message.
 
 If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
-
-## ZAAS Client
-
-The ZAAS client is a plain java library that provides authentication through a simple unified interface without the need
-for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods for retrieval of the JWT token, the PassTicket, and verification of JWT token information.
-
-### Pre-requisites
-
-- Java SDK version 1.8.
-- An active instance of the API ML Gateway Service.
-- A property file which defines the keystore or truststore certificates.
-
-### API Documentation
-
-The plain java library provides the `ZaasClient` interface with following public methods:
-
-```java
-public interface ZaasClient {
-    String login(String userId, String password) throws ZaasClientException;
-    String login(String authorizationHeader) throws ZaasClientException;
-    ZaasToken query(String token) throws ZaasClientException;
-    String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
-}
-```
-This java code enables your application to add the following functions:
-
-- **Obtain a JWT token (login)**
-- **Validate and get details from the token (query)**
-- **Obtain a PassTicket (passTicket)**
-
-#### Obtain a JWT token (login)
-
-To integrate login, call one of the following methods for login in the `ZaasClient` interface:
-
-  - If the user provides credentials in the request body, call the following method from your API:
-
-    ```java
-    String login(String userId, String password) throws ZaasClientException;
-    ```
-
-  - If the user provides credentials as Basic Auth, use the following method:
-
-      ```java
-      String login(String authorizationHeader) throws ZaasClientException;
-      ```
-
-  These methods return the JWT token as a String. This token can then be used to authenticate the user in subsequent APIs.
-
-  **Note:**
-  Both methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
-
-#### Validate and get details from the token (query)
-
-Use the `query` method to get the details embedded in the token. These details include creation time of the token, expiration time of the token, and the user who the token is issued to.
-
-To use this method, call the method from your API.
-
-```java
-ZaasToken query(String token) throws ZaasClientException;
-```
-
-In return, you receive the `ZaasToken` Object in JSON format.
-
-This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
-
-#### Obtain a PassTicket (passTicket)
-
-The `passTicket` method has an added layer of protection. To use this method, call the method of the interface and provide
-a valid APPLID of the application and JWT token as an input.
-
-The APPLID is the name of the application (up to 8 characters) that is used by security products to differentiate certain security operations (like PassTickets) between applications.
-
-This method has an added layer of security, whereby you do not have to provide an input to the method since you already initialized the `ConfigProperties` class. As such, this method automatically fetches the truststore and keystore files as an input.
-
-In return, this method provides a valid pass ticket as a String to the authorized user.
-
-**Tip:** For additional information about PassTickets in API ML see [Enabling PassTicket creation for API Services that Accept PassTickets](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-passtickets.html).
-
-### Getting Started (Step by Step Instructions)
-
-To use this library, use the procedure described in this section.
-
-**Follow these steps:**
-
-1. Add `zaas-client` as a dependency in your project.
-
-    Gradle:
-
-        dependencies {
-            compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
-        }
-
-    Pom:
-
-        <dependency>
-                    <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
-                    <artifactId>{{version}}</artifactId>
-        </dependency>
-
-2. In your application, create your java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue passTicket.
-
-3. To use `zaas-client`, provide a property file for configuration.
-
-   **Tip:** Check `org.zowe.apiml.zaasclient.config.ConfigProperites` to see which properties are required in the property file.
-
-   **Configuration Properties:**
-
-    ```java
-    public class ConfigProperties {
-        private String apimlHost;
-        private String apimlPort;
-        private String apimlBaseUrl;
-        private String keyStoreType;
-        private String keyStorePath;
-        private String keyStorePassword;
-        private String trustStoreType;
-        private String trustStorePath;
-        private String trustStorePassword;
-    }
-    ```
-
-4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object.
-
-   **Example:**
-
-    ```java
-    ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
-    ```
-You can now use any method from `ZaasClient` in your class.
-
-**Example:**
-
-For login, use the following code snippet:
-
-```java
-   String zaasClientToken = zaasClient.login("user", "user");
- ```
-
-The following codeblock is an example of a `SampleZaasClientImplementation`.
-
-**Example:**
-
-```java
-public class SampleZaasClientImplementation {
-
-    /**
-     * This method is used to fetch token from zaasClient
-     * @param username
-     * @param password
-     * @return
-     */
-    public String login(String username, String password) {
-        try {
-            ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
-            String zaasClientToken = zaasClient.login(username, password);
-            //Use this token  in subsequent calls
-            return zaasClientToken;
-        } catch (ZaasClientException | ZaasConfigurationException exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    private ConfigProperties getConfigProperties() {
-        // Load the values for configuration properties
-     }
-}
-```
-
