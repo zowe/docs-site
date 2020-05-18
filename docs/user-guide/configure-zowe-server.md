@@ -62,7 +62,7 @@ If you have a default instance directory you want you always start Zowe with, yo
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
 ```
 
-to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. 
+to replace the `instance_directory` with the location of the Zowe instance directory that contains the configurable Zowe instance directory. 
 
 If the JCL value `instance-directory` is not specified in the JCL, in order to start the Zowe server from SDSF, you will need to add the `INSTANCE` parameter on the START command when you start Zowe in SDSF:
 

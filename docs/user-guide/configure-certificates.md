@@ -1,6 +1,6 @@
 # Configuring Zowe certificates 
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts.  When a Zowe is launched the instance directory configuration file `instance.env` specifies the location of the keystore directory, see [Configure instance directory](configure-instance-directory.md#keystore-directory)
+A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. See [Configure instance directory](configure-instance-directory.md#keystore-directory).
 
 If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
 
@@ -8,15 +8,22 @@ You can use the existing certificate signed by an external certificate authority
 
 If you let the Zowe configuration to generate a self-signed certificate, the certificates should be imported into your browser to avoid untrusted network traffic challenges. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).  If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted and, depending on the browser you are using, have to add an exception to proceed to the web page.  Some browser versions may not accept the Zowe certificate because it is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser makes it a trusted source and the challenges will no longer occur.  
 
-If you have an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' truststore.  This will avoid the need to manually import the local CA into each client machine's browsers.  
+If you have an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company, which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' truststore.  This will avoid the need to manually import the local CA into each client machine's browsers.  
  
 If you want to avoid the need to have each browser trust the CA that has signed the Zowe certificate, you can use a public certificate authority such as Symantec, Comodo, or GoDaddy to create a certificate. These certificates are trusted by all browsers and most REST API clients. However, this option involves a manual process of requesting a certificate and may incur a cost payable to the publicly trusted CA.
 
 It's recommended that you start with the local API Mediation Layer CA for an initial evaluation.
 
+You can configure Zowe certificates via different methods. 
+
+- [Method 1: Configure Zowe certificates using shell script](#method-1-configure-zowe-certificates-using-shell-script)
+- [Method 2: Configure Zowe certificates with z/OSMF Workflows](#method-2-configure-zowe-certificates-with-zosmf-workflows)
+
+## Method 1: Configure Zowe certificates using shell script
+
 You can use the `<ROOT_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<ROOT_DIR>/bin/zowe-setup-certificates.env`. 
 
-## Generate certificate with the default values
+### Generate certificate with the default values
 
 The script reads the default variable values that are provided in the `<ROOT_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
 
@@ -24,9 +31,9 @@ The script reads the default variable values that are provided in the `<ROOT_DIR
 <ROOT_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-generates the keystore in `u/zowe/mykeystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
+generates the keystore in `u/zowe/mykeystore`.  On many z/OS installations access to this location will be restricted to privileged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
 
-## Generate certificate with the custom values
+### Generate certificate with the custom values
 
 We recommend that you review all the parameters in the `zowe-setup-certificates.env` file and customize the values for variables to meet your requirements. For example, set your preferred location to generate certificates and keystores. 
 
@@ -48,7 +55,7 @@ The keystore and certificates are generated based on the customized values in th
 `bin/zowe-setup-certificates.env` file.
 
 The `zowe-setup-certificates.sh` command also generates `zowe-certificates.env` file in the 
-`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configururing the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
    
 The following example shows how you can configure `zowe-setup-certificates.env` file to use the existing certificates:
 
@@ -112,4 +119,47 @@ This error has to be resolved before you can proceed with the next installation 
 
 **Notes:** 
 
-- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
+On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
+
+## Method 2: Configure Zowe certificates with z/OSMF Workflows
+
+z/OSMF Workflow lets you create a keystore directory that is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.
+
+Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
+
+ 1.	Log in to the z/OSMF web interface.
+ 2.	Select **Workflows** from the navigation tree.
+ 3.	Select Create Workflow from the **Actions** menu.
+ 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
+    The path to the workflow definition file is *[extracted_pax_folder]/files/workflows/ZWEWRF05.xml file*. 
+5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
+    The path to the variable input file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.properties file. 
+
+    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
+6. Select the system where you want to execute the workflow.
+7. Select Next.
+8. Specify the unique workflow name.
+9. Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
+10.Select **Finish**.
+   The workflow is registered in z/OSMF and ready to execute.
+11. Select the workflow that you registered from the workflow list.
+12. Execute the following steps in order:
+    -	**Define Variables**
+        
+        Define the custom values for variables that meet your z/OS security and verification configuration requirements.
+    - 	**New Custom zowe-setup-certificates.env**
+        
+        Execute the step to create a new `zowe-setup-certificates.env` in the user specified location and substitutes values.
+	-  **Execute zowe-setup-certificates**
+        
+        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file.
+
+13. Perform the following steps to execute each step individually:
+    1.  Double-click the title of the step.
+    2.	Select the **Perform** tab.
+    3.  Review the step contents and update the input values as required.
+    4.	Select **Next**.
+    5.	Repeat the previous two steps to complete all items until the option Finish is available.
+    6.	Select **Finish**.
+
+After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
