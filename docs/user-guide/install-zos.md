@@ -9,20 +9,22 @@ Review the installation diagram and the introduction in this topic to see the ge
   <figcaption></figcaption>
 </figure>
 <map name="home_map1" id="home_map1">
-  <area href="installandconfig.html#planning-the-installation-of-zowe-z-os-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="231, 40, 387, 80" />
-  <area href="systemrequirements.html" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="230, 158, 388, 201" />
-  <area href="https://www.zowe.org/#download" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="143, 342, 324, 385" />
-  <area href="install-zowe-smpe.html" alt="Install the Zowe SMP/E build" title="Install the Zowe SMP/E build" shape="rect" coords="141, 407, 322, 451" />
+  <area href="installandconfig.html#planning-the-installation-of-zowe-z-os-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="262, 40, 435, 86" />
+  <area href="systemrequirements.html" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="261, 171, 433, 220" />
 
-  <area href="https://www.zowe.org/#download" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="334, 343, 515, 386" />
-  <area href="install-zowe-zos-convenience-build.html#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="336, 407, 514, 450" />
-  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime" title="Install the Zowe runtime" shape="rect" coords="335, 469, 515, 513" />
-  <area href="configure-zos-system.html" alt="Configure the z/OS system for Zowe" title="Configure the z/OS system for Zowe" shape="rect" coords="163, 565, 507, 610" />
-  <area href="configure-certificates.html" alt="Configure Zowe certificates" title="Create the Zowe certificates keystore directory" shape="rect" coords="164, 638, 507, 683" />
-  <area href="configure-instance-directory.html" alt="Create and configure the Zowe instance directory" title="Create and configure the Zowe instance directory" shape="rect" coords="163, 711, 508, 758" />
-  <area href="configure-xmem-server.html" alt="Configure the Zowe cross memory server" title="Install and configure the Zowe cross memory server (ZWESISTC)" shape="rect" coords="162, 783, 507, 832" />
-  <area href="configure-zowe-server.html" alt="Configure the Zowe started task" title="Install the Zowe started task (ZWESVSTC)" shape="rect" coords="163, 860, 507, 905" />
-  <area href="verify-zowe-runtime-install.html" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="163, 948, 508, 993" />
+  <area href="https://www.zowe.org/#download" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="168, 355, 363, 402" />
+  <area href="install-zowe-smpe.html" alt="Install the Zowe SMP/E build" title="Install the Zowe SMP/E build" shape="rect" coords="166, 427, 362, 473" />
+
+  <area href="https://www.zowe.org/#download" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="378, 357, 575, 403" />
+  <area href="install-zowe-zos-convenience-build.html#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="376, 427, 574, 473" />
+  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime" title="Install the Zowe runtime" shape="rect" coords="377, 496, 742, 577" />
+
+  <area href="configure-zos-system.html" alt="Configure the z/OS system for Zowe" title="Configure the z/OS system for Zowe" shape="rect" coords="177, 620, 638, 722" />
+  <area href="configure-certificates.html" alt="Configure Zowe certificates" title="Create the Zowe certificates keystore directory" shape="rect" coords="177, 755, 639, 850" />
+  <area href="configure-instance-directory.html" alt="Create and configure the Zowe instance directory" title="Create and configure the Zowe instance directory" shape="rect" coords="174, 880, 636, 964" />
+  <area href="configure-xmem-server.html" alt="Configure the Zowe cross memory server" title="Install and configure the Zowe cross memory server (ZWESISTC)" shape="rect" coords="177, 1000, 638, 1056" />
+  <area href="configure-zowe-server.html" alt="Configure the Zowe started task" title="Install the Zowe started task (ZWESVSTC)" shape="rect" coords="178, 1090, 635, 1137" />
+  <area href="verify-zowe-runtime-install.html" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="177, 1186, 637, 1235" />
 </map>
 
 ## Stage 1: Plan and prepare
@@ -77,7 +79,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
    A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 
-   Next, you will install and configure the Zowe started tasks. Zowe has two high level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF-authorized code.  The JCLs for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`. 
+   Next, you will install and configure the Zowe started tasks. Zowe has two high-level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF-authorized code.  The JCLs for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`. 
    
    **Note** 
    By default, the API Mediation Layer rejects encoded slashes in the URL path of the request. Not allowing encoded slashes is the recommended configuration. If you are onboarding applications which expose endpoints expecting encoded slashes, you need to configure the API Mediation Layer to allow this pattern by performing the following steps:
