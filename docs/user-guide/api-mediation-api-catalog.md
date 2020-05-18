@@ -130,4 +130,4 @@ The API Catalog enables users to manually refresh static service APIs. Use the `
 To refresh the status of a static service, press the `Refresh` option located in the upper right-hand side of the API Catalog UI. 
 Successful requests return a dialog window that displays the message, `the refresh of static APIs was successful!`, and a timestamp that indicates the date and time when the last successful request was performed. If the request fails, a dialog appears with an error message that describes the cause of the fail. 
 
-**Note:** Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the API Catalog.
+**Note:** Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the only specific services. It is not necessary to also restart the API Catalog or the Discovery Service.
