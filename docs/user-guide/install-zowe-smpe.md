@@ -126,11 +126,11 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
 
-Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs and delivered on [zowe.org](https://zowe.org#download).  Because of the file size of the PTF  it is packaged as two co-requisites PTFs which are made available in a single .zip download.  
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://zowe.org#download).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.10.0) | UO01938 | UO01940
+[1.10](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
 [1.11](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
 
 ## Installation requirements and considerations
