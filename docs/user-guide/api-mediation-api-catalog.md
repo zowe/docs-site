@@ -122,3 +122,9 @@ This section outlines the process for making a request.
 
     <img src="../images/api-mediation/discoverable_clien_pet_swagger_response.png" alt="endpoint detail" width="700px"/>
 
+
+## Static APIs refresh functionality in the API Catalog
+
+The API Catalog enables users to refresh the static service APIs through button that is present in the API Catalog dashboard. 
+If the request succeeds, a success dialog will be displayed along with a timestamp that indicates the date when the success has been performed. Instead, if the request fails, another dialog will appear with an error message describing the cause of the fail.
+Therefore if you have changed the static service APIs and you want these changes to be reflected in the API Catalog without restarting the Discovery Service, you can use this new functionality.
