@@ -1,38 +1,63 @@
-Verify fingerprint
+# Verify fingerprint
 
-Verify the hash codes for your Zowe instance runtime folder.
-Here’s how:
-Obtain the verify tool
+Learn how to verify the hash codes for your Zowe instance runtime folder.
 
-Start a USS terminal session with the z/OS system where Zowe is installed.  
-Create a new, writable local directory, e.g. `/u/username/hash` 
-Navigate to zowe.org and select the hash code file for your version of Zowe. 
-Download these files to your local directory `/u/username/hash`  using FTP or a similar file-transfer utility 
-* HashFiles.class (binary)
-* RefRuntimeHash.txt (text)
-For < v1.12, navigate to zowe.org and select the “pre-v1.12” box (TBD) and download the above 2 files, plus
-* zowe-verify-authenticity.sh
-Note that the` RefRuntimeHash.txt` is specific to your release.
+## Step 1: Obtain the verify tool
 
-Verify your runtime folder
+1. Start a USS terminal session with the z/OS system where Zowe is installed.  
+2. Create a new, writable local directory, for example, `/u/username/hash`.
+3. Go to [zowe.org](https://www.zowe.org/).
+4. Depending on the version of Zowe you are using, download the hash code files to your local directory `/u/username/hash`  by using FTP or a similar file-transfer utility.  <!--How to select the hash files? Will there be a link or button somewhere? -->
 
-Now you are ready to verify your runtime folder, e.g. /usr/lpp/zowe/v1.12
-This is the folder that contains the following files, which you can check look like this
+   **v1.12 and later** 
+   - `HashFiles.class` (binary) 
+   - `RefRuntimeHash.txt` (text) 
+
+   **Prior v1.12**
+   - `HashFiles.class` (binary)
+   - `RefRuntimeHash.txt` (text)  
+   - `zowe-verify-authenticity.sh`
+
+Note that the `RefRuntimeHash.txt` file is specific to a Zowe release.
+
+## Step 2: Verify your runtime folder
+
+Now you are ready to verify your runtime folder, for example, `/usr/lpp/zowe/v1.12`, which contains the following files that you can check. 
+
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.12
 bin            components     install_log    manifest.json  scripts
 ```
-change to the runtime directory and run zowe-verify-authenticity.sh
-```
-cd /usr/lpp/zowe/v1.12
-scripts/utils/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
-``` 
 
-or, for < v.12, retrospectively;
-`/u/username/hash/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash`
-This script creates a `CustRuntimeHash.txt` file which it compares with the `RefRuntimeHash.txt` file.  
-Results
-Example of when files don’t match
+1. Change to the runtime directory. 
+   ```
+   cd /usr/lpp/zowe/v1.12
+   scripts/utils/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
+   ``` 
+
+2. Run the `zowe-verify-authenticity.sh` script.
+
+   **For Zowe v1.12 and later** 
+
+   ```
+   scripts/utils/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
+   ``` 
+
+   **For prior v1.12**
+   ```
+   /u/username/hash/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
+   ```
+
+The `zowe-verify-authenticity.sh` script creates a `CustRuntimeHash.txt` file, which it compares with the `RefRuntimeHash.txt` file.  
+
+## Step 3: Review results
+
+- [Mismatch](#mismatch)
+- [Match](#match)
+
+### Mismatch
+
+When files don't match, you see a message similar to the following one. 
 
 ```
 USERNAME:/u/username/hash: >ls -l
@@ -75,10 +100,13 @@ Info: Reference runtime hash file is available in  /u/username/hash/RefRuntimeHa
 USERNAME:/u/username/hash: >
 ```
 
-This is a worst-case scenario of a bad mismatch.  You should check the manifest.json file to see if one of the components is from the wrong release.
-The hash files *RuntimeHash.txt are left in case you want to use a GUI tool to perform a better file comparison.
+This is a worst-case scenario of a bad mismatch.  You can check the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
 
-Example of when files match as they should:
+The hash files `RuntimeHash.txt` are kept in case you want to use a GUI tool to perform a better file comparison.
+
+### Match
+
+When files match, you see a message similar to the following one:
 
 ```
 zowe-verify-authenticity.sh started
@@ -102,35 +130,35 @@ zowe-verify-authenticity.sh ended
 ```
 This is for the POC version of fingerprint.  The new version that will be delivered will have these attributes:
 
-- Self-contained – all parts are present in runtime directory, including RefRuntimeHash-v.r.m.txt
+- Self-contained – all parts are present in the runtime directory, including `RefRuntimeHash-V.v.p.txt`.
 
 - How to run it:
 
-```
-cd /usr/lpp/zowe/bin 
-zowe-verify-authenticity.sh
-```
+  ```
+  cd /usr/lpp/zowe/bin 
+  zowe-verify-authenticity.sh
+  ```
 
 - New parameter format
-`
-zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]`
+  ```
+  zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]```
 
 - Anti-falsing to ensure integrity
 
-- Download these files to downloads/hash
+- Download these files to `downloads/hash`.
 
-```
-zowe-verify-authenticity.sh 
-HashFiles.class
-RefRuntimeHash-v.r.m.txt
-```
+  ```
+  zowe-verify-authenticity.sh 
+  HashFiles.class
+  RefRuntimeHash-v.r.m.txt
+  ```
 
 - Run the script
 
-```
-cd downloads/hash
-zowe-verify-authenticity.sh -r /tmp/usr/lpp/zowe -h . –f .
-```
+  ```
+  cd downloads/hash
+  zowe-verify-authenticity.sh -r /tmp/usr/lpp/zowe -h . –f .
+  ```
 
-- Automatically called by zowe-support.sh
+- Automatically called by `zowe-support.sh`
 
