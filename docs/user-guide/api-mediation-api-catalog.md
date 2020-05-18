@@ -125,6 +125,5 @@ This section outlines the process for making a request.
 
 ## Static APIs refresh functionality in the API Catalog
 
-The API Catalog enables users to refresh the static service APIs through a button that is present in the API Catalog dashboard. 
-If the request succeeds, a success dialog will be displayed along with a timestamp that indicates the date when the successful request has been performed. Instead, if the request fails, another dialog will appear with an error message describing the cause of the fail.
-Therefore if you have changed the static service APIs and you want these changes to be reflected in the API Catalog without restarting the Discovery Service, you can use this new functionality.
+The API Catalog enables users to manually refresh static service APIs. Changes to the status of services that are onboarded to allow for dynamic discovery occurs automatically. To refresh the status of a static service, press the 'Refresh' option located in the upper right-hand side of the API Catalog UI. 
+Successful requests return a dialog window that displays a timestamp. This timestamp indicates the date when the successful request was last performed. If the request fails, a dialog appears with an error message that describes the cause of the fail. Use the `Refresh` otion if you change a static service API and you want these changes to be visible in the API Catalog without restarting the Discovery Service.
