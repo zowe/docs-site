@@ -2,7 +2,7 @@
 
 You install the Zowe&trade; convenience build by obtaining a PAX file for a build and using this to create the Zowe runtime environment.  
 
-After you [obtain the PAX file]((#obtaining-and-preparing-the-convenience-build)), you can take the following steps to complete the installation.
+After you [obtain the PAX file](#obtaining-and-preparing-the-convenience-build), you can take the following steps to complete the installation.
 
 - [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
 - [Step 2: Choose a runtime USS folder](#step-2-choose-a-runtime-uss-folder)

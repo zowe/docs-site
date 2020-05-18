@@ -6,7 +6,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - [Zowe Application Framework requirements](#zowe-application-framework-requirements-host)
   - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
     - [Using web tokens for SSO on for ZLUX and ZSS](#using-web-tokens-for-sso-on-for-zlux-and-zss)
-    - [Creating a PKCS#11 Token](creating-a-pkcs-11-token)
+    - [Creating a PKCS#11 Token](#creating-a-pkcs11-token)
     - [Accessing token](#accessing-token)
     - [Enabling SSO](#enabling-sso)
 - [Zowe CLI requirements](#zowe-cli-requirements)
