@@ -171,7 +171,8 @@
         "items": [
           "troubleshoot/troubleshooting.md",
           "troubleshoot/troubleshoot-zowe-release.md",
-          "troubleshoot/troubleshoot-diagnostics.md"
+          "troubleshoot/troubleshoot-diagnostics.md",
+          "troubleshoot/verify-fingerprint.md"
         ]
       },
       {
