@@ -143,7 +143,7 @@ Successful requests return a dialog window that displays the message, `the refre
 
 **Example:**
 
-<img src="../images/api-mediation/api_refresh_error.png.png" alt="api refresh error" width="700px"/>
+<img src="../images/api-mediation/api_refresh_error.png" alt="api refresh error" width="700px"/>
 
 **Note:** The manual `Refresh` option applies only to static service APIs. Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the specific services where changes are applied. It is not necessary to restart the API Catalog or the Discovery Service.
 
