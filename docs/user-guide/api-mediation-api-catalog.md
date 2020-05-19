@@ -132,7 +132,7 @@ The API Catalog enables users to manually refresh static service APIs. Use the `
 <img src="../images/api-mediation/api_refresh_button.png" alt="api refresh" width="700px"/>
 
 To refresh the status of a static service, press the `Refresh` option located in the upper right-hand side of the API Catalog UI. 
-Successful requests return a dialog window that displays the message, `the refresh of static APIs was successful!`.
+Successful requests return a pop-up notification that displays the message, `the refresh of static APIs was successful!`.
  
 **Example:**
 
