@@ -23,6 +23,32 @@ HEAP64(512M,4M,KEEP,256M,4M,KEEP,OK,FREE)
 
 ### OMVS segment
 
-Users installing Zowe need to have an OMVS segment.  The recommended MEMLIMIT for these should be ????
-
 <<TODO - Input from Onno, Nayer and John here>>
+
+Users installing Zowe to run Zowe scripts need to have an OMVS segment. If the user profile doesn't have OMVS segment, accessing USS through:
+- TSO OMVS will result in
+```
+FSUM2057I No session was started. This TSO/E user ID does not have access to OpenMVS.+
+FSUM2058I Function = sigprocmask, return value = FFFFFFFF, return code = 0000009C, reason code = 0B0C00FB
+
+Action: Create an OMVS segment with a UID.
+```
+- SSH will result in
+```
+Access denied with SSH
+```
+#### Address Space Region Size
+
+Java as a prerequisite for Zowe requires a suitable z/OS region size to operate successfully while installing/configuring Zowe. It is suggested that you do not restrict the region size, but allow Java to use what is necessary. Restricting the region size might cause failures with storage-related error messages such as
+```
+JVMJ9VM015W Initialization error for library j9gc29(2)
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit
+```
+##### ASSIZEMAX parameter
+ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes. 
+To specify the JVM maximum address space size on a per-user basis, set ASSIZEMAX configuration parameter to value 2147483647. It should fix the storage-related issue.
+
+##### MEMLIMIT parameter
+Nayer will add more info
+
