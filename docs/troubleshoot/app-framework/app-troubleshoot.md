@@ -42,15 +42,15 @@ Authentication failed for 1 types:  Types: ["zss"]
 
 For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.  
 
-There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows a path from the Zowe Desktop ZLUX server to the zssServer (across the default port 8542) (labelled as 1) which then connects to the `ZWESISTC` started task (2) using cross memory communication.  One of those two connections (ZLUX to zssServer, or zssServer to X-MEM) likely failed.
+There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these two connections likely failed. 
 
-- (1) [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem)
-- (2) [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver)
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).
+2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver). 
 
 <img src="../../images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
 
-### (1) ZSS server unable to communicate with X-MEM
+### ZSS server unable to communicate with X-MEM
 
 1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
@@ -72,9 +72,9 @@ There are two known problems that might cause this error.  The [Zowe architectur
 
      In this case, check that the ZWESISTC started task is running. If not, start it. Also, search the log for problems, such as statements indicating that the server was unable to find the load module.
     
-   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running check the started task `ZWESISTC` is active.  
+   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check that the started task `ZWESISTC` is active.  
    
-   - If this is the first time you have setup Zowe it is possible that cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  
+   - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  
 
    - If there is an authorization problem, the message might include `Permission Denied`. For example:
 
@@ -93,9 +93,7 @@ There are two known problems that might cause this error.  The [Zowe architectur
     If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration.html#configuring-zss-for-https).
 
 
-### (2) ZLUX unable to communicate with zssServer
-
-On the [Zowe architecture diagram](../../getting-started/zowe-architecture.md), there is a communication between ZLUX which is a Node.js runtime serving the Zowe desktop web pages to the user's browser, and the zssServer running on port 8542.  If this communication is failing, then you will be unable to log in to the desktop.
+### ZLUX unable to communicate with zssServer
 
 Follow these steps: 
 1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
