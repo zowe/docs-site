@@ -45,10 +45,19 @@ JVMJ9VM015W Initialization error for library j9gc29(2)
 Error: Could not create the Java Virtual Machine.
 Error: A fatal exception has occurred. Program will exit
 ```
+The storage-related issue should be fixed by one of the following changes:
 ##### ASSIZEMAX parameter
-ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes. 
-To specify the JVM maximum address space size on a per-user basis, set ASSIZEMAX configuration parameter to value 2147483647. It should fix the storage-related issue.
+ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes.
+To specify the JVM maximum address space size on a per-user basis, set ASSIZEMAX configuration parameter to value 2147483647.
+###### Note:
+Running a shell script via TSO OMVS will run the shell in the TSO address space, unless you specify _BPX_SHAREAS=NO when invoking OMVS. If you are using TSO OMVS to install Zowe, you will need "export _BPX_SHAREAS=NO" to make ASSIZEMAX change effective.
 
-##### MEMLIMIT parameter
-Nayer will add more info
+##### SIZE parameter of TSO segment
+Set SIZE operand of TSO segment to value 2096128.
+###### Note:
+If you have the recommended "export _BPX_SHAREAS=YES" in your shell setup, java will run in the TSO address space and the SIZE change will work.
 
+##### ulimit -A 
+The maximum address space size for the process should be at least 250M, in units of 1024 bytes. (eg. ulimit -A 250000k)
+###### Note:
+"ulimit -a" will display the currrent process limits
