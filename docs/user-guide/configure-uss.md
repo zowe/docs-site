@@ -58,6 +58,6 @@ Set SIZE operand of TSO segment to value 2096128.
 If you have the recommended "export _BPX_SHAREAS=YES" in your shell setup, java will run in the TSO address space and the SIZE change will work.
 
 ##### ulimit -A 
-The maximum address space size for the process should be at least 250M, in units of 1024 bytes. (eg. ulimit -A 250000k)
+The maximum address space size for the process should be at least 250M, in units of 1024 bytes. (eg. ulimit -A 250000)
 ###### Note:
 "ulimit -a" will display the currrent process limits
