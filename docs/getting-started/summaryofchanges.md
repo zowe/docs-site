@@ -25,7 +25,7 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 ## Version 1.12.0 LTS (May 2020)
 
 ### Requires action
-- `zowe-setup-certificates.sh` will need re-running during the upgrade process. This requirement is due to the automatic setup of SSO, requiring users to input new values in zowe-setup-certificates.env. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
+- You need to re-run the `zowe-setup-certificates.sh` script during the upgrade process. This requirement is due to the automatic setup of SSO, which requires users to input new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
 
 ### New features and enhancements
 
@@ -52,9 +52,9 @@ The following features and enhancements were added.
 The following bugs were fixed.
 
 #### Zowe installation
--  Minor enhancements to add log directory validation and remove unnecessary log file splitting. [#1334](https://github.com/zowe/zowe-install-packaging/pull/1334) & [#1300](https://github.com/zowe/docs-site/issues/1300)
-- When the automatically detected hostname Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279) 
-- Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plugins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
+-  Minor enhancements to add log directory validation and remove unnecessary log file splitting. [#1334](https://github.com/zowe/zowe-install-packaging/pull/1334), [#1300](https://github.com/zowe/docs-site/issues/1300)
+- When the automatically detected hostname that Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279) 
+- Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plug-ins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
 
 #### API Mediation Layer
 
