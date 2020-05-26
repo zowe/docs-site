@@ -50,7 +50,7 @@ Important notes when customizing the ZWEKRING jcl:
  - `ZOWE_KEYRING` - the key ring name that matches the `ZOWERING` variable in the ZWEKRING jcl.
  
  When the `zowe-setup-certificates.sh` script executes successfully then it generates `zowe-certificates.env` file in the 
- `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configururing the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+ `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
  
 ### zowe-setup-certificate.sh script only
 
@@ -126,7 +126,7 @@ The keystore and certificates are generated based on the customized values in th
 `bin/zowe-setup-certificates.env` file.
 
 The `zowe-setup-certificates.sh` command also generates `zowe-certificates.env` file in the 
-`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configururing the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
    
 The following example shows how you can configure `zowe-setup-certificates.env` file to use the existing certificates:
 
