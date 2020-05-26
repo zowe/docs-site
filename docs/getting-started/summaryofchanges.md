@@ -24,6 +24,9 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 
 ## Version 1.12.0 LTS (May 2020)
 
+### Requires action
+- `zowe-setup-certificates.sh` will need re-running during the upgrade process. This requirement is due to the automatic setup of SSO, requiring users to input new values in zowe-setup-certificates.env. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -31,13 +34,10 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 The following features and enhancements were added.
 
 #### Zowe installation
-- Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify a custom log directory. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
+- Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
 - Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
-- When the hostname cannot be resolved, use the IP address instead. This covers the scenario when the USS hostname command returned a system name that wasn't externally addressable, such as `S0W1.DAL-EBIS.IHOST.COM` which occurs on an image created from the z/OS Application Developers Controlled Distribution (ADCD). [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279) 
-- Separated ZSS component from the Zowe App Server component [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
-- Edited default plug-in references to point to the `$ROOT_DIR` environment variable. This ensures that the built-in plug-ins always point to the `ROOT_DIR` of your Zowe installation. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
-- Set up SSO in a standard installation of Zowe via new environment variables set in `zowe-setup-certificates.env`. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347)
-- Automated conversion of APIML public key and storage within PKCS#11 token. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347)
+- Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
+
 
 #### API Mediation Layer
 
@@ -52,6 +52,9 @@ The following features and enhancements were added.
 The following bugs were fixed.
 
 #### Zowe installation
+-  Minor enhancements to add log directory validation and remove unnecessary log file splitting. [#1334](https://github.com/zowe/zowe-install-packaging/pull/1334) & [#1300](https://github.com/zowe/docs-site/issues/1300)
+- When the automatically detected hostname Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279) 
+- Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plugins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
 
 #### API Mediation Layer
 
