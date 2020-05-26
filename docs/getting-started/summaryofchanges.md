@@ -45,7 +45,7 @@ The following features and enhancements were added.
 
 #### Zowe CLI
 
-The following features and enhancements were added to the **core CLI**:
+The following features and enhancements were added to the **core Zowe CLI**:
 
 - Added the `zowe files hrec ds` command to recall data sets. [#556](https://github.com/zowe/zowe-cli/issues/556)
 - Made the `account` option optional in TSO profiles. [#709](https://github.com/zowe/zowe-cli/pull/709)
