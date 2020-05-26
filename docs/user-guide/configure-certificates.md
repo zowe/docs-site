@@ -9,12 +9,14 @@ Select one of two options how to configure certificates in a keyring:
 Notes:
   - allows to easily review all the security commands that generate certificates and manage the key ring 
   - the JCL has to be customized before it is submitted. 
+  
 - Configure certificates in a key ring using only the zowe-setup-certificate.sh. 
 Notes:
-  - it is an identical flow as configuration of certificates in UNIX files except that two new env variables have to be set in the zowe-setup-certificates.env 
+  - it is an identical flow as configuration of certificates in UNIX files keystores except that two new env variables have to be set in the zowe-setup-certificates.env 
   - caller of the script has to have appropriate permissions to the IRR.DIGTCERT.* resources 
-  - this script is common for 
-  - maintenance for ACF2 (<ptf number and link>) and Top Secret (<ptf number and link>) has to be applied in order to make this work for ACF2 and Top Secret.
+  - this script is common to security products RACF, Top Secret and ACF2.
+  - maintenance for ACF2 ([SO11887](https://support.broadcom.com/download-center/solution-detail.html?aparNo=SO11887&os=z%2FOS)) 
+    and Top Secret ([SOxxxxx]()) has to be applied in order to make this way working for ACF2 and Top Secret.
 
 Proceed with one of the options:
 - [ZWEKRING jcl and zowe-setup-certificate.sh](#zwekring-jcl-and-zowe-setup-certificatesh)
@@ -32,23 +34,20 @@ zowe-setup-certificates.env:
  
 The zowe-setup-certificates.sh script generates the certificates and populates the key ring with the certificates.
 
-##### Permissions that are required to successfully configure the keyring using the script
+The Zowe user id specified by the `ZOWE_USER_ID` (`ZWESVUSR` by default) has to have READ access to the IRR.DIGTCERT.LISTRING security resource.
 
-[//]: # "TODO ??? Maybe we don't have to list all the required permissions. Instead of it just state that the script has to be executed by 
-         security admin or someone who has sufficient privileges to do all of this. I don't know..." 
-Relevant security resources:
-- IRR.DIGCERT.ADDRING
-- **TODO**...list all the resources here 
+##### Permissions that are required to configure the keyring using the zowe-setup-certificate.sh script
 
-If an ACID that invokes the zowe-setup-certificates.sh script is the same as the `ZOWE_USER_ID` variable in the zowe-setup-certificates.env file then you need 
-READ access to all the resources above. 
+A required level of permissions depends on several conditions such as:
+- A user id that executes the zowe-setup-certificate.sh script is or is not the same as the `ZOWE_USER_ID` value.
+- A Zowe certificate is planned to be signed by external CA or by Zowe's local CA. 
+- The `VERIFY_CERTIFICATES` parameter (in the zowe-setup-certificate.env file) is set to `true` or `false`
 
-If an ACID that invokes the zowe-setup-certificates.sh script is NOT the same as the `ZOWE_USER_ID` variable in the zowe-setup-certificates.env file then you need 
-UPDATE access to all the resources above.
+The access level for a subset of `IRR.DIGTCERT.*` resources differs depending on a combination of conditions above. 
 
-The zowe-setup-certificates.sh script can try to set up trust with z/OSMF. It downloads the certificate(s) and tries to add them to the keyring. Based on
-who the owner of the certificate or certificates is (userid, SITE or CERTAUTH ACID) an extra permission may be needed as described 
-in the [official documentation here](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.icha400/le-connect.htm#le-connect) (table 1, table 2 or possibly table 3)  
+For example, if user id executing the script and `ZOWE_USER_ID` are identical and Zowe's local CA signs the Zowe certificate and 
+`VERIFY_CERTIFICATES` is set to `false` then `READ` access to the subset of `IRR.DIGTCERT.*` resources is sufficient. 
+The subset of `IRR.DIGTCERT.*` resources means the `ADD`, `ADDRING`, `CONNECT`, `IMPORT`, `DELRING`, `DELETE`, `REMOVE`, `LIST` and `LISTRING` resources.
    
 ## Configuring Zowe certificates in UNIX files
 
