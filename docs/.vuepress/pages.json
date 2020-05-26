@@ -93,8 +93,17 @@
           "user-guide/cli-ftpplugin.md",
           "user-guide/cli-imsplugin.md",
           "user-guide/cli-mqplugin.md",
-          "user-guide/cli-scsplugin.md",
+          "user-guide/cli-scsplugin.md"
           "user-guide/cli-vscodeplugin.md"
+        ]
+      },
+      {
+        "text": "Zowe Explorer",
+        "items": [
+          "user-guide/ze-main.md",
+          "user-guide/ze-profiles.md",
+          "user-guide/ze-extensions.md",
+          "user-guide/ze-usage.md"
         ]
       }
     ]

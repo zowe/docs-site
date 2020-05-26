@@ -1,0 +1,94 @@
+# Zowe Explorer Extension for VSCode
+
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
+[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://slack.openmainframeproject.org/)
+
+The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSC can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
+
+* Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
+* Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
+* Provides a more streamlined way to access data sets, uss files and jobs.
+* Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
+* Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
+
+**Note:** The Zowe Explorer is powered by [Zowe CLI](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
+
+**Tips:**
+
+* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
+* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
+* Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
+
+## Contents
+
+* [Software Requirements](#software-requirements)
+* [Installing](#installing)
+* [Working with User Profile](#working-with-user-profiles)
+* [Enabling Secure Credential Store](#enabling-secure-credential-store)
+<!-- TODO * {expand the TOC} -->
+
+## Software Requirements
+
+Before you use the extension, meet the following software requirements on your computer:
+
+* Get access to z/OSMF.
+* Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+* Install [VSCode](https://code.visualstudio.com/).
+* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+<!-- TODO fix the link above -->
+* Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
+
+   **Notes:**
+
+   i. You can use your existing Zowe CLI `zosmf` profiles that are created with the Zowe CLI v.2.0.0 or later.
+
+   ii. Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in the Zowe CLI.
+
+## Installing
+
+1. Address [the software requirements](#software-requirements).
+2. Open VSCode, and navigate to the **Extensions** tab on the left-hand side of the UI.
+3. Click the green **Install** button to install the extension.
+4. Restart VSCode.
+
+The extension is now installed and available for use.
+
+* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README.md).
+
+You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<!-- TODO Some separator here? -->
+<iframe class="embed-responsive-item" id="youtubeplayer" title="How to Work with Data Sets" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+
+### Configuration
+
+You can modify Zowe Explorer preferences in the extension `Setting` in the following ways:
+
+* **Temp Folder Location:** You can change the default folder location where temporary files are stored. For example, use the following script:
+
+```json
+"Zowe-Temp-Folder-Location": {
+    "folderPath": "/path/to/directory"
+  }
+```
+
+where **/path/to/directory** is the folder location that you specify.
+
+* **Data set creation settings:** You can change the default creation settings for various data set types.
+
+  **Follow these steps:**
+
+1. Open the VSCode settings.
+2. Navigate to Zowe Explorer Settings.
+3. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
+4. Edit the settings as needed.
+5. Save the settings.
+
+![Configure Zowe settings](../images/ze/ZE-Configuration.gif?raw=true "Configure Zowe settings")
+<br /><br />
+<!-- TODO Update gif -->
+
+### Relevant Information
+
+<!-- TODO TBD -->
