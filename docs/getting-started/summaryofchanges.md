@@ -73,7 +73,7 @@ The following bugs were fixed.
 
 #### Zowe CLI
 
-Updated Yargs in Zowe Impertive CLI Framework to fix vulnerabilities.
+Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
 
 #### Zowe Explorer
 
