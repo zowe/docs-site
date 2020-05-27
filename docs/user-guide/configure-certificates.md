@@ -37,24 +37,63 @@ The ZWEKRING jcl should not be submitted as is. It has to be customized dependin
 Customize the jcl by editing the jcl variables at the beginning of the jcl and also carefully review and edit all the security commands (only those that are valid for your security manager).
 
 Important notes when customizing the ZWEKRING jcl:
- - TODO
- - TODO - (more about dependency on `VERIFY_CERTIFICATES`; see below)
+ - If you want APIML to verify certificates (i.e. `VERIFY_CERTIFICATES=true` is set in the zowe-setup-certificate.env file) then 
+   the root CA of the z/OSMF certificate has to be connected with the Zowe keyring. The ZWEKRING is ready for such a scenario.
+   You only need to set the `ROOTZFCA` variable in the ZWEKRING jcl. You can find the root CA by listing a chain of the z/OSMF
+   certificate. For example:
+    - RACF 
+      ```
+      RACDCERT ID(IZUSVR) LISTCHAIN(LABEL('DefaultzOSMFCert.IZUDFLT'))
+      ```
+    - Top Secret
+      ```
+      TSS LIST(IZUSVR) LABLCERT('DefaultzOSMFCert.IZUDFLT') CHAIN
+      ``` 
+    - ACF2
+      ```
+      SET PROFILE(USER) DIVISION(CERTDATA)
+      CHKCERT IZUSVR LABEL(DefaultzOSMFCert.IZUDFLT) CHAIN
+      ``` 
+       
+ - The Zowe certificate has to be connected to the keyring together with its CA chain (all certificates in the chain). 
+   The ZWEKRING has two variables `ITRMZWCA` and `ROOTZWCA` and corresponding "connect to keyring" commands that support the scenario 
+   where the Zowe certificate has one intermediate CA and the root CA in its CA chain. If your Zowe certificate has no 
+   intermediate CA or has more than one intermediate CA then you have to add or remove the connecting commands accordingly.
+   In order to find out what the certificate's CA chain is, you can use the example commands in the previous note.
+   
+   If Zowe certificate is self-signed or signed by the local Zowe CA then ignore `ITRMZWCA` and `ROOTZWCA` variables. In this case, you
+   may see error messages in the JCL related to the `ITRMZWCA` and `ROOTZWCA` variables.
+   
+     
+ - You can share a certificate with Zowe assuming the certificate is already stored in the security manager's database.
+   Such a certificate should be owned by the special SITE ACID (CERTSITE ACID for Top Secret or SITECERT ACID for ACF2).
+   In this scenario, you have to modify the "connect to keyring" security command so that it connects the SITE owned 
+   certificate to the Zowe keyring. Also, you have to allow the ZWESVUSR acid to extract private key from the SITE owned
+   certificate. You can do that by uncommenting the security command in the ZWEKRING jcl that gives ZWESVUSR CONTROL access 
+   to the IRR.DIGTCERT.GENCERT resource.
+ 
+ the Zowe certificate is already loaded in the security manager's database then it may be owned by other ACID than 
+    `ZWESVUSR`.
+ . It may be owned by a different user ACID or by the special SITE ACID (CERTSITE ACID for Top Secret, 
+   SITECERT ACID for ACF2). In this case, you have to  
  
  After the ZWEKRING jcl successfully configures the certificates and key ring, you have to customize the zowe-setup-certificate.env file 
  and run the zowe-setup-certificate.sh script so that the Zowe knows what the keyring and certificate names are. In the zowe-setup-certificate.env file,
  customize the key ring related variables:
  - `GENERATE_CERTS_FOR_KEYRING` - must be set to `false` so that the zowe-setup-certificate.sh script does not repeat the job already done by the ZWEKRING jcl. Default to `false` value.
  - `VERIFY_CERTIFICATES` - if set to true the key ring has to contain root CA of the z/OSMF certificate (it has to be configured by the ZWEKRING jcl).
- - `KEYSTORE_ALIAS` - has to match either the `LABEL` variable in the ZWEKRING jcl or the label of the certificate already stored in the security manager's database.
- - `ZOWE_USER_ID` - the owner of the key ring that matches the `ZOWEUSER` variable in the ZWEKRING jcl. Defaults to the `ZWESVUSR` user id. 
- - `ZOWE_KEYRING` - the key ring name that matches the `ZOWERING` variable in the ZWEKRING jcl.
+ - `KEYSTORE_ALIAS` - the certificate alias has to match either the `LABEL` variable in the ZWEKRING jcl or the label of the certificate already stored in the security manager's database.
+ - `ZOWE_USER_ID` - the owner of the key ring matches the `ZOWEUSER` variable in the ZWEKRING jcl. Defaults to the `ZWESVUSR` user id. 
+ - `ZOWE_KEYRING` - the key ring name matches the `ZOWERING` variable in the ZWEKRING jcl. **Warning:** If the `ZOWE_KEYRING` variable is empty then 
+                    the script generates certificates to UNIX keystore files. 
  
  When the `zowe-setup-certificates.sh` script executes successfully then it generates `zowe-certificates.env` file in the 
  `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
  
 ### zowe-setup-certificate.sh script only
 
-When following the **Configuring Zowe certificates in UNIX files** section, set the extra parameters in the
+The key ring can be completely configured by the zowe-setup-certificate.sh script (no need to run the ZWEKRING jcl). Basically, you follow the process described 
+in the **Configuring Zowe certificates in UNIX files** section but you set the extra key ring related parameters in the
 zowe-setup-certificates.env:
  - `ZOWE_KEYRING=` - set this variable to the key ring name
  - `GENERATE_CERTS_FOR_KEYRING=true` - set this variable to true
@@ -65,14 +104,14 @@ The Zowe user id specified by the `ZOWE_USER_ID` (`ZWESVUSR` by default) has to 
 
 ##### Permissions that are required to configure the keyring using the zowe-setup-certificate.sh script
 
-A required level of permissions depends on several conditions such as:
+A required level of permissions for the user id running the script depends on several conditions such as:
 - A user id that executes the zowe-setup-certificate.sh script is or is not the same as the `ZOWE_USER_ID` value.
 - A Zowe certificate is planned to be signed by external CA or by Zowe's local CA. 
 - The `VERIFY_CERTIFICATES` parameter (in the zowe-setup-certificate.env file) is set to `true` or `false`
 
-The access level for a subset of `IRR.DIGTCERT.*` resources differs depending on a combination of conditions above. 
+The access level for a subset of `IRR.DIGTCERT.*` resources differs depending on a combination of the conditions above. 
 
-For example, if user id executing the script and `ZOWE_USER_ID` are identical and Zowe's local CA signs the Zowe certificate and 
+For example, if user id executing the script and `ZOWE_USER_ID` are identical, Zowe's local CA signs the Zowe certificate and 
 `VERIFY_CERTIFICATES` is set to `false` then `READ` access to the subset of `IRR.DIGTCERT.*` resources is sufficient. 
 The subset of `IRR.DIGTCERT.*` resources means the `ADD`, `ADDRING`, `CONNECT`, `IMPORT`, `DELRING`, `DELETE`, `REMOVE`, `LIST` and `LISTRING` resources.
    
