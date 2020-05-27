@@ -11,20 +11,14 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way d
 * Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
 * Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
 
-**Note:** The Zowe Explorer is powered by [Zowe CLI](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
-
-**Tips:**
-
-* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
-* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
-* Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
+**Note:** Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
 
 ## Contents
 
 * [Software Requirements](#software-requirements)
 * [Installing](#installing)
-* [Working with User Profile](#working-with-user-profiles)
-* [Enabling Secure Credential Store](#enabling-secure-credential-store)
+* [Configuration](#configuration)
+* [Relevant Information](#relevant-information)
 <!-- TODO * {expand the TOC} -->
 
 ## Software Requirements
@@ -89,6 +83,10 @@ where **/path/to/directory** is the folder location that you specify.
 <br /><br />
 <!-- TODO Update gif -->
 
-### Relevant Information
+### More Information
 
-<!-- TODO TBD -->
+In this section you can find useful links and other relevant to Zowe Explorer information that can improve your experience with the extension. Check the following links:
+
+* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
+* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
+* Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
