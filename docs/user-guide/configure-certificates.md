@@ -31,7 +31,7 @@ The script reads the default variable values that are provided in the `<ROOT_DIR
 <ROOT_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-generates the keystore in `u/zowe/mykeystore`.  On many z/OS installations access to this location will be restricted to privileged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
+generates the keystore in `/global/zowe/keystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
 
 ### Generate certificate with the custom values
 
