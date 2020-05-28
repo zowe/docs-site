@@ -60,13 +60,17 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 ## Stage 3: Configure the Zowe runtime
 
-1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+You can configure the Zowe runtime with one of the following methods depending on your needs. 
+- Use JCL and shell scripts
+- Use z/OSMF Workflows
+
+1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring the z/OS system for Zowe](configure-zos-system.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).
    
    A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  
    
    If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation. 
 
-2. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md).  
+2. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
 
    If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory.
 
@@ -74,8 +78,7 @@ After successful installation of either a convenience build or an SMP/E build, t
    
    A keystore directory needs to be created for a Zowe instance to be launched successfully, and a keystore directory can be shared between Zowe instances and between Zowe runtimes, including between different Zowe releases, unless specified otherwise in the release documentation.  
 
-
-3. Create and customize an instance directory that contains configuration data required to launch a Zowe runtime and is where log files are stored. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+3. Create and customize an instance directory that contains configuration data required to launch a Zowe runtime and is where log files are stored. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).
 
    A single Zowe runtime can be launched multiple times from different instance directories, each specifying different port ranges, applications to include at start-up, paths of associated runtimes (Java, Node, z/OSMF).
 

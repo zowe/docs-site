@@ -3,16 +3,9 @@
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure, and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
 
-The cross memory server can be installed and configured in one of two ways, either manually with helper scripts, or using z/OSMF workflows.
-
-- <a href= "## Manual and scripted install">Manual and scripted install</a>
- - <a href= "## Configure Zowe Cross Memory Server with z/OSMF Workflow">Configure Zowe Cross Memory Server with z/OSMF Workflow</a>
-
-## Manual and scripted install
-
 To install and configure the cross memory server, you must create or edit APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
- The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
+The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
 `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
 The cross memory server is a long running angel process server that runs under the started task `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
@@ -162,83 +155,7 @@ To end the Zowe cross memory server process, issue the operator stop command thr
 
 The starting and stopping of the `ZWESVSTC` for the main Zowe servers is independent of the `ZWESISTC` cross memory server that is an angel process. If you are running more than one `ZWESVSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of the ZWESIS01 load module, it abandons its current load module instance in LPA and loads the updated version.
 
-To diagnose problems that may occur with the Zowe `ZWESVSTC` being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the instance directory `/logs` folder each time a Zowe `ZWESVSTC` instance is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop)
-
-## Configure Zowe Cross Memory Server with z/OSMF Workflow
-
-Optionally you can use the z/OSMF workflow to install, configure, and launch the cross memory server to use the Zowe desktop. The z/OSMF Workflow helps you to create APF-authorized load libraries, program properties table (PPT) entries, a parmlib and initiate the cross memory sever started task.
-
-Perform the following steps to register and execute the workflow in the z/OSMF web interface:
-
-  1.	Log in to the z/OSMF web interface and select Use Desktop Interface.
-  2.	Select the Workflows tile.
-  3.	Select **Create Workflow** from the **Actions** menu.
-  4.	The Create Workflow panel appears.
-  5.	Enter the complete USS path to the workflow you want to register in the Workflow Definition File field.
-
-        -   If you installed Zowe with the SMP/E build, the workflow is located in the SMP/E target zFS file system that was mounted during the installation. The path to the workflow definition file is  *<pathPrefix>/usr/lpp/zowe/files/workflows/ ZWEWRF06.xml*.
-
-        - (Optional) Enter the complete USS path to the edited workflow properties file in the Workflow Variable Input File field. Use this file to customize product instances and automate workflow execution, saving time and effort when deploying multiple standardized Zowe instances. Values from this file override the default values for the workflow variables.
-       
-          The sample properties file is located in the same directory with the workflow definition file as follows: *<pathPrefix>/usr/lpp/zowe/files/workflows/ZWEWRF06.properties*
-       
-           Create a copy of this file, and then modify as described in the file. Set the field to the path where the new file is located.
-          
-          **Note:** if you use the convenience build, the workflows and variable input files are located in the USS runtime folder in files/workflows.
-
-   6.	Select the System where the workflow runs.
-
-   7.	Select **Next**.
-
-  8.	Specify a unique Workflow name. 
-
-  9.	Select or enter an Owner user ID, and select **Assign all steps to owner user ID**.
-
-   10.	Select **Finish**. 
-
-        The workflow is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance. 
-11.	Execute the steps in the following order:
-
-    -	 **Define Variables**
-
-         The workflow includes the list of Zowe cross memory server configuration and the started task variables. Enter the values for variables based on your mainframe environment and Zowe cross memory server configuration requirements.
-
-      -	**Allocate Cross Memory Server Data Sets**
-
-         Execute the step to allocate the data sets that are required for XMEM.
-
-      - **Copy artifacts**
-
-         Execute the step to populate the data sets that are allocated in the previous step with the necessary artifacts such as load modules, parmlib members and others. This step also copies the cross memory server STC to the proclib.
-
-      -	**APF Authorize Load Library** 
-
-        Execute the step to APF authorize the XMEM LOADLIB.
-
-      -	**Modify Scheduler**
-
-        Execute the step to modify the SCHEDnn PARMLIB member.
-
-      - **Reload Scheduler Settings**
-
-        Execute this step to reload the scheduler settings.
-
-       - **Start the XMEM Server**
-
-           Execute this step to start the Cross Memory Server started task.
-
-12.	Perform the following steps to execute each step individually:
-
-    1.	Double-click the title of the step.
-    2.	Select the **Perform** tab.
-    3.	Review the step contents and update the input values as required.
-    4.	Select **Next**.
-    5.	Repeat the previous two steps to complete all items until the option Finish is available.
-    6.	Select **Finish**.
-
-        After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
-
-After complete the workflow execution, you can view the Cross Memory Server started task.
+To diagnose problems that may occur with the Zowe `ZWESVSTC` being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the instance directory `/logs` folder each time a Zowe `ZWESVSTC` instance is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
 
 
 
