@@ -42,10 +42,13 @@ Authentication failed for 1 types:  Types: ["zss"]
 
 For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.  
 
-There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows a path from the Zowe Desktop ZLUX server to the zssServer (across the default port 8542) which then connects to the `ZWESIS01` started task using cross memory communication.  One of those two connections (ZLUX to zssServer, or zssServer to X-MEM) likely failed.
+There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these two connections likely failed. 
 
-- [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem)
-- [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver)
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).
+2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver). 
+
+<img src="../../images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
+
 
 ### ZSS server unable to communicate with X-MEM
 
@@ -69,7 +72,9 @@ There are two known problems that might cause this error.  The [Zowe architectur
 
      In this case, check that the ZWESISTC started task is running. If not, start it. Also, search the log for problems, such as statements indicating that the server was unable to find the load module.
     
-   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server setup and configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  
+   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check that the started task `ZWESISTC` is active.  
+   
+   - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  
 
    - If there is an authorization problem, the message might include `Permission Denied`. For example:
 
@@ -89,8 +94,6 @@ There are two known problems that might cause this error.  The [Zowe architectur
 
 
 ### ZLUX unable to communicate with zssServer
-
-On the [Zowe architecture diagram](../../getting-started/zowe-architecture.md), there is a communication between ZLUX which is a Node.js runtime serving the Zowe desktop web pages to the user's browser, and the zssServer running on port 8542.  If this communication is failing, then you will be unable to log in to the desktop.
 
 Follow these steps: 
 1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
@@ -216,14 +219,13 @@ You can ignore these messages. These messages are timing-related where different
 The Zowe started task `ZWESVSTC` log contains messages
 
 ```
-yyyy-mm-dd hh:mm:ss:ms ZWED:16843061 ZWESVUSR WARN (_zsf.install,index.js:255) 
 ZWED0159W - Plugin (org.zowe.zlux.proxy.zosmf) loading failed. 
 Message: "ZWED0047E - Proxy (org.zowe.zlux.proxy.zosmf:data) setup failed.
 Host & Port for proxy destination are required but were missing.
 ```
 
 **Solution:**   
-You can ignore these messages. 
+You can ignore these messages which should not occur in 1.11 or later releases.  To check which release of Zowe you are running, see [Determining the Zowe release number](../../troubleshoot/troubleshooting.md#determining-the-zowe-release-number).
 
 ## Warning: ZWED0050W - Could not read swagger doc folder (..)
  
