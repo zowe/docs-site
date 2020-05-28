@@ -3,6 +3,13 @@
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. You must install, configure, and launch the cross memory server if you want to use the Zowe desktop. Otherwise, you can skip this step.
 
+The cross memory server can be installed and configured in one of two ways, either manually with helper scripts, or using z/OSMF workflows.
+
+- <a href= "## Manual and scripted install">Manual and scripted install</a>
+ - <a href= "## Configure Zowe Cross Memory Server with z/OSMF Workflow">Configure Zowe Cross Memory Server with z/OSMF Workflow</a>
+
+## Manual and scripted install
+
 To install and configure the cross memory server, you must create or edit APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
  The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
@@ -192,7 +199,7 @@ Perform the following steps to register and execute the workflow in the z/OSMF w
         The workflow is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance. 
 11.	Execute the steps in the following order:
 
-    -	**Define Variables**
+    -	 **Define Variables**
 
          The workflow includes the list of Zowe cross memory server configuration and the started task variables. Enter the values for variables based on your mainframe environment and Zowe cross memory server configuration requirements.
 
