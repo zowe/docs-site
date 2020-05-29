@@ -17,7 +17,7 @@ You can configure Zowe certificates in a key ring by using one of the following 
   
 - Use the `zowe-setup-certificate.sh` script only. 
 
-  - This is an identical flow as configuration of certificates in UNIX files keystores except that two new environment variables have to be set in the `zowe-setup-certificates.env` file. 
+  - This is an identical flow as configuration of certificates in UNIX files keystores except that two new environment variables must be set in the `zowe-setup-certificates.env` file. 
   - Caller of the `zowe-setup-certificate.sh` script must have appropriate permissions to the `IRR.DIGTCERT.*` resources. 
   - This `zowe-setup-certificate.sh` script is common to security products RACF, Top Secret, and ACF2.
   - Maintenance for ACF2 ([SO11887](https://support.broadcom.com/download-center/solution-detail.html?aparNo=SO11887&os=z%2FOS)) 
@@ -39,7 +39,7 @@ The ZWEKRING JCL helps you configure certificates in a key ring in the following
  
 Do not submit the ZWEKRING JCL as is. You must customize it depending on the scenario for your environment.
 
-To customize the JCL, editing the JCL variables at the beginning of the JCL and  carefully review and edit all the security commands that are valid for your security manager.
+To customize the JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager.
 
 **Important!**
 
@@ -66,33 +66,48 @@ To customize the JCL, editing the JCL variables at the beginning of the JCL and 
    
    To find out what the certificate's CA chain is, you can use the example commands in the previous note.
    
-   If Zowe certificate is self-signed or signed by the local Zowe CA, then ignore `ITRMZWCA` and `ROOTZWCA` variables. In this case, you may see error messages in the JCL related to the `ITRMZWCA` and `ROOTZWCA` variables.
+   If Zowe certificate is self-signed or signed by the local Zowe CA, then ignore `ITRMZWCA` and `ROOTZWCA` variables. In this case, you might see error messages in the JCL related to the `ITRMZWCA` and `ROOTZWCA` variables.
    
      
- - You can share a certificate with Zowe assuming the certificate is already stored in the security manager's database. Such a certificate should be owned by the special SITE ACID (CERTSITE ACID for Top Secret or SITECERT ACID for ACF2).
+ - You can share a certificate with Zowe if the certificate is already stored in the security manager's database. Such a certificate should be owned by the special SITE ACID (CERTSITE ACID for Top Secret or SITECERT ACID for ACF2).
    
    In this scenario, you must modify the "connect to keyring" security command so that it connects the SITE owned certificate to the Zowe key ring. Also, you must allow the ZWESVUSR acid to extract private key from the SITE owned certificate. You can do that by uncommenting the security command in the ZWEKRING JCL that gives ZWESVUSR CONTROL access to the `IRR.DIGTCERT.GENCERT` resource.
  
- the Zowe certificate is already loaded in the security manager's database then it may be owned by other ACID than `ZWESVUSR`. It may be owned by a different user ACID or by the special SITE ACID (CERTSITE ACID for Top Secret, SITECERT ACID for ACF2). In this case, you must  
+   If the Zowe certificate is already loaded in the security manager's database, then it might be owned by a different user ACID or by the special SITE ACID (CERTSITE ACID for Top Secret, SITECERT ACID for ACF2) instead of `ZWESVUSR`. <!--In this case, you must--> 
  
- After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-certificate.env` file,
- customize the key ring related variables:
- - `GENERATE_CERTS_FOR_KEYRING` - must be set to `false` so that the `zowe-setup-certificate.sh` script does not repeat the job already done by the ZWEKRING JCL. Default to `false` value.
- - `VERIFY_CERTIFICATES` - if set to true, the key ring must contain root CA of the z/OSMF certificate (it must be configured by the ZWEKRING JCL).
- - `KEYSTORE_ALIAS` - the certificate alias must match either the `LABEL` variable in the ZWEKRING JCL or the label of the certificate already stored in the security manager's database.
- - `ZOWE_USER_ID` - the owner of the key ring matches the `ZOWEUSER` variable in the ZWEKRING JCL. Defaults to the `ZWESVUSR` user ID. 
- - `ZOWE_KEYRING` - the key ring name matches the `ZOWERING` variable in the ZWEKRING JCL. 
+After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-certificate.env` file, customize the key ring related variables:
 
-    **Warning:** If the  variable is empty, then the script generates certificates to UNIX keystore files. 
+- `GENERATE_CERTS_FOR_KEYRING`
+   
+   Must be set to `false` so that the `zowe-setup-certificate.sh` script does not repeat the job already done by the ZWEKRING JCL. Defaults to `false` value.
+
+- `VERIFY_CERTIFICATES` 
+   
+   If set to true, the key ring must contain root CA of the z/OSMF certificate (it must be configured by the ZWEKRING JCL).
+
+- `KEYSTORE_ALIAS`
+
+   The certificate alias must match either the `LABEL` variable in the ZWEKRING JCL or the label of the certificate already stored in the security manager's database.
+
+- `ZOWE_USER_ID` 
+
+   The owner of the key ring matches the `ZOWEUSER` variable in the ZWEKRING JCL. Defaults to the `ZWESVUSR` user ID. 
+
+- `ZOWE_KEYRING` 
+
+   The key ring name matches the `ZOWERING` variable in the ZWEKRING JCL. 
+
+    **Warning:** If the variable is empty, then the script generates certificates to UNIX keystore files. 
  
- When the `zowe-setup-certificates.sh` script executes successfully, it generates `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+
+When the `zowe-setup-certificates.sh` script executes successfully, it generates the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
  
 ### zowe-setup-certificate.sh script only
 
-The key ring can be completely configured by the `zowe-setup-certificate.sh` script (no need to run the ZWEKRING jcl). Basically, you follow the process described 
-in the **Configuring Zowe certificates in UNIX files** section but you set the extra key ring related parameters in the `zowe-setup-certificates.env` file:
+The key ring can be completely configured by the `zowe-setup-certificate.sh` script without running the ZWEKRING JCL. Follow the process described 
+in the [Configuring Zowe certificates in UNIX files](#configuring-zowe-certificates-in-unix-files) section but ensure you set the extra key ring related parameters in the `zowe-setup-certificates.env` file:
  - `ZOWE_KEYRING=` - set this variable to the key ring name
- - `GENERATE_CERTS_FOR_KEYRING=true` - set this variable to true
+ - `GENERATE_CERTS_FOR_KEYRING=true` - set this variable to `true`
  
 The `zowe-setup-certificates.sh` script generates the certificates and populates the key ring with the certificates.
 
@@ -101,15 +116,13 @@ The Zowe user ID specified by the `ZOWE_USER_ID` (`ZWESVUSR` by default) must ha
 #### Permissions that are required to configure the key ring using the zowe-setup-certificate.sh script
 
 A required level of permissions for the user ID running the script depends on several conditions such as:
-- A user ID that executes the zowe-setup-certificate.sh script is or is not the same as the `ZOWE_USER_ID` value.
+- A user ID that executes the `zowe-setup-certificate.sh` script is or is not the same as the `ZOWE_USER_ID` value.
 - A Zowe certificate is planned to be signed by external CA or by Zowe's local CA. 
-- The `VERIFY_CERTIFICATES` parameter (in the zowe-setup-certificate.env file) is set to `true` or `false`
+- The `VERIFY_CERTIFICATES` parameter (in the `zowe-setup-certificate.env` file) is set to `true` or `false`.
 
 The access level for a subset of `IRR.DIGTCERT.*` resources differs depending on a combination of the conditions above. 
 
-For example, if user ID executing the script and `ZOWE_USER_ID` are identical, Zowe's local CA signs the Zowe certificate and 
-`VERIFY_CERTIFICATES` is set to `false` then `READ` access to the subset of `IRR.DIGTCERT.*` resources is sufficient. 
-The subset of `IRR.DIGTCERT.*` resources means the `ADD`, `ADDRING`, `CONNECT`, `IMPORT`, `DELRING`, `DELETE`, `REMOVE`,  , and `LISTRING` resources.
+For example, `READ` access to the subset of `IRR.DIGTCERT.*` resources is sufficient if the user ID executing the script and `ZOWE_USER_ID` are identical, Zowe's local CA signs the Zowe certificate, and `VERIFY_CERTIFICATES` is set to `false`. The subset of `IRR.DIGTCERT.*` resources means the `ADD`, `ADDRING`, `CONNECT`, `IMPORT`, `DELRING`, `DELETE`, `REMOVE`, and `LISTRING` resources.
    
 ## Configuring Zowe certificates in UNIX files
 
@@ -225,47 +238,4 @@ This error must be resolved before you can proceed with the next installation st
 
 **Notes:** 
 
-On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
-
-## Method 2: Configure Zowe certificates with z/OSMF Workflows
-
-z/OSMF Workflow lets you create a keystore directory that is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.
-
-Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
-
- 1.	Log in to the z/OSMF web interface.
- 2.	Select **Workflows** from the navigation tree.
- 3.	Select Create Workflow from the **Actions** menu.
- 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
-    The path to the workflow definition file is *[extracted_pax_folder]/files/workflows/ZWEWRF05.xml file*. 
-5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
-    The path to the variable input file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.properties file. 
-
-    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
-6. Select the system where you want to execute the workflow.
-7. Select Next.
-8. Specify the unique workflow name.
-9. Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
-10.Select **Finish**.
-   The workflow is registered in z/OSMF and ready to execute.
-11. Select the workflow that you registered from the workflow list.
-12. Execute the following steps in order:
-    -	**Define Variables**
-        
-        Define the custom values for variables that meet your z/OS security and verification configuration requirements.
-    - 	**New Custom zowe-setup-certificates.env**
-        
-        Execute the step to create a new `zowe-setup-certificates.env` in the user specified location and substitutes values.
-	-  **Execute zowe-setup-certificates**
-        
-        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file.
-
-13. Perform the following steps to execute each step individually:
-    1.  Double-click the title of the step.
-    2.	Select the **Perform** tab.
-    3.  Review the step contents and update the input values as required.
-    4.	Select **Next**.
-    5.	Repeat the previous two steps to complete all items until the option Finish is available.
-    6.	Select **Finish**.
-
-After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
+On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for. 
