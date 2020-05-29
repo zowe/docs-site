@@ -2,7 +2,7 @@
 
 As a system programmer, after you install Zowe, you can register and execute the z/OSMF workflows in the web interface to complete the Zowe configuration. z/OSMF helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration.
 
-Ensure that you have the following requirements before you start the Zowe configuration:
+Ensure that you meet the following requirements before you start the Zowe configuration:
 
 -  Installed and configured z/OSMF
 -  Installed Zowe with either SMP/E build or convenience build
@@ -15,14 +15,14 @@ You can complete the following tasks with the z/OSMF workflows:
 
 ## Configure z/OS Security Manager 
 
-Configure the z/OS security manager to prepare for launching the Zowe started tasks. The workflow definition file provided to assist with the security configuration. The workflow definition file allows you to configure security manager by using one of RACF, ACF2, or TSS security systems.
+Configure the z/OS security manager to prepare for launching the Zowe started tasks. The workflow definition file is provided to assist with the security configuration. The workflow definition file allows you to configure z/OS security manager by using one of RACF, ACF2, or TSS security systems.
 
 Register the **ZWESECUR.xml** workflow definition file in the z/OSMF web interface to configure z/OS security manager. The path to the workflow
-definition file is `<pathPrefix>/usr/lpp/zowe/files/workflows/`.
+definition file is `<pathPrefix>/files/workflows/`.
 
 Perform the following steps after you register the workflow definition file:
 
-1. **Define Values to Variables**
+1. **Define Values for Variables**
 
    Review all the parameters and customize the values for variables to meet the z/OS security requirements. We recommend that the security administrator at your site reviews and edits the values for security group variables.
 
@@ -30,47 +30,46 @@ Perform the following steps after you register the workflow definition file:
 
 2. **Execute JCL**
 
-   Execute the step to complete the z/O security manager configuration.
+   Execute the step to complete the z/OS security manager configuration.
 
-After you execute these steps, the groups, user IDs and started tasks are assigned based on the customized values. For general procedure on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
+After you execute these steps, the groups, user IDs and started tasks are assigned based on the customized values. For instructions on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 
 ## Configure Zowe certificates
 
-z/OSMF workflow lets you generate certificate signed by the CA API Mediation Layer and keystores in the specified location. Zowe uses the keystore directory hold the certificate to encrypt communication between Zowe clients and the Zowe z/OS servers. The keystore directory also holds the truststore that is used to hold public keys of any servers that Zowe trusts.
+z/OSMF workflow lets you generate certificate signed by the Zowe API Mediation Layer and keystores in the specified location. Zowe uses the keystore directory to hold the certificate to encrypt communication between Zowe clients and the Zowe z/OS servers. The keystore directory also holds the truststore that is used to hold public keys of any servers that Zowe trusts.
 
-Register the ZWEWRF02 member that is located in the `hlq.ZOWE.AZWE005.F4` data set in the z/OSMF web interface. After you register the workflow definition file, you can execute the following steps.
+Register the ZWEWRF05 member that is located `<pathPrefix>/files/workflows/ZWEWRF05.xml` data set in the z/OSMF web interface. After you register the workflow definition file, you can execute the following steps.
 
 1. **Define Variables**
 
    Review all the parameters and customize the values for variables to meet the z/OS security requirements.
 
-   Zowe package includes the variable input file that is in ZWEYML05 member of the `hlq.ZOWE.AZWE001` data set. Optionally you can use this file to customize the values for variables in advance. Upload the prepared properties file when your register the workflow definition file. Values from this file override the default values for the workflow variables.
+   Zowe package includes the variable input file ZWEWRF05.properties and the path is `<pathPrefix>/files/workflows/ZWEWRF05.properties`. Optionally you can use this file to customize the values for variables in advance. Upload the prepared properties file when you register the workflow definition file. Values from this file override the default values for the workflow variables.
 
-2. **New Custom zowe-setup-certificates.env**
+2. **Generate new custom zowe-setup-certificates.env file**
 
    Execute the step to generate a new custom `zowe-setup-certificated.env` file based on the custom values that you provide for variables in the first step.
 
 3. **Execute zowe-setup-certificates.sh**
 
-   Execute the step to run the shell script.
+   Execute the step to run the shell script to generate the custom certificates based on the defined values for varaibales and values for parameters in the provided environment file.
 
-After you execute these steps, the keystore and certificates are successfully generated based on the custom values. For general procedure on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
+After you execute these steps, the keystore and certificates are successfully generated based on the custom values. For general instruction on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 
 <!-- Commented out for next release>
 
 ## Configure Zowe Cross Memory Server 
 ----------------------------------
 
-The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program. Multiple Zowe desktop instances can use the same cross memory server. Use the z/OSMF workflow to Install, configure, and launch the cross memory server if
-you want to use the Zowe desktop. The z/OSMF workflow also lets you create an APF-authorized load libraries that are required to install and configure the cross memory server.
+The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program. Multiple Zowe desktop instances can use the same cross memory server. Use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server.
 
-Register the ZWEWRF06.xml workflow definition file that is located in the path `<pathPrefix\>/usr/lpp/zowe/files/workflows/`. After you complete the workflow registration, Perform the following steps to configure the Zowe cross memory server:
+Register the ZWEWRF06.xml workflow definition file that is located in `<pathPrefix>/files/workflows/`. After you complete the workflow registration, Perform the following steps to configure the Zowe cross memory server:
 
-1. **Define Variables**
+1. **Define values for Variables**
 
    The workflow includes the list of Zowe cross memory server configuration and the started task variables. Enter the custom values for variables based on your mainframe environment and Zowe cross memory server configuration requirements.
 
-   Zowe package includes ZWEWRF06.properties variable input file. Optionally you can use this file to customize the values for variables in advance. Upload the prepared properties file when your register the workflow definition file. Values from this file override the default values for the workflow variables.
+   Zowe package includes ZWEWRF06.properties variable input file and the path is `<pathPrefix>/files/workflows/ZWEWRF05.properties`. Optionally you can use this file to customize the values for variables in advance. Upload the prepared properties file when your register the workflow definition file. Values from this file override the default values for the workflow variables.
 
 2. **Allocate Cross Memory Server Data Sets**
 
@@ -82,7 +81,7 @@ Register the ZWEWRF06.xml workflow definition file that is located in the path `
 
 4. **APF Authorize Load Library**
 
-   Creates an APF-authorized load library that is required to install and configure the cross memory server. Execute the step to APF authorize the XMEM LOADLIB.
+   Creates APF-authorized load library that is required to install and configure the cross memory server. Execute the step to APF authorize the XMEM LOADLIB.
 
 5. **Modify Scheduler**
 
@@ -96,14 +95,14 @@ Register the ZWEWRF06.xml workflow definition file that is located in the path `
 
    Execute this step to start the Cross Memory Server started task.
 
-After you complete these steps, the Zowe cross memory server is configured and installed that is required for Zowe Desktop instance. For general procedure on how to register and execute the workflow, See, Register and Execute Workflow in the z/OSMF Web Interface.
+After you complete these steps, the Zowe cross memory server is configured and installed to start the Zowe Desktop instance. For instruction on how to register and execute the workflow, See, [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 -->
 
 ## Create and configure the Zowe instance directory and start the Zowe started task
 
 The Zowe instance directory contains configuration data that is required to launch a Zowe runtime. This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data is read from files in the instance directory and logs will be written to files in the instance directory. Zowe has three runtimes namely: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices.
 
-Register **ZWEWRF03.xml** workflow definition file in the z/OSMF web interface to create a Zowe instance directory and start the Zowe started task. The path to the workflow definition file is `<pathPrefix>/usr/lpp/zowe/files/workflows/`
+Register **ZWEWRF03.xml** workflow definition file in the z/OSMF web interface to create a Zowe instance directory and start the Zowe started task. The path to the workflow definition file is `<pathPrefix>/files/workflows/`
 
 After you register the workflow definition file, perform the following steps to complete the process:
 
@@ -111,7 +110,7 @@ After you register the workflow definition file, perform the following steps to 
 
    The workflow includes the list of instance configuration and the Zowe started task variables. Enter the values for variables based on your mainframe environment, Zowe instance configuration, and started task requirements.
 
-   Zowe package includes the variable input file that is **ZWEWRF03.properties**. Optionally you can use this file to customize the values for variables in advance. This automates the workflow execution, saving time and effort when deploying multiple standardized Zowe instances. Values from this file override the default values for the workflow variables.
+   Zowe package includes the variable input file that is **ZWEWRF03.properties** and the path is `<pathPrefix>/files/workflows/ZWEWRF03.properties`. Optionally you can use this file to customize the values for variables in advance. This automates the workflow execution, saving time and effort when deploying multiple standardized Zowe instances. Values from this file override the default values for the workflow variables.
 
 2. **Create a Zowe instance**
 
@@ -158,10 +157,10 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Perform th
 
   Configuration Tasks | Workflow Definition File Name | Properties File Name | Workflow Definition File Path | Variable Input file Path
   --- | --- | --- | --- | ---
-  Configure z/OS Security Manager | ZWESECUR.xml | ZWESECUR.properties | `<pathPrefix>/files/workflows/` /ZWESECUR.xml | `<pathPrefix>/usr/lpp/zowe/files/workflows/ ZWESECUR.properties`
-  Configure Zowe Certificates     | ZWEWRF05.xml | ZWEWRF05.properties | `<pathPrefix>/files/workflows/` / ZWEWRF05.xml | `<pathPrefix>/usr/lpp/zowe/files/workflows/ ZWEWRF05.properties`
-  Configure Cross Memory Server   | ZWEWRF06.xml | ZWEWRF06.properties | `<pathPrefix>/files/workflows/` / ZWEWRF06.xml | `<pathPrefix>/usr/lpp/zowe/files/workflows/ ZWEWRF06.properties`
-  Create Instance Director and Start the Zowe started Task | ZWEWRF03.xml | ZWEWRF03.properties | `<pathPrefix>/files/workflows/` / ZWEWRF03.xml| `<pathPrefix>/usr/lpp/zowe/files/workflows/ ZWEWRF03.properties`
+  Configure z/OS Security Manager | ZWESECUR.xml | ZWESECUR.properties | `<pathPrefix>/files/workflows/` /ZWESECUR.xml | `<pathPrefix>/files/workflows/ ZWESECUR.properties`
+  Configure Zowe Certificates     | ZWEWRF05.xml | ZWEWRF05.properties | `<pathPrefix>/files/workflows/` / ZWEWRF05.xml | `<pathPrefix>/files/workflows/ ZWEWRF05.properties`
+  Configure Cross Memory Server   | ZWEWRF06.xml | ZWEWRF06.properties | `<pathPrefix>/files/workflows/` / ZWEWRF06.xml | `<pathPrefix>/files/workflows/ZWEWRF06.properties`
+  Create Instance Directory and Start the Zowe started Task | ZWEWRF03.xml | ZWEWRF03.properties | `<pathPrefix>/files/workflows/` / ZWEWRF03.xml| `<pathPrefix>/files/workflows/ ZWEWRF03.properties`
 
 5. Select the System where the workflow runs.
 
