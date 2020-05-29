@@ -45,6 +45,17 @@ The following features and enhancements were added.
 
 #### Zowe CLI
 
+The following features and enhancements were added to the **core Zowe CLI**:
+
+- Added the `zowe files hrec ds` command to recall data sets. [#556](https://github.com/zowe/zowe-cli/issues/556)
+- Made the `account` option optional in TSO profiles. [#709](https://github.com/zowe/zowe-cli/pull/709)
+- Made `user` and `host` options optional in SSH profiles. [#709](https://github.com/zowe/zowe-cli/pull/709)
+
+The following features and enhancements were added to the **z/OS FTP Plug-in for Zowe CLI**:
+
+- Added the `zowe zos-ftp list data-set-members` command to find members in a PDS. [#45](https://github.com/zowe/zowe-cli-ftp-plugin/issues/45)
+- Added the `zowe zos-ftp make uss-directory` command. [#47](https://github.com/zowe/zowe-cli-ftp-plugin/issues/47)
+
 #### Zowe Explorer
 
 ### Bug fixes
@@ -53,7 +64,7 @@ The following bugs were fixed.
 
 #### Zowe installation
 -  Minor enhancements to add log directory validation and remove unnecessary log file splitting. [#1334](https://github.com/zowe/zowe-install-packaging/pull/1334), [#1300](https://github.com/zowe/docs-site/issues/1300)
-- When the automatically detected hostname that Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279) 
+- When the automatically detected hostname that Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279)
 - Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plug-ins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
 
 #### API Mediation Layer
@@ -61,6 +72,8 @@ The following bugs were fixed.
 #### Zowe App Server
 
 #### Zowe CLI
+
+Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
 
 #### Zowe Explorer
 
@@ -142,7 +155,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe installer
 
-- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs. 
+- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs.
 - Improved port validation to assist determining whether Zowe's ports are available.
 
 #### Zowe troubleshooting
@@ -166,11 +179,11 @@ The following bugs were fixed:
 
 #### Zowe App Server
 - Bugfix: Material dialogs no longer overlap over the login screen [#145](https://github.com/zowe/zlux-editor/pull/145)
-- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208) 
+- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208)
 - Bugfix: Bugfix for websockets to prevent server throwing exception on malformed message [#189](https://github.com/zowe/zlux-server-framework/pull/189)
 - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined [#187](https://github.com/zowe/zlux-server-framework/pull/187)
 - Bugfix: Added missing pluginID argument for setStorageAll method. [#191](https://github.com/zowe/zlux-server-framework/pull/191)
-- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111) 
+- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111)
 
 ## Version 1.10.0 LTS (April 2020)
 
