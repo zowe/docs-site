@@ -1,12 +1,14 @@
 # Using Zowe Explorer
 
-This is a placeholder for a meta that will include info about usage tips and sample use cases (Data set, USS files, JOBs, TSO commands and the like). 
+Use the content of this section to familiarize yourself with the extension, and make the best use of available options and features. The section contains usage tips, sample use cases for data sets, USS files, JOBs, and TSO commands.
+
+## Usage Tips
 
 Use the following tips to familiarize yourself with the extension and make the best use of it:
 
 * **Data set, USS and jobs persistence settings:** You can enable the persistence of any data sets, USS files and jobs by adding them to the **Favorites** tab. Right-click on a data set, USS file or jobs and click **Add Favorite**.
 
-* **Syntax highlighter:** Zowe Explorer supports syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [IBM-JCL](https://marketplace.visualstudio.com/items?itemName=kelosky.ibm-jcl) or [IBM-Assembler](https://marketplace.visualstudio.com/items?itemName=kelosky.ibm-assembler).
+* **Identify syntax errors wtih a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
 
 * **Edit a profile**: You can now edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
 
@@ -19,18 +21,16 @@ Use the following tips to familiarize yourself with the extension and make the b
 
 * **Hide a profile**: You can hide a profile from profile tree by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** button from the explorer tree.
 
-<!-- TODO More tips? Identify more useful topic that are not covered yet -->
-
 ## Sample Use Cases
 
 Review the following use cases to understand how to use Zowe Explorer.
 
-* [Data Sets](#data-sets)
-* [USS](#uss)
-* [JOBS](#jobs)
-* [Extras](#extras)
+* [Work with Data Sets](#work-with-data-sets)
+* [Work with USS Files](#work-with-uss-files)
+* [Work with JOBS](#work-with-jobs)
+* [MVS/TSO Commands](#mvs/tso-commands)
 
-### Data Sets
+### Work with Data Sets
 
 You can use the following functionalities when interacting with data set:
 
@@ -104,8 +104,6 @@ Your PDS member (or PS) is uploaded.
 ![Edit](../images/ze/ZE-download-edit.gif?raw=true "Edit")
 <br /><br />
 
-<!-- TODO update the gif -->
-
 #### Use the save option to prevent merge conflicts
 
 1. Navigate to the explorer tree.
@@ -117,8 +115,6 @@ Your PDS member (or PS) is uploaded.
 
 ![Save](../images/ze/ZE-safe-save.gif?raw=true "Save")
 <br /><br />
-
-<!-- TODO update the gif -->
 
 #### Create a new PDS and a PDS member
 
@@ -163,7 +159,7 @@ Your PDS member (or PS) is uploaded.
 
 ____
 
-### USS
+### Work with USS Files
 
 You can use the following functionalities when interacting with USS files:
 
@@ -270,7 +266,7 @@ Your file is uploaded.
 
 ____
 
-### JOBS
+### Work with JOBS
 
 You can use the following functionalities when interacting with Jobs:
 
@@ -300,7 +296,7 @@ You can use the following functionalities when interacting with Jobs:
 
 ____
 
-### Extras
+### MVS/TSO Commands
 
 #### Issue MVS commands
 

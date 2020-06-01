@@ -1,4 +1,4 @@
-# Zowe Explorer Extension for VSCode
+# Installing Zowe Explorer
 
 [![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
 [![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://slack.openmainframeproject.org/)
@@ -13,17 +13,14 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way d
 
 **Note:** Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
 
-## Contents
-
 * [Software Requirements](#software-requirements)
 * [Installing](#installing)
 * [Configuration](#configuration)
 * [Relevant Information](#relevant-information)
-<!-- TODO * {expand the TOC} -->
 
 ## Software Requirements
 
-Before you use the extension, meet the following software requirements on your computer:
+Ensure that you meet the following prerequisites before you use the extension:
 
 * Get access to z/OSMF.
 * Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
@@ -55,7 +52,7 @@ You can also watch the following videos to learn how to get started with Zowe Ex
 <!-- TODO Some separator here? -->
 <iframe class="embed-responsive-item" id="youtubeplayer" title="How to Work with Data Sets" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-### Configuration
+## Configuration
 
 You can modify Zowe Explorer preferences in the extension `Setting` in the following ways:
 
@@ -83,7 +80,7 @@ where **/path/to/directory** is the folder location that you specify.
 <br /><br />
 <!-- TODO Update gif -->
 
-### More Information
+## Relevant Information
 
 In this section you can find useful links and other relevant to Zowe Explorer information that can improve your experience with the extension. Check the following links:
 

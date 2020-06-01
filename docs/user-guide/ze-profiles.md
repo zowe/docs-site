@@ -1,6 +1,6 @@
-# Working with user profiles
+# Working with Zowe Explorer profiles
 
-You must have a profile before you can use the extension. You can set up a `zosmf` profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
+You must have a `zosmf` compatible profile before you can use Zowe Explorer. You can set up a profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
 
 **Follow these steps:**
 
@@ -20,8 +20,48 @@ You must have a profile before you can use the extension. You can set up a `zosm
 
 You successfully created a Zowe CLI `zosmf` profile. Now you can use all the functionalities of the extension.
 
-The extension also enables you to hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose the corresponding option from the options list.
+If you need to edit a profile, click the **Update Profile** button next to the corresponding profile.
 
-## Profile Types
+![Edit a Profile](../images/ze/ZE-edit-ze-profile.gif?raw=true "Edit a Profile")
+<br /><br />
 
-<!-- TODO A placeholder section, which will include information about profile types, the associate profiles feature etc -->
+In addition, you to hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
+
+## Enabling Secure Credential Store with Zowe Explorer
+
+You can enable a high level of security for you credentials, using the Secure Credential Store (SCS) plug-in in the Zowe Explorer extension. By default, your credentials are stored in plain text, which increases the vulnerability of your system. The SCS plug-in lets you store your credentials securely and avoid an unnecessary information leakage.
+
+Activate the SCS plug-in in Zowe Explorer.
+
+**Follow these steps:**
+
+1. Open Zowe Explorer.
+2. Navigate to the VSCode settings.
+3. Open Zowe Explorer Settings.
+4. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
+5. Restart VSCode.
+6. Create a profile.
+
+Your Zowe Explorer credentials are now stored securely.
+
+### For Zowe CLI users
+
+Ensure that you install the SCS plug-in for Zowe CLI before activating SCS in Zowe Explorer. For more information about the SCS plug-in for Zowe CLI, see [Secure Credential Store plug-in for Zowe Explorer](cli-scsplugin.md).
+
+**Important:** If you did not install the SCS plug-in for Zowe CLI and try to activate SCS in the extension, you will not be able to use your existing profiles, and will have to recreate them.
+
+Activate the SCS plug-in in Zowe Explorer.
+
+1. Open Zowe CLI and issue the following command:
+
+   ```shell
+   zowe scs u
+   ```
+
+2. Open Zowe Explorer.
+3. Navigate to the VSCode settings.
+4. Open Zowe Explorer Settings.
+5. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
+6. Restart VSCode.
+
+The credentials of your newly created or existing profiles are now stored securely.
