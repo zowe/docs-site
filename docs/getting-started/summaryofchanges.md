@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.12.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
+- [Version 1.12.0 LTS (May 2020)](#version-1-12-0-lts-may-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
 - [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
@@ -22,11 +22,24 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.12.0 LTS (June 2020)
+## Version 1.12.0 LTS (May 2020)
+
+### Requires action
+- You need to re-run the `zowe-setup-certificates.sh` script during the upgrade process. This requirement is due to the automatic setup of SSO, which requires users to input new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
 
 ### New features and enhancements
 
-The following features and enhancements were added:
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added.
+
+#### Zowe installation
+- Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
+- Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
+- Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
+
+
+#### API Mediation Layer
 
 #### ZSS
 
@@ -50,10 +63,31 @@ The following features and enhancements were added:
 - Right-click context menus have been implemented for the new desktop style [#216](https://github.com/zowe/zlux-app-manager/pull/216)
 - A new attribute has been implemented to load plugins from different relative paths [#212](https://github.com/zowe/zlux-server-framework/pull/212)
 
+#### Zowe CLI
+
+The following features and enhancements were added to the **core Zowe CLI**:
+
+- Added the `zowe files hrec ds` command to recall data sets. [#556](https://github.com/zowe/zowe-cli/issues/556)
+- Made the `account` option optional in TSO profiles. [#709](https://github.com/zowe/zowe-cli/pull/709)
+- Made `user` and `host` options optional in SSH profiles. [#709](https://github.com/zowe/zowe-cli/pull/709)
+
+The following features and enhancements were added to the **z/OS FTP Plug-in for Zowe CLI**:
+
+- Added the `zowe zos-ftp list data-set-members` command to find members in a PDS. [#45](https://github.com/zowe/zowe-cli-ftp-plugin/issues/45)
+- Added the `zowe zos-ftp make uss-directory` command. [#47](https://github.com/zowe/zowe-cli-ftp-plugin/issues/47)
+
+#### Zowe Explorer
 
 ### Bug fixes
 
-The following bugs were fixed:
+The following bugs were fixed.
+
+#### Zowe installation
+-  Minor enhancements to add log directory validation and remove unnecessary log file splitting. [#1334](https://github.com/zowe/zowe-install-packaging/pull/1334), [#1300](https://github.com/zowe/docs-site/issues/1300)
+- When the automatically detected hostname that Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279)
+- Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plug-ins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
+
+#### API Mediation Layer
 
 #### ZSS
 
@@ -78,6 +112,12 @@ Also, removes tokenInjector as it should not be needed anymore since sso exists 
 - Bugfix: Fixed lease info for APIML [#218](https://github.com/zowe/zlux-server-framework/pull/218)
 - Bugfix: Resolve when apiml is not in use. This is the case in which the plugin does not detect apiml, but does detect zss. The conditional never resolved, so the user was never shown the logout screen. [#221](https://github.com/zowe/zlux-server-framework/pull/221)
 - Bugfix: Fix localhost and hostname use for apiml, 1 client per cluster. In this release, the server uses a real hostname and tries to find the ip that best matches what apiml would be able to use. [#203](https://github.com/zowe/zlux-server-framework/pull/203)
+
+#### Zowe CLI
+
+Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
+
+#### Zowe Explorer
 
 
 ## Version 1.11.0 LTS (May 2020)
@@ -157,7 +197,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe installer
 
-- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs. 
+- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs.
 - Improved port validation to assist determining whether Zowe's ports are available.
 
 #### Zowe troubleshooting
@@ -181,11 +221,11 @@ The following bugs were fixed:
 
 #### Zowe App Server
 - Bugfix: Material dialogs no longer overlap over the login screen [#145](https://github.com/zowe/zlux-editor/pull/145)
-- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208) 
+- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208)
 - Bugfix: Bugfix for websockets to prevent server throwing exception on malformed message [#189](https://github.com/zowe/zlux-server-framework/pull/189)
 - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined [#187](https://github.com/zowe/zlux-server-framework/pull/187)
 - Bugfix: Added missing pluginID argument for setStorageAll method. [#191](https://github.com/zowe/zlux-server-framework/pull/191)
-- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111) 
+- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111)
 
 ## Version 1.10.0 LTS (April 2020)
 
