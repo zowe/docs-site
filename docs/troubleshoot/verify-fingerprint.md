@@ -138,19 +138,19 @@ Description of parameters
 
    - You can use dot (.) and tilde (~) in the parameters
 
--r <runtime-dir> root directory of the executables used by Zowe at run time
+`-r <runtime-dir>` root directory of the executables used by Zowe at run time
 typical value : `/usr/lpp/zowe`
 default: the parent directory of the 'bin' folder where this script is located
 
--h <HashPgm-dir> directory of the hash key program
+`-h <HashPgm-dir>` directory of the hash key program
 typical value : `/usr/lpp/zowe/fingerprint`
 default: the 'fingerprint' directory of the parent folder where this script is located
 
--f <HashRef-dir> directory of the reference hash key file RefRuntimeHash-v.r.m.txt
+`-f <HashRef-dir>` directory of the reference hash key file RefRuntimeHash-v.r.m.txt
 same typical value and default as -h
 The values specified for `-h` and `-f` can be the same or different.
 
--l <output-dir>  output directory where the following log and output files will be written.
+`-l <output-dir>`  output directory where the following log and output files will be written.
 
     zowe-verify-authenticity.log
     CustRuntimeHash.sort
