@@ -73,8 +73,6 @@ To customize the JCL, edit the JCL variables at the beginning of the JCL and car
    
    In this scenario, you must modify the "connect to keyring" security command so that it connects the SITE owned certificate to the Zowe key ring. Also, you must allow the ZWESVUSR acid to extract private key from the SITE owned certificate. You can do that by uncommenting the security command in the ZWEKRING JCL that gives ZWESVUSR CONTROL access to the `IRR.DIGTCERT.GENCERT` resource.
  
-   If the Zowe certificate is already loaded in the security manager's database, then it might be owned by a different user ACID or by the special SITE ACID (CERTSITE ACID for Top Secret, SITECERT ACID for ACF2) instead of `ZWESVUSR`. <!--In this case, you must--> 
- 
 After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-certificate.env` file, customize the key ring related variables:
 
 - `GENERATE_CERTS_FOR_KEYRING`
