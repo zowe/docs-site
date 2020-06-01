@@ -1,6 +1,18 @@
-# Verify fingerprint
+# Verify Zowe runtime directory
 
-Learn how to verify the hash codes for your Zowe instance runtime folder.
+The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zowe.  If these are altered in any way the behavior of Zowe is unpredictable.  
+
+To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a script file `zowe-verify-authenticity.sh`. 
+
+If you have a Zowe version 1.12 or higher the script is delivered with Zowe together with the information it needs to check the release contents.  
+
+If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10 and 1.11.   
+
+## Verifying a Zowe release 1.12 or later
+
+1. Navigate to `ROOT_DIR/bin` and execute the script `zowe-verify-authenticity.sh`.  
+
+This script 
 
 ## Step 1: Obtain the verify tool
 
