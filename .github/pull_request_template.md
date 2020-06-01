@@ -1,15 +1,10 @@
-<!--
-Thank you for your pull request! Please provide a description of the changes in this PR in the field above and review
-the requirements below.
--->
+### Your checklist for this pull request
+🚨Please review the [guidelines for contributing](../CONTRIBUTING.md) to this repository.
 
-#### Is there a related issue for this PR? 
-Issue number: 
+- [ ] Make sure you are making a pull request against the **docs-staging branch** (left side). Don't request  master!
+- [ ] If this PR relates to git issues in docs-staging or other repositories, please list in [Description](#description), prefixed with **close**, **fix** or **resolve** keywords.
 
-#### Developer's Certificate of Origin (DCO)
+### Description (including links to related git issues)
+Please describe your pull request.
 
-<!-- All commits must be signed off. Add a Signed-off-by line to your commit messages and this PR. Example: 
-
-Signed-off-by: Random J Developer <random@developer.example.org>
-
--->
+💔Thank you!
