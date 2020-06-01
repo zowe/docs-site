@@ -26,7 +26,6 @@ Ensure that you meet the following prerequisites before you use the extension:
 * Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 * Install [VSCode](https://code.visualstudio.com/).
 * Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
-<!-- TODO fix the link above -->
 * Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
    **Notes:**
@@ -49,7 +48,7 @@ The extension is now installed and available for use.
 You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
-<!-- TODO Some separator here? -->
+
 <iframe class="embed-responsive-item" id="youtubeplayer" title="How to Work with Data Sets" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Configuration
@@ -78,7 +77,6 @@ where **/path/to/directory** is the folder location that you specify.
 
 ![Configure Zowe settings](../images/ze/ZE-Configuration.gif?raw=true "Configure Zowe settings")
 <br /><br />
-<!-- TODO Update gif -->
 
 ## Relevant Information
 
