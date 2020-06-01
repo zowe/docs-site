@@ -1,17 +1,17 @@
-# Configuring Zowe CLI 
+# Configuring Zowe CLI
 This section explains how to define and verify your connection to the mainframe through Zowe&trade; CLI. You can also configure CLI settings, such as the level of detail produced in logs and the location of the home directory on your computer.
 
 **Note:** The configuration for the CLI is stored on your computer in a directory such as C:\Users\user01\.zowe. The configuration includes log files, your profile information, and CLI plug-ins that are installed. When you troubleshoot an issue with the CLI, the log files in the imperative and zowe folders contain valuable information.
 
 - [Defining Zowe CLI connection details](#defining-zowe-cli-connection-details)
-- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf) 
+- [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf)
 - [Setting CLI log levels](#setting-zowe-cli-log-levels)
 - [Setting the CLI home directory](#setting-the-zowe-cli-home-directory)
 
 
 ## Defining Zowe CLI connection details
 
-Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains order of precedence and different methods for specifying your mainframe connection details. 
+Zowe CLI has a *command option order of precedence* that lets you define arguments and options for commands in multiple ways (command-line, environment variables, and profiles). This provides flexibility when you issue commands and write automation scripts. This topic explains order of precedence and different methods for specifying your mainframe connection details.
 
   - [Understanding command option order of precedence](#understanding-command-option-order-of-precedence)
   - [Creating Zowe CLI profiles](#creating-zowe-cli-profiles)
@@ -65,7 +65,7 @@ After you create a profile, you can verify that it can communicate with z/OSMF. 
 
 
 
-#### Creating a profile that accesses API Mediation Layer 
+#### Creating a profile that accesses API Mediation Layer
 
 You can create profiles that access either an exposed API or API Mediation Layer (API ML) in the following ways:
 
@@ -86,7 +86,7 @@ zowe profiles create zosmf myprofile -H <myhost> -P <myport> -u <myuser> --pw <m
 After you create a profile, verify that it can communicate with z/OSMF. For more information, see [Testing Zowe CLI connection to z/OSMF](#testing-zowe-cli-connection-to-z-osmf).
 
 ### Defining Environment Variables
-You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value. 
+You can define environment variables in your environment to execute commands more efficiently. You can store a value, such as your password, in an environment variable, then issue commands without specifying your password every time. The term environment refers to your operating system, but it can also refer to an automation server, such as Jenkins or a Docker container. In this section we explain how to transform arguments and options from Zowe CLI commands into environment variables and define them with a value.
 
   - **Assigning an environment variable for a value that is commonly used.**
 
@@ -97,16 +97,16 @@ You can define environment variables in your environment to execute commands mor
     issue a command or create any profile type without specifying your
     user name repeatedly.
 
-  - **Overriding a value that is used in existing profiles.**  
-  
+  - **Overriding a value that is used in existing profiles.**
+
     For example, you might want to override a value that you previously
     set on multiple profiles to avoid recreating each profile.This
     reduces the number of profiles that you need to maintain and lets
     you avoid specifying every option on command line for one-off
     commands.
 
-  - **Specifying environment variables in a Jenkins environment (or other automation server) to store credentials securely.**  
-  
+  - **Specifying environment variables in a Jenkins environment (or other automation server) to store credentials securely.**
+
     You can set values in Jenkins environment variables for use in
     scripts that run in your CI/CD pipeline. You can define Jenkins
     environment variables in the same manner that you can on your computer. You
@@ -122,7 +122,7 @@ The following rules apply to this transformation:
 
   - Prefix environment variables with `ZOWE_OPT_`
   - Convert lowercase letters in arguments/options to uppercase letters
-  - Convert hyphens in arguments/options to underscores  
+  - Convert hyphens in arguments/options to underscores
 
 **Tip:**  See your operating system documentation for information about how to set and get environment variables. The procedure for setting environment variables varies between Windows, Mac, and various versions of Linux operating systems.
 
@@ -193,7 +193,7 @@ You can issue a command at any time to receive diagnostic information from the s
 Verify that your CLI instance can communicate with z/OSMF.
 
 ```
-zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> 
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password>
 ```
 
 **Default profile**
@@ -218,11 +218,11 @@ The commands return a success or failure message and display information about y
 
 Certificates authorize communication between a server and client, such as z/OSMF and Zowe CLI. The client CLI must "trust" the server to successfully issue commands. Use one of the following methods to let the CLI communicate with the server:
 
-- [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca) 
-- [Extend trusted certificates on client](#extend-trusted-certificates-on-client) 
-- [Bypass certificate requirement with CLI flag](#bypass-certificate-requirement-with-cli-flag) 
+- [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca)
+- [Extend trusted certificates on client](#extend-trusted-certificates-on-client)
+- [Bypass certificate requirement with CLI flag](#bypass-certificate-requirement-with-cli-flag)
 
-### Configure certificates signed by a Certificate Authority (CA) 
+### Configure certificates signed by a Certificate Authority (CA)
 
 System Administrators can configure the server with a certificate signed by a Certificate Authority (CA) trusted by Mozilla. When a CA trusted by Mozilla exists in the certificate chain, the CLI automatically recognizes the server and authorizes the connection.
 
@@ -230,12 +230,12 @@ System Administrators can configure the server with a certificate signed by a Ce
 
 - [Using certificates with z/OS client/server applications](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.icha700/icha700_Using_certificates_with_z_OS_client_server_applications.htm) in the IBM Knowledge Center.
 - [Configuring the z/OSMF key ring and certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm) in the IBM Knowledge Center.
-- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) 
-- [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates) 
+- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)
+- [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)
 
 ### Extend trusted certificates on client
 
-If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate. 
+If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate.
 
 [This blog post](https://medium.com/@dkelosky/zowe-cli-providing-node-extra-ca-certs-117727d936e5) outlines the process for using environment variables to trust the self-signed certificate.
 
@@ -248,7 +248,7 @@ If you do not have server certificates configured at your site, or you want to t
 **Example:**
 
 ```
-zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> --reject-unauthorized false 
+zowe zosmf check status --host <host> --port <port> --user <username> --pass <password> --reject-unauthorized false
 ```
 
 ## Setting Zowe CLI log levels
@@ -259,8 +259,8 @@ You can set the log level to adjust the level of detail that is written to log f
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
-| `ZOWE\_APP\_LOG\_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
-| `ZOWE\_IMPERATIVE\_LOG\_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
 ## Setting the Zowe CLI home directory
 
@@ -268,4 +268,4 @@ You can set the location on your computer where Zowe CLI creates the *.zowe* dir
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
-| `ZOWE\_CLI\_HOME`  | Zowe CLI home directory location | Any valid path on your computer | Your computer default home directory |
+| `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | Your computer default home directory |
