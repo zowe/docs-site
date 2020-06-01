@@ -1174,3 +1174,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check if the service is up and registered. If it is not registered, review the onboarding guide to ensure that all steps were completed.
 
+### ZWEAC707E
+
+  Static API refresh failed, caused by exception: %s
+
+  **Reason:**
+
+  The Static API refresh could not be performed because of exception.
+
+  **Action:**
+
+  Check the specific exception for troubleshooting.
+

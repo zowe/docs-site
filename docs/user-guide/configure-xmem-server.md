@@ -5,7 +5,7 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 
 To install and configure the cross memory server, you must create or edit APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
- The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
+The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are installed in the `SZWESAMP` PDS SAMPLIB.  The load modules for the cross memory server and an auxiliary server it uses are installed in the `SZWEAUTH` PDS load library.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
 `$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
 
 The cross memory server is a long running angel process server that runs under the started task `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
@@ -33,7 +33,7 @@ To install the cross memory server, take the following steps either [manually](#
     ```
     Where `<zwes_loadlib>` is the name of the data set, for example ZWES.SISLOAD. The `<zwes_loadlib>` data set must be a PDSE due to language requirements.
 
-    b. **Prob libraries** The cross memory server PROCLIB JCL is `ZWESISTC` and the auxiliary address space PROCLIB JCL is `ZWESASTC`.  
+    b. **Proc libraries** The cross memory server PROCLIB JCL is `ZWESISTC` and the auxiliary address space PROCLIB JCL is `ZWESASTC`.  
     
     You must specify the `<zwes_loadlib>` data set where `ZWESIS01` and `ZWESAUX` were copied to, in the STEPLIB DD statement of the two PROCLIB JCL members `ZWESISTC` and `ZWESASTC` respectively so that the appropriate version of the software is loaded correctly. 
     
@@ -155,4 +155,8 @@ To end the Zowe cross memory server process, issue the operator stop command thr
 
 The starting and stopping of the `ZWESVSTC` for the main Zowe servers is independent of the `ZWESISTC` cross memory server that is an angel process. If you are running more than one `ZWESVSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of the ZWESIS01 load module, it abandons its current load module instance in LPA and loads the updated version.
 
-To diagnose problems that may occur with the Zowe `ZWESVSTC` being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the instance directory `/logs` folder each time a Zowe `ZWESVSTC` instance is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop)
+To diagnose problems that may occur with the Zowe `ZWESVSTC` being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the instance directory `/logs` folder each time a Zowe `ZWESVSTC` instance is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
+
+
+
+
