@@ -8,43 +8,33 @@ If you have a Zowe version 1.12 or higher the script is delivered with Zowe toge
 
 If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10 and 1.11.   
 
-## Verifying a Zowe release 1.12 or later
-
-1. Navigate to `ROOT_DIR/bin` and execute the script `zowe-verify-authenticity.sh`.  
-
-This script 
-
-## Step 1: Obtain the verify tool
+## Step 1: Obtain the verify tool (Prior to v1.12)
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable local directory, for example, `/u/username/hash`.
 3. Go to [zowe.org](https://www.zowe.org/).
-4. Depending on the version of Zowe you are using, download the hash code files to your local directory `/u/username/hash`  by using FTP or a similar file-transfer utility.  <!--How to select the hash files? Will there be a link or button somewhere? -->
+4. Select the hash file directory for your release.
+5. Download these files to your local directory `/u/username/hash`  by using FTP or a similar file-transfer utility.  <!--How to select the hash files? Will there be a link or button somewhere? -->
 
-   **v1.12 and later** 
-   - `HashFiles.class` (binary) 
-   - `RefRuntimeHash.txt` (text) 
-
-   **Prior v1.12**
    - `HashFiles.class` (binary)
    - `RefRuntimeHash.txt` (text)  
-   - `zowe-verify-authenticity.sh`
+   - `zowe-verify-authenticity.sh` (text)
 
-Note that the `RefRuntimeHash.txt` file is specific to a Zowe release.
+Note that the `RefRuntimeHash.txt` file is specific to a Zowe release.  Rename it now, to `RefRuntimeHash-v.r.m.txt`, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  
 
 ## Step 2: Verify your runtime folder
 
-Now you are ready to verify your runtime folder, for example, `/usr/lpp/zowe/v1.12`, which contains the following files that you can check. 
+Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.12`, which contains the following files that you can check by using the `ls` command. 
 
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.12
-bin            components     install_log    manifest.json  scripts
+bin            components     fingerprint   install_log    manifest.json  scripts
 ```
+Note that you will not have a `fingerprint` directory in releases prior to v1.12.0.  
 
 1. Change to the runtime directory. 
    ```
    cd /usr/lpp/zowe/v1.12
-   scripts/utils/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
    ``` 
 
 2. Run the `zowe-verify-authenticity.sh` script.
@@ -52,12 +42,13 @@ bin            components     install_log    manifest.json  scripts
    **For Zowe v1.12 and later** 
 
    ```
-   scripts/utils/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
+   bin/zowe-verify-authenticity.sh
    ``` 
+   Note: You do not need to specify any parameters to this script.  
 
-   **For prior v1.12**
+   **For Zowe releases prior v1.12**
    ```
-   /u/username/hash/zowe-verify-authenticity.sh /usr/lpp/zowe/v1.12 /u/username/hash
+   /u/username/hash/zowe-verify-authenticity.sh -r /usr/lpp/zowe/v1.9 -f /u/username/hash
    ```
 
 The `zowe-verify-authenticity.sh` script creates a `CustRuntimeHash.txt` file, which it compares with the `RefRuntimeHash.txt` file.  
@@ -75,10 +66,9 @@ When files don't match, you see a message similar to the following one.
 USERNAME:/u/username/hash: >ls -l
 total 1856
 -rw-r--r--   1 OMVSKERN SYS1        1680 May  5 03:38 HashFiles.class
--rw-r--r--   1 OMVSKERN SYS1      921961 May  5 03:38 RefRuntimeHash.txt
+-rw-r--r--   1 OMVSKERN SYS1      921961 May  5 03:38 RefRuntimeHash-v.r.m.txt
 -rwxr-xr-x   1 OMVSKERN SYS1        5029 May  5 03:51 zowe-verify-authenticity.sh
-USERNAME:/u/username/hash: >r 153
-/u/username/hash/zowe-verify-authenticity.sh /tmp/usr/lpp/zowe /u/username/hash
+USERNAME:/u/username/hash: >/u/username/hash/zowe-verify-authenticity.sh /tmp/usr/lpp/zowe /u/username/hash
 Info: Gathering files ...
 Info: Calculating hashes ...
 Info: Comparing results ...
@@ -104,7 +94,7 @@ Info: List of matching files with different hashes
 ./components/app-server/share/sample-angular-app/webClient/src/assets/i18n/pluginDefinition.i18n.fr.json -1821281463413293505
 ./components/app-server/share/sample-angular-app/webClient/src/assets/i18n/pluginDefinition.i18n.fr.json -117903603306749052
 
-Info: More than 50 differences, no further differences are listed
+Info: More than 10 differences, no further differences are listed
 Info: End of list
 
 Info: Customer  runtime hash file is available in  /u/username/hash/CustRuntimeHash.txt
@@ -112,9 +102,9 @@ Info: Reference runtime hash file is available in  /u/username/hash/RefRuntimeHa
 USERNAME:/u/username/hash: >
 ```
 
-This is a worst-case scenario of a bad mismatch.  You can check the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
+This is a worst-case scenario of a bad mismatch.  To find out what the problem is, you could, for example, start by checking the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
 
-The hash files `RuntimeHash.txt` are kept in case you want to use a GUI tool to perform a better file comparison.
+The hash files mentioned above are left in the `/u/username/hash` directory in case you want to use a GUI tool to perform a better file comparison.
 
 ### Match
 
@@ -128,9 +118,6 @@ Info: Comparing results ...
 Info: Number of files different =  0
 Info: Number of files extra     =  0
 Info: Number of files missing   =  0
-Info: List of matching files with different hashes
-
-Info: End of list
 
 Info: Customer  runtime hash file is available in 
 ... /hash/CustRuntimeHash.sort
@@ -140,37 +127,47 @@ Info: Reference runtime hash file is available in
 ... /hash/RefRuntimeHash.txt
 zowe-verify-authenticity.sh ended
 ```
-This is for the POC version of fingerprint.  The new version that will be delivered will have these attributes:
 
-- Self-contained – all parts are present in the runtime directory, including `RefRuntimeHash-V.v.p.txt`.
+## Description of parameter format for zowe-verify-authenticity.sh
+`
+zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]`
 
-- How to run it:
+Description of parameters
 
-  ```
-  cd /usr/lpp/zowe/bin 
-  zowe-verify-authenticity.sh
-  ```
+   - All parameters are optional
 
-- New parameter format
-  ```
-  zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]```
+   - You can use dot (.) and tilde (~) in the parameters
 
-- Anti-falsing to ensure integrity
+-r <runtime-dir> root directory of the executables used by Zowe at run time
+typical value : `/usr/lpp/zowe`
+default: the parent directory of the 'bin' folder where this script is located
 
-- Download these files to `downloads/hash`.
+-h <HashPgm-dir> directory of the hash key program
+typical value : `/usr/lpp/zowe/fingerprint`
+default: the 'fingerprint' directory of the parent folder where this script is located
 
-  ```
-  zowe-verify-authenticity.sh 
-  HashFiles.class
-  RefRuntimeHash-v.r.m.txt
-  ```
+-f <HashRef-dir> directory of the reference hash key file RefRuntimeHash-v.r.m.txt
+same typical value and default as -h
+The values specified for `-h` and `-f` can be the same or different.
 
-- Run the script
+-l <output-dir>  output directory where the following log and output files will be written.
 
-  ```
-  cd downloads/hash
-  zowe-verify-authenticity.sh -r /tmp/usr/lpp/zowe -h . –f .
-  ```
+    zowe-verify-authenticity.log
+    CustRuntimeHash.sort
+    CustRuntimeHash.txt 
+    RefRuntimeHash.sort  
 
-- Automatically called by `zowe-support.sh`
+typical value : `~/zowe/fingerprint`
+The directory will be created if you specify it but it does not exist.
+
+default: The following defaults will be tried in this order
+```
+    /global/zowe/log 
+    ~/zowe 
+    $TMPDIR
+    /tmp
+```
+## Use of zowe-verify-authenticity.sh by zowe-support.sh
+
+From v1.12 on, `zowe-verify-authenticity.sh` is automatically called by `zowe-support.sh`, with no parameters.  
 
