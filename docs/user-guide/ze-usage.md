@@ -1,16 +1,16 @@
 # Using Zowe Explorer
 
-Use the content of this section to familiarize yourself with the extension, and make the best use of available options and features. The section contains usage tips, sample use cases for data sets, USS files, JOBs, and TSO commands.
+Review this section to familiarize yourself with the extension and make the best use of available options and features. The section contains usage tips and sample use cases for data sets, USS files, JOBs, and TSO commands.
 
 ## Usage Tips
 
-Use the following tips to familiarize yourself with the extension and make the best use of it:
+Make the best use of the extension with the following tips:
 
-* **Data set, USS and jobs persistence settings:** You can enable the persistence of any data sets, USS files and jobs by adding them to the **Favorites** tab. Right-click on a data set, USS file or jobs and click **Add Favorite**.
+* **Data set, USS and jobs persistence settings:** You can store any of data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
 
-* **Identify syntax errors wtih a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
+* **Identify syntax errors with a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
 
-* **Edit a profile**: You can now edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
+* **Edit a profile**: You can edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
 
 * **Delete a profile**: You can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes a profile from your `.zowe` folder. Alternatively, you can delete a profile from the VSCode Command Palette.
 
@@ -27,12 +27,12 @@ Review the following use cases to understand how to use Zowe Explorer.
 
 * [Work with Data Sets](#work-with-data-sets)
 * [Work with USS Files](#work-with-uss-files)
-* [Work with JOBS](#work-with-jobs)
+* [Work with jobs](#work-with-jobs)
 * [MVS/TSO Commands](#mvs/tso-commands)
 
 ### Work with Data Sets
 
-You can use the following functionalities when interacting with data set:
+You can use the following functionalities when interacting with data sets:
 
 * **View data sets and use multiple filters**: You can view multiple data sets simultaneously and apply filters to show specified data sets.
 * **Rename data sets**: You can rename specified data sets.
@@ -207,10 +207,10 @@ You can use the following functionalities when interacting with USS files:
 
     The file displays in the text editor window of VSC.
 
-    **Note:** If you have defined file associations with syntax coloring the suffix of your file will be marked up.
+    **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
 
 2. Edit the document.
-3. Type Ctrl-s or Command-s (OSx) to save the file
+3. Type Ctrl+S or Command+S (OSx) to save the file
 
 Your file is uploaded.  
 
@@ -240,7 +240,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a file you want to remove.
-4. Select the **Delete** button and press yes in the confirmation dropdown.
+4. Select the **Delete** button and press *Yes** to confirm.
    The file is deleted.
 
 #### Delete a directory
@@ -248,7 +248,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a directory you want to remove.
-4. Select the **Delete** button and press yes in the confirmation dropdown.
+4. Select the **Delete** button and press **Yes** to confirm.
    The directory and all child files and directories are deleted.
 
 ![Create and Delete](../images/ze/ZE-CreateDelete.gif?raw=true "Create and Delete")
@@ -266,9 +266,9 @@ Your file is uploaded.
 
 ____
 
-### Work with JOBS
+### Work with jobs
 
-You can use the following functionalities when interacting with Jobs:
+You can use the following functionalities when interacting with jobs:
 
 * **View a job**: You can view multiple jobs simultaneously.
 * **Download spool content**: You can download spool content on your computer.
