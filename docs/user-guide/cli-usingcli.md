@@ -332,81 +332,6 @@ You can either set environment variables using the `SET` command within your scr
 
 ![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
 
-## Writing a Script
-
-Write a script that executes multiple CLI commands.
-
-**Note:** The type of script that you write depends on the programming languages that you use and the environment where the script is executed. The following procedure is a general guide to Zowe CLI scripts, but you might need to refer to third-party documentation to learn more about scripting in general.
-
-**Follow these steps:**
-
-1. Create a new file on your computer with the extension .sh. For example, `testScript.sh`.
-
-    **Note:** On Linux, an extension is not required. You make the file executable by issuing the command `chmod u+x testScript`.
-
-2. At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/sh`.
-
-    **Note:** The command terminal that you use to execute the script depends on what you specify at the top of your script. Bash scripts require a bash interpreter (bash terminal), while shell scripts can be run from any terminal.
-
-3. Write a script using a series of Zowe CLI commands.
-
-    **Tip:** You can incorporate commands from other command-line tools in the same script. You might choose to "pipe" the output of one command into another command.
-
-4. From the appropriate command terminal, issue a command to execute the script. The command you use to execute script varies by operating system.
-
-The script runs and prints the output in your terminal. You can run scripts manually, or include them in your automated testing and delivery pipelines.
-
-### <span id="exampleOne">Example: Clean up Temporary Data Sets</span>
-
-The script in this example lists specified data sets, then loops through the list of data sets and deletes each file. You can use a similar script to clean up temporary data sets after use.
-
-**Note:** This script must be run from a bash terminal.
-
-```
-#!/bin/bash
-set -e
-# Project cleanup script - deletes temporary project data sets
-# Obtain the list of temporary project data sets
-dslist=$(zowe files ls ds "my.project.ds*")
-# Delete each data set in the list
-IFS=$'\n'
-for ds in $dslist
-do
-     echo "Deleting Temporary Project Dataset: $ds"
-     zowe files delete ds "$ds" -f
-done
-```
-
-### <span id="exampleTwo">Example: Submit Jobs and Save Spool Output</span>
-
-The script in this example submits a job, waits for the job to enter output status, and saves the spool files to local files on your computer.
-
-**Note:** This script must be run from a bash terminal.
-
-```
-#! /bin/env bash
-#submit our job
-jobid=$(zowe zos-jobs submit data-set "boech02.public.cntl(iefbr14)" --rff jobid --rft string)
-echo "Submitted our job, JOB ID is $jobid"
-#wait for job to go to output
-status="UNKNOWN"
-while [[ "$status" != "OUTPUT"]]; do
-    echo "Checking
-    status of job $jobid" status=$(zowe zos-jobs view job-status-by-jobid "$jobid" --rff status --rft string)
-    echo "Current status is $status"
-    sleep 5s
-done;
-echo "Job completed in OUTPUT status. Final result of job: "
-zowe zos-jobs view job-status-by-jobid "$jobid"
-# get a list of all of the spool files for our job now that it's in output
-spool_ids=$(zowe zos-jobs list spool-files-by-jobid "$jobid" --rff id --rft table)
-# save each spool ID to a custom file name
-while read -r id; do
-     zowe zos-jobs view spool-file-by-id "$jobid" "$id" > ./${jobid}_spool_${id}.txt
-     echo "Saved spool DD to ./${jobid}_spool_${id}.txt"
-done <<< "$spool_ids"
-```
-
 ## Using the prompt feature
 
 Zowe CLI lets you enable a command-line "prompt" feature, which masks values on the screen as you type. You might choose to enable the prompt for sensitive credentials such as mainframe username or password.
@@ -447,6 +372,87 @@ To enable the feature, set an environment variable named `ZOWE_OPT_PASSWORD` wit
 The default keyword that enables prompting in Zowe CLI is `"PROMPT*"`. You might want to change the keyword if there is a chance that `"PROMPT*"` could exist as a valid value for the field. For example, if you mask the `data-set` argument and are working with real mainframe data sets that begin with the characters `"PROMPT*"`.
 
 To configure the keyword, choose a new value. Then define the value to to the environment variable on your computer named `ZOWE_PROMPT_PHRASE`.
+
+## Writing scripts
+
+You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
+
+- [Example: Clean up Temporary Data Sets](#exampleOne)
+- [Example: Submit Jobs and Save Spool Output](#exampleTwo)
+
+**Note:** The type of script that you write depends on the programming languages that you use and the environment where the script is executed. The following procedure is a general guide to Zowe CLI scripts, but you might need to refer to third-party documentation to learn more about scripting in general.
+
+**Follow these steps:**
+
+1. Create a new file on your computer with the extension .sh. For example, `testScript.sh`.
+
+    **Note:** On Linux, an extension is not required. You make the file executable by issuing the command `chmod u+x testScript`.
+
+2. At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/sh`.
+
+    **Note:** The command terminal that you use to execute the script depends on what you specify at the top of your script. Bash scripts require a bash interpreter (bash terminal), while shell scripts can be run from any terminal.
+
+3. Write a script using a series of Zowe CLI commands.
+
+    **Tip:** You can incorporate commands from other command-line tools in the same script. You might choose to "pipe" the output of one command into another command.
+
+4. From the appropriate command terminal, issue a command to execute the script. The command you use to execute script varies by operating system.
+
+The script runs and prints the output in your terminal. You can run scripts manually, or include them in your automated testing and delivery pipelines.
+
+#### <span id="exampleOne">Example: Clean up Temporary Data Sets</span>
+
+The script in this example lists specified data sets, then loops through the list of data sets and deletes each file. You can use a similar script to clean up temporary data sets after use.
+
+**Note:** This script must be run from a bash terminal.
+
+```
+#!/bin/bash
+set -e
+# Project cleanup script - deletes temporary project data sets
+# Obtain the list of temporary project data sets
+dslist=$(zowe files ls ds "my.project.ds*")
+# Delete each data set in the list
+IFS=$'\n'
+for ds in $dslist
+do
+     echo "Deleting Temporary Project Dataset: $ds"
+     zowe files delete ds "$ds" -f
+done
+```
+
+#### <span id="exampleTwo">Example: Submit Jobs and Save Spool Output</span>
+
+The script in this example submits a job, waits for the job to enter output status, and saves the spool files to local files on your computer.
+
+**Note:** This script must be run from a bash terminal.
+
+```
+#! /bin/env bash
+#submit our job
+jobid=$(zowe zos-jobs submit data-set "boech02.public.cntl(iefbr14)" --rff jobid --rft string)
+echo "Submitted our job, JOB ID is $jobid"
+#wait for job to go to output
+status="UNKNOWN"
+while [[ "$status" != "OUTPUT"]]; do
+    echo "Checking
+    status of job $jobid" status=$(zowe zos-jobs view job-status-by-jobid "$jobid" --rff status --rft string)
+    echo "Current status is $status"
+    sleep 5s
+done;
+echo "Job completed in OUTPUT status. Final result of job: "
+zowe zos-jobs view job-status-by-jobid "$jobid"
+# get a list of all of the spool files for our job now that it's in output
+spool_ids=$(zowe zos-jobs list spool-files-by-jobid "$jobid" --rff id --rft table)
+# save each spool ID to a custom file name
+while read -r id; do
+     zowe zos-jobs view spool-file-by-id "$jobid" "$id" > ./${jobid}_spool_${id}.txt
+     echo "Saved spool DD to ./${jobid}_spool_${id}.txt"
+done <<< "$spool_ids"
+```
+
+
+
 
 ## Understanding core command groups
 
@@ -592,7 +598,7 @@ With the zos-workflows command group, you can perform the following tasks:
 zowe zos-workflows -h
 ```
 
-### zos-tso
+#### zos-tso
 
 The zos-tso command group lets you issue TSO commands and interact with TSO address spaces on z/OS systems.
 
@@ -623,13 +629,3 @@ With the zosmf command group, you can perform the following tasks:
 ```
 zowe zosmf -h
 ```
-
-## Writing scripts to automate mainframe actions
-
-You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
-
-- [Writing a Script](#writing-a-script)
-- [Example: Clean up Temporary Data Sets](#exampleOne)
-- [Example: Submit Jobs and Save Spool Output](#exampleTwo)
-
-
