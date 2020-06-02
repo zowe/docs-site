@@ -25,7 +25,7 @@ If you need to edit a profile, click the **Update Profile** button next to the c
 ![Edit a Profile](../images/ze/ZE-edit-ze-profile.gif?raw=true "Edit a Profile")
 <br /><br />
 
-In addition, you to hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
+In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
 
 ## Enabling Secure Credential Store with Zowe Explorer
 
