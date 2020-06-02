@@ -23,6 +23,12 @@ zowe --help
 
 ![Issuing the help command](../images/guides/CLI/GetHelp.gif)
 
+Alternatively, issue the following command to display a full list of all available commands:
+
+```
+zowe --ac
+```
+
 **Tip:** All Zowe CLI commands begin with `zowe.`
 
 #### Group, action, and object help

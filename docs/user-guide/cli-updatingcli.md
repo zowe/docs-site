@@ -22,7 +22,7 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
 3. Uninstall the pre-LTS version of core CLI. Issue the following command:
 
     ```
-    zowe uninstall -g @brightside/core
+    npm uninstall -g @brightside/core
     ```
 
     **Note:** You might recieve an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event    that you recieve the error, open an issue in the   Zowe CLI GitHub repository.
