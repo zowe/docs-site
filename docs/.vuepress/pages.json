@@ -100,10 +100,10 @@
       {
         "text": "Zowe Explorer",
         "items": [
-          "user-guide/ze-main.md",
+          "user-guide/ze-install.md",
           "user-guide/ze-profiles.md",
-          "user-guide/ze-extensions.md",
-          "user-guide/ze-usage.md"
+          "user-guide/ze-usage.md",
+          "user-guide/ze-extensions.md"
         ]
       }
     ]
