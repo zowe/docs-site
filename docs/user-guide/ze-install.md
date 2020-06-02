@@ -3,11 +3,11 @@
 [![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
 [![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://slack.openmainframeproject.org/)
 
-The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSC can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
+The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
 
 * Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
 * Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
-* Provides a more streamlined way to access data sets, uss files and jobs.
+* Provides a more streamlined way to access data sets, USS files and jobs.
 * Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
 * Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
 
@@ -38,8 +38,9 @@ Ensure that you meet the following prerequisites before you use the extension:
 
 1. Address [the software requirements](#software-requirements).
 2. Open VSCode, and navigate to the **Extensions** tab on the left-hand side of the UI.
-3. Click the green **Install** button to install the extension.
-4. Restart VSCode.
+3. Type **Zowe Explorer** in the search field.
+4. Click the green **Install** button to install the extension.
+5. Restart VSCode.
 
 The extension is now installed and available for use.
 
@@ -53,30 +54,35 @@ You can also watch the following videos to learn how to get started with Zowe Ex
 
 ## Configuration
 
-You can modify Zowe Explorer preferences in the extension `Setting` in the following ways:
-
-* **Temp Folder Location:** You can change the default folder location where temporary files are stored. For example, use the following script:
-
-```json
-"Zowe-Temp-Folder-Location": {
-    "folderPath": "/path/to/directory"
-  }
-```
-
-where **/path/to/directory** is the folder location that you specify.
+You can configure Zowe Explorer. To access the extension settings, navigate to **Manage (the gear icon)**  > **Settings**, then select **Extensions** > **Zowe Explorer Settings**. For example, you can modify the following settings:
 
 * **Data set creation settings:** You can change the default creation settings for various data set types.
 
   **Follow these steps:**
 
-1. Open the VSCode settings.
-2. Navigate to Zowe Explorer Settings.
-3. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
-4. Edit the settings as needed.
-5. Save the settings.
+1. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
+2. Edit the settings as needed.
+3. Save the settings.
 
 ![Configure Zowe settings](../images/ze/ZE-Configuration.gif?raw=true "Configure Zowe settings")
 <br /><br />
+
+* **Set the Temporary Folder Location:** You can change the default folder location where temporary files are stored. 
+
+    **Follow these steps:**
+
+   1. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
+   2. Modify the following definition:
+
+    ```json
+    "Zowe-Temp-Folder-Location": {
+        "folderPath": "/path/to/directory"
+      }
+    ```
+
+  where **/path/to/directory** is the folder location that you specify.
+  
+  3. Save the settings.
 
 ## Relevant Information
 
