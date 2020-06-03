@@ -63,9 +63,7 @@ You can configure Zowe Explorer. To access the extension settings, navigate to *
 1. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
 2. Edit the settings as needed.
 3. Save the settings.
-
-![Configure Zowe settings](../images/ze/ZE-Configuration.gif?raw=true "Configure Zowe settings")
-<br /><br />
+   <img src="../images/ze/ZE-Configuration.gif" alt="Configure Zowe settings">
 
 * **Set the Temporary Folder Location:** You can change the default folder location where temporary files are stored. 
 
