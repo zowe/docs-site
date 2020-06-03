@@ -2,9 +2,9 @@
 
 The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zowe.  If these are altered in any way the behavior of Zowe is unpredictable.  
 
-To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a script file `zowe-verify-authenticity.sh`. 
+To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a verify tool which comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. 
 
-If you have a Zowe version 1.12 or higher the script is delivered with Zowe together with the information it needs to check the release contents.  
+If you have Zowe version 1.12 or higher the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
 
 If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10 and 1.11.   
 
@@ -24,7 +24,7 @@ Note that the `RefRuntimeHash.txt` file is specific to a Zowe release.  Rename i
 
 ## Step 2: Verify your runtime folder
 
-Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.12`, which contains the following files that you can check by using the `ls` command. 
+Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.12`, which contains the following files that you can show by using the `ls` command. 
 
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.12
@@ -46,7 +46,18 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.12
    ``` 
    Note: You do not need to specify any parameters to this script.  
 
-   **For Zowe releases prior v1.12**
+   If you want to use the verify tool's script or files which you downloaded
+   instead of the ones in your runtime directory, you can call the downloaded script and specify the options `-f` and `-h` like this.
+   
+   ```
+   /u/username/hash/zowe-verify-authenticity.sh -f /u/username/hash -h /u/username/hash
+   ```
+   You might want to use the downloaded script and files if you suspect that the versions of those files in `ROOT_DIR` 
+   have been altered since this version of Zowe was installed.  The script and files in `ROOT_DIR` 
+   are interchangeable wih the ones you downloaded, so you can use them in any combination.   
+
+
+   **For Zowe releases prior to v1.12**
    ```
    /u/username/hash/zowe-verify-authenticity.sh -r /usr/lpp/zowe/v1.9 -f /u/username/hash
    ```
@@ -101,8 +112,12 @@ Info: Customer  runtime hash file is available in  /u/username/hash/CustRuntimeH
 Info: Reference runtime hash file is available in  /u/username/hash/RefRuntimeHash.txt
 USERNAME:/u/username/hash: >
 ```
+#### Troubleshooting and hints
 
 This is a worst-case scenario of a bad mismatch.  To find out what the problem is, you could, for example, start by checking the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
+If you have many files different but none missing or extra, you may have a file tagging or
+code-page problem.  Check that the environment variables are set as required according to 
+`zowe-set-env.sh`.  
 
 The hash files mentioned above are left in the `/u/username/hash` directory in case you want to use a GUI tool to perform a better file comparison.
 
