@@ -1,4 +1,5 @@
 # Using Zowe CLI
+
 This section explains how to connect Zowe CLI to the mainframe with Zowe&trade; CLI, manage profiles, integrate with API Mediation Layer, and more.
 
 Zowe&trade; command-line interface (CLI) can be used interactively from a command window on any computer on which it is installed.
@@ -11,7 +12,7 @@ Zowe CLI has a command-line help system that helps you to learn about the comman
 
 - [Top-level help](#top-level-help)
 - [Group, action, and object help](#group-action-and-object-help)
-- [Launch local web help](#interactive-web-help)
+- [Launch local web help](#launch-local-web-help)
 
 #### Top-level help
 
@@ -65,31 +66,29 @@ You can provide your mainframe connection details (username, password, etc...) t
 
 When you issue a command, the CLI *searches* for your command arguments in the following order:
 
-1. **Options** that you specify directly on individual commands.
-2. **Environment variables** that you define in the computer's operating system. For more information, see [Defining Environment Variables](#defining-environment-variables)
+1. **Options** that you specify on individual commands.
+2. **Environment variables** that you define in the computer's operating system. For more information, see [Using environment variables](#using-environment-variables)
 3. **Service profiles** that you create (i.e. z/OSMF profile or another MF service).
-4. **Base profiles** that you create (can contain credentials for multiple services and/or an API ML login token).
+4. **Base profiles** that you create (can contain credentials for use with multiple services and/or an API ML login token).
 5. The **default value**.
 
-If you omit an option from the command line, Zowe CLI searches for any environment variables that contains a value for the option. If no environment variable exists, the CLI searches your service profiles for the value. Base profiles provide values to other service profiles so that you do not need to specify the same options (i.e. username and password) in multiple service profiles.
+If you omit an option from the command line, Zowe CLI searches for an environment variable that contains a value for the option. If no environment variable exists, the CLI checks your service profiles for the value. Base profiles provide values to other service profles so that you do not need to specify the same options (i.e. username and password) in multiple service profiles.
 
-**Note:** If you do not provide a value with one of these methods, the default option value is used. If a required option or argument value is not located, you receive a syntax error message that states `Missing Positional Argument` or `Missing Option`.
+**Note:** If you do not provide a value using one of these methods, the default value is used. If a required option or argument value is not located, you receive a syntax error message that states `Missing Positional Argument` or `Missing Option`.
 
 ## Issuing commands
 
-You can provide all connection options directly on each command. For example, issue the following command to list all data sets under the name `ibmuser`:
+You can provide all connection options directly on each command. For example, issue the following command to list all data sets under the name `ibmuser` on the specified system:
 
 ```
 zowe zos-files list data-set "ibmuser.*" --host host123 --port port123 --user ibmuser --password pass123
 ```
 
-**Note:** If you omit a required option, the CLI prompts you to enter an option value.
-
 ## Testing connection to z/OSMF
 
 You can issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 
-**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Certificate security](#certificate-security).
+**Important!** By default, the server certificate is verified against a list of Certificate Authorities (CAs) trusted by Mozilla. This handshake ensures that the CLI can trust the server. You can append the flag `--ru false` to the following commands to bypass the certificate verification against CAs. If you use the `--ru false` flag, ensure that you understand the potential security risks of bypassing the certificate requirement at your site. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Working with certificates](#working-with-certificates).
 
 #### Without a profile
 
@@ -101,7 +100,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 #### Default profile
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that you can use your *default profile* to communicate with z/OSMF:
+After you [create a profile](#using-profiles), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -109,7 +108,7 @@ zowe zosmf check status
 
 #### Specific profile
 
-After you [create a profile](#creating-zowe-cli-profiles), verify that you can use *a specific profile* to communicate with z/OSMF:
+After you [create a profile](#using), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
@@ -261,7 +260,7 @@ Certificates authorize communication between a server and client, such as z/OSMF
 
 - [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca)
 - [Extend trusted certificates on client](#extend-trusted-certificates-on-client)
-- [Bypass certificate requirement with CLI flag](#bypass-certificate-requirement-with-cli-flag)
+- [Bypass certificate requirement with CLI flag](#bypass-certificate-requirement)
 
 ### Configure certificates signed by a Certificate Authority (CA)
 
@@ -462,13 +461,9 @@ done <<< "$spool_ids"
 
 ## Understanding core command groups
 
-Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group
-provides the ability to interact with mainframe data sets. This article provides you with a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-zowe-cli-help).
+Zowe CLI contains command groups that focus on specific business processes. For example, the `zos-files` command group lets you interact with mainframe data sets. This article provides a brief synopsis of the tasks that you can perform with each group. For more information, see [Display Zowe CLI Help](#displaying-help).
 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
-
-**Important!** Before you issue these commands, verify that you
-completed the steps in [Create a Zowe CLI profile](cli-configuringcli.md#creating-zowe-cli-profiles) and [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) to help ensure that Zowe CLI can communicate with z/OS systems.
 
 Zowe CLI contains the following command groups:
 
@@ -626,8 +621,8 @@ The zosmf command group lets you work with Zowe CLI profiles and get general inf
 
 With the zosmf command group, you can perform the following tasks:
 
-- Create and manage your Zowe CLI `zosmf` profiles. Profiles let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. For more information, see [Creating profiles](cli-configuringcli.md#creating-zowe-cli-profiles).
-- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf).
+- Create and manage your Zowe CLI `zosmf` profiles. Profiles let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing it again on every command. You can switch between profiles to quickly target different mainframe subsystems. For more information, see [Using profiles](#using-profiles).
+- Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Test Connection to z/OSMF](#testing-connection-to-z-osmf).
 - Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 **Note:** For more information about `zosmf` syntax, actions, and options, open Zowe CLI and issue the following command:

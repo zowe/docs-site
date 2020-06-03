@@ -2,10 +2,10 @@
 
 This section explains how to configure Zowe CLI, such as changing log levels and the home directory location.
 
-**Tip:** CLI configuration is stored on your computer in a directory such as `C:\Users\user01\.zowe`. The directory includes log files, profile information, and installed CLI plug-ins. When troubleshooting, refer to the logs in the `imperative` and `zowe` folders.
+**Tip:** CLI configuration is stored on your computer in the directory `C:\Users\user01\.zowe` by default. The directory includes log files, profile information, and installed CLI plug-ins. When troubleshooting, refer to the logs in the `imperative` and `zowe` folders.
 
-  - [Setting Zowe CLI log levels](#setting-zowe-cli-log-levels)
-  - [Setting the Zowe CLI home directory](#setting-the-zowe-cli-home-directory)
+  - [Setting Zowe CLI log levels](#setting-cli-log-levels)
+  - [Setting the Zowe CLI home directory](#setting-the-cli-home-directory)
 
 ## Setting CLI log levels
 

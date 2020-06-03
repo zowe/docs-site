@@ -98,7 +98,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe installer
 
-- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs. 
+- Added a `-l` parameter to the [zowe-install.sh](../user-guide/install-zowe-zos-convenience-build.md), [zowe-setup-certificates.sh](../user-guide/configure-certificates.md#generate-certificate-with-the-custom-values), [zowe-install-xmem.sh](../user-guide/configure-xmem-server.md#copy-cross-memory-data-set-members-automatically), and [zowe-install-proc.sh](../user-guide/configure-zowe-server.md#step-1-copy-the-proclib-member-zwesvstc) scripts. This parameter allows you to specify where the setup scripts write trace logs.
 - Improved port validation to assist determining whether Zowe's ports are available.
 
 #### Zowe troubleshooting
@@ -122,11 +122,11 @@ The following bugs were fixed:
 
 #### Zowe App Server
 - Bugfix: Material dialogs no longer overlap over the login screen [#145](https://github.com/zowe/zlux-editor/pull/145)
-- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208) 
+- Bugfix: Re-login to same desktop session would duplicate items in the launch menu. In this version, the session is cleared on logout, fixing the duplication issue [#208](https://github.com/zowe/zlux-app-manager/pull/208)
 - Bugfix: Bugfix for websockets to prevent server throwing exception on malformed message [#189](https://github.com/zowe/zlux-server-framework/pull/189)
 - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined [#187](https://github.com/zowe/zlux-server-framework/pull/187)
 - Bugfix: Added missing pluginID argument for setStorageAll method. [#191](https://github.com/zowe/zlux-server-framework/pull/191)
-- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111) 
+- Bugfix: app-server agent info was not available to plugins if it was specified via command line arguments [#111](https://github.com/zowe/zlux-app-server/pull/111)
 
 ## Version 1.10.0 LTS (April 2020)
 
@@ -297,7 +297,7 @@ The following new features and enhancements are added in this version:
 
 - **Notable Change:** The `--pass` option is changed to `--password`  for all commands and profiles (zosmf, cics, etc...). The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe profiles update` command and use the new option name `--password`.
 
-- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-for-sensitive-options).
+- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-feature).
 
 - Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
 
@@ -931,7 +931,7 @@ During product operation of the Zowe Cross Memory Server which was introduced in
 
 ### What's new in Zowe CLI
 
-- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#zowe-cli-command-groups)
+- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#understanding-core-command-groups)
 
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 
