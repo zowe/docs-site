@@ -93,8 +93,7 @@
           "user-guide/cli-ftpplugin.md",
           "user-guide/cli-imsplugin.md",
           "user-guide/cli-mqplugin.md",
-          "user-guide/cli-scsplugin.md",
-          "user-guide/cli-vscodeplugin.md"
+          "user-guide/cli-scsplugin.md"
         ]
       },
       {
