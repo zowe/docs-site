@@ -144,6 +144,8 @@ zowe-verify-authenticity.sh ended
 ```
 
 ## Description of parameter format for zowe-verify-authenticity.sh
+
+Usage:
 `
 zowe-verify-authenticity.sh [-r <runtime-dir>] [-h <HashPgm-dir>] [-f <HashRef-dir>] [-l <output-dir>]`
 
@@ -154,10 +156,12 @@ Description of parameters
    - You can use dot (.) and tilde (~) in the parameters
 
 `-r <runtime-dir>` root directory of the executables used by Zowe at run time
+
 typical value : `/usr/lpp/zowe`
 default: the parent directory of the 'bin' folder where this script is located
 
 `-h <HashPgm-dir>` directory of the hash key program
+
 typical value : `/usr/lpp/zowe/fingerprint`
 default: the 'fingerprint' directory of the parent folder where this script is located
 
