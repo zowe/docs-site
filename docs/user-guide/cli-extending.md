@@ -11,4 +11,4 @@ You can install plug-ins to extend the capabilities of Zowe&trade; CLI. Plug-ins
 - [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
 - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
 - [Secure Credential Store for Zowe CLI](cli-scsplugin.md)
-- [Visual Studio Code (VSCode) Extension for Zowe](cli-vscodeplugin.md)
+- [Visual Studio Code (VSCode) Extension for Zowe](ze-install.md)
