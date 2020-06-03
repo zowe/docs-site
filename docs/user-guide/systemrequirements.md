@@ -6,7 +6,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 - [Zowe Application Framework requirements](#zowe-application-framework-requirements)
 - [Zowe CLI requirements](#zowe-cli-requirements)
 - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
-
+- [Using web tokens for SSO on ZLUX and ZSS](#using-web-tokens-for-sso-on-zlux-and-zss)
 ## Common z/OS system requirements (host)
 
 - z/OS Version 2.2 or later.
@@ -44,74 +44,9 @@ If you do not see your product listed here, please contact the Zowe community so
 
 To enable multi-factor authentication, you must install [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos). For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-### Using web tokens for SSO on for ZLUX and ZSS
-Users must create a PKCS#11 token before continuing. This can be done through the USS utility, "gskkyman".
-#### Creating a PKCS#11 Token
-Ensure that the SO.TOKEN_NAME profile exists in CRYPTOZ, and that the user who will be creating tokens has either UPDATE or CONTROL access.
+### Using web tokens for SSO on ZLUX and ZSS
 
-1. Define profile: "RDEFINE CRYPTOZ SO.TOKEN_NAME"
-
-2. Add user with UPDATE access: "PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-
-4. Activate class with new profile: 
-
-   1. "SETROPTS RACLIST(CRYPTOZ)"
-
-   2. "SETROPTS CLASSACT(CRYPTOZ)"  
-
-A user should now be able to use "gskkyman" to create a token.
-
-#### Accessing token
-
-Ensure USER.TOKEN_NAME profile exists in CRYPTOZ:
-
-1. Define profile: "RDEFINE CRYPTOZ USER.TOKEN_NAME"
-
-2. Add user with READ access: "PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-
-4. Activate class with new profile: 
-   1. "SETROPTS RACLIST(CRYPTOZ)"
-   2. "SETROPTS CLASSACT(CRYPTOZ)"
-
-Configure zowe-setup-certifcates.env using the following parameters. Both are required to enable SSO.
-
-- PKCS#11 token name for SSO. Must already exist.
-
-  `PKCS11_TOKEN_NAME=<newly created token name>`
-
-- PKCS#11 token label for SSO. Must not already exist.
-
-  `PKCS11_TOKEN_LABEL=<unique label>`
-
-#### Enabling SSO
-
-1. Run zowe-setup-certificates.sh. 
-   - If you are upgrading from an older of version of Zowe that has the apiml configured: "rerun zowe-setup-certificates.sh"
-   - If upgrading, point the zowe instance to the newly generated keystore, or overwrite the previous one.
-
-2. In the ZSS server configuration, enable SSO and input your token name/label:
-```
-"agent": {
-    //host is for zlux to know, not zss
-    "host": "localhost",
-    "http": {
-      "ipAddresses": ["0.0.0.0"],
-      "port": 0000
-    },
-    "jwt": {
-      "enabled": true,
-      "fallback": false,
-      "key": {
-        "token": "TOKEN.NAME",
-        "label": "KEY_NAME"
-      }
-    },
-  },
-```
+In order to use web tokens for SSO on ZLUX and ZSS, users must first create a PKCS#11 token. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.   
 
 ## Zowe CLI requirements (client)
 

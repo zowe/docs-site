@@ -114,45 +114,89 @@ This error has to be resolved before you can proceed with the next installation 
 
 - On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
 
-## Configure Zowe Certificates with z/OSMF Workflows
+## Using web tokens for SSO on ZLUX and ZSS
 
-z/OSMF Workflow lets you create a keystore directory that is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.
+Users must create a PKCS#11 token before continuing. This can be done through the USS utility, "gskkyman".
 
-Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
+### Creating a PKCS#11 Token
 
- 1.	Log in to the z/OSMF web interface.
- 2.	Select **Workflows** from the navigation tree.
- 3.	Select Create Workflow from the **Actions** menu.
- 4.	Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
-    The path to the workflow definition file is *[extracted_pax_folder]/files/workflows/ZWEWRF05.xml file*. 
-5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
-    The path to the variable input file is <extracted_pax_folder>/files/workflows/ ZWEWRF05.properties file. 
+Ensure that the SO.TOKEN_NAME profile exists in CRYPTOZ, and that the user who will be creating tokens has either UPDATE or CONTROL access.
 
-    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
-6. Select the system where you want to execute the workflow.
-7. Select Next.
-8. Specify the unique workflow name.
-9. Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
-10.Select **Finish**.
-   The workflow is registered in z/OSMF and ready to execute.
-11. Select the workflow that you registered from the workflow list.
-12. Execute the following steps in order:
-    -	**Define Variables**
-        
-        Define the custom values for variables that meets your z/OS security and verification configuration requirements.
-    - 	**New Custom zowe-setup-certificates.env**
-        
-        Execute the step to create a new zowe-setup-certificates.env in the user specified location and substitutes values.
-	-  **Execute zowe-setup-certificates**
-        
-        Execute the step to substitute zowe-setup-certificates with the customized zowe-setup-certificates.env file.
+1. Define profile: "RDEFINE CRYPTOZ SO.TOKEN_NAME"
+2. Add user with UPDATE access: "PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
+3. Ensure profile was created: "RLIST CRYPTOZ *"
+4. Activate class with new profile: 
+    - "SETROPTS RACLIST(CRYPTOZ)"
+  
+    - "SETROPTS CLASSACT(CRYPTOZ)" 
 
-13. Perform the following steps to execute each step individually:
-    1.  Double-click the title of the step.
-    2.	Select the **Perform** tab.
-    3.  Review the step contents and update the input values as required.
-    4.	Select **Next**.
-    5.	Repeat the previous two steps to complete all items until the option Finish is available.
-    6.	Select **Finish**.
+A user should now be able to use "gskkyman" to create a token.
 
-After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
+### Accessing token
+
+Ensure USER.TOKEN_NAME profile exists in CRYPTOZ:
+
+1. Define profile: "RDEFINE CRYPTOZ USER.TOKEN_NAME"
+2. Add user with READ access: "PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
+3. Ensure profile was created: "RLIST CRYPTOZ *"
+4. Activate class with new profile: 
+
+    - "SETROPTS RACLIST(CRYPTOZ)"
+
+    - "SETROPTS CLASSACT(CRYPTOZ)"
+
+Configure zowe-setup-certifcates.env using the following parameters. Both are required to enable SSO.
+
+- PKCS#11 token name for SSO. Must already exist.
+
+ `PKCS11_TOKEN_NAME=<newly created token name>`
+
+- PKCS#11 token label for SSO. Must not already exist.
+
+ `PKCS11_TOKEN_LABEL=<unique label>`
+
+### Enabling SSO
+
+1. Run zowe-setup-certificates.sh. 
+
+    - If you are upgrading from an older of version of Zowe that has the apiml configured: "rerun zowe-setup-certificates.sh"
+
+    - If upgrading, point the zowe instance to the newly generated keystore, or overwrite the previous one.
+
+2. In the ZSS server configuration, enable SSO and input your token name/label:
+
+```
+
+"agent": {
+
+  //host is for zlux to know, not zss
+
+  "host": "localhost",
+
+  "http": {
+
+   "ipAddresses": ["0.0.0.0"],
+
+   "port": 0000
+
+  },
+
+  "jwt": {
+
+   "enabled": true,
+
+   "fallback": false,
+
+   "key": {
+
+​    "token": "TOKEN.NAME",
+
+​    "label": "KEY_NAME"
+
+   }
+
+  },
+
+ },
+
+```
