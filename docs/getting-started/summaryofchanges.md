@@ -145,7 +145,7 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 - Updates made to generate_zlux_certificates.sh because apiml_cm.sh has been moved into the zowe-install-packaging repo [#110](https://github.com/zowe/zlux-app-server/pull/110)
 - Zowe Web browser plugin, which can be used to view webpages that are not Zowe apps, has been added. [#194](https://github.com/zowe/zlux-app-manager/pull/194)
 - Translations have been added for labels and buttons for password reset forms [#215](https://github.com/zowe/zlux-app-manager/pull/215), [#218](https://github.com/zowe/zlux-app-manager/pull/218)
-- Browser-based apiml token, auth simplication [#196](https://github.com/zowe/zlux-server-framework/pull/196):
+- Browser-based apiml token, auth simplification [#196](https://github.com/zowe/zlux-server-framework/pull/196):
   1. API mediation layer token is now held in the browser upon login via the Desktop. This also allows for the Desktop to do single-sign-on login with the token if it is already present in the browser.
   2. Auth plugins no longer need to be specified explicitly within the server configuration file, the capability remains for backwards compatibility. The server will now auto-detect the auth plugins that are available
   3. Auth plugins can now be of more than one type, to satisfy environments that have plugins that need access to APIs of similar but different types
@@ -159,12 +159,12 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 **Zowe Jobs APIs**
 
 - Version 2 APIs now support single sign-on from the Zowe API Mediation Layer [#21](https://github.com/zowe/jobs/issues/21)
-- Updated embeded Spring Boot version [#89](https://github.com/zowe/jobs/pull/89)
+- Updated embedded Spring Boot version [#89](https://github.com/zowe/jobs/pull/89)
 
 **Zowe Data Set and Unix Files APIs**
 
 - Version 2 APIs now support single sign-on from the Zowe API Mediation Layer [#18](https://github.com/zowe/data-sets/issues/18)
-- Updated embeded Spring Boot version [#151](https://github.com/zowe/data-sets/pull/151)
+- Updated embedded Spring Boot version [#151](https://github.com/zowe/data-sets/pull/151)
 - Added incomplete connect timeout parameter to prevent Slowloris DOS attacks [#158](https://github.com/zowe/data-sets/pull/158)
 
 #### Zowe CLI
@@ -213,7 +213,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 The following bugs were fixed:
 
 #### ZSS
-- Bugfix: Fixed a below the line leak i the QSAM code [#138](https://github.com/zowe/zowe-common-c/pull/138)
+- Bugfix: Fixed a below-the-line leak in the QSAM code [#138](https://github.com/zowe/zowe-common-c/pull/138)
 
 #### Zowe App Server
 - Bugfix: Material dialogs no longer overlap over the login screen [#145](https://github.com/zowe/zlux-editor/pull/145)
@@ -241,7 +241,7 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 
 - Fast EBCDIC to UTF8 character translation is now supported by using the TROO instruction with a "EBCDIC 1047 to ISO/IEC 8859-1" translation table. [#127](https://github.com/zowe/zowe-common-c/pull/127)
 - Performance improvements in character conversion, JSON and collections code. [#162](https://github.com/zowe/zss/pull/162)
-- The code now prints fewer warnings when attls is not set up. [#130](https://github.com/zowe/zowe-common-c/pull/130)
+- The code now prints fewer warnings when AT-TLS is not set up. [#130](https://github.com/zowe/zowe-common-c/pull/130)
 - ZSS logs belonging in the ZSS repo have been refactored so that they now use the Zowe logger and message IDs. [#163](https://github.com/zowe/zss/pull/163)
 - Config variable names have been updated to stay consistent with IBM terminology. [#165](https://github.com/zowe/zss/pull/165)
 
@@ -261,7 +261,7 @@ The following new feature was added to the Zowe API Mediation Layer in this vers
 - App server can now add plugins on-demand without a restart, by re-scanning plugins directory via REST API /plugins. [#179](https://github.com/zowe/zlux-server-framework/pull/179)
 - App server can now be configured to set HTTP headers that will default and possibly override those of the plugins. [#180](https://github.com/zowe/zlux-server-framework/pull/180)
 - App server /auth API now returns which handler is the default. [#183](https://github.com/zowe/zlux-server-framework/pull/183)
-- Events and actions for viewports and windows are now accessible to iframe’s via the standardized window.ZoweZLUX.iframe object. [#184](https://github.com/zowe/zlux-app-manager/pull/184)
+- Events and actions for viewports and windows are now accessible to iframe via the standardized window.ZoweZLUX.iframe object. [#184](https://github.com/zowe/zlux-app-manager/pull/184)
 - Focus on app2app, as well as some package updates. [#188](https://github.com/zowe/zlux-app-manager/pull/188)
 - 3 features:
    1. Desktop can now filter the list of apps by search query.
@@ -302,7 +302,7 @@ The following bugs were fixed:
 
 #### Zowe z/OS Installation
 
-Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory location to be an existing Zowe runtime.  This caused a deadloop and running out of `BPXAS` instances. See [Unable to create BPXAS instances](../troubleshoot/troubleshoot-zos.md#unable-to-create-bpxas-instances). [#1123](https://github.com/zowe/zowe-install-packaging/issues/1123)
+Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory location to be an existing Zowe runtime.  This caused a deadlock and running out of `BPXAS` instances. See [Unable to create BPXAS instances](../troubleshoot/troubleshoot-zos.md#unable-to-create-bpxas-instances). [#1123](https://github.com/zowe/zowe-install-packaging/issues/1123)
 
 #### Zowe App Server
 
@@ -339,11 +339,11 @@ The following new features and enhancements have been made to the Zowe API Media
 - Support of special characters has been added to API Mediation Layer core services. In addition, all onboarding enablers now support special characters as well.
 - Custom metadata support has been added to the onboarding enablers. Additional parameters can now be easily added to an expandable parameter array. This feature may be used for security configuration in the future.
 - Passticket support has been added to API ML Core Services and onboarding enablers. This makes it easier to authenticate existing mainframe applications with the API Mediation Layer.
-- New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginifantly less disk space.
+- New versions of Spring Boot based onboarding enablers (V1 and V2) have been released. These enablers support the new version of the metadata required by the Discovery Service. The new versions of the enablers consume siginicantly less disk space.
 
 The following bug fixes have been introduced:
 
-- A fix of a critial authentication issue with some versions of z/OSMF has been applied.
+- A fix of a critical authentication issue with some versions of z/OSMF has been applied.
 - A fix has been applied to support multipart requests.
 - A fix has been applied to the z/OSMF authorization header.
 
@@ -359,7 +359,7 @@ The following bug fixes have been introduced:
     - A function to test whether the caller is in cross-memory mode
     - A function to test whether the caller is holding a CPU, CMS, CML or local lock
 - The logout endpoint has been re-added for zss [#100](https://github.com/zowe/zlux-app-server/pull/100)
-- Added support of SRB and locked callers to the Cross-Memory sever's PC space switch routine [#153](https://github.com/zowe/zss/pull/153)
+- Added support of SRB and locked callers to the Cross-Memory server's PC space switch routine [#153](https://github.com/zowe/zss/pull/153)
 - This pull request add the following features [#120](https://github.com/zowe/zowe-common-c/pull/120):
 Ability to use the lock-free queue intrusively which allows a more flexible storage management on the user's side
 Functions to copy to/from foreign address space using destination/source keys and ALETs
@@ -435,7 +435,7 @@ The following bugs were fixed:
 
 #### Zowe App Server
 
-- URL encoding with % sign were always returning with authorizatioz:false with RACF [#27](https://github.com/zowe/zss-auth/pull/27)
+- URL encoding with % sign were always returning with authorization:false with RACF [#27](https://github.com/zowe/zss-auth/pull/27)
 - Users are no longer able to delete the initial “/” in the address bar for selected files [#379](https://github.com/zowe/zlux/issues/379)
 - The search bar text for datasets has been changed from "Enter a dataset" to "Enter a dataset query". The Address bar text for files has been changed from “Enter a directory” to “Enter an absolute path” [#60](https://github.com/zowe/zlux-file-explorer/pull/60)
 
@@ -443,7 +443,7 @@ The following bugs were fixed:
 
 ### Bug fixes for Zowe CLI
 
-A bug was fixed where Zowe CLI installation could fail and users could recieve the following error message when installing Zowe CLI v1.8.0:
+A bug was fixed where Zowe CLI installation could fail and users could receive the following error message when installing Zowe CLI v1.8.0:
 
 ```
 981 verbose stack Error: EPERM: operation not permitted
@@ -519,7 +519,7 @@ The following bugs were fixed.
 
 #### Zowe App Server
 - Use of environment variables (_TAG_REDIR_XXX) required to run Zowe with node v12 [#333](https://github.com/zowe/zlux/issues/333)
-- Install-app.sh sh would not work without first server run, improper permissions [#373](https://github.com/zowe/zlux/issues/373)
+- `install-app.sh` script would not work without first server run, improper permissions [#373](https://github.com/zowe/zlux/issues/373)
 
 #### Zowe CLI
 - Fixed an issue where `zowe zos-jobs submit stdin` command returned an error when handling data from standard in. [#601](https://github.com/zowe/zowe-cli/issues/601)
@@ -584,7 +584,7 @@ The following features and enhancements were added.
 - IFrame app-to-app communication support ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
 - Removed unnecessary warning suppression ([#23](https://github.com/zowe/zlux-shared/pull/23))
 - Dispatcher always sends message, even when context doesn't exist ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
-- Support constructor injectibles via Iframe adapter ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
+- Support constructor injectables via Iframe adapter ([#174](https://github.com/zowe/zlux-app-manager/pull/174))
 - Browser tab for the desktop now includes opened app name. ([#175](https://github.com/zowe/zlux-app-manager/pull/175))
 - File Explorer now offers a right click file and folder Properties menu. ([#180](https://github.com/zowe/zlux/issues/180))
 - File Explorer now offers a right click dataset Properties menu. ([#49](https://github.com/zowe/zlux-file-explorer/pull/49))
@@ -595,7 +595,7 @@ The following features and enhancements were added.
 #### Zowe Explorer (Extension for VSCode)
 
 - The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
-- The VSCode Extention for Zowe contains various changes in this this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).
+- The VSCode Extension for Zowe contains various changes in this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).
 
 ### Bug fixes
 
@@ -700,7 +700,7 @@ The following bugs are fixed:
 - Remove placeholder swagger from swagger response when plugin-provided swagger is found ([#139](https://github.com/zowe/zlux-server-framework/pull/139))
 - ZSS Dataservices could fail due to incorrect impersonation environment variable setting (_BPX_SHAREAS) ([#68](https://github.com/zowe/zlux-app-server/pull/68))
 - Restore focus of text on window restore ([#84](https://github.com/zowe/zlux-editor/pull/84))
-- Reposition menu from menu bar on edge/firefox ([#82](https://github.com/zowe/zlux-editor/pull/82))
+- Reposition menu from menu bar on Edge/Firefox ([#82](https://github.com/zowe/zlux-editor/pull/82))
 - Could not open the SSH terminal in single window mode ([#21](https://github.com/zowe/vt-ng2/pull/21))
 
 ### What's new in Zowe CLI and Plug-ins
@@ -952,7 +952,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 ### What's new in Zowe USS API
 
 Made the following enhancements:
-- Chtag detection and ascii/ebcdic conversion on GET & PUT requests. For details, see [this issue](https://github.com/zowe/data-sets/issues/82).
+- Chtag detection and ASCII/EBDCIC conversion on GET & PUT requests. For details, see [this issue](https://github.com/zowe/data-sets/issues/82).
 - New optional header on GET Unix file content request to force conversion from ebcdic to ascii. For details, see [this issue](https://github.com/zowe/data-sets/issues/82).
 - New response header on GET Unix file content requests: E-Tag for overwrite detection and validation. For details, see [this issue](https://github.com/zowe/data-sets/issues/88).
 - Reintroduced PUT (update) Unix file content endpoint. For details, see [this issue](https://github.com/zowe/data-sets/issues/83).
@@ -1124,7 +1124,7 @@ Once multiple instances are open, you can click the application icon to select w
 
 ### What's changed
 
-- Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided unsing an IBM WebSphere Liberty web application server. In this release, they are provided using a Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
+- Previously,  APIs for z/OS Jobs services and z/OS Data Set services are provided sing an IBM WebSphere Liberty web application server. In this release, they are provided using a Tomcat web application server. You can view the associated API documentation corresponding to the z/OS services through the API Catalog.
 
 - References to `zlux-example-server` were changed to `zlux-app-server` and references to `zlux-proxy-server` were changed to `zlux-server-framework`.
 
