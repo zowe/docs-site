@@ -249,7 +249,7 @@ If multiple services are registered to the API Mediation Layer at your site, Zow
 
 When you are logged-in, supply the `--base-path` on commands to use the secure session. Ensure that you do not provide username, password, host, or port directly on your service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service. You might need to remove those options from existing profiles to use SSO.
 
-For information about registering an API service at your site, see [Developing for API Mediation Layer](/docs/extend/extend-apiml/onboard-overview.md).
+For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview.md).
 
 ### Accessing multiple services through SSO + one service not through APIML
 

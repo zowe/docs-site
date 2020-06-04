@@ -119,7 +119,7 @@ For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writin
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
-- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli#viewing-web-help).
+- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
 
 - Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
 
