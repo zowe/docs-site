@@ -1,4 +1,8 @@
-# Working with Zowe Explorer profiles
+# Zowe Explorer Profiles
+
+After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension. You can optionally activate the Secure Credential Store plug-in to securely store your credentials.
+
+## Working with Zowe Explorer profiles
 
 You must have a `zosmf` compatible profile before you can use Zowe Explorer. You can set up a profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
 
@@ -26,7 +30,7 @@ In addition, you can hide a profile from the explorer tree, and permanently dele
 
 ## Enabling Secure Credential Store with Zowe Explorer
 
-You can enable a high level of security for you credentials, using the Secure Credential Store (SCS) plug-in in the Zowe Explorer extension. By default, your credentials are stored in plain text, which increases the vulnerability of your system. The SCS plug-in lets you store your credentials securely and avoid an unnecessary information leakage.
+Store your credentials securely by using the Secure Credential Store (SCS) plug-in in Zowe Explorer. By default, your credentials are stored in plain text. The SCS plug-in lets you store your credentials securely.
 
 Activate the SCS plug-in in Zowe Explorer.
 
