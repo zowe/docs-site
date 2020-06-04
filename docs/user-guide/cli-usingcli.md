@@ -1,14 +1,14 @@
 # Using Zowe CLI
 
-This section explains how to connect Zowe CLI to the mainframe with Zowe&trade; CLI, manage profiles, integrate with API Mediation Layer, and more.
+This section explains how to use Zowe&trade; CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
 
-Zowe&trade; command-line interface (CLI) can be used interactively from a command window on any computer on which it is installed.
+The CLI can be used interactively from a command window on any computer on which it is installed, or run in a container or automation environment.
 
 **Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
 
 ## Displaying help
 
-Zowe CLI has a command-line help system that helps you to learn about the commands, actions, and options available in the product.
+Zowe CLI has a command-line help system that details the commands, actions, and options available in the product.
 
 - [Top-level help](#top-level-help)
 - [Group, action, and object help](#group-action-and-object-help)
@@ -78,7 +78,7 @@ If you omit an option from the command line, Zowe CLI searches for an environmen
 
 ## Issuing commands
 
-You can provide all connection options directly on each command. For example, issue the following command to list all data sets under the name `ibmuser` on the specified system:
+You can provide all connection options directly on commands to access a service. For example, issue the following command to list all data sets under the name `ibmuser` on the specified system:
 
 ```
 zowe zos-files list data-set "ibmuser.*" --host host123 --port port123 --user ibmuser --password pass123
@@ -94,7 +94,7 @@ You can issue a command at any time to receive diagnostic information from the s
 
 #### Without a profile
 
-Verify that your CLI instance can communicate with z/OSMF.
+Verify that your CLI instance can communicate with z/OSMF:
 
 ```
 zowe zosmf check status --host <host> --port <port> --user <username> --pass <password>
@@ -120,20 +120,20 @@ The commands return a success or failure message and display information about y
 
 ## Using profiles
 
-Profiles let you store configuration details for reuse. Create a profile that contains your username, password, and connection details for a mainframe service, then reuse that profile to avoid typing the information on every command. Switch between profiles to quickly target different mainframe subsystems. There are two main types of profiles:
+Profiles let you store configuration details for reuse. Create a profile that contains your username, password, and connection details for a mainframe service, then use that profile to avoid typing the information on every command. Switch between profiles to quickly target different mainframe subsystems. There are two main types of profiles:
 
 - **Service profiles:** Store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
-- **Base profiles:** Store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify your username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+- **Base profiles:** Store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
 **Tips:**
 - You can have multiple service profiles and multiple base profiles.
 - Profiles are **not** required. You can choose to specify all connection details for every command.
 - Profile values are stored on your computer in plaintext by default, in the `C:\Users\<yourUsername>\.zowe\profiles` folder.
 
-### Displaying help
+### Displaying profile help
 
-Use the CLI help to learn about the  options for creating profiles. For example, for a `zosmf` profile, issue the following command:
+Use the help to learn about options for creating profiles. For example, for a `zosmf` profile, issue the following command:
 
 ```
 zowe profiles create zosmf-profile --help
@@ -141,7 +141,7 @@ zowe profiles create zosmf-profile --help
 
 ### Service profiles
 
-Create a profile that targets a specific mainframe service, then use the profile to issue commands. For example, issue the following command (substituting your connection details) to create a `zosmf` service profile named `myprofile123`:
+Create profiles that target a specific mainframe service, then use profiles to issue commands. For example, issue the following command (substituting your connection details) to create a `zosmf` service profile named `myprofile123`:
 
 ```
 zowe profiles create zosmf-profile myprofile123 --host host123 --port port123 --user ibmuser --password pass123
@@ -153,16 +153,16 @@ Use the profile. For example, issue the following command to list all data sets 
 zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
-**Note:** If you do not specify a profile, your default profile is used.
+**Note:** If you do not specify a profile, your default profile is used. The first profile that your create is your default. You can set a profile as your default with the `zowe profiles set-default` command.
 
 ### Base profiles
 
-Base profiles store option values and provide them to multiple service profiles. The base profile can also contain a token to connect to services through API ML.
+Base profiles store your connection details and provide them to service profiles and commands as needed. The base profile can also contain a token to connect to services through API ML.
 
 For example, if you use the same username and password across multiple services, you can create a base profile that contains username and password. After the base profile is created, you can omit the `--username` and `--password` options when you issue commands or service profiles such as `zosmf` and `tso`. Commands will use the values provided by the base profile.
 
 <!--
-Insert example syntax here for creating base profile manually and issuing a command.
+TODO Insert example syntax here for creating base profile manually and issuing a command.
 -->
 
 If you log in to Zowe API Mediation Layer, a base profile is created to store a web token, host, and port for the layer.
@@ -171,7 +171,7 @@ If you log in to Zowe API Mediation Layer, a base profile is created to store a 
 
 According to the [order of precedence](#how-command-precedence-works), base profiles are always used in favor of service profiles. After you create a base profile, you might need to update your service profiles to remove username, host, and port. Otherwise, a command that you issue with a service profile will ignore your base profile definition.
 
-<!-- Anything else? -->
+<!-- TODO Anything other tips? -->
 
 ## Integrating with API Mediation Layer
 
@@ -193,17 +193,16 @@ To request a token and initiate a session with API ML, issue the following comma
 zowe auth login apiml
 ```
 
-The CLI prompts you to enter your username, password (where password can be a PIN concatenated with a second factor for MFA), and host and port for the API ML instance. A local base profile is created that contains your token.
+The CLI prompts you to enter your username, password (where password can be a PIN concatenated with a second factor for MFA), host, and port for the API ML instance.
 
-**Tip:** If you already created a base profile, you might not need to specify host and port.
+**Tip:** If you already created a base profile, you might not be prompted for host and port.
 
-A secure session is initiated. When you issue commands, you can omit your credentials, host, and port information.
+A local base profile is created that contains your token and a secure session is initiated. Now, when you issue commands, you can omit your username, password, host, and port.
 
-<!-- Does that initial default base profile have a name? -->
+Optionally, if you do not want to store the token on disk, append the `--show-token` option to the login command. If you choose this option, you must manually supply the token on each command using the `--token-value` option.
 
-**Important!** Tokens expire after a period of time defined by your security administrator. When a token expires, you must log in again to initiate a new session.
-
-**Tips:**
+**Notes:**
+- Tokens expire after a period of time defined by your security administrator. When a token expires, you must log in again to initiate a new session.
 - If you omit connection details from a service profile, such as `zosmf` profile, the CLI uses the information from your base profile.
 - You can choose to specify all connection details on a service profile and connect directly to the service. Routing through API ML is not required.
 
@@ -215,17 +214,28 @@ Issue the following command:
 
 ```zowe auth logout```
 
-### Accessing services through API ML
+### Accessing a service through API ML
 
-To make use of the API ML session, use the `--base-path` option. When you create a service profile or issue a command, specify the base path of the API ML instance that you want to access.
+To use an active API ML session, specify the following options in your commands and service profiles:
 
-The following example illustrates a complete path for a z/OSMF instance registered to API ML:
+- `--base-path`: The base path of the API ML instance that you want to access.
+- `--base-profile`: The base profile to use, which contains a session token. If you do not specify a base profile, the default base profile is used.
+
+**Note:** To access API ML, ensure that you do not provide username, password, host, or port directly on the service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service.
+
+#### Specifying base path
+
+<!--
+TODO - I'm a little iffy on this part. Are you specifying a base path to zosmf, or just the base path to APIML and it figures out which zosmf instance from there? Generally, is this section correct?
+-->
+
+The following example illustrates a complete path for a z/OSMF instance registered to API ML. The format of base path can vary based on how API ML is configured at your site:
 
 ```
 https://myapilayerhost:port/api/v1/zosmf1
 ```
 
-To access that instance of API ML, create a profile (or issue a command) using the base path `api/v1`:
+To access that API ML instance, create a service profile (or issue a command) with the base path `api/v1`. The service profile references the session token in your base profile. If you have multiple base profles, you can specify one with the `--base-profile` option:
 
 ```
 zowe profiles create zosmf myprofile123 --base-path api/v1
@@ -233,23 +243,29 @@ zowe profiles create zosmf myprofile123 --base-path api/v1
 
 Commands that you issue with this profile are routed through the layer to access an appropriate instance of z/OSMF.
 
-**Note:** The format of base path can vary based on how API ML is configured at your site.
-
 ### Accessing multiple services with SSO
 
-<!-- Gene's raw content - Token handling provides the Zowe API Mediation Layer the building block for single sign-on. Assume that a plug-in’s service is configured to route through APIML as described above. If a token is supplied to the plug-in’s commands, APIML will perform single sign-on.
-After a user logs into the Zowe-CLI, the resulting token can be supplied on requests to any service which participates in the APIML single sign-on mechanism, without requiring the user to login again. A site must know which plug-in services have been modified to participate in the APIML single sign-on mechanism and which services have not. To achieve single sign-on functionality, a site must supply a token to any plug-in service which supports single sign-on. The site must supply a user name and password to any plug-in service which has not been modified to work with single sign-on. APIML will not attempt to perform single sign-on when a user name and password is specified.
-Since each service must be modified to participate in APIML’s single sign-on mechanism, the number of such services will gradually increase. When the first SSO functionality is rolled out, the services that we expect will be accessible through SSO are zosmf and Endevor. -->
+If multiple services are registered to the API Mediation Layer at your site, Zowe CLI lets you access the services with Single Sign-on (SSO). Log in once to create a session and conveniently access all available services.
+
+When you are logged-in, supply the `--base-path` on commands to use the secure session. Ensure that you do not provide username, password, host, or port directly on your service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service. You might need to remove those options from existing profiles to use SSO.
+
+For information about registering an API service at your site, see [Developing for API Mediation Layer](/docs/extend/extend-apiml/onboard-overview.md).
 
 ### Accessing multiple services through SSO + one service not through APIML
 
-<!-- You log in and are connected w/ a session to zosmf + perhaps another service through APIML, but then also issue separate commands to a service registered to apiml-->
+There might be a scenario where you initiated an SSO session with API ML, but you also want access a different service directly (not through API ML).
 
-### Accessing services directly
+To access the SSO-enabled services, log in and issue commands with the `--base-path` option. The token from your base profile is used for authentication. Remember, your command or service profile must *not* contain username, password, host, or port.
 
-There might be a scenario where you initiated a session with API ML, but you want access a specific service directly.
+To access the other service directly, supply all connection information (username, password, host, and port) on a command or service profile. When you explicitly supply a username and password in a command or service profile, the CLI always uses that connection information instead of the API ML session token.
 
-To handle this scenario, supply your username, password, host, and port on a command or service profile. When a username and password is supplied, the CLI always uses that connection information instead of the API ML session token.
+<!-- TODO
+### Accessing multiple services through API ML SSO + one service through API ML not SSO
+
+Another scenario was mentioned where you want to access multiple services with SSO + one service that is on API ML but not SSO. Is that worth documenting? Can you provide some info about the use case and how this would work?
+
+My first guess is that you would do the usual SSO w/ base path and token for the first 2 services, then for the non-SSO service you would specify base path, but also specify username, host, port, etc...? Would that cause it to go to APIMl, but then choose a specific service instance? just guessing...
+-->
 
 ## Working with certificates
 
