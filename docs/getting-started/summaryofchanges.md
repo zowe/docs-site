@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.12.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.12.0 LTS (May 2020)](#version-1-12-0-lts-may-2020)
+- [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
 - [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
@@ -22,7 +22,7 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.12.0 LTS (May 2020)
+## Version 1.12.0 LTS (June 2020)
 
 ### Requires action
 - You need to re-run the `zowe-setup-certificates.sh` script during the upgrade process. This requirement is due to the automatic setup of SSO, which requires users to input new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
