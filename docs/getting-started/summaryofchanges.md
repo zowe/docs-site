@@ -41,7 +41,24 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
+#### ZSS
+
+- ZSS now follows the Zowe Component scheme, as part of the DESKTOP component group [#177](https://github.com/zowe/zss/pull/177)
+- Read JWT token information from environment variables, if they exist, to further support SSO during a standard install. [#178](https://github.com/zowe/zss/pull/178)
+- In previous versions, ZIS did not use the version information provided in `zss/version.txt`. In this version, the ZIS build uses `version.txt` the same way that ZSS uses it. [#184](https://github.com/zowe/zss/pull/184)
+
 #### Zowe App Server
+
+- Added SSO token name and label to `convert-env.sh` for use with ZSS. [#118](https://github.com/zowe/zlux-app-server/pull/118)
+- Script has been updated to allow ZSS to be a separate component. [#117](https://github.com/zowe/zlux-app-server/pull/117)
+- The app-server will favor and use a SAF keyring if defined for use in Zowe, rather than a unix file for keys, certificates, and certificate authorities. [#116](https://github.com/zowe/zlux-app-server/pull/116)
+- The process for making bundled plugins using `ROOT_DIR` has been upgraded [#123](https://github.com/zowe/zlux-app-server/pull/123)
+- Updates have been implemented for modal keyboard accessibility. [#148](https://github.com/zowe/zlux-editor/pull/148):
+  - Editor now has keyboard navigation in the browsing tree and pop-up modals.
+  - Pop-ups can be traversed with Tab/Tab + Shift.
+- Desktop redesign suite and personalization settings have been implemented. [#221](https://github.com/zowe/zlux-app-manager/pull/221)
+- Right-click context menus have been implemented for the new desktop style. [#216](https://github.com/zowe/zlux-app-manager/pull/216)
+- A new attribute has been implemented to load plugins from different relative paths. [#212](https://github.com/zowe/zlux-server-framework/pull/212)
 
 #### Zowe CLI
 
@@ -58,6 +75,10 @@ The following features and enhancements were added to the **z/OS FTP Plug-in for
 
 #### Zowe Explorer
 
+Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+
+You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
+
 ### Bug fixes
 
 The following bugs were fixed.
@@ -69,14 +90,31 @@ The following bugs were fixed.
 
 #### API Mediation Layer
 
+#### ZSS
+
+- Bugfix: Fixed a segfault when no config file is provided by moving all the zowelog invocations to a location where the logging environment is ready. Additionally, cleanup logic has been
+introduced to ensure that we free the STC base resources before leaving main. [#187](https://github.com/zowe/zss/pull/187)
+- Bugfix: In previous versions, if a warning message is produced by the compiler, the build process is considered successful. This is often dangerous as warnings can indicate passing the wrong type or redefinition of a `#define`, which should be considered bugs. The following changes have been implemented to make the build process more strict [#188](https://github.com/zowe/zss/pull/188):
+  - Make sure there are no warning messages in the current build.
+    - Update deps to remove the `httpfileservice.c` warning message, and pick up a minor type fix.
+    - Ensure side-deck `file/SYSDEFSD DD` by adding the `dll` option to the linker.
+  - Adjust the compiler env variable that controls the severity.
+  - Ensure no ZSS binary is created if RC != 0.
+
 #### Zowe App Server
+
+- Bugfix: Logout of sso-auth was not working because it was expecting apiml parameters that should have been there but were controlled by the env var APIML_ENABLE_SSO. In this version, the issue has been resolved. [#126](https://github.com/zowe/zlux-app-server/pull/126)
+- Bugfix: In this release, many bugs picked up by the Sonar scan for core Zowe repositories have been resolved [#214](https://github.com/zowe/zlux-server-framework/pull/214/)
+- Bugfix: Plugin api would not respond if a plugin could not load due to a dependency not being met. That plugin would not be placed in the array that checks when the processing has finished, so a response would never be generated. [#208](https://github.com/zowe/zlux-server-framework/pull/208)
+- Bugfix: Fixed a logout cookie bug and sso-auth behavior bug in order to fully support SSO.
+Additionally, `tokenInjector` was removed as it is no longer required with the introduction of SSO. [#209](https://github.com/zowe/zlux-server-framework/pull/209)
+- Bugfix: Fixed lease inforomation for API ML [#218](https://github.com/zowe/zlux-server-framework/pull/218)
+- Bugfix: In previous versions, the user was never shown the logout screen when the plugin would detect zss, but not apiml. In this version, this issue has been resolved. [#221](https://github.com/zowe/zlux-server-framework/pull/221)
+- Bugfix: Fixed issue where localhost & 127.0.0.1 were always used even when not true. Additionally, each worker in the cluster attempted registration even though, from an outside perspective, it is 1 server. In this version, the server uses a real hostname and tries to find the ip that best matches what apiml would be able to use [#203](https://github.com/zowe/zlux-server-framework/pull/203)
 
 #### Zowe CLI
 
 Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
-
-#### Zowe Explorer
-
 
 ## Version 1.11.0 LTS (May 2020)
 
