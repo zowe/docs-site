@@ -53,7 +53,7 @@ You can use the following functionalities when interacting with data sets:
 
 **Tip:** To provide multiple filters, separate entries with a comma. You can append or postpend any filter with an \*, which indicates wildcard searching. You cannot enter an \* as the entire pattern.
 <img src="../images/ze/ZE-multiple-search.gif" alt="View Data Set">
-<!-- TODO Replace with the updated one -->
+
 #### Refresh the list of data sets
 
 1. Navigate to the explorer tree.
