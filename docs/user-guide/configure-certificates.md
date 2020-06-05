@@ -1,6 +1,7 @@
 # Configuring Zowe certificates 
 
 To configure Zowe certificates, you can use one of the following methods.
+
 - [Configuring Zowe certificates in a key ring](#configuring-zowe-certificates-in-a-key-ring)
 - [Configuring Zowe certificates in UNIX files](#configuring-zowe-certificates-in-unix-files)
 
