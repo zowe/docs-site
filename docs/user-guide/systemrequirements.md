@@ -39,7 +39,7 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
 The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
 
 - Node.js
-  - **Note: Starting in September 2020, Node.js v6 will no longer be supported. Users are advised to updated to more recent versions of Node.js** 
+  - **Note: Starting in September 2020, Node.js v6 will no longer be supported. Users are advised to update to more recent versions of Node.js** 
   - On z/OS: Node.js v6.x starting with v6.14.4, v8.x (except v8.16.1), and v12.x. Note when using v12.x, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os)
   - Off z/OS: The Application Framework supports Node.js v6.14 through v12.x.
   
