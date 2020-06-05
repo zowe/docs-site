@@ -17,8 +17,7 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
 - v6.x starting with v6.14.4
     - z/OS V2R2 with PTF UI46658 or z/OS V2R3
     
-Node version 6 on z/OS program number 5655-SDK goes out of support at the end of September 2020, see [Software withdrawl and support discontinuance](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS919-021).  For a full list of the end of support dates for node versions and other products see [IBM Support EOS dates for z/OS](https://www.ibm.com/support/pages/eos-out-support-dates-zos).
-
+   Node version 6 on z/OS program number 5655-SDK goes out of support at the end of September 2020. For more information, see [Software withdrawal and support discontinuance](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS919-021).  For a full list of the end of support dates for node versions and other products, see [IBM Support EOS dates for z/OS](https://www.ibm.com/support/pages/eos-out-support-dates-zos).
 
 - v8.x (except v8.16.1)
    - z/OS V2R2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
