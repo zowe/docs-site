@@ -39,6 +39,9 @@ Ensure that you meet the following prerequisites before you use the extension:
 1. Address [the software requirements](#software-requirements).
 2. Open VSCode, and navigate to the **Extensions** tab on the left-hand side of the UI.
 3. Type **Zowe Explorer** in the search field.
+  
+   Zowe Explorer appears in the list of extensions in the left-hand panel.
+
 4. Click the green **Install** button to install the extension.
 5. Restart VSCode.
 
@@ -54,7 +57,7 @@ You can also watch the following videos to learn how to get started with Zowe Ex
 
 ## Configuration
 
-You can configure Zowe Explorer. To access the extension settings, navigate to **Manage (the gear icon)**  > **Settings**, then select **Extensions** > **Zowe Explorer Settings**. For example, you can modify the following settings:
+Configure Zowe Explorer in the settings file of the extension. To access the extension settings, navigate to **Manage (the gear icon)**  > **Settings**, then select **Extensions** > **Zowe Explorer Settings**. For example, you can modify the following settings:
 
 * **Data set creation settings:** You can change the default creation settings for various data set types.
 

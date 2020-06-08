@@ -30,7 +30,7 @@ In addition, you can hide a profile from the explorer tree, and permanently dele
 
 ## Enabling Secure Credential Store with Zowe Explorer
 
-Store your credentials securely by using the Secure Credential Store (SCS) plug-in in Zowe Explorer. By default, your credentials are stored in plain text. The SCS plug-in lets you store your credentials securely.
+Store your credentials securely by using the Secure Credential Store (SCS) plug-in in Zowe Explorer. By default, your credentials are stored in plain text.
 
 Activate the SCS plug-in in Zowe Explorer.
 

@@ -39,7 +39,7 @@ You can use the following functionalities when interacting with data sets:
 * **Copy data sets**: You can copy a specified data sets and memebers.
 * **Download, edit, and upload existing PDS members**: You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
 * **Create and delete data sets and data set members**: Enables you to easily create and delete both data sets and their members.
-* **View and access multiple profiles simultaneously**: Enables to work with data sets from multiple profiles.
+* **View and access multiple profiles simultaneously**: Enables you to work with data sets from multiple profiles.
 * **Submit a JCL**: You can submit a jcl from a chosen data set.
 
 #### View data sets and use multiple filters
@@ -84,9 +84,9 @@ You can use the following functionalities when interacting with data sets:
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
 3. Open a profile.  
-4. Click the PDS member (or PS) that you want to download.
+4. Select the PDS member (or PS) that you want to download.
 
-    **Note:** To view the members of a PDS, click the PDS to expand the tree.
+    **Note:** To view the members of a PDS, click on the PDS to expand the tree.
 
     The PDS member displays in the text editor window of VSC.
 5. Edit the document.
@@ -155,7 +155,7 @@ You can use the following functionalities when interacting with USS files:
 * **Rename USS files**: You can rename specified USS files.
 * **Download, edit, and upload existing USS files**: You can instantly pull USS files from the mainframe, edit them and upload back.
 * **Create and delete USS files and directories**: Enables you to easily create and delete both USS files and directories.
-* **View and access multiple profiles simultaneously**: Enables to work with USS files from multiple profiles.
+* **View and access multiple profiles simultaneously**: Enables you to work with USS files from multiple profiles.
 
 #### View Unix System Services (USS) files
 
@@ -191,7 +191,7 @@ You can use the following functionalities when interacting with USS files:
 
     **Note:** To view the files within a directory, click the directory to expand the tree.
 
-    The file displays in the text editor window of VSC.
+    The file is displayed in the text editor window of VSC.
 
     **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
 
@@ -208,7 +208,7 @@ Your file is uploaded.
 
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
-3. Select a directory that you want to add the new directory to.
+3. Select a directory where you want to add the new directory to.
 4. Select the **Create directory** button and specify the directory name.
    The directory is created.
 
@@ -216,7 +216,7 @@ Your file is uploaded.
 
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
-3. Select a directory that you want to add the new file to.
+3. Select a directory where you want to add the new file to.
 4. Select the **Create file** button and specify the file name.
    The file is created.
 
@@ -225,7 +225,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a file you want to remove.
-4. Select the **Delete** button and press *Yes** to confirm.
+4. Select the **Delete** button and click *Yes** to confirm.
    The file is deleted.
 
 #### Delete a directory
@@ -233,7 +233,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a directory you want to remove.
-4. Select the **Delete** button and press **Yes** to confirm.
+4. Select the **Delete** button and click **Yes** to confirm.
    The directory and all child files and directories are deleted.
 
 <img src="../images/ze/ZE-CreateDelete.gif" alt="Create and Delete">
@@ -277,11 +277,11 @@ You can use the following functionalities when interacting with jobs:
 
 #### Issue MVS commands
 
-Zowe Explorer also enables you to issue MVS command. You can issue such commands as Allocate or Exec against a profile.
+Zowe Explorer also enables you to issue MVS commands. You can issue such commands as Allocate or Exec against a profile.
 
 1. Press the **F1** key on your keyboard.
 2. Select the **Zowe:Issue MVS Command** option.
 3. Select your profile.
-4. Issue a MVS command.
+4. Issue an MVS command.
 
 <img src="../images/ze/ZE-Jobs-Issue-TSO-Command.gif" alt="Issue a MVS command">
