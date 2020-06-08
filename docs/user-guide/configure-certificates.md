@@ -29,10 +29,6 @@ You can configure Zowe certificates in a key ring by using one of the following 
 
 ### ZWEKRING JCL and zowe-setup-certificate.sh
 
-<!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 
-            it(self signed, externally signed certs), describe parts that could be confusing, 
-            connecting CA chain and z/osmf cert. Give an example of the keyring content" -->
-
 The ZWEKRING JCL helps you configure certificates in a key ring in the following scenarios: 
  1. The Zowe certificate is already stored in your security manager's database.
  2. The Zowe certificate is to be imported to security manager's database from a data set.
@@ -41,6 +37,10 @@ The ZWEKRING JCL helps you configure certificates in a key ring in the following
 Do not submit the ZWEKRING JCL as is. You must customize it depending on the scenario for your environment.
 
 To customize the JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager.
+
+<!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 
+            it(self signed, externally signed certs), describe parts that could be confusing, 
+            connecting CA chain and z/osmf cert. Give an example of the keyring content" -->
 
 **Important!**
 
