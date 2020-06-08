@@ -62,6 +62,10 @@ If you do not see your product listed here, please contact the Zowe community so
 
 To enable multi-factor authentication, you must install [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos). For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
+### Using web tokens for SSO on ZLUX and ZSS
+
+In order to use web tokens for SSO on ZLUX and ZSS, users must first create a PKCS#11 token. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.   
+
 ## Zowe CLI requirements (client)
 
 ### Client-side requirements
