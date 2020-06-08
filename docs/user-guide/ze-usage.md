@@ -208,7 +208,7 @@ Your file is uploaded.
 
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
-3. Select a directory where you want to add the new directory to.
+3. Select a directory where you want to add the new directory.
 4. Select the **Create directory** button and specify the directory name.
    The directory is created.
 
