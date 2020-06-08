@@ -395,6 +395,7 @@ To configure the keyword, choose a new value. Then define the value to to the en
 
 You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
 
+- [Sample script library](#sample-script-library)
 - [Example: Clean up Temporary Data Sets](#exampleOne)
 - [Example: Submit Jobs and Save Spool Output](#exampleTwo)
 
@@ -417,6 +418,10 @@ You can combine multiple Zowe CLI commands in bash or shell scripts to automate 
 4. From the appropriate command terminal, issue a command to execute the script. The command you use to execute script varies by operating system.
 
 The script runs and prints the output in your terminal. You can run scripts manually, or include them in your automated testing and delivery pipelines.
+
+#### Sample script library
+
+Refer to the [Zowe CLI Sample Scripts repository](https://github.com/zowe/zowe-cli-sample-scripts) for examples that cover a wide range of scripting languages and use cases.
 
 #### <span id="exampleOne">Example: Clean up Temporary Data Sets</span>
 
