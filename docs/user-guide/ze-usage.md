@@ -102,12 +102,12 @@ Your PDS member (or PS) is uploaded.
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
-3. Open a profile.
-4. Download and edit a data set.
-5. Click the **Save** button for the data set that you opened in the explorer tree.
-6. Resolve merge conflicts if necessary.
+3. Open a member of a data set you want to edit.
+4. Edit the member.
+5. Press Ctrl+S or Command+S (OSx) to save you changes.
+6. (Optional) Resolve merge conflicts if necessary.
 
-<img src="../images/ze/ZE-safe-save.gif" alt="Save">
+<img src="../images/ze/ZE-save.gif" alt="Save">
 
 #### Create a new PDS and a PDS member
 
@@ -196,7 +196,7 @@ You can use the following functionalities when interacting with USS files:
     **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
 
 2. Edit the document.
-3. Type Ctrl+S or Command+S (OSx) to save the file
+3. Press Ctrl+S or Command+S (OSx) to save the file
 
 Your file is uploaded.  
 
