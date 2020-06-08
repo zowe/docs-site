@@ -123,7 +123,7 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
 
-- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli#integrating-with-api-mediation-layer).
+- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
 
 - Write scripts and integrate them with automation server, such as Jenkins.
 
