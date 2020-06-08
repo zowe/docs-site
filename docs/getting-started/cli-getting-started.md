@@ -60,7 +60,7 @@ zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --u
 zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
-See [Command Groups](../user-guide/cli-usingcli.md#) for a list of available functionality.
+See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
 
 ## Using profiles
 
