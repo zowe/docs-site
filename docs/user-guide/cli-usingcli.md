@@ -84,7 +84,7 @@ You can provide all connection options directly on commands to access a service.
 zowe zos-files list data-set "ibmuser.*" --host host123 --port port123 --user ibmuser --password pass123
 ```
 
-If you omit a required option (and it cannot be found in your profile configuration), the CLI prompts you to enter a value.
+If you omit username, password, host, or port (and a value cannot be found in your configuration), the CLI prompts you to enter a value.
 
 ## Using profiles
 
@@ -97,7 +97,7 @@ Profiles let you store configuration details for reuse, and for logging in to au
 **Tips:**
 - You can have multiple service profiles and multiple base profiles.
 - Profiles are **not** required. You can choose to specify all connection details for every command.
-- Profile values are stored on your computer in plaintext by default, in the `C:\Users\<yourUsername>\.zowe\profiles` folder.
+- Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
 
 ### Displaying profile help
 
@@ -127,19 +127,23 @@ zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 
 Base profiles store your connection details and provide them to service profiles and commands as needed. The base profile can also contain a token to connect to services through API ML.
 
-For example, if you use the same username and password across multiple services, you can create a base profile with your username and password. After the base profile is created, you can omit the `--username` and `--password` options when you issue commands or service profiles such as `zosmf` and `tso`. Commands will use the values provided by the base profile.
+For example, if you use the same username and password across multiple services, you can create a base profile with your username and password. After the base profile is created, you can omit the `--username` and `--password` options when you issue commands or use service profiles such as `zosmf` and `tso`. Commands will use the values provided by the base profile. For example, create the base profile:
 
-<!--
-TODO Insert example syntax here for creating base profile manually and issuing a command.
--->
+```
+zowe profiles create base <mybaseprofile123> --user <myusername123> --password <mypassword123>
+```
 
-If you log in to Zowe API Mediation Layer, a base profile is created to store a web token, host, and port for the layer.
+The profile is created as your defualt. Use the default profile to issue a command:
+
+```
+zowe zos-files list data-set "ibmuser.*" --host myhost123 --port myport123
+```
+
+If you choose to log in to Zowe API Mediation Layer, a base profile is created for you to store a web token, host, and port.
 
 ### Profile best practices
 
-According to the [order of precedence](#how-command-precedence-works), base profiles are always used in favor of service profiles. After you create a base profile, you might need to update your service profiles to remove username, host, and port. Otherwise, a command that you issue with a service profile will ignore your base profile definition.
-
-<!-- TODO Anything other tips? -->
+According to [order of precedence](#how-command-precedence-works), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
 
 ## Testing connection to z/OSMF
 
@@ -177,7 +181,7 @@ The commands return a success or failure message and display information about y
 
 Zowe API ML provides a single point of access to a defined set of mainframe services. The layer provides API management features such as high-availability, consistent security, and a single sign-on (SSO) and multi-factor authentication (MFA) experience.
 
-You can access API ML through Zowe CLI, which initiates a secure session and lets you access multiple registered services with your base profile. When you issue commands, the layer routes requests to an appropriate instance of the API based on system load and available API instances.
+You can access services through API ML without reauthenticating every time you issue a command. Tokens are used to manage the secure interaction between the client and server. When you issue command to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
 
 ### How token management works
 
@@ -214,6 +218,8 @@ Issue the following command:
 
 ```zowe auth logout```
 
+The token is expired. Log in again to obtain a new token.
+
 ### Accessing a service through API ML
 
 To use an active API ML session, specify the following options in your commands and service profiles:
@@ -225,20 +231,16 @@ To use an active API ML session, specify the following options in your commands 
 
 #### Specifying base path
 
-<!--
-TODO - I'm a little iffy on this section. Are you specifying a base path to zosmf, or just the base path to APIML and it figures out which zosmf instance from there? Generally, is this section correct?
--->
-
 The following example illustrates a complete path for a z/OSMF instance registered to API ML. The format of base path can vary based on how API ML is configured at your site:
 
 ```
-https://myapilayerhost:port/api/v1/zosmf1
+https://myapilayerhost:port/api/v1/zosmf
 ```
 
-To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1`. Your service profile references the session token in your base profile. If you have multiple base profles, you can specify one with the `--base-profile` option. For example:
+To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1/zosmf`. Your service profile references the session token in your base profile. If you have multiple base profiles, you can specify one with the `--base-profile` option. For example:
 
 ```
-zowe profiles create zosmf myprofile123 --base-path api/v1 --base-profile mybaseprofile123
+zowe profiles create zosmf myprofile123 --base-path api/v1/zosmf --base-profile mybaseprofile123
 ```
 
 Commands that you issue with this profile are routed through the layer to access an appropriate instance of z/OSMF.
@@ -251,7 +253,7 @@ When you are logged-in, supply the `--base-path` on commands to use the secure s
 
 For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview.md).
 
-### Accessing multiple services through SSO + one service not through APIML
+### Accessing services through SSO + one service not through APIML
 
 There might be a scenario where you initiated an SSO session with API ML, but you also want access a different service directly (not through API ML).
 
@@ -259,13 +261,13 @@ To access the SSO-enabled services, log in and issue commands with the `--base-p
 
 To access the other service directly and circumvent API ML, supply all connection information (username, password, host, and port) on a command or service profile. When you explicitly supply a username and password in a command or service profile, the CLI always uses that connection information instead of the API ML session token.
 
-<!-- TODO
-### Accessing multiple services through API ML SSO + one service through API ML not SSO
+### Accessing services through SSO + one service through API ML but not SSO
 
-Another scenario was mentioned where you want to access multiple services with SSO + one service that is on API ML but not SSO. Is that worth documenting? Can you provide some info about the use case and how this would work?
+You might want to access multiple services with SSO, but also access a service through API ML that is not SSO-enabled.
 
-My first guess is that you would do the usual SSO w/ base path and token for the first 2 services, then for the non-SSO service you would specify base path, but also specify username, host, port, etc...? Would that cause it to go to APIMl, but then choose a specific service instance? just guessing...
--->
+To perform SSO for the first set of services, log in to API ML and supply the `--base-path` and `--base-profile` on commands. For more information, see [Accessing multiple services with SSO](#accessing-multiple-services-with-sso).
+
+To access the service that is *not* SSO-enabled, explicitly provide your username and password when you issue commands. Using the `--base-path` option ensures that the request is routed to API ML, but the username and password that you provide overrides the credentials in your base profile. This lets you sign on to the individual service.
 
 ## Working with certificates
 
@@ -288,7 +290,7 @@ System Administrators can configure the server with a certificate signed by a Ce
 
 ### Extend trusted certificates on client
 
-If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate.
+If your organization uses self-signed certificates in the certificate chain (rather than a CA trusted by Mozilla), you can download the certificate to your computer add it to the local list of trusted certificates. Provide the certificate locally using the `NODE_EXTRA_CA_CERTS` environment variable. Organizations might want to configure all client computers to trust the self-signed certificate.
 
 [This blog post](https://medium.com/@dkelosky/zowe-cli-providing-node-extra-ca-certs-117727d936e5) outlines the process for using environment variables to trust the self-signed certificate.
 
@@ -393,21 +395,21 @@ To configure the keyword, choose a new value. Then define the value to to the en
 
 ## Writing scripts
 
-You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. You can implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
+You can combine multiple Zowe CLI commands in bash or shell scripts to automate actions on z/OS. Implement scripts to enhance your development workflow, automate repetitive test or build tasks, and orchestrate mainframe actions from continuous integration/continuous deployment (CI/CD) tools such as Jenkins or TravisCI.
 
 - [Sample script library](#sample-script-library)
 - [Example: Clean up Temporary Data Sets](#exampleOne)
 - [Example: Submit Jobs and Save Spool Output](#exampleTwo)
 
-**Note:** The type of script that you write depends on the programming languages that you use and the environment where the script is executed. The following procedure is a general guide to Zowe CLI scripts, but you might need to refer to third-party documentation to learn more about scripting in general.
+**Note:** The type of script that you write depends on the programming languages that you use and the environment where the script is executed. The following is a general guide to Zowe CLI scripts. Refer to third-party documentation to learn more about scripting in general.
 
 **Follow these steps:**
 
 1. Create a new file on your computer with the extension .sh. For example, `testScript.sh`.
 
-    **Note:** On Linux, an extension is not required. You make the file executable by issuing the command `chmod u+x testScript`.
+    **Note:** On Mac and Linux, an extension is not required. To make the file executable, issue the command `chmod u+x testScript`.
 
-2. At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/sh`.
+2. **(Mac and Linux only)** At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/bash`.
 
     **Note:** The command terminal that you use to execute the script depends on what you specify at the top of your script. Bash scripts require a bash interpreter (bash terminal), while shell scripts can be run from any terminal.
 
