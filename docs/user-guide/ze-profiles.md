@@ -18,13 +18,14 @@ You must have a `zosmf` compatible profile before you can use Zowe Explorer. You
    **Note:** When you create a new profile, user name and password fields are optional. However, the system will prompt you to specify your credentials when you use the new profile for the first time.
 
 4. Follow the instructions, and enter all required information to complete the profile creation.
-   <img src="../images/ze/ZE-newProfiles.gif" alt="New Connection">
+
+<img src="../images/ze/ZE-newProfiles.gif" width="600" alt="New Connection">
 
 You successfully created a Zowe CLI `zosmf` profile. Now you can use all the functionalities of the extension.
 
 If you need to edit a profile, click the **Update Profile** button next to the corresponding profile.
 
-<img src="../images/ze/ZE-edit-ze-profile.gif" alt="Edit a Profile">
+<img src="../images/ze/ZE-edit-ze-profile.gif" width="600" height="300" alt="Edit a Profile">
 
 In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
 
