@@ -259,7 +259,7 @@ There might be a scenario where you log in to API ML with SSO, but you also want
 
 To access the SSO-enabled services, log in and issue commands with the `--base-path` and `--base-profile` options. The token from your base profile is used for authentication. Remember, your command or service profile must *not* contain username, password, host, or port.
 
-To access the other service directly (circumvent API ML), supply all connection information (username, password, host, and port) on a command or service profile. When you explicitly supply username and password in a command or service profile, the CLI always uses that connection information instead of the API ML session token.
+To access the other service directly (circumvent API ML), supply all connection information (username, password, host, and port) on a command or service profile. When you explicitly supply username and password in a command or service profile, the CLI always uses that connection information instead of the API ML token.
 
 ### Accessing services through SSO + one service through API ML but not SSO
 
