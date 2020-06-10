@@ -24,9 +24,6 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 
 ## Version 1.12.0 LTS (June 2020)
 
-### Requires action
-- You need to re-run the `zowe-setup-certificates.sh` script during the upgrade process. This requirement is due to the automatic setup of SSO, which requires users to input new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
-
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -34,6 +31,7 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 The following features and enhancements were added.
 
 #### Zowe installation
+- Keystore directory updated to add new parameters. If you which to enable SSO for the desktop you need to re-run the `zowe-setup-certificates.sh` script during the upgrade process, with new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
 - Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
 - Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
 - Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
