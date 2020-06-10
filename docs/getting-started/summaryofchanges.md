@@ -429,6 +429,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 Watch a video on how to [work with data sets using Zowe Explorer](../user-guide/ze-install.md#installing).
 
+
 ### Bug fixes
 
 The following bugs were fixed:
