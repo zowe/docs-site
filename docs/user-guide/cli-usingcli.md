@@ -121,7 +121,7 @@ Use the profile. For example, issue the following command to list all data sets 
 zowe zos-files list data-set "ibmuser.*" --zosmf-profile myprofile123
 ```
 
-**Note:** If you do not specify a profile, your default profile is used. The first profile that your create is your default. You can set a profile as your default with the `zowe profiles set-default` command.
+**Note:** If you do not specify a profile, your default profile is used. The first profile that your create is your default. You can set a service profile as your default with the `zowe profiles set-default <profileType> <profileName>` command.
 
 ### Base profiles
 
@@ -133,13 +133,15 @@ For example, if you use the same username and password across multiple services,
 zowe profiles create base <mybaseprofile123> --user <myusername123> --password <mypassword123>
 ```
 
-The profile is created as your defualt. Use the default profile to issue a command:
+The first profile that you create for a service is set as your default profile. When you create subsequent profiles, you can select one as the default with the `zowe profiles set-default <profileType> <profileName>` command.
+
+Use the default profile to issue a command:
 
 ```
 zowe zos-files list data-set "ibmuser.*" --host myhost123 --port myport123
 ```
 
-If you choose to log in to Zowe API Mediation Layer, a base profile is created for you to store a web token, host, and port.
+**Note:** If you choose to log in to Zowe API Mediation Layer, a base profile is created for you to store a web token, host, and port.
 
 ### Profile best practices
 
@@ -181,7 +183,7 @@ The commands return a success or failure message and display information about y
 
 Zowe API ML provides a single point of access to a defined set of mainframe services. The layer provides API management features such as high-availability, consistent security, and a single sign-on (SSO) and multi-factor authentication (MFA) experience.
 
-You can access services through API ML without reauthenticating every time you issue a command. Tokens are used to manage the secure interaction between the client and server. When you issue command to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
+You can access services through API ML without reauthenticating every time you issue a command. Tokens allow for a secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
 
 ### How token management works
 
@@ -212,7 +214,7 @@ Optionally, if you do not want to store the token on disk, append the `--show-to
 
 ### Logging out
 
-Log out to expire the token and remove it from your base profile.
+Log out to expire the API ML token and remove it from your base profile.
 
 Issue the following command:
 
@@ -222,12 +224,12 @@ The token is expired. Log in again to obtain a new token.
 
 ### Accessing a service through API ML
 
-To access services securely with the API ML token, specify the following options in your commands and service profiles:
+To access services through API ML using the token in your base profile, specify the following options on commands and service profiles:
 
 - `--base-path`: The base path of the API ML instance that you want to access.
-- `--base-profile`: The base profile to use, which contains a web token. If you do not specify a base profile, the default base profile is used.
+- `--disable-defaults`: Specify this flag to prevent default values from being stored in service profiles. If you do not use this flag, the defaults can override values in your base profile.
 
-**Note:** To access API ML, ensure that you *do not* provide username, password, host, or port directly on the service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service.
+**Note:** Ensure that you *do not* provide username, password, host, or port directly on the service commands or profiles. Supplying those options causes the CLI to ignore the API ML token in your base profile and directly access the service.
 
 #### Specifying base path
 
@@ -237,10 +239,10 @@ The following example illustrates a complete path for a z/OSMF instance register
 https://myapilayerhost:port/api/v1/zosmf
 ```
 
-To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1/zosmf`. Your service profile uses the token and credentials stored in your base profile. If you have multiple base profiles, you can specify one with the `--base-profile` option. For example:
+To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1`. Your service profile uses the token and credentials stored in your default base profile.
 
 ```
-zowe profiles create zosmf myprofile123 --base-path api/v1/zosmf --base-profile mybaseprofile123
+zowe profiles create zosmf myprofile123 --base-path api/v1 --disable-defaults
 ```
 
 Commands issued with this profile are routed through the layer to access an appropriate z/OSMF instance.
