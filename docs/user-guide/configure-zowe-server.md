@@ -1,4 +1,4 @@
-# Installing the Zowe started task (ZWESVSTC)
+# Installing and starting the Zowe started task (ZWESVSTC)
 
 Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the data set SAMPLIB `SZWESAMP` during the installation or either a convenience build or SMP/E.  This topic describes how to configure the z/OS runtime in order to launch the Zowe started task.
 
@@ -62,7 +62,7 @@ If you have a default instance directory you want you always start Zowe with, yo
 //ZWESVSTC   PROC INSTANCE='{{instance_directory}}'
 ```
 
-to replace the `instance_directory` with the location of the Zowe instanceDir that contains the configurable Zowe instance directory. 
+to replace the `instance_directory` with the location of the Zowe instance directory that contains the configurable Zowe instance directory. 
 
 If the JCL value `instance-directory` is not specified in the JCL, in order to start the Zowe server from SDSF, you will need to add the `INSTANCE` parameter on the START command when you start Zowe in SDSF:
 
@@ -71,30 +71,3 @@ If the JCL value `instance-directory` is not specified in the JCL, in order to s
 ```
 
 The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.
-
-## Stopping the ZWESVSTC PROC
-
-To stop the Zowe server, the ZWESVSTC PROC needs to be ended. Run the `zowe-stop.sh` script at the Unix Systems Services command prompt that is in the zowe instance directory used to start the Zowe started task:
-
-```
-cd $ZOWE_INSTANCE_DIR/bin
-./zowe-stop.sh
-```
-where _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to.
-
-When you stop ZWESVSTC, you might get the following error message:
-
-```
-IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
-```
-
-This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
-
-```
-/C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
-```
-Where _ZOWE_PREFIX_ and _ZOWE_INSTANCE_ are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
-
-```
-/D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-```

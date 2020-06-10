@@ -1,15 +1,12 @@
-<!--
-Thank you for your pull request! Please provide a description of the changes in this PR in the field above and review
-the requirements below.
--->
+### Your checklist for this pull request
+🚨Please review the [guidelines for contributing](../docs/contribute/contributing.md) to this repository.
 
-#### Is there a related issue for this PR? 
-Issue number: 
+- [ ] If the changes in this PR is part of the next future release, make this pull request against the **docs-staging** branch which will be published at the next release boundary. If the changes in this PR are part of the current release, use the default base branch, **master**. For more information about branches, see https://github.com/zowe/docs-site/tree/master#understanding-the-doc-branches. 
+      
+- [ ] If this PR relates to GitHub issues in `docs-site` or other repositories, please list in Description, prefixed with **close**, **fix** or **resolve** keywords.
 
-#### Developer's Certificate of Origin (DCO)
+### Description (including links to related git issues)
+Please describe your pull request.
 
-<!-- All commits must be signed off. Add a Signed-off-by line to your commit messages and this PR. Example: 
+:heart:Thank you!
 
-Signed-off-by: Random J Developer <random@developer.example.org>
-
--->

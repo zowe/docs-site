@@ -301,7 +301,7 @@ SETROPTS RACLIST(FACILITY) REFRESH
 
 For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
 
-##Configure multi-user address space (for TSS only)
+## Configure multi-user address space (for TSS only)
 
 The `ZWESVSTC` started task is multiuser address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task.
 The all acids signing on to the started task will need to be authorized to the FACILITY.
@@ -309,6 +309,7 @@ The all acids signing on to the started task will need to be authorized to the F
 The following is an example of how to create a new TSS FACILITY.
 
 **Example:**
+
 In the TSSPARMS, add the following lines to create the new FACILITY:
 ```
 FACILITY(USER11=NAME=ZOWE)
