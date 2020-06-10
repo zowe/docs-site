@@ -77,7 +77,8 @@ You can use the following functionalities when interacting with data sets:
 4. Right-click the member and select the **Copy Data Set** option.
 5. Right-click the data set where the member belongs and select the **Paste Data Set** option.
 6. Enter the name of the copied member.
-   <img src="../images/ze/ZE-copy.gif" alt="Copy Data Set">
+
+<img src="../images/ze/ZE-copy.gif" alt="Copy Data Set">
 
 #### Download, edit, and upload existing PDS members
 

@@ -481,32 +481,34 @@ d: | Location of the downloaded files
 
 Sample FTP upload scenario:
 
-_C:/>__ftp mvsaddr___  
-_Connected to mvsaddr._  
-_200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%._
-_220 Connection will close if idle for more than 5 minutes._  
-_User (mvsaddr:(none)): __tsouid___  
-_331 Send password please_  
-_Password: __tsopw___  
-_230 tsouid is loaded on.  Working directory is "tsouid."._  
-_ftp> __cd @zfs_path@___  
-_250 HFS directory @zfs_path@ is the current working directory_  
-_ftp> __ascii___  
-_200 Representation type is Ascii NonPrint_  
-_ftp> __put c:/AZWE001.readme.txt___  
-_200 Port request OK._  
-_150 Storing data set @zfs_path@/AZWE001.readme.txt_  
-_250 Transfer completed successfully._  
-_ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)_  
-_ftp __binary___  
-_200 Representation type is Image_  
-_ftp> __put c:\AZWE001.pax.Z___  
-_200 Port request OK._  
-_145 Storing data set @zfs_path@/AZWE001.pax.Z_  
-_250 Transfer completed successfully._  
-_ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)_  
-_ftp: __quit___  
-_221 Quit command received.  Goodbye._  
+```
+C:/>ftp mvsaddr  
+Connected to mvsaddr. 
+200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%.
+220 Connection will close if idle for more than 5 minutes.  
+User (mvsaddr:(none)): tsouid  
+331 Send password please  
+Password: tsopw  
+230 tsouid is loaded on.  Working directory is "tsouid.".  
+ftp> cd @zfs_path@ 
+250 HFS directory @zfs_path@ is the current working directory  
+ftp> ascii  
+200 Representation type is Ascii NonPrint  
+ftp> put c:/AZWE001.readme.txt  
+200 Port request OK.  
+150 Storing data set @zfs_path@/AZWE001.readme.txt  
+250 Transfer completed successfully.  
+ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)  
+ftp binary  
+200 Representation type is Image  
+ftp> put c:\AZWE001.pax.Z  
+200 Port request OK.  
+145 Storing data set @zfs_path@/AZWE001.pax.Z  
+250 Transfer completed successfully.  
+ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)  
+ftp: quit  
+221 Quit command received.  Goodbye.  
+```
 
 **If you are unable to connect with ftp and only able to use sftp**,
 the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE001.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE001.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
