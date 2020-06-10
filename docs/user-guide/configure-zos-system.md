@@ -13,175 +13,26 @@ If `ZWESECUR` encounters an error or a step that has already been performed, it 
 
 It is expected that the security administrator at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
 
-**Note:** You are required to manually perform an additional step for the Top Secret (TSS) external security product.  This step is not a part of the ZWESECUR job. For more information, see [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-(for-TSS-only)).  
-
 If you want to undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
 - You are configuring z/OS systems as part of a build pipeline that you want to undo and redo configuration and installation of Zowe using automation.
 - You have configured a z/OS system for Zowe that you no longer want to use and you prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  
 
 If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
 
-The remainder of this chapter covers some steps that are done by `ZWESECUR`, so they are included for reference to describe how `ZWESECUR` configures the z/OS environment, as well as for environments where a system programmer prefers to do steps manually instead of running `ZWESECUR`
+The following steps are not included in `ZWESECUR` so need to be done manually for a z/OS environment.  
+
+- Initialization Steps that are not included in `ZWESECUR`
+  - [Grant users permission to access z/OSMF](#grant-users-permission-to-access-z/osmf)
+  - [Configure an ICSF cryptographic services environment](configure-an-icsf-cryptographic-services-environment)
+  - [Configure multi-user address space (for Top Secret TSS only)](#configure-multi-user-address-space-(for-TSS-only)).  
+
+The following steps are included in `ZWESECUR`, so if you have successfully run the JCL you do not need perform them.  They are included for reference where the system programmer prefers to manually configure their z/OS environment, as well learn more about user IDs, groups, and associated security permissions required to operate Zowe.  
 
 - Initialization Steps that are included in `ZWESECUR`
   - [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
   - [Configure ZWESVSTC to run under ZWESVUSR user ID](configure-zwesvstc-to-run-under-zwesvisr-user-ID)
   - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
-- Initialization Steps that are not included in `ZWESECUR`
-  - [Grant users permission to access z/OSMF](#grant-users-permission-to-access-z/osmf)
 
-
-## User IDs and groups for the Zowe started tasks
-
-Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`. This userid must have a valid OMVS segment.
-
-Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started task `ZWESISTC`. This userid must have a valid OMVS segment.
-
-Zowe requires a group `ZWEADMIN` that both `ZWESVUSR` and `ZWESIUSR` should belong to. This group must have a valid OMVS segment.
-
-If you have run `ZWESECUR` you do not need to perform the steps described in this section, as the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`.  
-
-```
-/* group for started tasks                          */
-...
-/* userid for ZOWE main server                      */
-...
-/* userid for XMEM cross memory server              */
-...
-```
-
-If you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment the commands are described below for reference.  
-
-- To create the `ZWEADMIN` group, issue the following command:
-  ```
-  ADDGROUP ZWEADMIN OMVS(AUTOGID) -
-  DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
-  ```
-
-- To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
-  ```
-    ADDUSER  ZWESVUSR -
-    NOPASSWORD -
-    DFLTGRP(ZWEADMIN) -
-    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-    NAME('ZOWE SERVER') -
-    DATA('ZOWE MAIN SERVER')
-  ```
-
-- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
-  ```
-    ADDUSER ZWESIUSR -
-    NOPASSWORD -
-    DFLTGRP(ZWEADMIN) -
-    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-    NAME('ZOWE XMEM SERVER') -
-    DATA('ZOWE XMEM CROSS MEMORY SERVER')
-  ```
-
-## Configure ZWESVSTC to run under ZWESVUSR user ID
-
-When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
-
-If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
-```
-/* started task for ZOWE main server                   */
-...
-```
-
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the started task `ZWESVSTC` to run under the correct user ID and group.  
-
-- If you use RACF, issue the following commands:
-  ```
-  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-  SETROPTS REFRESH RACLIST(STARTED)
-  ```
-
-- If you use CA ACF2, issue the following commands:
-
-  ```
-  SET CONTROL(GSO)
-  INSERT STC.ZWESVSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESVSTC)
-  F ACF2,REFRESH(STC)
-  ```
-
-- If you use CA Top Secret, issue the following commands:
-
-  ```
-  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
-  ```
-
-## Configure the cross memory server for SAF
-
-Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
-
-If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
-```
-/* permit Zowe main server to use XMEM cross memory server       */
-...
-```
-
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the cross memory server for SAF.
-
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the Zowe started task `ZWESVSTC` runs under. 
-    
-To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the `ZWESVSTC` under the `ZWESVUSR` user.
-
-- If you use RACF, issue the following commands:
-
-    - To see the current class settings, use:
-        ```
-        SETROPTS LIST
-        ```  
-    - To define and activate the FACILITY class, use:
-        ```
-        SETROPTS GENERIC(FACILITY)
-        SETROPTS CLASSACT(FACILITY)
-        ```
-    - To RACLIST the FACILITY class, use:
-        ```
-        SETROPTS RACLIST(FACILITY)
-        ```
-    - To define the `ZWES.IS` profile in the FACILITY class and grant Zowe's started task userid READ access, issue the following commands:
-        ```
-        RDEFINE FACILITY ZWES.IS UACC(NONE)
-        ```
-        ```
-        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(READ)
-        ```
-        where `<zwesvstc_user>` is the user ID `ZWESVUSR` under which the ZWESVSTC started task runs.
-        ```
-        SETROPTS RACLIST(FACILITY) REFRESH
-        ```
-    - To check whether the permission has been successfully granted, issue the following command:
-        ```
-        RLIST FACILITY ZWES.IS AUTHUSER
-        ```
-        This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task userid with READ access.
-
-- If you use CA ACF2, issue the following commands:
-
-    ```
-    SET RESOURCE(FAC)
-    ```
-    ```
-    RECKEY ZWES ADD(IS ROLE(IZUSVR) SERVICE(READ) ALLOW)
-    ```
-    ```
-    F ACF2,REBUILD(FAC)
-    ```
-
-- If you use CA Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
-
-    ```
-    TSS ADD(`owner-acid`) IBMFAC(ZWES.)
-    ```
-    ```
-    TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
-    ```
-**Notes:**
-
-- The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
-- Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
 ## Grant users permission to access z/OSMF
 
@@ -448,3 +299,155 @@ To authorize a user to signon to the FACILITY, issues the following command:
 ```
 TSS ADD(user_acid) FAC(ZOWE)
 ```
+
+## User IDs and groups for the Zowe started tasks
+
+Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`. This userid must have a valid OMVS segment.
+
+Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started task `ZWESISTC`. This userid must have a valid OMVS segment.
+
+Zowe requires a group `ZWEADMIN` that both `ZWESVUSR` and `ZWESIUSR` should belong to. This group must have a valid OMVS segment.
+
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`.  
+
+```
+/* group for started tasks                          */
+...
+/* userid for ZOWE main server                      */
+...
+/* userid for XMEM cross memory server              */
+...
+```
+
+If you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment the commands are described below for reference.  
+
+- To create the `ZWEADMIN` group, issue the following command:
+  ```
+  ADDGROUP ZWEADMIN OMVS(AUTOGID) -
+  DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
+  ```
+
+- To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+  ```
+    ADDUSER  ZWESVUSR -
+    NOPASSWORD -
+    DFLTGRP(ZWEADMIN) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE SERVER') -
+    DATA('ZOWE MAIN SERVER')
+  ```
+
+- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
+  ```
+    ADDUSER ZWESIUSR -
+    NOPASSWORD -
+    DFLTGRP(ZWEADMIN) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE XMEM SERVER') -
+    DATA('ZOWE XMEM CROSS MEMORY SERVER')
+  ```
+
+## Configure ZWESVSTC to run under ZWESVUSR user ID
+
+When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
+
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
+```
+/* started task for ZOWE main server                   */
+...
+```
+
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the started task `ZWESVSTC` to run under the correct user ID and group.  
+
+- If you use RACF, issue the following commands:
+  ```
+  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+  SETROPTS REFRESH RACLIST(STARTED)
+  ```
+
+- If you use CA ACF2, issue the following commands:
+
+  ```
+  SET CONTROL(GSO)
+  INSERT STC.ZWESVSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESVSTC)
+  F ACF2,REFRESH(STC)
+  ```
+
+- If you use CA Top Secret, issue the following commands:
+
+  ```
+  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
+  ```
+
+## Configure the cross memory server for SAF
+
+Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
+
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
+```
+/* permit Zowe main server to use XMEM cross memory server       */
+...
+```
+
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the cross memory server for SAF.
+
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the Zowe started task `ZWESVSTC` runs under. 
+    
+To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the `ZWESVSTC` under the `ZWESVUSR` user.
+
+- If you use RACF, issue the following commands:
+
+    - To see the current class settings, use:
+        ```
+        SETROPTS LIST
+        ```  
+    - To define and activate the FACILITY class, use:
+        ```
+        SETROPTS GENERIC(FACILITY)
+        SETROPTS CLASSACT(FACILITY)
+        ```
+    - To RACLIST the FACILITY class, use:
+        ```
+        SETROPTS RACLIST(FACILITY)
+        ```
+    - To define the `ZWES.IS` profile in the FACILITY class and grant Zowe's started task userid READ access, issue the following commands:
+        ```
+        RDEFINE FACILITY ZWES.IS UACC(NONE)
+        ```
+        ```
+        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(READ)
+        ```
+        where `<zwesvstc_user>` is the user ID `ZWESVUSR` under which the ZWESVSTC started task runs.
+        ```
+        SETROPTS RACLIST(FACILITY) REFRESH
+        ```
+    - To check whether the permission has been successfully granted, issue the following command:
+        ```
+        RLIST FACILITY ZWES.IS AUTHUSER
+        ```
+        This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task userid with READ access.
+
+- If you use CA ACF2, issue the following commands:
+
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    RECKEY ZWES ADD(IS ROLE(IZUSVR) SERVICE(READ) ALLOW)
+    ```
+    ```
+    F ACF2,REBUILD(FAC)
+    ```
+
+- If you use CA Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
+
+    ```
+    TSS ADD(`owner-acid`) IBMFAC(ZWES.)
+    ```
+    ```
+    TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
+    ```
+**Notes:**
+
+- The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
+- Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
