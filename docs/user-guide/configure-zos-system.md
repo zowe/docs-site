@@ -21,6 +21,16 @@ If you want to undo all of the z/OS security configuration steps performed by th
 
 If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
 
+The remainder of this chapter covers some steps that are done by `ZWESECUR`, so they are included for reference to describe how `ZWESECUR` configures the z/OS environment, as well as for environments where a system programmer prefers to do steps manually instead of running `ZWESECUR`
+
+- Initialization Steps that are included in `ZWESECUR`
+  - [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
+  - [Configure ZWESVSTC to run under ZWESVUSR user ID](configure-zwesvstc-to-run-under-zwesvisr-user-ID)
+  - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
+- Initialization Steps that are not included in `ZWESECUR`
+  - [Grant users permission to access z/OSMF](#grant-users-permission-to-access-z/osmf)
+
+
 ## User IDs and groups for the Zowe started tasks
 
 Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`. This userid must have a valid OMVS segment.
@@ -29,8 +39,18 @@ Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started ta
 
 Zowe requires a group `ZWEADMIN` that both `ZWESVUSR` and `ZWESIUSR` should belong to. This group must have a valid OMVS segment.
 
-The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`.  
 
+```
+/* group for started tasks                          */
+...
+/* userid for ZOWE main server                      */
+...
+/* userid for XMEM cross memory server              */
+...
+```
+
+If you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment the commands are described below for reference.  
 
 - To create the `ZWEADMIN` group, issue the following command:
   ```
@@ -62,7 +82,14 @@ The JCL member `ZWESECUR` contains the TSO commands to create the user IDs.
 
 When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
 
-<!--Since in this release 1.8.0 we are creating/using a new set of group/user (ZWEADMIN/ZWESVUSR) for Zowe, so security commands should be changed-->
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
+```
+/* started task for ZOWE main server                   */
+...
+```
+
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the started task `ZWESVSTC` to run under the correct user ID and group.  
+
 - If you use RACF, issue the following commands:
   ```
   RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
@@ -83,34 +110,17 @@ When the Zowe started task `ZWESVSTC` is started, it must be associated with the
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
   ```
 
-## Grant users permission to access z/OSMF
-
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe. They should be added to the group with appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` by default.
-
-- If you use RACF, issue the following command:
-
-  ```
-  CONNECT (userid) GROUP(IZUUSER)
-  ```
-
-- If you use CA ACF2, issue the following commands:
-
-  ```
-  ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
-  F ACF2,REBUILD(TGR)
-  ```
-
-- If you use CA Top Secret, issue the following commands:
-
-  ```
-  TSS ADD(userid)  PROFILE(IZUUSER)
-  TSS ADD(userid)  GROUP(IZUUSRGP) 
-  ```
-  <!--I am not sure about this one: TSS ADD(userid)  GROUP(IZUADMGP) , should it be changed to TSS ADD(userid)  GROUP(ZWEADMIN) -->
-
 ## Configure the cross memory server for SAF
 
 Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
+
+If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
+```
+/* permit Zowe main server to use XMEM cross memory server       */
+...
+```
+
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually the following steps describe how to configure the cross memory server for SAF.
 
 Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the Zowe started task `ZWESVSTC` runs under. 
     
@@ -173,9 +183,46 @@ To do this, issue the following commands that are also included in the `ZWESECUR
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
+## Grant users permission to access z/OSMF
+
+TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe. They should be added to the group with appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` by default.  This step is not included in `ZWESECUR` because it must be done for every TSO user ID who wishes to access Zowe's z/OS services  The list of those user IDs is not known by `ZWESECUR` and will typically be the operators, administrators, developers, or anyone else in the z/OS environment who is logging into Zowe.
+
+**Note**.  If you are using Zowe without z/OSMF then you can skip this section.  Zowe is able to operate without z/OSMF but services which use z/OSMF REST APIs will not be available, specifically the USS, MVS and JES Explorers and the Zowe Command Line Interface files, jobs, workflows, tso and console groups.
+
+For every user TSO user ID that is going to log onto Zowe and use services that require z/OSMF.
+
+- If you use RACF, issue the following command:
+
+  ```
+  CONNECT (userid) GROUP(IZUUSER)
+  ```
+
+- If you use CA ACF2, issue the following commands:
+
+  ```
+  ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
+  F ACF2,REBUILD(TGR)
+  ```
+
+- If you use CA Top Secret, issue the following commands:
+
+  ```
+  TSS ADD(userid)  PROFILE(IZUUSER)
+  TSS ADD(userid)  GROUP(IZUUSRGP) 
+  ```
+  <!--I am not sure about this one: TSS ADD(userid)  GROUP(IZUADMGP) , should it be changed to TSS ADD(userid)  GROUP(ZWEADMIN) -->
+
 ## Configure an ICSF cryptographic services environment
 
-ZSS cookies require random number generation for security. ICSF is a secure way to do that. To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
+The zssServer uses cookies that equire random number generation for security. To understand more about the zssServer see [Zowe architecture](../getting-started/zowe-architecture.md#zssserver).
+
+Integrated Cryptographic Service Facility (ICSF) is a secure way to generate random numbers. 
+
+If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm).  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
+
+The z/OS Zowe environment configuration JCL member `ZWESECUR` does not perform any steps related to ICSF so if you are using the Zowe desktop, which uses zssServer, which requires ICSF then you need to perform the steps described in this chapter manually.
+
+To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
 
 Define or check the following configurations depending on whether ICSF is already installed:
 
