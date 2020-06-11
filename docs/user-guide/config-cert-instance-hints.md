@@ -4,12 +4,14 @@ When you are configuring Zowe on z/OS, you need to create certificates, and then
 
 ### Creating certificates
 
-We recommend that you re-create the certificates after every Zowe upgrade.
+You run create the certificates by running the script `zowe-setup-certificates.sh`.  You need not re-run this after the first time you install Zowe, unless instructed otherwise by SMP/E HOLDDATA or the release notes for that release.
+
 The creation of the certificates is controlled by the `zowe-setup-certificates.env` file, and you should have placed a copy of that file in your instance directory INSTANCE_DIR.  
 1.	 Keystore: Pick a location for where you want the setup script to place the keys it generates, and specify this in your copy of the  `zowe-setup-certificates.env` file
 ```
  KEYSTORE_DIRECTORY=/my/zowe/instance/keystore
 ```
+A keystore can be shared by all instances and this is the default, which we recommend.  The default location is `/global/zowe/keystore`. You can use a different shared location if you prefer.  The zowe instance uses the keystore you specify in `instance.env` in your INSTANCE_DIR.  This can be the shared location or you can create another keystore in a different location for that instance if you prefer and use that one instead.  We recommend a single, shared keystore.    
 
 2.	Hostname and IP address: These are set by the following keywords in `zowe-setup-certificates.env`
 ```
