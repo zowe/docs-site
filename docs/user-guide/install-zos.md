@@ -79,6 +79,8 @@ You can configure the Zowe runtime with one of the following methods depending o
 
 2. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
 
+//TODO @Vitek this should be changed
+
    If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory.
 
    The Zowe keystore directory contains the key used by the Zowe desktop and the Zowe API mediation layer to secure its TLS communication with clients (such as web browsers or REST AI clients). The keystore directory also has a truststore where public keys of any servers that Zowe communicates to (such as z/OSMF) are held.
