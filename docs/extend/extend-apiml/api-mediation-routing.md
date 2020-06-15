@@ -40,8 +40,8 @@ The following examples shows z/OSMF routes without a version.
 
 **Examples:**
 
-* `z/OSMF direct URL: `https://ca32.ca.com:1443/zosmf/restjobs/1.0/...`
-* `Gateway URL: `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
+* **z/OSMF direct URL:** `https://ca32.ca.com:1443/zosmf/restjobs/1.0/...`
+* **Gateway URL:** `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
 
 The following diagram presents how basic routing works:
 <img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/> 
@@ -85,5 +85,6 @@ where:
 This method of routing is the same as the previous method but does not use the version part of the URL. This is useful for services that handle their versioning themselves with different granularity.
 An example of this is z/OSMF.
 
-**Example?**
+**Example:**
 
+z/OSMF URL through Gateway: `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
