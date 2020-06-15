@@ -30,3 +30,37 @@ The URL format expected by the API Gateway is:
 * Gateway URL: `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
 
 <img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/> 
+
+
+#### Implementation Details
+
+The service instances provide information about routing to the API gateway via the Eureka metadata.
+
+
+    metadata-map:
+        apiml:
+            routes:
+                uiv1:
+                    gateway-url: "ui/v1"
+                    service-url: "/helloworld"
+                apiv1:
+                    gateway-url: "api/v1"
+                    service-url: "/helloworld/v1"
+                apiv2:
+                    gateway-url: "api/v2"
+                    service-url: "/helloworld/v2"
+
+In this case, we have a service (service ID is `helloworldservice` - it is not included in the routing metadata but in basic Eureka metadata) that exposes:
+
+* `UI` - `https://gateway/ui/v1/helloworldservice` will be routed to the `https://hwServiceHost:port/helloworld/`
+* `API major version 1` - `https://gateway/api/v1/helloworldservice` will be routed to `https://hwServiceHost:port/helloworld/v1`
+* `API major version 2` - `https://gateway/api/v2/helloworldservice` will be routed to `https://hwServiceHost:port/helloworld/v2`
+
+The gateway-url is matched against the prefix of the URL path used at the gateway `https://gateway/urlPath` where urlPath is `prefix/serviceId/resourcePath`. 
+The service ID is used to find the service host and port. 
+The service-url is used to prefix the resourcePath at the service host.
+
+### Basic Routing (only service ID-based)
+
+Same as the previous but the version part of the URL is not used. This is useful for services that handle their versioning themselves with different granularity.
+An example of this is z/OSMF.
