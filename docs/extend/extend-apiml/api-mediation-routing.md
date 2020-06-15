@@ -36,12 +36,16 @@ The URL format expected by the API Gateway is:
 
 `https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}`
 
-The following examples shows z/OSMF routes without a version.
+**Example:**
 
-**Examples:**
-
-* **z/OSMF direct URL:** `https://ca32.ca.com:1443/zosmf/restjobs/1.0/...`
-* **Gateway URL:** `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
+The original URL of a resource exposed by a service
+```
+http://service:10015/enablerv1sampleapp/api/v1/samples
+```
+API Gateway URL of the resource
+```
+https://gateway:10010/api/v1/enablerv1sampleapp/samples
+```
 
 The following diagram presents how basic routing works:
 <img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/> 
