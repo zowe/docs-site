@@ -220,7 +220,7 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.connectTimeout**
     
-    Value in milliseconds that specifies a period, in which this service should establish a single non-managed connection with API ML. If omitted, default value specified in API ML gateway service configuration is used.
+    Value in milliseconds that specifies a period, in which API ML should establish a single non-managed connection with this service. If omitted, default value specified in API ML gateway service configuration is used.
 
 * **apiml.readTimeout**
     
@@ -228,7 +228,7 @@ The following parameters define service information for the API Catalog:
     
 * **apiml.connectionManagerTimeout**
     
-    HttpClient employs a special entity to manage access to HTTP connections called HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage life cycle of persistent connections and to synchronize access to persistent connections. Internally it works with managed connections witch serves as proxy for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be establish. The value is in milliseconds. If omitted, default value specified in API ML gateway service configuration is used.
+    HttpClient employs a special entity to manage access to HTTP connections called HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage life cycle of persistent connections and to synchronize access to persistent connections. Internally it works with managed connections which serves as proxy for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be establish. The value is in milliseconds. If omitted, default value specified in API ML gateway service configuration is used.
       
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
