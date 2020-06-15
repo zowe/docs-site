@@ -15,9 +15,9 @@ To open a dataset, follow these steps:
 2. In the Dataset field, specify the name of the dataset you want to open. 
 3. Click **Open** 
 
-## Deleting a dataset
+## Deleting a file or folder
 
-1. In the file tree, right-click on a dataset you want to delete.
+1. In the file tree, right-click on a file or folder you want to delete.
 2. From the right-click menu, click **Delete**. A warning dialogue will appear. 
 3. Click **Delete** 
 
