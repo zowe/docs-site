@@ -91,4 +91,4 @@ An example of this is z/OSMF.
 
 **Example:**
 
-z/OSMF URL through Gateway: `https://ca3x.ca.com:10010/api/zosmfca32/restjobs/1.0/...`
+z/OSMF URL through Gateway: `https://gateway:10010/api/zosmf/restjobs/1.0/...`
