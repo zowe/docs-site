@@ -218,6 +218,18 @@ The following parameters define service information for the API Catalog:
 
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
+* **apiml.connectTimeout**
+    
+    Value in milliseconds that specifies a period, in which this service should establish a single non-managed connection with API ML. If omitted, default value specified in API ML gateway service configuration is used.
+
+* **apiml.readTimeout**
+    
+    Value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, default value specified in API ML gateway service configuration is used.
+    
+* **apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage life cycle of persistent connections and to synchronize access to persistent connections. Internally it works with managed connections witch serves as proxy for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be establish. The value is in milliseconds. If omitted, default value specified in API ML gateway service configuration is used.
+      
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
 
