@@ -627,10 +627,10 @@ To register a new service to the Discovery Service using HTTPS, provide a valid 
 Certificates for the API ML local CA and API ML service are managed by installing the Zowe runtime on z/OS. Follow the instructions in [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 There are two variants of certificate setup on z/OS machine.
-- certificates in SAF key ring
-- certificates in UNIX files
+- certificates in SAF keyring
+- certificates in UNIX files (keystore and truststore)
  
-The [Configuring Zowe certificates](../../user-guide/configure-certificates.md#configuring-zowe-certificates) contains instructions how to setup certificates during instalation. Follow the related section below, according to your choice during installation.
+The [Configuring Zowe certificates](../../user-guide/configure-certificates.md#configuring-zowe-certificates) contains instructions how to setup certificates during installation. Follow the related section below, according to your choice during installation.
 
 #### Certificates in SAF key ring
 
@@ -642,12 +642,11 @@ ___
 
 #### Import the local CA certificate to your browser
 
-Trust in the API ML server is a necessary precondition to properly encrypt traffic between web browsers and REST API client applications. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
+Trust in the API ML server is a necessary precondition for secure communication between Browser or API Client application. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
+
+**Note:** If SAF keyring is being used and setup with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. Please work with the security system administrator to obtain the certificate. Start the procedure at step 2.
 
 **Note:** The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$KEYSTORE_DIRECTORY/local_ca/localca.cer` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
-
-//TODO What happens if they import a cert?
-//TODO What happens when they run JCL?
 
 The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
@@ -701,7 +700,8 @@ The certificate is stored in UTF-8 encoding so you need to transfer it as a bina
 
 #### Generate a keystore and truststore for a new service on z/OS
 
-//TODO does this apply as well for the Keyring?
+//TODO @Vitek
+**Note:** This is not supported for Keyring at the moment. Please work with your security system administrator to obtain the required certificates.
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
@@ -715,7 +715,7 @@ bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext>
 
 The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
 
-The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. //TODO ? The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore.
+The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore.
 
 **Example:** `/opt/myservice/keystore/service.keystore`.
 
@@ -737,7 +737,6 @@ The `service-password` is the keystore password. The purpose of the password is 
 
 The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
 
-//TODO
 #### Add a service with an existing certificate to API ML on z/OS
 
 The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain. Use one of the following methods:
@@ -749,7 +748,20 @@ The API Mediation Layer requires validation of the certificate of each service t
   **Note:** If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
 Import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
-//TODO does this work with keyrings?
+
+//TODO @Vitek Does this really work? There is some weird code: 
+```
+function trust {
+    echo "Import a certificate to the truststore:"
+    pkeytool -importcert $V -trustcacerts -noprompt -file ${CERTIFICATE} -alias "${ALIAS}" -keystore ${SERVICE_TRUSTSTORE}.p12 -storepass ${SERVICE_PASSWORD} -storetype PKCS12
+
+    if [[ "${SERVICE_STORETYPE}" == "JCERACFKS" ]] && [[ "${GENERATE_CERTS_FOR_KEYRING}" != "false" ]]; then
+        keytool -importcert $V -trustcacerts -noprompt -file ${CERTIFICATE} -alias "${ALIAS}" -keystore safkeyring://${ZOWE_USERID}/${ZOWE_KEYRING} -storetype ${SERVICE_STORETYPE} \
+            -J-Djava.protocol.handler.pkgs=com.ibm.crypto.provider
+    fi
+}
+```
+
 ```
 cd $ZOWE_ROOT_DIR
 bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
