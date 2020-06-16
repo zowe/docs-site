@@ -17,7 +17,7 @@ There are two ways to route your service to the API Mediation Layer:
 
 * **URI (Uniform Resource Identifier)**
 
-  A string of characters used to identify a resource. Ensure that the specific URI only goes to the specific correspoding resource without requiring any additional information such as HTTP headers.
+  A string of characters used to identify a resource. It is necessary that each specific URI points to only one specific corresponding resource which does not require any additional information such as HTTP headers.
 
 ## APIML Basic Routing (using Service ID and version)
 
@@ -72,9 +72,9 @@ The service instances provide information about routing to the API Gateway via t
 
 In this case, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
-* `UI` - `https://gateway/ui/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/`
-* `API major version 1` - `https://gateway/api/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v1`
-* `API major version 2` - `https://gateway/api/v2/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v2`
+* **UI** - `https://gateway/ui/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/`
+* **API major version 1** - `https://gateway/api/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v1`
+* **API major version 2** - `https://gateway/api/v2/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v2`
 
 where:
 
@@ -93,5 +93,5 @@ An example of this is z/OSMF.
 
 z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/1.0/...`
 
-In the URL above, `zosmf` is the service ID, `/restjobs/1.0/...` is the rest of the endpoint segment
-and there is no version specified in the URL.
+In this URL example, `zosmf` is the service ID, and `/restjobs/1.0/...` is the rest of the endpoint segment.
+No version is specified in this URL.
