@@ -1,36 +1,36 @@
 # API Mediation Layer routing
 
-As an application developer, route your service to ...
-There are two ways to route to the API Mediation Layer:
+As an application developer, route your service through the Gateway using the API Mediation Layer to consume a specific resource.
+There are two ways to route your service to the API Mediation Layer which allow you to apply filters on the routes you define in your configuration file:
 
-* API ML Basic Routing (Service ID and version-based)
-* Basic Routing (only service ID-based)
+* Basic Routing (using Service ID and version)
+* Basic Routing (using only the service ID)
 
 ## Terminology
 
 * **Service**
 
-  A service provides one or more APIs. A service is identified by its service ID (sometimes the term service name is used in the same     meaning). 
-  The default service ID is provided by service developer in the service configuration file. 
-  The service ID can be replaced with deployment environment specific name by the system administrator using additional configuration     external to the service deployment unit (most often a jar or war file). 
+  A service provides one or more APIs, and is identified by its service ID. Note that sometimes the term "service name" is used to mean service ID. 
+  The default service ID is provided by the service developer in the service configuration file. 
+  The service ID can be replaced with a deployment environment specific name by the system administrator using additional configuration     that is external to the service deployment unit. Most often, this configuration is in a jar or war file. 
   Services are deployed using one or more service instances, which share the same service ID and implementation.
 
 * **URI (Uniform Resource Identifier)**
 
-  A string of characters used to identify a resource. The same URI should always go to the same resource without any need to other         information (e.g. HTTP headers).
+  A string of characters used to identify a resource. Ensure that the specific URI only goes to the specific correspoding resource without requiring any additional information such as HTTP headers.
 
-## APIML Basic Routing (Service ID and version-based)
+## APIML Basic Routing (using Service ID and version)
 
-Basic routing is based on the service ID that is used to identify the service. The specific instance is selected by the API Gateway. Identical response are required for all instances. Eureka and Zuul expect this type of routing.
+This method of basic routing is based on the service ID that is used to identify the service. The specific instance is selected by the API Gateway. All instances require an identical response. Eureka and Zuul expect this type of routing.
 
-The URI identifies the resource. It does not identify the instance of the same service as unique when multiple instances of the same service are provided, such as when the service is running in HA mode. 
+The URI identifies the resource but does not identify the instance of the same service as unique when multiple instances of the same service are provided. One example of this is when a service is running in HA mode. 
 Services of the same product that are providing different resources, such as SYSVIEW on one system and SYSVIEW in a different sysplex, cannot have the same service ID as the same URI cannot have two different meanings. 
 
-In addition to the basic Zuul routing, the Zowe API Gateway adds support for versioning where a major version can be specified. 
+In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which a major version can be specified. 
 The Gateway routes a request only to an instance that provides the specified major version of the API. 
-The `/api/` prefix is used for REST APIs. The prefix `/ui/` prefix applies to web UIs and the prefix `/ws/` applies to WebSockets.
+The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs and the prefix `/ws/` applies to WebSockets.
 
-Additional routing can be implemented using a Zuul Pre-filter.
+Additional routing can be implemented using a Zuul pre-filter.
 
 The URL format expected by the API Gateway is:
 
@@ -38,11 +38,11 @@ The URL format expected by the API Gateway is:
 
 **Example:**
 
-The original URL of a resource exposed by a service
+The following address shows the original URL of a resource exposed by a service
 ```
 http://service:10015/enablerv1sampleapp/api/v1/samples
 ```
-API Gateway URL of the resource
+The following address shows the API Gateway URL of the resource:
 ```
 https://gateway:10010/api/v1/enablerv1sampleapp/samples
 ```
@@ -70,13 +70,11 @@ The service instances provide information about routing to the API Gateway via t
                     gateway-url: "api/v2"
                     service-url: "/helloworld/v2"
 
-In this case, we have a service with a service ID of `helloworldservice` that exposes:
+In this case, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
 * `UI` - `https://gateway/ui/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/`
 * `API major version 1` - `https://gateway/api/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v1`
 * `API major version 2` - `https://gateway/api/v2/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v2`
-
-**Note:** This service ID is not included in the routing metadata but in the basic Eureka metadata. 
 
 where:
 
@@ -84,11 +82,13 @@ where:
 * The service ID is used to find the service host and port. 
 * The service-url is used to prefix the resourcePath at the service host.
 
-## Basic Routing (only service ID-based)
+**Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata. 
+
+## Basic Routing (using only the service ID)
 
 This method of routing is the same as the previous method but does not use the version part of the URL. This is useful for services that handle their versioning themselves with different granularity.
 An example of this is z/OSMF.
 
 **Example:**
 
-z/OSMF URL through Gateway: `https://gateway:10010/api/zosmf/restjobs/1.0/...`
+z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/1.0/...`
