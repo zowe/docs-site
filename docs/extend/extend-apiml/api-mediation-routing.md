@@ -60,15 +60,15 @@ The service instances provide information about routing to the API Gateway via t
     metadata-map:
         apiml:
             routes:
-                uiv1:
-                    gateway-url: "ui/v1"
-                    service-url: "/helloworld"
-                apiv1:
-                    gateway-url: "api/v1"
-                    service-url: "/helloworld/v1"
-                apiv2:
-                    gateway-url: "api/v2"
-                    service-url: "/helloworld/v2"
+                ui_v1:
+                    gatewayUrl: "ui/v1"
+                    serviceUrl: "/helloworld"
+                api_v1:
+                    gatewayUrl: "api/v1"
+                    serviceUrl: "/helloworld/v1"
+                api_v2:
+                    gatewayUrl: "api/v2"
+                    serviceUrl: "/helloworld/v2"
 
 In this case, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
@@ -78,9 +78,9 @@ In this case, the service has a service ID of `helloworldservice` that exposes t
 
 where:
 
-* The gateway-url is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath` where urlPath is `prefix/serviceId/resourcePath`. 
+* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath` where urlPath is `prefix/serviceId/resourcePath`. 
 * The service ID is used to find the service host and port. 
-* The service-url is used to prefix the resourcePath at the service host.
+* The serviceUrl is used to prefix the resourcePath at the service host.
 
 **Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata. 
 
