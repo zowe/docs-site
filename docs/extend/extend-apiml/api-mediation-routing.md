@@ -91,7 +91,7 @@ An example of this is z/OSMF.
 
 **Example:**
 
-z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/1.0/...`
+z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/jobs/...`
 
 In this URL example, `zosmf` is the service ID, and `/restjobs/1.0/...` is the rest of the endpoint segment.
 No version is specified in this URL.
