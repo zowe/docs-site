@@ -632,13 +632,6 @@ There are two variants of certificate setup on z/OS machine.
  
 The [Configuring Zowe certificates](../../user-guide/configure-certificates.md#configuring-zowe-certificates) contains instructions how to setup certificates during installation. Follow the related section below, according to your choice during installation.
 
-#### Certificates in SAF key ring
-
-#### Certificates in UNIX files
-
-___
-
-
 
 #### Import the local CA certificate to your browser
 
@@ -710,23 +703,19 @@ The API Mediation Layer requires validation of the certificate of each service t
 
 Import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
 
-//TODO @Vitek Does this really work? There is some weird code: 
-```
-function trust {
-    echo "Import a certificate to the truststore:"
-    pkeytool -importcert $V -trustcacerts -noprompt -file ${CERTIFICATE} -alias "${ALIAS}" -keystore ${SERVICE_TRUSTSTORE}.p12 -storepass ${SERVICE_PASSWORD} -storetype PKCS12
+//TODO @Vitek validate the commands on test system
+//TODO @Vitek apiml_cm.sh does not get params baked in at setup time... how does this work without exports for someone using the commands in installed Zowe?
 
-    if [[ "${SERVICE_STORETYPE}" == "JCERACFKS" ]] && [[ "${GENERATE_CERTS_FOR_KEYRING}" != "false" ]]; then
-        keytool -importcert $V -trustcacerts -noprompt -file ${CERTIFICATE} -alias "${ALIAS}" -keystore safkeyring://${ZOWE_USERID}/${ZOWE_KEYRING} -storetype ${SERVICE_STORETYPE} \
-            -J-Djava.protocol.handler.pkgs=com.ibm.crypto.provider
-    fi
-}
-```
-
+- Certificates in UNIX files
 ```
 cd $ZOWE_ROOT_DIR
 bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
 ```
+- Certificates in SAF key ring
+```
+This won't work
+```
+
 
 #### Procedure if the service is not trusted
 
