@@ -1,7 +1,7 @@
 # API Mediation Layer routing
 
 As an application developer, route your service through the Gateway using the API Mediation Layer to consume a specific resource.
-There are two ways to route your service to the API Mediation Layer which allow you to apply filters on the routes you define in your configuration file:
+There are two ways to route your service to the API Mediation Layer:
 
 * Basic Routing (using Service ID and version)
 * Basic Routing (using only the service ID)
