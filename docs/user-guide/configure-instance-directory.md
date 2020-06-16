@@ -2,7 +2,7 @@
 
 The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory. 
 
-The instance directory ``<INSTANCE_DIRECTORY>/bin` contains a number of key scripts
+The instance directory `<INSTANCE_DIRECTORY>/bin` contains a number of key scripts
  - `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
   - `zowe-stop.sh` is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
   - `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md)
@@ -23,7 +23,7 @@ Multiple instance directories can be created and used to launch independent Zowe
 
 The Zowe instance directory contains a file `instance.env` that stores configuration data. The data is read each time Zowe is started.  
 
-The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
+The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read-only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
 If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
 
@@ -40,7 +40,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 ### Component groups
 
 `LAUNCH_COMPONENT_GROUPS`: This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and uses the version of Java on z/OS as determined by the `JAVA_HOME` value.  
+  - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  
   - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `NODE_HOME` value.  
   - Vendor products may extend Zowe with their own component group that they want to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this, specify the fully qualified directory provided by the vendor that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that is called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that performs any configuration steps such as adding iFrame plug-ins to the Zowe desktop, and a `validate.sh` script **(optional)** that can be used to perform any pre-launch validation such as checking system prerequisites. For more information about how a vendor can extend Zowe with a sub address space, see the [Extending](../extend/extend-apiml/onboard-overview.md) section.
 
@@ -52,7 +52,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
-- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS return a different IP address from the external address.  
+- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
 - `APIML_ENABLE_SSO`: Define whether single sign-on should be enabled. Use a value of `true` or `false`. Defaults to `false`.
 
 ### Keystore configuration
