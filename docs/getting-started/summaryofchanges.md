@@ -35,7 +35,12 @@ The following features and enhancements were added.
 - Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
 - Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
 - Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
+- z/OSMF Workflows are provided to complete the following Zowe installation and configuration tasks:
 
+  - Install Zowe runtime using z/OSMF Workflows.
+  - Configure z/OS Security Manager.
+  - Configure Zowe certificates.
+  - Create and configure the Zowe instance directory, and run the Zowe started task.
 
 #### API Mediation Layer
 
