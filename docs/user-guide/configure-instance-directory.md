@@ -145,7 +145,7 @@ Learn about some hints and tips that you might find useful when you create and c
 
 When you are configuring Zowe on z/OS, you need to [create certificates](configure-certificates.md), and then create the Zowe instance.
 
-The creation of a Zowe instance is controlled by the [`instance.env` file]((#reviewing-the-instanceenv-file)) in your instance directory `INSTANCE_DIR`. 
+The creation of a Zowe instance is controlled by the [`instance.env` file](#reviewing-the-instanceenv-file) in your instance directory `INSTANCE_DIR`. 
 
 1.	Keystore 
    
