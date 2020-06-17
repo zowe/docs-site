@@ -130,8 +130,9 @@ Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on 
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.10](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
 
 ## Installation requirements and considerations
 
