@@ -30,7 +30,7 @@ In addition to the basic Zuul routing, the Zowe API Gateway supports versioning 
 The Gateway routes a request only to an instance that provides the specified major version of the API. 
 The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs and the prefix `/ws/` applies to WebSockets.
 
-Additional routing can be implemented using a Zuul pre-filter.
+Additional routing can be implemented using a Zuul pre-filter. For more information about how to implement a Zuul filter, see [Router and Filter: Zuul](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
 
 The URL format expected by the API Gateway is:
 
@@ -97,6 +97,6 @@ z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/jobs/.
 where:
 
 * `zosmf` is the service ID
-* `/restjobs/1.0/...` is the rest of the endpoint segment.
+* `/restjobs/1.0/...` is the rest of the endpoint segment
 
 No version is specified in this URL.
