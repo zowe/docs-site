@@ -38,7 +38,7 @@ The URL format expected by the API Gateway is:
 
 **Example:**
 
-The following address shows the original URL of a resource exposed by a service
+The following address shows the original URL of a resource exposed by a service:
 ```
 http://service:10015/enablerv1sampleapp/api/v1/samples
 ```
@@ -47,13 +47,14 @@ The following address shows the API Gateway URL of the resource:
 https://gateway:10010/api/v1/enablerv1sampleapp/samples
 ```
 
-The following diagram presents how basic routing works:
+The following diagram illustrates how basic routing works:
+
 <img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/> 
 
 
 ### Implementation Details
 
-The service instances provide information about routing to the API Gateway via the Eureka metadata.
+Service instances provide information about routing to the API Gateway via Eureka metadata.
 
 **Example:**
 
@@ -70,7 +71,7 @@ The service instances provide information about routing to the API Gateway via t
                     gatewayUrl: "api/v2"
                     serviceUrl: "/helloworld/v2"
 
-In this case, the service has a service ID of `helloworldservice` that exposes the following endpoints:
+In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
 * **UI** - `https://gateway/ui/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/`
 * **API major version 1** - `https://gateway/api/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v1`
@@ -78,20 +79,24 @@ In this case, the service has a service ID of `helloworldservice` that exposes t
 
 where:
 
-* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath` where urlPath is `prefix/serviceId/resourcePath`. 
+* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `prefix/serviceId/resourcePath`. 
 * The service ID is used to find the service host and port. 
-* The serviceUrl is used to prefix the resourcePath at the service host.
+* The `serviceUrl` is used to prefix the `resourcePath` at the service host.
 
 **Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata. 
 
 ## Basic Routing (using only the service ID)
 
-This method of routing is the same as the previous method but does not use the version part of the URL. This is useful for services that handle their versioning themselves with different granularity.
+This method of routing is the same as the previous method, but does not use the version part of the URL. This is useful for services that handle their versioning themselves with different granularity.
 An example of this is z/OSMF.
 
 **Example:**
 
 z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/jobs/...`
 
-In this URL example, `zosmf` is the service ID, and `/restjobs/1.0/...` is the rest of the endpoint segment.
+where:
+
+* `zosmf` is the service ID
+* `/restjobs/1.0/...` is the rest of the endpoint segment.
+
 No version is specified in this URL.
