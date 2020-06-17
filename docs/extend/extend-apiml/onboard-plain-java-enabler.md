@@ -43,6 +43,7 @@ The following steps outline the overall process to onboard a REST service with t
     * [API Catalog information](#api-catalog-information)
     * [Authentication parameters](#authentication-parameters)
     * [API Security](#api-security)
+    * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Eureka Discovery Service](#eureka-discovery-service)
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
@@ -238,10 +239,12 @@ The onboarding configuration parameters are broken down into the following group
 - [API info](#api-info)
 - [API routing information](#api-routing-information)
 - [API catalog information](#api-catalog-information)
-* [Authentication parameters](#authentication-parameters)
+- [Authentication parameters](#authentication-parameters)
 - [API security](#api-security)
+- [SAF Keyring configuration](#saf-keyring-configuration)
 - [Eureka Discovery Service](#eureka-discovery-service)
 - [Custom Metadata](#custom-metadata)
+- [Connection Timeout](#connection-timeout)
 
 ### REST service identification
 
@@ -619,7 +622,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key.
+  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **keyStorePassword**
 
@@ -631,7 +634,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates.
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **trustStorePassword: password**
 
@@ -655,6 +658,24 @@ TLS/SSL configuration consists of the following parameters:
 
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
 * Currently `ciphers` is not used. It is optional and serves as a place holder only.
+
+### SAF Keyring configuration
+
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+
+The following example shows enabler configuration with keyrings: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////my_racf_id/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////my_racf_id/my_key_ring
+    trustStoreType: JCERACFKS
+    trustStorePassword: password
+```
 
 ### Eureka Discovery Service
 
@@ -687,6 +708,18 @@ where:
     When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+
+* **customMetadata.apiml.connectTimeout**
+    
+    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.readTimeout**
+    
+    The value in milliseconds that specifies the maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 ##  Registering your service with API ML
 

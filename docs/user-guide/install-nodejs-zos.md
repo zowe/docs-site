@@ -14,24 +14,30 @@ The following Node.js versions are supported to run Zowe. See the [Hardware and 
 
 The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
-- v6.x starting with v6.14.4
-    - z/OS V2R2 with PTF UI46658 or z/OS V2R3
+**Note: Starting in September 2020, Node.js v6 on z/OS program number 5655-SDK will no longer be supported. You are advised to update to more recent versions of Node.js.** For more information, see [Software withdrawal and support discontinuance](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS919-021).  For a full list of the end of support dates for Node.js versions and other products, see [IBM Support EOS dates for z/OS](https://www.ibm.com/support/pages/eos-out-support-dates-zos).
+
+- v6.x starting with v6.14.4 
+    - z/OS V2R2 with PTF UI46658 (APAR [PI79959](http://www.ibm.com/support/docview.wss?uid=isg1PI79959)), z/OS V2R3, or higher
 
 - v8.x (except v8.16.1)
-   - z/OS V2R2: PTFs UI62788, UI46658, UI62416 (APARs PH10606, PI79959, PH10740)
-   - z/OS V2R3: PTFs UI61308, UI61376, and UI61747 (APARs PH07107, PH08353, and PH09543)
+   - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415 (APARs [PH10606](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10606), [PI79959](https://www-01.ibm.com/support/docview.wss?uid=swg1PI79959), [PH10740](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10740), [PH10741](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10741))
+   - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH0710](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))
+   - z/OS V2R4: PTFs UI64839, UI64940, UI64837, UI64830 (APARs [PH14559](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14559), [PH16038](http://www-01.ibm.com/support/docview.wss?uid=swg1PH16038), [PH15674](http://www-01.ibm.com/support/docview.wss?uid=swg1PH15674), [PH14560](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14560))
 
    **Known issue:** There is a known issue with node.js v8.16.1 and Zowe desktop encoding. See the [GitHub issue](https://github.com/ibmruntimes/node/issues/142) for details.
 
    **Workaround:** Use node.js v8.16.2 or later, which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `pax.Z` file.
 
 - v12.x
+   - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415 (APARs [PH10606](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10606), [PI79959](https://www-01.ibm.com/support/docview.wss?uid=swg1PI79959), [PH10740](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10740), [PH10741](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10741))
+   - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH0710](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))
+   - z/OS V2R4: PTFs UI64839, UI64940, UI64837, UI64830 (APARs [PH14559](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14559), [PH16038](http://www-01.ibm.com/support/docview.wss?uid=swg1PH16038), [PH15674](http://www-01.ibm.com/support/docview.wss?uid=swg1PH15674), [PH14560](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14560))
 
 ## How to obtain IBM SDK for Node.js - z/OS
 
 You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 - Order the SMP/E edition through your IBM representative for production use
-- Use the PAX evaluation edition for non-production deployments
+- Use the PAX edition for non-production deployments
 
 For more information, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
 
@@ -52,7 +58,7 @@ IBM zEnterprise® 196 (z196) or newer
 - z/OS UNIX System Services enabled
 - Integrated Cryptographic Service Facility (ICSF) configured and started
 
-  ICSF is required for Node.js to operate successfully on z/OS.  If you have not configured your z/OS environment for ICSF, see [z/OS Cryptographic Services ICSF Administrators Guide](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.csfb300/toc.htm).  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
+  ICSF is required for Node.js to operate successfully on z/OS.  If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm).  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
 
 ## Installing the PAX edition of Node.js - z/OS
 

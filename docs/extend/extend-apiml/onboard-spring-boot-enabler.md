@@ -24,8 +24,16 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
+    * [Sample API ML Onboarding Configuration](#Sample-API-ML-Onboarding-Configuration)
+    * [SAF Keyring configuration](#SAF-Keyring-configuration)
+    * [Custom Metadata](#Custom-Metadata)
+    * [Api Mediation Layer specific metadata](#Api-Mediation-Layer-specific-metadata)
+    
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-
+    
+    * [Unregistering your service with API ML](#Unregistering-your-service-with-API-ML)
+    * [Basic routing](#Basic-routing)
+    
 5. [Adding API documentation](#adding-api-documentation)
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
@@ -312,17 +320,13 @@ apiml:
             keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
             trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
             trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
- ```
-
-Optional metadata section
-```yaml
+        
+        # Optional metadata section
         customMetadata:
             yourqualifier:
                 key1: value1
                 key2: value2
-```
 
-```yaml
 server:
     scheme: ${apiml.service.scheme}
     hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
@@ -339,7 +343,8 @@ server:
         ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
         keyStoreType: PKCS12
         trustStoreType: PKCS12
-```
+ ```
+
 
 **Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -369,18 +374,48 @@ logging:
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
     in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
 
+### SAF Keyring configuration
+
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring).Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+
+The following example shows enabler configuration with keyrings: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////my_racf_id/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////my_racf_id/my_key_ring
+    trustStoreType: JCERACFKS
+    trustStorePassword: password
+```
+
 ### Custom Metadata
 
    (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
 
 #### Api Mediation Layer specific metadata
 
-* **`customMetadata.apiml.enableUrlEncodedCharacters`**
+* **customMetadata.apiml.enableUrlEncodedCharacters**
       
     When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+
+* **customMetadata.apiml.connectTimeout**
     
+    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.readTimeout**
+    
+    The value in milliseconds that specifies the maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections and to synchronize access to persistent connections. Internally, it works with managed connections which serves as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be establish. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+       
 ## Registering and unregistering your service with API ML
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
