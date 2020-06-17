@@ -124,7 +124,15 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 ### Service level information
 
-Since this is the first release of the SMP/E package, no PTFs have been created.
+The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
+
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://zowe.org#download).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
+
+Zowe release | PTF 1 | PTF 2 
+---|---|---
+[1.10](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
 
 ## Installation requirements and considerations
 
@@ -474,32 +482,34 @@ d: | Location of the downloaded files
 
 Sample FTP upload scenario:
 
-_C:/>__ftp mvsaddr___  
-_Connected to mvsaddr._  
-_200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%._
-_220 Connection will close if idle for more than 5 minutes._  
-_User (mvsaddr:(none)): __tsouid___  
-_331 Send password please_  
-_Password: __tsopw___  
-_230 tsouid is loaded on.  Working directory is "tsouid."._  
-_ftp> __cd @zfs_path@___  
-_250 HFS directory @zfs_path@ is the current working directory_  
-_ftp> __ascii___  
-_200 Representation type is Ascii NonPrint_  
-_ftp> __put c:/AZWE001.readme.txt___  
-_200 Port request OK._  
-_150 Storing data set @zfs_path@/AZWE001.readme.txt_  
-_250 Transfer completed successfully._  
-_ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)_  
-_ftp __binary___  
-_200 Representation type is Image_  
-_ftp> __put c:\AZWE001.pax.Z___  
-_200 Port request OK._  
-_145 Storing data set @zfs_path@/AZWE001.pax.Z_  
-_250 Transfer completed successfully._  
-_ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)_  
-_ftp: __quit___  
-_221 Quit command received.  Goodbye._  
+```
+C:/>ftp mvsaddr  
+Connected to mvsaddr. 
+200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%.
+220 Connection will close if idle for more than 5 minutes.  
+User (mvsaddr:(none)): tsouid  
+331 Send password please  
+Password: tsopw  
+230 tsouid is loaded on.  Working directory is "tsouid.".  
+ftp> cd @zfs_path@ 
+250 HFS directory @zfs_path@ is the current working directory  
+ftp> ascii  
+200 Representation type is Ascii NonPrint  
+ftp> put c:/AZWE001.readme.txt  
+200 Port request OK.  
+150 Storing data set @zfs_path@/AZWE001.readme.txt  
+250 Transfer completed successfully.  
+ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)  
+ftp binary  
+200 Representation type is Image  
+ftp> put c:\AZWE001.pax.Z  
+200 Port request OK.  
+145 Storing data set @zfs_path@/AZWE001.pax.Z  
+250 Transfer completed successfully.  
+ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)  
+ftp: quit  
+221 Quit command received.  Goodbye.  
+```
 
 **If you are unable to connect with ftp and only able to use sftp**,
 the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE001.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE001.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
@@ -718,13 +728,6 @@ Uncomment the `VOL=SER=&...` control statements and refer to the comments at the
 
 ### Create SMP/E environment (Optional)
 
-If you choose to create a new SMP/E environment for this install, you can use one of the following two options. 
-
-- [Create the SMP/E environment using JCL](#create-smp-e-environment-using-jcl)
-- [Create the SMP/E environment with z/OSMF workflow](#create-smp-e-environment-with-z-osmf-workflow)
-
-#### Create SMP/E Environment using JCL
-
 A sample job ZWE1SMPE is provided or you may choose to use your own JCL. If you are using an existing CSI, do not run the sample job ZWE1SMPE. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
 
 **Note:** If you want to use the default of letting your Automatic Class Selection (ACS) routines decide which volume to use, comment out the following line in the sample job ZWE1SMPE.
@@ -732,49 +735,6 @@ A sample job ZWE1SMPE is provided or you may choose to use your own JCL. If you 
 ```// SET CSIVOL=#csivol```
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
-
-
-#### Create SMP/E Environment with z/OSMF Workflow
-
-z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe. Register and execute the Zowe SMP/E workflow to create SMP/E environment in the z/OSMF web interface. Perform the following steps to register and execute the Zowe workflow in the z/OSMF web interface:
-
-1. Log in to the z/OSMF web interface.
-2. Select **Workflows** from the navigation tree. 
-3. Select **Create Workflow** from the **Actions** menu. 
-4. Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
-
-   The workflow is located in the ZWEWRF01 member of the `hlq.ZOWE.AZWE001.F4` data set. 
-
-5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
- 
-   The variable input file is located in ZWEYML01 member of the `hlq.ZOWE.AZWE001` data set. 
-
-   Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
-
-6. Select the system where you want to execute the workflow.
-7. Select **Next**. 
-8. Specify the unique workflow name. 
-9. Select or enter an **Owner Use ID** and select **Assign all steps to owner user ID**. 
-10. Select **Finish**. 
-
-    The workflow is registered in z/OSMF and ready to execute.
-
-11. Select the workflow that you registered from the workflow list.
-12. Execute the steps in order. 
-
-    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).  
-13. Perform the following steps to execute each step individually:
-
-    1. Double-click the title of the step.
-    2. Select the **Perform** tab. 
-    3. Review the step contents and update the input values as required.
-    4. Select **Next**. 
-    5. Repeat the previous two steps to complete all items until the option **Finish** is available. 
-    6. Select **Finish**. 
-
-       After you execute each step, the step is marked as **Complete**. The workflow is executed. 
-       
-After you complete executing all the steps individually, the Zowe SMP/E is created. 
 
 ### Perform SMP/E RECEIVE
 

@@ -16,13 +16,9 @@ You can also find error messages and codes, must-gathers, and information about 
 
 ## Collecting data for Zowe problems
 
-Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md). 
+Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md).
 
-## manifest.json
+## Understanding the Zowe release
 
-To see the release number of Zowe look at the `manifest.json` file.  This is included in the top level directory of where a Zowe convenience build is expanded to, see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md), the top level directory of a Zowe runtime `<ROOT_DIR>`, and for a Zowe instance directory `<INSTANCE_DIR>/workspace`, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md)
-
-
-To see the version of a Zowe release use the Unix grep command in a directory containing a `manifest.json` file.
-
+Knowing which version of Zowe you are running might help you isolate the problem. Also, the Zowe community who helps you will need to know this information. For more information, see [Understanding the Zowe release](troubleshoot-zowe-release.md).
 
