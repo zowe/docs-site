@@ -692,7 +692,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 #### Generate a keystore and truststore for a new service on z/OS
 
-**Note:** This procedure applies to UNIX file keystore/truststore only. For SAF keyring option, we recommend to perform the actions manually using your security system commands.
+**Note:** This procedure applies to UNIX file keystore/truststore only. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
@@ -731,7 +731,7 @@ The `local-ca-filename` is the path to the keystore that is used to sign your ne
 
 #### Add a service with an existing certificate to API ML on z/OS
 
-**Note:** This procedure applies to UNIX file keystore/truststore only. For SAF keyring option, we recommend to perform the actions manually using your security system commands.
+**Note:** This procedure applies to UNIX file keystore/truststore only. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
 The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain. Use one of the following methods:
 
