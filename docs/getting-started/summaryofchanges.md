@@ -39,6 +39,14 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
+- Provided Zowe Authentication and Authorization Service (ZAAS) client
+- Refreshed the static client definitions from the API Catalog UI
+- Switched to sso-auth instead of apiml-auth
+- Added logout endpoint api doc
+- Made jjwt only a test dependency
+- Fixed order of fetching JWT from request
+- Implemented request retrying for service instances
+
 #### ZSS
 
 - ZSS now follows the Zowe Component scheme, as part of the DESKTOP component group [#177](https://github.com/zowe/zss/pull/177)
