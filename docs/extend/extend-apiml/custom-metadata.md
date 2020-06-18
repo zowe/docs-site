@@ -22,4 +22,5 @@
               
 * **customMetadata.apiml.corsEnabled**
     
-    When this parameter is set to `true`, CORS are enabled on the service level for all its routes. 
+    When this parameter is set to `true`, CORS are enabled on the service level for all the service routes. 
+    For more information about the Cross-Origin Resource Sharing (CORS) check [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
