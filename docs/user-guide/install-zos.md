@@ -77,9 +77,7 @@ You can configure the Zowe runtime with one of the following methods depending o
    
    If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation. 
 
-2. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
-
-//TODO @Vitek this should be changed
+2. Configure the Zowe TLS. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
 
    If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory.
 
