@@ -731,17 +731,19 @@ The `local-ca-filename` is the path to the keystore that is used to sign your ne
 
 #### Add a service with an existing certificate to API ML on z/OS
 
-**Note:** This procedure applies to UNIX file keystore/truststore only. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
+**Note:** This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
 The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain. Use one of the following methods:
 
 - Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
 
-- Ensure that your service has its own certificate. If it was signed by intermediate CA all intermediate CA certificates ensure that all certificates are in its keystore.
+- Ensure that your service has its own certificate. If it was signed by intermediate CA, ensure that all intermediate CA certificates are contained in the service's keystore.
 
-  **Note:** If the service does not provide intermediate CA certificates to the APIML then the validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
+  **Note:** If the service does not provide an intermediate CA certificates to the API ML, then validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
-Import a public certificate to the APIML truststore by calling in the directory with API Mediation Layer:
+The following path is an example of importing a public certificate to the API ML truststore by calling in the directory with API Mediation Layer.
+
+**Example:**
 
 ```
 cd $ZOWE_ROOT_DIR
@@ -750,13 +752,13 @@ bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format>
 
 #### Procedure if the service is not trusted
 
-When you try to access a service with the request similar to:
+If your service is not trusted, you may receive a response with the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The following request is an example of when this errror response may occur.
 
 **Example:**
 
 ```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
 
-You will receive a similar response:
+In this example, you will receive a similar response:
 
 ```
     HTTP/1.1 502
@@ -774,6 +776,6 @@ You will receive a similar response:
     }
 ```
 
-The response has the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The message has key `apiml.common.tlsError` and the message number `AML0105` and content that explains details about the message.
+The message has the key `apiml.common.tlsError`, and the message number `AML0105`, and content that explains details about the message.
 
 If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
