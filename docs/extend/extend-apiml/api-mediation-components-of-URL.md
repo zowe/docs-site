@@ -1,37 +1,43 @@
 # Components of URL
 
-This page provides definitions and a diagram to make sure everyone was speaking the same terms. These terms are often overloaded. This page tries to follow the terms used in Swagger documentation.
+This page provides definitions and a diagram to make sure everyone is using the same terms. These terms are often overloaded. This page tries to follow the terms used in Swagger documentation.
 
 ## Definitions
 
-REST APIs have a _baseUrl_ to which the endpoint paths are appended. The base URL is defined by _scheme_, _host_, _port_ and _basePath_.
+REST APIs have a _baseUrl_ to which the endpoint paths are appended. The base URL is defined by _scheme_, _host_, _port_ and _basePath_
 
-The `baseUrl` an absolute URL prefix that is different for different instances of the service or when the service is accessed via the API gateway.
+where:
 
-The endpoint paths are relative paths that follow the documentation of the REST API.
+- **`baseUrl`** is an absolute URL prefix that is different for each instance of the service, or when the service is accessed via the API Gateway.
 
-`scheme` is the transfer protocols used by the API. APIML supports the `http`, `https`, and WebSocket schemes - `ws` and `wss`.
+  The endpoint paths are relative paths that follow the documentation of the REST API.
 
-`host` is the domain name or IP address (IPv4) of the host that serves the API. It may include the port number if different from the scheme's default port (80 for HTTP and 443 for HTTPS). Note that this must be the host only, without a scheme or sub-paths.
+- **`scheme`** is the transfer protocols used by the API. APIML supports the `http`, `https`, and WebSocket schemes - `ws` and `wss`.
 
-`basePath` is the URL prefix for all API paths, relative to the host root. It must start with a leading slash `/`. If basePath is not specified then all endpoint paths start at the host root.
+- **`host`** is the domain name or IP address (IPv4) of the host that serves the API. It may include the port number if it is different from the scheme's default port (80 for HTTP and 443 for HTTPS). Note that this must be the host only, without a scheme or sub-paths.
 
-When a service is accessed without the API gateway then the format the basePath depends on the service. It can be empty or have several parts (e.g. `/fileMasterPlus/api/v1`).
+- **`basePath`** is the URL prefix for all API paths, relative to the host root. It must start with a leading slash `/`. If basePath is not specified then all endpoint paths start at the host root.
 
-When a service is accessed via the API gateway then the format of the URL is standardized:
+When a service is accessed without the API Gateway then the format the `basePath` depends on the service. It can be empty or have several parts (e.g. `/fileMasterPlus/api/v1`).
 
-1. Using service type (`t`), major version (`v`), and `serviceId`
-2. Using service type (`t`) and `serviceId`
+When a service is accessed via the API Gateway then the format of the URL is standardized in one of the following formats:
 
-`t` is the type of the service. It can be `api`, `ui`, or `ws`
+- Using service type (`t`), major version (`v`), and `serviceId`
+- Using service type (`t`) and `serviceId`
 
-`v` is the major version the REST API, for example: `v1`, `v2`. It is optional since some existing services can have versioning in the endpoint path
+where:
 
-`serviceId` is a unique name of the service that is set during the installation of the service
+- **`t`** is the type of the service. It can be `api`, `ui`, or `ws`
 
-The main point is that by changing the base URL you can access different services with the same API because the structure after the base URL is the same.
+- **`v`** is the major version the REST API.
 
-The base URL is the parameter the can be set in Zowe CLI in order to access the service. The endpoint path is prepared by the Zowe CLI plugin but the base URL needs to be provided by the user based on installation of the REST API service.
+  **Example:** `v1`, `v2`. It is optional since some existing services can have versioning in the endpoint path.
+
+- **`serviceId`** is a unique name of the service that is set during the installation of the service.
+
+The fundimental principle is that by changing the base URL you can access different services with the same API because the structure after the base URL is the same.
+
+The base URL is the parameter the can be set in Zowe CLI in order to access the service. The endpoint path is prepared by the Zowe CLI plug-in but the base URL needs to be provided by the user based on installation of the REST API service.
 
 ## Examples
 
