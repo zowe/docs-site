@@ -236,7 +236,7 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.service.corsEnabled**
     
-    When this parameter is set to `true`, the Gateway allows CORS for the Gateway routes `api/v1/gateway/**`. 
+    When this parameter is set to `true`, CORS is enabled on the service level for all the service routes. 
     The same parameter can be also set on the service level, by providing the parameter as a `customMetadata` as shown [here](custom-metadata.md).
       
 #### Routing parameters
