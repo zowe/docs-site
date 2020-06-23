@@ -22,7 +22,7 @@
 
 * **customMetadata.apiml.okToRetryOnAllOperations**
     
-    Specifies whether all operations can be retried for this service. Default value is `false`. In this case, only GET requests will be retried, if they return response code `503`. Setting it `true`, will enable retry requests for all methods, which return response code `503`. Enabling retry can have an impact on the server’s resources, due to the buffering of the request body.
+    Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
               
 * **customMetadata.apiml.corsEnabled**
     
