@@ -12,22 +12,22 @@ By default, the API Mediation Layer rejects encoded slashes in the URL path of t
 **Follow these steps:**
     
 1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=false` parameter and set the value to `true`:
+2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=false` parameter and set the value to `true`.
 3. Restart Zowe&trade. 
     
 Requests with encoded slashes will now be passed to onboarded services. 
        
 ## apiml.service.corsEnabled
 
-By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for Gateway is necessary  to enable CORS at the service level. Use the following procedure to enable CORS.
+By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
     
 **Follow these steps:**
      
 1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`:
+2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`.
 3. Restart Zowe&trade.
   
-Requests throughthe Gateway will now contain CORS header. 
+Requests through the Gateway will now contain CORS header. 
 
 ## Retry policy
 
