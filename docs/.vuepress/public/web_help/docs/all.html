@@ -37,7 +37,12 @@
 </li>
 </ul>
 <div class="page-break print-only"><h4>Table of Contents</h4>
-<ul><li><a href="#zowe_cics">cics</a><ul><li><a href="#zowe_cics_add-to-list">add-to-list | atl</a><ul><li><a href="#zowe_cics_add-to-list_csdGroup">csdGroup | csdg</a></li>
+<ul><li><a href="#zowe_auth">auth</a><ul><li><a href="#zowe_auth_login">login | li</a><ul><li><a href="#zowe_auth_login_apiml">apiml</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_auth_logout">logout | lo</a><ul><li><a href="#zowe_auth_logout_apiml">apiml</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#zowe_cics">cics</a><ul><li><a href="#zowe_cics_add-to-list">add-to-list | atl</a><ul><li><a href="#zowe_cics_add-to-list_csdGroup">csdGroup | csdg</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_cics_define">define | def</a><ul><li><a href="#zowe_cics_define_program">program | prog</a></li>
 </ul><ul><li><a href="#zowe_cics_define_transaction">transaction | tran</a></li>
@@ -107,7 +112,8 @@
 </ul><ul><li><a href="#zowe_plugins_update">update</a></li>
 </ul><ul><li><a href="#zowe_plugins_validate">validate</a></li>
 </ul></li>
-<li><a href="#zowe_profiles">profiles</a><ul><li><a href="#zowe_profiles_create">create | cre</a><ul><li><a href="#zowe_profiles_create_cics-profile">cics-profile | cics</a></li>
+<li><a href="#zowe_profiles">profiles</a><ul><li><a href="#zowe_profiles_create">create | cre</a><ul><li><a href="#zowe_profiles_create_base-profile">base-profile | base</a></li>
+</ul><ul><li><a href="#zowe_profiles_create_cics-profile">cics-profile | cics</a></li>
 </ul><ul><li><a href="#zowe_profiles_create_db2-profile">db2-profile | db2</a></li>
 </ul><ul><li><a href="#zowe_profiles_create_ims-profile">ims-profile | ims</a></li>
 </ul><ul><li><a href="#zowe_profiles_create_mq-profile">mq-profile | mq</a></li>
@@ -116,7 +122,8 @@
 </ul><ul><li><a href="#zowe_profiles_create_zftp-profile">zftp-profile | zftp</a></li>
 </ul><ul><li><a href="#zowe_profiles_create_zosmf-profile">zosmf-profile | zosmf</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_profiles_delete">delete | rm</a><ul><li><a href="#zowe_profiles_delete_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete">delete | rm</a><ul><li><a href="#zowe_profiles_delete_base-profile">base-profile | base</a></li>
+</ul><ul><li><a href="#zowe_profiles_delete_cics-profile">cics-profile | cics</a></li>
 </ul><ul><li><a href="#zowe_profiles_delete_db2-profile">db2-profile | db2</a></li>
 </ul><ul><li><a href="#zowe_profiles_delete_ims-profile">ims-profile | ims</a></li>
 </ul><ul><li><a href="#zowe_profiles_delete_mq-profile">mq-profile | mq</a></li>
@@ -125,7 +132,8 @@
 </ul><ul><li><a href="#zowe_profiles_delete_zftp-profile">zftp-profile | zftp</a></li>
 </ul><ul><li><a href="#zowe_profiles_delete_zosmf-profile">zosmf-profile | zosmf</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_profiles_list">list | ls</a><ul><li><a href="#zowe_profiles_list_cics-profiles">cics-profiles | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_list">list | ls</a><ul><li><a href="#zowe_profiles_list_base-profiles">base-profiles | base</a></li>
+</ul><ul><li><a href="#zowe_profiles_list_cics-profiles">cics-profiles | cics</a></li>
 </ul><ul><li><a href="#zowe_profiles_list_db2-profiles">db2-profiles | db2</a></li>
 </ul><ul><li><a href="#zowe_profiles_list_ims-profiles">ims-profiles | ims</a></li>
 </ul><ul><li><a href="#zowe_profiles_list_mq-profiles">mq-profiles | mq</a></li>
@@ -134,7 +142,8 @@
 </ul><ul><li><a href="#zowe_profiles_list_zftp-profiles">zftp-profiles | zftp</a></li>
 </ul><ul><li><a href="#zowe_profiles_list_zosmf-profiles">zosmf-profiles | zosmf</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_profiles_set-default">set-default | set</a><ul><li><a href="#zowe_profiles_set-default_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default">set-default | set</a><ul><li><a href="#zowe_profiles_set-default_base-profile">base-profile | base</a></li>
+</ul><ul><li><a href="#zowe_profiles_set-default_cics-profile">cics-profile | cics</a></li>
 </ul><ul><li><a href="#zowe_profiles_set-default_db2-profile">db2-profile | db2</a></li>
 </ul><ul><li><a href="#zowe_profiles_set-default_ims-profile">ims-profile | ims</a></li>
 </ul><ul><li><a href="#zowe_profiles_set-default_mq-profile">mq-profile | mq</a></li>
@@ -143,7 +152,8 @@
 </ul><ul><li><a href="#zowe_profiles_set-default_zftp-profile">zftp-profile | zftp</a></li>
 </ul><ul><li><a href="#zowe_profiles_set-default_zosmf-profile">zosmf-profile | zosmf</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_profiles_update">update | upd</a><ul><li><a href="#zowe_profiles_update_cics-profile">cics-profile | cics</a></li>
+</ul><ul><li><a href="#zowe_profiles_update">update | upd</a><ul><li><a href="#zowe_profiles_update_base-profile">base-profile | base</a></li>
+</ul><ul><li><a href="#zowe_profiles_update_cics-profile">cics-profile | cics</a></li>
 </ul><ul><li><a href="#zowe_profiles_update_db2-profile">db2-profile | db2</a></li>
 </ul><ul><li><a href="#zowe_profiles_update_ims-profile">ims-profile | ims</a></li>
 </ul><ul><li><a href="#zowe_profiles_update_mq-profile">mq-profile | mq</a></li>
@@ -311,6 +321,157 @@
 </ul></li>
 </ul></div>
 <hr class="no-print">
+<a name="zowe_auth"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_auth">auth</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Connect to Zowe API Mediation Layer authentication service and obtain a token,
+or disconnect from the authentication service and revoke the token.</p>
+<p>The token provides authentication to services that support the API ML SSO
+(Single Sign-On) capability. When you log in, the token is stored in your
+default base profile until it expires. Base profiles store connection
+information shared by multiple services (e.g., z/OSMF), and are used if you do
+not supply connection information in a service profile. To take advantage of
+the API ML SSO capability, you should omit username and password in service
+profiles so that the token in the base profile is used.</p>
+<a name="zowe_auth_login"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_auth">auth</a> › <a href="#zowe_auth_login">login</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Log in to an authentication service.</p>
+<a class="cmd-anchor" name="zowe_auth_login_apiml"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_auth">auth</a> › <a href="#zowe_auth_login">login</a> › <a href="#zowe_auth_login_apiml">apiml</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Log in to Zowe API Mediation Layer authentication service and obtain or update a
+token.</p>
+<p>The token provides authentication to services that support the API ML SSO
+(Single Sign-On) capability. When you log in, the token is stored in your
+default base profile until it expires. Base profiles store connection
+information shared by multiple services (e.g., z/OSMF), and are used if you do
+not supply connection information in a service profile. To take advantage of
+the API ML SSO capability, you should omit username and password in service
+profiles so that the token in the base profile is used.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  auth login apiml [options]</p>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--show-token</code>  | <code>--st</code> <em>(boolean)</em></p>
+<ul>
+<li>Show the token when login is successful. If specified, does not save the token
+to a profile.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Log in to an API ML instance to obtain or update the token
+stored in your base profile:</p>
+<ul>
+<li><code>zowe  auth login apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth login apiml">Copy</button></li>
+</ul>
+</li>
+<li><p>Log in to an API ML instance to obtain a token without
+storing it in a profile:</p>
+<ul>
+<li><code>zowe  auth login apiml --show-token</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth login apiml --show-token">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a name="zowe_auth_logout"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_auth">auth</a> › <a href="#zowe_auth_logout">logout</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Log out of an authentication service.</p>
+<a class="cmd-anchor" name="zowe_auth_logout_apiml"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_auth">auth</a> › <a href="#zowe_auth_logout">logout</a> › <a href="#zowe_auth_logout_apiml">apiml</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Log out of the Zowe API Mediation Layer authentication service and revoke the
+token so it can no longer authenticate. Also remove the token from the default
+base profile, if it is stored on disk.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  auth logout apiml [options]</p>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Log out of an API ML instance to revoke the token that was
+in use and remove it from your base profile:</p>
+<ul>
+<li><code>zowe  auth logout apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth logout apiml">Copy</button></li>
+</ul>
+</li>
+<li><p>Log out of an API ML instance to revoke a token that was not
+stored in a profile:</p>
+<ul>
+<li><code>zowe  auth logout apiml --token-value &amp;lt;token&amp;gt;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth logout apiml --token-value &amp;lt;token&amp;gt;">Copy</button></li>
+</ul>
+</li>
+</ul>
+<hr class="no-print">
 <a name="zowe_cics"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Interact with IBM CICS programs and transactions.</p>
 <a name="zowe_cics_add-to-list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_cics">cics</a> › <a href="#zowe_cics_add-to-list">add-to-list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
@@ -393,6 +554,27 @@ List name is eight characters</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -484,6 +666,27 @@ define. The maximum length of the group name is eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -579,6 +782,27 @@ define. The maximum length of the group name is eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -714,6 +938,27 @@ certificate in SSL handshakes</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -863,6 +1108,27 @@ length of the transaction name is 32 characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -996,6 +1262,27 @@ define. The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1118,6 +1405,27 @@ schema in the web service description should be performed at run time.</p>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1210,6 +1518,27 @@ The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1299,6 +1628,27 @@ delete. The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1381,6 +1731,27 @@ The maximum length of the group name is eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -1467,6 +1838,27 @@ delete. The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1545,6 +1937,27 @@ eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -1632,6 +2045,27 @@ eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1715,6 +2149,27 @@ name is four characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -1791,6 +2246,27 @@ eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -1871,6 +2347,27 @@ eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -1966,6 +2463,27 @@ CMCI.</p>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2140,6 +2658,27 @@ install. The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -2229,6 +2768,27 @@ install. The maximum length of the group name is eight characters.</li>
 <li>The name of a (cics) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -2311,6 +2871,27 @@ The maximum length of the group name is eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2396,6 +2977,27 @@ eight characters.</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2488,6 +3090,27 @@ CSD List name is eight characters</li>
 <li><p><code>--cics-profile</code>  | <code>--cics-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2662,6 +3285,34 @@ provide values.</p>
 <li>The name of a (db2) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -2737,6 +3388,34 @@ line or from a file.</p>
 <li><p><code>--db2-profile</code>  | <code>--db2-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2818,6 +3497,34 @@ line or from a file.</p>
 <li><p><code>--db2-profile</code>  | <code>--db2-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -2928,6 +3635,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -3083,6 +3818,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -3276,6 +4039,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -3437,6 +4228,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -3592,6 +4411,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -3741,6 +4588,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -3894,6 +4769,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -4063,6 +4966,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -4211,6 +5142,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -4428,6 +5387,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -4813,6 +5800,34 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -4949,6 +5964,27 @@ number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.</li>
 <li><p><code>--mq-profile</code>  | <code>--mq-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (mq) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -5178,6 +6214,105 @@ Validation issues identified for this plug-in are displayed.</p>
 <p>Create and manage configuration profiles</p>
 <a name="zowe_profiles_create"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create new configuration profiles.</p>
+<a class="cmd-anchor" name="zowe_profiles_create_base-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_base-profile">base-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Base profile that stores values shared by multiple service profiles</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  profiles create base-profile &lt;profileName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>profileName</code>         <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new base profile. You can load this profile by using
+the name on commands that support the &quot;--base-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the base profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Create a profile called &#39;base1&#39; to connect to host
+example.com and port 443:</p>
+<ul>
+<li><code>zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a profile called &#39;base2&#39; to connect to host
+example.com (default port - 443) and allow self-signed certificates:</p>
+<ul>
+<li><code>zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a profile called &#39;base3&#39; to connect to host
+example.com and port 1443, not specifying a username or password so they are not
+stored on disk; these will need to be specified on every command:</p>
+<ul>
+<li><code>zowe  profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a zosmf profile called &#39;base4&#39; to connect to default
+port 443 and allow self-signed certificates, not specifying a username,
+password, or host so they are not stored on disk; these will need to be
+specified on every command:</p>
+<ul>
+<li><code>zowe  profiles create base-profile base4 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base4 --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_profiles_create_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_cics-profile">cics-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
@@ -5234,6 +6369,11 @@ the name on commands that support the &quot;--cics-profile&quot; option.</li>
 <li><p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the cics profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
 </ul>
 </li>
 </ul>
@@ -5314,6 +6454,11 @@ the name on commands that support the &quot;--db2-profile&quot; option.</li>
 <li>Overwrite the db2 profile when a profile of the same name exists.</li>
 </ul>
 </li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
 </ul>
 <a class="cmd-anchor" name="zowe_profiles_create_ims-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_ims-profile">ims-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>An ims profile is used to issue commands in the ims command group that interact
@@ -5383,6 +6528,11 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the ims profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
 </ul>
 </li>
 </ul>
@@ -5460,6 +6610,11 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <li>Overwrite the mq profile when a profile of the same name exists.</li>
 </ul>
 </li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -5529,6 +6684,11 @@ in the server for authentication</li>
 <li><p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the ssh profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
 </ul>
 </li>
 </ul>
@@ -5633,6 +6793,11 @@ UTF-8 to EBCDIC.</p>
 <li>Overwrite the tso profile when a profile of the same name exists.</li>
 </ul>
 </li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -5719,6 +6884,11 @@ established.</p>
 <li>Overwrite the zftp profile when a profile of the same name exists.</li>
 </ul>
 </li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
 </ul>
 <h4 id="tls--secure-connection-options">TLS / Secure Connection options</h4>
 <ul>
@@ -5798,9 +6968,20 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>The encoding for download and upload of z/OS data set and USS files. The
+default encoding if not specified is 1047.</li>
+</ul>
+</li>
 <li><p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the zosmf profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li><p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
 </ul>
 </li>
 </ul>
@@ -5842,6 +7023,39 @@ at the host zos124 (default port - 443) and allow self-signed certificates:</p>
 </ul>
 <a name="zowe_profiles_delete"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete existing profiles.</p>
+<a class="cmd-anchor" name="zowe_profiles_delete_base-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_base-profile">base-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Delete a base profile. You must specify a profile name to be deleted. To find
+a list of available profiles for deletion, issue the profiles list command. By
+default, you will be prompted to confirm the profile removal.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  profiles delete base-profile &lt;profileName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>profileName</code>         <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the base profile to be deleted. You can also load this
+profile by using the name on commands that support the &quot;--base-profile&quot;
+option.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--force</code>  <em>(boolean)</em></p>
+<ul>
+<li>Force deletion of profile, and dependent profiles if specified. No prompt will
+be displayed before deletion occurs.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Delete a base profile named profilename:</p>
+<ul>
+<li><code>zowe  profiles delete base-profile profilename</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles delete base-profile profilename">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_profiles_delete_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_delete">delete</a> › <a href="#zowe_profiles_delete_cics-profile">cics-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Delete a cics profile. You must specify a profile name to be deleted. To find
 a list of available profiles for deletion, issue the profiles list command. By
@@ -6108,6 +7322,32 @@ be displayed before deletion occurs.</li>
 </ul>
 <a name="zowe_profiles_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List profiles of the type {{type}}</p>
+<a class="cmd-anchor" name="zowe_profiles_list_base-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_base-profiles">base-profiles</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Base profile that stores values shared by multiple service profiles</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  profiles list base-profiles [options]</p>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--show-contents</code>  | <code>--sc</code> <em>(boolean)</em></p>
+<ul>
+<li>List base profiles and their contents. All profile details will be printed as
+part of command output.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>List profiles of type base:</p>
+<ul>
+<li><code>zowe  profiles list base-profiles</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles list base-profiles">Copy</button></li>
+</ul>
+</li>
+<li><p>List profiles of type base and display their contents:</p>
+<ul>
+<li><code>zowe  profiles list base-profiles --sc</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles list base-profiles --sc">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_profiles_list_cics-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_cics-profiles">cics-profiles</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
@@ -6326,6 +7566,34 @@ part of command output.</li>
 </ul>
 <a name="zowe_profiles_set-default"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Set which profiles are loaded by default.</p>
+<a class="cmd-anchor" name="zowe_profiles_set-default_base-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_base-profile">base-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>The base set default-profiles command allows you to set the default profiles
+for this command group. When a base command is issued and no profile override
+options are specified, the default profiles for the command group are
+automatically loaded for the command based on the commands profile
+requirements.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  profiles set-default base-profile &lt;profileName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>profileName</code>         <em>(string)</em></p>
+<ul>
+<li>Specify a
+profile for default usage within the base group. When you issue commands within
+the base group without a profile specified as part of the command, the default
+will be loaded instead.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Set the default profile for type base to the profile named
+&#39;profilename&#39;:</p>
+<ul>
+<li><code>zowe  profiles set-default base-profile profilename</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles set-default base-profile profilename">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_profiles_set-default_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_set-default">set-default</a> › <a href="#zowe_profiles_set-default_cics-profile">cics-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>The cics set default-profiles command allows you to set the default profiles
 for this command group. When a cics command is issued and no profile override
@@ -6553,6 +7821,69 @@ default will be loaded instead.</li>
 <p>Update a {{type}} profile. You can update any property present within the
 profile configuration. The updated profile will be printed so that you can
 review the result of the updates.</p>
+<a class="cmd-anchor" name="zowe_profiles_update_base-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_base-profile">base-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Base profile that stores values shared by multiple service profiles</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  profiles update base-profile &lt;profileName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>profileName</code>         <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new base profile. You can load this profile by using
+the name on commands that support the &quot;--base-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Reject self-signed certificates.</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Update a base profile named &#39;base1&#39; with a new username and
+password:</p>
+<ul>
+<li><code>zowe  profiles update base-profile base1 --user newuser --password newp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles update base-profile base1 --user newuser --password newp4ss">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_profiles_update_cics-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_update">update</a> › <a href="#zowe_profiles_update_cics-profile">cics-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>A cics profile is required to issue commands in the cics command group that
 interact with CICS regions. The cics profile contains your host, port, user
@@ -7007,6 +8338,15 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>The encoding for download and upload of z/OS data set and USS files. The
+default encoding if not specified is 1047.</li>
+</ul>
+</li>
+</ul>
 <h4 id="examples">Examples</h4>
 <ul>
 <li><p>Update a zosmf profile named &#39;zos123&#39; with a new username
@@ -7081,6 +8421,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -7151,6 +8512,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -7235,6 +8617,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -7307,6 +8710,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -7427,6 +8851,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -7501,6 +8946,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -7580,6 +9046,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -7708,6 +9195,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -7821,6 +9329,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -7983,6 +9512,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -8066,6 +9616,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -8242,6 +9813,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -8394,6 +9986,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -8549,6 +10162,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -8702,6 +10336,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -8848,6 +10503,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -8988,6 +10664,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9077,6 +10774,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9156,6 +10874,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -9296,6 +11035,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9394,6 +11154,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -9495,6 +11276,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -9599,6 +11401,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9685,6 +11508,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9723,6 +11567,12 @@ translation. No delimiters are added between records.</li>
 directory for you when it does not already exist. By default, the command
 creates a folder structure based on the data set qualifiers. For example, the
 data set ibmuser.new.cntl&#39;s members are downloaded to ibmuser/new/cntl).</li>
+</ul>
+</li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion
+is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li><p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
@@ -9808,6 +11658,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9843,6 +11714,12 @@ mode to the directory &quot;jcl/&quot;:</p>
 <li>Download the file content in binary mode, which means that no data conversion is
 performed. The data transfer process returns each line as-is, without
 translation. No delimiters are added between records.</li>
+</ul>
+</li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion
+is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li><p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
@@ -9920,6 +11797,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -9949,6 +11847,12 @@ to the local file &quot;main.obj&quot;:</p>
 <li>Download the file content in binary mode, which means that no data conversion is
 performed. The data transfer process returns each line as-is, without
 translation. No delimiters are added between records.</li>
+</ul>
+</li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion
+is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li><p><code>--file</code>  | <code>-f</code> <em>(string)</em></p>
@@ -10002,6 +11906,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -10085,6 +12010,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -10156,6 +12102,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -10253,6 +12220,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -10346,6 +12334,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -10448,6 +12457,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -10570,6 +12600,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -10697,6 +12748,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -10793,6 +12865,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -10876,6 +12969,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -10948,6 +13062,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11028,6 +13163,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -11097,6 +13253,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11197,6 +13374,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11358,6 +13556,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -11419,6 +13638,12 @@ encodings in the local file my_global_attributes::</p>
 <li>Data content in binary mode, which means that no data conversion is performed.
 The data transfer process returns each record as-is, without translation. No
 delimiters are added between records.</li>
+</ul>
+</li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Data content in encoding mode, which means that data conversion is performed
+according to the encoding specified.</li>
 </ul>
 </li>
 <li><p><code>--migrated-recall</code>  | <code>--mr</code> <em>(string)</em></p>
@@ -11484,6 +13709,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -11532,6 +13778,12 @@ The data transfer process returns each record as-is, without translation. No
 delimiters are added between records.</li>
 </ul>
 </li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Data content in encoding mode, which means that data conversion is performed
+according to the encoding specified.</li>
+</ul>
+</li>
 </ul>
 <h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
 <ul>
@@ -11577,6 +13829,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11671,6 +13944,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11793,6 +14087,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -11882,6 +14197,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -11984,6 +14320,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12091,6 +14448,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12204,6 +14582,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -12306,6 +14705,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12412,6 +14832,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12538,6 +14979,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12667,6 +15129,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -12803,6 +15286,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -12929,6 +15433,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -13064,6 +15589,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -13159,6 +15705,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -13264,6 +15831,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -13356,6 +15944,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -13490,6 +16099,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -13611,6 +16241,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -13758,6 +16409,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -13864,6 +16536,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -13959,6 +16652,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -14057,6 +16771,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14148,6 +16883,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -14247,6 +17003,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14343,6 +17120,27 @@ you are connecting securely</li>
 <li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -14481,6 +17279,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14577,6 +17396,27 @@ you are connecting securely</li>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14661,6 +17501,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14732,6 +17593,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -14824,6 +17706,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -14907,6 +17810,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -15025,6 +17949,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -15174,6 +18119,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -15315,6 +18281,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -15443,6 +18430,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -15540,6 +18548,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -15659,6 +18688,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -15802,6 +18852,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (tso) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -15872,6 +18943,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -15952,6 +19044,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -16082,6 +19195,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (tso) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -16161,6 +19295,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -16247,6 +19402,34 @@ in the server for authentication</li>
 <li>The name of a (ssh) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -16322,6 +19505,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -16496,6 +19700,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -16699,6 +19924,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -16863,6 +20109,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="response-format-options">Response Format Options</h4>
 <ul>
@@ -16998,6 +20265,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -17081,6 +20369,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -17190,6 +20499,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -17292,6 +20622,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -17398,6 +20749,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -17508,6 +20880,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -17606,6 +20999,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
@@ -17730,6 +21144,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -17818,6 +21253,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -17890,6 +21346,27 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li><p>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</p>
+<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>
