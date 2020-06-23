@@ -19,6 +19,10 @@
 * **customMetadata.apiml.connectionManagerTimeout**
     
     HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.okToRetryOnAllOperations**
+    
+    Specifies whether all operations can be retried for this service. Default value is `false`. In this case, only GET requests will be retried, if they return response code `503`. Setting it `true`, will enable retry requests for all methods, which return response code `503`. Enabling retry can have an impact on the server’s resources, due to the buffering of the request body.
               
 * **customMetadata.apiml.corsEnabled**
     
