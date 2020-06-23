@@ -26,7 +26,23 @@ By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/
 1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
 2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`:
 3. Restart Zowe&trade.
-    
+  
 Requests throughthe Gateway will now contain CORS header. 
 
+## Retry policy
+
+In default configuration, retry for for all request is disabled, with one exception. Server will retry `GET` requests, that finished with status code `503`. You can modify this behavior with these parameters:
+* **ribbon.retryableStatusCodes**
+
+    Provide a list of status codes, for which the server should retry the request. Example: `-Dribbon.retryableStatusCodes="503, 404"` 
+* **ribbon.OkToRetryOnAllOperations**
+
+     Specifies whether all operations can be retried for this service. Default value is `false`. In this case, only GET requests will be retried, if they return any response code that is listed in `ribbon.retryableStatusCodes`. Setting it `true`, will enable retry requests for all methods, which return response code listed in `ribbon.retryableStatusCodes`. Enabling retry can have an impact on the server’s resources, due to the buffering of the request body.
+
+* **ribbon.MaxAutoRetries**
     
+    The number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. Default value is `0`.
+    
+* **ribbon.MaxAutoRetriesNextServer**
+    
+    The number of servers to try excluding the first one. Default value is `5`. 
