@@ -43,7 +43,7 @@ The following features and enhancements were added.
 
 The following features and enhancements were added to the **core Zowe CLI**:
 
-- Add ability to log into and out of the APIML, getting and using a token
+- Added the ability to log into and out of the APIML, getting and using a token
 - Add `--base-profile` option to all commands that use profiles, allowing them to make use of base profiles containing shared values.
 - Upgrade Zowe commands to prompt for any of the following values if the option is missing: host, port, user, and password.
 - Add encoding / code page support for data set upload and download operations in library and CLI.
