@@ -77,7 +77,7 @@ You can configure the Zowe runtime with one of the following methods depending o
    
    If Zowe has already been launched on the z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation. 
 
-2. Configure the Zowe certificates keystore and truststore directory. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
+2. Configure the Zowe TLS. For instructions, see [Configuring Zowe certificates](configure-certificates.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).  
 
    If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory.
 
@@ -98,11 +98,8 @@ You can configure the Zowe runtime with one of the following methods depending o
    Next, you will install and configure the Zowe started tasks. Zowe has two high-level started tasks: `ZWESVSTC` that launches the Zowe desktop and API mediation layer address spaces, and `ZWESISTC` that is a cross memory server that runs all of the APF-authorized code.  The JCLs for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`. 
    
    **Note** 
-   By default, the API Mediation Layer rejects encoded slashes in the URL path of the request. Not allowing encoded slashes is the recommended configuration. If you are onboarding applications which expose endpoints expecting encoded slashes, you need to configure the API Mediation Layer to allow this pattern by performing the following steps:
-   1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-   2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=false` parameter and set the value to `true`:
-   3. Restart Zowe&trade;. Requests with encoded slashes will now be passed to onboarded services. 
-
+   
+   See [Zowe runtime configuration parameters](./api-mediation/api-gateway-configuration.md) for more information about the Gateway parameters that can be set during the Zowe runtime configuration.
 
 5. Configure and start the `ZWESVSTC` started task. For instructions, see [Installing the Zowe started task (ZWESVSTC)](configure-zowe-server.md). 
 

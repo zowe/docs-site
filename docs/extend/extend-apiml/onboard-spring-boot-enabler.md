@@ -394,28 +394,9 @@ ssl:
 
 ### Custom Metadata
 
-   (Optional) Additional metadata can be added to the instance information that is registered in the Discovery Service through the `customMetadata` section. This information is propagated from the Discovery Service to onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. It is recommended to define your own qualifier and group the metadata you wish to publish under this qualifier. The following parameter is an example of custom metadata.
+Custom metadata are described [here](custom-metadata.md).
 
-#### Api Mediation Layer specific metadata
 
-* **customMetadata.apiml.enableUrlEncodedCharacters**
-      
-    When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
-          
-    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
-
-* **customMetadata.apiml.connectTimeout**
-    
-    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
-* **customMetadata.apiml.readTimeout**
-    
-    The value in milliseconds that specifies the maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
-* **customMetadata.apiml.connectionManagerTimeout**
-    
-    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections and to synchronize access to persistent connections. Internally, it works with managed connections which serves as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be establish. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
-       
 ## Registering and unregistering your service with API ML
 
 Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
@@ -427,28 +408,8 @@ To register your REST service with API ML using a Spring Boot enabler, annotate 
 Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
 
 ### Basic routing
-Basic routing is based on the service ID and API version that are used to identify the service. The specific instance is selected by the API Gateway. The response needs to be the same for all instances. This is the type of routing that is expected by Eureka and Zuul.
 
-Gateway URL format:
-```
-https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
-```
-**Example:**
-
-The original URL of a resource exposed by a service
-```
-http://service:10015/enablerv1sampleapp/api/v1/samples
-```
-API Gateway URL of the resource
-```
-https://gateway:10010/api/v1/enablerv1sampleapp/samples
-```
-
-**Note:** The URL identifies the resource. It does not uniquely identify the instance of the same service when multiple instances are provided by the same service (i.e. service is running in HA mode). Services of the same product that provide different resources (e.g. SYSVIEW on one system and SYSVIEW in a different sysplex) cannot have the same service ID. 
-
-In addition to the basic Zuul routing, the Zowe API Gateway adds support of versioning where a major version can be specified. The Gateway routes request only to an instance that provides the specified major version of the API. 
-
-The /api/ prefix is used for REST APIs. The /ui/ prefix is used for web UIs, and /ws/ prefix for WebSockets.
+See [API ML Basic Routing](api-mediation-routing.md) for more information about basic routing in the API ML.
 
 ## Adding API documentation
 

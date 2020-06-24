@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.12.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.13.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.13.0 LTS (June 2020)](#version-1-13-0-lts-june-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
@@ -22,6 +23,42 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+## Version 1.13.0 LTS (June 2020)
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added.
+
+#### Zowe installation
+
+#### API Mediation Layer
+
+#### ZSS
+
+#### Zowe App Server
+
+#### Zowe CLI
+
+#### Zowe Explorer
+
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### Zowe installation
+
+#### API Mediation Layer
+
+#### ZSS
+
+#### Zowe App Server
+
+#### Zowe CLI
+
+
 ## Version 1.12.0 LTS (June 2020)
 
 ### New features and enhancements
@@ -35,7 +72,12 @@ The following features and enhancements were added.
 - Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
 - Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
 - Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
+- Introduced z/OSMF Workflows that accomplish the following Zowe installation and configuration tasks:
 
+  - Install Zowe runtime using z/OSMF Workflows.
+  - Configure z/OS Security Manager.
+  - Configure Zowe certificates.
+  - Create and configure the Zowe instance directory, and run the Zowe started task.
 
 #### API Mediation Layer
 
