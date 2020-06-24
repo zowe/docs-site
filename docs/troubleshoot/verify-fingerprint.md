@@ -4,11 +4,11 @@ The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zow
 
 To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a verify tool which comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. 
 
-If you have Zowe version 1.12 or higher the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
+If you have Zowe version 1.13 or later, the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
 
 If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10 and 1.11.   
 
-## Step 1: Obtain the verify tool (Prior to v1.12)
+## Step 1: Obtain the verify tool (Prior to v1.13)
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable local directory, for example, `/u/username/hash`.
@@ -39,7 +39,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.12
 
 2. Run the `zowe-verify-authenticity.sh` script.
 
-   **For Zowe v1.12 and later** 
+   **For Zowe v1.13 and later** 
 
    ```
    bin/zowe-verify-authenticity.sh
@@ -57,7 +57,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.12
    are interchangeable wih the ones you downloaded, so you can use them in any combination.   
 
 
-   **For Zowe releases prior to v1.12**
+   **For Zowe releases prior to v1.13**
    ```
    /u/username/hash/zowe-verify-authenticity.sh -r /usr/lpp/zowe/v1.9 -f /u/username/hash
    ```
@@ -188,5 +188,5 @@ default: The following defaults will be tried in this order
 ```
 ## Use of zowe-verify-authenticity.sh by zowe-support.sh
 
-From v1.12 on, `zowe-verify-authenticity.sh` is automatically called by `zowe-support.sh`, with no parameters.  
+From v1.13 on, `zowe-verify-authenticity.sh` is automatically called by `zowe-support.sh`, with no parameters.  
 
