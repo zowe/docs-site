@@ -41,6 +41,19 @@ The following features and enhancements were added.
 
 #### Zowe CLI
 
+The following features and enhancements were added to the **core Zowe CLI**:
+
+- Add ability to log into and out of the APIML, getting and using a token
+- Add `--base-profile` option to all commands that use profiles, allowing them to make use of base profiles containing shared values.
+- Upgrade Zowe commands to prompt for any of the following values if the option is missing: host, port, user, and password.
+- Add encoding / code page support for data set upload and download operations in library and CLI.
+- Add `encoding` option to `zosmf` profile type.
+- Added API to delete migrated data sets.
+
+The following features and enhancements were added to the **Imperative CLI Framework**:
+
+-
+
 #### Zowe Explorer
 
 
@@ -57,7 +70,8 @@ The following bugs were fixed.
 #### Zowe App Server
 
 #### Zowe CLI
-
+- Update Imperative version to include security fix
+- Update Imperative version to fix issue "Can't use service profile after storing token in base profile"
 
 ## Version 1.12.0 LTS (June 2020)
 
