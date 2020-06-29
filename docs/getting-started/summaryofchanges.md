@@ -33,6 +33,10 @@ The following features and enhancements were added.
 
 #### Zowe installation
 
+- Updated `zowe-configure-instance` upgrade to update ROOT_DIR. This allows you to move the Zowe runtime to a different place when you install a new version of Zowe. [#1414](https://github.com/zowe/zowe-install-packaging/pull/1414)
+- Updated the port validation logic to reduce false negatives. [#1399](https://github.com/zowe/zowe-install-packaging/pull/1399)
+- Updated the Zowe installation and configuration to tolerate ZERT Network Analyzer better. [#1124](https://github.com/zowe/zowe-install-packaging/pull/1124)
+
 #### API Mediation Layer
 
 #### ZSS
