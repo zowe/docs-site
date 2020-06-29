@@ -1,6 +1,7 @@
 # API Mediation Layer routing
 
-As an application developer, route your service through the Gateway using the API Mediation Layer to consume a specific resource.
+As an application developer, you can route your service through the Gateway using the API Mediation Layer to consume a specific resource.
+
 There are two ways to route your service to the API Mediation Layer:
 
 * Basic Routing (using Service ID and version)
@@ -10,27 +11,31 @@ There are two ways to route your service to the API Mediation Layer:
 
 * **Service**
 
-  A service provides one or more APIs, and is identified by its service ID. Note that sometimes the term "service name" is used to mean service ID. 
-  The default service ID is provided by the service developer in the service configuration file. 
-  The service ID can be replaced with a deployment environment specific name by the system administrator using additional configuration     that is external to the service deployment unit. Most often, this configuration is in a jar or war file. 
+  A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term "service name" is used to mean service ID.
+
+  The default service ID is provided by the service developer in the service configuration file.
+
+  A system administrator can replace the service ID with a deployment environment specific name using additional configuration that is external to the service deployment unit. Most often, this is configured in a JAR or WAR file.
+
   Services are deployed using one or more service instances, which share the same service ID and implementation.
 
 * **URI (Uniform Resource Identifier)**
 
-  A string of characters used to identify a resource. It is necessary that each specific URI points to only one specific corresponding resource which does not require any additional information such as HTTP headers.
+  A string of characters used to identify a resource. Each URI must point to a single corresponding resource that does not require any additional information, such as HTTP headers.
 
 ## APIML Basic Routing (using Service ID and version)
 
-This method of basic routing is based on the service ID that is used to identify the service. The specific instance is selected by the API Gateway. All instances require an identical response. Eureka and Zuul expect this type of routing.
+This method of basic routing is based on the service ID that identifies the service. The specific instance is selected by the API Gateway. All instances require an identical response. Eureka and Zuul expect this type of routing.
 
-The URI identifies the resource but does not identify the instance of the same service as unique when multiple instances of the same service are provided. One example of this is when a service is running in HA mode. 
-Services of the same product that are providing different resources, such as SYSVIEW on one system and SYSVIEW in a different sysplex, cannot have the same service ID as the same URI cannot have two different meanings. 
+The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided. For example, when a service is running in high-availability (HA) mode.
 
-In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which a major version can be specified. 
-The Gateway routes a request only to an instance that provides the specified major version of the API. 
+Services of the same product that provide different resources, such as CA SYSVIEW on one system and CA SYSVIEW in a different sysplex, cannot have the same service ID (the same URI cannot have two different meanings).
+
+In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which you can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
+
 The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs and the prefix `/ws/` applies to WebSockets.
 
-Additional routing can be implemented using a Zuul pre-filter. For more information about how to implement a Zuul filter, see [Router and Filter: Zuul](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
+You can implement additional routing using a Zuul pre-filter. For more information about how to implement a Zuul filter, see [Router and Filter: Zuul](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
 
 The URL format expected by the API Gateway is:
 
@@ -39,18 +44,20 @@ The URL format expected by the API Gateway is:
 **Example:**
 
 The following address shows the original URL of a resource exposed by a service:
+
 ```
 http://service:10015/enablerv1sampleapp/api/v1/samples
 ```
+
 The following address shows the API Gateway URL of the resource:
+
 ```
 https://gateway:10010/api/v1/enablerv1sampleapp/samples
 ```
 
 The following diagram illustrates how basic routing works:
 
-<img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/> 
-
+<img src="../../images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/>
 
 ### Implementation Details
 
@@ -79,16 +86,17 @@ In this example, the service has a service ID of `helloworldservice` that expose
 
 where:
 
-* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `prefix/serviceId/resourcePath`. 
-* The service ID is used to find the service host and port. 
+* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `prefix/serviceId/resourcePath`.
+* The service ID is used to find the service host and port.
 * The `serviceUrl` is used to prefix the `resourcePath` at the service host.
 
-**Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata. 
+**Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
 
 ## Basic Routing (using only the service ID)
 
-This method of routing is the same as the previous method, but does not use the version part of the URL. This is useful for services that handle their versioning themselves with different granularity.
-An example of this is z/OSMF.
+This method of routing is similar to the previous method, but does not use the version part of the URL. This approach is useful for services that handle versioning themselves with different granularity.
+
+One example that only uses a service ID is z/OSMF.
 
 **Example:**
 
@@ -96,7 +104,7 @@ z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/jobs/.
 
 where:
 
-* `zosmf` is the service ID
-* `/restjobs/1.0/...` is the rest of the endpoint segment
+* `zosmf` is the service ID.
+* `/restjobs/1.0/...` is the rest of the endpoint segment.
 
-No version is specified in this URL.
+Note that no version is specified in this URL.
