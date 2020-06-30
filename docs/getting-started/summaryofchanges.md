@@ -43,6 +43,17 @@ The following features and enhancements were added.
 
 #### Zowe App Server
 
+- In this version, the app server can now use more than one CA [#128](https://github.com/zowe/zlux-app-server/pull/128)
+- Removed usage of ngx-color [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- The `dispatcher.invokeAction` method now returns promise, which provides the ability to wait until `dispatcher.invokeAction` finishes and handles errors [#59](https://github.com/zowe/zlux-platform/pull/59)
+- Cross-launch via URL has been implemented [#234](https://github.com/zowe/zlux-app-manager/pull/234)
+- Improvements to feature and bookmarking functionality [#30](https://github.com/zowe/tn3270-ng2/pull/30)
+- Added close all + undo settings + hotkeys [#153](https://github.com/zowe/zlux-editor/pull/153)
+  - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
+  - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
+  - Added a snackbar notification for opening a folder/file you don't have access to   
+  - Added an "Undo" option to the Close All feature to re-open tabs & files
+
 #### Zowe CLI
 
 #### Zowe Explorer
@@ -58,7 +69,16 @@ The following bugs were fixed.
 
 #### ZSS
 
+- Bugfix: ICFS error message is not printed. In this version, the issue has been resolved [#143](https://github.com/zowe/zowe-common-c/pull/143)
+
+
 #### Zowe App Server
+
+- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129) 
+- Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
+- Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
+- Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
+- 
 
 #### Zowe CLI
 
