@@ -2,38 +2,27 @@
 
 Get started with Zowe&trade; CLI quickly and easily.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI.](../user-guide/cli-installcli.md)
+**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
 
 - [Installing](#installing)
-     - [Installing Zowe CLI core](#installing-zowe-cli-core)
-     - [Installing CLI plug-ins](#installing-cli-plug-ins)
 - [Issuing your first commands](#issuing-your-first-commands)
-     - [Listing all data sets under a high-level qualifier (HLQ)](#listing-all-data-sets-under-a-high-level-qualifier-hlq)
-     - [Downloading a partitioned data-set (PDS) member to local file](#downloading-a-partitioned-data-set-pds-member-to-local-file)
 - [Using profiles](#using-profiles)
-     - [Profile types](#profile-types)
-     - [Creating a zosmf profile](#creating-a-zosmf-profile)
-     - [Using a zosmf profile](#using-a-zosmf-profile)
 - [Writing scripts](#writing-scripts)
-     - [Example:](#example)
 - [Next Steps](#next-steps)
 
 ## Installing
 
 ### Software Requirements
+
 Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
 **(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
-
-
 
 ### Installing Zowe CLI core from public npm
 
 Issue the following commands in sequence to install the core CLI.
 
 The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
-
-
 
 ```
 npm install @zowe/cli@zowe-v1-lts -g
@@ -42,8 +31,6 @@ npm install @zowe/cli@zowe-v1-lts -g
 ```
 zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
-
-
 
 ### Installing CLI plug-ins
 
@@ -99,7 +86,7 @@ zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123
 zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
 ```
 
-For detailed information about issuing commands, using profiles, and storing variables as environment variables, see [Defining Zowe CLI connection details.](../user-guide/cli-configuringcli.md#defining-zowe-cli-connection-details)
+For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
 
 ## Writing scripts
 
@@ -126,17 +113,19 @@ do
 done
 ```
 
-For more information, see [Writing scripts to automate mainframe actions.](../user-guide/cli-usingcli.md#writing-scripts-to-automate-mainframe-actions)
+For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
 
 ## Next Steps
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
-- Review [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) to learn what functionality is available, and explore the in-product help.
+- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
 
-- Learn about [using environment variables](../user-guide/cli-configuringcli.md#using-environment-variables) to store configuration options.
+- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
 
-- Integrate your scripts with an automation server like Jenkins.
+- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+- Write scripts and integrate them with automation server, such as Jenkins.
 
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
 
