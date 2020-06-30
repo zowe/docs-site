@@ -21,7 +21,7 @@ where,
 
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
 
-If the desktop appears but you are unable to log on, check [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-known-issues.md#cannot-log-in-to-the-zowe-desktop) for troubleshooting tips.
+If the desktop appears but you are unable to log on, check [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop) for troubleshooting tips.
 
 
 ## Verifying API Mediation installation

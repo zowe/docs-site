@@ -1,11 +1,19 @@
 [{
+  "text": "v1.12.x LTS",
+  "link": "stable/"
+},
+{
+  "text": "v1.11.x LTS",
+  "link": "v1-11-x/"
+},
+{
 
-    "text": "Active Development",
-    "link": "active-development/"
+  "text": "v1.10.x LTS",
+  "link": "v1-10-x/"
 },
 {
   "text": "v1.9.x LTS",
-  "link": "stable/"
+  "link": "v1-9-x/"
 },
 {
   "text": "v1.8.x",

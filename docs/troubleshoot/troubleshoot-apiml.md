@@ -174,8 +174,8 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
 - [Connection refused](#connection-refused)
-- [Missing z/OSMF host name in subject alternative names](#missing-z/osmf-host-name-in-subject-alternative-names)
-- [Invalid z/OSMF host name in subject alternative names](#invalid-z/osmf-host-name-in-subject-alternative-names)
+- [Missing z/OSMF host name in subject alternative names](#missing-z-osmf-host-name-in-subject-alternative-names)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-z-osmf-host-name-in-subject-alternative-names)
 
 #### Connection refused
 
@@ -236,24 +236,14 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Navigate to `$ZOWE_RUNTIME` and run the following command:
-    ```
-    bin/apiml_cm.sh --action trust-zosmf 
-    ```
-
-    2a. (Optional) If you do not use the default z/OSMF userid (IZUSVR) and keyring (IZUKeyring.IZUDFLT), issue the following command: 
-
-       bin/apiml_cm.sh --action trust-zosmf--zosmf-userid **ZOSMF_USER** --zosmf-keyring **ZOSMF_KEYRING**
-    
-    where;
-    - `--zosmf-keyring` and `--zosmf-userid` - options that override the default userid and keyring accordingly.
+2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information. 
 
 #### Insecure fix
 
 **Follow these steps:**
 
-1. Set the value of the `VERIFY_CERTIFICATES` property to `false` in `$ZOWE_RUNTIME/scripts/internal/run-zowe.sh` to disable verification of certificates in Zowe.
-2. Reinstall Zowe.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
+
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -269,21 +259,52 @@ nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <A
 Fix the invalid z/OSMF host name in the subject alternative names using the following methods:
 
 - [Request a new certificate](#request-a-new-certificate)
-- [Change the ZOWE_EXPLORER_HOST variable](#change-the-zowe_explorer_host-variable)
+- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
 
 #### Request a new certificate
 
 Request a new certificate that contains a valid z/OSMF host name in the subject alternative names.
 
-#### Change the ZOWE_EXPLORER_HOST variable
+#### Re-create the Zowe keystore
 
-Change `ZOWE_EXPLORER_HOST` variable to fix the issue.
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
 
-**Follow these steps:**
+### API ML throws I/O error on GET request and cannot connect to other services
 
-1. Open .zowe_profile in the home directory of the user who installed Zowe.
-2. Change  `ZOWE_EXPLORER_HOST` to a host name from the subject alternative names of the z/OSMF certificate. For example, issue the following command:
-    ```
-    export ZOWE_EXPLORER_HOST=SAN (change this to the correct one > in the code block).
-    ```
-3. Reinstall Zowe. 
+**Symptom:**
+
+The API ML services are running but they are in DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
+
+**Sample message:**
+
+See the following message for full exceptions.
+
+```
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://USILCA32.lvn.broadcom.net:7553/eureka/apps/apicatalog": USILCA32.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
+
+.at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.queryDiscoveryForInstances(InstanceRetrievalService.java:276) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.getInstanceInfo(InstanceRetrievalService.java:158) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.retrieveAndRegisterAllInstancesWithCatalog(InstanceRetrievalService.java:90) Ýclas
+
+….
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRouteToHostException) caught when connecting to {s}->https://localhost:7553: EDC8130I Host cannot be reached. (Host unreachable)
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
+```
+
+**Solution:**
+
+The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system.html#grant-users-permission-to-access-z-osmf).
+
+The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
+
+You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.html#configure-security-environment-switching).

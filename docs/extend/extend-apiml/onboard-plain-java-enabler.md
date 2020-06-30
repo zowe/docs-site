@@ -43,6 +43,7 @@ The following steps outline the overall process to onboard a REST service with t
     * [API Catalog information](#api-catalog-information)
     * [Authentication parameters](#authentication-parameters)
     * [API Security](#api-security)
+    * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Eureka Discovery Service](#eureka-discovery-service)
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
@@ -50,6 +51,9 @@ The following steps outline the overall process to onboard a REST service with t
 5. [Adding API documentation](#adding-api-documentation)
 
 6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+
+7. (Optional) [Troubleshooting](#troubleshooting)
+    * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
 
@@ -235,10 +239,12 @@ The onboarding configuration parameters are broken down into the following group
 - [API info](#api-info)
 - [API routing information](#api-routing-information)
 - [API catalog information](#api-catalog-information)
-* [Authentication parameters](#authentication-parameters)
+- [Authentication parameters](#authentication-parameters)
 - [API security](#api-security)
+- [SAF Keyring configuration](#saf-keyring-configuration)
 - [Eureka Discovery Service](#eureka-discovery-service)
 - [Custom Metadata](#custom-metadata)
+- [Connection Timeout](#connection-timeout)
 
 ### REST service identification
 
@@ -398,11 +404,11 @@ The following snippet is an example of the API routing information properties.
 ```yaml
 routes:
     - gatewayUrl: api
-      serviceUrl: /sampleservice
+      serviceUrl: /sampleservice-api
     - gatewayUrl: api/v1
-      serviceUrl: /sampleservice/api/v1
+      serviceUrl: /sampleservice-api/ver1
     - gatewayUrl: api/v1/api-doc
-      serviceUrl: /sampleservice/api-doc
+      serviceUrl: /sampleservice-api/api-doc
 ```
    where:
 
@@ -418,10 +424,30 @@ routes:
 
     The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
 
-**Note:** The routes configuration contains a prefix before the `gatewayUrl` and `serviceUrl`.
-This prefix is used to differentiate the routes. It is automatically calculated by the API ML enabler.
-
-**Tip:** For more information about API ML routing, see: [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
+**Example:** 
+```
+https://gateway:10010/api/sampleservice 
+```
+will be routed to: 
+```
+https://service:10015/sampleservice-api
+```
+API major version 1:
+```
+https://gateway:10010/api/v1/sampleservice
+```
+will be routed to: 
+```
+https://service:10015/sampleservice-api/ver1
+```
+APIs docs major version 1:
+```
+https://gateway:10010/api/v1/api-doc/sampleservice
+```
+will be routed to:
+```
+https://service:10015/sampleservice-api/api-doc
+```
 
 ### API Catalog information
 
@@ -596,7 +622,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key.
+  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **keyStorePassword**
 
@@ -608,7 +634,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates.
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
 
 * **trustStorePassword: password**
 
@@ -632,6 +658,24 @@ TLS/SSL configuration consists of the following parameters:
 
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
 * Currently `ciphers` is not used. It is optional and serves as a place holder only.
+
+### SAF Keyring configuration
+
+You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+
+The following example shows enabler configuration with keyrings: 
+```
+ssl:
+    keyAlias: localhost
+    keyPassword: password
+    keyStore: safkeyring:////my_racf_id/my_key_ring
+    keyStorePassword: password
+    keyStoreType: JCERACFKS
+    trustStore: safkeyring:////my_racf_id/my_key_ring
+    trustStoreType: JCERACFKS
+    trustStorePassword: password
+```
 
 ### Eureka Discovery Service
 
@@ -664,6 +708,18 @@ where:
     When this parameter is set to `true`, encoded characters in a request URL are allowed to pass through the Gateway to the service. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests. 
           
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+
+* **customMetadata.apiml.connectTimeout**
+    
+    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.readTimeout**
+    
+    The value in milliseconds that specifies the maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 ##  Registering your service with API ML
 
@@ -892,3 +948,28 @@ with actual addresses of API ML components and the respective user credentials.
   4. Check that you can access your API service endpoints through the Gateway.
 
   5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+
+## Troubleshooting
+
+#### Log messages during registration problems
+
+When an Enabler connects to the Discovery service and fails, an error message prints to the Enabler log. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
+
+These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. 
+To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
+
+    com.netflix.discovery.DiscoveryClient, com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient
+
+Some logging frameworks provide other tools to suppress repeated messages. Consult the documentation of the logging framework you use to find out what tools are available. The following example demonstrates how the Logback framework can be used to suppress repeated messages.
+
+**Example:** 
+
+The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
+
+Add the following code to your configuration file if you use XML configuration:  
+
+    <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+        <AllowedRepetitions>0</AllowedRepetitions>
+    </turboFilter>
+
+**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 

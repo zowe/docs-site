@@ -20,15 +20,20 @@ Get started with Zowe&trade; CLI quickly and easily.
 
 ## Installing
 
-Before you install Zowe CLI, download and install [Node.js and npm.](https://nodejs.org/en/download/)
+### Software Requirements
+Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-**Note:** Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+
+
 
 ### Installing Zowe CLI core from public npm
 
 Issue the following commands in sequence to install the core CLI.
 
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrpyting your username and password.
+The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+
+
 
 ```
 npm install @zowe/cli@zowe-v1-lts -g
@@ -38,7 +43,7 @@ npm install @zowe/cli@zowe-v1-lts -g
 zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
 ```
 
-**Note:** On Linux, install [libsecret](https://github.com/GNOME/libsecret) before you use the Secure Credential Store.
+
 
 ### Installing CLI plug-ins
 
@@ -68,7 +73,7 @@ zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --u
 zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
-See [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) for a list of available functionality.
+See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
 
 ## Using profiles
 
@@ -127,9 +132,9 @@ For more information, see [Writing scripts to automate mainframe actions.](../us
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
-- Review [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups) to learn what functionality is available, and explore the in-product help.
+- Review [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) to learn what functionality is available, and explore the in-product help.
 
-- Learn about [using environment variables](../user-guide/cli-configuringcli.md#defining-environment-variables) to store configuration options.
+- Learn about [using environment variables](../user-guide/cli-configuringcli.md#using-environment-variables) to store configuration options.
 
 - Integrate your scripts with an automation server like Jenkins.
 

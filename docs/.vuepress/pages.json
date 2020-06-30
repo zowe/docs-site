@@ -3,7 +3,11 @@
     "baseuri": "/getting-started/",
     "items": [{
         "text": "Zowe overview",
-        "items": ["getting-started/overview.md", "getting-started/zowe-architecture.md"]
+        "link": "getting-started/overview.md"
+      },
+      {
+        "text": "Zowe architecture",
+        "link": "getting-started/zowe-architecture.md"
       },
       {
         "text": "Release notes",
@@ -16,6 +20,10 @@
       {
         "text": "Zowe FAQs",
         "link": "getting-started/freqaskques.md"
+      },
+      {
+        "text": "Related resources",
+        "link": "getting-started/zowe-resources.md"
       }
     ]
   },
@@ -30,7 +38,8 @@
         "user-guide/systemrequirements.md",
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
-        "user-guide/systemrequirements-zosmf-lite.md"
+        "user-guide/systemrequirements-zosmf-lite.md",
+        "user-guide/configure-uss.md"
       ]
       },
       {
@@ -39,13 +48,16 @@
           "user-guide/install-zos.md",
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
+          "user-guide/install-zowe-smpe-zosmf-workflow.md",
           "user-guide/configure-zos-system.md",
           "user-guide/configure-certificates.md",
-          "user-guide/configure-instance-directory.md",
           "user-guide/configure-xmem-server.md",
+          "user-guide/configure-instance-directory.md",
           "user-guide/configure-zowe-server.md",
+          "user-guide/configure-zowe-zosmf-workflow.md",
           "user-guide/verify-zowe-runtime-install.md",
           "user-guide/configure-auxiliary-address-space.md",
+          "user-guide/stop-zowe-zos.md",
           "user-guide/zowe-zos-uninstall.md"
         ]
       },
@@ -85,8 +97,16 @@
           "user-guide/cli-ftpplugin.md",
           "user-guide/cli-imsplugin.md",
           "user-guide/cli-mqplugin.md",
-          "user-guide/cli-scsplugin.md",
-          "user-guide/cli-vscodeplugin.md"
+          "user-guide/cli-scsplugin.md"
+        ]
+      },
+      {
+        "text": "Zowe Explorer",
+        "items": [
+          "user-guide/ze-install.md",
+          "user-guide/ze-profiles.md",
+          "user-guide/ze-usage.md",
+          "user-guide/ze-extensions.md"
         ]
       }
     ]
@@ -94,19 +114,10 @@
   {
     "text": "Extending",
     "baseuri": "/extend/",
-    "items": [{
-        "text": "Developing for API Mediation Layer",
-        "items": [
-          "extend/extend-apiml/onboard-overview.md",
-          "extend/extend-apiml/onboard-plain-java-enabler.md",
-          "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md",
-          "extend/extend-apiml/onboard-direct-eureka-call.md",
-          "extend/extend-apiml/onboard-spring-boot-enabler.md",
-          "extend/extend-apiml/onboard-static-definition.md",
-          "extend/extend-apiml/api-mediation-message-service.md",
-          "extend/extend-apiml/api-mediation-security.md",
-          "extend/extend-apiml/api-mediation-passtickets.md"
-        ]
+    "items": [
+      {
+        "text": "Overview",
+        "link": "extend/extend-zowe-overview.md"
       },
       {
         "text": "Developing for Zowe CLI",
@@ -117,6 +128,21 @@
           "extend/extend-cli/cli-extending-a-plugin.md",
           "extend/extend-cli/cli-developing-a-plugin.md",
           "extend/extend-cli/cli-implement-profiles.md"
+        ]
+      },
+      {
+        "text": "Developing for API Mediation Layer",
+        "items": [
+          "extend/extend-apiml/onboard-overview.md",
+          "extend/extend-apiml/onboard-plain-java-enabler.md",
+          "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md",
+          "extend/extend-apiml/onboard-direct-eureka-call.md",
+          "extend/extend-apiml/onboard-spring-boot-enabler.md",
+          "extend/extend-apiml/onboard-static-definition.md",
+          "extend/extend-apiml/api-mediation-message-service.md",
+          "extend/extend-apiml/api-mediation-security.md",
+          "extend/extend-apiml/api-mediation-routing.md",
+          "extend/extend-apiml/api-mediation-passtickets.md"
         ]
       },
       {
@@ -140,6 +166,10 @@
         ]
       },
       {
+        "text": "Lifecycling z/OS extensions",
+        "link": "extend/lifecycling-with-zwesvstc.md"
+      },
+      {
         "text": "Zowe Conformance Program",
         "link": "extend/zowe-conformance-program.md"
       }
@@ -148,9 +178,18 @@
   {
     "text": "Troubleshooting",
     "baseuri": "/troubleshoot/",
-    "items": [{
+    "items": [
+      {
         "text": "Overview",
-        "link": "troubleshoot/troubleshooting.md"
+        "items": [
+          "troubleshoot/troubleshooting.md",
+          "troubleshoot/troubleshoot-zowe-release.md",
+          "troubleshoot/troubleshoot-diagnostics.md"
+        ]
+      },
+      {
+        "text": "z/OS component installation",
+        "link": "troubleshoot/troubleshoot-zos.md"
       },
       {
         "text": "Zowe API Mediation Layer",
@@ -164,7 +203,6 @@
         "items": [
           "troubleshoot/app-framework/app-troubleshoot.md",
           "troubleshoot/app-framework/app-mustgather.md",
-          "troubleshoot/app-framework/app-known-issues.md",
           "troubleshoot/app-framework/app-issue.md"
         ]
       },
@@ -181,10 +219,6 @@
           "troubleshoot/cli/known-cli.md",
           "troubleshoot/cli/cli-issue.md"
         ]
-      },
-      {
-        "text": "Using Diagnostics Data Script",
-        "link": "troubleshoot/troubleshoot-diagnostics.md"
       }
     ]
   },

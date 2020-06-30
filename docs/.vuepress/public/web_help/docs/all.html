@@ -9,8 +9,8 @@
 <h2><a href="#zowe" name="zowe">zowe</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Welcome to Zowe CLI!</p>
 <p>Zowe CLI is a command line interface (CLI) that provides a simple and streamlined way to interact with IBM z/OS.</p>
-<p>For additional Zowe CLI documentation, visit <a href="https://zowe.github.io/docs-site">https://zowe.github.io/docs-site</a></p>
-<p>For Zowe CLI support, visit <a href="https://zowe.org">https://zowe.org</a></p>
+<p>For additional Zowe CLI documentation, visit <a href="https://docs.zowe.org">https://docs.zowe.org</a></p>
+<p>For Zowe CLI support, visit <a href="https://www.zowe.org">https://www.zowe.org</a></p>
 
 
 <h4 id="global-options">Global Options</h4>
@@ -194,8 +194,6 @@
 </ul><ul><li><a href="#zowe_zos-files_download_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_zos-files_hMigrate">hMigrate | hmigr</a><ul><li><a href="#zowe_zos-files_hMigrate_data-set">data-set | ds</a></li>
-</ul></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke_ams-statements">ams-statements | as</a></li>
 </ul></li>
@@ -204,7 +202,14 @@
 </ul><ul><li><a href="#zowe_zos-files_list_file-system">file-system | fs</a></li>
 </ul><ul><li><a href="#zowe_zos-files_list_uss-files">uss-files | uss</a></li>
 </ul></li>
+</ul><ul><li><a href="#zowe_zos-files_migrate">migrate | hmigr | hMigrate</a><ul><li><a href="#zowe_zos-files_migrate_data-set">data-set | ds</a></li>
+</ul></li>
 </ul><ul><li><a href="#zowe_zos-files_mount">mount</a><ul><li><a href="#zowe_zos-files_mount_file-system">file-system | fs</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_recall">recall | hrec | hRecall</a><ul><li><a href="#zowe_zos-files_recall_data-set">data-set | ds</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_rename">rename</a><ul><li><a href="#zowe_zos-files_rename_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_rename_data-set-member">data-set-member | dsm</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_unmount">unmount | umount</a><ul><li><a href="#zowe_zos-files_unmount_file-system">file-system | fs</a></li>
 </ul></li>
@@ -224,9 +229,12 @@
 </ul><ul><li><a href="#zowe_zos-ftp_download_uss-file">uss-file | uss</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-ftp_list">list | ls</a><ul><li><a href="#zowe_zos-ftp_list_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-ftp_list_data-set-members">data-set-members | members</a></li>
 </ul><ul><li><a href="#zowe_zos-ftp_list_jobs">jobs | j</a></li>
 </ul><ul><li><a href="#zowe_zos-ftp_list_spool-files-by-jobid">spool-files-by-jobid | sfbj</a></li>
 </ul><ul><li><a href="#zowe_zos-ftp_list_uss-files">uss-files | uss</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-ftp_make">make | mk</a><ul><li><a href="#zowe_zos-ftp_make_uss-directory">uss-directory | dir</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-ftp_rename">rename | mv</a><ul><li><a href="#zowe_zos-ftp_rename_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-ftp_rename_uss-file">uss-file | uss</a></li>
@@ -1041,8 +1049,10 @@ length of the pipeline name is eight characters</li>
 </li>
 <li><p><code>--validation</code>  <em>(boolean)</em></p>
 <ul>
-<li>Specifies whether full validation of SOAP messages against the corresponding
-schema in the web service description should be performed at run time.</li>
+<li><p>Specifies whether full validation of SOAP messages against the corresponding
+schema in the web service description should be performed at run time.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--wsdlfile</code>  | <code>--wsdl</code> <em>(string)</em></p>
@@ -4920,7 +4930,9 @@ number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.</li>
 </li>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -5427,7 +5439,9 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <ul>
 <li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates.</li>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
@@ -5539,6 +5553,13 @@ decryption passphrase &#39;privateKeyPassphrase&#39; for privatekey authenticati
 <li><code>zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
 </ul>
 </li>
+<li><p>Create a ssh profile called &#39;ssh444&#39; to connect to z/OS SSH
+server on default port 22, without specifying username, host, or password,
+preventing those values from being stored on disk:</p>
+<ul>
+<li><code>zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey">Copy</button></li>
+</ul>
+</li>
 </ul>
 <a class="cmd-anchor" name="zowe_profiles_create_tso-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_tso-profile">tso-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>z/OS TSO/E User Profile</p>
@@ -5625,6 +5646,12 @@ and JES accounting information of &#39;IZUACCT&#39;:</p>
 of 8192, a logon procedure of MYPROC, and JES accounting information of &#39;1234&#39;:</p>
 <ul>
 <li><code>zowe  profiles create tso-profile largeregion -a 1234 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile largeregion -a 1234 --rs 8192">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a tso profile called &#39;myprof2&#39; with default settings
+and region size of 8192, without storing the user account on disk:</p>
+<ul>
+<li><code>zowe  profiles create tso-profile myprof2 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile myprof2 --rs 8192">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -5789,6 +5816,21 @@ at host zos123 and port 1443:</p>
 at the host zos124 (default port - 443) and allow self-signed certificates:</p>
 <ul>
 <li><code>zowe  profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a zosmf profile called &#39;zos125&#39; to connect to z/OSMF
+at the host zos125 and port 1443, not specifying a username or password so they
+are not stored on disk; these will need to be specified on every command:</p>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443">Copy</button></li>
+</ul>
+</li>
+<li><p>Create a zosmf profile called &#39;zos126&#39; to connect to z/OSMF
+on the default port 443 and allow self-signed certificates, not specifying a
+username, password, or host so they are not stored on disk; these will need to
+be specified on every command:</p>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos126 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos126 --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a zosmf profile called &#39;zos124&#39; to connect to z/OSMF
@@ -9384,15 +9426,19 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li><p><code>--erase</code>  | <code>-e</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to overwrite the data component for the cluster with binary
+<li><p>Specify this option to overwrite the data component for the cluster with binary
 zeros. This option is ignored if the NOERASE attribute was specified when the
-cluster was defined or altered.</li>
+cluster was defined or altered.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to delete the VSAM cluster regardless of its retention
-period or date.</li>
+<li><p>Specify this option to delete the VSAM cluster regardless of its retention
+period or date.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -9700,6 +9746,14 @@ concurrent requests.</p>
 </li>
 </ul>
 </li>
+<li><p><code>--preserve-original-letter-case</code>  | <code>--po</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Specifies if the automatically generated directories and files use the original
+letter case</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
 <li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option
@@ -9802,6 +9856,14 @@ default file extension.</li>
 <ul>
 <li>The path to the local file where you want to download the content. When you
 omit the option, the command generates a file name automatically for you.</li>
+</ul>
+</li>
+<li><p><code>--preserve-original-letter-case</code>  | <code>--po</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Specifies if the automatically generated directories and files use the original
+letter case</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 <li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
@@ -9954,84 +10016,6 @@ specify this option if you are not using an API mediation layer.</li>
 &quot;java/MyJava.class&quot; in binary mode:</p>
 <ul>
 <li><code>zowe  zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;">Copy</button></li>
-</ul>
-</li>
-</ul>
-<a name="zowe_zos-files_hMigrate"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_hMigrate">hMigrate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Migrate data sets.</p>
-<a class="cmd-anchor" name="zowe_zos-files_hMigrate_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_hMigrate">hMigrate</a> › <a href="#zowe_zos-files_hMigrate_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Migrate a data set.</p>
-<h4 id="usage">Usage</h4>
-<p>   zowe  zos-files hMigrate data-set &lt;dataSetName&gt; [options]</p>
-<h4 id="positional-arguments">Positional Arguments</h4>
-<ul>
-<li><p><code>dataSetName</code>         <em>(string)</em></p>
-<ul>
-<li>The name of the data set you want to migrate.</li>
-</ul>
-</li>
-</ul>
-<h4 id="options">Options</h4>
-<ul>
-<li><p><code>--wait</code>  | <code>-w</code> <em>(boolean)</em></p>
-<ul>
-<li>If true then the function waits for completion of the request. If false the
-request is queued.</li>
-</ul>
-</li>
-</ul>
-<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
-<ul>
-<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
-<ul>
-<li>The z/OSMF server host name.</li>
-</ul>
-</li>
-<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
-<ul>
-<li><p>The z/OSMF server port.</p>
-<p>Default value: 443</p>
-</li>
-</ul>
-</li>
-<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
-</ul>
-</li>
-<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
-</ul>
-</li>
-<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li><p>Reject self-signed certificates.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
-<ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
-</ul>
-</li>
-</ul>
-<h4 id="profile-options">Profile Options</h4>
-<ul>
-<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (zosmf) profile to load for this command execution.</li>
-</ul>
-</li>
-</ul>
-<h4 id="examples">Examples</h4>
-<ul>
-<li><p>Migrate a data set using default options:</p>
-<ul>
-<li><code>zowe  zos-files hMigrate data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files hMigrate data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -10644,6 +10628,84 @@ displaying the headers associated with the file detail:</p>
 </ul>
 </li>
 </ul>
+<a name="zowe_zos-files_migrate"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_migrate">migrate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Migrate data sets.</p>
+<a class="cmd-anchor" name="zowe_zos-files_migrate_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_migrate">migrate</a> › <a href="#zowe_zos-files_migrate_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Migrate a data set.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files migrate data-set &lt;dataSetName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set you want to migrate.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--wait</code>  | <code>-w</code> <em>(boolean)</em></p>
+<ul>
+<li>If true then the function waits for completion of the request. If false the
+request is queued.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Migrate a data set using default options:</p>
+<ul>
+<li><code>zowe  zos-files migrate data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files migrate data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_zos-files_mount"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_mount">mount</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Mount z/OS UNIX file systems, such as HFS, ZFS, and more. This connects you to
 USS file systems.</p>
@@ -10742,6 +10804,237 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p>Mount a hierarchical file system with write access:</p>
 <ul>
 <li><code>zowe  zos-files mount file-system MY.HFS /a/ibmuser/mountdir --ft HFS -m rdwr</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files mount file-system MY.HFS /a/ibmuser/mountdir --ft HFS -m rdwr">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a name="zowe_zos-files_recall"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_recall">recall</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Recall migrated data sets.</p>
+<a class="cmd-anchor" name="zowe_zos-files_recall_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_recall">recall</a> › <a href="#zowe_zos-files_recall_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Recall a migrated data set.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files recall data-set &lt;dataSetName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set you want to recall.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--wait</code>  | <code>-w</code> <em>(boolean)</em></p>
+<ul>
+<li>If true then the function waits for completion of the request. If false the
+request is queued.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Recall a data set using default options:</p>
+<ul>
+<li><code>zowe  zos-files recall data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files recall data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a name="zowe_zos-files_rename"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_rename">rename</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Rename a data set or member.</p>
+<a class="cmd-anchor" name="zowe_zos-files_rename_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_rename">rename</a> › <a href="#zowe_zos-files_rename_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Rename a data set.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files rename data-set &lt;beforeDataSetName&gt; &lt;afterDataSetName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>beforeDataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set that you want to rename.</li>
+</ul>
+</li>
+<li><p><code>afterDataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name you want to rename the data set to.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Rename the data set named &#39;USER.BEFORE.SET&#39; to
+&#39;USER.AFTER.SET.&#39;:</p>
+<ul>
+<li><code>zowe  zos-files rename data-set &quot;USER.BEFORE.SET&quot; &quot;USER.AFTER.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files rename data-set &quot;USER.BEFORE.SET&quot; &quot;USER.AFTER.SET&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_rename_data-set-member"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_rename">rename</a> › <a href="#zowe_zos-files_rename_data-set-member">data-set-member</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Rename a data set member.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files rename data-set-member &lt;dataSetName&gt; &lt;beforeMemberName&gt; &lt;afterMemberName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set the member belongs to.</li>
+</ul>
+</li>
+<li><p><code>beforeMemberName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set member that you want to rename.</li>
+</ul>
+</li>
+<li><p><code>afterMemberName</code>         <em>(string)</em></p>
+<ul>
+<li>The name you want to rename the data set member to.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>In the data set &#39;USER.DATA.SET&#39;, rename the member named
+&#39;MEM1&#39; to &#39;MEM2&#39;.:</p>
+<ul>
+<li><code>zowe  zos-files rename data-set-member &quot;USER.DATA.SET&quot; &quot;MEM1&quot; &quot;MEM2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files rename data-set-member &quot;USER.DATA.SET&quot; &quot;MEM1&quot; &quot;MEM2">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -12026,7 +12319,7 @@ mode to the local file &quot;main.obj&quot;:</p>
 </li>
 </ul>
 <a name="zowe_zos-ftp_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_list">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List data sets, uss files, jobs, spool files</p>
+<p>List data sets, data set members, uss files, jobs, spool files</p>
 <a class="cmd-anchor" name="zowe_zos-ftp_list_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_list">list</a> › <a href="#zowe_zos-ftp_list_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>List all data sets that match a DSLEVEL pattern (see help below).
 The following values can be used with the --response-format-filter (--rff)
@@ -12163,6 +12456,131 @@ in the output.</li>
 &quot;cntl&quot;:</p>
 <ul>
 <li><code>zowe  zos-ftp list data-set &quot;ibmuser.**.cntl&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list data-set &quot;ibmuser.**.cntl&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-ftp_list_data-set-members"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_list">list</a> › <a href="#zowe_zos-ftp_list_data-set-members">data-set-members</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>List all members of the specified PDS or PDSE data set.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-ftp list data-set-members &lt;dsname&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dsname</code>         <em>(string)</em></p>
+<ul>
+<li>The PDS or PDSE data set name.</li>
+</ul>
+</li>
+</ul>
+<h4 id="required-options">Required Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname or IP address of the z/OS server to connect to.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The port of the z/OS FTP server.</p>
+<p>Default value: 21</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Username for authentication on z/OS</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li><p>Set to true for both control and data connection encryption, &#39;control&#39; for
+control connection encryption only, or &#39;implicit&#39; for implicitly encrypted
+control connection (this mode is deprecated in modern times, but usually uses
+port 990). Note: Unfortunately, this plugin&#39;s functionality only works with FTP
+and FTPS, not &#39;SFTP&#39; which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li><p>How long (in milliseconds) to wait for the control connection to be
+established.</p>
+<p>Default value: 10000</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="tls--secure-connection-options">TLS / Secure Connection options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Reject self-signed certificates. Only specify this if you are connecting to a
+secure FTP instance.</li>
+</ul>
+</li>
+<li><p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if
+you are connecting securely</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="response-format-options">Response Format Options</h4>
+<ul>
+<li><p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property
+names to include in the output response. You can filter JSON objects properties
+OR table columns/fields. In addition, you can use this option in conjunction
+with &#39;--response-format-type&#39; to reduce the output of a command to a single
+field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li><p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li><p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is
+an array of homogeneous JSON objects. Each property of the object will become a
+column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type
+(JSON objects/arrays) are stringified and a new line is added after each entry
+in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object).
+Can be used in place of &quot;table&quot; to change from tabular output to a list of
+prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li><p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers
+in the output.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>List all members in data set &quot;ibmuser.test.cntl&quot;:</p>
+<ul>
+<li><code>zowe  zos-ftp list data-set-members &quot;ibmuser.test.cntl&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list data-set-members &quot;ibmuser.test.cntl&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -12560,6 +12978,98 @@ in the output.</li>
 only the file name:</p>
 <ul>
 <li><code>zowe  zos-ftp list uss-files &quot;/u/users/ibmuser/&quot; --rff name</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list uss-files &quot;/u/users/ibmuser/&quot; --rff name">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a name="zowe_zos-ftp_make"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_make">make</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Make a USS directory</p>
+<a class="cmd-anchor" name="zowe_zos-ftp_make_uss-directory"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_make">make</a> › <a href="#zowe_zos-ftp_make_uss-directory">uss-directory</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Make a Unix System Services Directory</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-ftp make uss-directory &lt;ussDirectory&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>ussDirectory</code>         <em>(string)</em></p>
+<ul>
+<li>The USS directory you&#39;d like to make.</li>
+</ul>
+</li>
+</ul>
+<h4 id="required-options">Required Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname or IP address of the z/OS server to connect to.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The port of the z/OS FTP server.</p>
+<p>Default value: 21</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Username for authentication on z/OS</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li><p>Set to true for both control and data connection encryption, &#39;control&#39; for
+control connection encryption only, or &#39;implicit&#39; for implicitly encrypted
+control connection (this mode is deprecated in modern times, but usually uses
+port 990). Note: Unfortunately, this plugin&#39;s functionality only works with FTP
+and FTPS, not &#39;SFTP&#39; which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li><p>How long (in milliseconds) to wait for the control connection to be
+established.</p>
+<p>Default value: 10000</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="tls--secure-connection-options">TLS / Secure Connection options</h4>
+<ul>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Reject self-signed certificates. Only specify this if you are connecting to a
+secure FTP instance.</li>
+</ul>
+</li>
+<li><p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if
+you are connecting securely</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zftp) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Make a USS directory &quot;/u/users/ibmuser/mydir&quot;:</p>
+<ul>
+<li><code>zowe  zos-ftp make uss-directory &quot;/u/users/ibmuser/mydir&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp make uss-directory &quot;/u/users/ibmuser/mydir&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -13259,7 +13769,7 @@ you are connecting securely</li>
 <li><p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt
 with the DCB parameters:</p>
 <ul>
-<li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb RECFM=FB,LRECL=326,BLKSIZE=23472</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb RECFM=FB,LRECL=326,BLKSIZE=23472">Copy</button></li>
+<li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -16136,8 +16646,10 @@ to exist</li>
 </li>
 <li><p><code>--keep-files</code>  | <code>--kf</code> <em>(boolean)</em></p>
 <ul>
-<li>Avoid deletion the uploaded files in /tmp or another specified directory after
-successful execution.</li>
+<li><p>Avoid deletion the uploaded files in /tmp or another specified directory after
+successful execution.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -17166,7 +17678,9 @@ manually.</p>
 </li>
 <li><p><code>--perform-following-steps</code>  | <code>--pfs</code> <em>(boolean)</em></p>
 <ul>
-<li>Identifies whether to perform also following steps in the workflow instance.</li>
+<li><p>Identifies whether to perform also following steps in the workflow instance.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>

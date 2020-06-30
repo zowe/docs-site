@@ -15,7 +15,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Find out how to install and configure Zowe. Learn about how to use Zowe components, including Zowe Application Framework, API Mediation Layer, and Zowe CLI.</p>
   </div>
   <div class="feature">
-    <h2><a href="./extend/extend-apiml/onboard-overview.html">Extending</a></h2>
+    <h2><a href="./extend/extend-zowe-overview.html">Extending</a></h2>
     <p>Learn about onboarding your products. Developers can follow tutorials that teach how to build and extend Zowe components.</p>
   </div>
   <div class="feature">
@@ -36,9 +36,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.9.0.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.12.0.
 
-**[V1.9.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.12.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.11.0](./Zowe_Documentation_1.11.0.pdf)** |
+**[V1.10.0](./Zowe_Documentation_1.10.0.pdf)** |
+**[V1.9.0](./Zowe_Documentation_1.9.0.pdf)** |
 **[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** |
 **[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
 **[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** |

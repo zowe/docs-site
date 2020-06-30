@@ -7,8 +7,8 @@ As a user of Zowe&trade;, onboard an existing REST API service to the Zowe&trade
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
 * [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
-* [Route your API](#route-your-api)
 * [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+* [Route your API](#route-your-api)
 * [Customize configuration parameters](#customize-configuration-parameters)
 * [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
 * [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
@@ -53,33 +53,9 @@ The first step in API service onboarding is to identify the APIs that you want t
 
     In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
 
-## Route your API
-
-After you identify the APIs you want to expose, define the routing of your API. Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. The configuration parameters are explained in [Customize configuration parameters](#customize-configuration-parameters).
-
-**Note:** The API Gateway differentiates major versions of an API.
-
-**Example:**
-
-To access version 2 of the `petstore` API use the following gateway URL:
-
-`https://gateway-host:port/api/v2/petstore`
-
-The base URL of the version 2 of the `petstore` API is:
-
-`http://localhost:8080/v2`
-
-The API Gateway routes REST API requests from the gateway URL `https://gateway:port/api/v2/petstore` to the service `http://localhost:8080/v2`. This method provides access to the service in the API Gateway through the gateway URL. 
-
-**Example:**
-
-The request to the URL: `https://gateway:port/api/v2/petstore/pets/1` will be routed to `http://localhost:8080/v2/pets/1`
-
-**Note:** This method enables you to access the service through a stable URL, and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
-
 ## Define your service and API in YAML format
 
-Define your service and API in YAML format as presented in the following sample `petstore` service example.
+After you identify the APIs you want to expose, you need to define your service and API in YAML format as presented in the following sample `petstore` service example.
 
 **Example:**
 
@@ -130,6 +106,47 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
+
+## Route your API
+
+Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. The configuration parameters are explained in [Customize configuration parameters](#customize-configuration-parameters).
+Gateway URL format:
+```
+https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
+```
+**Note:** The API Gateway differentiates major versions of an API.
+
+**Example:**
+
+When the configuration parameters are:
+```
+services:
+    serviceId: petstore
+    instanceBaseUrls:
+        - https://localhost:8080
+    routes:
+        gatewayUrl: api/v2
+        serviceRelativeUrl: /v2
+```
+To access API version 2 of the service `petstore`, gateway URL will be:
+```
+https://gateway-host:port/api/v2/petstore
+```
+It will be routed to:
+```
+https://localhost:8080/v2
+```
+
+To access resource `pets` of the `petstore` version 2 API, gateway URL will be:
+```
+https://gateway:port/api/v2/petstore/pets
+```
+It will be routed to: 
+ ```
+ https://localhost:8080/v2/pets
+ ```
+
+**Note:** This method enables you to access the service through a stable URL, and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
 
 ## Customize configuration parameters
 
@@ -383,7 +400,19 @@ additionalServiceMetadata:
     When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.
           
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
-        
+
+* **customMetadata.apiml.connectTimeout**
+    
+    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **customMetadata.apiml.readTimeout**
+    
+    The value in milliseconds that specifies the  time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API MLGateway service configuration is used.
+
+* **customMetadata.apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+              
 * **catalogUiTileId**
 
    This parameter specifies the unique identifier for the API services group.

@@ -82,7 +82,7 @@ Zowe CLI is a command-line interface that lets you interact with the mainframe i
 Zowe CLI provides the following benefits:
 
   - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
-  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/cli-vscodeplugin.md).
+  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md).
   - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
   - Provides a more streamlined way to build software that integrates with z/OS.
 
@@ -170,6 +170,8 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 * [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 </details>
+
+To learn more about the architecture of Zowe, see [Zowe architecture](#zowe-architecture.md).
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
