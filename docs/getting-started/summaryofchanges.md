@@ -71,14 +71,12 @@ The following bugs were fixed.
 
 - Bugfix: ICFS error message is not printed. In this version, the issue has been resolved [#143](https://github.com/zowe/zowe-common-c/pull/143)
 
-
 #### Zowe App Server
 
 - Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129) 
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
-- 
 
 #### Zowe CLI
 
