@@ -22,7 +22,7 @@ Where:
 1. To log in, enter your mainframe credentials in the **Username** and  **Password** fields.
 2. Press Enter. Upon authentication of your user name and password, the desktop opens.
 
-To log out, click the the User icon in the lower right corner and click **Sign Out**.
+To log out, click the User icon in the lower right corner and click **Sign Out**.
 
 <img src="../images/mvd/person.png">
 
@@ -61,7 +61,7 @@ To log out, click the the User icon in the lower right corner and click **Sign O
 3. Drag an image into the wallpaper grid, or press the upload button, to upload a new Desktop wallpaper.
 4. To set a new theme color, select a color from the palette or hue. 
 5. Use the lightness swatch bar to adjust the lightness of the color. 
-- Adujusting the lightness will also change the lightness of secondary text.  
+- Adjusting the lightness will also change the lightness of secondary text.  
 6. Select a size (small, medium, or large) to adjust the scale of the Desktop UI. 
 
 ### Changing the desktop language
@@ -98,7 +98,7 @@ The API Catalog plug-in lets you view API services that have been discovered by 
 With the Zowe Editor you can create and edit files and view datasets on the system that Zowe serves.
 
 ### Workflows
-From the Workflow application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
+From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
@@ -125,7 +125,7 @@ Use this application to browse the MVS™ file system by using a high-level qual
 
 ## Using the Workflows application plug-in
 
-The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
+The Workflows application plug-in is available from the Zowe Desktop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
 
 ### Logging on to the system
 
