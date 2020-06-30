@@ -8,9 +8,9 @@ From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://{myhost}:{httpsPort}` or you can navigate to the direct Desktop URI at `https://{myhost}:{httpsPort}/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
     
-where:
+Where:
 
 -   *myHost* is the host on which you are running the Zowe Application Server.
 -   *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`.
@@ -22,11 +22,13 @@ where:
 1. To log in, enter your mainframe credentials in the **Username** and  **Password** fields.
 2. Press Enter. Upon authentication of your user name and password, the desktop opens.
 
-To log out, click the the avatar in the lower right corner and click **Sign Out**.
+To log out, click the the User icon in the lower right corner and click **Sign Out**.
+
+<img src="../images/mvd/person.png">
 
 ### Changing user password
  
-1. Click the personalization panel icon. 
+1. Open the Preferences panel by clicking on the Preferences icon.
 
 <img src="../images/mvd/settings.png">
   
@@ -42,14 +44,30 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 
 ### Pinning applications to the task bar
 
-1. Click the Start menu.
+1. Click the Start menu in the bottom left corner of the home screen.
 2. Locate the application you want to pin.
 3. Right-click the on the application icon and select **Pin to taskbar**.
 
-### Changing the desktop language
-Use the Languages setting in the personalization panel to change the desktop language. After you change the language and restart Zowe, desktop menus and text display in the specified language. Applications that support the specified desktop language also display in that language.
+### Personalizing the Desktop
 
-1. Click the personalization icon in the lower right corner.
+1. Click the **Preferences icon** to open the Preferences panel.
+
+<img src="../images/mvd/settings.png">
+
+2. Click the **Personalization icon** to open the menu.
+
+<img src="../images/mvd/personalization.png">
+
+3. Drag an image into the wallpaper grid, or press the upload button, to upload a new Desktop wallpaper.
+4. To set a new theme color, select a color from the palette or hue. 
+5. Use the lightness swatch bar to adjust the lightness of the color. 
+- Adujusting the lightness will also change the lightness of secondary text.  
+6. Select a size (small, medium, or large) to adjust the scale of the Desktop UI. 
+
+### Changing the desktop language
+Use the Languages setting in the Preferences panel to change the desktop language. After you change the language and restart Zowe, desktop menus and text display in the specified language. Applications that support the specified desktop language also display in that language.
+
+1. Click the Preferences icon in the lower right corner.
 2. Click **Languages**.
 3. In the **Languages** dialog, click a language, and then click **Apply**.
 4. When you are prompted, restart Zowe.
@@ -77,10 +95,10 @@ The VT Terminal plug-in provides a user interface that emulates the basic functi
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create and edit files on the system that Zowe serves.
+With the Zowe Editor you can create and edit files and view datasets on the system that Zowe serves.
 
 ### Workflows
-From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
+From the Workflow application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
