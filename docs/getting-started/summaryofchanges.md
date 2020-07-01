@@ -25,6 +25,12 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 
 ## Version 1.13.0 LTS (June 2020)
 
+### Notable changes
+
+Zowe CLI added the ability to accesss mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to to API Mediation Layer and recieve a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -43,12 +49,12 @@ The following features and enhancements were added.
 
 The following features and enhancements were added to the **core Zowe CLI**:
 
-- Added the ability to log into and out of the APIML getting and using a token. [Using CLI](../user-guide/cli-usingcli.md)
-- Add `--base-profile` option to all commands that use profiles, allowing them to make use of base profiles containing shared values.
-- Upgrade Zowe commands to prompt for any of the following values if the option is missing: host, port, user, and password.
-- Added encoding/code page support for data set upload and download operations in the library and the CLI.
-- Added `encoding` option to the  `zosmf` profile type. 
-- Added an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
+- Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
+- Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
+- Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
 
 The following features and enhancements were added to the **Imperative CLI Framework**:
 
