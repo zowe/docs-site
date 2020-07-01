@@ -53,6 +53,11 @@ The following features and enhancements were added.
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
   - Added a snackbar notification for opening a folder/file you don't have access to   
   - Added an "Undo" option to the Close All feature to re-open tabs & files
+- Login activity and storage event updates [#242](https://github.com/zowe/zlux-app-manager/pull/242)
+  - Converted login activity to event emitter
+  - Added new local storage listener so changes can be reported across tabs
+  - Added detect activity when loging in from a new window/tab
+  - In idleWarn popup added
 
 #### Zowe CLI
 
