@@ -59,7 +59,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.13
    Note: You do not need to specify any parameters to this script.  
 
    If you want to use the verify tool's script or files which you downloaded
-   instead of the ones in your runtime directory, you can call the downloaded script and specify the options `-f` and `-h` like this.
+   instead of the ones in your runtime directory, you can run the downloaded script and specify the options `-f` and `-h` like this.
    
    ```
    /u/username/hash/zowe-verify-authenticity.sh -f /u/username/hash -h /u/username/hash
