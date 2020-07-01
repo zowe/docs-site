@@ -81,3 +81,15 @@ pwd: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
 **Solution:**
 
 Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing, make sure that it is appended to PATH in your profile, for example, in `/etc/profile/`.
+
+## Cannot start ZWESAUX
+
+**Symptom:**
+
+When you try to start the ZWESAUX task, it fails with the following message.
+
+```ZWES0058E Communication area failure - master comm area parm not found.```
+
+**Solution:**
+
+You are not supposed to start ZWESAUX manually. It is started by ZWESIS on an as-needed basis. 
