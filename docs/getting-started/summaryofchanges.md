@@ -52,7 +52,6 @@ The following features and enhancements were added to the **core Zowe CLI**:
 
 The following features and enhancements were added to the **Imperative CLI Framework**:
 
-- test
 
 #### Zowe Explorer
 
