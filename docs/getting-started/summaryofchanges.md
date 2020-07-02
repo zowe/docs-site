@@ -50,52 +50,74 @@ The following features and enhancements were added.
 The following features and enhancements were added to the **core Zowe CLI**:
 
 - Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
 - Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
 - CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
 - Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
 - Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
 - Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
 
 The following features and enhancements were added to the **Imperative CLI Framework**:
 
-- Fix web help failing to load in Internet Explorer 11
-- Fix `--help-web` not working on macOS when DISPLAY environment variable is undefined
-- Hide sensitive session properties (user, password, and token value) in log file. Since 4.7.0, only password was hidden.
-- Don't load token value into Session object if user or password are supplied
-- Add the --dd flag to profile creation to allow the profile to be created without the default values specified for that profile.
+- Added the `ConnectionPropsForSessCfg.addPropsOrPrompt` function to store credentials, such as a token, in a session configuration object. [#718](https://github.com/zowe/zowe-cli/issues/718)
 
-- Use a token for authentication if a token is present in the underlying REST session object.
-- Added a new ConnectionPropsForSessCfg.addPropsOrPrompt function that places credentials (including a possible token) into a session configuration object.
-    - Plugins must use this function to create their sessions to gain the features of automatic token-handling and prompting for missing connection options.
-    - Connection information is obtained from the command line, environment variables, a service profile, a base profile, or from an option's default value in a service profile's definition, in that order.
-    - If key connection information is not supplied to any cor Zowe command, the command will prompt for:
+    - CLI plug-ins must implement this function to create sessions in order to consume automatic token-handling and prompt for mission options features.
+
+    - Connection information is obtained from the command line in the following order: Environment variables, service profiles, base profiles, or a default option value.
+
+    - If connection information is not supplied to any core CLI command, the user is prompted for:
         -  host
         -  port
         -  user
-        -  and password
-    - Any prompt will timeout after 30 seconds so that it will not hang an automated script.
-- Add base profiles, a new type of profile which can store values shared between profiles of other types.
-    - The properties that are currently recognized in a base profile are:
-        - host
-        - port
-        - user
-        - password
-        - rejectUnauthorized
-        - tokenType
-        - tokenValue
-    - To use base profiles in an Imperative-based CLI, define a `baseProfile` schema on your Imperative configuration object.
-    - If the `baseProfile` schema is defined, base profile support will be added to any command that uses profiles.
-- Due to new options (like tokenValue) help text will change. Plugin developers may have to update any mismatched snapshots in their automated tests.
-- Updated the version of TypeScript from 3.7.4 to 3.8.0.
-- Updated the version of TSLint from 5.x to 6.1.2.
-- Add login and logout commands to get and delete/invalidate tokens
-  - Add showToken flag to display token only, and not save it to the user profile
-  - Add ability to create a user profile on login if no profile of that type existed previously
+        -  password
+
+      The prompt times-out after 30 seconds so that automated scripts will not fail.
+
+- Added base profiles, a type of profile that can store values and provide them to other profiles types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
+
+  The following properties can be stored in a base profile:
+
+  - host
+  - port
+  - user
+  - password
+  - rejectUnauthorized
+  - tokenType
+  - tokenValue
+
+  To implement base profiles in a CLI plug-in, define a `baseProfile` schema on your Imperative configuration object. If the `baseProfile` schema is defined, base profile support is added to any command that uses profiles.
+
+- Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
+
+  - Added a `showToken` flag to display the token and not save it to the user profile.
+
+  - Added the ability to create a user profile upon login, if no profile of that type existed previously.
+
+- Sensitive session properties, such as user, password, and token value, are now hidden in log files. Prior to this release, only the password was hidden. [#416](https://github.com/zowe/imperative/issues/416)
+
+- Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- If a token is present in the underlying REST session object, Imperative uses the token for authentication.
+
+- Imperative will not load a token value into the Session object if user or password are supplied. [#413](https://github.com/zowe/imperative/issues/413)
+
+- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
+
+- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
+
+- CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
+
+- Updated the version of TypeScript from v3.7.4 to v3.8.0.
+
+- Updated the version of TSLint from v5.x to v6.1.2.
 
 - Fix optional secure fields not deleted when overwriting a profile
 
-- Update log4js to improve Webpack compatibility for extenders
-
+- Update log4js to improve Webpack compatibility for extenders.
 
 #### Zowe Explorer
 
