@@ -4,16 +4,16 @@ The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zow
 
 To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a verify tool which comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. 
 
-If you have Zowe version 1.13 or higher the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
+If you have Zowe version 1.14 or higher the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
 
-If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10, 1.11 and 1.12.   
+If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10, 1.11, 1.12 and 1.13.   
 
-## Step 1: Obtain the verify tool (Prior to v1.13)
+## Step 1: Obtain the verify tool (Prior to v1.14)
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable local directory, for example, `/u/username/hash`.
 3. Go to the [zowe.org](https://www.zowe.org/) downloads page.
-4. Select the `fingerprint.zip` file.
+4. Select the `fingerprint.zip` or `fingerprint.7z` file as preferred.
 <!-- there will be a link or button somewhere for this -->
 5. Download this file to a system where you can unzip it, either your workstation or your z/OS USS directory `/u/username/hash` by using FTP or a similar file-transfer utility. 
 6. When you transfer the zip file between systems, you must use binary transfer mode.
@@ -29,29 +29,30 @@ files to EBCDIC with `iconv` or another suitable utility.
    - `RefRuntimeHash-1.10.0.txt` (text)  
    - `RefRuntimeHash-1.11.0.txt` (text)  
    - `RefRuntimeHash-1.12.0.txt` (text)  
+   - `RefRuntimeHash-1.13.0.txt` (text) 
    - `zowe-verify-authenticity.sh` (text)
 
 Note that each `RefRuntimeHash-v.r.m.txt` file is specific to a Zowe release, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  Further 
-`RefRuntimeHash-v.r.m.txt` files will be added to the zip file as each release becomes available.  This includes releases after v1.13.  
+`RefRuntimeHash-v.r.m.txt` files will be added to the zip file as each release becomes available.  This includes releases after v1.14.  
 
 ## Step 2: Verify your runtime folder
 
-Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.13`, which contains the following files that you can show by using the `ls` command. 
+Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.14`, which contains the following files that you can show by using the `ls` command. 
 
 ```
-/u/username/hash:>ls /usr/lpp/zowe/v1.13
+/u/username/hash:>ls /usr/lpp/zowe/v1.14
 bin            components     fingerprint   install_log    manifest.json  scripts
 ```
-Note that you will not have a `fingerprint` directory in releases prior to v1.13.0.  
+Note that you will not have a `fingerprint` directory in releases prior to v1.14.0.  
 
 1. Change to the runtime directory. 
    ```
-   cd /usr/lpp/zowe/v1.13
+   cd /usr/lpp/zowe/v1.14
    ``` 
 
 2. Run the `zowe-verify-authenticity.sh` script.
 
-   **For Zowe v1.13 and later** 
+   **For Zowe v1.14 and later** 
 
    ```
    bin/zowe-verify-authenticity.sh
@@ -59,7 +60,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.13
    Note: You do not need to specify any parameters to this script.  
 
    If you want to use the verify tool's script or files which you downloaded
-   instead of the ones in your runtime directory, you can run the downloaded script and specify the options `-f` and `-h` like this.
+   instead of the ones in your runtime directory, you can call the downloaded script and specify the options `-f` and `-h` like this.
    
    ```
    /u/username/hash/zowe-verify-authenticity.sh -f /u/username/hash -h /u/username/hash
@@ -71,7 +72,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.13
    with Zowe runtimes prior to v1.12, so you should use the version from the zipfile instead. -->
 
 
-   **For Zowe releases prior to v1.13**
+   **For Zowe releases prior to v1.14**
    ```
    /u/username/hash/zowe-verify-authenticity.sh -r /usr/lpp/zowe/v1.9 -f /u/username/hash -h /u/username/hash
    ```
@@ -178,5 +179,5 @@ default: The following defaults will be tried in this order
 ```
 ## Use of zowe-verify-authenticity.sh by zowe-support.sh
 
-From v1.13 on, `zowe-verify-authenticity.sh` is automatically called, with no parameters, by `zowe-support.sh`.  
+From v1.14 on, `zowe-verify-authenticity.sh` is automatically called, with no parameters, by `zowe-support.sh`.  
 
