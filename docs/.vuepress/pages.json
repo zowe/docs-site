@@ -141,6 +141,7 @@
           "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
+          "extend/extend-apiml/api-mediation-routing.md",
           "extend/extend-apiml/api-mediation-passtickets.md"
         ]
       },
