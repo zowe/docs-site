@@ -4,9 +4,10 @@ The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zow
 
 To provide system programmers with the ability to check that the `ROOT_DIR` has not been altered, Zowe provides a verify tool which comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. 
 
-If you have Zowe version 1.14 or higher the verify tool is delivered with Zowe, but you can still download the verify tool if required.  
+If you have Zowe version 1.14 or higher the verify tool is delivered with Zowe, so you can skip Step 1 below,
+but you can still download the verify tool if required.  
 
-If you have an earlier Zowe version you can obtain the script and use it to verify a `ROOT_DIR` for 1.9, 1.10, 1.11, 1.12 and 1.13.   
+If you have an earlier Zowe version you can obtain the verify tool and use it to verify a `ROOT_DIR` for 1.9, 1.10, 1.11, 1.12 and 1.13.  
 
 ## Step 1: Obtain the verify tool (Prior to v1.14)
 
@@ -15,11 +16,11 @@ If you have an earlier Zowe version you can obtain the script and use it to veri
 3. Go to Jfrog Artifactory to obtain the `fingerprint.pax` PAX file.
 <!-- something like this ...
 https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/1.13.0-PR-1316/fingerprint-1.13.0-pr-1316-127-20200701121612.pax 
---> .
-5. Download this file to a temporary directory such as `/tmp` on your z/OS USS file system 
+-->
+4. Download this file to a temporary directory such as `/tmp` on your z/OS USS file system 
 by using SFTP or a similar file-transfer utility. 
 When you transfer the PAX file between systems, you must use binary transfer mode.
-6. Extract the PAX file inside `/u/username/hash` using commands like this
+5. Extract the PAX file inside `/u/username/hash` using commands like this
 ```
    cd /u/username/hash
    pax -ppx -rf /tmp/fingerprint.pax
@@ -40,7 +41,7 @@ files to EBCDIC with `iconv` or another suitable utility.  -->
    - `zowe-verify-authenticity.sh` (text)
 
 Note that each `RefRuntimeHash-v.r.m.txt` file is specific to a Zowe release, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  Further 
-`RefRuntimeHash-v.r.m.txt` files will be added to the zip file as each release becomes available.  This includes releases after v1.14.  
+`RefRuntimeHash-v.r.m.txt` files will be added to the PAX file as each release becomes available.  This includes releases after v1.14.  
 
 
 
