@@ -13,11 +13,8 @@ If you have an earlier Zowe version you can obtain the verify tool and use it to
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable, local directory, for example, `/u/username/hash`.
-3. Go to Jfrog Artifactory to obtain the `fingerprint.pax` PAX file.
-<!-- something like this ...
-https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/1.13.0-PR-1316/fingerprint-1.13.0-pr-1316-127-20200701121612.pax 
--->
-4. Download this file to a temporary directory such as `/tmp` on your z/OS USS file system 
+3. Go to https://ibm.box.com/s/9pc7qqx2t1z4hqovq4l9lz97wqu84s6l to download the `fingerprint.pax` PAX file.
+4. Upload this file to a temporary directory such as `/tmp` on your z/OS USS file system 
 by using SFTP or a similar file-transfer utility. 
 When you transfer the PAX file between systems, you must use binary transfer mode.
 5. Extract the PAX file from inside `/u/username/hash` using commands like this
