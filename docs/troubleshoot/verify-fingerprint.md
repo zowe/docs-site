@@ -11,18 +11,25 @@ If you have an earlier Zowe version you can obtain the script and use it to veri
 ## Step 1: Obtain the verify tool (Prior to v1.14)
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
-2. Create a new, writable local directory, for example, `/u/username/hash`.
-3. Go to the [zowe.org](https://www.zowe.org/) downloads page.
-4. Select the `fingerprint.zip`, `fingerprint.tar` or `fingerprint.7z` file as preferred.
-<!-- there will be a link or button somewhere on the downloads page for this -->
-5. Download this file to a system where you can unzip it, either your workstation or your z/OS USS directory `/u/username/hash` by using FTP or a similar file-transfer utility. 
-6. When you transfer the zip file between systems, you must use binary transfer mode.
-The zip file contains text files, which are in ASCII, and one class file, which is binary.  
-Once you unzip the zip file, you will need to convert the text files to EBCDIC before you can use them on z/OS.  
-So you could FTP the zip file to your workstation in binary format, unzip the zip file there, and transfer the text files to your z/OS USS directory in text format,
-which will convert them to EBCDIC.  Alternatively, you could transfer the zip file directly to z/OS in binary format, and unzip it there.  Then you could convert the text
-files to EBCDIC with `iconv` or another suitable utility.  
-6. When unzipped, you will see the following files
+2. Create a new, writable, local directory, for example, `/u/username/hash`.
+3. Go to Jfrog Artifactory to obtain the `fingerprint.pax` PAX file.
+<!-- something like this ...
+https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/1.13.0-PR-1316/fingerprint-1.13.0-pr-1316-127-20200701121612.pax 
+--> .
+5. Download this file to a temporary directory such as `/tmp` on your z/OS USS file system 
+by using SFTP or a similar file-transfer utility. 
+When you transfer the PAX file between systems, you must use binary transfer mode.
+6. Extract the PAX file inside `/u/username/hash` using commands like this
+```
+   cd /u/username/hash
+   pax -ppx -rf /tmp/fingerprint.pax
+```
+<!-- The zip file contains text files, which are in ASCII, and one class file, which is binary.  
+Once you un-PAX the zip file, you will need to convert the text files to EBCDIC before you can use them on z/OS.  
+So you could FTP the zip file to your workstation in binary format, un-PAX the zip file there, and transfer the text files to your z/OS USS directory in text format,
+which will convert them to EBCDIC.  Alternatively, you could transfer the zip file directly to z/OS in binary format, and un-PAX it there.  Then you could convert the text
+files to EBCDIC with `iconv` or another suitable utility.  -->
+6. When un-PAXed, you will see the following files in your `/u/username/hash` directory:
 
    - `HashFiles.class` (binary)
    - `RefRuntimeHash-1.9.0.txt` (text)  
@@ -35,9 +42,11 @@ files to EBCDIC with `iconv` or another suitable utility.
 Note that each `RefRuntimeHash-v.r.m.txt` file is specific to a Zowe release, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  Further 
 `RefRuntimeHash-v.r.m.txt` files will be added to the zip file as each release becomes available.  This includes releases after v1.14.  
 
+
+
 ## Step 2: Verify your runtime folder
 
-Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.14`, which contains the following files that you can show by using the `ls` command. 
+Now you are ready to verify your `ROOT_DIR` runtime folder, for example, `/usr/lpp/zowe/v1.14`, which contains the following files, which you can show by using the `ls` command. 
 
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.14
@@ -51,6 +60,9 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.14
    ``` 
 
 2. Run the `zowe-verify-authenticity.sh` script.
+
+   Note: The script will automatically choose the
+   correct `RefRuntimeHash-v.r.m.txt` file for the release found in your runtime directory.
 
    **For Zowe v1.14 and later** 
 
