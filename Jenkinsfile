@@ -78,7 +78,7 @@ opts.push(parameters(customParameters))
 // set build properties
 properties(opts)
 
-node ('ibm-jenkins-slave-dind') {
+node('ibm-jenkins-slave-nvm') {
   currentBuild.result = 'SUCCESS'
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
