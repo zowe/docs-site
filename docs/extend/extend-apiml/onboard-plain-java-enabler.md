@@ -296,12 +296,12 @@ The onboarding configuration parameters are broken down into the following group
 
 *  **serviceIpAddress** (Optional)
 
-    This parameter specifies the IP address of the service and can be provided by system administrator in externalized service configuration.
+    Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
     If this parameter is not present in the configuration file or is not set as a service context parameter, it will be resolved from the hostname part of the `baseUrl`.
 
 * **preferIpAddress** (Optional)
 
-    In some cases, it is preferable for Eureka to advertise the IP addresses of services rather than the hostname. Set preferIpAddress to `true` and, when the application registers with eureka, it uses its IP address rather than its hostname.
+    Set the value of the parameter to "true" if you want to advertise a service IP address instead of its hostname.
 
 ### Administrative endpoints
 
