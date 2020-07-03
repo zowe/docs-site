@@ -13,8 +13,8 @@ If you have an earlier Zowe version you can obtain the script and use it to veri
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable local directory, for example, `/u/username/hash`.
 3. Go to the [zowe.org](https://www.zowe.org/) downloads page.
-4. Select the `fingerprint.zip` or `fingerprint.7z` file as preferred.
-<!-- there will be a link or button somewhere for this -->
+4. Select the `fingerprint.zip`, `fingerprint.tar` or `fingerprint.7z` file as preferred.
+<!-- there will be a link or button somewhere on the downloads page for this -->
 5. Download this file to a system where you can unzip it, either your workstation or your z/OS USS directory `/u/username/hash` by using FTP or a similar file-transfer utility. 
 6. When you transfer the zip file between systems, you must use binary transfer mode.
 The zip file contains text files, which are in ASCII, and one class file, which is binary.  
@@ -66,11 +66,15 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.14
    /u/username/hash/zowe-verify-authenticity.sh -f /u/username/hash -h /u/username/hash
    ```
    You might want to use the downloaded script and files if you suspect that the versions of those files in `ROOT_DIR` 
-   have been altered since this version of Zowe was installed.  The script and files in `ROOT_DIR` 
+   have been altered since this version of Zowe was installed.  
+   <!-- The script and files in `ROOT_DIR` 
    are interoperable with the ones you downloaded, so you can use them in any combination.  
-   <!-- However, the `zowe-verify-authenticity.sh` script in `ROOT_DIR/bin` is not backwards-compatible
-   with Zowe runtimes prior to v1.12, so you should use the version from the zipfile instead. -->
-
+   The exception to this is the `zowe-verify-authenticity.sh` script in `ROOT_DIR/bin`, which is not backwards-compatible
+   with Zowe runtimes prior to v1.12, so you should use the version from the zipfile instead. 
+   This will affect you only if you are using the `zowe-verify-authenticity.sh` script in `ROOT_DIR/bin`,
+   which is in v1.14 and above, to check a runtime prior to v1.12.
+   This is an unlikely scenario unless you have more than one Zowe release installed.
+   -->
 
    **For Zowe releases prior to v1.14**
    ```
