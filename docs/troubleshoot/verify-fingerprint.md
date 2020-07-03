@@ -20,16 +20,11 @@ https://zowe.jfrog.io/zowe/libs-snapshot-local/org/zowe/1.13.0-PR-1316/fingerpri
 4. Download this file to a temporary directory such as `/tmp` on your z/OS USS file system 
 by using SFTP or a similar file-transfer utility. 
 When you transfer the PAX file between systems, you must use binary transfer mode.
-5. Extract the PAX file inside `/u/username/hash` using commands like this
+5. Extract the PAX file from inside `/u/username/hash` using commands like this
 ```
    cd /u/username/hash
    pax -ppx -rf /tmp/fingerprint.pax
 ```
-<!-- The zip file contains text files, which are in ASCII, and one class file, which is binary.  
-Once you un-PAX the zip file, you will need to convert the text files to EBCDIC before you can use them on z/OS.  
-So you could FTP the zip file to your workstation in binary format, un-PAX the zip file there, and transfer the text files to your z/OS USS directory in text format,
-which will convert them to EBCDIC.  Alternatively, you could transfer the zip file directly to z/OS in binary format, and un-PAX it there.  Then you could convert the text
-files to EBCDIC with `iconv` or another suitable utility.  -->
 6. When un-PAXed, you will see the following files in your `/u/username/hash` directory:
 
    - `HashFiles.class` (binary)
@@ -40,7 +35,7 @@ files to EBCDIC with `iconv` or another suitable utility.  -->
    - `RefRuntimeHash-1.13.0.txt` (text) 
    - `zowe-verify-authenticity.sh` (text)
 
-Note that each `RefRuntimeHash-v.r.m.txt` file is specific to a Zowe release, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  Further 
+Each `RefRuntimeHash-v.r.m.txt` file is specific to a Zowe release, where `v.r.m` is your Zowe release number, e.g. `1.9.0`.  Further 
 `RefRuntimeHash-v.r.m.txt` files will be added to the PAX file as each release becomes available.  This includes releases after v1.14.  
 
 
@@ -71,6 +66,10 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.14
    bin/zowe-verify-authenticity.sh
    ``` 
    Note: You do not need to specify any parameters to this script.  
+   To display a list of parameters, enter this command
+   ```
+   bin/zowe-verify-authenticity.sh -?
+   ```
 
    If you want to use the verify tool's script or files which you downloaded
    instead of the ones in your runtime directory, you can call the downloaded script and specify the options `-f` and `-h` like this.
