@@ -27,7 +27,7 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 
 ### Notable changes
 
-Zowe CLI added the ability to accesss mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to to API Mediation Layer and recieve a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+Zowe CLI added the ability to access mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to API Mediation Layer and receive a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
 
 The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
 
@@ -75,9 +75,9 @@ The following features and enhancements were added to the **Imperative CLI Frame
         -  user
         -  password
 
-      The prompt times-out after 30 seconds so that automated scripts will not fail.
+      The prompt times out after 30 seconds so that automated scripts will not fail.
 
-- Added base profiles, a type of profile that can store values and provide them to other profiles types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
+- Added base profiles, a type of profile that can store values and provide them to other profile types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
 
   The following properties can be stored in a base profile:
 
@@ -89,33 +89,21 @@ The following features and enhancements were added to the **Imperative CLI Frame
   - tokenType
   - tokenValue
 
-  To implement base profiles in a CLI plug-in, define a `baseProfile` schema on your Imperative configuration object. If the `baseProfile` schema is defined, base profile support is added to any command that uses profiles.
-
 - Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
 
   - Added a `showToken` flag to display the token and not save it to the user profile.
 
   - Added the ability to create a user profile upon login, if no profile of that type existed previously.
 
-- Sensitive session properties, such as user, password, and token value, are now hidden in log files. Prior to this release, only the password was hidden. [#416](https://github.com/zowe/imperative/issues/416)
-
 - Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
 
 - If a token is present in the underlying REST session object, Imperative uses the token for authentication.
-
-- Imperative will not load a token value into the Session object if user or password are supplied. [#413](https://github.com/zowe/imperative/issues/413)
-
-- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
-
-- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
 
 - CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
 
 - Updated the version of TypeScript from v3.7.4 to v3.8.0.
 
 - Updated the version of TSLint from v5.x to v6.1.2.
-
-- Fix optional secure fields not deleted when overwriting a profile
 
 - Update log4js to improve Webpack compatibility for extenders.
 
@@ -135,8 +123,16 @@ The following bugs were fixed.
 #### Zowe App Server
 
 #### Zowe CLI
-- Update Imperative version to include security fix
-- Update Imperative version to fix issue "Can't use service profile after storing token in base profile"
+
+- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
+
+- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
+
+- Updated Imperative version to include security fixes.
+
+- Updated Imperative version to fix a probem where users could not use a service profile after storing a token in a base profile.
+
+- Fixed an issue where optional secure fields were not deleted when overwriting a profile.
 
 ## Version 1.12.0 LTS (June 2020)
 
