@@ -180,6 +180,7 @@ are written in `${parameterValue}` format. For your service configuration file, 
  description: Sample API ML REST Service
  baseUrl: https://${samplehost}:${sampleport}/${sampleservice}
  serviceIpAddress: ${sampleHostIpAddress}
+ preferIpAddress: false
 
  homePageRelativeUrl: /application/home
  statusPageRelativeUrl: /application/info
@@ -295,10 +296,12 @@ The onboarding configuration parameters are broken down into the following group
 
 *  **serviceIpAddress** (Optional)
 
-
-    This parameter specifies the IP address of the service and can be provided by system administrator in externalized service configuration.
+    Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
     If this parameter is not present in the configuration file or is not set as a service context parameter, it will be resolved from the hostname part of the `baseUrl`.
 
+* **preferIpAddress** (Optional)
+
+    Set the value of the parameter to "true" if you want to advertise a service IP address instead of its hostname.
 
 ### Administrative endpoints
 
