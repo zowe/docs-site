@@ -59,6 +59,11 @@ The following features and enhancements were added.
   - Added detect activity when loging in from a new window/tab
   - In idleWarn popup added
   - Being active on the Desktop, while the session expiration prompt is active, will now dismiss the pop-up and attempt to renew the session. This feature also stays synchronized between multiple tabs, and will renew multiple tabs if the user is active in at least one of them
+- NGX-monaco has been removed [#155](https://github.com/zowe/zlux-editor/pull/155)
+  - Removed use of node-sass, so that native compilation is not required
+  - Updated to typescript 3.7
+  - Updated to monaco 0.20
+
 #### Zowe CLI
 
 #### Zowe Explorer
