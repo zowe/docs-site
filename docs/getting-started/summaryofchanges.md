@@ -25,6 +25,12 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 
 ## Version 1.13.0 LTS (June 2020)
 
+### Notable changes
+
+Zowe CLI added the ability to access mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to API Mediation Layer and receive a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -43,15 +49,63 @@ The following features and enhancements were added.
 
 The following features and enhancements were added to the **core Zowe CLI**:
 
-- Added the ability to log into and out of the APIML, getting and using a token
-- Add `--base-profile` option to all commands that use profiles, allowing them to make use of base profiles containing shared values.
-- Upgrade Zowe commands to prompt for any of the following values if the option is missing: host, port, user, and password.
-- Add encoding / code page support for data set upload and download operations in library and CLI.
-- Add `encoding` option to `zosmf` profile type.
-- Added API to delete migrated data sets.
+- Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
+- Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
+- Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
 
 The following features and enhancements were added to the **Imperative CLI Framework**:
 
+- Added the `ConnectionPropsForSessCfg.addPropsOrPrompt` function to store credentials, such as a token, in a session configuration object. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+    - CLI plug-ins must implement this function to create sessions in order to consume automatic token-handling and prompt for mission options features.
+
+    - Connection information is obtained from the command line in the following order: Environment variables, service profiles, base profiles, or a default option value.
+
+    - If connection information is not supplied to any core CLI command, the user is prompted for:
+        -  host
+        -  port
+        -  user
+        -  password
+
+      The prompt times out after 30 seconds so that automated scripts will not fail.
+
+- Added base profiles, a type of profile that can store values and provide them to other profile types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
+
+  The following properties can be stored in a base profile:
+
+  - host
+  - port
+  - user
+  - password
+  - rejectUnauthorized
+  - tokenType
+  - tokenValue
+
+- Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
+
+  - Added a `showToken` flag to display the token and not save it to the user profile.
+
+  - Added the ability to create a user profile upon login, if no profile of that type existed previously.
+
+- Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- If a token is present in the underlying REST session object, Imperative uses the token for authentication.
+
+- CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
+
+- Updated the version of TypeScript from v3.7.4 to v3.8.0.
+
+- Updated the version of TSLint from v5.x to v6.1.2.
+
+- Update log4js to improve Webpack compatibility for extenders.
 
 #### Zowe Explorer
 
@@ -69,8 +123,16 @@ The following bugs were fixed.
 #### Zowe App Server
 
 #### Zowe CLI
-- Update Imperative version to include security fix
-- Update Imperative version to fix issue "Can't use service profile after storing token in base profile"
+
+- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
+
+- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
+
+- Updated Imperative version to include security fixes.
+
+- Updated Imperative version to fix a probem where users could not use a service profile after storing a token in a base profile.
+
+- Fixed an issue where optional secure fields were not deleted when overwriting a profile.
 
 ## Version 1.12.0 LTS (June 2020)
 
