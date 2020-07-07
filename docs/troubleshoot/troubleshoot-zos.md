@@ -92,4 +92,4 @@ When you try to start the ZWESAUX task, it fails with the following message.
 
 **Solution:**
 
-You are not supposed to start ZWESAUX manually. It is started by ZWESIS on an as-needed basis. 
+You are not supposed to start ZWESAUX manually. It is started by ZWESIS on an as-needed basis. For more information, see [](../user-guide/configure-auxiliary-address-space.md).
