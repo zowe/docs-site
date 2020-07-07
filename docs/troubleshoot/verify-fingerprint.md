@@ -1,6 +1,6 @@
 # Verify Zowe runtime directory
 
-The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To avoid this situation, Zowe provides a verify tool that you can use to check if the `ROOT_DIR` has been altered. The verify tool comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
+The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To check if the `ROOT_DIR` has been altered, Zowe provides a verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
 
 You can use this verify tool on Zowe version 1.9 and later. 
 - If you use Zowe version 1.14 or later, the verify tool is delivered with Zowe, so you can skip [Step 1](#step-1-obtain-the-verify-tool-prior-to-v114) below, but you can still download the verify tool if required.  
@@ -47,7 +47,7 @@ Now you are ready to verify your runtime directory `ROOT_DIR`, for example, `/us
 
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.14
-bin            components     fingerprint   install_log    manifest.json  scripts
+bin  components  fingerprint  install_log  manifest.json  scripts
 ```
 Note that you will not have a `fingerprint` directory in releases prior to v1.14.0.  
 
@@ -100,7 +100,7 @@ The `zowe-verify-authenticity.sh` script creates a `CustRuntimeHash.txt` file, w
 
 ## Step 3: Review results
 
-There are two results:
+You will get one of the following results.
 
 - [Mismatch](#mismatch)
 - [Match](#match)
@@ -128,7 +128,7 @@ USERNAME:/u/username/hash: >
 ```
 #### Troubleshooting and hints
 
-This is a worst-case scenario of a bad mismatch.  To find out what the problem is, you could, for example, start by checking the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
+This is a worst-case scenario of a bad mismatch.  To find out what the problem is, you could, for example, start by referring to the [`manifest.json` file](troubleshoot-zowe-release.md#check-the-zowe-release-number) to see whether one of the components is from the wrong release.
 
 If you have many files different but none missing or extra, you might have a file tagging or code-page problem.  Check that the environment variables are set as required according to `zowe-set-env.sh`.  
 
