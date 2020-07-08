@@ -39,6 +39,11 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
+- Added Cross-origin resource sharing (CORS) Headers Support.
+- Introduced an option to set connection timeout for a service.
+- Provided SAF Keyrings support for a ZAAS Client.
+- Introduced Spring Boot enabler configuration validation.
+
 #### ZSS
 
 #### Zowe App Server
