@@ -16,7 +16,7 @@ You can also find error messages and codes, must-gathers, and information about 
 
 ## Collecting data for Zowe problems
 
-Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md). 
+Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md).
 
 ## Understanding the Zowe release
 
