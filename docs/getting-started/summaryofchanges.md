@@ -45,7 +45,6 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
-#### ZSS
 
 #### Zowe App Server
 
@@ -132,14 +131,10 @@ The following features and enhancements were added to the **Imperative CLI Frame
 
 - Update log4js to improve Webpack compatibility for extenders.
 
-#### Zowe Explorer
-
 
 ### Bug fixes
 
 The following bugs were fixed.
-
-#### Zowe installation
 
 #### API Mediation Layer
 
