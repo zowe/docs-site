@@ -144,7 +144,6 @@ The following features and enhancements were added to **Zowe Explorer**:
 * Improved text in confirmation dialogs.
 * Reorganized the Data Sets context menu to match the order of commands recommended by VSCode.
 
-
 ### Bug fixes
 
 The following bugs were fixed.
