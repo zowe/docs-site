@@ -45,6 +45,10 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
+- Added Cross-origin resource sharing (CORS) Headers Support.
+- Introduced an option to set connection timeout for a service.
+- Provided SAF Keyrings support for a ZAAS Client.
+- Introduced Spring Boot enabler configuration validation.
 
 #### Zowe App Server
 
@@ -131,6 +135,18 @@ The following features and enhancements were added to the **Imperative CLI Frame
 
 - Update log4js to improve Webpack compatibility for extenders.
 
+#### Zowe Explorer
+
+The following features and enhancements were added to **Zowe Explorer**:
+
+* Added a credentials check feature that allows users to update their credentials if they receive an authorization error.
+* Added a star icon that clearly denotes data sets, USS files, and jobs as favorites.
+* Added a profile validation feature that checks whether a profile is valid. The feature is triggered when any action is performed with the profile. Validated profiles are indicated by a green mark.
+* Disallowed case sensitivity for profiles with same names.
+* Enabled editing of search filters.
+* Enabled editing of ASCII files in USS.
+* Improved text in confirmation dialogs.
+* Reorganized the Data Sets context menu to match the order of commands recommended by VSCode.
 
 ### Bug fixes
 
