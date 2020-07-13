@@ -612,7 +612,7 @@ A bug was fixed where Zowe CLI installation could fail and users could receive t
 981 verbose stack Error: EPERM: operation not permitted
 ```
 
-To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/download.html) and retry the installation process.
 
 ## Version 1.8.0 (February 2020)
 
@@ -875,7 +875,7 @@ The following commands and enhancements are added:
 ## Zowe SMP/E Alpha (August 2019)
 
 A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment.
-- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website.
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/download.html) website.
 - For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
