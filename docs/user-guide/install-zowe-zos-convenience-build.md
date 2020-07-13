@@ -22,7 +22,7 @@ For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 
 The numbers are incremented each time a release is created, so the higher the numbers, the later the release.  For more information about the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
 
-To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. 
+To download the PAX file, open your web browser and click the **Zowe z/OS Convenience build** button on the [Zowe Download](https://www.zowe.org/download.html) website to save it to a folder on your desktop. 
 
 After you have the `zowe-V.v.p.PAX` file, follow these steps. 
 
