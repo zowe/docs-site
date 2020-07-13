@@ -35,7 +35,7 @@ If you do not have internet access at your site, use the following method to ins
 
    - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
-3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+3. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
     A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
