@@ -8,11 +8,11 @@ The following steps describe how to list the profiles that you created, delete t
 
 **Follow these steps:**
 
-1.  Open a command-line window.
+1. Open a command-line window.
 
     **Note:** If you do not want to delete the Zowe CLI profiles from your computer, go to Step 5.
 
-2.  List all profiles that you created for a [Command Group](cli-usingcli.html#zowe-cli-command-groups) by issuing the following command:
+2. List all profiles that you created for a given command group. Issue the following command:
 
     ```
      zowe profiles list <profileType>
@@ -27,7 +27,7 @@ The following steps describe how to list the profiles that you created, delete t
     $
     ```
 
-3.  Delete all of the profiles that are listed for the command group by issuing the following command:
+3. Delete all of the profiles that are listed for the command group by issuing the following command:
 
     **Tip:** For this command, use the results of the `list`
     command.
@@ -44,9 +44,9 @@ The following steps describe how to list the profiles that you created, delete t
     zowe profiles delete zosmf SMITH-123 --force
     ```
 
-4.  Repeat Steps 2 and 3 for all Zowe CLI command groups and profiles.
+4. Repeat Steps 2 and 3 for all Zowe CLI command groups and profiles.
 
-5.  Uninstall Zowe CLI by issuing the following command:
+5. Uninstall Zowe CLI by issuing the following command:
 
     ```
     npm uninstall --global @zowe/cli
