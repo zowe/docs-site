@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.13.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.13.0 LTS (June 2020)](#version-1-13-0-lts-june-2020)
+- [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
@@ -23,7 +23,7 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.13.0 LTS (June 2020)
+## Version 1.13.0 LTS (July 2020)
 
 ### Notable changes
 
@@ -60,7 +60,7 @@ The following features and enhancements were added.
 - Added close all + undo settings + hotkeys [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
-  - Added a snackbar notification for opening a folder/file you don't have access to   
+  - Added a snackbar notification for opening a folder/file you don't have access to
   - Added an "Undo" option to the Close All feature to re-open tabs & files
 - Login activity and storage event updates [#242](https://github.com/zowe/zlux-app-manager/pull/242)
   - Converted login activity to event emitter
@@ -78,25 +78,17 @@ The following features and enhancements were added.
 The following features and enhancements were added to the **core Zowe CLI**:
 
 - Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
-
 - Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
-
 - CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
-
 - Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
-
 - Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
-
 - Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
 
 The following features and enhancements were added to the **Imperative CLI Framework**:
 
 - Added the `ConnectionPropsForSessCfg.addPropsOrPrompt` function to store credentials, such as a token, in a session configuration object. [#718](https://github.com/zowe/zowe-cli/issues/718)
-
     - CLI plug-ins must implement this function to create sessions in order to consume automatic token-handling and prompt for mission options features.
-
     - Connection information is obtained from the command line in the following order: Environment variables, service profiles, base profiles, or a default option value.
-
     - If connection information is not supplied to any core CLI command, the user is prompted for:
         -  host
         -  port
@@ -104,7 +96,6 @@ The following features and enhancements were added to the **Imperative CLI Frame
         -  password
 
       The prompt times out after 30 seconds so that automated scripts will not fail.
-
 - Added base profiles, a type of profile that can store values and provide them to other profile types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
 
   The following properties can be stored in a base profile:
@@ -116,23 +107,14 @@ The following features and enhancements were added to the **Imperative CLI Frame
   - rejectUnauthorized
   - tokenType
   - tokenValue
-
 - Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
-
   - Added a `showToken` flag to display the token and not save it to the user profile.
-
   - Added the ability to create a user profile upon login, if no profile of that type existed previously.
-
 - Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
-
 - If a token is present in the underlying REST session object, Imperative uses the token for authentication.
-
 - CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
-
 - Updated the version of TypeScript from v3.7.4 to v3.8.0.
-
 - Updated the version of TSLint from v5.x to v6.1.2.
-
 - Update log4js to improve Webpack compatibility for extenders.
 
 #### Zowe Explorer
@@ -152,15 +134,13 @@ The following features and enhancements were added to **Zowe Explorer**:
 
 The following bugs were fixed.
 
-#### API Mediation Layer
-
 #### ZSS
 
 - Bugfix: ICFS error message is not printed. In this version, the issue has been resolved [#143](https://github.com/zowe/zowe-common-c/pull/143)
 
 #### Zowe App Server
 
-- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129) 
+- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129)
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
@@ -168,13 +148,9 @@ The following bugs were fixed.
 #### Zowe CLI
 
 - Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
-
 - Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
-
 - Updated Imperative version to include security fixes.
-
 - Updated Imperative version to fix a probem where users could not use a service profile after storing a token in a base profile.
-
 - Fixed an issue where optional secure fields were not deleted when overwriting a profile.
 
 ## Version 1.12.0 LTS (June 2020)
