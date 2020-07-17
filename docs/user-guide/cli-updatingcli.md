@@ -37,11 +37,11 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
 
 6. **(Optional)** If you copied your profiles to a local directory in Step 1, follow these steps:
 
-   **a.**  Move the profile configuration files that you saved in Step 1 to the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
+   **a.**  Move the profile configuration files that you saved in Step 1 back to the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
 
    **b.** Issue the `zowe scs update` command to update profiles that are secured with the Secure Credential Store Plug-in.
 
-   **c.** Issue the command `zowe profiles update zmsf <my-profile-name> --user <my-username> --password <my-password>` to update z/osmf profiles to use the current option names.
+   **c.** Issue the command `zowe profiles update zosmf <my-profile-name> --user <my-username> --password <my-password>` to update z/osmf profiles to use the current option names.
 
 You updated to the Zowe CLI LTS version!
 
