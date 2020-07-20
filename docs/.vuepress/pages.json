@@ -74,7 +74,7 @@
         "items": [
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md",
-          "user-guide/data-sets-and-jobs-api-configuration.md"
+          "user-guide/configure-data-sets-jobs-api.md"
         ]
       },
       {
