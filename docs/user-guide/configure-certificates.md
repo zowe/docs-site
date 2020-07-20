@@ -12,12 +12,10 @@ Notes:
   
 - Configure certificates in a key ring using only the zowe-setup-certificate.sh. 
 Notes:
+  - currently only RACF fully supports this option 
   - it is an identical flow as configuration of certificates in UNIX files keystores except that two new env variables have to be set in the zowe-setup-certificates.env 
   - caller of the script has to have appropriate permissions to the IRR.DIGTCERT.* resources 
-  - this script is common to security products RACF, Top Secret and ACF2.
-  - maintenance for ACF2 ([SO11887](https://support.broadcom.com/download-center/solution-detail.html?aparNo=SO11887&os=z%2FOS)) 
-    and Top Secret ([SOxxxxx]()) has to be applied in order to make this way working for ACF2 and Top Secret.
-
+ 
 Proceed with one of the options:
 - [ZWEKRING jcl and zowe-setup-certificate.sh](#zwekring-jcl-and-zowe-setup-certificatesh)
 - [zowe-setup-certificate.sh script only](#zowe-setup-certificatesh-script-only)
