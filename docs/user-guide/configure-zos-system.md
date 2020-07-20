@@ -309,6 +309,7 @@ The all acids signing on to the started task will need to be authorized to the F
 The following is an example of how to create a new TSS FACILITY.
 
 **Example:**
+
 In the TSSPARMS, add the following lines to create the new FACILITY:
 ```
 FACILITY(USER11=NAME=ZOWE)
