@@ -15,11 +15,15 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
 
 **Follow these steps:**
 
-1. **(Optional)** Copy the contents of `~/.zowe/profiles` or `%homepath%\.zowe\profiles` to another directory on your computer to preserve your existing user profiles (zosmf, cics, db2, etc..).
+1. Perform *one* of the following steps:
+
+   **a.** Delete the `~/.zowe/profiles` directory from your computer. You can recreate the profiles manually after you update the CLI.
+
+   **b.** If you want to preserve your existing profiles, copy the contents of `~/.zowe/profiles` or `%homepath%\.zowe\profiles` to another directory on your computer.
 
 2. Delete the `~/.zowe/plugins` or `%homepath%\.zowe\plugins` directory to uninstall all plug-ins.
 
-3. Uninstall the pre-LTS version of core CLI. Issue the following command:
+3. Issue the following command to uninstall the pre-LTS version of core CLI
 
     ```
     npm uninstall -g @brightside/core
@@ -29,7 +33,15 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
 
 4. Install the most recent `@zowe-v1-lts` version CLI and optional plug-ins. For more information, see [Installing CLI](./cli-installcli.md).
 
-5. **(Optional)** Reestablish your user profiles. Move the profile configuration files that you saved in Step 1 into the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
+5. **(Optional)** If you deleted your profiles in Step 1, recreate the profiles that you need manually.
+
+6. **(Optional)** If you copied your profiles to a local directory in Step 1, follow these steps:
+
+   **a.**  Move the profile configuration files that you saved in Step 1 back to the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
+
+   **b.** Issue the `zowe scs update` command to update profiles that are secured with the Secure Credential Store Plug-in.
+
+   **c.** Issue the command `zowe profiles update zosmf <my-profile-name> --user <my-username> --password <my-password>` to update z/osmf profiles to use the current option names.
 
 You updated to the Zowe CLI LTS version!
 
