@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.12.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.13.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.13.0 LTS (June 2020)](#version-1-13-0-lts-june-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
@@ -22,10 +23,13 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.12.0 LTS (June 2020)
+## Version 1.13.0 LTS (June 2020)
 
-### Requires action
-- You need to re-run the `zowe-setup-certificates.sh` script during the upgrade process. This requirement is due to the automatic setup of SSO, which requires users to input new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
+### Notable changes
+
+Zowe CLI added the ability to access mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to API Mediation Layer and receive a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
 
 ### New features and enhancements
 
@@ -34,12 +38,173 @@ Zowe Version 1.12.0 and later releases include the following enhancements, relea
 The following features and enhancements were added.
 
 #### Zowe installation
-- Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in install and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
-- Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
-- Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
 
+- Updated `zowe-configure-instance` upgrade to update ROOT_DIR. This allows you to move the Zowe runtime to a different place when you install a new version of Zowe. [#1414](https://github.com/zowe/zowe-install-packaging/pull/1414)
+- Updated the port validation logic to reduce false negatives. [#1399](https://github.com/zowe/zowe-install-packaging/pull/1399)
+- Updated the Zowe installation and configuration to tolerate ZERT Network Analyzer better. [#1124](https://github.com/zowe/zowe-install-packaging/pull/1124)
 
 #### API Mediation Layer
+
+- Added Cross-origin resource sharing (CORS) Headers Support.
+- Introduced an option to set connection timeout for a service.
+- Provided SAF Keyrings support for a ZAAS Client.
+- Introduced Spring Boot enabler configuration validation.
+
+#### Zowe App Server
+
+- In this version, the app server can now use more than one CA [#128](https://github.com/zowe/zlux-app-server/pull/128)
+- Removed usage of ngx-color [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- The `dispatcher.invokeAction` method now returns promise, which provides the ability to wait until `dispatcher.invokeAction` finishes and handles errors [#59](https://github.com/zowe/zlux-platform/pull/59)
+- Cross-launch via URL has been implemented [#234](https://github.com/zowe/zlux-app-manager/pull/234)
+- Improvements to feature and bookmarking functionality [#30](https://github.com/zowe/tn3270-ng2/pull/30)
+- Added close all + undo settings + hotkeys [#153](https://github.com/zowe/zlux-editor/pull/153)
+  - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
+  - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
+  - Added a snackbar notification for opening a folder/file you don't have access to   
+  - Added an "Undo" option to the Close All feature to re-open tabs & files
+- Login activity and storage event updates [#242](https://github.com/zowe/zlux-app-manager/pull/242)
+  - Converted login activity to event emitter
+  - Added new local storage listener so changes can be reported across tabs
+  - Added detect activity when loging in from a new window/tab
+  - In idleWarn popup added
+  - Being active on the Desktop, while the session expiration prompt is active, will now dismiss the pop-up and attempt to renew the session. This feature also stays synchronized between multiple tabs, and will renew multiple tabs if the user is active in at least one of them
+- NGX-monaco has been removed [#155](https://github.com/zowe/zlux-editor/pull/155)
+  - Removed use of node-sass, so that native compilation is not required
+  - Updated to typescript 3.7
+  - Updated to monaco 0.20
+
+#### Zowe CLI
+
+The following features and enhancements were added to the **core Zowe CLI**:
+
+- Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
+- Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
+
+- Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
+
+The following features and enhancements were added to the **Imperative CLI Framework**:
+
+- Added the `ConnectionPropsForSessCfg.addPropsOrPrompt` function to store credentials, such as a token, in a session configuration object. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+    - CLI plug-ins must implement this function to create sessions in order to consume automatic token-handling and prompt for mission options features.
+
+    - Connection information is obtained from the command line in the following order: Environment variables, service profiles, base profiles, or a default option value.
+
+    - If connection information is not supplied to any core CLI command, the user is prompted for:
+        -  host
+        -  port
+        -  user
+        -  password
+
+      The prompt times out after 30 seconds so that automated scripts will not fail.
+
+- Added base profiles, a type of profile that can store values and provide them to other profile types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
+
+  The following properties can be stored in a base profile:
+
+  - host
+  - port
+  - user
+  - password
+  - rejectUnauthorized
+  - tokenType
+  - tokenValue
+
+- Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
+
+  - Added a `showToken` flag to display the token and not save it to the user profile.
+
+  - Added the ability to create a user profile upon login, if no profile of that type existed previously.
+
+- Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
+
+- If a token is present in the underlying REST session object, Imperative uses the token for authentication.
+
+- CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
+
+- Updated the version of TypeScript from v3.7.4 to v3.8.0.
+
+- Updated the version of TSLint from v5.x to v6.1.2.
+
+- Update log4js to improve Webpack compatibility for extenders.
+
+#### Zowe Explorer
+
+The following features and enhancements were added to **Zowe Explorer**:
+
+* Added a credentials check feature that allows users to update their credentials if they receive an authorization error.
+* Added a star icon that clearly denotes data sets, USS files, and jobs as favorites.
+* Added a profile validation feature that checks whether a profile is valid. The feature is triggered when any action is performed with the profile. Validated profiles are indicated by a green mark.
+* Disallowed case sensitivity for profiles with same names.
+* Enabled editing of search filters.
+* Enabled editing of ASCII files in USS.
+* Improved text in confirmation dialogs.
+* Reorganized the Data Sets context menu to match the order of commands recommended by VSCode.
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+
+#### ZSS
+
+- Bugfix: ICFS error message is not printed. In this version, the issue has been resolved [#143](https://github.com/zowe/zowe-common-c/pull/143)
+
+#### Zowe App Server
+
+- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129) 
+- Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
+- Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
+- Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
+
+#### Zowe CLI
+
+- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
+
+- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
+
+- Updated Imperative version to include security fixes.
+
+- Updated Imperative version to fix a probem where users could not use a service profile after storing a token in a base profile.
+
+- Fixed an issue where optional secure fields were not deleted when overwriting a profile.
+
+## Version 1.12.0 LTS (June 2020)
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added.
+
+#### Zowe installation
+- Keystore directory generation updated to add new parameters. If you wish to enable SSO for the desktop you need to rerun the `zowe-setup-certificates.sh` script during the upgrade process, with new values in the `zowe-setup-certificates.env` file. [#1347](https://github.com/zowe/zowe-install-packaging/pull/1347) / Doc: [#1162](https://github.com/zowe/docs-site/issues/1162)
+- Added a `-l` optional parameter to the `zowe-support.sh` script. This parameter allows you to specify the custom log directory used in installation and configuration when collecting support data. [#1322](https://github.com/zowe/zowe-install-packaging/pull/1322) / Doc: [#1165](https://github.com/zowe/docs-site/issues/1165)
+- Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. [#1335](https://github.com/zowe/zowe-install-packaging/pull/1335) / Doc: [#1181](https://github.com/zowe/docs-site/pull/1181)
+- Separated ZSS component from the Zowe App Server component. [#1320](https://github.com/zowe/zowe-install-packaging/pull/1320)
+- Introduced z/OSMF Workflows that accomplish the following Zowe installation and configuration tasks:
+  - Install Zowe runtime using z/OSMF Workflows.
+  - Configure z/OS Security Manager.
+  - Configure Zowe certificates.
+  - Create and configure the Zowe instance directory, and run the Zowe started task.
+
+#### API Mediation Layer
+
+- Provided Zowe Authentication and Authorization Service (ZAAS) client.
+- Refreshed the static client definitions from the API Catalog UI.
+- Switched to `sso-auth` instead of `apiml-auth`.
+- Added logout endpoint API documentation.
+- Made `jjwt` only a test dependency.
+- Fixed the order of fetching the JWT from a request.
+- Implemented request retrying for service instances.
 
 #### ZSS
 
@@ -88,8 +253,6 @@ The following bugs were fixed.
 - When the automatically detected hostname that Zowe is installed on cannot be resolved, use the IP address instead. This covers the scenario when the USS `hostname` command returned a system name that wasn't externally addressable. [#1279](https://github.com/zowe/zowe-install-packaging/pull/1279)
 - Fixed an issue that could cause an upgraded version of Zowe to try and use an old version of plug-ins, by switching the desktop to use a relative reference to find plugins. [#1326](https://github.com/zowe/zowe-install-packaging/pull/1362)
 
-#### API Mediation Layer
-
 #### ZSS
 
 - Bugfix: Fixed a segfault when no config file is provided by moving all the zowelog invocations to a location where the logging environment is ready. Additionally, cleanup logic has been
@@ -108,7 +271,7 @@ introduced to ensure that we free the STC base resources before leaving main. [#
 - Bugfix: Plugin api would not respond if a plugin could not load due to a dependency not being met. That plugin would not be placed in the array that checks when the processing has finished, so a response would never be generated. [#208](https://github.com/zowe/zlux-server-framework/pull/208)
 - Bugfix: Fixed a logout cookie bug and sso-auth behavior bug in order to fully support SSO.
 Additionally, `tokenInjector` was removed as it is no longer required with the introduction of SSO. [#209](https://github.com/zowe/zlux-server-framework/pull/209)
-- Bugfix: Fixed lease inforomation for API ML [#218](https://github.com/zowe/zlux-server-framework/pull/218)
+- Bugfix: Fixed lease information for API ML [#218](https://github.com/zowe/zlux-server-framework/pull/218)
 - Bugfix: In previous versions, the user was never shown the logout screen when the plugin would detect zss, but not apiml. In this version, this issue has been resolved. [#221](https://github.com/zowe/zlux-server-framework/pull/221)
 - Bugfix: Fixed issue where localhost & 127.0.0.1 were always used even when not true. Additionally, each worker in the cluster attempted registration even though, from an outside perspective, it is 1 server. In this version, the server uses a real hostname and tries to find the ip that best matches what apiml would be able to use [#203](https://github.com/zowe/zlux-server-framework/pull/203)
 
@@ -392,7 +555,7 @@ The following new features and enhancements are added in this version:
 
 - **Notable Change:** The `--pass` option is changed to `--password`  for all commands and profiles (zosmf, cics, etc...). The aliases `--pw` and `--pass` still function. To update a profile, issue the `zowe profiles update` command and use the new option name `--password`.
 
-- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-for-sensitive-options).
+- **Notable Change:** You can enter `PROMPT*` as a value for any CLI option to enable interactive prompting. If you wrote scripts in which any option is defined with the exact value `PROMPT*`, the script will not execute properly in this version. For more information, see [Using the prompt for sensitive options](./../user-guide/cli-usingcli.md#using-the-prompt-feature).
 
 - Zowe CLI was tested and confirmed to run on Unix System Services (USS) on z/OS. For more information, refer to  blog [Installing Node.js on the Mainframe](https://medium.com/@plape/installing-node-js-on-the-mainframe-both-linux-and-z-os-to-run-zowe-cli-19abb6494e41).
 
@@ -427,7 +590,7 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
-Watch a video on how to [work with data sets using Zowe Explorer](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html).
+Watch a video on how to [work with data sets using Zowe Explorer](../user-guide/ze-install.md#installing).
 
 ### Bug fixes
 
@@ -449,7 +612,7 @@ A bug was fixed where Zowe CLI installation could fail and users could receive t
 981 verbose stack Error: EPERM: operation not permitted
 ```
 
-To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/download.html) and retry the installation process.
 
 ## Version 1.8.0 (February 2020)
 
@@ -463,7 +626,7 @@ The following features and enhancements were added.
 
 - The installation now just needs two parameters configured: the USS location of the runtime directory and a data set prefix where a SAMPLIB and LOADLIB will be created.  The runtime directory permissions are set to 755 and when Zowe is run, no data is written to the runtime directory.
 - The way to configure Zowe is changed. Previously, you configured Zowe at installation time with the `zowe-install.yaml` file.  This file has been removed and is no longer used in this release.
-- A new directory `zowe-instance-dir` has been introduced that contains configuration data used to launch Zowe.  This allows more than one Zowe instance to be started from the same Zowe runtime directory.  A new file `zowe-instance.env` within each `zowe-instance-dir` directory controls which ports are allocated to the Zowe servers as well as location of any dependencies such as Java, z/OSMF or node.  No configuration data is specified at install time.  The data is only read, validated and used at launch time.  The `zowe-instance.env` file contains a parameter value `LAUNCH_COMPONENT_GROUPS` that allows you to control which Zowe subsystems to launch, for example you can run the Zowe desktop and not the API Mediation Layer, or vice-versa; you can run just the API Mediation Layer and not the Zowe desktop.   The `zowe-instance-dir` directory is also where log files are collected.  Static extensions to the API Mediation Layer are recorded in the Zowe instance directory as well as any plug-in extensions to the Zowe desktop.  This allows the runtime directory to be fully replaced during PTF upgrades or moving to later Zowe releases while preserving configuration data and extension definitions that are held in the instance directory.
+- A new directory `zowe-instance-dir` has been introduced that contains configuration data used to launch Zowe.  This allows more than one Zowe instance to be started from the same Zowe runtime directory.  A new file `instance.env` within each `zowe-instance-dir` directory controls which ports are allocated to the Zowe servers as well as location of any dependencies such as Java, z/OSMF or node.  No configuration data is specified at install time.  The data is only read, validated and used at launch time.  The `instance.env` file contains a parameter value `LAUNCH_COMPONENT_GROUPS` that allows you to control which Zowe subsystems to launch, for example you can run the Zowe desktop and not the API Mediation Layer, or vice-versa; you can run just the API Mediation Layer and not the Zowe desktop.   The `zowe-instance-dir` directory is also where log files are collected.  Static extensions to the API Mediation Layer are recorded in the Zowe instance directory as well as any plug-in extensions to the Zowe desktop.  This allows the runtime directory to be fully replaced during PTF upgrades or moving to later Zowe releases while preserving configuration data and extension definitions that are held in the instance directory.
 - A new directory `keystore-directory` has been introduced outside of the Zowe runtime directory which is where the Zowe certificate is held, as well as the truststore for public certificates from z/OS services that Zowe communicates to (such as z/OSMF).  A keystore directory can be shared between multiple Zowe instances and across multiple Zowe runtimes.
 - All configuration of z/OS security that was done by Unix shell scripts during installation and configuration has been removed.  A JCL member `ZWESECUR` is provided that contains all of the JCL needed to configure permissions, user IDs and groups, and other steps to prepare and configure a z/OS environment to successfully run Zowe.  Code is included for RACF, Top Secret, and ACF/2.
 - The Zowe cross memory server installation script `zowe-install-apf-server.sh` is removed.  In this release, the steps for configuring z/OS security are included in the `ZWESECUR` JCL member.
@@ -510,8 +673,7 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
-Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
-
+Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](../user-guide/ze-install.md#installing).
 
 ### Bug fixes
 
@@ -713,7 +875,7 @@ The following commands and enhancements are added:
 ## Zowe SMP/E Alpha (August 2019)
 
 A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment.
-- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website.
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/download.html) website.
 - For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
@@ -1026,7 +1188,7 @@ During product operation of the Zowe Cross Memory Server which was introduced in
 
 ### What's new in Zowe CLI
 
-- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#zowe-cli-command-groups)
+- Create and Manage z/OSMF Workflows using the new `zos-workflows` command group. For more information, see [Zowe CLI command groups.](../user-guide/cli-usingcli.md#understanding-core-command-groups)
 
 - Use the `@lts-incremental` tag when you install and update Zowe CLI core or plug-ins. The tag ensures that you don't consume breaking changes that affect your existing scripts. Installation procedures are updated to reflect this change.
 

@@ -218,6 +218,27 @@ The following parameters define service information for the API Catalog:
 
     **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
+* **apiml.connectTimeout**
+    
+    The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **apiml.readTimeout**
+    
+    The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    
+* **apiml.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **apiml.okToRetryOnAllOperations**
+    
+    Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
+
+* **apiml.service.corsEnabled**
+    
+    When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
+    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [custom metadata.md](custom-metadata.md).
+      
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
 
@@ -256,7 +277,7 @@ This prefix is used to differentiate the routes. This prefix must be provided ma
 For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 #### Authentication parameters
-Authentication parameters are grouped under the prefix: `apiml.authentication`. When not specified, the default values are used.
+Authentication parameters are grouped under the prefix: `apiml.authentication`. When unspecified, the default values are used.
 
 This parameter enables a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
 

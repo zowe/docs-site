@@ -82,7 +82,7 @@ Zowe CLI is a command-line interface that lets you interact with the mainframe i
 Zowe CLI provides the following benefits:
 
   - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
-  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/cli-vscodeplugin.md).
+  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md).
   - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
   - Provides a more streamlined way to build software that integrates with z/OS.
 
@@ -105,7 +105,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
@@ -164,14 +164,14 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
-* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md) 
+* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 </details>
 
-To learn more about the architecture of Zowe, see [Zowe architecture](#zowe-architecture.md).
+To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 

@@ -126,12 +126,14 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
 
-Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://zowe.org#download).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11](https://d1xozlojgf8voe.cloudfront.net/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.10](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
+[1.13](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
 
 ## Installation requirements and considerations
 
@@ -382,7 +384,7 @@ Follow these high-level steps to download and install Zowe Open Source Project (
 
 ### Download the Zowe SMP/E package
 
-To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/#download) website. Click the **Zowe SMP/E FMID AZWE001** button to save the file to a folder on your desktop.
+To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE001** button to save the file to a folder on your desktop.
 
 You will receive one ZIP package on your desktop. You can extract the following files from the package.
 
@@ -481,32 +483,34 @@ d: | Location of the downloaded files
 
 Sample FTP upload scenario:
 
-_C:/>__ftp mvsaddr___  
-_Connected to mvsaddr._  
-_200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%._
-_220 Connection will close if idle for more than 5 minutes._  
-_User (mvsaddr:(none)): __tsouid___  
-_331 Send password please_  
-_Password: __tsopw___  
-_230 tsouid is loaded on.  Working directory is "tsouid."._  
-_ftp> __cd @zfs_path@___  
-_250 HFS directory @zfs_path@ is the current working directory_  
-_ftp> __ascii___  
-_200 Representation type is Ascii NonPrint_  
-_ftp> __put c:/AZWE001.readme.txt___  
-_200 Port request OK._  
-_150 Storing data set @zfs_path@/AZWE001.readme.txt_  
-_250 Transfer completed successfully._  
-_ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)_  
-_ftp __binary___  
-_200 Representation type is Image_  
-_ftp> __put c:\AZWE001.pax.Z___  
-_200 Port request OK._  
-_145 Storing data set @zfs_path@/AZWE001.pax.Z_  
-_250 Transfer completed successfully._  
-_ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)_  
-_ftp: __quit___  
-_221 Quit command received.  Goodbye._  
+```
+C:/>ftp mvsaddr  
+Connected to mvsaddr. 
+200-FTPD1 IBM FTP CS %version% at mvsaddr, %time% on %date%.
+220 Connection will close if idle for more than 5 minutes.  
+User (mvsaddr:(none)): tsouid  
+331 Send password please  
+Password: tsopw  
+230 tsouid is loaded on.  Working directory is "tsouid.".  
+ftp> cd @zfs_path@ 
+250 HFS directory @zfs_path@ is the current working directory  
+ftp> ascii  
+200 Representation type is Ascii NonPrint  
+ftp> put c:/AZWE001.readme.txt  
+200 Port request OK.  
+150 Storing data set @zfs_path@/AZWE001.readme.txt  
+250 Transfer completed successfully.  
+ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)  
+ftp binary  
+200 Representation type is Image  
+ftp> put c:\AZWE001.pax.Z  
+200 Port request OK.  
+145 Storing data set @zfs_path@/AZWE001.pax.Z  
+250 Transfer completed successfully.  
+ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)  
+ftp: quit  
+221 Quit command received.  Goodbye.  
+```
 
 **If you are unable to connect with ftp and only able to use sftp**,
 the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE001.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE001.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
@@ -640,8 +644,8 @@ ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
 ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1
 ZWE4ZFS | ALLOMZFS | Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
 ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
-ZWE6DDEF | DDDEF | Sample job to define SMP/E DDDEFs | ZOWE.AZWE001.F1
-ZWE7APLY | APPLY | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
+ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE001.F1
+ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE001.F1
 ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
 
 **Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier, as documented in the [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles) section.

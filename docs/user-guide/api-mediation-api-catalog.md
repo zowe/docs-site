@@ -10,6 +10,10 @@ As an application developer, use the API Catalog to view what services are runni
 
 **Note:** For more information about how to configure the API Catalog in the application.yml, see: [Add API Onboarding Configuration](../extend/extend-apiml/onboard-spring-boot-enabler.md).
 
+## API Versioning
+
+See [API Catalog and Versioning](../extend/extend-apiml/api-mediation-versioning.md) for more information about the API versioning.
+
 ## View Service Information and API Documentation in the API Catalog
 
 Use the API Catalog to view services, API documentation, descriptive information about the service, the current state of the service, service endpoints, and detailed descriptions of these endpoints.

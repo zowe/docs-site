@@ -40,7 +40,7 @@ You can launch the Zowe started task in two ways.
 
 ### Option 1: Starting Zowe from a USS shell
 
-To launch the `ZWESVSTC` started task, run the `zowe-start.sh` script from a USS shell.  This reads the configuration values from the `zowe-instance.env` file in the Zowe instance directory.
+To launch the `ZWESVSTC` started task, run the `zowe-start.sh` script from a USS shell.  This reads the configuration values from the `instance.env` file in the Zowe instance directory.
 
 ```
 cd <ZOWE_INSTANCE_DIR>/bin
