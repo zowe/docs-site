@@ -102,6 +102,7 @@ The cross memory server is run as a started task from the JCL in the PROCLIB mem
 ```
 /S ZWESISTC,REUSASID=YES
 ```
+The ZWESISTC task starts and stops the ZWESASTC task as needed. Do not start the ZWESASTC task manually.
 
 To end the Zowe cross memory server process, issue the operator stop command through SDSF:
 
