@@ -6,8 +6,8 @@ The following topics contain information that can help you troubleshoot problems
 
 If you are running Zowe 1.12 or 1.13 then there are situations where z/OSMF abends reporting a class cache problem.  This problem has been resolved in Zowe 1.14.  The following is a snippet from the snap trace
 
-```sh
-  * ** ASSERTION FAILED ** at ./OSCachesysv.cpp:1213: 
+```
+* ** ASSERTION FAILED ** at ./OSCachesysv.cpp:1213: 
 from info thread * ,  part of failing native thread  is 
 SH_OSCachesysv::acquireWriteLock(unsigned
 SH_CompositeCacheImpl::enterWriteMutex(J9
