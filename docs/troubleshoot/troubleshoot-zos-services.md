@@ -2,6 +2,85 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; z/OS Services.
 
+## z/OSMF JVM Cache Corruption
+
+If you are running Zowe 1.12 or 1.13 then there are situations where z/OSMF abends reporting a class cache problem.  This problem has been resolved in Zowe 1.14.  The following is a snippet from the snap trace
+
+```sh
+  * ** ASSERTION FAILED ** at ./OSCachesysv.cpp:1213: 
+from info thread * ,  part of failing native thread  is 
+SH_OSCachesysv::acquireWriteLock(unsigned
+SH_CompositeCacheImpl::enterWriteMutex(J9
+SH_CacheMap::startClassTransaction(J9VMTh
+j9shr_classStoreTransaction_start+0x956  
+```
+
+and the following is a snippet from the java stack
+
+```sh
+4XESTACKTRACE                at sun/misc/Unsafe.defineAnonymousClass(Native Method) 
+4XESTACKTRACE                at java/lang/invoke/InnerClassLambdaMetafactory.spinInnerClass(InnerClassLambdaMetafactory.java:339) 
+4XESTACKTRACE                at java/lang/invoke/InnerClassLambdaMetafactory.buildCallSite(InnerClassLambdaMetafactory.java:206) 
+```
+
+The error occurs because the Java runtime being used by the z/OSMF Liberty server and the Java runtimes being used by Zowe are sharing a cache and a collision occurs.  The fix is to change either z/OSMF, or Zowe (or both) runtimes so that they don't use the cache to share classes with the java startup argument `-Xshareclasses:none`.  
+
+### Update z/OSMF to not use JVM class caching
+
+Navigate to the file `/var/zosmf/configuration/local_override.cfg`.  This contains the startup arguments for the Java runtime used by z/OSMF.  Add the line
+```sh
+JVM_OPTIONS=-Xshareclasses:none
+```
+You will need to recycle the z/OSMF server running, which by default will be running under the started task `IZUSVR1`.  
+
+### Update Zowe to not use JVM class caching
+
+As an alternative to updating z/OSMF configuration you can update your Zowe runtime so that when it starts its Java servers class sharing in the cache is disabled.  
+
+Zowe has five Java Apache Tomcat servers that are launched with three shell scripts.
+
+The **API Mediation Layer** servers are launched with the script `<ROOT_DIR>/components/api-mediation/bin/start/sh`.  Navigate to this file and add the line `-Xshareclasses:none` to the three lines with the `java` command.  The -X argument must be added before any of the -D arguments.  
+
+For example, the code snippet below shows the line added to the java command for the Discovery server, the API Catalog, and the API Gateway.  
+
+```sh
+...
+DISCOVERY_CODE=AD
+_BPX_JOBNAME=${ZOWE_PREFIX}${DISCOVERY_CODE} java -Xms32m -Xmx256m -Xquickstart \
+    -Xshareclasses:none \
+    -Dibm.serversocket.recover=true \
+...
+CATALOG_CODE=AC
+_BPX_JOBNAME=${ZOWE_PREFIX}${CATALOG_CODE} java -Xms16m -Xmx512m -Xquickstart \
+    -Xshareclasses:none \
+    -Dibm.serversocket.recover=true \
+...
+GATEWAY_CODE=AG
+_BPX_JOBNAME=${ZOWE_PREFIX}${GATEWAY_CODE} java -Xms32m -Xmx256m -Xquickstart \
+    -Xshareclasses:none \
+...
+```
+
+The **Zowe z/OS Jobs API services** java server is launched with the script `<ROOT_DIR>/components/jobs-api/bin/start/sh`.  Navigate to this file and add the line `-Xshareclasses:none` to the `java` command, making sure it is before the first -D argument.
+
+```sh
+...
+COMPONENT_CODE=EJ
+_BPX_JOBNAME=${ZOWE_PREFIX}${COMPONENT_CODE} java -Xms16m -Xmx512m -Xshareclasses:none -Dibm.serversocket.recover=true -Dfile.encoding=UTF-8 \
+    -Djava.io.tmpdir=/tmp -Xquickstart \
+...
+```
+Do the same for the file `<ROOT_DIR>/components/files-api/bin/start/sh` which is the server for the **Zowe z/OS Files API services**.
+```sh
+...
+COMPONENT_CODE=EF
+_BPX_JOBNAME=${ZOWE_PREFIX}${COMPONENT_CODE} java -Xms16m -Xmx512m -Xshareclasses:none -Dibm.serversocket.recover=true -Dfile.encoding=UTF-8 \
+    -Djava.io.tmpdir=/tmp -Xquickstart \
+...
+```
+
+Having updated the `start.sh` scripts within Zowe you will need to stop and start the started task `ZWESVSTC`.  
+
 ## Unable to generate unique CeaTso APPTAG
 
 **Symptom:**
