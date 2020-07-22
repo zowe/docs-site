@@ -59,7 +59,7 @@ The following features and enhancements were added.
   - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
   - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
   - The buttons found in this feature have been realigned  
-- Several features have been added to the Zlux Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
+- Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
   - A snackbar notification will be displayed when users attempt to open a file that they do not have permission to open
@@ -67,7 +67,7 @@ The following features and enhancements were added.
 - Login activity and session activity is now synchronized across multiple desktop tabs [#242](https://github.com/zowe/zlux-app-manager/pull/242)
   - When a user logs out of a desktop tab, all other active tabs will also log out
   - When a user performs an action on a desktop tab, the other tabs register this activity, which stops them from timing out
-- NGX-monaco has been removed due to a bug that would not allow the Editor to be opened more than twice [#155](https://github.com/zowe/zlux-editor/pull/155)
+- NGX-monaco-editor library has been removed, allowing the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
   - Removed use of node-sass, so that native compilation is not required
   - Updated to typescript 3.7 from version 2.7.2
   - Updated to monaco 0.2 from version 0.13. The monaco changelog can be found [here](https://github.com/microsoft/monaco-editor/blob/master/CHANGELOG.md)
@@ -143,7 +143,7 @@ The following bugs were fixed.
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
-- Bugfix: NGX-monaco has been removed due to a bug that would not allow the Editor to be opened more than twice [#155](https://github.com/zowe/zlux-editor/pull/155)
+- Bugfix: NGX-monaco-editor library has been removed, allowing the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
 
 #### Zowe CLI
 
