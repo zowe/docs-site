@@ -53,11 +53,12 @@ The following features and enhancements were added.
 #### Zowe App Server
 
 - The app server is now able to use more than one certificate authority (CA). This allows the server to validate other server's authenticity by recognizing the CA that another server may have used [#128](https://github.com/zowe/zlux-app-server/pull/128)
+- The `dispatcher.invokeAction` method now returns promise, which provides the ability to wait until `dispatcher.invokeAction` finishes and handles errors [#59](https://github.com/zowe/zlux-platform/pull/59)
 - The ngx-color picker has been replaced by a custom hue selection bar, lightness swatches bar, and color palette, allowing for a more customizable personalization experience [#235](https://github.com/zowe/zlux-app-manager/pull/235)
-- In this version, cross-launch via URL has been implemented, allowing for integration between Zlux and other web applications. This feature enables users to bookmark a set of app2app communication actions (in the form of a URL) that will be executed when opening the webpage [#234](https://github.com/zowe/zlux-app-manager/pull/234)
-- Improvements have been made to the bookmarking functionality in the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
-  - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
+- In this version, cross-launch via URL has been implemented, allowing for integration between the Application Framework and  applications. This feature enables users to bookmark a set of app2app communication actions (in the form of a URL) that will be executed when opening the webpage [#234](https://github.com/zowe/zlux-app-manager/pull/234)
+- Bookmarking features have been added to the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
   - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
+  - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
   - The buttons found in this feature have been realigned  
 - Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
@@ -67,10 +68,6 @@ The following features and enhancements were added.
 - Login activity and session activity is now synchronized across multiple desktop tabs [#242](https://github.com/zowe/zlux-app-manager/pull/242)
   - When a user logs out of a desktop tab, all other active tabs will also log out
   - When a user performs an action on a desktop tab, the other tabs register this activity, which stops them from timing out
-- NGX-monaco-editor library has been removed, allowing the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
-  - Removed use of node-sass, so that native compilation is not required
-  - Updated to typescript 3.7 from version 2.7.2
-  - Updated to monaco 0.2 from version 0.13. The monaco changelog can be found [here](https://github.com/microsoft/monaco-editor/blob/master/CHANGELOG.md)
 
 #### Zowe CLI
 
@@ -143,8 +140,10 @@ The following bugs were fixed.
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
-- Bugfix: NGX-monaco-editor library has been removed, allowing the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
-
+- Bugfix: NGX-monaco-editor library has been removed in order to fix a bug. This now allows the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
+  - Removed use of node-sass, so that native compilation is not required
+  - Updated to typescript 3.7 from version 2.7.2
+  - Updated to monaco 0.20 from version 0.13. The monaco changelog can be found [here](https://github.com/microsoft/monaco-editor/blob/master/CHANGELOG.md)
 #### Zowe CLI
 
 - Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
