@@ -35,7 +35,7 @@ If you do not have internet access at your site, use the following method to ins
 
    - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
-3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+3. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
     A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
@@ -69,7 +69,7 @@ If you do not have internet access at your site, use the following method to ins
 
     **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
-Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
 
 ### Installing Zowe CLI from an online registry
 
@@ -115,7 +115,7 @@ If your computer is connected to the Internet, you can use the following method 
     zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
     ```
 
-After you install and configure Zowe CLI, issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
 
 
 

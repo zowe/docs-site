@@ -37,7 +37,7 @@ Use one of the following methods to install or update the plug-in:
 
 - [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
-## Create a User Profile
+## Creating a user profile
 
 You can create a `zftp` user profile to avoid typing your connection details on every command. A `zftp` profile contains the host, port, username, and password for the z/OS instance to which you want to connect. You can create multiple profiles and switch between them as needed.
 
