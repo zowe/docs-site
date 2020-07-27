@@ -84,7 +84,7 @@ Actions can be created dynamically at runtime, or saved and loaded by the system
 
 ### Cross-launch via URL
 
-Another way the Zowe Application Framework invokes Actions is via JSON Query Parameters, formated as a URL. This feature enables users to bookmark a set of application-to-application communication actions (in the form of a URL) that will be executed when opening the webpage. Developers creating separate web apps can build a link that will open Zlux and do specific actions in Zlux apps, for example, opening a file in the Editor.
+Another way the Zowe Application Framework invokes Actions is via URL Query Parameters, with parameters formatted in JSON. This feature enables users to bookmark a set of application-to-application communication actions (in the form of a URL) that will be executed when opening the webpage. Developers creating separate web apps can build a link that will open the Zowe Desktop and do specific actions in Apps, for example, opening a file in the Editor.
 
 The Cross-launch feature allows you to:
 
