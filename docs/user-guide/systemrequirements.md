@@ -42,24 +42,6 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
 
 The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
 
-### Important note for users upgrading to v1.14
-
-If you are upgrading to Zowe v1.14 from a previous release, 
-and the value of ZOWE_EXPLORER_HOST does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated 
-referrer-based security. 
-
-To configure your system for the version 1.14 update, perform **one** of the following tasks: 
-- Define ZWE_EXTERNAL_HOSTS as a comma-separated list of hosts that you would use to access Zowe from your browser.
-  - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
-
-- Define ZWE_REFERRER_HOSTS as a comma-separated list for the value to be applied specifically for referrer purposes.
-  - `ZWE_REFERRER_HOSTS=host1,host2,...`
-   
-See [Reviewing the instance env file](../user-guide/configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of instance.env files.
-
-See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-`instance.env`-file) for additional information on configuring instance.env files. 
-
-
 - Node.js
   - **Note: Starting in September 2020, Node.js v6 will no longer be supported. Users are advised to update to more recent versions of Node.js** 
   - On z/OS: Node.js v6.x starting with v6.14.4, v8.x (except v8.16.1), and v12.x. Note when using v12.x, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os)
@@ -79,6 +61,23 @@ See [Configuring a Zowe instance via `instance.env` file](../user-guide/configur
    Each release of the Zowe Application Framework is tested to work on the current releases of Chrome, Firefox, Safari, and Edge, as well as the oldest release within a 1-year time span, unless the current release is also older than 1 year. For Firefox, the oldest supported release will also be from the Extended Support Release (ESR) version of Firefox, to ensure compatibility in those enterprise environments. This scheme for browser support is to ensure that Zowe works on the vast majority of browsers that people are currently using, while still allowing for use of new features and security that browsers constantly add.
 
 If you do not see your product listed here, please contact the Zowe community so that it can be validated and included.
+
+### Important note for users upgrading to v1.14
+
+If you are upgrading to Zowe v1.14 from a previous release, 
+and the value of ZOWE_EXPLORER_HOST does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated 
+referrer-based security. 
+
+To configure your system for the version 1.14 update, perform **one** of the following tasks: 
+- Define ZWE_EXTERNAL_HOSTS as a comma-separated list of hosts that you would use to access Zowe from your browser.
+  - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
+
+- Define ZWE_REFERRER_HOSTS as a comma-separated list for the value to be applied specifically for referrer purposes.
+  - `ZWE_REFERRER_HOSTS=host1,host2,...`
+   
+See [Reviewing the instance env file](../user-guide/configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of instance.env files.
+
+See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-`instance.env`-file) for additional information on configuring instance.env files. 
 
 ### Multi-Factor Authentication for Zowe Desktop
 
