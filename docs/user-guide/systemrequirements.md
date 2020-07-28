@@ -77,7 +77,7 @@ To configure your system for the version 1.14 update, perform **one** of the fol
    
 See [Reviewing the instance env file](../user-guide/configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of instance.env files.
 
-See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-`instance.env`-file) for additional information on configuring instance.env files. 
+See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-instance.env-file) for additional information on configuring instance.env files. 
 
 ### Multi-Factor Authentication for Zowe Desktop
 
