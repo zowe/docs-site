@@ -141,6 +141,20 @@ To determine which ports are not available, follow these steps:
 
 - `EXTERNAL_COMPONENTS`: For third-party extenders to add the full path to the directory that contains their component lifecycle scripts.  For more information, see [Zowe lifecycle - Zowe extensions](../extend/lifecycling-with-zwesvstc.md#zowe-extensions).
 
+## Configuring a Zowe instance via `instance.env` file
+
+When configuring a Zowe instance through the instance.env file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
+
+However, these values may not reflect the website name that you access Zowe from. This is especially true in the following cases:
+- You are using a proxy
+- The URL is a derivative of the value of ZOWE_EXPLORER_HOST, such as `myhost` versus `myhost.mycompany.com`
+
+In these cases, it may be necessary to specify a value for ZWE_EXTERNAL_HOSTS in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
+
+In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
+
+This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZOWE_EXPLORER_HOST`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
+
 ## Hints and tips
 
 Learn about some hints and tips that you might find useful when you create and configure the Zowe instance.
