@@ -143,13 +143,13 @@ To determine which ports are not available, follow these steps:
 
 ## Configuring a Zowe instance via `instance.env` file
 
-When configuring a Zowe instance through the instance.env file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
+When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
 
 However, these values may not reflect the website name that you access Zowe from. This is especially true in the following cases:
 - You are using a proxy
-- The URL is a derivative of the value of ZOWE_EXPLORER_HOST, such as `myhost` versus `myhost.mycompany.com`
+- The URL is a derivative of the value of `ZOWE_EXPLORER_HOST`, such as `myhost` versus `myhost.mycompany.com`
 
-In these cases, it may be necessary to specify a value for ZWE_EXTERNAL_HOSTS in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
+In these cases, it may be necessary to specify a value for `ZWE_EXTERNAL_HOSTS` in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
 
 In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
 

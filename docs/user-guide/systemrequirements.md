@@ -65,19 +65,18 @@ If you do not see your product listed here, please contact the Zowe community so
 ### Important note for users upgrading to v1.14
 
 If you are upgrading to Zowe v1.14 from a previous release, 
-and the value of ZOWE_EXPLORER_HOST does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated 
-referrer-based security. 
+and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. 
 
 To configure your system for the version 1.14 update, perform **one** of the following tasks: 
-- Define ZWE_EXTERNAL_HOSTS as a comma-separated list of hosts that you would use to access Zowe from your browser.
+- Define `ZWE_EXTERNAL_HOSTS` as a comma-separated list of hosts from which you would access Zowe from your browser.
   - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
 
-- Define ZWE_REFERRER_HOSTS as a comma-separated list for the value to be applied specifically for referrer purposes.
+- Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
   - `ZWE_REFERRER_HOSTS=host1,host2,...`
    
-See [Reviewing the instance env file](../user-guide/configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of instance.env files.
+See [Reviewing the instance env file](../user-guide/configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of `instance.env` files.
 
-See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-instance.env-file) for additional information on configuring instance.env files. 
+See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-instance.env-file) for additional information on configuring `instance.env` files. 
 
 ### Multi-Factor Authentication for Zowe Desktop
 
