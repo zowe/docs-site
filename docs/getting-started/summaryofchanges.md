@@ -40,8 +40,7 @@ The following features and enhancements were added.
 #### Zowe CLI
 
 <!--
-Zowe CLI: 6.19.1
-Imperative: 4.7.4
+plugins to update:
 CICS: 4.0.2
 DB2: 4.0.6
 FTP: 1.2.0
@@ -52,10 +51,16 @@ SCS: 4.0.4
 
 The following features and enhancements were added to the **core Zowe CLI**:
 
-The following features and enhancements were added to the **Imperative CLI Framework**:
+- Update Imperative version
+- Fix compilation error
+- Add CLI command to delete migrated data sets zowe zos-files delete migrated-data-sets.
+- Add the --fail-fast option to the zowe zos-files download all-members command
+    Specifying --fail-fast false allows member downloads to continue if one or more fail
 
-The following features and enhancements were added to the **XYZ Plug-in for Zowe CLI**:
+The following enhancement was added to the **z/OS FTP Plug-in for Zowe CLI**:
 
+- Added three options for submit job: --wait, --wait-for-output, --wait-for-active.
+-
 #### Zowe Explorer
 
 The following features and enhancements were added to **Zowe Explorer**:
@@ -65,9 +70,13 @@ The following features and enhancements were added to **Zowe Explorer**:
 The following bugs were fixed.
 
 #### API Mediation Layer
+
 #### Zowe App Server
+
 #### Zowe CLI
 
+The following bug was fixed in Imperative CLI Framework:
+- Fix update profile API storing secure fields incorrectly when called without CLI args.
 
 ## Version 1.13.0 LTS (July 2020)
 
