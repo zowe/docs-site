@@ -38,7 +38,27 @@ The following features and enhancements were added.
 #### API Mediation Layer
 #### Zowe App Server
 #### Zowe CLI
+
+<!--
+Zowe CLI: 6.19.1
+Imperative: 4.7.4
+CICS: 4.0.2
+DB2: 4.0.6
+FTP: 1.2.0
+IMS: 2.0.1
+MQ: 2.0.1
+SCS: 4.0.4
+-->
+
+The following features and enhancements were added to the **core Zowe CLI**:
+
+The following features and enhancements were added to the **Imperative CLI Framework**:
+
+The following features and enhancements were added to the **XYZ Plug-in for Zowe CLI**:
+
 #### Zowe Explorer
+
+The following features and enhancements were added to **Zowe Explorer**:
 
 ### Bug fixes
 
@@ -85,7 +105,7 @@ The following features and enhancements were added.
 - Bookmarking features have been added to the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
   - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
   - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
-  - The buttons found in this feature have been realigned  
+  - The buttons found in this feature have been realigned
 - Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
