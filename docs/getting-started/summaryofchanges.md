@@ -2,9 +2,10 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.13.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.14.0 and later releases include the following enhancements, release by release.
 
-- [Version 1.13.0 LTS (June 2020)](#version-1-13-0-lts-june-2020)
+- [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
+- [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
 - [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
@@ -23,7 +24,38 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.13.0 LTS (June 2020)
+## Version 1.14.0 LTS (August 2020)
+
+### Notable changes
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added.
+
+#### Zowe installation
+#### API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+
+
+## Version 1.13.0 LTS (July 2020)
+
+### Notable changes
+
+Zowe CLI added the ability to access mainframe services through API Mediation Layer using single-sign on (SSO) and multi-factor authentication (MFA). Use Zowe CLI to log in to API Mediation Layer and receive a token that is used for secure authentication to one or more services. For more information, see [Integrating CLI with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
 
 ### New features and enhancements
 
@@ -39,43 +71,90 @@ The following features and enhancements were added.
 
 #### API Mediation Layer
 
-#### ZSS
+- Added Cross-origin resource sharing (CORS) Headers Support.
+- Introduced an option to set connection timeout for a service.
+- Provided SAF Keyrings support for a ZAAS Client.
+- Introduced Spring Boot enabler configuration validation.
 
 #### Zowe App Server
 
-- In this version, the app server can now use more than one CA [#128](https://github.com/zowe/zlux-app-server/pull/128)
-- Removed usage of ngx-color [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- The app server is now able to use more than one certificate authority (CA). This allows the server to validate other server's authenticity by recognizing the CA that another server may have used [#128](https://github.com/zowe/zlux-app-server/pull/128)
 - The `dispatcher.invokeAction` method now returns promise, which provides the ability to wait until `dispatcher.invokeAction` finishes and handles errors [#59](https://github.com/zowe/zlux-platform/pull/59)
-- Cross-launch via URL has been implemented [#234](https://github.com/zowe/zlux-app-manager/pull/234)
-- Improvements to feature and bookmarking functionality [#30](https://github.com/zowe/tn3270-ng2/pull/30)
-- Added close all + undo settings + hotkeys [#153](https://github.com/zowe/zlux-editor/pull/153)
+- The ngx-color picker has been replaced by a custom hue selection bar, lightness swatches bar, and color palette, allowing for a more customizable personalization experience [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- In this version, cross-launch via URL has been implemented, allowing for integration between the Application Framework and  applications. This feature enables users to bookmark a set of app2app communication actions (in the form of a URL) that will be executed when opening the webpage [#234](https://github.com/zowe/zlux-app-manager/pull/234)
+- Bookmarking features have been added to the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
+  - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
+  - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
+  - The buttons found in this feature have been realigned  
+- Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
-  - Added a snackbar notification for opening a folder/file you don't have access to   
+  - A snackbar notification will be displayed when users attempt to open a file that they do not have permission to open
   - Added an "Undo" option to the Close All feature to re-open tabs & files
-- Login activity and storage event updates [#242](https://github.com/zowe/zlux-app-manager/pull/242)
-  - Converted login activity to event emitter
-  - Added new local storage listener so changes can be reported across tabs
-  - Added detect activity when loging in from a new window/tab
-  - In idleWarn popup added
-  - Being active on the Desktop, while the session expiration prompt is active, will now dismiss the pop-up and attempt to renew the session. This feature also stays synchronized between multiple tabs, and will renew multiple tabs if the user is active in at least one of them
-- NGX-monaco has been removed [#155](https://github.com/zowe/zlux-editor/pull/155)
-  - Removed use of node-sass, so that native compilation is not required
-  - Updated to typescript 3.7
-  - Updated to monaco 0.20
+- Login activity and session activity is now synchronized across multiple desktop tabs [#242](https://github.com/zowe/zlux-app-manager/pull/242)
+  - When a user logs out of a desktop tab, all other active tabs will also log out
+  - When a user performs an action on a desktop tab, the other tabs register this activity, which stops them from timing out
 
 #### Zowe CLI
 
+The following features and enhancements were added to the **core Zowe CLI**:
+
+- Added the ability to log into and out of API ML using a token. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- Added the `--base-profile` option to all commands that use profiles to let them make use of base profiles that contain shared values. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- CLI commands now prompt for any of the following option values if the option is missing: host, port, user, and password. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- Added character encoding/code page support for download and upload data set operations in the API library and the CLI. [#632](https://github.com/zowe/zowe-cli/issues/632)
+- Added the `--encoding` option to the `zosmf` profile type. [#632](https://github.com/zowe/zowe-cli/issues/632)
+- Introduced an API to delete migrated data sets. [#715](https://github.com/zowe/zowe-cli/issues/715).
+
+The following features and enhancements were added to the **Imperative CLI Framework**:
+
+- Added the `ConnectionPropsForSessCfg.addPropsOrPrompt` function to store credentials, such as a token, in a session configuration object. [#718](https://github.com/zowe/zowe-cli/issues/718)
+    - CLI plug-ins must implement this function to create sessions in order to consume automatic token-handling and prompt for mission options features.
+    - Connection information is obtained from the command line in the following order: Environment variables, service profiles, base profiles, or a default option value.
+    - If connection information is not supplied to any core CLI command, the user is prompted for:
+        -  host
+        -  port
+        -  user
+        -  password
+
+      The prompt times out after 30 seconds so that automated scripts will not fail.
+- Added base profiles, a type of profile that can store values and provide them to other profile types, such as zosmf profiles. [#402](https://github.com/zowe/imperative/pull/402)
+
+  The following properties can be stored in a base profile:
+
+  - host
+  - port
+  - user
+  - password
+  - rejectUnauthorized
+  - tokenType
+  - tokenValue
+- Added `login` and `logout` commands to retrieve and delete tokens. [#405](https://github.com/zowe/imperative/issues/405)
+  - Added a `showToken` flag to display the token and not save it to the user profile.
+  - Added the ability to create a user profile upon login, if no profile of that type existed previously.
+- Added the `--dd` flag, which lets users create a profile without using the default values specified for that profile. [#718](https://github.com/zowe/zowe-cli/issues/718)
+- If a token is present in the underlying REST session object, Imperative uses the token for authentication.
+- CLI help text includes new options such as `tokenValue`. Plug-in developers might need to update mismatched snapshots in automated tests.
+- Updated the version of TypeScript from v3.7.4 to v3.8.0.
+- Updated the version of TSLint from v5.x to v6.1.2.
+- Update log4js to improve Webpack compatibility for extenders.
+
 #### Zowe Explorer
 
+The following features and enhancements were added to **Zowe Explorer**:
+
+* Added a credentials check feature that allows users to update their credentials if they receive an authorization error.
+* Added a star icon that clearly denotes data sets, USS files, and jobs as favorites.
+* Added a profile validation feature that checks whether a profile is valid. The feature is triggered when any action is performed with the profile. Validated profiles are indicated by a green mark.
+* Disallowed case sensitivity for profiles with same names.
+* Enabled editing of search filters.
+* Enabled editing of ASCII files in USS.
+* Improved text in confirmation dialogs.
+* Reorganized the Data Sets context menu to match the order of commands recommended by VSCode.
 
 ### Bug fixes
 
 The following bugs were fixed.
-
-#### Zowe installation
-
-#### API Mediation Layer
 
 #### ZSS
 
@@ -83,13 +162,21 @@ The following bugs were fixed.
 
 #### Zowe App Server
 
-- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129) 
+- Bugfix: Changing editor syntax in the MVS explorer caused a callstack limit exception. This was due to a trap focus conflict between the Orion editor and the modal part within the ui Select component on syntax change. In this version, the issue has been resolved by disabling `disableEnforceFocus` for the syntax selector [#129](https://github.com/zowe/explorer-mvs/pull/129)
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
-
+- Bugfix: NGX-monaco-editor library has been removed in order to fix a bug. This now allows the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
+  - Removed use of node-sass, so that native compilation is not required
+  - Updated to typescript 3.7 from version 2.7.2
+  - Updated to monaco 0.20 from version 0.13. The monaco changelog can be found [here](https://github.com/microsoft/monaco-editor/blob/master/CHANGELOG.md)
 #### Zowe CLI
 
+- Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
+- Fixed an issue where the `--help-web` option did not function on macOS when the `DISPLAY` environment variable was undefined. [#322](https://github.com/zowe/imperative/issues/322).
+- Updated Imperative version to include security fixes.
+- Updated Imperative version to fix a probem where users could not use a service profile after storing a token in a base profile.
+- Fixed an issue where optional secure fields were not deleted when overwriting a profile.
 
 ## Version 1.12.0 LTS (June 2020)
 
@@ -526,7 +613,7 @@ A bug was fixed where Zowe CLI installation could fail and users could receive t
 981 verbose stack Error: EPERM: operation not permitted
 ```
 
-To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/#download) and retry the installation process.
+To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.zowe.org/download.html) and retry the installation process.
 
 ## Version 1.8.0 (February 2020)
 
@@ -789,7 +876,7 @@ The following commands and enhancements are added:
 ## Zowe SMP/E Alpha (August 2019)
 
 A pre-release of the Zowe SMP/E build is now available. This alpha release is based on Zowe Version 1.4.0. Do not use this alpha release in production environment.
-- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/#download) website.
+- To obtain the SMP/E build, go to the [Zowe Download](https://www.zowe.org/download.html) website.
 - For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)

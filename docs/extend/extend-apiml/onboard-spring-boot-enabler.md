@@ -307,7 +307,6 @@ apiml:
         ssl:
             enabled: ${server.ssl.enabled}
             verifySslCertificatesOfServices: true
-            ciphers: ${server.ssl.ciphers}
             protocol: ${server.ssl.protocol}
             enabled-protocols: ${server.ssl.protocol}
             keyStoreType: ${server.ssl.keyStoreType}

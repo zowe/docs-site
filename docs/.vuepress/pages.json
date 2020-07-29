@@ -73,7 +73,8 @@
         "text": "Advanced Zowe configuration",
         "items": [
           "user-guide/mvd-configuration.md",
-          "user-guide/cli-configuringcli.md"
+          "user-guide/cli-configuringcli.md",
+          "user-guide/configure-data-sets-jobs-api.md"
         ]
       },
       {
