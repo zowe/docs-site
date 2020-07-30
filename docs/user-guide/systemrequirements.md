@@ -38,7 +38,7 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   :::
 
-### Zowe Application Framework requirements (host)
+## Zowe Application Framework requirements (host)
 
 The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
 
@@ -61,6 +61,22 @@ The Zowe Application Framework server provides the Zowe Desktop that contains an
    Each release of the Zowe Application Framework is tested to work on the current releases of Chrome, Firefox, Safari, and Edge, as well as the oldest release within a 1-year time span, unless the current release is also older than 1 year. For Firefox, the oldest supported release will also be from the Extended Support Release (ESR) version of Firefox, to ensure compatibility in those enterprise environments. This scheme for browser support is to ensure that Zowe works on the vast majority of browsers that people are currently using, while still allowing for use of new features and security that browsers constantly add.
 
 If you do not see your product listed here, please contact the Zowe community so that it can be validated and included.
+
+### Important note for users upgrading to v1.14
+
+If you are upgrading to Zowe v1.14 from a previous release, 
+and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. 
+
+To configure your system for the version 1.14 update, perform **one** of the following tasks: 
+- Define `ZWE_EXTERNAL_HOSTS` as a comma-separated list of hosts from which you would access Zowe from your browser.
+  - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
+
+- Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
+  - `ZWE_REFERRER_HOSTS=host1,host2,...`
+   
+See [Reviewing the instance env file](../user-guide/configure-instance-directory.md#reviewing-the-instanceenv-file) for additional information on the use of `instance.env` files.
+
+See [Configuring a Zowe instance via instance.env file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instanceenv-file) for additional information on configuring `instance.env` files. 
 
 ### Multi-Factor Authentication for Zowe Desktop
 
