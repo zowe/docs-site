@@ -35,7 +35,7 @@ In order to allow the `ZWESVSTC` started task to have permission to acces the co
 <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
 
-## Reviewing the `instance.env` file
+## Reviewing the instance.env file
 
 To operate Zowe, a number of zFS folders need to be located for prerequisites on the platform. Default values are selected when you run `zowe-configure-instance.sh`. You might want to modify the values.  
 
