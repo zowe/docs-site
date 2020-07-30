@@ -50,7 +50,9 @@ For information about how to install Zowe, see [Installing Zowe](installandconfi
 
 - In this tutorial, the following parameters are used as an example. Replace them with your own settings when you follow the tutorial in your environment.
 
-   - URL to access the Zowe Desktop: `https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+   - URL to access the Zowe Desktop:
+      - Using API mediation layer: `https://myhost:<gateway port>/ui/v1/zlux/`
+      - Without the API mediation layer:  `https://myhost:<appserver httpsPort>/` 
    - Mainframe credentials:
      - Username: `ibmuser`
      - Password: `sys1`
@@ -61,7 +63,11 @@ For information about how to install Zowe, see [Installing Zowe](installandconfi
 
 Access and navigate the Zowe Desktop to view the Zowe applications. In this tutorial, you will use the Firefox browser to log in to the Zowe Desktop.
 
-The URL to access the Zowe Desktop is `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html` in your own environment, where:
+There are two ways to log in to the Zowe Desktop:
+- Through the API mediation layer: `https://myhost:<gateway port>/ui/v1/zlux/`
+   - Example: `https://s0w1:7554/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+- Directly, if the mediation layer is not used: `https://myhost:<appserver httpsPort>/`
+   - Example `https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 - *myHost* is the host on which you are running the Zowe Application Server.
 - *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`. For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
