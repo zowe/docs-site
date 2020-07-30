@@ -74,9 +74,9 @@ To configure your system for the version 1.14 update, perform **one** of the fol
 - Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
   - `ZWE_REFERRER_HOSTS=host1,host2,...`
    
-See [Reviewing the instance env file](configure-instance-directory.md/#reviewing-the-instance-env-file) for additional information on the use of `instance.env` files.
+See [Reviewing the instance env file](configure-instance-directory.md#reviewing-the-instance-env-file) for additional information on the use of `instance.env` files.
 
-See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md/#configuring-a-Zowe-instance-via-instance-env-file) for additional information on configuring `instance.env` files. 
+See [Configuring a Zowe instance via `instance.env` file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instance-env-file) for additional information on configuring `instance.env` files. 
 
 ### Multi-Factor Authentication for Zowe Desktop
 
