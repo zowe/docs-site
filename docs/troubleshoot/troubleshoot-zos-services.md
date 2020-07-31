@@ -4,7 +4,8 @@ The following topics contain information that can help you troubleshoot problems
 
 ## z/OSMF JVM Cache Corruption
 
-If you are running Zowe 1.12 or 1.13 then there are situations where z/OSMF abends reporting a class cache problem.  This problem has been resolved in Zowe 1.14.  The following is a snippet from the snap trace
+There are situations when z/OSMF abends when working with Zowe. 
+The following is a snippet from the snap trace
 
 ```
 * ** ASSERTION FAILED ** at ./OSCachesysv.cpp:1213: 
@@ -23,9 +24,17 @@ and the following is a snippet from the java stack
 4XESTACKTRACE                at java/lang/invoke/InnerClassLambdaMetafactory.buildCallSite(InnerClassLambdaMetafactory.java:206) 
 ```
 
-The error occurs because the Java runtime being used by the z/OSMF Liberty server and the Java runtimes being used by Zowe are sharing a cache and a collision occurs.  The fix is to change either z/OSMF, or Zowe (or both) runtimes so that they don't use the cache to share classes with the java startup argument `-Xshareclasses:none`.  
+The error occurs because the Java runtime being used by the z/OSMF Liberty server and the Java runtimes being used by Zowe are sharing a user ID of `IZUSVR1` and a collision occurs.  
+
+### Isolate the started task user IDs
+
+The z/OSMF started task `IZUSVR1` runs under the user ID of `IZUSER`.  Prior to version 1.9 of Zowe its started task `ZWESVSTC` also ran under the same user ID.  With Zowe 1.9 the default configuration changed to use a new userID of `ZWESVUSR` and group of `ZWEADMIN`.  
+
+If your started task `ZWESVSTC` is configured to run under the user ID `IZUUSER` change it to run under user ID `ZWESVUSR`, see [Configuring the z/OS System for Zowe](../user-guide/configure-zos.system.md#user-ids-and-groups-for-the-zowe-started-tasks)
 
 ### Update z/OSMF to not use JVM class caching
+
+If you need to run `ZWESVSTC` under the same user ID as z/OSMF for your environment, you can update z/OSMF configuration to switch off shared class caching which will stops the crash from occurring.  Disabling shared class caching will reduce the performance of z/OSMF so the preferred fix is to change the user ID of  `ZWESVSTC` away from `IZUUSER` to `ZWESVUSR` as described above.  
 
 Navigate to the file `/var/zosmf/configuration/local_override.cfg`.  This contains the startup arguments for the Java runtime used by z/OSMF.  Add the line
 ```sh
@@ -33,53 +42,7 @@ JVM_OPTIONS=-Xshareclasses:none
 ```
 You will need to recycle the z/OSMF server running, which by default will be running under the started task `IZUSVR1`.  
 
-### Update Zowe to not use JVM class caching
-
-As an alternative to updating z/OSMF configuration you can update your Zowe runtime so that when it starts its Java servers class sharing in the cache is disabled.  
-
-Zowe has five Java Apache Tomcat servers that are launched with three shell scripts.
-
-The **API Mediation Layer** servers are launched with the script `<ROOT_DIR>/components/api-mediation/bin/start/sh`.  Navigate to this file and add the line `-Xshareclasses:none` to the three lines with the `java` command.  The -X argument must be added before any of the -D arguments.  
-
-For example, the code snippet below shows the line added to the java command for the Discovery server, the API Catalog, and the API Gateway.  
-
-```sh
-...
-DISCOVERY_CODE=AD
-_BPX_JOBNAME=${ZOWE_PREFIX}${DISCOVERY_CODE} java -Xms32m -Xmx256m -Xquickstart \
-    -Xshareclasses:none \
-    -Dibm.serversocket.recover=true \
-...
-CATALOG_CODE=AC
-_BPX_JOBNAME=${ZOWE_PREFIX}${CATALOG_CODE} java -Xms16m -Xmx512m -Xquickstart \
-    -Xshareclasses:none \
-    -Dibm.serversocket.recover=true \
-...
-GATEWAY_CODE=AG
-_BPX_JOBNAME=${ZOWE_PREFIX}${GATEWAY_CODE} java -Xms32m -Xmx256m -Xquickstart \
-    -Xshareclasses:none \
-...
-```
-
-The **Zowe z/OS Jobs API services** java server is launched with the script `<ROOT_DIR>/components/jobs-api/bin/start/sh`.  Navigate to this file and add the line `-Xshareclasses:none` to the `java` command, making sure it is before the first -D argument.
-
-```sh
-...
-COMPONENT_CODE=EJ
-_BPX_JOBNAME=${ZOWE_PREFIX}${COMPONENT_CODE} java -Xms16m -Xmx512m -Xshareclasses:none -Dibm.serversocket.recover=true -Dfile.encoding=UTF-8 \
-    -Djava.io.tmpdir=/tmp -Xquickstart \
-...
-```
-Do the same for the file `<ROOT_DIR>/components/files-api/bin/start/sh` which is the server for the **Zowe z/OS Files API services**.
-```sh
-...
-COMPONENT_CODE=EF
-_BPX_JOBNAME=${ZOWE_PREFIX}${COMPONENT_CODE} java -Xms16m -Xmx512m -Xshareclasses:none -Dibm.serversocket.recover=true -Dfile.encoding=UTF-8 \
-    -Djava.io.tmpdir=/tmp -Xquickstart \
-...
-```
-
-Having updated the `start.sh` scripts within Zowe you will need to stop and start the started task `ZWESVSTC`.  
+For more information on the effect that disabling a shared class cache has on a Java runtime see, [Class data sharing](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.vm.80.doc/docs/shrc.html)
 
 ## Unable to generate unique CeaTso APPTAG
 
