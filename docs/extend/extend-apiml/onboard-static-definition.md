@@ -553,6 +553,12 @@ The following procedure enables you to refresh the API definitions after you cha
     ```
     httpie --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
     ```
+   
+    Alternatively, it is possible to use curl if it is installed on your system:
+    
+    ```
+    curl -X POST --cert keystore/localhost/localhost.pem --cacert keystore/localhost/localhost.keystore.cer https://localhost:10011/discovery/api/v1/staticApi
+    ```
 
 2. Check if your updated definition is effective.
 
