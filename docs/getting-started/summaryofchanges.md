@@ -39,16 +39,6 @@ The following features and enhancements were added.
 #### Zowe App Server
 #### Zowe CLI
 
-<!--
-plugins to update:
-CICS: 4.0.2
-DB2: 4.0.6
-FTP: 1.2.0
-IMS: 2.0.1
-MQ: 2.0.1
-SCS: 4.0.4
--->
-
 The following features and enhancements were added to the **core Zowe CLI**:
 
 - Update Imperative version
@@ -59,8 +49,8 @@ The following features and enhancements were added to the **core Zowe CLI**:
 
 The following enhancement was added to the **z/OS FTP Plug-in for Zowe CLI**:
 
-- Added three options for submit job: --wait, --wait-for-output, --wait-for-active.
--
+- Added the following options to the `zowe jobs submit job` command: `--wait`, `--wait-for-output`, and `--wait-for-active`. [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+
 #### Zowe Explorer
 
 The following features and enhancements were added to **Zowe Explorer**:
@@ -76,6 +66,7 @@ The following bugs were fixed.
 #### Zowe CLI
 
 The following bug was fixed in Imperative CLI Framework:
+
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
 
 ## Version 1.13.0 LTS (July 2020)
