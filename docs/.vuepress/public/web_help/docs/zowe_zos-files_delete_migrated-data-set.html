@@ -2,19 +2,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>provisioning delete instance</title>
+<title>zos-files delete migrated-data-set</title>
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> › <a href="zowe_provisioning.html">provisioning</a> › <a href="zowe_provisioning_delete.html">delete</a> › <a href="zowe_provisioning_delete_instance.html">instance</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Deletes selected deprovisioned instance.</p>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_delete.html">delete</a> › <a href="zowe_zos-files_delete_migrated-data-set.html">migrated-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Delete migrated data sets.</p>
 <h4 id="usage">Usage</h4>
-<p>   zowe  provisioning delete instance &lt;name&gt; [options]</p>
+<p>   zowe  zos-files delete migrated-data-set &lt;dataSetName&gt; [options]</p>
 <h4 id="positional-arguments">Positional Arguments</h4>
 <ul>
-<li><p><code>name</code>         <em>(string)</em></p>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
 <ul>
-<li>Deprovisioned Instance name.</li>
+<li>The name of the migrated data set you want to delete.</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--wait</code>  | <code>-w</code> <em>(boolean)</em></p>
+<ul>
+<li><p>If true then the function waits for completion of the request. If false
+(default) the request is queued.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li><p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
+<ul>
+<li><p>If true then the function uses the PURGE=YES on ARCHDEL request. If false
+(default) the function uses the PURGE=NO on ARCHDEL request.</p>
+<p>Default value: false</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -86,9 +105,9 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
-<li><p>Delete deprovisioned instance &quot;instance1&quot;:</p>
+<li><p>Delete a migrated data set using default options:</p>
 <ul>
-<li><code>zowe  provisioning delete instance instance1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  provisioning delete instance instance1">Copy</button></li>
+<li><code>zowe  zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
