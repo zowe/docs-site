@@ -39,17 +39,21 @@ The following features and enhancements were added.
 #### Zowe App Server
 #### Zowe CLI
 
-The following features and enhancements were added to the **core Zowe CLI**:
+The following features and enhancements were added to the **core CLI**:
 
-- Update Imperative version
-- Fix compilation error
-- Add CLI command to delete migrated data sets zowe zos-files delete migrated-data-sets.
-- Add the --fail-fast option to the zowe zos-files download all-members command
-    Specifying --fail-fast false allows member downloads to continue if one or more fail
+- Added the command `zowe zos-files delete migrated-data-sets` to delete migrated data sets. [#716](https://github.com/zowe/zowe-cli/issues/716)
+- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command.  [#759](https://github.com/zowe/zowe-cli/pull/759)
 
-The following enhancement was added to the **z/OS FTP Plug-in for Zowe CLI**:
+    Set the option to `false` to continue downloading members if one or more of the downloads fails.
+- Updated the Imperative CLI Framework version. [#744](https://github.com/zowe/zowe-cli/pull/774)
 
-- Added the following options to the `zowe jobs submit job` command: `--wait`, `--wait-for-output`, and `--wait-for-active`. [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+**z/OS FTP Plug-in for Zowe CLI**:
+
+The following enhancement was added to the z/OS FTP Plug-in:
+- The following flags are added to the the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+  - `--wait` - Specify a query interval and max query time as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
+  - `--wait-for-output` - Wait for the job to enter OUTPUT status.
+  - `--wait-for-active` - Wait for the job to enter ACTIVE status.
 
 #### Zowe Explorer
 
@@ -68,6 +72,7 @@ The following bugs were fixed.
 The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
+- Fixed a  compilation error https://github.com/zowe/zowe-cli/pull/770
 
 ## Version 1.13.0 LTS (July 2020)
 
