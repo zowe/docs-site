@@ -5,23 +5,25 @@ The following topics contain information that can help you troubleshoot problems
 ## z/OSMF JVM Cache Corruption
 
 There are situations when z/OSMF abends when working with Zowe. 
-The following is a snippet from the snap trace
+
+The following is a snippet from the Java core dump
 
 ```
-* ** ASSERTION FAILED ** at ./OSCachesysv.cpp:1213: 
-from info thread * ,  part of failing native thread  is 
-SH_OSCachesysv::acquireWriteLock(unsigned
-SH_CompositeCacheImpl::enterWriteMutex(J9
-SH_CacheMap::startClassTransaction(J9VMTh
-j9shr_classStoreTransaction_start+0x956  
-```
-
-and the following is a snippet from the java stack
-
-```sh
-4XESTACKTRACE                at sun/misc/Unsafe.defineAnonymousClass(Native Method) 
-4XESTACKTRACE                at java/lang/invoke/InnerClassLambdaMetafactory.spinInnerClass(InnerClassLambdaMetafactory.java:339) 
-4XESTACKTRACE                at java/lang/invoke/InnerClassLambdaMetafactory.buildCallSite(InnerClassLambdaMetafactory.java:206) 
+CEE3DMP V2 R4.0: Condition processing resulted in the unhandled condition.   
+...
+  Condition Information for Active Routines
+    Condition Information for  (DSA address 0000005F026FDE40)
+      CIB Address: 0000005F026FA1E8
+      Current Condition:
+        CEE0198S The termination of a thread was signaled due to an unhandled condition.
+      Original Condition:
+        CEE3250C The system or user abend SDC2  R=4A001620 was issued.
+      Location:
+        Program Unit:  Entry: ntv_createJoinWorkUnit
+        Statement:     Offset: +000ABD14
+      Machine State:
+        ILC..... 0002    Interruption Code..... 000D
+        PSW..... 0785240180000000 000000003825D954
 ```
 
 The error occurs because the Java runtime being used by the z/OSMF Liberty server and the Java runtimes being used by Zowe are sharing a user ID of `IZUSVR1` and a collision occurs.  
