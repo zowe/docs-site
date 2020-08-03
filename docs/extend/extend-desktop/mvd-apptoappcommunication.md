@@ -82,6 +82,32 @@ export enum ActionType {       // not all actions are meaningful for all target 
 
 Actions can be created dynamically at runtime, or saved and loaded by the system at login.
 
+### Cross-launch via URL
+
+Another way the Zowe Application Framework invokes Actions is via URL Query Parameters, with parameters formatted in JSON. This feature enables users to bookmark a set of application-to-application communication actions (in the form of a URL) that will be executed when opening the webpage. Developers creating separate web apps can build a link that will open the Zowe Desktop and do specific actions in Apps, for example, opening a file in the Editor.
+
+The Cross-launch feature allows you to:
+
+1. Specify one or more actions that will be executed upon login, allowing you to bookmark a series of actions that you can share with someone else.
+
+2. Specify actions that are declared by plugins (when formatter is equal to a known action ID) or actions that you have custom-made (when formatter = 'data').
+
+3. Customize the action type, mode, and target plugin (when the formatter is equal to an existing action ID).
+
+#### Sample URL
+
+``https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?app2app=org.zowe.zlux.ng2desktop.webbrowser:launch:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:org.zowe.zlux.test.action:{"data": {"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}}``
+
+Query parameter format:
+
+``?app2app={pluginId}:{actionType}:{actionMode}:{formatter}:{contextData}&app2app={pluginId}:{actionType}:{actionMode}:{formatter}:{contextData}``
+
+- `pluginId` - application identifier, e.g. `'org.zowe.zlux.ng2desktop.webbrowser'`
+- `actionType` - `'launch' | 'message'`
+- `actionMode` - `'create' | 'system'`
+- `formatter` - `'data'` | actionId
+- `contextData` - context data in form of JSON
+
 ### Dynamically
 
 You can create Actions by calling the following Dispatcher method: `makeAction(id: string, defaultName: string, targetMode: ActionTargetMode, type: ActionType, targetPluginID: string, primaryArgument: any):Action`
