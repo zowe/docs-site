@@ -276,7 +276,7 @@ The Zowe Explorer VSCode extension provides developers new to the mainframe with
 
 <summary></summary>
 
-First of all, make sure you [fulfill the Zowe Explorer software requirements](https://docs.zowe.org/stable/user-guide/ze-install.html#software-requirements). Once the software requirements are fulfilled, [create a Zowe Explorer profile](https://docs.zowe.org/stable/user-guide/ze-profiles.html#working-with-zowe-explorer-profiles). Also, you can watch a short video on how to [get started with Zowe Explorer](https://www.youtube.com/watch?v=G_WCsFZIWt4).
+First of all, make sure you [fulfill the Zowe Explorer software requirements](https://docs.zowe.org/stable/user-guide/ze-install.html#software-requirements). Once the software requirements are fulfilled, [create a Zowe Explorer profile](https://docs.zowe.org/stable/user-guide/ze-profiles.html#working-with-zowe-explorer-profiles). Also, you can watch [Get Started with Zowe Explorer](https://www.youtube.com/watch?v=G_WCsFZIWt4).
 
 </details>
 
@@ -286,7 +286,7 @@ First of all, make sure you [fulfill the Zowe Explorer software requirements](ht
 
 <summary></summary>
 
-You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
+You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
 
 </details>
 
@@ -296,7 +296,7 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 <summary></summary>
 
-You can use the [Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask Zowe Explorer community for help.
+You can use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask Zowe Explorer community for help.
 
 </details>
 
@@ -316,7 +316,7 @@ Check out the [Enabling Secure Credential Store page](https://docs.zowe.org/stab
 
 <summary></summary>
 
-Check out the GitHub article about [FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
+Check out the GitHub article about [the FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
 
 </details>
 
@@ -348,7 +348,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 <summary></summary>
 
-The Zowe Explorer VSCode extension provides developers new to the mainframe with a modern UI, allowing to access and work with the data set, USS, and job functionalities in a fast and streamlined manner. In addition, Zowe Explorer enables you to work with Zowe CLI profiles and issue TSO/MVS commands.
+The Zowe Explorer VSCode extension provides developers new to the mainframe with a modern UI, allowing you to access and work with the data set, USS, and job functionalities in a fast and streamlined manner. In addition, Zowe Explorer enables you to work with Zowe CLI profiles and issue TSO/MVS commands.
 
 </details>
 
@@ -374,7 +374,7 @@ Once the software requirements are fulfilled, create a Zowe Explorer profile.
 3. Select the **Create a New Connection to z/OS** option.
 4. Follow the instructions, and enter all required information to complete the profile creation.
 
-You can also watch [the Getting Started with Zowe Explorer video](https://www.youtube.com/watch?v=G_WCsFZIWt4) to understand how to use the basic features of the extension.
+You can also watch [Getting Started with Zowe Explorer](https://www.youtube.com/watch?v=G_WCsFZIWt4) to understand how to use the basic features of the extension.
 
 </details>
 
@@ -384,7 +384,7 @@ You can also watch [the Getting Started with Zowe Explorer video](https://www.yo
 
 <summary></summary>
 
-You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
+You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
 
 </details>
 
@@ -428,7 +428,7 @@ For more information, see [the Enabling Secure Credential Store page](https://do
 
 <summary></summary>
 
-Check out the GitHub article about [FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
+Check out the GitHub article about [the FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
 
 </details>
 
