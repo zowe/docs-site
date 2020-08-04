@@ -31,7 +31,9 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 
 #### Support for verifying Zowe release integrity
 
-Zowe now provides a new verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. This allows you to check if the runtime directory is altered because if the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. You can use this verify tool on Zowe version 1.9 and later. For more information, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
+Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents. 
+
+If the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
 ### New features and enhancements
 
