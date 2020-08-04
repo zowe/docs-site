@@ -29,7 +29,9 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 ### Notable changes
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+#### Support for verifying Zowe release integrity
 
+Zowe now provides a new verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents. This allows you to check if the runtime directory is altered because if the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. You can use this verify tool on Zowe version 1.9 and later. For more information, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
 ### New features and enhancements
 
