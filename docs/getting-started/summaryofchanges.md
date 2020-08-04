@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.13.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.14.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
 - [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
 - [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
@@ -23,6 +24,34 @@ Zowe Version 1.13.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+## Version 1.14.0 LTS (August 2020)
+
+### Notable changes
+<!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
+
+
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added.
+
+#### Zowe installation
+#### API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+
+
 ## Version 1.13.0 LTS (July 2020)
 
 ### Notable changes
@@ -32,8 +61,6 @@ Zowe CLI added the ability to access mainframe services through API Mediation La
 The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added.
 
@@ -52,26 +79,22 @@ The following features and enhancements were added.
 
 #### Zowe App Server
 
-- In this version, the app server can now use more than one CA [#128](https://github.com/zowe/zlux-app-server/pull/128)
-- Removed usage of ngx-color [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- The app server is now able to use more than one certificate authority (CA). This allows the server to validate other server's authenticity by recognizing the CA that another server may have used [#128](https://github.com/zowe/zlux-app-server/pull/128)
 - The `dispatcher.invokeAction` method now returns promise, which provides the ability to wait until `dispatcher.invokeAction` finishes and handles errors [#59](https://github.com/zowe/zlux-platform/pull/59)
-- Cross-launch via URL has been implemented [#234](https://github.com/zowe/zlux-app-manager/pull/234)
-- Improvements to feature and bookmarking functionality [#30](https://github.com/zowe/tn3270-ng2/pull/30)
-- Added close all + undo settings + hotkeys [#153](https://github.com/zowe/zlux-editor/pull/153)
+- The ngx-color picker has been replaced by a custom hue selection bar, lightness swatches bar, and color palette, allowing for a more customizable personalization experience [#235](https://github.com/zowe/zlux-app-manager/pull/235)
+- In this version, cross-launch via URL has been implemented, allowing for integration between the Application Framework and  applications. This feature enables users to bookmark a set of app2app communication actions (in the form of a URL) that will be executed when opening the webpage [#234](https://github.com/zowe/zlux-app-manager/pull/234)
+- Bookmarking features have been added to the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
+  - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
+  - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
+  - The buttons found in this feature have been realigned  
+- Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
-  - Added a snackbar notification for opening a folder/file you don't have access to
+  - A snackbar notification will be displayed when users attempt to open a file that they do not have permission to open
   - Added an "Undo" option to the Close All feature to re-open tabs & files
-- Login activity and storage event updates [#242](https://github.com/zowe/zlux-app-manager/pull/242)
-  - Converted login activity to event emitter
-  - Added new local storage listener so changes can be reported across tabs
-  - Added detect activity when loging in from a new window/tab
-  - In idleWarn popup added
-  - Being active on the Desktop, while the session expiration prompt is active, will now dismiss the pop-up and attempt to renew the session. This feature also stays synchronized between multiple tabs, and will renew multiple tabs if the user is active in at least one of them
-- NGX-monaco has been removed [#155](https://github.com/zowe/zlux-editor/pull/155)
-  - Removed use of node-sass, so that native compilation is not required
-  - Updated to typescript 3.7
-  - Updated to monaco 0.20
+- Login activity and session activity is now synchronized across multiple desktop tabs [#242](https://github.com/zowe/zlux-app-manager/pull/242)
+  - When a user logs out of a desktop tab, all other active tabs will also log out
+  - When a user performs an action on a desktop tab, the other tabs register this activity, which stops them from timing out
 
 #### Zowe CLI
 
@@ -144,7 +167,10 @@ The following bugs were fixed.
 - Bugfix: An Infinite Auth loop would occur on explorer apps due to APIML and z/OSMF auth timeouts missmatch. In this version, the issue has been resolved by adding a force login flag if a datasets request comes back as 401 [#124](https://github.com/zowe/explorer-mvs/pull/124)
 - Bugfix: When using the JES Explorer to view Spool files of a job, users cannot open a spool file that has the same name as one already open. This issue has been resolved by adding a unique id to content tabs to allow opening of overlapping names [#188](https://github.com/zowe/explorer-jes/pull/188)
 - Bugfix: The `Env var` for `TERM` gets set to "linux", which is not recognized by USS. This issue has been resolved through the removal of rxjs-compat [#29](https://github.com/zowe/vt-ng2/pull/29)
-
+- Bugfix: NGX-monaco-editor library has been removed in order to fix a bug. This now allows the Editor to open and view files after the second instance of opening them [#155](https://github.com/zowe/zlux-editor/pull/155)
+  - Removed use of node-sass, so that native compilation is not required
+  - Updated to typescript 3.7 from version 2.7.2
+  - Updated to monaco 0.20 from version 0.13. The monaco changelog can be found [here](https://github.com/microsoft/monaco-editor/blob/master/CHANGELOG.md)
 #### Zowe CLI
 
 - Fixed an issue where CLI web help failed to load in Internet Explorer 11. [#393](https://github.com/zowe/imperative/issues/393).
@@ -156,8 +182,6 @@ The following bugs were fixed.
 ## Version 1.12.0 LTS (June 2020)
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added.
 
@@ -258,8 +282,6 @@ Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
 ## Version 1.11.0 LTS (May 2020)
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added:
 
@@ -463,11 +485,9 @@ Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory 
 
 ## Version 1.9.0 LTS (February 2020)
 
-Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.  <!-- Is there any further detail we should mention about what LTS means, link to some other announcement about LTS release, etc..? -->
+Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added:
 
@@ -592,8 +612,6 @@ To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.
 
 ## Version 1.8.0 (February 2020)
 
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### New features and enhancements
 
 The following features and enhancements were added.
@@ -665,8 +683,6 @@ The following bugs were fixed.
 
 ## Version 1.7.1 (December 2019)
 
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### New features and enhancements
 
 The following features and enhancements were added.
@@ -692,8 +708,6 @@ The following bugs were fixed.
 - Fixed a bug where all of the different administrator suffixes weren't defined, so it was incorrectly returning administrators. ([#114](https://github.com/zowe/zss/pull/114))
 
 ## Version 1.7.0 (November 2019)
-
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 ### New features and enhancements
 
@@ -778,8 +792,6 @@ You can [download the latest version](https://marketplace.visualstudio.com/items
 
 ## Version 1.5.0 (September 2019)
 
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### What's new in API Mediation Layer
 
 The following features and enhancements are added:
@@ -855,8 +867,6 @@ A pre-release of the Zowe SMP/E build is now available. This alpha release is ba
 - For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
-
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 ### What's new in API Mediation Layer
 
@@ -943,10 +953,8 @@ The following bugs are fixed:
 
 ## Version 1.3.0 (June 2019)
 
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
-
 ### What's new in API Mediation Layer
-<!-- TODO -->
+
 This release of Zowe API ML contains the following user experience improvements:
 
 - Added authentication endpoints (/login, /query) to the API Gateway
@@ -1015,10 +1023,6 @@ The following bugs are fixed:
 - Fixed an issue where `zowe workflow ls aw` commands with the `--wn` option failed if there was a space in the workflow name. [(#356)](https://github.com/zowe/zowe-cli/pull/356)
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
-
-<!-- ### What's changed -->
-<!-- TODO. Fix the link once the doc is ready -->
-<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
 
 
 ## Version 1.2.0 (May 2019)
