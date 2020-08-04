@@ -6,10 +6,9 @@ You can use this verify tool on Zowe version 1.9 and later.
 - If you use Zowe version 1.14 or later, the verify tool is delivered with Zowe, so you can skip [Step 1](#step-1-obtain-the-verify-tool-prior-to-v114) below, but you can still download the verify tool if required.  
 - If you use Zowe version 1.9, 1.10, 1.11, 1.12, and 1.13, you must obtain the verify tool separately and use it to verify the `ROOT_DIR`.
 
-
 **Contents in this topic**
     
-- [Step 1: Obtain the verify tool Prior to v1.14](#step-1-obtain-the-verify-tool-prior-to-v114)
+- [Step 1: Obtain the verify tool (Required for versions before v1.14)](#step-1-obtain-the-verify-tool-required-for-versions-before-v114)
 - [Step 2: Verify your runtime directory](#step-2-verify-your-runtime-directory)
 - [Step 3: Review results](#step-3-review-results)
    - [Mismatch](#mismatch)
@@ -17,7 +16,7 @@ You can use this verify tool on Zowe version 1.9 and later.
 - [zowe-verify-authenticity.sh parameters](#zowe-verify-authenticitysh-parameters)
 - [Use of zowe-verify-authenticity.sh by zowe-support.sh](#use-of-zowe-verify-authenticitysh-by-zowe-supportsh)
 
-## Step 1: Obtain the verify tool (Prior to v1.14)
+## Step 1: Obtain the verify tool (Required for versions before v1.14)
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable, local directory, for example, `/u/username/hash`.
