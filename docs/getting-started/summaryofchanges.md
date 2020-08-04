@@ -27,6 +27,13 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 ## Version 1.14.0 LTS (August 2020)
 
 ### Notable changes
+<!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
+
+#### Support for verifying Zowe release integrity
+
+Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents. 
+
+If the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
 ### New features and enhancements
 
@@ -83,8 +90,6 @@ Zowe CLI added the ability to access mainframe services through API Mediation La
 The CLI also supports a type of profile named "base profile" that lets you store configuration information for multiple services. For more information, see [Using Profiles](../user-guide/cli-usingcli.md#using-profiles).
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added.
 
@@ -207,8 +212,6 @@ The following bugs were fixed.
 
 ### New features and enhancements
 
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 The following features and enhancements were added.
 
 #### Zowe installation
@@ -308,8 +311,6 @@ Updated Yargs in Zowe Imperative CLI Framework to fix vulnerabilities.
 ## Version 1.11.0 LTS (May 2020)
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added:
 
@@ -513,11 +514,9 @@ Bugfix: `zowe-configure-instance.sh` does not allow the `-c` instance directory 
 
 ## Version 1.9.0 LTS (February 2020)
 
-Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.  <!-- Is there any further detail we should mention about what LTS means, link to some other announcement about LTS release, etc..? -->
+Zowe v1.9.x is designated as the current Zowe Long-term Support (LTS) version.
 
 ### New features and enhancements
-
-<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 The following features and enhancements were added:
 
@@ -642,8 +641,6 @@ To install the fix, download the new v1.8.1 package from [Zowe.org](https://www.
 
 ## Version 1.8.0 (February 2020)
 
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### New features and enhancements
 
 The following features and enhancements were added.
@@ -715,8 +712,6 @@ The following bugs were fixed.
 
 ## Version 1.7.1 (December 2019)
 
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### New features and enhancements
 
 The following features and enhancements were added.
@@ -742,8 +737,6 @@ The following bugs were fixed.
 - Fixed a bug where all of the different administrator suffixes weren't defined, so it was incorrectly returning administrators. ([#114](https://github.com/zowe/zss/pull/114))
 
 ## Version 1.7.0 (November 2019)
-
-<!--If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 ### New features and enhancements
 
@@ -828,8 +821,6 @@ You can [download the latest version](https://marketplace.visualstudio.com/items
 
 ## Version 1.5.0 (September 2019)
 
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
-
 ### What's new in API Mediation Layer
 
 The following features and enhancements are added:
@@ -905,8 +896,6 @@ A pre-release of the Zowe SMP/E build is now available. This alpha release is ba
 - For more information, see [Installing Zowe SMP/E Alpha](../user-guide/install-zowe-smpe.md).
 
 ## Version 1.4.0 (August 2019)
-
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
 
 ### What's new in API Mediation Layer
 
@@ -993,10 +982,8 @@ The following bugs are fixed:
 
 ## Version 1.3.0 (June 2019)
 
-<!--If it's a bug fix and there is a corresponding GitHub issue, please also include the GitHub issue number. For example, "Fixed a problem with incorrect return error when the user requests to view contents of a USS folder they do not have permission to. Now it returns a 403 (Forbidden) error. For details, see  [#nnnnn](https://github.com/zowe/data-sets/issues/77)." -->
-
 ### What's new in API Mediation Layer
-<!-- TODO -->
+
 This release of Zowe API ML contains the following user experience improvements:
 
 - Added authentication endpoints (/login, /query) to the API Gateway
@@ -1065,10 +1052,6 @@ The following bugs are fixed:
 - Fixed an issue where `zowe workflow ls aw` commands with the `--wn` option failed if there was a space in the workflow name. [(#356)](https://github.com/zowe/zowe-cli/pull/356)
 
 - Fixed an issue where `zowe zowe-files delete uss` command could fail when resource URL includes a leading forward-slash. [(#343)](https://github.com/zowe/zowe-cli/pull/343).
-
-<!-- ### What's changed -->
-<!-- TODO. Fix the link once the doc is ready -->
-<!-- - An update script for Zowe is introduced. Now you can update all Zowe applications with the update script. For more information, see [Zowe Update Script](../user-guide/update-zos.md). -->
 
 
 ## Version 1.2.0 (May 2019)
