@@ -116,6 +116,16 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 </details>
 
+### Zowe Client Software Development Kits (SDKs)
+
+The Zowe Client SDKs consist of programamatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
+ - Zowe Node Client SDK
+ - Zowe Python Client SDK
+
+ For more information, see [Using the Zowe SDKs](usingcli.md).
+
+  </details>
+
 ### API Mediation Layer
 
 Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for Single Sign On (SSO).
