@@ -4,6 +4,7 @@ Check out the following FAQs to learn more about the purpose and function of Zow
 
 - [Zowe FAQ](#zowe-faq)
 - [Zowe CLI FAQ](#zowe-cli-faq)
+- [Zowe Explorer FAQ](#zowe-CLI-FAQ)
 
 ## Zowe FAQ
 
