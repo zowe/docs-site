@@ -29,9 +29,11 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 ### Notable changes
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programamatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts independent of Zowe CLI. For more information and usage examples, see the [Zowe CLI Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
+
 #### Support for verifying Zowe release integrity
 
-Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents. 
+Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents.
 
 If the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
