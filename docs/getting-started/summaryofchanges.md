@@ -46,6 +46,11 @@ The following features and enhancements were added.
 #### Zowe installation
 #### API Mediation Layer
 #### Zowe App Server
+
+- Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected [#145](https://github.com/zowe/zowe-common-c/pull/145)
+- The `InstanceID` parameter within the server predates the environment variable. Therefore, in order to not disturb pre-existing parameters, the server will only use the environment variable if it is non-default. [#130](https://github.com/zowe/zlux-app-server/pull/130)
+- Package size of the editor has been significantly reduced by removing assets that are unlikely to be used, specifically, `.map ` files  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
+
 #### Zowe CLI
 
 The following features and enhancements were added to the **core CLI**:
@@ -75,6 +80,14 @@ The following bugs were fixed.
 #### API Mediation Layer
 
 #### Zowe App Server
+
+- Bugfix: ZSS will now maintain the connection if users respond to the 404 message with the request `Connection: Keep-Alive` [#147](https://github.com/zowe/zowe-common-c/pull/147)
+  - **NOTE:** The code only recognizes `Connection: Keep-Alive`.  Other "Keep-Alive" properties will be ignored.
+- Bugfix: If a loadmodule is incorrectly copied to STEPLIB, the z/OS loader will fail to load it. In these cases, an available copy in LPA will be used instead, if one is available. The problem with LPA is that any IDENTIFY calls to a module with an incorrect version number may cause serious issues. This pull-request ensures that ZWESIS01 comes from private storage. [#146](https://github.com/zowe/zowe-common-c/pull/146)
+- Bugfix: Fixes various issues that would occur when the number in the `Content-length` response header was different from the actual content length. [#150](https://github.com/zowe/zowe-common-c/pull/150)
+- Bugfixes for default plugin config and terminal handler location [#229](https://github.com/zowe/zlux-server-framework/pull/229)
+  - This fix allows the serverside plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
+  - This fix resolves an edge case where there was no `instance_dir` equivalent to a `root_dir` setting file
 
 #### Zowe CLI
 
