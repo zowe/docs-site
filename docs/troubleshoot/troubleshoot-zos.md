@@ -81,3 +81,49 @@ pwd: <instance-dir>/bin/internal/run-zowe.sh 2: FSUM7351 not found
 **Solution:**
 
 Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing, make sure that it is appended to PATH in your profile, for example, in `/etc/profile/`.
+
+## Various warnings show when connecting Zowe with another domain
+
+**Symptoms:**
+
+When you configure Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.env` with a domain (for example, domain-a.com), and access Zowe with another domain (for example, domain-b.com), you may see these errors:
+
+- Certificate warnings like:
+  ```
+  domain-b.com:8544 uses an invalid security certificate.
+
+  The certificate is only valid for the following names: domain-a.com, <ip-of-domain-a>, localhost.localdomain, localhost, 127.0.0.1
+  ```
+- No pinned applications showing in Zowe Desktop.
+- JES Explorer, MVS Explorer, USS Explorer may show error of:
+  ``` 
+  Blocked by Content Security Policy
+
+  An error occurred during a connection to domain-a.com:7554.
+
+  Firefox prevented this page from loading in this way because the page has a content security policy that disallows it.
+  ```
+  if you ignore the certificate error.
+
+The above warnings and errors will also show when you plan to use Zowe with multiple domain names.
+
+**Solutions:**
+
+There are several steps need to take:
+
+- When you preparing `bin/zowe-setup-certificates.env`, the `HOSTNAME=` and `IPADDRESS=` accepts multiple domains separated by comma (from Zowe v1.14.0). This is example configuration:
+
+  ```
+  HOSTNAME=domain-a.com,domain-b.com
+  IPADDRESS=<ip-of-domain-a>,<ip-of-domain-b>
+  ```
+
+  Then you can proceed to run `bin/zowe-setup-certificates.sh`.
+- After you run `bin/zowe-configure-instance.sh`, will need to modify `instance.env` located in instance directory to reflect the multiple domains planned to use.
+  * Add line of `ZWE_EXTERNAL_HOSTS`. For example, `ZWE_EXTERNAL_HOSTS=domain-a.com,domain-b.com`.
+  * Add line of `ZWE_REFERRER_HOSTS`. For example, `ZWE_REFERRER_HOSTS=domain-a.com,domain-b.com`.
+  * Find line starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZOWE_EXPLORER_HOST}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
+
+**Drawback:**
+
+With this change, the user has to use API Mediation Layer Gateway port (default is 7554) to access Desktop like this: https://domain-a.com:7554/ui/v1/zlux or https://domain-b.com:7554/ui/v1/zlux. Using Desktop port (default is 8544) like https://domain-b.com:8544/ is not supported.
