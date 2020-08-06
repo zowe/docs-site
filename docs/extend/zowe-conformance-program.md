@@ -13,3 +13,10 @@ As vendors, you are invited to submit conformance testing results for review and
 To participate in the Zowe Conformance Program, follow the process on the [Zowe Conformance Program website](https://www.openmainframeproject.org/projects/zowe/conformance). You can also find a list of products that have earned Zowe Conformant status.  
 
 To learn the criteria of achieving Zowe conformance for an offering, see [Zowe Conformance Criteria](https://github.com/openmainframeproject/foundation/tree/master/zowe_conformance).
+
+## How to suggest updates to the Zowe conformance program
+
+If you find a mistake with the Zowe conformance documents, or are a Zowe squad lead and wish to make an amendment to the criteria, these are held in markdown format at HTML table format at https://github.com/openmainframeproject/foundation/blob/master/zowe_conformance/test_evaluation_guide_table.md.  This file is used to create the Zowe conformance criteria.  If you do update the table of criteria.  The same information is also held in the markdown file https://github.com/openmainframeproject/foundation/blob/master/zowe_conformance/test_evaluation_guide.md that has history going back to Zowe 2019 conformance and allows easy change history comparision.
+
+To submit a proposal to update the conformance critera fork the repository https://github.com/openmainframeproject/foundation and make a pull request.  Flag this to the attention of github user ID @mertic, and also reach out to the Zowe onboarders squad in the slack workspace openmainframeproject.slack.com channel [#zowe-onboardding](https://openmainframeproject.slack.com/archives/CC60ALD61).  If you are not already signed up to slack you can sign up at https://slack.openmainframeproject.org/.
+
