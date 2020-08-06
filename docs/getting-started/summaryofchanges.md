@@ -29,7 +29,13 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 ### Notable changes
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programmatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts independent of Zowe CLI. For more information and usage examples, see the [Zowe CLI Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
+#### Support for verifying Zowe release integrity
+
+Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents.
+
+If the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
 ### New features and enhancements
 
@@ -46,13 +52,33 @@ The following features and enhancements were added.
 - Package size of the editor has been significantly reduced by removing assets that are unlikely to be used, specifically, `.map ` files  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
 
 #### Zowe CLI
+
+The following features and enhancements were added to the **core CLI**:
+
+- Added the command `zowe zos-files delete migrated-data-sets` to delete migrated data sets. [#716](https://github.com/zowe/zowe-cli/issues/716)
+- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command.  [#759](https://github.com/zowe/zowe-cli/pull/759)
+
+    Set the option to `false` to continue downloading members if one or more of the downloads fails.
+- Updated the Imperative CLI Framework version. [#744](https://github.com/zowe/zowe-cli/pull/774)
+
+**z/OS FTP Plug-in for Zowe CLI**:
+
+The following enhancement was added to the z/OS FTP Plug-in:
+- The following flags are added to the the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+  - `--wait` - Specify a query interval and max query time as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
+  - `--wait-for-output` - Wait for the job to enter OUTPUT status.
+  - `--wait-for-active` - Wait for the job to enter ACTIVE status.
+
 #### Zowe Explorer
+
+The following features and enhancements were added to **Zowe Explorer**:
 
 ### Bug fixes
 
 The following bugs were fixed.
 
 #### API Mediation Layer
+
 #### Zowe App Server
 
 - Bugfix: ZSS will now maintain the connection if users respond to the 404 message with the request `Connection: Keep-Alive` [#147](https://github.com/zowe/zowe-common-c/pull/147)
@@ -65,6 +91,10 @@ The following bugs were fixed.
 
 #### Zowe CLI
 
+The following bug was fixed in Imperative CLI Framework:
+
+- Fix update profile API storing secure fields incorrectly when called without CLI args.
+- Fixed a  compilation error https://github.com/zowe/zowe-cli/pull/770
 
 ## Version 1.13.0 LTS (July 2020)
 
@@ -100,7 +130,7 @@ The following features and enhancements were added.
 - Bookmarking features have been added to the TN3270 emulator [#30](https://github.com/zowe/tn3270-ng2/pull/30)
   - Users can now save connection preferences on a per-user level. Clicking the floppy disk icon saves user settings to that user's scope.
   - Codepages have been reorganized so that the numbers are shown first, making it easier for users to navigate to their favorites
-  - The buttons found in this feature have been realigned  
+  - The buttons found in this feature have been realigned
 - Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
   - Added a "Close All" button in the menu (hotkey is Alt + W + Shift)
