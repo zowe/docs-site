@@ -3,48 +3,70 @@
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. If you wish to start Zowe without the desktop (for example bring up just the AII Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. The cross memory server is needed to be able to log onto the Zowe desktop and operate its apps such as the File Editor.  
 
-To install and configure the cross memory server, you must create or edit APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
+To install and configure the cross memory server, you must define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
-The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS SAMPLIB that was created during the installation.  The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  The location of these for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). For an SMP/E installation, the location is the value of 
-`$datasetPrefixIn` in the member `AZWE001.F1(ZWE3ALOC)`.
+## PDS Sample Library and PDSE load library
 
-The cross memory server is a long running angel process server that runs under the started task `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
+The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS sample library.  
 
-The `ZWESISTC` started task runs the load module `ZWESIS01`, serves the Zowe desktop that is running under the `ZWESVSTC` started task, and provides it with secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization.  The user ID `ZWESIUSR` that is assigned to the cross memory server started tasks must have a valid OMVS segment and read access to the data sets where the load library and PROCLIB are held. The cross memory server loads the modules to LPA for its PC-cp services.
+The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
+
+The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe-install.sh -h` argument, see [Install Zowe z/OS convenience build](install-zowe-zos-convenience-build.md#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib). 
+
+For an SMP/E installation `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in sample member `AZWE001.F1(ZWE3ALOC)`.
+
+The cross memory server is a long running server process, by default, that runs under the started task name `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
+
+The `ZWESISTC` started task serves the Zowe desktop that is running under the `ZWESVSTC` started task, and provides it with secure services that require elevated privileges, such as supervisor state, system key, or APF-authorization.  
+
+The user ID `ZWESIUSR` that is assigned to the cross memory server started tasks must have a valid OMVS segment and read access to the load library `SZWEAUTH` and PARMLIB data sets. The cross memory server loads some functions to LPA for its PC-cp services.
 
 To install the cross memory server enable the PROCLIB, PARMLIB and load module:
 
+For customers wishing to perform scripted cross memory server installation and configuration see [Scripted Installation and Configuration of Zowe z/OS components](scripted-configure-server.md).  The steps to this manually are described below.  
+
 ## Load Module
 
-The cross memory server load module `ZWESIS00` is installed by Zowe into a PDSE `SZWESAMP`.  To be executed the PDSE needs to be APF authorized and the program needs to run in key(4) as non-swappable.  
+The cross memory server load module `ZWESIS00` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started the local module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
 
 ### APF Authorize
 
-You can either choose to copy the `ZWESI00` member into an existing APF authorized load library on your z//OS environment, or add the `SZWESAMP` PDSE used by the installer to the APF authorization list.  
+APF authorize the PDSE `SZWESAUTH`.  This will allow the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDSE itself when PTF maintenance is applied.  
 
-If you installing Zowe using SMP/E it is recommended that you APF authorize the PDSE `SZWESAMP` used by the installer itself.  This will allow the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDS itself without an additional copy step being required.  
+Do not add the `SZWEAUTH` data set to the system LNKLIST or LPALST concatenations.  
 
 To check whether a load library is APF-authorized, you can issue the following TSO command:
 
 ```
-D PROG,APF,DSNAME=ZWES.SISLOAD
+D PROG,APF,DSNAME=hlq.SISLOAD
 ```
-where the value of DSNAME is the name of the data set that contains the `ZWESIS01` load modules.
+where the value of DSNAME is the name of the `SZWEAUTH` data set as created during Zowe install that contains the `ZWESIS01` load module.
 
-To dynamically add a load library to the APF list if the load library is not SMS-managed, issue the following TSO command:
+Issue one of the following operator commands to dynamically add the load library to the APF list (until next IPL), where the value of DSNAME is the name of the `SZWEAUTH` data set, as created during Zowe install.  
 
-```
-SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,VOLUME=volser
-```
-If the load library is SMS-managed, issue the following TSO command:
-```
-SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,SMS
-```
-where the value of DSNAME is the name of the data set that contains the ZWESIS01 load modules.
+- If the load library is not SMS-managed issue the following operator command, where volser is the name of the volume that holds the data set:
 
-If you want to authorize the loadlib permanently, then add the following statement to `SYS1.PARMLIB(PROGxx)` or equivalent
+  ```
+  SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,VOLUME=volser
+  ```
+- If the load librar is SMS-managed, issue the following operator command:
 
-The PDS member `SZWESAMP(ZWESIMPRG)` created by the Zowe installation process contains the SETPROG statement for reference.
+  ```
+  SETPROG APF,ADD,DSNAME=hlq.SZWEAUTH,SMS
+  ```
+
+Add one of the following lines to your active `PROGxx` PARMLIB member, for example `SYS1.PARMLIB(PROG00)` to ensure the APF authorization is added automatically after next IPL. The value of `DSNAME` is the name of the `SZWEAUTH` data set, as created during Zowe install:  
+
+- if the load library is not SMS-managed, add the following line, where volser is the name of the volume that holds the data set:
+  ```
+  APF ADD DSNAME=hlq.SZWEAUTH VOLUME=volser
+  ```
+- If the load library is SMS-managed, add the following line:
+  ```
+  APF ADD DSNAME=hlq.SZWEAUTH SMS
+  ```
+
+The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement and PROGxx update for reference.
 
 ### Key 4 non-swappable
 
@@ -64,7 +86,11 @@ Then, issue the following command to make the SCHEDxx changes effective:
 
 ## PARMLIB
 
-The `ZWESISTC` started task must find a valid ZWESIPxx PARMLIB member in order to be launched successfull. The `SZWESAMP` PDS created at install time contains the member `ZWESIP00` with default configuration values. You can copy this member to your system PARMLIB data set, or else leave it in the `SZWESAMP`. If you do leave it in the `SZWESAMP` used at install time this has advantages for SMP/E maintenance as the APPLY and RESTORE jobs will be working directly against the runtime library.    
+The `ZWESISTC` started task must find a valid `ZWESIPxx` PARMLIB member in order to be launched successfully. The `SZWESAMP` PDS created at install time contains the member `ZWESIP00` with default configuration values. You can copy this member to another data set, for example your system PARMLIB data set, or else leave it in `SZWESAMP`.  
+
+If you chose to leave `ZWESIPxx` in the installation PDS `SZWESAMP` used at install time this has advantages for SMP/E maintenance because the APPLY and RESTORE jobs will be working directly against the runtime library.    
+
+Wherever you place the `ZWESIP00` member ensure the data set is listed in the `PARMLIB DD` statement of the started task `ZWESISTC`.  
 
 ## PROCLIB 
 
