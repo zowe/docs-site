@@ -9,30 +9,38 @@
 * Copyright Contributors to the Zowe Project.
 *
 */
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Imports to help Browserify find dependencies
-const jquery_1 = __importDefault(require("jquery"));
-const bootstrap = require("bootstrap");
-const jstree = require("jstree");
-const scrollIntoView = require("scroll-into-view-if-needed");
+var jquery_1 = __importDefault(require("jquery"));
+require("bootstrap");
+require("jstree");
+require("url-search-params-polyfill");
+var scrollIntoView = require("scroll-into-view-if-needed");
 // Define global variables
-const urlParams = new URLSearchParams(window.location.search);
-let currentNodeId;
-let currentView = +(urlParams.get("v") === "1");
-let searchTimeout = 0;
+var urlParams = new URLSearchParams(window.location.search);
+var currentNodeId;
+var currentView = +(urlParams.get("v") === "1");
+var searchTimeout = 0;
 /**
  * Generate flattened list of tree nodes
  * @param nestedNodes - Node list for command tree
  * @returns Flattened node list
  */
 function flattenNodes(nestedNodes) {
-    const flattenedNodes = [];
-    nestedNodes.forEach((node) => {
+    var flattenedNodes = [];
+    nestedNodes.forEach(function (node) {
         if (node.children && (node.children.length > 0)) {
-            flattenedNodes.push(...flattenNodes(node.children));
+            flattenedNodes.push.apply(flattenedNodes, flattenNodes(node.children));
         }
         else {
             flattenedNodes.push({
@@ -49,21 +57,24 @@ function flattenNodes(nestedNodes) {
  * @returns NUL-delimited list of search strings with all combinations of aliases
  */
 function permuteSearchStr(searchStr) {
-    const searchWords = searchStr.split(" ");
-    const searchWordsList = [searchWords];
-    for (let i = 0; i < searchWords.length; i++) {
-        const word = searchWords[i];
+    var searchWords = searchStr.split(" ");
+    var searchWordsList = [searchWords];
+    var _loop_1 = function (i) {
+        var word = searchWords[i];
         if (aliasList[word] !== undefined) {
-            const newSearchWordsList = [];
-            searchWordsList.forEach((oldSearchWords) => {
-                aliasList[word].forEach((alias) => {
-                    newSearchWordsList.push([...oldSearchWords.slice(0, i), alias, ...oldSearchWords.slice(i + 1)]);
+            var newSearchWordsList_1 = [];
+            searchWordsList.forEach(function (oldSearchWords) {
+                aliasList[word].forEach(function (alias) {
+                    newSearchWordsList_1.push(__spreadArrays(oldSearchWords.slice(0, i), [alias], oldSearchWords.slice(i + 1)));
                 });
             });
-            searchWordsList.push(...newSearchWordsList);
+            searchWordsList.push.apply(searchWordsList, newSearchWordsList_1);
         }
+    };
+    for (var i = 0; i < searchWords.length; i++) {
+        _loop_1(i);
     }
-    return searchWordsList.map((words) => words.join(" ")).join("\0");
+    return searchWordsList.map(function (words) { return words.join(" "); }).join("\0");
 }
 /**
  * Update node that docs are displayed for
@@ -72,7 +83,8 @@ function permuteSearchStr(searchStr) {
  * @param expand - Whether to expand tree node
  * @param force - Whether to update node even if already selected
  */
-function updateCurrentNode(newNodeId, goto, expand, force = false) {
+function updateCurrentNode(newNodeId, goto, expand, force) {
+    if (force === void 0) { force = false; }
     if (!force) {
         if ((newNodeId === currentNodeId) || !jquery_1.default("#cmd-tree").jstree(true).get_node(newNodeId)) {
             // Ignore if node already selected or does not exist
@@ -80,15 +92,18 @@ function updateCurrentNode(newNodeId, goto, expand, force = false) {
         }
     }
     currentNodeId = newNodeId;
+    var nodeIdWithoutExt = currentNodeId.slice(0, -5);
     if (goto) {
         // Load docs page for node in iframe
         if (currentView === 0) {
-            jquery_1.default("#docs-page").attr("src", `./docs/${currentNodeId}`);
+            jquery_1.default("#docs-page").attr("src", "./docs/" + currentNodeId);
         }
         else {
-            jquery_1.default("#docs-page").attr("src", `./docs/all.html#${currentNodeId.slice(0, -5)}`);
+            jquery_1.default("#docs-page").attr("src", "./docs/all.html#" + nodeIdWithoutExt);
         }
     }
+    // Update page title
+    document.title = nodeIdWithoutExt.replace(/_/g, " ") + " | " + headerStr + " Docs";
     // Select node in command tree
     jquery_1.default("#cmd-tree").jstree(true).deselect_all();
     jquery_1.default("#cmd-tree").jstree(true).select_node(currentNodeId);
@@ -97,15 +112,17 @@ function updateCurrentNode(newNodeId, goto, expand, force = false) {
         jquery_1.default("#cmd-tree").jstree(true).open_node(currentNodeId);
     }
     // Scroll node into view if needed
-    setTimeout(() => {
-        const nodeElem = document.getElementById(currentNodeId);
-        scrollIntoView(nodeElem, { scrollMode: "if-needed", block: "nearest", inline: "nearest" });
+    setTimeout(function () {
+        var nodeElem = document.getElementById(currentNodeId);
+        if (nodeElem) {
+            scrollIntoView(nodeElem, { scrollMode: "if-needed", block: "nearest", inline: "nearest" });
+        }
     }, 0);
     // Update URL in address bar to contain node ID
-    const baseUrl = window.location.href.replace(window.location.search, "");
-    let queryString = "";
+    var baseUrl = window.location.href.replace(window.location.search, "");
+    var queryString = "";
     if (currentNodeId !== treeNodes[0].id) {
-        queryString = "?p=" + currentNodeId.slice(0, -5);
+        queryString = "?p=" + nodeIdWithoutExt;
     }
     if (currentView === 1) {
         queryString = (queryString.length > 0) ? (queryString + "&v=1") : "?v=1";
@@ -124,13 +141,13 @@ function onTreeContextMenu(node) {
     return {
         expandAll: {
             label: "Expand All",
-            action: () => {
+            action: function () {
                 jquery_1.default("#cmd-tree").jstree("open_all");
             }
         },
         collapseAll: {
             label: "Collapse All",
-            action: () => {
+            action: function () {
                 jquery_1.default("#cmd-tree").jstree("close_all");
                 jquery_1.default("#cmd-tree").jstree(true).toggle_node(treeNodes[0].id);
             }
@@ -148,12 +165,14 @@ function onTreeSearch(permutedSearchStr, node) {
         return false; // Don't match root node
     }
     // Strip off ".html" to get full command name
-    const fullCmd = node.id.slice(0, -5).replace(/_/g, " ");
-    const searchStrList = permutedSearchStr.split("\0");
+    var fullCmd = node.id.slice(0, -5).replace(/_/g, " ");
+    var searchStrList = permutedSearchStr.split("\0");
     // Do fuzzy search that allows space or no char to be substituted for hyphen
-    for (const haystack of [fullCmd, fullCmd.replace(/-/g, " "), fullCmd.replace(/-/g, "")]) {
-        for (const needle of searchStrList) {
-            const matchIndex = haystack.lastIndexOf(needle);
+    for (var _i = 0, _a = [fullCmd, fullCmd.replace(/-/g, " "), fullCmd.replace(/-/g, "")]; _i < _a.length; _i++) {
+        var haystack = _a[_i];
+        for (var _b = 0, searchStrList_1 = searchStrList; _b < searchStrList_1.length; _b++) {
+            var needle = searchStrList_1[_b];
+            var matchIndex = haystack.lastIndexOf(needle);
             if (matchIndex !== -1) { // A search string was matched
                 if ((currentView === 1) || (haystack.indexOf(" ", matchIndex + needle.length) === -1)) {
                     // Don't match node if text that matches is only in label of parent node
@@ -168,10 +187,10 @@ function onTreeSearch(permutedSearchStr, node) {
  * Update current node and search bar after command tree (re)loaded
  */
 function onTreeLoaded() {
-    let tempNodeId = currentNodeId;
+    var tempNodeId = currentNodeId;
     if (!tempNodeId) {
-        const tempCmdToLoad = cmdToLoad || urlParams.get("p");
-        tempNodeId = tempCmdToLoad ? `${tempCmdToLoad}.html` : treeNodes[0].id;
+        var tempCmdToLoad = cmdToLoad || urlParams.get("p");
+        tempNodeId = tempCmdToLoad ? tempCmdToLoad + ".html" : treeNodes[0].id;
     }
     updateCurrentNode(tempNodeId, true, true, true);
     if (jquery_1.default("#tree-search").val()) {
@@ -193,12 +212,13 @@ function onTreeSelectionChanged(_, data) {
  * Search command tree after text in search box has changed
  * @param noDelay - If true, searches instantly rather than delaying 250 ms
  */
-function onSearchTextChanged(noDelay = false) {
+function onSearchTextChanged(noDelay) {
+    if (noDelay === void 0) { noDelay = false; }
     if (searchTimeout) {
         clearTimeout(searchTimeout);
     }
-    searchTimeout = window.setTimeout(() => {
-        const searchStr = (jquery_1.default("#tree-search").val() || "").toString().trim();
+    searchTimeout = window.setTimeout(function () {
+        var searchStr = (jquery_1.default("#tree-search").val() || "").toString().trim();
         jquery_1.default("#cmd-tree").jstree(true).search(permuteSearchStr(searchStr));
         if (!searchStr) {
             updateCurrentNode(currentNodeId, false, false, true);
@@ -210,7 +230,7 @@ function onSearchTextChanged(noDelay = false) {
  * @param e - Event object sent by postMessage
  */
 function onDocsPageChanged(e) {
-    const tempNodeId = e.data.slice(e.data.lastIndexOf("/") + 1);
+    var tempNodeId = e.data.slice(e.data.lastIndexOf("/") + 1);
     updateCurrentNode(tempNodeId, false, false);
 }
 /**
@@ -243,10 +263,10 @@ function loadTree() {
             search_callback: onTreeSearch
         }
     })
-        .on("model.jstree", onTreeLoaded)
+        .on("ready.jstree refresh.jstree", onTreeLoaded)
         .on("changed.jstree", onTreeSelectionChanged);
     // Connect events to search box and iframe
-    jquery_1.default("#tree-search").on("change keyup mouseup paste", () => onSearchTextChanged());
+    jquery_1.default("#tree-search").on("change keyup mouseup paste", function () { return onSearchTextChanged(); });
     window.addEventListener("message", onDocsPageChanged, false);
 }
 /**
@@ -276,7 +296,7 @@ function changeView(newMode) {
     currentView = newMode;
     jquery_1.default("#tree-view-link").toggleClass("active");
     jquery_1.default("#flat-view-link").toggleClass("active");
-    const newNodes = (currentView === 0) ? treeNodes : flattenNodes(treeNodes);
+    var newNodes = (currentView === 0) ? treeNodes : flattenNodes(treeNodes);
     jquery_1.default("#cmd-tree").jstree(true).settings.core.data = newNodes;
     jquery_1.default("#cmd-tree").jstree(true).refresh(false, true);
 }
