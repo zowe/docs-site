@@ -24,7 +24,7 @@ The script reads the default variable values that are provided in the `<ROOT_DIR
 <ROOT_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-generates the keystore in `/global/zowe/keystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
+generates the keystore in `/global/zowe/keystore`.  On many z/OS installations access to this location will be restricted to priviledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
 
 ## Generate certificate with the custom values
 
@@ -108,7 +108,7 @@ ZOWE_ZOSMF_HOST=${ZOWE_ZOSMF_HOST}   ZOWE_ZOSMF_PORT=${ZOWE_ZOSMF_PORT}
 You can also specify z/OSMF certificate explicitly in the ZOSMF_CERTIFICATE environmental variable in the zowe-setup-certificates.env file.
 ```
 
-This error has to be resolved before you can proceed with the next installation step.
+This error must be resolved before you can proceed with the next installation step.
 
 **Notes:** 
 
