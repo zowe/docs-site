@@ -86,16 +86,16 @@ Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing
 
 **Symptoms:**
 
-When you configure Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.env` with a domain (for example, domain-a.com), and access Zowe with another domain (for example, domain-b.com), you may see these errors:
+When you configure the Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.env` with a domain (for example, `domain-a.com`), and access Zowe with another domain (for example, `domain-b.com`), you may see the following errors:
 
-- Certificate warnings like:
+- Certificate warnings similar to the following one:
   ```
   domain-b.com:8544 uses an invalid security certificate.
 
   The certificate is only valid for the following names: domain-a.com, <ip-of-domain-a>, localhost.localdomain, localhost, 127.0.0.1
   ```
-- No pinned applications showing in Zowe Desktop.
-- JES Explorer, MVS Explorer, USS Explorer may show error of:
+- No pinned applications show in Zowe Desktop.
+- JES Explorer, MVS Explorer, USS Explorer may show errors similar to the following one if you ignore the certificate error.
   ``` 
   Blocked by Content Security Policy
 
@@ -103,27 +103,27 @@ When you configure Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.e
 
   Firefox prevented this page from loading in this way because the page has a content security policy that disallows it.
   ```
-  if you ignore the certificate error.
+  
 
 The above warnings and errors will also show when you plan to use Zowe with multiple domain names.
 
 **Solutions:**
 
-There are several steps need to take:
+You can take the following steps:
 
-- When you preparing `bin/zowe-setup-certificates.env`, the `HOSTNAME=` and `IPADDRESS=` accepts multiple domains separated by comma (from Zowe v1.14.0). This is example configuration:
+- When you prepare the `bin/zowe-setup-certificates.env` file, specify the `HOSTNAME=` and `IPADDRESS=` parameters to accept multiple domains separated by comma (from Zowe v1.14.0). The following configuration is an example:
 
   ```
   HOSTNAME=domain-a.com,domain-b.com
   IPADDRESS=<ip-of-domain-a>,<ip-of-domain-b>
   ```
 
-  Then you can proceed to run `bin/zowe-setup-certificates.sh`.
-- After you run `bin/zowe-configure-instance.sh`, will need to modify `instance.env` located in instance directory to reflect the multiple domains planned to use.
-  * Add line of `ZWE_EXTERNAL_HOSTS`. For example, `ZWE_EXTERNAL_HOSTS=domain-a.com,domain-b.com`.
-  * Add line of `ZWE_REFERRER_HOSTS`. For example, `ZWE_REFERRER_HOSTS=domain-a.com,domain-b.com`.
-  * Find line starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZOWE_EXPLORER_HOST}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
+  Then you can proceed to run the `bin/zowe-setup-certificates.sh` script.
+- After you run the `bin/zowe-configure-instance.sh` script, modify the `instance.env` file located in the instance directory in the following ways to reflect the multiple domains you plan to use.
+  * Add a line of `ZWE_EXTERNAL_HOSTS`. For example, `ZWE_EXTERNAL_HOSTS=domain-a.com,domain-b.com`.
+  * Add a line of `ZWE_REFERRER_HOSTS`. For example, `ZWE_REFERRER_HOSTS=domain-a.com,domain-b.com`.
+  * Find the line that starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify its values to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZOWE_EXPLORER_HOST}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
 
 **Drawback:**
 
-With this change, the user has to use API Mediation Layer Gateway port (default is 7554) to access Desktop like this: https://domain-a.com:7554/ui/v1/zlux or https://domain-b.com:7554/ui/v1/zlux. Using Desktop port (default is 8544) like https://domain-b.com:8544/ is not supported.
+With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.
