@@ -9,11 +9,13 @@
 * Copyright Contributors to the Zowe Project.
 *
 */
-const isInIframe = window.location !== window.parent.location;
-const links = Array.from(document.getElementsByTagName("a"));
+// Load polyfill for IE11 support
+var arrayFrom = require("array-from");
+var isInIframe = window.location !== window.parent.location;
+var links = arrayFrom(document.getElementsByTagName("a"));
 // Process all <a> tags on page
-links.forEach((link) => {
-    const url = link.getAttribute("href");
+links.forEach(function (link) {
+    var url = link.getAttribute("href");
     if (!url) {
         // Ignore links with no href
     }
@@ -28,7 +30,7 @@ links.forEach((link) => {
 });
 // Show Print button if inside iframe
 if (isInIframe) {
-    const printBtn = document.getElementById("btn-print");
+    var printBtn = document.getElementById("btn-print");
     if (printBtn) {
         printBtn.style.display = "block";
     }
@@ -41,28 +43,29 @@ if (isInIframe) {
 function setTooltip(btn, message) {
     btn.setAttribute("aria-label", message);
     btn.setAttribute("data-balloon-visible", "");
-    setTimeout(() => {
+    setTimeout(function () {
         btn.removeAttribute("aria-label");
         btn.removeAttribute("data-balloon-visible");
     }, 1000);
 }
 // Enable clipboard access for copy buttons
-const clipboard = new (require("clipboard"))(".btn-copy");
-clipboard.on("success", (e) => setTooltip(e.trigger, "Copied!"));
-clipboard.on("error", (e) => setTooltip(e.trigger, "Failed!"));
+var clipboard = new (require("clipboard"))(".btn-copy");
+clipboard.on("success", function (e) { return setTooltip(e.trigger, "Copied!"); });
+clipboard.on("error", function (e) { return setTooltip(e.trigger, "Failed!"); });
 // If in flat view, select currently scrolled to command in tree
 if (isInIframe && (window.location.href.indexOf("/all.html") !== -1)) {
-    let currentCmdName;
-    window.onscroll = (_) => {
-        const anchors = Array.from(document.getElementsByClassName("cmd-anchor"));
-        for (const anchor of anchors) {
-            const headerBounds = anchor.nextElementSibling.getBoundingClientRect();
+    var currentCmdName_1;
+    window.onscroll = function (_) {
+        var anchors = arrayFrom(document.getElementsByClassName("cmd-anchor"));
+        for (var _i = 0, anchors_1 = anchors; _i < anchors_1.length; _i++) {
+            var anchor = anchors_1[_i];
+            var headerBounds = anchor.nextElementSibling.getBoundingClientRect();
             if (0 < headerBounds.bottom) {
                 if (headerBounds.top < window.innerHeight) {
-                    const cmdName = anchor.getAttribute("name");
-                    if (cmdName && (cmdName !== currentCmdName)) {
+                    var cmdName = anchor.getAttribute("name");
+                    if (cmdName && (cmdName !== currentCmdName_1)) {
                         window.parent.postMessage(cmdName + ".html", "*");
-                        currentCmdName = cmdName;
+                        currentCmdName_1 = cmdName;
                     }
                 }
                 break;
