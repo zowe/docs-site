@@ -47,7 +47,7 @@ The following features and enhancements were added.
 #### Zowe CLI
 #### Zowe Explorer
 
-Check out [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
+Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
 
 ### Bug fixes
 
