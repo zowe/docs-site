@@ -313,7 +313,7 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 <summary></summary>
 
-- Use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask Zowe Explorer community for help.
+- Use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask the Zowe Explorer community for help.
 - Open a question or issue directly in [the Zowe Explorer GitHub repository](https://github.com/zowe/vscode-extension-for-zowe/issues).
 
 </details>
