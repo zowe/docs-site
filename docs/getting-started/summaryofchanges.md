@@ -88,6 +88,8 @@ The following bugs were fixed.
 - Bugfixes for default plugin config and terminal handler location [#229](https://github.com/zowe/zlux-server-framework/pull/229)
   - This fix allows the serverside plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
   - This fix resolves an edge case where there was no `instance_dir` equivalent to a `root_dir` setting file
+- Bugfix: The process of auto-converting untagged USS ebcdic files when using the ZSS /unixfile REST API has been improved by determining if the files are text or binary based on a list of file extensions. The API behavior towards unknown extensions has been changed from assuming text to now assuming binary. This fixed some cases where text files were not readable through the REST API [#148](https://github.com/zowe/zowe-common-c/pull/148) [#152](https://github.com/zowe/zowe-common-c/pull/152)
+- 
 
 #### Zowe CLI
 
