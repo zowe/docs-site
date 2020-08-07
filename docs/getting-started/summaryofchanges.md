@@ -53,6 +53,22 @@ The following features and enhancements were added.
 
 #### Zowe CLI
 
+The following features and enhancements were added to the **core CLI**:
+
+- Added the command `zowe zos-files delete migrated-data-sets` to delete migrated data sets. [#716](https://github.com/zowe/zowe-cli/issues/716)
+- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command.  [#759](https://github.com/zowe/zowe-cli/pull/759)
+
+    Set the option to `false` to continue downloading members if one or more of the downloads fails.
+- Updated the Imperative CLI Framework version. [#744](https://github.com/zowe/zowe-cli/pull/774)
+
+**z/OS FTP Plug-in for Zowe CLI**:
+
+The following enhancement was added to the z/OS FTP Plug-in:
+- The following flags are added to the the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+  - `--wait` - Specify a query interval and max query time as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
+  - `--wait-for-output` - Wait for the job to enter OUTPUT status.
+  - `--wait-for-active` - Wait for the job to enter ACTIVE status.
+
 #### Zowe Explorer
 
 Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
