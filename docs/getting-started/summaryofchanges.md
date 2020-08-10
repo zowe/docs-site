@@ -67,9 +67,7 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 The following features and enhancements were added to the **core CLI**:
 
 - Added the command `zowe zos-files delete migrated-data-sets` to delete migrated data sets. [#716](https://github.com/zowe/zowe-cli/issues/716)
-- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command.  [#759](https://github.com/zowe/zowe-cli/pull/759)
-
-    Set the option to `false` to continue downloading members if one or more of the downloads fails.
+- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command. Set the option to `false` to continue downloading members if one or more of the downloads fails.[#759](https://github.com/zowe/zowe-cli/pull/759)
 - Updated the Imperative CLI Framework version. [#744](https://github.com/zowe/zowe-cli/pull/774)
 
 **z/OS FTP Plug-in for Zowe CLI**:
@@ -95,6 +93,7 @@ The following bugs were fixed.
 - Bugfix: ZSS will now maintain the connection if users respond to the 404 message with the request `Connection: Keep-Alive` [#147](https://github.com/zowe/zowe-common-c/pull/147)
   - **NOTE:** The code only recognizes `Connection: Keep-Alive`.  Other "Keep-Alive" properties will be ignored.
 - Bugfix: If a loadmodule is incorrectly copied to STEPLIB, the z/OS loader will fail to load it. In these cases, an available copy in LPA will be used instead, if one is available. The problem with LPA is that any IDENTIFY calls to a module with an incorrect version number may cause serious issues. This pull-request ensures that ZWESIS01 comes from private storage. [#146](https://github.com/zowe/zowe-common-c/pull/146)
+- Bugfix: Fixes various issues that would occur when the number in the `Content-length` response header was different from the actual content length. [#150](https://github.com/zowe/zowe-common-c/pull/150)
 - Bugfixes for default plugin config and terminal handler location. This change was made in order to include `_internal`. `storageDefaults` other than `_internal` are already supported. For more info, see the [wiki](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults). [#229](https://github.com/zowe/zlux-server-framework/pull/229)
   - This fix allows the serverside plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
   - You can now specify terminal proxy handler overrides within `$INSTANCE_DIR`, which was previously only possible within `$ROOT_DIR`. `$ROOT_DIR` modification is not recommended and not conformant for Zowe plugins.
@@ -108,14 +107,12 @@ The following bugs were fixed.
 - Bugfix: Some app server configuration values could not be specified via environment variables due to the limited characters allowed in variables. A new syntax has been made to allow these edge-case configuration values to be specified, and this new syntax is seen here: [#230](https://github.com/zowe/zlux-server-framework/pull/230)
   - Overall behavior is described [in the wiki](https://github.com/zowe/zlux/wiki/Configuration-overriding). 
 
-
-
 #### Zowe CLI
 
 The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
-- Fixed a  compilation error https://github.com/zowe/zowe-cli/pull/770
+- Fixed a  compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
 
 ## Version 1.13.0 LTS (July 2020)
 
