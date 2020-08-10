@@ -49,6 +49,11 @@ The following features and enhancements were added.
 and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.   
 
 #### API Mediation Layer
+
+- Prevented crashing of API ML when null routes are set. [#767](https://github.com/zowe/api-layer/pull/767)
+- Added support to the X-Forwarded-* Headers. [#769](https://github.com/zowe/api-layer/pull/769)
+- Improved the configuration validator for the enablers to improve message specificity when one or more parameters required for setup are missing. [#760](https://github.com/zowe/api-layer/pull/760)
+
 #### Zowe App Server
 
 - Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected. [#145](https://github.com/zowe/zowe-common-c/pull/145)
