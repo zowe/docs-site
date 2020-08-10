@@ -44,12 +44,18 @@ If the contents of the Zowe runtime directory have been modified then it may res
 The following features and enhancements were added.
 
 #### Zowe installation
+
+- If you are upgrading to Zowe v1.14 from a previous release, 
+and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.   
+
 #### API Mediation Layer
 #### Zowe App Server
 
-- Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected [#145](https://github.com/zowe/zowe-common-c/pull/145)
-- The `InstanceID` parameter within the server predates the environment variable. Therefore, in order to not disturb pre-existing parameters, the server will only use the environment variable if it is non-default. [#130](https://github.com/zowe/zlux-app-server/pull/130)
-- Package size of the editor has been significantly reduced by removing assets that are unlikely to be used, specifically, `.map ` files  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
+- Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected. [#145](https://github.com/zowe/zowe-common-c/pull/145)
+- The `InstanceID` parameter within the server predates the environment variable. Therefore, in order to not disturb pre-existing parameters, the server will only use the environment variable if it is non-default. Additionally, the App Server will now use the `instance.env` value of `ZOWE_INSTANCE` whenever an instance number is needed, such as in the case of determining profile names for RBAC use. In previous versions, the server instead used the property `InstanceID` instead of `ZOWE_INSTANCE`, but now these are unified when the value of `ZOWE_INSTANCE` is non-default, in order to maintain backward-compatibility. [#130](https://github.com/zowe/zlux-app-server/pull/130)
+- The packaged size of the Editor has been significantly reduced by removing uncompressed versions of files that have compressed variants and `.map` files which were used for development debugging.  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
+- The ZSS /unixfile REST API now supports the changing of permissions on a file or folder, similar to `chmod`, by calling /unixfile/chmod. The behavior is documented [in swagger](https://github.com/zowe/zlux-app-server/blob/rc/doc/swagger/fileapi.yaml). [#195](https://github.com/zowe/zss/pull/195) [#132](https://github.com/zowe/zlux-app-server/pull/132)
+- The desktop personalization panel's color selection UI now has an extra highlight around the selected color to make the selection more apparent. [#236](https://github.com/zowe/zlux-app-manager/pull/236)
 
 #### Zowe CLI
 
@@ -83,9 +89,18 @@ The following bugs were fixed.
   - **NOTE:** The code only recognizes `Connection: Keep-Alive`.  Other "Keep-Alive" properties will be ignored.
 - Bugfix: If a loadmodule is incorrectly copied to STEPLIB, the z/OS loader will fail to load it. In these cases, an available copy in LPA will be used instead, if one is available. The problem with LPA is that any IDENTIFY calls to a module with an incorrect version number may cause serious issues. This pull-request ensures that ZWESIS01 comes from private storage. [#146](https://github.com/zowe/zowe-common-c/pull/146)
 - Bugfix: Fixes various issues that would occur when the number in the `Content-length` response header was different from the actual content length. [#150](https://github.com/zowe/zowe-common-c/pull/150)
-- Bugfixes for default plugin config and terminal handler location [#229](https://github.com/zowe/zlux-server-framework/pull/229)
-  - This fix allows the serverside plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.
-  - This fix resolves an edge case where there was no `instance_dir` equivalent to a `root_dir` setting file
+- Bugfixes for default plugin config and terminal handler location. This change was made in order to include `_internal`. `storageDefaults` other than `_internal` are already supported. For more info, see the [wiki](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults). [#229](https://github.com/zowe/zlux-server-framework/pull/229)
+  - This fix allows the serverside plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
+  - You can now specify terminal proxy handler overrides within `$INSTANCE_DIR`, which was previously only possible within `$ROOT_DIR`. `$ROOT_DIR` modification is not recommended and not conformant for Zowe plugins.
+- Bugfix: The process of auto-converting untagged USS ebcdic files when using the ZSS /unixfile REST API has been improved by determining if the files are text or binary based on a list of file extensions. The API behavior towards unknown extensions has been changed from assuming text to now assuming binary. This fixed some cases where text files were not readable through the REST API. [#148](https://github.com/zowe/zowe-common-c/pull/148) [#152](https://github.com/zowe/zowe-common-c/pull/152)
+- Bugfix: When using ZSS's /unixfile/contents REST API, large files would occasionally cause an incorrect HTTP message to be sent because the content-length header did not match the actual content length. This could result when there is a conversion error. This issue has been solved by updating the API, allowing it to use the transfer encoding type "chunked" instead, which allows these previously broken files to be sent successfully. [#150](https://github.com/zowe/zowe-common-c/pull/150)
+- Bugfix: Some file actions in the Editor would generate URLs that included multiple slashes in a row, which may cause errors on servers that receive such requests. In this update, the URI Broker now removes multiple slashes when they are encountered, which may additionally improve behavior in other apps that use the URI Broker for the ZSS REST API /unixfile. [#251](https://github.com/zowe/zlux-app-manager/pull/251)
+- Bugfix: During ZSS initialization, certain warning log messages were not displayed, such as the warning about lack of permission to use ICSF to generate a random number. This issue has been resolved by initializing the logger responsible for issuing the messages. [#143](https://github.com/zowe/zowe-common-c/pull/143)
+- Bugfix: In order to conserve log space, ZSS no longer prints debug information regarding HTTP dispatch. [#156](https://github.com/zowe/zowe-common-c/pull/156)
+- Bugfix: In previous versions, the app framework build process referenced webpack incorrectly, leading to an unnecessary build-time error if webpack was not installed globally. This issue has been resolved. [#248](https://github.com/zowe/zlux-app-manager/pull/248)
+- Bugfix: In previous versions, developing with the app framework would show linting warnings in VSCode. This issue has been resolved by updating tsconfig.json [#240](https://github.com/zowe/zlux-app-manager/pull/240)
+- Bugfix: Some app server configuration values could not be specified via environment variables due to the limited characters allowed in variables. A new syntax has been made to allow these edge-case configuration values to be specified, and this new syntax is seen here: [#230](https://github.com/zowe/zlux-server-framework/pull/230)
+  - Overall behavior is described [in the wiki](https://github.com/zowe/zlux/wiki/Configuration-overriding). 
 
 #### Zowe CLI
 
