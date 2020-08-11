@@ -47,7 +47,7 @@ The following features and enhancements were added.
 
 #### Zowe installation
 
-- If you are upgrading to Zowe v1.14 from a previous release, 
+- If you are upgrading to Zowe v1.14 from a previous release,
 and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.
 - Allow the user to verify the authenticity of a Zowe driver. The script `zowe-verify-authenticity.sh` will check that a Zowe `ROOT_DIR` for an installed release matches the contents for when that release was created, which assists with support and troubleshooting. To verify pre-1.14 releases, the script and its associated code are available [separately](https://github.com/zowe/zowe-install-packaging/blob/master/files/fingerprint.pax) (see [#1552](https://github.com/zowe/zowe-install-packaging/issues/1552)). For more information, see the new topic [Verify Zowe Runtime Directory](../troubleshoot/verify-fingerprint.md) that describes the operation of the script. 
 - Allow multiple domains (names/IP Addresses) when generating certificates. This also includes SMP/E `HOLDDATA` for the affected function `Zowe Configuration`. [#1511](https://github.com/zowe/zowe-install-packaging/issues/1511)
@@ -75,14 +75,14 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 The following features and enhancements were added to the **core CLI**:
 
 - Added the command `zowe zos-files delete migrated-data-sets` to delete migrated data sets. [#716](https://github.com/zowe/zowe-cli/issues/716)
-- Added a new option `--fail-fast` option to the `zowe zos-files download all-members` command. Set the option to `false` to continue downloading members if one or more of the downloads fails.[#759](https://github.com/zowe/zowe-cli/pull/759)
+- Added a new `--fail-fast` option to the `zowe zos-files download all-members` command. The option defaults to `true`, which preserves existing behavior. Set the option to `false` to continue downloading members if one or more of the downloads fails. [#759](https://github.com/zowe/zowe-cli/pull/759)
 - Updated the Imperative CLI Framework version. [#744](https://github.com/zowe/zowe-cli/pull/774)
 
 **z/OS FTP Plug-in for Zowe CLI**:
 
 The following enhancement was added to the z/OS FTP Plug-in:
-- The following flags are added to the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
-  - `--wait` - Specify a query interval and max query time as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
+- The following flags were added to the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+  - `--wait` - Specify a query interval and max times to query as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
   - `--wait-for-output` - Wait for the job to enter OUTPUT status.
   - `--wait-for-active` - Wait for the job to enter ACTIVE status.
 
@@ -111,7 +111,7 @@ The following bugs were fixed.
 - Bugfix: In previous versions, the app framework build process referenced webpack incorrectly, leading to an unnecessary build-time error if webpack was not installed globally. This issue has been resolved. [#248](https://github.com/zowe/zlux-app-manager/pull/248)
 - Bugfix: In previous versions, developing with the app framework would show linting warnings in VSCode. This issue has been resolved by updating tsconfig.json [#240](https://github.com/zowe/zlux-app-manager/pull/240)
 - Bugfix: Some app server configuration values could not be specified via environment variables due to the limited characters allowed in variables. A new syntax has been made to allow these edge-case configuration values to be specified, and this new syntax is seen here: [#230](https://github.com/zowe/zlux-server-framework/pull/230)
-  - Overall behavior is described [in the wiki](https://github.com/zowe/zlux/wiki/Configuration-overriding). 
+  - Overall behavior is described [in the wiki](https://github.com/zowe/zlux/wiki/Configuration-overriding).
 
 #### Zowe CLI
 
