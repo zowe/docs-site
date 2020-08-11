@@ -52,10 +52,12 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 #### Zowe App Server
 
 - Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected. [#145](https://github.com/zowe/zowe-common-c/pull/145)
-- The `InstanceID` parameter within the server predates the environment variable. Therefore, in order to not disturb pre-existing parameters, the server will only use the environment variable if it is non-default. Additionally, the App Server will now use the `instance.env` value of `ZOWE_INSTANCE` whenever an instance number is needed, such as in the case of determining profile names for RBAC use. In previous versions, the server instead used the property `InstanceID` instead of `ZOWE_INSTANCE`, but now these are unified when the value of `ZOWE_INSTANCE` is non-default, in order to maintain backward-compatibility. [#130](https://github.com/zowe/zlux-app-server/pull/130)
+- In previous versions, the server used the property `InstanceID` instead of `ZOWE_INSTANCE`. In order to maintain backwards compatibility, these properties are now unified when the value of `ZOWE_INSTANCE` is non-default. Additionally, the server uses these values whenever an instance number is needed, such as in the case of determining profile names for RBAC use [#130](https://github.com/zowe/zlux-app-server/pull/130)
 - The packaged size of the Editor has been significantly reduced by removing uncompressed versions of files that have compressed variants and `.map` files which were used for development debugging.  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
 - The ZSS /unixfile REST API now supports the changing of permissions on a file or folder, similar to `chmod`, by calling /unixfile/chmod. The behavior is documented [in swagger](https://github.com/zowe/zlux-app-server/blob/rc/doc/swagger/fileapi.yaml). [#195](https://github.com/zowe/zss/pull/195) [#132](https://github.com/zowe/zlux-app-server/pull/132)
+- A notification will be displayed when users attempt to upload a wallpaper image that is too large. [#254](https://github.com/zowe/zlux-app-manager/pull/254)
 - The desktop personalization panel's color selection UI now has an extra highlight around the selected color to make the selection more apparent. [#236](https://github.com/zowe/zlux-app-manager/pull/236)
+- Users can now recall migrated datasets in the Editor (via the File Tree) by clicking on them. [#78](https://github.com/zowe/zlux-file-explorer/pull/78)
 
 #### Zowe CLI
 
