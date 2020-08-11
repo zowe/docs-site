@@ -29,13 +29,15 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 ### Notable changes
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
-Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programmatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts independent of Zowe CLI. For more information and usage examples, see the [Zowe CLI Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
+**Zowe Node APIs**
 
-#### Support for verifying Zowe release integrity
+Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programmatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts independent of Zowe CLI. For more information and usage examples, see the [Zowe CLI readme file](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
+
+**Support for verifying Zowe release integrity**
 
 Zowe now provides a new tool to verify that the code in the Zowe runtime directory installed on your z/OS® system is identical to the released code. The tool comprises a script file `zowe-verify-authenticity.sh`, plus the files it needs to check the release contents.
 
-If the contents of the Zowe runtime directory have been modified then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
+If the contents of the Zowe runtime directory have been modified, then it may result in unpredictable behavior. For more information about the tool, see [Verify Zowe runtime directory](../troubleshoot/verify-fingerprint.md).
 
 ### New features and enhancements
 
@@ -46,7 +48,8 @@ The following features and enhancements were added.
 #### Zowe installation
 
 - If you are upgrading to Zowe v1.14 from a previous release, 
-and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.   
+and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.
+- Added the fingerprint tool (script and files) to verify the authenticity of the contents of `ROOT_DIR` [#1316](https://github.com/zowe/zowe-install-packaging/pull/1316). Reference fingerprint files for prior releases were uploaded as a single PAX file [#1553](https://github.com/zowe/zowe-install-packaging/pull/1553).
 
 #### API Mediation Layer
 
@@ -73,7 +76,7 @@ The following features and enhancements were added to the **core CLI**:
 **z/OS FTP Plug-in for Zowe CLI**:
 
 The following enhancement was added to the z/OS FTP Plug-in:
-- The following flags are added to the the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
+- The following flags are added to the `zowe zos-ftp submit data-set ` command: [#55](https://github.com/zowe/zowe-cli-ftp-plugin/pull/55)
   - `--wait` - Specify a query interval and max query time as comma-separated, numeric values. For example, specify `5,12` to query the job status every 5 seconds up to 12 times.
   - `--wait-for-output` - Wait for the job to enter OUTPUT status.
   - `--wait-for-active` - Wait for the job to enter ACTIVE status.
@@ -85,8 +88,6 @@ Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freq
 ### Bug fixes
 
 The following bugs were fixed.
-
-#### API Mediation Layer
 
 #### Zowe App Server
 
@@ -112,7 +113,7 @@ The following bugs were fixed.
 The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
-- Fixed a  compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
+- Fixed a compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
 
 ## Version 1.13.0 LTS (July 2020)
 
