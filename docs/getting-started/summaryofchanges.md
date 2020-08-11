@@ -31,7 +31,7 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 
 **Zowe Node APIs**
 
-Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programmatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts, independent of Zowe CLI . For more information and usage examples, see the [Zowe CLI readme file](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
+Did you know that you can leverage the Zowe Node APIs directly? The Zowe Node APIs are the programmatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts, independent of Zowe CLI. For more information and usage examples, see the [Zowe CLI readme file](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
 **Support for verifying Zowe release integrity**
 
@@ -100,7 +100,7 @@ The following bugs were fixed.
   - **NOTE:** The code only recognizes `Connection: Keep-Alive`.  Other "Keep-Alive" properties will be ignored.
 - Bugfix: If a load module is incorrectly copied to STEPLIB, the z/OS loader will fail to load it. In these cases, an available copy in LPA will be used instead, if one is available. The problem with LPA is that any IDENTIFY calls to a module with an incorrect version number may cause serious issues. This pull-request ensures that ZWESIS01 comes from private storage. [#146](https://github.com/zowe/zowe-common-c/pull/146)
 - Bugfix: Fixes various issues that would occur when the number in the `Content-length` response header was different from the actual content length. [#150](https://github.com/zowe/zowe-common-c/pull/150)
-- Bugfixes for default plugin config and terminal handler location. This change was made in order to include `_internal`. `storageDefaults` other than `_internal` are already supported. For more information, see the [wiki](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults). [#229](https://github.com/zowe/zlux-server-framework/pull/229)
+- Bugfixes for default plugin config and terminal handler location. This change was made in order to include the `_internal` folder. `storageDefaults` other than `_internal` are already supported. For more information, see the [wiki](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults). [#229](https://github.com/zowe/zlux-server-framework/pull/229)
   - This fix allows the server-side plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
   - You can now specify terminal proxy handler overrides within `$INSTANCE_DIR`, which was previously only possible within `$ROOT_DIR`. `$ROOT_DIR` modification is not recommended and not conformant for Zowe plugins.
 - Bugfix: The process of auto-converting untagged USS ebcdic files when using the ZSS /unixfile REST API has been improved by determining if the files are text or binary based on a list of file extensions. The API behavior towards unknown extensions has been changed from assuming text to now assuming binary. This fixed some cases where text files were not readable through the REST API. [#148](https://github.com/zowe/zowe-common-c/pull/148) [#152](https://github.com/zowe/zowe-common-c/pull/152)
