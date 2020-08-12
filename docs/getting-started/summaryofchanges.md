@@ -90,7 +90,13 @@ The following enhancement was added to the z/OS FTP Plug-in:
 
 #### Zowe Explorer
 
-Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
+The following features and enhancements were added to the **Zowe Explorer**:
+
+- Added a webpack that works with localization and logging.
+- Allowed extenders to load the saved profile sessions upon activation.
+- Added an automatic re-validation for invalid profiles.
+
+Also, check out [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
 
 ### Bug fixes
 
@@ -121,6 +127,11 @@ The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
 - Fixed a compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
+
+#### Zowe Explorer
+
+- Fixed the bug related to saving USS files.
+- Fixed the bug related to the deletion of datasets.
 
 ## Version 1.13.0 LTS (July 2020)
 
