@@ -31,6 +31,22 @@ By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/
   
 Requests through the Gateway will now contain CORS header. 
 
+### apiml.security.auth.provider
+
+By default, API Gateway uses zOSMF as an authentication provider. It is possible to switch to SAF as the authentication
+provider instead of the zOSMF. The intended usage of the SAF as an authentication provider is for systems without zOSMF.
+In case the SAF is used and the zOSMF is available on the system the created tokens won't be accepted by zOSMF. Use
+the following procedure to switch to SAF. 
+
+**Follow these steps:**
+     
+1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
+3. Restart Zowe&trade.
+
+Authentication requests will now leverage SAF as authentication provider and the API ML will run without the zOSMF present
+on the system. 
+
 ## Retry policy
 
 In default configuration, retry for all request is disabled, with one exception. The server will retry `GET` requests that finish with status code `503`. You can modify this behavior with these parameters:
