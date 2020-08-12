@@ -95,7 +95,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     - For Spring boot version 1.5.9, use the following artifact:
 
         ```groovy
-        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-2.1.1.RELEASE:$zoweApimlVersion"
         ```
 
     **Notes:**
@@ -144,7 +144,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
    ```maven
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
-       <artifactId>onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+       <artifactId>onboarding-enabler-spring-v1-springboot-2.1.1.RELEASE</artifactId>
        <version>$zoweApimlVersion</version>
    </dependency>
     ```
@@ -250,33 +250,36 @@ in any of the YAML configuration files.
 
 ### API ML Onboarding Configuration Sample
 
+Some parameters which are specific for your service deployment
+are written in `${fill.your.parameterValue}` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
+
 ```yaml
 spring:
     application:
-        name: ${apiml.service.id}           # Same name as for `apiml.service.serviceId`
+        name: ${apiml.service.serviceId}           # Has to be same as apiml.service.serviceId property
 
 apiml:
     enabled: true                           # Decision if the service should automatically register with API ML discovery service
     enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL
     service:                                # The root of API ML onboarding configuration
 
-        serviceId: ${apiml.service.id}      # The symbolic name of the service. Must be the same as `spring.application.name`
-        title: ${service.title}
-        description: ${service.description} # API service description
+        serviceId: ${fill.your.serviceId}      # The symbolic name of the service
+        title: ${fill.your.title} 
+        description: ${fill.your.description}  # API service description
 
         scheme: https
-        ### hostname:                                # Hostname must be defined by -Dapiml.service.hostname on MF
-        ### port:                                    # Port must be defined by -Dapiml.service.port on MF:
-        serviceIpAddress: ${apiml.service.ipAddress} # serviceIpAddress must be provided by -Dapiml.service.ipAddress on MF
+        hostname: ${fill.your.hostname}                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
+        port: ${fill.your.port}                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
+        serviceIpAddress: ${fill.your.ipAddress}                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
-        contextPath: /${apiml.service.id}            # By default the contextPath is set to be the same as apiml.service.serviceId
+        contextPath: /${apiml.service.serviceId}      # By default the contextPath is set to be the same as apiml.service.serviceId, but doesn't have to be the same
 
         homePageRelativeUrl: ${apiml.service.contextPath}
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        ### discoveryServiceUrls: ${apiml.service.discoveryServiceUrls} # discoveryServiceUrls must be defined by -Dapiml.service.discoveryServiceUrls on MF:
+        discoveryServiceUrls: https://${fill.your.discoveryServiceHost1}:${fill.your.discoveryServicePort1}/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
 
         routes:
             -   gateway-url: "ui/v1"
@@ -291,10 +294,10 @@ apiml:
             applid: ZOWEAPPL
 
         apiInfo:
-            -   apiId: org.zowe.discoverableclient
+            -   apiId: org.zowe.sampleservice
                 version: 1.0.0
                 gatewayUrl: api/v1
-                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/v2/api-docs
+                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
                 documentationUrl: https://www.zowe.org
 
         catalog:
@@ -305,20 +308,21 @@ apiml:
                 version: 1.0.1
 
         ssl:
-            enabled: ${server.ssl.enabled}
+            ## This part configures the http client that connects to Discovery Service. You might reuse your server.ssl.xxx properties that configure your application's servlet.
+            enabled: true
             verifySslCertificatesOfServices: true
-            protocol: ${server.ssl.protocol}
-            enabled-protocols: ${server.ssl.protocol}
-            keyStoreType: ${server.ssl.keyStoreType}
-            trustStoreType: ${server.ssl.trustStoreType}
+            protocol: TLSv1.2
+            enabled-protocols: TLSv1.2
+            keyStoreType: ${fill.your.keystoretype}
+            trustStoreType: ${fill.your.truststoretype}
 
             ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
-            keyAlias: ${server.ssl.keyAlias} #localhost-blah
-            keyPassword: ${server.ssl.keyPassword} #password-blah
-            keyStore: ${server.ssl.keyStore} #keystore/localhost/localhost.keystore.p12-blah
-            keyStorePassword: ${server.ssl.keyStorePassword} #password-blah
-            trustStore: ${server.ssl.trustStore} #keystore/localhost/localhost.truststore.p12-blah
-            trustStorePassword: ${server.ssl.trustStorePassword} #password-blah
+            keyAlias: ${fill.your.keyAlias}
+            keyPassword: ${fill.your.keyPassword}
+            keyStore: ${fill.your..keyStore}
+            keyStorePassword: ${fill.your.keyStorePassword}
+            trustStore: ${fill.your.trustStore}
+            trustStorePassword: ${fill.your.trustStorePassword}
         
         # Optional metadata section
         customMetadata:
@@ -326,23 +330,10 @@ apiml:
                 key1: value1
                 key2: value2
 
-server:
-    scheme: ${apiml.service.scheme}
-    hostname: ${apiml.service.hostname} #localhost # Hostname that is advertised in Eureka. Default is valid only for localhost
-    port: ${apiml.service.port} #10012         # Default port name for discoverable-client service
-    address: ${apiml.service.ipAddress} #127.0.0.1
-
-    servlet:
-        contextPath: /${apiml.service.id}
-
-    ssl:
-        enabled: true
-        protocol: TLSv1.2
-        enabled-protocols: TLSv1.2
-        ciphers: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-        keyStoreType: PKCS12
-        trustStoreType: PKCS12
- ```
+# rest of your configuration
+# server: ....
+# yourApplicationConfiguration: ....
+# and other properties
 
 
 **Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.

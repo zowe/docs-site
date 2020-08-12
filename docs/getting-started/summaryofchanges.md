@@ -54,7 +54,7 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 - Included z/OSMF workflows for Zowe z/OS configuration. [#1527](https://github.com/zowe/zowe-install-packaging/issues/1527)
 - Added warning if `ZWESVSTC` runs under user ID `IZUSVR`. [#1534](https://github.com/zowe/zowe-install-packaging/issues/1534)
 - [Docs] Changed the documentation so that SZWEAUTH PDSE load library members should not be copied elsewhere, but instead the original installation target SZWEAUTH PDSE should be APF-authorized and used as the runtime load library.  This also includes SMP/E `HOLDDATA` for the affected function `STC JCL` as well as changes to topics [Installing and configuring the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) and [Installing and starting the Zowe started task (ZWESVSTC)](../user-guide/configure-zowe-server.md).  
-- [Docs] Added a new topic [Installing and configuring Zowe z/OS components using scripts](https://docs.zowe.org/stable/user-guide/scripted-configure-server.html).
+- [Docs] Added a new topic [Installing and configuring Zowe z/OS components using scripts](../user-guide/scripted-configure-server.md).
 
 #### API Mediation Layer
 
@@ -90,7 +90,13 @@ The following enhancement was added to the z/OS FTP Plug-in:
 
 #### Zowe Explorer
 
-Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
+The following features and enhancements were added to the **Zowe Explorer**:
+
+- Added a webpack that works with localization and logging.
+- Allowed extenders to load the saved profile sessions upon activation.
+- Added an automatic re-validation for invalid profiles.
+
+Also, check out [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
 
 ### Bug fixes
 
@@ -121,6 +127,11 @@ The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
 - Fixed a compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
+
+#### Zowe Explorer
+
+- Fixed the bug related to saving USS files.
+- Fixed the bug related to the deletion of datasets.
 
 ## Version 1.13.0 LTS (July 2020)
 
