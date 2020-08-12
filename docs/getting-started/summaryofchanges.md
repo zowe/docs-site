@@ -54,7 +54,7 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 - Included z/OSMF workflows for Zowe z/OS configuration. [#1527](https://github.com/zowe/zowe-install-packaging/issues/1527)
 - Added warning if `ZWESVSTC` runs under user ID `IZUSVR`. [#1534](https://github.com/zowe/zowe-install-packaging/issues/1534)
 - [Docs] Changed the documentation so that SZWEAUTH PDSE load library members should not be copied elsewhere, but instead the original installation target SZWEAUTH PDSE should be APF-authorized and used as the runtime load library.  This also includes SMP/E `HOLDDATA` for the affected function `STC JCL` as well as changes to topics [Installing and configuring the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) and [Installing and starting the Zowe started task (ZWESVSTC)](../user-guide/configure-zowe-server.md).  
-- [Docs] Added a new topic [Installing and configuring Zowe z/OS components using scripts](https://docs.zowe.org/stable/user-guide/scripted-configure-server.html).
+- [Docs] Added a new topic [Installing and configuring Zowe z/OS components using scripts](../user-guide/scripted-configure-server.md).
 
 #### API Mediation Layer
 
@@ -65,10 +65,12 @@ and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that yo
 #### Zowe App Server
 
 - Using a cross-memory server without `REUSASID=YES` may result in an ASID shortage. This pull-request adds a check that will print a warning if `REUSASID=YES` is not detected. [#145](https://github.com/zowe/zowe-common-c/pull/145)
-- The `InstanceID` parameter within the server predates the environment variable. Therefore, in order to not disturb pre-existing parameters, the server will only use the environment variable if it is non-default. Additionally, the App Server will now use the `instance.env` value of `ZOWE_INSTANCE` whenever an instance number is needed, such as in the case of determining profile names for RBAC use. In previous versions, the server instead used the property `InstanceID` instead of `ZOWE_INSTANCE`, but now these are unified when the value of `ZOWE_INSTANCE` is non-default, in order to maintain backward-compatibility. [#130](https://github.com/zowe/zlux-app-server/pull/130)
+- In previous versions, the server used the property `InstanceID` instead of `ZOWE_INSTANCE`. In order to maintain backwards compatibility, these properties are now unified when the value of `ZOWE_INSTANCE` is non-default. Additionally, the server uses these values whenever an instance number is needed, such as in the case of determining profile names for RBAC use [#130](https://github.com/zowe/zlux-app-server/pull/130)
 - The packaged size of the Editor has been significantly reduced by removing uncompressed versions of files that have compressed variants and `.map` files which were used for development debugging.  [#160](https://app.zenhub.com/workspaces/zowe-apps-5ce5829c1c7e0448d98d961e/issues/zowe/zlux-editor/160)
 - The ZSS /unixfile REST API now supports the changing of permissions on a file or folder, similar to `chmod`, by calling /unixfile/chmod. The behavior is documented [in swagger](https://github.com/zowe/zlux-app-server/blob/rc/doc/swagger/fileapi.yaml). [#195](https://github.com/zowe/zss/pull/195) [#132](https://github.com/zowe/zlux-app-server/pull/132)
+- A notification will be displayed when users attempt to upload a wallpaper image that is too large. [#254](https://github.com/zowe/zlux-app-manager/pull/254)
 - The desktop personalization panel's color selection UI now has an extra highlight around the selected color to make the selection more apparent. [#236](https://github.com/zowe/zlux-app-manager/pull/236)
+- Users can now recall migrated datasets in the Editor (via the File Tree) by clicking on them. [#78](https://github.com/zowe/zlux-file-explorer/pull/78)
 
 #### Zowe CLI
 
@@ -88,7 +90,13 @@ The following enhancement was added to the z/OS FTP Plug-in:
 
 #### Zowe Explorer
 
-Review [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
+The following features and enhancements were added to the **Zowe Explorer**:
+
+- Added a webpack that works with localization and logging.
+- Allowed extenders to load the saved profile sessions upon activation.
+- Added an automatic re-validation for invalid profiles.
+
+Also, check out [the Zowe Explorer FAQ](https://docs.zowe.org/stable/getting-started/freqaskques.html#zowe-explorer-faq) to learn more about the purpose and function of the VS Code extension.
 
 ### Bug fixes
 
@@ -119,6 +127,11 @@ The following bug was fixed in Imperative CLI Framework:
 
 - Fix update profile API storing secure fields incorrectly when called without CLI args.
 - Fixed a compilation error when building the CLI from source.[#770](https://github.com/zowe/zowe-cli/pull/770)
+
+#### Zowe Explorer
+
+- Fixed the bug related to saving USS files.
+- Fixed the bug related to the deletion of datasets.
 
 ## Version 1.13.0 LTS (July 2020)
 
