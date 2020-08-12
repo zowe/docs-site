@@ -293,6 +293,8 @@ The onboarding configuration parameters are broken down into the following group
 
      `protocol://host:port/servicename`
 
+    **Note:** Do not end `baseUrl` with a trailing `/`. This will cause a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
+
 *  **serviceIpAddress** (Optional)
 
     Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
