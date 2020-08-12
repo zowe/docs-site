@@ -118,7 +118,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for Single Sign On (SSO).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)[(https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#participating-in-zowe-api-ml-single-sign-on).
 
 <details>
 <summary> Learn more </summary>
