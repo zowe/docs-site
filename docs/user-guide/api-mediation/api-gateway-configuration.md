@@ -33,9 +33,9 @@ Requests through the Gateway now contain a CORS header.
 
 ### apiml.security.auth.provider
 
-By default, API Gateway uses zOSMF as an authentication provider. It is possible to switch to SAF as the authentication
-provider instead of the zOSMF. The intended usage of the SAF as an authentication provider is for systems without zOSMF.
-Ife SAF is used and the zOSMF is available on the system, the created tokens are not accepted by zOSMF. Use
+By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
+provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
+If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
 the following procedure to switch to SAF. 
 
 **Follow these steps:**
@@ -48,7 +48,7 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Retry policy
 
-In default configuration, retry for all requests is disabled, with one exception. The server retries `GET` requests that finish with status code `503`. 
+In default configuration, retry for all requests is disabled, with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
 
 * **ribbon.retryableStatusCodes**
@@ -69,4 +69,4 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.MaxAutoRetriesNextServer**
     
-    The number of servers to try excluding the first one. The default value is `5`. 
+    The number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
