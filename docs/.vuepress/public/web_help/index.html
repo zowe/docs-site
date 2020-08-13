@@ -52,13 +52,15 @@
         </div>
     </div>
     <script>
-    document.title = `${headerStr} ${document.title}`;
+    document.title = headerStr + " " + document.title;
     const splitter = require("split.js")(["#panel-left", "#panel-right"], {
         sizes: [20, 80],
         minSize: 0
     });
     loadTree();
-    require("jquery")(".gutter").on("dblclick", () => toggleTree(splitter));
+    document.querySelector(".gutter").addEventListener("dblclick", function () {
+        toggleTree(splitter)
+    });
     </script>
 </body>
 </html>
