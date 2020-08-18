@@ -84,7 +84,8 @@
           "user-guide/mvd-using.md",
           "user-guide/mvd-editor.md",
           "user-guide/api-mediation-api-catalog.md",
-          "user-guide/cli-usingcli.md"
+          "user-guide/cli-usingcli.md",
+          "user-guide/sdks-using.md"
         ]
       },
       {

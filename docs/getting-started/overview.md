@@ -122,7 +122,7 @@ The Zowe Client SDKs consist of programamatic APIs that you can use to build cli
  - Zowe Node Client SDK
  - Zowe Python Client SDK
 
- For more information, see [Using the Zowe SDKs](usingcli.md).
+ For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
   </details>
 
