@@ -2,7 +2,7 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.14.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.15.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
