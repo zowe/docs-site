@@ -12,6 +12,8 @@ The following SDKs are available.
 
 To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and choose a programming language from the **Zowe Client SDKs** section. The package is downloaded to your computer.
 
+<!--TODO add a list of items the user can expect to find in the SDK (files, readmes, etc..) -->
+
 After you download an SDK, import the `ZoweSDK` class into your project. Create an object to handle requests to and from the mainframe.
 
 **Example - Node:**
@@ -39,13 +41,15 @@ z = ZoweSDK(zosmf_profile='<profile name>')
 
 This is a brief introduction to using the SDKs. For complete documentation and usage examples, see the documentation in the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis) or the [Python SDK Reamde](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
 
-<!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find more examples in the readmes? I wanted to add something of substance to this page but not duplicate EVERYTHING from the readmes here. -->
+<!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find the examples in the readmes? That doc is already written in the readme, so I see this page as "tying things together". -->
 
 ## API Documentation
 
-Refer to the API Reference documentation for detailed information about the interfaces. To access the API reference, do X Y and Z. <!-- Where is this mysterious API reference doc? Hosted? Local? Each SDK has it's own? -->
+Refer to the API Reference documentation for detailed information about each interface. To access the API Reference, do X Y and Z. <!-- Where is this mysterious API reference doc? Hosted? Local? Each SDK has it's own? -->
 
-<!-- Note: just putting these links once more to be sure that people don't miss the readmes -->
+<!-- Note: I'm putting these links here again for good measure, since the bulk of the usage info is there. -->
 To learn more about using the Node SDK, see the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
 To learn more about using the Python SDK, see the [Python SDK Readme](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
+
+
