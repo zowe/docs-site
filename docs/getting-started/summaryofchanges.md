@@ -3,7 +3,7 @@
 Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.14.0 and later releases include the following enhancements, release by release.
-
+- [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
 - [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
 - [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
@@ -23,6 +23,34 @@ Zowe Version 1.14.0 and later releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.15.0 LTS (September 2020)
+
+### Notable changes
+
+<!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
+
+### New features and enhancements
+
+<!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
+
+The following features and enhancements were added:
+
+#### Zowe installation
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+
+### Bug fixes
+
+The following bugs were fixed:
+
+#### Zowe installation
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
 
 ## Version 1.14.0 LTS (August 2020)
 
@@ -49,11 +77,11 @@ The following features and enhancements were added.
 
 - If you are upgrading to Zowe v1.14 from a previous release,
 and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security. See [System Requirements](../user-guide/systemrequirements.md#important_note_for_users_upgrading_to_v1.14) for information on updating your configuration.
-- Allow the user to verify the authenticity of a Zowe driver. The script `zowe-verify-authenticity.sh` will check that a Zowe `ROOT_DIR` for an installed release matches the contents for when that release was created, which assists with support and troubleshooting. To verify pre-1.14 releases, the script and its associated code are available [separately](https://github.com/zowe/zowe-install-packaging/blob/staging/files/fingerprint.pax) (see [#1552](https://github.com/zowe/zowe-install-packaging/issues/1552)). For more information, see the new topic [Verify Zowe Runtime Directory](../troubleshoot/verify-fingerprint.md) that describes the operation of the script. 
+- Allow the user to verify the authenticity of a Zowe driver. The script `zowe-verify-authenticity.sh` will check that a Zowe `ROOT_DIR` for an installed release matches the contents for when that release was created, which assists with support and troubleshooting. To verify pre-1.14 releases, the script and its associated code are available [separately](https://github.com/zowe/zowe-install-packaging/blob/staging/files/fingerprint.pax) (see [#1552](https://github.com/zowe/zowe-install-packaging/issues/1552)). For more information, see the new topic [Verify Zowe Runtime Directory](../troubleshoot/verify-fingerprint.md) that describes the operation of the script.
 - Allow multiple domains (names/IP Addresses) when generating certificates. This also includes SMP/E `HOLDDATA` for the affected function `Zowe Configuration`. [#1511](https://github.com/zowe/zowe-install-packaging/issues/1511)
 - Included z/OSMF workflows for Zowe z/OS configuration. [#1527](https://github.com/zowe/zowe-install-packaging/issues/1527)
 - Added warning if `ZWESVSTC` runs under user ID `IZUSVR`. [#1534](https://github.com/zowe/zowe-install-packaging/issues/1534)
-- [Docs] Changed the documentation so that SZWEAUTH PDSE load library members should not be copied elsewhere, but instead the original installation target SZWEAUTH PDSE should be APF-authorized and used as the runtime load library.  This also includes SMP/E `HOLDDATA` for the affected function `STC JCL` as well as changes to topics [Installing and configuring the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) and [Installing and starting the Zowe started task (ZWESVSTC)](../user-guide/configure-zowe-server.md).  
+- [Docs] Changed the documentation so that SZWEAUTH PDSE load library members should not be copied elsewhere, but instead the original installation target SZWEAUTH PDSE should be APF-authorized and used as the runtime load library.  This also includes SMP/E `HOLDDATA` for the affected function `STC JCL` as well as changes to topics [Installing and configuring the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) and [Installing and starting the Zowe started task (ZWESVSTC)](../user-guide/configure-zowe-server.md).
 - [Docs] Added a new topic [Installing and configuring Zowe z/OS components using scripts](../user-guide/scripted-configure-server.md).
 
 #### API Mediation Layer
@@ -109,7 +137,7 @@ The following bugs were fixed.
 - Bugfix: If a load module is incorrectly copied to STEPLIB, the z/OS loader will fail to load it. In these cases, an available copy in LPA will be used instead, if one is available. The problem with LPA is that any IDENTIFY calls to a module with an incorrect version number may cause serious issues. This pull-request ensures that ZWESIS01 comes from private storage. [#146](https://github.com/zowe/zowe-common-c/pull/146)
 - Bugfix: Fixes various issues that would occur when the number in the `Content-length` response header was different from the actual content length. [#150](https://github.com/zowe/zowe-common-c/pull/150)
 - Bugfixes for default plugin config and terminal handler location. This change was made in order to include the `_internal` folder. `storageDefaults` other than `_internal` are already supported. For more information, see the [wiki](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults). [#229](https://github.com/zowe/zlux-server-framework/pull/229)
-  - This fix allows the server-side plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.   
+  - This fix allows the server-side plugin config to exist within its own folder, rather than in the instance directory. As a result, plugins no longer have to perform a copy operation during installation.
   - You can now specify terminal proxy handler overrides within `$INSTANCE_DIR`, which was previously only possible within `$ROOT_DIR`. `$ROOT_DIR` modification is not recommended and not conformant for Zowe plugins.
 - Bugfix: The process of auto-converting untagged USS ebcdic files when using the ZSS /unixfile REST API has been improved by determining if the files are text or binary based on a list of file extensions. The API behavior towards unknown extensions has been changed from assuming text to now assuming binary. This fixed some cases where text files were not readable through the REST API. [#148](https://github.com/zowe/zowe-common-c/pull/148) [#152](https://github.com/zowe/zowe-common-c/pull/152)
 - Bugfix: When using ZSS's /unixfile/contents REST API, large files would occasionally cause an incorrect HTTP message to be sent because the content-length header did not match the actual content length. This could result when there is a conversion error. This issue has been solved by updating the API, allowing it to use the transfer encoding type "chunked" instead, which allows these previously broken files to be sent successfully. [#150](https://github.com/zowe/zowe-common-c/pull/150)
