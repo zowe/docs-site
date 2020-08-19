@@ -1,54 +1,51 @@
 # Using Zowe SDKs
 
-Learn about using the Zowe Client Software Development Kits (SDKs) that let you build applications and scripts that interface with z/OS mainframes.
+Learn about using the Zowe Client Software Development Kits (SDKs). The SDKs enable you to build client applications and scripts that interface with the mainframe.
 
-The Zowe SDKs consist of programamatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
+The SDKs includes programamatic APIs that each perform a particular mainframe task. For example, one API provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
+
+The following SDKs are available.
 - Zowe Node Client SDK
 - Zowe Python Client SDK
 
 ## Getting started
 
-To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and select a programming language in the **Zowe Client SDKs** section. The package is downloaded to your computer.
+To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and choose a programming language from the **Zowe Client SDKs** section. The package is downloaded to your computer.
 
-After you download an SDK, import the `ZoweSDK` class into your project. Create objects to handle requests.
+After you download an SDK, import the `ZoweSDK` class into your project. Create an object to handle requests to and from the mainframe.
+
+**Example - Node:**
+
+<!--TODO What does this example look like for Node? -->
+
+```
+example here import node sdk
+```
+
+**Example - Python:**
+
+```
+from zowe_sdk import ZoweSDK
+
+z = ZoweSDK(zosmf_host='<host address>', zosmf_user='<zosmf user>', zosmf_password='<zosmf password>')
+```
+
+To use a Zowe CLI z/OSMF profile instead of manual authentication, inform the profile name while creating the object:
+
+```
+from zowe_sdk import ZoweSDK
+z = ZoweSDK(zosmf_profile='<profile name>')
+```
+
+This is a brief introduction to using the SDKs. For complete documentation and usage examples, see the documentation in the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis) or the [Python SDK Reamde](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
+
+<!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find more examples in the readmes? I wanted to add something of substance to this page but not duplicate EVERYTHING from the readmes here. -->
 
 ## API Documentation
 
-For detailed reference documentation for each API interface, see [SDK Reference]().
+Refer to the API Reference documentation for detailed information about the interfaces. To access the API reference, do X Y and Z. <!-- Where is this mysterious API reference doc? Hosted? Local? Each SDK has it's own? -->
 
-## Using the Node SDK
+<!-- Note: just putting these links once more to be sure that people don't miss the readmes -->
+To learn more about using the Node SDK, see the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
-The Zowe Node SDK supports the following interfaces:
-
-- Provisioning: Provision middleware and resources such as IBM CICS, IBM Db2, IBM MQ, and more.
-- z/OS Console: Perform z/OS console operations.
-- z/OS Data Sets: Work with data sets on z/OS.
-- z/OS Jobs: Work with batch jobs on z/OS.
-- z/OSMF: Return data about z/OSMF, such as connection status or a list of available systems.
-- z/OS TSO: Interact with TSO/E adress spaces on z/OS.
-- z/OS USS: Work with UNIX system services (USS) files on z/OS.
-- z/OS Workflows: Create and manage z/OSMF workflows on z/OS.
-
-For more information and usage examples, see the [Zowe CLI Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
-
-## Using the Python SDK
-
-The Zowe Python SDK supports the following interfaces:
-
-- Console commands
-- z/OSMF Information retrieval
-- Submit job from a dataset
-- Submit job from local file
-- Submit job as plain text JCL
-- Retrieve job status
-- Retrieve job list from JES spool
-- Start/End TSO address space
-- Ping TSO address space
-- Issue TSO command
-
-For more information and usage examples, see the [Zowe Python Client SDK readme](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
-
-https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk
-
-
-
+To learn more about using the Python SDK, see the [Python SDK Readme](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
