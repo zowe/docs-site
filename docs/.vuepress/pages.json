@@ -226,8 +226,8 @@
         "text": "Zowe Explorer",
         "items": [
           "troubleshoot/ze/troubleshoot-ze.md",
-          "troubleshoot/cli/known-ze.md",
-          "troubleshoot/cli/ze-issue.md"
+          "troubleshoot/ze/known-ze.md",
+          "troubleshoot/ze/ze-issue.md"
         ]
       }
     ]
