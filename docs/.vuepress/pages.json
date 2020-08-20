@@ -133,7 +133,7 @@
         ]
       },
       {
-        "text": "Developing for API Mediation Layer",
+        "text": "Developing for Zowe API Mediation Layer",
         "items": [
           "extend/extend-apiml/onboard-overview.md",
           "extend/extend-apiml/onboard-plain-java-enabler.md",
@@ -166,6 +166,10 @@
           "extend/extend-desktop/mvd-errorreportingui.md",
           "extend/extend-desktop/mvd-logutility.md"
         ]
+      },
+      {
+        "text": "Developing for Zowe SDKs",
+        "link": "extend/extend-sdks.md"
       },
       {
         "text": "Lifecycling z/OS extensions",
