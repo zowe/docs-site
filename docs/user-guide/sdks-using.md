@@ -18,10 +18,18 @@ After you download an SDK, import the `ZoweSDK` class into your project. Create 
 
 **Example - Node:**
 
-<!--TODO What does this example look like for Node? -->
+<!--TODO What is a basic example for importing Node SDK?-->
 
 ```
-example here import node sdk
+import node sdk example here
+```
+
+<!--TODO Similarly, is there a basic profile example for Node SDK?-->
+
+To use a Zowe CLI z/OSMF profile instead of manual authentication, inform the profile name while creating the object:
+
+```
+node sdk profile example here
 ```
 
 **Example - Python:**
@@ -39,11 +47,11 @@ from zowe_sdk import ZoweSDK
 z = ZoweSDK(zosmf_profile='<profile name>')
 ```
 
+<!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find the examples in the readmes? I didn't want to duplicate what's already written in readmes, so I see this page as "tying things together". -->
+
 This is a brief introduction to using the SDKs. For complete documentation and usage examples, see the documentation in the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis) or the [Python SDK Reamde](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
 
-<!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find the examples in the readmes? That doc is already written in the readme, so I see this page as "tying things together". -->
-
-## API Documentation
+## API documentation
 
 Refer to the API Reference documentation for detailed information about each interface. To access the API Reference, do X Y and Z. <!-- Where is this mysterious API reference doc? Hosted? Local? Each SDK has it's own? -->
 
