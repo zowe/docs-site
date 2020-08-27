@@ -14,14 +14,19 @@ To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.
 
 <!--TODO List the artifacts that the user can expect to find in the package after downloading (files, readmes, etc..) -->
 
-After you download an SDK, import the `ZoweSDK` class into your project. Create an object to handle requests to and from the mainframe.
 
 **Example - Node:**
 
 <!--TODO What is a basic example for importing Node SDK?-->
 
-```
-import node sdk example here
+```python
+import { Download } from "@zowe/zos-files-for-zowe-sdk";
+
+const session = new Session({
+    hostname: '<host address>',
+    user: '<zosmf user>',
+    password: '<zosmf password>'
+});
 ```
 
 <!--TODO Similarly, is there a basic profile example for Node SDK?-->
@@ -29,10 +34,19 @@ import node sdk example here
 To use a Zowe CLI z/OSMF profile instead of manual authentication, provide the profile name when you create the object:
 
 ```
-node sdk profile example here
+import { CliProfileManager } from "@zowe/imperative";
+import { Submit } from "@zowe/zos-jobs-for-zowe-sdk";
+
+const profileManager = new CliProfileManager({
+  	profileRootDirectory: require("path").join(require("os").homedir(), ".zowe", "profiles"),
+  	type: "zosmf"
+});
+const profile = (await profileManager.load({ loadDefault: true })).profile;
 ```
 
 **Example - Python:**
+
+After you download an SDK, import the `ZoweSDK` class into your project. Create an object to handle requests to and from the mainframe:
 
 ```
 from zowe_sdk import ZoweSDK
@@ -40,7 +54,7 @@ from zowe_sdk import ZoweSDK
 z = ZoweSDK(zosmf_host='<host address>', zosmf_user='<zosmf user>', zosmf_password='<zosmf password>')
 ```
 
-To use a Zowe CLI z/OSMF profile instead of manual authentication, provide the profile name when you create the object:
+To use a Zowe CLI z/OSMF profile instead of manual authentication, provide a profile name when you create the object:
 
 ```
 from zowe_sdk import ZoweSDK

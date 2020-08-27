@@ -118,7 +118,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 ### Zowe Client Software Development Kits (SDKs)
 
-The Zowe Client SDKs consist of programamatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
+The Zowe Client SDKs consist of programatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
  - Zowe Node Client SDK
  - Zowe Python Client SDK
 
