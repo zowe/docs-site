@@ -9,8 +9,10 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 ### apiml.service.allowEncodedSlashes
 
-By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend to change the property to false if you don't expect the applications to use the encoded slashes. 
-    
+By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
+
+Use the following procedure reject encoded slashes.
+
 **Follow these steps:**
     
 1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
