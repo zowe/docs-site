@@ -40,6 +40,34 @@ The following features and enhancements were added:
 #### Zowe installation
 #### Zowe API Mediation Layer
 #### Zowe App Server
+
+- Users are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
+- A new endpoint has been added to the Agent API. This new endpoint will return a list of services to the user. [#209](https://github.com/zowe/zss/pull/209)
+  - Sample request: `GET /server/agent/services`
+  - Sample response: 
+
+```
+{
+  "services": [
+     {
+      "name": "plugin definitions service",
+      "urlMask": "/plugins",
+      "type": "REST"
+    },
+    {
+      "name": "UnixFileContents",
+      "urlMask": "/unixfile/contents/**",
+      "type": "REST"
+    },
+    {
+      "name": "UnixFileRename",
+      "urlMask": "/unixfile/rename/**",
+      "type": "REST"
+}
+```
+
+
+
 #### Zowe CLI
 #### Zowe Explorer
 
@@ -50,6 +78,10 @@ The following bugs were fixed:
 #### Zowe installation
 #### Zowe API Mediation Layer
 #### Zowe App Server
+
+- Bugfix: External CA certificates to the Zowe `ZWED_node_https_certificateAuthorities array` only after checking to see if the certificates exist, which prevents it from pointing to nothing, resulting in it breaking. [#136](https://github.com/zowe/zlux-app-server/pull/136)
+- Bugfix: In previous versions, the component.json file was only being created when users upgraded their Zowe system to a more recent version. Performing an initial installation would not result in the component.json file being created. In this version, this bug has been resolved, and the component.json file is created both when upgrading and performing an initial installation. [#135](https://github.com/zowe/zlux-app-server/pull/135) 
+
 #### Zowe CLI
 #### Zowe Explorer
 
