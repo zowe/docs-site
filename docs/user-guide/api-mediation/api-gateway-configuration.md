@@ -65,7 +65,7 @@ To use a custom configuration for z/OSMF which changes the expiration of LTPA to
 2. Find the line that contains the `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
 3. Before this line, add on a new line in the following format
 ```
--Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds}
+-Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
 ```
 where:
 
