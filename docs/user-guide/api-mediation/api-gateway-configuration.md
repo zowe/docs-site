@@ -125,7 +125,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 ## Service configuration
 
-Check [Onboarding a REST API service with the Plain Java Enabler (PJE)](../../extend/extend-apiml/onboard-plain-java-enabler.md) for more information about the parameters for the service configuration.
+For more information about service configuration parameters, see [Onboarding a REST API service with the Plain Java Enabler (PJE)](../../extend/extend-apiml/onboard-plain-java-enabler.md).
 
 ## Retry policy
 
@@ -140,7 +140,7 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.OkToRetryOnAllOperations**
 
-     Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only GET requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return response code listed in `ribbon.retryableStatusCodes`. 
+     Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return response code listed in `ribbon.retryableStatusCodes`. 
      
 **Note:** Enabling retry can impact server resources due to request body buffering.
 
@@ -158,11 +158,11 @@ To change this default configuration, include the following parameters:
 
 * **ribbon.readTimeout**
     
-    The value in milliseconds that specifies the  time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API MLGateway service configuration is used.
+    The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.connectionManagerTimeout**
     
-    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 * **ribbon.GZipPayload**     
 
@@ -191,7 +191,7 @@ zuul:
 
 ```    
 
-**NOte:** FOr more information about Zuul configuration parameters, see the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
+**Note:** For more information about Zuul configuration parameters, see the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
 ## Hystrix configuration
 
