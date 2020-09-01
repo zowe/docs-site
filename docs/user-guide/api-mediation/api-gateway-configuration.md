@@ -166,11 +166,11 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.GZipPayload**     
 
-    When set to false, this parameter stops the API Gateway from deflating gzip responses from services.
+    When set to `false`, this parameter stops the API Gateway from deflating gzip responses from services.
 
 ## Zuul configuration
 
-As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the example below:
+As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the following example:
 
 ```yaml
 zuul:
@@ -191,11 +191,11 @@ zuul:
 
 ```    
 
-You can find a description of each parameter in the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
+**NOte:** FOr more information about Zuul configuration parameters, see the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
 ## Hystrix configuration
 
-The API Gateway contains a Hystrix configuration as shown in the example below:
+The API Gateway contains a Hystrix configuration as shown in the following example:
 
 ```yaml
 hystrix:
@@ -216,7 +216,7 @@ hystrix:
                         maxConcurrentRequests: 100000
 ```
 
-You can find a description of each parameter in the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
+**Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
 
 ## Additional parameters
 
