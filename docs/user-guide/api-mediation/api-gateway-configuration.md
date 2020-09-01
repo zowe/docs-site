@@ -222,12 +222,12 @@ You can find a description of each parameter in the [Netflix - Hystrix documenta
 
 * **ibm.serversocket.recover**
 
-    By default, this parameter is enabled in the API Gateway. Check [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html) for more information.
+    By default, this parameter is enabled in the API Gateway. For more information, see the [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html).
 
 * **java.io.tmpdir**
 
-    This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically "/tmp" on Unix-like platforms.
+    This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically `/tmp` on Unix-like platforms.
 
 * **spring.profiles.include**
 
-    This property can be used to unconditionally add active profiles. Check [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) for more information.
+    This property can be used to unconditionally add active profiles. For more information, see [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles).
