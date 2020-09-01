@@ -8,18 +8,18 @@ From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
-From a supported browser, open the Zowe Desktop at `https://{myhost}:{httpsPort}` or you can navigate to the direct Desktop URI at `https://{myhost}:{httpsPort}/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://{myhost}:{httpsPort}` or you can navigate to the direct Desktop URI at `https://{myhost}:{httpsPort}/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
     
 Where:
 
 -   *myHost* is the host on which you are running the Zowe Application Server.
--   *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`.
-    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
+-   *httpsPort* is the value that was assigned to *node.https.port* in `server.json`.
+    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `server.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 
 ### Logging in and out of the Zowe Desktop
 
-1. To log in, enter your mainframe credentials in the **Username** and  **Password** fields.
+1. To log in, enter your TSO credentials in the **Username** and  **Password** fields.
 2. Press Enter. Upon authentication of your user name and password, the desktop opens.
 
 To log out, click the User icon in the lower right corner and click **Sign Out**.
@@ -28,7 +28,7 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 
 ### Changing user password
  
-1. Open the Preferences panel by clicking on the Preferences icon.
+1. Open the Preferences panel by clicking on the Preferences icon in the bottom right of the desktop.
 
 <img src="../images/mvd/settings.png">
   
@@ -46,7 +46,7 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 
 1. Click the Start menu in the bottom left corner of the home screen.
 2. Locate the application you want to pin.
-3. Right-click the on the application icon and select **Pin to taskbar**.
+3. Right-click the application icon and select **Pin to taskbar**.
 
 ### Personalizing the Desktop
 
@@ -77,7 +77,7 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ### Hello World Sample
-The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
+The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular and using React.
 
 ### IFrame Sample
 The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
