@@ -7,41 +7,6 @@ As an application developer who wants to run Zowe, set the following parameters 
 * **[API ML configuration](#api-ml-configuration)**
 * **[Eureka configuration](#eureka-configuration)**
 
-
-    -Dibm.serversocket.recover=true \
-    -Dfile.encoding=UTF-8 \
-    -Djava.io.tmpdir=/tmp \
-    -Dspring.profiles.active=https \
-    -Dspring.profiles.include=$LOG_LEVEL \
-    -Dserver.address=0.0.0.0 \
-    -Dapiml.discovery.userid=eureka \
-    -Dapiml.discovery.password=password \
-    -Dapiml.discovery.allPeersUrls=https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/ \
-    -Dapiml.service.hostname=${ZOWE_EXPLORER_HOST} \
-    -Dapiml.service.port=${DISCOVERY_PORT} \
-    -Dapiml.service.ipAddress=${ZOWE_IP_ADDRESS} \
-    -Dapiml.discovery.staticApiDefinitionsDirectories=${APIML_STATIC_DEF} \
-    -Dapiml.service.preferIpAddress=true \
-    eureka:
-        instance:
-            hostname: ${apiml.service.hostname}
-            ipAddress: ${apiml.service.ipAddress}
-            port: ${server.port}
-            securePort: 0
-            nonSecurePortEnabled: true
-            securePortEnabled: false
-            preferIpAddress: ${apiml.service.preferIpAddress}
-            statusPageUrl: http://${apiml.service.hostname}:${apiml.service.port}/application/info
-            healthCheckUrl: http://${apiml.service.hostname}:${apiml.service.port}/application/health
-        client:
-            registerWithEureka: true
-            fetchRegistry: true
-            region: default
-            serviceUrl:
-                defaultZone: ${apiml.discovery.allPeersUrls}
-        server:
-            useReadOnlyResponseCache: false
-
 ## API ML configuration
 
 * **apiml.discovery.userid**
