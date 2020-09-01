@@ -4,148 +4,128 @@
 
 As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
 
-* **[apiml.service.allowEncodedSlashes](#apimlserviceallowencodedslashes)**
-* **[apiml.service.corsEnabled](#apimlservicecorsenabled)**
-* **[ibm.serversocket.recover](#ibm.serversocket.recover)**
-* **[java.io.tmpdir](#java.io.tmpdir)**
-* **[spring.profiles.include](#spring.profiles.include)**
-* **[apiml.service.hostname](#apiml.service.hostname)**
-* **[apiml.service.port](#apiml.service.port)**
-* **[apiml.service.discoveryServiceUrls](#apiml.service.discoveryServiceUrls)**
-* **[apiml.service.preferIpAddress](#apiml.service.preferIpAddress)**
-* **[apiml.cache.storage.location](#apiml.cache.storage.location)**
-* **[environment.ipAddress](#environment.ipAddress)**
-* **[apiml.gateway.timeoutMillis](#apiml.gateway.timeoutMillis)**
-* **[apiml.security.ssl.verifySslCertificatesOfServices](#apiml.security.ssl.verifySslCertificatesOfServices)**
-* **[apiml.security.auth.zosmfServiceId](#apiml.security.auth.zosmfServiceId)**
-* **[apiml.zoweManifest](#apiml.zoweManifest)**
+* **[API ML configuration](#api-ml-configuration)**
+* **[Service configuration](#service-configuration)**
+* **[Retry policy](#retry-policy)**
+* **[Zuul configuration](#zuul-configuration)**
+* **[Hystrix configuration](#hystrix-configuration)**
+* **[Additional parameters](#additional-parameters)**
 
-### apiml.service.allowEncodedSlashes
+## API ML configuration
 
-By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
+* **apiml.service.allowEncodedSlashes**
 
-Use the following procedure reject encoded slashes.
-
-**Follow these steps:**
+    By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
     
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=true` parameter and set the value to `false`.
-3. Restart Zowe&trade. 
+    Use the following procedure reject encoded slashes.
     
-Requests with encoded slashes are now rejected by the API Mediation Layer.
+    **Follow these steps:**
+        
+    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+    2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=true` parameter and set the value to `false`.
+    3. Restart Zowe&trade. 
+        
+    Requests with encoded slashes are now rejected by the API Mediation Layer.
        
-### apiml.service.corsEnabled
+* **apiml.service.corsEnabled**
 
-By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+    By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+        
+    **Follow these steps:**
+         
+    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+    2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`.
+    3. Restart Zowe&trade.
+      
+    Requests through the Gateway now contain a CORS header. 
+
+* **apiml.service.hostname**
+
+    This property is used to set the API Gateway hostname.
+
+* **apiml.service.port**
+
+    This property is used to set the API Gateway port.
+
+* **apiml.service.discoveryServiceUrls**
+
+    This property specifies the Discovery Service URL used by the service to register to Eureka.
+
+* **apiml.service.preferIpAddress**
+
+    Set the value of this property to "true" if you want to advertise a service IP address instead of its hostname. 
+
+* **apiml.cache.storage.location** 
+
+    This property specifies the location of the EhCache used by Spring.
+
+* **apiml.gateway.timeoutMillis**
+
+    This property is used to define the timeout value for connection to the services.
+
+* **apiml.security.ssl.verifySslCertificatesOfServices**
+
+    This parameter makes it possible to prevent server certificate validation.
+
+    **Important!** Ensure that this parameter is set to `true` in production environments. 
+    Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
+
+* **apiml.security.auth.zosmfServiceId**
+
+    This parameter specifies the z/OSMF service id used as authentication provider.
+
+* **apiml.zoweManifest**
+
+    It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service. E.g.:
     
-**Follow these steps:**
+        https://localhost:10010/api/v1/gateway/version
+    
+    To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file, which is usually located in the root folder of Zowe build. 
+    If the encoding of manifest.json file is different from UTF-8 and IBM1047 it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
+
+* **apiml.security.auth.provider**
+
+    By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
+    provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
+    If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
+    the following procedure to switch to SAF. 
+
+    **Follow these steps:**
+         
+    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+    2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
+    3. Restart Zowe&trade.
+    
+    Authentication requests now utilize SAF as the authentication provider. API ML can run without zOSMF present on the system. 
+
+* **apiml.security.auth.tokenProperties.expirationInSeconds**
+
+    This property is relevant only when the JWT token is generated by the API Mediation Layer. API ML generation of the JWT token occurs in the following cases:
+    
+    * z/OSMF is only available as an older version which does not support JWT tokens 
+    * The SAF provider is used
      
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`.
-3. Restart Zowe&trade.
-  
-Requests through the Gateway now contain a CORS header. 
+    To use a custom configuration for z/OSMF which changes the expiration of LTPA token, it is necessary to also set the expiration in this parameter. 
+    
+    **Note:** The default value is 8 hours which mimicks the 8 hour default expiration of the LTPA token in z/OSMF.
+    
+    **Follow these steps:**
+         
+    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+    2. Find the line that contains the `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
+    3. Before this line, add on a new line in the following format
+    ```
+    -Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
+    ```
+    where:
+    
+    * `{expirationTimeInSeconds}` refers to the specific time before expiration
+    
+    3. Restart Zowe&trade.
 
+## Service configuration
 
-### ibm.serversocket.recover
-
-By default, this parameter is enabled in the API Gateway. Check [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html) for more information.
-
-### java.io.tmpdir
-
-This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically "/tmp" on Unix-like platforms.
-
-### spring.profiles.include
-
-This property can be used to unconditionally add active profiles. Check [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) for more information.
-
-### apiml.service.hostname
-
-This property is used to set the API Gateway hostname.
-
-### apiml.service.port
-
-This property is used to set the API Gateway port.
-
-### apiml.service.discoveryServiceUrls
-
-This property specifies the Discovery Service URL used by the service to register to Eureka.
-
-### apiml.service.preferIpAddress
-
-Set the value of this property to "true" if you want to advertise a service IP address instead of its hostname. 
-
-### apiml.cache.storage.location 
-
-This property specifies the location of the EhCache used by Spring.
-
-### environment.ipAddress
-
-This property is used to set the API Gateway IP address.
-
-### apiml.gateway.timeoutMillis
-
-This property is used to define the timeout value for connection to the services.
-
-### apiml.security.ssl.verifySslCertificatesOfServices
-
-This parameter makes it possible to prevent server certificate validation.
-
-  **Important!** Ensure that this parameter is set to `true` in production environments. 
-  Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
-
-### apiml.security.auth.zosmfServiceId
-
-This parameter specifies the z/OSMF service id used as authentication provider.
-
-### apiml.zoweManifest
-
-It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service. E.g.:
-
-    https://localhost:10010/api/v1/gateway/version
-
-To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file, which is usually located in the root folder of Zowe build. 
-If the encoding of manifest.json file is different from UTF-8 and IBM1047 it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
-
-### apiml.security.auth.provider
-
-By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
-provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
-If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
-the following procedure to switch to SAF. 
-
-**Follow these steps:**
-     
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
-3. Restart Zowe&trade.
-
-Authentication requests now utilize SAF as the authentication provider. API ML can run without zOSMF present on the system. 
-
-### apiml.security.auth.tokenProperties.expirationInSeconds
-
-This property is relevant only when the JWT token is generated by the API Mediation Layer. API ML generation of the JWT token occurs in the following cases:
-
-* z/OSMF is only available as an older version which does not support JWT tokens 
-* The SAF provider is used
- 
-To use a custom configuration for z/OSMF which changes the expiration of LTPA token, it is necessary to also set the expiration in this parameter. 
-
-**Note:** The default value is 8 hours which mimicks the 8 hour default expiration of the LTPA token in z/OSMF.
-
-**Follow these steps:**
-     
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
-3. Before this line, add on a new line in the following format
-```
--Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
-```
-where:
-
-* `{expirationTimeInSeconds}` refers to the specific time before expiration
-
-3. Restart Zowe&trade.
+Check [Onboarding a REST API service with the Plain Java Enabler (PJE)](../../extend/extend-apiml/onboard-plain-java-enabler.md) for more information about the parameters for the service configuration.
 
 ## Retry policy
 
@@ -187,8 +167,7 @@ To change this default configuration, include the following parameters:
 * **ribbon.GZipPayload**     
 
     When set to false, this parameter stops the API Gateway from deflating gzip responses from services.
-        
-        
+
 ## Zuul configuration
 
 As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the example below:
@@ -214,7 +193,6 @@ zuul:
 
 You can find a description of each parameter in the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
-
 ## Hystrix configuration
 
 The API Gateway contains a Hystrix configuration as shown in the example below:
@@ -239,3 +217,17 @@ hystrix:
 ```
 
 You can find a description of each parameter in the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
+
+## Additional parameters
+
+* **ibm.serversocket.recover**
+
+    By default, this parameter is enabled in the API Gateway. Check [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html) for more information.
+
+* **java.io.tmpdir**
+
+    This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically "/tmp" on Unix-like platforms.
+
+* **spring.profiles.include**
+
+    This property can be used to unconditionally add active profiles. Check [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) for more information.
