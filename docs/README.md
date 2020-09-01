@@ -1,9 +1,12 @@
 ---
 home: true
-actionText: Getting Started
-actionLink: getting-started/overview.html
 footer: Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.
 ---
+
+<div class="action" align="center">
+<a href="https://www.zowe.org/download.html" class="nav-link action-button"> <span>Download Zowe</span></a>
+<a href="https://www.openmainframeproject.org/projects/zowe/ztrial" class="nav-link action-button"> <span>Try Zowe</span></a>
+</div>
 
 <div class="features">
   <div class="feature">
@@ -38,8 +41,9 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.14.0.
 
-**[V1.14.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
-**[V1.13.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.15.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.14.0](./Zowe_Documentation_1.14.0.pdf)** |
+**[V1.13.0](./Zowe_Documentation_1.13.0.pdf)** |
 **[V1.12.0](./Zowe_Documentation_1.12.0.pdf)** |
 **[V1.11.0](./Zowe_Documentation_1.11.0.pdf)** |
 **[V1.10.0](./Zowe_Documentation_1.10.0.pdf)** |
