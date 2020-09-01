@@ -39,11 +39,8 @@ The following features and enhancements were added:
 
 #### Zowe installation
 #### Zowe API Mediation Layer
-#### Zowe App Server
+#### ZSS
 
-- A new feature that allows users to auto save plugin data by subscribing to the event. By default, the feature will auto save every 5 minutes, but this interval can be customized. [#250](https://github.com/zowe/zlux-app-manager/pull/250)
-  - This feature is enabled via the Plugin Definition. `"autosave": true`
-- Users are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
 - A new endpoint has been added to the Agent API. This new endpoint will return a list of services to the user. [#209](https://github.com/zowe/zss/pull/209)
   - Sample request: `GET /server/agent/services`
   - Sample response: 
@@ -66,9 +63,13 @@ The following features and enhancements were added:
       "urlMask": "/unixfile/rename/**",
       "type": "REST"
 }
-```
+```  
 
+#### Zowe App Server
 
+- A new feature that allows users to auto save plugin data by subscribing to the event. By default, the feature will auto save every 5 minutes, but this interval can be customized. [#250](https://github.com/zowe/zlux-app-manager/pull/250)
+  - This feature is enabled via the Plugin Definition. `"autosave": true`
+- Users are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
 
 #### Zowe CLI
 #### Zowe Explorer
@@ -79,6 +80,12 @@ The following bugs were fixed:
 
 #### Zowe installation
 #### Zowe API Mediation Layer
+#### ZSS
+
+- Bugfix: When RBAC is disabled, only the following services will be available. [#210](https://github.com/zowe/zss/pull/210)
+  - `/server/agent/environment` (with limited info)
+  - `/server/agent/services`  
+  
 #### Zowe App Server
 
 - Bugfix: External CA certificates to the Zowe `ZWED_node_https_certificateAuthorities array` only after checking to see if the certificates exist, which prevents it from pointing to nothing, resulting in it breaking. [#136](https://github.com/zowe/zlux-app-server/pull/136)
