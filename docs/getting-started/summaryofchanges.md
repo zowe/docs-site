@@ -31,6 +31,11 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+**Auto-Save plugin data** 
+
+Plugin developers can now make use of the new autosave feature, which will automatically save their state data at regular time intervals (default is 5 minutes). This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state.
+
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -85,7 +90,7 @@ The following bugs were fixed:
 - Bugfix: When RBAC is disabled, only the following services will be available. [#210](https://github.com/zowe/zss/pull/210)
   - `/server/agent/environment` (with limited info)
   - `/server/agent/services`  
-  
+
 #### Zowe App Server
 
 - Bugfix: External CA certificates to the Zowe `ZWED_node_https_certificateAuthorities array` only after checking to see if the certificates exist, which prevents it from pointing to nothing, resulting in it breaking. [#136](https://github.com/zowe/zlux-app-server/pull/136)
