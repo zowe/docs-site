@@ -6,6 +6,19 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **[apiml.service.allowEncodedSlashes](#apimlserviceallowencodedslashes)**
 * **[apiml.service.corsEnabled](#apimlservicecorsenabled)**
+* **[ibm.serversocket.recover](#ibm.serversocket.recover)**
+* **[java.io.tmpdir](#java.io.tmpdir)**
+* **[spring.profiles.include](#spring.profiles.include)**
+* **[apiml.service.hostname](#apiml.service.hostname)**
+* **[apiml.service.port](#apiml.service.port)**
+* **[apiml.service.discoveryServiceUrls](#apiml.service.discoveryServiceUrls)**
+* **[apiml.service.preferIpAddress](#apiml.service.preferIpAddress)**
+* **[apiml.cache.storage.location](#apiml.cache.storage.location)**
+* **[environment.ipAddress](#environment.ipAddress)**
+* **[apiml.gateway.timeoutMillis](#apiml.gateway.timeoutMillis)**
+* **[apiml.security.ssl.verifySslCertificatesOfServices](#apiml.security.ssl.verifySslCertificatesOfServices)**
+* **[apiml.security.auth.zosmfServiceId](#apiml.security.auth.zosmfServiceId)**
+* **[apiml.zoweManifest](#apiml.zoweManifest)**
 
 ### apiml.service.allowEncodedSlashes
 
@@ -32,6 +45,67 @@ By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/
 3. Restart Zowe&trade.
   
 Requests through the Gateway now contain a CORS header. 
+
+
+### ibm.serversocket.recover
+
+By default, this parameter is enabled in the API Gateway. Check [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html) for more information.
+
+### java.io.tmpdir
+
+This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically "/tmp" on Unix-like platforms.
+
+### spring.profiles.include
+
+This property can be used to unconditionally add active profiles. Check [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) for more information.
+
+### apiml.service.hostname
+
+This property is used to set the API Gateway hostname.
+
+### apiml.service.port
+
+This property is used to set the API Gateway port.
+
+### apiml.service.discoveryServiceUrls
+
+This property specifies the Discovery Service URL used by the service to register to Eureka.
+
+### apiml.service.preferIpAddress
+
+Set the value of this property to "true" if you want to advertise a service IP address instead of its hostname. 
+
+### apiml.cache.storage.location 
+
+This property specifies the location of the EhCache used by Spring.
+
+### environment.ipAddress
+
+This property is used to set the API Gateway IP address.
+
+### apiml.gateway.timeoutMillis
+
+This property is used to define the timeout value for connection to the services.
+
+### apiml.security.ssl.verifySslCertificatesOfServices
+
+This parameter makes it possible to prevent server certificate validation.
+
+  **Important!** Ensure that this parameter is set to `true` in production environments. 
+  Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
+
+### apiml.security.auth.zosmfServiceId
+
+This parameter specifies the z/OSMF service id used as authentication provider.
+
+### apiml.zoweManifest
+
+It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service. E.g.:
+
+    https://localhost:10010/api/v1/gateway/version
+
+To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file, which is usually located in the root folder of Zowe build. 
+If the encoding of manifest.json file is different from UTF-8 and IBM1047 it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
 
 ### apiml.security.auth.provider
 
@@ -97,3 +171,71 @@ To change this default configuration, include the following parameters:
 * **ribbon.MaxAutoRetriesNextServer**
     
     The number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
+    
+**ribbon.connectTimeout**
+    
+   The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **ribbon.readTimeout**
+    
+    The value in milliseconds that specifies the  time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API MLGateway service configuration is used.
+
+* **ribbon.connectionManagerTimeout**
+    
+    HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    
+* **ribbon.GZipPayload**     
+
+    When set to false, this parameter stops the API Gateway from deflating gzip responses from services.
+        
+        
+## Zuul configuration
+
+As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the example below:
+
+```yaml
+zuul:
+    sslHostnameValidationEnabled: false
+    addProxyHeaders: true
+    traceRequestBody: true
+    ignoreSecurityHeaders: false
+    includeDebugHeader: false
+    sensitiveHeaders: Expires,Date
+    ignoredPatterns:
+        - /ws/**
+    host:
+        connectTimeoutMillis: ${apiml.gateway.timeoutMillis}
+        socketTimeoutMillis: ${apiml.gateway.timeoutMillis}
+    forceOriginalQueryStringEncoding: true
+    retryable: true
+    decodeUrl: false # Flag to indicate whether to decode the matched URL or use it as is
+
+```    
+
+You can find a description of each parameter in the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
+
+
+## Hystrix configuration
+
+The API Gateway contains a Hystrix configuration as shown in the example below:
+
+```yaml
+hystrix:
+    command:
+        default:
+            fallback:
+                enabled: false
+            circuitBreaker:
+                enabled: false
+            execution:
+                timeout:
+                    enabled: false
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: ${apiml.gateway.timeoutMillis}
+                    strategy: SEMAPHORE
+                    semaphore:
+                        maxConcurrentRequests: 100000
+```
+
+You can find a description of each parameter in the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
