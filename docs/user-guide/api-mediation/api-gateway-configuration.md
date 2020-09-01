@@ -53,7 +53,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.service.preferIpAddress**
 
-    Set the value of this property to "true" if you want to advertise a service IP address instead of its hostname. 
+    Set the value of this property to `true` if you want to advertise a service IP address instead of its hostname. 
 
 * **apiml.cache.storage.location** 
 
@@ -80,7 +80,7 @@ As an application developer who wants to run Zowe, set the following parameters 
     
         https://localhost:10010/api/v1/gateway/version
     
-    To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file, which is usually located in the root folder of Zowe build. 
+    To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file. This file is usually located in the root folder of Zowe build. 
     If the encoding of manifest.json file is different from UTF-8 and IBM1047 it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
 
 * **apiml.security.auth.provider**
@@ -96,7 +96,7 @@ As an application developer who wants to run Zowe, set the following parameters 
     2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
     3. Restart Zowe&trade.
     
-    Authentication requests now utilize SAF as the authentication provider. API ML can run without zOSMF present on the system. 
+    Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
 * **apiml.security.auth.tokenProperties.expirationInSeconds**
 
