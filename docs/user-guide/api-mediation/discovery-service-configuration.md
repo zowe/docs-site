@@ -19,16 +19,23 @@ As an application developer who wants to run Zowe, set the following parameters 
     
 * **apiml.discovery.allPeersUrls**
 
-    This parameter contains the list of URLs of the Discovery Service in case of multiple instances. 
+    This parameter contains the list of URLs of the Discovery Service in case of multiple instances of the service on different host. 
     **Example:** 
     ```yaml
     apiml:
         discovery:
             allPeersUrls: https://localhost2:10021/eureka/,https://localhost3:10031/eureka/
     ```
+    **Note:** Each URL within the list must be separated by a comma.
+    
 * **apiml.discovery.staticApiDefinitionsDirectories**
 
     The static definition directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contains the definitions of static services.
+     **Example:** 
+        ```yaml
+        apiml:
+            discovery:
+                staticApiDefinitionsDirectories: config/local/api-defs;config/local2/api-defs
 
 ## Eureka configuration
 

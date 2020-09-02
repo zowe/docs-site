@@ -72,7 +72,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.security.auth.zosmfServiceId**
 
-    This parameter specifies the z/OSMF service id used as authentication provider.
+    This parameter specifies the z/OSMF service id used as authentication provider. The service id is defined in the static definition of z/OSMF. The default value is `zosmf`. 
 
 * **apiml.zoweManifest**
 
