@@ -80,7 +80,7 @@ As an application developer who wants to run Zowe, set the following parameters 
     
         https://localhost:10010/api/v1/gateway/version
     
-    This parameter lets you view the Zowe version by using the /version endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file. This file is usually located in the root folder of Zowe build. 
+    This parameter lets you view the Zowe version by using the `/version` endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build `manifest.json` file. This file is usually located in the root folder of Zowe build. 
     If the encoding of manifest.json file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
 
 * **apiml.security.auth.provider**
@@ -121,7 +121,7 @@ As an application developer who wants to run Zowe, set the following parameters 
     
     * `{expirationTimeInSeconds}` refers to the specific time before expiration
     
-    3. Restart Zowe&trade.
+    4. Restart Zowe&trade.
 
 ## Service configuration
 
@@ -219,7 +219,7 @@ hystrix:
 ```
 
 Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, 
-services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+services and 3rd party libraries, stop cascading failure, and enable resilience in complex distributed systems where failure is inevitable.
 
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
 
