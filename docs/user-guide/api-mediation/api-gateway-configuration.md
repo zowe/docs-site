@@ -189,7 +189,9 @@ zuul:
     retryable: true
     decodeUrl: false # Flag to indicate whether to decode the matched URL or use it as is
 
-```    
+```   
+ 
+The Zuul configuration allows the API Gateway to act as a reverse proxy server through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge.
 
 **Note:** For more information about Zuul configuration parameters, see the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
@@ -216,13 +218,19 @@ hystrix:
                         maxConcurrentRequests: 100000
 ```
 
+Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, 
+services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
 
 ## Additional parameters
 
 * **ibm.serversocket.recover**
 
-    By default, this parameter is enabled in the API Gateway. For more information, see the [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html).
+    In a multiple network stack environment (CINET), when one of the stacks fails, no notification or Java™ exception occurs for a Java program that is listening on an INADDR_ANY socket. 
+    Also, when new stacks become available, the Java application does not become aware of them until it rebinds the INADDR socket. 
+    By default, this parameter is enabled in the API Gateway, meaning that an exception (`NetworkRecycledException`) is thrown to the application to allow it either to fail or to attempt to rebind. 
+    For more information, see the [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html).
 
 * **java.io.tmpdir**
 
