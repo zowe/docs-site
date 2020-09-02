@@ -53,11 +53,18 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.service.preferIpAddress**
 
-    Set the value of this property to `true` to advertise a service IP address instead of its hostname. 
+    Set the value of this property to `true` to advertise a service IP address instead of its hostname.
+    
+    **Note:** If you set this property to `true`, you need to modify the value of `discoveryLocations:` to use IP address instead of hostname, 
+    otherwise Eureka won't be able to find the services registered and as consequence the **available-replicas** will be empty. 
+    
+    **Note:** Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN), so this must be taken in count when configuring this parameter.
 
 * **apiml.cache.storage.location** 
 
     This property specifies the location of the EhCache used by Spring.
+    
+    **Note:** It is necessary for the API ML process to have write access to that location.
 
 * **apiml.gateway.timeoutMillis**
 
