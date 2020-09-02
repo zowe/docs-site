@@ -240,7 +240,7 @@ services and 3rd party libraries, stop cascading failure, and enable resilience 
 
 * **java.io.tmpdir**
 
-    This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies (see Section 4 and Appendix A.6). The default value is typically `/tmp` on Unix-like platforms.
+    This property is a standard Java system property which is used by the disk-based storage policies. It determines where the JVM writes temporary files, including those written by these storage policies. The default value is typically `/tmp` on Unix-like platforms.
 
 * **spring.profiles.include**
 
