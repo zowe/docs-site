@@ -55,10 +55,9 @@ As an application developer who wants to run Zowe, set the following parameters 
 
     Set the value of this property to `true` to advertise a service IP address instead of its hostname.
     
-    **Note:** If you set this property to `true`, you need to modify the value of `discoveryLocations:` to use IP address instead of hostname, 
-    otherwise Eureka won't be able to find the services registered and as consequence the **available-replicas** will be empty. 
-    
-    **Note:** Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN), so this must be taken in count when configuring this parameter.
+    **Notes:** 
+    * If you set this property to `true`, you need to modify the value of `discoveryLocations:` to use the IP address instead of hostname. Failure to modify the value prevents Eureka from detecting registered services, and as consequence the **available-replicas** will be empty. 
+    * Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN). 
 
 * **apiml.cache.storage.location** 
 
