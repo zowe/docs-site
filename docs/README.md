@@ -57,14 +57,28 @@ You can download the Version 1.x.x Zowe documentation in PDF format from the lin
 **[V1.1.0](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)** |
 **[V1.0.x](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)**
 
-### Zowe CLI command reference guide
+### Zowe CLI command reference guides
 
 View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@zowe-v1-lts` version of the CLI. A PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:
 
 <p class="action">
-<a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse Online</span></a>
+<a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse CLI Reference (Online)</span></a>
 <a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
 <a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
+</p>
+
+### Zowe Client SDK reference guides
+
+Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
+
+<p class="action">
+<a href="" target="_blank" class="nav-link action-button"> <span>Browse Node SDK Reference (Online)</span></a>
+<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download Node SDK Reference (ZIP)</span></a>
+</p>
+
+<p class="action">
+<a href="" target="_blank" class="nav-link action-button"> <span>Browse Python SDK Reference (Online)</span></a>
+<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download Python SDK Reference (ZIP)</span></a>
 </p>
 
 ### Zowe overview deck

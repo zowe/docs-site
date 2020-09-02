@@ -64,7 +64,7 @@ The SDK is imported into your project and you can begin making API calls.
 
 ## API documentation
 
-Refer to the API Reference documentation for detailed information about each interface. To access the API Reference, <!-- TODO do X Y and Z. Where is this mysterious API reference doc? Hosted on doc site somehow? Local file? -->
+Browse or download the [API Reference documentation](https://docs.zowe.org/stable/#zowe-client-sdk-reference-guides) for detailed information about the API enpoints.
 
 For more information about the Node SDK, including usage examples, see the documentation in the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
