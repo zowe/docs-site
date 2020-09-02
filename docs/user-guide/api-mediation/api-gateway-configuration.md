@@ -17,7 +17,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
     By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
     
-    Use the following procedure reject encoded slashes.
+    Use the following procedure to reject encoded slashes.
     
     **Follow these steps:**
         
@@ -29,7 +29,7 @@ As an application developer who wants to run Zowe, set the following parameters 
        
 * **apiml.service.corsEnabled**
 
-    By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+    By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
         
     **Follow these steps:**
          
@@ -53,7 +53,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.service.preferIpAddress**
 
-    Set the value of this property to `true` if you want to advertise a service IP address instead of its hostname. 
+    Set the value of this property to `true` to advertise a service IP address instead of its hostname. 
 
 * **apiml.cache.storage.location** 
 
@@ -61,7 +61,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.gateway.timeoutMillis**
 
-    This property is used to define the timeout value for connection to the services.
+    This property is used to define the timeout value for connection to services.
 
 * **apiml.security.ssl.verifySslCertificatesOfServices**
 
@@ -76,12 +76,12 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 * **apiml.zoweManifest**
 
-    It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service. E.g.:
+    It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
     
         https://localhost:10010/api/v1/gateway/version
     
-    To view the Zowe version requires setting up the launch parameter of API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file. This file is usually located in the root folder of Zowe build. 
-    If the encoding of manifest.json file is different from UTF-8 and IBM1047 it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
+    This parameter lets you view the Zowe version by using the /version endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build manifest.json file. This file is usually located in the root folder of Zowe build. 
+    If the encoding of manifest.json file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
 
 * **apiml.security.auth.provider**
 
@@ -134,31 +134,31 @@ To change this default configuration, include the following parameters:
 
 * **ribbon.retryableStatusCodes**
 
-    Provide a list of status codes, for which the server should retry the request.
+    Provides a list of status codes, for which the server should retry the request.
     
     **Example:** `-Dribbon.retryableStatusCodes="503, 404"` 
     
 * **ribbon.OkToRetryOnAllOperations**
 
-     Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return response code listed in `ribbon.retryableStatusCodes`. 
+     Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
 **Note:** Enabling retry can impact server resources due to request body buffering.
 
 * **ribbon.MaxAutoRetries**
     
-    The number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
+    Specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
     
 * **ribbon.MaxAutoRetriesNextServer**
     
-    The number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
+    Specfies the number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
     
 **ribbon.connectTimeout**
     
-   The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+   Specifies the value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.readTimeout**
     
-    The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    Specifies the time in milliseconds of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.connectionManagerTimeout**
     
