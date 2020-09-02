@@ -31,6 +31,11 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+**Auto-Save plugin data** 
+
+Plugin developers can now make use of the new autosave feature, which can automatically save state data based on what the developer intends to retain, at regular time intervals. This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state. This new capability furthers the larger goal of high availability and fault tolerance for all Zowe components.
+
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->
@@ -44,8 +49,37 @@ The following features and enhancements were added:
 - The Swagger URL is now provided for z/OSMF. This URL provides full documentation containing the Try It Out functionality if the z/OSMF version supports the Swagger endpoint. Alternatively, the URL provides the info endpoint to directly enable access to Zowe endpoints. [#665](https://github.com/zowe/api-layer/issues/665)
 - The default configuration of API ML now supports character encoding. [#777](https://github.com/zowe/api-layer/issues/777)
 
+#### ZSS
+
+A new endpoint has been added to the Agent API. This new endpoint will return a list of services to the user. [#209](https://github.com/zowe/zss/pull/209)
+- Sample request: `GET /server/agent/services`
+- Sample response: 
+
+```
+{
+  "services": [
+     {
+      "name": "plugin definitions service",
+      "urlMask": "/plugins",
+      "type": "REST"
+    },
+    {
+      "name": "UnixFileContents",
+      "urlMask": "/unixfile/contents/**",
+      "type": "REST"
+    },
+    {
+      "name": "UnixFileRename",
+      "urlMask": "/unixfile/rename/**",
+      "type": "REST"
+}
+```  
+
 #### Zowe App Server
-<!--Locally maintained list. -->
+
+- A new feature that allows users to auto save plugin data by subscribing to the event. By default, the feature will auto save every 5 minutes, but this interval can be customized. [#250](https://github.com/zowe/zlux-app-manager/pull/250)
+  - This feature is enabled via the Plugin Definition. `"autosave": true`
+- Users are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
 
 #### Zowe CLI
 
@@ -78,8 +112,16 @@ The following bugs were fixed:
 - SSL validation when Eureka is running in HTTP mode has been fixed. When the scheme is HTTP, SSL configuration is not verified since it not used. [#792](https://github.com/zowe/api-layer/issues/792)
 - A problem in error handling has been fixed when no api-doc is available. Now a specific return code and message is generated when a problem occurs when obtaining or transforming the api-doc. [#571](https://github.com/zowe/api-layer/issues/571)
 
+#### ZSS
+
+- Bugfix: When RBAC is disabled, only the following services will be available. [#210](https://github.com/zowe/zss/pull/210)
+  - `/server/agent/environment` (with limited info)
+  - `/server/agent/services`  
+
 #### Zowe App Server
-<!--Locally maintained list. -->
+
+- Bugfix: External CA certificates to the Zowe `ZWED_node_https_certificateAuthorities array` only after checking to see if the certificates exist, which prevents it from pointing to nothing, resulting in it breaking. [#136](https://github.com/zowe/zlux-app-server/pull/136)
+- Bugfix: In previous versions, the component.json file was only being created when users upgraded their Zowe system to a more recent version. Performing an initial installation would not result in the component.json file being created. In this version, this bug has been resolved, and the component.json file is created both when upgrading and performing an initial installation. [#135](https://github.com/zowe/zlux-app-server/pull/135) 
 
 #### Zowe CLI
 
