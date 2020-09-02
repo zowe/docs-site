@@ -33,7 +33,7 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 **Auto-Save plugin data** 
 
-Plugin developers can now make use of the new autosave feature, which will automatically save their state data at regular time intervals (default is 5 minutes). This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state.
+Plugin developers can now make use of the new autosave feature, which can automatically save state data based on what the developer intends to retain, at regular time intervals. This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state. This new capability furthers the larger goal of high availability and fault tolerance for all Zowe components.
 
 
 ### New features and enhancements
