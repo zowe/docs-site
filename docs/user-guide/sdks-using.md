@@ -16,6 +16,8 @@ To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.
 
 **Example - Node:**
 
+Create a session object to communicate with z/OSMF. This example shows how to import the z/OS Files APIs and define your connection details in the session object:
+
 ```javascript
 import { Download } from "@zowe/zos-files-for-zowe-sdk";
 
