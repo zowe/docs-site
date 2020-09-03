@@ -1,5 +1,139 @@
 # Configuring Zowe certificates 
 
+Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a KEYTORE_DIRECTORY which contains information about where the certificate is located.  More than one instance of Zowe can share the same KEYSTORE_DIRECTORY, which is defined by the variable `KEYSTORE_DIRECTORY` in the `instance.env` file, see [Creating and configuring the Zowe instance directory](./configure-instance-directory.md).  
+
+## Northbound Certificate
+
+The Zowe certificate is used by the API Mediation Layer on its northbound edge when identifying itself and encrypting https:// traffic to web browsers or REST client applications.  
+
+## Southbound Certificate
+
+As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer that it communicates to over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
+
+## Trust store
+
+As well as Zowe using its certificates intra-address space,  to encrypt messages between its servers, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer).  These services will present their own certificate to the API Mediation Layer, in which case the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
+
+If you wish to disable the trust store validation of southbound certificates the value `VERIFY_CERTIFICATES=true` can be set to `false` in the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`.  A scenario when this is recommended is if certificate being presented to the API Mediation Layer is self signed (i.e. from an unknown certificate authority).  For example, the z/OSMF certificate may be self signed in which case the Zowe API Mediation Layer will not recognize the signing authority.  
+
+
+<!--
+<img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
+-->
+
+## Creating a KEYSTORE_DIRECTORY
+
+The `KEYSTORE_DIRECTORY` is created using the script `<ROOT_DIR>/bin/zowe-setup-certificates.sh`.  The input parameters for the script are held in a configuration file `<ROOT_DIR>/bin/zowe-setup-certificates.env` that should to be customized for each environment to match their security rules and practices.  Once the script `zowe-setup-certificates.sh` has been run and the `KEYSTORE_DIRECTORY` created in USS one, or many, instances of Zowe can use that keystore directory by specifying it in their `instance.env` variable `KEYSTORE_DIRECTORY`.  
+
+Zowe supports certificates being stored either in a in a USS direectory **Java KeyStore** format or else held in a **z/OS Keyring**.  
+
+z/OS keyrings are the preferred methods for storing certificates in many environments where systems programmers will already be familiar with how to control access to the keyring.  To work with z/OS keyrings the user ID configuring Zowe needs to have elevated privileges, so the ability to work with a USS JavaKeystore is provided for scenarios such as testing or developer sandbox Zowe instances.  
+
+- [Configuring Zowe certificates in a key ring](#configuring-zowe-certificates-in-a-key-ring)	
+- [Configuring Zowe certificates in UNIX files](#configuring-zowe-certificates-in-unix-files)
+
+<!-->
+<img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
+-->
+
+## Configuring Zowe certificates in a key ring	
+
+The JCL member `ZWEKRING` is provided as part of the PDS sample library `SZWESAMP` delivered with Zowe.  The JCL contains the security commands to create the keyring and manage the certificates that Zowe will use.  The JCL must customized before submitting and should be reviewed by a systems programmer familiar with z/OS certificates and keyrings.
+
+### ZWEKRING
+
+The `ZWEKRING` JCL helps you create a keyring containing a certificate and a local certificate authority that is used to self-sign the certificate.  Other scenarios (such as importing an existing certificate) are described in the `ZWEKRING` JCL with the commands commented out) but are currently unsupported and included in beta mode for early testing and feedback.  If you find any issues please raise an issue at https://github.com/zowe/zowe-install-packaging/issues.  Future releases of Zowe will provide support for more keyring scenarios.  
+
+The `PRODUCT` variable specifies the z/OS security manager.  The default is `RACF` and should be changed to `ACF2` or `TSS` if you are using Access Control Facility CA-ACF2 or CA Top Secret for z/OS as your z/OS security manager.  
+
+```
+//         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
+```
+
+The Zowe certificate is used on the northbound edge of the API Mediation Layer to encrypt data between web browser and other client applications such as the Zowe command line interface.  These client applications will validate that the network TCP/IP address that they have accessed the encrypted data from matches the network address in the certificate.  If the address does not match the browser will not continue as it will consider the site as unsecure.  To ensure the browser is able to establish a secure connection the `HOSTNAME` and `IPADDRESS` in the `ZWEKRING` JCL member should be set to match the hostname and TCP/IP address of the Zowe API Mediation Layer.  
+
+```
+//*      * Hostname of the system where Zowe is to run
+//         SET HOSTNAME=''
+//*      * IP address of the system where Zowe is to run
+//         SET IPADDRES=''
+//*      * Keyring for the Zowe userid
+```
+
+```
+//         SET ZOWERING='ZoweKeyring'
+//*      * Zowe's certificate label
+//         SET    LABEL='localhost'
+```
+
+To customize the JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager.	
+
+<!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 	
+            it(self signed, externally signed certs), describe parts that could be confusing, 	
+            connecting CA chain and z/osmf cert. Give an example of the keyring content" -->	
+
+**Important!**	
+
+ - If you want APIML to verify certificates (for example, `VERIFY_CERTIFICATES=true` is set in the `zowe-setup-certificate.env` file), then the root CA of the z/OSMF certificate must be connected with the Zowe key ring. The ZWEKRING is ready for such a scenario.	
+
+   You only need to set the `ROOTZFCA` variable in the ZWEKRING JCL. You can find the root CA by listing a chain of the z/OSMF certificate. For example,	
+    - RACF 	
+      ```	
+      RACDCERT ID(IZUSVR) LISTCHAIN(LABEL('DefaultzOSMFCert.IZUDFLT'))	
+      ```	
+    - Top Secret	
+      ```	
+      TSS LIST(IZUSVR) LABLCERT('DefaultzOSMFCert.IZUDFLT') CHAIN	
+      ``` 	
+    - ACF2	
+      ```	
+      SET PROFILE(USER) DIVISION(CERTDATA)	
+      CHKCERT IZUSVR LABEL(DefaultzOSMFCert.IZUDFLT) CHAIN	
+      ``` 	
+
+ - The Zowe certificate must be connected to the key ring together with its CA chain (all certificates in the chain). 	
+
+   The ZWEKRING has two variables `ITRMZWCA` and `ROOTZWCA` and corresponding "connect to keyring" commands that support the scenario where the Zowe certificate has one intermediate CA and the root CA in its CA chain. If your Zowe certificate has no intermediate CA or has more than one intermediate CA, then you must add or remove the connecting commands accordingly.	
+
+   To find out what the certificate's CA chain is, you can use the example commands in the previous note.	
+
+   If Zowe certificate is self-signed or signed by the local Zowe CA, then ignore `ITRMZWCA` and `ROOTZWCA` variables. In this case, you might see error messages in the JCL related to the `ITRMZWCA` and `ROOTZWCA` variables.	
+
+
+ - You can share a certificate with Zowe if the certificate is already stored in the security manager's database. Such a certificate should be owned by the special SITE ACID (CERTSITE ACID for Top Secret or SITECERT ACID for ACF2).	
+
+   In this scenario, you must modify the "connect to keyring" security command so that it connects the SITE owned certificate to the Zowe key ring. Also, you must allow the ZWESVUSR acid to extract private key from the SITE owned certificate. You can do that by uncommenting the security command in the ZWEKRING JCL that gives ZWESVUSR CONTROL access to the `IRR.DIGTCERT.GENCERT` resource.	
+
+After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-certificate.env` file, customize the key ring related variables:	
+
+- `GENERATE_CERTS_FOR_KEYRING`	
+
+   Must be set to `false` so that the `zowe-setup-certificate.sh` script does not repeat the job already done by the ZWEKRING JCL. Defaults to `false` value.	
+
+- `VERIFY_CERTIFICATES` 	
+
+   If set to true, the key ring must contain root CA of the z/OSMF certificate (it must be configured by the ZWEKRING JCL).	
+
+- `KEYSTORE_ALIAS`	
+
+   The certificate alias must match either the `LABEL` variable in the ZWEKRING JCL or the label of the certificate already stored in the security manager's database.	
+
+- `ZOWE_USER_ID` 	
+
+   The owner of the key ring matches the `ZOWEUSER` variable in the ZWEKRING JCL. Defaults to the `ZWESVUSR` user ID. 	
+
+- `ZOWE_KEYRING` 	
+
+   The key ring name matches the `ZOWERING` variable in the ZWEKRING JCL. 	
+
+    **Warning:** If the variable is empty, then the script generates certificates to UNIX keystore files. 	
+
+
+When the `zowe-setup-certificates.sh` script executes successfully, it generates the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).	
+
+
+## Configuring Zowe certificates in UNIX files
+
 A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. See [Configure instance directory](configure-instance-directory.md#keystore-directory).
 
 If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
