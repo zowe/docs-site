@@ -63,7 +63,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
     This property specifies the location of the EhCache used by Spring.
     
-    **Note:** It is necessary for the API ML process to have write access to that location.
+    **Note:** It is necessary for the API ML process to have write access to the cache location.
 
 * **apiml.gateway.timeoutMillis**
 
