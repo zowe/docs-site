@@ -35,6 +35,9 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 Plug-in developers can now make use of the new autosave feature, which can automatically save state data based on what the developer intends to retain, at regular time intervals. This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state. This new capability furthers the larger goal of high availability and fault tolerance for all Zowe components.
 
+**Support for starting Zowe API ML without z/OSMF on your system**
+
+By default, the API Gateway uses z/OSMF as an authentication provider. With the release of Zowe 1.15 it is now possible to switch to SAF as the authentication provider instead of z/OSMF. So, if you want to securely run the Zowe API ML but your system does not have z/OSMF, simply select SAF as your authentication provider. For more information on how to switch to SAF, see [API Gateway configuration parameters](https://github.com/zowe/docs-site/blob/docs-staging/docs/user-guide/api-mediation/api-gateway-configuration.md#apimlsecurityauthprovider).
 
 ### New features and enhancements
 
