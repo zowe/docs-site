@@ -31,9 +31,9 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
-**Auto-Save plugin data** 
+**Auto-Save plug-in data** 
 
-Plugin developers can now make use of the new autosave feature, which can automatically save state data based on what the developer intends to retain, at regular time intervals. This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state. This new capability furthers the larger goal of high availability and fault tolerance for all Zowe components.
+Plug-in developers can now make use of the new autosave feature, which can automatically save state data based on what the developer intends to retain, at regular time intervals. This is to protect against client crashes, and in the case of a crash, the apps are reopened upon desktop login and restored with the saved state. This new capability furthers the larger goal of high availability and fault tolerance for all Zowe components.
 
 
 ### New features and enhancements
@@ -77,9 +77,9 @@ A new endpoint has been added to the Agent API. This new endpoint will return a 
 
 #### Zowe App Server
 
-- A new feature that allows users to auto save plugin data by subscribing to the event. By default, the feature will auto save every 5 minutes, but this interval can be customized. [#250](https://github.com/zowe/zlux-app-manager/pull/250)
+- Added a feature that allows users to auto save plug-in data by subscribing to the event. By default, the feature will auto save every 5 minutes, but this interval can be customized. [#250](https://github.com/zowe/zlux-app-manager/pull/250)
   - This feature is enabled via the Plugin Definition. `"autosave": true`
-- Users are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
+- You are now able to select multiple jobs in the job tree, which allows for functions such as purging multiple jobs at once. [#274](https://github.com/zowe/zlux/issues/274), [#204](https://github.com/zowe/explorer-jes/pull/204)
 
 #### Zowe CLI
 
@@ -93,7 +93,7 @@ The following features and enhancements were added to the **Imperative CLI Frame
 <!-- Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history and date, pull updates after last release publish date Aug 13. Includes 4.7.6, 4.8.0, 4.8.1. -->
 
 - Added support for dynamically generated cookie names. Updated `AbstractSession.storeCookie()` to process cookie names that are not fully known at build-time. [#431](https://github.com/zowe/imperative/pull/431)
-- Added the SSO Callback function, which allows applications to call their own functions while validating session properties (that is, host, port, user, password, token, and so on.). The callback option is named `getValuesBack`. [#422](https://github.com/zowe/imperative/issues/422)
+- Added the SSO Callback function, which allows applications to call their own functions while validating session properties (that is, host, port, user, password, token, and so on). The callback option is named `getValuesBack`. [#422](https://github.com/zowe/imperative/issues/422)
 
 The following features and enhancements were added to the **Secure Credential Store Plug-in**:
 <!-- Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history and date, pull updates after last release publish date Aug 13. Includes 4.1.0. -->
@@ -103,25 +103,37 @@ The following features and enhancements were added to the **Secure Credential St
 <!--#### Zowe Explorer -->
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release publish date Aug 13. No changes.-->
 
+#### Zowe JES/MVS/USS Explorers
+
+The following features and enhancements were added to the **JES Explorer**:
+
+- Changed the packaging and lifecycle `start.sh` script to add explorer-ui-server keyring support. [#1177](https://github.com/zowe/zowe-install-packaging/pull/1177)
+- Added app bar, along with settings, and local storage to store user preferences and remember the last search filter. [#487](https://github.com/zowe/zlux/issues/487)    
+- Notifications preference can set duration for snack bar notification. [#273](https://github.com/zowe/zlux/issues/273)
+
+The following features and enhancements were added to the **MVS Explorer** and **USS Explorer**:
+- Changed the packaging and lifecycle `start.sh` script to add explorer-ui-server keyring support. [#1177](https://github.com/zowe/zowe-install-packaging/pull/1177)
+- Added ability to collapse and resize jobs tree. [#259](https://github.com/zowe/zlux/issues/259)
+
 ### Bug fixes
 
-The following bugs were fixed:
+The following bugs were fixed.
 
 #### Zowe API Mediation Layer
 <!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1150. Based on release number.-->
-- SSL validation when Eureka is running in HTTP mode has been fixed. When the scheme is HTTP, SSL configuration is not verified since it not used. [#792](https://github.com/zowe/api-layer/issues/792)
-- A problem in error handling has been fixed when no api-doc is available. Now a specific return code and message is generated when a problem occurs when obtaining or transforming the api-doc. [#571](https://github.com/zowe/api-layer/issues/571)
+- Fixed SSL validation when Eureka is running in HTTP mode. When the scheme is HTTP, SSL configuration is not verified since it is not used. [#792](https://github.com/zowe/api-layer/issues/792)
+- Fixed a problem in error handling when no api-doc is available. Now a specific return code and message is generated when a problem occurs when obtaining or transforming the api-doc. [#571](https://github.com/zowe/api-layer/issues/571)
 
 #### ZSS
 
 - When RBAC is disabled, only the following services will be available. [#210](https://github.com/zowe/zss/pull/210)
-  - `/server/agent/environment` (with limited info)
+  - `/server/agent/environment` (with limited information)
   - `/server/agent/services`  
 
 #### Zowe App Server
 
 - External CA certificates to the Zowe `ZWED_node_https_certificateAuthorities array` only after checking to see if the certificates exist, which prevents it from pointing to nothing, resulting in it breaking. [#136](https://github.com/zowe/zlux-app-server/pull/136)
-- In previous versions, the component.json file was only being created when users upgraded their Zowe system to a more recent version. Performing an initial installation would not result in the component.json file being created. In this version, this bug has been resolved, and the component.json file is created both when upgrading and performing an initial installation. [#135](https://github.com/zowe/zlux-app-server/pull/135) 
+- In previous versions, the `component.json` file was only being created when users upgraded their Zowe system to a more recent version. Performing an initial installation would not result in the `component.json` file being created. In this version, this bug has been resolved, and the `component.json` file is created both when upgrading and performing an initial installation. [#135](https://github.com/zowe/zlux-app-server/pull/135) 
 
 #### Zowe CLI
 
@@ -134,6 +146,21 @@ The following bug was fixed in the **Imperative CLI Framework**:
 
 <!--#### Zowe Explorer -->
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md no changes since Aug 13.-->
+
+#### Zowe JES/MVS/USS Explorers
+
+The following bugs were fixed in the **JES Explorer**:
+- Fixed a bug where no jobs would show after auth token expired and user logs back in. [#408](https://github.com/zowe/zlux/issues/408)
+- Added default value for `ZOWE_EXPLORER_FRAME_ANCESTORS` at lifecycle start script. It resolves [#44](https://github.com/zowe/explorer-ui-server/issues/44).
+- Fixed an issue where job tree height is greater than app container which makes the page scrollable. [#484](https://github.com/zowe/zlux/issues/484)
+
+The following bugs were fixed in the **MVS Explorer**:
+- Fixed an issue where the dataset tree and the content viewer were not aligned. [#484](https://github.com/zowe/zlux/issues/484)
+- Added default value for `ZOWE_EXPLORER_FRAME_ANCESTORS` at lifecycle start script. It resolves [#44](https://github.com/zowe/explorer-ui-server/issues/44).
+
+The following bugs were fixed in the **USS Explorer**:
+- Added default value for `ZOWE_EXPLORER_FRAME_ANCESTORS` at lifecycle start script. It resolves [#44](https://github.com/zowe/explorer-ui-server/issues/44).
+
 
 ## Version 1.14.0 LTS (August 2020)
 
