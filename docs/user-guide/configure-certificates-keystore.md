@@ -166,39 +166,22 @@ Configure zowe-setup-certifcates.env using the following parameters. Both are re
 2. In the ZSS server configuration, enable SSO and input your token name/label:
 
 ```
-
 "agent": {
-
   //host is for zlux to know, not zss
-
   "host": "localhost",
-
   "http": {
-
    "ipAddresses": ["0.0.0.0"],
-
    "port": 0000
-
   },
-
   "jwt": {
-
    "enabled": true,
-
    "fallback": false,
-
    "key": {
-
 ​    "token": "TOKEN.NAME",
-
 ​    "label": "KEY_NAME"
-
    }
-
   },
-
  },
-
 ```
 
 ## Hints and tips

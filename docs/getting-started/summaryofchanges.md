@@ -31,6 +31,10 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
+**Keyring support**
+
+Prior to 1.15 the Zowe z/OS components were only able to use a certificate held in a USS Java KeyStore.  In 1.15 there is the ability to use a certificate held in a z/OS keyring described in [Configuring Zowe certificates in a key ring](../user-guide/configure-certificates-keyring.md).  For a complete description of Zowe certificates, certificate authorities, trust stores, and how they are used by Zowe see [Configuring Zowe Certificates](../user-guide/configure-certificates.md).  
+
 ### New features and enhancements
 
 <!-- If there is a corresponding GitHub issue, please also include the GitHub issue number. See v1.3.0 release notes as an example.-->

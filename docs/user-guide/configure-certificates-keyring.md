@@ -1,11 +1,3 @@
-
-<!-->
-<img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
-
-The `KEYSTORE_DIRECTORY` is created using the script `<ROOT_DIR>/bin/zowe-setup-certificates.sh`.  The input parameters for the script are held in a configuration file `<ROOT_DIR>/bin/zowe-setup-certificates.env` that should to be customized for each environment to match their security rules and practices.  Once the script `zowe-setup-certificates.sh` has been run and the `KEYSTORE_DIRECTORY` created in USS one, or many, instances of Zowe can use that keystore directory by specifying it in their `instance.env` variable `KEYSTORE_DIRECTORY`.  
-
--->
-
 ## Configuring Zowe certificates in a key ring	
 
 The JCL member `ZWEKRING` is provided as part of the PDS sample library `SZWESAMP` delivered with Zowe.  The JCL contains the security commands to create the keyring and manage the certificates that Zowe will use.  The JCL must customized before submitting and should be reviewed by a systems programmer familiar with z/OS certificates and keyrings.
