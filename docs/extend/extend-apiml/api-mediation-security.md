@@ -725,6 +725,9 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
+Call the `apiml_cm.sh` script in the directory with API Mediation Layer as in the following example.
+
+**Example:**
 ```
 cd $ZOWE_ROOT_DIR
 bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
@@ -732,30 +735,39 @@ bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext>
 --service-dname <dname> --service-password <password> --service-validity <days> \
 --local-ca-filename $KEYSTORE_DIRECTORY/local_ca/localca
  ```
+where:
 
-The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
+* **`service-alias`**
+is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
-The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore.
+* **`service-keystore`**
+is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
 
-**Example:** `/opt/myservice/keystore/service.keystore`.
+  **Example:** `/opt/myservice/keystore/service.keystore`.
 
-The `service-truststore` contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that will be generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
+* **`service-truststore`**
+contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that is generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
-The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
+* **`service-ext`**
+specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
 
-**Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
+  **Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
-**Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
+  **Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
-The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
+* **`service-dname`**
+is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
 
-**Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
+  **Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
-The `service-validity` is the number of days after until the certificate expires.
+* **`service-validity`**
+is the number of days after until the certificate expires.
 
-The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
+* **`service-password`**
+is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
+* **`local-ca-filename`**
+is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
 
 
 #### Add a service with an existing certificate to API ML on z/OS
@@ -787,7 +799,7 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 ```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
 
-In this example, you will receive a similar response:
+In this example, you receive a similar response:
 
 ```
     HTTP/1.1 502
@@ -807,4 +819,4 @@ In this example, you will receive a similar response:
 
 The message has the key `apiml.common.tlsError`, and the message number `AML0105`, and content that explains details about the message.
 
-If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
+If you receive this message, import the certificate of your service or the CA that signed it to the truststore of the API Mediation Layer as described above.
