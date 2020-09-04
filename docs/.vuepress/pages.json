@@ -140,6 +140,7 @@
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
+          "extend/extend-apiml/api-mediation-sso.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-routing.md",
