@@ -6,7 +6,10 @@ The Zowe Single-Sign-On is based on a single authentication/identity token that 
 
 In the current release of Zowe, only a single z/OS security domain can be used. The current Zowe release also allows for a single technology scope, whereby only a single-sign-on to Zowe Desktop is possible. As such, a second sign-on is necessary to different types of clients, such as Zowe CLI, or web applications outside of Zowe Desktop.
 
-This following section outlines the high-level steps necessary to achieve the sign-on.
+This following section outlines the high-level steps necessary to achieve the sign-on. The following diagram shows high
+level overview of the process. 
+
+<img src="../../images/api-mediation/sso-diagram.jpeg" alt="Zowe SSO Explanation" width="700"/>
 
 There are two main types of components that are used in Zowe SSO via API ML:
 
