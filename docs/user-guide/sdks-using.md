@@ -10,13 +10,41 @@ The following SDKs are available.
 
 ## Getting started
 
-To get started with the SDKs, navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and choose a programming language from the **Zowe Client SDKs** section. The package is downloaded to your computer.
+To get started, download and import the SDK packages into your project. You can also import packages from an online npm registry.
 
-<!--TODO Can we list the artifacts that the user can expect to find in the package after downloading (files, readmes, etc..)? -->
+### Install SDK from local package
 
-**Example - Node:**
+Download and install a set of offline TGZ files.
 
-Create a session object to communicate with z/OSMF. This example shows how to import the z/OS Files APIs and define your connection details in the session object:
+**Follow these steps:**
+
+1. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and select a programming language from the **Zowe Client SDKs** section.
+
+   The SDK is downloaded to your computer.
+
+2. Copy each TGZ file that you want to install. Paste the files into your project directory.
+3. Navigate to your project directory and issue the command `npm install <packageName>.tgz` for each package.
+
+   The packages are installed and ready to use.
+
+### Install SDK from npm registry
+
+Define packages as dependencies in your project and access them from an online npm registry.
+
+**Follow these steps:**
+
+1. Issue the following command to import a package from public npm ``.  <!--TODO unsure about this procedure-->
+2. Define the packages in your project `package.json` file. You might want to automatically update the SDK version in your project, or prevent automatic version updates.
+
+    The packages are installed and ready to use.
+
+## Using
+
+The following examples demonstrate how to use the installed API packages:
+
+**Node Example:**
+
+After you install the package in your project, create a session object to handle communicate with z/OSMF. This example shows how to import the z/OS Files APIs and define your connection details in the session object:
 
 ```javascript
 import { Download } from "@zowe/zos-files-for-zowe-sdk";
@@ -41,9 +69,9 @@ const profileManager = new CliProfileManager({
 const profile = (await profileManager.load({ loadDefault: true })).profile;
 ```
 
-**Example - Python:**
+**Python Example**
 
-After you download an SDK, import the `ZoweSDK` class into your project. Create an object to handle requests to and from the mainframe:
+After you install the package in your project,  import the `ZoweSDK` class. Create an object to handle handle communicate with z/OSMF:
 
 ```python
 from zowe_sdk import ZoweSDK
@@ -57,8 +85,6 @@ To use a Zowe CLI z/OSMF profile instead of manual authentication, provide a pro
 from zowe_sdk import ZoweSDK
 z = ZoweSDK(zosmf_profile='<profile name>')
 ```
-
-The SDK is imported into your project and you can begin making API calls.
 
 <!-- TODO question - Do you think that this minimal info is enough to get started, and that from here it's easy enough to find the examples in the readmes? I didn't want to duplicate what's already written in readmes, so I see this page as "tying things together". -->
 
