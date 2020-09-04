@@ -48,6 +48,20 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without zOSMF present on the system. 
 
+### apiml.security.zosmf.applid
+
+When z/OSMF is used as an authentication provider, to allow client certificate authentication it is necessary to provide
+valid APPLID. The API ML authenticates to the z/OSMF via generation of the passticket and using it to authenticate to the
+z/OSMF. The value in the default installation of the z/OSMF is IZUDFLT. To change the value to another one use the following procedure.
+  
+**Follow these steps:**
+
+1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+2. Find the line that contains the `-Dapiml.security.zosmf.applid=IZUDFLT` parameter and set the value to the APPLID you use.
+3. Restart Zowe&trade.
+
+The provided APPLID will be used for generation of the passticket in case of the x509 client certificate authentication.
+
 ## Retry policy
 
 In default configuration, retry for all requests is disabled, with one exception: the server retries `GET` requests that finish with status code `503`. 

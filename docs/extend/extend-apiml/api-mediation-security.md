@@ -194,10 +194,33 @@ The response is a JSON object, which contains information associated with the ti
 
 For more details, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
+#### Supported authentication methods
+
+The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part
+of the Zowe all of the following methods are enabled and supported. All the methods are supported at least to some extent
+with each authentication provider. 
+
+##### Username/Password
+
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver the 
+credentials. There are more details in the ZAAS Client documentation. 
+
+##### Client certificate
+
+If the keyring or trustore contains at least one valid certificate authority (CA) other than the API ML it is possible to 
+use the client certificates issued by this CA to authenticate to the API ML and subsequent services.   
+
+##### JWT Token
+
+When the client authenticates with the API ML it receives in exchange the JWT token which can be used for further 
+authentication. If z/OSMF is configured as authentication provider and the client already received JWT token produced
+by the z/OSMF it is possible to reuse this token within the API ML for authentication.  
+
 #### Authentication providers
 
 API ML contains the following providers to handle authentication for the API Gateway:
 * `z/OSMF Authentication Provider`
+* `SAF Authentication Provider`
 * `Dummy Authentication Provider`
 
 ##### z/OSMF Authentication Provider
@@ -208,6 +231,16 @@ Use the following properties of API Gateway to enable the `z/OSMF Authentication
 ```
 apiml.security.auth.provider: zosmf
 apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+```
+
+##### SAF Authentication Provider
+
+The `SAF Authentication Provider` allows API Gateway to authenticate directly with the z/OS SAF provider installed on the system. The user needs SAF
+account in order to authenticate. 
+
+Use the following property of API Gateway to enable the `SAF Authentication Provider`:
+```
+apiml.security.auth.provider: saf
 ```
 
 ##### Dummy Authentication Provider
