@@ -10,9 +10,10 @@ As a Zowe Explorer user, you may encounter problems with how the VS Code extensi
 
 - Zowe Explorer and VS Code version installed.
 - Node.js and NPM versions installed.
+- Whether you have Zowe CLI and the Secure Credential Store Zowe CLI plug-in installed.
+- Your operating system.
+- Zowe Logs.
+  
+  Usually, can be found in `C:\Users\userID\.zowe\zowe\logs`.
 
-## Enable Zowe Explorer Debug Mode
-Use debug mode to activate the following functions:
-
-- Display additional debug messages for Zowe Explorer
-- Enable changing log level for individual code components
+Use [the Slack channel](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) to reach the Zowe Explorer community for assistance.
