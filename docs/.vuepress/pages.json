@@ -221,6 +221,14 @@
           "troubleshoot/cli/known-cli.md",
           "troubleshoot/cli/cli-issue.md"
         ]
+      },
+      {
+        "text": "Zowe Explorer",
+        "items": [
+          "troubleshoot/ze/troubleshoot-ze.md",
+          "troubleshoot/ze/known-ze.md",
+          "troubleshoot/ze/ze-issue.md"
+        ]
       }
     ]
   },
