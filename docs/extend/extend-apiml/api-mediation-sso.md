@@ -3,7 +3,7 @@
 As a contributer to Zowe, you can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer.
 
 Zowe Single-Sign-On is based on a single authentication/identity token that identifies the z/OS user. This token needs to be trusted by extensions in order to be used. Only Zowe API ML and the ZAAS component can issue an authentication token based on valid z/OS credentials. This article describes the multiple [authentication methods](api-mediation-security.md#Supported-authentication-methods) you can use to obtain the token.
-In the current release of Zowe, only a single z/OS security domain can be used. The current Zowe release also allows for a single technology scope, whereby only a single-sign-on to Zowe Desktop is possible. As such, a second sign-on method is necessary for clients, such as Zowe CLI, or web applications that are outside of Zowe Desktop.
+In the current release of Zowe, only a single z/OS security domain can be used.
 
 This following section outlines the high-level steps necessary to achieve the sign-on. The following diagram shows the high-level overview of the process. 
 
