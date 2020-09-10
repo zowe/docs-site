@@ -1,20 +1,21 @@
-# Utilizing Zowe API Mediation Layer Single-Sign-On
+# Zowe API Mediation Layer Single-Sign-On Overview
 
-As a contributer to Zowe, you can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer.
+You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer to enhance system security and improve the user experience. 
 
-Zowe Single-Sign-On is based on a single authentication/identity token that identifies the z/OS user. This token needs to be trusted by extensions in order to be used. Only Zowe API ML and the ZAAS component can issue an authentication token based on valid z/OS credentials. This article describes the multiple [authentication methods](api-mediation-security.md#Supported-authentication-methods) you can use to obtain the token.
-In the current release of Zowe, only a single z/OS security domain can be used.
+Zowe Single-Sign-On is based on a single user authentication which produces an access token that represents the user in communication with z/OS services accessible through API ML.  Zowe API ML and the ZAAS component can issue an authentication token based on valid z/OS credentials. This token can be validated by any component participating in SSO. This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to details Zowe SSO documentation. 
 
-This following section outlines the high-level steps necessary to achieve the sign-on. The following diagram shows the high-level overview of the process. 
+**Note:** Currently API ML is capable of providing SSO only in a single security domain.
+
+This article provides a high-level overview of the single-sign-on feature. The following diagram describes the interactions between the general participants in the single-sign-on process. 
 
 <img src="../../images/api-mediation/sso-diagram.jpeg" alt="Zowe SSO Explanation" width="700"/>
 
-There are two main types of components that are used in Zowe SSO via API ML:
+There are two main types of components that participate in Zowe SSO through API ML:
 
 * Zowe API ML client
 
-   - This type of component is user-facing and can obtain credentials from the user through a user interface (web, CLI, desktop).
-   - The Zowe API ML client calls API services through the API ML.
+   - This type of component is user-facing and can obtain user credentials through a user interface (web, CLI, desktop).
+   - A Zowe API ML client calls API services through the API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. Clients can be web or mobile applications.
 
 * An API service accessed through Zowe API ML
@@ -49,6 +50,7 @@ In this case, the service needs to accept a PassTicket in the HTTP Authorization
 
 ## Further resources
 
+* [Authentication Methods](api-mediation-security.md#Supported-authentication-methods)
 * [User guide for SSO in Zowe CLI ](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#accessing-multiple-services-with-sso)
 * [System requirements for using web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/systemrequirements.html#using-web-tokens-for-sso-on-zlux-and-zss)
 * [Certificate configuration for the usage of web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/configure-certificates.html#using-web-tokens-for-sso-on-zlux-and-zss) 
