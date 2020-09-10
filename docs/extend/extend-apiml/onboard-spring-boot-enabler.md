@@ -481,9 +481,12 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog.
-If your service appears in the Discovery Service UI but is not visible in the API Catalog,
-check to make sure that your configuration settings are correct.
+**Follow these steps:**
+  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+ 
+  2. Check that you can access your API service endpoints through the Gateway.
+
+  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
@@ -494,56 +497,6 @@ with actual addresses of API ML components and the respective user credentials.
 **Tip:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
 service was successfully started.
 
-**Follow these steps:**
-
- 1. Use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
-
-    ```
-    https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
-    ```
-
- 2. Check your service metadata.
-
-    **Response example:**
-
-    ```xml
-    <application>
-        <name>{serviceId}</name>
-        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
-        <hostName>{hostname}</hostName>
-        <app>{serviceId}</app>
-        <ipAddr>{ipAddress}</ipAddr>
-        <status>UP</status>
-        <port enabled="false">{port}</port>
-        <securePort enabled="true">{port}</securePort>
-        <vipAddress>{serviceId}</vipAddress>
-        <secureVipAddress>{serviceId}</secureVipAddress>
-        <metadata>
-                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
-                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
-                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
-                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
-                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service ©</apiml.service.title>
-                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
-                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
-                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
-                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
-                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
-                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
-                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
-                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
-                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
-        </metadata>
-    </application>
-    ```
-
-  3. Check that your API service is displayed in the API Catalog and all information including API documentation is correct.
-
-  4. Check that you can access your API service endpoints through the Gateway.
-
-  5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 ## Troubleshooting
 
