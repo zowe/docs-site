@@ -1,4 +1,6 @@
-# Configuring Zowe certificates in a key ring	
+# Configuring Zowe certificates in a key ring (**Beta Technical Preview**)
+
+Beginning with Zowe 1.15 release, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in https://git.com/zowe/community.  It is expected that in a future release keyring support will be made available as a fully supported feature.  
 
 To configure Zowe certificates in a key ring, run the `ZWEKRING` JCL which contains the security commands to create the key ring and manage the certificates that Zowe will use. The `ZWEKRING` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
 
@@ -23,8 +25,6 @@ The `PRODUCT` variable specifies the z/OS security manager.  The default value i
 ```
 //         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
 ```
-
-If you change the value to `ACF2` or `TSS`, you will need to comment out the RACF security commands and uncomment the commands for your security manager.  This is described more in the JCL member `ZWEKRING`.
 
 ### `HOSTNAME` and `IPADDRESS`
 
