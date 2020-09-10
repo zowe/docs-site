@@ -29,6 +29,21 @@ If you need to edit a profile, click the **Update Profile** button next to the c
 
 In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
 
+### Associate Profile
+
+Zowe Explorer allows you to extend its functionality, using Zowe Explorer Extender API. To allow extenders to add more functionality, Zowe Explorer leverages a simple mechanism that enables to 'associate' profiles. Every Zowe Explorer profile has two types of association: "primary" and "secondary". While the "primary" association is `zosmf`, the "secondary" association can include the following options:
+
+* endevor
+* endevor-location
+* ssh
+* tso
+
+Within the scope of their own extender package, associated profiles can be used to access a relevant REST API available to the extender.
+
+<img src="../images/ze/ZE-profile-links.gif" width="600" height="300" alt="Edit a Profile">
+
+For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
+
 ## Enabling Secure Credential Store with Zowe Explorer
 
 Store your credentials securely by using the Secure Credential Store (SCS) plug-in in Zowe Explorer. By default, your credentials are stored in plain text.
