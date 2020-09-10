@@ -147,7 +147,7 @@ module.exports = {
       'link',
       {
         rel: 'icon',
-        href: './vuepress/public/favicon.ico'
+        href: '/favicon.ico'
       }
     ],
   ],
