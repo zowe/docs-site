@@ -143,6 +143,13 @@ module.exports = {
         content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
       }
     ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: './vuepress/public/favicon.ico'
+      }
+    ],
   ],
   plugins: [
     ['@vuepress/back-to-top', true],
