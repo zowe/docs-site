@@ -38,7 +38,7 @@ The lines in bold green are external certificates for servers that are not manag
 
 Zowe supports certificates that are stored in a USS directory **Java KeyStore** format.  
 
-Beginning with release 1.15, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in https://git.com/zowe/community.  It is expected that in a future release keyring support will be made available as a fully supported feature.  
+Beginning with release 1.15, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  It is expected that in a future release keyring support will be made available as a fully supported feature.  
 
 <!--
 Zowe supports certificates that are stored either in a USS directory **Java KeyStore** format or else held in a **z/OS Keyring**.  z/OS keystore are the preferred choice for storing certificates where system programmers are already familiar with their operation and usage.  The user ID setting up a keystore and connecting it with certificates requires elevated permissions, and in scenarios where you need to create a Zowe sandbox environment or for testing purposes and your TSO user ID doesn't have authority to manipulate key rings, USS keystores are a good alternative.  

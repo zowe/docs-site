@@ -12,7 +12,7 @@ After you run `ZWEKRING` successfully, you must run the script `zowe-setup-certi
 
 The `ZWEKRING` JCL helps you create a key ring that contains a certificate and a local certificate authority that is used to self-sign the certificate. 
 
-Other scenarios (such as importing an existing certificate into the ZoweKeyring) are described in the `ZWEKRING` JCL with the commands commented out) but are currently unsupported and included in beta mode for early testing and feedback with Zowe v1.15.  If you find any issues, please raise a GitHub issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  Future releases of Zowe will provide support for more key ring scenarios.  
+Other scenarios (such as importing an existing certificate into the ZoweKeyring) are described in the `ZWEKRING` JCL with the commands commented out) but are not currently documented and have not been fully tested.  If you find any issues, please raise a GitHub issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  Future releases of Zowe will provide documentation and support for more key ring scenarios.
 
 ## Customizing the ZWEKRING JCL
 
