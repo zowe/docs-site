@@ -13,8 +13,8 @@ There are two main types of components that are used in Zowe SSO via API ML:
 
 * Zowe API ML client
 
-   - This type of component is user-facing and can obtain credentials from the user through a user interface (web, CLI, desktop)
-   - The Zowe API ML client calls API services through the API ML
+   - This type of component is user-facing and can obtain credentials from the user through a user interface (web, CLI, desktop).
+   - The Zowe API ML client calls API services through the API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. Clients can be web or mobile applications.
 
 * An API service accessed through Zowe API ML
@@ -25,21 +25,19 @@ The following sections describe what is necessary to utilize SSO for both types.
 
 ### Zowe API ML client
 
-* Zowe API ML client needs to obtain an authentication token via the `/login` endpoint of ZAAS described above. This endpoint requires valid credentials.
+* The Zowe API ML client needs to obtain an authentication token via the `/login` endpoint of ZAAS described previously. This endpoint requires valid credentials.
 * The client should not rely on the token format but use the ZAAS `/query` endpoint to validate the token and get information about it. This is useful when the API client has the token but does not store the associated data such as the user ID.
 * The API client needs to provide the authentication token to API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described in [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
-**Note:** Future plans for Zowe CLI to serve as an API ML client are desribed at [Zowe CLI: Token Authentication, MFA, and SSO](https://medium.com/zowe/zowe-cli-token-authentication-mfa-and-sso-b88bca3efa35).
-
 ### API service accessed via Zowe API ML
 
-This section describes the requirements of a service to adopt a Zowe authentication token. In the future, we intend to allow Zowe to support services that accept PassTickets. 
+This section describes the requirements of a service to adopt a Zowe authentication token. 
 
 * The API service must accept the authentication token to the API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken` or in the `Authorization: Bearer` HTTP header as described in the [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 * The API service must validate the token and extract information about the user ID by calling the `/query` endpoint of the ZAAS described above. The alternative is to validate the signature of the JWT token. The format of the signature and location of the public key is described above. We recommend that you use this alternative only when calling the `/query` endpoint is not feasible.
 * The API service needs to trust the Zowe API Gateway that hosts the ZAAS. The service is required to have the certificate of the CA that signed the Zowe API Gateway in its truststore.
 
-The REST API of the ZAAS can be easily called from a Java application using the [ZAAS Client](api-mediation-security.md#zaas-client) described below.
+The REST API of the ZAAS can easily be called from a Java application using the [ZAAS Client](api-mediation-security.md#zaas-client) described later in this article.
 
 ### Existing services that cannot be modified
 
