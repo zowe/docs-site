@@ -468,15 +468,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway. If the authentication is required and the default configuration provider on local instance is used the username is user and password user:
-
-    `https://localhost:10010/application/routes`
-
-    The following line should appear:
-
-    `/api/v2/petstore/**: "petstore"`
-
-    This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with the service ID `petstore`.
+4.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -509,15 +501,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
-5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
-
-    `https://${zoweHostname}:${gatewayHttpsPort}/application/routes`
-
-    The following line should appear:
-
-    `/api/v2/petstore/**: "petstore"`
-
-    This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+5.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```
