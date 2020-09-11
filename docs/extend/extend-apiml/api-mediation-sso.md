@@ -1,8 +1,8 @@
 # Zowe API Mediation Layer Single-Sign-On Overview
 
-You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer to enhance system security and improve the user experience. 
+You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
 
-This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to details Zowe SSO documentation. Zowe Single-Sign-On is based on a single user authentication which produces an access token that represents the user in communication with z/OS services accessible through API ML.  The access token is issued by the Zowe Authentication and Authorization Service (ZAAS) which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
+This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single-Sign-On is based on single user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS) which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
 
 **Note:** Currently API ML is capable of providing SSO only in a single security domain.
 
@@ -22,10 +22,10 @@ There are two main types of components that participate in Zowe SSO through API 
 * An API service accessed through Zowe API ML
 
    - A service that is registered to API ML and is accessed through the API Gateway.
-   - Services are protected by an access token or passticket.
-   - The access token or passticket can be validated by the called API service.
+   - Services are protected by an access token or PassTicket.
+   - The access token or PassTicket can be validated by the called API service.
 
-The following sections describe what is necessary to utilize SSO for both types.
+The following sections describe what is necessary to utilize SSO for both types of components.
 
 ### Zowe API ML client
 
@@ -37,9 +37,9 @@ The following sections describe what is necessary to utilize SSO for both types.
 
 This section describes the requirements that an API service needs to satisfy to adopt a Zowe SSO access token. 
 
-* The token received by the Gateway is first validated and then may be passed directly to the service. Alternatively, the Gateway can exchange the token for a passticket if the API service is configured to expect a passticket.
-* The API service can validate the token and extract information about the user ID by calling ZAAS `/query` endpoint. 
-* The alternative is to validate the signature of the JWT token using the public key of the token issuer (API ML Gateway). The API service needs to have the API ML Gateway certificate, along with the full CA certification chain in the API service truststore. 
+* The token received by the Gateway is first validated and then may be passed directly to the service. Alternatively, the Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
+* The API service can validate the token and extract information about the user ID by calling the ZAAS `/query` endpoint. 
+* The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 
 **Note:** The REST API of ZAAS can easily be called from a Java application using the [ZAAS Client](api-mediation-security.md#zaas-client).
 
