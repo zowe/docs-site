@@ -287,14 +287,14 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Possible actions regarding message content:
+  Possible actions regarding the message content:
   
-  - Message: Certificate doesn't match any of the subject alternative names.
+  - Message: The certificate does not match any of the subject alternative names.
     
-    Action: Verify that hostname the certificate is issued for, match the hostname of the service 
-  - Message: Unable to find valid certification path to requested target.
+    Action: Verify that the hostname which the certificate is issued for matches the hostname of the service. 
+  - Message: Unable to find the valid certification path to the requested target.
     
-    Action: Import the root CA (that issued service's certificate) certificate, to API Gateway truststore
+    Action: Import the root CA that issued service's certificate to the API Gateway truststore.
 
 ### ZWEAM600W
 
