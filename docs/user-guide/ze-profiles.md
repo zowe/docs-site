@@ -31,7 +31,7 @@ In addition, you can hide a profile from the explorer tree, and permanently dele
 
 ### Associate Profile
 
-Zowe Explorer allows you to extend its functionality, using Zowe Explorer Extender APIs. Extenders add more functionality, using a simple mechanism that enables you to associate profiles. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
+Zowe Explorer allows you to broaden its functionality, using Zowe Explorer Extender APIs. Extenders add new functionality to the extension, leveraging a simple mechanism that enables you to associate profiles. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
 
 Create a secondary association for your Zowe Explorer profiles.
 
