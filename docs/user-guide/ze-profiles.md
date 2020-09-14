@@ -31,16 +31,20 @@ In addition, you can hide a profile from the explorer tree, and permanently dele
 
 ### Associate Profile
 
-Zowe Explorer allows you to extend its functionality, using Zowe Explorer Extender APIs. Extenders add more functionality, levaraging a simple mechanism that enables you to 'associate' profiles. Every Zowe Explorer profile has two types of association: "primary" and "secondary". While the "primary" association is `zosmf`, the "secondary" association includes the following options:
+Zowe Explorer allows you to extend its functionality, using Zowe Explorer Extender APIs. Extenders add more functionality, using a simple mechanism that enables you to associate profiles. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
 
-* endevor
-* endevor-location
-* ssh
-* tso
+Create a secondary association for your Zowe Explorer profiles.
 
-Within the scope of their own extender package, associated profiles can be used to access a relevant REST API available to the extender.
+**Follow these steps:**
+
+1. Navigate to the explorer tree.
+2. Click the associate profiles button.
+3. Select a secondary profile type.
+4. Select a file name you want to create an association for.
 
 <img src="../images/ze/ZE-profile-links.gif" width="600" height="300" alt="Edit a Profile">
+
+You have successfully associated your Zowe Explorer profile.
 
 For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
 
