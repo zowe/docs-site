@@ -138,6 +138,7 @@ The Conda packages extend this by allowing for more than one Plugin, or a mix of
 ## Building Conda packages for Zowe
 
 This document is intended to be provided with example scripts by the Zowe community, which shows you how you can build a simple Zowe plugin into a Conda package.
+You can find the example scripts on the [Zowe zlux-build github repository.](https://github.com/zowe/zlux-build/tree/master/conda)
 This is not intended to be a one-size-fits-all set of scripts. If you have more advanced needs, you can use these scripts as a basis for writing your own scripts.
 
 To make a Conda package, you need conda-build, which you can install into a Conda environment:
