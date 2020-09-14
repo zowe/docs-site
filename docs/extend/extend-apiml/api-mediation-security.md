@@ -602,6 +602,8 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 **Notes:** 
 
+- If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It's recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
+
 - The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$KEYSTORE_DIRECTORY/local_ca/localca.cer` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 **Follow these steps:**
@@ -653,6 +655,8 @@ Trust in the API ML server is a necessary precondition for secure communication 
       ```
 
 #### Generate a keystore and truststore for a new service on z/OS
+
+**Note:** This procedure applies to UNIX file keystore and truststore only. For the SAF keyring option, it's recommended that you perform the actions manually using your security system commands.	
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 

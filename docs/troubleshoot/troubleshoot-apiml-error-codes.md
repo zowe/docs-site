@@ -283,11 +283,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Gateway does not trust the requested service and refuses to communicate with it. The certificate of the service is missing from the truststore of the API Mediation Layer.
+  The Gateway does not trust the requested service and refuses to communicate with it.
 
   **Action:**
 
-  Contact your administrator to verify API Mediation Layer truststore configuration.
+  Possible actions regarding the message content:
+  
+  - Message: The certificate does not match any of the subject alternative names.
+    
+    Action: Verify that the hostname which the certificate is issued for matches the hostname of the service. 
+  - Message: Unable to find the valid certification path to the requested target.
+    
+    Action: Import the root CA that issued service's certificate to the API Gateway truststore.
 
 ### ZWEAM600W
 

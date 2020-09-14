@@ -51,6 +51,8 @@
           "user-guide/install-zowe-smpe-zosmf-workflow.md",
           "user-guide/configure-zos-system.md",
           "user-guide/configure-certificates.md",
+          "user-guide/configure-certificates-keystore.md",
+          "user-guide/configure-certificates-keyring.md",
           "user-guide/configure-xmem-server.md",
           "user-guide/configure-instance-directory.md",
           "user-guide/configure-zowe-server.md",
@@ -221,6 +223,14 @@
           "troubleshoot/cli/zosmf-cli.md",
           "troubleshoot/cli/known-cli.md",
           "troubleshoot/cli/cli-issue.md"
+        ]
+      },
+      {
+        "text": "Zowe Explorer",
+        "items": [
+          "troubleshoot/ze/troubleshoot-ze.md",
+          "troubleshoot/ze/known-ze.md",
+          "troubleshoot/ze/ze-issue.md"
         ]
       }
     ]
