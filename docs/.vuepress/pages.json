@@ -272,7 +272,11 @@
     "canHideFirst": true,
     "items": [{
         "text": "Zowe CLI command reference",
-        "link": "#zowe-cli-command-reference-guide"
+        "link": "appendix/zowe-cli-commannd-reference.md"
+      },
+      {
+        "text": "Zowe API reference",
+        "link": "appendix/zowe-api-reference.md"
       },
       {
         "text": "Bill of Materials",
@@ -281,22 +285,6 @@
       {
         "text": "Third-Party Software Requirements",
         "link": "appendix/tpsr.md"
-      },
-      {
-        "text": "REST API for the Data sets and z/OS Unix Files Services",
-        "link": "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json"
-      },
-      {
-        "text": "REST API for the API Gateway service",
-        "link": "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/gateway.json"
-      },
-      {
-        "text": "REST API for the JES Jobs Service",
-        "link": "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json"
-      },
-      {
-        "text": "REST API for ZLUX Plugin",
-        "link": "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/zlux-plugin.json"
       }
     ]
   }
