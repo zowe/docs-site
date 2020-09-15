@@ -52,7 +52,7 @@ Define the packages as dependencies in your project and pull them from an online
    - To import a Node package: `npm install <sdkPackageName>`
    - To import a Python package: `pip install <sdkPackageName>`
 
-    The package is installed and defined in your `package.json` or `requirements.txt` file.
+    The package is installed and defined in your `package.json` or `setup.py` file.
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates. Use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) to define the versioning scheme.
 
@@ -117,7 +117,6 @@ For more information about the Python SDK, including usage examples see the [Pyt
 ## Contributing
 
 For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](./extend/../../extend/extend-sdks.md).
-
 
 
 
