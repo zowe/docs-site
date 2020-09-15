@@ -112,10 +112,9 @@ Browse or download the [API Reference documentation](https://docs.zowe.org/stabl
 
 For more information about the Node SDK, including usage examples, see the documentation in the [Node SDK Readme](https://github.com/zowe/zowe-cli#using-the-zowe-node-apis).
 
-For more information about the Python SDK, including usage examples see the [Python SDK Readme](https://github.com/zowe/zowe-client-python-sdk#zowe-python-client-sdk).
+For more information about the Python SDK, including usage examples see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
 
 ## Contributing
 
 For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](./extend/../../extend/extend-sdks.md).
-
 
