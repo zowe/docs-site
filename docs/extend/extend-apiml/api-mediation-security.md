@@ -27,6 +27,7 @@
     + [API Documentation](#api-documentation)
       - [Obtain a JWT token (`login`)](#obtain-a-jwt-token---login--)
       - [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token---query--)
+      - [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token---logout--)
       - [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket---passticket--)
     + [Getting Started (Step by Step Instructions)](#getting-started--step-by-step-instructions-)
   * [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
@@ -401,7 +402,12 @@ See [Enabling PassTicket creation for API Services that Accept PassTickets](api-
 ## ZAAS Client
 
 The ZAAS client is a plain Java library that provides authentication through a simple unified interface without the need
-for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods for retrieval of the JWT token, the PassTicket, and verification of JWT token information.
+for detailed knowledge of the REST API calls presented in this section. The Client function has only a few dependencies including Apache HTTP Client, Lombok, and their associated dependencies. The client contains methods to perform the following actions:
+
+- To obtain a JWT token
+- To validate and get details from a JWT token
+- To invalidate the JWT token
+- To obtain a PassTicket
 
 ### Pre-requisites
 
@@ -419,6 +425,7 @@ public interface ZaasClient {
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
     String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
+    void logout(String token) throws ZaasClientException, ZaasConfigurationException;
 }
 ```
 
@@ -426,6 +433,7 @@ This Java code enables your application to add the following functions:
 
 - **Obtain a JWT token (`login`)**
 - **Validate and get details from the token (`query`)**
+- **Invalidate a JWT token (`logout`)**
 - **Obtain a PassTicket (`passTicket`)**
 
 #### Obtain a JWT token (`login`)
@@ -453,7 +461,7 @@ Both methods automatically use the truststore file to add a security layer, whic
 
 Use the `query` method to get the details embedded in the token. These details include creation time of the token, expiration time of the token, and the user who the token is issued to.
 
-To use this method, call the method from your API.
+Call the `query` method from your API in the following format:
 
 ```java
 ZaasToken query(String token) throws ZaasClientException;
@@ -462,6 +470,18 @@ ZaasToken query(String token) throws ZaasClientException;
 In return, you receive the `ZaasToken` Object in JSON format.
 
 This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
+
+#### Invalidate a JWT token (`logout`)
+
+The `logout` method is used to invalidate the JWT token. The token must be provided in the Cookie header and must follow the format accepted by the API ML. 
+
+Call the `logout` method from your API in the following format:
+
+```java
+void logout(String token) throws ZaasClientException, ZaasConfigurationException;   
+```
+
+In return, you receive a `204` HTTP status code if the token was successfully invalidated.
 
 #### Obtain a PassTicket (`passTicket`)
 
