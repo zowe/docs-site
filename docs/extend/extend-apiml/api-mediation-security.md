@@ -425,7 +425,7 @@ public interface ZaasClient {
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
     String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
-    void logout(String token) throws ZaasClientException, IOException, ZaasConfigurationException;
+    void logout(String token) throws ZaasClientException, ZaasConfigurationException;
 }
 ```
 
@@ -478,7 +478,7 @@ The `logout` method is used to invalidate the JWT token. The token must be provi
 Call the `logout` method from your API in the following format:
 
 ```java
-void logout(String token) throws ZaasClientException, IOException, ZaasConfigurationException;   
+void logout(String token) throws ZaasClientException, ZaasConfigurationException;   
 ```
 
 In return, you receive a `204` HTTP status code if the token was successfully invalidated.
