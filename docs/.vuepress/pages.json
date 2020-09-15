@@ -272,7 +272,7 @@
     "canHideFirst": true,
     "items": [{
         "text": "Zowe CLI command reference",
-        "link": "appendix/zowe-cli-command-reference.md"
+        "link": "appendix/zowe-cli-commannd-reference.md"
       },
       {
         "text": "Zowe API reference",
