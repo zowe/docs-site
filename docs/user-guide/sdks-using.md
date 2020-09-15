@@ -91,20 +91,18 @@ const profile = (await profileManager.load({ loadDefault: true })).profile;
 
 **Python Example**
 
-After you install the package in your project,  import the `ZoweSDK` class. Create an object to handle communication with z/OSMF:
+After you install the package in your project,  import the class for the required sub-package (i.e `Console` class for z/OS Console commands). Create a dictionary to handle communication with z/OSMF:
 
 ```python
-from zowe_sdk import ZoweSDK
+from zowe.zos_console_for_zowe_sdk import Console
 
-z = ZoweSDK(zosmf_host='<host address>', zosmf_user='<zosmf user>', zosmf_password='<zosmf password>')
-```
+connection = {
+    "host_url": "'<host address>'",
+    "user": "<user>",
+    "password": "<password>",
 
-To use a Zowe CLI z/OSMF profile instead of manual authentication, provide a profile name when you create the object:
-
-```python
-from zowe_sdk import ZoweSDK
-z = ZoweSDK(zosmf_profile='<profile name>')
-```
+}
+my_console = Console(connection)
 
 ## API documentation
 
@@ -117,4 +115,3 @@ For more information about the Python SDK, including usage examples see the [Pyt
 ## Contributing
 
 For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](./extend/../../extend/extend-sdks.md).
-
