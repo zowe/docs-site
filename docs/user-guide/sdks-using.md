@@ -17,7 +17,7 @@ Before you use the Python SDK, install the following software:
 - [requests-2.22](https://github.com/psf/requests)
 - [keyring](https://github.com/jaraco/keyring)
 - [pyyaml](https://github.com/yaml/pyyaml)
-
+- [urllib3](https://github.com/urllib3/urllib3)
 ## Getting started
 
 To get started, download and import the SDK packages to your project. Alternatively, you can pull the packages from an online registry.
@@ -117,6 +117,5 @@ For more information about the Python SDK, including usage examples see the [Pyt
 ## Contributing
 
 For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](./extend/../../extend/extend-sdks.md).
-
 
 
