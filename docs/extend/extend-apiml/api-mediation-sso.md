@@ -6,6 +6,10 @@ This article provides an overview of the API ML single-sign-on feature, the prin
 
 **Note:** Currently API ML is capable of providing SSO only in a single security domain.
 
+- [Zowe API ML client](#zowe-api-ml-client)
+- [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
+- [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
+
 The following diagram describes the interactions between the general participants in the single-sign-on process. 
 
 <img src="../../images/api-mediation/sso-diagram.jpeg" alt="Zowe SSO Explanation" width="700"/>
