@@ -32,7 +32,7 @@ Download and install the packages.
 
    The SDK is downloaded to your computer.
 
-2. Open the SDK folder, which contains packages for each function. Copy each file that you want to install and paste them into your project directory.
+2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
 
 3. In a command-line window, navigate to your project directory. Issue one of the following commands:
 
@@ -64,7 +64,7 @@ The following examples demonstrate how to call the API endpoints:
 
 **Node Example:**
 
-After you install the package in your project, create a session object to handle communicate with z/OSMF. This example shows how to import the z/OS Files APIs and define your connection details in the session object:
+After you install the package in your project, create a session object to handle communication with z/OSMF. This example shows how to import the z/OS Files APIs and define your connection details in the session object:
 
 ```javascript
 import { Download } from "@zowe/zos-files-for-zowe-sdk";
@@ -91,7 +91,7 @@ const profile = (await profileManager.load({ loadDefault: true })).profile;
 
 **Python Example**
 
-After you install the package in your project,  import the `ZoweSDK` class. Create an object to handle handle communicate with z/OSMF:
+After you install the package in your project,  import the `ZoweSDK` class. Create an object to handle communication with z/OSMF:
 
 ```python
 from zowe_sdk import ZoweSDK
