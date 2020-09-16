@@ -100,7 +100,7 @@ The following range of service types apply to the Zowe&trade; API ML:
 
 ### Zowe API ML TLS requirements
 
-The API ML TLS requires servers to provide HTTPS ports. Each of the API ML services has the following specific requirements:
+The API ML TLS requires servers to provide HTTPS ports. Each API ML service has the following specific requirements:
 
 - **API Client**
     - The API Client is not a server
@@ -140,7 +140,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
     - API Gateway handles authentication.
     - There are two authentication endpoints that allow to authenticate the resource by providers
-    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token.
+    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
 
 - **API Catalog**
 
@@ -152,7 +152,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token.
+    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
 
 - **API Services**
 
@@ -168,14 +168,14 @@ The `/login` endpoint authenticates mainframe user credentials and returns an au
   * Basic access authentication
   * JSON with user credentials
 
-When authentication is successful the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
 
 The `/query` endpoint validates the token and retrieves the information associated with the token.
 The query request requires the token through one of the following methods:
   * A cookie named `apimlAuthenticationToken`
   * Bearer authentication
 
-When authentication is successful the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code.
 
 The `/ticket` endpoint generates a PassTicket for the user associated with a token.
 
@@ -185,20 +185,20 @@ The ticket request requires the token in one of the following formats:
 - Cookie named apimlAuthenticationToken.
 - Bearer authentication
 
-The request takes one parameter named `applicationName`, the name of the application for which the PassTicket should be generated. This parameter must be supplied.
+The request takes the `applicationName` parameter, which is the name of the application for which the PassTicket should be generated. This parameter must be supplied.
 
 The response is a JSON object, which contains information associated with the ticket.
 
 For more details, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
 #### Supported authentication methods
-The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part of the Zowe all of the following methods are enabled and supported. All the methods are supported at least to some extent with each authentication provider.
+The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part of Zowe, all of the following methods are enabled and supported. All the methods are supported at least to some extent with each authentication provider.
 
 ##### Username/Password
-The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the ZAAS Client documentation.
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the [ZAAS Client documentation](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#zaas-client).
 
 ##### JWT Token
-When the client authenticates with the API ML it receives in exchange the JWT token which can be used for further authentication. If z/OSMF is configured as authentication provider and the client already received JWT token produced by the z/OSMF it is possible to reuse this token within the API ML for authentication.
+When the client authenticates with the API ML, it receives in exchange the JWT token which can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by the z/OSMF, it is possible to reuse this token within the API ML for authentication.
 
 #### Authentication providers
 
