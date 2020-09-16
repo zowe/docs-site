@@ -103,6 +103,7 @@ connection = {
 
 }
 my_console = Console(connection)
+```
 
 ## API documentation
 
