@@ -2,9 +2,9 @@
 
 You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
 
-This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single-Sign-On is based on single user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS) which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
+This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single-Sign-On is based on single-user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS), which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
 
-**Note:** Currently API ML is capable of providing SSO only in a single security domain.
+**Note:** Currently, API ML can only provide SSO in a domain with a single method of security in place.
 
 - [Zowe API ML client](#zowe-api-ml-client)
 - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
@@ -49,7 +49,7 @@ This section describes the requirements that an API service needs to satisfy to 
 
 ### Existing services that cannot be modified
 
-If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe Single-Sign-On if the API service is able to handle PassTickets. 
+If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
 **Note:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md) for more details.
 
