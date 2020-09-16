@@ -1,6 +1,22 @@
+---
+meta:
+  - name: description
+    content: You can register and execute z/OSMF workflow in the web interface to complete the Zowe configuration after you install Zowe. z/OSMF workflow helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration.
+  - name: keywords
+    content: Zowe, components, introduction
+---
+
 # Zowe overview
 
 Zowe&trade; is an open source project created to host technologies that benefit the IBM Z platform for all members of the Z community, including Integrated Software Vendors (ISVs), System Integrators, and z/OS consumers. Zowe, like Mac or Windows, comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box. Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors.
+
+
+Zowe is an open source project within the Open Mainframe Project that is part of The Linux Foundation. Zowe is an extensible framework that simplifies and speeds application development, deployment, and operations on z/OS. Like Mac or Windows, Zowe comes with a set of APIs and OS capabilities that applications build on and includes some applications out of the box. It provides modern software interfaces that allow you to interact with z/OS in a way that is similar to what you experience on cloud platforms today by using familiar languages and tools. These interfaces include a new web graphical user interface, a script-able command-line interface, extensions to existing REST APIs, and new REST APIs on z/OS.
+
+mainframe modernization
+mainframe development
+open source mainframe
+open mainframe project
 
 ## Zowe Demo Video
 
