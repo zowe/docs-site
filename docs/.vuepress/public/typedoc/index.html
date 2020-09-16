@@ -1,0 +1,1766 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/cli - v6.21.1</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@zowe/cli - v6.21.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @zowe/cli - v6.21.1</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#zowe-cli-----omit-in-toc---" id="zowe-cli-----omit-in-toc---" style="color: inherit; text-decoration: none;">
+					<h1>Zowe CLI  <!-- omit in toc --></h1>
+				</a>
+				<p><a href="https://codecov.io/gh/zowe/zowe-cli"><img src="https://codecov.io/gh/zowe/zowe-cli/branch/master/graph/badge.svg" alt="codecov"></a></p>
+				<p>Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Through its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It provides a set of utilities and services that help developers, DevOps engineers, and more become efficient in supporting and building z/OS applications quickly.</p>
+				<p>You can also leverage the underlying Zowe Node APIs in this repository to build applications that interface with the mainframe. For more information, see <a href="#using-the-zowe-node-apis">Using the Zowe Node APIs</a>.</p>
+				<a href="#contents-----omit-in-toc---" id="contents-----omit-in-toc---" style="color: inherit; text-decoration: none;">
+					<h2>Contents  <!-- omit in toc --></h2>
+				</a>
+				<ul>
+					<li><a href="#documentation">Documentation</a></li>
+					<li><a href="#contribution-guidelines">Contribution guidelines</a></li>
+					<li><a href="#build-zowe-cli-from-source">Build Zowe CLI from source</a></li>
+					<li><a href="#install-zowe-cli-from-source">Install Zowe CLI from source</a></li>
+					<li><a href="#uninstall-zowe-cli">Uninstall Zowe CLI</a></li>
+					<li><a href="#configure-zowe-cli">Configure Zowe CLI</a></li>
+					<li><a href="#using-the-zowe-node-apis">Using the Zowe Node APIs</a></li>
+					<li><a href="#run-system-tests">Run system tests</a></li>
+					<li><a href="#frequently-asked-questions">FAQs</a></li>
+				</ul>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>For detailed information about how to install, configure, and use Zowe CLI, see <a href="https://docs.zowe.org/stable/">Zowe CLI Documentation</a>. The documentation includes examples and tutorials for how to contribute to Zowe CLI and develop CLI plug-ins.</p>
+				<p>The <code>docs</code> directory in this repository contains auto-generated typescript documentation under the <code>docs/typedoc</code> directory. To access the typescript documentation locally, navigate to the local <code>node_modules</code> directory that contains the installed package and access the <code>docs</code> directory after you install the Zowe CLI package.</p>
+				<p><strong>Note:</strong> Some links in the auto-generated typescript documentation are not functional at this time.</p>
+				<a href="#contribution-guidelines" id="contribution-guidelines" style="color: inherit; text-decoration: none;">
+					<h2>Contribution guidelines</h2>
+				</a>
+				<p>The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>For more information about ...</th>
+							<th>See:</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>General guidelines that apply to contributing to Zowe CLI and Plug-ins</td>
+							<td><a href="./CONTRIBUTING.md">Contribution Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Conventions and best practices for creating packages and plug-ins for Zowe CLI</td>
+							<td><a href="./docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Guidelines for running tests on Zowe CLI</td>
+							<td><a href="./docs/TESTING.md">Testing Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Guidelines for running tests on the plug-ins that you build</td>
+							<td><a href="./docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Documentation that describes the features of the Imperative CLI Framework</td>
+							<td><a href="https://github.com/zowe/imperative/wiki">About Imperative CLI Framework</a></td>
+						</tr>
+						<tr>
+							<td>Naming CLI commands and developing syntax</td>
+							<td><a href="./docs/CommandFormatStandards.md">Command Format Standards</a></td>
+						</tr>
+						<tr>
+							<td>Documentation that describes the features of the Imperative CLI Framework</td>
+							<td><a href="https://github.com/zowe/imperative/wiki">About Imperative CLI Framework</a></td>
+						</tr>
+						<tr>
+							<td>Versioning conventions for Zowe CLI and Plug-ins</td>
+							<td><a href="./docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
+						</tr>
+				</tbody></table>
+				<p><strong>Tip:</strong> Visit our <a href="https://github.com/zowe/zowe-cli-sample-plugin">Sample Plug-in repository</a> for example plug-in code. You can follow developer tutorials <a href="https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html">here</a>.</p>
+				<a href="#build-zowe-cli-from-source" id="build-zowe-cli-from-source" style="color: inherit; text-decoration: none;">
+					<h2>Build Zowe CLI from source</h2>
+				</a>
+				<p>The first time that you download Zowe CLI from the GitHub repository, issue the following command to install the required Zowe CLI dependencies and several development tools:</p>
+				<pre><code>npm install --<span class="hljs-variable">@zowe</span><span class="hljs-symbol">:registry=https</span><span class="hljs-symbol">://registry</span>.npmjs.org --no-package-lock --force</code></pre><p><strong>Note:</strong> When necessary, you can run the install command again to update dependencies that were changed in package.json.</p>
+				<p>To build your code changes, issue the following command:</p>
+				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> build</span></code></pre><p>When you update <code>package.json</code> to include new dependencies, or when you pull changes that affect <code>package.json</code>, issue the <code>npm update</code> command to download the dependencies.</p>
+				<a href="#install-zowe-cli-from-source" id="install-zowe-cli-from-source" style="color: inherit; text-decoration: none;">
+					<h2>Install Zowe CLI from source</h2>
+				</a>
+				<p>From your copy of this repository, after a build, issue the following command to install Zowe CLI from source:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g</code></pre><p><b>Notes:</b></p>
+				<ul>
+					<li>Depending on how you configured npm on Linux or Mac, you might need to prefix the <code>npm install -g</code> command or the <code>npm uninstall -g</code> command with <code>sudo</code> to let npm have write access to the installation directory.</li>
+					<li>On Windows, the <code>npm install -g</code> command might fail several times due to an <code>EPERM</code> error. This appears to be a bug that npm documented in their GitHub issues. This behaviour does not appear to be specific to installing the Zowe CLI package. Unfortunately, the only solution that we know of is to issue the <code>npm cache clean</code> command and the <code>npm install -g</code> command repeatedly until it works.</li>
+				</ul>
+				<a href="#uninstall-zowe-cli" id="uninstall-zowe-cli" style="color: inherit; text-decoration: none;">
+					<h2>Uninstall Zowe CLI</h2>
+				</a>
+				<p>From your local copy of this repository, issue the following command to uninstall Zowe CLI:</p>
+				<pre><code><span class="hljs-built_in">npm</span> uninstall --<span class="hljs-built_in">global</span> @zowe/cli</code></pre>
+				<a href="#configure-zowe-cli" id="configure-zowe-cli" style="color: inherit; text-decoration: none;">
+					<h2>Configure Zowe CLI</h2>
+				</a>
+				<p>Zowe CLI configuration is made up of different <strong>profiles</strong>. The profiles contain the information that Zowe CLI needs to communicate with the mainframe system. For example, credentials and z/OSMF host name. If you try to use Zowe CLI functionality and you get an error message that Zowe CLI failed to load any profiles, see the <code>zowe profiles create --help</code> command for the group of commands that you are trying to use (if any) to initialize your configuration.</p>
+				<p>The most fundamental Zowe CLI profile is a <code>zosmf</code> profile. Issue the following command to understand how to create a <code>zosmf</code> profile in Zowe CLI:</p>
+				<pre><code>zowe profiles <span class="hljs-built_in">create</span> zosmf-profile <span class="hljs-comment">--help</span></code></pre><p>After you create your profile, you can confirm that the properties of your profile can connect to and communicate with your mainframe system successfully by issuing the following command:</p>
+				<pre><code>zowe zosmf<span class="hljs-built_in"> check </span>status</code></pre><p><strong>Tip:</strong> When you confirm that your profile connects to and communicates with your mainframe system successfully, you can issue the same command at any time to verify the availability and status of the z/OSMF subsystem on your mainframe.</p>
+				<p>For detailed information about creating service profiles, creating base profiles, or integrating with Zowe API ML, see <a href="https://docs.zowe.org/stable/user-guide/cli-usingcli.html">Using Zowe CLI</a>.</p>
+				<a href="#using-the-zowe-node-apis" id="using-the-zowe-node-apis" style="color: inherit; text-decoration: none;">
+					<h2>Using the Zowe Node APIs</h2>
+				</a>
+				<p>The Zowe Node APIs are programamatic APIs that enable Zowe CLI to interface with the mainframe. You can use the APIs to build your own applications or automation scripts independent of Zowe CLI.</p>
+				<a href="#accessing-the-apis" id="accessing-the-apis" style="color: inherit; text-decoration: none;">
+					<h3>Accessing the APIs</h3>
+				</a>
+				<p>The Zowe Node APIs are maintained in this repository. Each set of functionality, such as z/OS Jobs, is stored in a folder that contains the API and CLI code.</p>
+				<p>To get started, import Zowe CLI into your project and call the individual APIs. We provide a Readme with usage examples for each API package:</p>
+				<pre><code>zowe-cli<span class="hljs-meta-keyword">/packages/</span><span class="hljs-params">&lt;package-name&gt;</span>/README.md</code></pre><p>Refer to each Readme for more information:</p>
+				<ul>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/provisioning">Provisioning</a>: Provision middleware and resources such as IBM CICS, IBM Db2, IBM MQ, and more.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosconsole">z/OS Console</a>: Perform z/OS console operations.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosfiles">z/OS Data Sets</a>: Work with data sets on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosjobs">z/OS Jobs</a>: Work with batch jobs on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosmf">z/OSMF</a>: Return data about z/OSMF, such as connection status or a list of available systems.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zostso">z/OS TSO</a>: Interact with TSO/E adress spaces on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosuss">z/OS USS</a>: Work with UNIX system services (USS) files on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/workflows">z/OS Workflows</a>: Create and manage z/OSMF workflows on z/OS.</li>
+				</ul>
+				<a href="#run-system-tests" id="run-system-tests" style="color: inherit; text-decoration: none;">
+					<h2>Run system tests</h2>
+				</a>
+				<p>In addition to Node.js, you must have a means to execute <code>.sh</code> (bash) scripts, which are required for running integration tests. On Windows, you can install &quot;Git Bash&quot; (bundled with the standard <a href="https://git-scm.com/downloads">Git</a> installation - check &quot;Use Git and Unix Tools from Windows Command Prompt&quot; installation option).</p>
+				<p>After downloading/installing the prerequisites, ensure that you can execute the following commands and receive success responses:</p>
+				<ol>
+					<li><code>node --version</code></li>
+					<li><code>npm --version</code></li>
+					<li>On Windows: <code>where sh</code></li>
+				</ol>
+				<p>To run Zowe CLI system tests, you need a configured properties file with proper system information present.</p>
+				<p>A dummy properties file is present in the <code>__tests__/__resources__/properties folder</code>, <code>default_properties.yaml</code>. Using this file as a template, you should create a <code>custom_properties.yaml</code> file within the same directory. Git is configured to ignore all properties files in the properties folder, except for the <code>default_properties.yaml</code> file.</p>
+				<p><strong>Important!</strong> Do not check in configured properties files because they contain security principles and other critical information.</p>
+				<p>You can run the system tests by issuing the following command:</p>
+				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span>:system</span></code></pre><p>If the <code>custom_properties.yaml</code> file cannot be found or loaded, an error with relevant details is thrown.</p>
+				<a href="#frequently-asked-questions" id="frequently-asked-questions" style="color: inherit; text-decoration: none;">
+					<h2>Frequently asked questions</h2>
+				</a>
+				<ul>
+					<li><p><strong>How can I install Zowe CLI as a root user on Mac/Linux?</strong></p>
+						<p>You can install the CLI as root so that all users can access the CLI without installing it individually on their user account. As the root user on Mac/Linux, issue the following command:</p>
+						<p><code>npm i -g @zowe/cli@latest --ignore-scripts</code></p>
+						<p><strong>Warning!</strong> If you use this method, plug-ins that are installed as root can only be accessed as root. Users must install plug-ins on their user account or share all profiles/plugins/settings/logs with root. You also might encounter npm errors if you install as root. We recommend that Linux administrators implement a user/group environment where permissions can be more carefully controlled.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/createdatasettypeenum.html" class="tsd-kind-icon">Create<wbr>Data<wbr>Set<wbr>Type<wbr>Enum</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/tag.html" class="tsd-kind-icon">Tag</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/transfermode.html" class="tsd-kind-icon">Transfer<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/actionhandler.html" class="tsd-kind-icon">Action<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-private">
+						<a href="classes/activeworkflowdetails.html" class="tsd-kind-icon">Active<wbr>Workflow<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/allmembershandler.html" class="tsd-kind-icon">All<wbr>Members<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/amsfilehandler.html" class="tsd-kind-icon">Ams<wbr>File<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/amsstatementshandler.html" class="tsd-kind-icon">Ams<wbr>Statements<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/apimlauthhandler.html" class="tsd-kind-icon">Apiml<wbr>Auth<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/archivehandler.html" class="tsd-kind-icon">Archive<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/archiveworkflow.html" class="tsd-kind-icon">Archive<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/archiveddeleteworkflow.html" class="tsd-kind-icon">Archived<wbr>Delete<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/binarypdshandler.html" class="tsd-kind-icon">BinaryPDSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/cpdshandler.html" class="tsd-kind-icon">CPDSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/canceljobs.html" class="tsd-kind-icon">Cancel<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/cancelworkflow.html" class="tsd-kind-icon">Cancel<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/catalogtemplateshandler.html" class="tsd-kind-icon">Catalog<wbr>Templates<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/checkstatus.html" class="tsd-kind-icon">Check<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/classicpdshandler.html" class="tsd-kind-icon">ClassicPDSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/collectcommand.html" class="tsd-kind-icon">Collect<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/consoleconstants.html" class="tsd-kind-icon">Console<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/consoleresponseservice.html" class="tsd-kind-icon">Console<wbr>Response<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/consolevalidator.html" class="tsd-kind-icon">Console<wbr>Validator</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/constants.html" class="tsd-kind-icon">Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/copy.html" class="tsd-kind-icon">Copy</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/create.html" class="tsd-kind-icon">Create</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/createcommonhandler.html" class="tsd-kind-icon">Create<wbr>Common<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/createworkflow.html" class="tsd-kind-icon">Create<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dshandler.html" class="tsd-kind-icon">DSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/datasethandler.html" class="tsd-kind-icon">Data<wbr>Set<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/datasethandler.html" class="tsd-kind-icon">Dataset<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/definitionworkflow.html" class="tsd-kind-icon">Definition<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/delete.html" class="tsd-kind-icon">Delete</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/deletearchivedcommonhandler.html" class="tsd-kind-icon">Delete<wbr>Archived<wbr>Common<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/deletecommonhandler.html" class="tsd-kind-icon">Delete<wbr>Common<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/deleteinstance.html" class="tsd-kind-icon">Delete<wbr>Instance</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/deletejobs.html" class="tsd-kind-icon">Delete<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/deleteworkflow.html" class="tsd-kind-icon">Delete<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dirtopdshandler.html" class="tsd-kind-icon">Dir<wbr>ToPds<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dirtoussdirhandler.html" class="tsd-kind-icon">Dir<wbr>ToUSSDir<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/download.html" class="tsd-kind-icon">Download</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/downloadjobs.html" class="tsd-kind-icon">Download<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dshandler.html" class="tsd-kind-icon">Ds<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dsmhandler.html" class="tsd-kind-icon">Dsm<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/filetodatasethandler.html" class="tsd-kind-icon">File<wbr>ToData<wbr>Set<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/filetousshandler.html" class="tsd-kind-icon">File<wbr>ToUSSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/fshandler.html" class="tsd-kind-icon">Fs<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/get.html" class="tsd-kind-icon">Get</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/getjobs.html" class="tsd-kind-icon">Get<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hdelete.html" class="tsd-kind-icon">HDelete</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hmigrate.html" class="tsd-kind-icon">HMigrate</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hrecall.html" class="tsd-kind-icon">HRecall</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/handler.html" class="tsd-kind-icon">Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/instanceinfohandler.html" class="tsd-kind-icon">Instance<wbr>Info<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/instancevariableshandler.html" class="tsd-kind-icon">Instance<wbr>Variables<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/invoke.html" class="tsd-kind-icon">Invoke</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/issuecommand.html" class="tsd-kind-icon">Issue<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/issuetso.html" class="tsd-kind-icon">Issue<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/jobhandler.html" class="tsd-kind-icon">Job<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/jobstatusbyjobidhandler.html" class="tsd-kind-icon">Job<wbr>Status<wbr>ByJobid<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/jobsconstants.html" class="tsd-kind-icon">Jobs<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/jobshandler.html" class="tsd-kind-icon">Jobs<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/list.html" class="tsd-kind-icon">List</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listactiveworkflowshandler.html" class="tsd-kind-icon">List<wbr>Active<wbr>Workflows<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listarchivedworkflows.html" class="tsd-kind-icon">List<wbr>Archived<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listarchivedworkflowshandler.html" class="tsd-kind-icon">List<wbr>Archived<wbr>Workflows<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listcatalogtemplates.html" class="tsd-kind-icon">List<wbr>Catalog<wbr>Templates</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listdefinedsystems.html" class="tsd-kind-icon">List<wbr>Defined<wbr>Systems</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listinstanceinfo.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listinstancevariables.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listregistryinstances.html" class="tsd-kind-icon">List<wbr>Registry<wbr>Instances</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listtemplateinfo.html" class="tsd-kind-icon">List<wbr>Template<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/listworkflows.html" class="tsd-kind-icon">List<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/login.html" class="tsd-kind-icon">Login</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/loginconstants.html" class="tsd-kind-icon">Login<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/logout.html" class="tsd-kind-icon">Logout</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/logoutconstants.html" class="tsd-kind-icon">Logout<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mdshandler.html" class="tsd-kind-icon">MDSHandler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitorjobs.html" class="tsd-kind-icon">Monitor<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mount.html" class="tsd-kind-icon">Mount</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/outputhandler.html" class="tsd-kind-icon">Output<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pdshandler.html" class="tsd-kind-icon">Pds<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/performaction.html" class="tsd-kind-icon">Perform<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pingtso.html" class="tsd-kind-icon">Ping<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/propertiesworkflow.html" class="tsd-kind-icon">Properties<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/provisionpublishedtemplate.html" class="tsd-kind-icon">Provision<wbr>Published<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/provisioningconstants.html" class="tsd-kind-icon">Provisioning<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/provisioningservice.html" class="tsd-kind-icon">Provisioning<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/provisioningvalidator.html" class="tsd-kind-icon">Provisioning<wbr>Validator</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pshandler.html" class="tsd-kind-icon">Ps<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/registryinstanceshandler.html" class="tsd-kind-icon">Registry<wbr>Instances<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/rename.html" class="tsd-kind-icon">Rename</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sendtso.html" class="tsd-kind-icon">Send<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sharedsubmithandler.html" class="tsd-kind-icon">Shared<wbr>Submit<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/shell.html" class="tsd-kind-icon">Shell</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/spoolfilebyidhandler.html" class="tsd-kind-icon">Spool<wbr>File<wbr>ById<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/spoolfileshandler.html" class="tsd-kind-icon">Spool<wbr>Files<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sshbasehandler.html" class="tsd-kind-icon">Ssh<wbr>Base<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sshsession.html" class="tsd-kind-icon">Ssh<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/starttso.html" class="tsd-kind-icon">Start<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/startworkflow.html" class="tsd-kind-icon">Start<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/stdintodatasethandler.html" class="tsd-kind-icon">Stdin<wbr>ToData<wbr>Set<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/stoptso.html" class="tsd-kind-icon">Stop<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/submitjobs.html" class="tsd-kind-icon">Submit<wbr>Jobs</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/templateinfohandler.html" class="tsd-kind-icon">Template<wbr>Info<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tsoconstants.html" class="tsd-kind-icon">Tso<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tsoresponseservice.html" class="tsd-kind-icon">Tso<wbr>Response<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tsovalidator.html" class="tsd-kind-icon">Tso<wbr>Validator</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ussfilehandler.html" class="tsd-kind-icon">USSFile<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/unmount.html" class="tsd-kind-icon">Unmount</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/upload.html" class="tsd-kind-icon">Upload</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ussdirhandler.html" class="tsd-kind-icon">Uss<wbr>Dir<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ussfilehandler.html" class="tsd-kind-icon">Uss<wbr>File<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/usshandler.html" class="tsd-kind-icon">Uss<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/utilities.html" class="tsd-kind-icon">Utilities</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/vsamhandler.html" class="tsd-kind-icon">Vsam<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/workflowconstants.html" class="tsd-kind-icon">Workflow<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/workflowfullhandler.html" class="tsd-kind-icon">Workflow<wbr>Full<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/workflowstephandler.html" class="tsd-kind-icon">Workflow<wbr>Step<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/workflowvalidator.html" class="tsd-kind-icon">Workflow<wbr>Validator</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zfshandler.html" class="tsd-kind-icon">Zfs<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosfilesattributes.html" class="tsd-kind-icon">Zos<wbr>Files<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-private">
+						<a href="classes/zosfilesbasehandler.html" class="tsd-kind-icon">Zos<wbr>Files<wbr>Base<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosfilesutils.html" class="tsd-kind-icon">Zos<wbr>Files<wbr>Utils</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zostsobasehandler.html" class="tsd-kind-icon">Zos<wbr>Tso<wbr>Base<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosmfbasehandler.html" class="tsd-kind-icon">Zosmf<wbr>Base<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosmfheaders.html" class="tsd-kind-icon">Zosmf<wbr>Headers</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosmfrestclient.html" class="tsd-kind-icon">Zosmf<wbr>Rest<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/zosmfsession.html" class="tsd-kind-icon">Zosmf<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iactiveworkflows.html" class="tsd-kind-icon">IActive<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iarchivedworkflow.html" class="tsd-kind-icon">IArchived<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iarchivedworkflows.html" class="tsd-kind-icon">IArchived<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iautomationstatus.html" class="tsd-kind-icon">IAutomation<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icanceljob.html" class="tsd-kind-icon">ICancel<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icanceljobparms.html" class="tsd-kind-icon">ICancel<wbr>Job<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icollectparms.html" class="tsd-kind-icon">ICollect<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icollectedresponses.html" class="tsd-kind-icon">ICollected<wbr>Responses</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icommonjobparms.html" class="tsd-kind-icon">ICommon<wbr>Job<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iconsoleparms.html" class="tsd-kind-icon">IConsole<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iconsoleresponse.html" class="tsd-kind-icon">IConsole<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icopydatasetoptions.html" class="tsd-kind-icon">ICopy<wbr>Dataset<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreatedatasetoptions.html" class="tsd-kind-icon">ICreate<wbr>Data<wbr>Set<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreateussoptions.html" class="tsd-kind-icon">ICreate<wbr>Uss<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreatevsamoptions.html" class="tsd-kind-icon">ICreate<wbr>Vsam<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreateworkflow.html" class="tsd-kind-icon">ICreate<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreatezfsoptions.html" class="tsd-kind-icon">ICreate<wbr>Zfs<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreatedworkflow.html" class="tsd-kind-icon">ICreated<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icreatedworkflowlocal.html" class="tsd-kind-icon">ICreated<wbr>Workflow<wbr>Local</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idataset.html" class="tsd-kind-icon">IData<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idefinedsystem.html" class="tsd-kind-icon">IDefined<wbr>System</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ideletedatasetoptions.html" class="tsd-kind-icon">IDelete<wbr>Dataset<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ideletejobparms.html" class="tsd-kind-icon">IDelete<wbr>Job<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ideleteoptions.html" class="tsd-kind-icon">IDelete<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ideletevsamoptions.html" class="tsd-kind-icon">IDelete<wbr>Vsam<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ideletevsamresponse.html" class="tsd-kind-icon">IDelete<wbr>Vsam<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idownloadallspoolcontentparms.html" class="tsd-kind-icon">IDownload<wbr>All<wbr>Spool<wbr>Content<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idownloadoptions.html" class="tsd-kind-icon">IDownload<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idownloadspoolcontentparms.html" class="tsd-kind-icon">IDownload<wbr>Spool<wbr>Content<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ifsoptions.html" class="tsd-kind-icon">IFs<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetjobsparms.html" class="tsd-kind-icon">IGet<wbr>Jobs<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetoptions.html" class="tsd-kind-icon">IGet<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetworkflowsoptions.html" class="tsd-kind-icon">IGet<wbr>Workflows<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iheadercontent.html" class="tsd-kind-icon">IHeader<wbr>Content</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iissueparms.html" class="tsd-kind-icon">IIssue<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iissueresponse.html" class="tsd-kind-icon">IIssue<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iissuetsoparms.html" class="tsd-kind-icon">IIssue<wbr>Tso<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijob.html" class="tsd-kind-icon">IJob</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobcomplete.html" class="tsd-kind-icon">IJob<wbr>Complete</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijoberror.html" class="tsd-kind-icon">IJob<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobfeedback.html" class="tsd-kind-icon">IJob<wbr>Feedback</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobfile.html" class="tsd-kind-icon">IJob<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobfilesimple.html" class="tsd-kind-icon">IJob<wbr>File<wbr>Simple</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobfiles.html" class="tsd-kind-icon">IJob<wbr>Files</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobinfo.html" class="tsd-kind-icon">IJob<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobstatus.html" class="tsd-kind-icon">IJob<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobstepdata.html" class="tsd-kind-icon">IJob<wbr>Step<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijobsubmit.html" class="tsd-kind-icon">IJob<wbr>Submit</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ilistoptions.html" class="tsd-kind-icon">IList<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imigrateoptions.html" class="tsd-kind-icon">IMigrate<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imonitorjobwaitforparms.html" class="tsd-kind-icon">IMonitor<wbr>Job<wbr>Wait<wbr>For<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imountfsoptions.html" class="tsd-kind-icon">IMount<wbr>FsOptions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ioptions.html" class="tsd-kind-icon">IOptions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ioptionsfullresponse.html" class="tsd-kind-icon">IOptions<wbr>Full<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iperformactionresponse.html" class="tsd-kind-icon">IPerform<wbr>Action<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipingresponse.html" class="tsd-kind-icon">IPing<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipromptvariable.html" class="tsd-kind-icon">IPrompt<wbr>Variable</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipropertiesinput.html" class="tsd-kind-icon">IProperties<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipropertymapping.html" class="tsd-kind-icon">IProperty<wbr>Mapping</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionoptionals.html" class="tsd-kind-icon">IProvision<wbr>Optionals</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisiontemplateresponse.html" class="tsd-kind-icon">IProvision<wbr>Template<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionedinstance.html" class="tsd-kind-icon">IProvisioned<wbr>Instance</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionedinstanceactions.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Actions</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionedinstancevariable.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variable</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionedinstancevariables.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iprovisionedinstances.html" class="tsd-kind-icon">IProvisioned<wbr>Instances</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipublishedtemplate.html" class="tsd-kind-icon">IPublished<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipublishedtemplateinfo.html" class="tsd-kind-icon">IPublished<wbr>Template<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipublishedtemplates.html" class="tsd-kind-icon">IPublished<wbr>Templates</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/irecalloptions.html" class="tsd-kind-icon">IRecall<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/irestclientresponse.html" class="tsd-kind-icon">IRest<wbr>Client<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isendresponse.html" class="tsd-kind-icon">ISend<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isendtsoparms.html" class="tsd-kind-icon">ISend<wbr>Tso<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ispoolfile.html" class="tsd-kind-icon">ISpool<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isshsession.html" class="tsd-kind-icon">ISsh<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istartstopresponse.html" class="tsd-kind-icon">IStart<wbr>Stop<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istartstopresponses.html" class="tsd-kind-icon">IStart<wbr>Stop<wbr>Responses</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istarttsoparms.html" class="tsd-kind-icon">IStart<wbr>Tso<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istartworkflow.html" class="tsd-kind-icon">IStart<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istepapprovers.html" class="tsd-kind-icon">IStep<wbr>Approvers</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istepdefinition.html" class="tsd-kind-icon">IStep<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istepinfo.html" class="tsd-kind-icon">IStep<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istepsummary.html" class="tsd-kind-icon">IStep<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istoptsoparms.html" class="tsd-kind-icon">IStop<wbr>Tso<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isubmitjclnotifyparm.html" class="tsd-kind-icon">ISubmit<wbr>Jcl<wbr>Notify<wbr>Parm</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isubmitjclparms.html" class="tsd-kind-icon">ISubmit<wbr>Jcl<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isubmitjobnotifyparm.html" class="tsd-kind-icon">ISubmit<wbr>Job<wbr>Notify<wbr>Parm</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isubmitjobparms.html" class="tsd-kind-icon">ISubmit<wbr>Job<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isubmitparms.html" class="tsd-kind-icon">ISubmit<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itemplateregistryinfo.html" class="tsd-kind-icon">ITemplate<wbr>Registry<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itemplateworkflowinfo.html" class="tsd-kind-icon">ITemplate<wbr>Workflow<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsomessage.html" class="tsd-kind-icon">ITso<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsomessages.html" class="tsd-kind-icon">ITso<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsopromptmessage.html" class="tsd-kind-icon">ITso<wbr>Prompt<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itsoresponsemessage.html" class="tsd-kind-icon">ITso<wbr>Response<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iussfilelistresponse.html" class="tsd-kind-icon">IUSSFile<wbr>List<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iusslistoptions.html" class="tsd-kind-icon">IUSSList<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iuploadattributes.html" class="tsd-kind-icon">IUpload<wbr>Attributes</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iuploaddir.html" class="tsd-kind-icon">IUpload<wbr>Dir</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iuploadfile.html" class="tsd-kind-icon">IUpload<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iuploadmap.html" class="tsd-kind-icon">IUpload<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iuploadoptions.html" class="tsd-kind-icon">IUpload<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iuploadresult.html" class="tsd-kind-icon">IUpload<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ivariable.html" class="tsd-kind-icon">IVariable</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ivariabledefinition.html" class="tsd-kind-icon">IVariable<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ivariableinfo.html" class="tsd-kind-icon">IVariable<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ivariablespecification.html" class="tsd-kind-icon">IVariable<wbr>Specification</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iworkflowdefinition.html" class="tsd-kind-icon">IWorkflow<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iworkflowinfo.html" class="tsd-kind-icon">IWorkflow<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iworkflows.html" class="tsd-kind-icon">IWorkflows</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iworkflowsinfo.html" class="tsd-kind-icon">IWorkflows<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosfilesoptions.html" class="tsd-kind-icon">IZos<wbr>Files<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosfilesresponse.html" class="tsd-kind-icon">IZos<wbr>Files<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosfmmessages.html" class="tsd-kind-icon">IZosfm<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfcollectresponse.html" class="tsd-kind-icon">IZosmf<wbr>Collect<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfinforesponse.html" class="tsd-kind-icon">IZosmf<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfissueparms.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Parms</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfissueresponse.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmflistdefinedsystemsresponse.html" class="tsd-kind-icon">IZosmf<wbr>List<wbr>Defined<wbr>Systems<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmflistresponse.html" class="tsd-kind-icon">IZosmf<wbr>List<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfpingresponse.html" class="tsd-kind-icon">IZosmf<wbr>Ping<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmfplugininfo.html" class="tsd-kind-icon">IZosmf<wbr>Plugin<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/izosmftsoresponse.html" class="tsd-kind-icon">IZosmf<wbr>Tso<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#client_property" class="tsd-kind-icon">CLIENT_<wbr>PROPERTY</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#consoleresponse" class="tsd-kind-icon">Console<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#imountfsmode" class="tsd-kind-icon">IMount<wbr>FsMode</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#job_status" class="tsd-kind-icon">JOB_<wbr>STATUS</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#jobdataresolve" class="tsd-kind-icon">Job<wbr>Data<wbr>Resolve</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#jobresolve" class="tsd-kind-icon">Job<wbr>Resolve</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sendresponse" class="tsd-kind-icon">Send<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#zosmfmigratedrecalloptions" class="tsd-kind-icon">Zosmf<wbr>Migrated<wbr>Recall<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#accesst" class="tsd-kind-icon">accessT</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#startt" class="tsd-kind-icon">startT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#client" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#description" class="tsd-kind-icon">DESCRIPTION</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#job_status_order" class="tsd-kind-icon">JOB_<wbr>STATUS_<wbr>ORDER</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#tso_option_group" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>GROUP</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#tso_profile_options" class="tsd-kind-icon">TSO_<wbr>PROFILE_<wbr>OPTIONS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#zosfilesoptiondefinitions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Option<wbr>Definitions</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#authpos" class="tsd-kind-icon">auth<wbr>Pos</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#authsallowed" class="tsd-kind-icon">auths<wbr>Allowed</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#dsstrings" class="tsd-kind-icon">dSStrings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#dsstrings" class="tsd-kind-icon">ds<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#dsmstrings" class="tsd-kind-icon">dsm<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#filestrings" class="tsd-kind-icon">file<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#fsstrings" class="tsd-kind-icon">fs<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#hasauthfailed" class="tsd-kind-icon">has<wbr>Auth<wbr>Failed</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#kbindex" class="tsd-kind-icon">kb<wbr>Index</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#maxconcurrentrequestsmaxvalue" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Requests<wbr>Max<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#minimatch" class="tsd-kind-icon">minimatch</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#startcmdflag" class="tsd-kind-icon">start<wbr>Cmd<wbr>Flag</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#stringwidth" class="tsd-kind-icon">string<wbr>Width</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#strings" class="tsd-kind-icon">strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#timingapi" class="tsd-kind-icon">timing<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#ussstrings" class="tsd-kind-icon">uss<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#vsamdsorg" class="tsd-kind-icon">vsam<wbr>DsOrg</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#vsamretainfor" class="tsd-kind-icon">vsam<wbr>Retain<wbr>For</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#vsamsecondary" class="tsd-kind-icon">vsam<wbr>Secondary</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#vsamsize" class="tsd-kind-icon">vsam<wbr>Size</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#vsamstrings" class="tsd-kind-icon">vsam<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#zfsstrings" class="tsd-kind-icon">zfs<wbr>Strings</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#asyncpool" class="tsd-kind-icon">async<wbr>Pool</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#generatezosmfoptions" class="tsd-kind-icon">generate<wbr>Zosmf<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getdataset" class="tsd-kind-icon">get<wbr>Data<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#geterrorcontext" class="tsd-kind-icon">get<wbr>Error<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getimperativeconfig" class="tsd-kind-icon">get<wbr>Imperative<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#padleft" class="tsd-kind-icon">pad<wbr>Left</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#readstdin" class="tsd-kind-icon">read<wbr>Stdin</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#sleep" class="tsd-kind-icon">sleep</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#trimlinetoterminalwidth" class="tsd-kind-icon">trim<wbr>Line<wbr>ToTerminal<wbr>Width</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#actiondefinition" class="tsd-kind-icon">Action<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#activeworkflowdetailscommonoptions" class="tsd-kind-icon">Active<wbr>Workflow<wbr>Details<wbr>Common<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#activeworkflows" class="tsd-kind-icon">Active<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#addressspacedefinition" class="tsd-kind-icon">Address<wbr>Space<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#allmembersdefinition" class="tsd-kind-icon">All<wbr>Members<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#amsfiledefinition" class="tsd-kind-icon">Ams<wbr>File<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#amsstatementsdefinition" class="tsd-kind-icon">Ams<wbr>Statements<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#archivedefinition" class="tsd-kind-icon">Archive<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#archiveoptions" class="tsd-kind-icon">Archive<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#archivedworkflows" class="tsd-kind-icon">Archived<wbr>Workflows</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#binarypdsdefinition" class="tsd-kind-icon">BinaryPDSDefinition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#client_property" class="tsd-kind-icon">CLIENT_<wbr>PROPERTY</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#cpdsdefinition" class="tsd-kind-icon">CPDSDefinition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#canceldefinition" class="tsd-kind-icon">Cancel<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#checkcommand" class="tsd-kind-icon">Check<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#checkstatusmessages" class="tsd-kind-icon">Check<wbr>Status<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#classicpdsdefinition" class="tsd-kind-icon">ClassicPDSDefinition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#commanddefinition" class="tsd-kind-icon">Command<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#copydefinition" class="tsd-kind-icon">Copy<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#createcommonoptions" class="tsd-kind-icon">Create<wbr>Common<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#createdefaults" class="tsd-kind-icon">Create<wbr>Defaults</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#createdefinition" class="tsd-kind-icon">Create<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#dataset" class="tsd-kind-icon">Data<wbr>Set</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#datasetdefinition" class="tsd-kind-icon">Data<wbr>Set<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#datasetdefinition" class="tsd-kind-icon">Dataset<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#deleteactiveworkflow" class="tsd-kind-icon">Delete<wbr>Active<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#deletearchivedworkflow" class="tsd-kind-icon">Delete<wbr>Archived<wbr>Workflow</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deletearchivedworkflowoptions" class="tsd-kind-icon">Delete<wbr>Archived<wbr>Workflow<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deletecommand" class="tsd-kind-icon">Delete<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#deletedefinition" class="tsd-kind-icon">Delete<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deleteinstancedefinition" class="tsd-kind-icon">Delete<wbr>Instance<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deleteworkflowoptions" class="tsd-kind-icon">Delete<wbr>Workflow<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#dirtopdsdefinition" class="tsd-kind-icon">Dir<wbr>ToPds<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#dirtoussdirdefinition" class="tsd-kind-icon">Dir<wbr>ToUSSDir<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#downloaddefinition" class="tsd-kind-icon">Download<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#downloadoptions" class="tsd-kind-icon">Download<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#dsdefinition" class="tsd-kind-icon">Ds<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#dsmdefinition" class="tsd-kind-icon">Dsm<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#filetodatasetdefinition" class="tsd-kind-icon">File<wbr>ToData<wbr>Set<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#filetoussdefinition" class="tsd-kind-icon">File<wbr>ToUSSDefinition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#fsdefinition" class="tsd-kind-icon">Fs<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#fsmountoptions" class="tsd-kind-icon">Fs<wbr>Mount<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#hmigratedefinition" class="tsd-kind-icon">HMigrate<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#hrecalldefinition" class="tsd-kind-icon">HRecall<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#invokedefinition" class="tsd-kind-icon">Invoke<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#issuecommanddefinition" class="tsd-kind-icon">Issue<wbr>Command<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#job_status" class="tsd-kind-icon">JOB_<wbr>STATUS</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#jobdefinition" class="tsd-kind-icon">Job<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#jobstatusbyjobiddefinition" class="tsd-kind-icon">Job<wbr>Status<wbr>ByJobid<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#jobsdefinition" class="tsd-kind-icon">Jobs<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#listactiveworkflowsoptions" class="tsd-kind-icon">List<wbr>Active<wbr>Workflows<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#listcommand" class="tsd-kind-icon">List<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#listdefinition" class="tsd-kind-icon">List<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#listoptions" class="tsd-kind-icon">List<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#localfile" class="tsd-kind-icon">Local<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#localfiledefinition" class="tsd-kind-icon">Local<wbr>File<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#mdsdefinition" class="tsd-kind-icon">Mds<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#mountdefinition" class="tsd-kind-icon">Mount<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#outputdefinition" class="tsd-kind-icon">Output<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#pdsdefinition" class="tsd-kind-icon">Pds<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#performcommand" class="tsd-kind-icon">Perform<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#pingaddressspacecommanddefinition" class="tsd-kind-icon">Ping<wbr>Address<wbr>Space<wbr>Command<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#pingcommand" class="tsd-kind-icon">Ping<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#provisioncommand" class="tsd-kind-icon">Provision<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#psdefinition" class="tsd-kind-icon">Ps<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#renamedefinition" class="tsd-kind-icon">Rename<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#retrieveworkflowdefinition" class="tsd-kind-icon">Retrieve<wbr>Workflow<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#retrieveworkflowdefinitioncommonoptions" class="tsd-kind-icon">Retrieve<wbr>Workflow<wbr>Definition<wbr>Common<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#sendcommand" class="tsd-kind-icon">Send<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#sendtoaddressspacecommanddefinition" class="tsd-kind-icon">Send<wbr>ToAddress<wbr>Space<wbr>Command<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#spoolfilebyiddefinition" class="tsd-kind-icon">Spool<wbr>File<wbr>ById<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#spoolfilesbyjobiddefinition" class="tsd-kind-icon">Spool<wbr>Files<wbr>ByJobid<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#sshdefinition" class="tsd-kind-icon">Ssh<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#startcommand" class="tsd-kind-icon">Start<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#startcommonoptions" class="tsd-kind-icon">Start<wbr>Common<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#startdefinition" class="tsd-kind-icon">Start<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#statusdefinition" class="tsd-kind-icon">Status<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#stdindefinition" class="tsd-kind-icon">Stdin<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#stdintodatasetdefinition" class="tsd-kind-icon">Stdin<wbr>ToData<wbr>Set<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#stopcommand" class="tsd-kind-icon">Stop<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#submitdefinition" class="tsd-kind-icon">Submit<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#syncresponsecommanddefinition" class="tsd-kind-icon">Sync<wbr>Response<wbr>Command<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#systemsdefinition" class="tsd-kind-icon">Systems<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_account" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>ACCOUNT</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_account_profile" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>ACCOUNT_<wbr>PROFILE</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_char_set" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>CHAR_<wbr>SET</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_code_page" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>CODE_<wbr>PAGE</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_columns" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>COLUMNS</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_logon_procedure" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>LOGON_<wbr>PROCEDURE</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_region_size" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>REGION_<wbr>SIZE</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#tso_option_rows" class="tsd-kind-icon">TSO_<wbr>OPTION_<wbr>ROWS</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#templatedefinition" class="tsd-kind-icon">Template<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ussfiledefinition" class="tsd-kind-icon">USSFile<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#unmountdefinition" class="tsd-kind-icon">Unmount<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#uploaddefinition" class="tsd-kind-icon">Upload<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#uploadoptions" class="tsd-kind-icon">Upload<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#usscreateoptions" class="tsd-kind-icon">Uss<wbr>Create<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#ussdefinition" class="tsd-kind-icon">Uss<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ussdirdefinition" class="tsd-kind-icon">Uss<wbr>Dir<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#ussfile" class="tsd-kind-icon">Uss<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ussfiledefinition" class="tsd-kind-icon">Uss<wbr>File<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#viewdefinition" class="tsd-kind-icon">View<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#vsamcreateoptions" class="tsd-kind-icon">Vsam<wbr>Create<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#vsamdefinition" class="tsd-kind-icon">Vsam<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#workflow" class="tsd-kind-icon">Workflow</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#workflowfull" class="tsd-kind-icon">Workflow<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#workflowstep" class="tsd-kind-icon">Workflow<wbr>Step</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#wrongworkflowkey" class="tsd-kind-icon">Wrong<wbr>Workflow<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zfscreateoptions" class="tsd-kind-icon">Zfs<wbr>Create<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#zfsdefinition" class="tsd-kind-icon">Zfs<wbr>Definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosfilesconstants" class="tsd-kind-icon">Zos<wbr>Files<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosfilescreateextraoptions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Create<wbr>Extra<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosfilescreateoptions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Create<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosfilesmessages" class="tsd-kind-icon">Zos<wbr>Files<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosfilesoptions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosjobsmessages" class="tsd-kind-icon">Zos<wbr>Jobs<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosussmessages" class="tsd-kind-icon">Zos<wbr>Uss<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosmfconstants" class="tsd-kind-icon">Zosmf<wbr>Constants</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#zosmfmessages" class="tsd-kind-icon">Zosmf<wbr>Messages</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#catalogtemplates" class="tsd-kind-icon">catalog<wbr>Templates</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#collectprocessingdetails" class="tsd-kind-icon">collect<wbr>Processing<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#config" class="tsd-kind-icon">config</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#decreasecounter" class="tsd-kind-icon">decrease<wbr>Counter</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-private">
+						<a href="globals.html#definition" class="tsd-kind-icon">definition</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#displaycollecterror" class="tsd-kind-icon">display<wbr>Collect<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#displaycollectresponse" class="tsd-kind-icon">display<wbr>Collect<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#displayerror" class="tsd-kind-icon">display<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#displayresponse" class="tsd-kind-icon">display<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainactionresponse" class="tsd-kind-icon">explain<wbr>Action<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainatcreatevariable" class="tsd-kind-icon">explain<wbr>AtCreate<wbr>Variable</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpromptvariable" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpromptvariablefull" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpromptvariablesummary" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisiontemplateresponse" class="tsd-kind-icon">explain<wbr>Provision<wbr>Template<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstanceactionsfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstanceactionssummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstanceextended" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Extended</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancefull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancesummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancesummarywithactions" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Actions</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancesummarywithvars" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Vars</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancevariable" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Variable</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancesfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainprovisionedinstancessummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplatefull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplateinfofull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplateinfosummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplatesummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplatesfull" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explainpublishedtemplatessummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explaintemplateregistryinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Registry<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#explaintemplateworkflowinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Workflow<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#instanceinfo" class="tsd-kind-icon">instance<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#instancevariables" class="tsd-kind-icon">instance<wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noaccountinfo" class="tsd-kind-icon">no<wbr>Account<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noaccountnumber" class="tsd-kind-icon">no<wbr>Account<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noactionname" class="tsd-kind-icon">no<wbr>Action<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nocollectparameters" class="tsd-kind-icon">no<wbr>Collect<wbr>Parameters</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nocommandinput" class="tsd-kind-icon">no<wbr>Command<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nocommandkey" class="tsd-kind-icon">no<wbr>Command<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noconsoleinput" class="tsd-kind-icon">no<wbr>Console<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noconsolename" class="tsd-kind-icon">no<wbr>Console<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nodatainput" class="tsd-kind-icon">no<wbr>Data<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noinstanceid" class="tsd-kind-icon">no<wbr>Instance<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noowner" class="tsd-kind-icon">no<wbr>Owner</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nopinginput" class="tsd-kind-icon">no<wbr>Ping<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noservletkeyinput" class="tsd-kind-icon">no<wbr>Servlet<wbr>Key<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nosession" class="tsd-kind-icon">no<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nosessionprovisioning" class="tsd-kind-icon">no<wbr>Session<wbr>Provisioning</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nosessiontso" class="tsd-kind-icon">no<wbr>Session<wbr>Tso</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nosteps" class="tsd-kind-icon">no<wbr>Steps</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nosystemname" class="tsd-kind-icon">no<wbr>System<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#notemplatename" class="tsd-kind-icon">no<wbr>Template<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#notsoissueinput" class="tsd-kind-icon">no<wbr>Tso<wbr>Issue<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#notsostartinput" class="tsd-kind-icon">no<wbr>Tso<wbr>Start<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#notsostopinput" class="tsd-kind-icon">no<wbr>Tso<wbr>Stop<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#novariables" class="tsd-kind-icon">no<wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noworkflowdefinitionfile" class="tsd-kind-icon">no<wbr>Workflow<wbr>Definition<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noworkflowkey" class="tsd-kind-icon">no<wbr>Workflow<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#noworkflowname" class="tsd-kind-icon">no<wbr>Workflow<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nozosmfinput" class="tsd-kind-icon">no<wbr>Zosmf<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nozosmfresponse" class="tsd-kind-icon">no<wbr>Zosmf<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#nozosmfversion" class="tsd-kind-icon">nozOSMFVersion</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#pretty" class="tsd-kind-icon">pretty</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#prettyfull" class="tsd-kind-icon">pretty<wbr>Full</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#prettysummary" class="tsd-kind-icon">pretty<wbr>Summary</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#registryinstances" class="tsd-kind-icon">registry<wbr>Instances</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#resetcounter" class="tsd-kind-icon">reset<wbr>Counter</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#templateinfo" class="tsd-kind-icon">template<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#wrongowner" class="tsd-kind-icon">wrong<wbr>Owner</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#wrongstring" class="tsd-kind-icon">wrong<wbr>String</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
