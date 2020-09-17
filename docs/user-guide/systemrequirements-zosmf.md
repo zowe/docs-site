@@ -1,7 +1,7 @@
 ---
 meta:
   - name: description
-    content: z/OSMF is a prerequisite for installing Zowe. Learn how to configure z/OSMF in this topic.
+    content: z/OSMF is a prerequisite for installing Zowe. This topic describes procedures and tips for meeting z/OSMF requirements for Zowe to work. You can refer to the Knowledge Center of IBM z/OS Management Facility for detailed information. 
   - name: keywords
     content: Zowe, z/OSMF, system requirements, prerequisite
 ---

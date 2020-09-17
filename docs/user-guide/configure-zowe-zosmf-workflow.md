@@ -1,7 +1,7 @@
 ---
 meta:
   - name: description
-    content: You can register and execute z/OSMF workflow in the web interface to complete the Zowe configuration after you install Zowe. z/OSMF workflow helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration.
+    content: You can register and execute z/OSMF workflow in the web interface to complete the Zowe configuration after you install Zowe through either the convenience build or SMP/E build. z/OSMF workflow helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration. You can use z/OSMF workflow to configure z/OS security manager, Zowe certificates, and Zowe instance directory as well as start the Zowe started task. 
   - name: keywords
     content: Zowe, z/OSMF workflow
 ---
