@@ -6,6 +6,7 @@ This article describes the process of configuring a REST service to onboard with
 * [Configuring a REST service for API ML onboarding](#configuring-a-rest-service-for-api-ml-onboarding)
 * [Plain Java Enabler service onboarding](#plain-java-enabler-service-onboarding-api)
     * [Automatic initialization of the onboarding configuration by a single method call](#automatic-initialization-of-the-onboarding-configuration-by-a-single-method-call)
+* [Validating successful onboarding with the API Mediation Layer](#Validating-successful-onboarding-with-the-API-Mediation-Layer)
 * [Loading YAML configuration files](#loading-yaml-configuration-files)
     * [Loading a single YAML configuration file](#loading-a-single-yaml-configuration-file)
     * [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files)
@@ -116,6 +117,16 @@ The following code block is an example of Java Servlet context configuration.
    The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
    
    The other context parameters with the _apiml_ prefix are used to rewrite values of properties in the configuration files. 
+
+## Validating successful onboarding with the API Mediation Layer
+Ensure that you successfully onboarded a service with the API Mediation Layer. 
+
+**Follow these steps:**
+  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+ 
+  2. Check that you can access your API service endpoints through the Gateway.
+
+  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
  ## Loading YAML configuration files
     
