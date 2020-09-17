@@ -284,17 +284,15 @@ The following error message codes may appear on logs or API responses. Use the f
   **Reason:**
 
   The Gateway does not trust the requested service and refuses to communicate with it.
+  The certificate of the service is missing from the truststore of the API Mediation Layer.
 
   **Action:**
 
-  Possible actions regarding the message content:
-  
-  - Message: The certificate does not match any of the subject alternative names.
-    
-    Action: Verify that the hostname which the certificate is issued for matches the hostname of the service. 
-  - Message: Unable to find the valid certification path to the requested target.
-    
-    Action: Import the root CA that issued service's certificate to the API Gateway truststore.
+  Possible actions regarding to message content:
+  - Message: Certificate doesn't match any of the subject alternative names.
+  Action: Verify that hostname the certificate is issued for, match the hostname of the service 
+  - Message: Unable to find valid certification path to requested target.
+  Action: Import the root CA (that issued services's certificate) certificate, to API Gateway truststore 
 
 ### ZWEAM600W
 
@@ -590,6 +588,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure that the security provider recognized the application id.
 
+### ZWEAS130E
+
+  Invalid token provided
+
+  **Reason:**
+
+  The JWT token is not valid
+
+  **Action:**
+
+  Provide a valid token.
+
 ### ZWEAS500E
 
   There was no path to the trust store.
@@ -646,7 +656,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Discovery Service tried to notify the Gateway about instance update, but the REST call failed. The purpose of this call is to update the Gateway caches. The Gateway might be down or a network problem occured.
+  The Discovery Service tried to notify the Gateway about instance update, but the REST call failed. The purpose of this call is to update the Gateway caches. The Gateway might be down or a network problem occurred.
+
+  **Action:**
+
+  Ensure there are no network issues and the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
+
+### ZWEAD401E
+
+  Cannot notify Gateway on '%s' about cancelled registration
+
+  **Reason:**
+
+  The Discovery Service tried to notify the Gateway about service un-registration, but the REST call failed. The purpose of this call is to update the Gateway caches. The Gateway might be down or a network problem occurred.
 
   **Action:**
 
@@ -826,6 +848,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify status of the requested instance.
 
+### ZWEAG709E
+
+  Service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The service is not available.
+
+  **Action:**
+
+  Make sure that the service is running and is accessible by the URL provided in the message.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -900,7 +934,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG106W
 
-  Login endpoint is running in the dummy mode. Use credentials user/user to login. Do not use this option in the production environment.
+  Login endpoint is running in the dummy mode. Use credentials '%s'/'%s' to login. Do not use this option in the production environment.
 
   **Reason:**
 
