@@ -165,7 +165,8 @@
           "extend/extend-desktop/mvd-apptoappcommunication.md",
           "extend/extend-desktop/mvd-iframecomm.md",
           "extend/extend-desktop/mvd-errorreportingui.md",
-          "extend/extend-desktop/mvd-logutility.md"
+          "extend/extend-desktop/mvd-logutility.md",
+          "extend/extend-desktop/mvd-conda.md"
         ]
       },
       {
@@ -272,7 +273,11 @@
     "canHideFirst": true,
     "items": [{
         "text": "Zowe CLI command reference",
-        "link": "#zowe-cli-command-reference-guide"
+        "link": "appendix/zowe-cli-commannd-reference.md"
+      },
+      {
+        "text": "Zowe API reference",
+        "link": "appendix/zowe-api-reference.md"
       },
       {
         "text": "Bill of Materials",
