@@ -78,8 +78,8 @@ Refer to the following Zowe Client SDK reference guides for information about th
 </p>
 
 <p class="action">
-<a href="" target="_blank" class="nav-link action-button"> <span>Browse Python SDK Reference (Online)</span></a>
-<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download Python SDK Reference (ZIP)</span></a>
+<a href="https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html" target="_blank" class="nav-link action-button"> <span>Browse Python SDK Reference (Online)</span></a>
+<a href="https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/" class="nav-link action-button"> <span>Download Python SDK Reference (ZIP)</span></a>
 </p>
 
 ### Zowe overview deck
