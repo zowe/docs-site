@@ -226,7 +226,7 @@ configuration file on the command line in the following format:
 A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can be used for two purposes:
 
   * To provide a runtime value for any `YAML` property if
-    `${property.key}` is used as its value (after `:`) in the YAML configuration file.
+    `${property.key}` is used as its value (after `:`) in the YAML configuration file
 
     **Example:**
     
@@ -236,7 +236,7 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
             key: ${property.key}
     ```
    
-  * To add a property to configuration if the property does not already exist.
+  * To add a property to configuration if the property does not already exist
 
     **Example:**
 
@@ -334,7 +334,7 @@ apiml:
 # server: ....
 # yourApplicationConfiguration: ....
 # and other properties
-
+```
 
 **Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -366,8 +366,8 @@ logging:
 
 ### SAF Keyring configuration
 
-You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring).Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+You can choose to use a SAF keyring instead of keystore and truststore for storing certificates.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with a keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings: 
 ```
@@ -389,13 +389,13 @@ Custom metadata are described [here](custom-metadata.md).
 
 ## Registering and unregistering your service with API ML
 
-Onboarding a REST service with API ML means registering the service with the API ML Discovery service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
+Onboarding a REST service to the API ML means registering the service with the API ML Discovery Service. The registration is triggered automatically by Spring after the service application context is fully initialized by firing a `ContextRefreshed` event.
 
 To register your REST service with API ML using a Spring Boot enabler, annotate your application `main` class with `@EnableApiDiscovery`.
 
 ### Unregistering your service with API ML
 
-Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery service.
+Unregistering a service onboarded with API ML is done automatically at the end of the service application shutdown process in which Spring fires a `ContextClosed` event. The Spring onboarding enabler listens for this event and issues an `unregister` REST call to the API ML Discovery Service.
 
 ### Basic routing
 
@@ -474,17 +474,19 @@ Use the following procedure to add Swagger API documentation to your project.
 3. Customize this configuration according to your specifications. For more information about customization properties,
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
-
-    **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
+   **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
     For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
 
 ## Validating the discoverability of your API service by the Discovery Service
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validating your service registration can be done in the API ML Discovery Service and the API ML Catalog.
-If your service appears in the Discovery Service UI but is not visible in the API Catalog,
-check to make sure that your configuration settings are correct.
+**Follow these steps:**
+  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+ 
+  2. Check that you can access your API service endpoints through the Gateway.
+
+  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
@@ -495,63 +497,12 @@ with actual addresses of API ML components and the respective user credentials.
 **Tip:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
 service was successfully started.
 
-**Follow these steps:**
-
- 1. Use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
-
-    ```
-    https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
-    ```
-
- 2. Check your service metadata.
-
-    **Response example:**
-
-    ```xml
-    <application>
-        <name>{serviceId}</name>
-        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
-        <hostName>{hostname}</hostName>
-        <app>{serviceId}</app>
-        <ipAddr>{ipAddress}</ipAddr>
-        <status>UP</status>
-        <port enabled="false">{port}</port>
-        <securePort enabled="true">{port}</securePort>
-        <vipAddress>{serviceId}</vipAddress>
-        <secureVipAddress>{serviceId}</secureVipAddress>
-        <metadata>
-                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
-                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
-                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
-                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
-                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service ©</apiml.service.title>
-                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
-                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
-                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
-                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
-                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
-                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
-                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
-                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
-                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
-        </metadata>
-    </application>
-    ```
-
-  3. Check that your API service is displayed in the API Catalog and all information including API documentation is correct.
-
-  4. Check that you can access your API service endpoints through the Gateway.
-
-  5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 ## Troubleshooting
 
 #### Log messages during registration problems
 
-When an Enabler connects to the Discovery service and fails, an error message prints to the Enabler log. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery service is not correct, the Discovery Service is down, or the TLS certificate is invalid. 
-These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. 
+When an Enabler connects to the Discovery Service and fails, an error message prints to the Enabler log. The default setting does not suppress these messages as they are useful to resolve problems during the Enabler registration. Possible reasons for failure include the location of Discovery Service is not correct, the Discovery Service is down, or the TLS certificate is invalid. These messages continue to print to the Enabler log, while the Enabler retries to connect to the Discovery Service. 
 
 To fully suppress these messages in your logging framework, set the log levels to `OFF` on the following loggers:
 
@@ -567,8 +518,9 @@ The Logback framework provides a filter tool, [DuplicateMessageFilter](http://lo
 
 Add the following code to your configuration file if you use XML configuration: 
 
+```
     <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
         <AllowedRepetitions>0</AllowedRepetitions>
     </turboFilter>
-    
+```    
 **Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 

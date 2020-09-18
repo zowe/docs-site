@@ -32,6 +32,12 @@ The data transfer process returns each record as-is, without translation. No
 delimiters are added between records.</li>
 </ul>
 </li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Data content in encoding mode, which means that data conversion is performed
+according to the encoding specified.</li>
+</ul>
+</li>
 <li><p><code>--migrated-recall</code>  | <code>--mr</code> <em>(string)</em></p>
 <ul>
 <li><p>The method by which migrated data set is handled. By default, a migrated data
@@ -46,6 +52,13 @@ nowait, error</p>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option
 at any time. However, the VOLSER is required only when the data set is not
 cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
