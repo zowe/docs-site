@@ -137,7 +137,7 @@ Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following 
 To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
 
 ```
-zowe profiles create db2 <profile name> -H <host> -P <port> -d <database> -u <user> -p <password>
+zowe profiles create db2 <profileName> -H <host> -P <port> -d <database> -u <user> --pw <password>
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
