@@ -328,7 +328,7 @@ You can override ciphers that are used by the HTTPS servers in API ML services b
 
 **Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 
-The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `$ZOWE_ROOT_DIR/components/api-mediation/bin/start.sh`.
+The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `<RUNTIME_DIR>/components/api-mediation/bin/start.sh`.
 Add the launch parameter of the shell script to set a cipher:
 
 ```
@@ -661,7 +661,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 - If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It's recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
 
-- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$KEYSTORE_DIRECTORY/local_ca/localca.cer` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 **Follow these steps:**
 
@@ -718,7 +718,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
 ```
-cd $ZOWE_ROOT_DIR
+cd $RUNTIME_DIR
 bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
 --service-keystore <keystore_path> --service-truststore <truststore_path> \
 --service-dname <dname> --service-password <password> --service-validity <days> \
@@ -747,7 +747,7 @@ The `service-validity` is the number of days after until the certificate expires
 
 The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
+The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
 
 
 #### Add a service with an existing certificate to API ML on z/OS
@@ -767,7 +767,7 @@ The following path is an example of importing a public certificate to the API ML
 **Example:**
 
 ```
-cd $ZOWE_ROOT_DIR
+cd <RUNTIME_DIR>
 bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
 ```
 
