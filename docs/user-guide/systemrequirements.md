@@ -29,6 +29,8 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
 
   z/OSMF is an optional prerequisite for Zowe.  It is recommended that z/OSMF is present to fully exploit Zowe's capabilities.
   
+  When utilizing z/OSMF with Zowe ensure the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).
+  
 - z/OS OpenSSH V2.2.0 or higher
   
   Conditional requisite for ssh connection.
