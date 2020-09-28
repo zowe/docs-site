@@ -146,3 +146,7 @@ When the `ZWEKRING` JCL runs successfully, it will create a key ring named `Zowe
 - The certificate used to encrypt the JSON Web Token (JWT) required for single sign-on (called `jwtsecret`)
 
 When the `zowe-setup-certificates.sh` script executes successfully, it will generate the USS `KEYSTORE_DIRECTORY` that contains the file `zowe-certificates.env`. This file is used in the Zowe instance configuration step. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+
+## Cleanup
+
+The JCL member `ZWENOKYR` provided in the PDS sample library `SZWESAMP` contains the inverse commands contained in `ZWEKKRING`. This allows an environment to be cleaned up and have the certificate(s), keyrings, and certificate authorities created by `ZWEKRING` removed from the z/OS environment.  This is useful if you are creating a devops pipeine to install and configure and environment for Zowe using `ZWEKRING` and wish to clean that environment before re-running the pipeline

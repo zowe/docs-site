@@ -44,3 +44,7 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
 4.  Reverse the z/OS security and environment updates from `ZWESECUR` job
 
     As part of installing Zowe the z/OS environment will have been altered to allow Zowe to operate, see [Configuring the z/OS System for Zowe](configure-zos-system.md#configuring-the-z/os-system-for-zowe).  You may leave the environment configured which allows you to install and operate a Zowe instance at a point in the future, or you may undo the configuration steps to your z/OS environment.  A JCL member `ZWENOSEC` is provided with Zowe that contains the commands needed to reset a z/OS environment and undo the steps that were performed in `ZWESECUR` when the environment was configured for Zowe operation.   
+
+5. Reverse the z/OS keyring updates from `ZWEKRING` job
+
+    The `ZWEKRING` JCL member provided in the `SZWESAMP` member can be used to create a keyring for containing the Zowe certificate(s) and certificate authority.  If you wish to remove the keyring and its certificate(s) and certificate authority, the JCL member `ZWENOKYR` is provided that contains the undo steps to reverse the configuration performed in `ZWEKRING`.
