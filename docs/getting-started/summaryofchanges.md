@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.15.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
 - [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
@@ -24,6 +25,14 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.16.0 LTS (October 2020)
+
+### Notable changes
+
+<!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
+
+### New features and enhancements
 
 ## Version 1.15.0 LTS (September 2020)
 
