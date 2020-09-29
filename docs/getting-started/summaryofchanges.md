@@ -30,11 +30,11 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 ### Notable changes
 
-**Certificate Management and Key ring support**
+**Certificate management and key ring support**
 
-- In 1.15 the JCL member `ZWEKRING` was added to the sample PDS library `SZWESAMP`.  This member contains commands to create a keyring that can contain the Zowe certificate(s) and a local certificate authority. In 1.16 the JCL member `ZWENOKYR` was added to `SZWESAMP` that contains the inverse commands, so it can be used to remove the keyring, the Zowe certificate(s) and the certificate authority.
-- In 1.15 `ZWEKRING` and the supporting code in the Zowe runtimes to work with certificates held in keyrings was provided in beta format for early technical preview. for RACF only  In 1.16 the commands in `ZWEKRING`, `ZWENOKYR` and the accompanying code in the Zowe runtimes for working with keyrings and certificates in RACF, TopSecret, and ACF/2 are now a supported piece of functionality.    
-- To provide more documentation for the configuration scenarios around Zowe certificates, and the relationship to a Zowe instance directory and Zowe runtime the documentation chapter, see [Toplogy for the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z/os-launch-process).
+- In V1.15, the JCL member `ZWEKRING` was added to the sample PDS library `SZWESAMP`.  This member contains commands to create a key ring that can contain the Zowe certificate(s) and a local certificate authority. In this release, the JCL member `ZWENOKYR` was added to `SZWESAMP` that contains the inverse commands, so it can be used to remove the key ring, the Zowe certificate(s), and the certificate authority.
+- In V1.15, the JCL member`ZWEKRING` and the supporting code in the Zowe runtimes for working with certificates held in key rings was provided in beta format for early technical preview for RACF only. In this release, the commands in `ZWEKRING`, `ZWENOKYR` and the supporting code in the Zowe runtimes for working with key rings and certificates in RACF, TopSecret, and ACF/2 are now a supported piece of functionality.    
+- A new documentation section is added to help you understand the configuration scenarios around Zowe certificates, and the relationship to a Zowe instance directory and Zowe runtime. See [Toplogy for the Zowe z/OS launch process](../user-guide/installandconfig.md#topology-of-the-zowe-z-os-launch-process).
 
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
