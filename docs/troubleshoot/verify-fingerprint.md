@@ -1,6 +1,6 @@
 # Verify Zowe runtime directory
 
-The Zowe runtime directory `RUMTIME_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To check if the `RUNTIME_DIR` has been altered, Zowe provides a verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
+The Zowe runtime directory `RUNTIME_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To check if the `RUNTIME_DIR` has been altered, Zowe provides a verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
 
 You can use this verify tool on Zowe version 1.9 and later. 
 - If you use Zowe version 1.14 or later, the verify tool is delivered with Zowe, so you can skip [Step 1](#step-1-obtain-the-verify-tool-prior-to-v114) below, but you can still download the verify tool if required.  

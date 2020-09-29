@@ -1,24 +1,22 @@
 # Configuring Zowe certificates in a key ring
 
-Zowe is able to work with with certificates held in a **z/OS Keyring**.  For background on Zowe certificates see [Configuring Zowe certificates](./configure-certificates.md).
+Zowe is able to work with certificates held in a **z/OS Keyring**.  For background on Zowe certificates, see [Configuring Zowe certificates](./configure-certificates.md). To configure Zowe certificates in a key ring, run the `ZWEKRING` JCL that contains the security commands to create the key ring and manage the certificates that Zowe will use. The `ZWEKRING` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
 
-To configure Zowe certificates in a key ring, run the `ZWEKRING` JCL which contains the security commands to create the key ring and manage the certificates that Zowe will use. The `ZWEKRING` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
+Before you submit the JCL, you must [customize it](#customizing-the-zwekring-jcl) and review it with a system programmer who is familiar with z/OS certificates and key rings. The JCL member contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
-Before you submit the JCL, you must customize it and review it with a system programmer who is familiar with z/OS certificates and key rings. The JCL member contains commands for three z/OS security managers RACF, TopSecret and ACF/2.
+The `ZWEKRING` JCL contains commands for the following scenarios:
+- Creation of a local CA which is used to sign a locally generated certificate, both of which are placed into the key ring.
+- (**Beta**) Importing an existing certificate already held in z/OS to the key ring for use by Zowe. 
+- (**Beta**) Creation of a locally generated certificated and signing it with an existing certificate authority, and placing the certificate into the key ring. 
 
-The JCL `ZWEKRING` contains commands for the following scenarios
-- Creation of a localca which is used to sign a locally generated certificate, both of which are placed into the keyring.
-- **Beta**  Importing an existing certificate already held in z/OS to the keyring for use by Zowe. 
-- **Beta**  Creation of a locally generated certificated and signing it with an already existing certificate authority, and placing the certificate into the keyring. 
+**Note:** The scenarios marked **Beta** are provided for technical preview.  If you have any feedback on using key rings, create an issue in the Zowe community repo at [https://github.com/zowe/community](https://github.com/zowe/community). 
 
-**Note** The scenarios marked **Beta** are provided for technical preview.  If you have any feedback using keyrings please create an issue in https://git.com/zowe/community. 
+After you run the `ZWEKRING` JCL, a key ring that contains the Zowe certificate is created.  In order for a Zowe instance to work with the keystore certificate, you also need to create a USS keystore directory.  This USS keystore directory does not contain any certificates, but is required for the Zowe [instance.env](./configure-instance-directory#keystore-configuration.md) file to configure the Zowe shell correctly so that the keystore certificate can be located by the Zowe runtime. 
 
-Having run `ZWEKRING` JCL there will be a keyring containing the Zowe certificate.  In order for a Zowe instance to work with the keystore certificate a USS keystore directory also needs to be created.  This USS directory does not contain any certificates, but is required so that the Zowe [instance.env](./configure-instance-directory#keystore-configuration.md) file is able to configure the Zowe shell correctly so that the keystore certificate can be located by the Zowe runtime. 
-
-In order to create the USS keystore directory after successfully running `ZWEKRING` JCL member, you will need to need to run the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`. This script is passed an input parameter `-p` which specifies the location of a configuration file controlling how and where the directory and its contents are created.  Copy the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` to a writeable location and review and edit its contents to match property values used in `ZWEKRING` JCL member.  Then execute the script using 
+To create the USS keystore directory after successfully running `ZWEKRING` JCL member, run the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`. This script has an input parameter `-p` which specifies the location of a configuration file controlling how and where the directory and its contents are created.  Copy the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` to a writeable location and review and edit its contents to match property values used in `ZWEKRING` JCL member.  Then, run the script by using the following command:
 
 ```.sh
-zowe-setup-certificates.sh -p <path to zowe-setup-keyring-certificates.env>`
+zowe-setup-certificates.sh -p <path to zowe-setup-keyring-certificates.env>
 ```
 
 ## Customizing the ZWEKRING JCL
@@ -149,4 +147,4 @@ When the `zowe-setup-certificates.sh` script executes successfully, it will gene
 
 ## Cleanup
 
-The JCL member `ZWENOKYR` provided in the PDS sample library `SZWESAMP` contains the inverse commands contained in `ZWEKKRING`. This allows an environment to be cleaned up and have the certificate(s), keyrings, and certificate authorities created by `ZWEKRING` removed from the z/OS environment.  This is useful if you are creating a devops pipeine to install and configure and environment for Zowe using `ZWEKRING` and wish to clean that environment before re-running the pipeline
+The JCL member `ZWENOKYR` provided in the PDS sample library `SZWESAMP` contains the inverse commands contained in `ZWEKKRING`. This allows an environment to be cleaned up and have one or more certificates, key rings, and certificate authorities created by `ZWEKRING` removed from the z/OS environment.  This is useful if you are creating a DevOps pipeline to install and configure and environment for Zowe using `ZWEKRING` and want to clean that environment before rerunning the pipeline.

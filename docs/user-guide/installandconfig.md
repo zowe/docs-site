@@ -38,24 +38,24 @@ The following diagram depicts the high-level structure of a Zowe installation an
 
 ### RUNTIME_DIR
 
-The `<RUNTIME_DIR>` contains the binaries and executables. There are three ways in which a runtime directory can be created
-- Executing the 'zowe-install.sh' script contained within the `install` directory of a `zowe-v.M.m.pax` convenience build.  
-- Installing the Zowe SMP/E FMID AZWE001 using the JCL members in the REL4 member
-- Executing the z/OSMF worklow script `ZWERF01` contained in the SMP/E FMID AZWE001
+The runtime directory `<RUNTIME_DIR>` contains the binaries and executable files. You can create a runtime directory in one of the following ways:
+- Executing the `zowe-install.sh` script contained within the `install` directory of a Zowe convenience build.  
+- Installing the Zowe SMP/E FMID AZWE001 using the JCL members in the REL4 member.
+- Executing the z/OSMF worklow script `ZWERF01` contained in the SMP/E FMID AZWE001.
 
-During execution of Zowe the RUNTIME_DIR contents are not modified.  Maintenance or APAR release for Zowe replace the contents of the RUNTIME_DIR and are rollup PTFs.  
+During execution of Zowe, the runtime directory contents are not modified.  Maintenance or APAR release for Zowe replaces the contents of the runtime directory and are rollup PTFs.  
 
 ### INSTANCE_DIR
 
-The instance directory is required to launch Zowe.  It is created with the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh`.  More than one instance directory can be created and used to launch multiple instances of Zowe sharing the same `<RUNTIME_DIR>`.
+The instance directory `<INSTANCE_DIR>` is required to launch Zowe.  It is created with the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh`.  More than one instance directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory `<RUNTIME_DIR>`.
 
 Zowe instances are started by running the script `<INSTANCE_DIR>/bin/zowe-start.sh`.  This creates a started task with the PROCLIB member `ZWESVSTC` that is provided with the samplib `SZWESAMP` created during the installation of Zowe.  The JCL member `ZWESVSTC` starts a USS shell under which it launches its address spaces.  
 
 The instance directory file `instance.env` is used to configure a Zowe launchable.  The file is executed during the launch of Zowe and specifies shell variables such as ports and location of dependent directories and services on z/OS.  
 
-The `instance.env` file set the location of the `<RUNTIME_DIRECTORY>` as well as the `<KEYSTORE_DIRECTORY>`
+The `instance.env` file sets the location of the `<RUNTIME_DIRECTORY>` as well as the `<KEYSTORE_DIRECTORY>`
 
 ### KEYSTORE_DIRECTORY
 
-Zowe uses certificates to encrypt data as well as a trust store.  The `<KEYSTORE_DIRECTORY>` controls where the certificates are located, either in a JavaKeystore or a z/OS keyring.  A `<KEYSTORE_DIRECTORY>` is created using the script `<RUNTIME_DIR>/bin/zowe-setupcertificates.sh`.  
+Zowe uses certificates to encrypt data as well as a truststore.  The keystore directory `<KEYSTORE_DIRECTORY>` controls where the certificates are located, either in a JavaKeystore or a z/OS keyring.  A `<KEYSTORE_DIRECTORY>` is created by using the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.  
 
