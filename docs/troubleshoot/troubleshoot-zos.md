@@ -32,7 +32,7 @@ You will also encounter the following messages in the SYSLOG:
 
 This problem occurs when the maximum number of `BPXAS` instances have been reached.  
 
-This may be because when the Zowe instance directory was created, it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created by using the script `<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>`. See [Creating an instance directory](../user-guide/configure-instance-directory.html#creating-an-instance-directory). The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read-only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
+This may be because when the Zowe instance directory was created, it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created by using the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>`. See [Creating an instance directory](../user-guide/configure-instance-directory.html#creating-an-instance-directory). The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read-only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
 
 This problem will only occur with Zowe drivers prior to v1.10 and has been resolved in v1.10 where the `zowe-configure-instance.sh` script will report error if it detects the `-c` argument because the installation directory location is an existing Zowe runtime directory.  
 
@@ -93,3 +93,49 @@ When you try to start the ZWESAUX task, it fails with the following message.
 **Solution:**
 
 You are not supposed to start ZWESAUX manually. It is started by ZWESIS on an as-needed basis. For more information, see [Zowe Auxiliary Address space](../user-guide/configure-auxiliary-address-space.md).
+
+## Various warnings show when connecting Zowe with another domain
+
+**Symptoms:**
+
+When you configure the Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.env` with a domain (for example, `domain-a.com`), and access Zowe with another domain (for example, `domain-b.com`), you may see the following errors:
+
+- Certificate warnings similar to the following one:
+  ```
+  domain-b.com:8544 uses an invalid security certificate.
+
+  The certificate is only valid for the following names: domain-a.com, <ip-of-domain-a>, localhost.localdomain, localhost, 127.0.0.1
+  ```
+- No pinned applications show in Zowe Desktop.
+- JES Explorer, MVS Explorer, USS Explorer may show errors similar to the following one if you ignore the certificate error.
+  ``` 
+  Blocked by Content Security Policy
+
+  An error occurred during a connection to domain-a.com:7554.
+
+  Firefox prevented this page from loading in this way because the page has a content security policy that disallows it.
+  ```
+  
+
+The above warnings and errors will also show when you plan to use Zowe with multiple domain names.
+
+**Solutions:**
+
+You can take the following steps:
+
+- When you prepare the `bin/zowe-setup-certificates.env` file, specify the `HOSTNAME=` and `IPADDRESS=` parameters to accept multiple domains separated by comma (from Zowe v1.14.0). The following configuration is an example:
+
+  ```
+  HOSTNAME=domain-a.com,domain-b.com
+  IPADDRESS=<ip-of-domain-a>,<ip-of-domain-b>
+  ```
+
+  Then you can proceed to run the `bin/zowe-setup-certificates.sh` script.
+- After you run the `bin/zowe-configure-instance.sh` script, modify the `instance.env` file located in the instance directory in the following ways to reflect the multiple domains you plan to use.
+  * Add a line of `ZWE_EXTERNAL_HOSTS`. For example, `ZWE_EXTERNAL_HOSTS=domain-a.com,domain-b.com`.
+  * Add a line of `ZWE_REFERRER_HOSTS`. For example, `ZWE_REFERRER_HOSTS=domain-a.com,domain-b.com`.
+  * Find the line that starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify its values to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZOWE_EXPLORER_HOST}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
+
+**Drawback:**
+
+With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.

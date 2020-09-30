@@ -1,6 +1,6 @@
 // load versions list
 const ZOWE_VERSIONS = require('./versions.json')
-const CURRENT_ZOWE_VERSION = '1.14.0 LTS'
+const CURRENT_ZOWE_VERSION = '1.16.0 LTS'
 // Due to VuePress limitation, publish url path cannot have dot (.) inside
 // so we convert it to dash
 const PUBLISH_TARGET_PATH = (process.env.PUBLISH_TARGET_PATH || 'stable').replace(/\./g, '-')
@@ -131,7 +131,7 @@ module.exports = {
   version: CURRENT_ZOWE_VERSION,
   base: `/${PUBLISH_TARGET_PATH}/`,
   dest: `.deploy/${PUBLISH_TARGET_PATH}/`,
-  description: 'Version 1.14.x LTS',
+  description: 'Version 1.16.x LTS',
   extraWatchFiles: [
     '.vuepress/theme/'
   ],
@@ -141,6 +141,13 @@ module.exports = {
       {
         name: 'google-site-verification',
         content: 'FFi0biHTX9XKglMxt3n2NZkB-knrnPxIrgBXpIZqlzc'
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/favicon.ico'
       }
     ],
   ],

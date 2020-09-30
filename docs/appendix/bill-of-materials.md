@@ -1,3 +1,11 @@
+---
+meta:
+  - name: description
+    content: Zowe distributes a list of materials in its binaries.
+  - name: keywords
+    content: Zowe binaries
+---
+
 # Zowe Binaries - Bill of Materials
 
 The following materials are distributed with Zowe&trade; binaries:

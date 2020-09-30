@@ -44,17 +44,16 @@ For the Zowe Desktop to work, the node server that runs under the ZWESVSTC start
 
 There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these two connections likely failed. 
 
-1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).
-2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver). 
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).  The architecture diagram below has been annotated with a (1) to show this connection.
+2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
 
 <img src="../../images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
-
 ### ZSS server unable to communicate with X-MEM
 
-1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+- Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
-2. Look for the message that starts with `ZIS status`.  
+- Look for the message that starts with `ZIS status`.  
 
    - If the communication works, the message includes `Ok`. For example:
 
@@ -100,9 +99,10 @@ There are two known problems that might cause this error.  The [Zowe architectur
 ### ZLUX unable to communicate with zssServer
 
 Follow these steps: 
-1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
-2. Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
+- Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+
+- Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
 
    ```
    yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR INFO (_zsf.apiml,apiml.
@@ -114,7 +114,9 @@ Follow these steps:
      syscall: 'getaddrinfo',                                              
      hostname: 'localhost'                                                    
    ``` 
-3. Map localhost to port 127.0.0.1. 
+  These messages show that the host name `localhost` cannot be reached between the Zowe desktop server and the zssServer because `localhost` has not been mapped to an IP address.  
+
+- Map localhost to port 127.0.0.1. 
 
    Create an entry in the file `/etc/hosts` that contains the line
 
@@ -122,7 +124,7 @@ Follow these steps:
    127.0.0.1       localhost
    ```
 
-4. Restart the `ZWESVSTC` address space.
+- Restart the `ZWESVSTC` address space.
 
 ## Server startup problem ret=1115
 
@@ -237,11 +239,11 @@ You can ignore these messages which should not occur in 1.11 or later releases. 
 The Zowe started task `ZWESVSTC` log contains messages ending
 
 ```
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-workflow/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-workflow/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
 ```
 
 **Solution:**   
