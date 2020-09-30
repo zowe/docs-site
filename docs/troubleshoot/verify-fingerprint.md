@@ -1,10 +1,10 @@
 # Verify Zowe runtime directory
 
-The Zowe runtime directory `ROOT_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To check if the `ROOT_DIR` has been altered, Zowe provides a verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
+The Zowe runtime directory `RUNTIME_DIR` contains the code modules that make up Zowe.  If these code modules are altered in any way, the behavior of Zowe is unpredictable. To check if the `RUNTIME_DIR` has been altered, Zowe provides a verify tool that comprises a script file `zowe-verify-authenticity.sh` and the files it needs to check the release contents.
 
 You can use this verify tool on Zowe version 1.9 and later. 
 - If you use Zowe version 1.14 or later, the verify tool is delivered with Zowe, so you can skip [Step 1](#step-1-obtain-the-verify-tool-prior-to-v114) below, but you can still download the verify tool if required.  
-- If you use Zowe version 1.9, 1.10, 1.11, 1.12, and 1.13, you must obtain the verify tool separately and use it to verify the `ROOT_DIR`.
+- If you use Zowe version 1.9, 1.10, 1.11, 1.12, and 1.13, you must obtain the verify tool separately and use it to verify the `RUNTIME_DIR`.
 
 **Contents in this topic**
     
@@ -42,7 +42,7 @@ Each `RefRuntimeHash-V.v.p.txt` file is specific to a Zowe release, where `V.v.p
 
 ## Step 2: Verify your runtime directory
 
-Now you are ready to verify your runtime directory `ROOT_DIR`, for example, `/usr/lpp/zowe/v1.14`, which contains the following files. You can show these files by using the `ls` command. 
+Now you are ready to verify your runtime directory `RUNTIME_DIR`, for example, `/usr/lpp/zowe/v1.14`, which contains the following files. You can show these files by using the `ls` command. 
 
 ```
 /u/username/hash:>ls /usr/lpp/zowe/v1.14
@@ -67,7 +67,7 @@ Note that you will not have a `fingerprint` directory in releases prior to v1.14
    bin/zowe-verify-authenticity.sh
    ``` 
    
-   If you suspect that the versions of the files in `ROOT_DIR` have been altered since this version of Zowe was installed, you might want to use the verify tool's script or files which you downloaded instead of the ones in your runtime directory. In this case, you can call the downloaded script and specify the options `-f` and `-h` in the following way:  
+   If you suspect that the versions of the files in `RUNTIME_DIR` have been altered since this version of Zowe was installed, you might want to use the verify tool's script or files which you downloaded instead of the ones in your runtime directory. In this case, you can call the downloaded script and specify the options `-f` and `-h` in the following way:  
 
    ```
    /u/username/hash/zowe-verify-authenticity.sh -f /u/username/hash -h /u/username/hash
