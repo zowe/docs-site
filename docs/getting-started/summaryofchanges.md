@@ -55,6 +55,8 @@ The following features and enhancements were added.
 - Implemented the logout functionality in ZAAS Client. [#808](https://github.com/zowe/api-layer/issues/808)
 - Added a more helpful and actionable description to message ZWEAM511E, which occurs when API ML does not trust the certificate provided by the service. [#818](https://github.com/zowe/api-layer/issues/818)
 
+#### Zowe App Server
+
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
 <!-- Imperative CLI Framewor: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Last release is 4.8.1. No change since that.-->
