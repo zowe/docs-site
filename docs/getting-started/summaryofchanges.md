@@ -56,6 +56,20 @@ The following features and enhancements were added.
 - Added a more helpful and actionable description to message ZWEAM511E, which occurs when API ML does not trust the certificate provided by the service. [#818](https://github.com/zowe/api-layer/issues/818)
 
 #### Zowe App Server
+- Added option to write json files without using nodejs. [#137](https://github.com/zowe/zlux-app-server/pull/137) 
+- Register ZSS to ML using configuration script. This is similar to how the ML team registers their APIs (for example, like Jobs API). [#208](https://github.com/zowe/zss/pull/208)
+- Additional env vars are now supported, which provides more options for TN3270 for the instance.env configuration's file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new env vars are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
+
+  - `ZOWE_ZLUX_TELNET_HOST = string`
+  - `ZOWE_ZLUX_SSH_HOST = string`
+  - `ZOWE_ZLUX_TN3270_ROW = number`
+  - `ZOWE_ZLUX_TN3270_COL = number`
+  - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
+  - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
+- An Agent API that provides limited information without the need for authentication has been added. [#211](https://github.com/zowe/zss/pull/211)
+  - `/server/agent/environment (limited info)`
+  - `server/agent/services`
+- Force encoding for files has been enabled. In previous versions, the system would automatically convert textfiles on the mainframe, which would sometimes lead to errors. A parameter to the `/unixfile` API that allows users to specify the source and target encoding has been implemented. [#160](https://github.com/zowe/zowe-common-c/pull/160)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
@@ -107,6 +121,21 @@ The following bugs were fixed.
 - Removed overwriting of the Swagger Base Path, which resulted in malformed API routes when the base URL is shared among multiple services. [#852](https://github.com/zowe/api-layer/issues/852)
 - API ML was previously not reporting SSL certificate errors when servers were unable to communicate. Now, if a SSLException occurs, SSL certificate errors are reported.  [#698](https://github.com/zowe/api-layer/issues/698)
 - Fixed language in log messages for consistency. [#830](https://github.com/zowe/api-layer/issues/830)
+
+#### Zowe App Server
+- Bugfix: In previous versions, the environment `arch` and `os` fields were incorrect. This has been fixed, and the updated response from `/server/agent/environment` service is [#213](https://github.com/zowe/zss/pull/213):
+
+```
+{
+  "agentName": "zss",
+  "agentVersion": "1.15.0+20200903",
+  "arch": "s390x",
+  "os": "zos",
+  "osRelease": "04.00",
+  "osVersion": "02",
+  "hardwareIdentifier": "8561"
+}
+```
 
 #### Zowe CLI
 
