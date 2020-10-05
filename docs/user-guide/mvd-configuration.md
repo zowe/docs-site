@@ -7,7 +7,7 @@ For simpler Zowe administration and better security, you can install an instance
 
 This configuration is simpler to administer because the framework servers are accessible externally through a single port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
 
-You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig` directory.
+You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `$RUNTIME_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig` directory.
 
 ### Enabling the Application Server to register with the Mediation Layer
 
@@ -57,7 +57,7 @@ The Zowe App Server and ZSS rely on many required or optional parameters to run,
 
 For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters. The parameters are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository (the `lib/zluxServer.js` file). The file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed.
 
-For an instance, the configuration file is located at and can be edited at `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`. The defaults from which that file is generated are located at `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
+For an instance, the configuration file is located at and can be edited at `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`. The defaults from which that file is generated are located at `$RUNTIME_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
 
 **Note:** All examples are based on the *zlux-app-server* repository defaults.
 
@@ -139,7 +139,7 @@ Prior to Zowe release 1.8.0, the location of the configuration directories were 
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <ROOT_DIR>/components/app-server/share
+| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <RUNTIME_DIR>/components/app-server/share
 | siteDir | <INSTANCE_DIR>/workspace/app-server/site | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
 | instanceDir | <INSTANCE_DIR>/workspace/app-server | zlux-app-server/deploy/instance |
 | groupsDir | <INSTANCE_DIR>/workspace/app-server/groups | zlux-app-server/deploy/instance/groups |
@@ -387,17 +387,17 @@ The following steps assume you have installed a Zowe runtime instance (which inc
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
 
-2. Install a new Zowe runtime by following steps in [Installing Zowe on z/OS](install-zos.md#obtaining-and-preparing-the-installation-file).
+2. Create a new Zowe instance directory by following steps in [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
-   **Note:** In the `zowe-install.yaml` configuration file, specify ports that are not used by the first Zowe runtime.
+   **Note:** In the `instance.env` configuration file, specify ports that are not used by the first Zowe runtime.
 
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
    ```text
-   /S ZWESVSTC,SRVRPATH='$ZOWE_ROOT_DIR'
+   /S ZWESVSTC,INSTANCE='$INSTANCE_DIR'
    ```
 
-   Where `'$ZOWE_ROOT_DIR'` is the first Zowe runtime root directory. By default the command starts the most recently installed runtime unless you specify the root directory of the runtime that you want to start.
+   Where `$INSTANCE_DIR` is the Zowe instance directory. 
 
 4. To specify a name for the new ZSS instance, follow these steps:
 
@@ -832,6 +832,6 @@ The API returns the following information in a JSON response:
 | /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode. |
 | /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode.            |
 
-Swagger API documentation is provided in the `$ROOT_DIR/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
+Swagger API documentation is provided in the `<RUNTIME_DIR>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
 **Note:** The "agent" end points interact with the agent specified in the `server.json` file. By default this is ZSS.

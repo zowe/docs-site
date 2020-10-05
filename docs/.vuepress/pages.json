@@ -142,6 +142,7 @@
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
+          "extend/extend-apiml/api-mediation-sso.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-routing.md",
@@ -273,7 +274,11 @@
     "canHideFirst": true,
     "items": [{
         "text": "Zowe CLI command reference",
-        "link": "#zowe-cli-command-reference-guide"
+        "link": "appendix/zowe-cli-commannd-reference.md"
+      },
+      {
+        "text": "Zowe API reference",
+        "link": "appendix/zowe-api-reference.md"
       },
       {
         "text": "Bill of Materials",
