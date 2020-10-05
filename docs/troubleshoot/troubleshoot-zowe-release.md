@@ -31,7 +31,7 @@ While Major releases are required for a "breaking" change, they also can be used
 
 ## Check the Zowe release number
 
-To see the release number of Zowe, look at the `manifest.json` file.  This is included in the top-level [directory of where a Zowe convenience build is expanded to](../user-guide/install-zowe-zos-convenience-build.md), the top-level directory of a Zowe runtime `<ROOT_DIR>`, and the [Zowe instance directory](../user-guide/configure-instance-directory.md) `<INSTANCE_DIR>/workspace`.
+To see the release number of Zowe, look at the `manifest.json` file.  This is included in the top-level [directory of where a Zowe convenience build is expanded to](../user-guide/install-zowe-zos-convenience-build.md), the top-level directory of a Zowe runtime `<RUNTIME_DIR>`, and the [Zowe instance directory](../user-guide/configure-instance-directory.md) `<INSTANCE_DIR>/workspace`.
 
 To see the version of a Zowe release, use the Unix grep command in a directory that contains a `manifest.json` file. 
 
