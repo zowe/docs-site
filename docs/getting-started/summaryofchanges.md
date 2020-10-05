@@ -36,6 +36,10 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 - In V1.15, the JCL member`ZWEKRING` and the supporting code in the Zowe runtimes for working with certificates held in key rings was provided in beta format for early technical preview for RACF only. In this release, the commands in `ZWEKRING`, `ZWENOKYR` and the supporting code in the Zowe runtimes for working with key rings and certificates in RACF, TopSecret, and ACF/2 are now a supported piece of functionality.    
 - A new documentation section is added to help you understand the configuration scenarios around Zowe certificates, and the relationship to a Zowe instance directory and Zowe runtime. See [Toplogy for the Zowe z/OS launch process](../user-guide/installandconfig.md#topology-of-the-zowe-z-os-launch-process).
 
+**Additional TN3270 terminal configuration options**
+
+- Additional TN3270 terminal configuration options are now possible to be specified within the instance.env configuration file. These choices, such as codepage and terminal dimensions, effect server defaults but do not change the preexisting ability for users to set their own preferences within the Desktop at runtime. A list of the available options can be found [here.](https://github.com/zowe/zlux-app-server/pull/108).
+
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
@@ -70,6 +74,7 @@ The following features and enhancements were added.
   - `/server/agent/environment (limited info)`
   - `server/agent/services`
 - Force encoding for files has been enabled. In previous versions, the system would automatically convert textfiles on the mainframe, which would sometimes lead to errors. A parameter to the `/unixfile` API that allows users to specify the source and target encoding has been implemented. [#160](https://github.com/zowe/zowe-common-c/pull/160)
+- Support for certificates and certificate authorities stored within PKCS12 files has been added. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
