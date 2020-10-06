@@ -88,7 +88,7 @@ z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`. To cha
     
 **Note:** Ribbon configures the client that connects to routed services.
 
-**ribbon.connectTimeout**
+* **ribbon.connectTimeout**
     
    Specifies the value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
