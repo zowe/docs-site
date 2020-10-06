@@ -53,17 +53,32 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-When z/OSMF is used as an authentication provider, to allow client certificate authentication it is necessary to provide
-valid APPLID. The API ML authenticates to the z/OSMF via generation of the passticket and using it to authenticate to the
-z/OSMF. The value in the default installation of the z/OSMF is IZUDFLT. To change the value to another one use the following procedure.
-  
+To enable the feature of using client certificate as a method of authentication for API Mediation Layer Gateway:
+
 **Follow these steps:**
 
 1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-2. Find the line that contains the `-Dapiml.security.zosmf.applid=IZUDFLT` parameter and set the value to the APPLID you use.
-3. Restart Zowe&trade.
+2. Configure the following properties:
 
-The provided APPLID will be used for generation of the passticket in case of the x509 client certificate authentication.
+* **apiml.security.x509.enabled**
+
+    This is the global feature toggle. Configure the property to `-Dapiml.security.x509.enabled=true`.
+
+* **apiml.security.x509.externalMapperUrl**
+
+    API Mediation Gateway uses external API to map certificate to it's owner in SAF. This property let's Gateway know, where does this api reside. In Zowe, ZSS is providing this api. Provide ZSS URL in the following format: `-Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map`. Default port is `8542` hostname is `localhost` as ZSS server is accessible only locally.
+
+* **apiml.security.x509.externalMapperUser**
+
+    To authenticate to the mapping API, a JWT token is sent with the request. The token is representing the user, that is configured with this property. The user here should be authorized to use `IRR.RUSERMAP` resource within `FACILITY` class. Default value is `ZWESVUSR` and the permissions are setup during installation with the `ZWESECUR` jcl or workflow. If you decide to customize ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to new value.
+
+* **apiml.security.zosmf.applid**
+
+    When z/OSMF is used as an authentication provider, to allow client certificate authentication it is necessary to provide
+valid APPLID. The API ML authenticates to the z/OSMF via generation of the passticket and using it to authenticate to the
+z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`. To change the value to another one use the following procedure.
+
+3. Restart Zowe&trade.
 
 ## Gateway timeouts
 
