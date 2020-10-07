@@ -216,9 +216,10 @@ The authentication is performed in the following steps:
 
 **Prerequisities:**
 * Have external Certificate Authority and signed client certificates or generate them in SAF
-* Import client certificates to SAF or add it to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please reref to your security system documentation)
+* Import client certificates to SAF or add it to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please refer to your security system documentation)
 * Import the external CA to API Mediation layer's truststore
 * [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication)
+* [For upgrade from zowe 1.16 or lower, please review the additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping)
 
 ##### JWT Token
 
