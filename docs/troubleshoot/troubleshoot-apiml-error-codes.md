@@ -87,7 +87,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Message service is requested to create message with an invalid key.
+  The Message service is requested to create a message with an invalid key.
 
   **Action:**
 
@@ -99,7 +99,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Message service is requested to create a message with an invalid text format.
+  The Message service is requested to create a message with an invalid text format.
 
   **Action:**
 
@@ -129,7 +129,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Refer to the specific message to identify the exact problem.
   Possible causes include:
-  - Incorrect security algorithm
+  - An incorrect security algorithm
   - The keystore is invalid or corrupted
   - The certificate is invalid or corrupted
 
@@ -521,11 +521,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The authorization header was empty or null
+  The authorization header was empty or null.
 
   **Action:**
 
-  Try again with valid authorization header
+  Try again with a valid authorization header.
 
 ### ZWEAS170E
 
@@ -533,7 +533,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  General exception. There are more information in the message
+  General exception. There is more information in the message.
 
   **Action:**
 
@@ -545,11 +545,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Unable to generate PassTicket.
+  Unable to generate a PassTicket.
 
   **Action:**
 
-  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider
+  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider.
 
 ### ZWEAS401E
 
@@ -557,11 +557,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  There was no JWT token provided for the generation of the PassTicket
+  There was no JWT token provided for the generation of the PassTicket.
 
   **Action:**
 
-  Ensure that you are passing JWT token for PassTicker generation
+  Ensure that you are passing a JWT token for PassTicker generation.
 
 ### ZWEAS404E
 
@@ -569,11 +569,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Gateway service doesn't respond.
+  The Gateway Service doe not respond.
 
   **Action:**
 
-  Ensure that the Gateway service is up and that the path to the gateway service is properly set.
+  Ensure that the Gateway Service is up and that the path to the gateway service is properly set.
 
 ### ZWEAS417E
 
@@ -581,7 +581,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The application id provided for the generation of the PassTicket wasn't recognized by security provider
+  The application id provided for the generation of the PassTicket was not recognized by the security provider.
 
   **Action:**
 
@@ -593,7 +593,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token is not valid
+  The JWT token is not valid.
 
   **Action:**
 
@@ -605,7 +605,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the trust store
+  The Zaas Client configuration does not contain the path to the trust store.
 
   **Action:**
 
@@ -617,7 +617,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the key store
+  The Zaas Client configuration does not contain the path to the key store.
 
   **Action:**
 
@@ -645,7 +645,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that both provided paths are resolved to valid trust store and valid key store
+  Ensure that both provided paths are resolved to valid trust store and valid key store.
 
 ## Discovery service messages
 
@@ -683,7 +683,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
+  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`.
 
 ### ZWEAD701E
 
