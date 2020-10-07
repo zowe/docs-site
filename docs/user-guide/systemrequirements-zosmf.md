@@ -1,3 +1,11 @@
+---
+meta:
+  - name: description
+    content: z/OSMF is a prerequisite for installing Zowe. This topic describes procedures and tips for meeting z/OSMF requirements for Zowe to work. You can refer to the Knowledge Center of IBM z/OS Management Facility for detailed information. 
+  - name: keywords
+    content: Zowe, z/OSMF, system requirements, prerequisite
+---
+
 # Configuring z/OSMF
 
 The following information contains procedures and tips for meeting z/OSMF requirements. For complete information, go to [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3/en/homepage.html) and read the following documents.
@@ -5,7 +13,7 @@ The following information contains procedures and tips for meeting z/OSMF requir
 - [IBM z/OS Management Facility Configuration Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PartConfiguring.htm)
 - [IBM z/OS Management Facility Help](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izu/izu.htm)
 
-## z/OS requirements
+## z/OS requirements for z/OSMF configuration
 Ensure that the z/OS system meets the following requirements:
 
 Requirements  | Description  | Resources in IBM Knowledge Center

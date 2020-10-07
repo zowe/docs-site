@@ -1,6 +1,7 @@
 # Zowe API Mediation Layer Security
 
 - [Zowe API Mediation Layer Security](#zowe-api-mediation-layer-security)
+  * [Zowe API Mediation Layer Single-Sign-On Overview](#zowe-api-mediation-layer-single-sign-on-overview)
   * [How API ML transport security works](#how-api-ml-transport-security-works)
     + [Transport layer security](#transport-layer-security)
     + [Authentication](#authentication)
@@ -18,10 +19,6 @@
     + [API ML SAF Keyring](#api-ml-saf-keyring)
     + [Discovery Service authentication](#discovery-service-authentication)
     + [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
-  * [Participating in Zowe API ML Single-Sign-On](#participating-in-zowe-api-ml-single-sign-on)
-    + [Zowe API ML client](#zowe-api-ml-client)
-    + [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
-    + [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
   * [ZAAS Client](#zaas-client)
     + [Pre-requisites](#pre-requisites)
     + [API Documentation](#api-documentation)
@@ -104,7 +101,7 @@ The following range of service types apply to the Zowe&trade; API ML:
 
 ### Zowe API ML TLS requirements
 
-The API ML TLS requires servers to provide HTTPS ports. Each of the API ML services has the following specific requirements:
+The API ML TLS requires servers to provide HTTPS ports. Each API ML service has the following specific requirements:
 
 - **API Client**
     - The API Client is not a server
@@ -144,7 +141,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
 
     - API Gateway handles authentication.
     - There are two authentication endpoints that allow to authenticate the resource by providers
-    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token.
+    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
 
 - **API Catalog**
 
@@ -156,7 +153,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each of the API ML servi
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token.
+    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
 
 - **API Services**
 
@@ -172,14 +169,14 @@ The `/login` endpoint authenticates mainframe user credentials and returns an au
   * Basic access authentication
   * JSON with user credentials
 
-When authentication is successful the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
 
 The `/query` endpoint validates the token and retrieves the information associated with the token.
 The query request requires the token through one of the following methods:
   * A cookie named `apimlAuthenticationToken`
   * Bearer authentication
 
-When authentication is successful the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code.
 
 The `/ticket` endpoint generates a PassTicket for the user associated with a token.
 
@@ -189,11 +186,20 @@ The ticket request requires the token in one of the following formats:
 - Cookie named apimlAuthenticationToken.
 - Bearer authentication
 
-The request takes one parameter named `applicationName`, the name of the application for which the PassTicket should be generated. This parameter must be supplied.
+The request takes the `applicationName` parameter, which is the name of the application for which the PassTicket should be generated. This parameter must be supplied.
 
 The response is a JSON object, which contains information associated with the ticket.
 
 For more details, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
+
+#### Supported authentication methods
+The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part of Zowe, all of the following methods are enabled and supported. All the methods are supported at least to some extent with each authentication provider.
+
+##### Username/Password
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the [ZAAS Client documentation](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#zaas-client).
+
+##### JWT Token
+When the client authenticates with the API ML, it receives in exchange the JWT token which can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by the z/OSMF, it is possible to reuse this token within the API ML for authentication.
 
 #### Authentication providers
 
@@ -209,6 +215,15 @@ Use the following properties of API Gateway to enable the `z/OSMF Authentication
 ```
 apiml.security.auth.provider: zosmf
 apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+```
+
+##### SAF Authentication Provider
+
+The `SAF Authentication Provider` allows API Gateway to authenticate directly with the z/OS SAF provider installed on the system. The user needs SAF account in order to authenticate.
+
+Use the following property of API Gateway to enable the SAF Authentication Provider:
+```
+apiml.security.auth.provider: saf
 ```
 
 ##### Dummy Authentication Provider
@@ -327,7 +342,7 @@ You can override ciphers that are used by the HTTPS servers in API ML services b
 
 **Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 
-The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `$ZOWE_ROOT_DIR/components/api-mediation/bin/start.sh`.
+The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `<RUNTIME_DIR>/components/api-mediation/bin/start.sh`.
 Add the launch parameter of the shell script to set a cipher:
 
 ```
@@ -348,56 +363,6 @@ The following list shows the default ciphers. API ML services use the following 
 ```
 
 Only IANA ciphers names are supported. For more information, see [Cipher Suites](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_suites) or [List of Ciphers](https://testssl.net/openssl-iana.mapping.html).
-
-## Participating in Zowe API ML Single-Sign-On
-
-As Zowe extender, you can extend Zowe and participate in Zowe Single-Sign-On provided by Zowe API ML.
-
-The Zowe Single-Sign-On is based on a single authentication/identity token that identifies the z/OS user. This token needs to be trusted by extensions in order to be used. Only Zowe API ML and the ZAAS compoment (described above), can issue the authentication token based on valid z/OS credentials.
-
-In the current release of Zowe, only a single z/OS security domain can be used. The current Zowe release also allows for a single technology scope, whereby only a single-sign-on to Zowe Desktop is possible. As such, a second sign-on is necessary to different types of clients, such as Zowe CLI, or web applications outside of Zowe Desktop.
-
-This following section outlines the high-level steps necessary to achieve the sign-on.
-
-There are two main types of components that are used in Zowe SSO via API ML:
-
-* Zowe API ML client
-
-   - This type of compoment is user-facing and can obtain credentials from the user through a user interface (web, CLI, desktop)
-   - The Zowe API ML client calls API services through the API ML
-   - An example of such clients are Zowe CLI or Zowe Desktop. Clients can be web or mobile applications
-
-* An API service accessed through Zowe API ML
-
-   - A service that is registered to API ML and is accessed through the API Gateway
-
-In following sections, you will learn what is necessary to participate SSO for both types.
-
-### Zowe API ML client
-
-* Zowe API ML client needs to obtain an authentication token via the `/login` endpoint of ZAAS described above. This endpoint requires valid credentials.
-* The client should not rely on the token format but use the ZAAS `/query` endpoint to validate the token and get information about it. This is useful when the API client has the token but does not store the associated data such as user ID.
-* The API client needs to provide the authentication token to the API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken` or in `Authorization: Bearer` HTTP header as described in the [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
-
-**Note:** Plans for Zowe CLI to be an API ML client in the future, are desribed at [Zowe CLI: Token Authentication, MFA, and SSO](https://medium.com/zowe/zowe-cli-token-authentication-mfa-and-sso-b88bca3efa35).
-
-### API service accessed via Zowe API ML
-
-This section describes the requirements of a service to adopt the Zowe authentication token. Zowe will be able to support services that accept PassTickets in the future.
-
-* The API service must accept the authentication token to the API services in the form of a Secure HttpOnly cookie with the name `apimlAuthenticationToken` or in the `Authorization: Bearer` HTTP header as described in the [Authenticated Request](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
-* The API service must validate the token and extract information about the user ID by calling `/query` endpoint of the ZAAS described above. The alternative is validate the signature of the JWT token. The format of the signature and location of the public key is described above. The alternative should be used only when the calling of `/query` endpoint is not feasible.
-* The API service needs to trust the Zowe API gateway that hosts the ZAAS, it needs to have the certificate of the CA that signed the Zowe API Gateway in its truststore.
-
-The REST API of the ZAAS can be easily called from a Java application using [ZAAS Client](#zaas-client) described below.
-
-### Existing services that cannot be modified
-
-If you have a service that cannot be changed to adopt Zowe authentication token, they can still participate in Zowe Single-Sign-On via API ML.
-
-They need to accept PassTicket in the HTTP Authorization header.
-See [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md) for more details.
-
 
 ## ZAAS Client
 
@@ -660,7 +625,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 - If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It's recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
 
-- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `$KEYSTORE_DIRECTORY/local_ca/localca.cer` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 **Follow these steps:**
 
@@ -717,7 +682,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
 ```
-cd $ZOWE_ROOT_DIR
+cd $RUNTIME_DIR
 bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
 --service-keystore <keystore_path> --service-truststore <truststore_path> \
 --service-dname <dname> --service-password <password> --service-validity <days> \
@@ -746,7 +711,7 @@ The `service-validity` is the number of days after until the certificate expires
 
 The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
+The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
 
 
 #### Add a service with an existing certificate to API ML on z/OS
@@ -766,7 +731,7 @@ The following path is an example of importing a public certificate to the API ML
 **Example:**
 
 ```
-cd $ZOWE_ROOT_DIR
+cd <RUNTIME_DIR>
 bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format> --alias <alias>
 ```
 

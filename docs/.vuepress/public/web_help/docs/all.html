@@ -9622,7 +9622,7 @@ data set named &#39;USER.TO.SET&#39;:</p>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 27998</p>
@@ -9634,17 +9634,17 @@ data set named &#39;USER.TO.SET&#39;:</p>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
 <li>The data set type</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li><p>The number of directory blocks (for example, 25)</p>
 <p>Default value: 25</p>
@@ -9663,14 +9663,14 @@ data set named &#39;USER.TO.SET&#39;:</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: U</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 27998</p>
@@ -9699,7 +9699,7 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
@@ -9802,7 +9802,7 @@ default parameters:</p>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 32760</p>
@@ -9814,17 +9814,17 @@ default parameters:</p>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
 <li>The data set type</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li><p>The number of directory blocks (for example, 25)</p>
 <p>Default value: 25</p>
@@ -9843,14 +9843,14 @@ default parameters:</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: VB</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 260</p>
@@ -9879,7 +9879,7 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
@@ -9981,7 +9981,7 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 6160</p>
@@ -9993,17 +9993,17 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
 <li>The data set type</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li><p>The number of directory blocks (for example, 25)</p>
 <p>Default value: 25</p>
@@ -10022,14 +10022,14 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: FB</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 80</p>
@@ -10058,7 +10058,7 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
@@ -10160,7 +10160,7 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 6160</p>
@@ -10172,17 +10172,17 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
 <li>The data set type</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li><p>The number of directory blocks (for example, 25)</p>
 <p>Default value: 5</p>
@@ -10201,14 +10201,14 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: FB</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 80</p>
@@ -10237,7 +10237,7 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
@@ -10339,7 +10339,7 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 6160</p>
@@ -10351,12 +10351,12 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li>The number of directory blocks (for example, 25)</li>
 </ul>
@@ -10373,14 +10373,14 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: FB</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 80</p>
@@ -10409,7 +10409,7 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
@@ -10517,7 +10517,7 @@ parameters:</p>
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-organization</code>  | <code>--dso</code> <em>(string)</em></p>
+<li><p><code>--data-set-organization</code>  | <code>--dso</code> | <code>--dsorg</code> <em>(string)</em></p>
 <ul>
 <li><p>The data set organization.</p>
 <p>Default value: INDEXED</p>
@@ -12331,6 +12331,12 @@ Skip this parameter to return all items. If you specify an incorrect value, the
 parameter returns up to 1000 items.</li>
 </ul>
 </li>
+<li><p><code>--pattern</code>  <em>(string)</em></p>
+<ul>
+<li>The option --pattern specifies the match pattern used when listing members in
+a data set. The default is to match against all members, e.g. &quot;*&quot;.</li>
+</ul>
+</li>
 <li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
@@ -12420,6 +12426,12 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <li><p>Show the first 5 members of the data set &quot;ibmuser.cntl&quot;:</p>
 <ul>
 <li><code>zowe  zos-files list all-members &quot;ibmuser.cntl&quot; --max 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files list all-members &quot;ibmuser.cntl&quot; --max 5">Copy</button></li>
+</ul>
+</li>
+<li><p>Show the first 4 members of the data set &quot;ibmuser.cntl&quot;
+matching an input pattern&quot;:</p>
+<ul>
+<li><code>zowe  zos-files list all-members &quot;sys1.maclib&quot; --pattern IJK* --max 4</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files list all-members &quot;sys1.maclib&quot; --pattern IJK* --max 4">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -15438,8 +15450,7 @@ in the output.</li>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-ftp_list_spool-files-by-jobid"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_list">list</a> › <a href="#zowe_zos-ftp_list_spool-files-by-jobid">spool-files-by-jobid</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Given a z/OS job JOBID, list the spool files (DDs) for a z/OS job on the
-JES/spool queues. The command does not pre-validate the JOBID. The command
-presents errors verbatim from the z/OSMF Jobs REST endpoints.</p>
+JES/spool queues. The command does not pre-validate the JOBID.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-ftp list spool-files-by-jobid &lt;jobid&gt; [options]</p>
 <h4 id="positional-arguments">Positional Arguments</h4>
@@ -17316,8 +17327,7 @@ pipe it into the hex viewer program xxd:</p>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-ftp_view_job-status-by-jobid"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_view">view</a> › <a href="#zowe_zos-ftp_view_job-status-by-jobid">job-status-by-jobid</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>View status details of a single z/OS job on spool/JES queues. The command does
-not prevalidate the JOBID. The command presents errors verbatim from the z/OSMF
-Jobs REST endpoints (expect for &quot;no jobs found&quot;).</p>
+not prevalidate the JOBID.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-ftp view job-status-by-jobid &lt;jobid&gt; [options]</p>
 <h4 id="positional-arguments">Positional Arguments</h4>
@@ -17463,8 +17473,7 @@ abbreviating the ID):</p>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-ftp_view_spool-file-by-id"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ftp">zos-ftp</a> › <a href="#zowe_zos-ftp_view">view</a> › <a href="#zowe_zos-ftp_view_spool-file-by-id">spool-file-by-id</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>View the contents of a spool file from a z/OS job on spool/JES queues. The
-command does not pre-validate the JOBID or spool ID. The command presents
-errors verbatim from the z/OSMF Jobs REST endpoints.</p>
+command does not pre-validate the JOBID or spool ID.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-ftp view spool-file-by-id &lt;jobid&gt; &lt;spoolfileid&gt; [options]</p>
 <h4 id="positional-arguments">Positional Arguments</h4>
@@ -17477,9 +17486,8 @@ pre-validation of the JOBID is performed.</li>
 </li>
 <li><p><code>spoolfileid</code>         <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;imperative
-zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID numbers.No
-pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. No pre-validation of the
+ID is performed.</li>
 </ul>
 </li>
 </ul>
