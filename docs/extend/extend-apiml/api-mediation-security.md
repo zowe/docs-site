@@ -168,6 +168,7 @@ The API Gateway contains two REST API authentication endpoints: `auth/login` and
 The `/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
   * Basic access authentication
   * JSON with user credentials
+  * Client certificate
 
 When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
 
@@ -205,8 +206,19 @@ credentials. There are more details in the ZAAS Client documentation.
 
 ##### Client certificate
 
-If the keyring or trustore contains at least one valid certificate authority (CA) other than the API ML it is possible to 
-use the client certificates issued by this CA to authenticate to the API ML and subsequent services.   
+If the keyring or truststore contains at least one valid certificate authority (CA) other than the API ML's own CA, it is possible to use the client certificates issued by this CA to authenticate to the API ML and subsequent services. This feature is not enabled by default and needs to be configured.
+
+The authentication is performed in the following steps:
+* Client calls API ML Gateway login endpoint with client certificate and it's private key.
+* Client certificate and private key are checked as a valid TLS client certificate against Gateway's trusted CA's.
+* Public part of the provided client certificate is checked against SAF and saf returns a user ID that owns this certificate. ZSS is providing this API for Mediation Layer.
+* Gateway performs login of the mapped user and returns a valid JWT token.
+
+**Prerequisities:**
+* Have external Certificate Authority and signed client certificates or generate them in SAF
+* Import client certificates to SAF or add it to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please reref to your security system documentation)
+* Import the external CA to API Mediation layer's truststore
+* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication)
 
 ##### JWT Token
 
