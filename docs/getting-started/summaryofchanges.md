@@ -83,8 +83,12 @@ The following features and enhancements were added.
 <!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Includes 1.2.1 changes. -->
 <!-- No changes to other plug-ins. -->
 
-The following feature was added to the **core CLI**:
-- Added `--pattern` option to `zowe files list am`. [#821](https://github.com/zowe/zowe-cli/pull/821)
+The following enhancements were added to the **core CLI**:
+- Enhancement: Added a `--pattern` option to the `zowe files list all-members` command. The option lets you restrict returned member names to only names that match a given pattern. The argument syntax is the same as the "pattern" parameter of the ISPF LMMLIST service. [#810](https://github.com/zowe/zowe-cli/issues/810)
+- Enhancement: Added new options `--lrecl` and `--recfm` to the `zos-files create` command. Use these options to specify a logical record length and record format for data sets that you create. [#788](https://github.com/zowe/zowe-cli/issues/788)
+
+The following bug was fixed in the **FTP plug-in for Zowe CLI**:
+- BugFix: Fixed an issue whre the `view spool-file-by-id` command retrieved incorrect contents. [#61](https://github.com/zowe/zowe-cli-ftp-plugin/issues/61)
 
 #### Zowe Explorer
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release 1.8.0. Includes 1.9.0 changes.-->
