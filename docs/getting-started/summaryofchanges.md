@@ -60,9 +60,10 @@ The following features and enhancements were added.
 - Added a more helpful and actionable description to message ZWEAM511E, which occurs when API ML does not trust the certificate provided by the service. [#818](https://github.com/zowe/api-layer/issues/818)
 
 #### Zowe App Server
-- Added option to write JSON files without using Node.js. [#137](https://github.com/zowe/zlux-app-server/pull/137)
-- Register ZSS to Zowe API ML using a configuration script. This is similar to how the API ML team registers their APIs (for example, the Jobs API). [#208](https://github.com/zowe/zss/pull/208)
-- Additional environment variables are now supported, which provides more options for TN3270 for the `instance.env` configuration file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration. [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new env vars are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
+- Enhancement: The install-app.sh script used to install App Server plugins can now be used without Node.js. If Node.js is not detected when the script is executed, this behavior will be automated. You can also force this behavior with the environment variable `INSTALL_NO_NODE=1`, such as in the following example:
+  - `INSTALL_NO_NODE=1 ./install-app.sh ~/zlux-editor` [#137](https://github.com/zowe/zlux-app-server/pull/137)
+- Feature: ZSS is now automatically registered to the API Mediation Layer when both are present, using a static registration file. [#208](https://github.com/zowe/zss/pull/208)
+- Enhancement: Additional environment variables are now supported, which provides more options for TN3270 for the `instance.env` configuration file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration. [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new env vars are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
 
   - `ZOWE_ZLUX_TELNET_HOST = string`
   - `ZOWE_ZLUX_SSH_HOST = string`
@@ -70,11 +71,11 @@ The following features and enhancements were added.
   - `ZOWE_ZLUX_TN3270_COL = number`
   - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
   - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
-- An Agent API that provides limited information without the need for authentication has been added. [#211](https://github.com/zowe/zss/pull/211)
+- Enhancement: The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subsect of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
   - `/server/agent/environment (limited info)`
-  - `server/agent/services`
-- Force encoding for files has been enabled. In previous versions, the system would automatically convert textfiles on the mainframe, which would sometimes lead to errors. A parameter to the `/unixfile` API that allows users to specify the source and target encoding has been implemented. [#160](https://github.com/zowe/zowe-common-c/pull/160)
-- Support for certificates and certificate authorities stored within PKCS12 files has been added. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
+  - `/server/agent/services`
+- Enhancement: The ZSS /unixfile API has been updated to include an option to force file content to be sent or received as a specific encoding. If not specified, the pre-existing behavior of automatically choosing encoding based on tagging & file extensions will be used. [#160](https://github.com/zowe/zowe-common-c/pull/160)
+- Enhancement: The app server can now read and use keys, certificates, and certificate authorities contained with PKCS12 files. This is in addition to existing support for PEM encoded files as well as z/OS keyrings. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
