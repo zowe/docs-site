@@ -77,9 +77,8 @@
 | Imperative CLI Framework for Zowe | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | Imperative CLI Framework for Zowe | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | Imperative CLI Framework for Zowe | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| Imperative CLI Framework for Zowe | @types/bootstrap |  v4.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/bootstrap](https://www.npmjs.com/package/@types/bootstrap) |
+| Imperative CLI Framework for Zowe | @types/bootstrap |  v4.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/bootstrap](https://www.npmjs.com/package/@types/bootstrap) |
 | Imperative CLI Framework for Zowe | @types/clipboard |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/clipboard](https://www.npmjs.com/package/@types/clipboard) |
-| Imperative CLI Framework for Zowe | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | Imperative CLI Framework for Zowe | @types/find-up |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/find-up](https://www.npmjs.com/package/@types/find-up) |
 | Imperative CLI Framework for Zowe | @types/fs-extra |  v8.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | Imperative CLI Framework for Zowe | @types/glob |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
@@ -89,16 +88,16 @@
 | Imperative CLI Framework for Zowe | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | Imperative CLI Framework for Zowe | @types/jest |  v24.9.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | Imperative CLI Framework for Zowe | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| Imperative CLI Framework for Zowe | @types/jquery |  v3.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
+| Imperative CLI Framework for Zowe | @types/jquery |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
 | Imperative CLI Framework for Zowe | @types/js-base64 |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/js-base64](https://www.npmjs.com/package/@types/js-base64) |
 | Imperative CLI Framework for Zowe | @types/jsonfile |  v4.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jsonfile](https://www.npmjs.com/package/@types/jsonfile) |
 | Imperative CLI Framework for Zowe | @types/jstree |  v3.3.40 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jstree](https://www.npmjs.com/package/@types/jstree) |
-| Imperative CLI Framework for Zowe | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| Imperative CLI Framework for Zowe | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | Imperative CLI Framework for Zowe | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
 | Imperative CLI Framework for Zowe | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | Imperative CLI Framework for Zowe | @types/mustache |  v0.8.32 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mustache](https://www.npmjs.com/package/@types/mustache) |
-| Imperative CLI Framework for Zowe | @types/node |  v12.12.62 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| Imperative CLI Framework for Zowe | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Imperative CLI Framework for Zowe | @types/node |  v12.12.67 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Imperative CLI Framework for Zowe | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Imperative CLI Framework for Zowe | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | Imperative CLI Framework for Zowe | @types/progress |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/progress](https://www.npmjs.com/package/@types/progress) |
 | Imperative CLI Framework for Zowe | @types/sizzle |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sizzle](https://www.npmjs.com/package/@types/sizzle) |
@@ -106,7 +105,7 @@
 | Imperative CLI Framework for Zowe | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | Imperative CLI Framework for Zowe | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | Imperative CLI Framework for Zowe | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| Imperative CLI Framework for Zowe | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| Imperative CLI Framework for Zowe | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | Imperative CLI Framework for Zowe | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | Imperative CLI Framework for Zowe | @typescript-eslint/typescript-estree |  v2.34.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
 | Imperative CLI Framework for Zowe | @zowe/perf-timing |  v1.0.7 | EPL-2.0 | [@zowe/perf-timing](http://Unknown) |
@@ -114,13 +113,13 @@
 | Imperative CLI Framework for Zowe | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | Imperative CLI Framework for Zowe | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | Imperative CLI Framework for Zowe | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Imperative CLI Framework for Zowe | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Imperative CLI Framework for Zowe | acorn |  v7.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Imperative CLI Framework for Zowe | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Imperative CLI Framework for Zowe | acorn |  v7.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Imperative CLI Framework for Zowe | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | Imperative CLI Framework for Zowe | acorn-node |  v1.8.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [acorn-node](https://www.github.com/browserify/acorn-node) |
 | Imperative CLI Framework for Zowe | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
 | Imperative CLI Framework for Zowe | acorn-walk |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| Imperative CLI Framework for Zowe | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Imperative CLI Framework for Zowe | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Imperative CLI Framework for Zowe | ansi-colors |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
 | Imperative CLI Framework for Zowe | ansi-colors |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
 | Imperative CLI Framework for Zowe | ansi-cyan |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-cyan](https://www.github.com/jonschlinkert/ansi-cyan) |
@@ -135,7 +134,7 @@
 | Imperative CLI Framework for Zowe | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | ansi-styles |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| Imperative CLI Framework for Zowe | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| Imperative CLI Framework for Zowe | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | ansi-wrap |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-wrap](https://www.github.com/jonschlinkert/ansi-wrap) |
 | Imperative CLI Framework for Zowe | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | Imperative CLI Framework for Zowe | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
@@ -249,7 +248,7 @@
 | Imperative CLI Framework for Zowe | clean-css |  v4.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [clean-css](https://www.github.com/jakubpawlowicz/clean-css) |
 | Imperative CLI Framework for Zowe | clear-require |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [clear-require](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | cli-cursor |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](http://sindresorhus.com) |
-| Imperative CLI Framework for Zowe | cli-spinners |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
+| Imperative CLI Framework for Zowe | cli-spinners |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
 | Imperative CLI Framework for Zowe | clipboard |  v2.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [clipboard](https://www.npmjs.com/package/clipboard) |
 | Imperative CLI Framework for Zowe | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
@@ -364,8 +363,8 @@
 | Imperative CLI Framework for Zowe | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | Imperative CLI Framework for Zowe | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Imperative CLI Framework for Zowe | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Imperative CLI Framework for Zowe | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Imperative CLI Framework for Zowe | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Imperative CLI Framework for Zowe | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Imperative CLI Framework for Zowe | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Imperative CLI Framework for Zowe | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Imperative CLI Framework for Zowe | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
 | Imperative CLI Framework for Zowe | es6-iterator |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [es6-iterator](http://www.medikoo.com/) |
@@ -510,7 +509,7 @@
 | Imperative CLI Framework for Zowe | inherits |  v2.0.4 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [inherits](https://www.npmjs.com/package/inherits) |
 | Imperative CLI Framework for Zowe | ini |  v1.3.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [ini](http://blog.izs.me/) |
 | Imperative CLI Framework for Zowe | inline-source-map |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [inline-source-map](https://www.github.com/thlorenz/inline-source-map) |
-| Imperative CLI Framework for Zowe | insert-module-globals |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [insert-module-globals](https://www.github.com/browserify/insert-module-globals) |
+| Imperative CLI Framework for Zowe | insert-module-globals |  v7.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [insert-module-globals](https://www.github.com/browserify/insert-module-globals) |
 | Imperative CLI Framework for Zowe | interpret |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [interpret](http://gulpjs.com/) |
 | Imperative CLI Framework for Zowe | invariant |  v2.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [invariant](https://www.npmjs.com/package/invariant) |
 | Imperative CLI Framework for Zowe | invert-kv |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [invert-kv](http://sindresorhus.com) |
@@ -675,7 +674,7 @@
 | Imperative CLI Framework for Zowe | log4js |  v6.3.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
 | Imperative CLI Framework for Zowe | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
 | Imperative CLI Framework for Zowe | lunr |  v2.3.9 | [MIT](http://opensource.org/licenses/mit-license) | [lunr](https://lunrjs.com/) |
-| Imperative CLI Framework for Zowe | madge |  v3.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
+| Imperative CLI Framework for Zowe | madge |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
 | Imperative CLI Framework for Zowe | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | make-dir |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | Imperative CLI Framework for Zowe | make-error |  v1.3.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
@@ -717,7 +716,7 @@
 | Imperative CLI Framework for Zowe | module-deps |  v6.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [module-deps](https://www.github.com/browserify/module-deps) |
 | Imperative CLI Framework for Zowe | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
 | Imperative CLI Framework for Zowe | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| Imperative CLI Framework for Zowe | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| Imperative CLI Framework for Zowe | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | Imperative CLI Framework for Zowe | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Imperative CLI Framework for Zowe | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Imperative CLI Framework for Zowe | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -1029,7 +1028,7 @@
 | Imperative CLI Framework for Zowe | traverse-chain |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [traverse-chain](https://www.npmjs.com/package/traverse-chain) |
 | Imperative CLI Framework for Zowe | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | Imperative CLI Framework for Zowe | ts-node |  v7.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
-| Imperative CLI Framework for Zowe | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Imperative CLI Framework for Zowe | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Imperative CLI Framework for Zowe | tslint |  v6.1.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | Imperative CLI Framework for Zowe | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Imperative CLI Framework for Zowe | tsutils |  v3.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
@@ -1049,7 +1048,7 @@
 | Imperative CLI Framework for Zowe | typescript |  v3.7.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | Imperative CLI Framework for Zowe | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | Imperative CLI Framework for Zowe | uc.micro |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [uc.micro](https://www.npmjs.com/package/uc.micro) |
-| Imperative CLI Framework for Zowe | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| Imperative CLI Framework for Zowe | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | Imperative CLI Framework for Zowe | umd |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [umd](https://www.npmjs.com/package/umd) |
 | Imperative CLI Framework for Zowe | unc-path-regex |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [unc-path-regex](https://www.github.com/regexhq/unc-path-regex) |
 | Imperative CLI Framework for Zowe | undeclared-identifiers |  v1.1.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [undeclared-identifiers](https://www.github.com/goto-bus-stop/undeclared-identifiers) |
@@ -1225,8 +1224,8 @@
 | Zowe API Mediation Layer | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Zowe API Mediation Layer | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
 | Zowe API Mediation Layer | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe API Mediation Layer | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe API Mediation Layer | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe API Mediation Layer | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe API Mediation Layer | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe API Mediation Layer | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe API Mediation Layer | es6-error |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [es6-error](https://www.github.com/bjyoungblood/es6-error) |
 | Zowe API Mediation Layer | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -1649,7 +1648,7 @@
 | Zowe API Mediation Layer | tomcat-servlet-api |  v9.0.13 | Apache License, Version 2.0 and Common Development And Distribution License (CDDL) Version 1.0 | tomcat-servlet-api |
 | Zowe API Mediation Layer | tomcat-util |  v9.0.13 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-util |
 | Zowe API Mediation Layer | tree-kill |  v1.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [tree-kill](https://www.github.com/pkrumins/node-tree-kill) |
-| Zowe API Mediation Layer | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe API Mediation Layer | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe API Mediation Layer | txw2 |  v2.3.1 | CDDL+GPL License | txw2 |
 | Zowe API Mediation Layer | unbescape |  v1.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | unbescape |
 | Zowe API Mediation Layer | uuid |  v3.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [uuid](https://www.npmjs.com/package/uuid) |
@@ -1871,28 +1870,27 @@
 | Zowe API Mediation Layer | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
 | Zowe API Mediation Layer | @types/blob-util |  v1.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/blob-util](https://www.npmjs.com/package/@types/blob-util) |
 | Zowe API Mediation Layer | @types/bluebird |  v3.5.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/bluebird](https://www.npmjs.com/package/@types/bluebird) |
-| Zowe API Mediation Layer | @types/chai |  v4.2.12 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
+| Zowe API Mediation Layer | @types/chai |  v4.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | Zowe API Mediation Layer | @types/chai |  v4.2.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | Zowe API Mediation Layer | @types/chai-jquery |  v1.1.40 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai-jquery](https://www.npmjs.com/package/@types/chai-jquery) |
 | Zowe API Mediation Layer | @types/cheerio |  v0.22.22 | [MIT](http://opensource.org/licenses/mit-license) | [@types/cheerio](https://www.npmjs.com/package/@types/cheerio) |
-| Zowe API Mediation Layer | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | Zowe API Mediation Layer | @types/eslint-visitor-keys |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/eslint-visitor-keys](https://www.npmjs.com/package/@types/eslint-visitor-keys) |
 | Zowe API Mediation Layer | @types/glob |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
 | Zowe API Mediation Layer | @types/istanbul-lib-coverage |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
 | Zowe API Mediation Layer | @types/istanbul-lib-report |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-report](https://www.npmjs.com/package/@types/istanbul-lib-report) |
 | Zowe API Mediation Layer | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | Zowe API Mediation Layer | @types/jquery |  v3.3.31 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
-| Zowe API Mediation Layer | @types/jquery |  v3.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
+| Zowe API Mediation Layer | @types/jquery |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
 | Zowe API Mediation Layer | @types/json-schema |  v7.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json-schema](https://www.npmjs.com/package/@types/json-schema) |
 | Zowe API Mediation Layer | @types/lodash |  v4.14.149 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | Zowe API Mediation Layer | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | Zowe API Mediation Layer | @types/mocha |  v5.2.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mocha](https://www.npmjs.com/package/@types/mocha) |
-| Zowe API Mediation Layer | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe API Mediation Layer | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe API Mediation Layer | @types/parse-json |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/parse-json](https://www.npmjs.com/package/@types/parse-json) |
 | Zowe API Mediation Layer | @types/q |  v1.5.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/q](https://www.npmjs.com/package/@types/q) |
 | Zowe API Mediation Layer | @types/react |  v16.4.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
 | Zowe API Mediation Layer | @types/sinon |  v7.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinon](https://www.npmjs.com/package/@types/sinon) |
-| Zowe API Mediation Layer | @types/sinon |  v9.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinon](https://www.npmjs.com/package/@types/sinon) |
+| Zowe API Mediation Layer | @types/sinon |  v9.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinon](https://www.npmjs.com/package/@types/sinon) |
 | Zowe API Mediation Layer | @types/sinon-chai |  v3.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinon-chai](https://www.npmjs.com/package/@types/sinon-chai) |
 | Zowe API Mediation Layer | @types/sinonjs__fake-timers |  v6.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinonjs__fake-timers](https://www.npmjs.com/package/@types/sinonjs__fake-timers) |
 | Zowe API Mediation Layer | @types/sizzle |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sizzle](https://www.npmjs.com/package/@types/sizzle) |
@@ -1928,8 +1926,8 @@
 | Zowe API Mediation Layer | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | Zowe API Mediation Layer | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
 | Zowe API Mediation Layer | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe API Mediation Layer | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe API Mediation Layer | acorn |  v7.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe API Mediation Layer | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe API Mediation Layer | acorn |  v7.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe API Mediation Layer | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | Zowe API Mediation Layer | acorn-jsx |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-jsx](https://www.github.com/acornjs/acorn-jsx) |
 | Zowe API Mediation Layer | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
@@ -1940,7 +1938,7 @@
 | Zowe API Mediation Layer | agentkeepalive |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [agentkeepalive](https://fengmk2.com) |
 | Zowe API Mediation Layer | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
 | Zowe API Mediation Layer | airbnb-prop-types |  v2.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [airbnb-prop-types](https://www.github.com/airbnb/prop-types#readme) |
-| Zowe API Mediation Layer | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe API Mediation Layer | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe API Mediation Layer | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe API Mediation Layer | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe API Mediation Layer | alphanum-sort |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [alphanum-sort](https://www.github.com/TrySound/alphanum-sort) |
@@ -1956,7 +1954,7 @@
 | Zowe API Mediation Layer | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Zowe API Mediation Layer | ansi-styles |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Zowe API Mediation Layer | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| Zowe API Mediation Layer | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| Zowe API Mediation Layer | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Zowe API Mediation Layer | ansicolors |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [ansicolors](http://thlorenz.com) |
 | Zowe API Mediation Layer | ansistyles |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [ansistyles](http://thlorenz.com) |
 | Zowe API Mediation Layer | any-observable |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [any-observable](http://sindresorhus.com) |
@@ -2086,7 +2084,7 @@
 | Zowe API Mediation Layer | camelcase |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe API Mediation Layer | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe API Mediation Layer | caniuse-api |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [caniuse-api](https://www.npmjs.com/package/caniuse-api) |
-| Zowe API Mediation Layer | caniuse-lite |  v1.0.30001137 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
+| Zowe API Mediation Layer | caniuse-lite |  v1.0.30001148 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
 | Zowe API Mediation Layer | capture-exit |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
 | Zowe API Mediation Layer | capture-stack-trace |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [capture-stack-trace](https://www.github.com/floatdrop) |
 | Zowe API Mediation Layer | case-sensitive-paths-webpack-plugin |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [case-sensitive-paths-webpack-plugin](https://www.github.com/Urthen/case-sensitive-paths-webpack-plugin#readme) |
@@ -2134,12 +2132,12 @@
 | Zowe API Mediation Layer | coa |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [coa](https://www.github.com/veged/coa) |
 | Zowe API Mediation Layer | code-point-at |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [code-point-at](http://sindresorhus.com) |
 | Zowe API Mediation Layer | collection-visit |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [collection-visit](https://www.github.com/jonschlinkert/collection-visit) |
-| Zowe API Mediation Layer | color |  v3.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [color](https://www.npmjs.com/package/color) |
+| Zowe API Mediation Layer | color |  v3.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color](https://www.npmjs.com/package/color) |
 | Zowe API Mediation Layer | color-convert |  v1.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
 | Zowe API Mediation Layer | color-convert |  v2.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [color-convert](https://www.npmjs.com/package/color-convert) |
 | Zowe API Mediation Layer | color-name |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/dfcreative/color-name) |
 | Zowe API Mediation Layer | color-name |  v1.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-name](https://www.github.com/colorjs/color-name) |
-| Zowe API Mediation Layer | color-string |  v1.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [color-string](https://www.npmjs.com/package/color-string) |
+| Zowe API Mediation Layer | color-string |  v1.5.4 | [MIT](http://opensource.org/licenses/mit-license) | [color-string](https://www.npmjs.com/package/color-string) |
 | Zowe API Mediation Layer | colorette |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [colorette](https://www.github.com/jorgebucaran/colorette) |
 | Zowe API Mediation Layer | colors |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [colors](https://www.github.com/Marak/colors.js) |
 | Zowe API Mediation Layer | columnify |  v1.5.4 | [MIT](http://opensource.org/licenses/mit-license) | [columnify](https://www.github.com/timoxley/columnify) |
@@ -2215,7 +2213,7 @@
 | Zowe API Mediation Layer | css-tree |  v1.0.0-alpha.37 | [MIT](http://opensource.org/licenses/mit-license) | [css-tree](https://www.github.com/lahmatiy) |
 | Zowe API Mediation Layer | css-tree |  v1.0.0-alpha.39 | [MIT](http://opensource.org/licenses/mit-license) | [css-tree](https://www.github.com/lahmatiy) |
 | Zowe API Mediation Layer | css-what |  v2.1.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [css-what](http://feedic.com) |
-| Zowe API Mediation Layer | css-what |  v3.3.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [css-what](http://feedic.com) |
+| Zowe API Mediation Layer | css-what |  v3.4.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [css-what](http://feedic.com) |
 | Zowe API Mediation Layer | css.escape |  v1.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [css.escape](https://mths.be/cssescape) |
 | Zowe API Mediation Layer | cssdb |  v4.4.0 | CC0-1.0 | [cssdb](https://www.github.com/csstools/cssdb#readme) |
 | Zowe API Mediation Layer | cssesc |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [cssesc](https://mths.be/cssesc) |
@@ -2304,7 +2302,7 @@
 | Zowe API Mediation Layer | editor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [editor](https://www.github.com/substack/node-editor) |
 | Zowe API Mediation Layer | ee-first |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ee-first](http://jongleberry.com) |
 | Zowe API Mediation Layer | ejs |  v3.1.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [ejs](https://www.github.com/mde/ejs) |
-| Zowe API Mediation Layer | electron-to-chromium |  v1.3.576 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
+| Zowe API Mediation Layer | electron-to-chromium |  v1.3.578 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
 | Zowe API Mediation Layer | elegant-spinner |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [elegant-spinner](http://sindresorhus.com) |
 | Zowe API Mediation Layer | elliptic |  v6.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [elliptic](https://www.github.com/indutny/elliptic) |
 | Zowe API Mediation Layer | emitter-component |  v1.1.1 | UNKNOWN | [emitter-component](https://www.npmjs.com/package/emitter-component) |
@@ -2330,8 +2328,8 @@
 | Zowe API Mediation Layer | err-code |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [err-code](http://indigounited.com) |
 | Zowe API Mediation Layer | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe API Mediation Layer | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe API Mediation Layer | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe API Mediation Layer | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe API Mediation Layer | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe API Mediation Layer | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe API Mediation Layer | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe API Mediation Layer | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
 | Zowe API Mediation Layer | es6-iterator |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [es6-iterator](http://www.medikoo.com/) |
@@ -2953,7 +2951,7 @@
 | Zowe API Mediation Layer | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe API Mediation Layer | object-hash |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-hash](https://www.github.com/puleos/object-hash) |
 | Zowe API Mediation Layer | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe API Mediation Layer | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe API Mediation Layer | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe API Mediation Layer | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe API Mediation Layer | object-path |  v0.11.4 | [MIT](http://opensource.org/licenses/mit-license) | [object-path](https://www.github.com/mariocasciaro/object-path) |
 | Zowe API Mediation Layer | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
@@ -3055,7 +3053,7 @@
 | Zowe API Mediation Layer | postcss |  v7.0.35 | [MIT](http://opensource.org/licenses/mit-license) | [postcss](https://postcss.org/) |
 | Zowe API Mediation Layer | postcss-attribute-case-insensitive |  v4.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-attribute-case-insensitive](https://www.github.com/Semigradsky/postcss-attribute-case-insensitive#readme) |
 | Zowe API Mediation Layer | postcss-browser-comments |  v3.0.0 | CC0-1.0 | [postcss-browser-comments](https://www.github.com/csstools/postcss-browser-comments#readme) |
-| Zowe API Mediation Layer | postcss-calc |  v7.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-calc](https://www.npmjs.com/package/postcss-calc) |
+| Zowe API Mediation Layer | postcss-calc |  v7.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-calc](https://www.npmjs.com/package/postcss-calc) |
 | Zowe API Mediation Layer | postcss-color-functional-notation |  v2.0.1 | CC0-1.0 | [postcss-color-functional-notation](https://www.github.com/jonathantneal/postcss-color-functional-notation#readme) |
 | Zowe API Mediation Layer | postcss-color-gray |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [postcss-color-gray](https://www.github.com/postcss/postcss-color-gray#readme) |
 | Zowe API Mediation Layer | postcss-color-hex-alpha |  v5.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [postcss-color-hex-alpha](https://www.github.com/postcss/postcss-color-hex-alpha#readme) |
@@ -3166,7 +3164,7 @@
 | Zowe API Mediation Layer | qs |  v6.7.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe API Mediation Layer | qs |  v6.9.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe API Mediation Layer | query-string |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](http://sindresorhus.com) |
-| Zowe API Mediation Layer | query-string |  v6.13.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
+| Zowe API Mediation Layer | query-string |  v6.13.5 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
 | Zowe API Mediation Layer | querystring |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystring](https://www.npmjs.com/package/querystring) |
 | Zowe API Mediation Layer | querystring-browser |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [querystring-browser](https://www.github.com/mathiasvr/querystring#readme) |
 | Zowe API Mediation Layer | querystring-es3 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [querystring-es3](https://www.npmjs.com/package/querystring-es3) |
@@ -3441,7 +3439,7 @@
 | Zowe API Mediation Layer | supports-color |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [supports-color](http://sindresorhus.com) |
 | Zowe API Mediation Layer | svg-parser |  v2.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [svg-parser](https://www.github.com/Rich-Harris/svg-parser#README) |
 | Zowe API Mediation Layer | svgo |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [svgo](https://www.github.com/svg/svgo) |
-| Zowe API Mediation Layer | swagger-client |  v3.11.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [swagger-client](https://www.npmjs.com/package/swagger-client) |
+| Zowe API Mediation Layer | swagger-client |  v3.11.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [swagger-client](https://www.npmjs.com/package/swagger-client) |
 | Zowe API Mediation Layer | swagger-ui-react |  v3.25.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [swagger-ui-react](https://www.github.com/swagger-api/swagger-ui) |
 | Zowe API Mediation Layer | symbol-observable |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-observable](https://www.npmjs.com/package/symbol-observable) |
 | Zowe API Mediation Layer | symbol-tree |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [symbol-tree](https://www.github.com/jsdom/js-symbol-tree#symbol-tree) |
@@ -3486,7 +3484,7 @@
 | Zowe API Mediation Layer | tree-kill |  v1.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [tree-kill](https://www.github.com/pkrumins/node-tree-kill) |
 | Zowe API Mediation Layer | ts-pnp |  v1.1.5 | [MIT](http://opensource.org/licenses/mit-license) | [ts-pnp](https://www.github.com/arcanis/ts-pnp) |
 | Zowe API Mediation Layer | ts-pnp |  v1.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-pnp](https://www.github.com/arcanis/ts-pnp) |
-| Zowe API Mediation Layer | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe API Mediation Layer | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe API Mediation Layer | tsutils |  v3.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe API Mediation Layer | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
 | Zowe API Mediation Layer | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
@@ -3639,7 +3637,7 @@
 | Zowe Application Framework | @rocketsoftware/express-ws |  v5.0.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@rocketsoftware/express-ws](https://www.github.com/rocketsoftware/express-ws) |
 | Zowe Application Framework | accept-language-parser |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [accept-language-parser](https://www.github.com/opentable/accept-language-parser) |
 | Zowe Application Framework | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
 | Zowe Application Framework | array-flatten |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [array-flatten](https://www.github.com/blakeembrey/array-flatten) |
 | Zowe Application Framework | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](http://joyent.com) |
@@ -3816,7 +3814,7 @@
 | Zowe Application Framework | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Application Framework | acorn-dynamic-import |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-dynamic-import](https://www.github.com/kesne/acorn-dynamic-import) |
 | Zowe Application Framework | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Application Framework | angular2-template-loader |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [angular2-template-loader](https://www.github.com/TheLarkInn/angular2-template-loader#readme) |
 | Zowe Application Framework | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
@@ -3954,8 +3952,8 @@
 | Zowe Application Framework | entities |  v1.1.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Application Framework | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Application Framework | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
-| Zowe Application Framework | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Application Framework | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Application Framework | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Application Framework | es6-templates |  v0.2.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [es6-templates](https://www.npmjs.com/package/es6-templates) |
 | Zowe Application Framework | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -4273,7 +4271,7 @@
 | Zowe Application Framework | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
 | Zowe Application Framework | toposort |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [toposort](https://www.npmjs.com/package/toposort) |
 | Zowe Application Framework | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Application Framework | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Application Framework | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
@@ -4321,16 +4319,16 @@
 | Zowe Application Framework | yargs-parser |  v9.0.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Application Framework | zone.js |  v0.8.29 | [MIT](http://opensource.org/licenses/mit-license) | [zone.js](https://www.npmjs.com/package/zone.js) || Zowe Application Framework | @zlux/grid |  v0.0.5 | unknown | @zlux/grid || Zowe Application Framework | rxjs |  v6.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [rxjs](https://www.github.com/ReactiveX/RxJS) |
 | Zowe Application Framework | rxjs-compat |  v6.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [rxjs-compat](https://www.npmjs.com/package/rxjs-compat) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) || Zowe Application Framework | @rocketsoftware/express-ws |  v5.0.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@rocketsoftware/express-ws](https://www.github.com/rocketsoftware/express-ws) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) || Zowe Application Framework | @rocketsoftware/express-ws |  v5.0.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@rocketsoftware/express-ws](https://www.github.com/rocketsoftware/express-ws) |
 | Zowe Application Framework | @types/body-parser |  v1.19.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/body-parser](https://www.npmjs.com/package/@types/body-parser) |
-| Zowe Application Framework | @types/chai |  v4.2.12 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
+| Zowe Application Framework | @types/chai |  v4.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | Zowe Application Framework | @types/connect |  v3.4.32 | [MIT](http://opensource.org/licenses/mit-license) | [@types/connect](https://www.npmjs.com/package/@types/connect) |
 | Zowe Application Framework | @types/connect |  v3.4.33 | [MIT](http://opensource.org/licenses/mit-license) | [@types/connect](https://www.npmjs.com/package/@types/connect) |
 | Zowe Application Framework | @types/cookiejar |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/cookiejar](https://www.npmjs.com/package/@types/cookiejar) |
 | Zowe Application Framework | @types/express |  v4.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express](https://www.npmjs.com/package/@types/express) |
 | Zowe Application Framework | @types/express-serve-static-core |  v4.17.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express-serve-static-core](https://www.npmjs.com/package/@types/express-serve-static-core) |
 | Zowe Application Framework | @types/mime |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mime](https://www.npmjs.com/package/@types/mime) |
-| Zowe Application Framework | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Application Framework | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Application Framework | @types/node |  v6.0.118 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Application Framework | @types/qs |  v6.9.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/qs](https://www.npmjs.com/package/@types/qs) |
 | Zowe Application Framework | @types/range-parser |  v1.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/range-parser](https://www.npmjs.com/package/@types/range-parser) |
@@ -4338,7 +4336,7 @@
 | Zowe Application Framework | @types/superagent |  v3.8.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/superagent](https://www.npmjs.com/package/@types/superagent) |
 | Zowe Application Framework | accept-language-parser |  v1.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [accept-language-parser](https://www.github.com/opentable/accept-language-parser) |
 | Zowe Application Framework | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
 | Zowe Application Framework | array-flatten |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [array-flatten](https://www.github.com/blakeembrey/array-flatten) |
 | Zowe Application Framework | asn1 |  v0.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [asn1](http://joyent.com) |
@@ -4540,7 +4538,7 @@
 | Zowe Application Framework | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Application Framework | acorn-dynamic-import |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-dynamic-import](https://www.github.com/kesne/acorn-dynamic-import) |
 | Zowe Application Framework | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | ajv-keywords |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Application Framework | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Application Framework | align-text |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [align-text](https://www.github.com/jonschlinkert/align-text) |
@@ -4682,8 +4680,8 @@
 | Zowe Application Framework | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Application Framework | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Application Framework | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Application Framework | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Application Framework | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Application Framework | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Application Framework | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
 | Zowe Application Framework | es6-iterator |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [es6-iterator](http://www.medikoo.com/) |
@@ -5055,7 +5053,7 @@
 | Zowe Application Framework | ts-node |  v3.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | Zowe Application Framework | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
 | Zowe Application Framework | tsickle |  v0.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsickle](https://www.github.com/angular/tsickle) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Application Framework | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Application Framework | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
@@ -5132,9 +5130,9 @@
 | Zowe Application Framework | @webassemblyjs/wast-printer |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/wast-printer](https://www.npmjs.com/package/@webassemblyjs/wast-printer) |
 | Zowe Application Framework | @xtuc/ieee754 |  v1.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@xtuc/ieee754](http://feross.org) |
 | Zowe Application Framework | @xtuc/long |  v4.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@xtuc/long](https://www.npmjs.com/package/@xtuc/long) |
-| Zowe Application Framework | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Application Framework | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Application Framework | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Application Framework | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Application Framework | ansi-colors |  v3.2.4 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
@@ -5258,8 +5256,8 @@
 | Zowe Application Framework | entities |  v1.1.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Application Framework | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Application Framework | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
-| Zowe Application Framework | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Application Framework | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Application Framework | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Application Framework | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
 | Zowe Application Framework | eslint-scope |  v4.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
@@ -5550,7 +5548,7 @@
 | Zowe Application Framework | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
 | Zowe Application Framework | toposort |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [toposort](https://www.npmjs.com/package/toposort) |
 | Zowe Application Framework | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Application Framework | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Application Framework | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
@@ -5704,7 +5702,7 @@
 | Zowe Application Framework | @types/glob |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
 | Zowe Application Framework | @types/json-schema |  v7.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json-schema](https://www.npmjs.com/package/@types/json-schema) |
 | Zowe Application Framework | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| Zowe Application Framework | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Application Framework | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Application Framework | @types/source-list-map |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/source-list-map](https://www.npmjs.com/package/@types/source-list-map) |
 | Zowe Application Framework | @types/webpack-sources |  v0.1.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
 | Zowe Application Framework | @webassemblyjs/ast |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/ast](https://www.npmjs.com/package/@webassemblyjs/ast) |
@@ -5746,10 +5744,10 @@
 | Zowe Application Framework | @xtuc/ieee754 |  v1.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@xtuc/ieee754](http://feross.org) |
 | Zowe Application Framework | @xtuc/long |  v4.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@xtuc/long](https://www.npmjs.com/package/@xtuc/long) |
 | Zowe Application Framework | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
-| Zowe Application Framework | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Application Framework | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Application Framework | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
 | Zowe Application Framework | ajv |  v6.12.3 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | ajv |  v6.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
 | Zowe Application Framework | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Application Framework | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
@@ -5847,7 +5845,7 @@
 | Zowe Application Framework | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe Application Framework | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe Application Framework | caniuse-lite |  v1.0.30001035 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
-| Zowe Application Framework | caniuse-lite |  v1.0.30001137 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
+| Zowe Application Framework | caniuse-lite |  v1.0.30001148 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
 | Zowe Application Framework | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
 | Zowe Application Framework | chalk |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
 | Zowe Application Framework | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
@@ -5945,7 +5943,7 @@
 | Zowe Application Framework | duplexify |  v3.7.1 | [MIT](http://opensource.org/licenses/mit-license) | [duplexify](https://www.github.com/mafintosh/duplexify) |
 | Zowe Application Framework | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
 | Zowe Application Framework | ee-first |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ee-first](http://jongleberry.com) |
-| Zowe Application Framework | electron-to-chromium |  v1.3.576 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
+| Zowe Application Framework | electron-to-chromium |  v1.3.578 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
 | Zowe Application Framework | elliptic |  v6.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [elliptic](https://www.github.com/indutny/elliptic) |
 | Zowe Application Framework | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Zowe Application Framework | emojis-list |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [emojis-list](https://www.github.com/Kikobeats/emojis-list) |
@@ -5956,8 +5954,8 @@
 | Zowe Application Framework | enhanced-resolve |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
 | Zowe Application Framework | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Application Framework | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Application Framework | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Application Framework | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Application Framework | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Application Framework | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Application Framework | es6-templates |  v0.2.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [es6-templates](https://www.npmjs.com/package/es6-templates) |
 | Zowe Application Framework | escalade |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [escalade](https://lukeed.com) |
@@ -6157,7 +6155,7 @@
 | Zowe Application Framework | istanbul-lib-coverage |  v3.0.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-coverage](https://istanbul.js.org/) |
 | Zowe Application Framework | istanbul-lib-instrument |  v4.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-instrument](https://istanbul.js.org/) |
 | Zowe Application Framework | jest-worker |  v24.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
-| Zowe Application Framework | jest-worker |  v26.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
+| Zowe Application Framework | jest-worker |  v26.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
 | Zowe Application Framework | js-tokens |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
 | Zowe Application Framework | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
 | Zowe Application Framework | js-yaml |  v3.14.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
@@ -6276,7 +6274,7 @@
 | Zowe Application Framework | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Application Framework | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Application Framework | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Application Framework | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Application Framework | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Application Framework | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Application Framework | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Application Framework | object.assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -6547,7 +6545,7 @@
 | Zowe Application Framework | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
 | Zowe Application Framework | tsickle |  v0.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsickle](https://www.github.com/angular/tsickle) |
 | Zowe Application Framework | tslib |  v1.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Application Framework | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Application Framework | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
@@ -6639,7 +6637,7 @@
 | Zowe Application Framework | @angular/platform-browser-dynamic |  v6.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@angular/platform-browser-dynamic](https://www.npmjs.com/package/@angular/platform-browser-dynamic) |
 | Zowe Application Framework | @angular/router |  v6.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@angular/router](https://www.github.com/angular/angular/tree/master/packages/router) |
 | Zowe Application Framework | @types/html2canvas |  v0.0.35 | [MIT](http://opensource.org/licenses/mit-license) | [@types/html2canvas](https://www.npmjs.com/package/@types/html2canvas) |
-| Zowe Application Framework | @types/jquery |  v3.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
+| Zowe Application Framework | @types/jquery |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jquery](https://www.npmjs.com/package/@types/jquery) |
 | Zowe Application Framework | @types/json-schema |  v7.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json-schema](https://www.npmjs.com/package/@types/json-schema) |
 | Zowe Application Framework | @types/sizzle |  v2.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sizzle](https://www.npmjs.com/package/@types/sizzle) |
 | Zowe Application Framework | @types/xmldom |  v0.1.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xmldom](https://www.npmjs.com/package/@types/xmldom) |
@@ -6665,9 +6663,9 @@
 | Zowe Application Framework | @xtuc/ieee754 |  v1.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@xtuc/ieee754](http://feross.org) |
 | Zowe Application Framework | @xtuc/long |  v4.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@xtuc/long](https://www.npmjs.com/package/@xtuc/long) |
 | Zowe Application Framework | @zlux/widgets |  v0.0.4 | EPL-2.0 | [@zlux/widgets](https://www.npmjs.com/package/@zlux/widgets) |
-| Zowe Application Framework | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Application Framework | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Application Framework | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
-| Zowe Application Framework | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Application Framework | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Application Framework | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Application Framework | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Application Framework | angular-l10n |  v5.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [angular-l10n](https://www.github.com/robisim74/angular-l10n) |
@@ -7146,11 +7144,11 @@
 | Zowe Application Framework | to-regex |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex](https://www.github.com/jonschlinkert/to-regex) |
 | Zowe Application Framework | to-regex-range |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
 | Zowe Application Framework | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
-| Zowe Application Framework | tokenizr |  v1.5.7 | [MIT](http://opensource.org/licenses/mit-license) | [tokenizr](https://www.github.com/rse/tokenizr) |
+| Zowe Application Framework | tokenizr |  v1.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [tokenizr](https://www.github.com/rse/tokenizr) |
 | Zowe Application Framework | tough-cookie |  v2.5.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [tough-cookie](https://www.github.com/salesforce/tough-cookie) |
 | Zowe Application Framework | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
 | Zowe Application Framework | tsickle |  v0.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsickle](https://www.github.com/angular/tsickle) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Application Framework | tslint-react |  v4.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint-react](https://www.npmjs.com/package/tslint-react) |
 | Zowe Application Framework | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
@@ -7201,7 +7199,7 @@
 | Zowe Application Framework | @types/express |  v4.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express](https://www.npmjs.com/package/@types/express) |
 | Zowe Application Framework | @types/express-serve-static-core |  v4.17.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express-serve-static-core](https://www.npmjs.com/package/@types/express-serve-static-core) |
 | Zowe Application Framework | @types/mime |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mime](https://www.npmjs.com/package/@types/mime) |
-| Zowe Application Framework | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Application Framework | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Application Framework | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Application Framework | @types/qs |  v6.9.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/qs](https://www.npmjs.com/package/@types/qs) |
 | Zowe Application Framework | @types/range-parser |  v1.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/range-parser](https://www.npmjs.com/package/@types/range-parser) |
@@ -7212,7 +7210,7 @@
 | Zowe Application Framework | core-js |  v2.5.7 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
 | Zowe Application Framework | rxjs |  v6.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [rxjs](https://www.github.com/ReactiveX/RxJS) |
 | Zowe Application Framework | rxjs-compat |  v6.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [rxjs-compat](https://www.npmjs.com/package/rxjs-compat) |
-| Zowe Application Framework | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Application Framework | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Application Framework | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
 
 ### Zowe CLI Dependency Attributions
@@ -7262,7 +7260,6 @@
 | Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | Zowe CLI | @types/fs-extra |  v8.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
 | Zowe CLI | @types/istanbul-lib-coverage |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
@@ -7271,18 +7268,18 @@
 | Zowe CLI | @types/jest |  v22.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | Zowe CLI | @types/js-yaml |  v3.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/js-yaml](https://www.npmjs.com/package/@types/js-yaml) |
-| Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
 | Zowe CLI | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| Zowe CLI | @types/node |  v12.12.62 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe CLI | @types/node |  v12.12.67 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | Zowe CLI | @types/ssh2 |  v0.5.44 | [MIT](http://opensource.org/licenses/mit-license) | [@types/ssh2](https://www.npmjs.com/package/@types/ssh2) |
 | Zowe CLI | @types/ssh2-streams |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/ssh2-streams](https://www.npmjs.com/package/@types/ssh2-streams) |
 | Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | Zowe CLI | @typescript-eslint/typescript-estree |  v2.34.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
 | Zowe CLI | @zowe/imperative |  v4.8.1 | EPL-2.0 | [@zowe/imperative](https://www.github.com/zowe/imperative#readme) |
@@ -7290,10 +7287,10 @@
 | Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe CLI | ansi-colors |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
 | Zowe CLI | ansi-colors |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
 | Zowe CLI | ansi-cyan |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-cyan](https://www.github.com/jonschlinkert/ansi-cyan) |
@@ -7308,7 +7305,7 @@
 | Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Zowe CLI | ansi-styles |  v2.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Zowe CLI | ansi-wrap |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-wrap](https://www.github.com/jonschlinkert/ansi-wrap) |
 | Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
@@ -7391,7 +7388,7 @@
 | Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
 | Zowe CLI | clear-require |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [clear-require](http://sindresorhus.com) |
 | Zowe CLI | cli-cursor |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](http://sindresorhus.com) |
-| Zowe CLI | cli-spinners |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
+| Zowe CLI | cli-spinners |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
 | Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
 | Zowe CLI | cliui |  v3.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
 | Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
@@ -7478,8 +7475,8 @@
 | Zowe CLI | enhanced-resolve |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
 | Zowe CLI | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe CLI | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
 | Zowe CLI | es6-iterator |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [es6-iterator](http://www.medikoo.com/) |
@@ -7750,7 +7747,7 @@
 | Zowe CLI | log4js |  v6.3.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
 | Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
 | Zowe CLI | lunr |  v2.3.9 | [MIT](http://opensource.org/licenses/mit-license) | [lunr](https://lunrjs.com/) |
-| Zowe CLI | madge |  v3.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
+| Zowe CLI | madge |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
 | Zowe CLI | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | Zowe CLI | make-dir |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | Zowe CLI | make-error |  v1.3.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
@@ -7776,7 +7773,7 @@
 | Zowe CLI | module-definition |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-definition](https://www.github.com/mrjoelkemp/module-definition) |
 | Zowe CLI | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
 | Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -8037,7 +8034,7 @@
 | Zowe CLI | traverse-chain |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [traverse-chain](https://www.npmjs.com/package/traverse-chain) |
 | Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | Zowe CLI | ts-node |  v7.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
-| Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe CLI | tslint |  v6.1.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe CLI | tsutils |  v3.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
@@ -8055,7 +8052,7 @@
 | Zowe CLI | typedoc-default-themes |  v0.6.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](https://typedoc.org/) |
 | Zowe CLI | typescript |  v3.7.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | Zowe CLI | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| Zowe CLI | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| Zowe CLI | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | Zowe CLI | unc-path-regex |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [unc-path-regex](https://www.github.com/regexhq/unc-path-regex) |
 | Zowe CLI | underscore |  v1.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [underscore](https://underscorejs.org/) |
 | Zowe CLI | undertaker |  v1.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [undertaker](https://gulpjs.com/) |
@@ -8166,7 +8163,6 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/fs-extra |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/istanbul-lib-coverage |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
@@ -8174,16 +8170,16 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | @typescript-eslint/typescript-estree |  v2.34.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
@@ -8192,10 +8188,10 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
@@ -8204,7 +8200,7 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | app-module-path |  v2.2.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [app-module-path](https://www.github.com/patrick-steele-idem/app-module-path-node) |
@@ -8259,7 +8255,7 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ci-info |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | cli-cursor |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](http://sindresorhus.com) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | cli-spinners |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | cli-spinners |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | cliui |  v6.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
@@ -8329,8 +8325,8 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -8543,7 +8539,7 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | log-symbols |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [log-symbols](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | log4js |  v6.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | madge |  v3.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | madge |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | make-dir |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | make-error |  v1.3.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
@@ -8569,7 +8565,7 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | module-definition |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-definition](https://www.github.com/mrjoelkemp/module-definition) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -8773,7 +8769,7 @@
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg CICS&reg Plug-in for Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| IBM&reg CICS&reg Plug-in for Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | IBM&reg CICS&reg Plug-in for Zowe CLI | tsutils |  v3.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
@@ -8882,7 +8878,6 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/fs-extra |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/handlebars |  v4.0.31 | [MIT](http://opensource.org/licenses/mit-license) | [@types/handlebars](https://www.npmjs.com/package/@types/handlebars) |
@@ -8893,12 +8888,12 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.74 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/marked |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/marked](https://www.npmjs.com/package/@types/marked) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/minimatch |  v2.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/shelljs |  v0.7.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/shelljs](https://www.npmjs.com/package/@types/shelljs) |
@@ -8906,7 +8901,7 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/xml2js |  v0.4.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/xml2js](https://www.npmjs.com/package/@types/xml2js) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs |  v8.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | @zowe/imperative |  v4.6.0 | EPL-2.0 | [@zowe/imperative](https://www.github.com/zowe/imperative#readme) |
@@ -8914,10 +8909,10 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
@@ -8926,7 +8921,7 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
@@ -9042,8 +9037,8 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -9265,7 +9260,7 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | mkdirp |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | mkdirp |  v0.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -9458,7 +9453,7 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
@@ -9472,7 +9467,7 @@
 | IBM&reg Db2&reg Plug-in for Zowe CLI | typedoc-default-themes |  v0.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](http://typedoc.org/) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | typescript |  v2.4.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| IBM&reg Db2&reg Plug-in for Zowe CLI | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| IBM&reg Db2&reg Plug-in for Zowe CLI | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
 | IBM&reg Db2&reg Plug-in for Zowe CLI | unset-value |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [unset-value](https://www.github.com/jonschlinkert/unset-value) |
@@ -9643,13 +9638,12 @@
 | Performance Timing Utility | @sinonjs/commons |  v1.8.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@sinonjs/commons](https://www.github.com/sinonjs/commons#readme) |
 | Performance Timing Utility | @sinonjs/fake-timers |  v6.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@sinonjs/fake-timers](https://www.github.com/sinonjs/fake-timers) |
 | Performance Timing Utility | @sinonjs/formatio |  v5.0.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@sinonjs/formatio](https://sinonjs.github.io/formatio/) |
-| Performance Timing Utility | @sinonjs/samsam |  v5.1.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@sinonjs/samsam](http://sinonjs.github.io/samsam/) |
+| Performance Timing Utility | @sinonjs/samsam |  v5.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@sinonjs/samsam](http://sinonjs.github.io/samsam/) |
 | Performance Timing Utility | @sinonjs/text-encoding |  v0.7.1 | (Unlicense OR Apache-2.0) | [@sinonjs/text-encoding](https://www.github.com/inexorabletash/text-encoding) |
 | Performance Timing Utility | @types/babel__core |  v7.1.10 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__core](https://www.npmjs.com/package/@types/babel__core) |
 | Performance Timing Utility | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | Performance Timing Utility | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | Performance Timing Utility | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| Performance Timing Utility | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | Performance Timing Utility | @types/dateformat |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/dateformat](https://www.npmjs.com/package/@types/dateformat) |
 | Performance Timing Utility | @types/fs-extra |  v8.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | Performance Timing Utility | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
@@ -9660,30 +9654,30 @@
 | Performance Timing Utility | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | Performance Timing Utility | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | Performance Timing Utility | @types/mkdirp |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mkdirp](https://www.npmjs.com/package/@types/mkdirp) |
-| Performance Timing Utility | @types/node |  v12.12.62 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| Performance Timing Utility | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Performance Timing Utility | @types/node |  v12.12.67 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Performance Timing Utility | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Performance Timing Utility | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | Performance Timing Utility | @types/pkg-up |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/pkg-up](https://www.npmjs.com/package/@types/pkg-up) |
 | Performance Timing Utility | @types/prettier |  v1.19.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/prettier](https://www.npmjs.com/package/@types/prettier) |
 | Performance Timing Utility | @types/sinon |  v7.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/sinon](https://www.npmjs.com/package/@types/sinon) |
 | Performance Timing Utility | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | Performance Timing Utility | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| Performance Timing Utility | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| Performance Timing Utility | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | Performance Timing Utility | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | Performance Timing Utility | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | Performance Timing Utility | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
-| Performance Timing Utility | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Performance Timing Utility | acorn |  v7.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Performance Timing Utility | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Performance Timing Utility | acorn |  v7.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Performance Timing Utility | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | Performance Timing Utility | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| Performance Timing Utility | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Performance Timing Utility | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Performance Timing Utility | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | Performance Timing Utility | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
 | Performance Timing Utility | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Performance Timing Utility | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Performance Timing Utility | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | Performance Timing Utility | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| Performance Timing Utility | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| Performance Timing Utility | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | Performance Timing Utility | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | Performance Timing Utility | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | Performance Timing Utility | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
@@ -9705,7 +9699,7 @@
 | Performance Timing Utility | babel-plugin-dynamic-import-node |  v2.3.3 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-dynamic-import-node](https://www.github.com/airbnb/babel-plugin-dynamic-import-node#readme) |
 | Performance Timing Utility | babel-plugin-istanbul |  v6.0.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [babel-plugin-istanbul](https://www.github.com/istanbuljs/babel-plugin-istanbul#readme) |
 | Performance Timing Utility | babel-plugin-jest-hoist |  v25.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-plugin-jest-hoist](https://www.npmjs.com/package/babel-plugin-jest-hoist) |
-| Performance Timing Utility | babel-preset-current-node-syntax |  v0.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-current-node-syntax](https://www.github.com/nicolo-ribaudo) |
+| Performance Timing Utility | babel-preset-current-node-syntax |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-current-node-syntax](https://www.github.com/nicolo-ribaudo) |
 | Performance Timing Utility | babel-preset-jest |  v25.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [babel-preset-jest](https://www.npmjs.com/package/babel-preset-jest) |
 | Performance Timing Utility | backbone |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [backbone](https://www.npmjs.com/package/backbone) |
 | Performance Timing Utility | balanced-match |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [balanced-match](https://www.github.com/juliangruber/balanced-match) |
@@ -9725,7 +9719,7 @@
 | Performance Timing Utility | cache-base |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [cache-base](https://www.github.com/jonschlinkert/cache-base) |
 | Performance Timing Utility | callsites |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [callsites](http://sindresorhus.com) |
 | Performance Timing Utility | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
-| Performance Timing Utility | caniuse-lite |  v1.0.30001137 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
+| Performance Timing Utility | caniuse-lite |  v1.0.30001148 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
 | Performance Timing Utility | capture-exit |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
 | Performance Timing Utility | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
 | Performance Timing Utility | chalk |  v2.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [chalk](https://www.npmjs.com/package/chalk) |
@@ -9780,13 +9774,13 @@
 | Performance Timing Utility | doctrine |  v0.7.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [doctrine](https://www.github.com/eslint/doctrine) |
 | Performance Timing Utility | domexception |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [domexception](https://domenic.me/) |
 | Performance Timing Utility | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
-| Performance Timing Utility | electron-to-chromium |  v1.3.576 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
+| Performance Timing Utility | electron-to-chromium |  v1.3.578 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
 | Performance Timing Utility | emoji-regex |  v8.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Performance Timing Utility | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
 | Performance Timing Utility | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | Performance Timing Utility | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Performance Timing Utility | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Performance Timing Utility | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Performance Timing Utility | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Performance Timing Utility | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Performance Timing Utility | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Performance Timing Utility | escalade |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [escalade](https://lukeed.com) |
 | Performance Timing Utility | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
@@ -9989,7 +9983,7 @@
 | Performance Timing Utility | mkdirp |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | Performance Timing Utility | mkdirp |  v0.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | Performance Timing Utility | mkdirp |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](https://www.npmjs.com/package/mkdirp) |
-| Performance Timing Utility | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| Performance Timing Utility | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | Performance Timing Utility | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Performance Timing Utility | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | Performance Timing Utility | mustache |  v4.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -10109,7 +10103,7 @@
 | Performance Timing Utility | shelljs |  v0.8.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [shelljs](https://www.github.com/shelljs/shelljs) |
 | Performance Timing Utility | shellwords |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [shellwords](https://www.github.com/jimmycuadra/shellwords) |
 | Performance Timing Utility | signal-exit |  v3.0.3 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [signal-exit](https://www.github.com/tapjs/signal-exit) |
-| Performance Timing Utility | sinon |  v9.0.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sinon](https://sinonjs.org/) |
+| Performance Timing Utility | sinon |  v9.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [sinon](https://sinonjs.org/) |
 | Performance Timing Utility | sisteransi |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [sisteransi](https://terkel.com) |
 | Performance Timing Utility | slash |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [slash](http://sindresorhus.com) |
 | Performance Timing Utility | snapdragon |  v0.8.2 | [MIT](http://opensource.org/licenses/mit-license) | [snapdragon](https://www.github.com/jonschlinkert/snapdragon) |
@@ -10159,7 +10153,7 @@
 | Performance Timing Utility | tr46 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tr46](https://www.npmjs.com/package/tr46) |
 | Performance Timing Utility | ts-jest |  v25.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | Performance Timing Utility | ts-node |  v7.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
-| Performance Timing Utility | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Performance Timing Utility | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Performance Timing Utility | tslib |  v1.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslib](http://typescriptlang.org/) |
 | Performance Timing Utility | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | Performance Timing Utility | tslint-consistent-codestyle |  v1.16.0 | [MIT](http://opensource.org/licenses/mit-license) | [tslint-consistent-codestyle](https://www.npmjs.com/package/tslint-consistent-codestyle) |
@@ -10180,7 +10174,7 @@
 | Performance Timing Utility | typedoc-plugin-internal-external |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [typedoc-plugin-internal-external](https://www.npmjs.com/package/typedoc-plugin-internal-external) |
 | Performance Timing Utility | typescript |  v3.7.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | Performance Timing Utility | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| Performance Timing Utility | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| Performance Timing Utility | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | Performance Timing Utility | underscore |  v1.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [underscore](https://underscorejs.org/) |
 | Performance Timing Utility | unicode-canonical-property-names-ecmascript |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [unicode-canonical-property-names-ecmascript](https://www.github.com/mathiasbynens/unicode-canonical-property-names-ecmascript) |
 | Performance Timing Utility | unicode-match-property-ecmascript |  v1.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [unicode-match-property-ecmascript](https://www.github.com/mathiasbynens/unicode-match-property-ecmascript) |
@@ -10273,9 +10267,8 @@
 | IBM&reg MQ Plug-in for Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| IBM&reg MQ Plug-in for Zowe CLI | @types/chai |  v4.2.12 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
+| IBM&reg MQ Plug-in for Zowe CLI | @types/chai |  v4.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/chai-as-promised |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai-as-promised](https://www.npmjs.com/package/@types/chai-as-promised) |
-| IBM&reg MQ Plug-in for Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/expect |  v1.20.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/expect](https://www.npmjs.com/package/@types/expect) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/fs-extra |  v8.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
@@ -10284,28 +10277,28 @@
 | IBM&reg MQ Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/jest |  v22.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg MQ Plug-in for Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM&reg MQ Plug-in for Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/mocha |  v2.2.48 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mocha](https://www.npmjs.com/package/@types/mocha) |
-| IBM&reg MQ Plug-in for Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM&reg MQ Plug-in for Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/yargs |  v11.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg MQ Plug-in for Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM&reg MQ Plug-in for Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg MQ Plug-in for Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | IBM&reg MQ Plug-in for Zowe CLI | @zowe/imperative |  v4.8.1 | EPL-2.0 | [@zowe/imperative](https://www.github.com/zowe/imperative#readme) |
 | IBM&reg MQ Plug-in for Zowe CLI | @zowe/perf-timing |  v1.0.7 | EPL-2.0 | [@zowe/perf-timing](http://Unknown) |
 | IBM&reg MQ Plug-in for Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | IBM&reg MQ Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | IBM&reg MQ Plug-in for Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg MQ Plug-in for Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM&reg MQ Plug-in for Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | IBM&reg MQ Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | IBM&reg MQ Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg MQ Plug-in for Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| IBM&reg MQ Plug-in for Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
@@ -10314,7 +10307,7 @@
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg MQ Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| IBM&reg MQ Plug-in for Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| IBM&reg MQ Plug-in for Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | IBM&reg MQ Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg MQ Plug-in for Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg MQ Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
@@ -10424,8 +10417,8 @@
 | IBM&reg MQ Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
 | IBM&reg MQ Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | IBM&reg MQ Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg MQ Plug-in for Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg MQ Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg MQ Plug-in for Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg MQ Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | IBM&reg MQ Plug-in for Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | IBM&reg MQ Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | IBM&reg MQ Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -10650,7 +10643,7 @@
 | IBM&reg MQ Plug-in for Zowe CLI | mkdirp |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | IBM&reg MQ Plug-in for Zowe CLI | mkdirp |  v0.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | IBM&reg MQ Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg MQ Plug-in for Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| IBM&reg MQ Plug-in for Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | IBM&reg MQ Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg MQ Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg MQ Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -10833,7 +10826,7 @@
 | IBM&reg MQ Plug-in for Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | IBM&reg MQ Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | IBM&reg MQ Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg MQ Plug-in for Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| IBM&reg MQ Plug-in for Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | IBM&reg MQ Plug-in for Zowe CLI | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | IBM&reg MQ Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | IBM&reg MQ Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
@@ -10848,7 +10841,7 @@
 | IBM&reg MQ Plug-in for Zowe CLI | typedoc-default-themes |  v0.6.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typedoc-default-themes](https://typedoc.org/) |
 | IBM&reg MQ Plug-in for Zowe CLI | typescript |  v3.7.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | IBM&reg MQ Plug-in for Zowe CLI | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| IBM&reg MQ Plug-in for Zowe CLI | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| IBM&reg MQ Plug-in for Zowe CLI | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | IBM&reg MQ Plug-in for Zowe CLI | underscore |  v1.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [underscore](https://underscorejs.org/) |
 | IBM&reg MQ Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
 | IBM&reg MQ Plug-in for Zowe CLI | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
@@ -11014,7 +11007,6 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| z/OS&reg FTP Plug-in for Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/fs-extra |  v5.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/istanbul-lib-coverage |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
@@ -11022,28 +11014,28 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| z/OS&reg FTP Plug-in for Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| z/OS&reg FTP Plug-in for Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
-| z/OS&reg FTP Plug-in for Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| z/OS&reg FTP Plug-in for Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/stack-trace |  v0.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-trace](https://www.npmjs.com/package/@types/stack-trace) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs |  v8.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
-| z/OS&reg FTP Plug-in for Zowe CLI | @zowe/cli |  v6.22.0 | EPL-2.0 | [@zowe/cli](https://www.github.com/zowe/zowe-cli#readme) |
+| z/OS&reg FTP Plug-in for Zowe CLI | @zowe/cli |  v6.23.0 | EPL-2.0 | [@zowe/cli](https://www.github.com/zowe/zowe-cli#readme) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @zowe/imperative |  v4.8.1 | EPL-2.0 | [@zowe/imperative](https://www.github.com/zowe/imperative#readme) |
 | z/OS&reg FTP Plug-in for Zowe CLI | @zowe/perf-timing |  v1.0.7 | EPL-2.0 | [@zowe/perf-timing](http://Unknown) |
 | z/OS&reg FTP Plug-in for Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | z/OS&reg FTP Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | z/OS&reg FTP Plug-in for Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| z/OS&reg FTP Plug-in for Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| z/OS&reg FTP Plug-in for Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | z/OS&reg FTP Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | z/OS&reg FTP Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| z/OS&reg FTP Plug-in for Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| z/OS&reg FTP Plug-in for Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
@@ -11052,7 +11044,7 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| z/OS&reg FTP Plug-in for Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| z/OS&reg FTP Plug-in for Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | z/OS&reg FTP Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | z/OS&reg FTP Plug-in for Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | z/OS&reg FTP Plug-in for Zowe CLI | argparse |  v1.0.10 | [MIT](http://opensource.org/licenses/mit-license) | [argparse](https://www.npmjs.com/package/argparse) |
@@ -11154,8 +11146,8 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | emoji-regex |  v8.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | z/OS&reg FTP Plug-in for Zowe CLI | end-of-stream |  v1.4.4 | [MIT](http://opensource.org/licenses/mit-license) | [end-of-stream](https://www.github.com/mafintosh/end-of-stream) |
 | z/OS&reg FTP Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| z/OS&reg FTP Plug-in for Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| z/OS&reg FTP Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| z/OS&reg FTP Plug-in for Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| z/OS&reg FTP Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | z/OS&reg FTP Plug-in for Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | z/OS&reg FTP Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | z/OS&reg FTP Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -11371,7 +11363,7 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | mkdirp |  v0.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | z/OS&reg FTP Plug-in for Zowe CLI | mkdirp |  v0.5.5 | [MIT](http://opensource.org/licenses/mit-license) | [mkdirp](http://substack.net) |
 | z/OS&reg FTP Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| z/OS&reg FTP Plug-in for Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| z/OS&reg FTP Plug-in for Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | z/OS&reg FTP Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -11554,7 +11546,7 @@
 | z/OS&reg FTP Plug-in for Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | z/OS&reg FTP Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | z/OS&reg FTP Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| z/OS&reg FTP Plug-in for Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| z/OS&reg FTP Plug-in for Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | z/OS&reg FTP Plug-in for Zowe CLI | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | z/OS&reg FTP Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | z/OS&reg FTP Plug-in for Zowe CLI | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
@@ -11657,7 +11649,6 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/babel__generator |  v7.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__generator](https://www.npmjs.com/package/@types/babel__generator) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/babel__template |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__template](https://www.npmjs.com/package/@types/babel__template) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/babel__traverse |  v7.0.15 | [MIT](http://opensource.org/licenses/mit-license) | [@types/babel__traverse](https://www.npmjs.com/package/@types/babel__traverse) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/color-name |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/color-name](https://www.npmjs.com/package/@types/color-name) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/fs-extra |  v8.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/graceful-fs |  v4.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/graceful-fs](https://www.npmjs.com/package/@types/graceful-fs) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/istanbul-lib-coverage |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-lib-coverage](https://www.npmjs.com/package/@types/istanbul-lib-coverage) |
@@ -11665,16 +11656,16 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/istanbul-reports |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/istanbul-reports](https://www.npmjs.com/package/@types/istanbul-reports) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/jest |  v20.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/jest |  v25.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jest](https://www.npmjs.com/package/@types/jest) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.161 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/lodash |  v4.14.162 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash](https://www.npmjs.com/package/@types/lodash) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/lodash-deep |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/lodash-deep](https://www.npmjs.com/package/@types/lodash-deep) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/normalize-package-data |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/normalize-package-data](https://www.npmjs.com/package/@types/normalize-package-data) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/stack-utils |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/stack-utils](https://www.npmjs.com/package/@types/stack-utils) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs |  v13.0.4 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs |  v15.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs](https://www.npmjs.com/package/@types/yargs) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @types/yargs-parser |  v15.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yargs-parser](https://www.npmjs.com/package/@types/yargs-parser) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | @typescript-eslint/typescript-estree |  v2.34.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [@typescript-eslint/typescript-estree](https://www.npmjs.com/package/@typescript-eslint/typescript-estree) |
@@ -11683,10 +11674,10 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | abab |  v2.0.5 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [abab](https://www.github.com/jsdom/abab#readme) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | abbrev |  v1.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [abbrev](https://www.npmjs.com/package/abbrev) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-escapes |  v4.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](https://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-parser |  v3.2.10 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-parser](https://www.github.com/IonicaBizau/node-ansi-parser) |
@@ -11695,7 +11686,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-regex |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-regex |  v5.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-styles |  v3.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-styles |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | ansi-styles |  v4.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-styles](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | anymatch |  v2.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | anymatch |  v3.1.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [anymatch](https://www.github.com/micromatch/anymatch) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | app-module-path |  v2.2.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [app-module-path](https://www.github.com/patrick-steele-idem/app-module-path-node) |
@@ -11751,7 +11742,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ci-info |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ci-info](https://www.github.com/watson/ci-info) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | class-utils |  v0.3.6 | [MIT](http://opensource.org/licenses/mit-license) | [class-utils](https://www.github.com/jonschlinkert/class-utils) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | cli-cursor |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-cursor](http://sindresorhus.com) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | cli-spinners |  v2.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | cli-spinners |  v2.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [cli-spinners](https://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | cli-table3 |  v0.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [cli-table3](https://www.github.com/cli-table/cli-table3) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | cliui |  v5.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | cliui |  v6.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [cliui](https://www.npmjs.com/package/cliui) |
@@ -11821,8 +11812,8 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | env-cmd |  v8.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [env-cmd](https://www.github.com/toddbluhm/env-cmd#readme) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -12039,7 +12030,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | log4js |  v6.3.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [log4js](https://log4js-node.github.io/log4js-node/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | loose-envify |  v1.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [loose-envify](https://www.github.com/zertosh/loose-envify) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | lunr |  v2.3.9 | [MIT](http://opensource.org/licenses/mit-license) | [lunr](https://lunrjs.com/) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | madge |  v3.10.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | madge |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [madge](https://www.github.com/pahen/madge) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | make-dir |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | make-dir |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [make-dir](http://sindresorhus.com) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | make-error |  v1.3.6 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [make-error](https://www.github.com/JsCommunity/make-error) |
@@ -12064,7 +12055,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | module-definition |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-definition](https://www.github.com/mrjoelkemp/module-definition) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | module-lookup-amd |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [module-lookup-amd](https://www.github.com/mrjoelkemp/node-module-lookup-amd) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | moment |  v2.20.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](http://momentjs.com/) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | moment |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | moment |  v2.29.1 | [MIT](http://opensource.org/licenses/mit-license) | [moment](https://momentjs.com/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ms |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ms |  v2.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ms](https://www.npmjs.com/package/ms) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | mustache |  v2.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [mustache](https://www.github.com/janl/mustache.js) |
@@ -12271,7 +12262,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ts-jest |  v24.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-jest](https://kulshekhar.github.io/ts-jest) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | ts-node |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | tsconfig |  v6.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig](https://www.github.com/TypeStrong/tsconfig) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | tsutils |  v3.17.1 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
@@ -12287,7 +12278,7 @@
 | IBM&reg IMS&reg Plug-in for Zowe CLI | typescript |  v3.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | typescript |  v3.7.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | typescript |  v3.9.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](https://www.typescriptlang.org/) |
-| IBM&reg IMS&reg Plug-in for Zowe CLI | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| IBM&reg IMS&reg Plug-in for Zowe CLI | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | underscore |  v1.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [underscore](https://underscorejs.org/) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | union-value |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [union-value](https://www.github.com/jonschlinkert/union-value) |
 | IBM&reg IMS&reg Plug-in for Zowe CLI | uniq |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [uniq](https://www.npmjs.com/package/uniq) |
@@ -12367,24 +12358,24 @@
 | Zowe Desktop Data Sets UI Plugin | @sinonjs/text-encoding |  v0.7.1 | (Unlicense OR Apache-2.0) | [@sinonjs/text-encoding](https://www.github.com/inexorabletash/text-encoding) |
 | Zowe Desktop Data Sets UI Plugin | @testim/chrome-version |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@testim/chrome-version](https://www.github.com/testimio/chrome-version) |
 | Zowe Desktop Data Sets UI Plugin | @types/anymatch |  v1.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/anymatch](https://www.npmjs.com/package/@types/anymatch) |
-| Zowe Desktop Data Sets UI Plugin | @types/chai |  v4.2.12 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
+| Zowe Desktop Data Sets UI Plugin | @types/chai |  v4.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | Zowe Desktop Data Sets UI Plugin | @types/glob |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
 | Zowe Desktop Data Sets UI Plugin | @types/json5 |  v0.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json5](https://www.npmjs.com/package/@types/json5) |
 | Zowe Desktop Data Sets UI Plugin | @types/jss |  v9.5.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jss](https://www.npmjs.com/package/@types/jss) |
 | Zowe Desktop Data Sets UI Plugin | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | Zowe Desktop Data Sets UI Plugin | @types/mocha |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mocha](https://www.npmjs.com/package/@types/mocha) |
-| Zowe Desktop Data Sets UI Plugin | @types/node |  v13.13.21 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| Zowe Desktop Data Sets UI Plugin | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop Data Sets UI Plugin | @types/node |  v13.13.25 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop Data Sets UI Plugin | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Desktop Data Sets UI Plugin | @types/node-fetch |  v2.5.7 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node-fetch](https://www.npmjs.com/package/@types/node-fetch) |
 | Zowe Desktop Data Sets UI Plugin | @types/prop-types |  v15.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/prop-types](https://www.npmjs.com/package/@types/prop-types) |
-| Zowe Desktop Data Sets UI Plugin | @types/react |  v16.9.49 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
+| Zowe Desktop Data Sets UI Plugin | @types/react |  v16.9.52 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
 | Zowe Desktop Data Sets UI Plugin | @types/react-transition-group |  v2.9.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react-transition-group](https://www.npmjs.com/package/@types/react-transition-group) |
 | Zowe Desktop Data Sets UI Plugin | @types/selenium-webdriver |  v4.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@types/selenium-webdriver](https://www.npmjs.com/package/@types/selenium-webdriver) |
 | Zowe Desktop Data Sets UI Plugin | @types/source-list-map |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/source-list-map](https://www.npmjs.com/package/@types/source-list-map) |
 | Zowe Desktop Data Sets UI Plugin | @types/tapable |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/tapable](https://www.npmjs.com/package/@types/tapable) |
-| Zowe Desktop Data Sets UI Plugin | @types/uglify-js |  v3.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
+| Zowe Desktop Data Sets UI Plugin | @types/uglify-js |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
 | Zowe Desktop Data Sets UI Plugin | @types/webpack |  v4.41.22 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack](https://www.npmjs.com/package/@types/webpack) |
-| Zowe Desktop Data Sets UI Plugin | @types/webpack-sources |  v1.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
+| Zowe Desktop Data Sets UI Plugin | @types/webpack-sources |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
 | Zowe Desktop Data Sets UI Plugin | @types/yauzl |  v2.9.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yauzl](https://www.npmjs.com/package/@types/yauzl) |
 | Zowe Desktop Data Sets UI Plugin | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
 | Zowe Desktop Data Sets UI Plugin | acorn |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/ternjs/acorn) |
@@ -12397,7 +12388,7 @@
 | Zowe Desktop Data Sets UI Plugin | agent-base |  v6.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [agent-base](http://n8.io/) |
 | Zowe Desktop Data Sets UI Plugin | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
 | Zowe Desktop Data Sets UI Plugin | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Desktop Data Sets UI Plugin | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop Data Sets UI Plugin | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop Data Sets UI Plugin | ajv-keywords |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop Data Sets UI Plugin | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop Data Sets UI Plugin | align-text |  v0.1.4 | [MIT](http://opensource.org/licenses/mit-license) | [align-text](https://www.github.com/jonschlinkert/align-text) |
@@ -12707,8 +12698,8 @@
 | Zowe Desktop Data Sets UI Plugin | enhanced-resolve |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
 | Zowe Desktop Data Sets UI Plugin | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Desktop Data Sets UI Plugin | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop Data Sets UI Plugin | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop Data Sets UI Plugin | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Data Sets UI Plugin | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Data Sets UI Plugin | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop Data Sets UI Plugin | es-get-iterator |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-get-iterator](https://www.github.com/ljharb/es-get-iterator#readme) |
 | Zowe Desktop Data Sets UI Plugin | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop Data Sets UI Plugin | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
@@ -12733,7 +12724,7 @@
 | Zowe Desktop Data Sets UI Plugin | eslint-plugin-jsx-a11y |  v5.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) |
 | Zowe Desktop Data Sets UI Plugin | eslint-plugin-mocha |  v4.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-mocha](https://www.github.com/lo1tuma/eslint-plugin-mocha) |
 | Zowe Desktop Data Sets UI Plugin | eslint-plugin-node |  v5.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-node](https://www.github.com/mysticatea/eslint-plugin-node#readme) |
-| Zowe Desktop Data Sets UI Plugin | eslint-plugin-react |  v7.21.2 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
+| Zowe Desktop Data Sets UI Plugin | eslint-plugin-react |  v7.21.4 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
 | Zowe Desktop Data Sets UI Plugin | eslint-restricted-globals |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-restricted-globals](https://www.npmjs.com/package/eslint-restricted-globals) |
 | Zowe Desktop Data Sets UI Plugin | eslint-scope |  v3.7.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
 | Zowe Desktop Data Sets UI Plugin | eslint-visitor-keys |  v1.3.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [eslint-visitor-keys](https://www.github.com/eslint/eslint-visitor-keys#readme) |
@@ -12986,7 +12977,7 @@
 | Zowe Desktop Data Sets UI Plugin | jss-template |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [jss-template](https://www.npmjs.com/package/jss-template) |
 | Zowe Desktop Data Sets UI Plugin | jss-vendor-prefixer |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jss-vendor-prefixer](https://www.npmjs.com/package/jss-vendor-prefixer) |
 | Zowe Desktop Data Sets UI Plugin | jsx-ast-utils |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
-| Zowe Desktop Data Sets UI Plugin | jsx-ast-utils |  v2.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
+| Zowe Desktop Data Sets UI Plugin | jsx-ast-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
 | Zowe Desktop Data Sets UI Plugin | jszip |  v3.5.0 | (MIT OR GPL-3.0) | [jszip](https://www.npmjs.com/package/jszip) |
 | Zowe Desktop Data Sets UI Plugin | just-extend |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [just-extend](https://www.npmjs.com/package/just-extend) |
 | Zowe Desktop Data Sets UI Plugin | keycode |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [keycode](https://www.github.com/timoxley/keycode) |
@@ -13090,7 +13081,7 @@
 | Zowe Desktop Data Sets UI Plugin | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Desktop Data Sets UI Plugin | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Desktop Data Sets UI Plugin | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Desktop Data Sets UI Plugin | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Desktop Data Sets UI Plugin | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Desktop Data Sets UI Plugin | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Desktop Data Sets UI Plugin | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Desktop Data Sets UI Plugin | object.assign |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -13190,7 +13181,7 @@
 | Zowe Desktop Data Sets UI Plugin | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
 | Zowe Desktop Data Sets UI Plugin | qs |  v6.7.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe Desktop Data Sets UI Plugin | qs |  v6.9.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
-| Zowe Desktop Data Sets UI Plugin | query-string |  v6.13.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
+| Zowe Desktop Data Sets UI Plugin | query-string |  v6.13.5 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
 | Zowe Desktop Data Sets UI Plugin | querystring |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystring](https://www.npmjs.com/package/querystring) |
 | Zowe Desktop Data Sets UI Plugin | querystring-es3 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [querystring-es3](https://www.npmjs.com/package/querystring-es3) |
 | Zowe Desktop Data Sets UI Plugin | querystringify |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystringify](https://www.github.com/unshiftio/querystringify) |
@@ -13744,8 +13735,8 @@
 | Zowe Desktop Eclipse Orion-based React Editor | enhanced-resolve |  v3.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [enhanced-resolve](https://www.github.com/webpack/enhanced-resolve) |
 | Zowe Desktop Eclipse Orion-based React Editor | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Desktop Eclipse Orion-based React Editor | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop Eclipse Orion-based React Editor | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop Eclipse Orion-based React Editor | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Eclipse Orion-based React Editor | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Eclipse Orion-based React Editor | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop Eclipse Orion-based React Editor | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop Eclipse Orion-based React Editor | escape-html |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [escape-html](https://www.npmjs.com/package/escape-html) |
 | Zowe Desktop Eclipse Orion-based React Editor | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -13756,7 +13747,7 @@
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-module-utils |  v2.6.0 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-module-utils](https://www.github.com/benmosher/eslint-plugin-import#readme) |
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-plugin-import |  v2.22.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-import](https://www.github.com/benmosher/eslint-plugin-import) |
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-plugin-jsx-a11y |  v5.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) |
-| Zowe Desktop Eclipse Orion-based React Editor | eslint-plugin-react |  v7.21.2 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
+| Zowe Desktop Eclipse Orion-based React Editor | eslint-plugin-react |  v7.21.4 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-restricted-globals |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-restricted-globals](https://www.npmjs.com/package/eslint-restricted-globals) |
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-scope |  v3.7.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
 | Zowe Desktop Eclipse Orion-based React Editor | eslint-visitor-keys |  v1.3.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [eslint-visitor-keys](https://www.github.com/eslint/eslint-visitor-keys#readme) |
@@ -13933,7 +13924,7 @@
 | Zowe Desktop Eclipse Orion-based React Editor | json5 |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [json5](http://json5.org/) |
 | Zowe Desktop Eclipse Orion-based React Editor | jsonify |  v0.0.0 | Public Domain | [jsonify](http://crockford.com/) |
 | Zowe Desktop Eclipse Orion-based React Editor | jsx-ast-utils |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
-| Zowe Desktop Eclipse Orion-based React Editor | jsx-ast-utils |  v2.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
+| Zowe Desktop Eclipse Orion-based React Editor | jsx-ast-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
 | Zowe Desktop Eclipse Orion-based React Editor | killable |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [killable](https://www.npmjs.com/package/killable) |
 | Zowe Desktop Eclipse Orion-based React Editor | kind-of |  v3.2.2 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
 | Zowe Desktop Eclipse Orion-based React Editor | kind-of |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [kind-of](https://www.github.com/jonschlinkert/kind-of) |
@@ -14001,7 +13992,7 @@
 | Zowe Desktop Eclipse Orion-based React Editor | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Desktop Eclipse Orion-based React Editor | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Desktop Eclipse Orion-based React Editor | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Desktop Eclipse Orion-based React Editor | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Desktop Eclipse Orion-based React Editor | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Desktop Eclipse Orion-based React Editor | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Desktop Eclipse Orion-based React Editor | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Desktop Eclipse Orion-based React Editor | object.assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -14291,7 +14282,7 @@
 | Zowe Desktop JES UI Plugin | @npmcli/move-file |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [@npmcli/move-file](https://www.npmjs.com/package/@npmcli/move-file) |
 | Zowe Desktop JES UI Plugin | @testim/chrome-version |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [@testim/chrome-version](https://www.github.com/testimio/chrome-version) |
 | Zowe Desktop JES UI Plugin | @types/anymatch |  v1.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/anymatch](https://www.npmjs.com/package/@types/anymatch) |
-| Zowe Desktop JES UI Plugin | @types/chai |  v4.2.12 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
+| Zowe Desktop JES UI Plugin | @types/chai |  v4.2.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/chai](https://www.npmjs.com/package/@types/chai) |
 | Zowe Desktop JES UI Plugin | @types/glob |  v7.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/glob](https://www.npmjs.com/package/@types/glob) |
 | Zowe Desktop JES UI Plugin | @types/html-minifier-terser |  v5.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/html-minifier-terser](https://www.npmjs.com/package/@types/html-minifier-terser) |
 | Zowe Desktop JES UI Plugin | @types/json-schema |  v7.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json-schema](https://www.npmjs.com/package/@types/json-schema) |
@@ -14299,17 +14290,17 @@
 | Zowe Desktop JES UI Plugin | @types/jss |  v9.5.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/jss](https://www.npmjs.com/package/@types/jss) |
 | Zowe Desktop JES UI Plugin | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
 | Zowe Desktop JES UI Plugin | @types/mocha |  v7.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mocha](https://www.npmjs.com/package/@types/mocha) |
-| Zowe Desktop JES UI Plugin | @types/node |  v13.13.21 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
-| Zowe Desktop JES UI Plugin | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop JES UI Plugin | @types/node |  v13.13.25 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop JES UI Plugin | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Desktop JES UI Plugin | @types/prop-types |  v15.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/prop-types](https://www.npmjs.com/package/@types/prop-types) |
-| Zowe Desktop JES UI Plugin | @types/react |  v16.9.49 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
+| Zowe Desktop JES UI Plugin | @types/react |  v16.9.52 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
 | Zowe Desktop JES UI Plugin | @types/react-transition-group |  v2.9.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react-transition-group](https://www.npmjs.com/package/@types/react-transition-group) |
 | Zowe Desktop JES UI Plugin | @types/selenium-webdriver |  v4.0.9 | [MIT](http://opensource.org/licenses/mit-license) | [@types/selenium-webdriver](https://www.npmjs.com/package/@types/selenium-webdriver) |
 | Zowe Desktop JES UI Plugin | @types/source-list-map |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/source-list-map](https://www.npmjs.com/package/@types/source-list-map) |
 | Zowe Desktop JES UI Plugin | @types/tapable |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/tapable](https://www.npmjs.com/package/@types/tapable) |
-| Zowe Desktop JES UI Plugin | @types/uglify-js |  v3.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
+| Zowe Desktop JES UI Plugin | @types/uglify-js |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
 | Zowe Desktop JES UI Plugin | @types/webpack |  v4.41.22 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack](https://www.npmjs.com/package/@types/webpack) |
-| Zowe Desktop JES UI Plugin | @types/webpack-sources |  v1.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
+| Zowe Desktop JES UI Plugin | @types/webpack-sources |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
 | Zowe Desktop JES UI Plugin | @types/yauzl |  v2.9.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/yauzl](https://www.npmjs.com/package/@types/yauzl) |
 | Zowe Desktop JES UI Plugin | @webassemblyjs/ast |  v1.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/ast](https://www.npmjs.com/package/@webassemblyjs/ast) |
 | Zowe Desktop JES UI Plugin | @webassemblyjs/floating-point-hex-parser |  v1.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/floating-point-hex-parser](https://www.npmjs.com/package/@webassemblyjs/floating-point-hex-parser) |
@@ -14334,8 +14325,8 @@
 | Zowe Desktop JES UI Plugin | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
 | Zowe Desktop JES UI Plugin | acorn |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/ternjs/acorn) |
 | Zowe Desktop JES UI Plugin | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe Desktop JES UI Plugin | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe Desktop JES UI Plugin | acorn |  v7.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop JES UI Plugin | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop JES UI Plugin | acorn |  v7.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop JES UI Plugin | acorn-jsx |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-jsx](https://www.github.com/RReverser/acorn-jsx) |
 | Zowe Desktop JES UI Plugin | acorn-walk |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop JES UI Plugin | adm-zip |  v0.4.16 | [MIT](http://opensource.org/licenses/mit-license) | [adm-zip](https://www.github.com/cthackers/adm-zip) |
@@ -14343,7 +14334,7 @@
 | Zowe Desktop JES UI Plugin | agent-base |  v6.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [agent-base](http://n8.io/) |
 | Zowe Desktop JES UI Plugin | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
 | Zowe Desktop JES UI Plugin | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Desktop JES UI Plugin | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop JES UI Plugin | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop JES UI Plugin | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Desktop JES UI Plugin | ajv-keywords |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop JES UI Plugin | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
@@ -14574,7 +14565,7 @@
 | Zowe Desktop JES UI Plugin | cookie-signature |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [cookie-signature](https://www.npmjs.com/package/cookie-signature) |
 | Zowe Desktop JES UI Plugin | copy-concurrently |  v1.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [copy-concurrently](https://www.npmjs.com/package/copy-concurrently) |
 | Zowe Desktop JES UI Plugin | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
-| Zowe Desktop JES UI Plugin | copy-webpack-plugin |  v6.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-webpack-plugin](https://www.github.com/webpack-contrib/copy-webpack-plugin) |
+| Zowe Desktop JES UI Plugin | copy-webpack-plugin |  v6.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-webpack-plugin](https://www.github.com/webpack-contrib/copy-webpack-plugin) |
 | Zowe Desktop JES UI Plugin | core-js |  v1.2.7 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
 | Zowe Desktop JES UI Plugin | core-js |  v2.6.11 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
 | Zowe Desktop JES UI Plugin | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
@@ -14666,8 +14657,8 @@
 | Zowe Desktop JES UI Plugin | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop JES UI Plugin | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Desktop JES UI Plugin | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop JES UI Plugin | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop JES UI Plugin | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop JES UI Plugin | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop JES UI Plugin | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop JES UI Plugin | es-get-iterator |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-get-iterator](https://www.github.com/ljharb/es-get-iterator#readme) |
 | Zowe Desktop JES UI Plugin | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop JES UI Plugin | es6-error |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [es6-error](https://www.github.com/bjyoungblood/es6-error) |
@@ -14684,7 +14675,7 @@
 | Zowe Desktop JES UI Plugin | eslint-plugin-jsx-a11y |  v5.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) |
 | Zowe Desktop JES UI Plugin | eslint-plugin-mocha |  v4.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-mocha](https://www.github.com/lo1tuma/eslint-plugin-mocha) |
 | Zowe Desktop JES UI Plugin | eslint-plugin-node |  v5.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-node](https://www.github.com/mysticatea/eslint-plugin-node#readme) |
-| Zowe Desktop JES UI Plugin | eslint-plugin-react |  v7.21.2 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
+| Zowe Desktop JES UI Plugin | eslint-plugin-react |  v7.21.4 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
 | Zowe Desktop JES UI Plugin | eslint-restricted-globals |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-restricted-globals](https://www.npmjs.com/package/eslint-restricted-globals) |
 | Zowe Desktop JES UI Plugin | eslint-scope |  v3.7.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
 | Zowe Desktop JES UI Plugin | eslint-scope |  v4.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
@@ -14726,7 +14717,7 @@
 | Zowe Desktop JES UI Plugin | figgy-pudding |  v3.5.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [figgy-pudding](https://www.npmjs.com/package/figgy-pudding) |
 | Zowe Desktop JES UI Plugin | figures |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [figures](http://sindresorhus.com) |
 | Zowe Desktop JES UI Plugin | file-entry-cache |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-entry-cache](http://royriojas.com) |
-| Zowe Desktop JES UI Plugin | file-loader |  v6.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-loader](https://www.github.com/webpack-contrib/file-loader) |
+| Zowe Desktop JES UI Plugin | file-loader |  v6.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [file-loader](https://www.github.com/webpack-contrib/file-loader) |
 | Zowe Desktop JES UI Plugin | file-uri-to-path |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-uri-to-path](https://www.github.com/TooTallNate/file-uri-to-path) |
 | Zowe Desktop JES UI Plugin | filesize |  v3.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [filesize](https://filesizejs.com/) |
 | Zowe Desktop JES UI Plugin | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
@@ -14915,7 +14906,7 @@
 | Zowe Desktop JES UI Plugin | istanbul-lib-report |  v2.0.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://istanbul.js.org/) |
 | Zowe Desktop JES UI Plugin | istanbul-lib-source-maps |  v3.0.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://istanbul.js.org/) |
 | Zowe Desktop JES UI Plugin | istanbul-reports |  v2.2.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://istanbul.js.org/) |
-| Zowe Desktop JES UI Plugin | jest-worker |  v26.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
+| Zowe Desktop JES UI Plugin | jest-worker |  v26.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
 | Zowe Desktop JES UI Plugin | js-tokens |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
 | Zowe Desktop JES UI Plugin | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
 | Zowe Desktop JES UI Plugin | js-yaml |  v3.13.1 | [MIT](http://opensource.org/licenses/mit-license) | [js-yaml](https://www.github.com/nodeca/js-yaml) |
@@ -14945,7 +14936,7 @@
 | Zowe Desktop JES UI Plugin | jss-template |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [jss-template](https://www.npmjs.com/package/jss-template) |
 | Zowe Desktop JES UI Plugin | jss-vendor-prefixer |  v7.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jss-vendor-prefixer](https://www.npmjs.com/package/jss-vendor-prefixer) |
 | Zowe Desktop JES UI Plugin | jsx-ast-utils |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
-| Zowe Desktop JES UI Plugin | jsx-ast-utils |  v2.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
+| Zowe Desktop JES UI Plugin | jsx-ast-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
 | Zowe Desktop JES UI Plugin | jszip |  v3.5.0 | (MIT OR GPL-3.0) | [jszip](https://www.npmjs.com/package/jszip) |
 | Zowe Desktop JES UI Plugin | keycode |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [keycode](https://www.github.com/timoxley/keycode) |
 | Zowe Desktop JES UI Plugin | killable |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [killable](https://www.npmjs.com/package/killable) |
@@ -15048,7 +15039,7 @@
 | Zowe Desktop JES UI Plugin | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Desktop JES UI Plugin | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Desktop JES UI Plugin | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Desktop JES UI Plugin | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Desktop JES UI Plugin | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Desktop JES UI Plugin | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Desktop JES UI Plugin | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Desktop JES UI Plugin | object.assign |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -15155,7 +15146,7 @@
 | Zowe Desktop JES UI Plugin | punycode |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [punycode](https://mths.be/punycode) |
 | Zowe Desktop JES UI Plugin | qs |  v6.7.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe Desktop JES UI Plugin | qs |  v6.9.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
-| Zowe Desktop JES UI Plugin | query-string |  v6.13.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
+| Zowe Desktop JES UI Plugin | query-string |  v6.13.5 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
 | Zowe Desktop JES UI Plugin | querystring |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystring](https://www.npmjs.com/package/querystring) |
 | Zowe Desktop JES UI Plugin | querystring-es3 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [querystring-es3](https://www.npmjs.com/package/querystring-es3) |
 | Zowe Desktop JES UI Plugin | querystringify |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystringify](https://www.github.com/unshiftio/querystringify) |
@@ -15250,6 +15241,7 @@
 | Zowe Desktop JES UI Plugin | schema-utils |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack-contrib/schema-utils#readme) |
 | Zowe Desktop JES UI Plugin | schema-utils |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack-contrib/schema-utils) |
 | Zowe Desktop JES UI Plugin | schema-utils |  v2.7.1 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack/schema-utils) |
+| Zowe Desktop JES UI Plugin | schema-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack/schema-utils) |
 | Zowe Desktop JES UI Plugin | select-hose |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [select-hose](https://www.github.com/indutny/select-hose#readme) |
 | Zowe Desktop JES UI Plugin | selenium-webdriver |  v4.0.0-alpha.7 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [selenium-webdriver](https://www.github.com/SeleniumHQ/selenium) |
 | Zowe Desktop JES UI Plugin | selfsigned |  v1.10.8 | [MIT](http://opensource.org/licenses/mit-license) | [selfsigned](http://joseoncode.com) |
@@ -15364,7 +15356,7 @@
 | Zowe Desktop JES UI Plugin | tryer |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tryer](https://gitlab.com/philbooth/tryer) |
 | Zowe Desktop JES UI Plugin | ts-node |  v8.10.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-node](https://www.github.com/TypeStrong/ts-node) |
 | Zowe Desktop JES UI Plugin | tsconfig-paths |  v3.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig-paths](https://www.npmjs.com/package/tsconfig-paths) |
-| Zowe Desktop JES UI Plugin | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop JES UI Plugin | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop JES UI Plugin | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
 | Zowe Desktop JES UI Plugin | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
 | Zowe Desktop JES UI Plugin | type-detect |  v4.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [type-detect](http://alogicalparadox.com) |
@@ -15454,9 +15446,9 @@
 | Zowe Desktop Web Plug-in Server | @babel/traverse |  v7.11.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/traverse](https://babeljs.io/) |
 | Zowe Desktop Web Plug-in Server | @babel/types |  v7.11.5 | [MIT](http://opensource.org/licenses/mit-license) | [@babel/types](https://babeljs.io/) |
 | Zowe Desktop Web Plug-in Server | abort-controller |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [abort-controller](https://www.github.com/mysticatea/abort-controller#readme) |
-| Zowe Desktop Web Plug-in Server | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop Web Plug-in Server | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop Web Plug-in Server | acorn-jsx |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-jsx](https://www.github.com/acornjs/acorn-jsx) |
-| Zowe Desktop Web Plug-in Server | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop Web Plug-in Server | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop Web Plug-in Server | ansi-colors |  v3.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-colors](https://www.github.com/doowb/ansi-colors) |
 | Zowe Desktop Web Plug-in Server | ansi-escapes |  v3.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-escapes](http://sindresorhus.com) |
 | Zowe Desktop Web Plug-in Server | ansi-regex |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [ansi-regex](http://sindresorhus.com) |
@@ -15508,8 +15500,8 @@
 | Zowe Desktop Web Plug-in Server | doctrine |  v3.0.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [doctrine](https://www.github.com/eslint/doctrine) |
 | Zowe Desktop Web Plug-in Server | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Zowe Desktop Web Plug-in Server | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop Web Plug-in Server | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop Web Plug-in Server | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Web Plug-in Server | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Web Plug-in Server | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop Web Plug-in Server | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop Web Plug-in Server | es6-error |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [es6-error](https://www.github.com/bjyoungblood/es6-error) |
 | Zowe Desktop Web Plug-in Server | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -15726,7 +15718,7 @@
 | Zowe Desktop Web Plug-in Server | tmp |  v0.0.33 | [MIT](http://opensource.org/licenses/mit-license) | [tmp](https://www.github.com/raszi/node-tmp) |
 | Zowe Desktop Web Plug-in Server | to-fast-properties |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [to-fast-properties](http://sindresorhus.com) |
 | Zowe Desktop Web Plug-in Server | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
-| Zowe Desktop Web Plug-in Server | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop Web Plug-in Server | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop Web Plug-in Server | type-check |  v0.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [type-check](https://www.github.com/gkz/type-check) |
 | Zowe Desktop Web Plug-in Server | type-detect |  v4.0.8 | [MIT](http://opensource.org/licenses/mit-license) | [type-detect](http://alogicalparadox.com) |
 | Zowe Desktop Web Plug-in Server | universalify |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [universalify](https://www.github.com/RyanZim/universalify#readme) |
@@ -15779,12 +15771,12 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/json-schema |  v7.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json-schema](https://www.npmjs.com/package/@types/json-schema) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/json5 |  v0.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json5](https://www.npmjs.com/package/@types/json5) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/minimatch |  v3.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/minimatch](https://www.npmjs.com/package/@types/minimatch) |
-| Zowe Desktop z/OS Unix Files UI Plugin | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop z/OS Unix Files UI Plugin | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/source-list-map |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/source-list-map](https://www.npmjs.com/package/@types/source-list-map) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/tapable |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [@types/tapable](https://www.npmjs.com/package/@types/tapable) |
-| Zowe Desktop z/OS Unix Files UI Plugin | @types/uglify-js |  v3.9.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
+| Zowe Desktop z/OS Unix Files UI Plugin | @types/uglify-js |  v3.11.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/uglify-js](https://www.npmjs.com/package/@types/uglify-js) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @types/webpack |  v4.41.22 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack](https://www.npmjs.com/package/@types/webpack) |
-| Zowe Desktop z/OS Unix Files UI Plugin | @types/webpack-sources |  v1.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
+| Zowe Desktop z/OS Unix Files UI Plugin | @types/webpack-sources |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [@types/webpack-sources](https://www.npmjs.com/package/@types/webpack-sources) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @webassemblyjs/ast |  v1.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/ast](https://www.npmjs.com/package/@webassemblyjs/ast) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @webassemblyjs/floating-point-hex-parser |  v1.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/floating-point-hex-parser](https://www.npmjs.com/package/@webassemblyjs/floating-point-hex-parser) |
 | Zowe Desktop z/OS Unix Files UI Plugin | @webassemblyjs/helper-api-error |  v1.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/helper-api-error](https://www.npmjs.com/package/@webassemblyjs/helper-api-error) |
@@ -15810,8 +15802,8 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
 | Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/ternjs/acorn) |
 | Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v7.4.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop z/OS Unix Files UI Plugin | acorn |  v7.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop z/OS Unix Files UI Plugin | acorn-jsx |  v3.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-jsx](https://www.github.com/RReverser/acorn-jsx) |
 | Zowe Desktop z/OS Unix Files UI Plugin | acorn-walk |  v7.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop z/OS Unix Files UI Plugin | agent-base |  v4.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [agent-base](http://n8.io/) |
@@ -15819,7 +15811,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | agentkeepalive |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [agentkeepalive](https://fengmk2.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Desktop z/OS Unix Files UI Plugin | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop z/OS Unix Files UI Plugin | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ajv-keywords |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
@@ -16018,7 +16010,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | camelcase |  v4.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | caniuse-api |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [caniuse-api](https://www.npmjs.com/package/caniuse-api) |
-| Zowe Desktop z/OS Unix Files UI Plugin | caniuse-db |  v1.0.30001137 | CC-BY-4.0 | [caniuse-db](https://www.npmjs.com/package/caniuse-db) |
+| Zowe Desktop z/OS Unix Files UI Plugin | caniuse-db |  v1.0.30001148 | CC-BY-4.0 | [caniuse-db](https://www.npmjs.com/package/caniuse-db) |
 | Zowe Desktop z/OS Unix Files UI Plugin | capture-stack-trace |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [capture-stack-trace](https://www.github.com/floatdrop) |
 | Zowe Desktop z/OS Unix Files UI Plugin | caseless |  v0.12.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [caseless](https://www.npmjs.com/package/caseless) |
 | Zowe Desktop z/OS Unix Files UI Plugin | chai |  v4.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [chai](http://chaijs.com/) |
@@ -16091,7 +16083,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | cookie-signature |  v1.0.6 | [MIT](http://opensource.org/licenses/mit-license) | [cookie-signature](https://www.npmjs.com/package/cookie-signature) |
 | Zowe Desktop z/OS Unix Files UI Plugin | copy-concurrently |  v1.0.5 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [copy-concurrently](https://www.npmjs.com/package/copy-concurrently) |
 | Zowe Desktop z/OS Unix Files UI Plugin | copy-descriptor |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-descriptor](https://www.github.com/jonschlinkert/copy-descriptor) |
-| Zowe Desktop z/OS Unix Files UI Plugin | copy-webpack-plugin |  v6.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-webpack-plugin](https://www.github.com/webpack-contrib/copy-webpack-plugin) |
+| Zowe Desktop z/OS Unix Files UI Plugin | copy-webpack-plugin |  v6.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [copy-webpack-plugin](https://www.github.com/webpack-contrib/copy-webpack-plugin) |
 | Zowe Desktop z/OS Unix Files UI Plugin | core-js |  v1.2.7 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
 | Zowe Desktop z/OS Unix Files UI Plugin | core-js |  v2.6.11 | [MIT](http://opensource.org/licenses/mit-license) | [core-js](https://www.npmjs.com/package/core-js) |
 | Zowe Desktop z/OS Unix Files UI Plugin | core-util-is |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [core-util-is](http://blog.izs.me/) |
@@ -16180,7 +16172,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | editor |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [editor](https://www.github.com/substack/node-editor) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ee-first |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ee-first](http://jongleberry.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | ejs |  v2.7.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [ejs](https://www.github.com/mde/ejs) |
-| Zowe Desktop z/OS Unix Files UI Plugin | electron-to-chromium |  v1.3.576 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
+| Zowe Desktop z/OS Unix Files UI Plugin | electron-to-chromium |  v1.3.578 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
 | Zowe Desktop z/OS Unix Files UI Plugin | elliptic |  v6.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [elliptic](https://www.github.com/indutny/elliptic) |
 | Zowe Desktop z/OS Unix Files UI Plugin | emoji-regex |  v6.5.1 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Zowe Desktop z/OS Unix Files UI Plugin | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
@@ -16196,8 +16188,8 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | err-code |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [err-code](http://indigounited.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Desktop z/OS Unix Files UI Plugin | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop z/OS Unix Files UI Plugin | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop z/OS Unix Files UI Plugin | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop z/OS Unix Files UI Plugin | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop z/OS Unix Files UI Plugin | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop z/OS Unix Files UI Plugin | es-get-iterator |  v1.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-get-iterator](https://www.github.com/ljharb/es-get-iterator#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop z/OS Unix Files UI Plugin | es6-error |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [es6-error](https://www.github.com/bjyoungblood/es6-error) |
@@ -16214,7 +16206,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-plugin-jsx-a11y |  v5.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) |
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-plugin-mocha |  v4.12.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-mocha](https://www.github.com/lo1tuma/eslint-plugin-mocha) |
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-plugin-node |  v5.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-node](https://www.github.com/mysticatea/eslint-plugin-node#readme) |
-| Zowe Desktop z/OS Unix Files UI Plugin | eslint-plugin-react |  v7.21.2 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
+| Zowe Desktop z/OS Unix Files UI Plugin | eslint-plugin-react |  v7.21.4 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-plugin-react](https://www.github.com/yannickcr/eslint-plugin-react) |
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-restricted-globals |  v0.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [eslint-restricted-globals](https://www.npmjs.com/package/eslint-restricted-globals) |
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-scope |  v3.7.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
 | Zowe Desktop z/OS Unix Files UI Plugin | eslint-scope |  v4.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [eslint-scope](https://www.github.com/eslint/eslint-scope) |
@@ -16259,7 +16251,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | figgy-pudding |  v3.5.2 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [figgy-pudding](https://www.npmjs.com/package/figgy-pudding) |
 | Zowe Desktop z/OS Unix Files UI Plugin | figures |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [figures](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | file-entry-cache |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-entry-cache](http://royriojas.com) |
-| Zowe Desktop z/OS Unix Files UI Plugin | file-loader |  v6.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-loader](https://www.github.com/webpack-contrib/file-loader) |
+| Zowe Desktop z/OS Unix Files UI Plugin | file-loader |  v6.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [file-loader](https://www.github.com/webpack-contrib/file-loader) |
 | Zowe Desktop z/OS Unix Files UI Plugin | file-uri-to-path |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [file-uri-to-path](https://www.github.com/TooTallNate/file-uri-to-path) |
 | Zowe Desktop z/OS Unix Files UI Plugin | filesize |  v3.6.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [filesize](https://filesizejs.com/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | fill-range |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [fill-range](https://www.github.com/jonschlinkert/fill-range) |
@@ -16344,7 +16336,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | hash.js |  v1.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [hash.js](https://www.github.com/indutny/hash.js) |
 | Zowe Desktop z/OS Unix Files UI Plugin | hasha |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [hasha](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | he |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [he](https://mths.be/he) |
-| Zowe Desktop z/OS Unix Files UI Plugin | highlight.js |  v10.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
+| Zowe Desktop z/OS Unix Files UI Plugin | highlight.js |  v10.2.1 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | highlight.js |  v9.12.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | highlight.js |  v9.18.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [highlight.js](https://highlightjs.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | history |  v3.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [history](https://www.npmjs.com/package/history) |
@@ -16481,7 +16473,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | istanbul-lib-report |  v2.0.8 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-report](https://istanbul.js.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | istanbul-lib-source-maps |  v3.0.6 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-lib-source-maps](https://istanbul.js.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | istanbul-reports |  v2.2.7 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [istanbul-reports](https://istanbul.js.org/) |
-| Zowe Desktop z/OS Unix Files UI Plugin | jest-worker |  v26.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
+| Zowe Desktop z/OS Unix Files UI Plugin | jest-worker |  v26.5.0 | [MIT](http://opensource.org/licenses/mit-license) | [jest-worker](https://www.npmjs.com/package/jest-worker) |
 | Zowe Desktop z/OS Unix Files UI Plugin | js-base64 |  v2.6.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [js-base64](https://www.npmjs.com/package/js-base64) |
 | Zowe Desktop z/OS Unix Files UI Plugin | js-tokens |  v3.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
 | Zowe Desktop z/OS Unix Files UI Plugin | js-tokens |  v4.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [js-tokens](https://www.npmjs.com/package/js-tokens) |
@@ -16506,7 +16498,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | jsonparse |  v1.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsonparse](https://www.npmjs.com/package/jsonparse) |
 | Zowe Desktop z/OS Unix Files UI Plugin | jsprim |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsprim](https://www.npmjs.com/package/jsprim) |
 | Zowe Desktop z/OS Unix Files UI Plugin | jsx-ast-utils |  v1.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
-| Zowe Desktop z/OS Unix Files UI Plugin | jsx-ast-utils |  v2.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
+| Zowe Desktop z/OS Unix Files UI Plugin | jsx-ast-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [jsx-ast-utils](https://www.npmjs.com/package/jsx-ast-utils) |
 | Zowe Desktop z/OS Unix Files UI Plugin | just-extend |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [just-extend](https://www.npmjs.com/package/just-extend) |
 | Zowe Desktop z/OS Unix Files UI Plugin | keycode |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [keycode](https://www.github.com/timoxley/keycode) |
 | Zowe Desktop z/OS Unix Files UI Plugin | killable |  v1.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [killable](https://www.npmjs.com/package/killable) |
@@ -16688,7 +16680,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Desktop z/OS Unix Files UI Plugin | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Desktop z/OS Unix Files UI Plugin | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Desktop z/OS Unix Files UI Plugin | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Desktop z/OS Unix Files UI Plugin | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Desktop z/OS Unix Files UI Plugin | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Desktop z/OS Unix Files UI Plugin | object.assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -16829,7 +16821,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | qs |  v6.7.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe Desktop z/OS Unix Files UI Plugin | qs |  v6.9.4 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [qs](https://www.github.com/ljharb/qs) |
 | Zowe Desktop z/OS Unix Files UI Plugin | query-string |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](http://sindresorhus.com) |
-| Zowe Desktop z/OS Unix Files UI Plugin | query-string |  v6.13.4 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
+| Zowe Desktop z/OS Unix Files UI Plugin | query-string |  v6.13.5 | [MIT](http://opensource.org/licenses/mit-license) | [query-string](https://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | querystring |  v0.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystring](https://www.npmjs.com/package/querystring) |
 | Zowe Desktop z/OS Unix Files UI Plugin | querystring-es3 |  v0.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [querystring-es3](https://www.npmjs.com/package/querystring-es3) |
 | Zowe Desktop z/OS Unix Files UI Plugin | querystringify |  v2.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [querystringify](https://www.github.com/unshiftio/querystringify) |
@@ -16932,6 +16924,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | schema-utils |  v0.3.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack-contrib/schema-utils#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | schema-utils |  v1.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack-contrib/schema-utils) |
 | Zowe Desktop z/OS Unix Files UI Plugin | schema-utils |  v2.7.1 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack/schema-utils) |
+| Zowe Desktop z/OS Unix Files UI Plugin | schema-utils |  v3.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [schema-utils](https://www.github.com/webpack/schema-utils) |
 | Zowe Desktop z/OS Unix Files UI Plugin | select-hose |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [select-hose](https://www.github.com/indutny/select-hose#readme) |
 | Zowe Desktop z/OS Unix Files UI Plugin | selfsigned |  v1.10.8 | [MIT](http://opensource.org/licenses/mit-license) | [selfsigned](http://joseoncode.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | semver |  v5.3.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [semver](https://www.npmjs.com/package/semver) |
@@ -17058,7 +17051,7 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | trim-right |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [trim-right](http://sindresorhus.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | tryer |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [tryer](https://gitlab.com/philbooth/tryer) |
 | Zowe Desktop z/OS Unix Files UI Plugin | tsconfig-paths |  v3.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig-paths](https://www.npmjs.com/package/tsconfig-paths) |
-| Zowe Desktop z/OS Unix Files UI Plugin | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop z/OS Unix Files UI Plugin | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop z/OS Unix Files UI Plugin | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
 | Zowe Desktop z/OS Unix Files UI Plugin | tunnel-agent |  v0.6.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tunnel-agent](http://www.futurealoof.com) |
 | Zowe Desktop z/OS Unix Files UI Plugin | tweetnacl |  v0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org/) |
@@ -17148,273 +17141,6 @@
 | Zowe Desktop z/OS Unix Files UI Plugin | yargs-parser |  v15.0.1 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 | Zowe Desktop z/OS Unix Files UI Plugin | yargs-parser |  v7.0.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [yargs-parser](https://www.npmjs.com/package/yargs-parser) |
 
-### Zowe Explorer Common REST Server Dependency Attributions
-| Component | Third-party Software | Version | License | GitHub |
-| ----------| -------------------- | --------| ------- | ------ |
-| Zowe Explorer Common REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
-| Zowe Explorer Common REST Server | LatencyUtils |  v2.0.3 | Public Domain, per Creative Commons CC0 | LatencyUtils |
-| Zowe Explorer Common REST Server | accessors-smart |  v1.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | accessors-smart |
-| Zowe Explorer Common REST Server | activation |  v1.1.1 | COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0 | activation |
-| Zowe Explorer Common REST Server | android-json |  v0.0.20131108.vaadin1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | android-json |
-| Zowe Explorer Common REST Server | asm |  v5.0.4 | [BSD](http://en.wikipedia.org/wiki/BSD_licenses#4-clause_license_.28original_.22BSD_License.22.29) | asm |
-| Zowe Explorer Common REST Server | assertj-core |  v3.11.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | assertj-core |
-| Zowe Explorer Common REST Server | byte-buddy |  v1.7.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Common REST Server | byte-buddy |  v1.9.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Common REST Server | byte-buddy-agent |  v1.9.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy-agent |
-| Zowe Explorer Common REST Server | classmate |  v1.3.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | classmate |
-| Zowe Explorer Common REST Server | commons-codec |  v1.11 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-codec |
-| Zowe Explorer Common REST Server | commons-lang3 |  v3.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-lang3 |
-| Zowe Explorer Common REST Server | commons-logging |  v1.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-logging |
-| Zowe Explorer Common REST Server | groovy |  v2.4.15 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | groovy |
-| Zowe Explorer Common REST Server | groovy-json |  v2.4.15 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | groovy-json |
-| Zowe Explorer Common REST Server | groovy-xml |  v2.4.15 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | groovy-xml |
-| Zowe Explorer Common REST Server | gson |  v2.8.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | gson |
-| Zowe Explorer Common REST Server | guava |  v20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | guava |
-| Zowe Explorer Common REST Server | hamcrest-core |  v1.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | hamcrest-core |
-| Zowe Explorer Common REST Server | hamcrest-library |  v1.3 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | hamcrest-library |
-| Zowe Explorer Common REST Server | hibernate-validator |  v6.0.17.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | hibernate-validator |
-| Zowe Explorer Common REST Server | httpclient |  v4.5.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpclient |
-| Zowe Explorer Common REST Server | httpcore |  v4.4.10 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpcore |
-| Zowe Explorer Common REST Server | httpmime |  v4.5.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpmime |
-| Zowe Explorer Common REST Server | jackson-annotations |  v2.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-annotations |
-| Zowe Explorer Common REST Server | jackson-core |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-core |
-| Zowe Explorer Common REST Server | jackson-databind |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-databind |
-| Zowe Explorer Common REST Server | jackson-datatype-jdk8 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jdk8 |
-| Zowe Explorer Common REST Server | jackson-datatype-jsr310 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jsr310 |
-| Zowe Explorer Common REST Server | jackson-module-parameter-names |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-module-parameter-names |
-| Zowe Explorer Common REST Server | javassist |  v3.21.0-GA | MPL 1.1, [GNU Lesser General Public License version 2.1](https://opensource.org/licenses/LGPL-2.1), [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | javassist |
-| Zowe Explorer Common REST Server | javax.annotation-api |  v1.3.2 | CDDL + GPLv2 with classpath exception | javax.annotation-api |
-| Zowe Explorer Common REST Server | jaxb-api |  v2.2.12 | CDDL 1.1, GPL2 w/ CPE | jaxb-api |
-| Zowe Explorer Common REST Server | jaxb-osgi |  v2.2.10 | CDDL+GPL License | jaxb-osgi |
-| Zowe Explorer Common REST Server | jboss-logging |  v3.3.2.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jboss-logging |
-| Zowe Explorer Common REST Server | json-path |  v2.4.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | json-path |
-| Zowe Explorer Common REST Server | json-path |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | json-path |
-| Zowe Explorer Common REST Server | json-smart |  v2.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | json-smart |
-| Zowe Explorer Common REST Server | jsonassert |  v1.5.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jsonassert |
-| Zowe Explorer Common REST Server | jul-to-slf4j |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | jul-to-slf4j |
-| Zowe Explorer Common REST Server | junit |  v4.12 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html) | junit |
-| Zowe Explorer Common REST Server | log4j-api |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-api |
-| Zowe Explorer Common REST Server | log4j-to-slf4j |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-to-slf4j |
-| Zowe Explorer Common REST Server | logback-classic |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-classic |
-| Zowe Explorer Common REST Server | logback-core |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-core |
-| Zowe Explorer Common REST Server | lombok |  v1.16.20 | [MIT](http://opensource.org/licenses/mit-license) | lombok |
-| Zowe Explorer Common REST Server | mapstruct |  v1.2.0.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | mapstruct |
-| Zowe Explorer Common REST Server | micrometer-core |  v1.1.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | micrometer-core |
-| Zowe Explorer Common REST Server | mockito-core |  v2.23.4 | [MIT](http://opensource.org/licenses/mit-license) | mockito-core |
-| Zowe Explorer Common REST Server | objenesis |  v2.6 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | objenesis |
-| Zowe Explorer Common REST Server | org.apache.sling.javax.activation |  v0.1.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.sling.javax.activation |
-| Zowe Explorer Common REST Server | powermock-api-mockito-common |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-api-mockito-common |
-| Zowe Explorer Common REST Server | powermock-api-mockito2 |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-api-mockito2 |
-| Zowe Explorer Common REST Server | powermock-api-support |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-api-support |
-| Zowe Explorer Common REST Server | powermock-core |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-core |
-| Zowe Explorer Common REST Server | powermock-module-junit4 |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-module-junit4 |
-| Zowe Explorer Common REST Server | powermock-module-junit4-common |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-module-junit4-common |
-| Zowe Explorer Common REST Server | powermock-module-junit4-rule |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-module-junit4-rule |
-| Zowe Explorer Common REST Server | powermock-reflect |  v1.7.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | powermock-reflect |
-| Zowe Explorer Common REST Server | reflections |  v0.9.11 | WTFPL, [New BSD](http://opensource.org/licenses/BSD-3-Clause) | reflections |
-| Zowe Explorer Common REST Server | rest-assured |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | rest-assured |
-| Zowe Explorer Common REST Server | rest-assured-common |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | rest-assured-common |
-| Zowe Explorer Common REST Server | slf4j-api |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | slf4j-api |
-| Zowe Explorer Common REST Server | snakeyaml |  v1.23 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | snakeyaml |
-| Zowe Explorer Common REST Server | spring-aop |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-aop |
-| Zowe Explorer Common REST Server | spring-beans |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-beans |
-| Zowe Explorer Common REST Server | spring-boot |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot |
-| Zowe Explorer Common REST Server | spring-boot-actuator |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator |
-| Zowe Explorer Common REST Server | spring-boot-actuator-autoconfigure |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator-autoconfigure |
-| Zowe Explorer Common REST Server | spring-boot-autoconfigure |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-autoconfigure |
-| Zowe Explorer Common REST Server | spring-boot-starter |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter |
-| Zowe Explorer Common REST Server | spring-boot-starter-actuator |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-actuator |
-| Zowe Explorer Common REST Server | spring-boot-starter-json |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-json |
-| Zowe Explorer Common REST Server | spring-boot-starter-logging |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-logging |
-| Zowe Explorer Common REST Server | spring-boot-starter-security |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-security |
-| Zowe Explorer Common REST Server | spring-boot-starter-test |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-test |
-| Zowe Explorer Common REST Server | spring-boot-starter-tomcat |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-tomcat |
-| Zowe Explorer Common REST Server | spring-boot-starter-web |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-web |
-| Zowe Explorer Common REST Server | spring-boot-test |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-test |
-| Zowe Explorer Common REST Server | spring-boot-test-autoconfigure |  v2.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-test-autoconfigure |
-| Zowe Explorer Common REST Server | spring-context |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-context |
-| Zowe Explorer Common REST Server | spring-core |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-core |
-| Zowe Explorer Common REST Server | spring-expression |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-expression |
-| Zowe Explorer Common REST Server | spring-jcl |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-jcl |
-| Zowe Explorer Common REST Server | spring-plugin-core |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-core |
-| Zowe Explorer Common REST Server | spring-plugin-metadata |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-metadata |
-| Zowe Explorer Common REST Server | spring-security-config |  v5.1.5.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-config |
-| Zowe Explorer Common REST Server | spring-security-core |  v5.1.5.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-core |
-| Zowe Explorer Common REST Server | spring-security-web |  v5.1.5.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-web |
-| Zowe Explorer Common REST Server | spring-test |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-test |
-| Zowe Explorer Common REST Server | spring-web |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-web |
-| Zowe Explorer Common REST Server | spring-webmvc |  v5.1.8.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-webmvc |
-| Zowe Explorer Common REST Server | springfox-core |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-core |
-| Zowe Explorer Common REST Server | springfox-schema |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-schema |
-| Zowe Explorer Common REST Server | springfox-spi |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spi |
-| Zowe Explorer Common REST Server | springfox-spring-web |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spring-web |
-| Zowe Explorer Common REST Server | springfox-swagger-common |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-common |
-| Zowe Explorer Common REST Server | springfox-swagger-ui |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-ui |
-| Zowe Explorer Common REST Server | springfox-swagger2 |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger2 |
-| Zowe Explorer Common REST Server | swagger-annotations |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-annotations |
-| Zowe Explorer Common REST Server | swagger-models |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-models |
-| Zowe Explorer Common REST Server | tagsoup |  v1.2.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tagsoup |
-| Zowe Explorer Common REST Server | tomcat-annotations-api |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-annotations-api |
-| Zowe Explorer Common REST Server | tomcat-embed-core |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-core |
-| Zowe Explorer Common REST Server | tomcat-embed-el |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-el |
-| Zowe Explorer Common REST Server | tomcat-embed-websocket |  v9.0.21 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
-| Zowe Explorer Common REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
-| Zowe Explorer Common REST Server | xml-path |  v3.2.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xml-path |
-| Zowe Explorer Common REST Server | xmlunit-core |  v2.6.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | xmlunit-core |
-
-### Zowe Explorer Data Sets REST Server Dependency Attributions
-| Component | Third-party Software | Version | License | GitHub |
-| ----------| -------------------- | --------| ------- | ------ |
-| Zowe Explorer Data Sets REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
-| Zowe Explorer Data Sets REST Server | LatencyUtils |  v2.0.3 | Public Domain, per Creative Commons CC0 | LatencyUtils |
-| Zowe Explorer Data Sets REST Server | byte-buddy |  v1.7.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Data Sets REST Server | byte-buddy |  v1.9.16 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Data Sets REST Server | classmate |  v1.3.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | classmate |
-| Zowe Explorer Data Sets REST Server | classmate |  v1.4.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | classmate |
-| Zowe Explorer Data Sets REST Server | commons-codec |  v1.11 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-codec |
-| Zowe Explorer Data Sets REST Server | commons-logging |  v1.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-logging |
-| Zowe Explorer Data Sets REST Server | explorer-api-common |  v1.1.4 | unknown | explorer-api-common |
-| Zowe Explorer Data Sets REST Server | gson |  v2.8.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | gson |
-| Zowe Explorer Data Sets REST Server | guava |  v20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | guava |
-| Zowe Explorer Data Sets REST Server | hibernate-validator |  v6.0.17.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | hibernate-validator |
-| Zowe Explorer Data Sets REST Server | httpclient |  v4.5.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpclient |
-| Zowe Explorer Data Sets REST Server | httpcore |  v4.4.10 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpcore |
-| Zowe Explorer Data Sets REST Server | jackson-annotations |  v2.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-annotations |
-| Zowe Explorer Data Sets REST Server | jackson-core |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-core |
-| Zowe Explorer Data Sets REST Server | jackson-databind |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-databind |
-| Zowe Explorer Data Sets REST Server | jackson-datatype-jdk8 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jdk8 |
-| Zowe Explorer Data Sets REST Server | jackson-datatype-jsr310 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jsr310 |
-| Zowe Explorer Data Sets REST Server | jackson-module-parameter-names |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-module-parameter-names |
-| Zowe Explorer Data Sets REST Server | javassist |  v3.21.0-GA | MPL 1.1, [GNU Lesser General Public License version 2.1](https://opensource.org/licenses/LGPL-2.1), [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | javassist |
-| Zowe Explorer Data Sets REST Server | javax.annotation-api |  v1.3.2 | CDDL + GPLv2 with classpath exception | javax.annotation-api |
-| Zowe Explorer Data Sets REST Server | jboss-logging |  v3.3.2.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jboss-logging |
-| Zowe Explorer Data Sets REST Server | jul-to-slf4j |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | jul-to-slf4j |
-| Zowe Explorer Data Sets REST Server | log4j-api |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-api |
-| Zowe Explorer Data Sets REST Server | log4j-to-slf4j |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-to-slf4j |
-| Zowe Explorer Data Sets REST Server | logback-classic |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-classic |
-| Zowe Explorer Data Sets REST Server | logback-core |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-core |
-| Zowe Explorer Data Sets REST Server | lombok |  v1.16.20 | [MIT](http://opensource.org/licenses/mit-license) | lombok |
-| Zowe Explorer Data Sets REST Server | mapstruct |  v1.2.0.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | mapstruct |
-| Zowe Explorer Data Sets REST Server | mapstruct-processor |  v1.2.0.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | mapstruct-processor |
-| Zowe Explorer Data Sets REST Server | micrometer-core |  v1.1.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | micrometer-core |
-| Zowe Explorer Data Sets REST Server | reflections |  v0.9.11 | WTFPL, [New BSD](http://opensource.org/licenses/BSD-3-Clause) | reflections |
-| Zowe Explorer Data Sets REST Server | slf4j-api |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | slf4j-api |
-| Zowe Explorer Data Sets REST Server | snakeyaml |  v1.23 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | snakeyaml |
-| Zowe Explorer Data Sets REST Server | spring-aop |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-aop |
-| Zowe Explorer Data Sets REST Server | spring-beans |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-beans |
-| Zowe Explorer Data Sets REST Server | spring-boot |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot |
-| Zowe Explorer Data Sets REST Server | spring-boot-actuator |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator |
-| Zowe Explorer Data Sets REST Server | spring-boot-actuator-autoconfigure |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator-autoconfigure |
-| Zowe Explorer Data Sets REST Server | spring-boot-autoconfigure |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-autoconfigure |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-actuator |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-actuator |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-json |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-json |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-logging |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-logging |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-security |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-security |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-tomcat |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-tomcat |
-| Zowe Explorer Data Sets REST Server | spring-boot-starter-web |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-web |
-| Zowe Explorer Data Sets REST Server | spring-context |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-context |
-| Zowe Explorer Data Sets REST Server | spring-core |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-core |
-| Zowe Explorer Data Sets REST Server | spring-expression |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-expression |
-| Zowe Explorer Data Sets REST Server | spring-jcl |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-jcl |
-| Zowe Explorer Data Sets REST Server | spring-plugin-core |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-core |
-| Zowe Explorer Data Sets REST Server | spring-plugin-metadata |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-metadata |
-| Zowe Explorer Data Sets REST Server | spring-security-config |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-config |
-| Zowe Explorer Data Sets REST Server | spring-security-core |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-core |
-| Zowe Explorer Data Sets REST Server | spring-security-web |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-web |
-| Zowe Explorer Data Sets REST Server | spring-web |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-web |
-| Zowe Explorer Data Sets REST Server | spring-webmvc |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-webmvc |
-| Zowe Explorer Data Sets REST Server | springfox-core |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-core |
-| Zowe Explorer Data Sets REST Server | springfox-schema |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-schema |
-| Zowe Explorer Data Sets REST Server | springfox-spi |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spi |
-| Zowe Explorer Data Sets REST Server | springfox-spring-web |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spring-web |
-| Zowe Explorer Data Sets REST Server | springfox-swagger-common |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-common |
-| Zowe Explorer Data Sets REST Server | springfox-swagger-ui |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-ui |
-| Zowe Explorer Data Sets REST Server | springfox-swagger2 |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger2 |
-| Zowe Explorer Data Sets REST Server | swagger-annotations |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-annotations |
-| Zowe Explorer Data Sets REST Server | swagger-models |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-models |
-| Zowe Explorer Data Sets REST Server | tomcat-annotations-api |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-annotations-api |
-| Zowe Explorer Data Sets REST Server | tomcat-embed-core |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-core |
-| Zowe Explorer Data Sets REST Server | tomcat-embed-el |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-el |
-| Zowe Explorer Data Sets REST Server | tomcat-embed-websocket |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
-| Zowe Explorer Data Sets REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
-
-### Zowe Explorer Jobs REST Server Dependency Attributions
-| Component | Third-party Software | Version | License | GitHub |
-| ----------| -------------------- | --------| ------- | ------ |
-| Zowe Explorer Jobs REST Server | HdrHistogram |  v2.1.9 | Public Domain, per Creative Commons CC0 | HdrHistogram |
-| Zowe Explorer Jobs REST Server | LatencyUtils |  v2.0.3 | Public Domain, per Creative Commons CC0 | LatencyUtils |
-| Zowe Explorer Jobs REST Server | byte-buddy |  v1.7.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Jobs REST Server | byte-buddy |  v1.9.16 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | byte-buddy |
-| Zowe Explorer Jobs REST Server | classmate |  v1.3.4 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | classmate |
-| Zowe Explorer Jobs REST Server | classmate |  v1.4.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | classmate |
-| Zowe Explorer Jobs REST Server | commons-codec |  v1.11 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-codec |
-| Zowe Explorer Jobs REST Server | commons-logging |  v1.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-logging |
-| Zowe Explorer Jobs REST Server | explorer-api-common |  v1.1.4 | unknown | explorer-api-common |
-| Zowe Explorer Jobs REST Server | gson |  v2.8.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | gson |
-| Zowe Explorer Jobs REST Server | guava |  v20.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | guava |
-| Zowe Explorer Jobs REST Server | hibernate-validator |  v6.0.17.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | hibernate-validator |
-| Zowe Explorer Jobs REST Server | httpclient |  v4.5.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpclient |
-| Zowe Explorer Jobs REST Server | httpcore |  v4.4.10 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | httpcore |
-| Zowe Explorer Jobs REST Server | jackson-annotations |  v2.9.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-annotations |
-| Zowe Explorer Jobs REST Server | jackson-core |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-core |
-| Zowe Explorer Jobs REST Server | jackson-databind |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-databind |
-| Zowe Explorer Jobs REST Server | jackson-datatype-jdk8 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jdk8 |
-| Zowe Explorer Jobs REST Server | jackson-datatype-jsr310 |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-datatype-jsr310 |
-| Zowe Explorer Jobs REST Server | jackson-module-parameter-names |  v2.9.9 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jackson-module-parameter-names |
-| Zowe Explorer Jobs REST Server | javassist |  v3.21.0-GA | MPL 1.1, [GNU Lesser General Public License version 2.1](https://opensource.org/licenses/LGPL-2.1), [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | javassist |
-| Zowe Explorer Jobs REST Server | javax.annotation-api |  v1.3.2 | CDDL + GPLv2 with classpath exception | javax.annotation-api |
-| Zowe Explorer Jobs REST Server | jboss-logging |  v3.3.2.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | jboss-logging |
-| Zowe Explorer Jobs REST Server | jul-to-slf4j |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | jul-to-slf4j |
-| Zowe Explorer Jobs REST Server | log4j-api |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-api |
-| Zowe Explorer Jobs REST Server | log4j-to-slf4j |  v2.11.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | log4j-to-slf4j |
-| Zowe Explorer Jobs REST Server | logback-classic |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-classic |
-| Zowe Explorer Jobs REST Server | logback-core |  v1.2.3 | [Eclipse Public License 1.0](https://www.eclipse.org/legal/epl-v10.html), GNU Lesser General Public License | logback-core |
-| Zowe Explorer Jobs REST Server | lombok |  v1.16.20 | [MIT](http://opensource.org/licenses/mit-license) | lombok |
-| Zowe Explorer Jobs REST Server | mapstruct |  v1.2.0.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | mapstruct |
-| Zowe Explorer Jobs REST Server | micrometer-core |  v1.1.5 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | micrometer-core |
-| Zowe Explorer Jobs REST Server | reflections |  v0.9.11 | WTFPL, [New BSD](http://opensource.org/licenses/BSD-3-Clause) | reflections |
-| Zowe Explorer Jobs REST Server | slf4j-api |  v1.7.26 | [MIT](http://opensource.org/licenses/mit-license) | slf4j-api |
-| Zowe Explorer Jobs REST Server | snakeyaml |  v1.23 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | snakeyaml |
-| Zowe Explorer Jobs REST Server | spring-aop |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-aop |
-| Zowe Explorer Jobs REST Server | spring-beans |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-beans |
-| Zowe Explorer Jobs REST Server | spring-boot |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot |
-| Zowe Explorer Jobs REST Server | spring-boot-actuator |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator |
-| Zowe Explorer Jobs REST Server | spring-boot-actuator-autoconfigure |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-actuator-autoconfigure |
-| Zowe Explorer Jobs REST Server | spring-boot-autoconfigure |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-autoconfigure |
-| Zowe Explorer Jobs REST Server | spring-boot-starter |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-actuator |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-actuator |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-json |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-json |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-logging |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-logging |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-security |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-security |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-tomcat |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-tomcat |
-| Zowe Explorer Jobs REST Server | spring-boot-starter-web |  v2.1.7.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-boot-starter-web |
-| Zowe Explorer Jobs REST Server | spring-context |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-context |
-| Zowe Explorer Jobs REST Server | spring-core |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-core |
-| Zowe Explorer Jobs REST Server | spring-expression |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-expression |
-| Zowe Explorer Jobs REST Server | spring-jcl |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-jcl |
-| Zowe Explorer Jobs REST Server | spring-plugin-core |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-core |
-| Zowe Explorer Jobs REST Server | spring-plugin-metadata |  v1.2.0.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-plugin-metadata |
-| Zowe Explorer Jobs REST Server | spring-security-config |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-config |
-| Zowe Explorer Jobs REST Server | spring-security-core |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-core |
-| Zowe Explorer Jobs REST Server | spring-security-web |  v5.1.6.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-security-web |
-| Zowe Explorer Jobs REST Server | spring-web |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-web |
-| Zowe Explorer Jobs REST Server | spring-webmvc |  v5.1.9.RELEASE | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | spring-webmvc |
-| Zowe Explorer Jobs REST Server | springfox-core |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-core |
-| Zowe Explorer Jobs REST Server | springfox-schema |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-schema |
-| Zowe Explorer Jobs REST Server | springfox-spi |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spi |
-| Zowe Explorer Jobs REST Server | springfox-spring-web |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-spring-web |
-| Zowe Explorer Jobs REST Server | springfox-swagger-common |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-common |
-| Zowe Explorer Jobs REST Server | springfox-swagger-ui |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger-ui |
-| Zowe Explorer Jobs REST Server | springfox-swagger2 |  v2.8.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | springfox-swagger2 |
-| Zowe Explorer Jobs REST Server | swagger-annotations |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-annotations |
-| Zowe Explorer Jobs REST Server | swagger-models |  v1.5.14 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | swagger-models |
-| Zowe Explorer Jobs REST Server | tomcat-annotations-api |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-annotations-api |
-| Zowe Explorer Jobs REST Server | tomcat-embed-core |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-core |
-| Zowe Explorer Jobs REST Server | tomcat-embed-el |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-el |
-| Zowe Explorer Jobs REST Server | tomcat-embed-websocket |  v9.0.22 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | tomcat-embed-websocket |
-| Zowe Explorer Jobs REST Server | validation-api |  v2.0.1.Final | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | validation-api |
-
 ### Zowe Application Framework Authentication Handlers Dependency Attributions
 | Component | Third-party Software | Version | License | GitHub |
 | ----------| -------------------- | --------| ------- | ------ |
@@ -17453,9 +17179,9 @@
 | Zowe Desktop TN3270 Emulator Plug-in | @webassemblyjs/wast-printer |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/wast-printer](https://www.npmjs.com/package/@webassemblyjs/wast-printer) |
 | Zowe Desktop TN3270 Emulator Plug-in | @xtuc/ieee754 |  v1.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@xtuc/ieee754](http://feross.org) |
 | Zowe Desktop TN3270 Emulator Plug-in | @xtuc/long |  v4.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@xtuc/long](https://www.npmjs.com/package/@xtuc/long) |
-| Zowe Desktop TN3270 Emulator Plug-in | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop TN3270 Emulator Plug-in | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop TN3270 Emulator Plug-in | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
-| Zowe Desktop TN3270 Emulator Plug-in | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop TN3270 Emulator Plug-in | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop TN3270 Emulator Plug-in | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Desktop TN3270 Emulator Plug-in | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop TN3270 Emulator Plug-in | angular2-template-loader |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [angular2-template-loader](https://www.github.com/TheLarkInn/angular2-template-loader#readme) |
@@ -17593,8 +17319,8 @@
 | Zowe Desktop TN3270 Emulator Plug-in | entities |  v1.1.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop TN3270 Emulator Plug-in | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop TN3270 Emulator Plug-in | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
-| Zowe Desktop TN3270 Emulator Plug-in | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop TN3270 Emulator Plug-in | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop TN3270 Emulator Plug-in | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop TN3270 Emulator Plug-in | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop TN3270 Emulator Plug-in | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop TN3270 Emulator Plug-in | es6-templates |  v0.2.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [es6-templates](https://www.npmjs.com/package/es6-templates) |
 | Zowe Desktop TN3270 Emulator Plug-in | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -17909,7 +17635,7 @@
 | Zowe Desktop TN3270 Emulator Plug-in | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
 | Zowe Desktop TN3270 Emulator Plug-in | toposort |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [toposort](https://www.npmjs.com/package/toposort) |
 | Zowe Desktop TN3270 Emulator Plug-in | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
-| Zowe Desktop TN3270 Emulator Plug-in | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop TN3270 Emulator Plug-in | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop TN3270 Emulator Plug-in | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Desktop TN3270 Emulator Plug-in | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Desktop TN3270 Emulator Plug-in | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
@@ -17964,7 +17690,7 @@
 | Zowe Desktop Sample Angular Application | @types/express |  v4.16.1 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express](https://www.npmjs.com/package/@types/express) |
 | Zowe Desktop Sample Angular Application | @types/express-serve-static-core |  v4.17.13 | [MIT](http://opensource.org/licenses/mit-license) | [@types/express-serve-static-core](https://www.npmjs.com/package/@types/express-serve-static-core) |
 | Zowe Desktop Sample Angular Application | @types/mime |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/mime](https://www.npmjs.com/package/@types/mime) |
-| Zowe Desktop Sample Angular Application | @types/node |  v14.11.2 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
+| Zowe Desktop Sample Angular Application | @types/node |  v14.11.8 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Desktop Sample Angular Application | @types/node |  v8.10.64 | [MIT](http://opensource.org/licenses/mit-license) | [@types/node](https://www.npmjs.com/package/@types/node) |
 | Zowe Desktop Sample Angular Application | @types/qs |  v6.9.5 | [MIT](http://opensource.org/licenses/mit-license) | [@types/qs](https://www.npmjs.com/package/@types/qs) |
 | Zowe Desktop Sample Angular Application | @types/range-parser |  v1.2.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/range-parser](https://www.npmjs.com/package/@types/range-parser) |
@@ -17982,7 +17708,7 @@
 | Zowe Desktop Sample React Application | @types/json5 |  v0.0.29 | [MIT](http://opensource.org/licenses/mit-license) | [@types/json5](https://www.npmjs.com/package/@types/json5) |
 | Zowe Desktop Sample React Application | @types/prop-types |  v15.7.3 | [MIT](http://opensource.org/licenses/mit-license) | [@types/prop-types](https://www.npmjs.com/package/@types/prop-types) |
 | Zowe Desktop Sample React Application | @types/react |  v16.3.18 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
-| Zowe Desktop Sample React Application | @types/react |  v16.9.49 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
+| Zowe Desktop Sample React Application | @types/react |  v16.9.52 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react](https://www.npmjs.com/package/@types/react) |
 | Zowe Desktop Sample React Application | @types/react-dom |  v16.0.11 | [MIT](http://opensource.org/licenses/mit-license) | [@types/react-dom](https://www.npmjs.com/package/@types/react-dom) |
 | Zowe Desktop Sample React Application | @webassemblyjs/ast |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/ast](https://www.npmjs.com/package/@webassemblyjs/ast) |
 | Zowe Desktop Sample React Application | @webassemblyjs/floating-point-hex-parser |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/floating-point-hex-parser](https://www.npmjs.com/package/@webassemblyjs/floating-point-hex-parser) |
@@ -18008,14 +17734,14 @@
 | Zowe Desktop Sample React Application | accepts |  v1.3.7 | [MIT](http://opensource.org/licenses/mit-license) | [accepts](https://www.npmjs.com/package/accepts) |
 | Zowe Desktop Sample React Application | acorn |  v4.0.13 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/ternjs/acorn) |
 | Zowe Desktop Sample React Application | acorn |  v5.7.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
-| Zowe Desktop Sample React Application | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop Sample React Application | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop Sample React Application | acorn-dynamic-import |  v2.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-dynamic-import](https://www.github.com/kesne/acorn-dynamic-import) |
 | Zowe Desktop Sample React Application | acorn-globals |  v4.3.4 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-globals](https://www.npmjs.com/package/acorn-globals) |
 | Zowe Desktop Sample React Application | acorn-walk |  v6.2.0 | [MIT](http://opensource.org/licenses/mit-license) | [acorn-walk](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop Sample React Application | address |  v1.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [address](https://www.npmjs.com/package/address) |
 | Zowe Desktop Sample React Application | address |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [address](https://www.npmjs.com/package/address) |
 | Zowe Desktop Sample React Application | ajv |  v5.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/epoberezkin/ajv) |
-| Zowe Desktop Sample React Application | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop Sample React Application | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop Sample React Application | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Desktop Sample React Application | ajv-keywords |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop Sample React Application | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
@@ -18200,8 +17926,8 @@
 | Zowe Desktop Sample React Application | camelcase |  v5.3.1 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase](http://sindresorhus.com) |
 | Zowe Desktop Sample React Application | camelcase-keys |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [camelcase-keys](http://sindresorhus.com) |
 | Zowe Desktop Sample React Application | caniuse-api |  v1.6.1 | [MIT](http://opensource.org/licenses/mit-license) | [caniuse-api](https://www.npmjs.com/package/caniuse-api) |
-| Zowe Desktop Sample React Application | caniuse-db |  v1.0.30001137 | CC-BY-4.0 | [caniuse-db](https://www.npmjs.com/package/caniuse-db) |
-| Zowe Desktop Sample React Application | caniuse-lite |  v1.0.30001137 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
+| Zowe Desktop Sample React Application | caniuse-db |  v1.0.30001148 | CC-BY-4.0 | [caniuse-db](https://www.npmjs.com/package/caniuse-db) |
+| Zowe Desktop Sample React Application | caniuse-lite |  v1.0.30001148 | CC-BY-4.0 | [caniuse-lite](http://beneb.info) |
 | Zowe Desktop Sample React Application | capture-exit |  v1.2.0 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [capture-exit](https://www.github.com/stefanpenner/capture-exit#readme) |
 | Zowe Desktop Sample React Application | capture-stack-trace |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [capture-stack-trace](https://www.github.com/floatdrop) |
 | Zowe Desktop Sample React Application | case-sensitive-paths-webpack-plugin |  v2.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [case-sensitive-paths-webpack-plugin](https://www.github.com/Urthen/case-sensitive-paths-webpack-plugin#readme) |
@@ -18342,7 +18068,7 @@
 | Zowe Desktop Sample React Application | duplexify |  v3.7.1 | [MIT](http://opensource.org/licenses/mit-license) | [duplexify](https://www.github.com/mafintosh/duplexify) |
 | Zowe Desktop Sample React Application | ecc-jsbn |  v0.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [ecc-jsbn](https://www.github.com/quartzjer/ecc-jsbn) |
 | Zowe Desktop Sample React Application | ee-first |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [ee-first](http://jongleberry.com) |
-| Zowe Desktop Sample React Application | electron-to-chromium |  v1.3.576 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
+| Zowe Desktop Sample React Application | electron-to-chromium |  v1.3.578 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [electron-to-chromium](https://www.npmjs.com/package/electron-to-chromium) |
 | Zowe Desktop Sample React Application | elliptic |  v6.5.3 | [MIT](http://opensource.org/licenses/mit-license) | [elliptic](https://www.github.com/indutny/elliptic) |
 | Zowe Desktop Sample React Application | emoji-regex |  v7.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [emoji-regex](https://mths.be/emoji-regex) |
 | Zowe Desktop Sample React Application | emojis-list |  v2.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [emojis-list](https://www.github.com/Kikobeats/emojis-list) |
@@ -18355,8 +18081,8 @@
 | Zowe Desktop Sample React Application | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop Sample React Application | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
 | Zowe Desktop Sample React Application | error-ex |  v1.3.2 | [MIT](http://opensource.org/licenses/mit-license) | [error-ex](https://www.npmjs.com/package/error-ex) |
-| Zowe Desktop Sample React Application | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop Sample React Application | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Sample React Application | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop Sample React Application | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop Sample React Application | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop Sample React Application | es5-ext |  v0.10.53 | [ISC](http://en.wikipedia.org/wiki/ISC_license) | [es5-ext](http://www.medikoo.com/) |
 | Zowe Desktop Sample React Application | es6-iterator |  v2.0.3 | [MIT](http://opensource.org/licenses/mit-license) | [es6-iterator](http://www.medikoo.com/) |
@@ -18775,7 +18501,7 @@
 | Zowe Desktop Sample React Application | object-assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-assign](http://sindresorhus.com) |
 | Zowe Desktop Sample React Application | object-copy |  v0.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-copy](https://www.github.com/jonschlinkert/object-copy) |
 | Zowe Desktop Sample React Application | object-inspect |  v1.8.0 | [MIT](http://opensource.org/licenses/mit-license) | [object-inspect](https://www.github.com/inspect-js/object-inspect) |
-| Zowe Desktop Sample React Application | object-is |  v1.1.2 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
+| Zowe Desktop Sample React Application | object-is |  v1.1.3 | [MIT](http://opensource.org/licenses/mit-license) | [object-is](https://www.github.com/es-shims/object-is) |
 | Zowe Desktop Sample React Application | object-keys |  v1.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-keys](http://ljharb.codes) |
 | Zowe Desktop Sample React Application | object-visit |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [object-visit](https://www.github.com/jonschlinkert/object-visit) |
 | Zowe Desktop Sample React Application | object.assign |  v4.1.1 | [MIT](http://opensource.org/licenses/mit-license) | [object.assign](https://www.npmjs.com/package/object.assign) |
@@ -19118,7 +18844,7 @@
 | Zowe Desktop Sample React Application | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
 | Zowe Desktop Sample React Application | tsconfig-paths |  v3.9.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig-paths](https://www.npmjs.com/package/tsconfig-paths) |
 | Zowe Desktop Sample React Application | tsconfig-paths-webpack-plugin |  v2.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsconfig-paths-webpack-plugin](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin) |
-| Zowe Desktop Sample React Application | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop Sample React Application | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop Sample React Application | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Desktop Sample React Application | tslint |  v5.20.1 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://palantir.github.io/tslint) |
 | Zowe Desktop Sample React Application | tslint-config-prettier |  v1.18.0 | [MIT](http://opensource.org/licenses/mit-license) | [tslint-config-prettier](https://www.npmjs.com/package/tslint-config-prettier) |
@@ -19135,7 +18861,7 @@
 | Zowe Desktop Sample React Application | typescript |  v2.9.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [typescript](http://typescriptlang.org/) |
 | Zowe Desktop Sample React Application | uglify-es |  v3.3.9 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-es](https://www.github.com/mishoo/UglifyJS2/tree/harmony) |
 | Zowe Desktop Sample React Application | uglify-js |  v2.8.29 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/uglifyjs) |
-| Zowe Desktop Sample React Application | uglify-js |  v3.11.0 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
+| Zowe Desktop Sample React Application | uglify-js |  v3.11.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | Zowe Desktop Sample React Application | uglify-js |  v3.4.10 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [uglify-js](http://lisperator.net/) |
 | Zowe Desktop Sample React Application | uglify-to-browserify |  v1.0.2 | [MIT](http://opensource.org/licenses/mit-license) | [uglify-to-browserify](https://www.npmjs.com/package/uglify-to-browserify) |
 | Zowe Desktop Sample React Application | uglifyjs-webpack-plugin |  v0.4.6 | [MIT](http://opensource.org/licenses/mit-license) | [uglifyjs-webpack-plugin](https://www.github.com/webpack-contrib/uglifyjs-webpack-plugin) |
@@ -19266,9 +18992,9 @@
 | Zowe Desktop VT Emulator Plugin-in | @webassemblyjs/wast-printer |  v1.8.5 | [MIT](http://opensource.org/licenses/mit-license) | [@webassemblyjs/wast-printer](https://www.npmjs.com/package/@webassemblyjs/wast-printer) |
 | Zowe Desktop VT Emulator Plugin-in | @xtuc/ieee754 |  v1.2.0 | [New BSD](http://opensource.org/licenses/BSD-3-Clause) | [@xtuc/ieee754](http://feross.org) |
 | Zowe Desktop VT Emulator Plugin-in | @xtuc/long |  v4.2.2 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [@xtuc/long](https://www.npmjs.com/package/@xtuc/long) |
-| Zowe Desktop VT Emulator Plugin-in | acorn |  v6.4.1 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
+| Zowe Desktop VT Emulator Plugin-in | acorn |  v6.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [acorn](https://www.github.com/acornjs/acorn) |
 | Zowe Desktop VT Emulator Plugin-in | aggregate-error |  v3.1.0 | [MIT](http://opensource.org/licenses/mit-license) | [aggregate-error](http://sindresorhus.com) |
-| Zowe Desktop VT Emulator Plugin-in | ajv |  v6.12.5 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
+| Zowe Desktop VT Emulator Plugin-in | ajv |  v6.12.6 | [MIT](http://opensource.org/licenses/mit-license) | [ajv](https://www.github.com/ajv-validator/ajv) |
 | Zowe Desktop VT Emulator Plugin-in | ajv-errors |  v1.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-errors](https://www.github.com/epoberezkin/ajv-errors#readme) |
 | Zowe Desktop VT Emulator Plugin-in | ajv-keywords |  v3.5.2 | [MIT](http://opensource.org/licenses/mit-license) | [ajv-keywords](https://www.github.com/epoberezkin/ajv-keywords#readme) |
 | Zowe Desktop VT Emulator Plugin-in | angular2-template-loader |  v0.6.2 | [MIT](http://opensource.org/licenses/mit-license) | [angular2-template-loader](https://www.github.com/TheLarkInn/angular2-template-loader#readme) |
@@ -19406,8 +19132,8 @@
 | Zowe Desktop VT Emulator Plugin-in | entities |  v1.1.2 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop VT Emulator Plugin-in | entities |  v2.0.3 | [Simplified BSD](http://opensource.org/licenses/bsd-license) | [entities](https://www.npmjs.com/package/entities) |
 | Zowe Desktop VT Emulator Plugin-in | errno |  v0.1.7 | [MIT](http://opensource.org/licenses/mit-license) | [errno](https://www.npmjs.com/package/errno) |
-| Zowe Desktop VT Emulator Plugin-in | es-abstract |  v1.17.6 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
-| Zowe Desktop VT Emulator Plugin-in | es-abstract |  v1.18.0-next.0 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop VT Emulator Plugin-in | es-abstract |  v1.17.7 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
+| Zowe Desktop VT Emulator Plugin-in | es-abstract |  v1.18.0-next.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-abstract](http://ljharb.codes) |
 | Zowe Desktop VT Emulator Plugin-in | es-to-primitive |  v1.2.1 | [MIT](http://opensource.org/licenses/mit-license) | [es-to-primitive](https://www.npmjs.com/package/es-to-primitive) |
 | Zowe Desktop VT Emulator Plugin-in | es6-templates |  v0.2.3 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [es6-templates](https://www.npmjs.com/package/es6-templates) |
 | Zowe Desktop VT Emulator Plugin-in | escape-string-regexp |  v1.0.5 | [MIT](http://opensource.org/licenses/mit-license) | [escape-string-regexp](http://sindresorhus.com) |
@@ -19722,7 +19448,7 @@
 | Zowe Desktop VT Emulator Plugin-in | to-regex-range |  v5.0.1 | [MIT](http://opensource.org/licenses/mit-license) | [to-regex-range](https://www.github.com/micromatch/to-regex-range) |
 | Zowe Desktop VT Emulator Plugin-in | toposort |  v1.0.7 | [MIT](http://opensource.org/licenses/mit-license) | [toposort](https://www.npmjs.com/package/toposort) |
 | Zowe Desktop VT Emulator Plugin-in | ts-loader |  v4.4.2 | [MIT](http://opensource.org/licenses/mit-license) | [ts-loader](https://www.github.com/TypeStrong/ts-loader) |
-| Zowe Desktop VT Emulator Plugin-in | tslib |  v1.13.0 | 0BSD | [tslib](https://www.typescriptlang.org/) |
+| Zowe Desktop VT Emulator Plugin-in | tslib |  v1.14.1 | 0BSD | [tslib](https://www.typescriptlang.org/) |
 | Zowe Desktop VT Emulator Plugin-in | tslint |  v5.10.0 | [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | [tslint](https://www.npmjs.com/package/tslint) |
 | Zowe Desktop VT Emulator Plugin-in | tsutils |  v2.29.0 | [MIT](http://opensource.org/licenses/mit-license) | [tsutils](https://www.npmjs.com/package/tsutils) |
 | Zowe Desktop VT Emulator Plugin-in | tty-browserify |  v0.0.0 | [MIT](http://opensource.org/licenses/mit-license) | [tty-browserify](https://www.github.com/substack/tty-browserify) |
