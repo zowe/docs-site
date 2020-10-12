@@ -34,12 +34,24 @@ Download and install the packages.
 
 2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
 
-3. In a command-line window, navigate to your project directory. Issue one of the following commands:
+3. **(Node SDK only)** Install required dependencies for the Node SDK. In a command-line window, navigate to your project directory and issue the following commands:
 
-   - To install a Node package: `npm install <fileName>.tgz`
-   - To install a Python package: `pip install <fileName>.whl`
+    ```
+    npm install core-for-zowe-sdk.tgz
+    ```
 
-   The packages are installed and you can call the APIs from within your project.
+    ```
+    npm install imperative.tgz
+    ```
+
+4. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
+
+   - To install a Node package: `npm install <packageName>.tgz`
+   - To install a Python package: `pip install <packageName>.whl`
+
+    *where* `<packageName>` is the name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+    The packages are installed and you can call the APIs from within your project.
 
 ### Install SDK from online registry
 
@@ -47,14 +59,26 @@ Define the packages as dependencies in your project and pull them from an online
 
 **Follow these steps:**
 
-1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+1. **(Node SDK only)** Install required dependencies for the Node SDK. In a command-line window, navigate to your project directory and issue the following commands:
 
-   - To import a Node package: `npm install <sdkPackageName>`
-   - To import a Python package: `pip install <sdkPackageName>`
+    ```
+    npm install core-for-zowe-sdk.tgz
+    ```
 
-    The package is installed and defined in your `package.json` or `setup.py` file.
+    ```
+    npm install imperative.tgz
+    ```
 
-2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates. Use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) to define the versioning scheme.
+2. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+
+   - To import a Node package: `npm install <PackageName>`
+   - To import a Python package: `pip install <PackageName>`
+
+   *where* `<packageName>` is the name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+    The package is installed and is defined in your `package.json` or `setup.py` file.
+
+3. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates. To define the versioning scheme, use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-).
 
     The packages are installed and you can call the APIs from within your project.
 
