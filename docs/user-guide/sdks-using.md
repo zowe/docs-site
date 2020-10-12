@@ -60,13 +60,13 @@ Define the packages as dependencies in your project and pull them from an online
 **Follow these steps:**
 
 1. **(Node SDK only)** Install required dependencies for the Node SDK. In a command-line window, navigate to your project directory and issue the following commands:
+npm install @zowe/core-for-zowe-sdk and npm install @zowe/imperative
+    ```
+    npm install @zowe/core-for-zowe-sdk
+    ```
 
     ```
-    npm install core-for-zowe-sdk.tgz
-    ```
-
-    ```
-    npm install imperative.tgz
+    npm install @zowe/imperative
     ```
 
 2. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
