@@ -2,7 +2,7 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.15.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.16.0 and later releases include the following enhancements, release by release.
 
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
@@ -38,10 +38,7 @@ Zowe Version 1.15.0 and later releases include the following enhancements, relea
 
 **Additional TN3270 terminal configuration options**
 
-- Additional TN3270 terminal configuration options are now possible to be specified within the instance.env configuration file. These choices, such as codepage and terminal dimensions, effect server defaults but do not change the preexisting ability for users to set their own preferences within the Desktop at runtime. A list of the available options can be found [here.](https://github.com/zowe/zlux-app-server/pull/108).
-
-
-<!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
+Additional TN3270 terminal configuration options are now possible to be specified within the `instance.env` configuration file. These choices, such as codepage and terminal dimensions, effect server defaults but do not change the preexisting ability for you to set their own preferences within the Desktop at runtime. A list of the available options can be found [here](https://github.com/zowe/zlux-app-server/pull/108).
 
 ### New features and enhancements
 
@@ -60,10 +57,10 @@ The following features and enhancements were added.
 - Added a more helpful and actionable description to message ZWEAM511E, which occurs when API ML does not trust the certificate provided by the service. [#818](https://github.com/zowe/api-layer/issues/818)
 
 #### Zowe App Server
-- Enhancement: The install-app.sh script used to install App Server plugins can now be used without Node.js. If Node.js is not detected when the script is executed, this behavior will be automated. You can also force this behavior with the environment variable `INSTALL_NO_NODE=1`, such as in the following example:
+- The `install-app.sh` script used to install App Server plugins can now be used without Node.js. If Node.js is not detected when the script is executed, this behavior will be automated. You can also force this behavior with the environment variable `INSTALL_NO_NODE=1`, such as in the following example:
   - `INSTALL_NO_NODE=1 ./install-app.sh ~/zlux-editor` [#137](https://github.com/zowe/zlux-app-server/pull/137)
-- Feature: ZSS is now automatically registered to the API Mediation Layer when both are present, using a static registration file. [#208](https://github.com/zowe/zss/pull/208)
-- Enhancement: Additional environment variables are now supported, which provides more options for TN3270 for the `instance.env` configuration file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration. [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new env vars are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
+- ZSS is now automatically registered to the API Mediation Layer when both are present, using a static registration file. [#208](https://github.com/zowe/zss/pull/208)
+- Additional environment variables are now supported, which provides more options for TN3270 for the `instance.env` configuration file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration. [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new environment variables are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
 
   - `ZOWE_ZLUX_TELNET_HOST = string`
   - `ZOWE_ZLUX_SSH_HOST = string`
@@ -71,11 +68,11 @@ The following features and enhancements were added.
   - `ZOWE_ZLUX_TN3270_COL = number`
   - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
   - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
-- Enhancement: The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subsect of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
+- The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subsect of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
   - `/server/agent/environment (limited info)`
   - `/server/agent/services`
-- Enhancement: The ZSS /unixfile API has been updated to include an option to force file content to be sent or received as a specific encoding. If not specified, the pre-existing behavior of automatically choosing encoding based on tagging & file extensions will be used. [#160](https://github.com/zowe/zowe-common-c/pull/160)
-- Enhancement: The app server can now read and use keys, certificates, and certificate authorities contained with PKCS12 files. This is in addition to existing support for PEM encoded files as well as z/OS keyrings. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
+- The ZSS `/unixfile` API has been updated to include an option to force file content to be sent or received as a specific encoding. If not specified, the pre-existing behavior of automatically choosing encoding based on tagging and file extensions will be used. [#160](https://github.com/zowe/zowe-common-c/pull/160)
+- The app server can now read and use keys, certificates, and certificate authorities contained with PKCS12 files. This is in addition to existing support for PEM encoded files as well as z/OS keyrings. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
@@ -85,11 +82,8 @@ The following features and enhancements were added.
 <!-- No changes to other plug-ins. -->
 
 The following enhancements were added to the **core CLI**:
-- Enhancement: Added a `--pattern` option to the `zowe files list all-members` command. The option lets you restrict returned member names to only names that match a given pattern. The argument syntax is the same as the "pattern" parameter of the ISPF LMMLIST service. [#810](https://github.com/zowe/zowe-cli/issues/810)
-- Enhancement: Added new options `--lrecl` and `--recfm` to the `zos-files create` command. Use these options to specify a logical record length and record format for data sets that you create. [#788](https://github.com/zowe/zowe-cli/issues/788)
-
-The following bug was fixed in the **FTP plug-in for Zowe CLI**:
-- BugFix: Fixed an issue whre the `view spool-file-by-id` command retrieved incorrect contents. [#61](https://github.com/zowe/zowe-cli-ftp-plugin/issues/61)
+- Added a `--pattern` option to the `zowe files list all-members` command. The option lets you restrict returned member names to only names that match a given pattern. The argument syntax is the same as the "pattern" parameter of the ISPF LMMLIST service. [#810](https://github.com/zowe/zowe-cli/issues/810)
+- Added new options `--lrecl` and `--recfm` to the `zos-files create` command. Use these options to specify a logical record length and record format for data sets that you create. [#788](https://github.com/zowe/zowe-cli/issues/788)
 
 #### Zowe Explorer
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release 1.8.0. Includes 1.9.0 changes.-->
@@ -133,7 +127,8 @@ The following bugs were fixed.
 - Fixed language in log messages for consistency. [#830](https://github.com/zowe/api-layer/issues/830)
 
 #### Zowe App Server
-- Bugfix: In previous versions, the environment `arch` and `os` fields were incorrect. This has been fixed, and the updated response from `/server/agent/environment` service is [#213](https://github.com/zowe/zss/pull/213):
+
+In previous versions, the environment `arch` and `os` fields were incorrect. This has been fixed, and the updated response from `/server/agent/environment` service is [#213](https://github.com/zowe/zss/pull/213):
 
 ```
 {
@@ -148,12 +143,12 @@ The following bugs were fixed.
 ```
 
 #### Zowe CLI
-
-The following bug was fixed in the **FTP Plug-in**:
 <!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Includes 1.2.1 changes. -->
-- Fixed view spool file by id with wrong content.
+The following bug was fixed in the **FTP plug-in for Zowe CLI**:
+- Fixed an issue where the `view spool-file-by-id` command retrieved incorrect contents. [#61](https://github.com/zowe/zowe-cli-ftp-plugin/issues/61)
 
 ### Zowe Explorer
+
 - Fixed USS renaming issues. [#911](https://github.com/zowe/vscode-extension-for-zowe/issues/911)
 - Fixed the deletion of datasets issue. [#963](https://github.com/zowe/vscode-extension-for-zowe/issues/963).
 - Removed errors in Favorites items caused by profiles that are created by other extensions. [#968](https://github.com/zowe/vscode-extension-for-zowe/issues/968)
