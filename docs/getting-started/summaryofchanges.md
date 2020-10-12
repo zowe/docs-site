@@ -68,7 +68,7 @@ The following features and enhancements were added.
   - `ZOWE_ZLUX_TN3270_COL = number`
   - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
   - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
-- The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subsect of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
+- The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subset of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
   - `/server/agent/environment (limited info)`
   - `/server/agent/services`
 - The ZSS `/unixfile` API has been updated to include an option to force file content to be sent or received as a specific encoding. If not specified, the pre-existing behavior of automatically choosing encoding based on tagging and file extensions will be used. [#160](https://github.com/zowe/zowe-common-c/pull/160)
