@@ -196,36 +196,36 @@ For more details, see the OpenAPI documentation of the API Mediation Layer in th
 #### Supported authentication methods
 
 The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part
-of the Zowe all of the following methods are enabled and supported. All the methods are supported at least to some extent
+of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
 with each authentication provider. 
 
 ##### Username/Password
 
-The client can authenticate via Username and password. There are multiple methods which can be used to deliver the 
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
 credentials. There are more details in the ZAAS Client documentation. 
 
 ##### Client certificate
 
-If the keyring or truststore contains at least one valid certificate authority (CA) other than the API ML's own CA, it is possible to use the client certificates issued by this CA to authenticate to the API ML and subsequent services. This feature is not enabled by default and needs to be configured.
+If the keyring or truststore contain at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML and subsequent services. This feature is not enabled by default and needs to be configured.
 
-The authentication is performed in the following steps:
-* Client calls API ML Gateway login endpoint with client certificate and it's private key.
-* Client certificate and private key are checked as a valid TLS client certificate against Gateway's trusted CA's.
-* Public part of the provided client certificate is checked against SAF and saf returns a user ID that owns this certificate. ZSS is providing this API for Mediation Layer.
-* Gateway performs login of the mapped user and returns a valid JWT token.
+Authentication is performed in the following ways:
+* The client calls the API ML Gateway login endpoint with the client certificate and its private key.
+* The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
+* The public part of the provided client certificate is checked against SAF and SAF subsequently returns a user ID that owns this certificate. ZSS is providing this API for Mediation Layer.
+* The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 **Prerequisities:**
-* Have external Certificate Authority and signed client certificates or generate them in SAF
-* Import client certificates to SAF or add it to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please refer to your security system documentation)
-* Import the external CA to API Mediation layer's truststore
+* Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF.
+* Import the client certificates to SAF, or add them to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please refer to your security system documentation)
+* Import the external CA to the truststore of the API Mediation Layer
 * [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication)
 * [For upgrade from zowe 1.16 or lower, please review the additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping)
 
 ##### JWT Token
 
-When the client authenticates with the API ML it receives in exchange the JWT token which can be used for further 
-authentication. If z/OSMF is configured as authentication provider and the client already received JWT token produced
-by the z/OSMF it is possible to reuse this token within the API ML for authentication.  
+When the client authenticates with the API ML, the client receives in exchange the JWT token. This token can be used for further 
+authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced
+by z/OSMF, it is possible to reuse this token within the API ML for authentication.  
 
 #### Authentication providers
 
@@ -246,10 +246,10 @@ apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF 
 
 ##### SAF Authentication Provider
 
-The `SAF Authentication Provider` allows API Gateway to authenticate directly with the z/OS SAF provider installed on the system. The user needs SAF
-account in order to authenticate. 
+The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF
+account to authenticate. 
 
-Use the following property of API Gateway to enable the `SAF Authentication Provider`:
+Use the following property of the API Gateway to enable the `SAF Authentication Provider`:
 ```
 apiml.security.auth.provider: saf
 ```
@@ -709,7 +709,7 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
-Call the `apiml_cm.sh` script in the directory with API Mediation Layer as in the following example.
+Call the `apiml_cm.sh` script in the directory with the API Mediation Layer as in the following example.
 
 **Example:**
 ```
@@ -722,7 +722,7 @@ bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext>
 where:
 
 * **`service-alias`**
-is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
+is a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
 * **`service-keystore`**
 is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
@@ -733,7 +733,7 @@ is a repository of security certificates plus corresponding private keys. The `<
 contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that is generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
 * **`service-ext`**
-specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
+specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need to specify the same hostname that is used by the service during API Mediation Layer registration.
 
   **Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
@@ -745,12 +745,12 @@ is the X.509 Distinguished Name and is used to identify entities, such as those 
   **Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
 * **`service-validity`**
-is the number of days after until the certificate expires.
+is the number of days until the certificate expires.
 
 * **`service-password`**
 is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
+The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates.
 
 
 #### Add a service with an existing certificate to API ML on z/OS
