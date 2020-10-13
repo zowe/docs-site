@@ -1,6 +1,6 @@
 # API Gateway configuration parameters
 
-As an application developer who wants to change default configuration of API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+As an application developer who wants to change the default configuration of the API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
 
   * [Runtime configuration](#runtime-configuration)
   * [Service configuration](#service-configuration)
@@ -25,10 +25,10 @@ This section describes other configuration properties you might see in the file.
 
 * **apiml.service.preferIpAddress**
 
-    Set the value of this property to `true` to advertise a service IP address instead of its hostname.
+    Set the value of this property to `true` to advertize a service IP address instead of its hostname.
     
     **Notes:** 
-    * If you set this property to `true` on discovery service, you need to modify the value of `discoveryLocations:` to use the IP address instead of hostname. Failure to modify the value prevents Eureka from detecting registered services, and as consequence the **available-replicas** will be empty. 
+    * If you set this property to `true` on the Discovery service, ensure that you modify the value of `discoveryLocations:` to use the IP address instead of the hostname. Failure to modify the value prevents Eureka from detecting registered services, and as a consequence the **available-replicas** will be empty. 
     * Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN). 
 
 * **apiml.cache.storage.location** 
@@ -50,13 +50,13 @@ This section describes other configuration properties you might see in the file.
 
 * **apiml.zoweManifest**
 
-    It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
-    
-        https://localhost:10010/api/v1/gateway/version
-    
     This parameter lets you view the Zowe version by using the `/version` endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build `manifest.json` file. This file is usually located in the root folder of Zowe build. 
     If the encoding of manifest.json file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
-
+    
+**Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
+```   
+https://localhost:10010/api/v1/gateway/version    
+```
 
 * **apiml.security.auth.tokenProperties.expirationInSeconds**
 
@@ -73,7 +73,7 @@ This section describes other configuration properties you might see in the file.
          
     1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
     2. Find the line that contains the `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
-    3. Before this line, add on a new line in the following format
+    3. Before this line, add a new line in the following format:
     ```
     -Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
     ```
