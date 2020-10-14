@@ -1,6 +1,6 @@
 # How to contribute
 
-:fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball:
+:fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball: :confetti_ball: :confetti_ball:
 
 We provide you a set of guidelines for contributing to Zowe&trade; documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation.
 
