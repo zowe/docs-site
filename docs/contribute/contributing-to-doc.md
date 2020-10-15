@@ -1,7 +1,7 @@
-# Contributing to Documentation <!-- omit in toc -->
+# Contributing to Zowe Documentation <!-- omit in toc -->
 
 *  Overview, contact on slack
-   *  Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository. 
+   *  Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository.
    *  You need to be familiar with git and GitHub to work effectively in the Zowe community.
    *  To get involved with documentation:
       * Sign the CNCF Contributor License Agreement.
@@ -50,9 +50,7 @@ The Zowe documentation is written in Markdown markup language. Not familiar with
 
 [84fff357]: https://www.markdownguide.org/basic-syntax "https://www.markdownguide.org/basic-syntax"
 
-
-
-## Contributing to documentation<a name="contribute"></a>
+## How to contribute<a name="contribute"></a>
 
 You can use one of the following ways to contribute to documentation:
 
@@ -151,7 +149,6 @@ Style:
     - put &lt;pax-file-name&gt;.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
-
 
 #### Message text and prompts to the user
 

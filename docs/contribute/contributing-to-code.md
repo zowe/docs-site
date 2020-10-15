@@ -1,4 +1,4 @@
-Welcome to this page
+# Contributing to Zowe Code
 
 * Overview, contact on slack
 * GitHub repos

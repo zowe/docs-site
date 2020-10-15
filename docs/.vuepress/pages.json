@@ -246,7 +246,10 @@
     {
       "text": "Contributing to documentation",
       "link": "contribute/contributing-to-doc.md"
-    } ]
+    }, {
+      "text": "UI design guidelines",
+      "link": "contribute/ui-design-guidelines.md"
+    }]
   },
   {
     "text": "References",
