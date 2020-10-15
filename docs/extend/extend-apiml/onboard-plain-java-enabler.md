@@ -48,11 +48,9 @@ The following steps outline the overall process to onboard a REST service with t
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
 
-5. [Adding API documentation](#adding-api-documentation)
+5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
-6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-7. (Optional) [Troubleshooting](#troubleshooting)
+6. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
@@ -105,7 +103,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     implementation "org.zowe.apiml.sdk:onboarding-enabler-java:$zoweApimlVersion"
     implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
-    **Note:** The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
+    The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
 
     ```gradle
     implementation libraries.eureka_client
@@ -141,8 +139,6 @@ Use the following procedure if you use _Maven_ as your build automation system.
             </snapshots>
         </repository>
     </repositories>
-    ```
-   
     ```
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
@@ -548,49 +544,6 @@ authentication:
     This parameter specifies a service APPLID.
     This parameter is valid only for `httpBasicPassTicket` authentication scheme.
     
-### API info
-
-REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
-
-The following snippet presents the information properties of a single API:
-
-**Example:**
-
-```
-apiInfo:
-    - apiId: org.zowe.sampleservice
-    version: v1
-    gatewayUrl: api/v1
-    swaggerUrl: http://localhost:10021/sampleservice/api-doc
-    documentationUrl: http://your.service.documentation.url
-```
-
-where:
-* **apiInfo.apiId**
-
-    specifies the API identifier that is registered in the API ML installation.
-        The API ID uniquely identifies the API in the API ML.
-         The `apiId` can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
-        The `apiId` must be a string of up to 64 characters
-        that uses lowercase alphanumeric characters and a dot: `.` .
-
-* **apiInfo.version**
-
-    specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
-
-* **apiInfo.gatewayUrl**
-
-    specifies the base path at the API Gateway where the API is available.
-    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections that apply to this API.
-
-* **apiInfo.swaggerUrl** (Optional)
-
-     specifies the Http or Https address where the Swagger JSON document is available.
-
-* **apiInfo.documentationUrl** (Optional)
-
-     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.    
-
 ### API Security
 
 REST services onboarded with the API ML act as both a client and a server. When communicating to API ML Discovery service, a REST service acts as a client. When the API ML Gateway is routing requests to a service, the REST service acts as a server.

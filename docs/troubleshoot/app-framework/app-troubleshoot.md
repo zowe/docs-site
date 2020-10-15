@@ -239,11 +239,11 @@ You can ignore these messages which should not occur in 1.11 or later releases. 
 The Zowe started task `ZWESVSTC` log contains messages ending
 
 ```
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-workflow/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-workflow/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
 ```
 
 **Solution:**   

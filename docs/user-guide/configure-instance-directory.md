@@ -15,10 +15,10 @@ Before creating an instance directory, ensure that you have created a keystore d
 
 To create an instance directory, use the `zowe-configure-instance.sh` script.
 
-Navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute the following commands:
+Navigate to the Zowe runtime directory `<RUNTIME_DIR>` and execute the following commands:
 
 ```sh
-<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
+<RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
@@ -32,7 +32,7 @@ If you have an instance directory that is created from a previous release of Zow
 In order to allow the `ZWESVSTC` started task to have permission to acces the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
 
 ```sh
-<ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
+<RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
 
 ## Reviewing the instance.env file
@@ -50,7 +50,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 
 - `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `NODE_HOME`:  The path to the Node.js runtime.  Only needs to be specified if not already set as a shell variable.  
-- `ROOT_DIR`: The directory where the Zowe runtime is located.  Defaults to the location of where `zowe-configure-instance` was executed. 
+- `ROOT_DIR`: The directory where the Zowe runtime is located, also referred to as the `<RUNTIME_DIR>`.  Defaults to the location of where `zowe-configure-instance` was executed. 
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 - `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
