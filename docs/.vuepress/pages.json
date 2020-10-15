@@ -240,17 +240,16 @@
     "hideInPdf": true,
     "canHideFirst": true,
     "items":  [{
-      "text": "Contributing",
-      "link": "contribute/contributing.md"
-    },
-    {
       "text": "Contributing to code",
       "link": "contribute/contributing-to-code.md"
     },
     {
-      "text": "Contributing to doc",
+      "text": "Contributing to documentation",
       "link": "contribute/contributing-to-doc.md"
-    } ]
+    }, {
+      "text": "UI design guidelines",
+      "link": "contribute/ui-design-guidelines.md"
+    }]
   },
   {
     "text": "References",
