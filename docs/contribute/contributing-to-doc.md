@@ -1,4 +1,4 @@
-# Contributing to Documentation
+# Contributing to Documentation <!-- omit in toc -->
 
 *  Overview, contact on slack
 *  Site organization/important files/how releases work
@@ -6,8 +6,19 @@
 *  Processes (open an issue, open a PR, etc…)
 *  Doc style guidelines
 
-<!--BTW Mike, you can make comments like this.
-I moved the following content in from contributing.md file-->
+- [Before you get started<a name="start"></a>](#before-you-get-started)
+- [Contributing to documentation<a name="contribute"></a>](#contributing-to-documentation)
+  - [Sending a GitHub pull request](#sending-a-github-pull-request)
+  - [Opening an issue for the documentation](#opening-an-issue-for-the-documentation)
+- [Documentation Style guide <a name="style"></a>](#documentation-style-guide-)
+  - [Headings and titles<a name="headings"></a>](#headings-and-titles)
+  - [Technical elements<a name="ui"></a>](#technical-elements)
+  - [Tone<a name="tone"></a>](#tone)
+  - [Word usage<a name="word"></a>](#word-usage)
+  - [Graphics<a name="graphics"></a>](#graphics)
+  - [Abbreviations<a name="abbreviations"></a>](#abbreviations)
+  - [Structure and format<a name="Structure"></a>](#structure-and-format)
+  - [Word usage<a name="usage"></a>](#word-usage-1)
 
 :fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball:
 
@@ -23,7 +34,6 @@ We provide you a set of guidelines for contributing to Zowe&trade; documentation
 :arrow_right: [Documentation style guide](#style)
 
 :arrow_right: [Word usage](#usage)
-
 
 ## Before you get started<a name="start"></a>
 
@@ -65,8 +75,6 @@ Follow these steps:
 3. Click **New issue**.
 4. Enter a title and description for the issue.
 5. Click **Submit new issue**.
-
-
 
 ## Documentation Style guide <a name="style"></a>
 
@@ -366,7 +374,7 @@ Example: Mainframe Virtual Desktop (MVD)
 ### Structure and format<a name="Structure"></a>
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.
 
-## Word usage<a name="usage"></a>
+### Word usage<a name="usage"></a>
 
 The following table alphabetically lists the common used words and their usage guidelines.
 
