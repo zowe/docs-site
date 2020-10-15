@@ -1,6 +1,14 @@
 # Contributing to Documentation <!-- omit in toc -->
 
 *  Overview, contact on slack
+   *  Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository. 
+   *  You need to be familiar with git and GitHub to work effectively in the Zowe community.
+   *  To get involved with documentation:
+      * Sign the CNCF Contributor License Agreement.
+      * Familiarize yourself with the documentation repository and the website's static site generator.
+      * Make sure you understand the basic processes for opening a pull request and reviewing changes.
+      * Some tasks require more trust and more access in the Zowe organization. See Participating in Zowe Docs for more details about roles and permissions.
+
 *  Site organization/important files/how releases work
 *  Basic tools/setup for those that aren’t familiar although these are.
 *  Processes (open an issue, open a PR, etc…)
