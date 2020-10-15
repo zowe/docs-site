@@ -5,6 +5,7 @@
    *  You need to be familiar with git and GitHub to work effectively in the Zowe community.
    *  To get involved with documentation:
       * Sign the CNCF Contributor License Agreement.
+      * <!--No idea if that's true of not.-->
       * Familiarize yourself with the documentation repository and the website's static site generator.
       * Make sure you understand the basic processes for opening a pull request and reviewing changes.
       * Some tasks require more trust and more access in the Zowe organization. See Participating in Zowe Docs for more details about roles and permissions.
