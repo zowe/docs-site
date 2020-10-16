@@ -143,6 +143,7 @@
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
+          "extend/extend-apiml/api-mediation-sso.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-routing.md",
@@ -166,7 +167,8 @@
           "extend/extend-desktop/mvd-apptoappcommunication.md",
           "extend/extend-desktop/mvd-iframecomm.md",
           "extend/extend-desktop/mvd-errorreportingui.md",
-          "extend/extend-desktop/mvd-logutility.md"
+          "extend/extend-desktop/mvd-logutility.md",
+          "extend/extend-desktop/mvd-conda.md"
         ]
       },
       {
