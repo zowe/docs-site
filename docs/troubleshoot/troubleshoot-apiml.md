@@ -309,11 +309,11 @@ The hostname that is displayed in the details of the exception is a valid hostna
 
 You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.html#configure-security-environment-switching).
 
-### Certificate error when using an external CA to deploy Zowe
+### Certificate error when using both an external certificate and Single Sign-On to deploy Zowe
 
 **Symptom:**
 
-You used an external CA to deploy Zowe. When you log in to the Zowe Desktop, you encounter an error similar to the following:
+You used an external certificate and Single Sign-On to deploy Zowe. When you log in to the Zowe Desktop, you encounter an error similar to the following:
 
 ```
 2020-07-28 02:13:43.203 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:263) APIML query error: self signed certificate in certificate chain
@@ -333,4 +333,4 @@ This issue might occur when you use a Zowe version of 1.12.0 or later. To resolv
  
 ```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
  
-Recycle your zone server. You should be able to log in to the Zowe Desktop successfully now.
+Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
