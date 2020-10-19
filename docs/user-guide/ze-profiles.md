@@ -31,7 +31,7 @@ In addition, you can hide a profile from the explorer tree, and permanently dele
 
 ### Associate Profile
 
-Zowe Explorer allows you to broaden its functionality, using Zowe Explorer Extender APIs. Extenders add new functionality to the extension, leveraging a simple mechanism that enables you to associate profiles. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
+Extensions built on Zowe Explorer provide users with additional functionality through unique profile types, such as RSE or FTP. The "associate profiles" function allows users to link, or associate, these extension profile types with an existing zOSMF profile. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
 
 Create a secondary association for your Zowe Explorer profiles.
 
@@ -44,7 +44,7 @@ Create a secondary association for your Zowe Explorer profiles.
 
 <img src="../images/ze/ZE-profile-links.gif" width="600" height="300" alt="Edit a Profile">
 
-You have successfully associated your Zowe Explorer profile.
+You have successfully created the secondary association for your Zowe Explorer profile.
 
 For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
 
@@ -86,3 +86,27 @@ Activate the SCS plug-in in Zowe Explorer.
 6. Restart VSCode.
 
 The credentials of your newly created or existing profiles are now stored securely.
+
+## Use Base Profile and Token with Existing Profiles
+
+As a Zowe user, you can leverage the base profile functionality to access multiple Zowe services instantly. Base profiles enable you to authenticate via Zowe API Mediation Layer. You can use base profiles with more than one service profile. Any service profile with the same host and port as your base profile automatically uses your API ML token to log in.
+
+Before using the base profile functionality, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v1.13.0 or higher installed.
+
+Connect your service profile with a base profile and token.
+
+**Follow these steps:**
+
+1. Open Zowe CLI and run the following command: `zowe auth login apiml`.
+
+2. Follow the instructions to complete the login.
+
+   A local base profile is created that contains your token. For more information about the process, see [Token Management](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#how-token-management-works).
+  
+3. Run Zowe Explorer and click the **+** icon.  
+
+4. Select the profile you use with your base profile with the token.
+
+   The profile appears in the tree and you can now use this profile to access z/OSMF via the API Mediation Layer.
+
+For more information, see [Integrating with API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#integrating-with-api-mediation-layer).
