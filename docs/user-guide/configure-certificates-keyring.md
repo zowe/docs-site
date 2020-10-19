@@ -1,18 +1,23 @@
-# Configuring Zowe certificates in a key ring (**Beta Technical Preview**)
+# Configuring Zowe certificates in a key ring
 
-Beginning with Zowe 1.15 release, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in https://git.com/zowe/community.  It is expected that in a future release keyring support will be made available as a fully supported feature.  
+Zowe is able to work with certificates held in a **z/OS Keyring**.  For background on Zowe certificates, see [Configuring Zowe certificates](./configure-certificates.md). To configure Zowe certificates in a key ring, run the `ZWEKRING` JCL that contains the security commands to create the key ring and manage the certificates that Zowe will use. The `ZWEKRING` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
 
-To configure Zowe certificates in a key ring, run the `ZWEKRING` JCL which contains the security commands to create the key ring and manage the certificates that Zowe will use. The `ZWEKRING` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
+Before you submit the JCL, you must [customize it](#customizing-the-zwekring-jcl) and review it with a system programmer who is familiar with z/OS certificates and key rings. The JCL member contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
-Before you submit the JCL, you must customize it and review it with a system programmer who is familiar with z/OS certificates and key rings. 
+The `ZWEKRING` JCL contains commands for the following scenarios:
+- Creation of a local CA which is used to sign a locally generated certificate, both of which are placed into the key ring.
+- (**Beta**) Importing an existing certificate already held in z/OS to the key ring for use by Zowe. 
+- (**Beta**) Creation of a locally generated certificated and signing it with an existing certificate authority, and placing the certificate into the key ring. 
 
-After you run `ZWEKRING` successfully, you must run the script `zowe-setup-certificates.sh` which will create the keystore directory `KEYSTORE_DIRECTORY` in USS.  Depending on how you have customized the `ZWEKRING` member, you need to customize the configuration file `zowe-setup-certificates.env` that is used to create the `KEYSTORE_DIRECTORY`.
+**Note:** The scenarios marked **Beta** are provided for technical preview.  If you have any feedback on using key rings, create an issue in the Zowe community repo at [https://github.com/zowe/community](https://github.com/zowe/community). 
 
-## Scenarios
+After you run the `ZWEKRING` JCL, a key ring that contains the Zowe certificate is created.  In order for a Zowe instance to work with the keystore certificate, you also need to create a USS keystore directory.  This USS keystore directory does not contain any certificates, but is required for the Zowe [instance.env](./configure-instance-directory.md#keystore-configuration.md) file to configure the Zowe shell correctly so that the keystore certificate can be located by the Zowe runtime. 
 
-The `ZWEKRING` JCL helps you create a key ring that contains a certificate and a local certificate authority that is used to self-sign the certificate. 
+To create the USS keystore directory after successfully running `ZWEKRING` JCL member, run the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`. This script has an input parameter `-p` which specifies the location of a configuration file controlling how and where the directory and its contents are created.  Copy the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` to a writeable location and review and edit its contents to match property values used in `ZWEKRING` JCL member.  Then, run the script by using the following command:
 
-Other scenarios (such as importing an existing certificate into the ZoweKeyring) are described in the `ZWEKRING` JCL with the commands commented out) but are not currently documented and have not been fully tested.  If you find any issues, please raise a GitHub issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  Future releases of Zowe will provide documentation and support for more key ring scenarios.
+```.sh
+zowe-setup-certificates.sh -p <path to zowe-setup-keyring-certificates.env>
+```
 
 ## Customizing the ZWEKRING JCL
 
@@ -50,8 +55,8 @@ The `ZOWERING` label is used for the name of the key ring created. The default v
 //         SET    LABEL='localhost'
 ```
 
-- The value of the `ZOWERING` label should match the value of the `ZOWE_KEYRING` variable in the `zowe-setup-certificates.env` file.  
-- The value of the `LABEL` label should match the value of the `KEYSTORE_ALIAS` variable in the `zowe-setup-certificates.env` file.  
+- The value of the `ZOWERING` label should match the value of the `ZOWE_KEYRING` variable in the `zowe-setup-keyring-certificates.env` file.  
+- The value of the `LABEL` label should match the value of the `KEYSTORE_ALIAS` variable in the `zowe-setup-keyring-certificates.env` file.  
 
 <!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 	
             it(self signed, externally signed certs), describe parts that could be confusing, 	
@@ -105,7 +110,7 @@ If you are unsure of the root CA you can find it by listing the chain of the z/O
 
    In this scenario, you must modify the "connect to keyring" security command so that it connects the SITE owned certificate to the Zowe key ring. Also, you must allow the ZWESVUSR acid to extract private key from the SITE owned certificate. You can do that by uncommenting the security command in the ZWEKRING JCL that gives ZWESVUSR CONTROL access to the `IRR.DIGTCERT.GENCERT` resource.	
 
-After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-certificate.env` file, customize the key ring related variables:	
+After the ZWEKRING JCL successfully configures the certificates and key ring, you must customize the `zowe-setup-keyring certificate.env` file and run the `zowe-setup-certificate.sh` script so that Zowe knows what the key ring and certificate names are. In the `zowe-setup-keyring-certificate.env` file, customize the key ring related variables:	
 
 - `GENERATE_CERTS_FOR_KEYRING`	
 
@@ -139,3 +144,7 @@ When the `ZWEKRING` JCL runs successfully, it will create a key ring named `Zowe
 - The certificate used to encrypt the JSON Web Token (JWT) required for single sign-on (called `jwtsecret`)
 
 When the `zowe-setup-certificates.sh` script executes successfully, it will generate the USS `KEYSTORE_DIRECTORY` that contains the file `zowe-certificates.env`. This file is used in the Zowe instance configuration step. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+
+## Cleanup
+
+The JCL member `ZWENOKYR` provided in the PDS sample library `SZWESAMP` contains the inverse commands contained in `ZWEKKRING`. This allows an environment to be cleaned up and have one or more certificates, key rings, and certificate authorities created by `ZWEKRING` removed from the z/OS environment.  This is useful if you are creating a DevOps pipeline to install and configure and environment for Zowe using `ZWEKRING` and want to clean that environment before rerunning the pipeline.

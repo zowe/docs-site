@@ -239,11 +239,11 @@ You can ignore these messages which should not occur in 1.11 or later releases. 
 The Zowe started task `ZWESVSTC` log contains messages ending
 
 ```
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-workflow/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-workflow/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
 ```
 
 **Solution:**   
@@ -265,3 +265,24 @@ ZWED0047W - Swagger file for service (org.zowe.terminal.tn3270:statediscovery) n
 
 **Solution:**   
 You can ignore these messages. 
+
+## Unable to log in to the explorers when using Zowe V1.13 or V1.14
+
+**Symptom:**
+
+You installed Zowe V1.13 or V1.14. When you start the Zowe server, you see the following error message in the `appServer` log. 
+
+```
+failed to process config                                           
+TypeError: config.csp.frame-ancestorsÝ0¨.split is not a function   
+```
+
+When you log in to the Zowe Desktop, you cannot open the JES, MVS, or USS Explorers. You receive the following error message: 
+
+```
+{"messages":[{"messageType":"ERROR","messageNumber":"ZWEAG708E","messageContent":"The request to the URL '/ui/v1/explorer-uss/' has failed after retrying on all known service instances. Caused by: java.net.ConnectException: EDC8128I Connection refused. (errno2=0x74940000) (Connection refused)","messageKey":"org.zowe.apiml.gateway.connectionRefused"}]} 
+```
+
+**Solution:**
+
+A new property `ZOWE_EXPLORER_FRAME_ANCESTORS` was introduced in V1.12. This property is required to be present in the `instance.env` file with some valid value. When undefined, it is treated as Boolean, which breaks the string split function. To resolve the issue, define the value for this property in the `instance.env` file. 

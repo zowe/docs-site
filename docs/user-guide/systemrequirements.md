@@ -24,17 +24,22 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
 
 ## z/OS system requirements (host)
 
-- z/OS Version 2.2 or later.
+- z/OS version in active support, such as Version 2.3 and Version 2.4
+   
+   **Note:** z/OS V2.2 reaches end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). Zowe Version 1.15 and earlier can continue to work with z/OS V2.2 but you are advised to upgrade your z/OS to more recent versions.
+
 - IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
 
   z/OSMF is an optional prerequisite for Zowe.  It is recommended that z/OSMF is present to fully exploit Zowe's capabilities.
   
-- z/OS OpenSSH V2.2.0 or higher
+  When utilizing z/OSMF with Zowe ensure the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).
+  
+- z/OS OpenSSH V2.2.0 or later
   
   Conditional requisite for ssh connection.
 
   ::: tip
-   - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md)
+   - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   :::
 
