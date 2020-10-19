@@ -8,8 +8,7 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-ftp.html">zos-ftp</a> › <a href="zowe_zos-ftp_view.html">view</a> › <a href="zowe_zos-ftp_view_spool-file-by-id.html">spool-file-by-id</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>View the contents of a spool file from a z/OS job on spool/JES queues. The
-command does not pre-validate the JOBID or spool ID. The command presents
-errors verbatim from the z/OSMF Jobs REST endpoints.</p>
+command does not pre-validate the JOBID or spool ID.</p>
 <h4 id="usage">Usage</h4>
 <p>   zowe  zos-ftp view spool-file-by-id &lt;jobid&gt; &lt;spoolfileid&gt; [options]</p>
 <h4 id="positional-arguments">Positional Arguments</h4>
@@ -22,9 +21,8 @@ pre-validation of the JOBID is performed.</li>
 </li>
 <li><p><code>spoolfileid</code>         <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;imperative
-zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID numbers.No
-pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. No pre-validation of the
+ID is performed.</li>
 </ul>
 </li>
 </ul>
