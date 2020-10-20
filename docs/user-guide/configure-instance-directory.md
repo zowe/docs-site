@@ -138,7 +138,7 @@ To determine which ports are not available, follow these steps:
 ### Gateway configuration
 
 - `APIML_ALLOW_ENCODED_SLASHES`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.
-- `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for the Gateway routes `api/v1/gateway/**`.
+- `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`.
 - `APIML_PREFER_IP_ADDRESS`: Set the value of the parameter to `true` if you want to advertise a service IP address instead of its hostname.
 - `APIML_GATEWAY_TIMEOUT_MILLIS`: Timeout for connection to the services. 
 - `APIML_SECURITY_X509_ENABLED`: When this parameter is set to `true`, the client certificate authentication functionality through ZSS is enabled.
