@@ -86,9 +86,9 @@ The `profiles` folder stores connnection information.
 **Important\!** The profile directory might contain "sensitive" information, such as your mainframe password. You should obfuscate any sensitive references before providing configuration files.
 
 ## Node.js and npm
-Zowe CLI should be compatible with Node.js v8 and greater.
+Zowe CLI is compatible with the currently supported Node.js LTS versions. For an up-to-date list of supported LTS versions, see [Node.js.org](https://nodejs.org/en/download/releases/).
 
-To gather Node.js and npm versions, use the following:
+To gather the Node.js and npm versions installed on your computer, issue the following commands:
 
 ```
 node --version
@@ -96,6 +96,7 @@ npm --version
 ```
 
 ### npm configuration
+
 If you are having trouble installing Zowe CLI from an npm registry, gather your npm configuration to help identify issues with registry settings, global install paths, proxy settings, etc...
 
 ```

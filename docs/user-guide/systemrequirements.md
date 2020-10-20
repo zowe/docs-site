@@ -108,7 +108,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
     :::
 
-- **Plug-ins** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You *must* meet the requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
+- **Plug-in client requirements** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You *must* meet the client requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
 
 ### Host-side
 
@@ -116,7 +116,7 @@ Zowe CLI requires the following mainframe configuration:
 
 - **IBM z/OSMF configured and running:** You do not need to install the full Zowe solution to install and use Zowe CLI. Minimally, an instance of IBM z/OSMF must be running on the mainframe before you can issue Zowe CLI commands successfully. z/OSMF enables the core capabilities such as retrieving data sets, executing TSO commands, submitting jobs, and more. If Zowe API Mediation Layer (API ML) is configured and running, CLI users can choose to connect to API ML rather than to every separate service.
 
-- **Plug-in services configured and running:** The CLI plug-ins communicate with various mainframe services, which must be configured and running prior to issuing plug-in commands. For example, the IMS plug-in requires an instance of IMS on the mainframe with IMS Connect (REST services) running. For more information, see [Software requirements for CLI plug-ins](./cli-swreqplugins.md)
+- **Plug-in services configured and running:** Plug-ins communicate with various mainframe services, which must be configured and running on the mainframe prior to issuing plug-in commands. For example, the IMS plug-in requires an instance of IBM IMS on the mainframe with IMS Connect (REST services) running. For more information, see [Software requirements for CLI plug-ins](./cli-swreqplugins.md)
 
 - **Zowe CLI on z/OS is not supported:** Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 and Secure Credentials Store plug-ins will *not* run on z/OS due to native code requirements. As such, Zowe CLI is *not supported on z/OS* and is currently experimental.
 
