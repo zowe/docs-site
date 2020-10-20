@@ -108,7 +108,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
     :::
 
-- **Plug-in client requirements** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You *must* meet the client requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
+- **Plug-in client requirements:** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You *must* meet the client requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
 
 ### Host-side
 
