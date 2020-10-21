@@ -21,7 +21,7 @@ As an application developer who wants to run Zowe, set the following parameters 
     
     **Follow these steps:**
         
-    1. Open the file `instance.env` configuration file.
+    1. Open the `instance.env` configuration file.
     2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
     3. Restart Zowe&trade. 
         
@@ -33,7 +33,7 @@ As an application developer who wants to run Zowe, set the following parameters 
         
     **Follow these steps:**
          
-    1. Open the file `instance.env` configuration file.
+    1. Open the `instance.env` configuration file.
     2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
     3. Restart Zowe&trade.
       
@@ -98,7 +98,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
     **Follow these steps:**
          
-    1. Open the file `instance.env` configuration file.
+    1. Open the `instance.env` configuration file.
     2. Find the property `APIML_SECURITY_AUTH_PROVIDER` and set the value to `saf`.
     3. Restart Zowe&trade.
     
