@@ -101,7 +101,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
     You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
     :::
 
-- **npm:** Ensure that you install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
+- **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
     ::: tip
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
