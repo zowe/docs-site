@@ -1,17 +1,16 @@
-# System requirements
+# System requirements <!-- omit in toc -->
 
 Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
 
-- [System requirements](#system-requirements)
-  - [z/OS system requirements (host)](#zos-system-requirements-host)
-  - [Zowe Application Framework requirements (host)](#zowe-application-framework-requirements-host)
-    - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
-    - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
-    - [Using web tokens for SSO on ZLUX and ZSS](#using-web-tokens-for-sso-on-zlux-and-zss)
-  - [Zowe CLI requirements](#zowe-cli-requirements)
-    - [Client-side](#client-side)
-    - [Host-side](#host-side)
-    - [Free disk space](#free-disk-space)
+- [z/OS system requirements (host)](#zos-system-requirements-host)
+- [Zowe Application Framework requirements (host)](#zowe-application-framework-requirements-host)
+  - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
+  - [Multi-Factor Authentication for Zowe Desktop](#multi-factor-authentication-for-zowe-desktop)
+  - [Using web tokens for SSO on ZLUX and ZSS](#using-web-tokens-for-sso-on-zlux-and-zss)
+- [Zowe CLI requirements](#zowe-cli-requirements)
+  - [Client-side](#client-side)
+  - [Host-side](#host-side)
+  - [Free disk space](#free-disk-space)
 
 Zowe CLI operates independently of the Zowe z/OS component and is installed on a client PC that runs Windows, Linux, or Mac operating systems.  It can access z/OS endpoints such as z/OSMF, or can access FTP, CICS, DB2, and other z/OS services through plug-ins.  The z/OS environment that Zowe CLI communicates with does not require that the Zowe z/OS component is installed.
 
