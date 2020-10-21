@@ -31,7 +31,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="./appendix/tpsr.html">References</a></h2>
-    <p>Get a list of reference materials to help you use Zowe, including Zowe command line reference, API reference, TPSR, and more.</p>
+    <p>Get a list of reference materials to help you use Zowe, including the Zowe command line reference, API reference, TPSR, and more.</p>
   </div>
 </div>
 
