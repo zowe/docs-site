@@ -89,9 +89,11 @@ The credentials of your newly created or existing profiles are now stored secure
 
 ## Use Base Profile and Token with Existing Profiles
 
-As a Zowe user, you can leverage the base profile functionality to access multiple Zowe services instantly. Base profiles enable you to authenticate via Zowe API Mediation Layer. You can use base profiles with more than one service profile.
+As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate via Zowe API Mediation Layer. You can use base profiles with more than one service profile. For more information, see [Base Profiles](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#base-profiles).
 
-Before you log in and connect your service profile, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v6.16 or higher installed. For more information, see [Base Profiles](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#base-profiles).
+Before you log in and connect your service profile, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v6.16 or higher installed. 
+
+### Access services through API ML with SSO
 
 Connect your service profile with a base profile and token.
 
