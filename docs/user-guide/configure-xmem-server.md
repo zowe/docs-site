@@ -15,7 +15,7 @@ To install and configure the cross memory server, you must define APF-authorized
 - [Summary of cross memory server installation](#summary-of-cross-memory-server-installation)
 - [Starting and stopping the cross memory server on z/OS](#starting-and-stopping-the-cross-memory-server-on-zos)
 - [Zowe auxiliary service](#zowe-auxiliary-service)
-    - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
+    - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)SZWEAUTH
     - [Installing the auxiliary service](#installing-the-auxiliary-service)
 
 ## PDS sample library and PDSE load library
@@ -51,7 +51,7 @@ Do not add the `SZWEAUTH` data set to the system LNKLIST or LPALST concatenation
 To check whether a load library is APF-authorized, you can issue the following command:
 
 ```
-D PROG,APF,DSNAME=hlq.SISLOAD
+D PROG,APF,DSNAME=hlq.SZWEAUTH
 ```
 where the value of DSNAME is the name of the `SZWEAUTH` data set as created during Zowe installation that contains the `ZWESIS01` load module.
 
@@ -60,7 +60,7 @@ Issue one of the following operator commands to dynamically add the load library
 - If the load library is not SMS-managed, issue the following operator command, where `volser` is the name of the volume that holds the data set:
 
   ```
-  SETPROG APF,ADD,DSNAME=ZWES.SISLOAD,VOLUME=volser
+  SETPROG APF,ADD,DSNAME=ZWES.SZWEAUTH,VOLUME=volser
   ```
 - If the load library is SMS-managed, issue the following operator command:
 
@@ -111,12 +111,12 @@ For the cross memory server to be started, you must move the JCL PROCLIB `ZWESIS
 
 You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESI00` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
 
-For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESI00` is `ZWESVUSR.SISLOAD` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVISR.SISSAMP`.  
+For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESI00` is `ZWESVUSR.SZWEAUTH` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVISR.SISSAMP`.  
 
 ```jcl
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
 //         PARM='NAME=&NAME,MEM=&MEM'
-//STEPLIB  DD   DSNAME=ZWESVUSR.SISLOAD,DISP=SHR
+//STEPLIB  DD   DSNAME=ZWESVUSR.SZWEAUTH,DISP=SHR
 //PARMLIB  DD   DSNAME=ZWESVUSR.SISSAMP,DISP=SHR
 //SYSPRINT DD   SYSOUT=*
 ```
