@@ -1,7 +1,13 @@
 # Advanced Gateway features configuration
 
-As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file. The parameters begin with the `-D` prefix, similar to all the other parameters in the file. Zowe needs to be restarted for these changes to take effect.
+As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either:
+- `<Zowe install directory>/components/api-mediation/bin/start.sh` file. The parameters begin with the `-D` prefix, similar to all the other parameters in the file. Zowe needs to be restarted for these changes to take effect.
 
+- `<Zowe instance directory>/instance.env` file. Zowe needs to be restarted for these changes to take effect.
+
+Refer to the particular section for specific instruction.
+
+  * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
@@ -9,24 +15,36 @@ As a system programmer who wants to configure advanced Gateway features of the A
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
 
+## Prefer IP Address for API Layer services
+
+API Mediation layer services are using hostname when communicating with each other. This behavior can be changed so IP address is used instead.
+
+**Follow these steps:**
+     
+1. Open the `<Zowe instance directory>/instance.env` configuration file.
+2. Find the property `APIML_PREFER_IP_ADDRESS` and set the value to `true`.
+3. Restart Zowe&trade.
+
+**Note:** This might introduce problems with certificates. IP Address needs to be present on a certificate SAN name.
+
 ## SAF as an Authentication provider
 
-* **apiml.security.auth.provider**
+By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
+provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
+If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
+the following procedure to switch to SAF. 
 
-    By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
-    provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
-    If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
-    the following procedure to switch to SAF. 
+**Follow these steps:**
+     
+1. Open the `<Zowe instance directory>/instance.env` configuration file.
+2. Find the property `APIML_SECURITY_AUTH_PROVIDER` and set the value to `saf`.
+3. Restart Zowe&trade.
 
-    **Follow these steps:**
-         
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
-    3. Restart Zowe&trade.
-    
-    Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
+Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
 ## Gateway retry policy
+
+Edit properties in `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
 
 In default configuration, retry for all requests is disabled, with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
@@ -57,12 +75,20 @@ Use the following procedure to enable the feature of using a client certificate 
 
 **Follow these steps:**
 
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+1. Open the `<Zowe instance directory>/instance.env` configuration file.
 2. Configure the following properties:
 
-* **apiml.security.x509.enabled**
+* **APIML_SECURITY_X509_ENABLED**
 
-    This is the global feature toggle. Configure the property to `-Dapiml.security.x509.enabled=true`.
+This is the global feature toggle. Set value to `true` to enable client certificate functionality.
+
+* **APIML_SECURITY_ZOSMF_APPLID**
+
+    When z/OSMF is used as an authentication provider, provide avalid APPLID to allow client certificate authentication. The API ML authenticates to z/OSMF through the generation of a passticket and subsequently uses this passticket to authenticate to the
+z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`.
+
+3. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+4. Configure the following properties:
 
 * **apiml.security.x509.externalMapperUrl**
 
@@ -76,20 +102,26 @@ Use the following procedure to enable the feature of using a client certificate 
 
     To authenticate to the mapping API, a JWT token is sent with the request. The token is represents the user that is configured with this property. The user is then authorized to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`, and the permissions are set up during installation with the `ZWESECUR` jcl or workflow. If you decide to customize the ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
 
-* **apiml.security.zosmf.applid**
-
-    When z/OSMF is used as an authentication provider, provide avalid APPLID to allow client certificate authentication. The API ML authenticates to z/OSMF through the generation of a passticket and susequently uses this passticket to authenticate to the
-z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`. To change the value to another value, use the following procedure.
-
 Restart Zowe&trade.
 
 ## Gateway timeouts
 
+Change global timeout value for the API Layer instance:
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS` and set the value to desired value.
+3. Restart Zowe&trade. 
+
+If you require finer control, you can edit the `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+
 * **apiml.gateway.timeoutMillis**
 
-    This property is used to define the global value for http/ws client timeout. For finer control, you can override the properties below.
+    This property defines the global value for http/ws client timeout.
     
 **Note:** Ribbon configures the client that connects to the routed services.
+**Note:** The following properties need to be added to the file for API Gateway.
 
 * **ribbon.connectTimeout**
     
@@ -105,32 +137,28 @@ Restart Zowe&trade.
     
 ## Cors handling
 
-* **apiml.service.corsEnabled**
-
-    By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
         
-    **Follow these steps:**
-         
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`.
-    3. Restart Zowe&trade.
-      
-    Requests through the Gateway now contain a CORS header. 
+**Follow these steps:**
+     
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
+3. Restart Zowe&trade.
+  
+Requests through the Gateway now contain a CORS header. 
 
 ## Encoded slashes
 
-* **apiml.service.allowEncodedSlashes**
+By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
+    
+Use the following procedure to reject encoded slashes.
 
-    By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
+**Follow these steps:**
     
-    Use the following procedure to reject encoded slashes.
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
+3. Restart Zowe&trade. 
     
-    **Follow these steps:**
-        
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=true` parameter and set the value to `false`.
-    3. Restart Zowe&trade. 
-        
-    Requests with encoded slashes are now rejected by the API Mediation Layer.
+Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 
