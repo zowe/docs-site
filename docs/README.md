@@ -31,7 +31,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="feature">
     <h2><a href="./appendix/tpsr.html">References</a></h2>
-    <p>Get a list of reference materials to help you use Zowe, including Zowe command line reference, TPSR, and BOM.</p>
+    <p>Get a list of reference materials to help you use Zowe, including the Zowe command line reference, API reference, TPSR, and more.</p>
   </div>
 </div>
 
@@ -39,7 +39,7 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.14.0.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.16.0.
 
 **[V1.16.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
 **[V1.15.0](./Zowe_Documentation_1.15.0.pdf)** |
