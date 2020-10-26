@@ -1,11 +1,15 @@
 # Advanced Gateway features configuration
 
-As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either:
-- `<Zowe install directory>/components/api-mediation/bin/start.sh` file. The parameters begin with the `-D` prefix, similar to all the other parameters in the file. Zowe needs to be restarted for these changes to take effect.
+As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either of the following files:
 
-- `<Zowe instance directory>/instance.env` file. Zowe needs to be restarted for these changes to take effect.
+- `<Zowe install directory>/components/api-mediation/bin/start.sh` 
+- `<Zowe instance directory>/instance.env`
 
-Refer to the particular section for specific instruction.
+The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
+
+**Note:** Restart Zowe to apply changes to the parameter.
+
+Refer to the particular section in this table fo contents for specific instructions.
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
@@ -17,7 +21,7 @@ Refer to the particular section for specific instruction.
 
 ## Prefer IP Address for API Layer services
 
-API Mediation layer services are using hostname when communicating with each other. This behavior can be changed so IP address is used instead.
+API Mediation Layer services use the hostname when communicating with each other. This behavior can be changed so that the IP address is used instead.
 
 **Follow these steps:**
      
@@ -25,7 +29,7 @@ API Mediation layer services are using hostname when communicating with each oth
 2. Find the property `APIML_PREFER_IP_ADDRESS` and set the value to `true`.
 3. Restart Zowe&trade.
 
-**Note:** This might introduce problems with certificates. IP Address needs to be present on a certificate SAN name.
+**Note:** Changing the value of this property might introduce problems with certificates. The IP Address needs to be present on the certificate SAN name.
 
 ## SAF as an Authentication provider
 
@@ -44,7 +48,7 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Gateway retry policy
 
-Edit properties in `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+Edit properties in the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
 
 In default configuration, retry for all requests is disabled, with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
@@ -59,7 +63,7 @@ To change this default configuration, include the following parameters:
 
      Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
-**Note:** Enabling retry can impact server resources due to request body buffering.
+  **Note:** Enabling retry can impact server resources due to request body buffering.
 
 * **ribbon.MaxAutoRetries**
     
@@ -78,66 +82,66 @@ Use the following procedure to enable the feature of using a client certificate 
 1. Open the `<Zowe instance directory>/instance.env` configuration file.
 2. Configure the following properties:
 
-* **APIML_SECURITY_X509_ENABLED**
+   * **APIML_SECURITY_X509_ENABLED**
 
-This is the global feature toggle. Set value to `true` to enable client certificate functionality.
+     This is the global feature toggle. Set value to `true` to enable client certificate functionality.
 
-* **APIML_SECURITY_ZOSMF_APPLID**
+   * **APIML_SECURITY_ZOSMF_APPLID**
 
-    When z/OSMF is used as an authentication provider, provide avalid APPLID to allow client certificate authentication. The API ML authenticates to z/OSMF through the generation of a passticket and subsequently uses this passticket to authenticate to the
-z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`.
+     When z/OSMF is used as an authentication provider, provide a valid APPLID to allow for client certificate authentication. The API ML authenticates to z/OSMF through the generation of a passticket and subsequently uses this passticket to authenticate to z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`.
 
 3. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
 4. Configure the following properties:
 
-* **apiml.security.x509.externalMapperUrl**
+   * **apiml.security.x509.externalMapperUrl**
 
-    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is provides this API in Zowe. Provide the ZSS URL in the following format:
-    ```
-    -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
-    ```
-    The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
+     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is provides this API in Zowe. Provide the ZSS URL in the following format:
+     ```
+     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
+     ```
+     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
 
-* **apiml.security.x509.externalMapperUser**
+   * **apiml.security.x509.externalMapperUser**
 
-    To authenticate to the mapping API, a JWT token is sent with the request. The token is represents the user that is configured with this property. The user is then authorized to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`, and the permissions are set up during installation with the `ZWESECUR` jcl or workflow. If you decide to customize the ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
+     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user is then authorized to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`, and the permissions are set up during installation with the `ZWESECUR` jcl or workflow. If you decide to customize the ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
 
 Restart Zowe&trade.
 
 ## Gateway timeouts
 
-Change global timeout value for the API Layer instance:
+Change the global timeout value for the API Layer instance:
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS` and set the value to desired value.
+2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS` and set the value to the desired value.
 3. Restart Zowe&trade. 
 
-If you require finer control, you can edit the `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+If you require finer control, you can edit the `<Zowe install directory>/components/api-mediation/bin/start.sh`, and modify the following properties:
 
 * **apiml.gateway.timeoutMillis**
 
-    This property defines the global value for http/ws client timeout.
-    
-**Note:** Ribbon configures the client that connects to the routed services.
-**Note:** The following properties need to be added to the file for API Gateway.
+  This property defines the global value for http/ws client timeout.
+  
+Add the following properties to the file for API Gateway:
+
+  **Note:** Ribbon configures the client that connects to the routed services.
 
 * **ribbon.connectTimeout**
     
-   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+  Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.readTimeout**
     
-    Specifies the time in milliseconds of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+  Specifies the time in milliseconds of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.connectionManagerTimeout**
     
-    The HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the connections that are managed serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period during which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+  The HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the connections that are managed serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period during which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 ## Cors handling
 
-By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS for the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS in the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
         
 **Follow these steps:**
      
