@@ -95,7 +95,7 @@ In order to use web tokens for SSO on ZLUX and ZSS, users must first create a PK
 
 Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the following requirements before you install the CLI:
 
-- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Node.js.org](https://nodejs.org/en/download/releases/).
+- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
     ::: tip
     You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
