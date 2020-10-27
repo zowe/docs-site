@@ -2,7 +2,7 @@
 
 ## Zowe runtime configuration parameters
 
-As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `instance.env` file:
 
 * **[API ML configuration](#api-ml-configuration)**
 * **[Service configuration](#service-configuration)**
@@ -21,8 +21,8 @@ As an application developer who wants to run Zowe, set the following parameters 
     
     **Follow these steps:**
         
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.service.allowEncodedSlashes=true` parameter and set the value to `false`.
+    1. Open the `instance.env` configuration file.
+    2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
     3. Restart Zowe&trade. 
         
     Requests with encoded slashes are now rejected by the API Mediation Layer.
@@ -33,8 +33,8 @@ As an application developer who wants to run Zowe, set the following parameters 
         
     **Follow these steps:**
          
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.service.corsEnabled=false` parameter and set the value to `true`.
+    1. Open the `instance.env` configuration file.
+    2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
     3. Restart Zowe&trade.
       
     Requests through the Gateway now contain a CORS header. 
@@ -98,8 +98,8 @@ As an application developer who wants to run Zowe, set the following parameters 
 
     **Follow these steps:**
          
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-Dapiml.security.auth.zosmfServiceId=zosmf` parameter and replace it with `-Dapiml.security.auth.provider=saf`.
+    1. Open the `instance.env` configuration file.
+    2. Find the property `APIML_SECURITY_AUTH_PROVIDER` and set the value to `saf`.
     3. Restart Zowe&trade.
     
     Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
