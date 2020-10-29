@@ -145,6 +145,8 @@ To determine which ports are not available, follow these steps:
 - `APIML_SECURITY_ZOSMF_APPLID`: The z/OSMF APPLID used for PassTicket.
 - `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider, but it is possible to switch to SAF as the authentication provider instead of z/OSMF.
 
+Refer to detailed section about [API Gateway configuration](api-mediation/api-gateway-configuration.md)
+
 ### Extensions
 
 - `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information, see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 
