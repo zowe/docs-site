@@ -308,3 +308,29 @@ The Zowe started task needs to run under the same user ID as z/OSMF (typically I
 The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
 You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.html#configure-security-environment-switching).
+
+### Certificate error when using both an external certificate and Single Sign-On to deploy Zowe
+
+**Symptom:**
+
+You used an external certificate and Single Sign-On to deploy Zowe. When you log in to the Zowe Desktop, you encounter an error similar to the following:
+
+```
+2020-07-28 02:13:43.203 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:263) APIML query error: self signed certificate in certificate chain
+2020-07-28 02:13:43.288 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:337) APIML login has failed:
+2020-07-28 02:13:43.288 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:338)  Error: self signed certificate in certificate chain
+   at TLSSocket.onConnectSecure (_tls_wrap.js:1321:34)
+   at TLSSocket.emit (events.js:210:5)
+   at TLSSocket._finishInit (_tls_wrap.js:794:8)
+   at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:608:12) {
+ code: 'SELF_SIGNED_CERT_IN_CHAIN'
+}
+```
+
+**Solution:**
+
+This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the Zowe `instance.env` file.
+ 
+```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
+ 
+Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
