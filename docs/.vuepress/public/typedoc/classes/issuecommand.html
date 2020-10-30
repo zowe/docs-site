@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IssueCommand | @zowe/cli - v6.21.1</title>
+	<title>IssueCommand | Zowe Node.js SDK - v6.24.2</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@zowe/cli - v6.21.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v6.24.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -69,15 +69,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Definition for the &quot;issue&quot; group of commands under the Shell plugin
-						Issue MVS Console commands by using a system console</p>
+						<p>Issue MVS Console commands by using a system console</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>export</dt>
 						<dd></dd>
-						<dt>class</dt>
-						<dd><p>IssueCommand</p>
-						</dd>
 					</dl>
 				</div>
 			</section>
@@ -94,17 +90,6 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#aliases" class="tsd-kind-icon">aliases</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#summary" class="tsd-kind-icon">summary</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-class"><a href="issuecommand.html#type" class="tsd-kind-icon">type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="issuecommand.html#buildzosmfconsoleapiparameters" class="tsd-kind-icon">build<wbr>Zosmf<wbr>Console<wbr>Api<wbr>Parameters</a></li>
@@ -120,80 +105,6 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="aliases" class="tsd-anchor"></a>
-					<h3>aliases</h3>
-					<div class="tsd-signature tsd-kind-icon">aliases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;iss&quot;]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L19">packages/cli/src/zostso/issue/Issue.definition.ts:19</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L19">packages/cli/src/zosuss/issue/Issue.definition.ts:19</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICommandDefinition</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[SshDefinition]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosconsole/issue/Issue.definition.ts#L20">packages/cli/src/zosconsole/issue/Issue.definition.ts:20</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L23">packages/cli/src/zostso/issue/Issue.definition.ts:23</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L23">packages/cli/src/zosuss/issue/Issue.definition.ts:23</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="description" class="tsd-anchor"></a>
-					<h3>description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Issue a z/OS USS command&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosconsole/issue/Issue.definition.ts#L19">packages/cli/src/zosconsole/issue/Issue.definition.ts:19</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L22">packages/cli/src/zostso/issue/Issue.definition.ts:22</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L21">packages/cli/src/zosuss/issue/Issue.definition.ts:21</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;issue&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosconsole/issue/Issue.definition.ts#L16">packages/cli/src/zosconsole/issue/Issue.definition.ts:16</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L18">packages/cli/src/zostso/issue/Issue.definition.ts:18</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L19">packages/cli/src/zosuss/issue/Issue.definition.ts:19</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="summary" class="tsd-anchor"></a>
-					<h3>summary</h3>
-					<div class="tsd-signature tsd-kind-icon">summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Issue a command&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosconsole/issue/Issue.definition.ts#L18">packages/cli/src/zosconsole/issue/Issue.definition.ts:18</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L21">packages/cli/src/zostso/issue/Issue.definition.ts:21</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L20">packages/cli/src/zosuss/issue/Issue.definition.ts:20</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-class">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"group"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;group&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosconsole/issue/Issue.definition.ts#L17">packages/cli/src/zosconsole/issue/Issue.definition.ts:17</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zostso/issue/Issue.definition.ts#L20">packages/cli/src/zostso/issue/Issue.definition.ts:20</a></li>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/cli/src/zosuss/issue/Issue.definition.ts#L22">packages/cli/src/zosuss/issue/Issue.definition.ts:22</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="buildzosmfconsoleapiparameters" class="tsd-anchor"></a>
@@ -205,7 +116,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L145">packages/zosconsole/src/IssueCommand.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L145">zowe-cli/packages/zosconsole/src/IssueCommand.ts:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -244,7 +155,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L134">packages/zosconsole/src/IssueCommand.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L134">zowe-cli/packages/zosconsole/src/IssueCommand.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -283,7 +194,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L70">packages/zosconsole/src/IssueCommand.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L70">zowe-cli/packages/zosconsole/src/IssueCommand.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L115">packages/zosconsole/src/IssueCommand.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L115">zowe-cli/packages/zosconsole/src/IssueCommand.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,13 +290,13 @@
 					<a name="issuecommon" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> issue<wbr>Common</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">issue<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, consoleName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commandParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/izosmfissueparms.html" class="tsd-signature-type">IZosmfIssueParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">issue<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, consoleName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commandParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/izosmfissueparms.html" class="tsd-signature-type">IZosmfIssueParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/izosmfissueresponse.html" class="tsd-signature-type">IZosmfIssueResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L41">packages/zosconsole/src/IssueCommand.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L41">zowe-cli/packages/zosconsole/src/IssueCommand.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -421,7 +332,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/izosmfissueresponse.html" class="tsd-signature-type">IZosmfIssueResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>command response on resolve, @see {IZosmfIssueResponse}</p>
 						</li>
 					</ul>
@@ -430,13 +341,13 @@
 					<a name="issuedefconsolecommon" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> issue<wbr>Def<wbr>Console<wbr>Common</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">issue<wbr>Def<wbr>Console<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, commandParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/izosmfissueparms.html" class="tsd-signature-type">IZosmfIssueParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">issue<wbr>Def<wbr>Console<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, commandParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/izosmfissueparms.html" class="tsd-signature-type">IZosmfIssueParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/izosmfissueresponse.html" class="tsd-signature-type">IZosmfIssueResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L56">packages/zosconsole/src/IssueCommand.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L56">zowe-cli/packages/zosconsole/src/IssueCommand.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,7 +377,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/izosmfissueresponse.html" class="tsd-signature-type">IZosmfIssueResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>command response on resolve, @see {IZosmfIssueResponse}</p>
 						</li>
 					</ul>
@@ -481,7 +392,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zosconsole/src/IssueCommand.ts#L91">packages/zosconsole/src/IssueCommand.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zosconsole/src/IssueCommand.ts#L91">zowe-cli/packages/zosconsole/src/IssueCommand.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -533,24 +444,6 @@
 					<li class="current tsd-kind-class">
 						<a href="issuecommand.html" class="tsd-kind-icon">Issue<wbr>Command</a>
 						<ul>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#aliases" class="tsd-kind-icon">aliases</a>
-							</li>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#children" class="tsd-kind-icon">children</a>
-							</li>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#description" class="tsd-kind-icon">description</a>
-							</li>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#summary" class="tsd-kind-icon">summary</a>
-							</li>
-							<li class=" tsd-kind-variable tsd-parent-kind-class">
-								<a href="issuecommand.html#type" class="tsd-kind-icon">type</a>
-							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="issuecommand.html#buildzosmfconsoleapiparameters" class="tsd-kind-icon">build<wbr>Zosmf<wbr>Console<wbr>Api<wbr>Parameters</a>
 							</li>

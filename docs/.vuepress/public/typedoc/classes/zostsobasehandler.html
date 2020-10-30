@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ZosTsoBaseHandler | @zowe/cli - v6.21.1</title>
+	<title>ZosTsoBaseHandler | Zowe Node.js SDK - v6.24.2</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@zowe/cli - v6.21.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v6.24.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -70,13 +70,19 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">any</span>
+						<span class="tsd-signature-type">ZosmfBaseHandler</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">ZosTsoBaseHandler</span>
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">ICommandHandler</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -86,13 +92,29 @@
 						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="zostsobasehandler.html#marguments" class="tsd-kind-icon">m<wbr>Arguments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="zostsobasehandler.html#mhandlerparams" class="tsd-kind-icon">m<wbr>Handler<wbr>Params</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="zostsobasehandler.html#msession" class="tsd-kind-icon">m<wbr>Session</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="zostsobasehandler.html#mtsostart" class="tsd-kind-icon">m<wbr>Tso<wbr>Start</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="zostsobasehandler.html#mzosmfloadedprofile" class="tsd-kind-icon">m<wbr>Zosmf<wbr>Loaded<wbr>Profile</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="zostsobasehandler.html#mzosmfprofile" class="tsd-kind-icon">m<wbr>Zosmf<wbr>Profile</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#console" class="tsd-kind-icon">console</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#format" class="tsd-kind-icon">format</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#progress" class="tsd-kind-icon">progress</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="zostsobasehandler.html#process" class="tsd-kind-icon">process</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#fail" class="tsd-kind-icon">fail</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="zostsobasehandler.html#process" class="tsd-kind-icon">process</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="zostsobasehandler.html#processcmd" class="tsd-kind-icon">process<wbr>Cmd</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,40 +122,243 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="marguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Arguments</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Arguments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICommandArguments</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#marguments">mArguments</a></p>
+						<ul>
+							<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:21</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Command line arguments passed</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mhandlerparams" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Handler<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Handler<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IHandlerParameters</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#mhandlerparams">mHandlerParams</a></p>
+						<ul>
+							<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:25</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Full set of command handler parameters from imperative</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="msession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Session</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Session<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AbstractSession</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#msession">mSession</a></p>
+						<ul>
+							<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:9</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The session creating from the command line arguments / profile</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="mtsostart" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Tso<wbr>Start</h3>
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Tso<wbr>Start<span class="tsd-signature-symbol">:</span> <a href="../interfaces/istarttsoparms.html" class="tsd-signature-type">IStartTsoParms</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zostso/src/ZosTsoBaseHandler.ts#L21">packages/zostso/src/ZosTsoBaseHandler.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zostso/src/ZosTsoBaseHandler.ts#L21">zowe-cli/packages/zostso/src/ZosTsoBaseHandler.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The parameter object required to issue start commands</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{IStartTsoParms}</p>
-							</dd>
-						</dl>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mzosmfloadedprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Zosmf<wbr>Loaded<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Zosmf<wbr>Loaded<wbr>Profile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IProfileLoaded</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#mzosmfloadedprofile">mZosmfLoadedProfile</a></p>
+						<ul>
+							<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:17</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Loaded z/OSMF profile with meta information</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mzosmfprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Zosmf<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Zosmf<wbr>Profile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IProfile</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#mzosmfprofile">mZosmfProfile</a></p>
+						<ul>
+							<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:13</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Loaded z/OSMF profile if needed</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="console" class="tsd-anchor"></a>
+					<h3>console</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> console<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerResponseConsoleApi</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#console">console</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:44</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the console interface for the command handler</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IHandlerResponseConsoleApi</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerResponseDataApi</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#data">data</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:54</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the format interface for the command handler</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IHandlerResponseDataApi</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="format" class="tsd-anchor"></a>
+					<h3>format</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> format<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerFormatOutputApi</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#format">format</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:49</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the format interface for the command handler</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IHandlerFormatOutputApi</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="progress" class="tsd-anchor"></a>
+					<h3>progress</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> progress<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerProgressApi</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#progress">progress</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:59</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the format interface for the command handler</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IHandlerProgressApi</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="fail" class="tsd-anchor"></a>
+					<h3>fail</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">fail<span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IImperativeError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#fail">fail</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:39</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fail the command with an imperative error</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>err: <span class="tsd-signature-type">IImperativeError</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the imperative error parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a name="process" class="tsd-anchor"></a>
 					<h3>process</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerParameters</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides ZosmfBaseHandler.process</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/zostso/src/ZosTsoBaseHandler.ts#L32">packages/zostso/src/ZosTsoBaseHandler.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/zostso/src/ZosTsoBaseHandler.ts#L32">zowe-cli/packages/zostso/src/ZosTsoBaseHandler.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -149,6 +374,38 @@
 									<h5>params: <span class="tsd-signature-type">IHandlerParameters</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Command parameters sent by imperative.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="processcmd" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> process<wbr>Cmd</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Cmd<span class="tsd-signature-symbol">(</span>commandParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlerParameters</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zostsobasehandler.html">ZosTsoBaseHandler</a>.<a href="zostsobasehandler.html#processcmd">processCmd</a></p>
+								<ul>
+									<li>Defined in zowe-cli/packages/zosmf/lib/ZosmfBaseHandler.d.ts:66</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is called by the {@link ZosmfBaseHandler#process} after it creates a session.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandParameters: <span class="tsd-signature-type">IHandlerParameters</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Command parameters sent to the handler.</p>
 									</div>
 								</li>
 							</ul>
@@ -173,11 +430,44 @@
 					<li class="current tsd-kind-class">
 						<a href="zostsobasehandler.html" class="tsd-kind-icon">Zos<wbr>Tso<wbr>Base<wbr>Handler</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="zostsobasehandler.html#marguments" class="tsd-kind-icon">m<wbr>Arguments</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="zostsobasehandler.html#mhandlerparams" class="tsd-kind-icon">m<wbr>Handler<wbr>Params</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="zostsobasehandler.html#msession" class="tsd-kind-icon">m<wbr>Session</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 								<a href="zostsobasehandler.html#mtsostart" class="tsd-kind-icon">m<wbr>Tso<wbr>Start</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="zostsobasehandler.html#mzosmfloadedprofile" class="tsd-kind-icon">m<wbr>Zosmf<wbr>Loaded<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="zostsobasehandler.html#mzosmfprofile" class="tsd-kind-icon">m<wbr>Zosmf<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#console" class="tsd-kind-icon">console</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#format" class="tsd-kind-icon">format</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#progress" class="tsd-kind-icon">progress</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#fail" class="tsd-kind-icon">fail</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="zostsobasehandler.html#process" class="tsd-kind-icon">process</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="zostsobasehandler.html#processcmd" class="tsd-kind-icon">process<wbr>Cmd</a>
 							</li>
 						</ul>
 					</li>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProvisionPublishedTemplate | @zowe/cli - v6.21.1</title>
+	<title>ProvisionPublishedTemplate | Zowe Node.js SDK - v6.24.2</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@zowe/cli - v6.21.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v6.24.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -74,9 +74,6 @@
 					<dl class="tsd-comment-tags">
 						<dt>export</dt>
 						<dd></dd>
-						<dt>class</dt>
-						<dd><p>ProvisionPublishedTemplate</p>
-						</dd>
 					</dl>
 				</div>
 			</section>
@@ -108,13 +105,13 @@
 					<a name="provisiontemplate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> provision<wbr>Template</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">provision<wbr>Template<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, zOSMFVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, optionalParms<span class="tsd-signature-symbol">?: </span><a href="../interfaces/iprovisionoptionals.html" class="tsd-signature-type">IProvisionOptionals</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">provision<wbr>Template<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, zOSMFVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, optionalParms<span class="tsd-signature-symbol">?: </span><a href="../interfaces/iprovisionoptionals.html" class="tsd-signature-type">IProvisionOptionals</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iprovisiontemplateresponse.html" class="tsd-signature-type">IProvisionTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/provisioning/src/ProvisionPublishedTemplate.ts#L63">packages/provisioning/src/ProvisionPublishedTemplate.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/provisioning/src/ProvisionPublishedTemplate.ts#L63">zowe-cli/packages/provisioning/src/ProvisionPublishedTemplate.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -155,7 +152,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iprovisiontemplateresponse.html" class="tsd-signature-type">IProvisionTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>z/OSMF response object, @see {IProvisionTemplateResponse}</p>
 						</li>
 					</ul>
@@ -164,13 +161,13 @@
 					<a name="provisiontemplatecommon" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> provision<wbr>Template<wbr>Common</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">provision<wbr>Template<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, zOSMFVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">provision<wbr>Template<wbr>Common<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, zOSMFVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, templateName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iprovisiontemplateresponse.html" class="tsd-signature-type">IProvisionTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/d3a0f35f/packages/provisioning/src/ProvisionPublishedTemplate.ts#L37">packages/provisioning/src/ProvisionPublishedTemplate.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/provisioning/src/ProvisionPublishedTemplate.ts#L37">zowe-cli/packages/provisioning/src/ProvisionPublishedTemplate.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +208,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iprovisiontemplateresponse.html" class="tsd-signature-type">IProvisionTemplateResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>z/OSMF response object, @see {IProvisionTemplateResponse}</p>
 						</li>
 					</ul>
