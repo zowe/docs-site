@@ -10,14 +10,29 @@ The following SDKs are available.
 
 ## Software requirements
 
-Before you use the Python SDK, install the following software:
+### Node.js
 
-<!-- These are listed in the python repo. I assume that the end user needs to install them prior to calling the APIs? Do they install them into their project? -->
+If you download Node SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Copy the files to your project and issue the following commands:
 
-- [requests-2.22](https://github.com/psf/requests)
-- [keyring](https://github.com/jaraco/keyring)
-- [pyyaml](https://github.com/yaml/pyyaml)
-- [urllib3](https://github.com/urllib3/urllib3)
+    ```
+    npm install core-for-zowe-sdk.tgz
+    ```
+
+    ```
+    npm install imperative.tgz
+    ```
+
+If you install Node SDK packages **from the online registry**, the required dependencies are installed automatically.
+
+### Python
+
+If you download the Python SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Copy the files to your project and issue the following command for each dependency file:
+
+```
+pip install <fileName>.whl
+```
+
+If you install Python SDK packages **from the online registry**, the required dependencies are installed automatically.
 
 ## Getting started
 
@@ -35,17 +50,9 @@ Download and install the packages.
 
 2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
 
-3. **(Node.js SDK only)** Install required dependencies for the Node SDK. In a command-line window, navigate to your project directory and issue the following commands:
+3. Install required dependecies, which are included in the bundle. See [Software requirements](#software-requirements) above for more information.
 
-    ```
-    npm install core-for-zowe-sdk.tgz
-    ```
-
-    ```
-    npm install imperative.tgz
-    ```
-
-4. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
+3. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
 
    - To install a Node.js package: `npm install <packageName>.tgz`
    - To install a Python package: `pip install <packageName>.whl`
@@ -77,7 +84,7 @@ npm install @zowe/core-for-zowe-sdk and npm install @zowe/imperative
 
    *where* `<packageName>` is the name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    The package is installed in your `package.json` or `setup.py` file.
+    For Node.js projects, the package is installed in your `package.json` file.
 
 3. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates. To define the versioning scheme, use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-).
 
@@ -109,6 +116,10 @@ import { Submit } from "@zowe/zos-jobs-for-zowe-sdk";
 
 const profile = await getDefaultProfile("zosmf", true)
 ```
+
+::: tip
+If you *do not* want to use the Base Profile functionality, you can omit `, true` from the example above. Base profiles let your application integrate with Zowe API Mediation Layer by storing an authentication token. They also provide a mechanism to store common values such as username, password, etc..., to be inherited by other service profiles.
+:::
 
 **Python Example**
 
