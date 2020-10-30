@@ -104,14 +104,10 @@ const session = new Session({
 To use a Zowe CLI z/OSMF profile instead of manual authentication, provide the profile name when you create the object:
 
 ```javascript
-import { CliProfileManager } from "@zowe/imperative";
+import { getDefaultProfile } from "@zowe/core-for-zowe-sdk";
 import { Submit } from "@zowe/zos-jobs-for-zowe-sdk";
 
-const profileManager = new CliProfileManager({
-  	profileRootDirectory: require("path").join(require("os").homedir(), ".zowe", "profiles"),
-  	type: "zosmf"
-});
-const profile = (await profileManager.load({ loadDefault: true })).profile;
+const profile = await getDefaultProfile("zosmf", true)
 ```
 
 **Python Example**
