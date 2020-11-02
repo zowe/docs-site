@@ -55,7 +55,7 @@ Pull the packages from an online registry such as npm or PyPi.
 
    *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    The packages are installed and you can call the APIs from within your project. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+    The packages are installed. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
@@ -84,10 +84,11 @@ Download and install the packages.
 
     *where* `<packageName>` is the name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    Repeat the command for each package that you need. Packages are now installed and you can call the APIs from within your project.
+    Repeat the command for each package that you need. Packages are now installed.
 
 ## Using
 
+After you install the SDK, you can make API calls to the mainframe from within your project.
 
 ### Using - Node.js
 
