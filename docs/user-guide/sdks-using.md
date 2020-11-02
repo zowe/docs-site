@@ -91,7 +91,7 @@ Download and install the packages.
 
 ### Using - Node.js
 
-Refer to the following package Readmes for usage and sytnax examples:
+For Node SDK usage and syntax examples, refer to the following package Readmes:
 
 - [Core libraries](https://www.npmjs.com/package/@zowe/core-for-zowe-sdk) - Use shared libraries, such as `rest` to access z/OSMF REST APIs, `auth` for connecting to token-based authentication services, and more.
 - [z/OS Console](https://www.npmjs.com/package/@zowe/zos-console-for-zowe-sdk) - Perform z/OS console operations.
@@ -105,7 +105,7 @@ Refer to the following package Readmes for usage and sytnax examples:
 
 ### Using - Python
 
-For information about the Python SDK, including usesand syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
+For information about the Python SDK, including usage and syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
 
 ## Contributing
 
