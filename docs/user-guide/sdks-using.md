@@ -1,6 +1,6 @@
 # Using Zowe SDKs
 
-Learn about using the Zowe Client Software Development Kits (SDKs). The SDKs enable you to build client applications and scripts that interface with the mainframe.
+Leverage the Zowe Client Software Development Kits (SDKs) to build client applications and scripts that interface with the mainframe.
 
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
@@ -12,7 +12,7 @@ The following SDKs are available.
 
 ### Node.js
 
-If you download Node SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Copy the files to your project and issue the following commands:
+If you download Node SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Extract the TGZ files from the folder, copy the files to your project, and issue the following commands:
 
     ```
     npm install core-for-zowe-sdk.tgz
@@ -26,7 +26,7 @@ If you install Node SDK packages **from the online registry**, the required depe
 
 ### Python
 
-If you download the Python SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Copy the files to your project and issue the following command for each dependency file:
+If you download the Python SDK packages **from Zowe.org**, the downloaded folder contains dependencies that you must install manually. Extract the WHL files from the folder, copy the files to your project, and issue the following command for each dependency:
 
 ```
 pip install <fileName>.whl
@@ -50,7 +50,7 @@ Download and install the packages.
 
 2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
 
-3. Install required dependecies, which are included in the bundle. See [Software requirements](#software-requirements) above for more information.
+3. Install required dependencies, which are included in the bundle. See [Software requirements](#software-requirements) above for more information.
 
 3. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
 
@@ -63,32 +63,25 @@ Download and install the packages.
 
 ### Install SDK from online registry
 
-Define the packages as dependencies in your project and pull them from an online registry.
+Define the packages as dependencies in your project and pull them from the online npm registry.
 
 **Follow these steps:**
 
-1. **(Node.js SDK only)** Install required dependencies for the Node SDK. In a command-line window, navigate to your project directory and issue the following commands:
-npm install @zowe/core-for-zowe-sdk and npm install @zowe/imperative
-    ```
-    npm install @zowe/core-for-zowe-sdk
-    ```
-
-    ```
-    npm install @zowe/imperative
-    ```
-
-2. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
 
    - To import a Node.js package: `npm install <PackageName>`
    - To import a Python package: `pip install <PackageName>`
 
-   *where* `<packageName>` is the name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
+   *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    For Node.js projects, the package is installed in your `package.json` file.
+    The packages are installed and you can call the APIs from within your project. Node packages are defined in `package.json` in your project. Python packages are installed to a location on your computer such as `/Users/AppData`.
 
-3. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates. To define the versioning scheme, use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-).
+2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
-    The packages are installed and you can call the APIs from within your project.
+    To define the versioning scheme for Node packages, use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-).
+
+    To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked in to their project. More information, see [pip documentation](https://pip.pypa.io/en/stable/reference/pip_install/#example-requirements-file)
+
 
 ## Using
 
