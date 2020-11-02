@@ -18,7 +18,7 @@ For details about the available API endpoints, browse or download the [API Refer
 
 If you install Node SDK packages from the online registry, the required dependencies are installed automatically.
 
-If you download Node SDK packages from Zowe.org, the folder contains dependencies that you must install manually. Extract the TGZ files from the folder, copy the files to your project, and issue the following command for each dependency:
+If you download Node SDK packages from Zowe.org, the folder contains dependencies that you must install manually. Extract the TGZ files from the folder, copy the files to your project, and issue the following commands to install the dependencies.
 
     ```
     npm install core-for-zowe-sdk.tgz
