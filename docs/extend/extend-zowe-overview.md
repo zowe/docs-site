@@ -18,7 +18,7 @@ The command line interface is built using Node.js and is typically run on a mach
 
 ## Adding a REST API service to the API Mediation Layer
 
-The API Mediation Layer includes an API gateway that acts as a reverse proxy server through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge. The API gateway is extensible so you can add REST APIs for z/OS servers to its list of services. For information about how to onboard REST APIs, see [Onboarding Overview](extend-apiml/onboard-overview.md).  
+The API Mediation Layer includes an API gateway that acts as a reverse proxy server through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge. REST APIs can be registered with API Mediation Layer and those made available in the API Catalog and for routing through  the API gateway. For information about how to onboard REST APIs, see [Onboarding Overview](extend-apiml/onboard-overview.md).  
 
 To register a z/OS server with the API Mediation layer, there are two techniques:
 - [dynamic](#dynamic-api-registration)
