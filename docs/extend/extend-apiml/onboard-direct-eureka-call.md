@@ -352,6 +352,11 @@ The following parameters provide the information properties of a single API:
 
     (Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
 
+* **apiml.apiInfo.{api-index}.defaultApi**
+
+    (Optional) This parameter specifices if the API is the default one shown in the API Catalog. If no API has this parameter set to `true`, or multiple APIs have it set to `true`,
+    then the default API becomes the API with the highest major version seen in `apiml.apiInfo.{api-index}.version`.
+
 **Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used.
 In the following example, `0` represents the `api-index`.
 

@@ -299,6 +299,11 @@ apiml:
                 gatewayUrl: api/v1
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
                 documentationUrl: https://www.zowe.org
+            -   apiId: org.zowe.sampleservice
+                version: 2.0.0
+                gatewayUrl: api/v2
+                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc?group=apiv2
+                documentationUrl: https://www.zowe.org
 
         catalog:
             tile:
@@ -455,7 +460,27 @@ Use the following procedure to add Swagger API documentation to your project.
             return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .paths(PathSelectors.ant("/api/v1/**"))
+                .build()
+                .apiInfo(new ApiInfo(
+                    "Spring REST API",
+                    "Example of REST API",
+                    "1.0.0",
+                    null,
+                    null,
+                    null,
+                    null,
+                    new ArrayList<>()
+                ));
+        }
+
+        @Bean
+        public Docket apiv2() {
+            return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("apiv2")
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/api/v2/**"))
                 .build()
                 .apiInfo(new ApiInfo(
                     "Spring REST API",
