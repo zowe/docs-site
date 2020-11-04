@@ -45,7 +45,15 @@ Services that belong to the same product family are displayed on the same tile.
 
    <img src="../images/api-mediation/newswagger.png" alt="controller detail" width="500px"/>
 
-3. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
+3. Select the API version for which you want to view documentation, using the version buttons.
+
+  **Example:**
+
+  <img src="../images/api-mediation/discoverableclient-apiv1.png" alt="discoverable client api v1" width="500"/>
+
+  <img src="../images/api-mediation/discoverableclient-apiv2.png" alt="discoverable client api v2" width="500"/>
+
+4. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
  the endpoint description, and the full structure of the endpoint.
 
    **Example:**
