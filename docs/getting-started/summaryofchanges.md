@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.16.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.17.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
@@ -25,6 +26,18 @@ Zowe Version 1.16.0 and later releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.17.0 LTS (November 2020)
+
+### Notable changes
+
+**z/OSMF workflow for configuring Cross Memory Server**
+
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
 
 ## Version 1.16.0 LTS (October 2020)
 
