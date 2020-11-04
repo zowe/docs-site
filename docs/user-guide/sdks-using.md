@@ -20,13 +20,13 @@ If you install Node SDK packages from the online registry, the required dependen
 
 If you download Node SDK packages from Zowe.org, the folder contains dependencies that you must install manually. Extract the TGZ files from the folder, copy the files to your project, and issue the following commands to install the dependencies.
 
-    ```
-    npm install core-for-zowe-sdk.tgz
-    ```
+```
+npm install imperative.tgz
+```
 
-    ```
-    npm install imperative.tgz
-    ```
+```
+npm install core-for-zowe-sdk.tgz
+```
 
 ### Python
 
