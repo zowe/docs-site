@@ -2,9 +2,10 @@
 
 *  Overview, contact on slack
    *  Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository.
-   *  You need to be familiar with git and GitHub to work effectively in the Zowe community.
+   *  You need to be familiar with git and GitHub to work effectively in the Zowe community. To learn about Git and GitHub...
    *  To get involved with documentation:
-      * Sign the CNCF Contributor License Agreement.
+      * Sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute Zowe documentation.
+      * Contributions to Zowe documentation are reviewed before being committed to the repository. Committing chnges to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md.
       * <!--I think the DCO signoff on commits is all they need to do to contribute. There's also a concept of becoming a Zowe "Committer" which gives you more access rights. There is a community voting process for that. A bit more info here https://github.com/zowe/community/blob/master/COMMITTERS.md  --?
       * Fork the repository, unless you are a Zowe Committer. (double check with someone if forking is always required)
       * Familiarize yourself with the documentation repository and the website's static site generator.
