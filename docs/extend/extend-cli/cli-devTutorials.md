@@ -13,7 +13,7 @@ You might want to contribute to Zowe CLI to accomplish the following:
 * Participate in the Zowe CLI community space.
 
 ## Getting started
-If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
+If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
 
 ### Tutorials
 Follow these tutorials to get started working with the sample plug-in:
