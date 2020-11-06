@@ -110,11 +110,11 @@ The following steps are required for both the registry and offline package insta
 2. Copy your Db2 license file and place it in the following directory.
     - **Windows:**
         ```
-        <zowe_home>\plugins\installed\node_modules\@zowe\db2\node_modules\ibm_db\installer\clidriver\license
+        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
         ```
     - **Linux:**
         ```
-        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2/node_modules/ibm_db/installer/clidriver/license
+        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
         ```
     **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
