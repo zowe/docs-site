@@ -22,11 +22,11 @@ its performance and create large log files that consume a large volume of disk s
    ```
     APIML_DEBUG_MODE_ENABLED=true
    ```
-   By default the debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
+   By default debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
    
 3. Restart Zowe&trade;.
 
-    You have enabled the debug mode for the API ML core services (API Catalog, API Gateway and Discovery Service).
+   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery Service).
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
