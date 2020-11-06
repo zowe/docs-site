@@ -15,7 +15,7 @@ To install and configure the cross memory server, you must define APF-authorized
 - [Summary of cross memory server installation](#summary-of-cross-memory-server-installation)
 - [Starting and stopping the cross memory server on z/OS](#starting-and-stopping-the-cross-memory-server-on-zos)
 - [Zowe auxiliary service](#zowe-auxiliary-service)
-    - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)SZWEAUTH
+    - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
     - [Installing the auxiliary service](#installing-the-auxiliary-service)
 
 ## PDS sample library and PDSE load library
