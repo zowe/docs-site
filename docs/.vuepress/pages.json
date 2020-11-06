@@ -76,7 +76,9 @@
         "items": [
           "user-guide/mvd-configuration.md",
           "user-guide/cli-configuringcli.md",
-          "user-guide/configure-data-sets-jobs-api.md"
+          "user-guide/configure-data-sets-jobs-api.md",
+          "user-guide/api-mediation/api-gateway-configuration.md",
+          "user-guide/api-mediation/api-mediation-internal-configuration.md"
         ]
       },
       {
