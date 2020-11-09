@@ -64,10 +64,7 @@ Register the ZWEWRF05 member that is located `<pathPrefix>/files/workflows/ZWEWR
 
 After you execute these steps, the keystore and certificates are successfully generated based on the custom values. For general instruction on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 
-<!-- Commented out for next release>
-
 ## Configure Zowe Cross Memory Server 
-----------------------------------
 
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program. Multiple Zowe desktop instances can use the same cross memory server. Use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server.
 
@@ -104,7 +101,6 @@ Register the ZWEWRF06.xml workflow definition file that is located in `<pathPref
    Execute this step to start the Cross Memory Server started task.
 
 After you complete these steps, the Zowe cross memory server is configured and installed to start the Zowe Desktop instance. For instruction on how to register and execute the workflow, See, [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
--->
 
 ## Create and configure the Zowe instance directory and start the Zowe started task
 
