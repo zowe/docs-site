@@ -14,7 +14,6 @@ Refer to the particular section in this table fo contents for specific instructi
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Gateway retry policy](#gateway-retry-policy)
-  * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
@@ -73,39 +72,6 @@ To change this default configuration, include the following parameters:
     
     Specfies the number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
     
-## Gateway client certificate authentication
-
-Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
-
-**Follow these steps:**
-
-1. Open the `<Zowe instance directory>/instance.env` configuration file.
-2. Configure the following properties:
-
-   * **APIML_SECURITY_X509_ENABLED**
-
-     This is the global feature toggle. Set value to `true` to enable client certificate functionality.
-
-   * **APIML_SECURITY_ZOSMF_APPLID**
-
-     When z/OSMF is used as an authentication provider, provide a valid APPLID to allow for client certificate authentication. The API ML authenticates to z/OSMF through the generation of a passticket and subsequently uses this passticket to authenticate to z/OSMF. The value in the default installation of the z/OSMF is `IZUDFLT`.
-
-3. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-4. Configure the following properties:
-
-   * **apiml.security.x509.externalMapperUrl**
-
-     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is provides this API in Zowe. Provide the ZSS URL in the following format:
-     ```
-     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
-     ```
-     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
-
-   * **apiml.security.x509.externalMapperUser**
-
-     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user is then authorized to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`, and the permissions are set up during installation with the `ZWESECUR` jcl or workflow. If you decide to customize the ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
-
-Restart Zowe&trade.
 
 ## Gateway timeouts
 
