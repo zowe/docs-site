@@ -1,8 +1,8 @@
 # Extending Zowe
 
-Zowe was designed to be an extensible tools platform. You can extend it in several ways to meet your needs or distribute the plug-ins to users who have already installed Zowe and want to introduce new functionality to it. 
+Zowe is designed as an extensible tools platform. You can extend Zowe in several ways for customized use, or to distribute the plug-ins to users who have already installed Zowe and want to introduce new functionality to it. 
 
-One of the goals of Zowe is to give users a consistent user experience, common functionality, and interoperability when using Zowe that includes the base set of Zowe core functions and plug-ins that are built outside the Zowe community. The Zowe Conformance Program provides a set of criteria to help with this. When followed, it also gives plug-in providers confidence that their software remains functional through Zowe releases. For more information, see [Zowe Conformance Program](zowe-conformance-program.md).
+One of the goals of Zowe is to give users a consistent user experience, common functionality, and interoperability that includes the base set of Zowe core functions and plug-ins that are built outside of the Zowe community. The Zowe Conformance Program provides the criteria to help the aforementioned goals. By satisfying the Zowe Conformance Program criteria, plug-in providers are assured that their software remains functional throughout Zowe releases. For more information, see [Zowe Conformance Program](zowe-conformance-program.md).
 
 You can extend Zowe in the following ways:
 
@@ -38,17 +38,13 @@ Instead of having the API service calling up to the API Mediation Layer, it is p
 
 The Zowe Desktop allows a user to interact with z/OS applications through a web browser.  It is served by the Zowe Application Framework Server on z/OS, also known as Z Lightweight User Experience (ZLUX).  The Zowe desktop comes with a set of default applications. You can extend it to add new applications. For more information, see [Developing for Zowe Application Framework](extend-desktop/mvd-extendingzlux.md).  
 
-The Zowe Desktop is an angular application that allows native plug-ins to be built that enjoy a high level of interoperability with other desktop components.  The React JavaScript toolkit is also supported.  In addition, an existing web application can be included in the Zowe Desktop using an iframe.  
+The Zowe Desktop is an angular application that allows native plug-ins to be built that provide for a high level of interoperability with other desktop components.  The React JavaScript toolkit is also supported. Additionally, you can include an existing web application in the Zowe Desktop using an iframe.  
 
-- iframe
-   
-   See [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
-- Angular App
-   
-   See [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
-- React App
+**Notes:**  For more information, see the following samples:
 
-   See [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
+- [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
+- [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
+- [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
 
 ## Lifecycling extensions as Zowe address spaces
 
