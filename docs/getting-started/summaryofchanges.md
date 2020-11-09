@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.16.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.17.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
@@ -26,19 +27,31 @@ Zowe Version 1.16.0 and later releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+## Version 1.17.0 LTS (November 2020)
+
+### Notable changes
+
+**z/OSMF workflow for configuring Cross Memory Server**
+
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+
 ## Version 1.16.0 LTS (October 2020)
 
 ### Notable changes
 
-**Certificate management and key ring support**
+**Certificate management and keyring support**
 
-- In V1.15, the JCL member `ZWEKRING` was added to the sample PDS library `SZWESAMP`.  This member contains commands to create a key ring that can contain the Zowe certificate(s) and a local certificate authority. In this release, the JCL member `ZWENOKYR` was added to `SZWESAMP` that contains the inverse commands, so it can be used to remove the key ring, the Zowe certificate(s), and the certificate authority.
-- In V1.15, the JCL member`ZWEKRING` and the supporting code in the Zowe runtimes for working with certificates held in key rings was provided in beta format for early technical preview for RACF only. In this release, the commands in `ZWEKRING`, `ZWENOKYR` and the supporting code in the Zowe runtimes for working with key rings and certificates in RACF, TopSecret, and ACF/2 are now a supported piece of functionality.
-- A new documentation section is added to help you understand the configuration scenarios around Zowe certificates, and the relationship to a Zowe instance directory and Zowe runtime. See [Toplogy for the Zowe z/OS launch process](../user-guide/installandconfig.md#topology-of-the-zowe-z-os-launch-process).
+- In V1.15, the JCL member `ZWEKRING` was added to the sample PDS library `SZWESAMP`.  This member contains commands to create a keyring that can contain the Zowe certificate(s) and a local certificate authority. In this release, the JCL member `ZWENOKYR` was added to `SZWESAMP` that contains the inverse commands, so it can be used to remove the keyring, the Zowe certificate(s), and the certificate authority.
+- In V1.15, the JCL member `ZWEKRING` and the supporting code in the Zowe runtimes for working with certificates held in keyrings were provided in beta format for early technical preview for RACF only. In this release, the commands in `ZWEKRING`, `ZWENOKYR` and the supporting code in the Zowe runtimes for working with keyrings and certificates in RACF, TopSecret, and ACF/2 are now a supported piece of functionality.
+- A new documentation section is added to help you understand the configuration scenarios around Zowe certificates, and the relationship to a Zowe instance directory and Zowe runtime. See [Topology for the Zowe z/OS launch process](../user-guide/installandconfig.md#topology-of-the-zowe-z-os-launch-process).
 
 **Additional TN3270 terminal configuration options**
 
-Additional TN3270 terminal configuration options are now possible to be specified within the `instance.env` configuration file. These choices, such as codepage and terminal dimensions, effect server defaults but do not change the preexisting ability for you to set their own preferences within the Desktop at runtime. A list of the available options can be found [here](https://github.com/zowe/zlux-app-server/pull/108).
+Additional TN3270 terminal configuration options can now be specified within the `instance.env` configuration file. These choices, such as codepage and terminal dimensions, affect server defaults but do not change the pre-existing ability for you to set your own preferences within the Desktop at runtime. A list of the available options can be found [here](https://github.com/zowe/zlux-app-server/pull/108).
 
 ### New features and enhancements
 
@@ -47,7 +60,7 @@ The following features and enhancements were added.
 #### Zowe installation
 <!-- Pulled from https://github.com/zowe/zowe-install-packaging/blob/staging/CHANGELOG.md. Based on version number. Includes 1.16.0 changes.-->
 - Moved explorer-ui-server out of explorers into new `shared` folder under Zowe Runtime Directory. [#1545](https://github.com/zowe/zowe-install-packaging/pull/1545), [#207](https://github.com/zowe/explorer-jes/pull/207), [#37](https://github.com/zowe/explorer-ui-server/pull/37)
-- Created `zowe-setup-keyring-certificates.env` and removed the overloaded properties from `zowe-setup-certificates.env` to try to clarify the user experience when setting up certificates in the key ring and USS keystore modes. [#1603](https://github.com/zowe/zowe-install-packaging/issues/1603)
+- Created `zowe-setup-keyring-certificates.env` and removed the overloaded properties from `zowe-setup-certificates.env` to try to simplify the user experience when setting up certificates in the keyring and USS keystore modes. [#1603](https://github.com/zowe/zowe-install-packaging/issues/1603)
 
 
 #### Zowe API Mediation Layer
@@ -68,11 +81,11 @@ The following features and enhancements were added.
   - `ZOWE_ZLUX_TN3270_COL = number`
   - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
   - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
-- The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subset of the information available to admins, specifically regarding the functionality of Zowe. OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on are examples of the information available to non-admins. [#211](https://github.com/zowe/zss/pull/211)
+- The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subset of the information available to admins, specifically regarding the functionality of Zowe.  Examples of the information available to non-admins are: OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on. [#211](https://github.com/zowe/zss/pull/211)
   - `/server/agent/environment (limited info)`
   - `/server/agent/services`
 - The ZSS `/unixfile` API has been updated to include an option to force file content to be sent or received as a specific encoding. If not specified, the pre-existing behavior of automatically choosing encoding based on tagging and file extensions will be used. [#160](https://github.com/zowe/zowe-common-c/pull/160)
-- The app server can now read and use keys, certificates, and certificate authorities contained with PKCS12 files. This is in addition to existing support for PEM encoded files as well as z/OS keyrings. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
+- The app server can now read and use keys, certificates, and certificate authorities contained with PKCS12 files. This is in addition to existing support for PEM-encoded files as well as z/OS keyrings. [#244](https://github.com/zowe/zlux-server-framework/pull/244)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.23.0. -->
@@ -97,7 +110,7 @@ The following enhancements were added to the **core CLI**:
 #### Zowe JES/MVS/USS Explorers
 
 The following enhancement was added to the **Explorer UI Server**:
-- Explorer UI Server now published as separate pax and decoupled out of explorers. [#37](https://github.com/zowe/explorer-ui-server/pull/37)
+- Explorer UI Server is now published as separate pax and decoupled out of explorers. [#37](https://github.com/zowe/explorer-ui-server/pull/37)
 
 The following features and enhancements were added to the **JES Explorer**:
 
@@ -107,7 +120,7 @@ The following features and enhancements were added to the **JES Explorer**:
 
 The following features and enhancements were added to the **MVS Explorer**:
 - Extracted out explorer-ui-server, changed MVS lifecycle start script and packaging script accordingly. [#151](https://github.com/zowe/explorer-mvs/pull/151)
-- Added loading icon to editor menu bar when opening a datasets contents. [#291](https://github.com/zowe/zlux/issues/291)
+- Added loading icon to editor menu bar when opening a dataset's contents. [#291](https://github.com/zowe/zlux/issues/291)
 - Added `.npmrc` to specify npm registry as config.
 
 The following features and enhancements were added to the **USS Explorer**:
@@ -160,9 +173,9 @@ The following bug was fixed in the **FTP plug-in for Zowe CLI**:
 
 <!-- Document the key highlights of Zowe in this release in details. You can explain the benefits of a feature/enhancement, add examples, and optionally include graphics or GIFs to demo how it looks, and so on. Use the feature/enhancement name as the title. Example: "Validate only mode: Zowe z/OS installation now supports a validate only mode. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. ...... -->
 
-**Key ring support**
+**Keyring support**
 
-Prior to v1.15, the Zowe z/OS components were only able to use a certificate held in a USS Java KeyStore.  In v1.15, the Zowe z/OS components can now use a certificate that is held in a z/OS key ring as described in [Configuring Zowe certificates in a key ring](../user-guide/configure-certificates-keyring.md).
+Prior to v1.15, the Zowe z/OS components were only able to use a certificate held in a USS Java KeyStore.  In v1.15, the Zowe z/OS components can now use a certificate that is held in a z/OS keyring as described in [Configuring Zowe certificates in a keyring](../user-guide/configure-certificates-keyring.md).
 
 For more information about Zowe certificates, certificate authorities, trust stores, and how they are used by Zowe, see [Configuring Zowe Certificates](../user-guide/configure-certificates.md).
 

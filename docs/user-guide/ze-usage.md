@@ -41,6 +41,7 @@ You can use the following functionalities when interacting with data sets:
 * **Create and delete data sets and data set members**: Enables you to easily create and delete both data sets and their members.
 * **View and access multiple profiles simultaneously**: Enables you to work with data sets from multiple profiles.
 * **Submit a JCL**: You can submit a jcl from a chosen data set.
+* **Allocate Like:** You can create a copy of a chosen data set with the same parameters.
 
 #### View data sets and use multiple filters
 
@@ -147,6 +148,15 @@ Your PDS member (or PS) is uploaded.
 4. Select the profile that you want to add to the view as illustrated by the following screen.
 
 <img src="../images/ze/ZE-mult-profiles.gif" alt="Add Profile">
+
+#### Allocate Like
+
+1. Navigate to the explorer tree.
+2. Open the **DATA SETS** bar.
+3. Right-click the data set and select the **Allocate Like (New File with Same Attributes)** option.
+4. Enter the new data set name.
+
+<img src="../images/ze/ZE-allocate-like.gif" alt="Allocate Like">
 
 ### Work with USS Files
 

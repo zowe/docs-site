@@ -104,17 +104,18 @@ The following steps are required for both the registry and offline package insta
 
 1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS.
 
-    **Note:** The license must be of version 11.1 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    **Note:** The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
 2. Copy your Db2 license file and place it in the following directory.
     - **Windows:**
         ```
-        <zowe_home>\plugins\installed\node_modules\@zowe\db2\node_modules\ibm_db\installer\clidriver\license
+        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
         ```
     - **Linux:**
         ```
-        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2/node_modules/ibm_db/installer/clidriver/license
+        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
+              
         ```
     **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
