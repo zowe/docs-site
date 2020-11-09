@@ -35,8 +35,9 @@ You might have reached the limit for shared message queues on your LPAR. When No
 When you attempt to log in to the Zowe Desktop, you receive the following error message that is displayed beneath the **Username** and **Password** fields. 
 
 ```
-Authentication failed for 1 types:  Types: ["zss"]
+Authentication failed for 3 types:  Types: ["saf","apiml","zss"]
 ```
+The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`.  the If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
 
 **Solution:**
 
@@ -55,6 +56,8 @@ There are two known problems that might cause this error.  The [Zowe architectur
 
 - Look for the message that starts with `ZIS status`.  
 
+
+
    - If the communication works, the message includes `Ok`. For example:
 
      ```
@@ -70,12 +73,28 @@ There are two known problems that might cause this error.  The [Zowe architectur
      ```
      or
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=2)
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
+     ```
+     or
+     ```
+     ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='N/A', clientVersion='2')
      ```
 
      In this case, check that the ZWESISTC started task is running. If not, start it with the TSO command `/S ZWESISTC`
     
-   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check that the started task `ZWESISTC` is active.  
+   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check the started task `ZWESISTC` log for any errors.  
+
+   - If the cross memory server `ZWESISTC` started task is running check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `instance.env` file used to launch Zowe. 
+   By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
+
+     The line in the `ZWESISTC` problib that defines the procedure name that cross memory will use is
+     ```
+     //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
+     ```
+     The line in the `instance.env` that specifies the cross memory procedure that the zssServer will try to attach to is
+     ```
+     ZOWE_ZSS_XMEM_SERVER_NAME=ZWESIS_STD
+     ```
    
    - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  Once `ZWESISTC` is started, if problems persist, check its log to ensure it has been able to correctly locate its load module ZWESIS01 as well as the parmlib ZWESIP00.  
 
