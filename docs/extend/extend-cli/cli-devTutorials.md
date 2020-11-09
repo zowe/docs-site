@@ -13,7 +13,7 @@ You might want to contribute to Zowe CLI to accomplish the following:
 * Participate in the Zowe CLI community space.
 
 ## Getting started
-If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/master/blob/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
+If you want to start working with the code immediately, check out the [Zowe CLI core repository](https://github.com/zowe/zowe-cli) and the [contribution guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
 
 ### Tutorials
 Follow these tutorials to get started working with the sample plug-in:
@@ -24,7 +24,7 @@ Follow these tutorials to get started working with the sample plug-in:
 5. **[Implementing user profiles](cli-implement-profiles.md)** - Implement user profiles with the plug-in.
 
 ### Plug-in Development Overview
-At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/package.json) `imperative` key.
+At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/package.json) `imperative` key.
 
 A Zowe CLI plug-in will minimally contain the following:
 1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
