@@ -20,7 +20,7 @@ You can use this verify tool on Zowe version 1.9 and later.
 
 1. Start a USS terminal session with the z/OS system where Zowe is installed.  
 2. Create a new, writable, local directory, for example, `/u/username/hash`.
-3. Go to the [download link](https://github.com/zowe/zowe-install-packaging/blob/staging/files/fingerprint.pax) to download the `fingerprint.pax` PAX file.
+3. Go to the [download link](https://github.com/zowe/zowe-install-packaging/blob/master/files/fingerprint.pax) to download the `fingerprint.pax` PAX file.
 4. Upload the downloaded file to a temporary directory such as `/tmp` on your z/OS USS file system by using SFTP or a similar file transfer utility. 
 When you transfer the PAX file between systems, you must use binary transfer mode.
 5. Extract the PAX file from inside the local directory you created (in this example, it is `/u/username/hash`) using commands like the following one:
