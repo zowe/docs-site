@@ -175,6 +175,7 @@ services:
           swaggerUrl: http://localhost:8080/v2/swagger.json
           documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
+          defaultApi: true
       customMetadata:
           yourqualifier:
               key1: value1
@@ -390,6 +391,11 @@ additionalServiceMetadata:
     * **apiInfo.version**
 
         (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
+
+    * **apiInfo.defaultApi**
+        
+        (Optional) This paraemeter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
+        then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
 
 * **customMetadata**
 
