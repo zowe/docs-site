@@ -146,6 +146,14 @@ To determine which ports are not available, follow these steps:
 
 Refer to detailed section about [API Gateway configuration](api-mediation/api-gateway-configuration.md)
 
+### Cross memory server
+
+- `ZOWE_ZSS_XMEM_SERVER_NAME`: For the Zowe Desktop to operate communication with the Zowe cross memory server.  The default procedure name `ZWESIS_STD` is used for the cross memory server. However, this can be changed in the `ZWESISTC` PROBLIC member.  This might occur to match local naming standards, or to allow isolated testing of a new version of the cross memory server while an older version is running concurrently.  The Zowe desktop that runs under the `ZWESVSTC` started task will locate the appropriate cross memory server running under its started task `ZWESISTC` using the `ZOWE_ZSS_XMEM_SERVER_NAME` value.  If this handshake cannot occur, users will be unable to log in to the Zowe desktop. See [Troubleshooting: ZSS server unable to communicate with X-MEM](../troubleshoot/app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-x-mem).
+
+   ```
+   //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
+   ```
+
 ### Extensions
 
 - `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information, see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 
