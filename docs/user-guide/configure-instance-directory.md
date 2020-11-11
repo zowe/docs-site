@@ -144,6 +144,8 @@ To determine which ports are not available, follow these steps:
 - `APIML_GATEWAY_TIMEOUT_MILLIS`: Timeout for connection to the services. 
 - `APIML_SECURITY_ZOSMF_APPLID`: The z/OSMF APPLID used for PassTicket.
 - `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider, but it is possible to switch to SAF as the authentication provider instead of z/OSMF.
+- `APIML_DEBUG_MODE_ENABLED` : When this parameter is set to `true` detailed logging of activity by the API mediation layer occurs. This can be useful to diagnose unexpected behavior of the API gateway, API discovery, or API catalog services.  Default value is `false`.  
+
 
 Refer to detailed section about [API Gateway configuration](api-mediation/api-gateway-configuration.md)
 
