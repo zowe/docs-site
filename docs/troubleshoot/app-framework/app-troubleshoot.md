@@ -37,7 +37,7 @@ When you attempt to log in to the Zowe Desktop, you receive the following error 
 ```
 Authentication failed for 3 types:  Types: ["saf","apiml","zss"]
 ```
-The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`.  the If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
+The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
 
 **Solution:**
 
@@ -84,8 +84,9 @@ There are two known problems that might cause this error.  The [Zowe architectur
     
    - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check the started task `ZWESISTC` log for any errors.  
 
-   - If the cross memory server `ZWESISTC` started task is running check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `instance.env` file used to launch Zowe. 
-   By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
+   - If the cross memory server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `instance.env` file used to launch Zowe. 
+    
+     By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
 
      The line in the `ZWESISTC` problib that defines the procedure name that cross memory will use is
      ```
