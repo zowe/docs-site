@@ -50,6 +50,7 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 
 - `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
 - `NODE_HOME`:  The path to the Node.js runtime.  Only needs to be specified if not already set as a shell variable.  
+- `SKIP_NODE` : When Zowe starts it checks whether the `NODE_HOME` path is a valid node runtime, and if not it will prompt for the location of where node can be located.  Specify a value of `1` to bypass this step, or `0` for the check to occur. This may be useful in an automation scenario where the `zowe-start.sh` script is run unattended and the makeup of the components being launched does not require a node runtime.  
 - `ROOT_DIR`: The directory where the Zowe runtime is located, also referred to as the `<RUNTIME_DIR>`.  Defaults to the location of where `zowe-configure-instance` was executed. 
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
@@ -160,6 +161,15 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 - `EXTERNAL_COMPONENTS`: For third-party extenders to add the full path to the directory that contains their component lifecycle scripts.  For more information, see [Zowe lifecycle - Zowe extensions](../extend/lifecycling-with-zwesvstc.md#zowe-extensions).
 
+### High Availability
+
+The high availability (HA) feature of Zowe is under development and has not been fully delivered.  The following values are work in progress towards HA capability, they are not used and will be documented in more detail once more HA support is finalized in a future Zowe release. 
+
+- `ZWE_DISCOVERY_SERVICES_LIST` : 
+- `ZWE_CACHING_SERVICE_PORT=7555` : This port is not yet used so the value does not need to be an availale
+- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM` : 
+- `ZWE_CACHING_SERVICE_VSAM_DATASET:` :
+
 ## Configuring a Zowe instance via `instance.env` file
 
 When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
@@ -173,6 +183,8 @@ In these cases, it may be necessary to specify a value for `ZWE_EXTERNAL_HOSTS` 
 In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
 
 This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZOWE_EXPLORER_HOST`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
+
+- `ZOWE_EXPLORER_FRAME_ANCESTORS` : The MVS, USS, and JES Explorer are served by their respective explorer UI address spaces.  These are accessed through the Zowe desktop where they are hosted as iFrames.  To protect against double iFrame security vulnerabilities browsers all of the valid address that may be used by the browser must be explicitly declated in this property.  The default values are: `"${ZOWE_EXPLORER_HOST}:*,${ZOWE_IP_ADDRESS}:*"`.  If there are any other URLs by which the Zowe Explorers can be served then these should be appended to this comma separated list.
 
 ## Hints and tips
 

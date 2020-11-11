@@ -49,6 +49,7 @@
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
           "user-guide/install-zowe-smpe-zosmf-workflow.md",
+          "user-guide/upgrade-zos-system.md",
           "user-guide/configure-zos-system.md",
           "user-guide/configure-certificates.md",
           "user-guide/configure-certificates-keystore.md",

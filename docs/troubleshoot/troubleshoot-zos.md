@@ -2,6 +2,16 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESVSTC` started task.
 
+## Unable to launch Zowe with { FSUM7351 }
+
+When you run `zowe-start.sh` from a unix shell path `<zowe-instance-directory>/bin` you encounter the following error:
+
+```
+<RUNTIME_DIRECTORY>/scripts/internal/opercmd: ./zowe-start.sh 6: FSUM7351 not found
+```
+
+This is because the value of the `ROOT_DIR` value in the `<zowe-instance-directory>/instance.env` file is pointing to an invalidate Zowe runtime.  This can occur in scenarios where the Zowe runtime directory was removed during an upgrade of a convenience build, and the `instance.env` file's `ROOT_DIR` value was not updated to point to the new fully qualified path for the new Zowe runtime.
+
 ## Unable to create BPXAS instances
 
 **Symptom:**
