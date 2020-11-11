@@ -53,6 +53,11 @@ The following features and enhancements were added.
 - Setting `APIML_DEBUG_MODE_ENABLED` in `instance.env` is properly passed on to the all API ML services. [#901](https://github.com/zowe/api-layer/issues/901)
 
 #### Zowe App Server
+<!--Pulled from 
+https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
+https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
+- ZSS no longer requires NodeJS for its configure.sh script.
+- Add support for DER encoded X.509 certificates. 
 
 
 #### Zowe CLI
@@ -99,6 +104,12 @@ The following bugs were fixed.
 #### Zowe API Mediation Layer
 - Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831) 
 - Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853) 
+
+#### Zowe App Server
+<!--Pulled from https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md-->
+- Make use of external certificate authorities referenced during keystore setup time.
+- ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
+
 
 #### Zowe CLI
 The following bug was fixed in the **core CLI**: 
