@@ -36,11 +36,11 @@ Instead of having the API service calling up to the API Mediation Layer, it is p
 
 ## Adding a plug-in to the Zowe Desktop
 
-The Zowe Desktop allows a user to interact with z/OS applications through a web browser. It is served by the Zowe Application Framework Server on z/OS, also known as Z Lightweight User Experience (ZLUX).  The Zowe desktop comes with a set of default applications. You can extend it to add new applications. For more information, see [Developing for Zowe Application Framework](extend-desktop/mvd-extendingzlux.md).
+The Zowe Desktop allows a user to interact with z/OS applications through a web browser. It is served by the Zowe Application Framework Server on z/OS, also known as Z Lightweight User Experience (ZLUX). The Zowe desktop comes with a set of default applications. You can extend it to add new applications. For more information, see [Developing for Zowe Application Framework](extend-desktop/mvd-extendingzlux.md).
 
 The Zowe Desktop is an angular application that allows native plug-ins to be built that provide for a high level of interoperability with other desktop components.  The React JavaScript toolkit is also supported. Additionally, you can include an existing web application in the Zowe Desktop using an iframe.
 
-**Notes:**  For more information, see the following samples:
+**Notes:** For more information, see the following samples:
 
 - [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
 - [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
@@ -48,5 +48,5 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 
 ## Lifecycling extensions as Zowe address spaces
 
-Zowe is run under the started task `ZWESVSTC` that brings up its address spaces.  It is possible to introduce a new micro service to be started and stopped with the Zowe stated task. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md).
+Zowe is run under the started task `ZWESVSTC` that brings up its address spaces. It is possible to introduce a new micro service to be started and stopped with the Zowe stated task. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md).
 
