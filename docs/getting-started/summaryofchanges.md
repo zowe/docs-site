@@ -33,10 +33,79 @@ Zowe Version 1.17.0 and later releases include the following enhancements, relea
 
 **z/OSMF workflow for configuring Cross Memory Server**
 
+You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server).
+
 
 ### New features and enhancements
 
 The following features and enhancements were added.
+
+#### Zowe installation
+<!-- Pulled from https://github.com/zowe/zowe-install-packaging/blob/staging/CHANGELOG.md. Based on version number. Includes 1.17.0 changes.-->
+- You can now start ZSS independent from the Zowe Application Framework server by specifying the `LAUNCH_COMPONENT_GROUP "ZSS"`. If `DESKTOP` is specified instead of `ZSS`, ZSS will still be included as a prerequisite to the Application Framework server. [#1632](https://github.com/zowe/zowe-install-packaging/pull/1632)
+- Zowe instance configuration script (`zowe-configure-instance.sh`) can now skip checking for Node.js by passing in the `-s` flag since Node.js may not be needed if the components to be launched don't require it. [#1677](https://github.com/zowe/zowe-install-packaging/pull/1677)
+- The `run-zowe.sh` script can also skip the checking for Node.js by setting the environment variable `SKIP_NODE=1` for the cases where the components to be launched don't require Node.js.
+- Exported the `EXTERNAL_CERTIFICATE_AUTHORITIES` variable to the `zowe-certificates.env` file such that it may be used by the Application Framework server. [#1742](https://github.com/zowe/zowe-install-packaging/pull/1742)
+
+#### Zowe API Mediation Layer
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1170. Based on release number.-->
+- Multiple versions of one API are now presented in the Catalog if configured to do so. Users can now switch between different versions within the Catalog to see differences in API documentation between versions. [#844](https://github.com/zowe/api-layer/issues/844)
+- Setting `APIML_DEBUG_MODE_ENABLED` in `instance.env` is properly passed on to the all API ML services. [#901](https://github.com/zowe/api-layer/issues/901)
+
+#### Zowe App Server
+
+
+#### Zowe CLI
+<!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.0, 6.24.1, 6.24.2, 6.24.3. -->
+<!-- Imperative CLI Framewor: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Last release is 4.8.1. No change since that.-->
+<!-- Secure Credential Store Plug-in: Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history. Includes 4.1.1.  -->
+<!-- CICS plug-in: Pulled from https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md. No changes.-->
+<!-- DB2 plug-in: Pulled from https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md. Inlcudes 4.0.7. -->
+<!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Last release is 1.2.1, no changes since that. -->
+<!-- No changes to other plug-ins. -->
+
+The following enhancements were added to the **core CLI**:
+- Published the APIs in Zowe CLI as separate SDK packages. [#750](https://github.com/zowe/zowe-cli/issues/750)
+- The "@zowe/cli" package still includes both API and CLI methods. In addition, the following SDK packages are now available:
+  - @zowe/provisioning-for-zowe-sdk
+  - @zowe/zos-console-for-zowe-sdk
+  - @zowe/zos-files-for-zowe-sdk
+  - @zowe/zos-jobs-for-zowe-sdk
+  - @zowe/zos-tso-for-zowe-sdk
+  - @zowe/zos-uss-for-zowe-sdk
+  - @zowe/zos-workflows-for-zowe-sdk
+  - @zowe/zosmf-for-zowe-sdk
+  - @zowe/core-for-zowe-sdk
+
+The following enhancements were added to the **Secure Credential Store Plug-in**:
+- Updated the Keytar dependency to v6 to support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+
+#### Zowe Explorer
+<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date. Includes 1.10.0, 1.10.1 changes.-->
+- Added Base Profile support. [#1037](https://github.com/zowe/vscode-extension-for-zowe/issues/1037).
+- Updated arguments to keep the order of precedence consistent between service and base profile. [#1055](https://github.com/zowe/vscode-extension-for-zowe/issues/1055).
+
+#### Zowe JES/MVS/USS Explorers
+<!-- JES Explorer <1.0.7> -->
+The following features and enhancements were added to the **JES Explorer**:
+
+- Added ability to refresh content of an open job output file via context menu entry on the job file [#549](https://github.com/zowe/zlux/issues/549)
+- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as per required by latest materail-ui version.
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### Zowe API Mediation Layer
+- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831) 
+- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853) 
+
+#### Zowe CLI
+The following bug was fixed in the **core CLI**: 
+- Fixed incorrect syntax of example for `zowe files create data-set-vsam`. [#823](https://github.com/zowe/zowe-cli/issues/823)
+
+The following bug was fixed in the **IBM Db2 Plug-in**: 
+- Added support for Node v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 
 ## Version 1.16.0 LTS (October 2020)
