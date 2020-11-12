@@ -12,27 +12,29 @@ You can extend Zowe in the following ways:
 
 ## Extending Zowe CLI
 
-Zowe CLI extenders can build plug-ins that provide new commands. For more information, see [Developing a new plug-in](extend-cli/cli-developing-a-plugin.md). There is a sample plug-in that is provided with the tutorial; see [Installing the sample plug-in](extend-cli/cli-installing-sample-plugin.md).
+Zowe CLI extenders can build plug-ins that provide new commands. For more information, see [Developing a new plug-in](extend-cli/cli-developing-a-plugin.md). This article includes a sample plug-in that is provided with the tutorial; see [Installing the sample plug-in](extend-cli/cli-installing-sample-plugin.md).
 
-The CLI is built using Node.js. It is typically run on a machine other than z/OS, such as a PC where it can be driven through a terminal or command prompt, or on an automation machine such as a DevOps pipeline orchestrator. The API Mediation Layer and Zowe Desktop run on z/OS. Support for running the API Mediation Layer and Zowe Desktop off platform might come in a future release of Zowe. To understand the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
+The CLI is built using Node.js. It is typically run on a machine other than z/OS, such as a PC where it can be driven through a terminal or command prompt, or on an automation machine such as a DevOps pipeline orchestrator. The API Mediation Layer and Zowe Desktop run on z/OS. Support for running the API Mediation Layer and Zowe Desktop off platform might come in a future release of Zowe. For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
 ## Adding a REST API service to the API Mediation Layer
 
-The API Mediation Layer includes an API gateway that acts as a reverse proxy server, through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge. REST APIs can be registered with API Mediation Layer, which makes them available in the API Catalog and for routing through the API gateway. For information about how to onboard REST APIs, see [Onboarding Overview](extend-apiml/onboard-overview.md).
+The API Mediation Layer includes an API Gateway that acts as a reverse proxy server, through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge. REST APIs can be registered with the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway. For information about how to onboard REST APIs, see [Onboarding Overview](extend-apiml/onboard-overview.md).
 
-To register a z/OS server with the API Mediation layer, there are two techniques:
+To register a z/OS server with the API Mediation Layer, there are two techniques:
 - [dynamic](#dynamic-api-registration)
 - [static](#static-api-registration)
 
 ### Dynamic API registration
 
-The API Gateway can be called by the server that wants to register REST APIs, through a set of API calls to the API Gateway itself. To do this, the z/OS server needs to know where the API Gateway is located and make the API calls to register or un-register itself. The API Gateway location can be within the z/OS server itself, but more typically registration is done by introducing a microservice that registers to the API Mediation Layer on behalf of an existing z/OS Service, acting as a registration broker. The coding pattern for the microservice is to create a Java Spring Boot server. For more information, see [Onboarding a Spring Boot based REST API Service](extend-apiml/onboard-spring-boot-enabler.md). This is a bottom-up registration, where the z/OS service beneath the API Mediation Layer is "calling up into it" to indicate that it is ready to receive API requests and information for how it should be rendered on the API catalog.
+The API Gateway can be called by the server that wants to register REST APIs through a set of API calls to the API Gateway. To do this, the z/OS server needs to know where the API Gateway is located and make API calls to register or un-register itself. The API Gateway location can be within the z/OS server itself, but more typically registration is performed by introducing a microservice that registers to the API Mediation Layer on behalf of an existing z/OS Service, acting as a registration broker. The coding pattern for the microservice is to create a Java Spring Boot server. This process of registration is bottom-up, whereby the z/OS service beneath the API Mediation Layer is "calling up into it" to indicate that the z/OS service is ready to receive API requests and information for how this service should be rendered in the API Catalog.
 
-The Zowe z/OS started task `ZWESVSTC` that launches the Zowe address spaces allows for extra USS microservices to work on the same lifecycle, so that they start together with Zowe and end when the Zowe started task stops. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md). You can use this, for example, to start and stop a dynamic APIML Spring Boot micro service that provides its own APIs or acts as a broker to register APIs on behalf of an existing z/OS server.
+**Note:** For more information, see [Onboarding a Spring Boot based REST API Service](extend-apiml/onboard-spring-boot-enabler.md). 
+
+The Zowe z/OS started task `ZWESVSTC` that launches the Zowe address spaces allows for extra USS microservices to work on the same lifecycle, so that they start together with Zowe and end when the Zowe started task stops. For more information, see [Lifecycling with Zowe](lifecycling-with-zwesvstc.md). You can use this feature, for example, to start and stop a dynamic API ML Spring Boot micro-service that provides its own APIs or acts as a broker to register APIs on behalf of an existing z/OS server.
 
 ### Static API registration
 
-Instead of having the API service calling up to the API Mediation Layer, it is possible to tell the API Mediation Layer about an API service by giving it a static file with details of the z/OS API service.  This is referred to in the documentation as being able to onboard without code changes, because there is no need to modify the existing API service to have it call up to the API Mediation Layer, or introduce a Spring Boot micro service to do this on its behalf. For more information, see [Onboard a REST API without code changes required](extend-apiml/onboard-static-definition.md).
+Instead of the API service calling up to the API Mediation Layer, it is possible to tell the API Mediation Layer about an API service by giving it a static file with details of the z/OS API service.  Zowe documentation refers to this form of registration as onboarding without code changes. In this registration method there is no need to modify the existing API service to have the service call up to the API Mediation Layer, or introduce a Spring Boot micro-service to make this call on its behalf. For more information, see [Onboard a REST API without code changes required](extend-apiml/onboard-static-definition.md).
 
 ## Adding a plug-in to the Zowe Desktop
 
