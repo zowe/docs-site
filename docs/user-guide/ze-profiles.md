@@ -117,7 +117,9 @@ For more information, see [Integrating with API Mediation Layer](https://docs.zo
 
 If the token for your base profile is no longer valid, you can log in again to get a new token with the Log in to API Mediation Layer feature.
 
-Follow these steps:
+**Note:** The feature is only available for base profiles.
+
+**Follow these steps:**
 
 1. Open Zowe Explorer.
 2. Right-clikc your profile.
