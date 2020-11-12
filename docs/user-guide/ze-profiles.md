@@ -91,7 +91,7 @@ The credentials of your newly created or existing profiles are now stored secure
 
 As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate via Zowe API Mediation Layer. You can use base profiles with more than one service profile. For more information, see [Base Profiles](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#base-profiles).
 
-Before you log in and connect your service profile, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v6.16 or higher installed. 
+Before you log in and connect your service profile, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v6.16 or higher installed.
 
 ### Access services through API ML with SSO
 
@@ -101,7 +101,7 @@ Connect your service profile with a base profile and token.
 
 1. Open Zowe CLI and run the following command: `zowe auth login apiml`.
 
-2. Follow the instructions to complete the login.
+2. Follow the instructions to complete the login process.
 
    A local base profile is created that contains your token. For more information about the process, see [Token Management](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#how-token-management-works).
   
@@ -112,3 +112,17 @@ Connect your service profile with a base profile and token.
    The profile appears in the tree and you can now use this profile to access z/OSMF via the API Mediation Layer.
 
 For more information, see [Integrating with API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#integrating-with-api-mediation-layer).
+
+### Log in to API Mediation Layer
+
+If the token for your base profile is no longer valid, you can log in again to get a new token with the Log in to API Mediation Layer feature.
+
+Follow these steps:
+
+1. Open Zowe Explorer.
+2. Right-clikc your profile.
+3. Select the **Log in to API Mediation Layer** option.
+
+   You will be prompted to enter your username and password beforehand.
+
+The token is stored in the default base profile .yaml file.
