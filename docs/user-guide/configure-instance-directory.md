@@ -167,7 +167,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 The high availability (HA) feature of Zowe is under development and has not been fully delivered.  The following values are work in progress towards HA capability. They are not used and will be documented in more detail once HA support is finalized in a future Zowe release. 
 
-- `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_
+- `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`. 
 - `ZWE_CACHING_SERVICE_PORT=7555`: _(Work in progress)_ This port is not yet used so the value does not need to be availale.
 - `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: _(Work in progress)_
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_

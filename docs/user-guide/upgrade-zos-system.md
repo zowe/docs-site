@@ -23,26 +23,15 @@ A Zowe instance directory is created using the script `zowe-configure-instance.s
 
 After installing a new version of Zowe, the new runtime will either be in the same directory as the previous version, for example, `/usr/lpp/zowe` if SMP/E has been used, or else may be in a different directory, for example, `~/zowe/zowe-r.M.m` if using a convenience build installation.
 
-In both situations, you can keep and reuse the instance directory that is used for the previous version of Zowe to launch the new version of Zowe. To do this, run the script `zowe-configure-instance.sh` from the new `<RUNTIME_DIR>/bin` directory with the `-c` argument pointing to the location of the existing instance directory. This is the same method used to create an instance directory with default values in an empty target directory, however if `-c` argument is a pre-existing instance directory rather than wiping and creating fresh contents, the contents are updated.  This includes updating the `manifest.json` file in the instance directory allowing you to see the version that an instance was last configured from.  In addition, new values with their defaults may be added to the existing `instance.env` file as new releases of Zowe offer new configuration options.  Options previously changed from their default, such as port values or locations of dependent runtimes, are not modified.
+In both situations, you can keep and reuse the instance directory that is used for the previous version of Zowe to launch the new version of Zowe. To do this, run the script `zowe-configure-instance.sh` from the new `<RUNTIME_DIR>/bin` directory with the `-c` argument pointing to the location of the existing instance directory. This is the same method used to create an instance directory with default values in an empty target directory, however if `-c` argument is a pre-existing instance directory rather than wiping and creating fresh contents, the contents are updated.  In the situation where the previous instance directory was created from a different runtime directory, the `ROOT_DIR=` value in `instance.env` will be updated to reference the `<RUNTIME_DIR>` from which `zowe-configure-instance.sh` was executed.  In addition the `manifest.json` file in the instance directory will be updated with the `"version:"` of the `<RUNTIME_DIR>`.  This can be used as a way to see the Zowe version that an instance was last configured from, see [Check the Zowe releae number](../troubleshoot/troubleshoot-zowe-release/md#check-the-zowe-release-number).  
+
+The `zowe-configure-instance.sh` script will detect if there are new configuration values that have been introduced since the instance directory was last created, and append these to `instance.env` with default values.  New values added will be echoed in the shell running the `zowe-configure-instance.sh` script, and are be described in [Reviewing the instance.env file](./configure-instance-directory.md#reviewing-the-instance.env-file).  Values in `instance.env` previously changed from their default, such as port values or locations of dependent runtimes, are not modified.
 
 The `zowe-configure-instance.sh` script will echo any values that are added to the `instance.env` file.
 
 ```
 Missing properties that will be appended to /u/winchj/zowe-instance/instance.env:
 ```
-
-A Zowe instance directory `instance.env` file points to the `RUNTIME_DIR` directory used to launch a Zowe instance with the value `ROOT_DIR`.  This directory is **NOT** updated by `zowe-configure-instance.sh` so you need to update it manually. See [Reviewing the instance.env file](./configure-instance-directory.md#comopnent-prerequisites) for more information.
-
-An example of this scenario is as follows:
-
-- Zowe 1.12.0 is installed to `/u/myuser/zowe/zowe-1.12.0` as a convenience build and the script `/u/myuser/zowe/zowe-1.12.0/bin/zowe-configure-instance.sh -c /u/myuser/zowe-instance-dir` is executed.  The `/u/myuser/zowe-instance-dir/instance.env` file will point to the runtime directory from which it was created, for example, `ROOT_DIR=/u/myuser/zowe/zowe-1.12.0`.
-- Zowe 1.16.0 is installed to `/u/myuser/zowe/zowe-1.16.0`.  In order to reuse the same instance directory that has been customized, the script `/u/myuser/zowe/zowe-1.16.0/bin/zowe-configure-instance.sh -c /u/myuser/zowe-instance-dir` is executed.  If the script `/u/myuser/zowe-instance-dir/bin/zowe-start.sh` is executed to launch Zowe because the `ROOT_DIR` value has not been changed, the 1.12 release is started and not the new 1.16 release.  To resolve this, update `/u/myuser/zowe-instance-dir/instance.env` value `ROOT_DIR=/u/myuser/zowe/zowe.1.12.0` to be `ROOT_DIR=/u/myuser/zowe/zowe.1.16.0`.
-
-```
-ROOT_DIR=<fully qualified path to Zowe runtime directory>
-```
-
-If the `ROOT_DIR` value is not updated and the directory it points to is removed, then `zowe-start.sh` will fail with the error `<RUNTIME_DIRECTORY>/scripts/internal/opercmd: ./zowe-start.sh 6: FSUM7351 not found`. See [Unable to launch Zowe with { FSUM7351 }](../troubleshoot/troubleshoot-zos.md#unable-to-launch-zowe-with--fsum7351-).
 
 ## Updating the PROCLIB members
 
@@ -68,7 +57,7 @@ The contents of `ZWESECUR` do not usually get updated between Zowe releases, so 
 
 When the previous release of Zowe was configured, a keystore directory would have been created.  This would either contain the Zowe certificate, or else reference a SAF keyring that contains the Zowe certificate. See [Configuring Zowe certificates](./configure-certificates.md).  The USS keystore directory is created using the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` that is delivered with the new Zowe release, and creates the USS file `<KEYSTORE_DIRECTORY/zowe-setup-certificates.env` containing key value parameters used by the Zowe runtime to locate its certificate.  
 
-Typically, the `<KEYSTORE_DIRECTORY>` is compatible with later versions and can be used when moving forward to a new Zowe release.  There are situations when new functionality is introduced into a Zowe release when new key values pairs may be introduced to the `<KEYSTORE_DIRECTORY>/zowe-setup-certificates.env` file, in which case the new release will describe the new functionality in its HOLDDATA (for SMP/E) or release notes.  If this occurs, it will be necessary to create a new `KEYSTORE_DIRECTORY` in order to use the new functionality.  This was the case when Zowe 1.13 introduced support for storing certificates in a SAF keyring.  
+Typically, the `<KEYSTORE_DIRECTORY>` is compatible with later versions and can be used when moving forward to a new Zowe release.  There are situations when new functionality is introduced into a Zowe release when new key values pairs may be introduced to the `<KEYSTORE_DIRECTORY>/zowe-setup-certificates.env` file, in which case the new release will describe the new functionality in its HOLDDATA (for SMP/E) or release notes.  If this occurs, it will be necessary to create a new `KEYSTORE_DIRECTORY` in order to use the new functionality.  This was the case when Zowe 1.15 introduced support for storing certificates in a SAF keyring.  
 
 Zowe provides a JCL member `SZWESAMP(ZWEKRING)` to create the keystore and populate it with the Zowe certificate. Unless instructed by the HOLDDATA or release notes, there is no need to re-create the keystore or certificate and ones used with previous Zowe releases can be reused.  
 
