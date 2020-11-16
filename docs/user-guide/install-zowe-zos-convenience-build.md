@@ -132,6 +132,8 @@ Member name | Purpose
 ---|---
 ZWESECUR | JCL member to configure z/OS user IDs and permissions required to run Zowe
 ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.
+ZWEKRING | JCL member to configure a z/OS keyring containing the Zowe certificate
+ZWENOKYR | JCL member to undo the configuration steps performed in ZWEKRING
 ZWESVSTC | JCL to start Zowe
 ZWEXMSTC | JCL to start the Zowe cross memory server
 ZWESIP00 | Parmlib member for the cross memory server
