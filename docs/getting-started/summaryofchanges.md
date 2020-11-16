@@ -33,8 +33,14 @@ Zowe Version 1.17.0 and later releases include the following enhancements, relea
 
 **z/OSMF workflow for configuring Cross Memory Server**
 
-You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](../user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server).
+You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](../user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server)
+.
 
+**Zowe Client SDKs**
+
+Announcing the availability of a new Zowe incubation project - the Zowe Client SDKs (Software Development Kits)! Available for Node.js, Python, and Swift programming languages; you can leverage these SDKs to rapidly develop off-platform applications and automation.
+
+Learn more about the Node.js and Python SDKs on the [Zowe Docs Site](https://docs.zowe.org/stable/user-guide/sdks-using.html). For information about the Swift SDK, refer to the [Swift SDK Readme](https://github.com/zowe/zowe-client-swift-sdk).
 
 ### New features and enhancements
 
@@ -53,16 +59,16 @@ The following features and enhancements were added.
 - Setting `APIML_DEBUG_MODE_ENABLED` in `instance.env` is properly passed on to the all API ML services. [#901](https://github.com/zowe/api-layer/issues/901)
 
 #### Zowe App Server
-<!--Pulled from 
+<!--Pulled from
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 - ZSS no longer requires NodeJS for its configure.sh script.
-- Add support for DER encoded X.509 certificates. 
+- Add support for DER encoded X.509 certificates.
 
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.0, 6.24.1, 6.24.2, 6.24.3. -->
-<!-- Imperative CLI Framewor: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Last release is 4.8.1. No change since that.-->
+<!-- Imperative CLI Framework: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Last release is 4.8.1. No change since that.-->
 <!-- Secure Credential Store Plug-in: Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history. Includes 4.1.1.  -->
 <!-- CICS plug-in: Pulled from https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md. No changes.-->
 <!-- DB2 plug-in: Pulled from https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md. Inlcudes 4.0.7. -->
@@ -70,6 +76,7 @@ https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 <!-- No changes to other plug-ins. -->
 
 The following enhancements were added to the **core CLI**:
+- Zowe CLI was tested and confirmed to be compatible with Node.js LTS versions, including Node.js v14.
 - Published the APIs in Zowe CLI as separate SDK packages. [#750](https://github.com/zowe/zowe-cli/issues/750)
 - The "@zowe/cli" package still includes both API and CLI methods. In addition, the following SDK packages are now available:
   - @zowe/provisioning-for-zowe-sdk
@@ -82,8 +89,14 @@ The following enhancements were added to the **core CLI**:
   - @zowe/zosmf-for-zowe-sdk
   - @zowe/core-for-zowe-sdk
 
-The following enhancements were added to the **Secure Credential Store Plug-in**:
-- Updated the Keytar dependency to v6 to support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+The following enhancement was added to the **Imperative CLI Framework**:
+- Enhancement: Expose the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
+
+The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
+- Updated the Keytar dependency to v6, which enables support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+
+The following enhancement was made to enable Node.js v14 support for the **IBM Db2 Plug-in**:
+- Added support for Node.js v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 #### Zowe Explorer
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date. Includes 1.10.0, 1.10.1 changes.-->
@@ -102,22 +115,20 @@ The following features and enhancements were added to the **JES Explorer**:
 The following bugs were fixed.
 
 #### Zowe API Mediation Layer
-- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831) 
-- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853) 
+- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831)
+- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853)
 
 #### Zowe App Server
 <!--Pulled from https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md-->
 - Make use of external certificate authorities referenced during keystore setup time.
 - ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
 
-
 #### Zowe CLI
-The following bug was fixed in the **core CLI**: 
+The following bug was fixed in the **core CLI**:
 - Fixed incorrect syntax of example for `zowe files create data-set-vsam`. [#823](https://github.com/zowe/zowe-cli/issues/823)
 
-The following bug was fixed in the **IBM Db2 Plug-in**: 
-- Added support for Node v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
-
+The following bug was fixed in the **Imperative CLI Framework**:
+- Updated `opener` dependency due to command injection vulnerability on Windows. For more information, see [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener).
 
 ## Version 1.16.0 LTS (October 2020)
 
