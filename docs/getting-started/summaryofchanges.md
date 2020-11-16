@@ -33,7 +33,8 @@ Zowe Version 1.17.0 and later releases include the following enhancements, relea
 
 **z/OSMF workflow for configuring Cross Memory Server**
 
-You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](./user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server).
+You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](../user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server)
+.
 
 **Zowe Client SDKs**
 
@@ -75,7 +76,7 @@ https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 <!-- No changes to other plug-ins. -->
 
 The following enhancements were added to the **core CLI**:
-- Zowe CLI was tested and confirmed to be compatible with Node.js LTS versions, including Node v14.
+- Zowe CLI was tested and confirmed to be compatible with Node.js LTS versions, including Node.js v14.
 - Published the APIs in Zowe CLI as separate SDK packages. [#750](https://github.com/zowe/zowe-cli/issues/750)
 - The "@zowe/cli" package still includes both API and CLI methods. In addition, the following SDK packages are now available:
   - @zowe/provisioning-for-zowe-sdk
@@ -91,7 +92,7 @@ The following enhancements were added to the **core CLI**:
 The following enhancement was added to the **Imperative CLI Framework**:
 - Enhancement: Expose the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
 
-The following enhancement was made to enable Node.js v14 support for the **Secure Credential Store Plug-in**:
+The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
 - Updated the Keytar dependency to v6, which enables support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
 
 The following enhancement was made to enable Node.js v14 support for the **IBM Db2 Plug-in**:
