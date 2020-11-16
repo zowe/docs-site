@@ -33,7 +33,7 @@ Zowe Version 1.17.0 and later releases include the following enhancements, relea
 
 **z/OSMF workflow for configuring Cross Memory Server**
 
-You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server).
+You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](../user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server).
 
 
 ### New features and enhancements
@@ -53,11 +53,11 @@ The following features and enhancements were added.
 - Setting `APIML_DEBUG_MODE_ENABLED` in `instance.env` is properly passed on to the all API ML services. [#901](https://github.com/zowe/api-layer/issues/901)
 
 #### Zowe App Server
-<!--Pulled from 
+<!--Pulled from
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 - ZSS no longer requires NodeJS for its configure.sh script.
-- Add support for DER encoded X.509 certificates. 
+- Add support for DER encoded X.509 certificates.
 
 
 #### Zowe CLI
@@ -102,8 +102,8 @@ The following features and enhancements were added to the **JES Explorer**:
 The following bugs were fixed.
 
 #### Zowe API Mediation Layer
-- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831) 
-- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853) 
+- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831)
+- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853)
 
 #### Zowe App Server
 <!--Pulled from https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md-->
@@ -112,10 +112,10 @@ The following bugs were fixed.
 
 
 #### Zowe CLI
-The following bug was fixed in the **core CLI**: 
+The following bug was fixed in the **core CLI**:
 - Fixed incorrect syntax of example for `zowe files create data-set-vsam`. [#823](https://github.com/zowe/zowe-cli/issues/823)
 
-The following bug was fixed in the **IBM Db2 Plug-in**: 
+The following bug was fixed in the **IBM Db2 Plug-in**:
 - Added support for Node v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 
