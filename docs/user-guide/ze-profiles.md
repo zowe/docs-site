@@ -113,18 +113,22 @@ Connect your service profile with a base profile and token.
 
 For more information, see [Integrating with API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#integrating-with-api-mediation-layer).
 
-### Log in to API Mediation Layer
+### Log in to the Authentication Service
 
-If the token for your base profile is no longer valid, you can log in again to get a new token with the Log in to API Mediation Layer feature.
+If the token for your base profile is no longer valid, you can log in again to get a new token with the Log in to Authentication Service feature.
 
-**Note:** The feature is only available for base profiles.
+**Notes:**
+
+* The feature is only available for base profiles.
+* The feature supports only API Mediation Layer at the moment. Other extenders may use a different authentication service.
 
 **Follow these steps:**
 
 1. Open Zowe Explorer.
-2. Right-clikc your profile.
-3. Select the **Log in to API Mediation Layer** option.
+2. Right-click your profile.
+3. Select the **Log in to Authentication Service** option.
 
    You will be prompted to enter your username and password beforehand.
 
 The token is stored in the default base profile .yaml file.
+
