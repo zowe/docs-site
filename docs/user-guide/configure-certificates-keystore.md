@@ -174,13 +174,13 @@ Configure zowe-setup-certifcates.env using the following parameters. Both are re
    "ipAddresses": ["0.0.0.0"],
    "port": 0000
   },
-"jwt": {
+  "jwt": {
    "enabled": true,
    "fallback": false,
-   "token": "TOKEN.NAME",
-   "label": "KEY_NAME"
+​   "token": "TOKEN.NAME",
+​   "label": "KEY_NAME"
   },
-},
+ },
 ```
 
 ## Hints and tips
