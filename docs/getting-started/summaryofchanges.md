@@ -1,4 +1,4 @@
-# Release notes <!-- omit in toc -->
+# Release notes
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
@@ -38,9 +38,9 @@ You can now use the z/OSMF workflow to install, configure, and launch the cross 
 
 **Zowe Client SDKs**
 
-Announcing the availability of a new Zowe incubation project - the Zowe Client SDKs (Software Development Kits)! Available for Node.js, Python, and Swift programming languages; you can leverage these SDKs to rapidly develop off-platform applications and automation.
+A new Zowe incubation project - the Zowe Client SDKs (Software Development Kits) is now available for Node.js, Python, and Swift programming languages. You can leverage these SDKs to rapidly develop off-platform applications and automation.
 
-Learn more about the Node.js and Python SDKs on the [Zowe Docs Site](https://docs.zowe.org/stable/user-guide/sdks-using.html). For information about the Swift SDK, refer to the [Swift SDK Readme](https://github.com/zowe/zowe-client-swift-sdk).
+For more information about the Node.js and Python SDKs, see [Using Zowe SDKs](../user-guide/sdks-using.md). For more information about the Swift SDK, see the [Swift SDK Readme](https://github.com/zowe/zowe-client-swift-sdk).
 
 ### New features and enhancements
 
@@ -64,7 +64,7 @@ The following features and enhancements were added.
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 - ZSS no longer requires NodeJS for its configure.sh script.
-- Add support for DER encoded X.509 certificates.
+- Added support for DER encoded X.509 certificates.
 
 
 #### Zowe CLI
@@ -91,12 +91,12 @@ The following enhancements were added to the **core CLI**:
   - @zowe/core-for-zowe-sdk
 
 The following enhancement was added to the **Imperative CLI Framework**:
-- Enhancement: Expose the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
+- Exposed the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
 
 The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
-- Updated the Keytar dependency to v6, which enables support Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+- Updated the Keytar dependency to v6, which enables support for Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
 
-The following enhancement was made to enable Node.js v14 support for the **IBM Db2 Plug-in**:
+The following enhancement was made to enable support for Node.js v14 for the **IBM Db2 Plug-in**:
 - Added support for Node.js v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 #### Zowe Explorer
@@ -109,7 +109,7 @@ The following enhancement was made to enable Node.js v14 support for the **IBM D
 The following features and enhancements were added to the **JES Explorer**:
 
 - Added ability to refresh content of an open job output file via context menu entry on the job file [#549](https://github.com/zowe/zlux/issues/549)
-- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as per required by latest materail-ui version.
+- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as per required by latest material-ui version.
 
 ### Bug fixes
 
