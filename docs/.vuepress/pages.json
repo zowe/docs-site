@@ -59,6 +59,7 @@
           "user-guide/configure-zowe-zosmf-workflow.md",
           "user-guide/verify-zowe-runtime-install.md",
           "user-guide/configure-auxiliary-address-space.md",
+          "user-guide/upgrade-zos-system.md",
           "user-guide/stop-zowe-zos.md",
           "user-guide/zowe-zos-uninstall.md"
         ]
