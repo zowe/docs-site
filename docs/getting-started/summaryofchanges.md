@@ -65,6 +65,17 @@ https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 - ZSS no longer requires NodeJS for its configure.sh script.
 - Added support for DER encoded X.509 certificates.
+- Allow to change tag for all files in the directory excluding subdirectories
+Users are now able to change tags for all files in the directory excluding subdirectories. For example `POST /unixfile/chtag/u/user/tmp?codeset=1047&type=text&recursive=false` should change tags only for files in `u/user/tmp` without changing tags for files in subdirectories. [#176](https://github.com/zowe/zowe-common-c/pull/176)
+- Multiple enhancements in the Editor for USS file and directory actions, including: [#84](https://github.com/zowe/zlux-file-explorer/pull/84) [#102](https://github.com/zowe/zlux-file-explorer/pull/102) [#93](https://github.com/zowe/zlux-file-explorer/pull/93)
+
+  - The ability to cut, copy, & paste files into a directory, such as the currently active directory.
+  - Re-ordered context menu options.
+  - Improved error messages by including more detail. 
+  - Added support to see a files current tag and change it.
+  - Chown & Chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog. 
+
+
 
 
 #### Zowe CLI
@@ -123,6 +134,8 @@ The following bugs were fixed.
 <!--Pulled from https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md-->
 - Make use of external certificate authorities referenced during keystore setup time.
 - ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
+- Bugfix: In previous versions, external certificate authorities were not registered with the app server properly and would sometimes contribute to a SELF_SIGNED_CERT_IN_CHAIN error when using the mediation layer. This issue has been resolved by adding external CA certs to the app-server CA array. [#138](https://app.zenhub.com/workspaces/community-5c93e02fa70b456d35b8f0ed/issues/zowe/zlux-app-server/138)
+- 
 
 #### Zowe CLI
 The following bug was fixed in the **core CLI**:
