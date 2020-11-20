@@ -447,8 +447,8 @@ In return, you receive the `ZaasToken` Object in JSON format.
 
 This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
 
-The `query` method is overloaded so you can provide the `HttpServletRequest` object that contains the token in the `apimlAuthenticationToken`
-cookie or in an Authorization header, and then receive the `ZaasToken` Object in JSON format.
+The `query` method is overloaded, so you can provide the `HttpServletRequest` object that contains the token in the `apimlAuthenticationToken`
+cookie or in an Authorization header. You then receive the `ZaasToken` Object in JSON format.
 
 ```java
 ZaasToken query(HttpServletRequest request) throws ZaasClientException;
