@@ -14,8 +14,11 @@
         "link": "getting-started/summaryofchanges.md"
       },
       {
-        "text": "Zowe CLI quick start",
-        "link": "getting-started/cli-getting-started.md"
+        "text": "Zowe quick start",
+        "items": [
+          "getting-started/cli-getting-started.md",
+          "getting-started/userroadmap-zowe-cli.md"
+        ]
       },
       {
         "text": "Zowe FAQs",

@@ -53,10 +53,10 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   <div class="solutionBox feature" style="height:340px">
       <div>
         <p><img src="./images/common/component.svg" alt="Component" style="height:40px; border-style: none"/> <strong>Which components are you interested in?</strong></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe API Mediation Layer</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe CLI</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
+        <p><a href="./getting-started/userroadmap-zowe-cli.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Client SDKs</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Mobile</a></p>
       </div>
@@ -147,15 +147,10 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <h3>Feedback</h3>
     <p>Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub, communicating with the community on Slack, or leaving comments when a **How are we doing?** window pops up.</p>
   </div>
-  <div class="solutionBox feature" style="height:140px">
+  <div>
   <a href="https://github.com/zowe/docs-site/issues">Create a GitHub issue</a>
   </div>
-  <div class="solutionBox feature" style="height:140px">
+  <div>
   <a href="https://github.com/zowe/docs-site/issues">Connect with the community on Slack</a>
   </div>
 </div>
-
-<!-->
-We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
-
-[Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update) -->
