@@ -71,9 +71,9 @@ Users are now able to change tags for all files in the directory excluding subdi
 
   - The ability to cut, copy, & paste files into a directory, such as the currently active directory.
   - Re-ordered context menu options.
-  - Improved error messages by including more detail. 
+  - Improved error messages by including more detail.
   - Added support to see a files current tag and change it.
-  - Chown & Chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog. 
+  - Chown & Chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog.
 
 
 
@@ -88,8 +88,8 @@ Users are now able to change tags for all files in the directory excluding subdi
 <!-- No changes to other plug-ins. -->
 
 The following enhancements were added to the **core CLI**:
-- Zowe CLI was tested and confirmed to be compatible with Node.js LTS versions, including Node.js v14.
-- Published the APIs in Zowe CLI as separate SDK packages. [#750](https://github.com/zowe/zowe-cli/issues/750)
+- Zowe CLI was tested and confirmed to be compatible with Node.js v14.
+- Published the programmatic interfaces in Zowe CLI as separate Software Development Kits (SDKs). [#750](https://github.com/zowe/zowe-cli/issues/750)
 - The "@zowe/cli" package still includes both API and CLI methods. In addition, the following SDK packages are now available:
   - @zowe/provisioning-for-zowe-sdk
   - @zowe/zos-console-for-zowe-sdk
@@ -105,10 +105,10 @@ The following enhancement was added to the **Imperative CLI Framework**:
 - Exposed the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
 
 The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
-- Updated the Keytar dependency to v6, which enables support for Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+-  Enabled support on Node.js v14 by updating Keytar dependency to v6. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
 
 The following enhancement was made to enable support for Node.js v14 for the **IBM Db2 Plug-in**:
-- Added support for Node.js v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
+- Enabled support for Node.js v14 by updating dependencies. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 #### Zowe Explorer
 <!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date. Includes 1.10.0, 1.10.1 changes.-->
@@ -135,11 +135,11 @@ The following bugs were fixed.
 - Make use of external certificate authorities referenced during keystore setup time.
 - ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
 - Bugfix: In previous versions, external certificate authorities were not registered with the app server properly and would sometimes contribute to a SELF_SIGNED_CERT_IN_CHAIN error when using the mediation layer. This issue has been resolved by adding external CA certs to the app-server CA array. [#138](https://app.zenhub.com/workspaces/community-5c93e02fa70b456d35b8f0ed/issues/zowe/zlux-app-server/138)
-- 
+-
 
 #### Zowe CLI
 The following bug was fixed in the **core CLI**:
-- Fixed incorrect syntax of example for `zowe files create data-set-vsam`. [#823](https://github.com/zowe/zowe-cli/issues/823)
+- Fixed incorrect syntax of example for `zowe files create data-set-vsam` in the help. [#823](https://github.com/zowe/zowe-cli/issues/823)
 
 The following bug was fixed in the **Imperative CLI Framework**:
 - Updated `opener` dependency due to command injection vulnerability on Windows. For more information, see [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener).
