@@ -35,67 +35,127 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
 </div>
 
-## Downloadable PDF Files
+<div class="features">
+  <div class="feature">
+    <h3>Discover your path</h3>
+    <p>Whether you're just starting or an experienced professional, the roadmap helps you arrive at your goals faster.</p>
+  </div>
+  <div class="solutionBox feature" style="height:340px">
+      <div>
+        <p><img src="./images/common/user.svg" alt="User role" style="height:40px"/> <strong> What roles are you interested in?</strong></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">User</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Consumer</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extender</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contributor</a></p>
+      </div>
+    </a>
+  </div>
+  <div class="solutionBox feature" style="height:340px">
+      <div>
+        <p><img src="./images/common/component.svg" alt="Component" style="height:40px; border-style: none"/> <strong>Which components are you interested in?</strong></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe API Mediation Layer</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe CLI</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Client SDKs</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Mobile</a></p>
+      </div>
+    </a>
+  </div>
+</div>
 
-### Zowe documentation
+<div class="features">
+  <div class="feature">
+    <h3>Featured topics</h3>
+  </div>
+  <div class="solutionBox feature">
+      <div>
+        <p class="bx--type-caption">
+         <ul>
+         <li><a href="./appendix/tpsr.html">Zowe Application Framework</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe API Mediation Layer</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe CLI</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Explorer</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Client SDKs (under development)</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Mobile (under development)</a></li>
+         </ul>
+        </p>
+      </div>
+    </a>
+  </div>
+  <div class="solutionBox feature">
+      <div>
+        <p class="bx--type-caption">
+         <ul>
+         <li><a href="./appendix/tpsr.html">Zowe Application Framework</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe API Mediation Layer</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe CLI</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Explorer</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Client SDKs (under development)</a></li>
+         <li><a href="./appendix/tpsr.html">Zowe Mobile (under development)</a></li>
+         </ul>
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.17.0.
+<section class="solutionBoxContainer features">
+<h3>Downloadable doc</h3>
+  <div class="solutionBox feature">
+      <p><strong>Zowe Release Doc</strong></p>
+      <p>You can download the Version 1.x.x Zowe documentation in PDF format. The latest version on this website is 1.17.0.
+      <ul>
+         <li><a href="https://docs.zowe.org/stable/Zowe_Documentation.pdf">V1.17.0 PDF</a></li>
+         <li><a href="./appendix/tpsr.html">Previous Releases PDF</a></li>
+      </ul>
+      </p>
+      <p><strong>Zowe Overview Deck</strong></p>
+      <p>The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
+      <ul>
+         <li><a href="https://github.com/zowe/community/tree/master/ppt_templates">Download</a></li>
+      </ul>
+      </p>
+  </div>
 
-**[V1.17.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
-**[V1.16.0](./Zowe_Documentation_1.16.0.pdf)** |
-**[V1.15.0](./Zowe_Documentation_1.15.0.pdf)** |
-**[V1.14.0](./Zowe_Documentation_1.14.0.pdf)** |
-**[V1.13.0](./Zowe_Documentation_1.13.0.pdf)** |
-**[V1.12.0](./Zowe_Documentation_1.12.0.pdf)** |
-**[V1.11.0](./Zowe_Documentation_1.11.0.pdf)** |
-**[V1.10.0](./Zowe_Documentation_1.10.0.pdf)** |
-**[V1.9.0](./Zowe_Documentation_1.9.0.pdf)** |
-**[V1.8.0](./Zowe_Documentation_1.8.0.pdf)** |
-**[V1.7.x](https://docs.zowe.org/v1-7-x/Zowe_Documentation.pdf)** |
-**[V1.6.0](https://docs.zowe.org/v1-6-x/Zowe_Documentation.pdf)** |
-**[V1.5.0](https://docs.zowe.org/v1-5-x/Zowe_Documentation.pdf)** |
-**[V1.4.0](https://docs.zowe.org/v1-4-x/Zowe_Documentation.pdf)** |
-**[V1.3.0](https://docs.zowe.org/v1-3-x/Zowe_Documentation.pdf)** |
-**[V1.2.0](https://docs.zowe.org/v1-2-x/Zowe_Documentation.pdf)** |
-**[V1.1.0](https://docs.zowe.org/v1-1-x/Zowe_Documentation.pdf)** |
-**[V1.0.x](https://docs.zowe.org/v1-0-x/Zowe_Documentation.pdf)**
+  <div class="solutionBox feature">
+      <p><strong>Zowe CLI Command Reference</strong></p>
+      <p>View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@zowe-v1-lts` version of the CLI. A PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:<ul>
+         <li><a href="./web_help/index.html">Browse Online</a></li>
+         <li><a href="./CLIReference_Zowe.pdf">Download PDF</a></li>
+         <li><a href="./zowe_web_help.zip">Download ZIP</a></li>
+      </ul></p>
+  </div>
+  <div class="solutionBox feature">
+      <p><strong>Client SDK reference guides</strong></p>
+      <p>Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
+      </p>
+      <p><b>Node.js SDK</b><ul>
+         <li><a href="./typedoc/index.html">Browse Node.js SDK Reference (Online)</a></li>
+         <li><a href="./zowe-node-sdk-typedoc.zip">Download Node SDK Reference (ZIP)</a></li>
+      </ul></p>
+      <p><b>Python SDK</b><ul>
+         <li><a href="https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html">Browse Python SDK Reference (Online)</a></li>
+         <li><a href="https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/">Download Python SDK Reference (ZIP)</a></li>
+      </ul></p>
+  </div>
 
-### Zowe CLI command reference guides
+</section>
 
-View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@zowe-v1-lts` version of the CLI. A PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:
+<div class="features">
+  <div class="feature">
+    <h3>Feedback</h3>
+    <p>Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub, communicating with the community on Slack, or leaving comments when a **How are we doing?** window pops up.</p>
+  </div>
+  <div class="solutionBox feature" style="height:140px">
+  <a href="https://github.com/zowe/docs-site/issues">Create a GitHub issue</a>
+  </div>
+  <div class="solutionBox feature" style="height:140px">
+  <a href="https://github.com/zowe/docs-site/issues">Connect with the community on Slack</a>
+  </div>
+</div>
 
-<p class="action">
-<a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse CLI Reference (Online)</span></a>
-<a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
-<a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
-</p>
-
-### Zowe Client SDK reference guides
-
-Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
-
-<p class="action">
-<a href="./typedoc/index.html" target="_blank" class="nav-link action-button"> <span>Browse Node.js SDK Reference (Online)</span></a>
-<a href="./zowe-node-sdk-typedoc.zip" class="nav-link action-button"> <span>Download Node SDK Reference (ZIP)</span></a>
-</p>
-
-<p class="action">
-<a href="https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html" target="_blank" class="nav-link action-button"> <span>Browse Python SDK Reference (Online)</span></a>
-<a href="https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/" class="nav-link action-button"> <span>Download Python SDK Reference (ZIP)</span></a>
-</p>
-
-### Zowe overview deck
-
-A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
-
-[Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
-
-## Feedback
-
-Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
-
-[Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
-
+<!-->
 We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
 
-[Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update)
+[Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update) -->
