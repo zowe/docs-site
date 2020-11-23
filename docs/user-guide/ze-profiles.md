@@ -115,7 +115,7 @@ For more information, see [Integrating with API Mediation Layer](https://docs.zo
 
 ### Log in to the Authentication Service
 
-If the token for your base profile is no longer valid, you can log in again to get a new token with the Log in to Authentication Service feature.
+If the token for your base profile is no longer valid, you can log in again to get a new token with the **Log in to Authentication Service** feature.
 
 **Notes:**
 
@@ -132,3 +132,12 @@ If the token for your base profile is no longer valid, you can log in again to g
 
 The token is stored in the default base profile .yaml file.
 
+If you do not want to store your token, request from the server to end the session of your token. Use the **Log in to Authentication Service** feature to invalidate the token.
+
+**Follow these steps:**
+
+1. Open Zowe Explorer.
+2. Right-click your profile.
+3. Select the **Log out from Authentication Service** option.
+
+Your token has been successfully invalidated.
