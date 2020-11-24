@@ -105,7 +105,7 @@ The following enhancement was added to the **Imperative CLI Framework**:
 - Exposed the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
 
 The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
--  Enabled support on Node.js v14 by updating Keytar dependency to v6. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+- Enabled support on Node.js v14 by updating Keytar dependency to v6. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
 
 The following enhancement was made to enable support for Node.js v14 for the **IBM Db2 Plug-in**:
 - Enabled support for Node.js v14 by updating dependencies. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
@@ -135,7 +135,6 @@ The following bugs were fixed.
 - Make use of external certificate authorities referenced during keystore setup time.
 - ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
 - Bugfix: In previous versions, external certificate authorities were not registered with the app server properly and would sometimes contribute to a SELF_SIGNED_CERT_IN_CHAIN error when using the mediation layer. This issue has been resolved by adding external CA certs to the app-server CA array. [#138](https://app.zenhub.com/workspaces/community-5c93e02fa70b456d35b8f0ed/issues/zowe/zlux-app-server/138)
--
 
 #### Zowe CLI
 The following bug was fixed in the **core CLI**:
