@@ -48,7 +48,7 @@ APF authorize the PDSE `SZWESAUTH`.  This allows the SMP/E APPLY and RESTORE job
 
 Do not add the `SZWEAUTH` data set to the system LNKLIST or LPALST concatenations.  
 
-To check whether a load library is APF-authorized, you can issue the following TSO command:
+To check whether a load library is APF-authorized, you can issue the following command:
 
 ```
 D PROG,APF,DSNAME=hlq.SISLOAD

@@ -6,7 +6,7 @@ Zowe provides UNIX shell scripts to assist with installation and configuration f
 
 ## Zowe z/OS components
 
-The script `<ROOT_DIR>/scripts/utils/zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib> -l <log_directory]` has the following parameters:
+The script `<RUNTIME_DIR>/scripts/utils/zowe-install-proc.sh -d <dataSetPrefix> [-r <proclib> -l <log_directory]` has the following parameters:
 
 - **`-d <dataSetPrefix>`** - Source PDS Prefix
 
@@ -31,7 +31,7 @@ The script `<ROOT_DIR>/scripts/utils/zowe-install-proc.sh -d <dataSetPrefix> [-r
 
 ## Cross memory and auxiliary server 
 
-The script `<ROOT_DIR>/scripts/utils/zowe-install-xmem.sh -d <dataSetPrefix> [-a <parmlib>] [-r <proclib] [-l <log_directory]` has the following parameters.
+The script `<RUNTIME_DIR>/scripts/utils/zowe-install-xmem.sh -d <dataSetPrefix> [-a <parmlib>] [-r <proclib] [-l <log_directory]` has the following parameters.
 
 - **`-d <dataSetPrefix>`** - Source PDS prefix.
   

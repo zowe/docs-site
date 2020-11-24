@@ -31,7 +31,7 @@ The following tutorials are available in Github.
 - **User Browser Workshop App**
 
    :::tip Github Repo:
-   [User Browser Workshop App](https://github.com/zowe/workshop-user-browser-app/README.md)
+   [User Browser Workshop App](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md)
    :::
 
 - **Internationalization in Angular Templates in Zowe Application Server**
@@ -97,11 +97,11 @@ If you are running into issues, try these suggestions:
 
 _This sample is included as the first part of a tutorial detailing communication between separate Zowe apps._
 
-**It should be installed on your system before starting the [User Browser Workshop App Tutorial](https://github.com/zowe/workshop-user-browser-app/README.md)**
+**It should be installed on your system before starting the [User Browser Workshop App Tutorial](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md)**
 
 The App's scenario is that it has been opened to submit a task report to a set of users who can handle the task.
 In this case, it is a bug report. We want to find engineers who can fix this bug, but this App does not contain a directory listing for engineers in the company, so we need to communicate with some App that does provide this information.
 In this tutorial, you must build an App which is called by this App in order to list engineers, is able to be filtered by the office that they work from, and is able to submit a list of engineers which would be able to handle the task.
 
-After installing this app on your system, follow directions in the [User Browser Workshop App Tutorial](https://github.com/zowe/workshop-user-browser-app/README.md) to enable app-to-app communication.
+After installing this app on your system, follow directions in the [User Browser Workshop App Tutorial](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md) to enable app-to-app communication.
 
