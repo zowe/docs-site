@@ -335,21 +335,23 @@ This issue might occur when you use a Zowe version of 1.12.0 or later. To resolv
  
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
 
-### Browser unable to connect with CIPHER_MISMATCH errors
+### Browser unable to connect with a CIPHER error
 
 **Symptom:**
 
-When connecting to the API Mediation Layer the web browser throws an error that the site is unable to provide a secure connection because of a `CIPHER_MISMATCH`.  
+When connecting to the API Mediation Layer the web browser throws an error that the site is unable to provide a secure connection because of an error with ciphers.  
 
-The error shown varies depending on the browser.
+The error shown varies depending on the browser, e.g.
 
+For Google Chrome
 <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
 
-For Firefox it might be:
+For Mozilla Firefox
+<img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
 
 **Solutions:**
 
-Remove `GCM` as a disabled `TLS` alogorithm from the Java runtime being used by Zowe.  
+Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Zowe.  
 
 Locate the `$JAVA_HOME/lib/security/java.security` file.  The value of `$JAVA_HOME` can be found by looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
 
