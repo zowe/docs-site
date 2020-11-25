@@ -443,3 +443,42 @@ To do this, issue the following commands that are also included in the `ZWESECUR
 
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
+
+## Configure main Zowe server use identity mapping
+This security configuration is necessary for API ML to be able to map client certificate to zOS identity. User running API Gateway must have read access to RACF general resource called IRR.RUSERMAP in the FACILITY class. 
+This security setup is done by submitting `ZWESECUR` JCL member. For users upgrading from version 1.16 and lower, follow the configuration steps below.
+
+If you use RAFC, follow these steps to verify and update permission in FACILITY class.
+1. verify user `ZWESVUSR` has read access
+
+    ```
+    RLIST FACILITY IRR.RUSERMAP AUTHUSER
+    ```
+
+2. add user `ZWESVUSR` permission to read
+    ```
+    PERMIT IRR.RUSERMAP CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
+    ```
+3. activate changes
+    ```
+    SETROPTS RACLIST(FACILITY) REFRESH
+    ```
+If you use ACF2, follow these steps to verify and update permission in FACILITY class.
+1. verify user `ZWESVUSR` has read access
+    ```      
+    SET RESOURCE(FAC) 
+    LIST LIKE(IRR-)
+    ```    
+2. add user `ZWESVUSR` permission to read
+    ```
+    RECKEY IRR.RUSERMAP ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
+    ```
+If you use TSS, follow these steps to verify and update permission in FACILITY class.
+1. verify user `ZWESVUSR` has read access
+    ```      
+    TSS WHOHAS IBMFAC(IRR.RUSERMAP)
+    ```    
+2. add user `ZWESVUSR` permission to read
+    ```
+    TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
+    ```

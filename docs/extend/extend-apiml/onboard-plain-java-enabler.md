@@ -196,10 +196,16 @@ authentication:
 
  apiInfo:
      - apiId: org.zowe.sampleservice
-       version: v1
+       version: 1.0.0
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
        doumentationUrl: http://
+     - apiId: org.zowe.sampleservice
+       version: 2.0.0
+       gatewayUrl: api/v2
+       swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc?group=api-v2
+       documentationUrl: http://
+       defaultApi: true
  catalog:
      tile:
          id: sampleservice
@@ -362,6 +368,7 @@ apiInfo:
     gatewayUrl: api/v1
     swaggerUrl: http://localhost:10021/sampleservice/api-doc
     documentationUrl: http://your.service.documentation.url
+    defaultApi: true
 ```
 
 where:
@@ -389,6 +396,11 @@ where:
 * **apiInfo.documentationUrl** (Optional)
 
      specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
+
+* **apiInfo.defaultApi** (Optional)
+
+    specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
+    with the highest api `version`.
 
 
 ### API routing information

@@ -32,7 +32,15 @@ _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to. 
 
 You can use SDSF to start Zowe. 
 
-If you issue the SDSF command `/S ZWESVSTC`, it will fail because the script needs to know the instance directory containing the configuration details.  
+If you issue the SDSF command `/S ZWESVSTC`, the JCL will need to know the instance directory containing the launch and configuration information.  To do this add the `INSTANCE` parameter on the START command when you start Zowe in SDSF:
+
+```
+/S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR',JOBNAME='ZWEXSV'
+```
+
+The `$ZOWE_INSTANCE_DIR` argument is the fully qualifed path to the USS directory containing the `instance.env` file containing the Zowe configuration.
+
+The `JOBNAME='ZWEXSV'` argument is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.
 
 If you have a default instance directory you want you always start Zowe with, you can tailor the JCL member `ZWESVSTC` at this line
 
@@ -41,11 +49,3 @@ If you have a default instance directory you want you always start Zowe with, yo
 ```
 
 to replace the `instance_directory` with the location of the Zowe instance directory that contains the configurable Zowe instance directory. 
-
-If the JCL value `instance-directory` is not specified in the JCL, in order to start the Zowe server from SDSF, you will need to add the `INSTANCE` parameter on the START command when you start Zowe in SDSF:
-
-```
-/S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR',JOBNAME='ZWEXSV'
-```
-
-The `JOBNAME='ZWEXSV'` is optional and the started task will operate correctly without it, however having it specified ensures that the address spaces will be prefixed with `ZWEXSV` which makes them easier to find in SDSF or locate in RMF records.

@@ -15,29 +15,20 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+1. Open the file `instance.env`.
 
-2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
-
-3. Find the line that contains the `LOG_LEVEL=` parameter and set the value to `debug`:
+2. Find the line that contains the `APIML_DEBUG_MODE_ENABLED=` parameter and set the value to `true`:
 
    ```
-    LOG_LEVEL=debug
+    APIML_DEBUG_MODE_ENABLED=true
    ```
+   By default debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
+   
+3. Restart Zowe&trade;.
 
-4. Restart Zowe&trade;.
+   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery Service).
 
-    You have enabled the debug mode.
-
-5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
-
-6. Disable the debug mode. Find the `LOG_LEVEL` parameter, and change its current value to the default `LOG_LEVEL=` one:
-    ```
-    LOG_LEVEL=
-    ```
-7. Restart Zowe.
-
-    You have disabled the debug mode.
+4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
 ## Change the Log Level of Individual Code Components
 

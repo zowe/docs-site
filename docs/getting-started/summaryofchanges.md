@@ -1,9 +1,10 @@
-# Release notes <!-- omit in toc -->
+# Release notes
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.16.0 and later releases include the following enhancements, release by release.
+Zowe Version 1.17.0 and later releases include the following enhancements, release by release.
 
+- [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
 - [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
@@ -25,6 +26,123 @@ Zowe Version 1.16.0 and later releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.17.0 LTS (November 2020)
+
+### Notable changes
+
+**z/OSMF workflow for configuring Cross Memory Server**
+
+You can now use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server. For more information, see [Configure Zowe Cross Memory Server with z/OSMF workflow](../user-guide/configure-zowe-zosmf-workflow.md#configure-zowe-cross-memory-server)
+.
+
+**Zowe Client SDKs**
+
+A new Zowe incubation project - the Zowe Client SDKs (Software Development Kits) is now available for Node.js, Python, and Swift programming languages. You can leverage these SDKs to rapidly develop off-platform applications and automation.
+
+For more information about the Node.js and Python SDKs, see [Using Zowe SDKs](../user-guide/sdks-using.md). For more information about the Swift SDK, see the [Swift SDK Readme](https://github.com/zowe/zowe-client-swift-sdk).
+
+### New features and enhancements
+
+The following features and enhancements were added.
+
+#### Zowe installation
+<!-- Pulled from https://github.com/zowe/zowe-install-packaging/blob/staging/CHANGELOG.md. Based on version number. Includes 1.17.0 changes.-->
+- You can now start ZSS independent from the Zowe Application Framework server by specifying the `LAUNCH_COMPONENT_GROUP "ZSS"`. If `DESKTOP` is specified instead of `ZSS`, ZSS will still be included as a prerequisite to the Application Framework server. [#1632](https://github.com/zowe/zowe-install-packaging/pull/1632)
+- Zowe instance configuration script (`zowe-configure-instance.sh`) can now skip checking for Node.js by passing in the `-s` flag since Node.js may not be needed if the components to be launched don't require it. [#1677](https://github.com/zowe/zowe-install-packaging/pull/1677)
+- The `run-zowe.sh` script can also skip the checking for Node.js by setting the environment variable `SKIP_NODE=1` for the cases where the components to be launched don't require Node.js.
+- Exported the `EXTERNAL_CERTIFICATE_AUTHORITIES` variable to the `zowe-certificates.env` file such that it may be used by the Application Framework server. [#1742](https://github.com/zowe/zowe-install-packaging/pull/1742)
+- A new documentation chapter [Upgrading the z/OS System for Zowe](../user-guide/upgrade-zos-system.md) has been included, that describes the steps to take when upgrading an existing Zowe installation.
+
+#### Zowe API Mediation Layer
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1170. Based on release number.-->
+- Multiple versions of one API are now presented in the Catalog if configured to do so. Users can now switch between different versions within the Catalog to see differences in API documentation between versions. [#844](https://github.com/zowe/api-layer/issues/844)
+- Setting `APIML_DEBUG_MODE_ENABLED` in `instance.env` is properly passed on to the all API ML services. [#901](https://github.com/zowe/api-layer/issues/901)
+
+#### Zowe App Server
+<!--Pulled from
+https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
+https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
+- ZSS no longer requires NodeJS for its configure.sh script.
+- Added support for DER encoded X.509 certificates.
+- Allow to change tag for all files in the directory excluding subdirectories
+Users are now able to change tags for all files in the directory excluding subdirectories. For example `POST /unixfile/chtag/u/user/tmp?codeset=1047&type=text&recursive=false` should change tags only for files in `u/user/tmp` without changing tags for files in subdirectories. [#176](https://github.com/zowe/zowe-common-c/pull/176)
+- Multiple enhancements in the Editor for USS file and directory actions, including: [#84](https://github.com/zowe/zlux-file-explorer/pull/84) [#102](https://github.com/zowe/zlux-file-explorer/pull/102) [#93](https://github.com/zowe/zlux-file-explorer/pull/93)
+
+  - The ability to cut, copy, & paste files into a directory, such as the currently active directory.
+  - Re-ordered context menu options.
+  - Improved error messages by including more detail. 
+  - Added support to see a files current tag and change it.
+  - Chown & Chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog. 
+
+
+
+
+#### Zowe CLI
+<!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.0, 6.24.1, 6.24.2, 6.24.3. -->
+<!-- Imperative CLI Framework: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Last release is 4.8.1. No change since that.-->
+<!-- Secure Credential Store Plug-in: Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history. Includes 4.1.1.  -->
+<!-- CICS plug-in: Pulled from https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md. No changes.-->
+<!-- DB2 plug-in: Pulled from https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md. Inlcudes 4.0.7. -->
+<!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Last release is 1.2.1, no changes since that. -->
+<!-- No changes to other plug-ins. -->
+
+The following enhancements were added to the **core CLI**:
+- Zowe CLI was tested and confirmed to be compatible with Node.js LTS versions, including Node.js v14.
+- Published the APIs in Zowe CLI as separate SDK packages. [#750](https://github.com/zowe/zowe-cli/issues/750)
+- The "@zowe/cli" package still includes both API and CLI methods. In addition, the following SDK packages are now available:
+  - @zowe/provisioning-for-zowe-sdk
+  - @zowe/zos-console-for-zowe-sdk
+  - @zowe/zos-files-for-zowe-sdk
+  - @zowe/zos-jobs-for-zowe-sdk
+  - @zowe/zos-tso-for-zowe-sdk
+  - @zowe/zos-uss-for-zowe-sdk
+  - @zowe/zos-workflows-for-zowe-sdk
+  - @zowe/zosmf-for-zowe-sdk
+  - @zowe/core-for-zowe-sdk
+
+The following enhancement was added to the **Imperative CLI Framework**:
+- Exposed the `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`. [#458](https://github.com/zowe/imperative/pull/458)
+
+The following enhancement was made to enable support for Node.js v14 for the **Secure Credential Store Plug-in**:
+- Updated the Keytar dependency to v6, which enables support for Node.js v14. [#28](https://github.com/zowe/zowe-cli-scs-plugin/issues/28)
+
+The following enhancement was made to enable support for Node.js v14 for the **IBM Db2 Plug-in**:
+- Added support for Node.js v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
+
+#### Zowe Explorer
+<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date. Includes 1.10.0, 1.10.1 changes.-->
+- Added Base Profile support. [#1037](https://github.com/zowe/vscode-extension-for-zowe/issues/1037).
+- Updated arguments to keep the order of precedence consistent between service and base profile. [#1055](https://github.com/zowe/vscode-extension-for-zowe/issues/1055).
+
+#### Zowe JES/MVS/USS Explorers
+<!-- JES Explorer <1.0.7> -->
+The following features and enhancements were added to the **JES Explorer**:
+
+- Added ability to refresh content of an open job output file via context menu entry on the job file [#549](https://github.com/zowe/zlux/issues/549)
+- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as per required by latest material-ui version.
+
+### Bug fixes
+
+The following bugs were fixed.
+
+#### Zowe API Mediation Layer
+- Improved returned information while logging out via logout on Gateway. [#831](https://github.com/zowe/api-layer/issues/831)
+- Updated API paths for the API ML in the API Catalog to use the service id in front. [#853](https://github.com/zowe/api-layer/issues/853)
+
+#### Zowe App Server
+<!--Pulled from https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md-->
+- Make use of external certificate authorities referenced during keystore setup time.
+- ZSS startup would issue warnings about failure to write yml files for APIML in the case APIML was not also being used.
+- Bugfix: In previous versions, external certificate authorities were not registered with the app server properly and would sometimes contribute to a SELF_SIGNED_CERT_IN_CHAIN error when using the mediation layer. This issue has been resolved by adding external CA certs to the app-server CA array. [#138](https://app.zenhub.com/workspaces/community-5c93e02fa70b456d35b8f0ed/issues/zowe/zlux-app-server/138)
+- 
+
+#### Zowe CLI
+The following bug was fixed in the **core CLI**:
+- Fixed incorrect syntax of example for `zowe files create data-set-vsam`. [#823](https://github.com/zowe/zowe-cli/issues/823)
+
+The following bug was fixed in the **Imperative CLI Framework**:
+- Updated `opener` dependency due to command injection vulnerability on Windows. For more information, see [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener).
 
 ## Version 1.16.0 LTS (October 2020)
 
