@@ -363,7 +363,8 @@ In `java.security` there is a parameter value for `jdk.tls.disabledAlgorithms`, 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
 ```
-This line may likely have a continuation characater `\` and be split across two lines due to its length.  
+
+**Note** This line may have a continuation characater `\` and be split across two lines due to its length.  
 
 Edit the parameter value to remove `GCM` from the list. 
 
