@@ -334,3 +334,42 @@ This issue might occur when you use a Zowe version of 1.12.0 or later. To resolv
 ```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
  
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
+
+### Browser unable to connect with CIPHER_MISMATCH errors
+
+**Symptom:**
+
+When connecting to the API Mediation Layer the web browser throws an error that the site is unable to provide a secure connection because of a `CIPHER_MISMATCH`.  
+
+The error shown varies depending on the browser.
+
+<img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+
+For Firefox it might be:
+
+**Solutions:**
+
+Remove `GCM` as a disabled `TLS` alogorithm from the Java runtime being used by Zowe.  
+
+Locate the `$JAVA_HOME/lib/security/java.security` file.  The value of `$JAVA_HOME` can be found by looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
+
+For example if `instance.env` contains the line
+
+```
+JAVA_HOME=`/usr/lpp/java/J8.0_64/
+```
+
+then the file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
+
+The value of `JAVA_HOME` can also be determined by inspecting the `SYSOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+
+In `java.security` there is a parameter value for `jdk.tls.disabledAlgorithms`, e.g.
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
+```
+This line may likely have a continuation characater `\` and be split across two lines due to its length.  
+
+Edit the parameter value to remove `GCM` from the list. 
+
+The `ZWESVSTC` started task will need to be restarted for the change to take effect.
