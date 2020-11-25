@@ -354,7 +354,7 @@ JAVA_HOME=`/usr/lpp/java/J8.0_64/
 
 then the file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
 
-The value of `JAVA_HOME` can also be determined by inspecting the `SYSOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+The value of `JAVA_HOME` can also be determined by inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
 
 In `java.security` there is a parameter value for `jdk.tls.disabledAlgorithms`, e.g.
 
