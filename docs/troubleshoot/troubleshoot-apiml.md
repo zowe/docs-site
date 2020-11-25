@@ -334,13 +334,15 @@ When connecting to the API Mediation Layer the web browser throws an error that 
 
 The error shown varies depending on the browser, e.g.
 
-For Google Chrome
+For Google Chrome:
+
 <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
 
-For Mozilla Firefox
+For Mozilla Firefox:
+
 <img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
 
-**Solutions:**
+**Solution:**
 
 Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Zowe.  
 
