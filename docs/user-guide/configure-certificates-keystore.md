@@ -177,10 +177,8 @@ Configure zowe-setup-certifcates.env using the following parameters. Both are re
   "jwt": {
    "enabled": true,
    "fallback": false,
-   "key": {
-​    "token": "TOKEN.NAME",
-​    "label": "KEY_NAME"
-   }
+​   "token": "TOKEN.NAME",
+​   "label": "KEY_NAME"
   },
  },
 ```

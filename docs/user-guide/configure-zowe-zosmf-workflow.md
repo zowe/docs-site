@@ -16,10 +16,11 @@ Ensure that you meet the following requirements before you start the Zowe config
 -  Installed Zowe with either SMP/E build or convenience build
 
 You can complete the following tasks with the z/OSMF workflows:
--  [Configure z/OS Security Manager to prepare for launching the Zowe started tasks](#configure-z-os-security-manager)
--  [Configure Zowe certificates](#configure-zowe-certificates)
-<!-- Commented out for next release: -Configure the Zowe Cross Memory Server-->
--  [Create and configure the Zowe instance directory and start the Zowe started task](#create-and-configure-the-zowe-instance-directory-and-start-the-zowe-started-task)
+
+- [Configure z/OS Security Manager to prepare for launching the Zowe started tasks](#configure-zos-security-manager)
+- [Configure Zowe certificates](#configure-zowe-certificates)
+- [Configure Zowe Cross Memory Server](#configure-zowe-cross-memory-server)
+- [Create and configure the Zowe instance directory and start the Zowe started task](#create-and-configure-the-zowe-instance-directory-and-start-the-zowe-started-task)
 
 ## Configure z/OS Security Manager 
 
@@ -64,10 +65,7 @@ Register the ZWEWRF05 member that is located `<pathPrefix>/files/workflows/ZWEWR
 
 After you execute these steps, the keystore and certificates are successfully generated based on the custom values. For general instruction on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 
-<!-- Commented out for next release>
-
 ## Configure Zowe Cross Memory Server 
-----------------------------------
 
 The Zowe cross memory server provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program. Multiple Zowe desktop instances can use the same cross memory server. Use the z/OSMF workflow to install, configure, and launch the cross memory server if you want to use the Zowe desktop. The z/OSMF workflow also lets you create APF-authorized load libraries that are required to install and configure the cross memory server.
 
@@ -87,24 +85,29 @@ Register the ZWEWRF06.xml workflow definition file that is located in `<pathPref
 
    Execute the step to populate the data sets that are allocated in the previous step with the necessary artifacts such as load modules, parmlib members and others. This step also copies the cross memory server STC to the proclib.
 
-4. **APF Authorize Load Library**
+4. **Add PPT entries to the system PARMLIB**
+   
+   The cross memory server and its auxiliary address spaces must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
+   ```PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP```
+   
+   The PDS member SZWESAMP contains the PPT lines for reference. Issue the following command to make the SCHEDxx changes effective.
+   ```/SET SCH=xx```
+   
+   For more information, see [Key 4 non-swappable](configure-xmem-server.md#key-4-non-swappable).
+
+5. **Retrieve the LOADLIB volume**
+
+   This step allows you to automatically retrieve the VOLUME for non-SMS LOADLIB. Run this step to retrieve the actual VOLUME of the LOADLIB.
+
+6. **APF Authorize Load Library**
 
    Creates APF-authorized load library that is required to install and configure the cross memory server. Execute the step to APF authorize the XMEM LOADLIB.
-
-5. **Modify Scheduler**
-
-   Execute the step to modify the SCHEDnn PARMLIB member.
-
-6. **Reload Scheduler Settings**
-
-   Execute this step to reload the scheduler settings.
 
 7. **Start the XMEM Server**
 
    Execute this step to start the Cross Memory Server started task.
 
 After you complete these steps, the Zowe cross memory server is configured and installed to start the Zowe Desktop instance. For instruction on how to register and execute the workflow, See, [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
--->
 
 ## Create and configure the Zowe instance directory and start the Zowe started task
 
@@ -139,13 +142,12 @@ After you register the workflow definition file, perform the following steps to 
 After you execute each step, the step is marked as Complete. After completing the workflow execution, you can view the Zowe started task.
 
 ## Register and execute workflow in the z/OSMF web interface
----------------------------------------------------------
 
 z/OSMF workflow simplifies the procedure to configure and start Zowe. Perform the following steps to register and execute the workflow in the z/OSMF web interface:
 
 1. Log in to the z/OSMF web interface and select **Use Desktop Interface**.
 
-2. Select the Workflows tile.
+2. Select the Workflows File.
 
 3. Select **Create Workflow** from the **Actions** menu.
 
@@ -197,6 +199,5 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Perform th
 
 11. Select **Finish**.
 
-After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
+After you execute each step, the step is marked as Complete. The workflow is executed.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="z/OSMF Workflows Tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/KLKi7bhKBlE" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
