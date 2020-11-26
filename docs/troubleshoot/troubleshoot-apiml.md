@@ -330,7 +330,7 @@ Recycle your Zowe server. You should be able to log in to the Zowe Desktop succe
 
 **Symptom:**
 
-When connecting to the API Mediation Layer the web browser throws an error that the site is unable to provide a secure connection because of an error with ciphers.  
+When connecting to the API Mediation Layer the web browser throws an error saying that the site is unable to provide a secure connection because of an error with ciphers.  
 
 The error shown varies depending on the browser, e.g.
 
