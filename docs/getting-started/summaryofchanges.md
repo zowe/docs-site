@@ -111,9 +111,8 @@ The following enhancement was made to enable support for Node.js v14 for the **I
 - Added support for Node.js v14. [#60](https://github.com/zowe/zowe-cli-db2-plugin/pull/60)
 
 #### Zowe Explorer
-<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date. Includes 1.10.0, 1.10.1 changes.-->
-- Added Base Profile support. [#1037](https://github.com/zowe/vscode-extension-for-zowe/issues/1037).
-- Updated arguments to keep the order of precedence consistent between service and base profile. [#1055](https://github.com/zowe/vscode-extension-for-zowe/issues/1055).
+
+- Added login and logout functions for base profiles. You can now log in to API Mediation Layer and generate a token for your base profile. [#914](https://github.com/zowe/vscode-extension-for-zowe/issues/914)
 
 #### Zowe JES/MVS/USS Explorers
 <!-- JES Explorer <1.0.7> -->
@@ -143,6 +142,12 @@ The following bug was fixed in the **core CLI**:
 
 The following bug was fixed in the **Imperative CLI Framework**:
 - Updated `opener` dependency due to command injection vulnerability on Windows. For more information, see [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener).
+
+#### Zowe Explorer
+
+- Fixed the empty profile folders in Favorites issue. [#1026](https://github.com/zowe/vscode-extension-for-zowe/issues/1026)
+- Fixed the initialization error that occurred when base profiles were used while being logged out from API ML. [#1063](https://github.com/zowe/vscode-extension-for-zowe/issues/1063)
+- Fixed the issue preventing the tree refresh function from updating extender profiles. [#1078](https://github.com/zowe/vscode-extension-for-zowe/issues/1078)
 
 ## Version 1.16.0 LTS (October 2020)
 
