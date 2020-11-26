@@ -326,7 +326,7 @@ This issue might occur when you use a Zowe version of 1.12.0 or later. To resolv
  
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
 
-### Browser unable to connect with a CIPHER error
+### Browser unable to connect due to a CIPHER error
 
 **Symptom:**
 
@@ -364,8 +364,15 @@ In `java.security` there is a parameter value for `jdk.tls.disabledAlgorithms`, 
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
 ```
 
-**Note** This line may have a continuation characater `\` and be split across two lines due to its length.  
+**Note** This line may have a continuation character `\` and be split across two lines due to its length.  
 
-Edit the parameter value to remove `GCM` from the list. 
+Edit the parameter value to remove `GCM`. If as shown above the line ends `<224, GCM` remove the preceding comma so the values remain a well formed list of comma separated algorithms:
+
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224
+```
+
+**Note** The file permissions of the `java.security` will likely be be restricted for privileged users at most z/OS sites.  
 
 The `ZWESVSTC` started task will need to be restarted for the change to take effect.
