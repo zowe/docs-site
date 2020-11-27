@@ -330,49 +330,51 @@ Recycle your Zowe server. You should be able to log in to the Zowe Desktop succe
 
 **Symptom:**
 
-When connecting to the API Mediation Layer the web browser throws an error saying that the site is unable to provide a secure connection because of an error with ciphers.  
+When connecting to the API Mediation Layer, the web browser throws an error saying that the site is unable to provide a secure connection because of an error with ciphers.  
 
-The error shown varies depending on the browser, e.g.
+The error shown varies depending on the browser. For example, 
 
-For Google Chrome:
+- For Google Chrome:
 
-<img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+   <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
 
-For Mozilla Firefox:
+- For Mozilla Firefox:
 
-<img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
+   <img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
 
 **Solution:**
 
 Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Zowe.  
 
-Locate the `$JAVA_HOME/lib/security/java.security` file.  The value of `$JAVA_HOME` can be found by looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
+To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You can find the value of `$JAVA_HOME` in one of the following ways. 
 
-For example if `instance.env` contains the line
+- Method 1: By looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
 
-```
-JAVA_HOME=`/usr/lpp/java/J8.0_64/
-```
+   For example, if the `instance.env` file contains the following line, 
 
-then the file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
+   ```
+   JAVA_HOME=`/usr/lpp/java/J8.0_64/
+   ```
 
-The value of `JAVA_HOME` can also be determined by inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+   then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
 
-In `java.security` there is a parameter value for `jdk.tls.disabledAlgorithms`, e.g.
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+
+   
+In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`, for example,
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
 ```
 
-**Note** This line may have a continuation character `\` and be split across two lines due to its length.  
+**Note:** This line may have a continuation character `\` and be split across two lines due to its length.  
 
-Edit the parameter value to remove `GCM`. If as shown above the line ends `<224, GCM` remove the preceding comma so the values remain a well formed list of comma separated algorithms:
-
+Edit the parameter value for `jdk.tls.disabledAlgorithms` to remove `GCM`. If as shown above the line ends `<224, GCM`, remove the preceding comma so the values remain a well-formed list of comma-separated algorithms:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224
 ```
 
-**Note** The file permissions of the `java.security` will likely be be restricted for privileged users at most z/OS sites.  
+**Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
 
-The `ZWESVSTC` started task will need to be restarted for the change to take effect.
+After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
