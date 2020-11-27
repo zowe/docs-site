@@ -42,11 +42,11 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="solutionBox feature" style="height:340px">
       <div>
-        <p><img src="./images/common/user.svg" alt="User role" style="height:40px"/> <strong> What roles are you interested in?</strong></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">User</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Consumer</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extender</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contributor</a></p>
+        <p><img src="./images/common/user.svg" alt="User role" style="height:40px"/> <strong> What are you looking for about Zowe?</strong></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Consume</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute</a></p>
       </div>
     </a>
   </div>
@@ -100,8 +100,8 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
 </div>
 
-<section class="solutionBoxContainer features">
 <h3>Downloadable doc</h3>
+<section class="solutionBoxContainer features">
   <div class="solutionBox feature">
       <p><strong>Zowe Release Doc</strong></p>
       <p>You can download the Version 1.x.x Zowe documentation in PDF format. The latest version on this website is 1.17.0.
