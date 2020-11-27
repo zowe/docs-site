@@ -14,7 +14,6 @@ Zowe is designed as an extensible tools platform. You can extend Zowe in the fol
 - Contribute to core functionality
 - Extend the Zowe Command-Line Interface (Zowe CLI) by adding commands or building plug-ins.
 - Extend Zowe API Mediation Layer (API ML). 
-  REST API services cand be onboarded to the API ML either [dynamically](#dynamic-api- registration) or [statically](#static-api-registration).
 - Add a plug-in to the Zowe Desktop (CLI, zLUX application server, or ZSS service)
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
