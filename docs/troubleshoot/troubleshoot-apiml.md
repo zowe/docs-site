@@ -325,3 +325,56 @@ This issue might occur when you use a Zowe version of 1.12.0 or later. To resolv
 ```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
  
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
+
+### Browser unable to connect due to a CIPHER error
+
+**Symptom:**
+
+When connecting to the API Mediation Layer, the web browser throws an error saying that the site is unable to provide a secure connection because of an error with ciphers.  
+
+The error shown varies depending on the browser. For example, 
+
+- For Google Chrome:
+
+   <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+
+- For Mozilla Firefox:
+
+   <img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
+
+**Solution:**
+
+Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Zowe.  
+
+To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You can find the value of `$JAVA_HOME` in one of the following ways. 
+
+- Method 1: By looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
+
+   For example, if the `instance.env` file contains the following line, 
+
+   ```
+   JAVA_HOME=`/usr/lpp/java/J8.0_64/
+   ```
+
+   then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
+
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+
+   
+In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`, for example,
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
+```
+
+**Note:** This line may have a continuation character `\` and be split across two lines due to its length.  
+
+Edit the parameter value for `jdk.tls.disabledAlgorithms` to remove `GCM`. If as shown above the line ends `<224, GCM`, remove the preceding comma so the values remain a well-formed list of comma-separated algorithms:
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224
+```
+
+**Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
+
+After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
