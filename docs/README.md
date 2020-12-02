@@ -42,23 +42,24 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
   <div class="solutionBox feature" style="height:340px">
       <div>
-        <p><img src="./images/common/user.svg" alt="User role" style="height:40px"/> <strong> What are you looking for about Zowe?</strong></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Consume</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute</a></p>
+        <p><img src="./images/common/objective.svg" alt="User goal" style="height:25px"/> <strong>What would you like to do?</strong></p>
+        <p>Choose one option below and we'll suggest resources for you.</p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn about Zowe</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Install and use Zowe</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend Zowe</a></p>
+        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute to Zowe</a></p>
       </div>
     </a>
   </div>
   <div class="solutionBox feature" style="height:340px">
       <div>
-        <p><img src="./images/common/component.svg" alt="Component" style="height:40px; border-style: none"/> <strong>Which components are you interested in?</strong></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe API Mediation Layer</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe CLI</a></p>
-        <p><a href="./getting-started/userroadmap-zowe-cli.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Client SDKs</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Mobile</a></p>
+        <p><img src="./images/common/component.svg" alt="Component" style="height:25px; border-style: none"/> <strong>Which components are you interested in?</strong></p>
+        <p><a href="./getting-started/user-roadmap-apiml.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe API Mediation Layer</a></p>
+        <p><a href="./getting-started/user-roadmap-app-framework.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-cli.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe CLI</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-explorer.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
+        <p><a href="./getting-started/user-roadmap-client-sdk.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Client SDKs</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-mobile.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Mobile</a></p>
       </div>
     </a>
   </div>
@@ -72,12 +73,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
       <div>
         <p class="bx--type-caption">
          <ul>
-         <li><a href="./appendix/tpsr.html">Zowe Application Framework</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe API Mediation Layer</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe CLI</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Explorer</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Client SDKs (under development)</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Mobile (under development)</a></li>
+         <li><a href="./getting-started/user-roadmap-app-framework.html">Zowe Application Framework</a></li>
+         <li><a href="./getting-started/user-roadmap-apiml.html">Zowe API Mediation Layer</a></li>
+         <li><a href="./getting-started/user-roadmap-zowe-cli.html">Zowe CLI</a></li>
+         <li><a href="./getting-started/user-roadmap-zowe-explorer.html">Zowe Explorer</a></li>
+         <li><a href="./getting-started/user-roadmap-client-sdk.html">Zowe Client SDKs (under development)</a></li>
+         <li><a href="./getting-started/user-roadmap-zowe-mobile.html">Zowe Mobile (under development)</a></li>
          </ul>
         </p>
       </div>
