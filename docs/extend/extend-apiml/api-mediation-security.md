@@ -193,18 +193,27 @@ The response is a JSON object, which contains information associated with the ti
 For more details, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
 #### Supported authentication methods
-The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part of Zowe, all of the following methods are enabled and supported. All the methods are supported at least to some extent with each authentication provider.
+
+The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part
+of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
+with each authentication provider. 
 
 ##### Username/Password
-The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the [ZAAS Client documentation](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#zaas-client).
+
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
+credentials. There are more details in the ZAAS Client documentation. 
 
 ##### JWT Token
-When the client authenticates with the API ML, it receives in exchange the JWT token which can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by the z/OSMF, it is possible to reuse this token within the API ML for authentication.
+
+When the client authenticates with the API ML, the client receives in exchange the JWT token. This token can be used for further 
+authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced
+by z/OSMF, it is possible to reuse this token within the API ML for authentication.  
 
 #### Authentication providers
 
 API ML contains the following providers to handle authentication for the API Gateway:
 * `z/OSMF Authentication Provider`
+* `SAF Authentication Provider`
 * `Dummy Authentication Provider`
 
 ##### z/OSMF Authentication Provider
@@ -219,9 +228,10 @@ apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF 
 
 ##### SAF Authentication Provider
 
-The `SAF Authentication Provider` allows API Gateway to authenticate directly with the z/OS SAF provider installed on the system. The user needs SAF account in order to authenticate.
+The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF
+account to authenticate. 
 
-Use the following property of API Gateway to enable the SAF Authentication Provider:
+Use the following property of the API Gateway to enable the `SAF Authentication Provider`:
 ```
 apiml.security.auth.provider: saf
 ```
@@ -389,6 +399,7 @@ public interface ZaasClient {
     String login(String userId, String password) throws ZaasClientException;
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
+    ZaasToken query(HttpServletRequest request) throws ZaasClientException;
     String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
     void logout(String token) throws ZaasClientException, ZaasConfigurationException;
 }
@@ -435,6 +446,13 @@ ZaasToken query(String token) throws ZaasClientException;
 In return, you receive the `ZaasToken` Object in JSON format.
 
 This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
+
+The `query` method is overloaded, so you can provide the `HttpServletRequest` object that contains the token in the `apimlAuthenticationToken`
+cookie or in an Authorization header. You then receive the `ZaasToken` Object in JSON format.
+
+```java
+ZaasToken query(HttpServletRequest request) throws ZaasClientException;
+```
 
 #### Invalidate a JWT token (`logout`)
 
@@ -681,6 +699,9 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
 
+Call the `apiml_cm.sh` script in the directory with the API Mediation Layer as in the following example.
+
+**Example:**
 ```
 cd $RUNTIME_DIR
 bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext> \
@@ -688,30 +709,38 @@ bin/apiml_cm.sh --action new-service --service-alias <alias> --service-ext <ext>
 --service-dname <dname> --service-password <password> --service-validity <days> \
 --local-ca-filename $KEYSTORE_DIRECTORY/local_ca/localca
  ```
+where:
 
-The `service-alias` is an unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore will have only one certificate, you can omit this parameter and use the default value `localhost`.
+* **`service-alias`**
+is a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
-The `service-keystore` is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that will be generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with `.p12` extension. It should be path in an existing directory where your service expects the keystore.
+* **`service-keystore`**
+is a repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
 
-**Example:** `/opt/myservice/keystore/service.keystore`.
+  **Example:** `/opt/myservice/keystore/service.keystore`.
 
-The `service-truststore` contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that will be generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
+* **`service-truststore`**
+contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that is generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
-The `service-ext` specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need specify the same hostname that is used by the service during API Mediation Layer registration.
+* **`service-ext`**
+specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need to specify the same hostname that is used by the service during API Mediation Layer registration.
 
-**Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
+  **Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
-**Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
+  **Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
-The `service-dname` is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
+* **`service-dname`**
+is the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
 
-**Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
+  **Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
-The `service-validity` is the number of days after until the certificate expires.
+* **`service-validity`**
+is the number of days until the certificate expires.
 
-The `service-password` is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
+* **`service-password`**
+is the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
 
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during an installation step that generates Zowe certificates.
+The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates.
 
 
 #### Add a service with an existing certificate to API ML on z/OS
@@ -743,7 +772,7 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 ```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
 
-In this example, you will receive a similar response:
+In this example, you receive a similar response:
 
 ```
     HTTP/1.1 502
@@ -763,4 +792,4 @@ In this example, you will receive a similar response:
 
 The message has the key `apiml.common.tlsError`, and the message number `AML0105`, and content that explains details about the message.
 
-If you receive this message, import the certificate of your service or the CA that has signed it to the truststore of the API Mediation Layer as described above.
+If you receive this message, import the certificate of your service or the CA that signed it to the truststore of the API Mediation Layer as described above.
