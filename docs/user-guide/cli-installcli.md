@@ -21,13 +21,17 @@ If you do not have internet access at your site, use the following method to ins
 
 1. Address the following software requirements for the core CLI:
 
-    - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
+- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    ::: tip
+    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    :::
 
-    - Verify that you have **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
+    ::: tip
+    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+    :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -79,13 +83,17 @@ If your computer is connected to the Internet, you can use the following method 
 
 1. Address the following software requirements for the core CLI:
 
-    - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
+- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    ::: tip
+    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    :::
 
-    - Verify that you have **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
+    ::: tip
+    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+    :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
