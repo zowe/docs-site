@@ -21,7 +21,7 @@ For more information about extending the Zowe CLI, see [Developing a new plug-in
 
 ## Extend Zowe API Mediation Layer 
 
-Zowe API Mediation Layer extenders can build and onboard additional API services to the API ML. REST APIs can register with the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.  
+Zowe API Mediation Layer extenders can build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register with the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.  
 
 To register a z/OS service with the API Mediation Layer, there are two approaches:
 - [Dynamic API registration](#dynamic-api-registration)
