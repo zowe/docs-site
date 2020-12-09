@@ -2,7 +2,7 @@
 
 As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either of the following files:
 
-- `<Zowe install directory>/components/api-mediation/bin/start.sh` 
+- `<Zowe install directory>/components/api-mediation/bin/start-gateway.sh` 
 - `<Zowe instance directory>/instance.env`
 
 The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
