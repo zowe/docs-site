@@ -15,7 +15,7 @@ More information about VSAM can be found in the [IBM documentation](https://www.
 
 ### VSAM configuration
 
-* `caching.storage.vsam.name`: the ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines.                                                      
+* `caching.storage.vsam.name`: the ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines. The ZFile filename should follow the specific naming convention `//'DATASET.NAME'`.                                                  
 * `caching.storage.vsam.keyLength`: The VsamKey length. The default value is 32 bytes.
 * `caching.storage.vsam.recordLength`: The record length. The default value is 512 bytes.
 * `caching.storage.vsam.encoding`: The character encoding. The default value is IBM-1047.
