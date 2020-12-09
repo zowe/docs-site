@@ -1,6 +1,8 @@
 User-agent: *
 
 # Zowe doc archives
+Disallow: /active-development/
+Disallow: /v0-9-x/
 Disallow: /v1-0-x/
 Disallow: /v1-1-x/
 Disallow: /v1-2-x/
