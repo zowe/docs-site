@@ -2,7 +2,7 @@
 
 As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either of the following files:
 
-- `<Zowe install directory>/components/api-mediation/bin/start.sh` 
+- `<Zowe install directory>/components/api-mediation/bin/start-gateway.sh` 
 - `<Zowe instance directory>/instance.env`
 
 The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
@@ -17,6 +17,7 @@ Refer to the particular section in this table fo contents for specific instructi
   * [Gateway timeouts](#gateway-timeouts)
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
+  * [Connection limits](#connection-limits)
 
 ## Prefer IP Address for API Layer services
 
@@ -131,4 +132,15 @@ Use the following procedure to reject encoded slashes.
     
 Requests with encoded slashes are now rejected by the API Mediation Layer.
 
+## Connection limits
+
+By default, the API Gateway accepts up to 100 conncurrent connections per route and 1000 total concurrent connections. Any further concurrent requests are queued.
+
+Use the following procedure to change the number of concurrent connections.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
+3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
