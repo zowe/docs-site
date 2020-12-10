@@ -1,4 +1,10 @@
-## VSAM 
+# Using VSAM as a storage solution through the Caching service
+
+As an API developer you can configure VSAM as a storage solution through the Caching service. The procedure in this article
+describes how to configure your storage solution for VSAM or in memory. Configuring VSAM ensures that you do not lose data if you need to restart...(restart what?) Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
+
+## Understanding VSAM
+
 The term `Virtual Storage Access Method (VSAM)` applies to both a data set type and the access method used to manage various user data types.
 
 As an access method, VSAM provides much more complex functions than other disk access methods. VSAM keeps disk records in a unique format that is not understandable by other access methods.
@@ -14,8 +20,6 @@ This provides random access to data. Records are of variable length. IMS™ uses
 More information about VSAM can be found in the [IBM documentation](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zconcepts/zconcepts_169.htm).
 
 ### VSAM configuration
-
-As an API developer you can configure VSAM as a storage solution through the Caching service by modifying the configuration parameters described below in the service `application.yml`.
 
 * `caching.storage.vsam.name`: the ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines. The ZFile filename should follow the specific naming convention `//'DATASET.NAME'`.                                                  
 * `caching.storage.vsam.keyLength`: The VsamKey length. The default value is 32 bytes.
