@@ -1,4 +1,3 @@
-​
 # Install CLI from Online Registry Via Proxy
 ​
 This topic describes how to install Zowe CLI using the NPM install command when you are working behind a proxy server. You will need to use this installation method if your site blocks access to public npm.
@@ -71,6 +70,3 @@ Zowe CLI is installed.
 8. **(Optional)** Access the Zowe CLI Help (`zowe --help`) or the Zowe CLI Web Help for a complete reference of Zowe CLI.
 ​
 After you install the CLI, you can connect to the mainframe directly issuing a command, by creating user profiles and making use of them on commands, or by using environment variables. For more information, see [Using CLI](cli-usingcli.md).
-​
-​
-​
