@@ -5,7 +5,7 @@ At the current time, some services are not, and cannot be stateless. For these s
 The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. 
 The service will be used only by internal Zowe applications and will not be exposed to the internet. The Caching service needs to support a hot-reload scenario in which a client service requests all available service data. 
 The current implementation of the service depends on VSAM to store the key/value pairs, as VSAM is a native z/OS solution to storing key/value pairs.  
-Eventually, there will be other implementations for solutions such as MQs. As such, this needs to be taken into account for the initial design document. 
+Eventually, there will be other implementations for solutions such as MQs.
 
 ## Architecture
 

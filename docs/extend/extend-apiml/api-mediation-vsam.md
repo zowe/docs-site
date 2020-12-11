@@ -21,6 +21,8 @@ More information about VSAM can be found in the [IBM documentation](https://www.
 
 ### VSAM configuration
 
+You can configure VSAM as a storage solution through the Caching service by modifying the configuration parameters described below in the service `application.yml`.
+
 * `caching.storage.vsam.name`: the ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines. The ZFile filename should follow the specific naming convention `//'DATASET.NAME'`.                                                  
 * `caching.storage.vsam.keyLength`: The VsamKey length. The default value is 32 bytes.
 * `caching.storage.vsam.recordLength`: The record length. The default value is 512 bytes.
