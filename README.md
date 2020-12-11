@@ -101,7 +101,10 @@ If you missed DCO sign-off statements in a series of commits, you can retroactiv
 
 ### Previewing or testing the doc site locally
 
-If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`.
+If you want to preview your changes on your local machine, you will need node.js >= 8, npm, and yarn installed. 
+- To install npm, run `npm install`.
+- [Node.js 8+](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/en/)
 
 Then, follow these steps:
 1. cd into the `docs-site` folder.
