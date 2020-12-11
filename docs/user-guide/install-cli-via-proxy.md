@@ -10,7 +10,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
 ​Follow these steps: 
 ​
-1. Identify the proxy server.​
+1. Identify the proxy server, including the IP address or hostname and the port number.​
     * If your proxy server **does not** require login credentials, issue the following commands to add the proxy URL to the NPM config file:
 
         ```
