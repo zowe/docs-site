@@ -12,7 +12,7 @@ Eventually, there will be other implementations for solutions such as MQs. As su
 <img src="../images/api-mediation/caching-service.png" alt="Caching service" width="600px"/> 
 
 The cached APIs information are stored as JSON in the format below:
-```json
+```yml
 {
   “key”: “keyValue”, 
   “value”: “valueValue”
