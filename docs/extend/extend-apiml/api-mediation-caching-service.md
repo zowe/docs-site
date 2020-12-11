@@ -13,6 +13,8 @@ Eventually, there will be other implementations for solutions such as MQs.
 
 <img src="../../images/api-mediation/caching-service.png" alt="Caching service" width="600px"/> 
 
+There are REST APIs available to create, delete, and update key-value pairs in the cache, as well as APIs to read a specific key-value pair or all key-value pairs in the cache.
+
 The cached APIs information are stored as JSON in the format below:
 ```yml
 {
@@ -20,8 +22,6 @@ The cached APIs information are stored as JSON in the format below:
   “value”: “valueValue”
 }
 ```
-
-There are REST APIs available to create, delete, and update key-value pairs in the cache, as well as APIs to read a specific key-value pair or all key-value pairs in the cache.  
 
 ## Storage methods
 
