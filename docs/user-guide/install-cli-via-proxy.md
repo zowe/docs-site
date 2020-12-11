@@ -14,26 +14,26 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
     * If your proxy server **does not** require login credentials, issue the following commands to add the proxy URL to the NPM config file:
 
         ```
-        npm config set https-proxy http://proxy.[proxy_name].com:8080
+        npm config set https-proxy http://proxy.[proxy_name].com:[port_number]
         ```
 
         ```
-        npm config set proxy http://proxy.[proxy_name].com:8080
+        npm config set proxy http://proxy.[proxy_name].com:[port_number]
         ```
 
-        *where* [proxy_name] is the name of the proxy server.
+        *where* [proxy_name] is the IP or hostname and [port_number] is the port number of the proxy server.
 
     * If your proxy server **does** require login credentials, issue the following commands to add the proxy URL, with login credentials, to the NPM config file:
 
         ```
-        npm config set https-proxy http://[username]:[password]@proxy.[proxy_name].com:8080
+        npm config set https-proxy http://[username]:[password]@proxy.[proxy_name].com:[port_number]
         ```
 
         ```
-        npm config set proxy http://[username]:[password]@proxy.[proxy_name].com:8080
+        npm config set proxy http://[username]:[password]@proxy.[proxy_name].com:[port_number]
         ```
 
-        where [username] and [password] are the required login credentials and [proxy_name] is the name of the proxy server.
+        where [username] and [password] are the required login credentials, [proxy_name] is the IP or hostname, and [port_number] is the port number of the proxy server.
 
 2. Ensure that you meet the [Software Requirements for CLI](cli-swreqplugins.md).
 
