@@ -42,3 +42,8 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
 
 * [Onboarding Overview](../../extend/extend-apiml/onboard-overview.md)
+
+## Caching service
+
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
+For more  information about the Caching service, see its [documentation](../../extend/extend-apiml/api-mediation-caching-service.md).

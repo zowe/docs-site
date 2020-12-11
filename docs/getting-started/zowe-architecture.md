@@ -40,6 +40,11 @@ The API Discovery server acts as the registration service broker between the API
 
 <img src="../images/api-mediation/api-discovery.png" alt="Zowe API Discovery" width="600px"/> 
 
+## Caching service
+
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
+For more  information about the Caching service, see its [documentation](../extend/extend-apiml/api-mediation-caching-service.md).
+
 ## MVS, JES, and USS UI
 
 Zowe provides a number of rich GUI web applications for working with z/OS.  This includes the MVS Explorer for data sets, the JES Explorer for jobs, and the USS Explorer for the Unix File System. You can access them through the Zowe desktop.
