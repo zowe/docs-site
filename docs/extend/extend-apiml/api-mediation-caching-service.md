@@ -1,4 +1,6 @@
 # Caching service 
+As an API developer, you can use the Caching service to provide an API which offers the possibility to store, retrieve and delete data associated with keys. 
+
 To support the High Availability of all components within Zowe, components either need to be stateless, or offload the state to a location accessible by all instances of the service, including those which just started. 
 At the current time, some services are not, and cannot be stateless. For these services, we introduce the Caching service. 
 
