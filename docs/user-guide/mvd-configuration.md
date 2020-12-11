@@ -356,7 +356,7 @@ Copy the CA certificate to the ZSS server. Then in the Zowe App Server configura
 1. Enter the following command to copy the CA certificate to the correct location in UNIX System Services (USS):
 
 ```
-cp "//'[output_dataset_name]'" 'zlux-app-server/deploy/instance/ZLUX/serverConfig/[ca_cert]'
+cp "//'[output_dataset_name]'" '[INSTANCE_DIR]/workspace/app-server/serverConfig/[ca_cert]'
 ```
 2. In the `[INSTANCE_DIR]/workspace/app-server/serverConfig` directory, open the `server.json` file.
 3. In the **node.https.certificateAuthorities** object, add the CA certificate file path, for example:
