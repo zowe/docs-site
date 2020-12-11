@@ -21,12 +21,9 @@ The cached APIs information are stored as JSON in the format below:
 }
 ```
 
-The Caching Service is built on top of the Spring enabler, which means that it is dynamically registered to the API Mediation Layer. 
-It appears in the API Catalog under the tile "Zowe Applications".
-
 There are REST APIs available to create, delete, and update key-value pairs in the cache, as well as APIs to read a specific key-value pair or all key-value pairs in the cache.  
 
-## Storage
+## Storage methods
 
 There are multiple storage solutions supported by the Caching Service with the option to 
 add custom implementation. [Additional Storage Support](#additional-storage-support) explains
@@ -60,6 +57,11 @@ The example above shows the Configuration within the library that will use diffe
 
 It is possible to provide the custom implementation via the `-Dloader.path` property provided on startup of the Caching service. 
 
+## How to start the service
+
+By default, the Caching service is started along with the other Zowe components. You can prevent the Caching service to start by setting the `zowe_apiml_caching_service_start` defined in the ansible playbooks to `false`. 
+This parameter will be then appended to the `instance.env` configuration file and used at the Zowe start.
+
 ## API
 
 The Caching service API path is `/cachingservice/api/v1/cache/${path-params-as-needed}`.
@@ -71,7 +73,10 @@ The Caching service API path is `/cachingservice/api/v1/cache/${path-params-as-n
 
 ## Configuration properties
 
-The Caching Service uses the standard `application.yml` structure for configuration.
+The Caching service uses the standard `application.yml` structure for configuration and it is built on top of the Spring enabler, which means that it is dynamically registered to the API Mediation Layer. 
+It appears in the API Catalog under the tile "Zowe Applications".
 
-* `apiml.service.routes` only specifies one API route as there is no need for web socket or UI routes.
-* `caching.storage` is reserved for the setup of the proper storage within the Caching Service. 
+**Note:** For more information about how to configure the Caching service in the application.yml, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
+
+In case VSAM is used, additional configuration parameters must be set. See [VSAM](./api-mediation-vsam.md) for more information.
+
