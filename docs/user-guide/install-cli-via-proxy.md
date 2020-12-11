@@ -33,7 +33,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
         npm config set proxy http://[username]:[password]@proxy.[proxy_name].com:[port_number]
         ```
 
-        where [username] and [password] are the required login credentials, [proxy_name] is the IP or hostname, and [port_number] is the port number of the proxy server.
+        *where* [username] and [password] are the required login credentials, [proxy_name] is the IP or hostname, and [port_number] is the port number of the proxy server.
 
 2. Ensure that you meet the [Software Requirements for CLI](cli-swreqplugins.md).
 
