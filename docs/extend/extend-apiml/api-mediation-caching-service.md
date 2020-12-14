@@ -1,21 +1,17 @@
 # Caching service 
-As an API developer, you can use the Caching service to provide an API which offers the possibility to store, retrieve and delete data associated with keys. 
+As an API developer, you can use the Caching service to store, retrieve, and delete data associated with keys.
 
-To support the High Availability of all components within Zowe, components either need to be stateless, or offload the state to a location accessible by all instances of the service, including those which just started. 
-At the current time, some services are not, and cannot be stateless. For these services, we introduce the Caching service. 
-
-The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. 
-The service will be used only by internal Zowe applications and will not be exposed to the internet. The Caching service needs to support a hot-reload scenario in which a client service requests all available service data. 
-The current implementation of the service depends on VSAM to store the key/value pairs, as VSAM is a native z/OS solution to storing key/value pairs.  
-Eventually, there will be other implementations for solutions such as MQs.
-
+To support High Availability of all components within Zowe, components need to be either stateless, or offload the state to a location accessible by all instances of the service, including those instances which just started. 
+At the current time, some services are not, and cannot be stateless. The Caching service is designed for these types of services. The current implementation of the Caching service depends on VSAM to store the key/value pairs, as VSAM is a native z/OS solution for storing key/value pairs.  
+ 
+T**Note:** The Caching service is available only for internal Zowe applications, and is not be exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 ## Architecture
 
 <img src="../../images/api-mediation/caching-service.png" alt="Caching service" width="600px"/> 
 
-There are REST APIs available to create, delete, and update key-value pairs in the cache, as well as APIs to read a specific key-value pair or all key-value pairs in the cache.
+REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
-The cached APIs information are stored as JSON in the format below:
+The cached APIs information is stored asa JSON in the following format:
 ```yml
 {
   “key”: “keyValue”, 
@@ -25,13 +21,11 @@ The cached APIs information are stored as JSON in the format below:
 
 ## Storage methods
 
-There are multiple storage solutions supported by the Caching Service with the option to 
-add custom implementation. [Additional Storage Support](#additional-storage-support) explains
-what needs to be done to implement custom solution.
+The Caching service supports multiple storage solutions, which provide the option to add custom implementation. For more infomation about how to implement a custom solution, see [Additional Storage Support](#additional-storage-support).
 
 ### VSAM
 
-Check [VSAM](./api-mediation-vsam.md) to get more information about this storage access method.
+For more information about the VSAM storage access method, see [VSAM](./api-mediation-vsam.md).
 
 ### In Memory
 
