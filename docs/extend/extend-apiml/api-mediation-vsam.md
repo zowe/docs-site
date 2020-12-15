@@ -1,32 +1,37 @@
 # Using VSAM as a storage solution through the Caching service
 
-As an API developer you can configure VSAM as a storage solution through the Caching service. The procedure in this article
-describes how to configure your storage solution for VSAM or in memory. Configuring VSAM ensures that you do not lose data if you need to restart...(restart what?) Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
+As an API developer, you can configure VSAM as a storage solution through the Caching service. The procedure in this article
+describes how to configure your storage solution for VSAM or in memory. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
 
 ## Understanding VSAM
 
-The term `Virtual Storage Access Method (VSAM)` applies to both a data set type and the access method used to manage various user data types.
-
-As an access method, VSAM provides much more complex functions than other disk access methods. VSAM keeps disk records in a unique format that is not understandable by other access methods.
-
-VSAM is used primarily for applications. It is not used for source programs, JCL, or executable modules. VSAM files cannot be routinely displayed or edited with ISPF.
-
-You can use VSAM to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. The primary difference among these types of data sets is the way their records are stored and accessed.
-
-API Caching service supports VSAM as a storage method to cache the APIs and is using the `Key Sequence Data Set (KSDS)` dataset. This type is the most common use for VSAM.
-Each record has one or more key fields and a record can be retrieved (or inserted) by key value. 
+`Virtual Storage Access Method (VSAM)` is both a data set type, and a method for accessing various user data types.
+Using VSAM as an access method makes it possible to maintain disk records in a unique format that is not understandable by other access methods.
+VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files. VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. The
+API Caching service supports VSAM as a storage method to cache APIs and uses the `Key Sequence Data Set (KSDS)` dataset. Each record has one or more key fields and a record can be retrieved (or inserted) by the key value. 
 This provides random access to data. Records are of variable length. IMS™ uses KDSDs.
 
-More information about VSAM can be found in the [IBM documentation](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zconcepts/zconcepts_169.htm).
+For more information about VSAM, see the [IBM documentation](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zconcepts/zconcepts_169.htm).
 
 ### VSAM configuration
 
-You can configure VSAM as a storage solution through the Caching service by modifying the configuration parameters described below in the service `application.yml`.
+Configure VSAM as a storage solution through the Caching service by modifying the following configuration parameters in the service `application.yml`.
 
-* `caching.storage.vsam.name`: the ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines. The ZFile filename should follow the specific naming convention `//'DATASET.NAME'`.                                                  
-* `caching.storage.vsam.keyLength`: The VsamKey length. The default value is 32 bytes.
-* `caching.storage.vsam.recordLength`: The record length. The default value is 512 bytes.
-* `caching.storage.vsam.encoding`: The character encoding. The default value is IBM-1047.
+* **`caching.storage.vsam.name`**
+
+  The ZFile filename. The ZFile is a wrapper around a z/OS file based on the supplied name and options. This method calls the fopen() and fldata() C-library routines. The ZFile filename should follow the specific naming convention `//'DATASET.NAME'`.                                                  
+
+* **`caching.storage.vsam.keyLength`**
+
+  The VsamKey length. The default value is 32 bytes.
+
+* **`caching.storage.vsam.recordLength`**
+
+  The record length. The default value is 512 bytes.
+
+* **`caching.storage.vsam.encoding`**
+
+  The character encoding. The default value is IBM-1047.
 
 
 
