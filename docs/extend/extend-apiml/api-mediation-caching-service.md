@@ -38,16 +38,15 @@ The information of cached APIs is stored as a JSON in the following format:
 The Caching service supports multiple storage solutions, which provide the option to add custom implementation. 
 ### VSAM
 
-VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
+VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules.
+The Caching service uses the KSDS version of the dataset, which allows storage and retrieval of the keys.
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 ### InMemory
 
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
-### Additional Storage Support
 
-For more infomation about how to implement a custom solution, see [Additional Storage Support](#additional-storage-support).
 ## How to start the service
 
 By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set the following parameter to `false`:
