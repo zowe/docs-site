@@ -20,8 +20,6 @@ The Caching service is available only for internal Zowe applications, and is not
 
 A precondition to provide for High Availability of all components within Zowe is the requirement for these components to be either stateless, or for the service's resources to be offloaded to a location accessible by all instances of the service. This includes those instances which just started. Some services, however, are not, and cannot be stateless. The Caching service is designed for these types of services.   
 
-<img src="../../images/api-mediation/caching-service.png" alt="Caching service" width="600px"/> 
-
 REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
 Information from cached APIs is stored as a JSON in the following format:
@@ -40,7 +38,7 @@ VSAM can be used to organize records into four types of data sets: key-sequenced
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 ### InMemory
-
+TODO (add in memory procedure)
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
 ## How to start the service
