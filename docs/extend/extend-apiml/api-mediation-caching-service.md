@@ -7,7 +7,7 @@ To support High Availability of all components within Zowe, components need to b
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
   - [VSAM](#vsam)
-  - [In Memory](#in-memory)
+  - [InMemory](#inmemory)
   - [Additional Storage Support](#additional-storage-support)
 - [How to start the service](#how-to-start-the-service)
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
@@ -35,9 +35,9 @@ VSAM is used primarily for applications, and is not used for source programs, JC
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 
-### Inmemory
+### InMemory
 
-The inmemory storage method is useful for testing and integration verification. Be sure that you do not use inmemory storage in production. 
+The InMemory storage method is useful for testing and integration verification. Be sure that you do not use InMemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
 
 ## How to start the service
