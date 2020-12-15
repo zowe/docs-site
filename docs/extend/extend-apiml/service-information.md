@@ -32,15 +32,23 @@ where:
 
 - **{serviceId}** is the service ID of the API service (e.g. `apicatalog`)
 
-It returns a JSON response that describes the - see [Response Format](#response-format).
+It returns a JSON response that describes the service - see [Response Format](#response-format).
 
 ### Obtain Information about All Services
 
-TODO
+`GET /gateway/api/v1/services`
+
+It returns a JSON response with a list of all services - see [Response Format](#response-format).
 
 ### Obtain Information about All Services with a Specific AP ID
 
-TODO
+`GET /gateway/api/v1/services?apiId={apiId}`
+
+where:
+
+- **{apiId}** is the API ID that needs to be provided by the service (e.g. `zowe.apiml.apicatalog`)
+
+It returns a JSON response with a list of services that provide specified API ID - see [Response Format](#response-format).
 
 ### Response Format
 
