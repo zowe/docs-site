@@ -39,26 +39,6 @@ For information about the VSAM storage access method, see [Using VSAM as a stora
 The inmemory storage method is useful for testing and integration verification. Be sure that you do not use inmemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
 
-### Additional Storage Support
-
-To add a new implementation it is necessary to provide the library with the implementation
-of the `Storage.class`, and properly configure Spring with the additional implementation. 
-
-**Example:**
-
-    @ConditionalOnProperty(
-        value = "caching.storage",
-        havingValue = "custom"
-    )
-    @Bean
-    public Storage custom() {
-        return new CustomStorage();
-    }
-
-The previous example shows the configuration within a library that uses a different storage method than the default (inmemory). 
-
-It is possible to provide the custom implementation through the `-Dloader.path` property provided on startup of the Caching service. 
-
 ## How to start the service
 
 By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set the following parameter to `false`:
