@@ -31,8 +31,9 @@ The Caching service supports multiple storage solutions, which provide the optio
 
 ### VSAM
 
-As mentioned before, VSAM is the storage solution for production. 
-For information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
+VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files. VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. 
+
+For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 
 ### Inmemory
 
