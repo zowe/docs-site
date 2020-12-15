@@ -1,7 +1,13 @@
-# Using the Caching service 
-As an API developer, you can use the Caching service to store, retrieve, and delete data associated with keys.
-To support High Availability of all components within Zowe, components need to be either stateless, or offload the state to a location accessible by all instances of the service, including those instances which just started. Some services, however, are not, and cannot be stateless. The Caching service is designed for these types of services. The current implementation of the Caching service depends on VSAM to store the key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.  
- 
+# Using the Caching service
+
+As an API developer, you can use the Caching service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching service is designed to make resource sharing possible for services that cannot be made stateless in three ways:
+
+- Using VSAM to store key/value pairs for production
+- Using InMemory
+- Using additional storage support 
+
+The Caching service makes it possible to store, retrieve, and delete data associated with keys.
+
 **Note:** The Caching service is available only for internal Zowe applications, and is not be exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 
 - [Architecture](#architecture)
@@ -13,6 +19,8 @@ To support High Availability of all components within Zowe, components need to b
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
 - [Configuration properties](#configuration-properties)
 ## Architecture
+
+A pre-condition to provide for High Availability of all components within Zowe is the requirement for components to be either stateless, or offload the state to a location accessible by all instances of the service, including those instances which just started. Some services, however, are not, and cannot be stateless. The Caching service is designed for these types of services. The current implementation of the Caching service depends on VSAM to store the key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.  
 
 <img src="../../images/api-mediation/caching-service.png" alt="Caching service" width="600px"/> 
 
@@ -27,19 +35,19 @@ The information of cached APIs is stored as a JSON in the following format:
 ```
 ## Storage methods
 
-The Caching service supports multiple storage solutions, which provide the option to add custom implementation. For more infomation about how to implement a custom solution, see [Additional Storage Support](#additional-storage-support).
-
+The Caching service supports multiple storage solutions, which provide the option to add custom implementation. 
 ### VSAM
 
-VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files. VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. 
+VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
-
 ### InMemory
 
-The InMemory storage method is useful for testing and integration verification. Be sure that you do not use InMemory storage in production. 
+The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
+### Additional Storage Support
 
+For more infomation about how to implement a custom solution, see [Additional Storage Support](#additional-storage-support).
 ## How to start the service
 
 By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set the following parameter to `false`:
@@ -56,15 +64,25 @@ To apply a method to the Caching service, use the following API path:
 `/cachingservice/api/v1/cache/${path-params-as-needed}`
 
 Use the following methods with the Caching service API:
-- `POST /cache`:
+
+- **`POST /cache`**
+
    Creates a new key in the Cache
-- `GET /cache`
+
+- **`GET /cache`**
+
    Returns all key/value pairs for specific service
-- `PUT /cache/{key}`
+
+- **`PUT /cache/{key}`**
+
    Updates the existing value for the given key
-- `GET /cache/{key}`
+
+- **`GET /cache/{key}`**
+
    Returns the existing value for the given key
-- `DELETE /cache/{key}`
+
+- **`DELETE /cache/{key}`**
+
    Deletes a key/value pair
 
 ## Configuration properties
