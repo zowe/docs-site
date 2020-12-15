@@ -14,7 +14,6 @@ The Caching service makes it possible to store, retrieve, and delete data associ
 - [Storage methods](#storage-methods)
   - [VSAM](#vsam)
   - [InMemory](#inmemory)
-  - [Additional Storage Support](#additional-storage-support)
 - [How to start the service](#how-to-start-the-service)
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
 - [Configuration properties](#configuration-properties)
