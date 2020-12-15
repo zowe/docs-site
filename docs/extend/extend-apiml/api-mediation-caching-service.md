@@ -1,6 +1,6 @@
 # Using the Caching service 
 As an API developer, you can use the Caching service to store, retrieve, and delete data associated with keys.
-To support High Availability of all components within Zowe, components need to be either stateless, or offload the state to a location accessible by all instances of the service, including those instances which just started. Some services, howevre, are not, and cannot be stateless. The Caching service is designed for these types of services. The current implementation of the Caching service depends on VSAM to store the key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.  
+To support High Availability of all components within Zowe, components need to be either stateless, or offload the state to a location accessible by all instances of the service, including those instances which just started. Some services, however, are not, and cannot be stateless. The Caching service is designed for these types of services. The current implementation of the Caching service depends on VSAM to store the key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.  
  
 **Note:** The Caching service is available only for internal Zowe applications, and is not be exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 
@@ -31,6 +31,7 @@ The Caching service supports multiple storage solutions, which provide the optio
 
 ### VSAM
 
+As mentioned before, VSAM is the storage solution for production. 
 For information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 
 ### Inmemory
