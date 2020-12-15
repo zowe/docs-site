@@ -8,7 +8,7 @@ As an API developer, you can use the Caching service as a storage solution to en
 
 The Caching service makes it possible to store, retrieve, and delete data associated with keys.
 
-**Note:** The Caching service is available only for internal Zowe applications, and is not be exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
+**Note:** The Caching service is available only for internal Zowe applications, and is not exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
