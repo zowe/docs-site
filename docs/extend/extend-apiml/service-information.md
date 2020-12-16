@@ -40,7 +40,7 @@ It returns a JSON response that describes the service - see [Response Format](#r
 
 It returns a JSON response with a list of all services - see [Response Format](#response-format).
 
-### Obtain Information about All Services with a Specific AP ID
+### Obtain Information about All Services with a Specific API ID
 
 `GET /gateway/api/v1/services?apiId={apiId}`
 
@@ -57,7 +57,7 @@ This documentation provides basic information about the structure of the respons
 The `apiml` section provides information about:
 
 - the service in the `service` subsection
-- the APIs that are provided by the service in the `apiInfo` section. It shows each major version that is provided by at least one instance. For each major version, the lowest minor version is displayed
+- the APIs that are provided by the service in the `apiInfo` section. It shows each major API version that is provided by at least one instance. For each major version, the lowest minor version is displayed
 - the authentication methods that are supported by all instances are displayed
 
 The API clients can use this information to locate the the right API based on API ID and use `baseUrl` or `basePath` to access it via API gateway.
