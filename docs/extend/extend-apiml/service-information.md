@@ -54,4 +54,59 @@ It returns a JSON response with a list of services that provide specified API ID
 
 This documentation provides basic information about the structure of the response. Full reference on the field in the response is in the API Catalog.
 
-TODO
+The `apiml` section provides information about:
+
+- the service in the `service` subsection
+- the APIs that are provided by the service in the `apiInfo` section. It shows each major version that is provided by at least one instance. For each major version, the lowest minor version is displayed
+- the authentication methods that are supported by all instances are displayed
+
+The API clients can use this information to locate the the right API based on API ID and use `baseUrl` or `basePath` to access it via API gateway.
+
+The `instances` section contains more details about instances. The API services can provide more application specific details in `customMetadata` that can be used by the API clients.
+
+Example:
+
+```json
+{
+  "apiml": {
+    "apiInfo": [
+      {
+        "apiId": "zowe.sample",
+        "basePath": "/zowesample/api/v1",
+        "baseUrl": "https://sys1.acme.net:7554/zowesample/api/v1",
+        "defaultApi": true,
+        "documentationUrl": "https://docs.zowe.org/",
+        "gatewayUrl": "api/v1",
+        "swaggerUrl": "https://sys1.acme.net:7554/casample/api/v1/apiDocs",
+        "version": "1.0.0"
+      }
+    ],
+    "authentication": [
+      {
+        "applid": "TSTAPPL",
+        "scheme": "zoweJwt",
+        "supportsSso": true
+      }
+    ],
+    "service": {
+      "description": "Sample Spring Boot API service that provides Zowe-conformant REST API",
+      "homePageUrl": "https://sys1.acme.net:7554/casample/ui/v1/",
+      "title": "Zowe Sample API Service"
+    }
+  },
+  "instances": [
+    {
+      "instanceId": {
+        "homePageUrl": "https://sys1.acme.net:10080/",
+        "hostname": "sys1.acme.net",
+        "customMetadata": {
+          "zos.sysname": "SYS1",
+        },
+        "status": "UP"
+      }
+    }
+  ],
+  "serviceId": "zowesample",
+  "status": "UP"
+}
+```
