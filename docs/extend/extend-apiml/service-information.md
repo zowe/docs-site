@@ -62,7 +62,7 @@ The `apiml` section provides information about:
 
 The API clients can use this information to locate the the right API based on API ID and use `baseUrl` or `basePath` to access it via API gateway.
 
-The `instances` section contains more details about instances. The API services can provide more application specific details in `customMetadata` that can be used by the API clients.
+The `instances` section contains more details about instances. The API services can provide more application specific details in `customMetadata` that can be used by the API clients. Do not use information in this section for use cases that API Gateway supports, such as routing or load balancing.
 
 Example:
 
