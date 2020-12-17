@@ -144,3 +144,21 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
+# API Mediation Layer as a standalone component
+
+By default Gateway, Zowe System Services and Virtual Desktop are started when
+ Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
+ Services aren't needed it's possible to specify components started in the
+ context of Zowe. There is no change needed during the installation process to
+ support this setup.
+ 
+Once Zowe is installed, use the following procedure to limit the started
+ components.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Find the property `LAUNCH_COMPONENT_GROUPS` and set `GATEWAY`
+3. Restart Zowe&trade.   
+
+To learn more about the related section of the environment file visit [Create and Configure instance Directory](../configure-instance-directory.md#component-groups)
