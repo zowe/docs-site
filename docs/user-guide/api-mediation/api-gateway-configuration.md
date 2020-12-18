@@ -146,14 +146,13 @@ Use the following procedure to change the number of concurrent connections.
 
 # API Mediation Layer as a standalone component
 
-By default Gateway, Zowe System Services and Virtual Desktop are started when
+By default, the Gateway, Zowe System Services, and Virtual Desktop start when
  Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
- Services aren't needed it's possible to specify components started in the
- context of Zowe. There is no change needed during the installation process to
+ Services are not required, it is possible to specify which components start in the
+ context of Zowe. No change is required during the installation process to
  support this setup.
  
-Once Zowe is installed, use the following procedure to limit the started
- components.
+Once Zowe is installed, use the following procedure to limit which components start.
 
 **Follow these steps:**
 
@@ -161,4 +160,4 @@ Once Zowe is installed, use the following procedure to limit the started
 2. Find the property `LAUNCH_COMPONENT_GROUPS` and set `GATEWAY`
 3. Restart Zowe&trade.   
 
-To learn more about the related section of the environment file visit [Create and Configure instance Directory](../configure-instance-directory.md#component-groups)
+To learn more about the related section of the environment file, see [Create and Configure instance Directory](../configure-instance-directory.md#component-groups).
