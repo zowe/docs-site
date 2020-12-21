@@ -43,6 +43,30 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check that both the service and the Gateway can register with Discovery. If the services are not registering, investigate the reason why. If no cause can be determined, create an issue.
 
+### ZWEAO105W
+
+  Gateway HTTP Client per-route connection limit of %s has been reached for the '%s' route.
+
+  **Reason:**
+  
+  Too many concurrent connection requests were made to the same route
+
+  **Action:**
+
+  Further connections will be queued until there is room in the connection pool. You may also increase the per-route connection limit via the gateway start-up script.
+
+### ZWEAO106W
+
+  Gateway Http Client total connection limit of %s has been reached.
+
+  **Reason:**
+
+  Too many concurrent connection requests were made.
+
+  **Action:**
+
+  Further connections will be queued until there is room in the connection pool. You may also increase the total connection limit via the gateway start-up script
+
 ### ZWEAO401E
 
   Unknown error in HTTPS configuration: '%s'
