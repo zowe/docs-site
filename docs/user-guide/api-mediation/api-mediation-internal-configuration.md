@@ -121,6 +121,8 @@ zuul:
     host:
         connectTimeoutMillis: ${apiml.gateway.timeoutMillis}
         socketTimeoutMillis: ${apiml.gateway.timeoutMillis}
+        maxTotalConnetions: ${server.maxConnectionsPerRoute}
+        maxPerRouteConnections: ${server.maxTotalConnections}
     forceOriginalQueryStringEncoding: true
     retryable: true
     decodeUrl: false # Flag to indicate whether to decode the matched URL or use it as is
@@ -151,7 +153,7 @@ hystrix:
                         timeoutInMilliseconds: ${apiml.gateway.timeoutMillis}
                     strategy: SEMAPHORE
                     semaphore:
-                        maxConcurrentRequests: 100000
+                        maxConcurrentRequests: ${server.maxTotalConnections}
 ```
 
 Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, 
