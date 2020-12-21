@@ -98,6 +98,9 @@ https://localhost:10010/api/v1/gateway/version
 
     This property can be used to unconditionally add active profiles. For more information, see [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles).
 
+* **server.maxTotalConnections and server.maxConnectionsPerRoute**
+
+    These two properties are used to set the number of concurrent connections. Any connection requests that are made that would put the number of connections over either of these limits are queued until an existing connection completes. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 ## Service configuration
 
