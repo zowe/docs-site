@@ -1,6 +1,6 @@
 # Advanced Gateway features configuration
 
-As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, set the following parameters by modifying either of the following files:
+As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying either of the following files:
 
 - `<Zowe install directory>/components/api-mediation/bin/start-gateway.sh` 
 - `<Zowe instance directory>/instance.env`
@@ -9,7 +9,7 @@ The parameters begin with the `-D` prefix, similar to all the other parameters i
 
 **Note:** Restart Zowe to apply changes to the parameter.
 
-Refer to the particular section in this table fo contents for specific instructions.
+Follow the procedures in the following sections to customize Gateway parameters according to your preferences:
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
@@ -18,6 +18,7 @@ Refer to the particular section in this table fo contents for specific instructi
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Connection limits](#connection-limits)
+  * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
 
 ## Prefer IP Address for API Layer services
 
@@ -29,7 +30,7 @@ API Mediation Layer services use the hostname when communicating with each other
 2. Find the property `APIML_PREFER_IP_ADDRESS` and set the value to `true`.
 3. Restart Zowe&trade.
 
-**Note:** Changing the value of this property might introduce problems with certificates. The IP Address needs to be present on the certificate SAN name.
+**Note:** Changing the value of this property might introduce problems with certificates. Ensure that the IP Address is present on the certificate SAN name.
 
 ## SAF as an Authentication provider
 
@@ -48,9 +49,9 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Gateway retry policy
 
-Edit properties in the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
 
-In default configuration, retry for all requests is disabled, with one exception: the server retries `GET` requests that finish with status code `503`. 
+All requests are disabled as the default configuration for retry with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
 
 * **ribbon.retryableStatusCodes**
@@ -61,7 +62,7 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.OkToRetryOnAllOperations**
 
-     Specifies whether all operations can be retried for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
+     Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
   **Note:** Enabling retry can impact server resources due to request body buffering.
 
@@ -71,12 +72,12 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.MaxAutoRetriesNextServer**
     
-    Specfies the number of additional servers that attempt to make the request. This number excleds the first server. The default value is `5`. 
+    Specfies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
     
 
 ## Gateway timeouts
 
-Change the global timeout value for the API Layer instance:
+Use teh following procedure to change the global timeout value for the API Layer instance.
 
 **Follow these steps:**
 
@@ -106,9 +107,9 @@ Add the following properties to the file for API Gateway:
     
   The HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the connections that are managed serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period during which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
-## Cors handling
+## CORS handling
 
-By default, CORS are disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. Allowing CORS in the Gateway is necessary to enable CORS at the service level. Use the following procedure to enable CORS.
+By default, Cross-Origin Resource Sharing (CORS) is disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. To enable CORS at the service level, it is necessary to enable CORS in the Gateway. Use the following procedure to enable CORS.
         
 **Follow these steps:**
      
@@ -120,7 +121,7 @@ Requests through the Gateway now contain a CORS header.
 
 ## Encoded slashes
 
-By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes you must keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
+By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes, it is necessary to keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
     
 Use the following procedure to reject encoded slashes.
 
@@ -134,7 +135,7 @@ Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 ## Connection limits
 
-By default, the API Gateway accepts up to 100 conncurrent connections per route and 1000 total concurrent connections. Any further concurrent requests are queued.
+By default, the API Gateway accepts up to 100 conncurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued.
 
 Use the following procedure to change the number of concurrent connections.
 
