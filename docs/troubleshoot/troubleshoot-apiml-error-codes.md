@@ -49,11 +49,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
   
-  Too many concurrent connection requests were made to the same route
+  Too many concurrent connection requests were made to the same route.
 
   **Action:**
 
-  Further connections will be queued until there is room in the connection pool. You may also increase the per-route connection limit via the gateway start-up script.
+  Further connections will be queued until there is room in the connection pool. You may also increase the per-route connection limit via the gateway start-up script by setting the Gateway configuration for maxConnectionsPerRoute.
 
 ### ZWEAO106W
 
@@ -65,7 +65,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Further connections will be queued until there is room in the connection pool. You may also increase the total connection limit via the gateway start-up script
+  Further connections will be queued until there is room in the connection pool. You may also increase the total connection limit via the gateway start-up script by setting the Gateway configuration for maxTotalConnections.
 
 ### ZWEAO401E
 
