@@ -179,8 +179,8 @@
         "link": "extend/extend-sdks.md"
       },
       {
-        "text": "Lifecycling z/OS extensions",
-        "link": "extend/lifecycling-with-zwesvstc.md"
+        "text": "Packaging z/OS extensions",
+        "link": "extend/packaging-zos-extensions.md"
       },
       {
         "text": "Zowe Conformance Program",
