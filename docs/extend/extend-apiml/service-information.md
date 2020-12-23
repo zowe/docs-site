@@ -7,6 +7,8 @@ As an API Mediation Layer user, information about API services can be obtained f
 - To obtain information that permits routing through the API Gateway such as _baseUrl_ or _basePath_
 - To obtain information about an API service, the service APIs, or instances of the service 
 
+This article provides further detail about each of these use cases.
+
 - [API ID in the API Mediation Layer](#api-id-in-the-api-mediation-layer)
 - [Protection of Service Information](#protection-of-service-information)
 - [API Endpoints](#api-endpoints)
@@ -18,6 +20,7 @@ As an API Mediation Layer user, information about API services can be obtained f
 ## API ID in the API Mediation Layer
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID. It must be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. The Zowe APIs start with the `zowe.` prefix. API ML APIs start with the `zowe.apiml.` prefix.
+
 - For more information about _baseUrl_ or _basePath_, see [Components of URL](api-mediation-components-of-URL.md).
 
 ## Protection of Service Information
