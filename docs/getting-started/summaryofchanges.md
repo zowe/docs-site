@@ -859,7 +859,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe documentation
 
-- Added a topic [Zowe lifecycle](../extend/packaging-zos-extensions.md#zowe-runtime-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
+- Added a topic [Zowe runtime lifecycle](../extend/lifecycling-with-zwesvstc.html#zowe-runtime-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
 - Improved the [Zowe architecture](../getting-started/zowe-architecture.md) information to include a more current architecture topology diagram and more details on the individual Zowe services, where they log their data, and how to perform high-level problem determination.
 - Added new problem determination scenarios and resolution. See [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md)
 - Added information on how to determine which release of Zowe is installed. See [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).

@@ -9,7 +9,7 @@ Zowe can be extended in the following ways:
   - [Dynamic API registration](#dynamic-api-registration)
   - [Static API registration](#static-api-registration)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
-- [Lifecycle extensions as Zowe address spaces](#lifecycle-extensions-as-zowe-address-spaces)
+- [Sample extensions](#sample-extensions)
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
@@ -50,3 +50,13 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 - [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
 - [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
 - [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
+
+## Sample extensions
+
+### Sample Zowe API extension
+
+The repository [https://github.com/zowe/sample-node-api](https://github.com/zowe/sample-node-api) contains a sample Zowe extension with a node server providing sample APIs for looking at cars in a dealership. For more information, see [sample-node-api](https://github.com/zowe/sample-node-api/blob/master/README.md).  
+
+### Sample Zowe Desktop and API Catalog extension
+
+The repository [https://github.com/zowe/sample-trial-app](https://github.com/zowe/sample-trial-app) contains a sample Zowe extension with a node server providing a web page that gives a user interface to the APIs included with the API sample above.  
