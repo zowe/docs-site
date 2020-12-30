@@ -5,9 +5,7 @@ Zowe can be extended in multiple ways. You may extend Zowe with "microservices",
 - **component**: is the most generic way to describe a program which can work within Zowe. It can be a microservice, can be a desktop plugin, or even just a shared program be used by other Zowe components. This is also the generic word we refer to both Zowe core components and extensions. In most of the cases described below, this terminology doesn't include programs running on client side, like Zowe CLI plugin or Zowe Explorer (VSCode extension).
 - **extension**: is similar to **component** but excludes Zowe core components. All Zowe extensions are suggested to installed into a shared extension directory.
 
-## Zowe server component package format <Badge text="Technical Preview"/>
-
-_Note: this section is for technical preview. Content in this section may be changed or improved in the future._
+## Zowe server component package format
 
 Zowe components (extensions) can be packaged into various formats. You have the choice of choosing from a standalone PAX, ZIP or TAR file, or you can also choose to bundle and ship your Zowe extension(s) within another product.
 
@@ -47,9 +45,7 @@ If you decide to bundle and ship Zowe extension(s) within another product. You c
             |-- start.sh
 ```
 
-## Zowe component manifest <Badge text="Technical Preview"/>
-
-_Note: this section is for technical preview. Content in this section may be changed or improved in the future._
+## Zowe component manifest
 
 _Note: this feature is added with Zowe v1.18.0 release._
 

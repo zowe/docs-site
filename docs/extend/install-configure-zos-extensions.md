@@ -2,7 +2,7 @@
 
 ## Install with zowe-install-component.sh <Badge text="Technical Preview"/>
 
-_Note: this section is for technical preview. Content in this section may be changed or improved in the future._
+_Note: this section is for technical preview and we are happy to hear any feedbacks. Content in this section may be changed or improved in the future._
 
 _Note: this feature is added with Zowe v1.19.0 release._
 
@@ -42,7 +42,7 @@ $ zowe-install-component.sh \
 
 ## Configure with zowe-configure-component.sh <Badge text="Technical Preview"/>
 
-_Note: this section is for technical preview. Content in this section may be changed or improved in the future._
+_Note: this section is for technical preview and we are happy to hear any feedbacks. Content in this section may be changed or improved in the future._
 
 _Note: this feature is added with Zowe v1.19.0 release._
 
