@@ -11,7 +11,7 @@ The first part is the Zowe runtime, consisting of the following components:
 
 The second part is the Zowe Cross Memory Server, an authorized server application that provides privileged services to Zowe in a secure manner.
 
-If you want to use Docker, instead follow this related page: [Installing Zowe Server Components using Docker](install-docker.md)
+If you want to use Docker, instead follow this related page: [Installing Zowe Server Components using Docker](install-docker.md) <Badge text="Technical Preview"/>
 
 For more information on the Zowe components and how they are used to launch an instance of Zowe, see [Planning the installation](./installandconfig.md#planning-the-installation-of-zowe-z-os-components).
 

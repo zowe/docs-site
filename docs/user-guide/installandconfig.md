@@ -12,7 +12,7 @@ Here are some scenarios to consider:
 
 - If you will only be accessing the Zowe server components through a web browser or REST API client, then you do not need to install the Zowe CLI.
 - If you will only be using the Zowe CLI, depending on the plugins used you may not need to install the Zowe server components.
-- If you intend to use Docker for the server components, less components need to be installed on z/OS. If you are not using the Desktop or ZSS, then it's possible run the other Zowe components without installing any of Zowe onto z/OS.
+- If you intend to use Docker for the server components, less components need to be installed on z/OS. If you are not using the Desktop or ZSS, then it's possible run the other Zowe components without installing any of Zowe onto z/OS. <Badge text="Technical Preview"/>
 
 Before you start the installation, review the information on system requirements and other considerations.
 

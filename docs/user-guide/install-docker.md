@@ -1,4 +1,4 @@
-# Docker Installation Roadmap
+# Docker Installation Roadmap <Badge text="Technical Preview"/>
 
 
 There are three parts to using Docker to install Zowe&trade;.
@@ -65,7 +65,7 @@ Before you start the installation, review the information on hardware and softwa
 
 Complete the tasks in **Stage 2** of [z/OS Installation Roadmap](install-zos.md#stage-2-install-the-zowe-z-os-runtime)
 
-## Stage 3: Configure the Zowe z/OS runtime
+## Stage 3: Configure the Zowe z/OS runtime <Badge text="Technical Preview"/>
 
 First you must complete the tasks in **Stage 3** of [z/OS installation Roadmap](install-zos.md#stage-3-configure-the-zowe-z-os-runtime)
 
@@ -75,11 +75,11 @@ After, you should edit or review the chosen Component groups in the Zowe instanc
 
 Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe installation on z/OS](verify-zowe-runtime-install.md).
 
-## Stage 5: Install Docker image
+## Stage 5: Install Docker image <Badge text="Technical Preview"/>
 
 Get the latest Docker Image for the Zowe Server Components. See [Installing Zowe runtime Docker Image](install-docker-image.md).
 
-## Stage 6: Configure Docker container
+## Stage 6: Configure Docker container <Badge text="Technical Preview"/>
 
 Extract and customize the start script, instance directory, and keystore before running a Docker container. See [Configuring Zowe runtime Docker Container](configuring-docker.md)
 
