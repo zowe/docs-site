@@ -72,12 +72,12 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.MaxAutoRetriesNextServer**
     
-    Specfies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
+    Specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
     
 
 ## Gateway timeouts
 
-Use teh following procedure to change the global timeout value for the API Layer instance.
+Use the following procedure to change the global timeout value for the API Layer instance.
 
 **Follow these steps:**
 
@@ -135,7 +135,7 @@ Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 ## Connection limits
 
-By default, the API Gateway accepts up to 100 conncurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued.
+By default, the API Gateway accepts up to 100 conncurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued until the completion of an existing request. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 Use the following procedure to change the number of concurrent connections.
 
