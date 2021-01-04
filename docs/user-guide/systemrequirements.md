@@ -13,7 +13,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - [Client-side](#client-side-requirements)
   - [Host-side](#host-side-requirements)
   - [Free disk space](#free-disk-space)
-- [Feature requirements]
+- [Feature requirements](#feature-requirements)
   - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
   - [Single Sign-On (SSO)](#single-sign-on-sso)
 
@@ -105,7 +105,7 @@ Once you have Docker, the Zowe Docker image has the following requirements
 - Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
 
 When using Docker, z/OS is still required and if using the Application Framework or ZSS, installing ZSS on the z/OS host is still required. See these requirements:
-- [z/OS system requirements](zos-system-requirements-host)
+- [z/OS system requirements](#zos-system-requirements-host)
 
 **Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
 
