@@ -9,7 +9,7 @@ There are three parts to using Docker to install Zowe&trade;.
 
 - The Zowe Docker image, which runs on a Linux or zLinux host. It consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. 
 
-Using the Zowe Docker bundle first requires setting up your z/OS system for Zowe. The steps for z/OS setup are detailed on the page: [Installing Zowe Server Components on z/OS](install-zos.md)
+Using the Zowe Docker bundle first requires setting up your z/OS system for Zowe. The steps for z/OS setup are detailed on the page: [Installing Zowe Server Components on z/OS](install-zos.md).
 
 **NOTE**: If you want to install all server components on z/OS instead of using Docker, completing the z/OS install instructions in the above document is all that is required.
 
@@ -63,13 +63,13 @@ Before you start the installation, review the information on hardware and softwa
 
 ## Stage 2: Install the Zowe runtime on z/OS
 
-Complete the tasks in **Stage 2** of [z/OS Installation Roadmap](install-zos.md#stage-2-install-the-zowe-z-os-runtime)
+Complete the tasks in **Stage 2** of [z/OS Installation Roadmap](install-zos.md#stage-2-install-the-zowe-z-os-runtime).
 
 ## Stage 3: Configure the Zowe z/OS runtime <Badge text="Technical Preview"/>
 
-First you must complete the tasks in **Stage 3** of [z/OS installation Roadmap](install-zos.md#stage-3-configure-the-zowe-z-os-runtime)
+First you must complete the tasks in **Stage 3** of [z/OS installation Roadmap](install-zos.md#stage-3-configure-the-zowe-z-os-runtime).
 
-After, you should edit or review the chosen Component groups in the Zowe instance directory that was created. For use with Docker, only the Component group ZSS is required. This means that at minimum, the file `instance.env` will have the value `LAUNCH_OMPONENT_GROUPS=ZSS` set. See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups)
+After, you should edit or review the chosen Component groups in the Zowe instance directory that was created. For use with Docker, only the Component group ZSS is required. This means that at minimum, the file `instance.env` will have the value `LAUNCH_OMPONENT_GROUPS=ZSS` set. See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups).
 
 ## Stage 4: Verify the installation
 
@@ -81,7 +81,7 @@ Get the latest Docker Image for the Zowe Server Components. See [Installing Zowe
 
 ## Stage 6: Configure Docker container <Badge text="Technical Preview"/>
 
-Extract and customize the start script, instance directory, and keystore before running a Docker container. See [Configuring Zowe runtime Docker Container](configuring-docker.md)
+Extract and customize the start script, instance directory, and keystore before running a Docker container. See [Configuring Zowe runtime Docker Container](configuring-docker.md).
 
 ## Looking for troubleshooting help?
 

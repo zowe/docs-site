@@ -17,17 +17,17 @@ You can download a Docker Image by using the Docker command line utility `docker
 
 - The latest version of zowe, `ompzowe/server-bundle:latest`
 - The latest version for the platform you are running on, such as `ompzowe/server-bundle:amd64` for Linux
-- A specific version by referencing the verion's digest, such as `ompzowe/server-bundle@sha256:bdbc0617b02e16a452f6d4de50b8b13e56592e309b4c68f9ea52c82303ad57ec`
+- A specific version by referencing the version's digest, such as `ompzowe/server-bundle@sha256:bdbc0617b02e16a452f6d4de50b8b13e56592e309b4c68f9ea52c82303ad57ec`
 
 The latest digests can be seen on the [image's tags page](https://hub.docker.com/r/ompzowe/server-bundle/tags).
 
 ## Installing via direct download <Badge text="Technical Preview"/>
 
-You can install a Docker Image that has been downloaded as a `.tar` archive from anywhere, such as Zowe.org.
+You can install a Docker Image that has been downloaded as a `.tar` archive from anywhere, such as [Zowe.org](https://www.zowe.org/).
 
-### Loading an image from tarball <Badge text="Technical Preview"/>
+### Loading an image from .tar file <Badge text="Technical Preview"/>
 
-To install a Docker Image that you have downloaded as a tar file from somewhere, transfer the file to the destination host and then run `docker image load -i path_to_tar`
+To install a Docker Image that you have downloaded as a tar file from somewhere, transfer the file to the destination host and then run the following command: ```docker image load -i path_to_tar```
 
 ## Confirming the installation <Badge text="Technical Preview"/>
 

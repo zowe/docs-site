@@ -1,21 +1,22 @@
-# System requirements <!-- omit in toc -->
+# System requirements 
 
 Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
 
 - [z/OS system requirements (host)](#zos-system-requirements-host)
   - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements-host)
   - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements-host)
-  - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-requirements-host)
+  - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements-host)
     - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
 - [Docker requirements](#docker-requirements-host) <Badge text="Technical Preview"/>
 - [Zowe Desktop requirements](#zowe-desktop-requirements-client)
-- [Zowe CLI requirements](#zowe-cli-requirements-client)
-  - [Client-side](#client-side-requirements)
-  - [Host-side](#host-side-requirements)
+- [Zowe CLI requirements](#zowe-cli-requirements)
+  - [Client-side](#client-side)
+  - [Host-side](#host-side)
   - [Free disk space](#free-disk-space)
 - [Feature requirements](#feature-requirements)
   - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
   - [Single Sign-On (SSO)](#single-sign-on-sso)
+
 
 **Please note: Not all of the prerequisites below are needed. The prerequisites needed depends on what components you want to use.**
 

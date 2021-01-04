@@ -2,7 +2,7 @@
 
 Configuring the Zowe runtime Docker Image has similarities to [configuring runtime instance on z/OS](configure-instance-directory.md). However, there are three major differences:
 
-- Ports are managed between Docker and the host rather than in instance.env
+- Ports are managed between Docker and the host rather than in the `instance.env` file
 - Plugins can be added from the host by using a Docker mount
 - External certificates can be used from a Docker mount
 
@@ -53,15 +53,16 @@ Within `start.sh`, you will be able to see parameters to customize ports, specif
 **Note: The Zowe keystore cannot be copied in this way because it does not exist initially. If you need to initialize a keystore, you can start Zowe in the container temporarily by omitting `ZOWE_START=0` and run a `docker cp` command to copy out `/global/zowe/keystore` to make desired edits.**
 
 ### Customizing Zowe container start script <Badge text="Technical Preview"/>
-There are many different ways to configure a Zowe docer container:
 
-- `-h <hostname>` - hostname of docker host (hostname of your laptop eg: myhost.acme.net)
+There are many different ways to configure a Zowe docker container:
+
+- `-h <hostname>` - hostname of docker host (hostname of your laptop, for example,  `myhost.acme.net`)
 - `--env ZOWE_IP_ADDRESS=<ip>` - The IP which the servers should bind to. Should not be a loopback address.
-- `--env ZOSMF_HOST=<zosmf_hostname>` - z/OSMF hostname (eg mf.acme.net)
-- `--env ZOSMF_PORT=<zosmf_port>` - z/OSMF port eg (1443)
-- `--env ZWED_agent_host=<zss_hostname>` - ZSS host (eg mf.acme.net)
-- `--env ZWED_agent_http_port=<zss_port>` - ZSS port z/OSMF port eg (60012)
-- `--env LAUNCH_COMPONENT_GROUPS=<DESKTOP or GATEWAY>` - what do you want to start
+- `--env ZOSMF_HOST=<zosmf_hostname>` - z/OSMF hostname (for example, `mf.acme.net`)
+- `--env ZOSMF_PORT=<zosmf_port>` - z/OSMF port (for example, 1443)
+- `--env ZWED_agent_host=<zss_hostname>` - ZSS host (for example, `mf.acme.net`)
+- `--env ZWED_agent_http_port=<zss_port>` - ZSS port z/OSMF port (for example, 60012).
+- `--env LAUNCH_COMPONENT_GROUPS=<DESKTOP or GATEWAY>` - What component you want to start.
   - DESKTOP - only desktop
   - GATEWAY - only GATEWAY + explorers
   - GATEWAY,DESKTOP - both
@@ -69,10 +70,10 @@ There are many different ways to configure a Zowe docer container:
 - `--env EXTERNAL_CERTIFICATE=<keystore.p12>` - location of p12 keystore. (optional)
 - `--env EXTERNAL_CERTIFICATE_ALIAS=<alias>` - valid alias within keystore. (optional)
 - `--env EXTERNAL_CERTIFICATE_AUTHORITIES=<CA.cer>` - location of x509 Certificate Authority (optional)
-- `-v [LOCAL_APPS_DIR]:/root/zowe/apps:ro` - Adds App Framework Apps to the container
+- `-v [LOCAL_APPS_DIR]:/root/zowe/apps:ro` - Adds App Framework Apps to the container.
 - `-v [LOCAL_INSTANCE_DIR]:/root/zowe/external_instance:rw` - (Recommended) Uses a Zowe instance directory from outside the container. Recommended to save preferences between upgrades and to have multiple containers of Zowe sharing configurations.
 - `--env EXTERNAL_INSTANCE=/root/zowe/external_instance` - Used together with the `-v` command to use an external instance directory.
-- 
+
 
 **Note: External certificates are optional, but recommended to resolve self-signed certificate warnings.**
 
@@ -92,7 +93,7 @@ See [Creating and configuring the Zowe instance directory](configure-instance-di
 
 
 ### Using external certificates <Badge text="Technical Preview"/>
-Zowe's keystore can be used to configure which keys and ceritificates will be used by Zowe for HTTPS connections.
+Zowe's keystore can be used to configure which keys and certificates will be used by Zowe for HTTPS connections.
 
 The keystore directory configuration and functionality for Docker is identical to the configuration and functionality on z/OS, except for limitations on storage types.
 Currently, the Zowe bundle Docker image only supports file-based keys and certificates, such as P12 and PEM files.
@@ -109,15 +110,16 @@ When the container is running, the servers' log output may be printed to the scr
 
 After startup, you can verify that Zowe is running by opening the browser to:
 
- - API Mediation Layer: https://your_hostname:7554
- - App Framework: https://your_hostname:8544
+ - API Mediation Layer: `https://your_hostname:7554`
+ - App Framework: `https://your_hostname:8544`
 
 Or, if the ports were modified, `https://your_hostname:$GATEWAY_PORT` and `https://your_hostname:$APP_SERVER_PORT`
 
 ## Using Zowe-based products, plugins and apps <Badge text="Technical Preview"/>
 To use Zowe-based software with the docker container, you must make that software visible to the Zowe that is within Docker by mapping a folder on your host machine to a folder visible within the docker container.
 
-To share a host directory *HOST_DIR* into the docker container destination directory *CONTAINER_DIR* with read-write access, simply add this line to your docker run command: `-v [HOST_DIR]:[CONTAINER_DIR]:ro`
+To share a host directory *HOST_DIR* into the docker container destination directory *CONTAINER_DIR* with read/write access, simply add this line to your docker run command: `-v [HOST_DIR]:[CONTAINER_DIR]:ro`
+
 You can have multiple such volumes, but for Zowe Application Framework plugins, the value of *CONTAINER_DIR* must be `/root/zowe/apps`
 
 Application Framework plugins within the root directory of ```/root/zowe/apps``` will be automatically installed at start up, but if you have a product which has subdirectories of plugins, it may need manual installation or configuration.
@@ -125,7 +127,7 @@ Application Framework plugins within the root directory of ```/root/zowe/apps```
 For those plugins, you can run their scripts or Zowe's own `install-app.sh` script by executing a command in Docker, such as:
 ```docker exec -it [CONTAINER_ID] /root/zowe/instance/bin/install-app.sh [APPLICATION_DIR]```
 
-**Note: When installing Application Framework plugins, you can attempt to load them without a server restart via either clicking "Refresh Applications" in the launchbar menu of the Zowe Desktop, or by doing an HTTP GET call to /plugins?refresh=true to the app server. Some plugins may still need a server restart. Consult product documentation for specifics**
+**Note: When installing Application Framework plugins, you can attempt to load them without a server restart via either clicking "Refresh Applications" in the launchbar menu of the Zowe Desktop, or by doing an HTTP GET call to /plugins?refresh=true to the app server. Some plugins may still need a server restart. Consult product documentation for specifics.**
 
 ## Zowe's docker mount locations <Badge text="Technical Preview"/>
 
