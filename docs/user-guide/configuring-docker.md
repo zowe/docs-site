@@ -78,6 +78,7 @@ There are many different ways to configure a Zowe docker container:
 **Note: External certificates are optional, but recommended to resolve self-signed certificate warnings.**
 
 ### Using an instance directory external to the Zowe container <Badge text="Technical Preview"/>
+
 Each Zowe container comes with a simple instance directory setup, but it is recommended that this only be used for development, as changes made to the instance will not remain after upgrade and it prevents sharing configuration across multiple containers.
 
 Instead, having an instance directory external to the container solve these issues.
@@ -93,6 +94,7 @@ See [Creating and configuring the Zowe instance directory](configure-instance-di
 
 
 ### Using external certificates <Badge text="Technical Preview"/>
+
 Zowe's keystore can be used to configure which keys and certificates will be used by Zowe for HTTPS connections.
 
 The keystore directory configuration and functionality for Docker is identical to the configuration and functionality on z/OS, except for limitations on storage types.
@@ -103,6 +105,7 @@ To use external certificates, the [external instance](#using-an-instance-directo
 See [Configuring Zowe certificates](configure-certificates.md) for more information.
 
 ### Starting the container <Badge text="Technical Preview"/>
+
 The recommended way to start your first container is by running the `start.sh` script.
 You can choose to run it with `nohup`, `&`, or the docker `--detach` command as ways to run the container independent of the terminal.
 
@@ -116,6 +119,7 @@ After startup, you can verify that Zowe is running by opening the browser to:
 Or, if the ports were modified, `https://your_hostname:$GATEWAY_PORT` and `https://your_hostname:$APP_SERVER_PORT`
 
 ## Using Zowe-based products, plugins and apps <Badge text="Technical Preview"/>
+
 To use Zowe-based software with the docker container, you must make that software visible to the Zowe that is within Docker by mapping a folder on your host machine to a folder visible within the docker container.
 
 To share a host directory *HOST_DIR* into the docker container destination directory *CONTAINER_DIR* with read/write access, simply add this line to your docker run command: `-v [HOST_DIR]:[CONTAINER_DIR]:ro`

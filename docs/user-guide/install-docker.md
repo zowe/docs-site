@@ -1,6 +1,5 @@
 # Docker Installation Roadmap <Badge text="Technical Preview"/>
 
-
 There are three parts to using Docker to install Zowe&trade;.
 
 - The Zowe z/OS runtime which contains the ZSS component.
