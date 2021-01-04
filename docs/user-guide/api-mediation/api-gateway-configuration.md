@@ -134,7 +134,7 @@ Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 ## Connection limits
 
-By default, the API Gateway accepts up to 100 conncurrent connections per route and 1000 total concurrent connections. Any further concurrent requests are queued.
+By default, the API Gateway accepts up to 100 conncurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued until the completion of an existing request. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 Use the following procedure to change the number of concurrent connections.
 
@@ -143,4 +143,3 @@ Use the following procedure to change the number of concurrent connections.
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
-
