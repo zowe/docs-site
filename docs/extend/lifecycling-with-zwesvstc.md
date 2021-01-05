@@ -16,17 +16,17 @@ When `run-zowe.sh` is run in the USS shell that `BPXBATSL` creates, it executes 
 
 **Note:**
 
-The scripts of core Zowe components and some extensions use the helper library `<RUNTIME_DIR>/scripts/utils`.  Currently, these are not publicly supported. Future releases of Zowe might provide these as supported system programming interfaces (SPIs) and include their usage in the Zowe documentation.  
+The scripts of core Zowe components and some extensions use the helper library `<RUNTIME_DIR>/bin/utils`.  Currently, these are not publicly supported. Future releases of Zowe might provide these as supported system programming interfaces (SPIs) and include their usage in the Zowe documentation.  
 
 ## Zowe component runtime lifecycle
 
-Each Zowe component will be installed with its own USS directory, which contains its executable files. Within each component's USS directory, a `bin` directory is suggested to contain scripts that are used for the lifecycle of the component.  When Zowe is started, it identifies the components that are configured to launch and then execute the scripts of those components in the cycle of [validate](#validate), [configure](#configure), and [start](#start).  All components are validated, then all are configured, and finally all are started. This technique is used as follows: 
+Each Zowe component will be installed with its own USS directory, which contains its executable files. Within each component's USS directory, a `bin` directory is recommended to contain scripts that are used for the lifecycle of the component.  When Zowe is started, it identifies the components that are configured to launch and then execute the scripts of those components in the cycle of [validate](#validate), [configure](#configure), and [start](#start).  All components are validated, then all are configured, and finally all are started. This technique is used as follows: 
 - Used for the base Zowe components that are included with the core Zowe runtime.
 - Applies to extensions to allow vendor offerings to be able to have the lifecycle of their 'microservices' within the Zowe USS shell and be included as address spaces under the `ZWESVSTC` started task.
 
 ### Validate
 
-Each component is optional to instruct Zowe runtime to validate itself with a USS command defined in manifest `commands.validate`. If this is not defined, for backward compatible purpose, a call to its `/bin/validate.sh` script will be executed if it exists.
+Each component can optionally instruct Zowe runtime to validate itself with a USS command defined in manifest `commands.validate`. If this is not defined, for backward compatible purpose, a call to its `/bin/validate.sh` script will be executed if it exists.
 
 If present, the `validate` script performs tasks such as:
 - Check that the shell has the correct prerequisites.
@@ -37,7 +37,7 @@ During execution of the `validate` script, if an error is detected, then a compo
 
 ### Configure
 
-Each component is optional to instruct Zowe runtime to configure itself with a USS command defined in manifest `commands.configure`. If this is not defined, for backward compatible purpose, a call to its `/bin/configure.sh` script will be executed if it exists.
+Each component can optionally instruct Zowe runtime to configure itself with a USS command defined in manifest `commands.configure`. If this is not defined, for backward compatible purpose, a call to its `/bin/configure.sh` script will be executed if it exists.
 
 If the component has manifest defined, some configure actions will be performed automatically based on manifest definition:
 
@@ -48,6 +48,6 @@ For backward compatible purpose, you can choose to configure component by yourse
 
 ### Start
 
-Each component is optional to instruct Zowe runtime to start itself with a USS command defined in manifest `commands.start`. If this is not defined, for backward compatible purpose, a call to its `/bin/start.sh` script will be executed if it exists. If your component is not supposed to be started by itself, for example, the component is a shared library, you can skip this instruction.
+Each component can optionally instruct Zowe runtime to start itself with a USS command defined in manifest `commands.start`. If this is not defined, for backward compatible purpose, a call to its `/bin/start.sh` script will be executed if it exists. If your component is not supposed to be started by itself, for example, the component is a shared library, you can skip this instruction.
 
 It is up to each component to start itself based on how it has been written.  We recommend that any variables that someone who configure Zowe may need to vary, such as timeout values, port numbers, or similar, are specified as variables in the `instance.env` file and then referenced as shell variables in the `start.sh` script to be passed into the component runtime.

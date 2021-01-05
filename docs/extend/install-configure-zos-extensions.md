@@ -6,7 +6,7 @@ _Note: this section is for technical preview and we are happy to hear any feedba
 
 _Note: this feature is added with Zowe v1.19.0 release._
 
-From v1.19.0, Zowe ships a `bin/zowe-install-components.sh` tool to help you install any Zowe server component (extension). Zowe core components are also installed with this tool. To make the tool works better, the component to be installed is suggested to follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+From v1.19.0, Zowe ships a `bin/zowe-install-component.sh` tool to help you install any Zowe server component (extension). Zowe core components are also installed with this tool. To make the tool works better, the component to be installed is suggested to follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 The tool can be executed from z/OS USS, and it takes these command line parameters:
 
@@ -18,7 +18,7 @@ The tool can be executed from z/OS USS, and it takes these command line paramete
   * `yes`: automatically tag the encoding of the files,
   * `no`: do not automatically tag encoding of the files,
   * `auto`: only tag when manifest is in `ISO8859-1` encoding.
-- **`-n|--native`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
+- **`-n|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
 - **`-l|--logs-dir`**: This is optional. It's the path to logs directory.
 - **`-f|--log-file`**: This is optional. Instead of writing independent log to a directory, you have option to append log to this log file specified.
 
@@ -46,7 +46,7 @@ _Note: this section is for technical preview and we are happy to hear any feedba
 
 _Note: this feature is added with Zowe v1.19.0 release._
 
-From v1.19.0, Zowe ships a `bin/zowe-configure-components.sh` tool to help you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. To make the tool works better, the component to be configured is suggested to follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+From v1.19.0, Zowe ships a `bin/zowe-configure-components.sh` tool to help you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 You may not need to run this script directly if you have supplied `-i|--instance-dir` when you run `zowe-install-component.sh`.
 
@@ -55,7 +55,7 @@ The tool can be executed from z/OS USS, and it takes these command line paramete
 - **`-c|--component-name`**: This is required. It's the name of the component.
 - **`-i|--instance-dir`**: This is required. It's the path to Zowe instance directory.
 - **`-d|--target-dir`**: This is optional. It's the directory where the component is installed. For native component, default value is `${ZOWE_ROOT_DIR}/components`. For non-native component, the script will check `ZWE_EXTENSION_DIR` if possible. Otherwise will fall back to default target directory `/global/zowe/extensions`.
-- **`-n|--native`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
+- **`-n|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
 - **`-l|--logs-dir`**: This is optional. It's the path to logs directory.
 - **`-f|--log-file`**: This is optional. Instead of writing independent log to a directory, you have option to append log to this log file specified.
 
