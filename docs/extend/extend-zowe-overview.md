@@ -53,10 +53,10 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 
 ## Sample extensions
 
-### Sample Zowe API extension
+### Sample Zowe API and API Catalog extension
 
 The repository [https://github.com/zowe/sample-node-api](https://github.com/zowe/sample-node-api) contains a sample Zowe extension with a node server providing sample APIs for looking at cars in a dealership. For more information, see [sample-node-api](https://github.com/zowe/sample-node-api/blob/master/README.md).  
 
-### Sample Zowe Desktop and API Catalog extension
+### Sample Zowe Desktop extension
 
 The repository [https://github.com/zowe/sample-trial-app](https://github.com/zowe/sample-trial-app) contains a sample Zowe extension with a node server providing a web page that gives a user interface to the APIs included with the API sample above.  

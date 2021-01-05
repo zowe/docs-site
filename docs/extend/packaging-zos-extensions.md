@@ -91,5 +91,5 @@ There are many examples you may find across Zowe github repositories. Here are f
 
 - [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/master/api-catalog-package/src/main/resources/manifest.yaml)
 - [Jobs API manifest.yaml](https://github.com/zowe/jobs/blob/master/jobs-zowe-server-package/src/main/resources/manifest.yaml)
-- [Sample Node API extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
-- [Sample Zowe Desktop and API Catalog extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
+- [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
+- [Sample Zowe Desktop extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
