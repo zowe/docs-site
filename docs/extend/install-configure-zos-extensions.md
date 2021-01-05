@@ -18,7 +18,7 @@ The tool can be executed from z/OS USS, and it takes these command line paramete
   * `yes`: automatically tag the encoding of the files,
   * `no`: do not automatically tag encoding of the files,
   * `auto`: only tag when manifest is in `ISO8859-1` encoding.
-- **`-n|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
+- **`-k|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
 - **`-l|--logs-dir`**: This is optional. It's the path to logs directory.
 - **`-f|--log-file`**: This is optional. Instead of writing independent log to a directory, you have option to append log to this log file specified.
 
@@ -55,7 +55,7 @@ The tool can be executed from z/OS USS, and it takes these command line paramete
 - **`-c|--component-name`**: This is required. It's the name of the component.
 - **`-i|--instance-dir`**: This is required. It's the path to Zowe instance directory.
 - **`-d|--target-dir`**: This is optional. It's the directory where the component is installed. For native component, default value is `${ZOWE_ROOT_DIR}/components`. For non-native component, the script will check `ZWE_EXTENSION_DIR` if possible. Otherwise will fall back to default target directory `/global/zowe/extensions`.
-- **`-n|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
+- **`-k|--core`**: This is an optional boolean. It defines whether this component is bundled into Zowe package as core component.
 - **`-l|--logs-dir`**: This is optional. It's the path to logs directory.
 - **`-f|--log-file`**: This is optional. Instead of writing independent log to a directory, you have option to append log to this log file specified.
 
