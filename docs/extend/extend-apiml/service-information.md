@@ -5,7 +5,7 @@ As an API Mediation Layer user, information about API services can be obtained f
 - To display available services based on a particular criterion (API ID, hostname, or custom metadata)
 - To locate a specific API service based on one or more specific criteria (for example the API ID)
 - To obtain information that permits routing through the API Gateway such as _baseUrl_ or _basePath_
-- To obtain information about an API service, the service APIs, or instances of the service 
+- To obtain information about an API service, the service APIs, or instances of the service
 
 This article provides further detail about each of these use cases.
 
@@ -15,7 +15,7 @@ This article provides further detail about each of these use cases.
   - [Obtain Information about a  Specific Service](#obtain-information-about-a-specific-service)
   - [Obtain Information about All Services](#obtain-information-about-all-services)
   - [Obtain Information about All Services with a Specific API ID](#obtain-information-about-all-services-with-a-specific-api-id)
-  
+
 
 ## API ID in the API Mediation Layer
 
@@ -25,9 +25,12 @@ The _API ID_ uniquely identifies the API in the API ML. The API ID can be used t
 
 ## Protection of Service Information
 
-Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessable only by authorized users and services.
+Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessible only by authorized users and services.
 
-Access to this information requires authentication using mainframe credentials, and a SAF resource check (SAF resource check - TBD).
+Access to this information requires authentication using mainframe credentials, and a SAF resource check is done. The resource class and resource is defined in the `ZWESECUR` job. You can find more details about the `ZWESECUR` job in [Configuring the z/OS system for Zowe](../../user-guide/configure-zos-system.md).
+
+The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to the your that can access
+the information about API services.
 
 ## API Endpoints
 
