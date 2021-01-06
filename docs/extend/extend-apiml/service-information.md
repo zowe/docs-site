@@ -16,7 +16,6 @@ This article provides further detail about each of these use cases.
   - [Obtain Information about All Services](#obtain-information-about-all-services)
   - [Obtain Information about All Services with a Specific API ID](#obtain-information-about-all-services-with-a-specific-api-id)
 
-
 ## API ID in the API Mediation Layer
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID. It must be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. The Zowe APIs start with the `zowe.` prefix. API ML APIs start with the `zowe.apiml.` prefix.
