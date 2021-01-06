@@ -130,6 +130,7 @@ After you register the workflow definition file, perform the following steps to 
 3. **Change the instance configuration**
 
    Execute the step to configure the Zowe instance. The configuration of the Zowe instance depends on the values for variables that you defined in the first step.
+   **Note: If you are planning to use Docker, be sure to select only to start LAUNCH_COMPONENT_GROUP=ZSS, otherwise more components of Zowe than necessary will be run on z/OS, such as API Mediation Layer and the App Framework. You can skip configuration for those components here, as they will run in Docker.**
 
 4. **Copy the STC to the procedure library**
 
