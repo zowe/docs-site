@@ -1,6 +1,6 @@
 # Configuring Zowe certificates 
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a KEYTORE_DIRECTORY which contains information about where the certificate is located. 
+Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a KEYSTORE_DIRECTORY which contains information about where the certificate is located.
 
 Learn more about the key concepts of Zowe certificates in the following sections.
  

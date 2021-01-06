@@ -1,6 +1,8 @@
 # Installing Node.js on z/OS
 
-Before you install Zowe&trade;, you must install IBM SDK for Node.js on the same z/OS server that hosts the Zowe Application Server. Review the information in this topic to obtain and install Node.js.
+**Note: This section is not required if using Docker or only using the CLI.**
+
+Before you install Zowe&trade; on z/OS, you must install IBM SDK for Node.js on the same z/OS server that hosts the Zowe Application Server and z/OS Explorer Services. Review the information in this topic to obtain and install Node.js.
 
 - [Supported Node.js versions](#supported-nodejs-versions)
 - [How to obtain IBM SDK for Node.js - z/OS](#how-to-obtain-ibm-sdk-for-nodejs---zos)
@@ -13,11 +15,6 @@ Before you install Zowe&trade;, you must install IBM SDK for Node.js on the same
 The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
 
 The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
-
-**Note: Starting in September 2020, Node.js v6 on z/OS program number 5655-SDK will no longer be supported. You are advised to update to more recent versions of Node.js.** For more information, see [Software withdrawal and support discontinuance](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS919-021).  For a full list of the end of support dates for Node.js versions and other products, see [IBM Support EOS dates for z/OS](https://www.ibm.com/support/pages/eos-out-support-dates-zos).
-
-- v6.x starting with v6.14.4 
-    - z/OS V2R2 with PTF UI46658 (APAR [PI79959](http://www.ibm.com/support/docview.wss?uid=isg1PI79959)), z/OS V2R3, or higher
 
 - v8.x (except v8.16.1)
    - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415 (APARs [PH10606](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10606), [PI79959](https://www-01.ibm.com/support/docview.wss?uid=swg1PI79959), [PH10740](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10740), [PH10741](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10741))
