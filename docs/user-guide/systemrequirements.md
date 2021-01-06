@@ -7,7 +7,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements-host)
   - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements-host)
     - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
-- [Docker requirements](#docker-requirements-host) <Badge text="Technical Preview"/>
+- [Docker requirements](#docker-requirements-host)
 - [Zowe Desktop requirements](#zowe-desktop-requirements-client)
 - [Zowe CLI requirements](#zowe-cli-requirements)
   - [Client-side](#client-side)
@@ -92,7 +92,9 @@ See [Reviewing the instance env file](../user-guide/configure-instance-directory
 
 See [Configuring a Zowe instance via instance.env file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instanceenv-file) for additional information on configuring `instance.env` files.
 
-## Docker requirements (host) <Badge text="Technical Preview"/>
+## Docker requirements (host)  
+
+<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
 
 Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
 Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.

@@ -12,7 +12,9 @@ Zowe components can be categorized by location: server or client. While the clie
 
 Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under Unix System Services (USS). The ones that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
-## Zowe architecture when using Docker image <Badge text="Technical Preview"/>
+## Zowe architecture when using Docker image
+
+<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. 
 
 The following diagram depicts the difference in locations of Zowe components when using Docker as opposed to running all components on z/OS.
 

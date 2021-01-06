@@ -101,7 +101,9 @@ Prerequisites vary by component used, but in most cases the primary prerequisite
 
 </details>
 
-### What's the difference between using Zowe with or without Docker? <Badge text="Technical Preview"/>
+### What's the difference between using Zowe with or without Docker?  
+
+<Badge text="Technical Preview"/>
 
 <details class="zowe-faq">
 
@@ -116,7 +118,9 @@ Configurating components with Docker is similar to the procedures you would foll
 
 </details>
 
-### Is the Zowe CLI packaged within the Zowe Docker download? <Badge text="Technical Preview"/>
+### Is the Zowe CLI packaged within the Zowe Docker download?  
+
+<Badge text="Technical Preview"/>
 
 <details class="zowe-faq">
 

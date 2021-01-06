@@ -1,4 +1,6 @@
-# Installing Zowe runtime Docker Image <Badge text="Technical Preview"/>
+# Installing Zowe runtime Docker Image (Technical Preview)
+
+<Badge text="Technical Preview"/> 
 
 Docker is a way to create a pre-packaged set of software and configuration called an "Image". Images are used to create Docker "Containers", which run the Image contents in isolation from the other software running on the same system. Docker containers are the runtime environment, and Images are what they are crated from.
 
@@ -9,7 +11,7 @@ If you have not set up the Zowe server runtime on z/OS, please follow the steps 
 
 This guide assumes you are using Linux or zLinux and have already downloaded Docker itself. If you have not yet done so, please review [System Requirements](systemrequirements.md).
 
-## Installing via Docker Hub <Badge text="Technical Preview"/>
+## Installing via Docker Hub  
 
 Zowe's Docker Image is hosted on [Docker Hub](https://hub.docker.com), which is the default location from which you can use the Docker command line utility to download and update Docker Images. On Docker Hub, the Zowe server runtime image is named [ompzowe/server-bundle](https://hub.docker.com/r/ompzowe/server-bundle).
 
@@ -21,15 +23,15 @@ You can download a Docker Image by using the Docker command line utility `docker
 
 The latest digests can be seen on the [image's tags page](https://hub.docker.com/r/ompzowe/server-bundle/tags).
 
-## Installing via direct download <Badge text="Technical Preview"/>
+## Installing via direct download  
 
 You can install a Docker Image that has been downloaded as a `.tar` archive from anywhere, such as [Zowe.org](https://www.zowe.org/).
 
-### Loading an image from .tar file <Badge text="Technical Preview"/>
+### Loading an image from .tar file  
 
 To install a Docker Image that you have downloaded as a tar file from somewhere, transfer the file to the destination host and then run the following command: ```docker image load -i path_to_tar```
 
-## Confirming the installation <Badge text="Technical Preview"/>
+## Confirming the installation  
 
 The `docker images` command lists the images a system currently has, which make them available for creating containers from.
 
@@ -39,7 +41,7 @@ REPOSITORY                         TAG                 IMAGE ID            CREAT
 ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
 ```
 
-## Upgrading <Badge text="Technical Preview"/>
+## Upgrading  
 
 Once installed, it is possible to upgrade an image by using `docker pull` with the same _imagename_ as before, or by using `docker image load` to load another image of the same type.
 Newer containers can be created from newer images. In Zowe, configuration can be persisted between containers. More information on this subject can be found in [Configuring Docker Container](configuring-docker.md) documentation.
