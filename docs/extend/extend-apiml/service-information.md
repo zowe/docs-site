@@ -30,6 +30,26 @@ Access to this information requires authentication using mainframe credentials, 
 
 The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to the your that can access the information about API services.
 
+In IBM RACF, the access to the service information can be given by:
+
+```txt
+PERMIT APIML.SERVICES CLASS(ZOWE) ID(user) ACCESS(READ)
+```
+
+In CA Top Secret:
+
+```txt
+TSS PERMIT(user) ZOWE(APIML.SERVICES) ACCESS(READ)
+```
+
+In ACF2:
+
+```txt
+SET RESOURCE(ZWE)
+RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
+F ACF2,REBUILD(ZWE)
+```
+
 ## API Endpoints
 
 ### Obtain Information about a Specific Service
