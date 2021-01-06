@@ -18,9 +18,9 @@ This article provides further detail about each of these use cases.
 
 ## API ID in the API Mediation Layer
 
-The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID. It must be a string of up to 64 characters that uses lowercase alphanumeric characters and a dot: `.`. The Zowe APIs start with the `zowe.` prefix. API ML APIs start with the `zowe.apiml.` prefix.
+The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
-- For more information about _baseUrl_ or _basePath_, see [Components of URL](api-mediation-components-of-URL.md).
+For more information about _baseUrl_ or _basePath_, see [Components of URL](api-mediation-components-of-URL.md).
 
 ## Protection of Service Information
 
@@ -28,8 +28,7 @@ Information about API services is considered sensitive as it contains partial in
 
 Access to this information requires authentication using mainframe credentials, and a SAF resource check is done. The resource class and resource is defined in the `ZWESECUR` job. You can find more details about the `ZWESECUR` job in [Configuring the z/OS system for Zowe](../../user-guide/configure-zos-system.md).
 
-The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to the your that can access
-the information about API services.
+The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to the your that can access the information about API services.
 
 ## API Endpoints
 
@@ -61,7 +60,7 @@ Use the following method to get information about all services with a specific A
 
 where:
 
-- **`{apiId}`** is the API ID provided by the service (e.g. `zowe.apiml.apicatalog`)
+- **`{apiId}`** is the API ID that represents required API (e.g. `zowe.apiml.apicatalog`)
 
 This method returns a JSON response with a list of services provided by a specified API ID. For more information, see [Response Format](#response-format).
 
