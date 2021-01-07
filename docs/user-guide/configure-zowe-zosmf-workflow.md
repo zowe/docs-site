@@ -61,7 +61,7 @@ Register the ZWEWRF05 member that is located `<pathPrefix>/files/workflows/ZWEWR
 
 3. **Execute zowe-setup-certificates.sh**
 
-   Execute the step to run the shell script to generate the custom certificates based on the defined values for varaibales and values for parameters in the provided environment file.
+   Execute the step to run the shell script to generate the custom certificates based on the defined values for variables and values for parameters in the provided environment file.
 
 After you execute these steps, the keystore and certificates are successfully generated based on the custom values. For general instruction on how to register and execute the workflow, see [Register and execute workflow in the z/OSMF Web Interface](#register-and-execute-workflow-in-the-zosmf-web-interface).
 
