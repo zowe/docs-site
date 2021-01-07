@@ -1,4 +1,4 @@
-# Docker Installation Roadmap （Technical Preview)
+# Docker Installation Roadmap (Technical Preview)
 
 <Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. Technical previews are for testing only and not ready for production. Any feedback that you can provide is highly appreciated.
 

@@ -41,9 +41,6 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 
 ### New features and enhancements
 
-#### Zowe installation
-<!-- Pulled from https://github.com/zowe/zowe-install-packaging/blob/staging/CHANGELOG.md. Based on version number.-->
-
 #### Zowe API Mediation Layer
 <!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1180. Based on release number.-->
 - Configure more detailed logging outside of Spool. [#709](https://github.com/zowe/api-layer/issues/709)
