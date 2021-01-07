@@ -78,7 +78,7 @@ opts.push(parameters(customParameters))
 // set build properties
 properties(opts)
 
-node ('ibm-jenkins-slave-dind') {
+node ('zowe-jenkins-agent-dind') {
   currentBuild.result = 'SUCCESS'
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
