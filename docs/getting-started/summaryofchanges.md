@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.18 and earlier releases include the following enhancements, release by release.
 
-- [Version 1.18.0 LTS (December 2020)](#version-1-18-0-lts-december-2020)
+- [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
 - [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
 - [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
@@ -28,22 +28,103 @@ Zowe Version 1.18 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.18.0 LTS (December 2020)
-### Notable changes
+## Version 1.18.0 LTS (January 2021)
+
+### Notable changes 
+
+**Zowe Docker build Technical Preview is available** 
+
+The Zowe Docker build enables you to run a subset of the Zowe server-side components outside z/OS. The Docker build runs in combination with the convenience or SMP/E build. You can download the build directly via the .tar file, or as a cloud download from Docker Hub. Separate downloads exist for z/Linux ("s390x") and other Linux ("amd64" for intel & amd systems).
+
+For more information, see [Docker Installation Roadmap](../user-guide/install-docker.md). To download the Docker build technical preview, visit [Zowe.org](https://www.zowe.org/download.html).  
+
 
 ### New features and enhancements
-#### Zowe installation
+
 #### Zowe API Mediation Layer
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1180. Based on release number.-->
+- Version 1.18.0 introduces a feature allowing users to run the Zowe API Mediation Layer as a standalone component. After downloading and installing the current Zowe SMPE package, you can then configure and deploy only the Zowe API Mediation Layer without the other Zowe components. [#856](https://github.com/zowe/api-layer/issues/856)
+- You can now configure more detailed logging outside of Spool. [#709](https://github.com/zowe/api-layer/issues/709)
+- High Availability: The start script per API ML service has been componentized. You can now launch and restart API Mediation Layer components individually. [#862](https://github.com/zowe/api-layer/issues/862)
+- High Availability: It is now possible to distinguish between internal and external traffic through port separation, whereby each port uses a unique certificate; one presenting an internal certificate, and the other an external certificate. [#910](https://github.com/zowe/api-layer/issues/910)
+- API version is now automatically set to the version tab selected in the API Catalog so users can easily grab the Base Path. [#943](https://github.com/zowe/api-layer/issues/943)
+- API Catalog versioning has been improved with the addition of the API differences tab. This feature enables you to compare versions of two APIs. [#923](https://github.com/zowe/api-layer/issues/923)
+
 #### Zowe App Server
+<!--Pulled from
+https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
+https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
+- Feature: The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
+  - This is backward compatible with apps that have previously used single app mode. 
+  - In the case that app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
+- Feature: ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
+
+
+
+
 #### Zowe CLI
+<!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.5, 6.24.6, 6.25.0. -->
+<!-- Imperative CLI Framework: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Includes 4.9.0, 4.10.0.-->
+<!-- Secure Credential Store Plug-in: Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history. Last release is 4.1.1. No changes since then. -->
+<!-- CICS plug-in: Pulled from https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md. No changes.-->
+<!-- DB2 plug-in: Pulled from https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md. One change: Added a help example for how to pass output values when calling a Db2 stored procedure.. -->
+<!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Incldues 1.3.0. -->
+<!-- No changes to other plug-ins. -->
+
+The following enhancements were added to the **core CLI**:
+
+- Added a `--replace` option to the `zowe zos-files copy data-set` command. Use this option if you want to replace like-named members in the target data set. [#808](https://github.com/zowe/zowe-cli/issues/808)
+- Improved a cryptic error message that was shown if TSO address space failed to start for the `zowe zos-tso issue command` command. [#28](https://github.com/zowe/zowe-cli/issues/28)
+
+The following enhancements were added to the **Imperative CLI Framework**:
+- Added an `arrayAllowDuplicate` option to the `ICommandOptionDefinition` interface. By default, the option value is set to `true` and duplicate values are allowed in an array. Specify `false` if you want Imperative to throw an error for duplicate array values. [#437](https://github.com/zowe/imperative/issues/437)
+- Expose `trim` parameter from `wrap-ansi` within `TextUtils.wordWrap()`
+
+The following enhancement was added to the **IBM Db2 Plug-in**:
+- Added a help example for how to pass output values when calling a Db2 stored procedure.
+
+The following enhancement was added to the **FTP Plug-in**:
+- Move the reusable code from handlers to api folder.
+
 #### Zowe Explorer
+<!--Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md, no changes since 1.11.0.-->
+
+#### Zowe JES/MVS/USS Explorers   
+<!-- JES Explorer <1.0.8> https://github.com/zowe/explorer-jes/blob/v1.0.8/CHANGELOG.md#108 -->
+The following features and enhancements were added to the **JES Explorer**:
+- Added webdevSever proxy setting in webpack.config.js to enable https for local development.
+
 
 ### Bug Fixes
-#### Zowe installation
+
 #### Zowe API Mediation Layer
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1180. Based on release number.-->
+- ZaasJwtService enhancement on JWT parsing and error handling. [#897](https://github.com/zowe/api-layer/issues/897)
+- Upgrade dependencies for the Enablers. [#933](https://github.com/zowe/api-layer/issues/933)
+
 #### Zowe App Server
+<!--Pulled from
+https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
+https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
+
+- Bugfix: The zss server log verbosity seen when using the TN3270 desktop app has been reduced. [#188](https://github.com/zowe/zowe-common-c/pull/188)
+- Bugfix: Keep-alive parsing has been temporarily disabled to patch a memory leak. A permenant fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
+- Bugfix: The small warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
+- Bugfix: In previous versions, static app2app recognizers would not be loaded from storage because they were treated as actions instead of as recognizers. This issue has been resolved in this release. [#297](https://github.com/zowe/zlux-app-manager/pull/297)
+
 #### Zowe CLI
+
+The following bugs were fixed in the **core CLI**:
+- Removed "[object Object]" text that appeared in some error messages. The proper text "Imperative API Error" is now displayed. [#836](https://github.com/zowe/zowe-cli/pull/836)
+- Improved performance of `zowe zos-files list` commands when long lists are printed to console. [#861](https://github.com/zowe/zowe-cli/issues/861)
+- Updated Imperative dependency version to one that does not contain a vulnerable dependency.
+
+The following bug was fixed in the **Imperative CLI Framework**:
+- Updated `opener` dependency due to command injection vulnerability on Windows - [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener)
+
 #### Zowe Explorer
+
+
 ## Version 1.17.0 LTS (November 2020)
 
 ### Notable changes

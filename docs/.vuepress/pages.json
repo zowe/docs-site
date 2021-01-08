@@ -65,9 +65,18 @@
         ]
       },
       {
+        "text": "Installing Zowe Docker Bundle",
+        "items": [
+          "user-guide/install-docker.md",
+          "user-guide/install-docker-image.md",
+          "user-guide/configuring-docker.md"
+        ]
+      },
+      {
         "text": "Installing Zowe CLI",
         "items": [
           "user-guide/cli-installcli.md",
+          "user-guide/install-cli-via-proxy.md",
           "user-guide/cli-updatingcli.md",
           "user-guide/cli-uninstall.md"
         ]
