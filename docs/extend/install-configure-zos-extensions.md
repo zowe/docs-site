@@ -1,6 +1,8 @@
 # Install and Configure Zowe Server Component
 
-## Install with zowe-install-component.sh <Badge text="Technical Preview"/>
+## Install with zowe-install-component.sh - Technical Preview
+
+<Badge text="Technical Preview"/>
 
 _Note: this section is for technical preview and we are happy to hear any feedbacks. Content in this section may be changed or improved in the future._
 
@@ -40,7 +42,9 @@ $ zowe-install-component.sh \
     -l /var/zowe/instance/logs
 ```
 
-## Configure with zowe-configure-component.sh <Badge text="Technical Preview"/>
+## Configure with zowe-configure-component.sh - Technical Preview
+
+<Badge text="Technical Preview"/>
 
 _Note: this section is for technical preview and we are happy to hear any feedbacks. Content in this section may be changed or improved in the future._
 
