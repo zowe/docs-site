@@ -43,11 +43,12 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 
 #### Zowe API Mediation Layer
 <!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1180. Based on release number.-->
-- Configure more detailed logging outside of Spool. [#709](https://github.com/zowe/api-layer/issues/709)
-- HA: Componentize the start script per API ML service. Individual API Mediation Layer components can be launched and restarted individually. [#862](https://github.com/zowe/api-layer/issues/862)
-- HA: It is now possible to distinguish between internal and external traffic through port separation, whereby each port uses a unique certificate; one presenting an internal certificate, and the other an external certificate. [#910](https://github.com/zowe/api-layer/issues/910)
+- Version 1.18.0 introduces a feature allowing users to run the Zowe API Mediation Layer as a standalone component. After downloading and installing the current Zowe SMPE package, you can then configure and deploy only the Zowe API Mediation Layer without the other Zowe components. [#856](https://github.com/zowe/api-layer/issues/856)
+- You can now configure more detailed logging outside of Spool. [#709](https://github.com/zowe/api-layer/issues/709)
+- High Availability: The start script per API ML service has been componentized. You can now launch and restart API Mediation Layer components individually. [#862](https://github.com/zowe/api-layer/issues/862)
+- High Availability: It is now possible to distinguish between internal and external traffic through port separation, whereby each port uses a unique certificate; one presenting an internal certificate, and the other an external certificate. [#910](https://github.com/zowe/api-layer/issues/910)
 - API version is now automatically set to the version tab selected in the API Catalog so users can easily grab the Base Path. [#943](https://github.com/zowe/api-layer/issues/943)
-- A new enhancement to the API Catalog versioning has been introduced with the addition of the API differences tab. This feature enables users to compare versions of two APIs. [#923](https://github.com/zowe/api-layer/issues/923)
+- API Catalog versioning has been improved with the addition of the API differences tab. This feature enables you to compare versions of two APIs. [#923](https://github.com/zowe/api-layer/issues/923)
 
 #### Zowe App Server
 <!--Pulled from
