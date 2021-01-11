@@ -42,7 +42,6 @@ Each component can optionally instruct Zowe runtime to configure itself with a U
 If the component has manifest defined, some configure actions will be performed automatically based on manifest definition:
 
 - `apimlServices.static`: Zowe runtime will automatically parse and add your static definition to API Mediation Layer.
-- `desktopIframePlugins`: Zowe runtime will automatically register your Desktop iframe plugin to Zlux.
 
 For backward compatible purpose, you can choose to configure component by yourself with `/bin/configure.sh`. An example configuration step is if a component wants to install applications into the Zowe desktop as iframes, or add API endpoints statically into the API Mediation Layer.  Because a component's `configure.sh` script is run inside the USS shell that the `instance.env` has initialized, it will have all of the shell variables for prerequisites set, so the configure step can be used to query these in order to prepare the component ready for launch.  
 

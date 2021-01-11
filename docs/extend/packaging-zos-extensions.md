@@ -77,11 +77,6 @@ The properties supported by the manifest file are listed here:
     - **`file`**: Path to the static definition file. This file is supposed to be a template.
 - **`appfwPlugins`**: Array of objects. This section defines how the component will be registered to App Framework Plugin. All sub-fields are optional.
   * **`path`**: This points to the directory where App Framework `pluginDefinition.json` file is located. If you use `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will execute `<INSTANCE_DIR>/bin/install-app.sh` with this path automatically.
-- **`desktopIframePlugins`**: Array of objects. It tells Zowe this component has Desktop Iframe Plugins and the Zowe launch script will execute `<RUNTIME_DIR>/bin/utils/zowe-install-iframe-plugin.sh` for this plugin when Zowe is started. Please note, this section is for backward compatible purpose, it will be deprecated in next major release.
-  * **`id`**: This is optional, default value is `id` in higher level.
-  * **`title`**: This is optional, default value is `title` in higher level.
-  * **`url`**: this is the full URL or path to your iframe plugin entry point. If it's a path, a prefix of `https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}` will be automatically added.
-  * **`icon`**: this is the desktop plugin icon.
 
 _Please note: all paths of directories or files mentioned above should be relative paths to the root directory where manifest located._
 
