@@ -47,7 +47,7 @@ If you decide to bundle and ship Zowe extension(s) within another product. You c
 
 ## Zowe component manifest
 
-_Note: this feature is added with Zowe v1.18.0 release._
+_Note: this feature is added with Zowe v1.19.0 release._
 
 Zowe extensions, and as well as core components, can use a manifest file to describe itself. The manifest file defines the name, purpose of the component, and it also provides information how this component should be installed, configured, started, and tested. It can be named as `manifest.yaml`, `manifest.yml` or `manifest.json` and should locate in the root directory of this component. Currently only `YAML` or `JSON` format are supported.
 
