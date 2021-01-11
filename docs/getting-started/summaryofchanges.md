@@ -54,13 +54,10 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 <!--Pulled from
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
-- Feature: The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
+- The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
   - This is backward compatible with apps that have previously used single app mode. 
   - In the case that app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
-- Feature: ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
-
-
-
+- ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
 
 #### Zowe CLI
 <!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.5, 6.24.6, 6.25.0. -->
@@ -86,7 +83,7 @@ The following enhancement was added to the **IBM Db2 Plug-in**:
 The following enhancement was added to the **FTP Plug-in**:
 - Move the reusable code from handlers to api folder.
 
-#### Zowe Explorer
+<!-- #### Zowe Explorer -->
 <!--Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md, no changes since 1.11.0.-->
 
 #### Zowe JES/MVS/USS Explorers   
@@ -107,10 +104,10 @@ The following features and enhancements were added to the **JES Explorer**:
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
 
-- Bugfix: The zss server log verbosity seen when using the TN3270 desktop app has been reduced. [#188](https://github.com/zowe/zowe-common-c/pull/188)
-- Bugfix: Keep-alive parsing has been temporarily disabled to patch a memory leak. A permenant fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
-- Bugfix: The small warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
-- Bugfix: In previous versions, static app2app recognizers would not be loaded from storage because they were treated as actions instead of as recognizers. This issue has been resolved in this release. [#297](https://github.com/zowe/zlux-app-manager/pull/297)
+- The zss server log verbosity seen when using the TN3270 desktop app has been reduced. [#188](https://github.com/zowe/zowe-common-c/pull/188)
+- Keep-alive parsing has been temporarily disabled to patch a memory leak. A permenant fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
+- The small warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
+- In previous versions, static app2app recognizers would not be loaded from storage because they were treated as actions instead of as recognizers. This issue has been resolved in this release. [#297](https://github.com/zowe/zlux-app-manager/pull/297)
 
 #### Zowe CLI
 
@@ -121,8 +118,6 @@ The following bugs were fixed in the **core CLI**:
 
 The following bug was fixed in the **Imperative CLI Framework**:
 - Updated `opener` dependency due to command injection vulnerability on Windows - [GHSL-2020-145](https://securitylab.github.com/advisories/GHSL-2020-145-domenic-opener)
-
-#### Zowe Explorer
 
 
 ## Version 1.17.0 LTS (November 2020)
