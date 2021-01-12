@@ -56,7 +56,7 @@ https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
 - The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
   - This is backward compatible with apps that have previously used single app mode. 
-  - In the case that app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
+  - In the case where app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
 - ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
 
 #### Zowe CLI
@@ -71,7 +71,7 @@ https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
 The following enhancements were added to the **core CLI**:
 
 - Added a `--replace` option to the `zowe zos-files copy data-set` command. Use this option if you want to replace like-named members in the target data set. [#808](https://github.com/zowe/zowe-cli/issues/808)
-- Improved a cryptic error message that was shown if TSO address space failed to start for the `zowe zos-tso issue command` command. [#28](https://github.com/zowe/zowe-cli/issues/28)
+- Improved a cryptic error message that was shown if the TSO address space failed to start for the `zowe zos-tso issue command` command. [#28](https://github.com/zowe/zowe-cli/issues/28)
 
 The following enhancements were added to the **Imperative CLI Framework**:
 - Added an `arrayAllowDuplicate` option to the `ICommandOptionDefinition` interface. By default, the option value is set to `true` and duplicate values are allowed in an array. Specify `false` if you want Imperative to throw an error for duplicate array values. [#437](https://github.com/zowe/imperative/issues/437)
@@ -106,7 +106,7 @@ https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
 
 - The zss server log verbosity seen when using the TN3270 desktop app has been reduced. [#188](https://github.com/zowe/zowe-common-c/pull/188)
 - Keep-alive parsing has been temporarily disabled to patch a memory leak. A permenant fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
-- The small warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
+- The warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
 - In previous versions, static app2app recognizers would not be loaded from storage because they were treated as actions instead of as recognizers. This issue has been resolved in this release. [#297](https://github.com/zowe/zlux-app-manager/pull/297)
 
 #### Zowe CLI
@@ -141,7 +141,7 @@ The following features and enhancements were added.
 
 #### Zowe installation
 <!-- Pulled from https://github.com/zowe/zowe-install-packaging/blob/staging/CHANGELOG.md. Based on version number. Includes 1.17.0 changes.-->
-- You can now start ZSS independent from the Zowe Application Framework server by specifying the `LAUNCH_COMPONENT_GROUP "ZSS"`. If `DESKTOP` is specified instead of `ZSS`, ZSS will still be included as a prerequisite to the Application Framework server. [#1632](https://github.com/zowe/zowe-install-packaging/pull/1632)
+- You can now start ZSS independent of the Zowe Application Framework server by specifying the `LAUNCH_COMPONENT_GROUP "ZSS"`. If `DESKTOP` is specified instead of `ZSS`, ZSS will still be included as a prerequisite to the Application Framework server. [#1632](https://github.com/zowe/zowe-install-packaging/pull/1632)
 - Zowe instance configuration script (`zowe-configure-instance.sh`) can now skip checking for Node.js by passing in the `-s` flag since Node.js may not be needed if the components to be launched don't require it. [#1677](https://github.com/zowe/zowe-install-packaging/pull/1677)
 - The `run-zowe.sh` script can also skip the checking for Node.js by setting the environment variable `SKIP_NODE=1` for the cases where the components to be launched don't require Node.js.
 - Exported the `EXTERNAL_CERTIFICATE_AUTHORITIES` variable to the `zowe-certificates.env` file such that it may be used by the Application Framework server. [#1742](https://github.com/zowe/zowe-install-packaging/pull/1742)
@@ -157,16 +157,15 @@ The following features and enhancements were added.
 https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  -->
 - ZSS no longer requires NodeJS for its configure.sh script.
-- Added support for DER encoded X.509 certificates.
-- Allow to change tag for all files in the directory excluding subdirectories
-Users are now able to change tags for all files in the directory excluding subdirectories. For example `POST /unixfile/chtag/u/user/tmp?codeset=1047&type=text&recursive=false` should change tags only for files in `u/user/tmp` without changing tags for files in subdirectories. [#176](https://github.com/zowe/zowe-common-c/pull/176)
+- Added support for DER-encoded X.509 certificates.
+- You are now able to change tags for all files in the directory excluding subdirectories. For example, `POST /unixfile/chtag/u/user/tmp?codeset=1047&type=text&recursive=false` should change tags only for files in `u/user/tmp` without changing tags for files in subdirectories. [#176](https://github.com/zowe/zowe-common-c/pull/176)
 - Multiple enhancements in the Editor for USS file and directory actions, including: [#84](https://github.com/zowe/zlux-file-explorer/pull/84) [#102](https://github.com/zowe/zlux-file-explorer/pull/102) [#93](https://github.com/zowe/zlux-file-explorer/pull/93)
 
   - The ability to cut, copy, & paste files into a directory, such as the currently active directory.
   - Re-ordered context menu options.
   - Improved error messages by including more detail.
-  - Added support to see a files current tag and change it.
-  - Chown & Chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog.
+  - Added support to see a file's current tag and change it.
+  - chown & chmod enhancement that pre-populates the owner and group fields when opening the ownership and properties dialogs. It also adds owner and group information to the file properties dialog.
 
 
 
@@ -212,7 +211,7 @@ The following enhancement was made to enable support for Node.js v14 for the **I
 The following features and enhancements were added to the **JES Explorer**:
 
 - Added ability to refresh content of an open job output file via context menu entry on the job file [#549](https://github.com/zowe/zlux/issues/549)
-- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as per required by latest material-ui version.
+- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as required by latest material-ui version.
 
 ### Bug fixes
 
