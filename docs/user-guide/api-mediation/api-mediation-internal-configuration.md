@@ -9,7 +9,7 @@ As an application developer who wants to change the default configuration of the
 
 ## Runtime configuration
 
-This section describes other configuration properties you might see in the file.
+This section describes runtime configuration properties.
        
 * **apiml.service.hostname**
 
@@ -28,7 +28,7 @@ This section describes other configuration properties you might see in the file.
     Set the value of this property to `true` to advertize a service IP address instead of its hostname.
     
     **Notes:** 
-    * If you set this property to `true` on the Discovery service, ensure that you modify the value of `discoveryLocations:` to use the IP address instead of the hostname. Failure to modify the value prevents Eureka from detecting registered services, and as a consequence the **available-replicas** will be empty. 
+    * If you set this property to `true` on the Discovery service, ensure that you modify the value of `discoveryLocations:` to use the IP address instead of the hostname. Failure to modify the `discoveryLocations:` value prevents Eureka from detecting registered services. As a result, the **available-replicas** is empty. 
     * Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN). 
 
 * **apiml.cache.storage.location** 
@@ -51,7 +51,7 @@ This section describes other configuration properties you might see in the file.
 * **apiml.zoweManifest**
 
     This parameter lets you view the Zowe version by using the `/version` endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build `manifest.json` file. This file is usually located in the root folder of Zowe build. 
-    If the encoding of manifest.json file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
+    If the encoding of `manifest.json` file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
     
 **Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
 ```   
@@ -65,14 +65,14 @@ https://localhost:10010/api/v1/gateway/version
     * z/OSMF is only available as an older version which does not support JWT tokens 
     * The SAF provider is used
      
-    To use a custom configuration for z/OSMF which changes the expiration of LTPA token, it is necessary to also set the expiration in this parameter. 
+    To use a custom configuration for z/OSMF which changes the expiration of the LTPA token, it is necessary to also set the expiration in this parameter. 
     
     **Note:** The default value is 8 hours which mimicks the 8 hour default expiration of the LTPA token in z/OSMF.
     
     **Follow these steps:**
          
     1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains the `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
+    2. Find the line that contains `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
     3. Before this line, add a new line in the following format:
     ```
     -Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
@@ -85,9 +85,9 @@ https://localhost:10010/api/v1/gateway/version
 
 * **ibm.serversocket.recover**
 
-    In a multiple network stack environment (CINET), when one of the stacks fails, no notification or Java™ exception occurs for a Java program that is listening on an INADDR_ANY socket. 
-    Also, when new stacks become available, the Java application does not become aware of them until it rebinds the INADDR socket. 
-    By default, this parameter is enabled in the API Gateway, meaning that an exception (`NetworkRecycledException`) is thrown to the application to allow it either to fail or to attempt to rebind. 
+    In a multiple network stack environment (CINET), when one of the stacks fails, no notification or Java™ exception occurs for a Java program that is listening on an `INADDR_ANY` socket. 
+    When new stacks become available, the Java application does not become aware of them until the application rebinds the `INADDR` socket. 
+    By default, this parameter is enabled in the API Gateway. As a result, the `NetworkRecycledException` exception is thrown to the application to allow it to either fail or  attempt to rebind. 
     For more information, see the [IBM documentation](https://www.ibm.com/support/knowledgecenter/SSYKE2_7.1.0/com.ibm.java.zos.71.doc/user/cinet.html).
 
 * **java.io.tmpdir**
@@ -98,15 +98,19 @@ https://localhost:10010/api/v1/gateway/version
 
     This property can be used to unconditionally add active profiles. For more information, see [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles).
 
+* **server.maxTotalConnections and server.maxConnectionsPerRoute**
+
+    These two properties are used to set the number of concurrent connections. Any connection requests that are made that would put the number of connections over either of these limits are queued until an existing connection completes. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 ## Service configuration
 
-For more information about service configuration parameters, see [Onboarding a REST API service with the Plain Java Enabler (PJE)](../../extend/extend-apiml/onboard-plain-java-enabler.md).
-
+For information about service configuration parameters, see [Onboarding a REST API service with the Plain Java Enabler (PJE)](../../extend/extend-apiml/onboard-plain-java-enabler.md).
 
 ## Zuul configuration
 
-As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the following example:
+As a provider for routing and filtering, the API Gateway contains a Zuul configuration as shown in the following example.
+
+**Example:**
 
 ```yaml
 zuul:
@@ -121,19 +125,23 @@ zuul:
     host:
         connectTimeoutMillis: ${apiml.gateway.timeoutMillis}
         socketTimeoutMillis: ${apiml.gateway.timeoutMillis}
+        maxTotalConnetions: ${server.maxConnectionsPerRoute}
+        maxPerRouteConnections: ${server.maxTotalConnections}
     forceOriginalQueryStringEncoding: true
     retryable: true
     decodeUrl: false # Flag to indicate whether to decode the matched URL or use it as is
 
 ```   
  
-The Zuul configuration allows the API Gateway to act as a reverse proxy server through which API requests can be routed from clients on its northbound edge to z/OS servers on its southbound edge.
+The Zuul configuration allows the API Gateway to act as a reverse proxy server through which API requests can be routed from clients on the northbound edge to z/OS servers on the  southbound edge.
 
 **Note:** For more information about Zuul configuration parameters, see the [Spring Cloud Netflix documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
 ## Hystrix configuration
 
-The API Gateway contains a Hystrix configuration as shown in the following example:
+The API Gateway contains a Hystrix configuration as shown in the following example.
+
+**Example:**
 
 ```yaml
 hystrix:
@@ -151,10 +159,10 @@ hystrix:
                         timeoutInMilliseconds: ${apiml.gateway.timeoutMillis}
                     strategy: SEMAPHORE
                     semaphore:
-                        maxConcurrentRequests: 100000
+                        maxConcurrentRequests: ${server.maxTotalConnections}
 ```
 
 Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, 
-services and 3rd party libraries, stop cascading failure, and enable resilience in complex distributed systems where failure is inevitable.
+services and third-party libraries, stop cascading failure, and enable resilience in complex distributed systems where failure is inevitable.
 
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).

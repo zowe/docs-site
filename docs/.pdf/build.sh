@@ -97,6 +97,7 @@ echo "Generating PDF ..."
 # can pass "--clean.temp=no" option for debugging purpose
 docker run -v $DOCS_ROOT/$TMP_FOLDER:/opt/dita-ot/data \
   -v $DOCS_ROOT/$OUT_FOLDER:/opt/dita-ot/out \
+  -e ANT_OPTS="-Xmx1024m" \
   ditaot/dita-ot-base \
   dita -i /opt/dita-ot/data/Zowe_Documentation.ditamap \
   -f pdf \

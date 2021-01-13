@@ -39,9 +39,10 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.17.0.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.18.0.
 
-**[V1.17.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.18.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.17.0](./Zowe_Documentation_1.17.0.pdf)** |
 **[V1.16.0](./Zowe_Documentation_1.16.0.pdf)** |
 **[V1.15.0](./Zowe_Documentation_1.15.0.pdf)** |
 **[V1.14.0](./Zowe_Documentation_1.14.0.pdf)** |
@@ -84,17 +85,11 @@ Refer to the following Zowe Client SDK reference guides for information about th
 <a href="https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/" class="nav-link action-button"> <span>Download Python SDK Reference (ZIP)</span></a>
 </p>
 
-### Zowe overview deck
-
-A Zowe overview deck in PDF format is available for download. The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
-
-[Download PDF](./Zowe_Overview.pdf)  |  [Download PowerPoint](https://ibm.box.com/s/1l34h38at1fgvmy1ghtu09owdhewx1sm)
-
 ## Feedback
 
-Your feedback is important to us. Tell us what you think about the experience by taking the survey, creating an issue in GitHub, or leaving comments when a **How are we doing?** window pops up.
+Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub or contacting the team on Slack.
 
-[Take Survey](https://forms.gle/Ztu9AjgV6HRr1kEs9)  |  [Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
+[Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
 
 We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
 
