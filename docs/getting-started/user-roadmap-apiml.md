@@ -1,132 +1,165 @@
-# Zowe CLI quick start
+# Information roadmap for Zowe API Mediation Layer
 
-Get started with Zowe&trade; CLI quickly and easily.
+This roadmap outlines the information resources that are available for all user roles who are interested in Zowe API Mediation Layer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe API Mediation Layer.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 
-- [Installing](#installing)
-- [Issuing your first commands](#issuing-your-first-commands)
-- [Using profiles](#using-profiles)
-- [Writing scripts](#writing-scripts)
-- [Next Steps](#next-steps)
+* Beginner: You're starting out and want to learn the fundamentals.
+* Intermediate: You have some experience but want to learn more in-depth skills. 
+* Advanced: You have lots of experience and are looking to learn about specialized topics.
+
+## Fundamentals
+
+> Zowe skill level: Beginner
+
+- [**Zowe API Mediation Layer overview**](overview.md#api-mediation-layer)
+
+   New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of API Mediation Layer.
+
+- [**Architecture**](zowe-architecture.md#zowe-architecture)
+
+   Review the Zowe architecture to understand how API Mediation Layer works in the Zowe framework.
 
 ## Installing
 
-### Software Requirements
+> Zowe skill level: Beginner
 
-Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- [**System requirements**](../user-guide/systemrequirements.md)
 
-**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+   Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. API Mediation Layer is one of the server-side components. 
 
-### Installing Zowe CLI core from public npm
+- [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
 
-Issue the following commands in sequence to install the core CLI.
+  This information provides details about planning for the installation, the Zowe z/OS launch process, and so on.
 
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+- [**Installing API Mediation Layer**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
-```
-npm install @zowe/cli@zowe-v1-lts -g
-```
+   This information provides an overview of the essential steps involved in installing API Mediation Layer.
 
-```
-zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-```
+## Configuring and updating
 
-### Installing CLI plug-ins
+> Zowe skill level: Intermediate
 
-```
-zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
-```
+- **Configuring API Mediation Layer**
 
-The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+   - [API Gateway configuration parameters](../user-guide/api-mediation/api-mediation-internal-configuration.md)
+     
+      This information introduces the default configuration of the API Mediation Layer and how to change the parameters to meet your needs. 
 
-For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
+   - [Configuring the Zowe APIs](../user-guide/configure-data-sets-jobs-api.md) 
 
-## Issuing your first commands
+      The information explains how to configure security for the Zowe API Mediation Layer. 
 
-Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
+   - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
+      
+       This information is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as gateway retry policy, connection limits, gateway timeouts, and so on.
 
-To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
+- [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
 
-### Listing all data sets under a high-level qualifier (HLQ)
+   Learn how to upgrade Zowe API Mediation Layer to a more recent version.
 
-```
-zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+## Using Zowe API Mediation Layer
 
-### Downloading a partitioned data-set (PDS) member to local file
+> Zowe skill level: Intermediate
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+- [**Using API Catalog**](../user-guide/api-mediation-api-catalog.md)
 
-See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
+   Learn about how to use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view the associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. 
 
-## Using profiles
+- [**Blog: Introducing “Try it out” functionality in the Zowe API Mediation Layer**](https://medium.com/zowe/introducing-try-it-out-functionality-in-the-zowe-api-mediation-layer-930aa9e947bd) 
 
-Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
+   This blog talks about one key functionality of the Zowe API Mediation Layer. 
 
-### Profile types
+- [**Docs: Zowe API reference guide**](../appendix/zowe-api-reference.md)
 
-Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
+   Find and learn about the Zowe APIs that you can use.
 
-**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
+## Onboarding APIs
 
-### Creating a zosmf profile
+> Zowe skill level: Advanced
 
-```
-zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
-```
+- [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extend-zowe-api-mediation-layer) 
 
-**Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
+   Learn how you can extend the Zowe API Mediation Layer. Extenders can build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register with the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.
 
-### Using a zosmf profile
+- [**Onboarding overview**](../extend/extend-apiml/onboard-overview.md#prerequisites)
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
-```
+   This information provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
 
-For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
+- [**Zowe API ML repository**](https://github.com/zowe/zowe-api)
 
-## Writing scripts
+   If you want to start working with the code immediately, check out this code repository. 
 
-You can write Zowe CLI scripts to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
+## Security
 
-### Example:
+> Zowe skill level: Advanced
 
-You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command.
+- [**API Mediation Layer Security**](../extend/extend-apiml/api-mediation-security.md)
 
-```
-#!/bin/bash
+   This article describes how API ML uses Transport Layer Security (TLS). Use this guide to familiarize yourself with the API ML security concepts.
 
-set -e
+- [**Zowe API Mediation Layer Single-Sign-On Overview**](../extend/extend-apiml/api-mediation-sso.md)
 
-# Obtain the list of temporary project data sets
-dslist=$(zowe zos-files list dataset "my.project.ds*")
+   This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation.
 
-# Delete each data set in the list
-IFS=$'\n'
-for ds in $dslist
-do
-     echo "Deleting Temporary Project Dataset: $ds"
-     zowe files delete ds "$ds" -f
-done
-```
+- [**Blog: The ZAAS Client: a library for the API Mediation Layer**](https://medium.com/zowe/the-zaas-client-a-library-for-the-api-mediation-layer-822ea2994388)
 
-For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
+   This blog introduces you to Zowe Authentication and Authorization Service (ZAAS) Client — a library that contains methods for retrieval of JWT tokens, PassTickets, and even verifying JTW token information.
 
-## Next Steps
+- [**Blog: Single-Sign-On to z/OS REST APIs with Zowe**](https://medium.com/zowe/single-sign-on-to-z-os-rest-apis-with-zowe-6e35fd022a95)
 
-You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
+   This blog takes a deeper dive in to the SSO feature of API ML.
 
-- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
+## Contributing to Zowe API Mediation Layer
 
-- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
+> Zowe skill level: Advanced
 
-- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+- [**Contributing guidelines**](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
 
-- Write scripts and integrate them with automation server, such as Jenkins.
+   This document is a summary of conventions and best practices for development within Zowe API Mediation Layer.
 
-- See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
+- [**Conformance Program**](../extend/zowe-conformance-program.md)
+   
+  This topic introduces the Zowe Conformance Program. Conformance provides Independent Software Vendors (ISVs), System Integrators (SIs), and end users greater confidence that their software will behave as expected. As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today.
 
-- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
+- [**Blog: Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea)
+
+   This blog describes the Conformance Program in more details.
+
+## Troubleshooting and support
+
+- [**Troubleshooting API ML**](../troubleshoot/troubleshoot-apiml.md)
+
+   Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe API ML. 
+
+- [**Error Message Codes**](../troubleshoot/troubleshoot-apiml-error-codes.md) 
+
+   Use the message code references and the corresponding reasons and actions to help troubleshoot issues.
+
+- [**Sumit an issue**](https://github.com/zowe/api-layer/issues)
+
+   If you have an issue that is specific to Zowe API Mediation Layer, you can submit an issue against the `api-layer` repo.
+
+## Community resources 
+
+- [**Slack channel**](https://openmainframeproject.slack.com/)
+   
+   Join the #zowe-api Slack channel to ask questions about Zowe API ML, propose new ideas, and interact with the Zowe community. 
+
+- [**Zowe API ML squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+
+   You can join one of the Zowe API ML squad meetings to get involved.
+
+- [**Zowe Blogs on Medium**](https://medium.com/zowe) 
+
+   Read a series of blogs about Zowe on Medium to explore use cases, best practices, and more. 
+
+- **Community Forums**
+
+   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
+
+
+
+
+
+

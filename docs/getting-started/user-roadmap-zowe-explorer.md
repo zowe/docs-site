@@ -1,132 +1,121 @@
-# Zowe CLI quick start
+# Information roadmap for Zowe Explorer
 
-Get started with Zowe&trade; CLI quickly and easily.
+This roadmap outlines the information resources that are available for all user roles who are interested in Zowe Explorer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe API Mediation Layer.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 
-- [Installing](#installing)
-- [Issuing your first commands](#issuing-your-first-commands)
-- [Using profiles](#using-profiles)
-- [Writing scripts](#writing-scripts)
-- [Next Steps](#next-steps)
+* Beginner: You're starting out and want to learn the fundamentals.
+* Intermediate: You have some experience but want to learn more in-depth skills. 
+* Advanced: You have lots of experience and are looking to learn about specialized topics.
 
-## Installing
+## Fundamentals
 
-### Software Requirements
+> Zowe skill level: Beginner
 
-Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- [**Zowe Explorer overview**](overview.md#api-mediation-layer)
 
-**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+   New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of API Mediation Layer.
 
-### Installing Zowe CLI core from public npm
+- [**Architecture**](zowe-architecture.md#zowe-architecture)
 
-Issue the following commands in sequence to install the core CLI.
+   Review the Zowe architecture to understand how Zowe Explorer works in the Zowe framework.
 
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+- [**Zowe Explorer FAQs**](freqaskques.md#zowe-explorer-faq)
+   
+   If you have a question, it's a good idea to try the FAQ, which answers the most commonly asked questions about Zowe Explorer.
 
-```
-npm install @zowe/cli@zowe-v1-lts -g
-```
+- [**Blog: Visual Studio Code for Mainframe Via the Zowe Explorer Extension**](https://medium.com/zowe/visual-studio-code-for-mainframe-via-the-zowe-explorer-extension-b679054ffaf7)
 
-```
-zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-```
+   This blog introduces Zowe Explorer to you with videos. 
 
-### Installing CLI plug-ins
+## Installing and configuring
 
-```
-zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
-```
+> Zowe skill level: Beginner
 
-The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+- [**Installing Zowe Explorer**](../user-guide/ze-install.md#installing-zowe-explorer)
 
-For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
+   This information describes the system requirements and steps for installing the Zowe Explorer.
 
-## Issuing your first commands
+- [**Video: Getting started with Zowe Explorer (Part 1)**](https://youtu.be/G_WCsFZIWt4)
+- [**Video: Getting started with Zowe Explorer (Part 2)**](https://youtu.be/X4oSHrI4oN4)
 
-Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
+   These videos guides you to get started with Zowe Explorer, and work with data sets.
 
-To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
+- [**Zowe Explorer Profiles**](../user-guide/ze-profiles.md)
 
-### Listing all data sets under a high-level qualifier (HLQ)
+   This information describes how to have a Zowe Explorer profile to use all functions of the extension, activate the Secure Credential Store plug-in to securely store credentials, and so on.
 
-```
-zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+## Using Zowe Explorer
 
-### Downloading a partitioned data-set (PDS) member to local file
+> Zowe skill level: Intermediate
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+- [**Using Zowe Explorer**](../user-guide/ze-usage.md)
 
-See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
+   Review this section to familiarize yourself with the extension and make the best use of available options and features. The section contains usage tips and sample use cases for data sets, USS files, JOBs, and TSO commands.
 
-## Using profiles
+## Extending 
 
-Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
+> Zowe skill level: Advanced
 
-### Profile types
+- [**Extend Zowe Explorer**](../user-guide/ze-extensions.md) 
 
-Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
+   You can add new functionalities to Zowe Explorer by creating your own extension. 
+   
+- [**Extensions for Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md)
 
-**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
+   This document describes extension points that assist third party extenders to create extensions that access Explorer entities and enrich the user experience. 
 
-### Creating a zosmf profile
+- [**Zowe Explorer repository**](https://github.com/zowe/vscode-extension-for-zowe)
 
-```
-zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
-```
+   If you want to start working with the code immediately, check out this code repository. 
 
-**Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
+- [**Developing for Eclipse Theia**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md)
 
-### Using a zosmf profile
+   This article talks about how to develop for Eclipse Theia.
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
-```
 
-For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
+## Contributing to Zowe Explorer
 
-## Writing scripts
+> Zowe skill level: Advanced
 
-You can write Zowe CLI scripts to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
+- [**Conformance Program**](../extend/zowe-conformance-program.md)
+   
+  This topic introduces the Zowe Conformance Program. Conformance provides Independent Software Vendors (ISVs), System Integrators (SIs), and end users greater confidence that their software will behave as expected. As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today.
 
-### Example:
+- [**Blog: Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea)
 
-You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command.
+   This blog describes the Conformance Program in more details.
 
-```
-#!/bin/bash
+## Troubleshooting and support
 
-set -e
+- [**Troubleshooting Zowe Explorer**](../troubleshoot/ze/troubleshoot-ze.md)
 
-# Obtain the list of temporary project data sets
-dslist=$(zowe zos-files list dataset "my.project.ds*")
+   Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe Explorer. 
 
-# Delete each data set in the list
-IFS=$'\n'
-for ds in $dslist
-do
-     echo "Deleting Temporary Project Dataset: $ds"
-     zowe files delete ds "$ds" -f
-done
-```
+- [**Sumit an issue**](https://github.com/zowe/vscode-extension-for-zowe/issues)
 
-For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
+   If you have an issue that is specific to Zowe Explorer, you can submit an issue against the `vscode-extension-for-zowe` repo.
 
-## Next Steps
+## Community resources 
 
-You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
+- [**Slack channel**](https://openmainframeproject.slack.com/)
+   
+   Join the #zowe-explorer Slack channel to ask questions, propose new ideas, and interact with the Zowe community. 
 
-- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
+- [**Zowe Explorer squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
 
-- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
+   You can join one of the Zowe Explorer squad meetings to get involved.
 
-- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+- [**Zowe Blogs on Medium**](https://medium.com/zowe) 
 
-- Write scripts and integrate them with automation server, such as Jenkins.
+   Read a series of blogs about Zowe on Medium to explore use cases, best practices, and more. 
 
-- See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
+- **Community Forums**
 
-- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
+   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
+
+
+
+
+
+
