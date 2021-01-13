@@ -2,6 +2,43 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESVSTC` started task.
 
+
+## Successful startup of `ZWESVSTC`
+
+The `ZWESVSTC` started task on z/OS brings up a number of address spaces.  For each component messages are written to the JES `STDOUT` that can be used to check that they have started successfully.  Errors during startup can be found in the `STDERR` job spool file.  
+
+To learn more about the Zowe components see the [Zowe Archiecture](../getting-started/zowe-architecture.md). Zowe can be configured to only bring up a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file, see [Component Groups](../user-guide/configure-instance-directory.md#component-groups).  
+
+To monitor `ZWESVSTC` you can look at the address spaces, using a command such as `DA` in SDSF.  Each address space is named to identify its component, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names).
+
+### API Mediation Layer 
+
+The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG` and API Discovery `ZWE1AD`.  Check that each address spaces is active.
+
+Each component write a successful startup message `ZWEAM000I` to the JES, that also indicates the CPU of seconds spent, as shown below.  Check that each address space has written this message.  
+
+```
+021-01-12 17:48:23.738 <ZWEADS1:main:33557015> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Discovery Service started in 97.725 seconds
+2021-01-12 17:48:27.577 <ZWEEAJ1:main:50334218> ZWESVUSR INFO  (o.s.b.w.e.t.TomcatWebServer,TomcatWebServer.java:202) Tomcat started on port(s): 8545 (https) with context path ''
+2021-01-12 17:48:27.590 <ZWEEAJ1:main:50334218> ZWESVUSR INFO  (o.z.j.JesJobsApplication,StartupInfoLogger.java:59) Started JesJobsApplication in 44.878 seconds (JVM running for 52.194)
+2021-01-12 17:48:30.145 <ZWEAGW1:main:50334212> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Gateway Service started in 104.248 seconds
+2021-01-12 17:48:31.036 <ZWEAAC1:main:33557009> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` API Catalog Service started in 105.127 seconds
+```
+
+As well as looking for `ZWEAM00I` in the JES log, another way to check the API mediation layer is fully initialized is to log into the gateway homepage.  If there is a red or yellow tick beside one of its three services the components are still starting.  
+
+<img src="../images/api-mediation/apiml-startup.png" alt="Zowe API Mediation Layer Startup" width="600px"/> 
+
+When all services are fully initialized there will be three green ticks.
+
+<img src="../images/api-mediation/apiml-started.png" alt="Zowe API Mediation Layer Startup" width="300px"/> 
+
+### Zowe Desktop 
+
+The Zowe desktop 
+
+###
+
 ## Unable to launch Zowe with { FSUM7351 }
 
 When you run `zowe-start.sh` from a unix shell path `<zowe-instance-directory>/bin`, you encounter the following error:
