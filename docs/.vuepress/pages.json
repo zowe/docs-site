@@ -76,6 +76,7 @@
         "text": "Installing Zowe CLI",
         "items": [
           "user-guide/cli-installcli.md",
+          "user-guide/install-cli-via-proxy.md",
           "user-guide/cli-updatingcli.md",
           "user-guide/cli-uninstall.md"
         ]
