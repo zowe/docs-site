@@ -1,132 +1,105 @@
-# Zowe CLI quick start
+# Information roadmap for Zowe Client SDKs
 
-Get started with Zowe&trade; CLI quickly and easily.
+This roadmap outlines the information resources that are available for all user roles who are interested in Zowe Client Software Development Kits (SDKs) which is a Zowe component still under development. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Client SDKs.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 
-- [Installing](#installing)
-- [Issuing your first commands](#issuing-your-first-commands)
-- [Using profiles](#using-profiles)
-- [Writing scripts](#writing-scripts)
-- [Next Steps](#next-steps)
+* Beginner: You're starting out and want to learn the fundamentals.
+* Intermediate: You have some experience but want to learn more in-depth skills. 
+* Advanced: You have lots of experience and are looking to learn about specialized topics.
+
+## Fundamentals
+
+> Zowe skill level: Beginner
+
+- [**Zowe Client SDK overview**](overview.md##zowe-client-software-development-kits-sdks)
+
+   New to Zowe Client SDKs? This overview topic briefly introduces what it is.
+
+- [**Blog: Zowe SDKs - Build z/OS Connected Applications Faster**](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9)
+
+   This blog introduces the Zowe SDKs and their benefits.
 
 ## Installing
 
-### Software Requirements
+> Zowe skill level: Beginner
 
-Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- [**System requirements**](../user-guide/sdks-using.md#software-requirements)
 
-**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+   Review this topic to ensure that your system meets the requirements for installing Zowe Client SDKs. 
 
-### Installing Zowe CLI core from public npm
+- [**Installing Zowe SDK**](../user-guide/sdks-using.md#getting-started)
 
-Issue the following commands in sequence to install the core CLI.
+   Follow the steps to install Zowe SDKs. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
 
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+## Using Zowe Client SDKs
 
-```
-npm install @zowe/cli@zowe-v1-lts -g
-```
+> Zowe skill level: Intermediate
 
-```
-zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-```
+### Zowe Node.js SDK
 
-### Installing CLI plug-ins
+- [**Using Zowe Node.js SDKs**](../user-guide/sdks-using.md#using-node-js)
 
-```
-zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
-```
+   This information provides links to different pakcage Readmes that describes how to use the Zowe Node SDK. 
 
-The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+- **Docs: Node.js SDK reference guide**
 
-For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
+   Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
+   - **[Browse Node SDK reference guide online](https://docs.zowe.org/stable/typedoc/index.html)**
+   - **[Download SDK reference guide in ZIP format](../zowe-node-sdk-typedoc.zip)**
 
-## Issuing your first commands
+- [**Zowe SDK Sample Scripts**](https://github.com/zowe/zowe-sdk-sample-scripts/)
 
-Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
+   This repository contains some sample scripts that utilize various components of the Zowe SDKs organized by use cases.
 
-To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
+### Zowe Python SDK
 
-### Listing all data sets under a high-level qualifier (HLQ)
+- [**Using Zowe Python SDKs**](https://zowe-client-python-sdk.readthedocs.io/en/latest/)
 
-```
-zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+   This information provides links to different pakcage Readmes that describes how to use the Zowe Python SDK. 
 
-### Downloading a partitioned data-set (PDS) member to local file
+- **Docs: Python SDK reference guide**
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
-```
+   Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
+   - **[Browse Python SDK reference guide online](https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html)**
+   - **[Download SDK reference guide in PDF format](https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/)**  
 
-See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
 
-## Using profiles
+## Contributing to Zowe Client SDKs
 
-Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
+> Zowe skill level: Advanced
 
-### Profile types
+- [**Contributing guidelines**](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
 
-Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
+   This document is a summary of guidelines for development within Zowe SDKs. You can contribute to add features, enhancements, and bug fixes to the source code.
 
-**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
+## Troubleshooting and support
 
-### Creating a zosmf profile
+- [**Sumit an issue**](https://github.com/zowe/zowe-cli/issues/new)
 
-```
-zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
-```
+   If you have an issue that is specific to Zowe SDKs, you can submit an issue against the `zowe-cli` repo.
 
-**Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
 
-### Using a zosmf profile
+## Community resources 
 
-```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
-```
+- [**Slack channel**](https://openmainframeproject.slack.com/)
+   
+   Join the #zowe-cli Slack channel to ask questions about Zowe CLI and Zowe SDKs, propose new ideas, and interact with the Zowe community. 
 
-For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
+- [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
 
-## Writing scripts
+   You can join one of the Zowe CLI squad meetings to discuss Zowe SDKs issues and contibute to Zowe SDKs.
 
-You can write Zowe CLI scripts to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
+- [**Zowe Blogs on Medium**](https://medium.com/zowe) 
 
-### Example:
+   Read a series of blogs about Zowe on Medium to explore use cases, best practices, and more. 
 
-You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command.
+- **Community Forums**
 
-```
-#!/bin/bash
+   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
 
-set -e
 
-# Obtain the list of temporary project data sets
-dslist=$(zowe zos-files list dataset "my.project.ds*")
 
-# Delete each data set in the list
-IFS=$'\n'
-for ds in $dslist
-do
-     echo "Deleting Temporary Project Dataset: $ds"
-     zowe files delete ds "$ds" -f
-done
-```
 
-For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
 
-## Next Steps
 
-You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
-
-- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
-
-- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
-
-- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
-
-- Write scripts and integrate them with automation server, such as Jenkins.
-
-- See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
-
-- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
