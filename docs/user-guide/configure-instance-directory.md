@@ -147,6 +147,7 @@ To determine which ports are not available, follow these steps:
 - `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`.
 - `APIML_PREFER_IP_ADDRESS`: Set the value of the parameter to `true` if you want to advertise a service IP address instead of its hostname.
 - `APIML_GATEWAY_TIMEOUT_MILLIS`: Timeout for connection to the services. 
+- `APIML_SECURITY_X509_ENABLED`: When this parameter is set to `true`, the client certificate authentication functionality through ZSS is enabled.
 - `APIML_SECURITY_ZOSMF_APPLID`: The z/OSMF APPLID used for PassTicket.
 - `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider, but it is possible to switch to SAF as the authentication provider instead of z/OSMF.
 - `APIML_DEBUG_MODE_ENABLED` : When this parameter is set to `true`, detailed logging of activity by the API mediation layer occurs. This can be useful to diagnose unexpected behavior of the API gateway, API discovery, or API catalog services.  Default value is `false`.  

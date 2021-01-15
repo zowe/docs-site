@@ -2,7 +2,7 @@
 
 As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying either of the following files:
 
-- `<Zowe install directory>/components/api-mediation/bin/start-gateway.sh` 
+- `<Zowe install directory>/components/gateway/bin/start-gateway.sh` 
 - `<Zowe instance directory>/instance.env`
 
 The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
@@ -14,6 +14,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Gateway retry policy](#gateway-retry-policy)
+  * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
@@ -49,7 +50,7 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Gateway retry policy
 
-To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
 
 All requests are disabled as the default configuration for retry with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
@@ -74,6 +75,46 @@ To change this default configuration, include the following parameters:
     
     Specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
     
+## Gateway client certificate authentication
+
+**Note:**
+
+Beginning with release 1.19 LTS, Zowe is including the ability to authenticate using client certificates. Feature itself is complete and tested, but automated testing on various security systems is not completed. That is the reason why the feature is being provided as a beta for early preview. If you have any feedback using client certificate authentication please create an issue against the api-layer repository. It is expected that in a future release it will be made available as a fully supported feature.
+
+
+Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
+
+**Follow these steps:**
+
+1. Open the `<Zowe instance directory>/instance.env` configuration file.
+2. Configure the following properties:
+
+   * **APIML_SECURITY_X509_ENABLED**
+
+     This is the global feature toggle. Set value to `true` to enable client certificate functionality.
+
+   * **APIML_SECURITY_ZOSMF_APPLID**
+
+     When z/OSMF is used as an authentication provider, provide a valid APPLID to allow for client certificate authentication. The API ML generates passticket for specified APPLID and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+  
+**The following is necessary only if ZSS hostname or default Zowe user name are altered:**
+
+3. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
+4. Configure the following properties:
+
+   * **apiml.security.x509.externalMapperUrl**
+
+     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the api provider in Zowe. Provide the ZSS URL in the following format:
+     ```
+     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
+     ```
+     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
+
+   * **apiml.security.x509.externalMapperUser**
+
+     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user has to be authorized to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. The permissions are set up during installation with the `ZWESECUR` jcl or workflow. If you decide to customize the ZWESECUR jcl or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
+
+Restart Zowe&trade.
 
 ## Gateway timeouts
 
@@ -85,7 +126,7 @@ Use the following procedure to change the global timeout value for the API Layer
 2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS` and set the value to the desired value.
 3. Restart Zowe&trade. 
 
-If you require finer control, you can edit the `<Zowe install directory>/components/api-mediation/bin/start.sh`, and modify the following properties:
+If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
 
 * **apiml.gateway.timeoutMillis**
 

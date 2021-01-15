@@ -446,7 +446,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
 
 ## Configure main Zowe server use identity mapping
 This security configuration is necessary for API ML to be able to map client certificate to zOS identity. User running API Gateway must have read access to RACF general resource called IRR.RUSERMAP in the FACILITY class. 
-This security setup is done by submitting `ZWESECUR` JCL member. For users upgrading from version 1.16 and lower, follow the configuration steps below.
+This security setup is done by submitting `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, follow the configuration steps below.
 
 If you use RAFC, follow these steps to verify and update permission in FACILITY class.
 1. verify user `ZWESVUSR` has read access
