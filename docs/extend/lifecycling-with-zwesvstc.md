@@ -1,4 +1,4 @@
-# Zowe Server Component Runtime Lifecycle
+# Zowe server component runtime lifecycle
 
 ## Zowe runtime lifecycle
 
