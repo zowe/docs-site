@@ -51,7 +51,7 @@ Secure data during data-transport by using the TLS protocol for all connections 
 
 ### Authentication
 
-Authentication is the method of how an entity, whether it be a user (API Client) or an application (API Service), proves its true identity.
+Authentication is the method of how an entity, whether it be a user (API Client), or an application (API Service), proves its true identity.
 
 API ML uses the following authentication methods:
 
@@ -77,7 +77,7 @@ The following range of service types apply to the Zowe&trade; API ML:
 
   - **Discovery Service (DS)**
     The Discovery Service collects information about API services and provides this information to the Gateway
-    and other services. API ML internal services are also registered to the Discovery Service.
+    and other services. API ML internal services also register to the Discovery Service.
 
   - **API Catalog (AC)**
     The Catalog displays information about API services through a web UI. The Catalog receives information
@@ -90,11 +90,11 @@ The following range of service types apply to the Zowe&trade; API ML:
 
 - **API Clients**
 
-  External applications, users, or other API services that are accessing API services via the API Gateway
+  API Clients are external applications, users, or other API services that are accessing API services via the API Gateway
 
 - **API Services**
 
-  Applications that are accessed through the API Gateway. API services register themselves to the
+  API services are applications that are accessed through the API Gateway. API services register themselves to the
   Discovery Service and can access other services through the Gateway. If an API service is installed
   in such a way that direct access is possible, API services can access other services without the Gateway.
   When APIs access other services, they can also function as API clients.
@@ -139,7 +139,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
 - **API Gateway**
 
-    - API Gateway handles authentication.
+    - The API Gateway handles authentication
     - There are two authentication endpoints that allow to authenticate the resource by providers
     - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
 
@@ -170,14 +170,14 @@ The `/login` endpoint authenticates mainframe user credentials and returns an au
   * JSON with user credentials
   * Client certificate
 
-When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
 The `/query` endpoint validates the token and retrieves the information associated with the token.
 The query request requires the token through one of the following methods:
   * A cookie named `apimlAuthenticationToken`
   * Bearer authentication
 
-When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, a user gets a 401 status code.
+When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
 The `/ticket` endpoint generates a PassTicket for the user associated with a token.
 
@@ -195,35 +195,35 @@ For more details, see the OpenAPI documentation of the API Mediation Layer in th
 
 #### Supported authentication methods
 
-The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part
+The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as part
 of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
 with each authentication provider. 
 
 ##### Username/Password
 
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
-credentials. There are more details in the ZAAS Client documentation. 
+credentials. For more details, see the ZAAS Client documentation. 
 
 ##### Client certificate
 
 **Note:**
 
-Beginning with release 1.19 LTS, Zowe is including the ability to authenticate using client certificates. Feature itself is complete and tested, but automated testing on various security systems is not completed. That is the reason why the feature is being provided as a beta for early preview. If you have any feedback using client certificate authentication please create an issue against the api-layer repository. It is expected that in a future release it will be made available as a fully supported feature.
+Beginning with release 1.19 LTS, it is possible to perform authentication with client certificates. This feature is functional and tested, but automated testing on various security systems is not yet complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
-If the keyring or truststore contain at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML. This feature is not enabled by default and needs to be configured.
+If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML. This feature is not enabled by default and needs to be configured.
 
 Authentication is performed in the following ways:
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
-* The public part of the provided client certificate is checked against SAF and SAF subsequently returns a user ID that owns this certificate. ZSS is providing this API for Mediation Layer.
+* The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS is providing this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 **Prerequisities:**
 * Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF.
-* Import the client certificates to SAF, or add them to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For details, please refer to your security system documentation)
-* Import the external CA to the truststore of the API Mediation Layer
-* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication)
-* [For upgrade from zowe 1.18 or lower, please review the additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping)
+* Import the client certificates to SAF, or add them to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For more information, see your security system documentation.
+* Import the external CA to the truststore of the API Mediation Layer.
+* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
+* To upgrade from Zowe 1.18 or lower, see the [additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
 
 ##### JWT Token
 
@@ -240,7 +240,7 @@ API ML contains the following providers to handle authentication for the API Gat
 
 ##### z/OSMF Authentication Provider
 
-The `z/OSMF Authentication Provider` allows API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
+The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
 
 Use the following properties of API Gateway to enable the `z/OSMF Authentication Provider`:
 ```

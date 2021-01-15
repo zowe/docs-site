@@ -79,7 +79,7 @@ To change this default configuration, include the following parameters:
 
 **Note:**
 
-Beginning with release 1.19 LTS, Zowe is including the ability to authenticate using client certificates. Feature itself is complete and tested, but automated testing on various security systems is not completed. That is the reason why the feature is being provided as a beta for early preview. If you have any feedback using client certificate authentication please create an issue against the api-layer repository. It is expected that in a future release it will be made available as a fully supported feature.
+Beginning with release 1.19 LTS,it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 
 Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
@@ -185,21 +185,3 @@ Use the following procedure to change the number of concurrent connections.
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
-
-# API Mediation Layer as a standalone component
-
-By default, the Gateway, Zowe System Services, and Virtual Desktop start when
- Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
- Services are not required, it is possible to specify which components start in the
- context of Zowe. No change is required during the installation process to
- support this setup.
- 
-Once Zowe is installed, use the following procedure to limit which components start.
-
-**Follow these steps:**
-
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `LAUNCH_COMPONENT_GROUPS` and set `GATEWAY`
-3. Restart Zowe&trade.   
-
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups).
