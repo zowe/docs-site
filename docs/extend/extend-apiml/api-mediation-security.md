@@ -215,19 +215,19 @@ If the keyring or a truststore contains at least one valid certificate authority
 Authentication is performed in the following ways:
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
-* The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS is providing this API for the Mediation Layer.
+* The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 **Prerequisities:**
 * Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF.
-* Import the client certificates to SAF, or add them to a user profile (for example `RACDCERT ADD` or `RACDCERT GENCERT`. For more information, see your security system documentation.
+* Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
 * Import the external CA to the truststore of the API Mediation Layer.
 * [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
 * To upgrade from Zowe 1.18 or lower, see the [additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
 
 ##### JWT Token
 
-When the client authenticates with the API ML, the client receives in exchange the JWT token. This token can be used for further 
+When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further 
 authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced
 by z/OSMF, it is possible to reuse this token within the API ML for authentication.  
 
@@ -242,7 +242,7 @@ API ML contains the following providers to handle authentication for the API Gat
 
 The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
 
-Use the following properties of API Gateway to enable the `z/OSMF Authentication Provider`:
+Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
 ```
 apiml.security.auth.provider: zosmf
 apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
@@ -250,8 +250,7 @@ apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF 
 
 ##### SAF Authentication Provider
 
-The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF
-account to authenticate. 
+The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. 
 
 Use the following property of the API Gateway to enable the `SAF Authentication Provider`:
 ```
@@ -260,7 +259,7 @@ apiml.security.auth.provider: saf
 
 ##### Dummy Authentication Provider
 
-The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` allows API Gateway to run without authenticating with the z/OSMF service.
+The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
 
 Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
 ```
