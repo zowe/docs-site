@@ -36,20 +36,20 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 
 **Package manifest and component installer**
 
-Zowe extensions, as well as core components, can use a manifest file to describe itself now. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started, and tested. For more information, see [Packaging z/OS extensions](../extend/packaging-zos-extensions.md).
+Each Zowe extension and each core component can now use a manifest file to describe itself. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started, and tested. For more information, see [Packaging z/OS extensions](../extend/packaging-zos-extensions.md).
 
-Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are introduced in this release as technical review. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-components.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
+Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are introduced in this release as technical review. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-component.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
 
 **X.509 client certificate authentication support for API Mediation Layer (Technical Preview)**
 
-This is released as technical preview in Zowe 1.19. Previously, you have to supply some sort of credentials usually basic authentication when you make a login call against API Gateway. Now you can also make the call with client certificates by using ESM to map the certificate with the user mainframe identity and issue a JWT. 
+This is released as technical preview in Zowe 1.19. Previously, you had to supply some sort of credentials (usually basic authentication) when you make a login call against the API Gateway. Now you can also make the call with client certificates by using ESM to map the certificate with the user mainframe identity and issue a JWT. 
 
-If you would like to offer feedback using client certificate authentication, please create an issue against the Zowe `api-layer` repository.
+If you would like to offer feedback about using client certificate authentication, please create an issue against the Zowe `api-layer` repository.
 
 **Standalone run of Zowe API Mediation Layer**
 
-You can now start the API Mediation Layer independently of other Zowe components. This allows you to minimize used resources when you use Zowe as Devops tool instead of Virtual Desktop tool. 
+You can now start the API Mediation Layer independently of other Zowe components. This allows you to minimize the resources used when you use Zowe as a Devops tool instead of a Virtual Desktop tool. 
 
 
 ### New features and enhancements
