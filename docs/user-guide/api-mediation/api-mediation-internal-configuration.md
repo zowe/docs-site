@@ -1,6 +1,6 @@
 # API Gateway configuration parameters
 
-As an application developer who wants to change the default configuration of the API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+As an application developer who wants to change the default configuration of the API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/gateway/bin/start.sh` file:
 
   * [Runtime configuration](#runtime-configuration)
   * [Service configuration](#service-configuration)
@@ -71,8 +71,8 @@ https://localhost:10010/api/v1/gateway/version
     
     **Follow these steps:**
          
-    1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
-    2. Find the line that contains `-cp ${ROOT_DIR}"/components/api-mediation/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
+    1. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
+    2. Find the line that contains `-cp ${ROOT_DIR}"/components/gateway/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar`.
     3. Before this line, add a new line in the following format:
     ```
     -Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
