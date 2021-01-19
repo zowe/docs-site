@@ -218,13 +218,17 @@ Authentication is performed in the following ways:
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
-**Prerequisities:**
-* Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF.
-* Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
-* Import the external CA to the truststore of the API Mediation Layer.
-* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
-* To upgrade from Zowe 1.18 or lower, see the [additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
+<img src="../../images/api-mediation/zowe-client-cert-auth.png" alt="Zowe client certificate authentication diagram" align=center/>
 
+**Prerequisities:**
+* Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata to allow being used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
+* Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
+* Import the external CA to the truststore or keyring of the API Mediation Layer.
+* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
+* To upgrade from Zowe 1.18 or lower, see the [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
+* Passticket generation must be enabled for Zowe runtime user. The user has to be able to generate Passticket for itself and for ZOSMF's APPLID. [Configure Passticket](api-mediation-passtickets.md)
+* Zowe runtime user has to be enabled to perform identity mapping in SAF. [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping)
+* ZSS has to be configured to participate in Zowe SSO. [Using web tokens for sso on Zlux and ZSS](../../user-guide/configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss)
 ##### JWT Token
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further 
