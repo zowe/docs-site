@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.18 and earlier releases include the following enhancements, release by release.
+Zowe Version 1.19 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.19.0 LTS (January 2021)](#version-1-19-0-lts-january-2021)
 - [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
 - [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
@@ -27,6 +28,48 @@ Zowe Version 1.18 and earlier releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+
+## Version 1.19.0 LTS (January 2021)
+
+### Notable changes 
+
+**Package manifest and component installer**
+
+Zowe extensions, as well as core components, can use a manifest file to describe itself now. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started, and tested. For more information, see [Packaging z/OS extensions](../extend/packaging-zos-extensions.md).
+
+Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are introduced in this release as technical review. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-components.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
+
+
+**X.509 client certificate authentication support for API Mediation Layer (Technical Preview)**
+
+This is released as technical preview in Zowe 1.19. Previously, you have to supply some sort of credentials usually basic authentication when you make a login call against API Gateway. Now you can also make the call with client certificates by using ESM to map the certificate with the user mainframe identity and issue a JWT. 
+
+If you would like to offer feedback using client certificate authentication, please create an issue against the Zowe `api-layer` repository.
+
+**Standalone run of Zowe API Mediation Layer**
+
+You can now start the API Mediation Layer independently of other Zowe components. This allows you to minimize used resources when you use Zowe as Devops tool instead of Virtual Desktop tool. 
+
+
+### New features and enhancements
+
+#### Zowe API Mediation Layer
+
+#### Zowe App Server
+
+#### Zowe CLI
+
+
+### Bug Fixes
+
+#### Zowe API Mediation Layer
+
+#### Zowe App Server
+
+#### Zowe CLI
+
+
 
 ## Version 1.18.0 LTS (January 2021)
 
@@ -934,7 +977,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe documentation
 
-- Added a topic [Zowe lifecycle](../extend/lifecycling-with-zwesvstc.md#zowe-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
+- Added a topic [Zowe runtime lifecycle](../extend/lifecycling-with-zwesvstc.html#zowe-runtime-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
 - Improved the [Zowe architecture](../getting-started/zowe-architecture.md) information to include a more current architecture topology diagram and more details on the individual Zowe services, where they log their data, and how to perform high-level problem determination.
 - Added new problem determination scenarios and resolution. See [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md)
 - Added information on how to determine which release of Zowe is installed. See [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).
