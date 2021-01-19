@@ -68,7 +68,7 @@ The manifest file contains the following properties:
   * **`number`**: You may create multiple packages in the same branch. This is the sequential number of the current package.
   * **`commitHash`**: This is the commit hash of the package that can be used to match the exact source code in the repository. Zowe core components usually use `git rev-parse --verify HEAD` to retrieve the commit hash.
   * **`timestamp`**: This is the UNIX timestamp when the package is created.
-- **`commands`**: This field is a high level of several subfields to define actions that should be taken when the component is installed, configured, started, or tested. All subfields are optional and usually should point to a USS command or script.
+- **`commands`**: This defines actions that should be taken when the component is installed, configured, started, or tested. You must issue this command with one or more subfields as listed below. For example, `commands.install`. All subfields are optional and usually should point to a USS command or script.
   * **`install`**: This defines extra steps when installing this component. It will be automatically executed if you install your component with the `<RUNTIME_DIR>/bin/zowe-install-component.sh` utility tool.
   * **`configureInstance`**: This defines extra steps when configuring the component for a Zowe instance. It will be automatically executed if you configure your component with the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool.
   * **`validate`**: This defines extra validations that the component requires other than global validations. It is for runtime purpose, and will be automatically executed each time Zowe is started.
