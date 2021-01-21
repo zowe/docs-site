@@ -38,12 +38,11 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 <div class="features">
   <div class="feature">
     <h3>Discover your path</h3>
-    <p>Whether you're just starting or an experienced professional, the roadmap helps you arrive at your goals faster.</p>
+    <p>The roadmaps help you arrive at your goals faster. Choose one option and we'll suggest resources for you.</p>
   </div>
   <div class="solutionBox feature" style="height:340px">
       <div>
         <p><img src="./images/common/objective.svg" alt="User goal" style="height:25px"/> <strong>What would you like to do?</strong></p>
-        <p>Choose one option below and we'll suggest resources for you.</p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn about Zowe</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Install and use Zowe</a></p>
         <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend Zowe</a></p>
@@ -73,12 +72,13 @@ footer: Except where otherwise noted, content on this site is licensed under a C
       <div>
         <p class="bx--type-caption">
          <ul>
-         <li><a href="./getting-started/user-roadmap-app-framework.html">Zowe Application Framework</a></li>
-         <li><a href="./getting-started/user-roadmap-apiml.html">Zowe API Mediation Layer</a></li>
-         <li><a href="./getting-started/user-roadmap-zowe-cli.html">Zowe CLI</a></li>
-         <li><a href="./getting-started/user-roadmap-zowe-explorer.html">Zowe Explorer</a></li>
-         <li><a href="./getting-started/user-roadmap-client-sdk.html">Zowe Client SDKs (under development)</a></li>
-         <li><a href="./getting-started/user-roadmap-zowe-mobile.html">Zowe Mobile (under development)</a></li>
+         <li><a href="./getting-started/summaryofchanges.html">Release notes</a></li>
+         <li><a href="./getting-started/overview.html">Zowe overview</a></li>
+         <li><a href="./user-guide/zowe-getting-started-tutorial.html">Getting started tutorial</a></li>
+         <li><a href="./user-guide/installandconfig.html">Planning for installation</a></li>
+         <li><a href="./user-guide/systemrequirements.html">System requirements</a></li>
+         <li><a href="./user-guide/install-zos.html">Installing Zowe z/OS components</a></li>
+         <li><a href="./user-guide/systemrequirements-zosmf.html">Configuring z/OSMF </a></li>
          </ul>
         </p>
       </div>
@@ -88,12 +88,12 @@ footer: Except where otherwise noted, content on this site is licensed under a C
       <div>
         <p class="bx--type-caption">
          <ul>
-         <li><a href="./appendix/tpsr.html">Zowe Application Framework</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe API Mediation Layer</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe CLI</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Explorer</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Client SDKs (under development)</a></li>
-         <li><a href="./appendix/tpsr.html">Zowe Mobile (under development)</a></li>
+         <li><a href="./user-guide/cli-installcli.html">Installing Zowe CLI</a></li>
+         <li><a href="./user-guide/cli-usingcli.html">Using Zowe CLI</a></li>
+         <li><a href="./user-guide/install-zowe-smpe.html">Installing Zowe SMP/E</a></li>
+         <li><a href="./user-guide/configure-zos-system.html">Configuring the z/OS system</a></li>
+         <li><a href="./user-guide/configure-certificates.html">Configuring Zowe certificates</a></li>
+        <li><a href="./extend/extend-apiml/onboard-plain-java-enabler.html">Onboarding a REST API service with the Plain Java Enabler (PJE)</a></li>
          </ul>
         </p>
       </div>
@@ -105,9 +105,9 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 <section class="solutionBoxContainer features">
   <div class="solutionBox feature">
       <p><strong>Zowe Release Doc</strong></p>
-      <p>You can download the Version 1.x.x Zowe documentation in PDF format. The latest version on this website is 1.17.0.
+      <p>You can download the Version 1.x.x Zowe documentation in PDF format. The latest version on this website is 1.19.0.
       <ul>
-         <li><a href="https://docs.zowe.org/stable/Zowe_Documentation.pdf">V1.17.0 PDF</a></li>
+         <li><a href="https://docs.zowe.org/stable/Zowe_Documentation.pdf">V1.19.0 PDF</a></li>
          <li><a href="./appendix/tpsr.html">Previous Releases PDF</a></li>
       </ul>
       </p>
