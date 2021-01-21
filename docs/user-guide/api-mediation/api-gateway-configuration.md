@@ -2,7 +2,7 @@
 
 As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying either of the following files:
 
-- `<Zowe install directory>/components/api-mediation/bin/start-gateway.sh` 
+- `<Zowe install directory>/components/gateway/bin/start-gateway.sh` 
 - `<Zowe instance directory>/instance.env`
 
 The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
@@ -14,6 +14,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Gateway retry policy](#gateway-retry-policy)
+  * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
   * [Cors handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
@@ -49,7 +50,7 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Gateway retry policy
 
-To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
 
 All requests are disabled as the default configuration for retry with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
@@ -74,24 +75,66 @@ To change this default configuration, include the following parameters:
     
     Specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
     
+## Gateway client certificate authentication
+
+**Note:**
+
+Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
+
+
+Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
+
+**Follow these steps:**
+
+1. Open the `<Zowe instance directory>/instance.env` configuration file.
+2. Configure the following properties:
+
+   * **APIML_SECURITY_X509_ENABLED**
+
+     This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
+
+   * **APIML_SECURITY_ZOSMF_APPLID**
+
+     When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+  
+**Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
+
+3. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
+4. Configure the following properties:
+
+   * **apiml.security.x509.externalMapperUrl**
+
+     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the ZSS URL in the following format:
+     ```
+     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
+     ```
+     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
+
+   * **apiml.security.x509.externalMapperUser**
+
+     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. 
+     
+     To customize the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
+
+Restart Zowe&trade.
 
 ## Gateway timeouts
 
-Use the following procedure to change the global timeout value for the API Layer instance.
+Use the following procedure to change the global timeout value for the API Mediation Layer instance.
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS` and set the value to the desired value.
+2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS`, and set the value to the desired value.
 3. Restart Zowe&trade. 
 
-If you require finer control, you can edit the `<Zowe install directory>/components/api-mediation/bin/start.sh`, and modify the following properties:
+If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
 
 * **apiml.gateway.timeoutMillis**
 
   This property defines the global value for http/ws client timeout.
   
-Add the following properties to the file for API Gateway:
+Add the following properties to the file for the API Gateway:
 
   **Note:** Ribbon configures the client that connects to the routed services.
 
@@ -147,18 +190,19 @@ Use the following procedure to change the number of concurrent connections.
 
 # API Mediation Layer as a standalone component
 
+As a Zowe user, follow the procedure in this article to start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
  Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
  Services are not required, it is possible to specify which components start in the
  context of Zowe. No change is required during the installation process to
  support this setup.
- 
+
 Once Zowe is installed, use the following procedure to limit which components start.
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `LAUNCH_COMPONENT_GROUPS` and set `GATEWAY`
+2. Find the property `ZWE_LAUNCH_COMPONENTS` and set `discovery,gateway,api-catalog`
 3. Restart Zowe&trade.   
 
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups).
+To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
