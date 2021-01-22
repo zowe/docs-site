@@ -40,7 +40,6 @@ Each Zowe extension and each core component can now use a manifest file to descr
 
 Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are introduced in this release as technical review. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-component.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
-
 **X.509 client certificate authentication support for API Mediation Layer (Technical Preview)**
 
 This is released as technical preview in Zowe 1.19. Previously, you had to supply some sort of credentials (usually basic authentication) when you make a login call against the API Gateway. Now you can also make the call with client certificates by using ESM to map the certificate with the user mainframe identity and issue a JWT. 
@@ -55,11 +54,27 @@ You can now start the API Mediation Layer independently of other Zowe components
 ### New features and enhancements
 
 #### Zowe API Mediation Layer
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md. No 1.19.0 changes.-->
 
 #### Zowe App Server
 
-#### Zowe CLI
+#### Zowe Explorer
+<!--Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md, includes 1.11.1.-->
+- Updated Keytar and Jest dev deps for Node 14. 
 
+#### Zowe JES/MVS/USS Explorers   
+<!-- JES Explorer <1.0.9> https://github.com/zowe/explorer-jes/blob/v1.0.9/CHANGELOG.md#109 
+MVS Explorer <1.10.0> https://github.com/zowe/explorer-mvs/blob/v1.0.10/CHANGELOG.md#1010
+USS Explorer https://github.com/zowe/explorer-uss/blob/v1.0.9/CHANGELOG.md  No changes.-->
+
+The following features and enhancements were added to the **JES Explorer**:
+- Introduced the menu shortcuts and confirmation dialog before canceling or purging the job for JES explorer. [#235](https://github.com/zowe/explorer-jes/pull/235)
+- Refactored JES packagaing and installation scripts, and folder renames to accomodate new iframe capability in ZLUX. [#236](https://github.com/zowe/explorer-jes/pull/236)
+- Added manifest for API ML and App Framework installation using new plugin installation process. [#234](https://github.com/zowe/explorer-jes/pull/234)
+
+The following features and enhancements were added to the **MVS Explorer**:
+- Refactored MVS packagaing and installation scripts, and folder renames, to accomodate new iframe capability in ZLUX. [#164](https://github.com/zowe/explorer-mvs/pull/164)
+- Added manifest for API ML and App Framework installation using new plugin installation process. [#164](https://github.com/zowe/explorer-mvs/pull/164)
 
 ### Bug Fixes
 
@@ -69,6 +84,12 @@ You can now start the API Mediation Layer independently of other Zowe components
 
 #### Zowe CLI
 
+The following bug was fixed in the **core CLI**:
+- Updated the Imperative version to fix a vulnerability.
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Fixed vulnerabilities by updating `marked` [#515](https://github.com/zowe/imperative/pull/515)
+- Fixed an issue where `TypeError` has been raised by `Logger.getCallerFileAndLineTag()` when there was not filename for a stack frame. [#449](https://github.com/zowe/imperative/issues/449)
 
 
 ## Version 1.18.0 LTS (January 2021)
@@ -85,7 +106,6 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 ### New features and enhancements
 
 #### Zowe API Mediation Layer
-<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md#1180. Based on release number.-->
 - Version 1.18.0 introduces a feature allowing users to run the Zowe API Mediation Layer as a standalone component. After downloading and installing the current Zowe SMPE package, you can then configure and deploy only the Zowe API Mediation Layer without the other Zowe components. [#856](https://github.com/zowe/api-layer/issues/856)
 - You can now configure more detailed logging outside of Spool. [#709](https://github.com/zowe/api-layer/issues/709)
 - High Availability: The start script per API ML service has been componentized. You can now launch and restart API Mediation Layer components individually. [#862](https://github.com/zowe/api-layer/issues/862)
@@ -94,22 +114,13 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 - API Catalog versioning has been improved with the addition of the API differences tab. This feature enables you to compare versions of two APIs. [#923](https://github.com/zowe/api-layer/issues/923)
 
 #### Zowe App Server
-<!--Pulled from
-https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
-https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
+
 - The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
   - This is backward compatible with apps that have previously used single app mode. 
   - In the case where app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
 - ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
 
 #### Zowe CLI
-<!-- Pulled from https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md. Based on change history, pull updates after last release. Includes 6.24.5, 6.24.6, 6.25.0. -->
-<!-- Imperative CLI Framework: Pulled from https://github.com/zowe/imperative/blob/master/CHANGELOG.md. Based on change history. Includes 4.9.0, 4.10.0.-->
-<!-- Secure Credential Store Plug-in: Pulled from https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md. Based on change history. Last release is 4.1.1. No changes since then. -->
-<!-- CICS plug-in: Pulled from https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md. No changes.-->
-<!-- DB2 plug-in: Pulled from https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md. One change: Added a help example for how to pass output values when calling a Db2 stored procedure.. -->
-<!-- FTP Plug-in: Pulled from https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md. Based on change history. Incldues 1.3.0. -->
-<!-- No changes to other plug-ins. -->
 
 The following enhancements were added to the **core CLI**:
 
@@ -126,8 +137,6 @@ The following enhancement was added to the **IBM Db2 Plug-in**:
 The following enhancement was added to the **FTP Plug-in**:
 - Move the reusable code from handlers to api folder.
 
-<!-- #### Zowe Explorer -->
-<!--Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md, no changes since 1.11.0.-->
 
 #### Zowe JES/MVS/USS Explorers   
 <!-- JES Explorer <1.0.8> https://github.com/zowe/explorer-jes/blob/v1.0.8/CHANGELOG.md#108 -->
