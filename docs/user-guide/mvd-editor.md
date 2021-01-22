@@ -61,5 +61,10 @@ To create a new file, complete these steps:
 |ALT+W   	|Close a file |
 |CTRL+S |Save file |
 |ALT+Shift+M |Navigate Menu bar (use arrow keys) |
-|ALT+Shift+S   	|Search bar |
 |ALT+Shift+1   	|Editor Component |
+|ALT+PageUp(or <)| Cycle forward through open file tabs|
+|ALT+PageDown(or >)|Cycle back through open file tabs|
+|CTRL+ALT+T| Undo closed tab|
+|ALT+P|Open search|
+|ALT+B|Hide/Show file tree|
+
