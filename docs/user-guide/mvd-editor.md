@@ -65,6 +65,6 @@ To create a new file, complete these steps:
 |ALT+PageUp(or <)| Cycle forward through open file tabs|
 |ALT+PageDown(or >)|Cycle back through open file tabs|
 |CTRL+ALT+T| Undo closed tab|
-|ALT+P|Open search|
+|ALT+P|Focus to Search Bar|
 |ALT+B|Hide/Show file tree|
 
