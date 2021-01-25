@@ -5,23 +5,27 @@ The following topics contain information that can help you troubleshoot problems
 
 ## Successful startup of `ZWESVSTC`
 
-The `ZWESVSTC` started task on z/OS brings up a number of address spaces.  For each component messages are written to the JES `STDOUT` that can be used to check that they have started successfully.  Errors during startup can be found in the `STDERR` job spool file.  
+The `ZWESVSTC` started task on z/OS brings up a number of address spaces.  There is no single **Zowe has launched and is ready to run** message as the sequence of address spaces initialization is environment dependent, although the message ID `ZWED0021I` is typically the last one that is logged.  More detail on each subsystem and their startup messages are described below.
 
-To learn more about the Zowe components see the [Zowe Archiecture](../getting-started/zowe-architecture.md). Zowe can be configured to only bring up a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file, see [Component Groups](../user-guide/configure-instance-directory.md#component-groups).  
+To check that every Zowe has started successfully the most complete way is to check that each component successfully completed its initialization. Each component writes messages to the JES `STDOUT` and severe errors are written to the `STDERR` job spool file.  
 
-To monitor `ZWESVSTC` you can look at the address spaces, using a command such as `DA` in SDSF.  Each address space is named to identify its component, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names).
+To learn more about the Zowe components and their role see the [Zowe Archiecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to only bring up a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file, see [Component Groups](../user-guide/configure-instance-directory.md#component-groups).  
+
+To monitor `ZWESVSTC` a good approach is to look at the active address spaces using a command such as `DA` in SDSF.  Each address space is named to identify its component, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names).
+
+As well as looking at address spaces, to check whether each component has launched successfully you can look for particular messages in the `STDOUT` Job spool file.  
 
 ### API Mediation Layer 
 
-The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG` and API Discovery `ZWE1AD`.  Check that each address spaces is active.
+The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG` and API Discovery `ZWE1AD`.  These may have been changed from their defaults, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names). 
 
 Each component write a successful startup message `ZWEAM000I` to the JES, that also indicates the CPU of seconds spent, as shown below.  Check that each address space has written this message.  
 
 ```
 021-01-12 17:48:23.738 <ZWEADS1:main:33557015> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Discovery Service started in 97.725 seconds
-2021-01-12 17:48:27.577 <ZWEEAJ1:main:50334218> ZWESVUSR INFO  (o.s.b.w.e.t.TomcatWebServer,TomcatWebServer.java:202) Tomcat started on port(s): 8545 (https) with context path ''
-2021-01-12 17:48:27.590 <ZWEEAJ1:main:50334218> ZWESVUSR INFO  (o.z.j.JesJobsApplication,StartupInfoLogger.java:59) Started JesJobsApplication in 44.878 seconds (JVM running for 52.194)
+...
 2021-01-12 17:48:30.145 <ZWEAGW1:main:50334212> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Gateway Service started in 104.248 seconds
+...
 2021-01-12 17:48:31.036 <ZWEAAC1:main:33557009> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` API Catalog Service started in 105.127 seconds
 ```
 
@@ -35,9 +39,54 @@ When all services are fully initialized there will be three green ticks.
 
 ### Zowe Desktop 
 
-The Zowe desktop 
+The Zowe Desktop address space is named `ZWE1DS1`.  During its initialization process the desktop loads its plugins and writes a message `ZWED0031I` when it is completed.  
 
-###
+```
+2021-01-22 14:35:00.300 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:340) ZWED0031I - Server is ready at https://0.0.0.0:8554, Plugins successfully loaded: 100% (21/21)
+```
+
+The`ZWED0031I` message includes a count of the number of loaded plugins as well as the total number of plugins, for example `Plugins successfully loaded: 100% (21/21)`.  A failed plugin load will not abort the launch of the desktop.
+
+In the message example above it indicates that 21 plugins have loaded successfully. Each of these plugins writes its individual message `ZWED0290I`, so is `ZWED0031I` indicates 21 plugins have loaded there will be 21 instances of `ZWED0290I`, for example:
+
+```
+2021-01-22 14:34:58.762 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.zosmf.workflows) loaded. Successful: 5% (1/21) Attempted: 5% (1/21)
+...
+2021-01-22 14:35:00.114 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.zlux.appmanager.app.propview) loaded. Successful: 52% (11/21) Attempted: 52% (11/21)
+...
+2021-01-22 14:35:00.278 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.api.catalog) loaded. Successful: 95% (20/21) Attempted: 95% (20/21)
+```
+
+Messages for `ZWED0290I` will be written when the JES Explorer `org.zowe.explorer-jes`, the MVS Explorer `org.zowe.explorer-mvs` and the USS Explorer `org.zowe.explorer-uss` are loaded. 
+
+When the Zowe desktop and the API Gateway are both started in a launch configuration, after the Zowe desktop has started it will register itself with the API Gateway.  This step must be completed before a user is able to successfully log in, as the API Mediation layer is used as the backing authentication service.  The message that is written to indicate that the registration has been successful is `ZWED0021I`, for example
+
+```2021-01-22 14:36:01.846 <ZWED:16842882> ZWESVUSR INFO (_zsf.apiml,apiml.js:218) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://<HOSTNAME>:<APIDISCOVERYPORT>/ui/v1/zlux/
+```
+
+### Zowe File and Jobs API servers
+
+Zowe has two servers that are used to provide API services for jobs and files. The Jobs API server address space is named `ZWE1EF` and the Files API server address space is named `ZWE1EJ`.  When these have successfully started a message `Started <name> in <nn> seconds (JVM running for <nn>)` is written to the log, for example.
+
+```
+2021-01-22 14:35:17.869 <ZWEEAJ1:main:50397279> ZWESVUSR INFO  (o.z.j.JesJobsApplication,StartupInfoLogger.java:59) Started JesJobsApplication in 29.867 seconds (JVM running for 37.296)
+...
+2021-01-22 14:35:21.567 <ZWEEAD1:main:67174496> ZWESVUSR INFO  (o.z.DataSetsAndUnixFilesApplication,StartupInfoLogger.java:59) Started DataSetsAndUnixFilesApplication in 33.597 seconds (JVM running for 41.002)
+```
+
+### Zowe Secure Services
+
+The zssServer is used for secure services for the Zowe desktop.  
+
+```
+ZWES1013I ZSS Server has started. Version '1.18.0+20201214' 
+```
+
+The zssServer will register itself with the cross memory server running under the adddress space `ZWESISTC`.  The attach messsage ID `ZWES1014I` can be used to check that this has occurred successfully.  If this message contains a non zero return code in the `cmsRC=` value then a failure occurred.  For more information on how to diagnose these see, [ZSS server unable to communicate with X-MEM](./app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-x-mem).
+
+```
+ZWES1014I ZIS status - 'Ok' (name='ZWESIS_STD      ', cmsRC='0', description='Ok', clientVersion='2')
+```
 
 ## Unable to launch Zowe with { FSUM7351 }
 
