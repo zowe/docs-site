@@ -82,6 +82,18 @@ Use the following methods with the Caching service API:
 
 The Caching service uses the standard `application.yml` structure for configuration. The service is built on top of the Spring enabler. As such, it is dynamically registered to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
 
+* **`caching.storage.size`**
+
+  Limit the size of the caching service. The different implementations may implement this property differently but in the VSAM and InMemory implementation this property represents amount of records before the eviction strategy will kick in. The default value is 100. 
+
+* **`caching.storage.evictionStrategy`**
+
+  The strategy explaining how the service behaves when it reaches the limit of the size. The default value is Reject.
+  
+  * reject - Reject new item with the HTTP status code 507 when the service reaches configured size
+  * removeOldest - Remove the oldest item in the cache when the service reaches configured size
+
+
 **Notes:** 
 - For more information about how to configure the Caching service in the application.yml, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
 - When using VSAM, ensure that you set the additional configuration parameters. For more information see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
