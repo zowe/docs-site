@@ -1,8 +1,9 @@
-# Using the Caching service
+# Using the Caching Service
 
-As an API developer, you can use the Caching service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching service makes it possible to store, retrieve, and delete data associated with keys. The Caching service is designed to make resource sharing possible for services that cannot be made stateless in two ways:
+As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching Service makes it possible to store, retrieve, and delete data associated with keys. The Caching Service is designed to make resource sharing possible for services that cannot be made stateless in two ways:
 
 - Using VSAM to store key/value pairs for production
+
 - Using InMemory
 
 **Note:** In the current implementation of the Caching service, VSAM is required for the storage of key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.
@@ -18,7 +19,7 @@ The Caching service is available only for internal Zowe applications, and is not
 - [Configuration properties](#configuration-properties)
 ## Architecture
 
-A precondition to provide for High Availability of all components within Zowe is the requirement for these components to be either stateless, or for the service's resources to be offloaded to a location accessible by all instances of the service. This includes those instances which just started. Some services, however, are not, and cannot be stateless. The Caching service is designed for these types of services.   
+A precondition to provide for High Availability of all components within Zowe is the requirement for these components to be either stateless, or for the resources of the service to be offloaded to a location accessible by all instances of the service. This condition also applies to recently started instances. Some services, however, are not, and cannot be stateless. The Caching Service is designed for these types of services.
 
 REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
@@ -31,10 +32,10 @@ Information from cached APIs is stored as a JSON in the following format:
 ```
 ## Storage methods
 
-The Caching service supports the following storage solutions, which provide the option to add custom implementation.  
+The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
 ### VSAM
 
-VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications, and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
+VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
 ### InMemory
@@ -49,14 +50,15 @@ By default, the Caching service starts along with the other Zowe components. To 
 
 This parameter is defined in the ansible playbooks. 
 
-When you set this parameter to `false`, the parameter appends to the `instance.env` configuration file, which is used at Zowe start time.
+When this parameter is set to `false`, the parameter appends to the `instance.env` configuration file, which is used at Zowe start time.
 
 ## Methods to use the Caching service API
 
 To apply a method to the Caching service, use the following API path:
+
 `/cachingservice/api/v1/cache/${path-params-as-needed}`
 
-Use the following methods with the Caching service API:
+Use the following methods with the Caching Service API:
 
 - **`POST /cache`**
 
@@ -80,21 +82,28 @@ Use the following methods with the Caching service API:
 
 ## Configuration properties
 
-The Caching service uses the standard `application.yml` structure for configuration. The service is built on top of the Spring enabler. As such, it is dynamically registered to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
+The Caching Service uses the standard `application.yml` structure for configuration. The service is built on top of the Spring enabler. As such, it dynamically registers to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
 
 * **`caching.storage.size`**
 
-  Limit the size of the caching service. The different implementations may implement this property differently but in the VSAM and InMemory implementation this property represents amount of records before the eviction strategy will kick in. The default value is 100. 
+  This property limits the size of the Caching Service. In the VSAM and InMemory implementations, this property represents the number of records stored before the eviction strategy is initiated. The default value is `100`. 
+
+  **Note:** Different implementations may implement this property differently.
 
 * **`caching.storage.evictionStrategy`**
 
-  The strategy explaining how the service behaves when it reaches the limit of the size. The default value is Reject.
-  
-  * reject - Reject new item with the HTTP status code 507 when the service reaches configured size
-  * removeOldest - Remove the oldest item in the cache when the service reaches configured size
+  This parameter specifies service behavior when the limit of records is reached. The default value is `Reject`.
 
+  where:
+  
+  * **reject**
+  
+    rejects the new item with the HTTP status code `507` when the service reaches the configured maximum number
+
+  * **removeOldest**
+  
+    removes the oldest item in the cache when the service reaches the configured maximum number
 
 **Notes:** 
-- For more information about how to configure the Caching service in the application.yml, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
-- When using VSAM, ensure that you set the additional configuration parameters. For more information see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
-
+- For more information about how to configure the Caching Service in the `application.yml`, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
+- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
